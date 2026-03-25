@@ -19,8 +19,10 @@ Primary output is a **promoted export** that TIBER-Fantasy (or any consumer) can
 - `docs/`
   - `architecture.md`
   - `export-contract.md`
+  - `tiber-fantasy-consumer-contract.md`
 - `scripts/`
   - `compute_rookie_alpha.py`
+  - `validate_promoted_export.py`
 - `data/raw/`
   - combine inputs (example 2026 artifact)
 - `data/processed/`
@@ -97,6 +99,36 @@ Before ingesting a promoted export, downstream systems (such as TIBER-Fantasy) s
 2. Recompute SHA-256 for each listed input/output file and verify hashes exactly match manifest values.
 3. Verify manifest and export metadata agree exactly (`season`, `model_version`, `generated_at`, and coverage/source-file metadata).
 4. Validate row/coverage expectations from `coverage_summary` before import.
+
+## Downstream consumption (TIBER-Fantasy readiness)
+
+Use the consumer validation helper to gate ingestion:
+
+```bash
+python3 scripts/validate_promoted_export.py \
+  --export-json exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json \
+  --manifest exports/promoted/rookie-alpha/2026_manifest.json
+```
+
+Expected behavior:
+
+- exits `0` and prints `VALIDATION PASSED` when contract checks succeed
+- exits non-zero and prints each failure condition when checks fail
+
+Validation includes:
+
+1. export/manifest required field checks
+2. cross-file metadata consistency checks
+3. output hash verification (`output_files`)
+4. input hash + row count verification (`input_files`)
+
+For downstream flat ingestion, a sample convenience artifact is included:
+
+- `exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.consumer_view.json`
+
+Authoritative contract and failure semantics are documented in:
+
+- `docs/tiber-fantasy-consumer-contract.md`
 
 ## Known v0 caveats
 

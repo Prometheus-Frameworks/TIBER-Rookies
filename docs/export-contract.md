@@ -94,3 +94,5 @@ Consumers should reject an export if any of the following fail:
 2. Any input/output file hash mismatch against manifest.
 3. `export_metadata` mismatch with manifest top-level metadata.
 4. Coverage counts outside expected operating thresholds.
+
+For TIBER-Fantasy specific ingestion gates and CLI validation workflow, see `docs/tiber-fantasy-consumer-contract.md`.
