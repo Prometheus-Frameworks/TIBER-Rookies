@@ -1,0 +1,26 @@
+[
+  {
+    "player_id": "rb-ashley-jennings",
+    "player_name": "Ashley Jennings",
+    "position": "RB",
+    "production_score_0_100": 86.2
+  },
+  {
+    "player_id": "rb-darius-cole",
+    "player_name": "Darius Cole",
+    "position": "RB",
+    "production_score_0_100": 78.4
+  },
+  {
+    "player_id": "wr-malik-ford",
+    "player_name": "Malik Ford",
+    "position": "WR",
+    "production_score_0_100": 88.1
+  },
+  {
+    "player_id": "wr-keon-banks",
+    "player_name": "Keon Banks",
+    "position": "WR",
+    "production_score_0_100": 73.9
+  }
+]

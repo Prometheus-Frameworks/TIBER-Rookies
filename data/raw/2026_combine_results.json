@@ -1,0 +1,42 @@
+[
+  {
+    "player_id": "rb-ashley-jennings",
+    "player_name": "Ashley Jennings",
+    "position": "RB",
+    "height_in": 70,
+    "weight_lb": 212,
+    "forty": 4.45,
+    "vertical": 38.5,
+    "broad": 126
+  },
+  {
+    "player_id": "rb-darius-cole",
+    "player_name": "Darius Cole",
+    "position": "RB",
+    "height_in": 71,
+    "weight_lb": 220,
+    "forty": 4.53,
+    "vertical": 35,
+    "broad": 121
+  },
+  {
+    "player_id": "wr-malik-ford",
+    "player_name": "Malik Ford",
+    "position": "WR",
+    "height_in": 73,
+    "weight_lb": 198,
+    "forty": 4.38,
+    "vertical": 39,
+    "broad": 129
+  },
+  {
+    "player_id": "wr-keon-banks",
+    "player_name": "Keon Banks",
+    "position": "WR",
+    "height_in": 74,
+    "weight_lb": 207,
+    "forty": 4.49,
+    "vertical": 36.5,
+    "broad": 123
+  }
+]
