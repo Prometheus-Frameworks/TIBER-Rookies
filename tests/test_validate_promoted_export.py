@@ -130,6 +130,16 @@ class ValidatePromotedExportTests(unittest.TestCase):
             errors = validate_export_manifest(export_path, manifest_path)
             self.assertTrue(any("Output hash mismatch" in err for err in errors))
 
+    def test_validate_export_manifest_requires_json_and_csv_outputs(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            export_path, manifest_path = self._write_contract_files(root)
+            manifest_payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+            manifest_payload["output_files"] = [manifest_payload["output_files"][0]]
+            manifest_path.write_text(json.dumps(manifest_payload, indent=2) + "\n", encoding="utf-8")
+            errors = validate_export_manifest(export_path, manifest_path)
+            self.assertTrue(any("missing required JSON/CSV output entries" in err for err in errors))
+
 
 if __name__ == "__main__":
     unittest.main()
