@@ -45,27 +45,28 @@ def sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
+def find_repo_root(start_path: Path) -> Path:
+    current = start_path.resolve()
+    for candidate in [current, *current.parents]:
+        if (candidate / ".git").exists():
+            return candidate
+    return current
+
+
 def resolve_path(path_str: str, manifest_path: Path) -> Path:
     path = Path(path_str)
     if path.is_absolute():
         return path
-    manifest_parent = manifest_path.parent
-    repo_root_guess = manifest_parent
-    if len(manifest_parent.parts) >= 3:
-        try:
-            repo_root_guess = manifest_parent.parents[2]
-        except IndexError:
-            repo_root_guess = manifest_parent
-    from_repo_root_guess = (repo_root_guess / path).resolve()
-    if from_repo_root_guess.exists():
-        return from_repo_root_guess
-    from_manifest_dir = (manifest_parent / path).resolve()
+    repo_root = find_repo_root(manifest_path.parent)
+    if repo_root == manifest_path.parent and len(manifest_path.parent.parents) >= 3:
+        repo_root = manifest_path.parent.parents[2]
+    from_repo_root = (repo_root / path).resolve()
+    if from_repo_root.exists():
+        return from_repo_root
+    from_manifest_dir = (manifest_path.parent / path).resolve()
     if from_manifest_dir.exists():
         return from_manifest_dir
-    from_cwd = (Path.cwd() / path).resolve()
-    if from_cwd.exists():
-        return from_cwd
-    return from_repo_root_guess / path
+    return from_repo_root
 
 
 def validate_export_manifest(
@@ -76,11 +77,16 @@ def validate_export_manifest(
     check_output_hashes: bool = True,
 ) -> list[str]:
     errors: list[str] = []
-
-    if not export_path.exists():
-        return [f"Export file not found: {export_path}"]
-    if not manifest_path.exists():
-        return [f"Manifest file not found: {manifest_path}"]
+    required_companion_files = {
+        export_path,
+        export_path.with_suffix(".csv"),
+        manifest_path,
+    }
+    for required_file in required_companion_files:
+        if not required_file.exists():
+            errors.append(f"Required companion file not found: {required_file}")
+    if errors:
+        return errors
 
     try:
         export_payload = load_json(export_path)
@@ -141,6 +147,17 @@ def validate_export_manifest(
         if not isinstance(output_entries, list):
             errors.append("manifest.output_files must be a list.")
         else:
+            output_paths = {
+                str(resolve_path(str(entry.get("path")), manifest_path))
+                for entry in output_entries
+                if isinstance(entry, dict) and entry.get("path")
+            }
+            expected_output_paths = {
+                str(export_path.resolve()),
+                str(export_path.with_suffix(".csv").resolve()),
+            }
+            if not expected_output_paths.issubset(output_paths):
+                errors.append("manifest.output_files is missing required JSON/CSV output entries.")
             for output in output_entries:
                 if not isinstance(output, dict):
                     errors.append("manifest.output_files entries must be objects.")
