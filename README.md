@@ -69,16 +69,34 @@ python3 scripts/compute_rookie_alpha.py \
 
 - `exports/promoted/rookie-alpha/{season}_rookie_alpha_predraft_v0.json`
 - `exports/promoted/rookie-alpha/{season}_rookie_alpha_predraft_v0.csv`
+- `exports/promoted/rookie-alpha/{season}_manifest.json`
 
 Export metadata includes:
 
 - `model_version`
 - `generated_at`
+- `run_id`
 - `season`
 - `coverage_summary`
 - `source_files_used`
 
+The manifest is a machine-readable reproducibility record that includes:
+
+- `season`, `model_version`, `generated_at`, `run_id`
+- input file paths + SHA-256 hashes + row counts
+- output file paths + SHA-256 hashes
+- coverage summary and export metadata mirror for consistency checks
+
 Full field-level contract is documented in `docs/export-contract.md`.
+
+## Downstream validation checklist
+
+Before ingesting a promoted export, downstream systems (such as TIBER-Fantasy) should:
+
+1. Confirm all three files exist for the season (`.json`, `.csv`, and `_manifest.json`).
+2. Recompute SHA-256 for each listed input/output file and verify hashes exactly match manifest values.
+3. Verify manifest and export metadata agree exactly (`season`, `model_version`, `generated_at`, and coverage/source-file metadata).
+4. Validate row/coverage expectations from `coverage_summary` before import.
 
 ## Known v0 caveats
 

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import logging
 from dataclasses import dataclass
@@ -26,6 +27,14 @@ class PlayerInputs:
     ras_score_0_100: float | None
     production_score_0_100: float | None
     draft_capital_proxy_0_100: float | None
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(65536), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def load_json(path: Path) -> Any:
@@ -58,19 +67,29 @@ def safe_stats(values: list[float]) -> tuple[float, float]:
     return (mean(values), sd if sd > 1e-9 else 1.0)
 
 
-def coerce_float(value: Any, field_name: str, player_id: str, source_name: str) -> float | None:
+def coerce_float(
+    value: Any,
+    field_name: str,
+    player_id: str,
+    source_name: str,
+    warned_invalid_values: set[tuple[str, str, str, str]] | None = None,
+) -> float | None:
     if value is None:
         return None
     try:
         return float(value)
     except (TypeError, ValueError):
-        logging.warning(
-            "Skipping invalid %s value %r for player_id=%s in %s; field will be treated as missing.",
-            field_name,
-            value,
-            player_id,
-            source_name,
-        )
+        warning_key = (field_name, repr(value), player_id, source_name)
+        if warned_invalid_values is None or warning_key not in warned_invalid_values:
+            logging.warning(
+                "Skipping invalid %s value %r for player_id=%s in %s; field will be treated as missing.",
+                field_name,
+                value,
+                player_id,
+                source_name,
+            )
+            if warned_invalid_values is not None:
+                warned_invalid_values.add(warning_key)
         return None
 
 
@@ -95,6 +114,7 @@ def normalize_row(
 
 def compute_ras_scores(combine_rows: list[dict[str, Any]]) -> dict[str, float]:
     by_position: dict[str, list[dict[str, Any]]] = {}
+    warned_invalid_values: set[tuple[str, str, str, str]] = set()
     for idx, row in enumerate(combine_rows, start=1):
         normalized = normalize_row(row, "combine input", idx)
         if normalized is None:
@@ -107,31 +127,41 @@ def compute_ras_scores(combine_rows: list[dict[str, Any]]) -> dict[str, float]:
         forties = [
             value
             for r in rows
-            for value in [coerce_float(r.get("forty"), "forty", str(r["player_id"]), "combine input")]
+            for value in [
+                coerce_float(r.get("forty"), "forty", str(r["player_id"]), "combine input", warned_invalid_values)
+            ]
             if value is not None
         ]
         verticals = [
             value
             for r in rows
-            for value in [coerce_float(r.get("vertical"), "vertical", str(r["player_id"]), "combine input")]
+            for value in [
+                coerce_float(r.get("vertical"), "vertical", str(r["player_id"]), "combine input", warned_invalid_values)
+            ]
             if value is not None
         ]
         broads = [
             value
             for r in rows
-            for value in [coerce_float(r.get("broad"), "broad", str(r["player_id"]), "combine input")]
+            for value in [
+                coerce_float(r.get("broad"), "broad", str(r["player_id"]), "combine input", warned_invalid_values)
+            ]
             if value is not None
         ]
         heights = [
             value
             for r in rows
-            for value in [coerce_float(r.get("height_in"), "height_in", str(r["player_id"]), "combine input")]
+            for value in [
+                coerce_float(r.get("height_in"), "height_in", str(r["player_id"]), "combine input", warned_invalid_values)
+            ]
             if value is not None
         ]
         weights = [
             value
             for r in rows
-            for value in [coerce_float(r.get("weight_lb"), "weight_lb", str(r["player_id"]), "combine input")]
+            for value in [
+                coerce_float(r.get("weight_lb"), "weight_lb", str(r["player_id"]), "combine input", warned_invalid_values)
+            ]
             if value is not None
         ]
 
@@ -143,11 +173,29 @@ def compute_ras_scores(combine_rows: list[dict[str, Any]]) -> dict[str, float]:
 
         for r in rows:
             components: list[tuple[float, float]] = []
-            forty = coerce_float(r.get("forty"), "forty", str(r["player_id"]), "combine input")
-            vertical = coerce_float(r.get("vertical"), "vertical", str(r["player_id"]), "combine input")
-            broad = coerce_float(r.get("broad"), "broad", str(r["player_id"]), "combine input")
-            height = coerce_float(r.get("height_in"), "height_in", str(r["player_id"]), "combine input")
-            weight = coerce_float(r.get("weight_lb"), "weight_lb", str(r["player_id"]), "combine input")
+            forty = coerce_float(r.get("forty"), "forty", str(r["player_id"]), "combine input", warned_invalid_values)
+            vertical = coerce_float(
+                r.get("vertical"),
+                "vertical",
+                str(r["player_id"]),
+                "combine input",
+                warned_invalid_values,
+            )
+            broad = coerce_float(r.get("broad"), "broad", str(r["player_id"]), "combine input", warned_invalid_values)
+            height = coerce_float(
+                r.get("height_in"),
+                "height_in",
+                str(r["player_id"]),
+                "combine input",
+                warned_invalid_values,
+            )
+            weight = coerce_float(
+                r.get("weight_lb"),
+                "weight_lb",
+                str(r["player_id"]),
+                "combine input",
+                warned_invalid_values,
+            )
 
             if forty is not None:
                 z = (forty_mu - forty) / forty_sd  # lower is better
@@ -183,13 +231,20 @@ def merge_inputs(
     draft_proxy_rows: list[dict[str, Any]],
 ) -> list[PlayerInputs]:
     ras_by_id = compute_ras_scores(combine_rows)
+    warned_invalid_values: set[tuple[str, str, str, str]] = set()
     prod_by_id: dict[str, float] = {}
     for idx, row in enumerate(production_rows, start=1):
         normalized = normalize_row(row, "production input", idx)
         if normalized is None:
             continue
         player_id, _, _ = normalized
-        value = coerce_float(row.get("production_score_0_100"), "production_score_0_100", player_id, "production input")
+        value = coerce_float(
+            row.get("production_score_0_100"),
+            "production_score_0_100",
+            player_id,
+            "production input",
+            warned_invalid_values,
+        )
         if value is not None:
             prod_by_id[player_id] = value
 
@@ -204,6 +259,7 @@ def merge_inputs(
             "draft_capital_proxy_0_100",
             player_id,
             "draft proxy input",
+            warned_invalid_values,
         )
         if value is not None:
             draft_by_id[player_id] = value
@@ -260,8 +316,10 @@ def write_outputs(
     draft_proxy_path: Path,
     output_json: Path,
     output_csv: Path,
+    output_manifest: Path,
 ) -> None:
     generated_at = datetime.now(tz=timezone.utc).replace(microsecond=0).isoformat()
+    run_id = f"rookie-alpha-{season}-{generated_at}"
 
     ranked: list[dict[str, Any]] = []
     missing_any = 0
@@ -323,6 +381,7 @@ def write_outputs(
             },
         },
         "generated_at": generated_at,
+        "run_id": run_id,
         "season": season,
         "coverage_summary": {
             "players_total": len(ranked),
@@ -336,9 +395,9 @@ def write_outputs(
         ],
         "players": ranked,
     }
-
     output_json.parent.mkdir(parents=True, exist_ok=True)
     output_csv.parent.mkdir(parents=True, exist_ok=True)
+    output_manifest.parent.mkdir(parents=True, exist_ok=True)
 
     with output_json.open("w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2)
@@ -375,6 +434,61 @@ def write_outputs(
                 }
             )
 
+    input_files = [
+        {
+            "path": str(combine_path),
+            "sha256": sha256_file(combine_path),
+            "row_count": len(load_json(combine_path)),
+        },
+        {
+            "path": str(production_path),
+            "sha256": sha256_file(production_path),
+            "row_count": len(load_json(production_path)),
+        },
+        {
+            "path": str(draft_proxy_path),
+            "sha256": sha256_file(draft_proxy_path),
+            "row_count": len(load_json(draft_proxy_path)),
+        },
+    ]
+    output_files = [
+        {"path": str(output_json), "sha256": sha256_file(output_json)},
+        {"path": str(output_csv), "sha256": sha256_file(output_csv)},
+    ]
+    manifest = {
+        "season": season,
+        "model_version": payload["model"]["model_version"],
+        "generated_at": generated_at,
+        "run_id": run_id,
+        "input_files": input_files,
+        "coverage_summary": payload["coverage_summary"],
+        "output_files": output_files,
+        "export_metadata": {},
+    }
+    exported_payload = load_json(output_json)
+    manifest["export_metadata"] = {
+        "season": exported_payload["season"],
+        "model_version": exported_payload["model"]["model_version"],
+        "generated_at": exported_payload["generated_at"],
+        "run_id": exported_payload["run_id"],
+        "coverage_summary": exported_payload["coverage_summary"],
+        "source_files_used": exported_payload["source_files_used"],
+    }
+    expected_export_metadata = {
+        "season": manifest["season"],
+        "model_version": manifest["model_version"],
+        "generated_at": manifest["generated_at"],
+        "run_id": manifest["run_id"],
+        "coverage_summary": manifest["coverage_summary"],
+        "source_files_used": [entry["path"] for entry in manifest["input_files"]],
+    }
+    if manifest["export_metadata"] != expected_export_metadata:
+        raise RuntimeError("Manifest export_metadata does not match top-level manifest metadata.")
+
+    with output_manifest.open("w", encoding="utf-8") as f:
+        json.dump(manifest, f, indent=2)
+        f.write("\n")
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Compute standalone Rookie Alpha promoted export")
@@ -404,6 +518,11 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=None,
     )
+    parser.add_argument(
+        "--output-manifest",
+        type=Path,
+        default=None,
+    )
     return parser.parse_args()
 
 
@@ -415,6 +534,7 @@ def main() -> None:
     draft_proxy_input = args.draft_proxy_input or Path(f"data/processed/{args.season}_draft_capital_proxy.json")
     output_json = args.output_json or Path(f"exports/promoted/rookie-alpha/{args.season}_rookie_alpha_predraft_v0.json")
     output_csv = args.output_csv or Path(f"exports/promoted/rookie-alpha/{args.season}_rookie_alpha_predraft_v0.csv")
+    output_manifest = args.output_manifest or Path(f"exports/promoted/rookie-alpha/{args.season}_manifest.json")
 
     combine_rows = load_json(combine_input)
     production_rows = load_json(production_input)
@@ -434,6 +554,7 @@ def main() -> None:
         draft_proxy_path=draft_proxy_input,
         output_json=output_json,
         output_csv=output_csv,
+        output_manifest=output_manifest,
     )
 
 

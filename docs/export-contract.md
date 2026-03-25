@@ -4,6 +4,7 @@ This repository's primary artifact is a promoted export under:
 
 - `exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json`
 - `exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.csv`
+- `exports/promoted/rookie-alpha/2026_manifest.json`
 
 ## JSON contract
 
@@ -20,6 +21,7 @@ Top-level fields:
     - `draft_capital_proxy_weight` (0.20)
     - `age_at_entry_supported` (false in v0)
 - `generated_at`: ISO-8601 UTC timestamp
+- `run_id`: run identifier shared with manifest
 - `season`: integer season, e.g. `2026`
 - `coverage_summary`
   - `players_total`
@@ -56,3 +58,39 @@ Columns:
 9. `model_inputs_missing`
 
 CSV is a flattened companion artifact for simpler downstream ingestion.
+
+## Manifest contract (`*_manifest.json`)
+
+Top-level fields:
+
+- `season`
+- `model_version`
+- `generated_at`
+- `run_id`
+- `input_files`: list of
+  - `path`
+  - `sha256`
+  - `row_count`
+- `coverage_summary`
+  - `players_total`
+  - `players_with_any_missing_input`
+  - `players_with_full_inputs`
+- `output_files`: list of
+  - `path`
+  - `sha256`
+- `export_metadata` (must match exactly)
+  - `season`
+  - `model_version`
+  - `generated_at`
+  - `run_id`
+  - `coverage_summary`
+  - `source_files_used`
+
+## Downstream validation requirements
+
+Consumers should reject an export if any of the following fail:
+
+1. Missing companion files (`.json`, `.csv`, manifest).
+2. Any input/output file hash mismatch against manifest.
+3. `export_metadata` mismatch with manifest top-level metadata.
+4. Coverage counts outside expected operating thresholds.
