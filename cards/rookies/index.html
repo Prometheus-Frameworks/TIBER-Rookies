@@ -24,6 +24,7 @@
       import { renderRookieGalleryControls } from '/components/rookies/RookieGalleryControls.js';
       import { collectGalleryFilters, sortAndFilterRookies } from '/lib/rookies/sortAndFilterRookies.js';
       import { addRookieToQueue, isRookieQueued, removeRookieFromQueue } from '/lib/rookies/rookieQueueStore.js';
+      import { deriveRookieTier } from '/lib/rookies/deriveRookieTier.js';
 
       const gallery = document.getElementById('gallery');
       const controlsRoot = document.getElementById('controls-root');
@@ -38,7 +39,7 @@
           school: card.identity.school,
           rookieGrade: card.summary.rookieGrade,
           classRank: card.summary.classRank,
-          tierLabel: card.summary.rookieGrade == null ? 'Tier N/A' : `Grade band ${Math.floor(card.summary.rookieGrade / 10) * 10}+`,
+          tierLabel: deriveRookieTier(card.summary.rookieGrade).label,
           identityNote: card.summary.archetype ?? card.summary.projection ?? card.tags?.[0],
         };
       }
