@@ -1,0 +1,26 @@
+[
+  {
+    "player_id": "rb-ashley-jennings",
+    "player_name": "Ashley Jennings",
+    "position": "RB",
+    "draft_capital_proxy_0_100": 74.0
+  },
+  {
+    "player_id": "rb-darius-cole",
+    "player_name": "Darius Cole",
+    "position": "RB",
+    "draft_capital_proxy_0_100": 67.5
+  },
+  {
+    "player_id": "wr-malik-ford",
+    "player_name": "Malik Ford",
+    "position": "WR",
+    "draft_capital_proxy_0_100": 82.3
+  },
+  {
+    "player_id": "wr-keon-banks",
+    "player_name": "Keon Banks",
+    "position": "WR",
+    "draft_capital_proxy_0_100": 64.8
+  }
+]

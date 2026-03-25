@@ -1,0 +1,80 @@
+{
+  "model": {
+    "name": "tiber-rookie-alpha",
+    "stage": "pre-draft",
+    "label": "pre-draft v0",
+    "model_version": "rookie-alpha-predraft-v0.1.0",
+    "formula": {
+      "ras_weight": 0.35,
+      "production_weight": 0.45,
+      "draft_capital_proxy_weight": 0.2,
+      "age_at_entry_supported": false
+    }
+  },
+  "generated_at": "2026-03-25T00:36:09+00:00",
+  "season": 2026,
+  "coverage_summary": {
+    "players_total": 4,
+    "players_with_any_missing_input": 0,
+    "players_with_full_inputs": 4
+  },
+  "source_files_used": [
+    "data/raw/2026_combine_results.json",
+    "data/processed/2026_college_production.json",
+    "data/processed/2026_draft_capital_proxy.json"
+  ],
+  "players": [
+    {
+      "player_id": "wr-malik-ford",
+      "player_name": "Malik Ford",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 61.6667,
+        "production_0_100": 88.1,
+        "draft_capital_proxy_0_100": 82.3,
+        "rookie_alpha_0_100": 77.6883
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 1
+    },
+    {
+      "player_id": "rb-ashley-jennings",
+      "player_name": "Ashley Jennings",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 61.6667,
+        "production_0_100": 86.2,
+        "draft_capital_proxy_0_100": 74.0,
+        "rookie_alpha_0_100": 75.1733
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 2
+    },
+    {
+      "player_id": "rb-darius-cole",
+      "player_name": "Darius Cole",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 38.3333,
+        "production_0_100": 78.4,
+        "draft_capital_proxy_0_100": 67.5,
+        "rookie_alpha_0_100": 62.1967
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 3
+    },
+    {
+      "player_id": "wr-keon-banks",
+      "player_name": "Keon Banks",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 38.3333,
+        "production_0_100": 73.9,
+        "draft_capital_proxy_0_100": 64.8,
+        "rookie_alpha_0_100": 59.6317
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 4
+    }
+  ]
+}
