@@ -67,15 +67,20 @@ def safe_stats(values: list[float]) -> tuple[float, float]:
     return (mean(values), sd if sd > 1e-9 else 1.0)
 
 
-def coerce_float(value: Any, field_name: str, player_id: str, source_name: str) -> float | None:
+def coerce_float(
+    value: Any,
+    field_name: str,
+    player_id: str,
+    source_name: str,
+    warned_invalid_values: set[tuple[str, str, str, str]] | None = None,
+) -> float | None:
     if value is None:
         return None
     try:
         return float(value)
     except (TypeError, ValueError):
         warning_key = (field_name, repr(value), player_id, source_name)
-        warned = getattr(coerce_float, "_warned_invalid_values", set())
-        if warning_key not in warned:
+        if warned_invalid_values is None or warning_key not in warned_invalid_values:
             logging.warning(
                 "Skipping invalid %s value %r for player_id=%s in %s; field will be treated as missing.",
                 field_name,
@@ -83,8 +88,8 @@ def coerce_float(value: Any, field_name: str, player_id: str, source_name: str) 
                 player_id,
                 source_name,
             )
-            warned.add(warning_key)
-            setattr(coerce_float, "_warned_invalid_values", warned)
+            if warned_invalid_values is not None:
+                warned_invalid_values.add(warning_key)
         return None
 
 
@@ -109,6 +114,7 @@ def normalize_row(
 
 def compute_ras_scores(combine_rows: list[dict[str, Any]]) -> dict[str, float]:
     by_position: dict[str, list[dict[str, Any]]] = {}
+    warned_invalid_values: set[tuple[str, str, str, str]] = set()
     for idx, row in enumerate(combine_rows, start=1):
         normalized = normalize_row(row, "combine input", idx)
         if normalized is None:
@@ -121,31 +127,41 @@ def compute_ras_scores(combine_rows: list[dict[str, Any]]) -> dict[str, float]:
         forties = [
             value
             for r in rows
-            for value in [coerce_float(r.get("forty"), "forty", str(r["player_id"]), "combine input")]
+            for value in [
+                coerce_float(r.get("forty"), "forty", str(r["player_id"]), "combine input", warned_invalid_values)
+            ]
             if value is not None
         ]
         verticals = [
             value
             for r in rows
-            for value in [coerce_float(r.get("vertical"), "vertical", str(r["player_id"]), "combine input")]
+            for value in [
+                coerce_float(r.get("vertical"), "vertical", str(r["player_id"]), "combine input", warned_invalid_values)
+            ]
             if value is not None
         ]
         broads = [
             value
             for r in rows
-            for value in [coerce_float(r.get("broad"), "broad", str(r["player_id"]), "combine input")]
+            for value in [
+                coerce_float(r.get("broad"), "broad", str(r["player_id"]), "combine input", warned_invalid_values)
+            ]
             if value is not None
         ]
         heights = [
             value
             for r in rows
-            for value in [coerce_float(r.get("height_in"), "height_in", str(r["player_id"]), "combine input")]
+            for value in [
+                coerce_float(r.get("height_in"), "height_in", str(r["player_id"]), "combine input", warned_invalid_values)
+            ]
             if value is not None
         ]
         weights = [
             value
             for r in rows
-            for value in [coerce_float(r.get("weight_lb"), "weight_lb", str(r["player_id"]), "combine input")]
+            for value in [
+                coerce_float(r.get("weight_lb"), "weight_lb", str(r["player_id"]), "combine input", warned_invalid_values)
+            ]
             if value is not None
         ]
 
@@ -157,11 +173,29 @@ def compute_ras_scores(combine_rows: list[dict[str, Any]]) -> dict[str, float]:
 
         for r in rows:
             components: list[tuple[float, float]] = []
-            forty = coerce_float(r.get("forty"), "forty", str(r["player_id"]), "combine input")
-            vertical = coerce_float(r.get("vertical"), "vertical", str(r["player_id"]), "combine input")
-            broad = coerce_float(r.get("broad"), "broad", str(r["player_id"]), "combine input")
-            height = coerce_float(r.get("height_in"), "height_in", str(r["player_id"]), "combine input")
-            weight = coerce_float(r.get("weight_lb"), "weight_lb", str(r["player_id"]), "combine input")
+            forty = coerce_float(r.get("forty"), "forty", str(r["player_id"]), "combine input", warned_invalid_values)
+            vertical = coerce_float(
+                r.get("vertical"),
+                "vertical",
+                str(r["player_id"]),
+                "combine input",
+                warned_invalid_values,
+            )
+            broad = coerce_float(r.get("broad"), "broad", str(r["player_id"]), "combine input", warned_invalid_values)
+            height = coerce_float(
+                r.get("height_in"),
+                "height_in",
+                str(r["player_id"]),
+                "combine input",
+                warned_invalid_values,
+            )
+            weight = coerce_float(
+                r.get("weight_lb"),
+                "weight_lb",
+                str(r["player_id"]),
+                "combine input",
+                warned_invalid_values,
+            )
 
             if forty is not None:
                 z = (forty_mu - forty) / forty_sd  # lower is better
@@ -197,13 +231,20 @@ def merge_inputs(
     draft_proxy_rows: list[dict[str, Any]],
 ) -> list[PlayerInputs]:
     ras_by_id = compute_ras_scores(combine_rows)
+    warned_invalid_values: set[tuple[str, str, str, str]] = set()
     prod_by_id: dict[str, float] = {}
     for idx, row in enumerate(production_rows, start=1):
         normalized = normalize_row(row, "production input", idx)
         if normalized is None:
             continue
         player_id, _, _ = normalized
-        value = coerce_float(row.get("production_score_0_100"), "production_score_0_100", player_id, "production input")
+        value = coerce_float(
+            row.get("production_score_0_100"),
+            "production_score_0_100",
+            player_id,
+            "production input",
+            warned_invalid_values,
+        )
         if value is not None:
             prod_by_id[player_id] = value
 
@@ -218,6 +259,7 @@ def merge_inputs(
             "draft_capital_proxy_0_100",
             player_id,
             "draft proxy input",
+            warned_invalid_values,
         )
         if value is not None:
             draft_by_id[player_id] = value
@@ -353,15 +395,6 @@ def write_outputs(
         ],
         "players": ranked,
     }
-    manifest_export_metadata = {
-        "season": payload["season"],
-        "model_version": payload["model"]["model_version"],
-        "generated_at": payload["generated_at"],
-        "run_id": payload["run_id"],
-        "coverage_summary": payload["coverage_summary"],
-        "source_files_used": payload["source_files_used"],
-    }
-
     output_json.parent.mkdir(parents=True, exist_ok=True)
     output_csv.parent.mkdir(parents=True, exist_ok=True)
     output_manifest.parent.mkdir(parents=True, exist_ok=True)
@@ -430,7 +463,16 @@ def write_outputs(
         "input_files": input_files,
         "coverage_summary": payload["coverage_summary"],
         "output_files": output_files,
-        "export_metadata": manifest_export_metadata,
+        "export_metadata": {},
+    }
+    exported_payload = load_json(output_json)
+    manifest["export_metadata"] = {
+        "season": exported_payload["season"],
+        "model_version": exported_payload["model"]["model_version"],
+        "generated_at": exported_payload["generated_at"],
+        "run_id": exported_payload["run_id"],
+        "coverage_summary": exported_payload["coverage_summary"],
+        "source_files_used": exported_payload["source_files_used"],
     }
     expected_export_metadata = {
         "season": manifest["season"],

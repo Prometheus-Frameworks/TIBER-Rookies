@@ -4,6 +4,7 @@ from pathlib import Path
 
 from scripts.compute_rookie_alpha import (
     PlayerInputs,
+    coerce_float,
     compute_ras_scores,
     load_json,
     merge_inputs,
@@ -172,6 +173,12 @@ class RookieAlphaTests(unittest.TestCase):
             with self.assertRaises(SystemExit) as invalid_json_error:
                 load_json(invalid_json)
             self.assertIn("Invalid JSON", str(invalid_json_error.exception))
+
+    def test_coerce_float_warning_dedup_is_call_scoped(self) -> None:
+        with self.assertLogs(level="WARNING") as cm:
+            coerce_float("bad", "forty", "p1", "combine input")
+            coerce_float("bad", "forty", "p1", "combine input")
+        self.assertEqual(len(cm.output), 2)
 
 
 if __name__ == "__main__":
