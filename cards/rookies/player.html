@@ -9,11 +9,11 @@
   <body>
     <main class="page">
       <a class="nav-link" href="/cards/rookies/index.html">← Back to rookies gallery</a>
-      <section id="card-root" style="margin-top: 12px"></section>
+      <section id="card-root" style="margin-top: 12px">Loading rookie card…</section>
     </main>
 
     <script type="module">
-      import { getAllRookieCards, getRookieCardBySlug } from '/lib/rookies/getRookieCardData.js';
+      import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
       import { renderRookieCard } from '/components/rookies/RookieCard.js';
 
       const root = document.getElementById('card-root');
@@ -21,11 +21,13 @@
       const slug = params.get('slug');
 
       try {
-        const fallback = (await getAllRookieCards())[0] ?? null;
-        const card = slug ? await getRookieCardBySlug(slug) : fallback;
+        const cards = await getAllRookieCards();
+        const card = slug ? cards.find((candidate) => candidate.slug === slug) ?? null : cards[0] ?? null;
+
         if (!card) {
           root.innerHTML = '<div class="meta">No rookie card data available for 2026.</div>';
         } else {
+          document.title = `TIBER Rookie Card | ${card.identity.name}`;
           renderRookieCard(root, card);
         }
       } catch (error) {

@@ -1,14 +1,10 @@
 :root {
   color-scheme: dark;
-  --bg: #0a0d12;
   --panel: #111824;
   --panel-alt: #182131;
   --text: #e8edf5;
   --muted: #8ea0bc;
   --accent: #53a8ff;
-  --good: #4fd8a3;
-  --warn: #ffc857;
-  --bad: #ff6b6b;
   --border: #273446;
 }
 body {
