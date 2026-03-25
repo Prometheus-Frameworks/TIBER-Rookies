@@ -36,8 +36,29 @@
       const boardRoot = document.getElementById('board-root');
       const queueRoot = document.getElementById('queue-root');
       const queueJumpLink = document.getElementById('queue-jump-link');
+      const SORT_OPTIONS = new Set(['grade', 'rank', 'position']);
+      const VIEW_OPTIONS = new Set(['tiered', 'flat']);
       const state = { sort: 'grade', position: 'ALL', view: 'tiered' };
       const compareState = { left: null, right: null };
+
+      function hydrateStateFromUrl() {
+        const params = new URLSearchParams(window.location.search);
+        const sort = params.get('sort');
+        const position = params.get('position');
+        const view = params.get('view');
+
+        if (SORT_OPTIONS.has(sort)) state.sort = sort;
+        if (VIEW_OPTIONS.has(view)) state.view = view;
+        if (position && position.trim()) state.position = position.toUpperCase();
+      }
+
+      function syncUrlState() {
+        const next = new URL(window.location.href);
+        next.searchParams.set('sort', state.sort);
+        next.searchParams.set('position', state.position);
+        next.searchParams.set('view', state.view);
+        window.history.replaceState({}, '', next.toString());
+      }
 
       function collectPositions(rows) {
         return [...new Set(rows.map((row) => row.position).filter(Boolean))].sort();
@@ -145,6 +166,7 @@
 
       function render(allRows) {
         const positions = collectPositions(allRows);
+        if (state.position !== 'ALL' && !positions.includes(state.position)) state.position = 'ALL';
         const filtered = filterRookieBoard(allRows, { position: state.position });
         const sorted = sortRookieBoard(filtered, state.sort);
         const queue = loadRookieQueue();
@@ -157,6 +179,7 @@
           queueSlugs: new Set(queue.map((player) => player.slug)),
         });
         queueRoot.innerHTML = renderRookieQueuePanel(queue, compareState);
+        syncUrlState();
 
         controlsRoot.querySelectorAll('select[data-board-control]').forEach((el) => {
           el.addEventListener('change', (event) => {
@@ -170,6 +193,7 @@
       }
 
       try {
+        hydrateStateFromUrl();
         const cards = await getAllRookieCards();
         const rows = buildRookieBoardRows(cards);
         render(rows);

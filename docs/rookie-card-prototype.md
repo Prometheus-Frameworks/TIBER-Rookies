@@ -1,5 +1,11 @@
 # Rookie Card Prototype Handoff (2026 class)
 
+## PR11 update summary (URL state + compare-side quick actions)
+
+- Added URL query-param persistence for board control state (`sort`, `position`, `view`) so board links retain context.
+- Added `Set Left` / `Set Right` direct-nav actions on each board row, replacing the generic `Compare` link.
+- Added position validation guard in `render()` so a stale URL position param that falls outside the available class is reset to `ALL` rather than producing an empty board.
+
 ## PR10 update summary (first honest rookie shortlist queue)
 
 - Added a local rookie shortlist queue workflow on top of the rookie board route.
@@ -28,6 +34,27 @@
 - `data/raw/2026_combine_results.json`
 - `data/processed/2026_college_production.json`
 - `data/processed/2026_draft_capital_proxy.json`
+
+## Board URL state
+
+Board route: `/cards/rookies/board/index.html`
+
+Board control state syncs to URL params on every render via `replaceState`:
+
+- `sort=grade|rank|position`
+- `position=ALL|QB|RB|WR|TE|…`
+- `view=tiered|flat`
+
+State is hydrated from URL on initial load. Unknown sort/view values are ignored; unknown position values are reset to `ALL` at render time.
+
+## Board row quick actions
+
+Board row actions reinforce the `board → inspect → compare` flow:
+
+- `Detail` links to `/cards/rookies/player.html?slug=<slug>`
+- `Set Left` links to `/cards/rookies/compare/index.html?left=<slug>`
+- `Set Right` links to `/cards/rookies/compare/index.html?right=<slug>`
+- `Add to queue` / `Queued` toggles local shortlist membership
 
 ## Queue state + persistence
 
@@ -59,25 +86,15 @@ No server writes are introduced. Queue is scoped to the current browser profile.
 
 ## Board + queue behavior
 
-Board route: `/cards/rookies/board/index.html`
-
-- Board rows now include queue action controls in the existing action column.
+- Board rows include queue action controls alongside Set Left / Set Right in the action column.
 - Queued rows receive a subtle visual highlight.
-- Queue panel appears below the board and is fed from local queue state.
+- Queue panel appears below the board with a jump link above the board rows.
 - Summary strip includes:
   - total queued players
   - position mix
   - highest-ranked queued player
   - explicit local-storage disclaimer
-- Each queued row includes:
-  - rank
-  - player identity
-  - rookie grade + tier
-  - identity note
-  - detail jump link
-  - remove action
-  - move up/down actions
-  - compare side assignment actions
+- Each queued row includes rank, player identity, rookie grade + tier, identity note, detail jump link, remove action, move up/down actions, and compare side assignment actions.
 
 ## Compare-from-queue behavior
 
@@ -90,15 +107,15 @@ No new compare engine is added; this is routing glue into the existing compare p
 
 ## Missing data handling
 
-- Queue entries preserve current data honesty:
-  - missing school renders as `School N/A`
-  - missing grade renders as `N/A`
-  - missing notes fall back to `Profile note unavailable`
-  - missing tier label falls back to `Tier N/A`
+- School remains honest to current artifact scope: board shows `School N/A` where not in promoted data.
+- Profile summary falls back deterministically: archetype → projection → first tag → `Profile still forming`.
+- Missing Rookie Grade renders as `N/A` and routes to `Unscored cluster`.
+- Queue entries: missing school → `School N/A`, missing grade → `N/A`, missing notes → `Profile note unavailable`, missing tier → `Tier N/A`.
 
 ## Next likely expansion path (toward draft-room)
 
 1. Add optional queue notes (short deterministic text only) per queued rookie in local state.
-2. Add URL persistence for board filter/view state to share exact board + queue context snapshots.
-3. Add lightweight import/export for queue JSON so users can move shortlist state between browsers.
+2. Add lightweight import/export for queue JSON so users can move shortlist state between browsers.
+3. Expand promoted profile artifact with school/bio and position-native evidence so board rows can surface richer but still honest scouting signals.
 4. Add account-backed persistence only when draft-room auth and tenancy boundaries are real (not simulated in prototype).
+5. Layer in draft-room interactions (queue, targets, notes) on top of this board rather than replacing this deterministic board foundation.

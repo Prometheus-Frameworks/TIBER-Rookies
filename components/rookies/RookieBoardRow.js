@@ -10,6 +10,8 @@ export function renderRookieBoardRow(row, { isQueued = false } = {}) {
   const rank = row.classRank == null ? 'N/A' : `#${row.classRank}`;
   const grade = row.rookieGrade == null ? 'N/A' : row.rookieGrade.toFixed(1);
   const slug = encodeURIComponent(String(row.slug ?? ''));
+  const compareLeftHref = `/cards/rookies/compare/index.html?left=${slug}`;
+  const compareRightHref = `/cards/rookies/compare/index.html?right=${slug}`;
 
   return `
     <article class="board-row ${isQueued ? 'board-row-queued' : ''}">
@@ -24,7 +26,8 @@ export function renderRookieBoardRow(row, { isQueued = false } = {}) {
       <div class="board-cell" data-label="Tier"><span class="board-tier-pill">${esc(row.tier.label)}</span></div>
       <div class="board-cell board-actions" data-label="Actions">
         <a class="nav-link" href="/cards/rookies/player.html?slug=${slug}">Detail</a>
-        <a class="nav-link" href="/cards/rookies/compare/index.html?left=${slug}">Compare</a>
+        <a class="nav-link" href="${compareLeftHref}">Set Left</a>
+        <a class="nav-link" href="${compareRightHref}">Set Right</a>
         <button type="button" class="queue-toggle ${isQueued ? 'is-queued' : ''}" data-queue-toggle="${esc(row.slug)}">${isQueued ? 'Queued ✓' : 'Add to queue'}</button>
       </div>
     </article>
