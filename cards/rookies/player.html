@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIBER Rookie Card</title>
+    <link rel="stylesheet" href="/components/rookies/rookieCardStyles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <a class="nav-link" href="/cards/rookies/index.html">← Back to rookies gallery</a>
+      <section id="card-root" style="margin-top: 12px"></section>
+    </main>
+
+    <script type="module">
+      import { getAllRookieCards, getRookieCardBySlug } from '/lib/rookies/getRookieCardData.js';
+      import { renderRookieCard } from '/components/rookies/RookieCard.js';
+
+      const root = document.getElementById('card-root');
+      const params = new URLSearchParams(window.location.search);
+      const slug = params.get('slug');
+
+      try {
+        const fallback = (await getAllRookieCards())[0] ?? null;
+        const card = slug ? await getRookieCardBySlug(slug) : fallback;
+        if (!card) {
+          root.innerHTML = '<div class="meta">No rookie card data available for 2026.</div>';
+        } else {
+          renderRookieCard(root, card);
+        }
+      } catch (error) {
+        root.innerHTML = `<div class="meta">Failed to load rookie card: ${error.message}</div>`;
+      }
+    </script>
+  </body>
+</html>

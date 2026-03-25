@@ -120,3 +120,13 @@ Recommended handoff pattern:
 - NFL transition blending phase
 
 Those phases should extend the promoted artifact chain without breaking the pre-draft v0 contract.
+
+## Rookie card frontend prototype (2026)
+
+A small static product-surface prototype now exists to prove card rendering from real promoted data:
+
+- `cards/rookies/index.html`
+- `cards/rookies/player.html?slug=wr-malik-ford`
+- `cards/rookies/wr-malik-ford/index.html`
+
+Data is loaded directly from promoted/data artifacts and mapped via `lib/rookies/` adapters.
