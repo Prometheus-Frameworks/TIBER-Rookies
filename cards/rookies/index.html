@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIBER Rookie Cards | 2026</title>
+    <link rel="stylesheet" href="/components/rookies/rookieCardStyles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <div class="section-title">TIBER 2026 Rookie Class</div>
+      <h1>Rookie Card Gallery Prototype</h1>
+      <p class="meta">Pre-draft v0 data source. Click any player to open the full card view.</p>
+      <section id="gallery" class="gallery-grid">Loading rookie gallery…</section>
+    </main>
+
+    <script type="module">
+      import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
+      import { renderRookieCardCompact } from '/components/rookies/RookieCardCompact.js';
+
+      const gallery = document.getElementById('gallery');
+      try {
+        const cards = await getAllRookieCards();
+        gallery.innerHTML = cards.map(renderRookieCardCompact).join('');
+      } catch (error) {
+        gallery.innerHTML = `<div class="meta">Failed to load rookie gallery: ${error.message}</div>`;
+      }
+    </script>
+  </body>
+</html>
