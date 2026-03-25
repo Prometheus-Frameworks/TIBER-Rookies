@@ -1,19 +1,24 @@
 # Rookie Card Prototype Handoff (2026 class)
 
-## PR9 update summary (first dedicated rookie board)
+## PR10 update summary (first honest rookie shortlist queue)
 
-- Added a dedicated 2026 rookie board route that is ranking-first and distinct from the browse-first gallery.
-- Added deterministic rookie board helpers for row building, tier derivation, sorting/filtering, and tier grouping.
-- Added a board surface with rank, position, school availability state, Rookie Grade, tier label, and short profile summary.
-- Added restrained board controls: sort, position filter, and tiered-vs-flat board view toggle.
-- Added quick board actions to jump directly into full detail (`player.html`) and compare (`compare/index.html?left=...`) flows.
-- Added a board header summary showing class coverage, position mix, tier count, and explicit tier rule bands.
+- Added a local rookie shortlist queue workflow on top of the rookie board route.
+- Added queue controls on board rows (`Add to queue` / `Queued`) with duplicate prevention and visible queued state.
+- Added queue actions on detail cards and compact gallery cards for quick shortlist updates from inspect surfaces.
+- Added a dedicated queue panel on the board page with:
+  - queue summary strip
+  - queued player context rows (rank, name, position, school, Rookie Grade, tier, identity note)
+  - remove actions
+  - move up / move down ordering
+  - compare pairing controls (set left / set right) + quick compare launch
+- Added browser-local persistence through `localStorage` (no auth, no backend, no league sync implied).
+- Added a clear queue action with explicit confirmation prompt.
 
 ## Routes
 
 - `/cards/rookies/index.html` (browse-first compact card gallery)
-- `/cards/rookies/board/index.html` (ranking-first rookie board surface)
-- `/cards/rookies/player.html?slug=<player_id>` (full detail route)
+- `/cards/rookies/board/index.html` (ranking-first rookie board + local shortlist queue panel)
+- `/cards/rookies/player.html?slug=<player_id>` (full detail route + shortlist action)
 - `/cards/rookies/compare/index.html?left=<slug>&right=<slug>` (two-player compare surface)
 - `/cards/rookies/wr-malik-ford/index.html` (direct single-player entry for one real rookie)
 
@@ -24,61 +29,76 @@
 - `data/processed/2026_college_production.json`
 - `data/processed/2026_draft_capital_proxy.json`
 
-## Board sort/filter behavior
+## Queue state + persistence
 
-Helper: `lib/rookies/buildRookieBoardRows.js`
+Helper: `lib/rookies/rookieQueueStore.js`
 
-- Default sort is `grade` (Rookie Grade descending, then class rank tiebreak).
-- Alternate sorts:
-  - `rank` (class rank ascending)
-  - `position` (position alpha, then grade desc, then class rank)
-- Position filter supports `ALL` + available class positions from mapped card objects.
-- View mode supports:
-  - `tiered` (grouped sections)
-  - `flat` (single ranked list)
+Queue state is intentionally small and browser-local:
 
-## Tier/group logic (deterministic + inspectable)
+- Storage key: `tiber-rookie-queue-v1`
+- Stored record fields:
+  - `slug`
+  - `name`
+  - `position`
+  - `school`
+  - `rookieGrade`
+  - `classRank`
+  - `tierLabel`
+  - `identityNote`
 
-Helper: `lib/rookies/deriveRookieTier.js`
+Supported store operations:
 
-Tier labels are intentionally coarse and score-band based:
+- `loadRookieQueue()`
+- `addRookieToQueue(item)` (deduped by `slug`)
+- `removeRookieFromQueue(slug)`
+- `moveQueuedRookie(slug, 'up' | 'down')`
+- `clearRookieQueue()`
+- `isRookieQueued(slug)`
 
-- `Top cluster`: Rookie Grade >= 75
-- `Strong starter tier`: Rookie Grade >= 70
-- `Development tier`: Rookie Grade >= 65
-- `Swing tier`: Rookie Grade < 65
-- `Unscored cluster`: Rookie Grade missing
+No server writes are introduced. Queue is scoped to the current browser profile.
 
-Grouping helper: `lib/rookies/groupRookiesByTier.js`
+## Board + queue behavior
 
-- Rows inherit the tier object from `deriveRookieTier`.
-- Tiered board sections are grouped by tier key and rendered in fixed bucket order.
-- No model-generated or opaque clustering is used.
+Board route: `/cards/rookies/board/index.html`
 
-## Quick action flow wiring
+- Board rows now include queue action controls in the existing action column.
+- Queued rows receive a subtle visual highlight.
+- Queue panel appears below the board and is fed from local queue state.
+- Summary strip includes:
+  - total queued players
+  - position mix
+  - highest-ranked queued player
+  - explicit local-storage disclaimer
+- Each queued row includes:
+  - rank
+  - player identity
+  - rookie grade + tier
+  - identity note
+  - detail jump link
+  - remove action
+  - move up/down actions
+  - compare side assignment actions
 
-Board row actions intentionally reinforce:
+## Compare-from-queue behavior
 
-`board -> inspect -> compare`
+- Queue rows support `Set Left` and `Set Right` markers.
+- Queue toolbar exposes `Compare selected pair` when both sides are set and distinct.
+- Compare launch reuses existing compare route/query model:
+  - `/cards/rookies/compare/index.html?left=<slug>&right=<slug>`
 
-- `Detail` action links to `/cards/rookies/player.html?slug=<slug>`
-- `Compare` action links to `/cards/rookies/compare/index.html?left=<slug>`
-
-This reuses existing route/query behavior and avoids introducing a parallel state system.
+No new compare engine is added; this is routing glue into the existing compare page.
 
 ## Missing data handling
 
-- School remains honest to current artifact scope: board shows `School N/A` where school is not present in promoted data.
-- Profile summary falls back deterministically in this order:
-  1. archetype
-  2. projection
-  3. first tag
-  4. `Profile still forming`
-- Missing Rookie Grade is rendered as `N/A` and routed to `Unscored cluster`.
+- Queue entries preserve current data honesty:
+  - missing school renders as `School N/A`
+  - missing grade renders as `N/A`
+  - missing notes fall back to `Profile note unavailable`
+  - missing tier label falls back to `Tier N/A`
 
 ## Next likely expansion path (toward draft-room)
 
-1. Add URL query-param persistence for board state (`sort`, `position`, `view`) so links can preserve board context.
-2. Add a lightweight compare queue (pick first, pick second from board rows) without simulating live draft mechanics.
-3. Expand promoted profile artifact with school/bio and position-native evidence so board rows can surface richer but still honest scouting signals.
-4. Layer in draft-room interactions (queue, targets, notes) on top of this board rather than replacing this deterministic board foundation.
+1. Add optional queue notes (short deterministic text only) per queued rookie in local state.
+2. Add URL persistence for board filter/view state to share exact board + queue context snapshots.
+3. Add lightweight import/export for queue JSON so users can move shortlist state between browsers.
+4. Add account-backed persistence only when draft-room auth and tenancy boundaries are real (not simulated in prototype).

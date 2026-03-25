@@ -12,14 +12,14 @@ function compactMetric(metric) {
   return `<div class="compact-metric"><div class="compact-metric-label">${esc(metric.label)}</div><div class="compact-metric-value">${esc(metric.display)}</div></div>`;
 }
 
-export function renderRookieCardCompact(card) {
+export function renderRookieCardCompact(card, { isQueued = false } = {}) {
   const score = card.summary.rookieGrade == null ? 'N/A' : card.summary.rookieGrade.toFixed(1);
   const slug = encodeURIComponent(String(card.slug ?? ''));
   const snippets = selectRookieEvidenceMetrics(card, 'compact');
   const topTags = (card.tags ?? []).slice(0, 3);
 
   return `
-    <article class="compact-card">
+    <article class="compact-card ${isQueued ? 'compact-card-queued' : ''}">
       <a class="compact-card-link" href="/cards/rookies/player.html?slug=${slug}">
         <div class="compact-header-row">
           <div>
@@ -34,7 +34,10 @@ export function renderRookieCardCompact(card) {
         <div class="compact-archetype">${esc(card.summary.archetype ?? card.summary.projection ?? 'Role profile unavailable')}</div>
         ${topTags.length ? `<div class="compact-tags">${topTags.map((tag) => `<span class="tag">${esc(tag)}</span>`).join('')}</div>` : ''}
       </a>
-      <a class="compact-compare-link" href="/cards/rookies/compare/index.html?left=${slug}">Compare from this player</a>
+      <div class="compact-actions-row">
+        <button type="button" class="queue-toggle ${isQueued ? 'is-queued' : ''}" data-queue-toggle="${esc(card.slug)}">${isQueued ? 'Queued ✓' : 'Add to queue'}</button>
+        <a class="compact-compare-link" href="/cards/rookies/compare/index.html?left=${slug}">Compare from this player</a>
+      </div>
     </article>
   `;
 }

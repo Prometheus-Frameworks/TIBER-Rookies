@@ -17,6 +17,7 @@
       <section id="board-summary" class="board-summary" style="margin-top: 14px">Loading board summary…</section>
       <section id="board-controls-root" style="margin-top: 10px">Loading board controls…</section>
       <section id="board-root" style="margin-top: 12px">Loading rookie board…</section>
+      <section id="queue-root" style="margin-top: 16px">Loading shortlist queue…</section>
     </main>
 
     <script type="module">
@@ -26,14 +27,31 @@
       import { getRookieTierRules } from '/lib/rookies/deriveRookieTier.js';
       import { renderRookieBoardControls } from '/components/rookies/RookieBoardControls.js';
       import { renderRookieBoard } from '/components/rookies/RookieBoard.js';
+      import { renderRookieQueuePanel } from '/components/rookies/RookieQueuePanel.js';
+      import { addRookieToQueue, clearRookieQueue, isRookieQueued, loadRookieQueue, moveQueuedRookie, removeRookieFromQueue } from '/lib/rookies/rookieQueueStore.js';
 
       const summaryRoot = document.getElementById('board-summary');
       const controlsRoot = document.getElementById('board-controls-root');
       const boardRoot = document.getElementById('board-root');
+      const queueRoot = document.getElementById('queue-root');
       const state = { sort: 'grade', position: 'ALL', view: 'tiered' };
+      const compareState = { left: null, right: null };
 
       function collectPositions(rows) {
         return [...new Set(rows.map((row) => row.position).filter(Boolean))].sort();
+      }
+
+      function toQueueEntry(row) {
+        return {
+          slug: row.slug,
+          name: row.name,
+          position: row.position,
+          school: row.school,
+          rookieGrade: row.rookieGrade,
+          classRank: row.classRank,
+          tierLabel: row.tier?.label,
+          identityNote: row.profileSummary,
+        };
       }
 
       function renderSummary(allRows, activeRows) {
@@ -56,14 +74,80 @@
         `;
       }
 
+      function wireBoardActions(allRows) {
+        boardRoot.querySelectorAll('[data-queue-toggle]').forEach((button) => {
+          button.addEventListener('click', (event) => {
+            const slug = event.currentTarget.dataset.queueToggle;
+            const row = allRows.find((candidate) => candidate.slug === slug);
+            if (!row) return;
+
+            if (isRookieQueued(slug)) {
+              removeRookieFromQueue(slug);
+              if (compareState.left === slug) compareState.left = null;
+              if (compareState.right === slug) compareState.right = null;
+            } else {
+              addRookieToQueue(toQueueEntry(row));
+            }
+
+            render(allRows);
+          });
+        });
+      }
+
+      function wireQueueActions(allRows) {
+        queueRoot.querySelectorAll('[data-queue-remove]').forEach((button) => {
+          button.addEventListener('click', (event) => {
+            const slug = event.currentTarget.dataset.slug;
+            removeRookieFromQueue(slug);
+            if (compareState.left === slug) compareState.left = null;
+            if (compareState.right === slug) compareState.right = null;
+            render(allRows);
+          });
+        });
+
+        queueRoot.querySelectorAll('[data-queue-move]').forEach((button) => {
+          button.addEventListener('click', (event) => {
+            const slug = event.currentTarget.dataset.slug;
+            const direction = event.currentTarget.dataset.queueMove;
+            moveQueuedRookie(slug, direction);
+            render(allRows);
+          });
+        });
+
+        queueRoot.querySelectorAll('[data-queue-mark]').forEach((button) => {
+          button.addEventListener('click', (event) => {
+            const slug = event.currentTarget.dataset.slug;
+            const side = event.currentTarget.dataset.queueMark;
+            compareState[side] = compareState[side] === slug ? null : slug;
+            render(allRows);
+          });
+        });
+
+        const clearButton = queueRoot.querySelector('[data-queue-clear]');
+        if (clearButton) {
+          clearButton.addEventListener('click', () => {
+            if (!window.confirm('Clear your local rookie queue?')) return;
+            clearRookieQueue();
+            compareState.left = null;
+            compareState.right = null;
+            render(allRows);
+          });
+        }
+      }
+
       function render(allRows) {
         const positions = collectPositions(allRows);
         const filtered = filterRookieBoard(allRows, { position: state.position });
         const sorted = sortRookieBoard(filtered, state.sort);
+        const queue = loadRookieQueue();
 
         renderSummary(allRows, sorted);
         controlsRoot.innerHTML = renderRookieBoardControls({ positions, state });
-        boardRoot.innerHTML = renderRookieBoard(sorted, { view: state.view });
+        boardRoot.innerHTML = renderRookieBoard(sorted, {
+          view: state.view,
+          queueSlugs: new Set(queue.map((player) => player.slug)),
+        });
+        queueRoot.innerHTML = renderRookieQueuePanel(queue, compareState);
 
         controlsRoot.querySelectorAll('select[data-board-control]').forEach((el) => {
           el.addEventListener('change', (event) => {
@@ -71,6 +155,9 @@
             render(allRows);
           });
         });
+
+        wireBoardActions(allRows);
+        wireQueueActions(allRows);
       }
 
       try {
@@ -81,6 +168,7 @@
         summaryRoot.innerHTML = '';
         controlsRoot.innerHTML = '';
         boardRoot.innerHTML = `<div class="meta">Failed to load rookie board: ${error.message}</div>`;
+        queueRoot.innerHTML = '';
       }
     </script>
   </body>

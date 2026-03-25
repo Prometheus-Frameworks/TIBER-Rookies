@@ -23,11 +23,43 @@
       import { renderRookieCardCompact } from '/components/rookies/RookieCardCompact.js';
       import { renderRookieGalleryControls } from '/components/rookies/RookieGalleryControls.js';
       import { collectGalleryFilters, sortAndFilterRookies } from '/lib/rookies/sortAndFilterRookies.js';
+      import { addRookieToQueue, isRookieQueued, removeRookieFromQueue } from '/lib/rookies/rookieQueueStore.js';
 
       const gallery = document.getElementById('gallery');
       const controlsRoot = document.getElementById('controls-root');
       const rankingContext = document.getElementById('ranking-context');
       const state = { sort: 'grade', position: 'ALL', tag: 'ALL' };
+
+      function queuePayload(card) {
+        return {
+          slug: card.slug,
+          name: card.identity.name,
+          position: card.identity.position,
+          school: card.identity.school,
+          rookieGrade: card.summary.rookieGrade,
+          classRank: card.summary.classRank,
+          tierLabel: card.summary.rookieGrade == null ? 'Tier N/A' : `Grade band ${Math.floor(card.summary.rookieGrade / 10) * 10}+`,
+          identityNote: card.summary.archetype ?? card.summary.projection ?? card.tags?.[0],
+        };
+      }
+
+      function wireQueueButtons(cards, filters) {
+        gallery.querySelectorAll('[data-queue-toggle]').forEach((button) => {
+          button.addEventListener('click', (event) => {
+            const slug = event.currentTarget.dataset.queueToggle;
+            const card = cards.find((candidate) => candidate.slug === slug);
+            if (!card) return;
+
+            if (isRookieQueued(slug)) {
+              removeRookieFromQueue(slug);
+            } else {
+              addRookieToQueue(queuePayload(card));
+            }
+
+            render(cards, filters);
+          });
+        });
+      }
 
       function render(cards, filters) {
         const sorted = sortAndFilterRookies(cards, state);
@@ -36,7 +68,7 @@
 
         controlsRoot.innerHTML = renderRookieGalleryControls({ positions: filters.positions, tags: filters.tags, state });
         gallery.innerHTML = sorted.length
-          ? sorted.map(renderRookieCardCompact).join('')
+          ? sorted.map((card) => renderRookieCardCompact(card, { isQueued: isRookieQueued(card.slug) })).join('')
           : '<article class="rookie-card"><div class="meta">No rookies matched the selected filters.</div></article>';
 
         controlsRoot.querySelectorAll('select[data-control]').forEach((el) => {
@@ -45,6 +77,8 @@
             render(cards, filters);
           });
         });
+
+        wireQueueButtons(cards, filters);
       }
 
       try {

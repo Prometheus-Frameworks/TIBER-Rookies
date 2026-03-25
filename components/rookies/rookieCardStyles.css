@@ -231,3 +231,94 @@ body {
   .board-player::before,
   .board-actions::before { display: none; }
 }
+
+.queue-toggle,
+.queue-action,
+.queue-clear {
+  border: 1px solid var(--border);
+  background: #111a29;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.queue-toggle.is-queued { border-color: rgba(69, 213, 175, 0.65); color: #b5f3e2; }
+.queue-toggle:hover,
+.queue-action:hover,
+.queue-clear:hover { border-color: rgba(83,168,255,.6); }
+
+.board-row-queued { background: rgba(26, 44, 40, 0.35); }
+
+.compact-card-queued { border-color: rgba(69, 213, 175, 0.7); }
+.compact-actions-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.queue-panel {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: rgba(11, 17, 27, 0.9);
+  padding: 12px;
+}
+.queue-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 10px;
+}
+.queue-summary > div {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel);
+  padding: 10px;
+}
+.queue-toolbar {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+.nav-link.is-disabled {
+  color: var(--muted);
+  pointer-events: none;
+}
+.queue-list { margin-top: 12px; display: grid; gap: 10px; }
+.queue-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel);
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.queue-item-main { display: flex; gap: 10px; align-items: flex-start; }
+.queue-rank {
+  min-width: 50px;
+  text-align: center;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 8px;
+  color: #c3d7f4;
+  font-weight: 700;
+}
+.queue-item-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+  align-content: flex-start;
+}
+.queue-remove { border-color: rgba(255, 138, 138, 0.6); color: #ffc5c5; }
+
+@media (max-width: 760px) {
+  .compact-actions-row,
+  .queue-toolbar,
+  .queue-item { flex-direction: column; align-items: flex-start; }
+  .queue-item-actions { justify-content: flex-start; }
+}
