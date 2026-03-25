@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import logging
 from dataclasses import dataclass
@@ -26,6 +27,14 @@ class PlayerInputs:
     ras_score_0_100: float | None
     production_score_0_100: float | None
     draft_capital_proxy_0_100: float | None
+
+
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(65536), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
 
 
 def load_json(path: Path) -> Any:
@@ -64,13 +73,18 @@ def coerce_float(value: Any, field_name: str, player_id: str, source_name: str) 
     try:
         return float(value)
     except (TypeError, ValueError):
-        logging.warning(
-            "Skipping invalid %s value %r for player_id=%s in %s; field will be treated as missing.",
-            field_name,
-            value,
-            player_id,
-            source_name,
-        )
+        warning_key = (field_name, repr(value), player_id, source_name)
+        warned = getattr(coerce_float, "_warned_invalid_values", set())
+        if warning_key not in warned:
+            logging.warning(
+                "Skipping invalid %s value %r for player_id=%s in %s; field will be treated as missing.",
+                field_name,
+                value,
+                player_id,
+                source_name,
+            )
+            warned.add(warning_key)
+            setattr(coerce_float, "_warned_invalid_values", warned)
         return None
 
 
@@ -260,8 +274,10 @@ def write_outputs(
     draft_proxy_path: Path,
     output_json: Path,
     output_csv: Path,
+    output_manifest: Path,
 ) -> None:
     generated_at = datetime.now(tz=timezone.utc).replace(microsecond=0).isoformat()
+    run_id = f"rookie-alpha-{season}-{generated_at}"
 
     ranked: list[dict[str, Any]] = []
     missing_any = 0
@@ -323,6 +339,7 @@ def write_outputs(
             },
         },
         "generated_at": generated_at,
+        "run_id": run_id,
         "season": season,
         "coverage_summary": {
             "players_total": len(ranked),
@@ -336,9 +353,18 @@ def write_outputs(
         ],
         "players": ranked,
     }
+    manifest_export_metadata = {
+        "season": payload["season"],
+        "model_version": payload["model"]["model_version"],
+        "generated_at": payload["generated_at"],
+        "run_id": payload["run_id"],
+        "coverage_summary": payload["coverage_summary"],
+        "source_files_used": payload["source_files_used"],
+    }
 
     output_json.parent.mkdir(parents=True, exist_ok=True)
     output_csv.parent.mkdir(parents=True, exist_ok=True)
+    output_manifest.parent.mkdir(parents=True, exist_ok=True)
 
     with output_json.open("w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2)
@@ -375,6 +401,52 @@ def write_outputs(
                 }
             )
 
+    input_files = [
+        {
+            "path": str(combine_path),
+            "sha256": sha256_file(combine_path),
+            "row_count": len(load_json(combine_path)),
+        },
+        {
+            "path": str(production_path),
+            "sha256": sha256_file(production_path),
+            "row_count": len(load_json(production_path)),
+        },
+        {
+            "path": str(draft_proxy_path),
+            "sha256": sha256_file(draft_proxy_path),
+            "row_count": len(load_json(draft_proxy_path)),
+        },
+    ]
+    output_files = [
+        {"path": str(output_json), "sha256": sha256_file(output_json)},
+        {"path": str(output_csv), "sha256": sha256_file(output_csv)},
+    ]
+    manifest = {
+        "season": season,
+        "model_version": payload["model"]["model_version"],
+        "generated_at": generated_at,
+        "run_id": run_id,
+        "input_files": input_files,
+        "coverage_summary": payload["coverage_summary"],
+        "output_files": output_files,
+        "export_metadata": manifest_export_metadata,
+    }
+    expected_export_metadata = {
+        "season": manifest["season"],
+        "model_version": manifest["model_version"],
+        "generated_at": manifest["generated_at"],
+        "run_id": manifest["run_id"],
+        "coverage_summary": manifest["coverage_summary"],
+        "source_files_used": [entry["path"] for entry in manifest["input_files"]],
+    }
+    if manifest["export_metadata"] != expected_export_metadata:
+        raise RuntimeError("Manifest export_metadata does not match top-level manifest metadata.")
+
+    with output_manifest.open("w", encoding="utf-8") as f:
+        json.dump(manifest, f, indent=2)
+        f.write("\n")
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Compute standalone Rookie Alpha promoted export")
@@ -404,6 +476,11 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=None,
     )
+    parser.add_argument(
+        "--output-manifest",
+        type=Path,
+        default=None,
+    )
     return parser.parse_args()
 
 
@@ -415,6 +492,7 @@ def main() -> None:
     draft_proxy_input = args.draft_proxy_input or Path(f"data/processed/{args.season}_draft_capital_proxy.json")
     output_json = args.output_json or Path(f"exports/promoted/rookie-alpha/{args.season}_rookie_alpha_predraft_v0.json")
     output_csv = args.output_csv or Path(f"exports/promoted/rookie-alpha/{args.season}_rookie_alpha_predraft_v0.csv")
+    output_manifest = args.output_manifest or Path(f"exports/promoted/rookie-alpha/{args.season}_manifest.json")
 
     combine_rows = load_json(combine_input)
     production_rows = load_json(production_input)
@@ -434,6 +512,7 @@ def main() -> None:
         draft_proxy_path=draft_proxy_input,
         output_json=output_json,
         output_csv=output_csv,
+        output_manifest=output_manifest,
     )
 
 

@@ -8,6 +8,7 @@ from scripts.compute_rookie_alpha import (
     load_json,
     merge_inputs,
     rookie_alpha_score,
+    sha256_file,
     write_outputs,
 )
 
@@ -91,8 +92,16 @@ class RookieAlphaTests(unittest.TestCase):
 
     def test_missing_input_behavior_and_logging(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
-            out_json = Path(tmp) / "out.json"
-            out_csv = Path(tmp) / "out.csv"
+            tmp_path = Path(tmp)
+            out_json = tmp_path / "out.json"
+            out_csv = tmp_path / "out.csv"
+            out_manifest = tmp_path / "manifest.json"
+            combine = tmp_path / "combine.json"
+            production = tmp_path / "production.json"
+            draft = tmp_path / "draft.json"
+            combine.write_text("[]\n", encoding="utf-8")
+            production.write_text("[]\n", encoding="utf-8")
+            draft.write_text("[]\n", encoding="utf-8")
             player = PlayerInputs(
                 player_id="p_missing",
                 player_name="Missing Inputs",
@@ -105,13 +114,44 @@ class RookieAlphaTests(unittest.TestCase):
                 write_outputs(
                     players=[player],
                     season=2026,
-                    combine_path=Path("combine.json"),
-                    production_path=Path("production.json"),
-                    draft_proxy_path=Path("draft.json"),
+                    combine_path=combine,
+                    production_path=production,
+                    draft_proxy_path=draft,
                     output_json=out_json,
                     output_csv=out_csv,
+                    output_manifest=out_manifest,
                 )
             self.assertTrue(any("Defaulting missing inputs to 50.0" in line for line in cm.output))
+
+    def test_write_outputs_creates_manifest_with_hashes(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            combine = tmp_path / "combine.json"
+            production = tmp_path / "production.json"
+            draft = tmp_path / "draft.json"
+            combine.write_text("[]\n", encoding="utf-8")
+            production.write_text("[]\n", encoding="utf-8")
+            draft.write_text("[]\n", encoding="utf-8")
+            out_json = tmp_path / "out.json"
+            out_csv = tmp_path / "out.csv"
+            out_manifest = tmp_path / "manifest.json"
+
+            write_outputs(
+                players=[],
+                season=2026,
+                combine_path=combine,
+                production_path=production,
+                draft_proxy_path=draft,
+                output_json=out_json,
+                output_csv=out_csv,
+                output_manifest=out_manifest,
+            )
+            manifest = load_json(out_manifest)
+            self.assertEqual(manifest["season"], 2026)
+            self.assertEqual(manifest["output_files"][0]["sha256"], sha256_file(out_json))
+            self.assertEqual(manifest["output_files"][1]["sha256"], sha256_file(out_csv))
+            self.assertEqual(manifest["input_files"][0]["row_count"], 0)
+            self.assertEqual(manifest["export_metadata"]["coverage_summary"], manifest["coverage_summary"])
 
     def test_missing_required_player_fields_are_skipped(self) -> None:
         players = merge_inputs(
