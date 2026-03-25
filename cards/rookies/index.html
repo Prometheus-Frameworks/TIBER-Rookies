@@ -9,20 +9,49 @@
   <body>
     <main class="page">
       <div class="section-title">TIBER 2026 Rookie Class</div>
-      <h1>Rookie Card Gallery Prototype</h1>
-      <p class="meta">Pre-draft v0 data source. Click any player to open the full card view.</p>
+      <h1>Rookie Class Board</h1>
+      <p class="meta">Pre-draft v0 data source. Sorted by Rookie Grade by default. Use controls to browse position slices.</p>
+      <div id="ranking-context" class="meta" style="margin-top: 8px">Loading class context…</div>
+      <div id="controls-root">Loading controls…</div>
       <section id="gallery" class="gallery-grid">Loading rookie gallery…</section>
     </main>
 
     <script type="module">
       import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
       import { renderRookieCardCompact } from '/components/rookies/RookieCardCompact.js';
+      import { renderRookieGalleryControls } from '/components/rookies/RookieGalleryControls.js';
+      import { collectGalleryFilters, sortAndFilterRookies } from '/lib/rookies/sortAndFilterRookies.js';
 
       const gallery = document.getElementById('gallery');
+      const controlsRoot = document.getElementById('controls-root');
+      const rankingContext = document.getElementById('ranking-context');
+      const state = { sort: 'grade', position: 'ALL', tag: 'ALL' };
+
+      function render(cards, filters) {
+        const sorted = sortAndFilterRookies(cards, state);
+        const total = cards.length;
+        rankingContext.textContent = `${sorted.length} of ${total} rookies shown • grade rank uses promoted export ordering.`;
+
+        controlsRoot.innerHTML = renderRookieGalleryControls({ positions: filters.positions, tags: filters.tags, state });
+        gallery.innerHTML = sorted.length
+          ? sorted.map(renderRookieCardCompact).join('')
+          : '<article class="rookie-card"><div class="meta">No rookies matched the selected filters.</div></article>';
+
+        controlsRoot.querySelectorAll('select[data-control]').forEach((el) => {
+          el.addEventListener('change', (event) => {
+            state[event.target.dataset.control] = event.target.value;
+            render(cards, filters);
+          });
+        });
+      }
+
       try {
         const cards = await getAllRookieCards();
-        gallery.innerHTML = cards.map(renderRookieCardCompact).join('');
+        const filters = collectGalleryFilters(cards);
+        render(cards, filters);
       } catch (error) {
+        controlsRoot.innerHTML = '';
+        rankingContext.textContent = '';
         gallery.innerHTML = `<div class="meta">Failed to load rookie gallery: ${error.message}</div>`;
       }
     </script>

@@ -1,3 +1,5 @@
+import { selectRookieEvidenceMetrics } from '/lib/rookies/selectRookieEvidenceMetrics.js';
+
 function esc(str) {
   return String(str ?? '')
     .replace(/&/g, '&amp;')
@@ -31,6 +33,7 @@ export function renderRookieCard(container, card) {
     card.identity.height,
     card.identity.weight,
   ].filter(Boolean).join(' • ');
+  const evidenceMetrics = selectRookieEvidenceMetrics(card, 'full');
 
   const seasonsTable = card.seasons.length
     ? `<table class="stats-table"><thead><tr><th>Season</th><th>Team</th><th>Games</th><th>Stat Line</th></tr></thead><tbody>${card.seasons.map((row) => `<tr><td>${esc(row.season)}</td><td>${esc(row.team)}</td><td>${esc(row.games ?? 'N/A')}</td><td>${esc(Object.entries(row.statLine).map(([k, v]) => `${k}: ${v}`).join(' | '))}</td></tr>`).join('')}</tbody></table>`
@@ -40,7 +43,7 @@ export function renderRookieCard(container, card) {
     <article class="rookie-card">
       <div class="header-grid">
         <div>
-          <div class="section-title">TIBER Rookie Card Prototype</div>
+          <div class="section-title">TIBER Rookie Card</div>
           <h1 class="player-name">${esc(card.identity.name)}</h1>
           <div class="meta">${esc(identityBits || 'Profile context not available')}</div>
         </div>
@@ -63,8 +66,8 @@ export function renderRookieCard(container, card) {
       </section>
 
       <section class="metrics">
-        <div class="section-title">Metric Evidence</div>
-        ${card.metrics.map(metricRow).join('') || '<div class="meta">No evidence metrics available.</div>'}
+        <div class="section-title">Position-aware Evidence</div>
+        ${evidenceMetrics.map(metricRow).join('') || '<div class="meta">No evidence metrics available.</div>'}
       </section>
 
       <section class="metrics">
@@ -72,9 +75,9 @@ export function renderRookieCard(container, card) {
         ${seasonsTable}
       </section>
 
-      <section class="tags">
-        ${card.tags.map((tag) => `<span class="tag">${esc(tag)}</span>`).join('')}
-      </section>
+      ${card.tags.length
+        ? `<section class="tags">${card.tags.map((tag) => `<span class="tag">${esc(tag)}</span>`).join('')}</section>`
+        : ''}
     </article>
   `;
 }
