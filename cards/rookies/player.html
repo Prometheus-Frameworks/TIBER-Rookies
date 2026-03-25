@@ -9,28 +9,68 @@
   <body>
     <main class="page">
       <a class="nav-link" href="/cards/rookies/index.html">← Back to rookies gallery</a>
+      <p style="margin-top: 10px"><a class="nav-link" href="/cards/rookies/board/index.html">Open board + shortlist queue →</a></p>
+      <section id="detail-actions" style="margin-top: 12px"></section>
       <section id="card-root" style="margin-top: 12px">Loading rookie card…</section>
     </main>
 
     <script type="module">
       import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
       import { renderRookieCard } from '/components/rookies/RookieCard.js';
+      import { addRookieToQueue, isRookieQueued, removeRookieFromQueue } from '/lib/rookies/rookieQueueStore.js';
+      import { deriveRookieTier } from '/lib/rookies/deriveRookieTier.js';
 
       const root = document.getElementById('card-root');
+      const actionsRoot = document.getElementById('detail-actions');
       const params = new URLSearchParams(window.location.search);
       const slug = params.get('slug');
+
+      function toQueueEntry(card) {
+        return {
+          slug: card.slug,
+          name: card.identity.name,
+          position: card.identity.position,
+          school: card.identity.school,
+          rookieGrade: card.summary.rookieGrade,
+          classRank: card.summary.classRank,
+          tierLabel: deriveRookieTier(card.summary.rookieGrade).label,
+          identityNote: card.summary.archetype ?? card.summary.projection ?? card.tags?.[0],
+        };
+      }
+
+      function renderActions(card) {
+        const queued = isRookieQueued(card.slug);
+        actionsRoot.innerHTML = `
+          <div class="rookie-card" style="padding: 12px 14px; display: flex; justify-content: space-between; gap: 10px; align-items: center;">
+            <div class="meta">Shortlist status for ${card.identity.name}: <strong>${queued ? 'Queued' : 'Not queued'}</strong></div>
+            <button type="button" class="queue-toggle ${queued ? 'is-queued' : ''}" id="detail-queue-toggle">${queued ? 'Remove from queue' : 'Add to queue'}</button>
+          </div>
+        `;
+
+        document.getElementById('detail-queue-toggle').addEventListener('click', () => {
+          if (isRookieQueued(card.slug)) {
+            removeRookieFromQueue(card.slug);
+          } else {
+            addRookieToQueue(toQueueEntry(card));
+          }
+          renderActions(card);
+        });
+      }
 
       try {
         const cards = await getAllRookieCards();
         const card = slug ? cards.find((candidate) => candidate.slug === slug) ?? null : cards[0] ?? null;
 
         if (!card) {
+          actionsRoot.innerHTML = '';
           root.innerHTML = '<div class="meta">No rookie card data available for 2026.</div>';
         } else {
           document.title = `TIBER Rookie Card | ${card.identity.name}`;
+          renderActions(card);
           renderRookieCard(root, card);
         }
       } catch (error) {
+        actionsRoot.innerHTML = '';
         root.innerHTML = `<div class="meta">Failed to load rookie card: ${error.message}</div>`;
       }
     </script>

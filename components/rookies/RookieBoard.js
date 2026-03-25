@@ -1,7 +1,7 @@
 import { renderRookieBoardRow } from '/components/rookies/RookieBoardRow.js';
 import { groupRookiesByTier } from '/lib/rookies/groupRookiesByTier.js';
 
-export function renderRookieBoard(rows, { view = 'tiered' } = {}) {
+export function renderRookieBoard(rows, { view = 'tiered', queueSlugs = new Set() } = {}) {
   if (!rows.length) {
     return '<article class="rookie-card"><div class="meta">No rookies matched this board filter.</div></article>';
   }
@@ -19,7 +19,7 @@ export function renderRookieBoard(rows, { view = 'tiered' } = {}) {
   `;
 
   if (view === 'flat') {
-    return `<section class="rookie-board-surface">${header}${rows.map(renderRookieBoardRow).join('')}</section>`;
+    return `<section class="rookie-board-surface">${header}${rows.map((row) => renderRookieBoardRow(row, { isQueued: queueSlugs.has(row.slug) })).join('')}</section>`;
   }
 
   const groups = groupRookiesByTier(rows);
@@ -32,7 +32,7 @@ export function renderRookieBoard(rows, { view = 'tiered' } = {}) {
               <div class="board-tier-title">${group.label}</div>
               <div class="meta">${group.rows.length} rookies</div>
             </div>
-            ${group.rows.map(renderRookieBoardRow).join('')}
+            ${group.rows.map((row) => renderRookieBoardRow(row, { isQueued: queueSlugs.has(row.slug) })).join('')}
           `
         )
         .join('')}
