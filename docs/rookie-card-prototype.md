@@ -1,15 +1,18 @@
 # Rookie Card Prototype Handoff (2026 class)
 
-## PR8 update summary (compare surface)
+## PR9 update summary (first dedicated rookie board)
 
-- Added a dedicated rookie compare route so two real 2026 rookies can be evaluated side by side.
-- Added reusable compare UI components (selector + compare view) that render from existing mapped rookie card objects.
-- Added deterministic compare helper logic that returns verdict, grade delta, score/evidence rows, and compare notes.
-- Added lightweight compare launch affordances from class board (`Open rookie compare tool`) and compact cards (`Compare from this player`).
+- Added a dedicated 2026 rookie board route that is ranking-first and distinct from the browse-first gallery.
+- Added deterministic rookie board helpers for row building, tier derivation, sorting/filtering, and tier grouping.
+- Added a board surface with rank, position, school availability state, Rookie Grade, tier label, and short profile summary.
+- Added restrained board controls: sort, position filter, and tiered-vs-flat board view toggle.
+- Added quick board actions to jump directly into full detail (`player.html`) and compare (`compare/index.html?left=...`) flows.
+- Added a board header summary showing class coverage, position mix, tier count, and explicit tier rule bands.
 
 ## Routes
 
-- `/cards/rookies/index.html` (class board + compact cards + controls)
+- `/cards/rookies/index.html` (browse-first compact card gallery)
+- `/cards/rookies/board/index.html` (ranking-first rookie board surface)
 - `/cards/rookies/player.html?slug=<player_id>` (full detail route)
 - `/cards/rookies/compare/index.html?left=<slug>&right=<slug>` (two-player compare surface)
 - `/cards/rookies/wr-malik-ford/index.html` (direct single-player entry for one real rookie)
@@ -21,54 +24,61 @@
 - `data/processed/2026_college_production.json`
 - `data/processed/2026_draft_capital_proxy.json`
 
-## Compare verdict logic (transparent + deterministic)
+## Board sort/filter behavior
 
-Helper: `lib/rookies/compareRookies.js`
+Helper: `lib/rookies/buildRookieBoardRows.js`
 
-Returned compare object includes:
+- Default sort is `grade` (Rookie Grade descending, then class rank tiebreak).
+- Alternate sorts:
+  - `rank` (class rank ascending)
+  - `position` (position alpha, then grade desc, then class rank)
+- Position filter supports `ALL` + available class positions from mapped card objects.
+- View mode supports:
+  - `tiered` (grouped sections)
+  - `flat` (single ranked list)
 
-- `overallDelta` (left Rookie Grade − right Rookie Grade)
-- `verdict` (`Lean <name>`, `Close profile`, or `Insufficient edge`)
-- `scoreComparisons` (shared score buckets with winner/tie per row)
-- `evidenceComparisons` (shared metric rows sorted by absolute edge)
-- `sharedPosition` and `notes` (context + data-availability caveats)
+## Tier/group logic (deterministic + inspectable)
 
-Verdict decision order:
+Helper: `lib/rookies/deriveRookieTier.js`
 
-1. Compare overall Rookie Grade if available.
-2. Check edge balance from evidence rows.
-3. Emit one of:
-   - `Lean Player` (clear/slight edge)
-   - `Close profile` (small grade delta + narrow evidence split)
-   - `Insufficient edge` (grade missing / sparse evidence)
+Tier labels are intentionally coarse and score-band based:
 
-No fake model narration is used.
+- `Top cluster`: Rookie Grade >= 75
+- `Strong starter tier`: Rookie Grade >= 70
+- `Development tier`: Rookie Grade >= 65
+- `Swing tier`: Rookie Grade < 65
+- `Unscored cluster`: Rookie Grade missing
 
-## Evidence row selection behavior
+Grouping helper: `lib/rookies/groupRookiesByTier.js`
 
-- Evidence rows are derived from existing position-aware selection helper (`selectRookieEvidenceMetrics`) for each card.
-- Compare helper intersects shared metric labels and only keeps rows with values on both sides.
-- Rows are sorted by absolute delta and capped:
-  - same-position: up to 6 rows
-  - cross-position: lighter cap (up to 4 rows)
-- Directional honesty is enforced (`40 Yard Dash (s)` treats lower time as better).
+- Rows inherit the tier object from `deriveRookieTier`.
+- Tiered board sections are grouped by tier key and rendered in fixed bucket order.
+- No model-generated or opaque clustering is used.
 
-## Same-position vs cross-position handling
+## Quick action flow wiring
 
-- **Same position:** richer apples-to-apples evidence rows with stronger metric table.
-- **Cross position:** intentionally lighter evidence usage, with more weight on overall grade/scores and explicit notes.
-- If shared evidence is too sparse, compare view falls back to honest unavailable copy instead of fabricating precision.
+Board row actions intentionally reinforce:
 
-## Data honesty constraints still enforced
+`board -> inspect -> compare`
 
-- No fabricated school/age/comps/season rows.
-- No fake export claims (PNG/PDF is still TODO).
-- If artifacts do not carry a metric, card sections omit it or show explicit unavailable copy.
-- Verdict remains deterministic and inspectable from visible data fields.
+- `Detail` action links to `/cards/rookies/player.html?slug=<slug>`
+- `Compare` action links to `/cards/rookies/compare/index.html?left=<slug>`
 
-## Next likely expansion path
+This reuses existing route/query behavior and avoids introducing a parallel state system.
 
-1. Promote richer processed rookie profile artifact (school/age/bio + position-native stat fields).
-2. Add board-level “compare queue” flow (pick first, pick second) with persisted query state.
-3. Add role-specific compare templates once additional trustworthy metrics are in promoted artifacts.
-4. Reuse compare helper output for future draft-room decision views and exports.
+## Missing data handling
+
+- School remains honest to current artifact scope: board shows `School N/A` where school is not present in promoted data.
+- Profile summary falls back deterministically in this order:
+  1. archetype
+  2. projection
+  3. first tag
+  4. `Profile still forming`
+- Missing Rookie Grade is rendered as `N/A` and routed to `Unscored cluster`.
+
+## Next likely expansion path (toward draft-room)
+
+1. Add URL query-param persistence for board state (`sort`, `position`, `view`) so links can preserve board context.
+2. Add a lightweight compare queue (pick first, pick second from board rows) without simulating live draft mechanics.
+3. Expand promoted profile artifact with school/bio and position-native evidence so board rows can surface richer but still honest scouting signals.
+4. Layer in draft-room interactions (queue, targets, notes) on top of this board rather than replacing this deterministic board foundation.

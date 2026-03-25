@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIBER Rookie Board | 2026</title>
+    <link rel="stylesheet" href="/components/rookies/rookieCardStyles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <a class="nav-link" href="/cards/rookies/index.html">← Back to rookie gallery</a>
+      <div class="section-title" style="margin-top: 12px">TIBER 2026 Rookie Board</div>
+      <h1>Draft board surface</h1>
+      <p class="meta">Ranking-first board powered by promoted Rookie Grade artifacts. Use tiers to spot cliffs, then jump to detail/compare.</p>
+      <p style="margin-top: 10px"><a class="nav-link" href="/cards/rookies/compare/index.html">Open compare tool →</a></p>
+
+      <section id="board-summary" class="board-summary" style="margin-top: 14px">Loading board summary…</section>
+      <section id="board-controls-root" style="margin-top: 10px">Loading board controls…</section>
+      <section id="board-root" style="margin-top: 12px">Loading rookie board…</section>
+    </main>
+
+    <script type="module">
+      import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
+      import { buildRookieBoardRows, filterRookieBoard, sortRookieBoard } from '/lib/rookies/buildRookieBoardRows.js';
+      import { groupRookiesByTier } from '/lib/rookies/groupRookiesByTier.js';
+      import { getRookieTierRules } from '/lib/rookies/deriveRookieTier.js';
+      import { renderRookieBoardControls } from '/components/rookies/RookieBoardControls.js';
+      import { renderRookieBoard } from '/components/rookies/RookieBoard.js';
+
+      const summaryRoot = document.getElementById('board-summary');
+      const controlsRoot = document.getElementById('board-controls-root');
+      const boardRoot = document.getElementById('board-root');
+      const state = { sort: 'grade', position: 'ALL', view: 'tiered' };
+
+      function collectPositions(rows) {
+        return [...new Set(rows.map((row) => row.position).filter(Boolean))].sort();
+      }
+
+      function renderSummary(allRows, activeRows) {
+        const positionCounts = activeRows.reduce((acc, row) => {
+          acc[row.position] = (acc[row.position] ?? 0) + 1;
+          return acc;
+        }, {});
+        const topPositionBits = Object.entries(positionCounts)
+          .sort((a, b) => b[1] - a[1])
+          .slice(0, 3)
+          .map(([position, count]) => `${position}: ${count}`)
+          .join(' • ');
+        const tierCount = groupRookiesByTier(activeRows).length;
+        const tierRules = getRookieTierRules().map((rule) => Number.isFinite(rule.minGrade) ? `${rule.label} (${rule.minGrade}+)` : rule.label).join(' | ');
+
+        summaryRoot.innerHTML = `
+          <div><span class="section-title">Board snapshot</span><div class="board-summary-value">${activeRows.length} shown / ${allRows.length} total</div></div>
+          <div><span class="section-title">Position mix</span><div class="meta">${topPositionBits || 'No position data available'}</div></div>
+          <div><span class="section-title">Tier bands</span><div class="meta">${tierCount} shown • ${tierRules}</div></div>
+        `;
+      }
+
+      function render(allRows) {
+        const positions = collectPositions(allRows);
+        const filtered = filterRookieBoard(allRows, { position: state.position });
+        const sorted = sortRookieBoard(filtered, state.sort);
+
+        renderSummary(allRows, sorted);
+        controlsRoot.innerHTML = renderRookieBoardControls({ positions, state });
+        boardRoot.innerHTML = renderRookieBoard(sorted, { view: state.view });
+
+        controlsRoot.querySelectorAll('select[data-board-control]').forEach((el) => {
+          el.addEventListener('change', (event) => {
+            state[event.target.dataset.boardControl] = event.target.value;
+            render(allRows);
+          });
+        });
+      }
+
+      try {
+        const cards = await getAllRookieCards();
+        const rows = buildRookieBoardRows(cards);
+        render(rows);
+      } catch (error) {
+        summaryRoot.innerHTML = '';
+        controlsRoot.innerHTML = '';
+        boardRoot.innerHTML = `<div class="meta">Failed to load rookie board: ${error.message}</div>`;
+      }
+    </script>
+  </body>
+</html>
