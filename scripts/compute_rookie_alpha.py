@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import logging
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
@@ -28,8 +29,15 @@ class PlayerInputs:
 
 
 def load_json(path: Path) -> Any:
-    with path.open("r", encoding="utf-8") as f:
-        return json.load(f)
+    try:
+        with path.open("r", encoding="utf-8") as f:
+            return json.load(f)
+    except FileNotFoundError as exc:
+        raise SystemExit(f"Input file not found: {path}") from exc
+    except json.JSONDecodeError as exc:
+        raise SystemExit(f"Invalid JSON in {path}: {exc.msg} (line {exc.lineno}, column {exc.colno})") from exc
+    except OSError as exc:
+        raise SystemExit(f"Unable to read input file {path}: {exc}") from exc
 
 
 def clamp_0_100(value: float) -> float:
@@ -50,18 +58,82 @@ def safe_stats(values: list[float]) -> tuple[float, float]:
     return (mean(values), sd if sd > 1e-9 else 1.0)
 
 
+def coerce_float(value: Any, field_name: str, player_id: str, source_name: str) -> float | None:
+    if value is None:
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        logging.warning(
+            "Skipping invalid %s value %r for player_id=%s in %s; field will be treated as missing.",
+            field_name,
+            value,
+            player_id,
+            source_name,
+        )
+        return None
+
+
+def normalize_row(
+    row: dict[str, Any],
+    source_name: str,
+    row_number: int,
+) -> tuple[str, str, str] | None:
+    player_id_raw = row.get("player_id")
+    if player_id_raw is None or str(player_id_raw).strip() == "":
+        logging.warning(
+            "Skipping row %s in %s because required field player_id is missing.",
+            row_number,
+            source_name,
+        )
+        return None
+    player_id = str(player_id_raw)
+    player_name = str(row.get("player_name", player_id))
+    position = str(row.get("position", "UNK"))
+    return (player_id, player_name, position)
+
+
 def compute_ras_scores(combine_rows: list[dict[str, Any]]) -> dict[str, float]:
     by_position: dict[str, list[dict[str, Any]]] = {}
-    for row in combine_rows:
-        by_position.setdefault(str(row.get("position", "UNK")), []).append(row)
+    for idx, row in enumerate(combine_rows, start=1):
+        normalized = normalize_row(row, "combine input", idx)
+        if normalized is None:
+            continue
+        pid, _, position = normalized
+        by_position.setdefault(position, []).append({"player_id": pid, **row})
 
     scores: dict[str, float] = {}
     for position, rows in by_position.items():
-        forties = [float(r["forty"]) for r in rows if r.get("forty") is not None]
-        verticals = [float(r["vertical"]) for r in rows if r.get("vertical") is not None]
-        broads = [float(r["broad"]) for r in rows if r.get("broad") is not None]
-        heights = [float(r["height_in"]) for r in rows if r.get("height_in") is not None]
-        weights = [float(r["weight_lb"]) for r in rows if r.get("weight_lb") is not None]
+        forties = [
+            value
+            for r in rows
+            for value in [coerce_float(r.get("forty"), "forty", str(r["player_id"]), "combine input")]
+            if value is not None
+        ]
+        verticals = [
+            value
+            for r in rows
+            for value in [coerce_float(r.get("vertical"), "vertical", str(r["player_id"]), "combine input")]
+            if value is not None
+        ]
+        broads = [
+            value
+            for r in rows
+            for value in [coerce_float(r.get("broad"), "broad", str(r["player_id"]), "combine input")]
+            if value is not None
+        ]
+        heights = [
+            value
+            for r in rows
+            for value in [coerce_float(r.get("height_in"), "height_in", str(r["player_id"]), "combine input")]
+            if value is not None
+        ]
+        weights = [
+            value
+            for r in rows
+            for value in [coerce_float(r.get("weight_lb"), "weight_lb", str(r["player_id"]), "combine input")]
+            if value is not None
+        ]
 
         forty_mu, forty_sd = safe_stats(forties)
         vert_mu, vert_sd = safe_stats(verticals)
@@ -71,21 +143,27 @@ def compute_ras_scores(combine_rows: list[dict[str, Any]]) -> dict[str, float]:
 
         for r in rows:
             components: list[tuple[float, float]] = []
-            if r.get("forty") is not None:
-                z = (forty_mu - float(r["forty"])) / forty_sd  # lower is better
+            forty = coerce_float(r.get("forty"), "forty", str(r["player_id"]), "combine input")
+            vertical = coerce_float(r.get("vertical"), "vertical", str(r["player_id"]), "combine input")
+            broad = coerce_float(r.get("broad"), "broad", str(r["player_id"]), "combine input")
+            height = coerce_float(r.get("height_in"), "height_in", str(r["player_id"]), "combine input")
+            weight = coerce_float(r.get("weight_lb"), "weight_lb", str(r["player_id"]), "combine input")
+
+            if forty is not None:
+                z = (forty_mu - forty) / forty_sd  # lower is better
                 components.append((0.35, z_to_score(z)))
-            if r.get("vertical") is not None:
-                z = (float(r["vertical"]) - vert_mu) / vert_sd
+            if vertical is not None:
+                z = (vertical - vert_mu) / vert_sd
                 components.append((0.25, z_to_score(z)))
-            if r.get("broad") is not None:
-                z = (float(r["broad"]) - broad_mu) / broad_sd
+            if broad is not None:
+                z = (broad - broad_mu) / broad_sd
                 components.append((0.25, z_to_score(z)))
 
             size_parts: list[float] = []
-            if r.get("height_in") is not None:
-                size_parts.append(z_to_score((float(r["height_in"]) - h_mu) / h_sd))
-            if r.get("weight_lb") is not None:
-                size_parts.append(z_to_score((float(r["weight_lb"]) - w_mu) / w_sd))
+            if height is not None:
+                size_parts.append(z_to_score((height - h_mu) / h_sd))
+            if weight is not None:
+                size_parts.append(z_to_score((weight - w_mu) / w_sd))
             if size_parts:
                 components.append((0.15, mean(size_parts)))
 
@@ -105,19 +183,50 @@ def merge_inputs(
     draft_proxy_rows: list[dict[str, Any]],
 ) -> list[PlayerInputs]:
     ras_by_id = compute_ras_scores(combine_rows)
-    prod_by_id = {str(r["player_id"]): float(r["production_score_0_100"]) for r in production_rows}
-    draft_by_id = {str(r["player_id"]): float(r["draft_capital_proxy_0_100"]) for r in draft_proxy_rows}
+    prod_by_id: dict[str, float] = {}
+    for idx, row in enumerate(production_rows, start=1):
+        normalized = normalize_row(row, "production input", idx)
+        if normalized is None:
+            continue
+        player_id, _, _ = normalized
+        value = coerce_float(row.get("production_score_0_100"), "production_score_0_100", player_id, "production input")
+        if value is not None:
+            prod_by_id[player_id] = value
+
+    draft_by_id: dict[str, float] = {}
+    for idx, row in enumerate(draft_proxy_rows, start=1):
+        normalized = normalize_row(row, "draft proxy input", idx)
+        if normalized is None:
+            continue
+        player_id, _, _ = normalized
+        value = coerce_float(
+            row.get("draft_capital_proxy_0_100"),
+            "draft_capital_proxy_0_100",
+            player_id,
+            "draft proxy input",
+        )
+        if value is not None:
+            draft_by_id[player_id] = value
 
     names_positions: dict[str, tuple[str, str]] = {}
-    for row in combine_rows:
-        pid = str(row["player_id"])
-        names_positions[pid] = (str(row.get("player_name", pid)), str(row.get("position", "UNK")))
-    for row in production_rows:
-        pid = str(row["player_id"])
-        names_positions.setdefault(pid, (str(row.get("player_name", pid)), str(row.get("position", "UNK"))))
-    for row in draft_proxy_rows:
-        pid = str(row["player_id"])
-        names_positions.setdefault(pid, (str(row.get("player_name", pid)), str(row.get("position", "UNK"))))
+    for idx, row in enumerate(combine_rows, start=1):
+        normalized = normalize_row(row, "combine input", idx)
+        if normalized is None:
+            continue
+        pid, player_name, position = normalized
+        names_positions[pid] = (player_name, position)
+    for idx, row in enumerate(production_rows, start=1):
+        normalized = normalize_row(row, "production input", idx)
+        if normalized is None:
+            continue
+        pid, player_name, position = normalized
+        names_positions.setdefault(pid, (player_name, position))
+    for idx, row in enumerate(draft_proxy_rows, start=1):
+        normalized = normalize_row(row, "draft proxy input", idx)
+        if normalized is None:
+            continue
+        pid, player_name, position = normalized
+        names_positions.setdefault(pid, (player_name, position))
 
     all_ids = sorted(set(ras_by_id) | set(prod_by_id) | set(draft_by_id))
     players: list[PlayerInputs] = []
@@ -169,6 +278,12 @@ def write_outputs(
         ]
         if missing_components:
             missing_any += 1
+            logging.warning(
+                "Missing model inputs for player_id=%s (%s): %s. Defaulting missing inputs to 50.0.",
+                p.player_id,
+                p.player_name,
+                ",".join(missing_components),
+            )
         ranked.append(
             {
                 "player_id": p.player_id,
@@ -263,49 +378,62 @@ def write_outputs(
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Compute standalone Rookie Alpha promoted export")
-    parser.add_argument("--season", type=int, default=2026)
+    parser.add_argument("--season", type=int, default=datetime.now(tz=timezone.utc).year)
     parser.add_argument(
         "--combine-input",
         type=Path,
-        default=Path("data/raw/2026_combine_results.json"),
+        default=None,
     )
     parser.add_argument(
         "--production-input",
         type=Path,
-        default=Path("data/processed/2026_college_production.json"),
+        default=None,
     )
     parser.add_argument(
         "--draft-proxy-input",
         type=Path,
-        default=Path("data/processed/2026_draft_capital_proxy.json"),
+        default=None,
     )
     parser.add_argument(
         "--output-json",
         type=Path,
-        default=Path("exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json"),
+        default=None,
     )
     parser.add_argument(
         "--output-csv",
         type=Path,
-        default=Path("exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.csv"),
+        default=None,
     )
     return parser.parse_args()
 
 
 def main() -> None:
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
     args = parse_args()
-    combine_rows = load_json(args.combine_input)
-    production_rows = load_json(args.production_input)
-    draft_rows = load_json(args.draft_proxy_input)
+    combine_input = args.combine_input or Path(f"data/raw/{args.season}_combine_results.json")
+    production_input = args.production_input or Path(f"data/processed/{args.season}_college_production.json")
+    draft_proxy_input = args.draft_proxy_input or Path(f"data/processed/{args.season}_draft_capital_proxy.json")
+    output_json = args.output_json or Path(f"exports/promoted/rookie-alpha/{args.season}_rookie_alpha_predraft_v0.json")
+    output_csv = args.output_csv or Path(f"exports/promoted/rookie-alpha/{args.season}_rookie_alpha_predraft_v0.csv")
+
+    combine_rows = load_json(combine_input)
+    production_rows = load_json(production_input)
+    draft_rows = load_json(draft_proxy_input)
+    if not isinstance(combine_rows, list):
+        raise SystemExit(f"Expected list JSON in {combine_input}, got {type(combine_rows).__name__}")
+    if not isinstance(production_rows, list):
+        raise SystemExit(f"Expected list JSON in {production_input}, got {type(production_rows).__name__}")
+    if not isinstance(draft_rows, list):
+        raise SystemExit(f"Expected list JSON in {draft_proxy_input}, got {type(draft_rows).__name__}")
     players = merge_inputs(combine_rows, production_rows, draft_rows)
     write_outputs(
         players=players,
         season=args.season,
-        combine_path=args.combine_input,
-        production_path=args.production_input,
-        draft_proxy_path=args.draft_proxy_input,
-        output_json=args.output_json,
-        output_csv=args.output_csv,
+        combine_path=combine_input,
+        production_path=production_input,
+        draft_proxy_path=draft_proxy_input,
+        output_json=output_json,
+        output_csv=output_csv,
     )
 
 

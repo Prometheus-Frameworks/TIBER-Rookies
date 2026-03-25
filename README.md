@@ -41,11 +41,11 @@ This is explicitly labeled as `pre-draft v0` in export metadata.
 
 ## Inputs
 
-Default artifact inputs:
+By default, inputs are resolved from the `--season` flag (defaults to current UTC year):
 
-- `data/raw/2026_combine_results.json`
-- `data/processed/2026_college_production.json`
-- `data/processed/2026_draft_capital_proxy.json`
+- `data/raw/{season}_combine_results.json`
+- `data/processed/{season}_college_production.json`
+- `data/processed/{season}_draft_capital_proxy.json`
 
 ## Run
 
@@ -67,8 +67,8 @@ python3 scripts/compute_rookie_alpha.py \
 
 ## Outputs (promoted contract)
 
-- `exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json`
-- `exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.csv`
+- `exports/promoted/rookie-alpha/{season}_rookie_alpha_predraft_v0.json`
+- `exports/promoted/rookie-alpha/{season}_rookie_alpha_predraft_v0.csv`
 
 Export metadata includes:
 
@@ -79,6 +79,11 @@ Export metadata includes:
 - `source_files_used`
 
 Full field-level contract is documented in `docs/export-contract.md`.
+
+## Known v0 caveats
+
+- Small-group positional samples (especially when very few prospects test) can distort relative RAS separation.
+- If any upstream input artifact changes, committed exports must be regenerated so promoted outputs remain in sync with source files.
 
 ## How TIBER-Fantasy should consume this later
 
