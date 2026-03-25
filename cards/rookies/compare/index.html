@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIBER Rookie Compare | 2026</title>
+    <link rel="stylesheet" href="/components/rookies/rookieCardStyles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <a class="nav-link" href="/cards/rookies/index.html">← Back to rookies gallery</a>
+      <div class="section-title" style="margin-top: 12px">TIBER Rookie Compare</div>
+      <h1>Rookie decision surface</h1>
+      <p class="meta">Compare two 2026 rookies with deterministic grade + evidence deltas.</p>
+
+      <section id="compare-selector-root" style="margin-top: 12px">Loading compare controls…</section>
+      <section id="compare-root" style="margin-top: 12px">Loading comparison…</section>
+    </main>
+
+    <script type="module">
+      import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
+      import { renderRookieCompareSelector } from '/components/rookies/RookieCompareSelector.js';
+      import { renderRookieCompareView } from '/components/rookies/RookieCompareView.js';
+
+      const selectorRoot = document.getElementById('compare-selector-root');
+      const compareRoot = document.getElementById('compare-root');
+
+      function syncParams(leftSlug, rightSlug) {
+        const next = new URL(window.location.href);
+        next.searchParams.set('left', leftSlug);
+        next.searchParams.set('right', rightSlug);
+        window.history.replaceState({}, '', next.toString());
+      }
+
+      function resolvePair(cards) {
+        const params = new URLSearchParams(window.location.search);
+        const leftParam = params.get('left');
+        const rightParam = params.get('right');
+
+        const leftCard = cards.find((card) => card.slug === leftParam) ?? cards[0] ?? null;
+        const rightFallback = cards.find((card) => card.slug !== leftCard?.slug) ?? cards[0] ?? null;
+        const rightCard = cards.find((card) => card.slug === rightParam) ?? rightFallback;
+
+        if (!leftCard || !rightCard) return null;
+        return { leftCard, rightCard };
+      }
+
+      function render(cards) {
+        const pair = resolvePair(cards);
+        if (!pair) {
+          selectorRoot.innerHTML = '';
+          compareRoot.innerHTML = '<div class="meta">Not enough rookie data available to compare.</div>';
+          return;
+        }
+
+        syncParams(pair.leftCard.slug, pair.rightCard.slug);
+        selectorRoot.innerHTML = renderRookieCompareSelector({
+          cards,
+          leftSlug: pair.leftCard.slug,
+          rightSlug: pair.rightCard.slug,
+        });
+        renderRookieCompareView(compareRoot, pair.leftCard, pair.rightCard);
+
+        const form = document.getElementById('compare-selector');
+        const leftSelect = form.querySelector('select[name="left"]');
+        const rightSelect = form.querySelector('select[name="right"]');
+
+        function onChange() {
+          const leftCard = cards.find((card) => card.slug === leftSelect.value);
+          const rightCard = cards.find((card) => card.slug === rightSelect.value);
+          if (!leftCard || !rightCard) return;
+
+          syncParams(leftCard.slug, rightCard.slug);
+          renderRookieCompareView(compareRoot, leftCard, rightCard);
+        }
+
+        leftSelect.addEventListener('change', onChange);
+        rightSelect.addEventListener('change', onChange);
+
+        document.getElementById('swap-compare-sides').addEventListener('click', () => {
+          const leftBefore = leftSelect.value;
+          leftSelect.value = rightSelect.value;
+          rightSelect.value = leftBefore;
+          onChange();
+        });
+      }
+
+      try {
+        const cards = await getAllRookieCards();
+        render(cards);
+      } catch (error) {
+        selectorRoot.innerHTML = '';
+        compareRoot.innerHTML = `<div class="meta">Failed to load rookie compare data: ${error.message}</div>`;
+      }
+    </script>
+  </body>
+</html>

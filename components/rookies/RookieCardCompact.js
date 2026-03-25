@@ -19,19 +19,22 @@ export function renderRookieCardCompact(card) {
   const topTags = (card.tags ?? []).slice(0, 3);
 
   return `
-    <a class="compact-card" href="/cards/rookies/player.html?slug=${slug}">
-      <div class="compact-header-row">
-        <div>
-          <p class="compact-name">${esc(card.identity.name)}</p>
-          <div class="compact-meta">${esc(card.identity.position)} • ${esc(card.identity.school ?? 'School N/A')} • Class ${esc(card.identity.classYear)}</div>
+    <article class="compact-card">
+      <a class="compact-card-link" href="/cards/rookies/player.html?slug=${slug}">
+        <div class="compact-header-row">
+          <div>
+            <p class="compact-name">${esc(card.identity.name)}</p>
+            <div class="compact-meta">${esc(card.identity.position)} • ${esc(card.identity.school ?? 'School N/A')} • Class ${esc(card.identity.classYear)}</div>
+          </div>
+          <div class="compact-rank">${card.summary.classRank != null ? '#' + esc(card.summary.classRank) : 'N/A'}</div>
         </div>
-        <div class="compact-rank">${card.summary.classRank != null ? '#' + esc(card.summary.classRank) : 'N/A'}</div>
-      </div>
-      <div class="section-title">Rookie Grade</div>
-      <div class="compact-score">${esc(score)}</div>
-      ${snippets.length ? `<div class="compact-snippets">${snippets.map(compactMetric).join('')}</div>` : ''}
-      <div class="compact-archetype">${esc(card.summary.archetype ?? card.summary.projection ?? 'Role profile unavailable')}</div>
-      ${topTags.length ? `<div class="compact-tags">${topTags.map((tag) => `<span class="tag">${esc(tag)}</span>`).join('')}</div>` : ''}
-    </a>
+        <div class="section-title">Rookie Grade</div>
+        <div class="compact-score">${esc(score)}</div>
+        ${snippets.length ? `<div class="compact-snippets">${snippets.map(compactMetric).join('')}</div>` : ''}
+        <div class="compact-archetype">${esc(card.summary.archetype ?? card.summary.projection ?? 'Role profile unavailable')}</div>
+        ${topTags.length ? `<div class="compact-tags">${topTags.map((tag) => `<span class="tag">${esc(tag)}</span>`).join('')}</div>` : ''}
+      </a>
+      <a class="compact-compare-link" href="/cards/rookies/compare/index.html?left=${slug}">Compare from this player</a>
+    </article>
   `;
 }

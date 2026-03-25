@@ -1,16 +1,17 @@
 # Rookie Card Prototype Handoff (2026 class)
 
-## PR7 update summary (since PR5)
+## PR8 update summary (compare surface)
 
-- Promoted the gallery from a demo list into a class board with deterministic sort/filter controls.
-- Added a compact rookie card variant intended for gallery use now and social/share surfaces later.
-- Added position-aware evidence selection so full and compact cards choose metrics by position profile.
-- Tightened fallback behavior so missing data is omitted cleanly (no null/debug dumps).
+- Added a dedicated rookie compare route so two real 2026 rookies can be evaluated side by side.
+- Added reusable compare UI components (selector + compare view) that render from existing mapped rookie card objects.
+- Added deterministic compare helper logic that returns verdict, grade delta, score/evidence rows, and compare notes.
+- Added lightweight compare launch affordances from class board (`Open rookie compare tool`) and compact cards (`Compare from this player`).
 
 ## Routes
 
 - `/cards/rookies/index.html` (class board + compact cards + controls)
 - `/cards/rookies/player.html?slug=<player_id>` (full detail route)
+- `/cards/rookies/compare/index.html?left=<slug>&right=<slug>` (two-player compare surface)
 - `/cards/rookies/wr-malik-ford/index.html` (direct single-player entry for one real rookie)
 
 ## Source data used (unchanged)
@@ -20,51 +21,54 @@
 - `data/processed/2026_college_production.json`
 - `data/processed/2026_draft_capital_proxy.json`
 
-## Gallery behavior (v2)
+## Compare verdict logic (transparent + deterministic)
 
-- Default sort: `Rookie Grade` descending.
-- Optional sort: `Position` (QB, RB, WR, TE ordering).
-- Filter: single position or all positions.
-- Optional profile-tag filter using deterministic tags already derived from existing score bands.
-- Ranking context line shows visible count and clarifies class rank source (promoted export ordering).
+Helper: `lib/rookies/compareRookies.js`
 
-## Compact/share card purpose
+Returned compare object includes:
 
-Compact card is not an export engine. It is a reusable visual format for:
+- `overallDelta` (left Rookie Grade − right Rookie Grade)
+- `verdict` (`Lean <name>`, `Close profile`, or `Insufficient edge`)
+- `scoreComparisons` (shared score buckets with winner/tie per row)
+- `evidenceComparisons` (shared metric rows sorted by absolute edge)
+- `sharedPosition` and `notes` (context + data-availability caveats)
 
-- gallery tiles now,
-- future social/share surface,
-- future export pathways once a stable renderer is chosen.
+Verdict decision order:
 
-Compact card includes:
+1. Compare overall Rookie Grade if available.
+2. Check edge balance from evidence rows.
+3. Emit one of:
+   - `Lean Player` (clear/slight edge)
+   - `Close profile` (small grade delta + narrow evidence split)
+   - `Insufficient edge` (grade missing / sparse evidence)
 
-- player identity (name, position, school when available),
-- Rookie Grade + class rank,
-- 3–4 key evidence metrics,
-- archetype/projection snippet,
-- up to 3 tags.
+No fake model narration is used.
 
-## Position-aware evidence selection
+## Evidence row selection behavior
 
-Helper: `lib/rookies/selectRookieEvidenceMetrics.js`
+- Evidence rows are derived from existing position-aware selection helper (`selectRookieEvidenceMetrics`) for each card.
+- Compare helper intersects shared metric labels and only keeps rows with values on both sides.
+- Rows are sorted by absolute delta and capped:
+  - same-position: up to 6 rows
+  - cross-position: lighter cap (up to 4 rows)
+- Directional honesty is enforced (`40 Yard Dash (s)` treats lower time as better).
 
-- Input: mapped rookie card view model.
-- Output: deterministic metric list for `full` and `compact` variants.
-- Uses position priority maps:
-  - WR/TE prioritize production + athletic receiving-adjacent indicators available in artifacts.
-  - RB prioritizes production + draft capital + rushing-athletic proxies available in artifacts.
-  - QB fallback prefers available passing-proxy friendly fields if present.
-- Missing metric values are omitted rather than filled with fabricated values.
+## Same-position vs cross-position handling
+
+- **Same position:** richer apples-to-apples evidence rows with stronger metric table.
+- **Cross position:** intentionally lighter evidence usage, with more weight on overall grade/scores and explicit notes.
+- If shared evidence is too sparse, compare view falls back to honest unavailable copy instead of fabricating precision.
 
 ## Data honesty constraints still enforced
 
 - No fabricated school/age/comps/season rows.
 - No fake export claims (PNG/PDF is still TODO).
 - If artifacts do not carry a metric, card sections omit it or show explicit unavailable copy.
+- Verdict remains deterministic and inspectable from visible data fields.
 
-## Next obvious expansion path
+## Next likely expansion path
 
-1. Add a richer processed rookie profile artifact (school/age/bio).
-2. Add position-native stat features (target share, YPRR, rushing share, etc.) from pipeline outputs.
-3. Add compare-mode layout reusing compact card blocks.
-4. Add URL query-state persistence for board controls when moved to app runtime.
+1. Promote richer processed rookie profile artifact (school/age/bio + position-native stat fields).
+2. Add board-level “compare queue” flow (pick first, pick second) with persisted query state.
+3. Add role-specific compare templates once additional trustworthy metrics are in promoted artifacts.
+4. Reuse compare helper output for future draft-room decision views and exports.
