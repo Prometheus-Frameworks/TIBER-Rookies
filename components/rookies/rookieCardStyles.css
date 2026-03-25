@@ -158,7 +158,7 @@ body {
 }
 .board-row {
   display: grid;
-  grid-template-columns: 80px minmax(180px, 2fr) 80px 120px 110px 190px 130px;
+  grid-template-columns: 80px minmax(180px, 2fr) 80px 120px 110px 190px 150px;
   gap: 8px;
   align-items: center;
   border-top: 1px solid var(--border);
@@ -206,7 +206,7 @@ body {
 
 @media (max-width: 950px) {
   .board-row {
-    grid-template-columns: 70px minmax(140px, 1.8fr) 60px 90px 100px 140px 110px;
+    grid-template-columns: 70px minmax(140px, 1.8fr) 60px 90px 100px 140px 130px;
     font-size: 13px;
   }
 }

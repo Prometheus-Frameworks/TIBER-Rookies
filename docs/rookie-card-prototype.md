@@ -33,6 +33,13 @@
 
 Helper: `lib/rookies/rookieQueueStore.js`
 
+Board controls sync to URL params so links retain context:
+- Default sort is `grade` (Rookie Grade descending, then class rank tiebreak).
+- Alternate sorts: `rank` (class rank ascending), `position` (position alpha, then grade desc, then class rank).
+- Position filter supports `ALL` + available class positions from mapped card objects.
+- View mode supports `tiered` (grouped sections) and `flat` (single ranked list).
+- URL params: `sort=grade|rank|position`, `position=ALL|QB|RB|WR|TE|…`, `view=tiered|flat`.
+
 Queue state is intentionally small and browser-local:
 
 - Storage key: `tiber-rookie-queue-v1`
@@ -87,6 +94,11 @@ Board route: `/cards/rookies/board/index.html`
   - `/cards/rookies/compare/index.html?left=<slug>&right=<slug>`
 
 No new compare engine is added; this is routing glue into the existing compare page.
+- `Detail` action links to `/cards/rookies/player.html?slug=<slug>`
+- `Set Left` action links to `/cards/rookies/compare/index.html?left=<slug>`
+- `Set Right` action links to `/cards/rookies/compare/index.html?right=<slug>`
+
+This reuses existing route/query behavior and avoids introducing a parallel state system.
 
 ## Missing data handling
 
@@ -99,6 +111,7 @@ No new compare engine is added; this is routing glue into the existing compare p
 ## Next likely expansion path (toward draft-room)
 
 1. Add optional queue notes (short deterministic text only) per queued rookie in local state.
-2. Add URL persistence for board filter/view state to share exact board + queue context snapshots.
-3. Add lightweight import/export for queue JSON so users can move shortlist state between browsers.
-4. Add account-backed persistence only when draft-room auth and tenancy boundaries are real (not simulated in prototype).
+2. Add lightweight import/export for queue JSON so users can move shortlist state between browsers.
+3. Add account-backed persistence only when draft-room auth and tenancy boundaries are real (not simulated in prototype).
+4. Expand promoted profile artifact with school/bio and position-native evidence so board rows can surface richer but still honest scouting signals.
+5. Layer in draft-room interactions (queue, targets, notes) on top of this board rather than replacing this deterministic board foundation.
