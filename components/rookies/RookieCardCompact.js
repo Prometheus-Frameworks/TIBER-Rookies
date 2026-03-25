@@ -25,11 +25,11 @@ export function renderRookieCardCompact(card) {
           <p class="compact-name">${esc(card.identity.name)}</p>
           <div class="compact-meta">${esc(card.identity.position)} • ${esc(card.identity.school ?? 'School N/A')} • Class ${esc(card.identity.classYear)}</div>
         </div>
-        <div class="compact-rank">#${esc(card.summary.classRank ?? 'N/A')}</div>
+        <div class="compact-rank">${card.summary.classRank != null ? '#' + esc(card.summary.classRank) : 'N/A'}</div>
       </div>
       <div class="section-title">Rookie Grade</div>
       <div class="compact-score">${esc(score)}</div>
-      <div class="compact-snippets">${snippets.map(compactMetric).join('')}</div>
+      ${snippets.length ? `<div class="compact-snippets">${snippets.map(compactMetric).join('')}</div>` : ''}
       <div class="compact-archetype">${esc(card.summary.archetype ?? card.summary.projection ?? 'Role profile unavailable')}</div>
       ${topTags.length ? `<div class="compact-tags">${topTags.map((tag) => `<span class="tag">${esc(tag)}</span>`).join('')}</div>` : ''}
     </a>
