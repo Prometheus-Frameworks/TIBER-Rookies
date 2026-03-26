@@ -1,0 +1,12 @@
+{
+  "name": "tiber-rookies",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Standalone Rookie Alpha producer lab with static rookie surfaces",
+  "scripts": {
+    "start": "node runtime-server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
