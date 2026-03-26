@@ -63,6 +63,7 @@ Storage model:
 - key: `tiber-rookie-queue-v1`
 - local browser profile only
 - no server writes, no auth, no cross-device sync
+- portability is file-based JSON export/import (manual, not synced)
 
 Supported queue operations:
 
@@ -72,6 +73,40 @@ Supported queue operations:
 - `moveQueuedRookie(slug, 'up' | 'down')`
 - `clearRookieQueue()`
 - `isRookieQueued(slug)`
+- `serializeRookieQueue()`
+- `importRookieQueue(payload, { mode: 'replace' | 'merge' })`
+
+### Queue portability (PR14)
+
+Queue portability is intentionally a **local workflow tool**, not a platform feature.
+
+- Export action downloads JSON from current browser-local queue state.
+- Import action validates JSON before writing to local storage.
+- Default import mode is **Replace queue** (with confirmation when queue is non-empty).
+- Optional import mode **Merge imported first** keeps imported order, dedupes by `slug`, and appends existing non-imported players after imported items.
+- Malformed/incompatible files fail with visible, concise errors and do not partially mutate queue state.
+
+Export payload shape (v1):
+
+- `version` (currently `1`)
+- `exported_at` (ISO timestamp)
+- `source` (surface note)
+- `queue` (array of queue entries)
+- `metadata` (lightweight context such as `total_items` and storage note)
+
+Validation/version rules:
+
+- Top-level value must be an object.
+- `version` must be exactly `1`.
+- `queue` must be an array.
+- each queue item must include a valid `slug`.
+- optional fields are normalized through queue-store fallbacks.
+
+Boundary note:
+
+- this JSON is a **portability artifact for static UI state**
+- it is **not** part of the producer/export contracts in `docs/export-contract.md`
+- it does **not** imply auth/account identity or cloud persistence
 
 
 ## Mapped identity/context enrichment
