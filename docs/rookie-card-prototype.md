@@ -32,7 +32,7 @@ Surface data is mapped from repository artifacts, including:
 - `data/processed/2026_college_production.json`
 - `data/processed/2026_draft_capital_proxy.json`
 
-Mapping/adaptation helpers live in `lib/rookies/`.
+Mapping/adaptation helpers live in `lib/rookies/`, including deterministic identity/profile enrichers (`normalizeRookieIdentity`, `deriveRookieProfileSummary`) used by board/detail/compare/queue surfaces.
 
 ## Board flow and URL state
 
@@ -73,12 +73,24 @@ Supported queue operations:
 - `clearRookieQueue()`
 - `isRookieQueued(slug)`
 
+
+## Mapped identity/context enrichment
+
+The mapped rookie card object now carries additional deterministic fields (without changing producer weights):
+
+- `identity.positionLabel`, `identity.roleLabel`, `identity.schoolDisplay`
+- `summary.profileSummary`, `summary.identityNote`, `summary.boardSummary`
+- `metrics[*].family`, `metrics[*].direction`, `metrics[*].source`
+- `evidence.readinessLabel`, family availability, and missing-input context
+
+These fields are derived from existing promoted + supporting artifacts only; no synthetic scouting claims are introduced.
+
 ## Missing-data and fallback behavior
 
 Surfaces retain deterministic fallbacks where artifacts are incomplete:
 
-- school may render as `School N/A`
-- profile summary falls back to available archetype/projection/tag data
+- school now uses normalized source precedence and otherwise renders `School unavailable in current artifacts`
+- profile summary now derives from deterministic score/evidence context before falling back to archetype/projection/tag data
 - missing Rookie Grade renders as `N/A`
 - queue rows use fallback labels for unavailable fields
 

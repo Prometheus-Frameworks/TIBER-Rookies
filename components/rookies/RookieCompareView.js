@@ -16,7 +16,8 @@ function gradeCell(label, card, side) {
     <article class="compare-player compare-${side}">
       <div class="section-title">${esc(label)}</div>
       <h2 class="compare-name">${esc(card.identity.name)}</h2>
-      <div class="meta">${esc(card.identity.position)} • Class ${esc(card.identity.classYear)}${card.identity.school ? ` • ${esc(card.identity.school)}` : ''}</div>
+      <div class="meta">${esc(card.identity.positionLabel ?? card.identity.position)} • Class ${esc(card.identity.classYear)}${card.identity.schoolDisplay ? ` • ${esc(card.identity.schoolDisplay)}` : ''}</div>
+      <div class="meta">${esc(card.summary.profileSummary ?? card.summary.identityNote ?? 'Identity summary unavailable')}</div>
       <div class="compare-grade">${esc(grade)}</div>
       <div class="meta">Class rank ${esc(rank)}</div>
       <div class="compare-pills">
@@ -87,12 +88,12 @@ export function renderRookieCompareView(container, leftCard, rightCard) {
       <section class="compare-grid compare-snapshot-grid">
         <article class="rookie-card compare-snapshot">
           <div class="section-title">Left profile snapshot</div>
-          <div class="meta">${leftHighlights.map((metric) => `${esc(metric.label)}: ${esc(metric.display)}`).join(' • ') || 'No evidence snippets available.'}</div>
+          <div class="meta">${leftHighlights.map((metric) => `${esc(metric.evidenceLabel ?? metric.label)}: ${esc(metric.display)}`).join(' • ') || 'No evidence snippets available.'}</div>
           ${seasonSnapshot(leftCard)}
         </article>
         <article class="rookie-card compare-snapshot">
           <div class="section-title">Right profile snapshot</div>
-          <div class="meta">${rightHighlights.map((metric) => `${esc(metric.label)}: ${esc(metric.display)}`).join(' • ') || 'No evidence snippets available.'}</div>
+          <div class="meta">${rightHighlights.map((metric) => `${esc(metric.evidenceLabel ?? metric.label)}: ${esc(metric.display)}`).join(' • ') || 'No evidence snippets available.'}</div>
           ${seasonSnapshot(rightCard)}
         </article>
       </section>

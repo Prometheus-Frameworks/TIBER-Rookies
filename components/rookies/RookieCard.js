@@ -21,14 +21,14 @@ function scoreCell(score) {
 function metricRow(metric) {
   if (metric.value == null) return '';
   const width = metric.percent == null ? 0 : Math.max(0, Math.min(100, metric.percent));
-  return `<div class="metric-row"><div class="metric-header"><span>${esc(metric.label)}</span><strong>${esc(metric.display)}</strong></div><div class="metric-track"><div class="metric-fill" style="width:${width}%"></div></div></div>`;
+  return `<div class="metric-row"><div class="metric-header"><span>${esc(metric.evidenceLabel ?? metric.label)}</span><strong>${esc(metric.display)}</strong></div><div class="metric-track"><div class="metric-fill" style="width:${width}%"></div></div></div>`;
 }
 
 export function renderRookieCard(container, card) {
   const heroScore = card.summary.rookieGrade == null ? 'N/A' : card.summary.rookieGrade.toFixed(1);
   const identityBits = [
-    card.identity.position,
-    card.identity.school,
+    card.identity.positionLabel ?? card.identity.position,
+    card.identity.schoolDisplay ?? card.identity.school,
     `Class ${card.identity.classYear}`,
     card.identity.height,
     card.identity.weight,
@@ -46,6 +46,7 @@ export function renderRookieCard(container, card) {
           <div class="section-title">TIBER Rookie Card</div>
           <h1 class="player-name">${esc(card.identity.name)}</h1>
           <div class="meta">${esc(identityBits || 'Profile context not available')}</div>
+          <div class="meta">${esc(card.summary.profileSummary ?? card.summary.identityNote ?? 'Identity summary unavailable')}</div>
         </div>
         <div class="hero-score">
           <div class="section-title">Rookie Grade</div>
@@ -67,6 +68,7 @@ export function renderRookieCard(container, card) {
 
       <section class="metrics">
         <div class="section-title">Position-aware Evidence</div>
+        <div class="meta">${esc(card.evidence?.readinessLabel ?? 'Evidence readiness unavailable')}</div>
         ${evidenceMetrics.map(metricRow).join('') || '<div class="meta">No evidence metrics available.</div>'}
       </section>
 

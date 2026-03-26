@@ -36,11 +36,11 @@
           slug: card.slug,
           name: card.identity.name,
           position: card.identity.position,
-          school: card.identity.school,
+          school: card.identity.schoolDisplay ?? card.identity.school,
           rookieGrade: card.summary.rookieGrade,
           classRank: card.summary.classRank,
           tierLabel: deriveRookieTier(card.summary.rookieGrade).label,
-          identityNote: card.summary.archetype ?? card.summary.projection ?? card.tags?.[0],
+          identityNote: card.summary.profileSummary ?? card.summary.identityNote ?? card.summary.archetype ?? card.summary.projection ?? card.tags?.[0],
         };
       }
 
