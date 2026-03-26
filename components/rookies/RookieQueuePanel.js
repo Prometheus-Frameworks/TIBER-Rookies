@@ -27,9 +27,12 @@ function findHighestRanked(queue) {
   return ranked[0] ?? null;
 }
 
-export function renderRookieQueuePanel(queue, compareState = {}) {
+export function renderRookieQueuePanel(queue, compareState = {}, portabilityState = {}) {
   const highestRanked = findHighestRanked(queue);
   const canCompare = compareState.left && compareState.right && compareState.left !== compareState.right;
+  const importMode = portabilityState.mode === 'merge' ? 'merge' : 'replace';
+  const statusTone = portabilityState.tone === 'error' ? 'error' : 'info';
+  const statusMessage = portabilityState.message ?? 'Export to a JSON file, then import on another browser/device.';
 
   return `
     <section class="queue-panel">
@@ -44,6 +47,17 @@ export function renderRookieQueuePanel(queue, compareState = {}) {
         <a class="nav-link ${canCompare ? '' : 'is-disabled'}" href="${canCompare ? `/cards/rookies/compare/index.html?left=${encodeURIComponent(compareState.left)}&right=${encodeURIComponent(compareState.right)}` : '#'}">Compare selected pair →</a>
         <button type="button" class="queue-clear" data-queue-clear ${queue.length ? '' : 'disabled'}>Clear queue</button>
       </div>
+      <div class="queue-toolbar" style="margin-top: 10px; align-items: center; gap: 8px; flex-wrap: wrap;">
+        <button type="button" class="queue-action" data-queue-export ${queue.length ? '' : 'disabled'}>Export queue JSON</button>
+        <label class="meta" for="queue-import-mode">Import mode</label>
+        <select id="queue-import-mode" data-queue-import-mode>
+          <option value="replace" ${importMode === 'replace' ? 'selected' : ''}>Replace queue</option>
+          <option value="merge" ${importMode === 'merge' ? 'selected' : ''}>Merge imported first</option>
+        </select>
+        <button type="button" class="queue-action" data-queue-import-trigger>Import queue JSON</button>
+        <input type="file" data-queue-import-input accept="application/json,.json" style="display: none" />
+      </div>
+      <div class="meta" data-queue-import-status="${statusTone}" style="${statusTone === 'error' ? 'color: #ff8f8f;' : ''}">${esc(statusMessage)}</div>
 
       <div class="queue-list">
         ${queue.length

@@ -29,7 +29,7 @@
       import { renderRookieBoardControls } from '/components/rookies/RookieBoardControls.js';
       import { renderRookieBoard } from '/components/rookies/RookieBoard.js';
       import { renderRookieQueuePanel } from '/components/rookies/RookieQueuePanel.js';
-      import { addRookieToQueue, clearRookieQueue, isRookieQueued, loadRookieQueue, moveQueuedRookie, removeRookieFromQueue } from '/lib/rookies/rookieQueueStore.js';
+      import { addRookieToQueue, clearRookieQueue, importRookieQueue, isRookieQueued, loadRookieQueue, moveQueuedRookie, removeRookieFromQueue, serializeRookieQueue } from '/lib/rookies/rookieQueueStore.js';
 
       const summaryRoot = document.getElementById('board-summary');
       const controlsRoot = document.getElementById('board-controls-root');
@@ -40,6 +40,7 @@
       const VIEW_OPTIONS = new Set(['tiered', 'flat']);
       const state = { sort: 'grade', position: 'ALL', view: 'tiered' };
       const compareState = { left: null, right: null };
+      const portabilityState = { mode: 'replace', tone: 'info', message: '' };
 
       function hydrateStateFromUrl() {
         const params = new URLSearchParams(window.location.search);
@@ -75,6 +76,25 @@
           tierLabel: row.tier?.label,
           identityNote: row.profileSummary,
         };
+      }
+
+      function setPortabilityStatus(message, tone = 'info') {
+        portabilityState.message = message;
+        portabilityState.tone = tone;
+      }
+
+      function readFileAsText(file) {
+        return new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(String(reader.result ?? ''));
+          reader.onerror = () => reject(new Error('Import failed: unable to read the selected file.'));
+          reader.readAsText(file);
+        });
+      }
+
+      function buildExportFilename() {
+        const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+        return `tiber-rookie-queue-${stamp}.json`;
       }
 
       function renderSummary(allRows, activeRows) {
@@ -162,6 +182,72 @@
             render(allRows);
           });
         }
+
+        const modeSelect = queueRoot.querySelector('[data-queue-import-mode]');
+        if (modeSelect) {
+          modeSelect.addEventListener('change', (event) => {
+            portabilityState.mode = event.target.value === 'merge' ? 'merge' : 'replace';
+            setPortabilityStatus(
+              portabilityState.mode === 'replace'
+                ? 'Import mode: Replace queue (default).'
+                : 'Import mode: Merge imported queue first, keep existing extras after.',
+              'info',
+            );
+            render(allRows);
+          });
+        }
+
+        const exportButton = queueRoot.querySelector('[data-queue-export]');
+        if (exportButton) {
+          exportButton.addEventListener('click', () => {
+            const payload = serializeRookieQueue();
+            const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const anchor = document.createElement('a');
+            anchor.href = url;
+            anchor.download = buildExportFilename();
+            anchor.click();
+            URL.revokeObjectURL(url);
+            setPortabilityStatus(`Exported ${payload.metadata.total_items} queue items to JSON.`, 'info');
+            render(allRows);
+          });
+        }
+
+        const importInput = queueRoot.querySelector('[data-queue-import-input]');
+        const importTrigger = queueRoot.querySelector('[data-queue-import-trigger]');
+        if (importInput && importTrigger) {
+          importTrigger.addEventListener('click', () => {
+            importInput.value = '';
+            importInput.click();
+          });
+
+          importInput.addEventListener('change', async (event) => {
+            const file = event.target.files?.[0];
+            if (!file) return;
+
+            try {
+              const mode = portabilityState.mode === 'merge' ? 'merge' : 'replace';
+              if (mode === 'replace' && loadRookieQueue().length > 0) {
+                if (!window.confirm('Replace your current local queue with this imported file?')) return;
+              }
+
+              const raw = await readFileAsText(file);
+              const importedQueue = importRookieQueue(raw, { mode });
+              const queueSlugs = new Set(importedQueue.map((player) => player.slug));
+              if (compareState.left && !queueSlugs.has(compareState.left)) compareState.left = null;
+              if (compareState.right && !queueSlugs.has(compareState.right)) compareState.right = null;
+
+              setPortabilityStatus(
+                `Imported ${importedQueue.length} queue items via ${mode} mode from ${file.name}.`,
+                'info',
+              );
+            } catch (error) {
+              setPortabilityStatus(error.message || 'Import failed for an unknown reason.', 'error');
+            }
+
+            render(allRows);
+          });
+        }
       }
 
       function render(allRows) {
@@ -178,7 +264,7 @@
           view: state.view,
           queueSlugs: new Set(queue.map((player) => player.slug)),
         });
-        queueRoot.innerHTML = renderRookieQueuePanel(queue, compareState);
+        queueRoot.innerHTML = renderRookieQueuePanel(queue, compareState, portabilityState);
         syncUrlState();
 
         controlsRoot.querySelectorAll('select[data-board-control]').forEach((el) => {
