@@ -1,10 +1,14 @@
-# Promoted Export Contract: Rookie Alpha (2026 pre-draft v0)
+# Promoted Export Contract: Rookie Alpha (pre-draft v0)
 
-This repository's primary artifact is a promoted export under:
+The promoted export contract is the authoritative producer output of this repository.
+
+Primary artifact set (example season `2026`):
 
 - `exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json`
 - `exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.csv`
 - `exports/promoted/rookie-alpha/2026_manifest.json`
+
+Static rookie prototype routes in this repo may read mapped data derived from these artifacts, but they do not replace this contract as system-of-record output.
 
 ## JSON contract
 
@@ -22,7 +26,7 @@ Top-level fields:
     - `age_at_entry_supported` (false in v0)
 - `generated_at`: ISO-8601 UTC timestamp
 - `run_id`: run identifier shared with manifest
-- `season`: integer season, e.g. `2026`
+- `season`: integer season (example: `2026`)
 - `coverage_summary`
   - `players_total`
   - `players_with_any_missing_input`
@@ -57,7 +61,7 @@ Columns:
 8. `rookie_alpha_0_100`
 9. `model_inputs_missing`
 
-CSV is a flattened companion artifact for simpler downstream ingestion.
+CSV is a flattened companion artifact for row-oriented ingestion.
 
 ## Manifest contract (`*_manifest.json`)
 
@@ -78,7 +82,7 @@ Top-level fields:
 - `output_files`: list of
   - `path`
   - `sha256`
-- `export_metadata` (must match exactly)
+- `export_metadata` (must match export metadata exactly)
   - `season`
   - `model_version`
   - `generated_at`
@@ -91,8 +95,8 @@ Top-level fields:
 Consumers should reject an export if any of the following fail:
 
 1. Missing companion files (`.json`, `.csv`, manifest).
-2. Any input/output file hash mismatch against manifest.
+2. Input/output hash mismatch against manifest.
 3. `export_metadata` mismatch with manifest top-level metadata.
 4. Coverage counts outside expected operating thresholds.
 
-For TIBER-Fantasy specific ingestion gates and CLI validation workflow, see `docs/tiber-fantasy-consumer-contract.md`.
+For TIBER-Fantasy-specific ingest gates and CLI workflow, see `docs/tiber-fantasy-consumer-contract.md`.
