@@ -1,10 +1,16 @@
 # TIBER-Fantasy Consumer Contract (Rookie Alpha promoted export)
 
-This document defines the **ingestion gate** for TIBER-Fantasy before importing a promoted Rookie Alpha artifact.
+This document defines the ingestion gate TIBER-Fantasy should enforce before importing a promoted Rookie Alpha artifact.
+
+## Boundary statement
+
+TIBER-Fantasy should consume promoted exports as versioned artifacts.
+
+It should **not** depend on this repository's static rookie prototype routes (`gallery`, `board`, `detail`, `compare`, local queue) as a runtime service boundary.
 
 ## Required files
 
-For a season (example `2026`), TIBER-Fantasy ingestion requires all artifacts below from `exports/promoted/rookie-alpha/`:
+For a season (example `2026`), ingestion requires all artifacts from `exports/promoted/rookie-alpha/`:
 
 1. `{season}_rookie_alpha_predraft_v0.json` (authoritative model export)
 2. `{season}_rookie_alpha_predraft_v0.csv` (flat companion)
@@ -45,23 +51,21 @@ The following values must be identical across export and manifest:
 
 Treat any condition below as a hard ingest failure:
 
-- Missing required files
-- Export/manifest parse errors
-- Required field omissions
+- missing required files
+- export/manifest parse errors
+- required field omissions
 - `export_metadata` mismatch
-- Input hash mismatch
-- Output hash mismatch
-- Input `row_count` mismatch
+- input hash mismatch
+- output hash mismatch
+- input `row_count` mismatch
 
-Suggested downstream behavior: reject ingest, log full validation errors, and request a regenerated promoted export.
+Suggested downstream behavior: reject ingest, log full validation errors, request regenerated promoted export.
 
 ## Consumer-ready normalized view (optional, derived)
 
-The promoted JSON is authoritative but nests scores under `players[].scores`, which can be awkward for consumers that want row-oriented ingestion.
+Promoted JSON is authoritative but nests score fields under `players[].scores`. Consumers may derive a normalized row shape at ingest time rather than relying on committed snapshot files.
 
-To avoid stale committed snapshots, consumers should derive a normalized view at ingest time (or in their own pipeline) rather than relying on a checked-in `.consumer_view.json` file.
-
-Recommended normalized row shape:
+Example normalized row shape:
 
 ```json
 {

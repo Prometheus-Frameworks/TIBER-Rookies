@@ -1,17 +1,41 @@
 # TIBER-Rookies
 
-Standalone rookie grading lab for the **current implemented pre-draft Rookie Alpha model (v0)**.
+TIBER-Rookies is a **standalone Rookie Alpha producer lab** with a **static rookie intelligence prototype** layered on top of real promoted artifacts.
 
-## Why this repo exists
+It is intentionally not a full draft room or live backend service.
 
-This repository extracts the rookie scoring path out of TIBER-Fantasy into a minimal, honest handoff artifact pipeline:
+## Repository framing
 
-- no frontend
-- no Express routes
-- no Drizzle/Postgres dependency
-- no dependency on TIBER-Fantasy runtime services
+This repo currently has two aligned layers:
 
-Primary output is a **promoted export** that TIBER-Fantasy (or any consumer) can ingest later.
+1. **Producer layer (authoritative)**
+   - computes the pre-draft Rookie Alpha model (`v0`)
+   - emits promoted JSON/CSV plus a reproducibility manifest
+   - supports validation before downstream ingest
+2. **Static product-surface layer (prototype)**
+   - reads mapped artifact data into static HTML surfaces
+   - provides gallery, board, detail, compare, and browser-local shortlist queue flows
+   - exists to validate UX direction on top of real artifacts, not to replace downstream ingestion contracts
+
+## Current capabilities
+
+### Producer + contract capabilities
+
+- Standalone promoted export pipeline via `scripts/compute_rookie_alpha.py`
+- Promoted artifact set per season:
+  - `exports/promoted/rookie-alpha/{season}_rookie_alpha_predraft_v0.json`
+  - `exports/promoted/rookie-alpha/{season}_rookie_alpha_predraft_v0.csv`
+  - `exports/promoted/rookie-alpha/{season}_manifest.json`
+- Manifest + validation contract documented in `docs/export-contract.md`
+- Consumer ingest gate helper: `scripts/validate_promoted_export.py`
+
+### Static rookie prototype capabilities
+
+- Gallery route: `/cards/rookies/index.html`
+- Board route: `/cards/rookies/board/index.html`
+- Detail route: `/cards/rookies/player.html?slug=<player_id>`
+- Compare route: `/cards/rookies/compare/index.html?left=<slug>&right=<slug>`
+- Browser-local shortlist queue (`localStorage`) with add/remove/reorder and compare-side assignment
 
 ## Repository layout
 
@@ -19,43 +43,40 @@ Primary output is a **promoted export** that TIBER-Fantasy (or any consumer) can
 - `docs/`
   - `architecture.md`
   - `export-contract.md`
+  - `rookie-card-prototype.md`
   - `tiber-fantasy-consumer-contract.md`
 - `scripts/`
   - `compute_rookie_alpha.py`
   - `validate_promoted_export.py`
+- `lib/rookies/`
+  - mapping/adaptation and prototype helpers
+- `cards/rookies/`
+  - static gallery/board/detail/compare surfaces
 - `data/raw/`
   - combine inputs (example 2026 artifact)
 - `data/processed/`
-  - college production and draft-capital-proxy artifacts
+  - production and draft-capital-proxy artifacts
 - `exports/promoted/rookie-alpha/`
-  - generated promoted JSON + CSV outputs
+  - generated promoted outputs
 
 ## Current model implementation (pre-draft v0)
 
-The formula preserved in this standalone pipeline is:
+Implemented formula:
 
 - **RAS 35%**
 - **Production 45%**
 - **Draft capital proxy 20%**
-- **No age-at-entry support yet**
+- **Age-at-entry not implemented yet**
 
-This is explicitly labeled as `pre-draft v0` in export metadata.
+This is explicitly labeled `pre-draft v0` in export metadata.
 
-## Inputs
-
-By default, inputs are resolved from the `--season` flag (defaults to current UTC year):
-
-- `data/raw/{season}_combine_results.json`
-- `data/processed/{season}_college_production.json`
-- `data/processed/{season}_draft_capital_proxy.json`
-
-## Run
+## Run producer pipeline
 
 ```bash
 python3 scripts/compute_rookie_alpha.py
 ```
 
-Optional flags:
+Optional explicit inputs/outputs:
 
 ```bash
 python3 scripts/compute_rookie_alpha.py \
@@ -67,42 +88,7 @@ python3 scripts/compute_rookie_alpha.py \
   --output-csv exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.csv
 ```
 
-## Outputs (promoted contract)
-
-- `exports/promoted/rookie-alpha/{season}_rookie_alpha_predraft_v0.json`
-- `exports/promoted/rookie-alpha/{season}_rookie_alpha_predraft_v0.csv`
-- `exports/promoted/rookie-alpha/{season}_manifest.json`
-
-Export metadata includes:
-
-- `model_version`
-- `generated_at`
-- `run_id`
-- `season`
-- `coverage_summary`
-- `source_files_used`
-
-The manifest is a machine-readable reproducibility record that includes:
-
-- `season`, `model_version`, `generated_at`, `run_id`
-- input file paths + SHA-256 hashes + row counts
-- output file paths + SHA-256 hashes
-- coverage summary and export metadata mirror for consistency checks
-
-Full field-level contract is documented in `docs/export-contract.md`.
-
-## Downstream validation checklist
-
-Before ingesting a promoted export, downstream systems (such as TIBER-Fantasy) should:
-
-1. Confirm all three files exist for the season (`.json`, `.csv`, and `_manifest.json`).
-2. Recompute SHA-256 for each listed input/output file and verify hashes exactly match manifest values.
-3. Verify manifest and export metadata agree exactly (`season`, `model_version`, `generated_at`, and coverage/source-file metadata).
-4. Validate row/coverage expectations from `coverage_summary` before import.
-
-## Downstream consumption (TIBER-Fantasy readiness)
-
-Use the consumer validation helper to gate ingestion:
+## Validate promoted export before ingest
 
 ```bash
 python3 scripts/validate_promoted_export.py \
@@ -110,53 +96,30 @@ python3 scripts/validate_promoted_export.py \
   --manifest exports/promoted/rookie-alpha/2026_manifest.json
 ```
 
-Expected behavior:
+Validation checks field presence, metadata consistency, hashes, and row-count expectations.
 
-- exits `0` and prints `VALIDATION PASSED` when contract checks succeed
-- exits non-zero and prints each failure condition when checks fail
+## Current limitations
 
-Validation includes:
+- Model is still **pre-draft v0** (no landing-spot or NFL transition phase yet).
+- Queue is **browser-local only** (no auth, no multi-device sync, no league persistence).
+- Repo is **not** a full draft room or live service.
+- Surface richness depends on available promoted/source artifact fields.
+- Missing player identity/context fields can still produce deterministic fallback states.
 
-1. export/manifest required field checks
-2. cross-file metadata consistency checks
-3. output hash verification (`output_files`)
-4. input hash + row count verification (`input_files`)
+## Next likely steps
 
-For downstream flat ingestion, derive a normalized view from the authoritative export at ingest time (instead of checking in a static consumer snapshot).
+- Enrich promoted rookie identity/context fields in producer artifacts.
+- Improve mapped evidence inputs used by static surfaces.
+- Add queue portability (import/export) before any account-backed persistence.
+- Consider draft-room layering only after real auth/persistence boundaries exist.
 
-Authoritative contract and failure semantics are documented in:
+## TIBER-Fantasy handoff stance
 
+TIBER-Fantasy (or any downstream consumer) should ingest promoted exports as versioned artifacts. It should not treat this repository as a live runtime dependency.
+
+See:
+
+- `docs/architecture.md`
+- `docs/export-contract.md`
 - `docs/tiber-fantasy-consumer-contract.md`
-
-## Known v0 caveats
-
-- Small-group positional samples (especially when very few prospects test) can distort relative RAS separation.
-- If any upstream input artifact changes, committed exports must be regenerated so promoted outputs remain in sync with source files.
-
-## How TIBER-Fantasy should consume this later
-
-TIBER-Fantasy should treat this repo as a producer and ingest the promoted JSON export as input data, not as a live service dependency.
-
-Recommended handoff pattern:
-
-1. Run this repo's pipeline for the season.
-2. Publish/version the promoted JSON artifact.
-3. TIBER-Fantasy import job reads the export and maps by `player_id`.
-4. Keep downstream UI/runtime logic separate from this model computation pipeline.
-
-## Future roadmap (not implemented yet)
-
-- Landing spot adjustment phase
-- NFL transition blending phase
-
-Those phases should extend the promoted artifact chain without breaking the pre-draft v0 contract.
-
-## Rookie card frontend prototype (2026)
-
-A small static product-surface prototype now exists to prove card rendering from real promoted data:
-
-- `cards/rookies/index.html`
-- `cards/rookies/player.html?slug=wr-malik-ford`
-- `cards/rookies/wr-malik-ford/index.html`
-
-Data is loaded directly from promoted/data artifacts and mapped via `lib/rookies/` adapters.
+- `docs/rookie-card-prototype.md`
