@@ -1,21 +1,21 @@
 # TIBER-Rookies
 
-TIBER-Rookies is a **standalone Rookie Alpha producer lab** with a **static rookie intelligence prototype** layered on top of real promoted artifacts.
+TIBER-Rookies is the **authoritative Rookie Alpha producer lab** and now also has a **minimal standalone static runtime** so the rookie prototype can be deployed independently (including Railway).
 
-It is intentionally not a full draft room or live backend service.
+It is intentionally not a full draft room, not a live backend, and not a runtime dependency for TIBER-Fantasy.
 
 ## Repository framing
 
-This repo currently has two aligned layers:
+This repo has two intentionally separated layers:
 
 1. **Producer layer (authoritative)**
    - computes the pre-draft Rookie Alpha model (`v0`)
    - emits promoted JSON/CSV plus a reproducibility manifest
    - supports validation before downstream ingest
-2. **Static product-surface layer (prototype)**
-   - reads mapped artifact data into static HTML surfaces
-   - provides gallery, board, detail, compare, and browser-local shortlist queue flows
-   - exists to validate UX direction on top of real artifacts, not to replace downstream ingestion contracts
+2. **Standalone static lab layer (deployable)**
+   - serves static rookie surfaces from existing artifact-backed files
+   - provides gallery, board, detail, compare, shortlist queue, queue import/export, and local note/tag behavior
+   - does not recompute model logic at request time
 
 ## Current capabilities
 
@@ -29,22 +29,30 @@ This repo currently has two aligned layers:
 - Manifest + validation contract documented in `docs/export-contract.md`
 - Consumer ingest gate helper: `scripts/validate_promoted_export.py`
 
-### Static rookie prototype capabilities
+### Standalone rookie lab capabilities
 
-- Gallery route: `/cards/rookies/index.html`
-- Board route: `/cards/rookies/board/index.html`
-- Detail route: `/cards/rookies/player.html?slug=<player_id>`
-- Compare route: `/cards/rookies/compare/index.html?left=<slug>&right=<slug>`
-- Browser-local shortlist queue (`localStorage`) with add/remove/reorder and compare-side assignment
+- Runtime entrypoint: `runtime-server.js` (small Node HTTP static server)
+- Health endpoint: `GET /health`
+- Root redirect: `/` → `/cards/rookies/board/index.html`
+- Served rookie surfaces:
+  - `/cards/rookies/index.html`
+  - `/cards/rookies/board/index.html`
+  - `/cards/rookies/player.html?slug=<player_id>`
+  - `/cards/rookies/compare/index.html?left=<slug>&right=<slug>`
+- Browser-local shortlist queue (`localStorage`) with add/remove/reorder/import/export and local note/tag annotations
 
 ## Repository layout
 
 - `README.md`
+- `runtime-server.js`
+- `package.json`
+- `railway.json`
 - `docs/`
   - `architecture.md`
   - `export-contract.md`
   - `rookie-card-prototype.md`
   - `tiber-fantasy-consumer-contract.md`
+  - `runbooks/standalone-railway-rookie-lab.md`
 - `scripts/`
   - `compute_rookie_alpha.py`
   - `validate_promoted_export.py`
@@ -98,20 +106,49 @@ python3 scripts/validate_promoted_export.py \
 
 Validation checks field presence, metadata consistency, hashes, and row-count expectations.
 
+## Run standalone static lab locally
+
+Requires Node.js 20+.
+
+```bash
+npm start
+```
+
+Then open:
+
+- `http://localhost:3000/` (redirects to rookie board)
+- `http://localhost:3000/cards/rookies/index.html`
+- `http://localhost:3000/cards/rookies/board/index.html`
+- `http://localhost:3000/cards/rookies/player.html?slug=wr-malik-ford`
+- `http://localhost:3000/cards/rookies/compare/index.html?left=wr-malik-ford&right=te-owen-hale`
+- `http://localhost:3000/health`
+
+## Railway deploy contract
+
+This repo is Railway-ready with an explicit start contract:
+
+- `package.json` script: `npm start`
+- runtime binds to `PORT` from environment
+- `railway.json` sets:
+  - `startCommand: npm start`
+  - `healthcheckPath: /health`
+
+Deployment flow:
+
+1. Create a Railway project from this repo.
+2. Ensure Node 20+ runtime.
+3. Deploy with default command (`npm start`).
+4. Verify `/health` and rookie routes after deploy.
+
+See the operator runbook: `docs/runbooks/standalone-railway-rookie-lab.md`.
+
 ## Current limitations
 
 - Model is still **pre-draft v0** (no landing-spot or NFL transition phase yet).
 - Queue is **browser-local only** (no auth, no multi-device sync, no league persistence).
-- Repo is **not** a full draft room or live service.
+- Runtime is intentionally **static-only** (no database, no model recompute, no live room).
 - Surface richness depends on available promoted/source artifact fields.
 - Missing player identity/context fields can still produce deterministic fallback states.
-
-## Next likely steps
-
-- Enrich promoted rookie identity/context fields in producer artifacts.
-- Improve mapped evidence inputs used by static surfaces.
-- Add queue portability (import/export) before any account-backed persistence.
-- Consider draft-room layering only after real auth/persistence boundaries exist.
 
 ## TIBER-Fantasy handoff stance
 
