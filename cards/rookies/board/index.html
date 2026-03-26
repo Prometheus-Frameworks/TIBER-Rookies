@@ -29,7 +29,7 @@
       import { renderRookieBoardControls } from '/components/rookies/RookieBoardControls.js';
       import { renderRookieBoard } from '/components/rookies/RookieBoard.js';
       import { renderRookieQueuePanel } from '/components/rookies/RookieQueuePanel.js';
-      import { addRookieToQueue, clearRookieQueue, importRookieQueue, isRookieQueued, loadRookieQueue, moveQueuedRookie, removeRookieFromQueue, serializeRookieQueue } from '/lib/rookies/rookieQueueStore.js';
+      import { addRookieToQueue, clearQueuedRookieNote, clearQueuedRookieTag, clearRookieQueue, getRookieQueueNoteMaxLength, getRookieQueueTagOptions, importRookieQueue, isRookieQueued, loadRookieQueue, moveQueuedRookie, removeRookieFromQueue, serializeRookieQueue, updateQueuedRookieNote, updateQueuedRookieTag } from '/lib/rookies/rookieQueueStore.js';
 
       const summaryRoot = document.getElementById('board-summary');
       const controlsRoot = document.getElementById('board-controls-root');
@@ -41,6 +41,9 @@
       const state = { sort: 'grade', position: 'ALL', view: 'tiered' };
       const compareState = { left: null, right: null };
       const portabilityState = { mode: 'replace', tone: 'info', message: '' };
+
+      const queueTagOptions = getRookieQueueTagOptions();
+      const queueNoteMaxLength = getRookieQueueNoteMaxLength();
 
       function hydrateStateFromUrl() {
         const params = new URLSearchParams(window.location.search);
@@ -123,6 +126,11 @@
           : '↓ Jump to shortlist queue';
       }
 
+
+      function buildQueueAnnotationMap(queue) {
+        return new Map(queue.map((player) => [player.slug, { queueTag: player.queueTag, queueNote: player.queueNote }]));
+      }
+
       function wireBoardActions(allRows) {
         boardRoot.querySelectorAll('[data-queue-toggle]').forEach((button) => {
           button.addEventListener('click', (event) => {
@@ -168,6 +176,45 @@
             const slug = event.currentTarget.dataset.slug;
             const side = event.currentTarget.dataset.queueMark;
             compareState[side] = compareState[side] === slug ? null : slug;
+            render(allRows);
+          });
+        });
+
+        queueRoot.querySelectorAll('[data-queue-tag]').forEach((select) => {
+          select.addEventListener('change', (event) => {
+            const slug = event.currentTarget.dataset.slug;
+            updateQueuedRookieTag(slug, event.currentTarget.value);
+            render(allRows);
+          });
+        });
+
+        queueRoot.querySelectorAll('[data-queue-note]').forEach((field) => {
+          field.addEventListener('input', (event) => {
+            const slug = event.currentTarget.dataset.slug;
+            const counter = queueRoot.querySelector(`[data-queue-note-counter][data-slug="${slug}"]`);
+            if (!counter) return;
+            const length = event.currentTarget.value.length;
+            counter.textContent = `${length}/${queueNoteMaxLength}`;
+            counter.classList.toggle('queue-note-counter-limit', length >= queueNoteMaxLength);
+          });
+
+          field.addEventListener('blur', (event) => {
+            const slug = event.currentTarget.dataset.slug;
+            updateQueuedRookieNote(slug, event.currentTarget.value);
+            render(allRows);
+          });
+        });
+
+        queueRoot.querySelectorAll('[data-queue-note-clear]').forEach((button) => {
+          button.addEventListener('click', (event) => {
+            clearQueuedRookieNote(event.currentTarget.dataset.slug);
+            render(allRows);
+          });
+        });
+
+        queueRoot.querySelectorAll('[data-queue-tag-clear]').forEach((button) => {
+          button.addEventListener('click', (event) => {
+            clearQueuedRookieTag(event.currentTarget.dataset.slug);
             render(allRows);
           });
         });
@@ -260,11 +307,18 @@
         renderSummary(allRows, sorted);
         updateQueueJumpLink(queue.length);
         controlsRoot.innerHTML = renderRookieBoardControls({ positions, state });
+        const queueSlugs = new Set(queue.map((player) => player.slug));
+        const queueAnnotations = buildQueueAnnotationMap(queue);
+
         boardRoot.innerHTML = renderRookieBoard(sorted, {
           view: state.view,
-          queueSlugs: new Set(queue.map((player) => player.slug)),
+          queueSlugs,
+          queueAnnotations,
         });
-        queueRoot.innerHTML = renderRookieQueuePanel(queue, compareState, portabilityState);
+        queueRoot.innerHTML = renderRookieQueuePanel(queue, compareState, portabilityState, {
+          tagOptions: queueTagOptions,
+          noteMaxLength: queueNoteMaxLength,
+        });
         syncUrlState();
 
         controlsRoot.querySelectorAll('select[data-board-control]').forEach((el) => {

@@ -23,7 +23,7 @@
       import { renderRookieCardCompact } from '/components/rookies/RookieCardCompact.js';
       import { renderRookieGalleryControls } from '/components/rookies/RookieGalleryControls.js';
       import { collectGalleryFilters, sortAndFilterRookies } from '/lib/rookies/sortAndFilterRookies.js';
-      import { addRookieToQueue, isRookieQueued, removeRookieFromQueue } from '/lib/rookies/rookieQueueStore.js';
+      import { addRookieToQueue, isRookieQueued, loadRookieQueue, removeRookieFromQueue } from '/lib/rookies/rookieQueueStore.js';
       import { deriveRookieTier } from '/lib/rookies/deriveRookieTier.js';
 
       const gallery = document.getElementById('gallery');
@@ -42,6 +42,12 @@
           tierLabel: deriveRookieTier(card.summary.rookieGrade).label,
           identityNote: card.summary.profileSummary ?? card.summary.identityNote ?? card.summary.archetype ?? card.summary.projection ?? card.tags?.[0],
         };
+      }
+
+
+      function buildQueueAnnotationMap() {
+        const queue = loadRookieQueue();
+        return new Map(queue.map((player) => [player.slug, { queueTag: player.queueTag, queueNote: player.queueNote }]));
       }
 
       function wireQueueButtons(cards, filters) {
@@ -68,8 +74,10 @@
         rankingContext.textContent = `${sorted.length} of ${total} rookies shown • grade rank uses promoted export ordering.`;
 
         controlsRoot.innerHTML = renderRookieGalleryControls({ positions: filters.positions, tags: filters.tags, state });
+        const queueAnnotations = buildQueueAnnotationMap();
+
         gallery.innerHTML = sorted.length
-          ? sorted.map((card) => renderRookieCardCompact(card, { isQueued: isRookieQueued(card.slug) })).join('')
+          ? sorted.map((card) => renderRookieCardCompact(card, { isQueued: isRookieQueued(card.slug), queueAnnotation: queueAnnotations.get(card.slug) ?? null })).join('')
           : '<article class="rookie-card"><div class="meta">No rookies matched the selected filters.</div></article>';
 
         controlsRoot.querySelectorAll('select[data-control]').forEach((el) => {
