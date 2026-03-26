@@ -4,7 +4,7 @@ const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
 
-const ROOT_DIR = process.cwd();
+const ROOT_DIR = __dirname;
 const PORT = Number.parseInt(process.env.PORT || '3000', 10);
 
 const CONTENT_TYPES = {

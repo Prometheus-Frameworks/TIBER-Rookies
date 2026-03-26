@@ -25,7 +25,7 @@ If these files are missing, surfaces render load errors (by design) rather than 
 
 ## Local start
 
-1. Use Node.js 20+.
+1. Use Node.js 20+. No `npm install` is needed; there are no runtime dependencies.
 2. From repo root, run:
 
 ```bash
