@@ -9,7 +9,7 @@ function esc(str) {
 }
 
 function compactMetric(metric) {
-  return `<div class="compact-metric"><div class="compact-metric-label">${esc(metric.label)}</div><div class="compact-metric-value">${esc(metric.display)}</div></div>`;
+  return `<div class="compact-metric"><div class="compact-metric-label">${esc(metric.evidenceLabel ?? metric.label)}</div><div class="compact-metric-value">${esc(metric.display)}</div></div>`;
 }
 
 export function renderRookieCardCompact(card, { isQueued = false } = {}) {
@@ -24,14 +24,14 @@ export function renderRookieCardCompact(card, { isQueued = false } = {}) {
         <div class="compact-header-row">
           <div>
             <p class="compact-name">${esc(card.identity.name)}</p>
-            <div class="compact-meta">${esc(card.identity.position)} • ${esc(card.identity.school ?? 'School N/A')} • Class ${esc(card.identity.classYear)}</div>
+            <div class="compact-meta">${esc(card.identity.positionLabel ?? card.identity.position)} • ${esc(card.identity.schoolDisplay ?? card.identity.school ?? 'School unavailable in current artifacts')} • Class ${esc(card.identity.classYear)}</div>
           </div>
           <div class="compact-rank">${card.summary.classRank != null ? '#' + esc(card.summary.classRank) : 'N/A'}</div>
         </div>
         <div class="section-title">Rookie Grade</div>
         <div class="compact-score">${esc(score)}</div>
         ${snippets.length ? `<div class="compact-snippets">${snippets.map(compactMetric).join('')}</div>` : ''}
-        <div class="compact-archetype">${esc(card.summary.archetype ?? card.summary.projection ?? 'Role profile unavailable')}</div>
+        <div class="compact-archetype">${esc(card.summary.profileSummary ?? card.summary.archetype ?? card.summary.projection ?? 'Role profile unavailable')}</div>
         ${topTags.length ? `<div class="compact-tags">${topTags.map((tag) => `<span class="tag">${esc(tag)}</span>`).join('')}</div>` : ''}
       </a>
       <div class="compact-actions-row">

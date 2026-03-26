@@ -39,6 +39,7 @@ Responsibilities:
 
 - map promoted/source artifacts into display-ready rookie card and board shapes
 - normalize/fallback incomplete fields into deterministic UI-safe values
+- derive reusable identity/context summaries (`normalizeRookieIdentity`, `deriveRookieProfileSummary`) for board/detail/compare/queue consumers
 - provide compare and queue-supporting helpers without changing producer contract authority
 
 This layer intentionally sits between raw exports and static UI so prototype surfaces do not drift into a second model source of truth.
