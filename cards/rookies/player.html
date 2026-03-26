@@ -17,7 +17,7 @@
     <script type="module">
       import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
       import { renderRookieCard } from '/components/rookies/RookieCard.js';
-      import { addRookieToQueue, isRookieQueued, removeRookieFromQueue } from '/lib/rookies/rookieQueueStore.js';
+      import { addRookieToQueue, getQueuedRookieAnnotation, isRookieQueued, removeRookieFromQueue } from '/lib/rookies/rookieQueueStore.js';
       import { deriveRookieTier } from '/lib/rookies/deriveRookieTier.js';
 
       const root = document.getElementById('card-root');
@@ -40,9 +40,18 @@
 
       function renderActions(card) {
         const queued = isRookieQueued(card.slug);
+        const annotation = queued ? getQueuedRookieAnnotation(card.slug) : null;
+        const annotationBits = [
+          annotation?.queueTag ? `Tag: ${annotation.queueTag}` : '',
+          annotation?.queueNote ? `Note: ${annotation.queueNote.length > 80 ? `${annotation.queueNote.slice(0, 80)}…` : annotation.queueNote}` : '',
+        ].filter(Boolean);
+
         actionsRoot.innerHTML = `
           <div class="rookie-card" style="padding: 12px 14px; display: flex; justify-content: space-between; gap: 10px; align-items: center;">
-            <div class="meta">Shortlist status for ${card.identity.name}: <strong>${queued ? 'Queued' : 'Not queued'}</strong></div>
+            <div>
+              <div class="meta">Shortlist status for ${card.identity.name}: <strong>${queued ? 'Queued' : 'Not queued'}</strong></div>
+              ${queued && annotationBits.length ? `<div class="meta" style="margin-top: 4px;">${annotationBits.join(' • ')}</div>` : ''}
+            </div>
             <button type="button" class="queue-toggle ${queued ? 'is-queued' : ''}" id="detail-queue-toggle">${queued ? 'Remove from queue' : 'Add to queue'}</button>
           </div>
         `;

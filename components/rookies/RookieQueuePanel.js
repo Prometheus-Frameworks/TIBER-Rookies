@@ -27,12 +27,19 @@ function findHighestRanked(queue) {
   return ranked[0] ?? null;
 }
 
-export function renderRookieQueuePanel(queue, compareState = {}, portabilityState = {}) {
+function notePreview(note) {
+  if (!note) return '';
+  return note.length > 90 ? `${note.slice(0, 90)}…` : note;
+}
+
+export function renderRookieQueuePanel(queue, compareState = {}, portabilityState = {}, options = {}) {
   const highestRanked = findHighestRanked(queue);
   const canCompare = compareState.left && compareState.right && compareState.left !== compareState.right;
   const importMode = portabilityState.mode === 'merge' ? 'merge' : 'replace';
   const statusTone = portabilityState.tone === 'error' ? 'error' : 'info';
   const statusMessage = portabilityState.message ?? 'Export to a JSON file, then import on another browser/device.';
+  const tagOptions = Array.isArray(options.tagOptions) ? options.tagOptions : [];
+  const noteMaxLength = Number.isFinite(options.noteMaxLength) ? options.noteMaxLength : 160;
 
   return `
     <section class="queue-panel">
@@ -64,6 +71,9 @@ export function renderRookieQueuePanel(queue, compareState = {}, portabilityStat
           ? queue
               .map((player, index) => {
                 const grade = player.rookieGrade == null ? 'N/A' : player.rookieGrade.toFixed(1);
+                const playerNote = player.queueNote ?? '';
+                const playerTag = player.queueTag ?? '';
+                const counterTone = playerNote.length >= noteMaxLength ? ' queue-note-counter-limit' : '';
                 return `
                   <article class="queue-item">
                     <div class="queue-item-main">
@@ -73,6 +83,28 @@ export function renderRookieQueuePanel(queue, compareState = {}, portabilityStat
                         <div class="meta">${esc(player.position)} • ${esc(player.school)}</div>
                         <div class="meta">Grade ${esc(grade)} • ${esc(player.tierLabel)}</div>
                         <div class="meta">${esc(player.identityNote)}</div>
+                        ${playerTag ? `<div class="queue-annotation-tags"><span class="queue-tag-pill">${esc(playerTag)}</span></div>` : ''}
+                        ${playerNote ? `<div class="queue-note-preview">“${esc(notePreview(playerNote))}”</div>` : ''}
+                        <div class="queue-annotation-editor">
+                          <label class="meta" for="queue-tag-${esc(player.slug)}">Draft tag</label>
+                          <select id="queue-tag-${esc(player.slug)}" class="queue-annotation-select" data-queue-tag data-slug="${esc(player.slug)}">
+                            <option value="">No tag</option>
+                            ${tagOptions.map((tag) => `<option value="${esc(tag)}" ${playerTag === tag ? 'selected' : ''}>${esc(tag)}</option>`).join('')}
+                          </select>
+                          <label class="meta" for="queue-note-${esc(player.slug)}">Queue note</label>
+                          <textarea
+                            id="queue-note-${esc(player.slug)}"
+                            class="queue-annotation-note"
+                            data-queue-note
+                            data-slug="${esc(player.slug)}"
+                            maxlength="${noteMaxLength}"
+                            placeholder="Short local note (why this player is queued)">${esc(playerNote)}</textarea>
+                          <div class="meta queue-note-counter${counterTone}" data-queue-note-counter data-slug="${esc(player.slug)}">${playerNote.length}/${noteMaxLength}</div>
+                          <div style="display:flex; gap: 6px; flex-wrap: wrap; margin-top: 4px;">
+                            <button type="button" class="queue-action" data-queue-note-clear data-slug="${esc(player.slug)}" ${playerNote ? '' : 'disabled'}>Clear note</button>
+                            <button type="button" class="queue-action" data-queue-tag-clear data-slug="${esc(player.slug)}" ${playerTag ? '' : 'disabled'}>Clear tag</button>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div class="queue-item-actions">

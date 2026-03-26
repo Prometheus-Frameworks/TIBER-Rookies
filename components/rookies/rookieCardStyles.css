@@ -322,3 +322,44 @@ body {
   .queue-item { flex-direction: column; align-items: flex-start; }
   .queue-item-actions { justify-content: flex-start; }
 }
+
+.queue-tag-pill {
+  display: inline-block;
+  border: 1px solid rgba(130, 170, 255, 0.45);
+  background: rgba(43, 65, 112, 0.35);
+  color: #d2e2ff;
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+}
+
+.queue-inline-indicator { margin-top: 4px; }
+
+.queue-annotation-tags { margin-top: 6px; }
+.queue-note-preview {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #c9d7eb;
+}
+.queue-annotation-editor {
+  margin-top: 8px;
+  display: grid;
+  gap: 4px;
+  max-width: 420px;
+}
+.queue-annotation-select,
+.queue-annotation-note {
+  border: 1px solid var(--border);
+  background: #101828;
+  color: var(--text);
+  border-radius: 8px;
+  font-size: 12px;
+  padding: 6px 8px;
+}
+.queue-annotation-note {
+  min-height: 58px;
+  resize: vertical;
+}
+.queue-note-counter { text-align: right; }
+.queue-note-counter-limit { color: #ffb4b4; }

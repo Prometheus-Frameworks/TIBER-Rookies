@@ -6,12 +6,13 @@ function esc(str) {
     .replace(/"/g, '&quot;');
 }
 
-export function renderRookieBoardRow(row, { isQueued = false } = {}) {
+export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = null } = {}) {
   const rank = row.classRank == null ? 'N/A' : `#${row.classRank}`;
   const grade = row.rookieGrade == null ? 'N/A' : row.rookieGrade.toFixed(1);
   const slug = encodeURIComponent(String(row.slug ?? ''));
   const compareLeftHref = `/cards/rookies/compare/index.html?left=${slug}`;
   const compareRightHref = `/cards/rookies/compare/index.html?right=${slug}`;
+  const queueTag = queueAnnotation?.queueTag ?? '';
 
   return `
     <article class="board-row ${isQueued ? 'board-row-queued' : ''}">
@@ -19,6 +20,7 @@ export function renderRookieBoardRow(row, { isQueued = false } = {}) {
       <div class="board-cell board-player" data-label="Player">
         <div class="board-player-name">${esc(row.name)}</div>
         <div class="meta">${esc(row.profileSummary)}</div>
+        ${isQueued && queueTag ? `<div class="meta queue-inline-indicator">Queue tag: <span class="queue-tag-pill">${esc(queueTag)}</span></div>` : ''}
       </div>
       <div class="board-cell" data-label="Position">${esc(row.position)}</div>
       <div class="board-cell" data-label="School">${esc(row.school)}</div>

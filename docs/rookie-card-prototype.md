@@ -75,8 +75,10 @@ Supported queue operations:
 - `isRookieQueued(slug)`
 - `serializeRookieQueue()`
 - `importRookieQueue(payload, { mode: 'replace' | 'merge' })`
+- `updateQueuedRookieNote(slug, note)` / `clearQueuedRookieNote(slug)`
+- `updateQueuedRookieTag(slug, tag)` / `clearQueuedRookieTag(slug)`
 
-### Queue portability (PR14)
+### Queue annotations + portability (PR15)
 
 Queue portability is intentionally a **local workflow tool**, not a platform feature.
 
@@ -86,18 +88,24 @@ Queue portability is intentionally a **local workflow tool**, not a platform fea
 - Optional import mode **Merge imported first** keeps imported order, dedupes by `slug`, and appends existing non-imported players after imported items.
 - Malformed/incompatible files fail with visible, concise errors and do not partially mutate queue state.
 
-Export payload shape (v1):
+Queue annotation scope:
 
-- `version` (currently `1`)
+- Optional draft tag from a fixed list only: `Target`, `Fade`, `Compare later`, `Landing spot watch`, `Contingency`, `Tier break`, `Upside swing`, `Floor play`.
+- Optional short queue note (`160` chars max, trimmed and whitespace-normalized before storage).
+- Notes/tags are editable from the queue panel only; board/detail/gallery show read-only context when queued.
+
+Export payload shape (v2):
+
+- `version` (currently `2`)
 - `exported_at` (ISO timestamp)
 - `source` (surface note)
-- `queue` (array of queue entries)
-- `metadata` (lightweight context such as `total_items` and storage note)
+- `queue` (array of queue entries including optional `queueTag` and `queueNote`)
+- `metadata` (lightweight context such as `total_items`, storage note, and annotation constraints)
 
 Validation/version rules:
 
 - Top-level value must be an object.
-- `version` must be exactly `1`.
+- `version` must be `1` or `2` (`1` imports still load, with no annotations).
 - `queue` must be an array.
 - each queue item must include a valid `slug`.
 - optional fields are normalized through queue-store fallbacks.
