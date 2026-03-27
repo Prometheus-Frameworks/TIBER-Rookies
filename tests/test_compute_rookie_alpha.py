@@ -3,6 +3,7 @@ import unittest
 from pathlib import Path
 
 from scripts.compute_rookie_alpha import (
+    MergeDiagnostics,
     PlayerInputs,
     coerce_float,
     compute_ras_scores,
@@ -81,8 +82,23 @@ class RookieAlphaTests(unittest.TestCase):
             }
         ]
 
-        players = merge_inputs(combine_rows, production_rows, draft_rows)
-        self.assertEqual([p.player_id for p in players], ["p1", "p2", "p3"])
+        players, diagnostics = merge_inputs(combine_rows, production_rows, draft_rows)
+        self.assertEqual(players, [])
+        self.assertEqual(diagnostics.excluded_for_missing_sources["total_excluded"], 3)
+
+    def test_merge_inputs_excludes_cross_source_identity_mismatches(self) -> None:
+        combine_rows = [
+            {"player_id": "p1", "player_name": "Name One", "position": "WR", "forty": 4.4},
+        ]
+        production_rows = [
+            {"player_id": "p1", "player_name": "Name Two", "position": "WR", "production_score_0_100": 80},
+        ]
+        draft_rows = [
+            {"player_id": "p1", "player_name": "Name One", "position": "WR", "draft_capital_proxy_0_100": 70},
+        ]
+        players, diagnostics = merge_inputs(combine_rows, production_rows, draft_rows)
+        self.assertEqual(players, [])
+        self.assertEqual(diagnostics.identity_conflicts_skipped, 1)
 
     def test_draft_capital_proxy_handling(self) -> None:
         players = [
@@ -114,6 +130,7 @@ class RookieAlphaTests(unittest.TestCase):
             with self.assertLogs(level="WARNING") as cm:
                 write_outputs(
                     players=[player],
+                    merge_diagnostics=MergeDiagnostics(0, 0, {"missing_combine": 0, "missing_production": 0, "missing_draft_proxy": 0, "total_excluded": 0}),
                     season=2026,
                     combine_path=combine,
                     production_path=production,
@@ -139,6 +156,7 @@ class RookieAlphaTests(unittest.TestCase):
 
             write_outputs(
                 players=[],
+                merge_diagnostics=MergeDiagnostics(0, 0, {"missing_combine": 0, "missing_production": 0, "missing_draft_proxy": 0, "total_excluded": 0}),
                 season=2026,
                 combine_path=combine,
                 production_path=production,
@@ -155,7 +173,7 @@ class RookieAlphaTests(unittest.TestCase):
             self.assertEqual(manifest["export_metadata"]["coverage_summary"], manifest["coverage_summary"])
 
     def test_missing_required_player_fields_are_skipped(self) -> None:
-        players = merge_inputs(
+        players, _ = merge_inputs(
             combine_rows=[{"player_name": "No Id", "position": "WR", "forty": 4.5}],
             production_rows=[],
             draft_proxy_rows=[],

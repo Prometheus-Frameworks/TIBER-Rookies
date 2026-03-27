@@ -29,6 +29,13 @@ class PlayerInputs:
     draft_capital_proxy_0_100: float | None
 
 
+@dataclass(frozen=True)
+class MergeDiagnostics:
+    duplicate_rows_skipped: int
+    identity_conflicts_skipped: int
+    excluded_for_missing_sources: dict[str, int]
+
+
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as f:
@@ -229,7 +236,61 @@ def merge_inputs(
     combine_rows: list[dict[str, Any]],
     production_rows: list[dict[str, Any]],
     draft_proxy_rows: list[dict[str, Any]],
-) -> list[PlayerInputs]:
+) -> tuple[list[PlayerInputs], MergeDiagnostics]:
+    def build_identity_map(
+        rows: list[dict[str, Any]],
+        source_name: str,
+    ) -> tuple[dict[str, tuple[str, str]], int, int]:
+        identities: dict[str, tuple[str, str]] = {}
+        duplicate_rows_skipped = 0
+        identity_conflicts_skipped = 0
+        for idx, row in enumerate(rows, start=1):
+            normalized = normalize_row(row, source_name, idx)
+            if normalized is None:
+                continue
+            player_id, player_name, position = normalized
+            incoming = (player_name, position)
+            if player_id in identities:
+                if identities[player_id] == incoming:
+                    duplicate_rows_skipped += 1
+                    logging.warning(
+                        "Skipping duplicate row for player_id=%s in %s (row %s).",
+                        player_id,
+                        source_name,
+                        idx,
+                    )
+                else:
+                    identity_conflicts_skipped += 1
+                    logging.warning(
+                        "Skipping conflicting identity for player_id=%s in %s (row %s): existing=%s incoming=%s.",
+                        player_id,
+                        source_name,
+                        idx,
+                        identities[player_id],
+                        incoming,
+                    )
+                continue
+            identities[player_id] = incoming
+        return identities, duplicate_rows_skipped, identity_conflicts_skipped
+
+    combine_identities, combine_duplicates, combine_conflicts = build_identity_map(combine_rows, "combine input")
+    production_identities, production_duplicates, production_conflicts = build_identity_map(
+        production_rows,
+        "production input",
+    )
+    draft_identities, draft_duplicates, draft_conflicts = build_identity_map(draft_proxy_rows, "draft proxy input")
+
+    conflicting_across_sources: set[str] = set()
+    for player_id in sorted(set(combine_identities) | set(production_identities) | set(draft_identities)):
+        seen = [m[player_id] for m in (combine_identities, production_identities, draft_identities) if player_id in m]
+        if len(set(seen)) > 1:
+            conflicting_across_sources.add(player_id)
+            logging.warning(
+                "Excluding player_id=%s due to cross-source identity mismatch: %s",
+                player_id,
+                seen,
+            )
+
     ras_by_id = compute_ras_scores(combine_rows)
     warned_invalid_values: set[tuple[str, str, str, str]] = set()
     prod_by_id: dict[str, float] = {}
@@ -264,30 +325,20 @@ def merge_inputs(
         if value is not None:
             draft_by_id[player_id] = value
 
-    names_positions: dict[str, tuple[str, str]] = {}
-    for idx, row in enumerate(combine_rows, start=1):
-        normalized = normalize_row(row, "combine input", idx)
-        if normalized is None:
-            continue
-        pid, player_name, position = normalized
-        names_positions[pid] = (player_name, position)
-    for idx, row in enumerate(production_rows, start=1):
-        normalized = normalize_row(row, "production input", idx)
-        if normalized is None:
-            continue
-        pid, player_name, position = normalized
-        names_positions.setdefault(pid, (player_name, position))
-    for idx, row in enumerate(draft_proxy_rows, start=1):
-        normalized = normalize_row(row, "draft proxy input", idx)
-        if normalized is None:
-            continue
-        pid, player_name, position = normalized
-        names_positions.setdefault(pid, (player_name, position))
+    common_ids = sorted(set(ras_by_id) & set(prod_by_id) & set(draft_by_id))
+    missing_combine = (set(prod_by_id) | set(draft_by_id)) - set(ras_by_id)
+    missing_production = (set(ras_by_id) | set(draft_by_id)) - set(prod_by_id)
+    missing_draft = (set(ras_by_id) | set(prod_by_id)) - set(draft_by_id)
+    excluded_ids = (set(ras_by_id) | set(prod_by_id) | set(draft_by_id)) - set(common_ids)
 
-    all_ids = sorted(set(ras_by_id) | set(prod_by_id) | set(draft_by_id))
     players: list[PlayerInputs] = []
-    for pid in all_ids:
-        name, position = names_positions.get(pid, (pid, "UNK"))
+    for pid in common_ids:
+        if pid in conflicting_across_sources:
+            continue
+        name, position = combine_identities.get(pid) or production_identities.get(pid) or draft_identities.get(pid) or (
+            pid,
+            "UNK",
+        )
         players.append(
             PlayerInputs(
                 player_id=pid,
@@ -298,7 +349,17 @@ def merge_inputs(
                 draft_capital_proxy_0_100=draft_by_id.get(pid),
             )
         )
-    return players
+    diagnostics = MergeDiagnostics(
+        duplicate_rows_skipped=combine_duplicates + production_duplicates + draft_duplicates,
+        identity_conflicts_skipped=combine_conflicts + production_conflicts + draft_conflicts + len(conflicting_across_sources),
+        excluded_for_missing_sources={
+            "missing_combine": len(missing_combine),
+            "missing_production": len(missing_production),
+            "missing_draft_proxy": len(missing_draft),
+            "total_excluded": len(excluded_ids | conflicting_across_sources),
+        },
+    )
+    return players, diagnostics
 
 
 def rookie_alpha_score(player: PlayerInputs) -> float:
@@ -310,6 +371,7 @@ def rookie_alpha_score(player: PlayerInputs) -> float:
 
 def write_outputs(
     players: list[PlayerInputs],
+    merge_diagnostics: MergeDiagnostics,
     season: int,
     combine_path: Path,
     production_path: Path,
@@ -387,6 +449,11 @@ def write_outputs(
             "players_total": len(ranked),
             "players_with_any_missing_input": missing_any,
             "players_with_full_inputs": len(ranked) - missing_any,
+            "input_alignment": {
+                "duplicate_rows_skipped": merge_diagnostics.duplicate_rows_skipped,
+                "identity_conflicts_skipped": merge_diagnostics.identity_conflicts_skipped,
+                **merge_diagnostics.excluded_for_missing_sources,
+            },
         },
         "source_files_used": [
             str(combine_path),
@@ -545,9 +612,10 @@ def main() -> None:
         raise SystemExit(f"Expected list JSON in {production_input}, got {type(production_rows).__name__}")
     if not isinstance(draft_rows, list):
         raise SystemExit(f"Expected list JSON in {draft_proxy_input}, got {type(draft_rows).__name__}")
-    players = merge_inputs(combine_rows, production_rows, draft_rows)
+    players, merge_diagnostics = merge_inputs(combine_rows, production_rows, draft_rows)
     write_outputs(
         players=players,
+        merge_diagnostics=merge_diagnostics,
         season=args.season,
         combine_path=combine_input,
         production_path=production_input,

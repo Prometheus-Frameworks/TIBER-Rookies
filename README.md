@@ -100,9 +100,9 @@ This repo has two intentionally separated layers:
 - `cards/rookies/`
   - static gallery/board/detail/compare surfaces
 - `data/raw/`
-  - combine inputs (example 2026 artifact)
+  - combine inputs (placeholder/proxy 2026 example set)
 - `data/processed/`
-  - production and draft-capital-proxy artifacts
+  - production and draft-capital-proxy inputs for the same placeholder prototype set
 - `exports/promoted/rookie-alpha/`
   - generated promoted outputs
 
@@ -188,6 +188,8 @@ See the operator runbooks:
 ## Current limitations
 
 - Model is still **pre-draft v0** (no landing-spot or NFL transition phase yet).
+- 2026 inputs are still a **manually seeded prototype placeholder pool** and do not represent a full real prospect class.
+- 2026 remains **proxy-limited** (college production and draft capital are normalized proxy inputs, not final NFL outcomes).
 - Queue is **browser-local only** (no auth, no multi-device sync, no league persistence).
 - Runtime is intentionally **static-only** (no database, no model recompute, no live room).
 - Surface richness depends on available promoted/source artifact fields.
