@@ -17,7 +17,7 @@ This runbook is the operational rehearsal path for draft week.
    - `data/raw/2026_combine_results.json`
    - `data/processed/2026_college_production.json`
    - `data/processed/2026_draft_capital_proxy.json`
-   - all three files represent the same real-seeded prospect pool (matching `player_id`/`player_name`/`position`)
+   - all three files represent the same placeholder/proxy prototype pool (matching `player_id`/`player_name`/`position`)
 4. You have write access to `exports/promoted/rookie-alpha/`.
 5. You have a handoff channel/path to TIBER-Fantasy (manual bridge).
 
