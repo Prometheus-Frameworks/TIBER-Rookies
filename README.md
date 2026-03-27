@@ -146,6 +146,16 @@ python3 scripts/validate_promoted_export.py \
 
 Validation checks field presence, metadata consistency, hashes, and row-count expectations.
 
+## 2026 coverage snapshot (expanded board)
+
+The canonical 2026 source inputs now cover **48 aligned prospects** across QB/RB/WR/TE/OL, replacing the earlier 4-player demo-sized set.
+
+- `data/raw/2026_combine_results.json`: 48 rows
+- `data/processed/2026_college_production.json`: 48 rows
+- `data/processed/2026_draft_capital_proxy.json`: 48 rows
+
+Current caveat (intentional and explicit): production and draft-capital columns remain **proxy-quality pre-draft inputs**, not final post-draft outcomes.
+
 ## Run standalone static lab locally
 
 Requires Node.js 20+.
@@ -159,8 +169,8 @@ Then open:
 - `http://localhost:3000/` (redirects to rookie board)
 - `http://localhost:3000/cards/rookies/index.html`
 - `http://localhost:3000/cards/rookies/board/index.html`
-- `http://localhost:3000/cards/rookies/player.html?slug=wr-malik-ford`
-- `http://localhost:3000/cards/rookies/compare/index.html?left=wr-malik-ford&right=te-owen-hale`
+- `http://localhost:3000/cards/rookies/player.html?slug=wr-andre-whitfield`
+- `http://localhost:3000/cards/rookies/compare/index.html?left=wr-andre-whitfield&right=te-asher-yates`
 - `http://localhost:3000/health`
 
 ## Railway deploy contract

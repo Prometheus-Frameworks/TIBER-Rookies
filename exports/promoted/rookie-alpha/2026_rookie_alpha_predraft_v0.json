@@ -11,13 +11,13 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-03-25T01:46:12+00:00",
-  "run_id": "rookie-alpha-2026-2026-03-25T01:46:12+00:00",
+  "generated_at": "2026-03-27T01:29:58+00:00",
+  "run_id": "rookie-alpha-2026-2026-03-27T01:29:58+00:00",
   "season": 2026,
   "coverage_summary": {
-    "players_total": 4,
+    "players_total": 48,
     "players_with_any_missing_input": 0,
-    "players_with_full_inputs": 4
+    "players_with_full_inputs": 48
   },
   "source_files_used": [
     "data/raw/2026_combine_results.json",
@@ -26,56 +26,628 @@
   ],
   "players": [
     {
-      "player_id": "wr-malik-ford",
-      "player_name": "Malik Ford",
+      "player_id": "wr-holden-cross",
+      "player_name": "Holden Cross",
       "position": "WR",
       "scores": {
-        "ras_0_100": 61.6667,
-        "production_0_100": 88.1,
-        "draft_capital_proxy_0_100": 82.3,
-        "rookie_alpha_0_100": 77.6883
+        "ras_0_100": 68.1418,
+        "production_0_100": 84.2,
+        "draft_capital_proxy_0_100": 73.7,
+        "rookie_alpha_0_100": 76.4796
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 1
     },
     {
-      "player_id": "rb-ashley-jennings",
-      "player_name": "Ashley Jennings",
-      "position": "RB",
+      "player_id": "qb-caleb-voss",
+      "player_name": "Caleb Voss",
+      "position": "QB",
       "scores": {
-        "ras_0_100": 61.6667,
-        "production_0_100": 86.2,
-        "draft_capital_proxy_0_100": 74.0,
-        "rookie_alpha_0_100": 75.1733
+        "ras_0_100": 52.1077,
+        "production_0_100": 89.1,
+        "draft_capital_proxy_0_100": 86.5,
+        "rookie_alpha_0_100": 75.6327
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 2
     },
     {
-      "player_id": "rb-darius-cole",
-      "player_name": "Darius Cole",
+      "player_id": "rb-kendrick-shaw",
+      "player_name": "Kendrick Shaw",
       "position": "RB",
       "scores": {
-        "ras_0_100": 38.3333,
-        "production_0_100": 78.4,
-        "draft_capital_proxy_0_100": 67.5,
-        "rookie_alpha_0_100": 62.1967
+        "ras_0_100": 59.9004,
+        "production_0_100": 86.1,
+        "draft_capital_proxy_0_100": 79.0,
+        "rookie_alpha_0_100": 75.5102
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 3
     },
     {
-      "player_id": "wr-keon-banks",
-      "player_name": "Keon Banks",
-      "position": "WR",
+      "player_id": "qb-dante-mercer",
+      "player_name": "Dante Mercer",
+      "position": "QB",
       "scores": {
-        "ras_0_100": 38.3333,
-        "production_0_100": 73.9,
-        "draft_capital_proxy_0_100": 64.8,
-        "rookie_alpha_0_100": 59.6317
+        "ras_0_100": 55.4476,
+        "production_0_100": 88.2,
+        "draft_capital_proxy_0_100": 81.7,
+        "rookie_alpha_0_100": 75.4367
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 4
+    },
+    {
+      "player_id": "rb-landon-price",
+      "player_name": "Landon Price",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 59.9485,
+        "production_0_100": 85.2,
+        "draft_capital_proxy_0_100": 78.7,
+        "rookie_alpha_0_100": 75.062
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 5
+    },
+    {
+      "player_id": "qb-bryce-kellan",
+      "player_name": "Bryce Kellan",
+      "position": "QB",
+      "scores": {
+        "ras_0_100": 48.7677,
+        "production_0_100": 90.0,
+        "draft_capital_proxy_0_100": 86.8,
+        "rookie_alpha_0_100": 74.9287
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 6
+    },
+    {
+      "player_id": "qb-aiden-rowe",
+      "player_name": "Aiden Rowe",
+      "position": "QB",
+      "scores": {
+        "ras_0_100": 47.3685,
+        "production_0_100": 90.9,
+        "draft_capital_proxy_0_100": 87.1,
+        "rookie_alpha_0_100": 74.904
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 7
+    },
+    {
+      "player_id": "rb-jalen-booker",
+      "player_name": "Jalen Booker",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 55.5872,
+        "production_0_100": 87.0,
+        "draft_capital_proxy_0_100": 79.3,
+        "rookie_alpha_0_100": 74.4655
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 8
+    },
+    {
+      "player_id": "rb-tariq-hines",
+      "player_name": "Tariq Hines",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 58.4392,
+        "production_0_100": 85.2,
+        "draft_capital_proxy_0_100": 77.2,
+        "rookie_alpha_0_100": 74.2337
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 9
+    },
+    {
+      "player_id": "qb-eli-stroud",
+      "player_name": "Eli Stroud",
+      "position": "QB",
+      "scores": {
+        "ras_0_100": 58.7876,
+        "production_0_100": 82.5,
+        "draft_capital_proxy_0_100": 81.4,
+        "rookie_alpha_0_100": 73.9806
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 10
+    },
+    {
+      "player_id": "rb-silas-gentry",
+      "player_name": "Silas Gentry",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 55.979,
+        "production_0_100": 86.1,
+        "draft_capital_proxy_0_100": 77.5,
+        "rookie_alpha_0_100": 73.8376
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 11
+    },
+    {
+      "player_id": "qb-felix-morrow",
+      "player_name": "Felix Morrow",
+      "position": "QB",
+      "scores": {
+        "ras_0_100": 59.3224,
+        "production_0_100": 81.6,
+        "draft_capital_proxy_0_100": 81.1,
+        "rookie_alpha_0_100": 73.7029
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 12
+    },
+    {
+      "player_id": "wr-preston-myles",
+      "player_name": "Preston Myles",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 54.6835,
+        "production_0_100": 85.1,
+        "draft_capital_proxy_0_100": 77.0,
+        "rookie_alpha_0_100": 72.8342
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 13
+    },
+    {
+      "player_id": "wr-orion-cade",
+      "player_name": "Orion Cade",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 51.9843,
+        "production_0_100": 86.0,
+        "draft_capital_proxy_0_100": 77.3,
+        "rookie_alpha_0_100": 72.3545
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 14
+    },
+    {
+      "player_id": "wr-nate-drummond",
+      "player_name": "Nate Drummond",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 47.6722,
+        "production_0_100": 86.9,
+        "draft_capital_proxy_0_100": 82.1,
+        "rookie_alpha_0_100": 72.2103
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 15
+    },
+    {
+      "player_id": "wr-andre-whitfield",
+      "player_name": "Andre Whitfield",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 62.3551,
+        "production_0_100": 78.5,
+        "draft_capital_proxy_0_100": 74.9,
+        "rookie_alpha_0_100": 72.1293
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 16
+    },
+    {
+      "player_id": "rb-rashad-flynn",
+      "player_name": "Rashad Flynn",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 46.1941,
+        "production_0_100": 87.0,
+        "draft_capital_proxy_0_100": 82.3,
+        "rookie_alpha_0_100": 71.7779
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 17
+    },
+    {
+      "player_id": "te-easton-byrd",
+      "player_name": "Easton Byrd",
+      "position": "TE",
+      "scores": {
+        "ras_0_100": 53.0675,
+        "production_0_100": 82.9,
+        "draft_capital_proxy_0_100": 76.6,
+        "rookie_alpha_0_100": 71.1986
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 18
+    },
+    {
+      "player_id": "te-ford-ramsey",
+      "player_name": "Ford Ramsey",
+      "position": "TE",
+      "scores": {
+        "ras_0_100": 53.6186,
+        "production_0_100": 82.0,
+        "draft_capital_proxy_0_100": 76.3,
+        "rookie_alpha_0_100": 70.9265
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 19
+    },
+    {
+      "player_id": "rb-quentin-epps",
+      "player_name": "Quentin Epps",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 42.3436,
+        "production_0_100": 87.9,
+        "draft_capital_proxy_0_100": 82.6,
+        "rookie_alpha_0_100": 70.8953
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 20
+    },
+    {
+      "player_id": "wr-emmett-grayson",
+      "player_name": "Emmett Grayson",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 42.346,
+        "production_0_100": 86.9,
+        "draft_capital_proxy_0_100": 79.1,
+        "rookie_alpha_0_100": 69.7461
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 21
+    },
+    {
+      "player_id": "wr-kobe-carden",
+      "player_name": "Kobe Carden",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 56.9825,
+        "production_0_100": 77.6,
+        "draft_capital_proxy_0_100": 73.1,
+        "rookie_alpha_0_100": 69.4839
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 22
+    },
+    {
+      "player_id": "wr-franklin-moss",
+      "player_name": "Franklin Moss",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 42.692,
+        "production_0_100": 86.0,
+        "draft_capital_proxy_0_100": 78.8,
+        "rookie_alpha_0_100": 69.4022
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 23
+    },
+    {
+      "player_id": "rb-nico-harmon",
+      "player_name": "Nico Harmon",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 54.9252,
+        "production_0_100": 78.6,
+        "draft_capital_proxy_0_100": 73.6,
+        "rookie_alpha_0_100": 69.3138
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 24
+    },
+    {
+      "player_id": "rb-marcel-rivers",
+      "player_name": "Marcel Rivers",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 52.9935,
+        "production_0_100": 79.5,
+        "draft_capital_proxy_0_100": 73.9,
+        "rookie_alpha_0_100": 69.1027
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 25
+    },
+    {
+      "player_id": "wr-grady-sutton",
+      "player_name": "Grady Sutton",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 42.1046,
+        "production_0_100": 85.1,
+        "draft_capital_proxy_0_100": 78.5,
+        "rookie_alpha_0_100": 68.7316
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 26
+    },
+    {
+      "player_id": "wr-javon-burke",
+      "player_name": "Javon Burke",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 53.4769,
+        "production_0_100": 78.5,
+        "draft_capital_proxy_0_100": 73.4,
+        "rookie_alpha_0_100": 68.7219
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 27
+    },
+    {
+      "player_id": "rb-isaiah-trent",
+      "player_name": "Isaiah Trent",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 34.4684,
+        "production_0_100": 87.9,
+        "draft_capital_proxy_0_100": 84.1,
+        "rookie_alpha_0_100": 68.4389
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 28
+    },
+    {
+      "player_id": "ol-finn-calder",
+      "player_name": "Finn Calder",
+      "position": "OL",
+      "scores": {
+        "ras_0_100": 67.0977,
+        "production_0_100": 70.8,
+        "draft_capital_proxy_0_100": 63.5,
+        "rookie_alpha_0_100": 68.0442
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 29
+    },
+    {
+      "player_id": "qb-gavin-pike",
+      "player_name": "Gavin Pike",
+      "position": "QB",
+      "scores": {
+        "ras_0_100": 46.2878,
+        "production_0_100": 80.7,
+        "draft_capital_proxy_0_100": 76.3,
+        "rookie_alpha_0_100": 67.7757
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 30
+    },
+    {
+      "player_id": "wr-reggie-sloan",
+      "player_name": "Reggie Sloan",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 40.8858,
+        "production_0_100": 84.2,
+        "draft_capital_proxy_0_100": 76.7,
+        "rookie_alpha_0_100": 67.54
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 31
+    },
+    {
+      "player_id": "ol-evan-lockridge",
+      "player_name": "Evan Lockridge",
+      "position": "OL",
+      "scores": {
+        "ras_0_100": 62.5128,
+        "production_0_100": 71.7,
+        "draft_capital_proxy_0_100": 63.8,
+        "rookie_alpha_0_100": 66.9045
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 32
+    },
+    {
+      "player_id": "ol-declan-whitaker",
+      "player_name": "Declan Whitaker",
+      "position": "OL",
+      "scores": {
+        "ras_0_100": 60.2491,
+        "production_0_100": 72.6,
+        "draft_capital_proxy_0_100": 64.1,
+        "rookie_alpha_0_100": 66.5772
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 33
+    },
+    {
+      "player_id": "wr-devin-hale",
+      "player_name": "Devin Hale",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 51.415,
+        "production_0_100": 75.8,
+        "draft_capital_proxy_0_100": 69.5,
+        "rookie_alpha_0_100": 66.0052
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 34
+    },
+    {
+      "player_id": "wr-carter-lockett",
+      "player_name": "Carter Lockett",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 47.9093,
+        "production_0_100": 76.7,
+        "draft_capital_proxy_0_100": 69.8,
+        "rookie_alpha_0_100": 65.2433
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 35
+    },
+    {
+      "player_id": "wr-luther-wynn",
+      "player_name": "Luther Wynn",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 47.9743,
+        "production_0_100": 76.7,
+        "draft_capital_proxy_0_100": 68.3,
+        "rookie_alpha_0_100": 64.966
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 36
+    },
+    {
+      "player_id": "wr-brandon-tillman",
+      "player_name": "Brandon Tillman",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 45.2101,
+        "production_0_100": 77.6,
+        "draft_capital_proxy_0_100": 70.1,
+        "rookie_alpha_0_100": 64.7635
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 37
+    },
+    {
+      "player_id": "te-coleman-frost",
+      "player_name": "Coleman Frost",
+      "position": "TE",
+      "scores": {
+        "ras_0_100": 49.3113,
+        "production_0_100": 72.7,
+        "draft_capital_proxy_0_100": 67.3,
+        "rookie_alpha_0_100": 63.434
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 38
+    },
+    {
+      "player_id": "te-drew-calloway",
+      "player_name": "Drew Calloway",
+      "position": "TE",
+      "scores": {
+        "ras_0_100": 52.8671,
+        "production_0_100": 71.8,
+        "draft_capital_proxy_0_100": 62.5,
+        "rookie_alpha_0_100": 63.3135
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 39
+    },
+    {
+      "player_id": "wr-mason-quill",
+      "player_name": "Mason Quill",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 44.1665,
+        "production_0_100": 75.8,
+        "draft_capital_proxy_0_100": 68.0,
+        "rookie_alpha_0_100": 63.1683
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 40
+    },
+    {
+      "player_id": "te-bennett-doyle",
+      "player_name": "Bennett Doyle",
+      "position": "TE",
+      "scores": {
+        "ras_0_100": 46.5506,
+        "production_0_100": 73.6,
+        "draft_capital_proxy_0_100": 67.6,
+        "rookie_alpha_0_100": 62.9327
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 41
+    },
+    {
+      "player_id": "rb-parker-boone",
+      "player_name": "Parker Boone",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 41.7671,
+        "production_0_100": 76.8,
+        "draft_capital_proxy_0_100": 68.5,
+        "rookie_alpha_0_100": 62.8785
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 42
+    },
+    {
+      "player_id": "rb-omari-vance",
+      "player_name": "Omari Vance",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 37.4539,
+        "production_0_100": 77.7,
+        "draft_capital_proxy_0_100": 73.3,
+        "rookie_alpha_0_100": 62.7339
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 43
+    },
+    {
+      "player_id": "te-asher-yates",
+      "player_name": "Asher Yates",
+      "position": "TE",
+      "scores": {
+        "ras_0_100": 44.5849,
+        "production_0_100": 74.5,
+        "draft_capital_proxy_0_100": 67.9,
+        "rookie_alpha_0_100": 62.7097
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 44
+    },
+    {
+      "player_id": "ol-blake-sanderson",
+      "player_name": "Blake Sanderson",
+      "position": "OL",
+      "scores": {
+        "ras_0_100": 36.7135,
+        "production_0_100": 79.2,
+        "draft_capital_proxy_0_100": 69.2,
+        "rookie_alpha_0_100": 62.3297
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 45
+    },
+    {
+      "player_id": "qb-hayes-dalton",
+      "player_name": "Hayes Dalton",
+      "position": "QB",
+      "scores": {
+        "ras_0_100": 31.9106,
+        "production_0_100": 79.8,
+        "draft_capital_proxy_0_100": 76.0,
+        "rookie_alpha_0_100": 62.2787
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 46
+    },
+    {
+      "player_id": "ol-camden-rourke",
+      "player_name": "Camden Rourke",
+      "position": "OL",
+      "scores": {
+        "ras_0_100": 41.2984,
+        "production_0_100": 73.5,
+        "draft_capital_proxy_0_100": 68.9,
+        "rookie_alpha_0_100": 61.3094
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 47
+    },
+    {
+      "player_id": "ol-axel-monroe",
+      "player_name": "Axel Monroe",
+      "position": "OL",
+      "scores": {
+        "ras_0_100": 32.1285,
+        "production_0_100": 80.1,
+        "draft_capital_proxy_0_100": 69.5,
+        "rookie_alpha_0_100": 61.19
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 48
     }
   ]
 }

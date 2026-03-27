@@ -43,6 +43,11 @@ Expected artifacts:
 - `exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.csv`
 - `exports/promoted/rookie-alpha/2026_manifest.json`
 
+Expected coverage signal after generation:
+
+- `coverage_summary.players_total` is **48** for the current expanded 2026 board.
+- `coverage_summary.players_with_full_inputs` is **48** (no excluded rows in the canonical aligned set).
+
 ### 2) Validate artifact + manifest
 
 Run:
@@ -76,8 +81,8 @@ Optional deployed probe (Railway URL):
 ```bash
 curl -fsS https://<tiber-rookies-url>/health
 curl -fsSI https://<tiber-rookies-url>/
-curl -fsSI "https://<tiber-rookies-url>/cards/rookies/player.html?slug=wr-malik-ford"
-curl -fsSI "https://<tiber-rookies-url>/cards/rookies/compare/index.html?left=wr-malik-ford&right=te-owen-hale"
+curl -fsSI "https://<tiber-rookies-url>/cards/rookies/player.html?slug=wr-andre-whitfield"
+curl -fsSI "https://<tiber-rookies-url>/cards/rookies/compare/index.html?left=wr-andre-whitfield&right=te-asher-yates"
 ```
 
 Expected:

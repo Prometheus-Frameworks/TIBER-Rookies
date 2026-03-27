@@ -1,26 +1,290 @@
 [
   {
-    "player_id": "rb-ashley-jennings",
-    "player_name": "Ashley Jennings",
-    "position": "RB",
-    "draft_capital_proxy_0_100": 74.0
+    "player_id": "qb-aiden-rowe",
+    "player_name": "Aiden Rowe",
+    "position": "QB",
+    "draft_capital_proxy_0_100": 87.1
   },
   {
-    "player_id": "rb-darius-cole",
-    "player_name": "Darius Cole",
-    "position": "RB",
-    "draft_capital_proxy_0_100": 67.5
+    "player_id": "qb-bryce-kellan",
+    "player_name": "Bryce Kellan",
+    "position": "QB",
+    "draft_capital_proxy_0_100": 86.8
   },
   {
-    "player_id": "wr-malik-ford",
-    "player_name": "Malik Ford",
-    "position": "WR",
+    "player_id": "qb-caleb-voss",
+    "player_name": "Caleb Voss",
+    "position": "QB",
+    "draft_capital_proxy_0_100": 86.5
+  },
+  {
+    "player_id": "qb-dante-mercer",
+    "player_name": "Dante Mercer",
+    "position": "QB",
+    "draft_capital_proxy_0_100": 81.7
+  },
+  {
+    "player_id": "qb-eli-stroud",
+    "player_name": "Eli Stroud",
+    "position": "QB",
+    "draft_capital_proxy_0_100": 81.4
+  },
+  {
+    "player_id": "qb-felix-morrow",
+    "player_name": "Felix Morrow",
+    "position": "QB",
+    "draft_capital_proxy_0_100": 81.1
+  },
+  {
+    "player_id": "qb-gavin-pike",
+    "player_name": "Gavin Pike",
+    "position": "QB",
+    "draft_capital_proxy_0_100": 76.3
+  },
+  {
+    "player_id": "qb-hayes-dalton",
+    "player_name": "Hayes Dalton",
+    "position": "QB",
+    "draft_capital_proxy_0_100": 76.0
+  },
+  {
+    "player_id": "rb-isaiah-trent",
+    "player_name": "Isaiah Trent",
+    "position": "RB",
+    "draft_capital_proxy_0_100": 84.1
+  },
+  {
+    "player_id": "rb-jalen-booker",
+    "player_name": "Jalen Booker",
+    "position": "RB",
+    "draft_capital_proxy_0_100": 79.3
+  },
+  {
+    "player_id": "rb-kendrick-shaw",
+    "player_name": "Kendrick Shaw",
+    "position": "RB",
+    "draft_capital_proxy_0_100": 79.0
+  },
+  {
+    "player_id": "rb-landon-price",
+    "player_name": "Landon Price",
+    "position": "RB",
+    "draft_capital_proxy_0_100": 78.7
+  },
+  {
+    "player_id": "rb-marcel-rivers",
+    "player_name": "Marcel Rivers",
+    "position": "RB",
+    "draft_capital_proxy_0_100": 73.9
+  },
+  {
+    "player_id": "rb-nico-harmon",
+    "player_name": "Nico Harmon",
+    "position": "RB",
+    "draft_capital_proxy_0_100": 73.6
+  },
+  {
+    "player_id": "rb-omari-vance",
+    "player_name": "Omari Vance",
+    "position": "RB",
+    "draft_capital_proxy_0_100": 73.3
+  },
+  {
+    "player_id": "rb-parker-boone",
+    "player_name": "Parker Boone",
+    "position": "RB",
+    "draft_capital_proxy_0_100": 68.5
+  },
+  {
+    "player_id": "rb-quentin-epps",
+    "player_name": "Quentin Epps",
+    "position": "RB",
+    "draft_capital_proxy_0_100": 82.6
+  },
+  {
+    "player_id": "rb-rashad-flynn",
+    "player_name": "Rashad Flynn",
+    "position": "RB",
     "draft_capital_proxy_0_100": 82.3
   },
   {
-    "player_id": "wr-keon-banks",
-    "player_name": "Keon Banks",
+    "player_id": "rb-silas-gentry",
+    "player_name": "Silas Gentry",
+    "position": "RB",
+    "draft_capital_proxy_0_100": 77.5
+  },
+  {
+    "player_id": "rb-tariq-hines",
+    "player_name": "Tariq Hines",
+    "position": "RB",
+    "draft_capital_proxy_0_100": 77.2
+  },
+  {
+    "player_id": "wr-andre-whitfield",
+    "player_name": "Andre Whitfield",
     "position": "WR",
-    "draft_capital_proxy_0_100": 64.8
+    "draft_capital_proxy_0_100": 74.9
+  },
+  {
+    "player_id": "wr-brandon-tillman",
+    "player_name": "Brandon Tillman",
+    "position": "WR",
+    "draft_capital_proxy_0_100": 70.1
+  },
+  {
+    "player_id": "wr-carter-lockett",
+    "player_name": "Carter Lockett",
+    "position": "WR",
+    "draft_capital_proxy_0_100": 69.8
+  },
+  {
+    "player_id": "wr-devin-hale",
+    "player_name": "Devin Hale",
+    "position": "WR",
+    "draft_capital_proxy_0_100": 69.5
+  },
+  {
+    "player_id": "wr-emmett-grayson",
+    "player_name": "Emmett Grayson",
+    "position": "WR",
+    "draft_capital_proxy_0_100": 79.1
+  },
+  {
+    "player_id": "wr-franklin-moss",
+    "player_name": "Franklin Moss",
+    "position": "WR",
+    "draft_capital_proxy_0_100": 78.8
+  },
+  {
+    "player_id": "wr-grady-sutton",
+    "player_name": "Grady Sutton",
+    "position": "WR",
+    "draft_capital_proxy_0_100": 78.5
+  },
+  {
+    "player_id": "wr-holden-cross",
+    "player_name": "Holden Cross",
+    "position": "WR",
+    "draft_capital_proxy_0_100": 73.7
+  },
+  {
+    "player_id": "wr-javon-burke",
+    "player_name": "Javon Burke",
+    "position": "WR",
+    "draft_capital_proxy_0_100": 73.4
+  },
+  {
+    "player_id": "wr-kobe-carden",
+    "player_name": "Kobe Carden",
+    "position": "WR",
+    "draft_capital_proxy_0_100": 73.1
+  },
+  {
+    "player_id": "wr-luther-wynn",
+    "player_name": "Luther Wynn",
+    "position": "WR",
+    "draft_capital_proxy_0_100": 68.3
+  },
+  {
+    "player_id": "wr-mason-quill",
+    "player_name": "Mason Quill",
+    "position": "WR",
+    "draft_capital_proxy_0_100": 68.0
+  },
+  {
+    "player_id": "wr-nate-drummond",
+    "player_name": "Nate Drummond",
+    "position": "WR",
+    "draft_capital_proxy_0_100": 82.1
+  },
+  {
+    "player_id": "wr-orion-cade",
+    "player_name": "Orion Cade",
+    "position": "WR",
+    "draft_capital_proxy_0_100": 77.3
+  },
+  {
+    "player_id": "wr-preston-myles",
+    "player_name": "Preston Myles",
+    "position": "WR",
+    "draft_capital_proxy_0_100": 77.0
+  },
+  {
+    "player_id": "wr-reggie-sloan",
+    "player_name": "Reggie Sloan",
+    "position": "WR",
+    "draft_capital_proxy_0_100": 76.7
+  },
+  {
+    "player_id": "te-asher-yates",
+    "player_name": "Asher Yates",
+    "position": "TE",
+    "draft_capital_proxy_0_100": 67.9
+  },
+  {
+    "player_id": "te-bennett-doyle",
+    "player_name": "Bennett Doyle",
+    "position": "TE",
+    "draft_capital_proxy_0_100": 67.6
+  },
+  {
+    "player_id": "te-coleman-frost",
+    "player_name": "Coleman Frost",
+    "position": "TE",
+    "draft_capital_proxy_0_100": 67.3
+  },
+  {
+    "player_id": "te-drew-calloway",
+    "player_name": "Drew Calloway",
+    "position": "TE",
+    "draft_capital_proxy_0_100": 62.5
+  },
+  {
+    "player_id": "te-easton-byrd",
+    "player_name": "Easton Byrd",
+    "position": "TE",
+    "draft_capital_proxy_0_100": 76.6
+  },
+  {
+    "player_id": "te-ford-ramsey",
+    "player_name": "Ford Ramsey",
+    "position": "TE",
+    "draft_capital_proxy_0_100": 76.3
+  },
+  {
+    "player_id": "ol-axel-monroe",
+    "player_name": "Axel Monroe",
+    "position": "OL",
+    "draft_capital_proxy_0_100": 69.5
+  },
+  {
+    "player_id": "ol-blake-sanderson",
+    "player_name": "Blake Sanderson",
+    "position": "OL",
+    "draft_capital_proxy_0_100": 69.2
+  },
+  {
+    "player_id": "ol-camden-rourke",
+    "player_name": "Camden Rourke",
+    "position": "OL",
+    "draft_capital_proxy_0_100": 68.9
+  },
+  {
+    "player_id": "ol-declan-whitaker",
+    "player_name": "Declan Whitaker",
+    "position": "OL",
+    "draft_capital_proxy_0_100": 64.1
+  },
+  {
+    "player_id": "ol-evan-lockridge",
+    "player_name": "Evan Lockridge",
+    "position": "OL",
+    "draft_capital_proxy_0_100": 63.8
+  },
+  {
+    "player_id": "ol-finn-calder",
+    "player_name": "Finn Calder",
+    "position": "OL",
+    "draft_capital_proxy_0_100": 63.5
   }
 ]
