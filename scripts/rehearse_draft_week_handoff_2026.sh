@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Ensure we always run from repo root, whether invoked via npm or directly.
+cd "$(dirname "$0")/.."
+
 SEASON="2026"
 EXPORT_DIR="exports/promoted/rookie-alpha"
 EXPORT_JSON="${EXPORT_DIR}/${SEASON}_rookie_alpha_predraft_v0.json"
