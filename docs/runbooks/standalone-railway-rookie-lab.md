@@ -100,6 +100,11 @@ npm run test:runtime-smoke
 
 This test starts the standalone server, checks core routes (including query-param deep links), and verifies content-type/path traversal guardrails.
 
+
+## Draft-week handoff companion
+
+For end-to-end 2026 production + validation + downstream handoff rehearsal, use `docs/runbooks/draft-week-handoff-2026.md` (or run `npm run ops:rehearse-2026`).
+
 ## Remaining limitations
 
 - No auth, database, live sync, or websockets.
