@@ -2,7 +2,19 @@
 
 The promoted export contract is the authoritative producer output of this repository.
 
-Primary artifact set (example season `2026`):
+## Canonical promoted path + filename contract
+
+All promoted outputs live in:
+
+- `exports/promoted/rookie-alpha/`
+
+For a given `{season}`, filenames are fixed:
+
+- `{season}_rookie_alpha_predraft_v0.json`
+- `{season}_rookie_alpha_predraft_v0.csv`
+- `{season}_manifest.json`
+
+Example for season `2026`:
 
 - `exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json`
 - `exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.csv`
@@ -89,6 +101,31 @@ Top-level fields:
   - `run_id`
   - `coverage_summary`
   - `source_files_used`
+
+## Standard production + validation sequence (2026)
+
+Run from repo root:
+
+```bash
+python3 scripts/compute_rookie_alpha.py \
+  --season 2026 \
+  --combine-input data/raw/2026_combine_results.json \
+  --production-input data/processed/2026_college_production.json \
+  --draft-proxy-input data/processed/2026_draft_capital_proxy.json \
+  --output-json exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json \
+  --output-csv exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.csv \
+  --output-manifest exports/promoted/rookie-alpha/2026_manifest.json
+
+python3 scripts/validate_promoted_export.py \
+  --export-json exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json \
+  --manifest exports/promoted/rookie-alpha/2026_manifest.json
+```
+
+Expected validator output:
+
+```text
+VALIDATION PASSED
+```
 
 ## Downstream validation requirements
 

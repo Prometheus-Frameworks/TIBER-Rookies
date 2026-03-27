@@ -4,6 +4,43 @@ TIBER-Rookies is the **authoritative Rookie Alpha producer lab** and now also ha
 
 It is intentionally not a full draft room, not a live backend, and not a runtime dependency for TIBER-Fantasy.
 
+## Draft-week readiness (March 27, 2026)
+
+This repository is **draft-week ready for promoted artifact handoff** when an operator can complete the documented 2026 rehearsal path:
+
+1. generate the promoted artifact set,
+2. validate the artifact + manifest,
+3. verify standalone TIBER-Rookies routes and smoke checks,
+4. manually hand those same files to TIBER-Fantasy ingest,
+5. verify `/rookies` in TIBER-Fantasy after ingest.
+
+What is still manual on purpose:
+
+- cross-repo file transfer from TIBER-Rookies to TIBER-Fantasy,
+- running TIBER-Fantasy-side ingest/verification commands,
+- final production promotion decision by operator.
+
+## Operator quickstart (2026)
+
+Run from repository root:
+
+```bash
+npm run ops:rehearse-2026
+```
+
+Expected output signals:
+
+- generated artifact files are listed under `exports/promoted/rookie-alpha/`,
+- validator prints `VALIDATION PASSED`,
+- runtime smoke test exits successfully,
+- script ends with `Draft-week rehearsal for 2026 completed.`
+
+For deployed URL checks in the same sequence:
+
+```bash
+RUN_REMOTE_CURLS=1 BASE_URL="https://<deployed-rookies-url>" npm run ops:rehearse-2026
+```
+
 ## Repository framing
 
 This repo has two intentionally separated layers:
@@ -53,9 +90,11 @@ This repo has two intentionally separated layers:
   - `rookie-card-prototype.md`
   - `tiber-fantasy-consumer-contract.md`
   - `runbooks/standalone-railway-rookie-lab.md`
+  - `runbooks/draft-week-handoff-2026.md`
 - `scripts/`
   - `compute_rookie_alpha.py`
   - `validate_promoted_export.py`
+  - `rehearse_draft_week_handoff_2026.sh`
 - `lib/rookies/`
   - mapping/adaptation and prototype helpers
 - `cards/rookies/`
@@ -93,7 +132,8 @@ python3 scripts/compute_rookie_alpha.py \
   --production-input data/processed/2026_college_production.json \
   --draft-proxy-input data/processed/2026_draft_capital_proxy.json \
   --output-json exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json \
-  --output-csv exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.csv
+  --output-csv exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.csv \
+  --output-manifest exports/promoted/rookie-alpha/2026_manifest.json
 ```
 
 ## Validate promoted export before ingest
@@ -140,7 +180,10 @@ Deployment flow:
 3. Deploy with default command (`npm start`).
 4. Verify `/health` and rookie routes after deploy.
 
-See the operator runbook: `docs/runbooks/standalone-railway-rookie-lab.md`.
+See the operator runbooks:
+
+- `docs/runbooks/standalone-railway-rookie-lab.md`
+- `docs/runbooks/draft-week-handoff-2026.md`
 
 ## Current limitations
 
@@ -159,4 +202,5 @@ See:
 - `docs/architecture.md`
 - `docs/export-contract.md`
 - `docs/tiber-fantasy-consumer-contract.md`
+- `docs/runbooks/draft-week-handoff-2026.md`
 - `docs/rookie-card-prototype.md`

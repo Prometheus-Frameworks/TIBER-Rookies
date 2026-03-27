@@ -5,7 +5,8 @@
   "description": "Standalone Rookie Alpha producer lab with static rookie surfaces",
   "scripts": {
     "start": "node runtime-server.js",
-    "test:runtime-smoke": "node --test tests/runtime-server.smoke.test.cjs"
+    "test:runtime-smoke": "node --test tests/runtime-server.smoke.test.cjs",
+    "ops:rehearse-2026": "bash scripts/rehearse_draft_week_handoff_2026.sh"
   },
   "engines": {
     "node": ">=20"

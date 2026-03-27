@@ -18,6 +18,17 @@ For a season (example `2026`), ingestion requires all artifacts from `exports/pr
 
 If any required file is missing, ingestion must fail fast.
 
+## Manual handoff assumptions (explicit)
+
+Current handoff between TIBER-Rookies and TIBER-Fantasy is intentionally manual.
+
+Assumptions:
+
+1. Operator copies all three files together from the same TIBER-Rookies commit.
+2. Filenames are preserved exactly (no rename/repack).
+3. TIBER-Fantasy ingest runs against that exact triplet.
+4. `/rookies` verification happens only after ingest validation succeeds.
+
 ## Required validation steps
 
 Run validation before ingest:
