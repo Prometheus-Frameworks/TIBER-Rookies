@@ -20,8 +20,11 @@ const CONTENT_TYPES = {
   '.txt': 'text/plain; charset=utf-8',
 };
 
+// Extensionless and clean-URL aliases for deployment-style deep links.
+// Note: '/' is intentionally absent — it is handled by an explicit 302
+// redirect in the request handler. Adding it here would serve a 200
+// instead and silently break redirect semantics.
 const ROUTE_ALIASES = new Map([
-  ['/', '/cards/rookies/board/index.html'],
   ['/cards/rookies', '/cards/rookies/index.html'],
   ['/cards/rookies/board', '/cards/rookies/board/index.html'],
   ['/cards/rookies/player', '/cards/rookies/player.html'],
