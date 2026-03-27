@@ -4,7 +4,8 @@
   "private": true,
   "description": "Standalone Rookie Alpha producer lab with static rookie surfaces",
   "scripts": {
-    "start": "node runtime-server.js"
+    "start": "node runtime-server.js",
+    "test:runtime-smoke": "node --test tests/runtime-server.smoke.test.cjs"
   },
   "engines": {
     "node": ">=20"
