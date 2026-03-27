@@ -1,26 +1,11 @@
 [
   {
-    "player_id": "rb-ashley-jennings",
-    "player_name": "Ashley Jennings",
-    "position": "RB",
-    "production_score_0_100": 86.2
-  },
-  {
-    "player_id": "rb-darius-cole",
-    "player_name": "Darius Cole",
-    "position": "RB",
-    "production_score_0_100": 78.4
-  },
-  {
-    "player_id": "wr-malik-ford",
-    "player_name": "Malik Ford",
+    "player_id": "wr-carnell-tate",
+    "player_name": "Carnell Tate",
     "position": "WR",
-    "production_score_0_100": 88.1
-  },
-  {
-    "player_id": "wr-keon-banks",
-    "player_name": "Keon Banks",
-    "position": "WR",
-    "production_score_0_100": 73.9
+    "school": "Ohio State",
+    "production_score_0_100": null,
+    "production_source": null,
+    "notes": "Missing sourced production score in seed pool."
   }
 ]

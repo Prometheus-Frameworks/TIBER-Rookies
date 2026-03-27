@@ -1,0 +1,22 @@
+[
+  {
+    "player_id": "wr-carnell-tate",
+    "player_name": "Carnell Tate",
+    "position": "WR",
+    "school": "Ohio State",
+    "height_in": null,
+    "weight_lb": null,
+    "forty": null,
+    "vertical": null,
+    "broad": null,
+    "production_score_0_100": null,
+    "draft_capital_proxy_0_100": null,
+    "big_board_rank": 6,
+    "big_board_source": "FantasyPros consensus 2026 big board",
+    "combine_invited": true,
+    "measurement_source": null,
+    "production_source": null,
+    "draft_proxy_source": null,
+    "notes": "Real 2026 prospect; fill measurements/scores only from sourced public data."
+  }
+]

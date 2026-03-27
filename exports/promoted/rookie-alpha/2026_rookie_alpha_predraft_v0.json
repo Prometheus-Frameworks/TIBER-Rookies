@@ -11,13 +11,13 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-03-25T01:46:12+00:00",
-  "run_id": "rookie-alpha-2026-2026-03-25T01:46:12+00:00",
+  "generated_at": "2026-03-27T13:24:33+00:00",
+  "run_id": "rookie-alpha-2026-2026-03-27T13:24:33+00:00",
   "season": 2026,
   "coverage_summary": {
-    "players_total": 4,
-    "players_with_any_missing_input": 0,
-    "players_with_full_inputs": 4
+    "players_total": 1,
+    "players_with_any_missing_input": 1,
+    "players_with_full_inputs": 0
   },
   "source_files_used": [
     "data/raw/2026_combine_results.json",
@@ -26,56 +26,20 @@
   ],
   "players": [
     {
-      "player_id": "wr-malik-ford",
-      "player_name": "Malik Ford",
+      "player_id": "wr-carnell-tate",
+      "player_name": "Carnell Tate",
       "position": "WR",
       "scores": {
-        "ras_0_100": 61.6667,
-        "production_0_100": 88.1,
-        "draft_capital_proxy_0_100": 82.3,
-        "rookie_alpha_0_100": 77.6883
+        "ras_0_100": 50.0,
+        "production_0_100": 50.0,
+        "draft_capital_proxy_0_100": 50.0,
+        "rookie_alpha_0_100": 50.0
       },
-      "model_inputs_missing": [],
+      "model_inputs_missing": [
+        "production",
+        "draft_capital_proxy"
+      ],
       "rookie_alpha_rank": 1
-    },
-    {
-      "player_id": "rb-ashley-jennings",
-      "player_name": "Ashley Jennings",
-      "position": "RB",
-      "scores": {
-        "ras_0_100": 61.6667,
-        "production_0_100": 86.2,
-        "draft_capital_proxy_0_100": 74.0,
-        "rookie_alpha_0_100": 75.1733
-      },
-      "model_inputs_missing": [],
-      "rookie_alpha_rank": 2
-    },
-    {
-      "player_id": "rb-darius-cole",
-      "player_name": "Darius Cole",
-      "position": "RB",
-      "scores": {
-        "ras_0_100": 38.3333,
-        "production_0_100": 78.4,
-        "draft_capital_proxy_0_100": 67.5,
-        "rookie_alpha_0_100": 62.1967
-      },
-      "model_inputs_missing": [],
-      "rookie_alpha_rank": 3
-    },
-    {
-      "player_id": "wr-keon-banks",
-      "player_name": "Keon Banks",
-      "position": "WR",
-      "scores": {
-        "ras_0_100": 38.3333,
-        "production_0_100": 73.9,
-        "draft_capital_proxy_0_100": 64.8,
-        "rookie_alpha_0_100": 59.6317
-      },
-      "model_inputs_missing": [],
-      "rookie_alpha_rank": 4
     }
   ]
 }
