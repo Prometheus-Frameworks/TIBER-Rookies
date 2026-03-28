@@ -1,26 +1,44 @@
 [
   {
-    "player_id": "rb-ashley-jennings",
-    "player_name": "Ashley Jennings",
+    "player_id": "qb-fernando-mendoza",
+    "player_name": "Fernando Mendoza",
+    "position": "QB",
+    "draft_capital_proxy_0_100": 95
+  },
+  {
+    "player_id": "qb-ty-simpson",
+    "player_name": "Ty Simpson",
+    "position": "QB",
+    "draft_capital_proxy_0_100": 85
+  },
+  {
+    "player_id": "rb-jeremiyah-love",
+    "player_name": "Jeremiyah Love",
     "position": "RB",
-    "draft_capital_proxy_0_100": 74.0
+    "draft_capital_proxy_0_100": 95
   },
   {
-    "player_id": "rb-darius-cole",
-    "player_name": "Darius Cole",
+    "player_id": "rb-jadarian-price",
+    "player_name": "Jadarian Price",
     "position": "RB",
-    "draft_capital_proxy_0_100": 67.5
+    "draft_capital_proxy_0_100": 65
   },
   {
-    "player_id": "wr-malik-ford",
-    "player_name": "Malik Ford",
+    "player_id": "wr-carnell-tate",
+    "player_name": "Carnell Tate",
     "position": "WR",
-    "draft_capital_proxy_0_100": 82.3
+    "draft_capital_proxy_0_100": 95
   },
   {
-    "player_id": "wr-keon-banks",
-    "player_name": "Keon Banks",
+    "player_id": "wr-jordyn-tyson",
+    "player_name": "Jordyn Tyson",
     "position": "WR",
-    "draft_capital_proxy_0_100": 64.8
+    "draft_capital_proxy_0_100": 95
+  },
+  {
+    "player_id": "te-kenyon-sadiq",
+    "player_name": "Kenyon Sadiq",
+    "position": "TE",
+    "draft_capital_proxy_0_100": 85
   }
 ]
