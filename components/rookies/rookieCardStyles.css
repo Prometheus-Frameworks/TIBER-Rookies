@@ -41,6 +41,16 @@ body {
 .metric-header { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; color: var(--muted); }
 .metric-track { height: 8px; background: #0b111b; border-radius: 999px; overflow: hidden; border: 1px solid var(--border); }
 .metric-fill { height: 100%; background: linear-gradient(90deg, #2a8cff, #45d5af); }
+
+.radar-section {
+  display: grid;
+  place-items: center;
+}
+.radar-chart {
+  width: 220px;
+  max-width: 100%;
+  margin-top: 8px;
+}
 .stats-table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 13px; }
 .stats-table th, .stats-table td { border-bottom: 1px solid var(--border); padding: 8px 4px; text-align: left; }
 .tags, .compact-tags { display: flex; flex-wrap: wrap; gap: 8px; }
