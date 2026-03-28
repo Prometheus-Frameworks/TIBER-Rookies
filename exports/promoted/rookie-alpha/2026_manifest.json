@@ -1,23 +1,23 @@
 {
   "season": 2026,
   "model_version": "rookie-alpha-predraft-v0.1.0",
-  "generated_at": "2026-03-28T12:23:30+00:00",
-  "run_id": "rookie-alpha-2026-2026-03-28T12:23:30+00:00",
+  "generated_at": "2026-03-28T12:55:46+00:00",
+  "run_id": "rookie-alpha-2026-2026-03-28T12:55:46+00:00",
   "input_files": [
     {
       "path": "data/raw/2026_combine_results.json",
-      "sha256": "3543ed62316b7970abe4ac4c59603fe1dc517728ae5ebe3fdeb7af4a51cc07d4",
-      "row_count": 4
+      "sha256": "75ee2ba81a03d442bee4f5eb8ce46697c7f506cfe80d4223f0bbf210c5c96d89",
+      "row_count": 23
     },
     {
       "path": "data/processed/2026_college_production.json",
-      "sha256": "fc28e7e81acc2c75849fec7286951e7c8b74c8acc8518f345db7495fcd9572f9",
-      "row_count": 4
+      "sha256": "e3740da160da98fae0e9dbec28363fa66a5db25c0fae407cfcae84c7f0a3213e",
+      "row_count": 23
     },
     {
       "path": "data/processed/2026_draft_capital_proxy.json",
-      "sha256": "08ec72c8f58758cf6a6ad412ecd4fd6a33487892b4e2dae6b18f4257b9ad2211",
-      "row_count": 7
+      "sha256": "dec2cab622d86728243af4d6c224e0d923692d3afcca6c46bbf91e83031731f3",
+      "row_count": 23
     }
   ],
   "coverage_summary": {
@@ -27,16 +27,16 @@
     "input_alignment": {
       "duplicate_rows_skipped": 0,
       "identity_conflicts_skipped": 0,
-      "missing_combine": 7,
-      "missing_production": 7,
-      "missing_draft_proxy": 4,
-      "total_excluded": 11
+      "missing_combine": 0,
+      "missing_production": 23,
+      "missing_draft_proxy": 16,
+      "total_excluded": 23
     }
   },
   "output_files": [
     {
       "path": "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
-      "sha256": "b023077636ec8bf9f6b86011e1754543fafe7d40f80f7c4e4612033d3d153c9a"
+      "sha256": "7d4201bb6efb183b672e864e3715c0177bf2397c1a9ec464aa0def7dabdd6916"
     },
     {
       "path": "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.csv",
@@ -46,8 +46,8 @@
   "export_metadata": {
     "season": 2026,
     "model_version": "rookie-alpha-predraft-v0.1.0",
-    "generated_at": "2026-03-28T12:23:30+00:00",
-    "run_id": "rookie-alpha-2026-2026-03-28T12:23:30+00:00",
+    "generated_at": "2026-03-28T12:55:46+00:00",
+    "run_id": "rookie-alpha-2026-2026-03-28T12:55:46+00:00",
     "coverage_summary": {
       "players_total": 0,
       "players_with_any_missing_input": 0,
@@ -55,10 +55,10 @@
       "input_alignment": {
         "duplicate_rows_skipped": 0,
         "identity_conflicts_skipped": 0,
-        "missing_combine": 7,
-        "missing_production": 7,
-        "missing_draft_proxy": 4,
-        "total_excluded": 11
+        "missing_combine": 0,
+        "missing_production": 23,
+        "missing_draft_proxy": 16,
+        "total_excluded": 23
       }
     },
     "source_files_used": [
