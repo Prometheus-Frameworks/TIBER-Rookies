@@ -104,6 +104,22 @@ Top-level fields:
 
 ## Standard production + validation sequence (2026)
 
+### 2026 temporary pre-draft draft-capital proxy rule
+
+For the real 2026 seed pool, `draft_capital_proxy_0_100` is a temporary pre-draft conversion from seeded `big_board_rank` values. It is explicitly not equivalent to realized NFL draft capital.
+
+Applied deterministic mapping:
+
+- `1–10` => `95`
+- `11–20` => `85`
+- `21–32` => `75`
+- `33–50` => `65`
+- `51–75` => `55`
+- `76–100` => `45`
+- missing or `>100` => `null`
+
+Only entries with a seeded `big_board_rank` are eligible for conversion.
+
 Run from repo root:
 
 ```bash

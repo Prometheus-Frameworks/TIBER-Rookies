@@ -117,6 +117,22 @@ Implemented formula:
 
 This is explicitly labeled `pre-draft v0` in export metadata.
 
+## 2026 temporary pre-draft draft-capital proxy conversion
+
+For the real 2026 seed pool, `draft_capital_proxy_0_100` is currently a temporary pre-draft proxy derived from seeded `big_board_rank` values (not true NFL draft capital outcomes).
+
+Deterministic conversion bands:
+
+- ranks `1–10` → `95`
+- ranks `11–20` → `85`
+- ranks `21–32` → `75`
+- ranks `33–50` → `65`
+- ranks `51–75` → `55`
+- ranks `76–100` → `45`
+- rank missing or out of range (`>100`) → `null`
+
+This conversion only applies where a seeded `big_board_rank` exists. Missing ranks remain missing for draft-capital proxy.
+
 ## Run producer pipeline
 
 ```bash

@@ -20,9 +20,9 @@
     "production_score_source": null,
     "big_board_rank": 1,
     "big_board_source": "FantasyPros consensus 2026 big board",
-    "draft_capital_proxy_0_100": null,
-    "draft_capital_proxy_source": null,
-    "draft_capital_proxy_pending_conversion": true,
+    "draft_capital_proxy_0_100": 95,
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45)",
+    "draft_capital_proxy_pending_conversion": false,
     "notes": "2026 Heisman Trophy winner; consensus #1 overall prospect. Did not run forty at combine."
   },
   {
@@ -46,9 +46,9 @@
     "production_score_source": null,
     "big_board_rank": 19,
     "big_board_source": "Bleacher Report 2026 post-combine big board",
-    "draft_capital_proxy_0_100": null,
-    "draft_capital_proxy_source": null,
-    "draft_capital_proxy_pending_conversion": true,
+    "draft_capital_proxy_0_100": 85,
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45)",
+    "draft_capital_proxy_pending_conversion": false,
     "notes": "15 career starts at Alabama; QB2 in class per multiple sources. Did not run forty at combine."
   },
   {
@@ -150,9 +150,9 @@
     "production_score_source": null,
     "big_board_rank": 2,
     "big_board_source": "Bleacher Report 2026 post-combine big board",
-    "draft_capital_proxy_0_100": null,
-    "draft_capital_proxy_source": null,
-    "draft_capital_proxy_pending_conversion": true,
+    "draft_capital_proxy_0_100": 95,
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45)",
+    "draft_capital_proxy_pending_conversion": false,
     "notes": "Ran 4.36 at combine. 6.0 YPC in 2025 season at Notre Dame. Top RB in class by consensus."
   },
   {
@@ -176,9 +176,9 @@
     "production_score_source": null,
     "big_board_rank": 37,
     "big_board_source": "Bleacher Report 2026 post-combine big board",
-    "draft_capital_proxy_0_100": null,
-    "draft_capital_proxy_source": null,
-    "draft_capital_proxy_pending_conversion": true,
+    "draft_capital_proxy_0_100": 65,
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45)",
+    "draft_capital_proxy_pending_conversion": false,
     "notes": "Complementary back to Jeremiyah Love at Notre Dame. Day 2 projection."
   },
   {
@@ -280,9 +280,9 @@
     "production_score_source": null,
     "big_board_rank": 6,
     "big_board_source": "FantasyPros consensus 2026 big board",
-    "draft_capital_proxy_0_100": null,
-    "draft_capital_proxy_source": null,
-    "draft_capital_proxy_pending_conversion": true,
+    "draft_capital_proxy_0_100": 95,
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45)",
+    "draft_capital_proxy_pending_conversion": false,
     "notes": "Did not complete positional drills at combine. WR1 per ESPN Mel Kiper. Official forty 4.52; some sources report 4.53."
   },
   {
@@ -306,9 +306,9 @@
     "production_score_source": null,
     "big_board_rank": 6,
     "big_board_source": "NBC Sports Connor Rogers 2026 big board",
-    "draft_capital_proxy_0_100": null,
-    "draft_capital_proxy_source": null,
-    "draft_capital_proxy_pending_conversion": true,
+    "draft_capital_proxy_0_100": 95,
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45)",
+    "draft_capital_proxy_pending_conversion": false,
     "notes": "Did not run forty due to hamstring injury at combine. Prior ACL injury history. WR1 per Bleacher Report post-combine."
   },
   {
@@ -514,9 +514,9 @@
     "production_score_source": null,
     "big_board_rank": 14,
     "big_board_source": "FantasyPros consensus 2026 big board",
-    "draft_capital_proxy_0_100": null,
-    "draft_capital_proxy_source": null,
-    "draft_capital_proxy_pending_conversion": true,
+    "draft_capital_proxy_0_100": 85,
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45)",
+    "draft_capital_proxy_pending_conversion": false,
     "notes": "Set all-time TE 40-yard dash record (4.39) at 2026 NFL Combine. TE1 in class by consensus; first-round projection."
   },
   {
