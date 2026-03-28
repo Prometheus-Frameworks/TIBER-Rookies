@@ -1,0 +1,54 @@
+[
+  {
+    "player_id": "sample-qb-2018-a",
+    "player_name": "Sample QB Profile A",
+    "position": "QB",
+    "draft_year": 2018,
+    "career_outcome_label": null,
+    "best_season_fantasy_ppg": null,
+    "top_finish_band": null,
+    "years_1_to_3_summary": null,
+    "source_name": "sample_fixture",
+    "source_url": null,
+    "notes": "sample/dev fixture only; no real outcomes populated"
+  },
+  {
+    "player_id": "sample-qb-2019-b",
+    "player_name": "Sample QB Profile B",
+    "position": "QB",
+    "draft_year": 2019,
+    "career_outcome_label": null,
+    "best_season_fantasy_ppg": null,
+    "top_finish_band": null,
+    "years_1_to_3_summary": null,
+    "source_name": "sample_fixture",
+    "source_url": null,
+    "notes": "sample/dev fixture only; no real outcomes populated"
+  },
+  {
+    "player_id": "sample-wr-2020-a",
+    "player_name": "Sample WR Profile A",
+    "position": "WR",
+    "draft_year": 2020,
+    "career_outcome_label": null,
+    "best_season_fantasy_ppg": null,
+    "top_finish_band": null,
+    "years_1_to_3_summary": null,
+    "source_name": "sample_fixture",
+    "source_url": null,
+    "notes": "sample/dev fixture only; no real outcomes populated"
+  },
+  {
+    "player_id": "sample-te-2021-a",
+    "player_name": "Sample TE Profile A",
+    "position": "TE",
+    "draft_year": 2021,
+    "career_outcome_label": null,
+    "best_season_fantasy_ppg": null,
+    "top_finish_band": null,
+    "years_1_to_3_summary": null,
+    "source_name": "sample_fixture",
+    "source_url": null,
+    "notes": "sample/dev fixture only; no real outcomes populated"
+  }
+]

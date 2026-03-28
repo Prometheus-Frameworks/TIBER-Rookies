@@ -223,3 +223,44 @@ See:
 - `docs/tiber-fantasy-consumer-contract.md`
 - `docs/runbooks/draft-week-handoff-2026.md`
 - `docs/rookie-card-prototype.md`
+
+## Historical comps foundation (producer-only scaffold)
+
+This repo now includes a **producer-only historical comps foundation lane** with no UI integration in this phase.
+
+Canonical scaffold files:
+
+- `data/historical/README.md`
+- `data/historical/historical_prospect_features.schema.md`
+- `data/historical/historical_prospect_features.sample.json`
+- `data/historical/historical_player_outcomes.sample.json`
+- `docs/historical-comps-contract.md`
+
+Run the historical comps producer with sample scaffold data:
+
+```bash
+python3 scripts/compute_historical_comps.py \
+  --rookie-export exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json \
+  --historical-features data/historical/historical_prospect_features.sample.json \
+  --historical-outcomes data/historical/historical_player_outcomes.sample.json \
+  --output-json exports/promoted/historical-comps/2026_historical_comps_v0.json \
+  --comp-mode talent_comp
+```
+
+If outcomes are not yet locally populated:
+
+```bash
+python3 scripts/compute_historical_comps.py \
+  --historical-outcomes data/historical/local_historical_player_outcomes.json \
+  --allow-missing-outcomes
+```
+
+Emitted artifact path:
+
+- `exports/promoted/historical-comps/{season}_historical_comps_v0.json`
+
+Notes:
+
+- Sample historical files are scaffold fixtures, not a complete historical warehouse.
+- Local operators can replace sample files with real locally prepared historical datasets that satisfy the documented schema and contract.
+- UI integration for comp pills/card surfaces is intentionally out of scope for this PR.

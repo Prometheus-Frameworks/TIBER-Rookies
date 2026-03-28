@@ -1,0 +1,599 @@
+{
+  "model": {
+    "name": "historical_comps",
+    "model_version": "v0",
+    "comp_mode": "talent_comp",
+    "distance_model": "weighted_euclidean",
+    "weights": {
+      "ras_0_100": 0.45,
+      "production_0_100": 0.45,
+      "size_context_0_100": 0.1
+    },
+    "notes": "v0 emits talent_comp by default; market_comp support is scaffolded and optional."
+  },
+  "generated_at": "2026-03-28T00:00:00+00:00",
+  "season": 2026,
+  "source_files_used": [
+    "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
+    "data/historical/historical_prospect_features.sample.json",
+    "data/historical/historical_player_outcomes.sample.json"
+  ],
+  "players": [
+    {
+      "player_id": "qb-carson-beck",
+      "player_name": "Carson Beck",
+      "position": "QB",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "sample-qb-2019-b",
+          "player_name": "Sample QB Profile B",
+          "draft_year": 2019,
+          "position": "QB",
+          "similarity_score": 95.2736,
+          "distance": 0.047264,
+          "feature_snapshot": {
+            "ras_0_100": 61.0,
+            "production_0_100": 72.0,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 66.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "sample-qb-2018-a",
+          "player_name": "Sample QB Profile A",
+          "draft_year": 2018,
+          "position": "QB",
+          "similarity_score": 87.3427,
+          "distance": 0.126573,
+          "feature_snapshot": {
+            "ras_0_100": 74.0,
+            "production_0_100": 80.0,
+            "draft_capital_proxy_0_100": 88.0,
+            "size_context_0_100": 71.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "qb-drew-allar",
+      "player_name": "Drew Allar",
+      "position": "QB",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "sample-qb-2019-b",
+          "player_name": "Sample QB Profile B",
+          "draft_year": 2019,
+          "position": "QB",
+          "similarity_score": 85.6443,
+          "distance": 0.143557,
+          "feature_snapshot": {
+            "ras_0_100": 61.0,
+            "production_0_100": 72.0,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 66.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "sample-qb-2018-a",
+          "player_name": "Sample QB Profile A",
+          "draft_year": 2018,
+          "position": "QB",
+          "similarity_score": 78.0627,
+          "distance": 0.219373,
+          "feature_snapshot": {
+            "ras_0_100": 74.0,
+            "production_0_100": 80.0,
+            "draft_capital_proxy_0_100": 88.0,
+            "size_context_0_100": 71.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "qb-fernando-mendoza",
+      "player_name": "Fernando Mendoza",
+      "position": "QB",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "sample-qb-2018-a",
+          "player_name": "Sample QB Profile A",
+          "draft_year": 2018,
+          "position": "QB",
+          "similarity_score": 93.6975,
+          "distance": 0.063025,
+          "feature_snapshot": {
+            "ras_0_100": 74.0,
+            "production_0_100": 80.0,
+            "draft_capital_proxy_0_100": 88.0,
+            "size_context_0_100": 71.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "sample-qb-2019-b",
+          "player_name": "Sample QB Profile B",
+          "draft_year": 2019,
+          "position": "QB",
+          "similarity_score": 92.8581,
+          "distance": 0.071419,
+          "feature_snapshot": {
+            "ras_0_100": 61.0,
+            "production_0_100": 72.0,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 66.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "qb-garrett-nussmeier",
+      "player_name": "Garrett Nussmeier",
+      "position": "QB",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "sample-qb-2019-b",
+          "player_name": "Sample QB Profile B",
+          "draft_year": 2019,
+          "position": "QB",
+          "similarity_score": 73.5327,
+          "distance": 0.264673,
+          "feature_snapshot": {
+            "ras_0_100": 61.0,
+            "production_0_100": 72.0,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 66.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "sample-qb-2018-a",
+          "player_name": "Sample QB Profile A",
+          "draft_year": 2018,
+          "position": "QB",
+          "similarity_score": 62.7437,
+          "distance": 0.372563,
+          "feature_snapshot": {
+            "ras_0_100": 74.0,
+            "production_0_100": 80.0,
+            "draft_capital_proxy_0_100": 88.0,
+            "size_context_0_100": 71.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "qb-ty-simpson",
+      "player_name": "Ty Simpson",
+      "position": "QB",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "sample-qb-2019-b",
+          "player_name": "Sample QB Profile B",
+          "draft_year": 2019,
+          "position": "QB",
+          "similarity_score": 76.0261,
+          "distance": 0.239739,
+          "feature_snapshot": {
+            "ras_0_100": 61.0,
+            "production_0_100": 72.0,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 66.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "sample-qb-2018-a",
+          "player_name": "Sample QB Profile A",
+          "draft_year": 2018,
+          "position": "QB",
+          "similarity_score": 65.2697,
+          "distance": 0.347303,
+          "feature_snapshot": {
+            "ras_0_100": 74.0,
+            "production_0_100": 80.0,
+            "draft_capital_proxy_0_100": 88.0,
+            "size_context_0_100": 71.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "rb-jadarian-price",
+      "player_name": "Jadarian Price",
+      "position": "RB",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "rb-jeremiyah-love",
+      "player_name": "Jeremiyah Love",
+      "position": "RB",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "rb-jonah-coleman",
+      "player_name": "Jonah Coleman",
+      "position": "RB",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "rb-nick-singleton",
+      "player_name": "Nick Singleton",
+      "position": "RB",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "te-eli-stowers",
+      "player_name": "Eli Stowers",
+      "position": "TE",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "sample-te-2021-a",
+          "player_name": "Sample TE Profile A",
+          "draft_year": 2021,
+          "position": "TE",
+          "similarity_score": 91.5,
+          "distance": 0.085,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 69.0,
+            "draft_capital_proxy_0_100": 58.0,
+            "size_context_0_100": 77.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "te-kenyon-sadiq",
+      "player_name": "Kenyon Sadiq",
+      "position": "TE",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "sample-te-2021-a",
+          "player_name": "Sample TE Profile A",
+          "draft_year": 2021,
+          "position": "TE",
+          "similarity_score": 89.4,
+          "distance": 0.106,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 69.0,
+            "draft_capital_proxy_0_100": 58.0,
+            "size_context_0_100": 77.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "te-max-klare",
+      "player_name": "Max Klare",
+      "position": "TE",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "sample-te-2021-a",
+          "player_name": "Sample TE Profile A",
+          "draft_year": 2021,
+          "position": "TE",
+          "similarity_score": 80.2,
+          "distance": 0.198,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 69.0,
+            "draft_capital_proxy_0_100": 58.0,
+            "size_context_0_100": 77.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-carnell-tate",
+      "player_name": "Carnell Tate",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "sample-wr-2020-a",
+          "player_name": "Sample WR Profile A",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 66.3895,
+          "distance": 0.336105,
+          "feature_snapshot": {
+            "ras_0_100": 82.0,
+            "production_0_100": 78.0,
+            "draft_capital_proxy_0_100": 76.0,
+            "size_context_0_100": 64.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-chris-bell",
+      "player_name": "Chris Bell",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "sample-wr-2020-a",
+          "player_name": "Sample WR Profile A",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 82.4905,
+          "distance": 0.175095,
+          "feature_snapshot": {
+            "ras_0_100": 82.0,
+            "production_0_100": 78.0,
+            "draft_capital_proxy_0_100": 76.0,
+            "size_context_0_100": 64.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-chris-brazzell-ii",
+      "player_name": "Chris Brazzell II",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "sample-wr-2020-a",
+          "player_name": "Sample WR Profile A",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 80.1767,
+          "distance": 0.198233,
+          "feature_snapshot": {
+            "ras_0_100": 82.0,
+            "production_0_100": 78.0,
+            "draft_capital_proxy_0_100": 76.0,
+            "size_context_0_100": 64.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-denzel-boston",
+      "player_name": "Denzel Boston",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "sample-wr-2020-a",
+          "player_name": "Sample WR Profile A",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 80.7093,
+          "distance": 0.192907,
+          "feature_snapshot": {
+            "ras_0_100": 82.0,
+            "production_0_100": 78.0,
+            "draft_capital_proxy_0_100": 76.0,
+            "size_context_0_100": 64.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-elijah-sarratt",
+      "player_name": "Elijah Sarratt",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "sample-wr-2020-a",
+          "player_name": "Sample WR Profile A",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 83.0022,
+          "distance": 0.169978,
+          "feature_snapshot": {
+            "ras_0_100": 82.0,
+            "production_0_100": 78.0,
+            "draft_capital_proxy_0_100": 76.0,
+            "size_context_0_100": 64.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-jordyn-tyson",
+      "player_name": "Jordyn Tyson",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "sample-wr-2020-a",
+          "player_name": "Sample WR Profile A",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 75.7072,
+          "distance": 0.242928,
+          "feature_snapshot": {
+            "ras_0_100": 82.0,
+            "production_0_100": 78.0,
+            "draft_capital_proxy_0_100": 76.0,
+            "size_context_0_100": 64.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-kc-concepcion",
+      "player_name": "KC Concepcion",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "sample-wr-2020-a",
+          "player_name": "Sample WR Profile A",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 71.8709,
+          "distance": 0.281291,
+          "feature_snapshot": {
+            "ras_0_100": 82.0,
+            "production_0_100": 78.0,
+            "draft_capital_proxy_0_100": 76.0,
+            "size_context_0_100": 64.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-makai-lemon",
+      "player_name": "Makai Lemon",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "sample-wr-2020-a",
+          "player_name": "Sample WR Profile A",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 68.1807,
+          "distance": 0.318193,
+          "feature_snapshot": {
+            "ras_0_100": 82.0,
+            "production_0_100": 78.0,
+            "draft_capital_proxy_0_100": 76.0,
+            "size_context_0_100": 64.0
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        }
+      ]
+    }
+  ]
+}
