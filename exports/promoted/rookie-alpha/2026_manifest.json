@@ -1,64 +1,64 @@
 {
   "season": 2026,
   "model_version": "rookie-alpha-predraft-v0.1.0",
-  "generated_at": "2026-03-27T11:13:06+00:00",
-  "run_id": "rookie-alpha-2026-2026-03-27T11:13:06+00:00",
+  "generated_at": "2026-03-28T02:18:14+00:00",
+  "run_id": "rookie-alpha-2026-2026-03-28T02:18:14+00:00",
   "input_files": [
     {
       "path": "data/raw/2026_combine_results.json",
-      "sha256": "3543ed62316b7970abe4ac4c59603fe1dc517728ae5ebe3fdeb7af4a51cc07d4",
-      "row_count": 4
+      "sha256": "da022112e457687389f43e4186078b4f53be70450310c2e090a843d90320442b",
+      "row_count": 1
     },
     {
       "path": "data/processed/2026_college_production.json",
-      "sha256": "fc28e7e81acc2c75849fec7286951e7c8b74c8acc8518f345db7495fcd9572f9",
-      "row_count": 4
+      "sha256": "def93b0b89f283ca5422926caa79033706aa4a4c130513b1e719eba15ba0aa78",
+      "row_count": 1
     },
     {
       "path": "data/processed/2026_draft_capital_proxy.json",
-      "sha256": "4090b7ac06d885b972ca4622b25abf2fb15d936e8a3de189426dba0e433f79f4",
-      "row_count": 4
+      "sha256": "cc42c17b11066c5a7ebef98338a61969a6f09463c2e27d11482e94803b54c8cc",
+      "row_count": 1
     }
   ],
   "coverage_summary": {
-    "players_total": 4,
+    "players_total": 0,
     "players_with_any_missing_input": 0,
-    "players_with_full_inputs": 4,
+    "players_with_full_inputs": 0,
     "input_alignment": {
       "duplicate_rows_skipped": 0,
       "identity_conflicts_skipped": 0,
       "missing_combine": 0,
-      "missing_production": 0,
-      "missing_draft_proxy": 0,
-      "total_excluded": 0
+      "missing_production": 1,
+      "missing_draft_proxy": 1,
+      "total_excluded": 1
     }
   },
   "output_files": [
     {
       "path": "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
-      "sha256": "e36047ff3cf75ba4b1a372a1b558bff9df5367236480093cfc140e4443add3be"
+      "sha256": "f1e1683a4118f250664bf325f32468182010d3ecd0e82411b2aaf73e44672e1b"
     },
     {
       "path": "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.csv",
-      "sha256": "e3ffcfdd5fd066564d8e94205415c64c96fd65b35db627fdec839c87eba0e56a"
+      "sha256": "3594637a2dbf2a8f93467e187b171f040e9f4d91fda5fee0b630da63d96a4752"
     }
   ],
   "export_metadata": {
     "season": 2026,
     "model_version": "rookie-alpha-predraft-v0.1.0",
-    "generated_at": "2026-03-27T11:13:06+00:00",
-    "run_id": "rookie-alpha-2026-2026-03-27T11:13:06+00:00",
+    "generated_at": "2026-03-28T02:18:14+00:00",
+    "run_id": "rookie-alpha-2026-2026-03-28T02:18:14+00:00",
     "coverage_summary": {
-      "players_total": 4,
+      "players_total": 0,
       "players_with_any_missing_input": 0,
-      "players_with_full_inputs": 4,
+      "players_with_full_inputs": 0,
       "input_alignment": {
         "duplicate_rows_skipped": 0,
         "identity_conflicts_skipped": 0,
         "missing_combine": 0,
-        "missing_production": 0,
-        "missing_draft_proxy": 0,
-        "total_excluded": 0
+        "missing_production": 1,
+        "missing_draft_proxy": 1,
+        "total_excluded": 1
       }
     },
     "source_files_used": [

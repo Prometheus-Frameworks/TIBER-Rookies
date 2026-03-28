@@ -137,3 +137,63 @@ Consumers should reject an export if any of the following fail:
 4. Coverage counts outside expected operating thresholds.
 
 For TIBER-Fantasy-specific ingest gates and CLI workflow, see `docs/tiber-fantasy-consumer-contract.md`.
+
+## Authoritative 2026 real-seed schema and canonical projections
+
+For the 2026 real-seeded batch, `data/raw/2026_real_seed_pool.json` is the sole source of truth. The file is a manually curated transcription source and is projected into the three canonical compute inputs without inference.
+
+### Seed schema (authoritative source file)
+
+Each seed row may contain:
+
+- Identity fields (copied exactly across all projections):
+  - `player_id`
+  - `player_name`
+  - `position`
+  - `school`
+  - `class_year`
+- Combine data + provenance:
+  - `combine_invited`
+  - `height_in`
+  - `height_in_source`
+  - `weight_lb`
+  - `weight_lb_source`
+  - `forty`
+  - `forty_source`
+  - `vertical`
+  - `vertical_source`
+  - `broad`
+  - `broad_source`
+- Production data + provenance:
+  - `production_score_0_100`
+  - `production_score_source`
+- Draft proxy data + provenance:
+  - `big_board_rank`
+  - `big_board_source`
+  - `draft_capital_proxy_0_100`
+  - `draft_capital_proxy_source`
+  - `draft_capital_proxy_pending_conversion`
+- Metadata:
+  - `notes`
+
+### Field usage: metadata/provenance vs currently consumed model inputs
+
+- Metadata/provenance fields that may be present but are **not consumed directly** by `scripts/compute_rookie_alpha.py`:
+  - `school`
+  - `class_year`
+  - `combine_invited`
+  - all `*_source` fields
+  - `big_board_rank`
+  - `big_board_source`
+  - `draft_capital_proxy_pending_conversion`
+  - `notes`
+- Fields currently consumed by the compute pipeline:
+  - Identity for merge alignment: `player_id`, `player_name`, `position`
+  - RAS component inputs: `height_in`, `weight_lb`, `forty`, `vertical`, `broad`
+  - Other scoring components: `production_score_0_100`, `draft_capital_proxy_0_100`
+
+### Null policy and pending conversion
+
+- Null numeric values are intentional in real-seed transcription and must remain null in canonical inputs unless explicitly provided by the seed source.
+- Numeric values are never auto-filled, inferred, interpolated, or fabricated during projection.
+- `big_board_rank` may be present while `draft_capital_proxy_0_100` remains null; in this case `draft_capital_proxy_pending_conversion` should remain `true` to indicate pending explicit conversion.

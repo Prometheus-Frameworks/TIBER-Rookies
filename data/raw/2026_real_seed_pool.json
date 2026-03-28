@@ -15,6 +15,14 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "production_score_0_100": null,
+    "production_score_source": null,
+    "big_board_rank": 6,
+    "big_board_source": "FantasyPros consensus 2026 big board",
+    "draft_capital_proxy_0_100": null,
+    "draft_capital_proxy_source": null,
+    "draft_capital_proxy_pending_conversion": true,
+    "notes": "Real 2026 prospect. Unsourced numeric fields intentionally null."
   }
 ]

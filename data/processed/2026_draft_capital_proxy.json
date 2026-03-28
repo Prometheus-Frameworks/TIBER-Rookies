@@ -1,26 +1,14 @@
 [
   {
-    "player_id": "rb-ashley-jennings",
-    "player_name": "Ashley Jennings",
-    "position": "RB",
-    "draft_capital_proxy_0_100": 74.0
-  },
-  {
-    "player_id": "rb-darius-cole",
-    "player_name": "Darius Cole",
-    "position": "RB",
-    "draft_capital_proxy_0_100": 67.5
-  },
-  {
-    "player_id": "wr-malik-ford",
-    "player_name": "Malik Ford",
+    "player_id": "wr-carnell-tate",
+    "player_name": "Carnell Tate",
     "position": "WR",
-    "draft_capital_proxy_0_100": 82.3
-  },
-  {
-    "player_id": "wr-keon-banks",
-    "player_name": "Keon Banks",
-    "position": "WR",
-    "draft_capital_proxy_0_100": 64.8
+    "school": "Ohio State",
+    "class_year": 2026,
+    "big_board_rank": 6,
+    "big_board_source": "FantasyPros consensus 2026 big board",
+    "draft_capital_proxy_0_100": null,
+    "draft_capital_proxy_source": null,
+    "draft_capital_proxy_pending_conversion": true
   }
 ]
