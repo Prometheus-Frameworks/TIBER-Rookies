@@ -20,6 +20,7 @@ CFBD_BASE_URL = "https://api.collegefootballdata.com"
 DEFAULT_SEED_INPUT = Path("data/raw/2026_real_seed_pool.json")
 DEFAULT_PRODUCTION_OUTPUT = Path("data/processed/2026_college_production.json")
 DEFAULT_SEED_OUTPUT = Path("data/raw/2026_real_seed_pool.json")
+DEFAULT_STATS_OUTPUT = Path("data/processed/2026_player_stats.json")
 
 POSITION_LIMITS = {
     "QB": 100.0,
@@ -82,6 +83,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--seed-input", type=Path, default=DEFAULT_SEED_INPUT)
     parser.add_argument("--production-output", type=Path, default=DEFAULT_PRODUCTION_OUTPUT)
     parser.add_argument("--seed-output", type=Path, default=DEFAULT_SEED_OUTPUT)
+    parser.add_argument("--stats-output", type=Path, default=DEFAULT_STATS_OUTPUT)
     return parser.parse_args()
 
 
@@ -425,6 +427,115 @@ def to_production_rows(seed_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return output
 
 
+def rounded_stat(value: float) -> int | float:
+    if float(value).is_integer():
+        return int(value)
+    return round(value, 1)
+
+
+def add_stat(stats: dict[str, int | float], key: str, value: float | None) -> None:
+    if value is None:
+        return
+    stats[key] = rounded_stat(value)
+
+
+def build_stat_lines(
+    seed_rows: list[dict[str, Any]],
+    results: list[MatchResult],
+    passing_stats: dict[tuple[str, str], dict[str, Any]],
+    rushing_stats: dict[tuple[str, str], dict[str, Any]],
+    receiving_stats: dict[tuple[str, str], dict[str, Any]],
+    cfbd_year: int,
+) -> list[dict[str, Any]]:
+    populations: dict[str, list[PopulationPlayer]] = {
+        "QB": build_population("QB", passing_stats, rushing_stats, receiving_stats),
+        "RB": build_population("RB", passing_stats, rushing_stats, receiving_stats),
+        "WR": build_population("WR", passing_stats, rushing_stats, receiving_stats),
+        "TE": build_population("TE", passing_stats, rushing_stats, receiving_stats),
+    }
+    failed_ids = {result.player_id for result in results if result.match_mode == "failed"}
+    stat_lines: list[dict[str, Any]] = []
+
+    for row in seed_rows:
+        player_id = str(row.get("player_id", ""))
+        position = str(row.get("position", "")).upper()
+        stats: dict[str, int | float] = {}
+
+        if player_id not in failed_ids and populations.get(position):
+            matched, _ = match_seed_player(row, populations[position])
+            if matched is not None:
+                key = (normalize_identity(matched.name), normalize_identity(matched.school))
+
+                if position == "QB":
+                    passing = passing_stats.get(key, {}).get("stats", {})
+                    attempts = passing.get("ATT")
+                    completions = passing.get("COMPLETIONS")
+                    passing_yards = passing.get("YDS")
+                    passing_tds = passing.get("TD")
+                    interceptions = passing.get("INT")
+
+                    add_stat(stats, "completions", completions)
+                    add_stat(stats, "attempts", attempts)
+                    add_stat(
+                        stats,
+                        "completion_pct",
+                        safe_div(completions, attempts) * 100 if completions is not None and attempts is not None else None,
+                    )
+                    add_stat(stats, "passing_yards", passing_yards)
+                    add_stat(stats, "passing_tds", passing_tds)
+                    add_stat(stats, "interceptions", interceptions)
+                    add_stat(
+                        stats,
+                        "yards_per_attempt",
+                        safe_div(passing_yards, attempts) if passing_yards is not None and attempts is not None else None,
+                    )
+
+                elif position == "RB":
+                    rushing = rushing_stats.get(key, {}).get("stats", {})
+                    receiving = receiving_stats.get(key, {}).get("stats", {})
+                    rush_attempts = rushing.get("CAR")
+                    rush_yards = rushing.get("YDS")
+                    rush_tds = rushing.get("TD")
+
+                    add_stat(stats, "rush_attempts", rush_attempts)
+                    add_stat(stats, "rush_yards", rush_yards)
+                    add_stat(stats, "rush_tds", rush_tds)
+                    add_stat(
+                        stats,
+                        "yards_per_carry",
+                        safe_div(rush_yards, rush_attempts) if rush_yards is not None and rush_attempts is not None else None,
+                    )
+                    add_stat(stats, "receptions", receiving.get("REC"))
+                    add_stat(stats, "receiving_yards", receiving.get("YDS"))
+
+                elif position in {"WR", "TE"}:
+                    receiving = receiving_stats.get(key, {}).get("stats", {})
+                    receptions = receiving.get("REC")
+                    receiving_yards = receiving.get("YDS")
+
+                    add_stat(stats, "receptions", receptions)
+                    add_stat(stats, "receiving_yards", receiving_yards)
+                    add_stat(stats, "receiving_tds", receiving.get("TD"))
+                    add_stat(
+                        stats,
+                        "yards_per_reception",
+                        safe_div(receiving_yards, receptions) if receiving_yards is not None and receptions is not None else None,
+                    )
+
+        stat_lines.append(
+            {
+                "player_id": row.get("player_id"),
+                "player_name": row.get("player_name"),
+                "position": row.get("position"),
+                "school": row.get("school"),
+                "season": cfbd_year,
+                "stats": stats,
+            }
+        )
+
+    return stat_lines
+
+
 def print_summary(results: list[MatchResult]) -> None:
     print("=== CFBD match summary ===")
     primary = [r for r in results if r.match_mode == "primary"]
@@ -466,6 +577,8 @@ def main() -> int:
 
     write_json(args.seed_output, updated_seed)
     write_json(args.production_output, production_rows)
+    stat_lines = build_stat_lines(seed_rows, results, passing_stats, rushing_stats, receiving_stats, cfbd_year)
+    write_json(args.stats_output, stat_lines)
 
     print_summary(results)
     return 0

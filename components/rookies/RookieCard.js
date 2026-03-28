@@ -24,6 +24,56 @@ function metricRow(metric) {
   return `<div class="metric-row"><div class="metric-header"><span>${esc(metric.evidenceLabel ?? metric.label)}</span><strong>${esc(metric.display)}</strong></div><div class="metric-track"><div class="metric-fill" style="width:${width}%"></div></div></div>`;
 }
 
+function pointForValue(centerX, centerY, radius, angle, value) {
+  const safeValue = value == null ? 0 : Math.max(0, Math.min(100, Number(value) || 0));
+  const scaledRadius = (safeValue / 100) * radius;
+  const x = centerX + (scaledRadius * Math.cos(angle));
+  const y = centerY + (scaledRadius * Math.sin(angle));
+  return `${x.toFixed(1)},${y.toFixed(1)}`;
+}
+
+function renderRadarChart(ras, production, draftCapital) {
+  const centerX = 100;
+  const centerY = 100;
+  const radius = 80;
+  const axes = [
+    { label: 'RAS', angle: -Math.PI / 2, value: ras },
+    { label: 'Production', angle: Math.PI / 6, value: production },
+    { label: 'Draft Capital', angle: (5 * Math.PI) / 6, value: draftCapital },
+  ];
+
+  const ringScales = [0.25, 0.5, 0.75];
+  const rings = ringScales.map((scale) => {
+    const points = axes.map((axis) => pointForValue(centerX, centerY, radius, axis.angle, scale * 100)).join(' ');
+    const isAverageRing = scale === 0.5;
+    return `<polygon points="${points}" fill="none" stroke="#6f8098" stroke-width="${isAverageRing ? 1.6 : 1}" ${isAverageRing ? 'stroke-dasharray="4 3"' : ''} />`;
+  }).join('');
+
+  const dataPoints = axes.map((axis) => pointForValue(centerX, centerY, radius, axis.angle, axis.value)).join(' ');
+  const axesLines = axes.map((axis) => {
+    const endpoint = pointForValue(centerX, centerY, radius, axis.angle, 100);
+    return `<line x1="${centerX}" y1="${centerY}" x2="${endpoint.split(',')[0]}" y2="${endpoint.split(',')[1]}" stroke="#516179" stroke-width="1" />`;
+  }).join('');
+
+  const labels = axes.map((axis) => {
+    const outer = pointForValue(centerX, centerY, radius + 16, axis.angle, 100).split(',');
+    const rendered = axis.value == null ? '0.0' : Number(axis.value).toFixed(1);
+    return `<text x="${outer[0]}" y="${outer[1]}" fill="#b5c7dd" font-size="11" text-anchor="middle">${esc(axis.label)} ${esc(rendered)}</text>`;
+  }).join('');
+
+  return `
+    <section class="metrics radar-section">
+      <div class="section-title">Model Input Radar</div>
+      <svg class="radar-chart" viewBox="0 0 200 200" role="img" aria-label="Radar chart for RAS, production, and draft capital scores">
+        ${rings}
+        ${axesLines}
+        <polygon points="${dataPoints}" fill="rgba(59, 130, 246, 0.25)" stroke="#3b82f6" stroke-width="2" />
+        ${labels}
+      </svg>
+    </section>
+  `;
+}
+
 export function renderRookieCard(container, card) {
   const heroScore = card.summary.rookieGrade == null ? 'N/A' : card.summary.rookieGrade.toFixed(1);
   const identityBits = [
@@ -65,6 +115,8 @@ export function renderRookieCard(container, card) {
       <section class="core-row">
         ${card.scores.map(scoreCell).join('')}
       </section>
+
+      ${renderRadarChart(card.scores[1]?.value, card.scores[2]?.value, card.scores[3]?.value)}
 
       <section class="metrics">
         <div class="section-title">Position-aware Evidence</div>

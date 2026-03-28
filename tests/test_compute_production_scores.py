@@ -2,6 +2,7 @@ import unittest
 
 from scripts.compute_production_scores import (
     apply_results,
+    build_stat_lines,
     compute_scores_for_seed,
     normalize_identity,
     pivot_stats,
@@ -68,6 +69,27 @@ class ComputeProductionScoresTests(unittest.TestCase):
         )
         self.assertIsNone(result_seed[0]["production_score_0_100"])
         self.assertIsNone(result_seed[0]["production_score_source"])
+
+    def test_build_stat_lines_qb_and_failed_player(self) -> None:
+        passing_rows = [
+            {"player": "QB One", "team": "Indiana", "statType": "ATT", "stat": "200"},
+            {"player": "QB One", "team": "Indiana", "statType": "COMPLETIONS", "stat": "140"},
+            {"player": "QB One", "team": "Indiana", "statType": "YDS", "stat": "2500"},
+            {"player": "QB One", "team": "Indiana", "statType": "TD", "stat": "24"},
+            {"player": "QB One", "team": "Indiana", "statType": "INT", "stat": "8"},
+        ]
+        seed_rows = [
+            {"player_id": "p1", "player_name": "QB One", "position": "QB", "school": "Indiana"},
+            {"player_id": "p2", "player_name": "QB Missing", "position": "QB", "school": "Nowhere"},
+        ]
+        results = compute_scores_for_seed(seed_rows, pivot_stats(passing_rows), {}, {})
+        stat_lines = build_stat_lines(seed_rows, results, pivot_stats(passing_rows), {}, {}, 2025)
+        self.assertEqual(len(stat_lines), 2)
+        self.assertEqual(stat_lines[0]["stats"]["completions"], 140)
+        self.assertEqual(stat_lines[0]["stats"]["completion_pct"], 70)
+        self.assertEqual(stat_lines[0]["stats"]["yards_per_attempt"], 12.5)
+        self.assertEqual(stat_lines[1]["stats"], {})
+
 
 
 if __name__ == "__main__":
