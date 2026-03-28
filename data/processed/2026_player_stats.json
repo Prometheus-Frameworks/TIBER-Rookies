@@ -5,7 +5,15 @@
     "position": "QB",
     "school": "Indiana",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "completions": 273,
+      "attempts": 379,
+      "completion_pct": 72.0,
+      "passing_yards": 3535,
+      "passing_tds": 41,
+      "interceptions": 6,
+      "yards_per_attempt": 9.3
+    }
   },
   {
     "player_id": "qb-ty-simpson",
@@ -13,7 +21,15 @@
     "position": "QB",
     "school": "Alabama",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "completions": 305,
+      "attempts": 473,
+      "completion_pct": 64.5,
+      "passing_yards": 3567,
+      "passing_tds": 28,
+      "interceptions": 5,
+      "yards_per_attempt": 7.5
+    }
   },
   {
     "player_id": "qb-carson-beck",
@@ -21,7 +37,15 @@
     "position": "QB",
     "school": "Miami (FL)",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "completions": 338,
+      "attempts": 468,
+      "completion_pct": 72.2,
+      "passing_yards": 3813,
+      "passing_tds": 30,
+      "interceptions": 12,
+      "yards_per_attempt": 8.1
+    }
   },
   {
     "player_id": "qb-drew-allar",
@@ -29,7 +53,15 @@
     "position": "QB",
     "school": "Penn State",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "completions": 103,
+      "attempts": 159,
+      "completion_pct": 64.8,
+      "passing_yards": 1100,
+      "passing_tds": 8,
+      "interceptions": 3,
+      "yards_per_attempt": 6.9
+    }
   },
   {
     "player_id": "qb-garrett-nussmeier",
@@ -37,7 +69,15 @@
     "position": "QB",
     "school": "LSU",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "completions": 194,
+      "attempts": 288,
+      "completion_pct": 67.4,
+      "passing_yards": 1927,
+      "passing_tds": 12,
+      "interceptions": 5,
+      "yards_per_attempt": 6.7
+    }
   },
   {
     "player_id": "rb-jeremiyah-love",
@@ -45,7 +85,14 @@
     "position": "RB",
     "school": "Notre Dame",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "rush_attempts": 199,
+      "rush_yards": 1372,
+      "rush_tds": 18,
+      "yards_per_carry": 6.9,
+      "receptions": 27,
+      "receiving_yards": 280
+    }
   },
   {
     "player_id": "rb-jadarian-price",
@@ -53,7 +100,14 @@
     "position": "RB",
     "school": "Notre Dame",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "rush_attempts": 113,
+      "rush_yards": 674,
+      "rush_tds": 11,
+      "yards_per_carry": 6.0,
+      "receptions": 6,
+      "receiving_yards": 87
+    }
   },
   {
     "player_id": "rb-mike-washington-jr",
@@ -61,7 +115,14 @@
     "position": "RB",
     "school": "Arkansas",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "rush_attempts": 168,
+      "rush_yards": 1068,
+      "rush_tds": 8,
+      "yards_per_carry": 6.4,
+      "receptions": 28,
+      "receiving_yards": 226
+    }
   },
   {
     "player_id": "rb-nick-singleton",
@@ -69,7 +130,14 @@
     "position": "RB",
     "school": "Penn State",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "rush_attempts": 123,
+      "rush_yards": 549,
+      "rush_tds": 13,
+      "yards_per_carry": 4.5,
+      "receptions": 24,
+      "receiving_yards": 219
+    }
   },
   {
     "player_id": "rb-jonah-coleman",
@@ -77,7 +145,14 @@
     "position": "RB",
     "school": "Washington",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "rush_attempts": 156,
+      "rush_yards": 758,
+      "rush_tds": 15,
+      "yards_per_carry": 4.9,
+      "receptions": 31,
+      "receiving_yards": 354
+    }
   },
   {
     "player_id": "wr-carnell-tate",
@@ -85,7 +160,12 @@
     "position": "WR",
     "school": "Ohio State",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "receptions": 51,
+      "receiving_yards": 875,
+      "receiving_tds": 9,
+      "yards_per_reception": 17.2
+    }
   },
   {
     "player_id": "wr-jordyn-tyson",
@@ -93,7 +173,12 @@
     "position": "WR",
     "school": "Arizona State",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "receptions": 61,
+      "receiving_yards": 711,
+      "receiving_tds": 8,
+      "yards_per_reception": 11.7
+    }
   },
   {
     "player_id": "wr-makai-lemon",
@@ -101,7 +186,12 @@
     "position": "WR",
     "school": "USC",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "receptions": 79,
+      "receiving_yards": 1156,
+      "receiving_tds": 11,
+      "yards_per_reception": 14.6
+    }
   },
   {
     "player_id": "wr-kc-concepcion",
@@ -109,7 +199,12 @@
     "position": "WR",
     "school": "Texas A&M",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "receptions": 61,
+      "receiving_yards": 919,
+      "receiving_tds": 9,
+      "yards_per_reception": 15.1
+    }
   },
   {
     "player_id": "wr-brenen-thompson",
@@ -117,7 +212,12 @@
     "position": "WR",
     "school": "Mississippi State",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "receptions": 57,
+      "receiving_yards": 1054,
+      "receiving_tds": 6,
+      "yards_per_reception": 18.5
+    }
   },
   {
     "player_id": "wr-chris-brazzell-ii",
@@ -125,7 +225,12 @@
     "position": "WR",
     "school": "Tennessee",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "receptions": 62,
+      "receiving_yards": 1017,
+      "receiving_tds": 9,
+      "yards_per_reception": 16.4
+    }
   },
   {
     "player_id": "wr-denzel-boston",
@@ -133,7 +238,12 @@
     "position": "WR",
     "school": "Washington",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "receptions": 62,
+      "receiving_yards": 881,
+      "receiving_tds": 11,
+      "yards_per_reception": 14.2
+    }
   },
   {
     "player_id": "wr-chris-bell",
@@ -141,7 +251,12 @@
     "position": "WR",
     "school": "Louisville",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "receptions": 72,
+      "receiving_yards": 917,
+      "receiving_tds": 6,
+      "yards_per_reception": 12.7
+    }
   },
   {
     "player_id": "wr-elijah-sarratt",
@@ -149,7 +264,12 @@
     "position": "WR",
     "school": "Indiana",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "receptions": 64,
+      "receiving_yards": 806,
+      "receiving_tds": 15,
+      "yards_per_reception": 12.6
+    }
   },
   {
     "player_id": "te-kenyon-sadiq",
@@ -157,7 +277,12 @@
     "position": "TE",
     "school": "Oregon",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "receptions": 51,
+      "receiving_yards": 560,
+      "receiving_tds": 8,
+      "yards_per_reception": 11.0
+    }
   },
   {
     "player_id": "te-max-klare",
@@ -165,7 +290,12 @@
     "position": "TE",
     "school": "Ohio State",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "receptions": 43,
+      "receiving_yards": 448,
+      "receiving_tds": 2,
+      "yards_per_reception": 10.4
+    }
   },
   {
     "player_id": "te-oscar-delp",
@@ -173,7 +303,12 @@
     "position": "TE",
     "school": "Georgia",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "receptions": 20,
+      "receiving_yards": 261,
+      "receiving_tds": 1,
+      "yards_per_reception": 13.1
+    }
   },
   {
     "player_id": "te-eli-stowers",
@@ -181,6 +316,11 @@
     "position": "TE",
     "school": "Vanderbilt",
     "season": 2025,
-    "stats": {}
+    "stats": {
+      "receptions": 61,
+      "receiving_yards": 765,
+      "receiving_tds": 4,
+      "yards_per_reception": 12.5
+    }
   }
 ]
