@@ -5,8 +5,8 @@
     "position": "QB",
     "school": "Indiana",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 87.9,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "qb-ty-simpson",
@@ -14,8 +14,8 @@
     "position": "QB",
     "school": "Alabama",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 87.7,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "qb-carson-beck",
@@ -50,8 +50,8 @@
     "position": "RB",
     "school": "Notre Dame",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 93.1,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "rb-jadarian-price",
@@ -59,8 +59,8 @@
     "position": "RB",
     "school": "Notre Dame",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 78.6,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "rb-mike-washington-jr",
@@ -95,8 +95,8 @@
     "position": "WR",
     "school": "Ohio State",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 90.3,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "wr-jordyn-tyson",
@@ -104,8 +104,8 @@
     "position": "WR",
     "school": "Arizona State",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 82.9,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "wr-makai-lemon",
@@ -176,8 +176,8 @@
     "position": "TE",
     "school": "Oregon",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 73.8,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "te-max-klare",
