@@ -369,6 +369,17 @@ def rookie_alpha_score(player: PlayerInputs) -> float:
     return clamp_0_100((0.35 * ras) + (0.45 * production) + (0.20 * draft))
 
 
+def talent_score(player: PlayerInputs) -> float:
+    """RAS + production only, renormalized to sum to 1.0.
+
+    Weights derived from rookie_alpha formula: 0.35 / 0.80 = 0.4375 (RAS),
+    0.45 / 0.80 = 0.5625 (production). Null inputs default to 50.0.
+    """
+    ras = player.ras_score_0_100 if player.ras_score_0_100 is not None else 50.0
+    production = player.production_score_0_100 if player.production_score_0_100 is not None else 50.0
+    return clamp_0_100((0.4375 * ras) + (0.5625 * production))
+
+
 def write_outputs(
     players: list[PlayerInputs],
     merge_diagnostics: MergeDiagnostics,
@@ -387,6 +398,7 @@ def write_outputs(
     missing_any = 0
     for p in players:
         alpha = rookie_alpha_score(p)
+        ts = talent_score(p)
         missing_components = [
             key
             for key, value in {
@@ -419,15 +431,24 @@ def write_outputs(
                         p.draft_capital_proxy_0_100 if p.draft_capital_proxy_0_100 is not None else 50.0,
                         4,
                     ),
+                    "talent_score_0_100": round(ts, 4),
                     "rookie_alpha_0_100": round(alpha, 4),
                 },
                 "model_inputs_missing": missing_components,
             }
         )
 
-    ranked.sort(key=lambda r: r["scores"]["rookie_alpha_0_100"], reverse=True)
+    ranked.sort(key=lambda r: (-r["scores"]["rookie_alpha_0_100"], r["player_id"]))
     for i, row in enumerate(ranked, start=1):
         row["rookie_alpha_rank"] = i
+
+    talent_sorted = sorted(ranked, key=lambda r: (-r["scores"]["talent_score_0_100"], r["player_id"]))
+    talent_rank_map = {row["player_id"]: i for i, row in enumerate(talent_sorted, start=1)}
+    for row in ranked:
+        row["talent_rank"] = talent_rank_map[row["player_id"]]
+
+    for row in ranked:
+        row["draft_proxy_delta"] = row["talent_rank"] - row["rookie_alpha_rank"]
 
     payload = {
         "model": {
@@ -481,7 +502,10 @@ def write_outputs(
                 "ras_0_100",
                 "production_0_100",
                 "draft_capital_proxy_0_100",
+                "talent_score_0_100",
                 "rookie_alpha_0_100",
+                "talent_rank",
+                "draft_proxy_delta",
                 "model_inputs_missing",
             ],
         )
@@ -496,7 +520,10 @@ def write_outputs(
                     "ras_0_100": row["scores"]["ras_0_100"],
                     "production_0_100": row["scores"]["production_0_100"],
                     "draft_capital_proxy_0_100": row["scores"]["draft_capital_proxy_0_100"],
+                    "talent_score_0_100": row["scores"]["talent_score_0_100"],
                     "rookie_alpha_0_100": row["scores"]["rookie_alpha_0_100"],
+                    "talent_rank": row["talent_rank"],
+                    "draft_proxy_delta": row["draft_proxy_delta"],
                     "model_inputs_missing": ",".join(row["model_inputs_missing"]),
                 }
             )

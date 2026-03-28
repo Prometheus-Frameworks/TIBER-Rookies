@@ -49,6 +49,8 @@ Top-level fields:
 Player fields:
 
 - `rookie_alpha_rank`
+- `talent_rank`: rank within the promoted cohort by talent_score_0_100 descending; ties broken by player_id ascending
+- `draft_proxy_delta`: talent_rank minus rookie_alpha_rank; positive = draft capital suppressing score (potential value); negative = draft capital boosting score; zero = no ranking movement
 - `player_id`
 - `player_name`
 - `position`
@@ -56,6 +58,7 @@ Player fields:
   - `ras_0_100`
   - `production_0_100`
   - `draft_capital_proxy_0_100`
+  - `talent_score_0_100`: RAS and production blended without draft capital proxy (RAS weight 0.4375, production weight 0.5625); null inputs default to 50.0
   - `rookie_alpha_0_100`
 - `model_inputs_missing`: list of missing components (`ras`, `production`, `draft_capital_proxy`)
 
@@ -70,8 +73,11 @@ Columns:
 5. `ras_0_100`
 6. `production_0_100`
 7. `draft_capital_proxy_0_100`
-8. `rookie_alpha_0_100`
-9. `model_inputs_missing`
+8. `talent_score_0_100`
+9. `rookie_alpha_0_100`
+10. `talent_rank`
+11. `draft_proxy_delta`
+12. `model_inputs_missing`
 
 CSV is a flattened companion artifact for row-oriented ingestion.
 
