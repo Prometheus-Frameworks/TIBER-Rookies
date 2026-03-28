@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-03-28T12:23:30+00:00",
-  "run_id": "rookie-alpha-2026-2026-03-28T12:23:30+00:00",
+  "generated_at": "2026-03-28T12:55:46+00:00",
+  "run_id": "rookie-alpha-2026-2026-03-28T12:55:46+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 0,
@@ -21,10 +21,10 @@
     "input_alignment": {
       "duplicate_rows_skipped": 0,
       "identity_conflicts_skipped": 0,
-      "missing_combine": 7,
-      "missing_production": 7,
-      "missing_draft_proxy": 4,
-      "total_excluded": 11
+      "missing_combine": 0,
+      "missing_production": 23,
+      "missing_draft_proxy": 16,
+      "total_excluded": 23
     }
   },
   "source_files_used": [
