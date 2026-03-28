@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-03-28T19:57:03+00:00",
-  "run_id": "rookie-alpha-2026-2026-03-28T19:57:03+00:00",
+  "generated_at": "2026-03-28T22:23:25+00:00",
+  "run_id": "rookie-alpha-2026-2026-03-28T22:23:25+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 7,
@@ -28,9 +28,9 @@
     }
   },
   "source_files_used": [
-    "data/raw/2026_combine_results.json",
-    "data/processed/2026_college_production.json",
-    "data/processed/2026_draft_capital_proxy.json"
+    "data\\raw\\2026_combine_results.json",
+    "data\\processed\\2026_college_production.json",
+    "data\\processed\\2026_draft_capital_proxy.json"
   ],
   "players": [
     {
@@ -39,10 +39,10 @@
       "position": "QB",
       "scores": {
         "ras_0_100": 65.168,
-        "production_0_100": 87.9,
+        "production_0_100": 81.2,
         "draft_capital_proxy_0_100": 95.0,
-        "talent_score_0_100": 77.9548,
-        "rookie_alpha_0_100": 81.3638
+        "talent_score_0_100": 74.186,
+        "rookie_alpha_0_100": 78.3488
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 1,
@@ -55,30 +55,14 @@
       "position": "RB",
       "scores": {
         "ras_0_100": 55.5775,
-        "production_0_100": 93.1,
+        "production_0_100": 75.0,
         "draft_capital_proxy_0_100": 95.0,
-        "talent_score_0_100": 76.6839,
-        "rookie_alpha_0_100": 80.3471
+        "talent_score_0_100": 66.5027,
+        "rookie_alpha_0_100": 72.2021
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 2,
       "talent_rank": 2,
-      "draft_proxy_delta": 0
-    },
-    {
-      "player_id": "wr-jordyn-tyson",
-      "player_name": "Jordyn Tyson",
-      "position": "WR",
-      "scores": {
-        "ras_0_100": 54.657,
-        "production_0_100": 82.9,
-        "draft_capital_proxy_0_100": 95.0,
-        "talent_score_0_100": 70.5437,
-        "rookie_alpha_0_100": 75.4349
-      },
-      "model_inputs_missing": [],
-      "rookie_alpha_rank": 3,
-      "talent_rank": 3,
       "draft_proxy_delta": 0
     },
     {
@@ -87,30 +71,30 @@
       "position": "WR",
       "scores": {
         "ras_0_100": 34.6625,
-        "production_0_100": 90.3,
+        "production_0_100": 73.7,
         "draft_capital_proxy_0_100": 95.0,
-        "talent_score_0_100": 65.9586,
-        "rookie_alpha_0_100": 71.7669
+        "talent_score_0_100": 56.6211,
+        "rookie_alpha_0_100": 64.2969
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 3,
+      "talent_rank": 3,
+      "draft_proxy_delta": 0
+    },
+    {
+      "player_id": "wr-jordyn-tyson",
+      "player_name": "Jordyn Tyson",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 54.657,
+        "production_0_100": 57.2,
+        "draft_capital_proxy_0_100": 95.0,
+        "talent_score_0_100": 56.0874,
+        "rookie_alpha_0_100": 63.8699
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 4,
       "talent_rank": 4,
-      "draft_proxy_delta": 0
-    },
-    {
-      "player_id": "qb-ty-simpson",
-      "player_name": "Ty Simpson",
-      "position": "QB",
-      "scores": {
-        "ras_0_100": 30.4966,
-        "production_0_100": 87.7,
-        "draft_capital_proxy_0_100": 85.0,
-        "talent_score_0_100": 62.6735,
-        "rookie_alpha_0_100": 67.1388
-      },
-      "model_inputs_missing": [],
-      "rookie_alpha_rank": 5,
-      "talent_rank": 5,
       "draft_proxy_delta": 0
     },
     {
@@ -119,14 +103,14 @@
       "position": "TE",
       "scores": {
         "ras_0_100": 45.0286,
-        "production_0_100": 73.8,
+        "production_0_100": 58.4,
         "draft_capital_proxy_0_100": 85.0,
-        "talent_score_0_100": 61.2125,
-        "rookie_alpha_0_100": 65.97
+        "talent_score_0_100": 52.55,
+        "rookie_alpha_0_100": 59.04
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 6,
-      "talent_rank": 6,
+      "rookie_alpha_rank": 5,
+      "talent_rank": 5,
       "draft_proxy_delta": 0
     },
     {
@@ -135,10 +119,26 @@
       "position": "RB",
       "scores": {
         "ras_0_100": 31.2399,
-        "production_0_100": 78.6,
+        "production_0_100": 66.8,
         "draft_capital_proxy_0_100": 65.0,
-        "talent_score_0_100": 57.88,
-        "rookie_alpha_0_100": 59.304
+        "talent_score_0_100": 51.2425,
+        "rookie_alpha_0_100": 53.994
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 6,
+      "talent_rank": 6,
+      "draft_proxy_delta": 0
+    },
+    {
+      "player_id": "qb-ty-simpson",
+      "player_name": "Ty Simpson",
+      "position": "QB",
+      "scores": {
+        "ras_0_100": 30.4966,
+        "production_0_100": 57.2,
+        "draft_capital_proxy_0_100": 85.0,
+        "talent_score_0_100": 45.5173,
+        "rookie_alpha_0_100": 53.4138
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 7,

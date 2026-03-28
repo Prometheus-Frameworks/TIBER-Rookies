@@ -68,8 +68,8 @@
     "position": "RB",
     "school": "Arkansas",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 62.8,
+    "production_score_source": "CFBD 2025 season stats (normalized RB production score)"
   },
   {
     "player_id": "rb-nick-singleton",
@@ -77,8 +77,8 @@
     "position": "RB",
     "school": "Penn State",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 65.7,
+    "production_score_source": "CFBD 2025 season stats (normalized RB production score)"
   },
   {
     "player_id": "rb-jonah-coleman",
@@ -122,8 +122,8 @@
     "position": "WR",
     "school": "Texas A&M",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 69.0,
+    "production_score_source": "CFBD 2025 season stats (normalized WR production score)"
   },
   {
     "player_id": "wr-brenen-thompson",
