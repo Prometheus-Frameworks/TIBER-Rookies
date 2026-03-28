@@ -11,26 +11,26 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-03-28T22:23:25+00:00",
-  "run_id": "rookie-alpha-2026-2026-03-28T22:23:25+00:00",
+  "generated_at": "2026-03-28T22:35:16+00:00",
+  "run_id": "rookie-alpha-2026-2026-03-28T22:35:16+00:00",
   "season": 2026,
   "coverage_summary": {
-    "players_total": 7,
+    "players_total": 20,
     "players_with_any_missing_input": 0,
-    "players_with_full_inputs": 7,
+    "players_with_full_inputs": 20,
     "input_alignment": {
       "duplicate_rows_skipped": 0,
       "identity_conflicts_skipped": 0,
       "missing_combine": 0,
       "missing_production": 0,
-      "missing_draft_proxy": 16,
-      "total_excluded": 16
+      "missing_draft_proxy": 3,
+      "total_excluded": 3
     }
   },
   "source_files_used": [
-    "data\\raw\\2026_combine_results.json",
-    "data\\processed\\2026_college_production.json",
-    "data\\processed\\2026_draft_capital_proxy.json"
+    "data/raw/2026_combine_results.json",
+    "data/processed/2026_college_production.json",
+    "data/processed/2026_draft_capital_proxy.json"
   ],
   "players": [
     {
@@ -66,6 +66,38 @@
       "draft_proxy_delta": 0
     },
     {
+      "player_id": "wr-denzel-boston",
+      "player_name": "Denzel Boston",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 56.4264,
+        "production_0_100": 68.5,
+        "draft_capital_proxy_0_100": 85.0,
+        "talent_score_0_100": 63.2178,
+        "rookie_alpha_0_100": 67.5742
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 3,
+      "talent_rank": 6,
+      "draft_proxy_delta": 3
+    },
+    {
+      "player_id": "wr-chris-bell",
+      "player_name": "Chris Bell",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 64.3816,
+        "production_0_100": 60.6,
+        "draft_capital_proxy_0_100": 75.0,
+        "talent_score_0_100": 62.2545,
+        "rookie_alpha_0_100": 64.8036
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 4,
+      "talent_rank": 8,
+      "draft_proxy_delta": 4
+    },
+    {
       "player_id": "wr-carnell-tate",
       "player_name": "Carnell Tate",
       "position": "WR",
@@ -77,9 +109,9 @@
         "rookie_alpha_0_100": 64.2969
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 3,
-      "talent_rank": 3,
-      "draft_proxy_delta": 0
+      "rookie_alpha_rank": 5,
+      "talent_rank": 11,
+      "draft_proxy_delta": 6
     },
     {
       "player_id": "wr-jordyn-tyson",
@@ -93,9 +125,89 @@
         "rookie_alpha_0_100": 63.8699
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 4,
+      "rookie_alpha_rank": 6,
+      "talent_rank": 14,
+      "draft_proxy_delta": 8
+    },
+    {
+      "player_id": "wr-chris-brazzell-ii",
+      "player_name": "Chris Brazzell II",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 54.3456,
+        "production_0_100": 73.4,
+        "draft_capital_proxy_0_100": 55.0,
+        "talent_score_0_100": 65.0637,
+        "rookie_alpha_0_100": 63.0509
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 7,
+      "talent_rank": 3,
+      "draft_proxy_delta": -4
+    },
+    {
+      "player_id": "qb-carson-beck",
+      "player_name": "Carson Beck",
+      "position": "QB",
+      "scores": {
+        "ras_0_100": 63.2332,
+        "production_0_100": 65.7,
+        "draft_capital_proxy_0_100": 55.0,
+        "talent_score_0_100": 64.6208,
+        "rookie_alpha_0_100": 62.6966
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 8,
       "talent_rank": 4,
-      "draft_proxy_delta": 0
+      "draft_proxy_delta": -4
+    },
+    {
+      "player_id": "wr-elijah-sarratt",
+      "player_name": "Elijah Sarratt",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 60.3276,
+        "production_0_100": 67.6,
+        "draft_capital_proxy_0_100": 55.0,
+        "talent_score_0_100": 64.4183,
+        "rookie_alpha_0_100": 62.5347
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 9,
+      "talent_rank": 5,
+      "draft_proxy_delta": -4
+    },
+    {
+      "player_id": "wr-kc-concepcion",
+      "player_name": "KC Concepcion",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 43.2509,
+        "production_0_100": 69.0,
+        "draft_capital_proxy_0_100": 75.0,
+        "talent_score_0_100": 57.7348,
+        "rookie_alpha_0_100": 61.1878
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 10,
+      "talent_rank": 9,
+      "draft_proxy_delta": -1
+    },
+    {
+      "player_id": "wr-makai-lemon",
+      "player_name": "Makai Lemon",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 37.2794,
+        "production_0_100": 73.0,
+        "draft_capital_proxy_0_100": 75.0,
+        "talent_score_0_100": 57.3723,
+        "rookie_alpha_0_100": 60.8978
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 11,
+      "talent_rank": 10,
+      "draft_proxy_delta": -1
     },
     {
       "player_id": "te-kenyon-sadiq",
@@ -109,9 +221,57 @@
         "rookie_alpha_0_100": 59.04
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 5,
-      "talent_rank": 5,
-      "draft_proxy_delta": 0
+      "rookie_alpha_rank": 12,
+      "talent_rank": 17,
+      "draft_proxy_delta": 5
+    },
+    {
+      "player_id": "rb-nick-singleton",
+      "player_name": "Nick Singleton",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 58.0578,
+        "production_0_100": 65.7,
+        "draft_capital_proxy_0_100": 45.0,
+        "talent_score_0_100": 62.3565,
+        "rookie_alpha_0_100": 58.8852
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 13,
+      "talent_rank": 7,
+      "draft_proxy_delta": -6
+    },
+    {
+      "player_id": "te-eli-stowers",
+      "player_name": "Eli Stowers",
+      "position": "TE",
+      "scores": {
+        "ras_0_100": 50.8029,
+        "production_0_100": 60.5,
+        "draft_capital_proxy_0_100": 55.0,
+        "talent_score_0_100": 56.2575,
+        "rookie_alpha_0_100": 56.006
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 14,
+      "talent_rank": 13,
+      "draft_proxy_delta": -1
+    },
+    {
+      "player_id": "rb-jonah-coleman",
+      "player_name": "Jonah Coleman",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 39.845,
+        "production_0_100": 69.4,
+        "draft_capital_proxy_0_100": 45.0,
+        "talent_score_0_100": 56.4697,
+        "rookie_alpha_0_100": 54.1758
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 15,
+      "talent_rank": 12,
+      "draft_proxy_delta": -3
     },
     {
       "player_id": "rb-jadarian-price",
@@ -125,9 +285,41 @@
         "rookie_alpha_0_100": 53.994
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 6,
-      "talent_rank": 6,
-      "draft_proxy_delta": 0
+      "rookie_alpha_rank": 16,
+      "talent_rank": 18,
+      "draft_proxy_delta": 2
+    },
+    {
+      "player_id": "te-max-klare",
+      "player_name": "Max Klare",
+      "position": "TE",
+      "scores": {
+        "ras_0_100": 59.0727,
+        "production_0_100": 49.2,
+        "draft_capital_proxy_0_100": 55.0,
+        "talent_score_0_100": 53.5193,
+        "rookie_alpha_0_100": 53.8155
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 17,
+      "talent_rank": 16,
+      "draft_proxy_delta": -1
+    },
+    {
+      "player_id": "qb-drew-allar",
+      "player_name": "Drew Allar",
+      "position": "QB",
+      "scores": {
+        "ras_0_100": 61.2878,
+        "production_0_100": 51.7,
+        "draft_capital_proxy_0_100": 45.0,
+        "talent_score_0_100": 55.8946,
+        "rookie_alpha_0_100": 53.7157
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 18,
+      "talent_rank": 15,
+      "draft_proxy_delta": -3
     },
     {
       "player_id": "qb-ty-simpson",
@@ -141,8 +333,24 @@
         "rookie_alpha_0_100": 53.4138
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 7,
-      "talent_rank": 7,
+      "rookie_alpha_rank": 19,
+      "talent_rank": 19,
+      "draft_proxy_delta": 0
+    },
+    {
+      "player_id": "qb-garrett-nussmeier",
+      "player_name": "Garrett Nussmeier",
+      "position": "QB",
+      "scores": {
+        "ras_0_100": 29.8143,
+        "production_0_100": 51.3,
+        "draft_capital_proxy_0_100": 55.0,
+        "talent_score_0_100": 41.9,
+        "rookie_alpha_0_100": 44.52
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 20,
+      "talent_rank": 20,
       "draft_proxy_delta": 0
     }
   ]
