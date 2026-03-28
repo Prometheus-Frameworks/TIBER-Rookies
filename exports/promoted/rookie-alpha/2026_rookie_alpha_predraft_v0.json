@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-03-28T15:15:45+00:00",
-  "run_id": "rookie-alpha-2026-2026-03-28T15:15:45+00:00",
+  "generated_at": "2026-03-28T19:57:03+00:00",
+  "run_id": "rookie-alpha-2026-2026-03-28T19:57:03+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 7,
@@ -22,7 +22,7 @@
       "duplicate_rows_skipped": 0,
       "identity_conflicts_skipped": 0,
       "missing_combine": 0,
-      "missing_production": 16,
+      "missing_production": 0,
       "missing_draft_proxy": 16,
       "total_excluded": 16
     }

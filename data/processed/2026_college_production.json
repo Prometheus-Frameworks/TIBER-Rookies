@@ -23,8 +23,8 @@
     "position": "QB",
     "school": "Miami (FL)",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 76.3,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "qb-drew-allar",
@@ -32,8 +32,8 @@
     "position": "QB",
     "school": "Penn State",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 72.4,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "qb-garrett-nussmeier",
@@ -41,8 +41,8 @@
     "position": "QB",
     "school": "LSU",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 77.1,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "rb-jeremiyah-love",
@@ -68,8 +68,8 @@
     "position": "RB",
     "school": "Arkansas",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 78.3,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "rb-nick-singleton",
@@ -77,8 +77,8 @@
     "position": "RB",
     "school": "Penn State",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 77.6,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "rb-jonah-coleman",
@@ -86,8 +86,8 @@
     "position": "RB",
     "school": "Washington",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 81.7,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "wr-carnell-tate",
@@ -113,8 +113,8 @@
     "position": "WR",
     "school": "USC",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 90.8,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "wr-kc-concepcion",
@@ -122,8 +122,8 @@
     "position": "WR",
     "school": "Texas A&M",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 78.4,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "wr-brenen-thompson",
@@ -131,8 +131,8 @@
     "position": "WR",
     "school": "Mississippi State",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 77.4,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "wr-chris-brazzell-ii",
@@ -140,8 +140,8 @@
     "position": "WR",
     "school": "Tennessee",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 79.4,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "wr-denzel-boston",
@@ -149,8 +149,8 @@
     "position": "WR",
     "school": "Washington",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 87.7,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "wr-chris-bell",
@@ -158,8 +158,8 @@
     "position": "WR",
     "school": "Louisville",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 81.8,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "wr-elijah-sarratt",
@@ -167,8 +167,8 @@
     "position": "WR",
     "school": "Indiana",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 85.0,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "te-kenyon-sadiq",
@@ -185,8 +185,8 @@
     "position": "TE",
     "school": "Ohio State",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 72.3,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "te-oscar-delp",
@@ -194,8 +194,8 @@
     "position": "TE",
     "school": "Georgia",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 65.7,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   },
   {
     "player_id": "te-eli-stowers",
@@ -203,7 +203,7 @@
     "position": "TE",
     "school": "Vanderbilt",
     "class_year": 2026,
-    "production_score_0_100": null,
-    "production_score_source": null
+    "production_score_0_100": 81.6,
+    "production_score_source": "PFF NCAA player page (2025 overall grade)"
   }
 ]
