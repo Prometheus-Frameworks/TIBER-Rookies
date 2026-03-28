@@ -28,6 +28,15 @@ POSITION_LIMITS = {
     "TE": 10.0,
 }
 
+# Maps normalized seed player names to known CFBD name variants.
+# Add entries here when CFBD uses a different form of a player's name
+# (e.g. full legal name vs. nickname, suffix differences).
+PLAYER_NAME_ALIASES: dict[str, list[str]] = {
+    "mike washington jr": ["michael washington"],
+    "nick singleton": ["nicholas singleton"],
+    "kc concepcion": ["kevin concepcion"],
+}
+
 
 @dataclass(frozen=True)
 class PopulationPlayer:
@@ -298,13 +307,37 @@ def match_seed_player(
     by_name_school, by_name = build_match_maps(position_population)
     normalized_name = normalize_identity(str(seed_row.get("player_name", "")))
     school_options = school_aliases(str(seed_row.get("school", "")))
+
+    # Try the seed name first (primary match: name + school).
     for school in school_options:
         match = by_name_school.get((normalized_name, school))
         if match:
             return match, "primary"
+
+    # Try known CFBD name aliases (primary quality: alias name + school).
+    for alias_name in PLAYER_NAME_ALIASES.get(normalized_name, []):
+        for school in school_options:
+            match = by_name_school.get((alias_name, school))
+            if match:
+                logging.info(
+                    "MATCH ALIAS: %s resolved to CFBD name '%s' (%s)",
+                    seed_row.get("player_name"),
+                    match.name,
+                    match.school,
+                )
+                return match, "primary"
+
+    # Fallback: name only (no school check).
     fallback_candidates = by_name.get(normalized_name, [])
     if fallback_candidates:
         return fallback_candidates[0], "name-only"
+
+    # Also try alias names as name-only fallback.
+    for alias_name in PLAYER_NAME_ALIASES.get(normalized_name, []):
+        alias_candidates = by_name.get(alias_name, [])
+        if alias_candidates:
+            return alias_candidates[0], "name-only"
+
     return None, "failed"
 
 
