@@ -13,6 +13,7 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
   const compareLeftHref = `/cards/rookies/compare/index.html?left=${slug}`;
   const compareRightHref = `/cards/rookies/compare/index.html?right=${slug}`;
   const queueTag = queueAnnotation?.queueTag ?? '';
+  const translationPills = (row.translationFlags ?? []).slice(0, 3);
 
   return `
     <article class="board-row ${isQueued ? 'board-row-queued' : ''}">
@@ -20,6 +21,7 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
       <div class="board-cell board-player" data-label="Player">
         <div class="board-player-name">${esc(row.name)}</div>
         <div class="meta">${esc(row.profileSummary)}</div>
+        ${translationPills.length ? `<div class="meta">${translationPills.map((flag) => `<span class="tag">${esc(String(flag).replace(/_/g, ' '))}</span>`).join('')}</div>` : ''}
         ${isQueued && queueTag ? `<div class="meta queue-inline-indicator">Queue tag: <span class="queue-tag-pill">${esc(queueTag)}</span></div>` : ''}
       </div>
       <div class="board-cell" data-label="Position">${esc(row.position)}</div>

@@ -30,7 +30,7 @@ Top-level fields:
   - `name`: `tiber-rookie-alpha`
   - `stage`: `pre-draft`
   - `label`: `pre-draft v0`
-  - `model_version`: semantic version for handoff safety
+  - `model_version`: semantic version for handoff safety (`rookie-alpha-predraft-v0.2.0` adds optional context/evidence fields only)
   - `formula`
     - `ras_weight` (0.35)
     - `production_weight` (0.45)
@@ -43,6 +43,7 @@ Top-level fields:
   - `players_total`
   - `players_with_any_missing_input`
   - `players_with_full_inputs`
+  - `players_with_context_fields` (additive count of players with deterministic context rows attached)
 - `source_files_used`: list of artifact file paths used for the run
 - `players`: ordered list, highest `rookie_alpha_0_100` first
 
@@ -61,6 +62,19 @@ Player fields:
   - `talent_score_0_100`: RAS and production blended without draft capital proxy (RAS weight 0.4375, production weight 0.5625); null inputs default to 50.0
   - `rookie_alpha_0_100`
 - `model_inputs_missing`: list of missing components (`ras`, `production`, `draft_capital_proxy`)
+- `context` (optional additive block with deterministic translation/context fields; unavailable values stay `null`)
+- `evidence` (optional additive block)
+  - `evidence_tags` (fixed vocabulary)
+  - `context_flags` (fixed vocabulary)
+  - `translation_flags` (fixed surfaced subset for board/detail/compare)
+  - `evidence_summary` (template-style deterministic summary)
+  - `context_source` (provenance label)
+
+Additive compatibility note:
+
+- Existing score fields and rank behavior are unchanged.
+- Rookie Alpha formula/weights are unchanged.
+- Consumers may ignore `context` and `evidence` without breaking ingest.
 
 ## CSV contract
 
@@ -114,6 +128,10 @@ Top-level fields:
 
 For the real 2026 seed pool, `draft_capital_proxy_0_100` is a temporary pre-draft conversion from seeded `big_board_rank` values. It is explicitly not equivalent to realized NFL draft capital.
 
+Optional deterministic context artifact (additive only):
+
+- `data/processed/2026_prospect_context.json`
+
 Applied deterministic mapping:
 
 - `1–10` => `95`
@@ -134,6 +152,7 @@ python3 scripts/compute_rookie_alpha.py \
   --combine-input data/raw/2026_combine_results.json \
   --production-input data/processed/2026_college_production.json \
   --draft-proxy-input data/processed/2026_draft_capital_proxy.json \
+  --context-input data/processed/2026_prospect_context.json \
   --output-json exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json \
   --output-csv exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.csv \
   --output-manifest exports/promoted/rookie-alpha/2026_manifest.json

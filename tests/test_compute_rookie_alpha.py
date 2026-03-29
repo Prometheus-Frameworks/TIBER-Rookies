@@ -5,6 +5,7 @@ from pathlib import Path
 from scripts.compute_rookie_alpha import (
     MergeDiagnostics,
     PlayerInputs,
+    load_context_by_player_id,
     coerce_float,
     compute_ras_scores,
     load_json,
@@ -171,6 +172,48 @@ class RookieAlphaTests(unittest.TestCase):
             self.assertEqual(manifest["output_files"][1]["sha256"], sha256_file(out_csv))
             self.assertEqual(manifest["input_files"][0]["row_count"], 0)
             self.assertEqual(manifest["export_metadata"]["coverage_summary"], manifest["coverage_summary"])
+            self.assertEqual(manifest["model_version"], "rookie-alpha-predraft-v0.2.0")
+
+    def test_context_is_additive_and_optional(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            combine = tmp_path / "combine.json"
+            production = tmp_path / "production.json"
+            draft = tmp_path / "draft.json"
+            context = tmp_path / "context.json"
+            combine.write_text("[]\n", encoding="utf-8")
+            production.write_text("[]\n", encoding="utf-8")
+            draft.write_text("[]\n", encoding="utf-8")
+            context.write_text(
+                '[{"player_id":"p1","player_name":"One","position":"WR","school":"School","class_year":2026,"evidence_tags":["early_declare"],"context_flags":["limited_multi_season_data"],"evidence_summary":"Summary."}]',
+                encoding="utf-8",
+            )
+            out_json = tmp_path / "out.json"
+            out_csv = tmp_path / "out.csv"
+            out_manifest = tmp_path / "manifest.json"
+            player = PlayerInputs("p1", "One", "WR", 80.0, 70.0, 60.0)
+            write_outputs(
+                players=[player],
+                merge_diagnostics=MergeDiagnostics(0, 0, {"missing_combine": 0, "missing_production": 0, "missing_draft_proxy": 0, "total_excluded": 0}),
+                season=2026,
+                combine_path=combine,
+                production_path=production,
+                draft_proxy_path=draft,
+                output_json=out_json,
+                output_csv=out_csv,
+                output_manifest=out_manifest,
+                context_path=context,
+                context_by_id=load_context_by_player_id(context),
+            )
+            payload = load_json(out_json)
+            self.assertIn("context", payload["players"][0])
+            self.assertIn("evidence", payload["players"][0])
+            self.assertEqual(payload["coverage_summary"]["players_with_context_fields"], 1)
+            self.assertIn(str(context), payload["source_files_used"])
+
+    def test_missing_context_file_does_not_fail(self) -> None:
+        context_map = load_context_by_player_id(Path("/tmp/missing-context-file.json"))
+        self.assertEqual(context_map, {})
 
     def test_missing_required_player_fields_are_skipped(self) -> None:
         players, _ = merge_inputs(

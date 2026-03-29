@@ -103,19 +103,20 @@ This repo has two intentionally separated layers:
   - canonical combine inputs projected from the 2026 real seed pool
 - `data/processed/`
   - canonical production + draft-capital-proxy inputs aligned to the same 2026 real seed pool
+  - optional deterministic context scaffold (`2026_prospect_context.json`) for additive translation/evidence enrichment
 - `exports/promoted/rookie-alpha/`
   - generated promoted outputs
 
 ## Current model implementation (pre-draft v0)
 
-Implemented formula:
+Implemented formula (unchanged):
 
 - **RAS 35%**
 - **Production 45%**
 - **Draft capital proxy 20%**
 - **Age-at-entry not implemented yet**
 
-This is explicitly labeled `pre-draft v0` in export metadata.
+This is explicitly labeled `pre-draft v0` in export metadata. Current model version `rookie-alpha-predraft-v0.2.0` adds additive deterministic `context`/`evidence` player fields only; Rookie Alpha weights and ranking formula are unchanged.
 
 ## 2026 temporary pre-draft draft-capital proxy conversion
 
@@ -147,6 +148,7 @@ python3 scripts/compute_rookie_alpha.py \
   --combine-input data/raw/2026_combine_results.json \
   --production-input data/processed/2026_college_production.json \
   --draft-proxy-input data/processed/2026_draft_capital_proxy.json \
+  --context-input data/processed/2026_prospect_context.json \
   --output-json exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json \
   --output-csv exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.csv \
   --output-manifest exports/promoted/rookie-alpha/2026_manifest.json

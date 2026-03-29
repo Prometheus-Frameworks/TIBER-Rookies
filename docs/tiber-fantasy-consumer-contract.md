@@ -7,6 +7,7 @@ This document defines the ingestion gate TIBER-Fantasy should enforce before imp
 TIBER-Fantasy should consume promoted exports as versioned artifacts.
 
 It should **not** depend on this repository's static rookie prototype routes (`gallery`, `board`, `detail`, `compare`, local queue) as a runtime service boundary.
+It should continue treating the promoted JSON/CSV/manifest triplet as the only ingest boundary even when additive context/evidence fields are present in JSON rows.
 
 ## Required files
 
@@ -57,6 +58,14 @@ The following values must be identical across export and manifest:
 - `run_id`
 - `coverage_summary`
 - `source_files_used` (export) vs input file `path` sequence (manifest)
+
+## Additive context/evidence fields (v0.2.0)
+
+Promoted player rows may include optional `context` and `evidence` objects for deterministic explanation/enrichment.
+
+- These fields are additive and may be absent for some/all players.
+- Ingest should not require them.
+- They do not change `scores` semantics or Rookie Alpha formula outputs.
 
 ## Failure conditions
 
