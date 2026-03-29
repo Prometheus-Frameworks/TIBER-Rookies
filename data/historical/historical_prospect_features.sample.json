@@ -55,19 +55,23 @@
     "draft_year": 2020,
     "source_season": 2019,
     "ras_0_100": 74.5,
-    "production_0_100": 71.5,
+    "production_0_100": 68.6,
     "draft_capital_proxy_0_100": 85.0,
     "size_context_0_100": 75.0,
-    "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page + Pro Football Network 2020 RAS table",
-    "source_url": "https://www.profootballnetwork.com/nfl-draft-relative-athletic-scores-math-bomb/",
-    "notes": "pre-draft receiving yards: 1327; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds).",
+    "normalization_scope": "historical-wr-cfbd-method-v1",
+    "source_name": "Wikipedia player page (college receiving totals by season); existing RAS + draft capital sourcing retained",
+    "source_url": "https://en.wikipedia.org/wiki/CeeDee_Lamb",
+    "notes": "Sourced 2019 receiving line for WR production methodology harmonization (REC/yds/TD = 62/1327/14).",
     "normalization_anchor": {
       "min_player": "wr-jamarr-chase-2021",
       "min_yards": 0,
       "max_player": "wr-devonta-smith-2021",
       "max_yards": 1856
-    }
+    },
+    "receptions": 62,
+    "receiving_yards": 1327,
+    "receiving_tds": 14,
+    "production_0_100_legacy": 71.5
   },
   {
     "player_id": "wr-jerry-jeudy-2020",
@@ -77,19 +81,23 @@
     "draft_year": 2020,
     "source_season": 2019,
     "ras_0_100": 67.8,
-    "production_0_100": 62.66,
+    "production_0_100": 45.3,
     "draft_capital_proxy_0_100": 85.0,
     "size_context_0_100": 65.0,
-    "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page + Pro Football Network 2020 RAS table",
-    "source_url": "https://www.profootballnetwork.com/nfl-draft-relative-athletic-scores-math-bomb/",
-    "notes": "pre-draft receiving yards: 1163; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds).",
+    "normalization_scope": "historical-wr-cfbd-method-v1",
+    "source_name": "Wikipedia player page (college receiving totals by season); existing RAS + draft capital sourcing retained",
+    "source_url": "https://en.wikipedia.org/wiki/Jerry_Jeudy",
+    "notes": "Sourced 2019 receiving line for WR production methodology harmonization (REC/yds/TD = 77/1163/10).",
     "normalization_anchor": {
       "min_player": "wr-jamarr-chase-2021",
       "min_yards": 0,
       "max_player": "wr-devonta-smith-2021",
       "max_yards": 1856
-    }
+    },
+    "receptions": 77,
+    "receiving_yards": 1163,
+    "receiving_tds": 10,
+    "production_0_100_legacy": 62.66
   },
   {
     "player_id": "wr-justin-jefferson-2020",
@@ -99,19 +107,23 @@
     "draft_year": 2020,
     "source_season": 2019,
     "ras_0_100": 96.9,
-    "production_0_100": 82.97,
+    "production_0_100": 50.8,
     "draft_capital_proxy_0_100": 75.0,
     "size_context_0_100": 45.0,
-    "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page + Pro Football Network 2020 RAS table",
-    "source_url": "https://www.profootballnetwork.com/nfl-draft-relative-athletic-scores-math-bomb/",
-    "notes": "pre-draft receiving yards: 1540; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds).",
+    "normalization_scope": "historical-wr-cfbd-method-v1",
+    "source_name": "Wikipedia player page (college receiving totals by season); existing RAS + draft capital sourcing retained",
+    "source_url": "https://en.wikipedia.org/wiki/Justin_Jefferson",
+    "notes": "Sourced 2019 receiving line for WR production methodology harmonization (REC/yds/TD = 111/1540/18).",
     "normalization_anchor": {
       "min_player": "wr-jamarr-chase-2021",
       "min_yards": 0,
       "max_player": "wr-devonta-smith-2021",
       "max_yards": 1856
-    }
+    },
+    "receptions": 111,
+    "receiving_yards": 1540,
+    "receiving_tds": 18,
+    "production_0_100_legacy": 82.97
   },
   {
     "player_id": "wr-brandon-aiyuk-2020",
@@ -121,19 +133,23 @@
     "draft_year": 2020,
     "source_season": 2019,
     "ras_0_100": 84.6,
-    "production_0_100": 64.22,
+    "production_0_100": 52.1,
     "draft_capital_proxy_0_100": 75.0,
     "size_context_0_100": 30.0,
-    "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page + Pro Football Network 2020 RAS table",
-    "source_url": "https://www.profootballnetwork.com/nfl-draft-relative-athletic-scores-math-bomb/",
-    "notes": "pre-draft receiving yards: 1192; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds).",
+    "normalization_scope": "historical-wr-cfbd-method-v1",
+    "source_name": "Wikipedia player page (college receiving totals by season); existing RAS + draft capital sourcing retained",
+    "source_url": "https://en.wikipedia.org/wiki/Brandon_Aiyuk",
+    "notes": "Sourced 2019 receiving line for WR production methodology harmonization (REC/yds/TD = 65/1192/8).",
     "normalization_anchor": {
       "min_player": "wr-jamarr-chase-2021",
       "min_yards": 0,
       "max_player": "wr-devonta-smith-2021",
       "max_yards": 1856
-    }
+    },
+    "receptions": 65,
+    "receiving_yards": 1192,
+    "receiving_tds": 8,
+    "production_0_100_legacy": 64.22
   },
   {
     "player_id": "wr-tee-higgins-2020",
@@ -143,19 +159,23 @@
     "draft_year": 2020,
     "source_season": 2019,
     "ras_0_100": 41.6,
-    "production_0_100": 62.88,
+    "production_0_100": 62.4,
     "draft_capital_proxy_0_100": 65.0,
     "size_context_0_100": 50.0,
-    "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page + Pro Football Network 2020 RAS table",
-    "source_url": "https://www.profootballnetwork.com/nfl-draft-relative-athletic-scores-math-bomb/",
-    "notes": "pre-draft receiving yards: 1167; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds).",
+    "normalization_scope": "historical-wr-cfbd-method-v1",
+    "source_name": "Wikipedia player page (college receiving totals by season); existing RAS + draft capital sourcing retained",
+    "source_url": "https://en.wikipedia.org/wiki/Tee_Higgins",
+    "notes": "Sourced 2019 receiving line for WR production methodology harmonization (REC/yds/TD = 59/1167/13).",
     "normalization_anchor": {
       "min_player": "wr-jamarr-chase-2021",
       "min_yards": 0,
       "max_player": "wr-devonta-smith-2021",
       "max_yards": 1856
-    }
+    },
+    "receptions": 59,
+    "receiving_yards": 1167,
+    "receiving_tds": 13,
+    "production_0_100_legacy": 62.88
   },
   {
     "player_id": "wr-jamarr-chase-2021",
@@ -165,20 +185,24 @@
     "draft_year": 2021,
     "source_season": 2020,
     "ras_0_100": 98.2,
-    "production_0_100": 0.0,
+    "production_0_100": null,
     "draft_capital_proxy_0_100": 95.0,
     "size_context_0_100": 65.0,
-    "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page + RAS.football team/pro-bowl tables",
-    "source_url": "https://ras.football/2025-initial-pro-bowl-roster/",
-    "notes": "pre-draft receiving yards: 0; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds).",
+    "normalization_scope": "historical-wr-cfbd-method-v1-null",
+    "source_name": "Wikipedia player page (college receiving totals by season); existing RAS + draft capital sourcing retained",
+    "source_url": "https://en.wikipedia.org/wiki/Ja%27Marr_Chase",
+    "notes": "pre-draft receiving yards: 0; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds). 2020 opt-out: no eligible receiving stat line for production scoring.",
     "opt_out_season_flag": true,
     "normalization_anchor": {
       "min_player": "wr-jamarr-chase-2021",
       "min_yards": 0,
       "max_player": "wr-devonta-smith-2021",
       "max_yards": 1856
-    }
+    },
+    "receptions": null,
+    "receiving_yards": null,
+    "receiving_tds": null,
+    "production_0_100_legacy": 0.0
   },
   {
     "player_id": "wr-jaylen-waddle-2021",
@@ -188,19 +212,23 @@
     "draft_year": 2021,
     "source_season": 2020,
     "ras_0_100": null,
-    "production_0_100": 30.01,
+    "production_0_100": 47.5,
     "draft_capital_proxy_0_100": 90.0,
     "size_context_0_100": 45.0,
-    "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page (college receiving stats + pre-draft measurables + draft pick); player-level RAS check returned null in this pass",
+    "normalization_scope": "historical-wr-cfbd-method-v1",
+    "source_name": "Wikipedia player page (college receiving totals by season); existing RAS + draft capital sourcing retained",
     "source_url": "https://en.wikipedia.org/wiki/Jaylen_Waddle",
-    "notes": "pre-draft receiving yards: 557; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds). ras_0_100 remains null because no clean player-level RAS value (ras.football player page or explicit player Wikipedia RAS entry) was found in this pass.",
+    "notes": "Sourced 2020 receiving line for WR production methodology harmonization (REC/yds/TD = 28/557/4).",
     "normalization_anchor": {
       "min_player": "wr-jamarr-chase-2021",
       "min_yards": 0,
       "max_player": "wr-devonta-smith-2021",
       "max_yards": 1856
-    }
+    },
+    "receptions": 28,
+    "receiving_yards": 557,
+    "receiving_tds": 4,
+    "production_0_100_legacy": 30.01
   },
   {
     "player_id": "wr-devonta-smith-2021",
@@ -210,19 +238,23 @@
     "draft_year": 2021,
     "source_season": 2020,
     "ras_0_100": null,
-    "production_0_100": 100.0,
+    "production_0_100": 62.4,
     "draft_capital_proxy_0_100": 85.0,
     "size_context_0_100": 50.0,
-    "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page (college receiving stats + pre-draft measurables + draft pick); player-level RAS check returned null in this pass",
+    "normalization_scope": "historical-wr-cfbd-method-v1",
+    "source_name": "Wikipedia player page (college receiving totals by season); existing RAS + draft capital sourcing retained",
     "source_url": "https://en.wikipedia.org/wiki/DeVonta_Smith",
-    "notes": "pre-draft receiving yards: 1856; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds). ras_0_100 remains null because no clean player-level RAS value (ras.football player page or explicit player Wikipedia RAS entry) was found in this pass.",
+    "notes": "Sourced 2020 receiving line for WR production methodology harmonization (REC/yds/TD = 117/1856/23).",
     "normalization_anchor": {
       "min_player": "wr-jamarr-chase-2021",
       "min_yards": 0,
       "max_player": "wr-devonta-smith-2021",
       "max_yards": 1856
-    }
+    },
+    "receptions": 117,
+    "receiving_yards": 1856,
+    "receiving_tds": 23,
+    "production_0_100_legacy": 100.0
   },
   {
     "player_id": "wr-kadarius-toney-2021",
@@ -232,19 +264,23 @@
     "draft_year": 2021,
     "source_season": 2020,
     "ras_0_100": 89.9,
-    "production_0_100": 53.02,
+    "production_0_100": 41.5,
     "draft_capital_proxy_0_100": 75.0,
     "size_context_0_100": 20.0,
-    "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page + RAS.football team/pro-bowl tables",
-    "source_url": "https://ras.football/new-york-giants-ras-team-page/",
-    "notes": "pre-draft receiving yards: 984; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds).",
+    "normalization_scope": "historical-wr-cfbd-method-v1",
+    "source_name": "Wikipedia player page (college receiving totals by season); existing RAS + draft capital sourcing retained",
+    "source_url": "https://en.wikipedia.org/wiki/Kadarius_Toney",
+    "notes": "Sourced 2020 receiving line for WR production methodology harmonization (REC/yds/TD = 70/984/10).",
     "normalization_anchor": {
       "min_player": "wr-jamarr-chase-2021",
       "min_yards": 0,
       "max_player": "wr-devonta-smith-2021",
       "max_yards": 1856
-    }
+    },
+    "receptions": 70,
+    "receiving_yards": 984,
+    "receiving_tds": 10,
+    "production_0_100_legacy": 53.02
   },
   {
     "player_id": "wr-rashod-bateman-2021",
@@ -254,19 +290,23 @@
     "draft_year": 2021,
     "source_season": 2020,
     "ras_0_100": 80.4,
-    "production_0_100": 25.43,
+    "production_0_100": 25.0,
     "draft_capital_proxy_0_100": 80.0,
     "size_context_0_100": 55.0,
-    "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page + RAS.football team/pro-bowl tables",
-    "source_url": "https://ras.football/baltimore-ravens-ras-team-page/",
-    "notes": "pre-draft receiving yards: 472; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds).",
+    "normalization_scope": "historical-wr-cfbd-method-v1",
+    "source_name": "Wikipedia player page (college receiving totals by season); existing RAS + draft capital sourcing retained",
+    "source_url": "https://en.wikipedia.org/wiki/Rashod_Bateman",
+    "notes": "Sourced 2020 receiving line for WR production methodology harmonization (REC/yds/TD = 36/472/2).",
     "normalization_anchor": {
       "min_player": "wr-jamarr-chase-2021",
       "min_yards": 0,
       "max_player": "wr-devonta-smith-2021",
       "max_yards": 1856
-    }
+    },
+    "receptions": 36,
+    "receiving_yards": 472,
+    "receiving_tds": 2,
+    "production_0_100_legacy": 25.43
   },
   {
     "player_id": "wr-garrett-wilson-2022",
@@ -276,19 +316,23 @@
     "draft_year": 2022,
     "source_season": 2021,
     "ras_0_100": null,
-    "production_0_100": 57.0,
+    "production_0_100": 47.0,
     "draft_capital_proxy_0_100": 95.0,
     "size_context_0_100": 44.44,
-    "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page + FantasyData (college production sourcing); player-level RAS check returned null in this pass",
+    "normalization_scope": "historical-wr-cfbd-method-v1",
+    "source_name": "Wikipedia player page (college receiving totals by season); existing RAS + draft capital sourcing retained",
     "source_url": "https://en.wikipedia.org/wiki/Garrett_Wilson",
-    "notes": "pre-draft receiving yards: 1058; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds). ras_0_100 remains null because no clean player-level RAS value (ras.football player page or explicit player Wikipedia RAS entry) was found in this pass.",
+    "notes": "Sourced 2021 receiving line for WR production methodology harmonization (REC/yds/TD = 70/1058/12).",
     "normalization_anchor": {
       "min_player": "wr-jamarr-chase-2021",
       "min_yards": 0,
       "max_player": "wr-devonta-smith-2021",
       "max_yards": 1856
-    }
+    },
+    "receptions": 70,
+    "receiving_yards": 1058,
+    "receiving_tds": 12,
+    "production_0_100_legacy": 57.0
   },
   {
     "player_id": "wr-drake-london-2022",
@@ -298,19 +342,23 @@
     "draft_year": 2022,
     "source_season": 2021,
     "ras_0_100": null,
-    "production_0_100": 58.41,
+    "production_0_100": 34.3,
     "draft_capital_proxy_0_100": 95.0,
     "size_context_0_100": 70.0,
-    "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page + FantasyData (college production sourcing); player-level RAS check returned null in this pass",
+    "normalization_scope": "historical-wr-cfbd-method-v1",
+    "source_name": "Wikipedia player page (college receiving totals by season); existing RAS + draft capital sourcing retained",
     "source_url": "https://en.wikipedia.org/wiki/Drake_London",
-    "notes": "pre-draft receiving yards: 1084; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds). ras_0_100 remains null because no clean player-level RAS value (ras.football player page or explicit player Wikipedia RAS entry) was found in this pass.",
+    "notes": "Sourced 2021 receiving line for WR production methodology harmonization (REC/yds/TD = 88/1084/7).",
     "normalization_anchor": {
       "min_player": "wr-jamarr-chase-2021",
       "min_yards": 0,
       "max_player": "wr-devonta-smith-2021",
       "max_yards": 1856
-    }
+    },
+    "receptions": 88,
+    "receiving_yards": 1084,
+    "receiving_tds": 7,
+    "production_0_100_legacy": 58.41
   },
   {
     "player_id": "wr-chris-olave-2022",
@@ -320,19 +368,23 @@
     "draft_year": 2022,
     "source_season": 2021,
     "ras_0_100": 86.4,
-    "production_0_100": 50.43,
+    "production_0_100": 46.0,
     "draft_capital_proxy_0_100": 85.0,
     "size_context_0_100": 40.0,
-    "normalization_scope": "cross-class-wr-v0",
-    "source_name": "FantasyData player page + Wikipedia player page + public RAS references",
+    "normalization_scope": "historical-wr-cfbd-method-v1",
+    "source_name": "Wikipedia player page (college receiving totals by season); existing RAS + draft capital sourcing retained",
     "source_url": "https://en.wikipedia.org/wiki/Chris_Olave",
-    "notes": "pre-draft receiving yards: 936; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds).",
+    "notes": "Sourced 2021 receiving line for WR production methodology harmonization (REC/yds/TD = 65/936/13).",
     "normalization_anchor": {
       "min_player": "wr-jamarr-chase-2021",
       "min_yards": 0,
       "max_player": "wr-devonta-smith-2021",
       "max_yards": 1856
-    }
+    },
+    "receptions": 65,
+    "receiving_yards": 936,
+    "receiving_tds": 13,
+    "production_0_100_legacy": 50.43
   },
   {
     "player_id": "wr-jameson-williams-2022",
@@ -342,19 +394,23 @@
     "draft_year": 2022,
     "source_season": 2021,
     "ras_0_100": null,
-    "production_0_100": 84.7,
+    "production_0_100": 66.3,
     "draft_capital_proxy_0_100": 85.0,
     "size_context_0_100": 36.67,
-    "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page + FantasyData (college production sourcing); player-level RAS check returned null in this pass",
+    "normalization_scope": "historical-wr-cfbd-method-v1",
+    "source_name": "Wikipedia player page (college receiving totals by season); existing RAS + draft capital sourcing retained",
     "source_url": "https://en.wikipedia.org/wiki/Jameson_Williams",
-    "notes": "pre-draft receiving yards: 1572; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds). ras_0_100 remains null because no clean player-level RAS value (ras.football player page or explicit player Wikipedia RAS entry) was found in this pass.",
+    "notes": "Sourced 2021 receiving line for WR production methodology harmonization (REC/yds/TD = 79/1572/15).",
     "normalization_anchor": {
       "min_player": "wr-jamarr-chase-2021",
       "min_yards": 0,
       "max_player": "wr-devonta-smith-2021",
       "max_yards": 1856
-    }
+    },
+    "receptions": 79,
+    "receiving_yards": 1572,
+    "receiving_tds": 15,
+    "production_0_100_legacy": 84.7
   },
   {
     "player_id": "wr-treylon-burks-2022",
@@ -364,18 +420,22 @@
     "draft_year": 2022,
     "source_season": 2021,
     "ras_0_100": 57.8,
-    "production_0_100": 59.48,
+    "production_0_100": 50.8,
     "draft_capital_proxy_0_100": 85.0,
     "size_context_0_100": 58.89,
-    "normalization_scope": "cross-class-wr-v0",
-    "source_name": "FantasyData player page + Wikipedia player page + public RAS references",
+    "normalization_scope": "historical-wr-cfbd-method-v1",
+    "source_name": "Wikipedia player page (college receiving totals by season); existing RAS + draft capital sourcing retained",
     "source_url": "https://en.wikipedia.org/wiki/Treylon_Burks",
-    "notes": "pre-draft receiving yards: 1104; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds).",
+    "notes": "Sourced 2021 receiving line for WR production methodology harmonization (REC/yds/TD = 66/1104/11).",
     "normalization_anchor": {
       "min_player": "wr-jamarr-chase-2021",
       "min_yards": 0,
       "max_player": "wr-devonta-smith-2021",
       "max_yards": 1856
-    }
+    },
+    "receptions": 66,
+    "receiving_yards": 1104,
+    "receiving_tds": 11,
+    "production_0_100_legacy": 59.48
   }
 ]
