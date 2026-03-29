@@ -92,4 +92,4 @@ Producer must validate:
 
 Because sandbox environments may not populate live historical APIs, this contract supports local operator population of historical files with real data while preserving the exact same row shape and artifact interface.
 
-The committed `exports/promoted/historical-comps/2026_historical_comps_v0.json` file in this repository is sample/scaffold output driven by sample fixture rows, not a full populated historical warehouse artifact.
+The committed `exports/promoted/historical-comps/2026_historical_comps_v0.json` file is now partially populated with real WR historical cohort rows while other positions may still be scaffold/sample-backed. It is not yet a fully populated historical warehouse artifact.

@@ -2,8 +2,8 @@
 
 This directory is the canonical staging lane for **historical prospect comp inputs**.
 
-The files currently committed here are **schema + sample fixtures only** so the contract is explicit and testable in-repo.
-They are not a fully populated historical warehouse.
+The files currently committed here are **schema + partial fixture population** so the contract is explicit and testable in-repo.
+WR is now seeded with a small real historical cohort while QB/TE remain sample scaffolding. This is still not a fully populated historical warehouse.
 
 ## Canonical files
 
@@ -16,7 +16,7 @@ They are not a fully populated historical warehouse.
 - Deterministic, machine-readable row contracts.
 - Explicit `null` values for unavailable historical inputs.
 - No fabricated claims of complete historical population.
-- Local operators can replace `*.sample.json` with real locally generated files that follow the same row shape.
+- Local operators can continue expanding the lane position-by-position with real sourced rows that follow the same row shape.
 
 ## Relationship to comp producer
 
