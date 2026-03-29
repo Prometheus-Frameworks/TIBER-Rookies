@@ -18,6 +18,7 @@ Each row represents one historical drafted prospect candidate used for nearest-n
 ## Optional fields
 
 - `size_context_0_100` (number | null): optional size/context signal for talent-profile tie-breaking.
+- `normalization_anchor` (object | null): optional explicit min/max anchor metadata for the current `production_0_100` normalization regime (e.g., min/max player id and raw production values).
 - `source_name` (string | null): human-readable provenance source label.
 - `source_url` (string | null): provenance URL.
 - `notes` (string | null): operator note if useful.
