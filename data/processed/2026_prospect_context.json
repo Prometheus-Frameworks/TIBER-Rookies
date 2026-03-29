@@ -240,9 +240,9 @@
     "freshman_ypc": null,
     "athletic_upside_flag": null,
     "path_disruption_flag": false,
-    "evidence_tags": ["late_round_dart"],
+    "evidence_tags": [],
     "context_flags": ["limited_multi_season_data"],
-    "evidence_summary": "Late-round dart context based on current draft-capital proxy tier; receiving and efficiency translation fields remain null.",
-    "context_source": "2026 draft-capital proxy tier + deterministic context scaffolding"
+    "evidence_summary": "RB context row seeded, but late-round dart evidence is intentionally withheld until non-proxy translation fields are sourced.",
+    "context_source": "2026 seed pool identity + deterministic context scaffolding"
   }
 ]
