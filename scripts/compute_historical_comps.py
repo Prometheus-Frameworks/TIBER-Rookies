@@ -242,6 +242,35 @@ def build_comp_candidates(
     return output
 
 
+
+
+def build_ui_display_allowed(
+    players: list[dict[str, Any]], comp_data_warnings: dict[str, Any]
+) -> dict[str, bool]:
+    """Emit conservative per-position UI gating for downstream consumers."""
+    ui_display_allowed: dict[str, bool] = {}
+    positions = sorted({str(player.get("position")) for player in players if player.get("position") is not None})
+
+    for position in positions:
+        has_warning = False
+        if isinstance(comp_data_warnings, dict) and position in comp_data_warnings:
+            warning_value = comp_data_warnings.get(position)
+            has_warning = bool(warning_value)
+
+        position_players = [player for player in players if player.get("position") == position]
+        position_comps = [comp for player in position_players for comp in player.get("comps", [])]
+
+        has_min_features = bool(position_comps) and all(
+            len(comp.get("effective_features_used", [])) >= 2 for comp in position_comps
+        )
+        has_outcome_labels = bool(position_comps) and all(
+            (comp.get("outcome_snapshot") or {}).get("career_outcome_label") is not None
+            for comp in position_comps
+        )
+
+        ui_display_allowed[position] = (not has_warning) and has_min_features and has_outcome_labels
+
+    return ui_display_allowed
 def compute_historical_comps(
     season: int,
     rookies: list[dict[str, Any]],
@@ -297,6 +326,8 @@ def compute_historical_comps(
             "coverage is added."
         )
 
+    ui_display_allowed = build_ui_display_allowed(players, warnings)
+
     return {
         "model": {
             "name": "historical_comps",
@@ -310,6 +341,7 @@ def compute_historical_comps(
         "season": season,
         "source_files_used": source_files_used,
         "comp_data_warnings": warnings,
+        "ui_display_allowed": ui_display_allowed,
         "players": players,
     }
 

@@ -236,5 +236,180 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
         self.assertEqual(artifact["players"][0]["comps"][0]["effective_features_used"], ["ras_0_100", "production_0_100", "size_context_0_100"] )
 
 
+    def test_ui_display_allowed_present_and_position_keyed(self) -> None:
+        rookies = [
+            {
+                "player_id": "qb-r",
+                "player_name": "Rookie QB",
+                "position": "QB",
+                "ras_0_100": 74.0,
+                "production_0_100": 80.0,
+                "draft_capital_proxy_0_100": 90.0,
+                "size_context_0_100": 72.0,
+            }
+        ]
+        historical_features = normalize_historical_feature_rows(
+            [
+                {
+                    "player_id": "qb-h",
+                    "player_name": "Historical QB",
+                    "position": "QB",
+                    "school": "Sample",
+                    "draft_year": 2018,
+                    "source_season": 2017,
+                    "ras_0_100": 74.0,
+                    "production_0_100": 80.0,
+                    "draft_capital_proxy_0_100": 90.0,
+                    "size_context_0_100": 72.0,
+                    "normalization_scope": "class-local",
+                }
+            ]
+        )
+        outcomes = normalize_outcome_rows(
+            [
+                {
+                    "player_id": "qb-h",
+                    "player_name": "Historical QB",
+                    "position": "QB",
+                    "draft_year": 2018,
+                    "career_outcome_label": "Starter",
+                    "best_season_fantasy_ppg": 18.0,
+                    "top_finish_band": "QB1",
+                    "years_1_to_3_summary": "sample",
+                }
+            ]
+        )
+
+        artifact = compute_historical_comps(
+            season=2026,
+            rookies=rookies,
+            historical_features=historical_features,
+            outcomes_by_player_id=outcomes,
+            comp_mode="talent_comp",
+            top_n=3,
+            source_files_used=["a", "b"],
+            generated_at="2026-03-28T00:00:00+00:00",
+        )
+
+        self.assertIn("ui_display_allowed", artifact)
+        self.assertIsInstance(artifact["ui_display_allowed"], dict)
+        self.assertIn("QB", artifact["ui_display_allowed"])
+
+    def test_ui_display_allowed_false_when_warning_present(self) -> None:
+        rookies = [
+            {
+                "player_id": "wr-r",
+                "player_name": "Rookie WR",
+                "position": "WR",
+                "ras_0_100": 90.0,
+                "production_0_100": 90.0,
+                "draft_capital_proxy_0_100": 80.0,
+                "size_context_0_100": 70.0,
+            }
+        ]
+        historical_features = normalize_historical_feature_rows(
+            [
+                {
+                    "player_id": "wr-h",
+                    "player_name": "Historical WR",
+                    "position": "WR",
+                    "school": "Sample",
+                    "draft_year": 2018,
+                    "source_season": 2017,
+                    "ras_0_100": 90.0,
+                    "production_0_100": 90.0,
+                    "draft_capital_proxy_0_100": 80.0,
+                    "size_context_0_100": 70.0,
+                    "normalization_scope": "class-local",
+                }
+            ]
+        )
+        outcomes = normalize_outcome_rows(
+            [
+                {
+                    "player_id": "wr-h",
+                    "player_name": "Historical WR",
+                    "position": "WR",
+                    "draft_year": 2018,
+                    "career_outcome_label": "Starter",
+                    "best_season_fantasy_ppg": 14.0,
+                    "top_finish_band": "WR2",
+                    "years_1_to_3_summary": "sample",
+                }
+            ]
+        )
+
+        artifact = compute_historical_comps(
+            season=2026,
+            rookies=rookies,
+            historical_features=historical_features,
+            outcomes_by_player_id=outcomes,
+            comp_mode="talent_comp",
+            top_n=3,
+            source_files_used=["a", "b"],
+            generated_at="2026-03-28T00:00:00+00:00",
+        )
+
+        self.assertFalse(artifact["ui_display_allowed"]["WR"])
+
+    def test_ui_display_allowed_false_when_any_comp_has_too_few_effective_features(self) -> None:
+        rookies = [
+            {
+                "player_id": "qb-r",
+                "player_name": "Rookie QB",
+                "position": "QB",
+                "ras_0_100": 74.0,
+                "production_0_100": None,
+                "draft_capital_proxy_0_100": None,
+                "size_context_0_100": None,
+            }
+        ]
+        historical_features = normalize_historical_feature_rows(
+            [
+                {
+                    "player_id": "qb-h",
+                    "player_name": "Historical QB",
+                    "position": "QB",
+                    "school": "Sample",
+                    "draft_year": 2018,
+                    "source_season": 2017,
+                    "ras_0_100": 74.0,
+                    "production_0_100": None,
+                    "draft_capital_proxy_0_100": None,
+                    "size_context_0_100": None,
+                    "normalization_scope": "class-local",
+                }
+            ]
+        )
+        outcomes = normalize_outcome_rows(
+            [
+                {
+                    "player_id": "qb-h",
+                    "player_name": "Historical QB",
+                    "position": "QB",
+                    "draft_year": 2018,
+                    "career_outcome_label": "Starter",
+                    "best_season_fantasy_ppg": 18.0,
+                    "top_finish_band": "QB1",
+                    "years_1_to_3_summary": "sample",
+                }
+            ]
+        )
+
+        artifact = compute_historical_comps(
+            season=2026,
+            rookies=rookies,
+            historical_features=historical_features,
+            outcomes_by_player_id=outcomes,
+            comp_mode="talent_comp",
+            top_n=3,
+            source_files_used=["a", "b"],
+            generated_at="2026-03-28T00:00:00+00:00",
+        )
+
+        self.assertEqual(artifact["players"][0]["comps"][0]["effective_features_used"], ["ras_0_100"])
+        self.assertFalse(artifact["ui_display_allowed"]["QB"])
+
+
 if __name__ == "__main__":
     unittest.main()

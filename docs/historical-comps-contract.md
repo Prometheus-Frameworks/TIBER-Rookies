@@ -76,6 +76,32 @@ Each row in `players[].comps[]`:
   - `top_finish_band`
   - `years_1_to_3_summary`
 
+
+## UI gating field (`ui_display_allowed`)
+
+Producer emits an additive top-level field:
+
+```json
+"ui_display_allowed": {
+  "WR": false,
+  "QB": false
+}
+```
+
+Shape and semantics:
+
+- Object keyed by position string.
+- Value is a conservative boolean computed per position.
+- `true` is allowed **only** when all conditions below hold for that position:
+  1. `comp_data_warnings` has no entry for the position (or warnings object is empty),
+  2. every emitted comp has `effective_features_used` length `>= 2`,
+  3. every emitted comp has non-null `outcome_snapshot.career_outcome_label`.
+- Any uncertainty or failed condition must resolve to `false`.
+
+Consumer requirement:
+
+- Downstream/UI consumers must check `ui_display_allowed[position]` before surfacing comps in any UI flow.
+
 ## Comp modes
 
 - `talent_comp` (default v0 output): weighted by athleticism + production + optional size context.
