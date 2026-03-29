@@ -84,6 +84,9 @@ export function renderRookieCard(container, card) {
     card.identity.weight,
   ].filter(Boolean).join(' • ');
   const evidenceMetrics = selectRookieEvidenceMetrics(card, 'full');
+  const translationFlags = Array.isArray(card.translationFlags) ? card.translationFlags : [];
+  const contextFlags = Array.isArray(card.contextSignals?.contextFlags) ? card.contextSignals.contextFlags : [];
+  const evidenceSummary = card.contextSignals?.evidenceSummary ?? null;
 
   const seasonsTable = card.seasons.length
     ? `<table class="stats-table"><thead><tr><th>Season</th><th>Team</th><th>Games</th><th>Stat Line</th></tr></thead><tbody>${card.seasons.map((row) => `<tr><td>${esc(row.season)}</td><td>${esc(row.team)}</td><td>${esc(row.games ?? 'N/A')}</td><td>${esc(Object.entries(row.statLine).map(([k, v]) => `${k}: ${v}`).join(' | '))}</td></tr>`).join('')}</tbody></table>`
@@ -122,6 +125,17 @@ export function renderRookieCard(container, card) {
         <div class="section-title">Position-aware Evidence</div>
         <div class="meta">${esc(card.evidence?.readinessLabel ?? 'Evidence readiness unavailable')}</div>
         ${evidenceMetrics.map(metricRow).join('') || '<div class="meta">No evidence metrics available.</div>'}
+      </section>
+
+      <section class="metrics">
+        <div class="section-title">Why this profile translates (deterministic)</div>
+        <div class="meta">${esc(evidenceSummary ?? 'Translation summary unavailable in current artifacts.')}</div>
+        ${translationFlags.length
+          ? `<div class="tags">${translationFlags.map((flag) => `<span class="tag">${esc(String(flag).replace(/_/g, ' '))}</span>`).join('')}</div>`
+          : '<div class="meta">No translation evidence tags available.</div>'}
+        ${contextFlags.length
+          ? `<div class="meta">Context flags: ${esc(contextFlags.map((flag) => String(flag).replace(/_/g, ' ')).join(' • '))}</div>`
+          : ''}
       </section>
 
       <section class="metrics">

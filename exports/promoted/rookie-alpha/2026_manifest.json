@@ -1,8 +1,8 @@
 {
   "season": 2026,
-  "model_version": "rookie-alpha-predraft-v0.1.0",
-  "generated_at": "2026-03-28T22:35:16+00:00",
-  "run_id": "rookie-alpha-2026-2026-03-28T22:35:16+00:00",
+  "model_version": "rookie-alpha-predraft-v0.2.0",
+  "generated_at": "2026-03-29T02:23:08+00:00",
+  "run_id": "rookie-alpha-2026-2026-03-29T02:23:08+00:00",
   "input_files": [
     {
       "path": "data/raw/2026_combine_results.json",
@@ -18,12 +18,18 @@
       "path": "data/processed/2026_draft_capital_proxy.json",
       "sha256": "87d71738456fe597510442c0768722025e9daca9cfbc626b1f4f5349c9c33686",
       "row_count": 23
+    },
+    {
+      "path": "data/processed/2026_prospect_context.json",
+      "sha256": "d2a382d2216dace2a83709a071ef53b7dc4c6295cc5d6a008fa1130ca2dc0a3a",
+      "row_count": 6
     }
   ],
   "coverage_summary": {
     "players_total": 20,
     "players_with_any_missing_input": 0,
     "players_with_full_inputs": 20,
+    "players_with_context_fields": 6,
     "input_alignment": {
       "duplicate_rows_skipped": 0,
       "identity_conflicts_skipped": 0,
@@ -36,7 +42,7 @@
   "output_files": [
     {
       "path": "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
-      "sha256": "d3b201f907f7362ea4bfcfc3ab31c21ef7775b3de5a393c3fd734d661c5f8723"
+      "sha256": "a2cfb0bb8ad9f74d9a4cabb6d3c811dd2f59ad30e588d9b2f33f4a417eca42de"
     },
     {
       "path": "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.csv",
@@ -45,13 +51,14 @@
   ],
   "export_metadata": {
     "season": 2026,
-    "model_version": "rookie-alpha-predraft-v0.1.0",
-    "generated_at": "2026-03-28T22:35:16+00:00",
-    "run_id": "rookie-alpha-2026-2026-03-28T22:35:16+00:00",
+    "model_version": "rookie-alpha-predraft-v0.2.0",
+    "generated_at": "2026-03-29T02:23:08+00:00",
+    "run_id": "rookie-alpha-2026-2026-03-29T02:23:08+00:00",
     "coverage_summary": {
       "players_total": 20,
       "players_with_any_missing_input": 0,
       "players_with_full_inputs": 20,
+      "players_with_context_fields": 6,
       "input_alignment": {
         "duplicate_rows_skipped": 0,
         "identity_conflicts_skipped": 0,
@@ -64,7 +71,8 @@
     "source_files_used": [
       "data/raw/2026_combine_results.json",
       "data/processed/2026_college_production.json",
-      "data/processed/2026_draft_capital_proxy.json"
+      "data/processed/2026_draft_capital_proxy.json",
+      "data/processed/2026_prospect_context.json"
     ]
   }
 }

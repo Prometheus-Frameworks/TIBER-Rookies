@@ -49,6 +49,12 @@ function seasonSnapshot(card) {
   return `<table class="stats-table"><thead><tr><th>Season</th><th>Team</th><th>Games</th></tr></thead><tbody>${top.map((row) => `<tr><td>${esc(row.season)}</td><td>${esc(row.team)}</td><td>${esc(row.games ?? 'N/A')}</td></tr>`).join('')}</tbody></table>`;
 }
 
+function translationSignals(card) {
+  const flags = Array.isArray(card?.translationFlags) ? card.translationFlags : [];
+  if (!flags.length) return 'No deterministic translation tags available.';
+  return flags.map((flag) => String(flag).replace(/_/g, ' ')).join(' • ');
+}
+
 export function renderRookieCompareView(container, leftCard, rightCard) {
   const compared = compareRookies(leftCard, rightCard);
   const leftHighlights = selectRookieEvidenceMetrics(leftCard, 'compact').slice(0, 3);
@@ -89,11 +95,13 @@ export function renderRookieCompareView(container, leftCard, rightCard) {
         <article class="rookie-card compare-snapshot">
           <div class="section-title">Left profile snapshot</div>
           <div class="meta">${leftHighlights.map((metric) => `${esc(metric.evidenceLabel ?? metric.label)}: ${esc(metric.display)}`).join(' • ') || 'No evidence snippets available.'}</div>
+          <div class="meta"><strong>Translation tags:</strong> ${esc(translationSignals(leftCard))}</div>
           ${seasonSnapshot(leftCard)}
         </article>
         <article class="rookie-card compare-snapshot">
           <div class="section-title">Right profile snapshot</div>
           <div class="meta">${rightHighlights.map((metric) => `${esc(metric.evidenceLabel ?? metric.label)}: ${esc(metric.display)}`).join(' • ') || 'No evidence snippets available.'}</div>
+          <div class="meta"><strong>Translation tags:</strong> ${esc(translationSignals(rightCard))}</div>
           ${seasonSnapshot(rightCard)}
         </article>
       </section>

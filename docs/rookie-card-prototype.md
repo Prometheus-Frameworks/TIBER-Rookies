@@ -31,6 +31,7 @@ Surface data is mapped from repository artifacts, including:
 - `data/raw/2026_combine_results.json`
 - `data/processed/2026_college_production.json`
 - `data/processed/2026_draft_capital_proxy.json`
+- `data/processed/2026_prospect_context.json` (optional additive context enrichment)
 
 Mapping/adaptation helpers live in `lib/rookies/`, including deterministic identity/profile enrichers (`normalizeRookieIdentity`, `deriveRookieProfileSummary`) used by board/detail/compare/queue surfaces.
 
@@ -125,6 +126,7 @@ The mapped rookie card object now carries additional deterministic fields (witho
 - `summary.profileSummary`, `summary.identityNote`, `summary.boardSummary`
 - `metrics[*].family`, `metrics[*].direction`, `metrics[*].source`
 - `evidence.readinessLabel`, family availability, and missing-input context
+- `translationFlags` and `contextSignals` sourced from promoted additive `context`/`evidence` blocks
 
 These fields are derived from existing promoted + supporting artifacts only; no synthetic scouting claims are introduced.
 
@@ -135,6 +137,7 @@ Surfaces retain deterministic fallbacks where artifacts are incomplete:
 - school now uses normalized source precedence and otherwise renders `School unavailable in current artifacts`
 - profile summary now derives from deterministic score/evidence context before falling back to archetype/projection/tag data
 - missing Rookie Grade renders as `N/A`
+- missing context artifact rows simply omit translation tags/summary sections (clean fallback)
 - queue rows use fallback labels for unavailable fields
 
 ## Current limitations

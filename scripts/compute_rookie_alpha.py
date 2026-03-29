@@ -36,6 +36,39 @@ class MergeDiagnostics:
     excluded_for_missing_sources: dict[str, int]
 
 
+CONTEXT_EVIDENCE_TAG_VOCAB = {
+    "elite_early_producer",
+    "young_breakout",
+    "early_declare",
+    "multi_season_efficiency",
+    "one_year_context_suppression",
+    "injury_adjusted",
+    "inside_out_versatility",
+    "yac_signal",
+    "rushing_signal",
+    "late_round_dart",
+}
+
+CONTEXT_FLAG_VOCAB = {
+    "limited_multi_season_data",
+    "single_season_efficiency_dip",
+    "injury_context",
+    "suppressed_offense_context",
+    "path_disruption",
+}
+
+TRANSLATION_FLAG_VOCAB = {
+    "young_breakout",
+    "multi_season_efficiency",
+    "one_year_context_suppression",
+    "injury_adjusted",
+    "inside_out_versatility",
+    "yac_signal",
+    "rushing_signal",
+    "late_round_dart",
+}
+
+
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
     with path.open("rb") as f:
@@ -362,6 +395,86 @@ def merge_inputs(
     return players, diagnostics
 
 
+def load_context_by_player_id(context_path: Path | None) -> dict[str, dict[str, Any]]:
+    if context_path is None or not context_path.exists():
+        return {}
+    context_rows = load_json(context_path)
+    if not isinstance(context_rows, list):
+        raise SystemExit(f"Expected list JSON in {context_path}, got {type(context_rows).__name__}")
+    context_by_id: dict[str, dict[str, Any]] = {}
+    for idx, row in enumerate(context_rows, start=1):
+        if not isinstance(row, dict):
+            logging.warning("Skipping context row %s in %s because row is not an object.", idx, context_path)
+            continue
+        normalized = normalize_row(row, str(context_path), idx)
+        if normalized is None:
+            continue
+        player_id, _, _ = normalized
+        context_by_id[player_id] = row
+    return context_by_id
+
+
+def normalize_context_entry(context_row: dict[str, Any]) -> dict[str, Any]:
+    evidence_tags = [
+        str(tag)
+        for tag in context_row.get("evidence_tags", [])
+        if isinstance(tag, str) and tag in CONTEXT_EVIDENCE_TAG_VOCAB
+    ]
+    context_flags = [
+        str(flag)
+        for flag in context_row.get("context_flags", [])
+        if isinstance(flag, str) and flag in CONTEXT_FLAG_VOCAB
+    ]
+    translation_flags = [tag for tag in evidence_tags if tag in TRANSLATION_FLAG_VOCAB]
+    normalized = {
+        "player_id": context_row.get("player_id"),
+        "player_name": context_row.get("player_name"),
+        "position": context_row.get("position"),
+        "school": context_row.get("school"),
+        "class_year": context_row.get("class_year"),
+        "early_declare_flag": context_row.get("early_declare_flag"),
+        "breakout_age": context_row.get("breakout_age"),
+        "age_at_first_impact_season": context_row.get("age_at_first_impact_season"),
+        "freshman_total_yards": context_row.get("freshman_total_yards"),
+        "sophomore_total_yards": context_row.get("sophomore_total_yards"),
+        "freshman_impact_flag": context_row.get("freshman_impact_flag"),
+        "young_breakout_flag": context_row.get("young_breakout_flag"),
+        "career_yards_per_route_run": context_row.get("career_yards_per_route_run"),
+        "best_season_yprr": context_row.get("best_season_yprr"),
+        "worst_season_yprr": context_row.get("worst_season_yprr"),
+        "seasons_over_2_3_yprr": context_row.get("seasons_over_2_3_yprr"),
+        "single_season_efficiency_dip_flag": context_row.get("single_season_efficiency_dip_flag"),
+        "multi_season_efficiency_flag": context_row.get("multi_season_efficiency_flag"),
+        "injury_affected_season_count": context_row.get("injury_affected_season_count"),
+        "injury_adjusted_profile_flag": context_row.get("injury_adjusted_profile_flag"),
+        "broken_offense_context_flag": context_row.get("broken_offense_context_flag"),
+        "suppressed_context_season_count": context_row.get("suppressed_context_season_count"),
+        "rush_attempts_or_rush_usage_signal": context_row.get("rush_attempts_or_rush_usage_signal"),
+        "rushing_production_signal": context_row.get("rushing_production_signal"),
+        "missed_tackles_forced_per_reception": context_row.get("missed_tackles_forced_per_reception"),
+        "yac_proxy_per_reception": context_row.get("yac_proxy_per_reception"),
+        "contested_catch_rate": context_row.get("contested_catch_rate"),
+        "inside_out_versatility_flag": context_row.get("inside_out_versatility_flag"),
+        "man_zone_versatility_flag": context_row.get("man_zone_versatility_flag"),
+        "power4_early_contributor_flag": context_row.get("power4_early_contributor_flag"),
+        "career_receiving_market_share": context_row.get("career_receiving_market_share"),
+        "career_mtf_per_attempt": context_row.get("career_mtf_per_attempt"),
+        "freshman_ypc": context_row.get("freshman_ypc"),
+        "athletic_upside_flag": context_row.get("athletic_upside_flag"),
+        "path_disruption_flag": context_row.get("path_disruption_flag"),
+    }
+    return {
+        "context": normalized,
+        "evidence": {
+            "evidence_tags": evidence_tags,
+            "context_flags": context_flags,
+            "translation_flags": translation_flags,
+            "evidence_summary": context_row.get("evidence_summary"),
+            "context_source": context_row.get("context_source"),
+        },
+    }
+
+
 def rookie_alpha_score(player: PlayerInputs) -> float:
     ras = player.ras_score_0_100 if player.ras_score_0_100 is not None else 50.0
     production = player.production_score_0_100 if player.production_score_0_100 is not None else 50.0
@@ -390,11 +503,15 @@ def write_outputs(
     output_json: Path,
     output_csv: Path,
     output_manifest: Path,
+    context_path: Path | None = None,
+    context_by_id: dict[str, dict[str, Any]] | None = None,
 ) -> None:
     generated_at = datetime.now(tz=timezone.utc).replace(microsecond=0).isoformat()
     run_id = f"rookie-alpha-{season}-{generated_at}"
 
     ranked: list[dict[str, Any]] = []
+    context_by_id = context_by_id or {}
+    players_with_context = 0
     missing_any = 0
     for p in players:
         alpha = rookie_alpha_score(p)
@@ -416,27 +533,29 @@ def write_outputs(
                 p.player_name,
                 ",".join(missing_components),
             )
-        ranked.append(
-            {
-                "player_id": p.player_id,
-                "player_name": p.player_name,
-                "position": p.position,
-                "scores": {
-                    "ras_0_100": round(p.ras_score_0_100 if p.ras_score_0_100 is not None else 50.0, 4),
-                    "production_0_100": round(
-                        p.production_score_0_100 if p.production_score_0_100 is not None else 50.0,
-                        4,
-                    ),
-                    "draft_capital_proxy_0_100": round(
-                        p.draft_capital_proxy_0_100 if p.draft_capital_proxy_0_100 is not None else 50.0,
-                        4,
-                    ),
-                    "talent_score_0_100": round(ts, 4),
-                    "rookie_alpha_0_100": round(alpha, 4),
-                },
-                "model_inputs_missing": missing_components,
-            }
-        )
+        row_payload = {
+            "player_id": p.player_id,
+            "player_name": p.player_name,
+            "position": p.position,
+            "scores": {
+                "ras_0_100": round(p.ras_score_0_100 if p.ras_score_0_100 is not None else 50.0, 4),
+                "production_0_100": round(
+                    p.production_score_0_100 if p.production_score_0_100 is not None else 50.0,
+                    4,
+                ),
+                "draft_capital_proxy_0_100": round(
+                    p.draft_capital_proxy_0_100 if p.draft_capital_proxy_0_100 is not None else 50.0,
+                    4,
+                ),
+                "talent_score_0_100": round(ts, 4),
+                "rookie_alpha_0_100": round(alpha, 4),
+            },
+            "model_inputs_missing": missing_components,
+        }
+        if p.player_id in context_by_id:
+            row_payload.update(normalize_context_entry(context_by_id[p.player_id]))
+            players_with_context += 1
+        ranked.append(row_payload)
 
     ranked.sort(key=lambda r: (-r["scores"]["rookie_alpha_0_100"], r["player_id"]))
     for i, row in enumerate(ranked, start=1):
@@ -455,7 +574,7 @@ def write_outputs(
             "name": "tiber-rookie-alpha",
             "stage": "pre-draft",
             "label": "pre-draft v0",
-            "model_version": "rookie-alpha-predraft-v0.1.0",
+            "model_version": "rookie-alpha-predraft-v0.2.0",
             "formula": {
                 "ras_weight": 0.35,
                 "production_weight": 0.45,
@@ -470,19 +589,18 @@ def write_outputs(
             "players_total": len(ranked),
             "players_with_any_missing_input": missing_any,
             "players_with_full_inputs": len(ranked) - missing_any,
+            "players_with_context_fields": players_with_context,
             "input_alignment": {
                 "duplicate_rows_skipped": merge_diagnostics.duplicate_rows_skipped,
                 "identity_conflicts_skipped": merge_diagnostics.identity_conflicts_skipped,
                 **merge_diagnostics.excluded_for_missing_sources,
             },
         },
-        "source_files_used": [
-            str(combine_path),
-            str(production_path),
-            str(draft_proxy_path),
-        ],
+        "source_files_used": [str(combine_path), str(production_path), str(draft_proxy_path)],
         "players": ranked,
     }
+    if context_path is not None and context_path.exists():
+        payload["source_files_used"].append(str(context_path))
     output_json.parent.mkdir(parents=True, exist_ok=True)
     output_csv.parent.mkdir(parents=True, exist_ok=True)
     output_manifest.parent.mkdir(parents=True, exist_ok=True)
@@ -545,6 +663,14 @@ def write_outputs(
             "row_count": len(load_json(draft_proxy_path)),
         },
     ]
+    if context_path is not None and context_path.exists():
+        input_files.append(
+            {
+                "path": str(context_path),
+                "sha256": sha256_file(context_path),
+                "row_count": len(load_json(context_path)),
+            }
+        )
     output_files = [
         {"path": str(output_json), "sha256": sha256_file(output_json)},
         {"path": str(output_csv), "sha256": sha256_file(output_csv)},
@@ -617,6 +743,12 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=None,
     )
+    parser.add_argument(
+        "--context-input",
+        type=Path,
+        default=None,
+        help="Optional deterministic prospect context artifact; additive export enrichment only.",
+    )
     return parser.parse_args()
 
 
@@ -629,6 +761,7 @@ def main() -> None:
     output_json = args.output_json or Path(f"exports/promoted/rookie-alpha/{args.season}_rookie_alpha_predraft_v0.json")
     output_csv = args.output_csv or Path(f"exports/promoted/rookie-alpha/{args.season}_rookie_alpha_predraft_v0.csv")
     output_manifest = args.output_manifest or Path(f"exports/promoted/rookie-alpha/{args.season}_manifest.json")
+    context_input = args.context_input or Path(f"data/processed/{args.season}_prospect_context.json")
 
     combine_rows = load_json(combine_input)
     production_rows = load_json(production_input)
@@ -640,6 +773,7 @@ def main() -> None:
     if not isinstance(draft_rows, list):
         raise SystemExit(f"Expected list JSON in {draft_proxy_input}, got {type(draft_rows).__name__}")
     players, merge_diagnostics = merge_inputs(combine_rows, production_rows, draft_rows)
+    context_by_id = load_context_by_player_id(context_input)
     write_outputs(
         players=players,
         merge_diagnostics=merge_diagnostics,
@@ -650,6 +784,8 @@ def main() -> None:
         output_json=output_json,
         output_csv=output_csv,
         output_manifest=output_manifest,
+        context_path=context_input,
+        context_by_id=context_by_id,
     )
 
 
