@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-03-29T02:29:58+00:00",
-  "run_id": "rookie-alpha-2026-2026-03-29T02:29:58+00:00",
+  "generated_at": "2026-03-29T03:04:46+00:00",
+  "run_id": "rookie-alpha-2026-2026-03-29T03:04:46+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 20,
@@ -124,8 +124,8 @@
           "limited_multi_season_data"
         ],
         "translation_flags": [],
-        "evidence_summary": "Early declare signal with athletic-upside indicator; multi-season translation metrics pending future data expansion.",
-        "context_source": "2026 seed pool identity + deterministic context scaffolding"
+        "evidence_summary": "Sourced profile confirms 62-881-11 in 2025 and only 66 total receiving yards across his first two college seasons combined; year-by-year freshman/sophomore split is not explicitly published in currently available sources.",
+        "context_source": "Wikipedia Denzel Boston college career summary and pre-draft measurables section, retrieved 2026-03-29."
       },
       "rookie_alpha_rank": 3,
       "talent_rank": 6,
@@ -168,9 +168,9 @@
         "early_declare_flag": true,
         "breakout_age": null,
         "age_at_first_impact_season": null,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
+        "freshman_total_yards": 264,
+        "sophomore_total_yards": 739,
+        "freshman_impact_flag": false,
         "young_breakout_flag": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
@@ -182,14 +182,14 @@
         "injury_adjusted_profile_flag": false,
         "broken_offense_context_flag": null,
         "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
+        "rush_attempts_or_rush_usage_signal": 2,
+        "rushing_production_signal": 22,
         "missed_tackles_forced_per_reception": null,
         "yac_proxy_per_reception": null,
         "contested_catch_rate": null,
         "inside_out_versatility_flag": null,
         "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
+        "power4_early_contributor_flag": true,
         "career_receiving_market_share": null,
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
@@ -204,8 +204,8 @@
           "limited_multi_season_data"
         ],
         "translation_flags": [],
-        "evidence_summary": "Early declare signal present; translation context remains limited to deterministic pre-draft artifacts.",
-        "context_source": "2026 seed pool identity + deterministic context scaffolding"
+        "evidence_summary": "Verified Ohio State progression from 264 freshman total yards to 739 sophomore total yards (733 receiving + 6 rushing), then 854 total yards in 2025.",
+        "context_source": "Wikipedia Carnell Tate college statistics table (2023-2025 rows), retrieved 2026-03-29."
       },
       "rookie_alpha_rank": 5,
       "talent_rank": 11,
@@ -232,17 +232,17 @@
         "early_declare_flag": true,
         "breakout_age": null,
         "age_at_first_impact_season": null,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": null,
+        "freshman_total_yards": 470,
+        "sophomore_total_yards": 0,
+        "freshman_impact_flag": true,
+        "young_breakout_flag": false,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
         "worst_season_yprr": null,
         "seasons_over_2_3_yprr": null,
         "single_season_efficiency_dip_flag": null,
         "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": 1,
+        "injury_affected_season_count": 2,
         "injury_adjusted_profile_flag": true,
         "broken_offense_context_flag": null,
         "suppressed_context_season_count": null,
@@ -253,12 +253,12 @@
         "contested_catch_rate": null,
         "inside_out_versatility_flag": null,
         "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
+        "power4_early_contributor_flag": true,
         "career_receiving_market_share": null,
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": false
+        "path_disruption_flag": true
       },
       "evidence": {
         "evidence_tags": [
@@ -267,13 +267,13 @@
         ],
         "context_flags": [
           "injury_context",
-          "limited_multi_season_data"
+          "path_disruption"
         ],
         "translation_flags": [
           "injury_adjusted"
         ],
-        "evidence_summary": "Early declare signal with injury-adjusted context flag; multi-season efficiency fields remain unavailable.",
-        "context_source": "2026 seed pool notes-derived injury flag + deterministic context scaffolding"
+        "evidence_summary": "Sourced career path includes 470 receiving yards as a true freshman at Colorado, then an injury-limited 2023 season with no catches, plus a 2024 season-ending injury note before his 2025 draft cycle.",
+        "context_source": "Wikipedia Jordyn Tyson college career summary and Arizona State official roster bio historical notes, retrieved 2026-03-29."
       },
       "rookie_alpha_rank": 6,
       "talent_rank": 14,
@@ -348,9 +348,9 @@
         "early_declare_flag": true,
         "breakout_age": null,
         "age_at_first_impact_season": null,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
+        "freshman_total_yards": 1159,
+        "sophomore_total_yards": 496,
+        "freshman_impact_flag": true,
         "young_breakout_flag": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
@@ -362,14 +362,14 @@
         "injury_adjusted_profile_flag": false,
         "broken_offense_context_flag": null,
         "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
+        "rush_attempts_or_rush_usage_signal": 70,
+        "rushing_production_signal": 431,
         "missed_tackles_forced_per_reception": null,
         "yac_proxy_per_reception": null,
         "contested_catch_rate": null,
         "inside_out_versatility_flag": null,
         "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
+        "power4_early_contributor_flag": true,
         "career_receiving_market_share": null,
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
@@ -378,14 +378,18 @@
       },
       "evidence": {
         "evidence_tags": [
-          "early_declare"
+          "early_declare",
+          "elite_early_producer",
+          "rushing_signal"
         ],
         "context_flags": [
           "limited_multi_season_data"
         ],
-        "translation_flags": [],
-        "evidence_summary": "Early declare signal present; multi-season translation fields are not available in current inputs.",
-        "context_source": "2026 seed pool identity + deterministic context scaffolding"
+        "translation_flags": [
+          "rushing_signal"
+        ],
+        "evidence_summary": "Verified collegiate production: 1,159 total yards as a freshman (839 receiving + 320 rushing) and 496 as a sophomore (460 receiving + 36 rushing), with 70 career rush attempts indicating multi-phase usage.",
+        "context_source": "Wikipedia Kevin Concepcion stats table (2023-2025 season rows) and Sports-Reference-linked career totals, retrieved 2026-03-29."
       },
       "rookie_alpha_rank": 10,
       "talent_rank": 9,
@@ -412,9 +416,9 @@
         "early_declare_flag": true,
         "breakout_age": null,
         "age_at_first_impact_season": null,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
+        "freshman_total_yards": 88,
+        "sophomore_total_yards": 764,
+        "freshman_impact_flag": false,
         "young_breakout_flag": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
@@ -426,14 +430,14 @@
         "injury_adjusted_profile_flag": false,
         "broken_offense_context_flag": null,
         "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
+        "rush_attempts_or_rush_usage_signal": 9,
+        "rushing_production_signal": 4,
         "missed_tackles_forced_per_reception": null,
         "yac_proxy_per_reception": null,
         "contested_catch_rate": null,
         "inside_out_versatility_flag": null,
         "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
+        "power4_early_contributor_flag": true,
         "career_receiving_market_share": null,
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
@@ -448,8 +452,8 @@
           "limited_multi_season_data"
         ],
         "translation_flags": [],
-        "evidence_summary": "Early declare signal present; richer WR translation fields are intentionally null pending expanded sourced inputs.",
-        "context_source": "2026 seed pool identity + deterministic context scaffolding"
+        "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season is aligned with the sourced profile.",
+        "context_source": "Wikipedia Makai Lemon statistics table (2023-2025 rows) plus awards section, retrieved 2026-03-29."
       },
       "rookie_alpha_rank": 11,
       "talent_rank": 10,
