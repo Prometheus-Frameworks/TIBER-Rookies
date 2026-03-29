@@ -11,7 +11,7 @@
     },
     "notes": "v0 emits talent_comp by default; market_comp support is scaffolded and optional."
   },
-  "generated_at": "2026-03-29T18:23:34+00:00",
+  "generated_at": "2026-03-29T21:38:40+00:00",
   "season": 2026,
   "source_files_used": [
     "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
@@ -20,6 +20,58 @@
   ],
   "comp_data_warnings": {
     "WR": "WR lane remains insufficiently differentiated for UI use: at least one historical WR is the #1 comp for 4 prospects (>3 threshold). Similarities remain directional only."
+  },
+  "similarity_quality_by_position": {
+    "QB": {
+      "status": "directional_only",
+      "reason": "outcomes_present: false; methodology_compatible: false",
+      "requirements_checked": {
+        "no_lane_warning": true,
+        "min_effective_feature_count_met": true,
+        "outcomes_present": false,
+        "non_market_dimension_present": true,
+        "methodology_compatible": false
+      }
+    },
+    "RB": {
+      "status": "directional_only",
+      "reason": "min_effective_feature_count_met: false; outcomes_present: false; non_market_dimension_present: false; methodology_compatible: false",
+      "requirements_checked": {
+        "no_lane_warning": true,
+        "min_effective_feature_count_met": false,
+        "outcomes_present": false,
+        "non_market_dimension_present": false,
+        "methodology_compatible": false
+      }
+    },
+    "TE": {
+      "status": "directional_only",
+      "reason": "min_effective_feature_count_met: false; outcomes_present: false; non_market_dimension_present: false; methodology_compatible: false",
+      "requirements_checked": {
+        "no_lane_warning": true,
+        "min_effective_feature_count_met": false,
+        "outcomes_present": false,
+        "non_market_dimension_present": false,
+        "methodology_compatible": false
+      }
+    },
+    "WR": {
+      "status": "directional_only",
+      "reason": "no_lane_warning: false; methodology_compatible: false",
+      "requirements_checked": {
+        "no_lane_warning": false,
+        "min_effective_feature_count_met": true,
+        "outcomes_present": true,
+        "non_market_dimension_present": true,
+        "methodology_compatible": false
+      }
+    }
+  },
+  "methodology_compatibility_by_position": {
+    "QB": false,
+    "RB": false,
+    "TE": false,
+    "WR": false
   },
   "ui_display_allowed": {
     "QB": false,

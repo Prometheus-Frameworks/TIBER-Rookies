@@ -41,6 +41,22 @@ Example:
   "comp_data_warnings": {
     "WR": "artifact-visible caveat string for partial lane quality (and explicit non-differentiation warning when #1 comp concentration exceeds threshold)"
   },
+  "similarity_quality_by_position": {
+    "WR": {
+      "status": "directional_only",
+      "reason": "no_lane_warning: false; methodology_compatible: false",
+      "requirements_checked": {
+        "no_lane_warning": false,
+        "min_effective_feature_count_met": true,
+        "outcomes_present": true,
+        "non_market_dimension_present": true,
+        "methodology_compatible": false
+      }
+    }
+  },
+  "methodology_compatibility_by_position": {
+    "WR": false
+  },
   "players": [
     {
       "player_id": "...",
@@ -95,12 +111,68 @@ Shape and semantics:
 - `true` is allowed **only** when all conditions below hold for that position:
   1. `comp_data_warnings` has no entry for the position (or warnings object is empty),
   2. every emitted comp has `effective_features_used` length `>= 2`,
-  3. every emitted comp has non-null `outcome_snapshot.career_outcome_label`.
+  3. every emitted comp has non-null `outcome_snapshot.career_outcome_label`,
+  4. every emitted comp includes at least one non-market dimension in `effective_features_used` (`ras_0_100` or `size_context_0_100`),
+  5. the position is methodology-compatible with current production normalization.
 - Any uncertainty or failed condition must resolve to `false`.
 
 Consumer requirement:
 
 - Downstream/UI consumers must check `ui_display_allowed[position]` before surfacing comps in any UI flow.
+- Binary gating alone is insufficient. Consumers should also read `similarity_quality_by_position[position]` to understand *why* a lane is blocked or partial.
+
+## Similarity quality signaling (`similarity_quality_by_position`)
+
+Producer emits an additive top-level field:
+
+```json
+"similarity_quality_by_position": {
+  "WR": {
+    "status": "directional_only",
+    "reason": "no_lane_warning: false; methodology_compatible: false",
+    "requirements_checked": {
+      "no_lane_warning": false,
+      "min_effective_feature_count_met": true,
+      "outcomes_present": true,
+      "non_market_dimension_present": true,
+      "methodology_compatible": false
+    }
+  }
+}
+```
+
+Status derivation rules:
+
+- `ui_safe`: all five booleans in `requirements_checked` are true.
+- `directional_only`: `no_lane_warning` is false **or** `methodology_compatible` is false.
+- `partial`: both hard blockers above pass, but at least one remaining check fails.
+
+Field definitions in `requirements_checked`:
+
+1. `no_lane_warning`: no entry for that position in `comp_data_warnings`.
+2. `min_effective_feature_count_met`: every emitted comp for the position has at least two features in `effective_features_used`.
+3. `outcomes_present`: every emitted comp has non-null `outcome_snapshot.career_outcome_label`.
+4. `non_market_dimension_present`: every emitted comp includes at least one of `ras_0_100` or `size_context_0_100` in `effective_features_used`.
+5. `methodology_compatible`: all historical feature rows for the position have `normalization_scope` values in `PRODUCTION_SCOPE_COMPATIBLE`.
+
+`reason` is always a non-empty string that enumerates failed checks (`<check>: false; ...`) or `all_checks_passed`.
+
+## Methodology compatibility projection (`methodology_compatibility_by_position`)
+
+Producer emits:
+
+```json
+"methodology_compatibility_by_position": {
+  "WR": false,
+  "QB": false
+}
+```
+
+This field is a convenience projection from:
+
+- `similarity_quality_by_position[position].requirements_checked.methodology_compatible`
+
+It must not be independently computed from different logic.
 
 ## Comp modes
 
