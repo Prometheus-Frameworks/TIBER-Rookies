@@ -4,6 +4,7 @@ from pathlib import Path
 
 from scripts.compute_historical_comps import (
     MARKET_WEIGHTS,
+    build_ui_display_allowed,
     REQUIRED_HISTORICAL_FEATURE_FIELDS,
     REQUIRED_HISTORICAL_OUTCOME_FIELDS,
     build_comp_candidates,
@@ -296,61 +297,37 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
         self.assertIn("QB", artifact["ui_display_allowed"])
 
     def test_ui_display_allowed_false_when_warning_present(self) -> None:
-        rookies = [
+        players = [
             {
-                "player_id": "wr-r",
-                "player_name": "Rookie WR",
-                "position": "WR",
-                "ras_0_100": 90.0,
-                "production_0_100": 90.0,
-                "draft_capital_proxy_0_100": 80.0,
-                "size_context_0_100": 70.0,
-            }
+                "player_id": "qb-r",
+                "player_name": "Rookie QB",
+                "position": "QB",
+                "comps": [
+                    {
+                        "effective_features_used": ["ras_0_100", "production_0_100", "size_context_0_100"],
+                        "outcome_snapshot": {"career_outcome_label": "Starter"},
+                    }
+                ],
+            },
+            {
+                "player_id": "rb-r",
+                "player_name": "Rookie RB",
+                "position": "RB",
+                "comps": [
+                    {
+                        "effective_features_used": ["ras_0_100", "production_0_100", "size_context_0_100"],
+                        "outcome_snapshot": {"career_outcome_label": "Starter"},
+                    }
+                ],
+            },
         ]
-        historical_features = normalize_historical_feature_rows(
-            [
-                {
-                    "player_id": "wr-h",
-                    "player_name": "Historical WR",
-                    "position": "WR",
-                    "school": "Sample",
-                    "draft_year": 2018,
-                    "source_season": 2017,
-                    "ras_0_100": 90.0,
-                    "production_0_100": 90.0,
-                    "draft_capital_proxy_0_100": 80.0,
-                    "size_context_0_100": 70.0,
-                    "normalization_scope": "class-local",
-                }
-            ]
+        ui_display_allowed = build_ui_display_allowed(
+            players,
+            {"QB": "explicit warning"},
+            {"QB": True, "RB": True},
         )
-        outcomes = normalize_outcome_rows(
-            [
-                {
-                    "player_id": "wr-h",
-                    "player_name": "Historical WR",
-                    "position": "WR",
-                    "draft_year": 2018,
-                    "career_outcome_label": "Starter",
-                    "best_season_fantasy_ppg": 14.0,
-                    "top_finish_band": "WR2",
-                    "years_1_to_3_summary": "sample",
-                }
-            ]
-        )
-
-        artifact = compute_historical_comps(
-            season=2026,
-            rookies=rookies,
-            historical_features=historical_features,
-            outcomes_by_player_id=outcomes,
-            comp_mode="talent_comp",
-            top_n=3,
-            source_files_used=["a", "b"],
-            generated_at="2026-03-28T00:00:00+00:00",
-        )
-
-        self.assertFalse(artifact["ui_display_allowed"]["WR"])
+        self.assertFalse(ui_display_allowed["QB"])
+        self.assertTrue(ui_display_allowed["RB"])
 
     def test_ui_display_allowed_false_when_any_comp_has_too_few_effective_features(self) -> None:
         rookies = [
@@ -409,6 +386,44 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
 
         self.assertEqual(artifact["players"][0]["comps"][0]["effective_features_used"], ["ras_0_100"])
         self.assertFalse(artifact["ui_display_allowed"]["QB"])
+
+    def test_similarity_quality_by_position_shape_and_keys(self) -> None:
+        artifact = json.loads(
+            Path("exports/promoted/historical-comps/2026_historical_comps_v0.json").read_text(encoding="utf-8")
+        )
+        self.assertIn("similarity_quality_by_position", artifact)
+        self.assertIsInstance(artifact["similarity_quality_by_position"], dict)
+        required_keys = {
+            "no_lane_warning",
+            "min_effective_feature_count_met",
+            "outcomes_present",
+            "non_market_dimension_present",
+            "methodology_compatible",
+        }
+        for position, quality in artifact["similarity_quality_by_position"].items():
+            self.assertIn("status", quality, msg=position)
+            self.assertIn("reason", quality, msg=position)
+            self.assertTrue(bool(quality["reason"]), msg=position)
+            self.assertIn("requirements_checked", quality, msg=position)
+            self.assertEqual(set(quality["requirements_checked"].keys()), required_keys, msg=position)
+
+    def test_similarity_quality_wr_directional_only_when_warning_present(self) -> None:
+        artifact = json.loads(
+            Path("exports/promoted/historical-comps/2026_historical_comps_v0.json").read_text(encoding="utf-8")
+        )
+        self.assertIn("WR", artifact["comp_data_warnings"])
+        self.assertEqual(artifact["similarity_quality_by_position"]["WR"]["status"], "directional_only")
+
+    def test_methodology_compatibility_projection_matches_similarity_quality(self) -> None:
+        artifact = json.loads(
+            Path("exports/promoted/historical-comps/2026_historical_comps_v0.json").read_text(encoding="utf-8")
+        )
+        self.assertIn("methodology_compatibility_by_position", artifact)
+        for position, compatible in artifact["methodology_compatibility_by_position"].items():
+            self.assertEqual(
+                compatible,
+                artifact["similarity_quality_by_position"][position]["requirements_checked"]["methodology_compatible"],
+            )
 
 
 if __name__ == "__main__":

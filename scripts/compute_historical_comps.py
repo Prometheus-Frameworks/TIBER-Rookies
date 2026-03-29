@@ -45,6 +45,7 @@ MARKET_WEIGHTS = {
     "size_context_0_100": 0.10,
     "draft_capital_proxy_0_100": 0.20,
 }
+PRODUCTION_SCOPE_COMPATIBLE: frozenset[str] = frozenset()
 
 
 def load_json(path: Path) -> Any:
@@ -245,7 +246,9 @@ def build_comp_candidates(
 
 
 def build_ui_display_allowed(
-    players: list[dict[str, Any]], comp_data_warnings: dict[str, Any]
+    players: list[dict[str, Any]],
+    comp_data_warnings: dict[str, Any],
+    methodology_compatible_by_position: dict[str, bool],
 ) -> dict[str, bool]:
     """Emit conservative per-position UI gating for downstream consumers."""
     ui_display_allowed: dict[str, bool] = {}
@@ -267,10 +270,74 @@ def build_ui_display_allowed(
             (comp.get("outcome_snapshot") or {}).get("career_outcome_label") is not None
             for comp in position_comps
         )
+        has_non_market_dimension = bool(position_comps) and all(
+            bool({"ras_0_100", "size_context_0_100"}.intersection(comp.get("effective_features_used", [])))
+            for comp in position_comps
+        )
+        is_methodology_compatible = bool(methodology_compatible_by_position.get(position))
 
-        ui_display_allowed[position] = (not has_warning) and has_min_features and has_outcome_labels
+        ui_display_allowed[position] = (
+            (not has_warning)
+            and has_min_features
+            and has_outcome_labels
+            and has_non_market_dimension
+            and is_methodology_compatible
+        )
 
     return ui_display_allowed
+
+
+def build_methodology_compatible_by_position(
+    positions: set[str], historical_features: list[dict[str, Any]]
+) -> dict[str, bool]:
+    output: dict[str, bool] = {}
+    for position in sorted(positions):
+        position_rows = [row for row in historical_features if row.get("position") == position]
+        output[position] = bool(position_rows) and all(
+            row.get("normalization_scope") in PRODUCTION_SCOPE_COMPATIBLE for row in position_rows
+        )
+    return output
+
+
+def build_similarity_quality_by_position(
+    players: list[dict[str, Any]],
+    comp_data_warnings: dict[str, Any],
+    methodology_compatible_by_position: dict[str, bool],
+) -> dict[str, Any]:
+    output: dict[str, Any] = {}
+    positions = sorted({str(player.get("position")) for player in players if player.get("position") is not None})
+    for position in positions:
+        position_players = [player for player in players if player.get("position") == position]
+        position_comps = [comp for player in position_players for comp in player.get("comps", [])]
+        requirements_checked = {
+            "no_lane_warning": not (isinstance(comp_data_warnings, dict) and bool(comp_data_warnings.get(position))),
+            "min_effective_feature_count_met": bool(position_comps)
+            and all(len(comp.get("effective_features_used", [])) >= 2 for comp in position_comps),
+            "outcomes_present": bool(position_comps)
+            and all((comp.get("outcome_snapshot") or {}).get("career_outcome_label") is not None for comp in position_comps),
+            "non_market_dimension_present": bool(position_comps)
+            and all(
+                bool({"ras_0_100", "size_context_0_100"}.intersection(comp.get("effective_features_used", [])))
+                for comp in position_comps
+            ),
+            "methodology_compatible": bool(methodology_compatible_by_position.get(position)),
+        }
+
+        if all(requirements_checked.values()):
+            status = "ui_safe"
+        elif (not requirements_checked["no_lane_warning"]) or (not requirements_checked["methodology_compatible"]):
+            status = "directional_only"
+        else:
+            status = "partial"
+
+        failed = [f"{name}: false" for name, is_true in requirements_checked.items() if not is_true]
+        reason = "; ".join(failed) if failed else "all_checks_passed"
+        output[position] = {
+            "status": status,
+            "reason": reason,
+            "requirements_checked": requirements_checked,
+        }
+    return output
 def compute_historical_comps(
     season: int,
     rookies: list[dict[str, Any]],
@@ -326,7 +393,18 @@ def compute_historical_comps(
             "coverage is added."
         )
 
-    ui_display_allowed = build_ui_display_allowed(players, warnings)
+    positions = {str(player.get("position")) for player in players if player.get("position") is not None}
+    methodology_compatible_by_position = build_methodology_compatible_by_position(positions, historical_features)
+    similarity_quality_by_position = build_similarity_quality_by_position(
+        players,
+        warnings,
+        methodology_compatible_by_position,
+    )
+    methodology_compatibility_by_position = {
+        position: bool(quality.get("requirements_checked", {}).get("methodology_compatible"))
+        for position, quality in similarity_quality_by_position.items()
+    }
+    ui_display_allowed = build_ui_display_allowed(players, warnings, methodology_compatible_by_position)
 
     return {
         "model": {
@@ -341,6 +419,8 @@ def compute_historical_comps(
         "season": season,
         "source_files_used": source_files_used,
         "comp_data_warnings": warnings,
+        "similarity_quality_by_position": similarity_quality_by_position,
+        "methodology_compatibility_by_position": methodology_compatibility_by_position,
         "ui_display_allowed": ui_display_allowed,
         "players": players,
     }

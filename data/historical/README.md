@@ -20,6 +20,9 @@ WR now includes multiple real draft vintages (2020 + 2021) while QB/TE remain sa
 - WR outcome rows for the seeded real cohort now include sourced PPR/G-based snapshots (`best_season_fantasy_ppg`, `years_1_to_3_summary`) plus deterministic label/band derivations.
 - WR `production_0_100` is currently `normalization_scope = "cross-class-wr-v0"` min-max over raw pre-draft receiving-yards values pooled across all current WR historical rows in this artifact.
 - `cross-class-wr-v0` uses raw pre-draft receiving yards pooled across all current WR historical rows; it is not yet calibrated against the 2026 prospect `production_0_100` methodology, which is a multi-signal score.
+- `scripts/compute_historical_comps.py` defines `PRODUCTION_SCOPE_COMPATIBLE` as an empty frozenset in v0, so `methodology_compatible` currently resolves to `false` for every position.
+- `cross-class-wr-v0` is explicitly out-of-scope for production compatibility today because it is raw receiving-yards based rather than aligned to the 2026 multi-signal production composite.
+- WR `methodology_compatible` is expected to remain false until historical normalization and 2026 prospect production normalization are validated as aligned.
 - WR `career_outcome_label` and `top_finish_band` are currently deterministic derivations from each player's sourced peak `FPTS/G` (not yet a fully league-ranked finish model).
 - The promoted comp artifact now exposes `effective_features_used` per comp row plus `comp_data_warnings` so partial feature overlap is visible in-artifact.
 - As a result, current WR similarity behavior is improved versus one-vintage/one-proxy, but remains partial and not UI-ready.
