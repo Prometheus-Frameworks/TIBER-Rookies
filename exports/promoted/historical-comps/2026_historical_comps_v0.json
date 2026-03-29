@@ -11,7 +11,7 @@
     },
     "notes": "v0 emits talent_comp by default; market_comp support is scaffolded and optional."
   },
-  "generated_at": "2026-03-29T17:53:56+00:00",
+  "generated_at": "2026-03-29T18:23:34+00:00",
   "season": 2026,
   "source_files_used": [
     "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
@@ -20,6 +20,12 @@
   ],
   "comp_data_warnings": {
     "WR": "WR lane remains insufficiently differentiated for UI use: at least one historical WR is the #1 comp for 4 prospects (>3 threshold). Similarities remain directional only."
+  },
+  "ui_display_allowed": {
+    "QB": false,
+    "RB": false,
+    "TE": false,
+    "WR": false
   },
   "players": [
     {

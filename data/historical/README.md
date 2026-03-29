@@ -31,6 +31,7 @@ WR now includes multiple real draft vintages (2020 + 2021) while QB/TE remain sa
 
 - Deterministic, machine-readable row contracts.
 - Explicit `null` values for unavailable historical inputs.
+- WR `ras_0_100` backfill is player-level only: acceptable sources are a player-specific `ras.football` page or a player Wikipedia page that explicitly states that player's RAS; team pages, roster tables, and compilation/roundup pages are explicitly excluded.
 - No fabricated claims of complete historical population.
 - Local operators can continue expanding the lane position-by-position with real sourced rows that follow the same row shape.
 
