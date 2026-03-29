@@ -88,6 +88,17 @@ Producer must validate:
 6. similarity ordering is deterministic (stable tie-break by `historical_player_id`),
 7. artifact is machine-readable JSON and deterministic for identical inputs and `generated_at`.
 
+
+## Current WR cohort caveat (v0)
+
+The seeded real WR cohort in `data/historical/historical_prospect_features.sample.json` is intentionally low-featured in this first pass:
+
+- `ras_0_100` and `size_context_0_100` are currently null for the cohort.
+- Outcome fields in `data/historical/historical_player_outcomes.sample.json` are currently null.
+- `production_0_100` is currently a cohort-local min-max normalization over sourced receiving yards, not a full multi-signal historical production model.
+
+Interpret current WR comp similarities accordingly: useful first real population pass, but not a fully featured historical nearest-neighbor space yet.
+
 ## Local population posture
 
 Because sandbox environments may not populate live historical APIs, this contract supports local operator population of historical files with real data while preserving the exact same row shape and artifact interface.
