@@ -274,6 +274,10 @@ def compute_historical_comps(
 
     warnings = {}
     if wr_max_top_1 > 3:
+        # Known v0 behavior: even with added 2021/2022 WR rows, the promoted 2026 rookie WR
+        # feature cluster can still collapse to one nearest neighbor when RAS/size coverage is
+        # sparse or class-local normalization compresses variance across cohorts. Keep warning
+        # explicit rather than forcing synthetic differentiation in historical rows.
         warnings["WR"] = (
             "WR lane remains insufficiently differentiated for UI use: at least one historical WR is the #1 comp for "
             f"{wr_max_top_1} prospects (>3 threshold). Similarities remain directional only."

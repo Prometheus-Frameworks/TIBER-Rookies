@@ -23,6 +23,9 @@ WR now includes multiple real draft vintages (2020 + 2021) while QB/TE remain sa
 - The promoted comp artifact now exposes `effective_features_used` per comp row plus `comp_data_warnings` so partial feature overlap is visible in-artifact.
 - As a result, current WR similarity behavior is improved versus one-vintage/one-proxy, but remains partial and not UI-ready.
 
+
+- Current 2026 repro still emits a WR comp-data warning: one historical WR can remain the #1 comp for all eight 2026 WR prospects. This is currently driven by sparse WR RAS coverage and class-local normalization compression across partial vintages; do not fabricate rows or synthetic deltas to suppress this warning.
+
 ## Intentional posture
 
 - Deterministic, machine-readable row contracts.
