@@ -4,6 +4,7 @@ from pathlib import Path
 
 from scripts.compute_historical_comps import (
     MARKET_WEIGHTS,
+    apply_wr_historical_production_methodology,
     build_ui_display_allowed,
     REQUIRED_HISTORICAL_FEATURE_FIELDS,
     REQUIRED_HISTORICAL_OUTCOME_FIELDS,
@@ -424,6 +425,83 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
                 compatible,
                 artifact["similarity_quality_by_position"][position]["requirements_checked"]["methodology_compatible"],
             )
+
+    def test_wr_historical_rows_compute_or_null_per_threshold_and_opt_out(self) -> None:
+        rows = normalize_historical_feature_rows(
+            [
+                {
+                    "player_id": "wr-scoreable",
+                    "player_name": "WR Scoreable",
+                    "position": "WR",
+                    "school": "Sample",
+                    "draft_year": 2021,
+                    "source_season": 2020,
+                    "ras_0_100": 70.0,
+                    "production_0_100": 55.0,
+                    "draft_capital_proxy_0_100": 70.0,
+                    "normalization_scope": "cross-class-wr-v0",
+                    "receptions": 60,
+                    "receiving_yards": 1000,
+                    "receiving_tds": 10,
+                },
+                {
+                    "player_id": "wr-null-rec",
+                    "player_name": "WR Null Rec",
+                    "position": "WR",
+                    "school": "Sample",
+                    "draft_year": 2021,
+                    "source_season": 2020,
+                    "ras_0_100": 70.0,
+                    "production_0_100": 55.0,
+                    "draft_capital_proxy_0_100": 70.0,
+                    "normalization_scope": "cross-class-wr-v0",
+                    "receptions": None,
+                    "receiving_yards": 800,
+                    "receiving_tds": 8,
+                },
+            ]
+        )
+        scored = apply_wr_historical_production_methodology(rows)
+        scoreable = [row for row in scored if row["player_id"] == "wr-scoreable"][0]
+        null_row = [row for row in scored if row["player_id"] == "wr-null-rec"][0]
+        self.assertIsNotNone(scoreable["production_0_100"])
+        self.assertEqual(scoreable["normalization_scope"], "historical-wr-cfbd-method-v1")
+        self.assertIsNone(null_row["production_0_100"])
+        self.assertEqual(null_row["normalization_scope"], "historical-wr-cfbd-method-v1-null")
+
+    def test_artifact_wr_contract_flags_remain_conservative(self) -> None:
+        artifact = json.loads(
+            Path("exports/promoted/historical-comps/2026_historical_comps_v0.json").read_text(encoding="utf-8")
+        )
+        self.assertFalse(artifact["methodology_compatibility_by_position"]["WR"])
+        self.assertEqual(artifact["similarity_quality_by_position"]["WR"]["status"], "directional_only")
+        self.assertFalse(artifact["ui_display_allowed"]["WR"])
+
+    def test_wr_legacy_score_populated_and_non_wr_legacy_absent(self) -> None:
+        features = json.loads(Path("data/historical/historical_prospect_features.sample.json").read_text(encoding="utf-8"))
+        wr_rows = [row for row in features if row["position"] == "WR"]
+        non_wr_rows = [row for row in features if row["position"] != "WR"]
+        self.assertTrue(all("production_0_100_legacy" in row for row in wr_rows))
+        self.assertTrue(all("production_0_100_legacy" not in row for row in non_wr_rows))
+
+    def test_waddle_partial_season_policy_enforced(self) -> None:
+        features = json.loads(Path("data/historical/historical_prospect_features.sample.json").read_text(encoding="utf-8"))
+        waddle = [row for row in features if row.get("player_id") == "wr-jaylen-waddle-2021"][0]
+        self.assertIn("partial season", str(waddle.get("notes", "")).lower())
+        self.assertIsNone(waddle.get("production_0_100"))
+        self.assertEqual(waddle.get("normalization_scope"), "historical-wr-cfbd-method-v1-null")
+
+    def test_non_wr_feature_snapshots_omit_wr_only_fields(self) -> None:
+        artifact = json.loads(
+            Path("exports/promoted/historical-comps/2026_historical_comps_v0.json").read_text(encoding="utf-8")
+        )
+        qb_comps = [player for player in artifact["players"] if player["position"] == "QB"][0]["comps"]
+        self.assertTrue(qb_comps)
+        snapshot = qb_comps[0]["feature_snapshot"]
+        self.assertNotIn("production_0_100_legacy", snapshot)
+        self.assertNotIn("receptions", snapshot)
+        self.assertNotIn("receiving_yards", snapshot)
+        self.assertNotIn("receiving_tds", snapshot)
 
 
 if __name__ == "__main__":

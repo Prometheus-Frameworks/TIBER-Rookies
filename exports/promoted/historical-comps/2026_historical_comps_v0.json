@@ -11,7 +11,7 @@
     },
     "notes": "v0 emits talent_comp by default; market_comp support is scaffolded and optional."
   },
-  "generated_at": "2026-03-29T21:38:40+00:00",
+  "generated_at": "2026-03-29T22:23:28+00:00",
   "season": 2026,
   "source_files_used": [
     "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
@@ -19,7 +19,7 @@
     "data/historical/historical_player_outcomes.sample.json"
   ],
   "comp_data_warnings": {
-    "WR": "WR lane remains insufficiently differentiated for UI use: at least one historical WR is the #1 comp for 4 prospects (>3 threshold). Similarities remain directional only."
+    "WR": "WR lane remains insufficiently differentiated for UI use: at least one historical WR is the #1 comp for 5 prospects (>3 threshold). Similarities remain directional only."
   },
   "similarity_quality_by_position": {
     "QB": {
@@ -57,7 +57,7 @@
     },
     "WR": {
       "status": "directional_only",
-      "reason": "no_lane_warning: false; methodology_compatible: false",
+      "reason": "metric methodology matches; population scope incompatible (15-row historical cohort vs. full CFBD season population); lane warning present",
       "requirements_checked": {
         "no_lane_warning": false,
         "min_effective_feature_count_met": true,
@@ -518,15 +518,19 @@
           "player_name": "Tee Higgins",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 90.9115,
-          "distance": 0.090885,
+          "similarity_score": 90.5032,
+          "distance": 0.094968,
           "feature_snapshot": {
             "ras_0_100": 41.6,
-            "production_0_100": 62.88,
+            "production_0_100": 62.2,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.88,
+            "receptions": 59,
+            "receiving_yards": 1167,
+            "receiving_tds": 13
           },
           "effective_features_used": [
             "ras_0_100",
@@ -544,15 +548,19 @@
           "player_name": "Treylon Burks",
           "draft_year": 2022,
           "position": "WR",
-          "similarity_score": 80.7965,
-          "distance": 0.192035,
+          "similarity_score": 76.8312,
+          "distance": 0.231688,
           "feature_snapshot": {
             "ras_0_100": 57.8,
-            "production_0_100": 59.48,
+            "production_0_100": 50.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
+            "receptions": 66,
+            "receiving_yards": 1104,
+            "receiving_tds": 11
           },
           "effective_features_used": [
             "ras_0_100",
@@ -566,45 +574,23 @@
           }
         },
         {
-          "historical_player_id": "wr-jerry-jeudy-2020",
-          "player_name": "Jerry Jeudy",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 75.3021,
-          "distance": 0.246979,
-          "feature_snapshot": {
-            "ras_0_100": 67.8,
-            "production_0_100": 62.66,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 65.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr3_peak",
-            "best_season_fantasy_ppg": 14.2,
-            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
-          }
-        },
-        {
           "historical_player_id": "wr-ceedee-lamb-2020",
           "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 71.7877,
-          "distance": 0.282123,
+          "similarity_score": 71.6096,
+          "distance": 0.283904,
           "feature_snapshot": {
             "ras_0_100": 74.5,
-            "production_0_100": 71.5,
+            "production_0_100": 68.7,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 71.5,
+            "receptions": 62,
+            "receiving_yards": 1327,
+            "receiving_tds": 14
           },
           "effective_features_used": [
             "ras_0_100",
@@ -618,19 +604,53 @@
           }
         },
         {
+          "historical_player_id": "wr-jerry-jeudy-2020",
+          "player_name": "Jerry Jeudy",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 69.048,
+          "distance": 0.30952,
+          "feature_snapshot": {
+            "ras_0_100": 67.8,
+            "production_0_100": 45.1,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 65.0,
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.66,
+            "receptions": 77,
+            "receiving_yards": 1163,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
+          }
+        },
+        {
           "historical_player_id": "wr-brandon-aiyuk-2020",
           "player_name": "Brandon Aiyuk",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 64.0582,
-          "distance": 0.359418,
+          "similarity_score": 61.5272,
+          "distance": 0.384728,
           "feature_snapshot": {
             "ras_0_100": 84.6,
-            "production_0_100": 64.22,
+            "production_0_100": 52.1,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 30.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 64.22,
+            "receptions": 65,
+            "receiving_yards": 1192,
+            "receiving_tds": 8
           },
           "effective_features_used": [
             "ras_0_100",
@@ -652,45 +672,23 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "wr-jerry-jeudy-2020",
-          "player_name": "Jerry Jeudy",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 97.1779,
-          "distance": 0.028221,
-          "feature_snapshot": {
-            "ras_0_100": 67.8,
-            "production_0_100": 62.66,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 65.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr3_peak",
-            "best_season_fantasy_ppg": 14.2,
-            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
-          }
-        },
-        {
           "historical_player_id": "wr-treylon-burks-2022",
           "player_name": "Treylon Burks",
           "draft_year": 2022,
           "position": "WR",
-          "similarity_score": 95.2792,
-          "distance": 0.047208,
+          "similarity_score": 91.4757,
+          "distance": 0.085243,
           "feature_snapshot": {
             "ras_0_100": 57.8,
-            "production_0_100": 59.48,
+            "production_0_100": 50.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
+            "receptions": 66,
+            "receiving_yards": 1104,
+            "receiving_tds": 11
           },
           "effective_features_used": [
             "ras_0_100",
@@ -708,15 +706,19 @@
           "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 89.4835,
-          "distance": 0.105165,
+          "similarity_score": 90.8351,
+          "distance": 0.091649,
           "feature_snapshot": {
             "ras_0_100": 74.5,
-            "production_0_100": 71.5,
+            "production_0_100": 68.7,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 71.5,
+            "receptions": 62,
+            "receiving_yards": 1327,
+            "receiving_tds": 14
           },
           "effective_features_used": [
             "ras_0_100",
@@ -730,19 +732,53 @@
           }
         },
         {
+          "historical_player_id": "wr-jerry-jeudy-2020",
+          "player_name": "Jerry Jeudy",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 88.7765,
+          "distance": 0.112235,
+          "feature_snapshot": {
+            "ras_0_100": 67.8,
+            "production_0_100": 45.1,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 65.0,
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.66,
+            "receptions": 77,
+            "receiving_yards": 1163,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
+          }
+        },
+        {
           "historical_player_id": "wr-brandon-aiyuk-2020",
           "player_name": "Brandon Aiyuk",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 85.4761,
-          "distance": 0.145239,
+          "similarity_score": 84.4914,
+          "distance": 0.155086,
           "feature_snapshot": {
             "ras_0_100": 84.6,
-            "production_0_100": 64.22,
+            "production_0_100": 52.1,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 30.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 64.22,
+            "receptions": 65,
+            "receiving_yards": 1192,
+            "receiving_tds": 8
           },
           "effective_features_used": [
             "ras_0_100",
@@ -760,15 +796,19 @@
           "player_name": "Tee Higgins",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 83.8105,
-          "distance": 0.161895,
+          "similarity_score": 83.8513,
+          "distance": 0.161487,
           "feature_snapshot": {
             "ras_0_100": 41.6,
-            "production_0_100": 62.88,
+            "production_0_100": 62.2,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.88,
+            "receptions": 59,
+            "receiving_yards": 1167,
+            "receiving_tds": 13
           },
           "effective_features_used": [
             "ras_0_100",
@@ -790,45 +830,23 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "wr-treylon-burks-2022",
-          "player_name": "Treylon Burks",
-          "draft_year": 2022,
-          "position": "WR",
-          "similarity_score": 89.8585,
-          "distance": 0.101415,
-          "feature_snapshot": {
-            "ras_0_100": 57.8,
-            "production_0_100": 59.48,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 58.89,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "depth_peak",
-            "best_season_fantasy_ppg": 8.6,
-            "top_finish_band": "Depth (<12.0 PPR/G peak)",
-            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
-          }
-        },
-        {
           "historical_player_id": "wr-tee-higgins-2020",
           "player_name": "Tee Higgins",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 88.3141,
-          "distance": 0.116859,
+          "similarity_score": 88.0023,
+          "distance": 0.119977,
           "feature_snapshot": {
             "ras_0_100": 41.6,
-            "production_0_100": 62.88,
+            "production_0_100": 62.2,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.88,
+            "receptions": 59,
+            "receiving_yards": 1167,
+            "receiving_tds": 13
           },
           "effective_features_used": [
             "ras_0_100",
@@ -842,45 +860,23 @@
           }
         },
         {
-          "historical_player_id": "wr-jerry-jeudy-2020",
-          "player_name": "Jerry Jeudy",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 87.8269,
-          "distance": 0.121731,
-          "feature_snapshot": {
-            "ras_0_100": 67.8,
-            "production_0_100": 62.66,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 65.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr3_peak",
-            "best_season_fantasy_ppg": 14.2,
-            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
-          }
-        },
-        {
           "historical_player_id": "wr-ceedee-lamb-2020",
           "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 85.6855,
-          "distance": 0.143145,
+          "similarity_score": 85.3663,
+          "distance": 0.146337,
           "feature_snapshot": {
             "ras_0_100": 74.5,
-            "production_0_100": 71.5,
+            "production_0_100": 68.7,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 71.5,
+            "receptions": 62,
+            "receiving_yards": 1327,
+            "receiving_tds": 14
           },
           "effective_features_used": [
             "ras_0_100",
@@ -894,19 +890,83 @@
           }
         },
         {
+          "historical_player_id": "wr-treylon-burks-2022",
+          "player_name": "Treylon Burks",
+          "draft_year": 2022,
+          "position": "WR",
+          "similarity_score": 83.6241,
+          "distance": 0.163759,
+          "feature_snapshot": {
+            "ras_0_100": 57.8,
+            "production_0_100": 50.5,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 58.89,
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
+            "receptions": 66,
+            "receiving_yards": 1104,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.6,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
+          }
+        },
+        {
+          "historical_player_id": "wr-jerry-jeudy-2020",
+          "player_name": "Jerry Jeudy",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 77.8425,
+          "distance": 0.221575,
+          "feature_snapshot": {
+            "ras_0_100": 67.8,
+            "production_0_100": 45.1,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 65.0,
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.66,
+            "receptions": 77,
+            "receiving_yards": 1163,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
+          }
+        },
+        {
           "historical_player_id": "wr-brandon-aiyuk-2020",
           "player_name": "Brandon Aiyuk",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 77.6438,
-          "distance": 0.223562,
+          "similarity_score": 73.8369,
+          "distance": 0.261631,
           "feature_snapshot": {
             "ras_0_100": 84.6,
-            "production_0_100": 64.22,
+            "production_0_100": 52.1,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 30.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 64.22,
+            "receptions": 65,
+            "receiving_yards": 1192,
+            "receiving_tds": 8
           },
           "effective_features_used": [
             "ras_0_100",
@@ -928,71 +988,23 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "wr-treylon-burks-2022",
-          "player_name": "Treylon Burks",
-          "draft_year": 2022,
-          "position": "WR",
-          "similarity_score": 93.5484,
-          "distance": 0.064516,
-          "feature_snapshot": {
-            "ras_0_100": 57.8,
-            "production_0_100": 59.48,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 58.89,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "depth_peak",
-            "best_season_fantasy_ppg": 8.6,
-            "top_finish_band": "Depth (<12.0 PPR/G peak)",
-            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
-          }
-        },
-        {
-          "historical_player_id": "wr-jerry-jeudy-2020",
-          "player_name": "Jerry Jeudy",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 90.9594,
-          "distance": 0.090406,
-          "feature_snapshot": {
-            "ras_0_100": 67.8,
-            "production_0_100": 62.66,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 65.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr3_peak",
-            "best_season_fantasy_ppg": 14.2,
-            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
-          }
-        },
-        {
           "historical_player_id": "wr-tee-higgins-2020",
           "player_name": "Tee Higgins",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 88.7883,
-          "distance": 0.112117,
+          "similarity_score": 88.6089,
+          "distance": 0.113911,
           "feature_snapshot": {
             "ras_0_100": 41.6,
-            "production_0_100": 62.88,
+            "production_0_100": 62.2,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.88,
+            "receptions": 59,
+            "receiving_yards": 1167,
+            "receiving_tds": 13
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1006,19 +1018,53 @@
           }
         },
         {
+          "historical_player_id": "wr-treylon-burks-2022",
+          "player_name": "Treylon Burks",
+          "draft_year": 2022,
+          "position": "WR",
+          "similarity_score": 87.2351,
+          "distance": 0.127649,
+          "feature_snapshot": {
+            "ras_0_100": 57.8,
+            "production_0_100": 50.5,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 58.89,
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
+            "receptions": 66,
+            "receiving_yards": 1104,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.6,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
+          }
+        },
+        {
           "historical_player_id": "wr-ceedee-lamb-2020",
           "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 87.0452,
-          "distance": 0.129548,
+          "similarity_score": 87.2193,
+          "distance": 0.127807,
           "feature_snapshot": {
             "ras_0_100": 74.5,
-            "production_0_100": 71.5,
+            "production_0_100": 68.7,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 71.5,
+            "receptions": 62,
+            "receiving_yards": 1327,
+            "receiving_tds": 14
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1032,19 +1078,53 @@
           }
         },
         {
+          "historical_player_id": "wr-jerry-jeudy-2020",
+          "player_name": "Jerry Jeudy",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 81.6027,
+          "distance": 0.183973,
+          "feature_snapshot": {
+            "ras_0_100": 67.8,
+            "production_0_100": 45.1,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 65.0,
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.66,
+            "receptions": 77,
+            "receiving_yards": 1163,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
+          }
+        },
+        {
           "historical_player_id": "wr-brandon-aiyuk-2020",
           "player_name": "Brandon Aiyuk",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 79.8497,
-          "distance": 0.201503,
+          "similarity_score": 76.9488,
+          "distance": 0.230512,
           "feature_snapshot": {
             "ras_0_100": 84.6,
-            "production_0_100": 64.22,
+            "production_0_100": 52.1,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 30.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 64.22,
+            "receptions": 65,
+            "receiving_yards": 1192,
+            "receiving_tds": 8
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1066,71 +1146,23 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "wr-treylon-burks-2022",
-          "player_name": "Treylon Burks",
-          "draft_year": 2022,
-          "position": "WR",
-          "similarity_score": 93.9866,
-          "distance": 0.060134,
-          "feature_snapshot": {
-            "ras_0_100": 57.8,
-            "production_0_100": 59.48,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 58.89,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "depth_peak",
-            "best_season_fantasy_ppg": 8.6,
-            "top_finish_band": "Depth (<12.0 PPR/G peak)",
-            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
-          }
-        },
-        {
-          "historical_player_id": "wr-jerry-jeudy-2020",
-          "player_name": "Jerry Jeudy",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 93.666,
-          "distance": 0.06334,
-          "feature_snapshot": {
-            "ras_0_100": 67.8,
-            "production_0_100": 62.66,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 65.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr3_peak",
-            "best_season_fantasy_ppg": 14.2,
-            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
-          }
-        },
-        {
           "historical_player_id": "wr-ceedee-lamb-2020",
           "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 89.6061,
-          "distance": 0.103939,
+          "similarity_score": 89.9485,
+          "distance": 0.100515,
           "feature_snapshot": {
             "ras_0_100": 74.5,
-            "production_0_100": 71.5,
+            "production_0_100": 68.7,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 71.5,
+            "receptions": 62,
+            "receiving_yards": 1327,
+            "receiving_tds": 14
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1144,19 +1176,53 @@
           }
         },
         {
+          "historical_player_id": "wr-treylon-burks-2022",
+          "player_name": "Treylon Burks",
+          "draft_year": 2022,
+          "position": "WR",
+          "similarity_score": 87.7771,
+          "distance": 0.122229,
+          "feature_snapshot": {
+            "ras_0_100": 57.8,
+            "production_0_100": 50.5,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 58.89,
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
+            "receptions": 66,
+            "receiving_yards": 1104,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.6,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
+          }
+        },
+        {
           "historical_player_id": "wr-tee-higgins-2020",
           "player_name": "Tee Higgins",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 86.3435,
-          "distance": 0.136565,
+          "similarity_score": 86.2181,
+          "distance": 0.137819,
           "feature_snapshot": {
             "ras_0_100": 41.6,
-            "production_0_100": 62.88,
+            "production_0_100": 62.2,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.88,
+            "receptions": 59,
+            "receiving_yards": 1167,
+            "receiving_tds": 13
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1170,19 +1236,53 @@
           }
         },
         {
+          "historical_player_id": "wr-jerry-jeudy-2020",
+          "player_name": "Jerry Jeudy",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 83.2357,
+          "distance": 0.167643,
+          "feature_snapshot": {
+            "ras_0_100": 67.8,
+            "production_0_100": 45.1,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 65.0,
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.66,
+            "receptions": 77,
+            "receiving_yards": 1163,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
+          }
+        },
+        {
           "historical_player_id": "wr-brandon-aiyuk-2020",
           "player_name": "Brandon Aiyuk",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 82.6712,
-          "distance": 0.173288,
+          "similarity_score": 79.6358,
+          "distance": 0.203642,
           "feature_snapshot": {
             "ras_0_100": 84.6,
-            "production_0_100": 64.22,
+            "production_0_100": 52.1,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 30.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 64.22,
+            "receptions": 65,
+            "receiving_yards": 1192,
+            "receiving_tds": 8
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1208,15 +1308,19 @@
           "player_name": "Treylon Burks",
           "draft_year": 2022,
           "position": "WR",
-          "similarity_score": 97.2544,
-          "distance": 0.027456,
+          "similarity_score": 94.767,
+          "distance": 0.05233,
           "feature_snapshot": {
             "ras_0_100": 57.8,
-            "production_0_100": 59.48,
+            "production_0_100": 50.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
+            "receptions": 66,
+            "receiving_yards": 1104,
+            "receiving_tds": 11
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1230,45 +1334,23 @@
           }
         },
         {
-          "historical_player_id": "wr-jerry-jeudy-2020",
-          "player_name": "Jerry Jeudy",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 89.9365,
-          "distance": 0.100635,
-          "feature_snapshot": {
-            "ras_0_100": 67.8,
-            "production_0_100": 62.66,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 65.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr3_peak",
-            "best_season_fantasy_ppg": 14.2,
-            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
-          }
-        },
-        {
           "historical_player_id": "wr-tee-higgins-2020",
           "player_name": "Tee Higgins",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 89.9315,
-          "distance": 0.100685,
+          "similarity_score": 90.1135,
+          "distance": 0.098865,
           "feature_snapshot": {
             "ras_0_100": 41.6,
-            "production_0_100": 62.88,
+            "production_0_100": 62.2,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.88,
+            "receptions": 59,
+            "receiving_yards": 1167,
+            "receiving_tds": 13
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1282,19 +1364,53 @@
           }
         },
         {
+          "historical_player_id": "wr-jerry-jeudy-2020",
+          "player_name": "Jerry Jeudy",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 87.3677,
+          "distance": 0.126323,
+          "feature_snapshot": {
+            "ras_0_100": 67.8,
+            "production_0_100": 45.1,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 65.0,
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.66,
+            "receptions": 77,
+            "receiving_yards": 1163,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
+          }
+        },
+        {
           "historical_player_id": "wr-ceedee-lamb-2020",
           "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 82.705,
-          "distance": 0.17295,
+          "similarity_score": 83.7828,
+          "distance": 0.162172,
           "feature_snapshot": {
             "ras_0_100": 74.5,
-            "production_0_100": 71.5,
+            "production_0_100": 68.7,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 71.5,
+            "receptions": 62,
+            "receiving_yards": 1327,
+            "receiving_tds": 14
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1312,15 +1428,19 @@
           "player_name": "Brandon Aiyuk",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 78.253,
-          "distance": 0.21747,
+          "similarity_score": 78.5222,
+          "distance": 0.214778,
           "feature_snapshot": {
             "ras_0_100": 84.6,
-            "production_0_100": 64.22,
+            "production_0_100": 52.1,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 30.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 64.22,
+            "receptions": 65,
+            "receiving_yards": 1192,
+            "receiving_tds": 8
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1346,15 +1466,19 @@
           "player_name": "Tee Higgins",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 95.5178,
-          "distance": 0.044822,
+          "similarity_score": 95.052,
+          "distance": 0.04948,
           "feature_snapshot": {
             "ras_0_100": 41.6,
-            "production_0_100": 62.88,
+            "production_0_100": 62.2,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.88,
+            "receptions": 59,
+            "receiving_yards": 1167,
+            "receiving_tds": 13
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1372,15 +1496,19 @@
           "player_name": "Treylon Burks",
           "draft_year": 2022,
           "position": "WR",
-          "similarity_score": 87.7056,
-          "distance": 0.122944,
+          "similarity_score": 83.3578,
+          "distance": 0.166422,
           "feature_snapshot": {
             "ras_0_100": 57.8,
-            "production_0_100": 59.48,
+            "production_0_100": 50.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
+            "receptions": 66,
+            "receiving_yards": 1104,
+            "receiving_tds": 11
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1394,45 +1522,23 @@
           }
         },
         {
-          "historical_player_id": "wr-jerry-jeudy-2020",
-          "player_name": "Jerry Jeudy",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 82.0716,
-          "distance": 0.179284,
-          "feature_snapshot": {
-            "ras_0_100": 67.8,
-            "production_0_100": 62.66,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 65.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr3_peak",
-            "best_season_fantasy_ppg": 14.2,
-            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
-          }
-        },
-        {
           "historical_player_id": "wr-ceedee-lamb-2020",
           "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 77.8329,
-          "distance": 0.221671,
+          "similarity_score": 77.9025,
+          "distance": 0.220975,
           "feature_snapshot": {
             "ras_0_100": 74.5,
-            "production_0_100": 71.5,
+            "production_0_100": 68.7,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 71.5,
+            "receptions": 62,
+            "receiving_yards": 1327,
+            "receiving_tds": 14
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1446,19 +1552,53 @@
           }
         },
         {
+          "historical_player_id": "wr-jerry-jeudy-2020",
+          "player_name": "Jerry Jeudy",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 75.7733,
+          "distance": 0.242267,
+          "feature_snapshot": {
+            "ras_0_100": 67.8,
+            "production_0_100": 45.1,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 65.0,
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.66,
+            "receptions": 77,
+            "receiving_yards": 1163,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
+          }
+        },
+        {
           "historical_player_id": "wr-brandon-aiyuk-2020",
           "player_name": "Brandon Aiyuk",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 70.5671,
-          "distance": 0.294329,
+          "similarity_score": 68.4139,
+          "distance": 0.315861,
           "feature_snapshot": {
             "ras_0_100": 84.6,
-            "production_0_100": 64.22,
+            "production_0_100": 52.1,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 30.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 64.22,
+            "receptions": 65,
+            "receiving_yards": 1192,
+            "receiving_tds": 8
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1484,15 +1624,19 @@
           "player_name": "Tee Higgins",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 92.2192,
-          "distance": 0.077808,
+          "similarity_score": 91.7748,
+          "distance": 0.082252,
           "feature_snapshot": {
             "ras_0_100": 41.6,
-            "production_0_100": 62.88,
+            "production_0_100": 62.2,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.88,
+            "receptions": 59,
+            "receiving_yards": 1167,
+            "receiving_tds": 13
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1510,15 +1654,19 @@
           "player_name": "Treylon Burks",
           "draft_year": 2022,
           "position": "WR",
-          "similarity_score": 82.6235,
-          "distance": 0.173765,
+          "similarity_score": 78.4669,
+          "distance": 0.215331,
           "feature_snapshot": {
             "ras_0_100": 57.8,
-            "production_0_100": 59.48,
+            "production_0_100": 50.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
+            "receptions": 66,
+            "receiving_yards": 1104,
+            "receiving_tds": 11
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1532,45 +1680,23 @@
           }
         },
         {
-          "historical_player_id": "wr-jerry-jeudy-2020",
-          "player_name": "Jerry Jeudy",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 77.2138,
-          "distance": 0.227862,
-          "feature_snapshot": {
-            "ras_0_100": 67.8,
-            "production_0_100": 62.66,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 65.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr3_peak",
-            "best_season_fantasy_ppg": 14.2,
-            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
-          }
-        },
-        {
           "historical_player_id": "wr-ceedee-lamb-2020",
           "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 73.6597,
-          "distance": 0.263403,
+          "similarity_score": 73.506,
+          "distance": 0.26494,
           "feature_snapshot": {
             "ras_0_100": 74.5,
-            "production_0_100": 71.5,
+            "production_0_100": 68.7,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 71.5,
+            "receptions": 62,
+            "receiving_yards": 1327,
+            "receiving_tds": 14
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1584,19 +1710,53 @@
           }
         },
         {
+          "historical_player_id": "wr-jerry-jeudy-2020",
+          "player_name": "Jerry Jeudy",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 70.7603,
+          "distance": 0.292397,
+          "feature_snapshot": {
+            "ras_0_100": 67.8,
+            "production_0_100": 45.1,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 65.0,
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.66,
+            "receptions": 77,
+            "receiving_yards": 1163,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
+          }
+        },
+        {
           "historical_player_id": "wr-brandon-aiyuk-2020",
           "player_name": "Brandon Aiyuk",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 65.9682,
-          "distance": 0.340318,
+          "similarity_score": 63.421,
+          "distance": 0.36579,
           "feature_snapshot": {
             "ras_0_100": 84.6,
-            "production_0_100": 64.22,
+            "production_0_100": 52.1,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 30.0,
-            "normalization_scope": "cross-class-wr-v0",
-            "opt_out_season_flag": false
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 64.22,
+            "receptions": 65,
+            "receiving_yards": 1192,
+            "receiving_tds": 8
           },
           "effective_features_used": [
             "ras_0_100",

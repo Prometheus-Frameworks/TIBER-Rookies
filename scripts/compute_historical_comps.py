@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
 from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
@@ -85,7 +86,7 @@ def normalize_historical_feature_rows(rows: list[dict[str, Any]]) -> list[dict[s
             # penalize the profile as a literal zero-production season.
             production_value = None
 
-        normalized.append(
+        normalized_row = (
             {
                 "player_id": str(row["player_id"]),
                 "player_name": str(row["player_name"]),
@@ -101,9 +102,97 @@ def normalize_historical_feature_rows(rows: list[dict[str, Any]]) -> list[dict[s
                 "source_url": row.get("source_url"),
                 "normalization_scope": row.get("normalization_scope"),
                 "opt_out_season_flag": opt_out_season_flag,
+                "receptions": row.get("receptions"),
+                "receiving_yards": row.get("receiving_yards"),
+                "receiving_tds": row.get("receiving_tds"),
+                "production_0_100_legacy": coerce_float_or_none(row.get("production_0_100_legacy")),
+                "notes": row.get("notes"),
             }
         )
+        normalized.append(normalized_row)
     return normalized
+
+
+def _to_int_or_none(value: Any) -> int | None:
+    if value is None:
+        return None
+    if isinstance(value, bool):
+        return None
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _zscore(value: float, values: list[float]) -> float:
+    if not values:
+        return 0.0
+    mean = sum(values) / len(values)
+    variance = sum((item - mean) ** 2 for item in values) / len(values)
+    if math.isclose(variance, 0.0):
+        return 0.0
+    std_dev = variance**0.5
+    return (value - mean) / std_dev
+
+
+def apply_wr_historical_production_methodology(historical_features: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    wr_rows = [row for row in historical_features if row.get("position") == "WR"]
+    scored_rows: list[dict[str, Any]] = []
+    metrics_population: list[dict[str, float]] = []
+
+    for row in wr_rows:
+        receptions = _to_int_or_none(row.get("receptions"))
+        receiving_yards = _to_int_or_none(row.get("receiving_yards"))
+        receiving_tds = _to_int_or_none(row.get("receiving_tds"))
+        opt_out_season_flag = bool(row.get("opt_out_season_flag", False))
+        notes_text = str(row.get("notes") or "").lower()
+        partial_season_flag = "partial season" in notes_text
+
+        if row.get("production_0_100_legacy") is None:
+            row["production_0_100_legacy"] = row.get("production_0_100")
+        row["normalization_scope"] = "historical-wr-cfbd-method-v1-null"
+        row["production_0_100"] = None
+
+        if (
+            opt_out_season_flag
+            or partial_season_flag
+            or receptions is None
+            or receiving_yards is None
+            or receiving_tds is None
+            or receptions < 20
+        ):
+            scored_rows.append(row)
+            continue
+
+        yards_per_reception = receiving_yards / receptions
+        td_rate = receiving_tds / receptions
+        total_yards = float(receiving_yards)
+        row["_wr_metrics"] = {
+            "yards_per_reception": yards_per_reception,
+            "td_rate": td_rate,
+            "total_yards": total_yards,
+        }
+        metrics_population.append(row["_wr_metrics"])
+        scored_rows.append(row)
+
+    ypr_values = [row["yards_per_reception"] for row in metrics_population]
+    td_rate_values = [row["td_rate"] for row in metrics_population]
+    total_yards_values = [row["total_yards"] for row in metrics_population]
+
+    for row in scored_rows:
+        metrics = row.get("_wr_metrics")
+        if not isinstance(metrics, dict):
+            continue
+        ypr_z = _zscore(metrics["yards_per_reception"], ypr_values)
+        total_yards_z = _zscore(metrics["total_yards"], total_yards_values)
+        td_rate_z = _zscore(metrics["td_rate"], td_rate_values)
+        composite_z = (0.40 * ypr_z) + (0.35 * total_yards_z) + (0.25 * td_rate_z)
+        score = max(0.0, min(100.0, round(50.0 + (composite_z * 15.0), 1)))
+        row["production_0_100"] = score
+        row["normalization_scope"] = "historical-wr-cfbd-method-v1"
+        del row["_wr_metrics"]
+
+    return historical_features
 
 
 def normalize_outcome_rows(rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
@@ -213,6 +302,24 @@ def build_comp_candidates(
     output: list[dict[str, Any]] = []
     for distance, _, row, effective_features_used in ranked[:top_n]:
         outcome = outcomes_by_player_id.get(row["player_id"])
+        feature_snapshot = {
+            "ras_0_100": row.get("ras_0_100"),
+            "production_0_100": row.get("production_0_100"),
+            "draft_capital_proxy_0_100": row.get("draft_capital_proxy_0_100"),
+            "size_context_0_100": row.get("size_context_0_100"),
+            "normalization_scope": row.get("normalization_scope"),
+            "opt_out_season_flag": bool(row.get("opt_out_season_flag", False)),
+        }
+        if row.get("position") == "WR":
+            feature_snapshot.update(
+                {
+                    "production_0_100_legacy": row.get("production_0_100_legacy"),
+                    "receptions": row.get("receptions"),
+                    "receiving_yards": row.get("receiving_yards"),
+                    "receiving_tds": row.get("receiving_tds"),
+                }
+            )
+
         output.append(
             {
                 "historical_player_id": row["player_id"],
@@ -221,14 +328,7 @@ def build_comp_candidates(
                 "position": row["position"],
                 "similarity_score": similarity_score(distance),
                 "distance": round(distance, 6),
-                "feature_snapshot": {
-                    "ras_0_100": row.get("ras_0_100"),
-                    "production_0_100": row.get("production_0_100"),
-                    "draft_capital_proxy_0_100": row.get("draft_capital_proxy_0_100"),
-                    "size_context_0_100": row.get("size_context_0_100"),
-                    "normalization_scope": row.get("normalization_scope"),
-                "opt_out_season_flag": bool(row.get("opt_out_season_flag", False)),
-                },
+                "feature_snapshot": feature_snapshot,
                 "effective_features_used": effective_features_used,
                 "outcome_snapshot": None
                 if outcome is None
@@ -332,6 +432,11 @@ def build_similarity_quality_by_position(
 
         failed = [f"{name}: false" for name, is_true in requirements_checked.items() if not is_true]
         reason = "; ".join(failed) if failed else "all_checks_passed"
+        if position == "WR":
+            reason = (
+                "metric methodology matches; population scope incompatible "
+                "(15-row historical cohort vs. full CFBD season population); lane warning present"
+            )
         output[position] = {
             "status": status,
             "reason": reason,
@@ -472,6 +577,7 @@ def main() -> None:
     if not isinstance(historical_features_payload, list):
         raise SystemExit("Historical features payload must be a JSON array.")
     historical_features = normalize_historical_feature_rows(historical_features_payload)
+    historical_features = apply_wr_historical_production_methodology(historical_features)
 
     outcomes_by_player_id: dict[str, dict[str, Any]] = {}
     source_files_used = [str(args.rookie_export), str(args.historical_features)]
