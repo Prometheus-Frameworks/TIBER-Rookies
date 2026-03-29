@@ -217,12 +217,12 @@
     "source_season": 2021,
     "ras_0_100": null,
     "production_0_100": 19.18,
-    "draft_capital_proxy_0_100": 85.0,
+    "draft_capital_proxy_0_100": 95.0,
     "size_context_0_100": 44.44,
     "normalization_scope": "class-local",
     "source_name": "FantasyData player page + Wikipedia player page + 2022 WR RAS roundup (Steelers Depot citing ras.football)",
     "source_url": "https://en.wikipedia.org/wiki/Garrett_Wilson",
-    "notes": "2021 receiving yards sourced as 1058 (Wikipedia college stats). 2022 WR production_0_100 uses class-local min-max on raw 2021 receiving yards across this 5-player slice: min 936 (Olave), max 1572 (Williams). size_context_0_100 is deterministic percentile composite of listed height, weight, and forty time across this 5-player slice; speed input unavailable for some rows and treated as neutral (50th percentile) in the composite. ras_0_100 left null because an exact player-level RAS value was not cleanly sourced in this pass."
+    "notes": "2021 receiving yards sourced as 1058 (Wikipedia college stats). Draft capital proxy updated for top-10 selection (band 1-10 => 95.0). 2022 WR production_0_100 uses class-local min-max on raw 2021 receiving yards across this 5-player slice: min 936 (Olave), max 1572 (Williams). size_context_0_100 is deterministic percentile composite of listed height, weight, and forty time across this 5-player slice; speed input unavailable for some rows and treated as neutral (50th percentile) in the composite. ras_0_100 left null because an exact player-level RAS value was not cleanly sourced in this pass."
   },
   {
     "player_id": "wr-drake-london-2022",
@@ -233,12 +233,12 @@
     "source_season": 2021,
     "ras_0_100": null,
     "production_0_100": 23.27,
-    "draft_capital_proxy_0_100": 85.0,
+    "draft_capital_proxy_0_100": 95.0,
     "size_context_0_100": 70.0,
     "normalization_scope": "class-local",
     "source_name": "FantasyData player page + Wikipedia player page + 2022 WR RAS roundup (Steelers Depot citing ras.football)",
     "source_url": "https://en.wikipedia.org/wiki/Drake_London",
-    "notes": "2021 receiving yards sourced as 1084 (Wikipedia college stats). 2022 WR production_0_100 uses class-local min-max on raw 2021 receiving yards across this 5-player slice: min 936 (Olave), max 1572 (Williams). size_context_0_100 is deterministic percentile composite of listed height, weight, and forty time across this 5-player slice; speed input unavailable for this row and treated as neutral (50th percentile) in the composite. ras_0_100 left null because an exact player-level RAS value was not cleanly sourced in this pass."
+    "notes": "2021 receiving yards sourced as 1084 (Wikipedia college stats). Draft capital proxy updated for top-10 selection (band 1-10 => 95.0). 2022 WR production_0_100 uses class-local min-max on raw 2021 receiving yards across this 5-player slice: min 936 (Olave), max 1572 (Williams). size_context_0_100 is deterministic percentile composite of listed height, weight, and forty time across this 5-player slice; speed input unavailable for this row and treated as neutral (50th percentile) in the composite. ras_0_100 left null because an exact player-level RAS value was not cleanly sourced in this pass."
   },
   {
     "player_id": "wr-chris-olave-2022",

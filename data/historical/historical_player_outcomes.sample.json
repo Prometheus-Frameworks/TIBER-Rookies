@@ -114,7 +114,7 @@
     "years_1_to_3_summary": "2021-2023 PPR/G: 17.9, 20.2, 16.4; receiving line: 81/1455/13, 87/1046/9, 100/1216/7.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/ja-marr-chase-fantasy/22564",
-    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
+    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table (23.7 in 2024 season); top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
   },
   {
     "player_id": "wr-jaylen-waddle-2021",
@@ -199,9 +199,9 @@
     "player_name": "Chris Olave",
     "position": "WR",
     "draft_year": 2022,
-    "career_outcome_label": "wr2_peak",
-    "best_season_fantasy_ppg": 16.8,
-    "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+    "career_outcome_label": "wr3_peak",
+    "best_season_fantasy_ppg": 14.5,
+    "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
     "years_1_to_3_summary": "2022-2024 PPR/G: 13.2, 14.5, 9.6; receiving line: 72/1042/4, 87/1123/5, 32/400/1.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/chris-olave-fantasy/22565",

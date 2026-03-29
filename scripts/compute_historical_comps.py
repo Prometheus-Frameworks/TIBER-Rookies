@@ -77,6 +77,13 @@ def normalize_historical_feature_rows(rows: list[dict[str, Any]]) -> list[dict[s
     validate_required_fields(rows, REQUIRED_HISTORICAL_FEATURE_FIELDS, "historical features")
     normalized: list[dict[str, Any]] = []
     for row in rows:
+        production_value = coerce_float_or_none(row.get("production_0_100"))
+        opt_out_season_flag = bool(row.get("opt_out_season_flag", False))
+        if opt_out_season_flag:
+            # Treat opt-out years as unavailable production context so distance math does not
+            # penalize the profile as a literal zero-production season.
+            production_value = None
+
         normalized.append(
             {
                 "player_id": str(row["player_id"]),
@@ -86,12 +93,13 @@ def normalize_historical_feature_rows(rows: list[dict[str, Any]]) -> list[dict[s
                 "draft_year": row.get("draft_year"),
                 "source_season": row.get("source_season"),
                 "ras_0_100": coerce_float_or_none(row.get("ras_0_100")),
-                "production_0_100": coerce_float_or_none(row.get("production_0_100")),
+                "production_0_100": production_value,
                 "draft_capital_proxy_0_100": coerce_float_or_none(row.get("draft_capital_proxy_0_100")),
                 "size_context_0_100": coerce_float_or_none(row.get("size_context_0_100")),
                 "source_name": row.get("source_name"),
                 "source_url": row.get("source_url"),
                 "normalization_scope": row.get("normalization_scope"),
+                "opt_out_season_flag": opt_out_season_flag,
             }
         )
     return normalized
@@ -218,6 +226,7 @@ def build_comp_candidates(
                     "draft_capital_proxy_0_100": row.get("draft_capital_proxy_0_100"),
                     "size_context_0_100": row.get("size_context_0_100"),
                     "normalization_scope": row.get("normalization_scope"),
+                "opt_out_season_flag": bool(row.get("opt_out_season_flag", False)),
                 },
                 "effective_features_used": effective_features_used,
                 "outcome_snapshot": None

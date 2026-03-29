@@ -11,7 +11,7 @@
     },
     "notes": "v0 emits talent_comp by default; market_comp support is scaffolded and optional."
   },
-  "generated_at": "2026-03-29T15:17:53+00:00",
+  "generated_at": "2026-03-29T16:17:21+00:00",
   "season": 2026,
   "source_files_used": [
     "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
@@ -40,7 +40,8 @@
             "production_0_100": 72.0,
             "draft_capital_proxy_0_100": 70.0,
             "size_context_0_100": 66.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -65,7 +66,8 @@
             "production_0_100": 80.0,
             "draft_capital_proxy_0_100": 88.0,
             "size_context_0_100": 71.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -98,7 +100,8 @@
             "production_0_100": 72.0,
             "draft_capital_proxy_0_100": 70.0,
             "size_context_0_100": 66.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -123,7 +126,8 @@
             "production_0_100": 80.0,
             "draft_capital_proxy_0_100": 88.0,
             "size_context_0_100": 71.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -156,7 +160,8 @@
             "production_0_100": 80.0,
             "draft_capital_proxy_0_100": 88.0,
             "size_context_0_100": 71.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -181,7 +186,8 @@
             "production_0_100": 72.0,
             "draft_capital_proxy_0_100": 70.0,
             "size_context_0_100": 66.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -214,7 +220,8 @@
             "production_0_100": 72.0,
             "draft_capital_proxy_0_100": 70.0,
             "size_context_0_100": 66.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -239,7 +246,8 @@
             "production_0_100": 80.0,
             "draft_capital_proxy_0_100": 88.0,
             "size_context_0_100": 71.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -272,7 +280,8 @@
             "production_0_100": 72.0,
             "draft_capital_proxy_0_100": 70.0,
             "size_context_0_100": 66.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -297,7 +306,8 @@
             "production_0_100": 80.0,
             "draft_capital_proxy_0_100": 88.0,
             "size_context_0_100": 71.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -358,7 +368,8 @@
             "production_0_100": 69.0,
             "draft_capital_proxy_0_100": 58.0,
             "size_context_0_100": 77.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "production_0_100"
@@ -390,7 +401,8 @@
             "production_0_100": 69.0,
             "draft_capital_proxy_0_100": 58.0,
             "size_context_0_100": 77.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "production_0_100"
@@ -422,7 +434,8 @@
             "production_0_100": 69.0,
             "draft_capital_proxy_0_100": 58.0,
             "size_context_0_100": 77.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "production_0_100"
@@ -454,7 +467,8 @@
             "production_0_100": 43.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -479,7 +493,8 @@
             "production_0_100": 26.42,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -504,7 +519,8 @@
             "production_0_100": 53.02,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 20.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -529,7 +545,8 @@
             "production_0_100": 25.43,
             "draft_capital_proxy_0_100": 80.0,
             "size_context_0_100": 55.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -554,7 +571,8 @@
             "production_0_100": 100.0,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 45.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -587,7 +605,8 @@
             "production_0_100": 43.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -612,7 +631,8 @@
             "production_0_100": 53.02,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 20.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -637,7 +657,8 @@
             "production_0_100": 26.42,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -662,7 +683,8 @@
             "production_0_100": 25.43,
             "draft_capital_proxy_0_100": 80.0,
             "size_context_0_100": 55.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -687,7 +709,8 @@
             "production_0_100": 100.0,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 45.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -720,7 +743,8 @@
             "production_0_100": 43.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -745,7 +769,8 @@
             "production_0_100": 53.02,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 20.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -770,7 +795,8 @@
             "production_0_100": 26.42,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -795,7 +821,8 @@
             "production_0_100": 100.0,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 45.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -820,7 +847,8 @@
             "production_0_100": 25.43,
             "draft_capital_proxy_0_100": 80.0,
             "size_context_0_100": 55.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -853,7 +881,8 @@
             "production_0_100": 43.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -878,7 +907,8 @@
             "production_0_100": 53.02,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 20.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -903,7 +933,8 @@
             "production_0_100": 26.42,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -928,7 +959,8 @@
             "production_0_100": 25.43,
             "draft_capital_proxy_0_100": 80.0,
             "size_context_0_100": 55.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -953,7 +985,8 @@
             "production_0_100": 100.0,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 45.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -986,7 +1019,8 @@
             "production_0_100": 43.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1011,7 +1045,8 @@
             "production_0_100": 53.02,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 20.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1036,7 +1071,8 @@
             "production_0_100": 26.42,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1061,7 +1097,8 @@
             "production_0_100": 25.43,
             "draft_capital_proxy_0_100": 80.0,
             "size_context_0_100": 55.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1086,7 +1123,8 @@
             "production_0_100": 100.0,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 45.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1119,7 +1157,8 @@
             "production_0_100": 43.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1144,7 +1183,8 @@
             "production_0_100": 26.42,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1169,7 +1209,8 @@
             "production_0_100": 53.02,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 20.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1194,7 +1235,8 @@
             "production_0_100": 25.43,
             "draft_capital_proxy_0_100": 80.0,
             "size_context_0_100": 55.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1219,7 +1261,8 @@
             "production_0_100": 1.06,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1252,7 +1295,8 @@
             "production_0_100": 43.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1277,7 +1321,8 @@
             "production_0_100": 26.42,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1302,7 +1347,8 @@
             "production_0_100": 53.02,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 20.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1327,7 +1373,8 @@
             "production_0_100": 25.43,
             "draft_capital_proxy_0_100": 80.0,
             "size_context_0_100": 55.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1352,7 +1399,8 @@
             "production_0_100": 100.0,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 45.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1385,7 +1433,8 @@
             "production_0_100": 43.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1410,7 +1459,8 @@
             "production_0_100": 26.42,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1435,7 +1485,8 @@
             "production_0_100": 53.02,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 20.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1460,7 +1511,8 @@
             "production_0_100": 25.43,
             "draft_capital_proxy_0_100": 80.0,
             "size_context_0_100": 55.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1485,7 +1537,8 @@
             "production_0_100": 100.0,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 45.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
