@@ -1,0 +1,62 @@
+[
+  {
+    "player_id": "sample-qb-2018-a",
+    "player_name": "Sample QB Profile A",
+    "position": "QB",
+    "school": "Sample State",
+    "draft_year": 2018,
+    "source_season": 2017,
+    "ras_0_100": 74.0,
+    "production_0_100": 80.0,
+    "draft_capital_proxy_0_100": 88.0,
+    "size_context_0_100": 71.0,
+    "source_name": "sample_fixture",
+    "source_url": null,
+    "notes": "sample/dev fixture only"
+  },
+  {
+    "player_id": "sample-qb-2019-b",
+    "player_name": "Sample QB Profile B",
+    "position": "QB",
+    "school": "Example Tech",
+    "draft_year": 2019,
+    "source_season": 2018,
+    "ras_0_100": 61.0,
+    "production_0_100": 72.0,
+    "draft_capital_proxy_0_100": 70.0,
+    "size_context_0_100": 66.0,
+    "source_name": "sample_fixture",
+    "source_url": null,
+    "notes": "sample/dev fixture only"
+  },
+  {
+    "player_id": "sample-wr-2020-a",
+    "player_name": "Sample WR Profile A",
+    "position": "WR",
+    "school": "Demo University",
+    "draft_year": 2020,
+    "source_season": 2019,
+    "ras_0_100": 82.0,
+    "production_0_100": 78.0,
+    "draft_capital_proxy_0_100": 76.0,
+    "size_context_0_100": 64.0,
+    "source_name": "sample_fixture",
+    "source_url": null,
+    "notes": "sample/dev fixture only"
+  },
+  {
+    "player_id": "sample-te-2021-a",
+    "player_name": "Sample TE Profile A",
+    "position": "TE",
+    "school": "Example College",
+    "draft_year": 2021,
+    "source_season": 2020,
+    "ras_0_100": null,
+    "production_0_100": 69.0,
+    "draft_capital_proxy_0_100": 58.0,
+    "size_context_0_100": 77.0,
+    "source_name": "sample_fixture",
+    "source_url": null,
+    "notes": "sample/dev fixture only"
+  }
+]
