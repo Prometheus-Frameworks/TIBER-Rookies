@@ -44,7 +44,7 @@ Example:
   "similarity_quality_by_position": {
     "WR": {
       "status": "directional_only",
-      "reason": "metric methodology matches; population scope incompatible (15-row historical cohort vs. full CFBD season population); lane warning present",
+      "reason": "metric methodology matches; population scope incompatible (in-repo WR cohort fallback vs. full CFBD season population); lane warning present",
       "requirements_checked": {
         "no_lane_warning": false,
         "min_effective_feature_count_met": true,
@@ -160,7 +160,7 @@ Field definitions in `requirements_checked`:
 5. `methodology_compatible`: all historical feature rows for the position have `normalization_scope` values in `PRODUCTION_SCOPE_COMPATIBLE`.
 
 `reason` is always a non-empty string that enumerates failed checks (`<check>: false; ...`) or `all_checks_passed`.
-For WR in the current v1 pass, reason is explicitly pinned to: `metric methodology matches; population scope incompatible (15-row historical cohort vs. full CFBD season population); lane warning present`.
+For WR in the current v1 pass, reason is explicitly pinned to: `metric methodology matches; population scope incompatible (in-repo WR cohort fallback vs. full CFBD season population); lane warning present`.
 
 ## Methodology compatibility projection (`methodology_compatibility_by_position`)
 
@@ -184,6 +184,14 @@ It must not be independently computed from different logic.
 - `talent_comp` (default v0 output): weighted by athleticism + production + optional size context.
 - `market_comp` (deferred output mode but supported in script): uses explicit normalized weights that sum to 1.0 (`ras=0.35`, `production=0.35`, `size_context=0.10`, `draft_capital_proxy=0.20`).
 
+## Historical WR reference population infrastructure
+
+- Optional static reference files are read from `data/historical/wr_reference_populations/{season}_wr_receiving_population.json`.
+- Required fields per row: `player_name`, `position`, `source_season`, `receptions`, `receiving_yards`, `receiving_tds`, `source_name`, `source_url`.
+- A file is considered valid for compatibility only when at least 100 rows qualify (`position == "WR"`, `receptions >= 20`, and sourced provenance present).
+- When valid population files are present for a row's `source_season`, WR rows are normalized using scope `historical-wr-cfbd-season-pop-v1`.
+- When absent, scoring falls back to `historical-wr-cfbd-method-v1` / `historical-wr-cfbd-method-v1-null` and compatibility remains conservative.
+
 ## WR production harmonization scope (historical-wr-cfbd-method-v1)
 
 - Historical WR rows now compute `production_0_100` using the same **metric methodology** as `scripts/compute_production_scores.py` for 2026 WR:
@@ -192,7 +200,7 @@ It must not be independently computed from different logic.
   - z-composite: `0.40*ypr_z + 0.35*total_yards_z + 0.25*td_rate_z`,
   - transform: `max(0.0, min(100.0, round(50.0 + (z * 15.0), 1)))`.
 - Population scope remains intentionally different in this pass:
-  - historical WR z-scores use only the in-repo 15-row historical WR cohort (not full-season CFBD population),
+  - historical WR z-scores use the in-repo WR cohort fallback unless a valid season population file is provided (not full-season CFBD population by default),
   - therefore `methodology_compatibility_by_position.WR` remains `false`.
 - `normalization_scope` values:
   - `historical-wr-cfbd-method-v1`: row met the raw-stat and threshold requirements and has a computed replacement score.
@@ -219,7 +227,7 @@ The seeded real WR cohort in `data/historical/historical_prospect_features.sampl
 - 2020 WR rows include sourced `ras_0_100`; some later rows preserve `ras_0_100 = null` where clean sourcing was not available.
 - `size_context_0_100` is now populated as a deterministic height/weight percentile context dimension.
 - Outcome fields for the seeded real WR cohort are now partially populated from sourced FantasyData PPR season rows.
-- `production_0_100` includes an explicit `normalization_scope` marker (currently class-local for WR rows in this pass), and should not be assumed cross-class comparable unless scope states so.
+- `production_0_100` includes an explicit `normalization_scope` marker (`historical-wr-cfbd-method-v1`, `historical-wr-cfbd-method-v1-null`, or `historical-wr-cfbd-season-pop-v1` when valid population files exist).
 - `career_outcome_label` and `top_finish_band` for seeded WR rows are deterministic peak-`FPTS/G` bucket derivations, not yet a league-wide finalized finish model.
 - `effective_features_used` must be used when reading similarities; metadata weights are not equivalent to active dimensions for every row.
 

@@ -47,6 +47,19 @@ MARKET_WEIGHTS = {
     "draft_capital_proxy_0_100": 0.20,
 }
 PRODUCTION_SCOPE_COMPATIBLE: frozenset[str] = frozenset()
+WR_POPULATION_SCOPE = "historical-wr-cfbd-season-pop-v1"
+WR_POPULATION_MIN_ROWS = 100
+WR_REFERENCE_POPULATION_DIR = Path("data/historical/wr_reference_populations")
+REQUIRED_WR_REFERENCE_POPULATION_FIELDS = {
+    "player_name",
+    "position",
+    "source_season",
+    "receptions",
+    "receiving_yards",
+    "receiving_tds",
+    "source_name",
+    "source_url",
+}
 
 
 def load_json(path: Path) -> Any:
@@ -135,10 +148,68 @@ def _zscore(value: float, values: list[float]) -> float:
     return (value - mean) / std_dev
 
 
-def apply_wr_historical_production_methodology(historical_features: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def _load_wr_reference_populations(population_dir: Path) -> dict[int, list[dict[str, float]]]:
+    if not population_dir.exists():
+        return {}
+
+    populations_by_season: dict[int, list[dict[str, float]]] = {}
+    for path in sorted(population_dir.glob("*_wr_receiving_population.json")):
+        payload = load_json(path)
+        if not isinstance(payload, list):
+            raise SystemExit(f"WR reference population file must be a JSON array: {path}")
+
+        season_population: list[dict[str, float]] = []
+        for i, row in enumerate(payload, start=1):
+            if not isinstance(row, dict):
+                raise SystemExit(f"WR reference population row {i} in {path} must be an object")
+            missing = [field for field in sorted(REQUIRED_WR_REFERENCE_POPULATION_FIELDS) if field not in row]
+            if missing:
+                raise SystemExit(f"WR reference population row {i} in {path} missing required fields: {missing}")
+            if str(row.get("position")) != "WR":
+                continue
+
+            source_season = _to_int_or_none(row.get("source_season"))
+            receptions = _to_int_or_none(row.get("receptions"))
+            receiving_yards = _to_int_or_none(row.get("receiving_yards"))
+            receiving_tds = _to_int_or_none(row.get("receiving_tds"))
+            source_name = str(row.get("source_name") or "").strip()
+            source_url = str(row.get("source_url") or "").strip()
+            if source_season is None or receptions is None or receiving_yards is None or receiving_tds is None:
+                continue
+            if not source_name or not source_url:
+                continue
+            if receptions < 20:
+                continue
+
+            season_population.append(
+                {
+                    "yards_per_reception": receiving_yards / receptions,
+                    "td_rate": receiving_tds / receptions,
+                    "total_yards": float(receiving_yards),
+                }
+            )
+            populations_by_season.setdefault(source_season, [])
+
+        season_from_name = _to_int_or_none(path.name.split("_", 1)[0])
+        if season_from_name is None:
+            continue
+        populations_by_season[season_from_name] = season_population
+
+    valid_populations = {
+        season: rows for season, rows in populations_by_season.items() if len(rows) >= WR_POPULATION_MIN_ROWS
+    }
+    return valid_populations
+
+
+def apply_wr_historical_production_methodology(
+    historical_features: list[dict[str, Any]],
+    *,
+    wr_reference_populations: dict[int, list[dict[str, float]]] | None = None,
+) -> tuple[list[dict[str, Any]], frozenset[str]]:
     wr_rows = [row for row in historical_features if row.get("position") == "WR"]
     scored_rows: list[dict[str, Any]] = []
     metrics_population: list[dict[str, float]] = []
+    has_valid_reference_population = bool(wr_reference_populations)
 
     for row in wr_rows:
         receptions = _to_int_or_none(row.get("receptions"))
@@ -175,24 +246,45 @@ def apply_wr_historical_production_methodology(historical_features: list[dict[st
         metrics_population.append(row["_wr_metrics"])
         scored_rows.append(row)
 
-    ypr_values = [row["yards_per_reception"] for row in metrics_population]
-    td_rate_values = [row["td_rate"] for row in metrics_population]
-    total_yards_values = [row["total_yards"] for row in metrics_population]
+    fallback_ypr_values = [row["yards_per_reception"] for row in metrics_population]
+    fallback_td_rate_values = [row["td_rate"] for row in metrics_population]
+    fallback_total_yards_values = [row["total_yards"] for row in metrics_population]
 
     for row in scored_rows:
         metrics = row.get("_wr_metrics")
         if not isinstance(metrics, dict):
             continue
+
+        source_season = _to_int_or_none(row.get("source_season"))
+        season_population = (
+            wr_reference_populations.get(source_season, [])
+            if has_valid_reference_population and source_season is not None
+            else []
+        )
+        if season_population:
+            row["normalization_scope"] = WR_POPULATION_SCOPE
+            ypr_values = [entry["yards_per_reception"] for entry in season_population]
+            td_rate_values = [entry["td_rate"] for entry in season_population]
+            total_yards_values = [entry["total_yards"] for entry in season_population]
+        else:
+            ypr_values = fallback_ypr_values
+            td_rate_values = fallback_td_rate_values
+            total_yards_values = fallback_total_yards_values
+
         ypr_z = _zscore(metrics["yards_per_reception"], ypr_values)
         total_yards_z = _zscore(metrics["total_yards"], total_yards_values)
         td_rate_z = _zscore(metrics["td_rate"], td_rate_values)
         composite_z = (0.40 * ypr_z) + (0.35 * total_yards_z) + (0.25 * td_rate_z)
         score = max(0.0, min(100.0, round(50.0 + (composite_z * 15.0), 1)))
         row["production_0_100"] = score
-        row["normalization_scope"] = "historical-wr-cfbd-method-v1"
+        if row.get("normalization_scope") != WR_POPULATION_SCOPE:
+            row["normalization_scope"] = "historical-wr-cfbd-method-v1"
         del row["_wr_metrics"]
 
-    return historical_features
+    compatible_scopes = (
+        frozenset({WR_POPULATION_SCOPE}) if any(row.get("normalization_scope") == WR_POPULATION_SCOPE for row in wr_rows) else PRODUCTION_SCOPE_COMPATIBLE
+    )
+    return historical_features, compatible_scopes
 
 
 def normalize_outcome_rows(rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
@@ -388,13 +480,13 @@ def build_ui_display_allowed(
 
 
 def build_methodology_compatible_by_position(
-    positions: set[str], historical_features: list[dict[str, Any]]
+    positions: set[str], historical_features: list[dict[str, Any]], production_scope_compatible: frozenset[str] = PRODUCTION_SCOPE_COMPATIBLE
 ) -> dict[str, bool]:
     output: dict[str, bool] = {}
     for position in sorted(positions):
         position_rows = [row for row in historical_features if row.get("position") == position]
         output[position] = bool(position_rows) and all(
-            row.get("normalization_scope") in PRODUCTION_SCOPE_COMPATIBLE for row in position_rows
+            row.get("normalization_scope") in production_scope_compatible for row in position_rows
         )
     return output
 
@@ -435,7 +527,7 @@ def build_similarity_quality_by_position(
         if position == "WR":
             reason = (
                 "metric methodology matches; population scope incompatible "
-                "(15-row historical cohort vs. full CFBD season population); lane warning present"
+                "(in-repo WR cohort fallback vs. full CFBD season population); lane warning present"
             )
         output[position] = {
             "status": status,
@@ -453,6 +545,7 @@ def compute_historical_comps(
     top_n: int,
     source_files_used: list[str],
     generated_at: str,
+    production_scope_compatible: frozenset[str] = PRODUCTION_SCOPE_COMPATIBLE,
 ) -> dict[str, Any]:
     if comp_mode not in {"talent_comp", "market_comp"}:
         raise SystemExit(f"Unsupported comp mode: {comp_mode}")
@@ -499,7 +592,11 @@ def compute_historical_comps(
         )
 
     positions = {str(player.get("position")) for player in players if player.get("position") is not None}
-    methodology_compatible_by_position = build_methodology_compatible_by_position(positions, historical_features)
+    methodology_compatible_by_position = build_methodology_compatible_by_position(
+        positions,
+        historical_features,
+        production_scope_compatible,
+    )
     similarity_quality_by_position = build_similarity_quality_by_position(
         players,
         warnings,
@@ -577,7 +674,11 @@ def main() -> None:
     if not isinstance(historical_features_payload, list):
         raise SystemExit("Historical features payload must be a JSON array.")
     historical_features = normalize_historical_feature_rows(historical_features_payload)
-    historical_features = apply_wr_historical_production_methodology(historical_features)
+    wr_reference_populations = _load_wr_reference_populations(WR_REFERENCE_POPULATION_DIR)
+    historical_features, production_scope_compatible = apply_wr_historical_production_methodology(
+        historical_features,
+        wr_reference_populations=wr_reference_populations,
+    )
 
     outcomes_by_player_id: dict[str, dict[str, Any]] = {}
     source_files_used = [str(args.rookie_export), str(args.historical_features)]
@@ -603,6 +704,7 @@ def main() -> None:
         top_n=args.top_n,
         source_files_used=source_files_used,
         generated_at=args.generated_at,
+        production_scope_compatible=production_scope_compatible,
     )
 
     args.output_json.parent.mkdir(parents=True, exist_ok=True)
