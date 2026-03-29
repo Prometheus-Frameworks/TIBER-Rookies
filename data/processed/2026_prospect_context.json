@@ -16,7 +16,7 @@
     "best_season_yprr": null,
     "worst_season_yprr": null,
     "seasons_over_2_3_yprr": null,
-    "single_season_efficiency_dip_flag": null,
+    "single_season_efficiency_dip_flag": true,
     "multi_season_efficiency_flag": null,
     "injury_affected_season_count": 0,
     "injury_adjusted_profile_flag": false,
@@ -37,13 +37,13 @@
     "path_disruption_flag": false,
     "evidence_tags": [
       "early_declare",
-      "elite_early_producer",
       "rushing_signal"
     ],
     "context_flags": [
-      "limited_multi_season_data"
+      "limited_multi_season_data",
+      "single_season_efficiency_dip"
     ],
-    "evidence_summary": "Verified collegiate production: 1,159 total yards as a freshman (839 receiving + 320 rushing) and 496 as a sophomore (460 receiving + 36 rushing), with 70 career rush attempts indicating multi-phase usage.",
+    "evidence_summary": "Verified collegiate production: 1,159 total yards as a freshman (839 receiving + 320 rushing) and 496 as a sophomore (460 receiving + 36 rushing), indicating a real year-two production dip while retaining 70 career rush attempts as a multi-phase usage signal.",
     "context_source": "Wikipedia Kevin Concepcion stats table (2023-2025 season rows) and Sports-Reference-linked career totals, retrieved 2026-03-29."
   },
   {
@@ -217,7 +217,7 @@
     "career_receiving_market_share": null,
     "career_mtf_per_attempt": null,
     "freshman_ypc": null,
-    "athletic_upside_flag": true,
+    "athletic_upside_flag": null,
     "path_disruption_flag": false,
     "evidence_tags": [
       "early_declare"
@@ -225,7 +225,7 @@
     "context_flags": [
       "limited_multi_season_data"
     ],
-    "evidence_summary": "Sourced profile confirms 62-881-11 in 2025 and only 66 total receiving yards across his first two college seasons combined; year-by-year freshman/sophomore split is not explicitly published in currently available sources.",
+    "evidence_summary": "Sourced profile confirms 62-881-11 in 2025 and only 66 total receiving yards across his first two college seasons combined; year-by-year freshman/sophomore split and combine-verified testing context are not explicitly published in currently available in-repo sources.",
     "context_source": "Wikipedia Denzel Boston college career summary and pre-draft measurables section, retrieved 2026-03-29."
   },
   {
@@ -258,7 +258,7 @@
     "contested_catch_rate": null,
     "inside_out_versatility_flag": null,
     "man_zone_versatility_flag": null,
-    "power4_early_contributor_flag": true,
+    "power4_early_contributor_flag": null,
     "career_receiving_market_share": null,
     "career_mtf_per_attempt": null,
     "freshman_ypc": null,

@@ -102,5 +102,70 @@
     "source_name": "sample_fixture",
     "source_url": null,
     "notes": "sample/dev fixture only; no real outcomes populated"
+  },
+  {
+    "player_id": "wr-jamarr-chase-2021",
+    "player_name": "Ja'Marr Chase",
+    "position": "WR",
+    "draft_year": 2021,
+    "career_outcome_label": null,
+    "best_season_fantasy_ppg": null,
+    "top_finish_band": null,
+    "years_1_to_3_summary": null,
+    "source_name": "Outcome placeholder with source attached; values intentionally null pending consistent fantasy backfill",
+    "source_url": "https://en.wikipedia.org/wiki/Ja%27Marr_Chase",
+    "notes": "Added for row parity with historical features. Preserve nulls where outcome metrics were not re-sourced in this cleanup pass."
+  },
+  {
+    "player_id": "wr-jaylen-waddle-2021",
+    "player_name": "Jaylen Waddle",
+    "position": "WR",
+    "draft_year": 2021,
+    "career_outcome_label": null,
+    "best_season_fantasy_ppg": null,
+    "top_finish_band": null,
+    "years_1_to_3_summary": null,
+    "source_name": "Outcome placeholder with source attached; values intentionally null pending consistent fantasy backfill",
+    "source_url": "https://en.wikipedia.org/wiki/Jaylen_Waddle",
+    "notes": "Added for row parity with historical features. Preserve nulls where outcome metrics were not re-sourced in this cleanup pass."
+  },
+  {
+    "player_id": "wr-devonta-smith-2021",
+    "player_name": "DeVonta Smith",
+    "position": "WR",
+    "draft_year": 2021,
+    "career_outcome_label": null,
+    "best_season_fantasy_ppg": null,
+    "top_finish_band": null,
+    "years_1_to_3_summary": null,
+    "source_name": "Outcome placeholder with source attached; values intentionally null pending consistent fantasy backfill",
+    "source_url": "https://en.wikipedia.org/wiki/DeVonta_Smith",
+    "notes": "Added for row parity with historical features. Preserve nulls where outcome metrics were not re-sourced in this cleanup pass."
+  },
+  {
+    "player_id": "wr-kadarius-toney-2021",
+    "player_name": "Kadarius Toney",
+    "position": "WR",
+    "draft_year": 2021,
+    "career_outcome_label": null,
+    "best_season_fantasy_ppg": null,
+    "top_finish_band": null,
+    "years_1_to_3_summary": null,
+    "source_name": "Outcome placeholder with source attached; values intentionally null pending consistent fantasy backfill",
+    "source_url": "https://en.wikipedia.org/wiki/Kadarius_Toney",
+    "notes": "Added for row parity with historical features. Preserve nulls where outcome metrics were not re-sourced in this cleanup pass."
+  },
+  {
+    "player_id": "wr-rashod-bateman-2021",
+    "player_name": "Rashod Bateman",
+    "position": "WR",
+    "draft_year": 2021,
+    "career_outcome_label": null,
+    "best_season_fantasy_ppg": null,
+    "top_finish_band": null,
+    "years_1_to_3_summary": null,
+    "source_name": "Outcome placeholder with source attached; values intentionally null pending consistent fantasy backfill",
+    "source_url": "https://en.wikipedia.org/wiki/Rashod_Bateman",
+    "notes": "Added for row parity with historical features. Preserve nulls where outcome metrics were not re-sourced in this cleanup pass."
   }
 ]

@@ -3,7 +3,7 @@
 This directory is the canonical staging lane for **historical prospect comp inputs**.
 
 The files currently committed here are **schema + partial fixture population** so the contract is explicit and testable in-repo.
-WR is now seeded with a small real historical cohort while QB/TE remain sample scaffolding. This is still not a fully populated historical warehouse.
+WR now includes multiple real draft vintages (2020 + 2021) while QB/TE remain sample scaffolding. This is still not a fully populated historical warehouse.
 
 ## Canonical files
 
@@ -13,11 +13,15 @@ WR is now seeded with a small real historical cohort while QB/TE remain sample s
 
 ## Current WR pass limitations (intentional for v0)
 
-- WR feature rows currently have `ras_0_100 = null` and `size_context_0_100 = null` across the seeded real cohort.
+- WR feature rows now include mixed coverage:
+  - 2020 cohort includes sourced `ras_0_100`.
+  - Some added WR rows still have `ras_0_100 = null` where clean sourcing was not available in this pass.
+  - `size_context_0_100` is a deterministic size percentile context signal built from listed pre-draft height/weight across WR rows in this artifact.
 - WR outcome rows for the seeded real cohort now include sourced PPR/G-based snapshots (`best_season_fantasy_ppg`, `years_1_to_3_summary`) plus deterministic label/band derivations.
-- WR `production_0_100` is a **cohort-local min-max normalization** over sourced receiving-yards values; it is a narrow proxy, not a full historical production model.
+- WR `production_0_100` is currently `normalization_scope = "class-local"` min-max over sourced receiving-yards values for the draft class slice represented in this artifact.
 - WR `career_outcome_label` and `top_finish_band` are currently deterministic derivations from each player's sourced peak `FPTS/G` (not yet a fully league-ranked finish model).
-- As a result, current WR similarity behavior is driven by a draft anchor plus narrow production proxy, not a fully populated historical feature set.
+- The promoted comp artifact now exposes `effective_features_used` per comp row plus `comp_data_warnings` so partial feature overlap is visible in-artifact.
+- As a result, current WR similarity behavior is improved versus one-vintage/one-proxy, but remains partial and not UI-ready.
 
 ## Intentional posture
 
