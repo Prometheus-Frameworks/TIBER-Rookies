@@ -18,14 +18,14 @@ WR now includes multiple real draft vintages (2020 + 2021) while QB/TE remain sa
   - Some added WR rows still have `ras_0_100 = null` where clean sourcing was not available in this pass.
   - `size_context_0_100` is a deterministic size percentile context signal built from listed pre-draft height/weight across WR rows in this artifact.
 - WR outcome rows for the seeded real cohort now include sourced PPR/G-based snapshots (`best_season_fantasy_ppg`, `years_1_to_3_summary`) plus deterministic label/band derivations.
-- WR `production_0_100` is currently `normalization_scope = "class-local"` min-max over sourced receiving-yards values for the draft class slice represented in this artifact.
-- Class-local min-max behavior means each represented WR class has a forced `production_0_100 = 0.0` floor at that slice's minimum raw-yardage row, even when the player's absolute production is still strong versus other classes.
+- WR `production_0_100` is currently `normalization_scope = "cross-class-wr-v0"` min-max over raw pre-draft receiving-yards values pooled across all current WR historical rows in this artifact.
+- `cross-class-wr-v0` uses raw pre-draft receiving yards pooled across all current WR historical rows; it is not yet calibrated against the 2026 prospect `production_0_100` methodology, which is a multi-signal score.
 - WR `career_outcome_label` and `top_finish_band` are currently deterministic derivations from each player's sourced peak `FPTS/G` (not yet a fully league-ranked finish model).
 - The promoted comp artifact now exposes `effective_features_used` per comp row plus `comp_data_warnings` so partial feature overlap is visible in-artifact.
 - As a result, current WR similarity behavior is improved versus one-vintage/one-proxy, but remains partial and not UI-ready.
 
 
-- Current 2026 repro still emits a WR comp-data warning: one historical WR can remain the #1 comp for all eight 2026 WR prospects. This is currently driven by sparse WR RAS coverage and class-local normalization compression across partial vintages; do not fabricate rows or synthetic deltas to suppress this warning.
+- Current 2026 repro still emits a WR comp-data warning: one historical WR can remain the #1 comp for all eight 2026 WR prospects. This is currently driven by sparse WR RAS coverage and remaining feature-shape compression across partial vintages; do not fabricate rows or synthetic deltas to suppress this warning.
 
 ## Intentional posture
 
