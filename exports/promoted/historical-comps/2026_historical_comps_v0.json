@@ -11,7 +11,7 @@
     },
     "notes": "v0 emits talent_comp by default; market_comp support is scaffolded and optional."
   },
-  "generated_at": "2026-03-29T14:55:53+00:00",
+  "generated_at": "2026-03-29T16:17:21+00:00",
   "season": 2026,
   "source_files_used": [
     "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
@@ -40,7 +40,8 @@
             "production_0_100": 72.0,
             "draft_capital_proxy_0_100": 70.0,
             "size_context_0_100": 66.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -65,7 +66,8 @@
             "production_0_100": 80.0,
             "draft_capital_proxy_0_100": 88.0,
             "size_context_0_100": 71.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -98,7 +100,8 @@
             "production_0_100": 72.0,
             "draft_capital_proxy_0_100": 70.0,
             "size_context_0_100": 66.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -123,7 +126,8 @@
             "production_0_100": 80.0,
             "draft_capital_proxy_0_100": 88.0,
             "size_context_0_100": 71.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -156,7 +160,8 @@
             "production_0_100": 80.0,
             "draft_capital_proxy_0_100": 88.0,
             "size_context_0_100": 71.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -181,7 +186,8 @@
             "production_0_100": 72.0,
             "draft_capital_proxy_0_100": 70.0,
             "size_context_0_100": 66.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -214,7 +220,8 @@
             "production_0_100": 72.0,
             "draft_capital_proxy_0_100": 70.0,
             "size_context_0_100": 66.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -239,7 +246,8 @@
             "production_0_100": 80.0,
             "draft_capital_proxy_0_100": 88.0,
             "size_context_0_100": 71.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -272,7 +280,8 @@
             "production_0_100": 72.0,
             "draft_capital_proxy_0_100": 70.0,
             "size_context_0_100": 66.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -297,7 +306,8 @@
             "production_0_100": 80.0,
             "draft_capital_proxy_0_100": 88.0,
             "size_context_0_100": 71.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -358,7 +368,8 @@
             "production_0_100": 69.0,
             "draft_capital_proxy_0_100": 58.0,
             "size_context_0_100": 77.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "production_0_100"
@@ -390,7 +401,8 @@
             "production_0_100": 69.0,
             "draft_capital_proxy_0_100": 58.0,
             "size_context_0_100": 77.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "production_0_100"
@@ -422,7 +434,8 @@
             "production_0_100": 69.0,
             "draft_capital_proxy_0_100": 58.0,
             "size_context_0_100": 77.0,
-            "normalization_scope": "cohort-local"
+            "normalization_scope": "cohort-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "production_0_100"
@@ -454,7 +467,8 @@
             "production_0_100": 43.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -465,6 +479,32 @@
             "best_season_fantasy_ppg": 23.7,
             "top_finish_band": "WR1 (>=20.0 PPR/G peak)",
             "years_1_to_3_summary": "2020-2022 PPR/G: 13.2, 14.6, 17.7; receiving line: 74/935/5, 79/1102/6, 107/1359/9."
+          }
+        },
+        {
+          "historical_player_id": "wr-treylon-burks-2022",
+          "player_name": "Treylon Burks",
+          "draft_year": 2022,
+          "position": "WR",
+          "similarity_score": 62.7794,
+          "distance": 0.372206,
+          "feature_snapshot": {
+            "ras_0_100": 57.8,
+            "production_0_100": 26.42,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 58.89,
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.6,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
           }
         },
         {
@@ -479,17 +519,18 @@
             "production_0_100": 53.02,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 20.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.2,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.2, 6.4, 4.1; receiving line: 39/420/0, 16/171/2, 27/169/1."
           }
         },
         {
@@ -504,17 +545,18 @@
             "production_0_100": 25.43,
             "draft_capital_proxy_0_100": 80.0,
             "size_context_0_100": 55.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 10.3,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.6, 8.9, 4.8; receiving line: 46/515/1, 15/285/2, 32/367/1."
           }
         },
         {
@@ -529,7 +571,8 @@
             "production_0_100": 100.0,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 45.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -540,31 +583,6 @@
             "best_season_fantasy_ppg": 21.7,
             "top_finish_band": "WR1 (>=20.0 PPR/G peak)",
             "years_1_to_3_summary": "2020-2022 PPR/G: 17.1, 19.4, 21.7; receiving line: 88/1400/7, 108/1616/10, 128/1809/8."
-          }
-        },
-        {
-          "historical_player_id": "wr-tee-higgins-2020",
-          "player_name": "Tee Higgins",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 48.402,
-          "distance": 0.51598,
-          "feature_snapshot": {
-            "ras_0_100": 41.6,
-            "production_0_100": 1.06,
-            "draft_capital_proxy_0_100": 65.0,
-            "size_context_0_100": 50.0,
-            "normalization_scope": "class-local"
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 18.5,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 12.2, 15.7, 13.8; receiving line: 67/908/6, 74/1091/6, 74/1029/7."
           }
         }
       ]
@@ -587,7 +605,8 @@
             "production_0_100": 43.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -612,17 +631,44 @@
             "production_0_100": 53.02,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 20.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.2,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.2, 6.4, 4.1; receiving line: 39/420/0, 16/171/2, 27/169/1."
+          }
+        },
+        {
+          "historical_player_id": "wr-treylon-burks-2022",
+          "player_name": "Treylon Burks",
+          "draft_year": 2022,
+          "position": "WR",
+          "similarity_score": 75.3871,
+          "distance": 0.246129,
+          "feature_snapshot": {
+            "ras_0_100": 57.8,
+            "production_0_100": 26.42,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 58.89,
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.6,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
           }
         },
         {
@@ -637,17 +683,18 @@
             "production_0_100": 25.43,
             "draft_capital_proxy_0_100": 80.0,
             "size_context_0_100": 55.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 10.3,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.6, 8.9, 4.8; receiving line: 46/515/1, 15/285/2, 32/367/1."
           }
         },
         {
@@ -662,7 +709,8 @@
             "production_0_100": 100.0,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 45.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -673,31 +721,6 @@
             "best_season_fantasy_ppg": 21.7,
             "top_finish_band": "WR1 (>=20.0 PPR/G peak)",
             "years_1_to_3_summary": "2020-2022 PPR/G: 17.1, 19.4, 21.7; receiving line: 88/1400/7, 108/1616/10, 128/1809/8."
-          }
-        },
-        {
-          "historical_player_id": "wr-brandon-aiyuk-2020",
-          "player_name": "Brandon Aiyuk",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 59.9485,
-          "distance": 0.400515,
-          "feature_snapshot": {
-            "ras_0_100": 84.6,
-            "production_0_100": 7.69,
-            "draft_capital_proxy_0_100": 75.0,
-            "size_context_0_100": 30.0,
-            "normalization_scope": "class-local"
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 15.6,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 15.4, 10.0, 13.4; receiving line: 60/748/5, 56/826/5, 78/1015/8."
           }
         }
       ]
@@ -720,7 +743,8 @@
             "production_0_100": 43.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -745,17 +769,44 @@
             "production_0_100": 53.02,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 20.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.2,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.2, 6.4, 4.1; receiving line: 39/420/0, 16/171/2, 27/169/1."
+          }
+        },
+        {
+          "historical_player_id": "wr-treylon-burks-2022",
+          "player_name": "Treylon Burks",
+          "draft_year": 2022,
+          "position": "WR",
+          "similarity_score": 66.6904,
+          "distance": 0.333096,
+          "feature_snapshot": {
+            "ras_0_100": 57.8,
+            "production_0_100": 26.42,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 58.89,
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.6,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
           }
         },
         {
@@ -770,7 +821,8 @@
             "production_0_100": 100.0,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 45.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -795,42 +847,18 @@
             "production_0_100": 25.43,
             "draft_capital_proxy_0_100": 80.0,
             "size_context_0_100": 55.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
-          }
-        },
-        {
-          "historical_player_id": "wr-brandon-aiyuk-2020",
-          "player_name": "Brandon Aiyuk",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 48.8476,
-          "distance": 0.511524,
-          "feature_snapshot": {
-            "ras_0_100": 84.6,
-            "production_0_100": 7.69,
-            "draft_capital_proxy_0_100": 75.0,
-            "size_context_0_100": 30.0,
-            "normalization_scope": "class-local"
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 15.6,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 15.4, 10.0, 13.4; receiving line: 60/748/5, 56/826/5, 78/1015/8."
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 10.3,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.6, 8.9, 4.8; receiving line: 46/515/1, 15/285/2, 32/367/1."
           }
         }
       ]
@@ -853,7 +881,8 @@
             "production_0_100": 43.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -878,17 +907,44 @@
             "production_0_100": 53.02,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 20.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.2,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.2, 6.4, 4.1; receiving line: 39/420/0, 16/171/2, 27/169/1."
+          }
+        },
+        {
+          "historical_player_id": "wr-treylon-burks-2022",
+          "player_name": "Treylon Burks",
+          "draft_year": 2022,
+          "position": "WR",
+          "similarity_score": 70.2291,
+          "distance": 0.297709,
+          "feature_snapshot": {
+            "ras_0_100": 57.8,
+            "production_0_100": 26.42,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 58.89,
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.6,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
           }
         },
         {
@@ -903,17 +959,18 @@
             "production_0_100": 25.43,
             "draft_capital_proxy_0_100": 80.0,
             "size_context_0_100": 55.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 10.3,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.6, 8.9, 4.8; receiving line: 46/515/1, 15/285/2, 32/367/1."
           }
         },
         {
@@ -928,7 +985,8 @@
             "production_0_100": 100.0,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 45.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -939,31 +997,6 @@
             "best_season_fantasy_ppg": 21.7,
             "top_finish_band": "WR1 (>=20.0 PPR/G peak)",
             "years_1_to_3_summary": "2020-2022 PPR/G: 17.1, 19.4, 21.7; receiving line: 88/1400/7, 108/1616/10, 128/1809/8."
-          }
-        },
-        {
-          "historical_player_id": "wr-brandon-aiyuk-2020",
-          "player_name": "Brandon Aiyuk",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 52.6101,
-          "distance": 0.473899,
-          "feature_snapshot": {
-            "ras_0_100": 84.6,
-            "production_0_100": 7.69,
-            "draft_capital_proxy_0_100": 75.0,
-            "size_context_0_100": 30.0,
-            "normalization_scope": "class-local"
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 15.6,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 15.4, 10.0, 13.4; receiving line: 60/748/5, 56/826/5, 78/1015/8."
           }
         }
       ]
@@ -986,7 +1019,8 @@
             "production_0_100": 43.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1011,17 +1045,44 @@
             "production_0_100": 53.02,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 20.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.2,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.2, 6.4, 4.1; receiving line: 39/420/0, 16/171/2, 27/169/1."
+          }
+        },
+        {
+          "historical_player_id": "wr-treylon-burks-2022",
+          "player_name": "Treylon Burks",
+          "draft_year": 2022,
+          "position": "WR",
+          "similarity_score": 70.8265,
+          "distance": 0.291735,
+          "feature_snapshot": {
+            "ras_0_100": 57.8,
+            "production_0_100": 26.42,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 58.89,
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.6,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
           }
         },
         {
@@ -1036,17 +1097,18 @@
             "production_0_100": 25.43,
             "draft_capital_proxy_0_100": 80.0,
             "size_context_0_100": 55.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 10.3,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.6, 8.9, 4.8; receiving line: 46/515/1, 15/285/2, 32/367/1."
           }
         },
         {
@@ -1061,7 +1123,8 @@
             "production_0_100": 100.0,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 45.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1072,31 +1135,6 @@
             "best_season_fantasy_ppg": 21.7,
             "top_finish_band": "WR1 (>=20.0 PPR/G peak)",
             "years_1_to_3_summary": "2020-2022 PPR/G: 17.1, 19.4, 21.7; receiving line: 88/1400/7, 108/1616/10, 128/1809/8."
-          }
-        },
-        {
-          "historical_player_id": "wr-brandon-aiyuk-2020",
-          "player_name": "Brandon Aiyuk",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 54.2925,
-          "distance": 0.457075,
-          "feature_snapshot": {
-            "ras_0_100": 84.6,
-            "production_0_100": 7.69,
-            "draft_capital_proxy_0_100": 75.0,
-            "size_context_0_100": 30.0,
-            "normalization_scope": "class-local"
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 15.6,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 15.4, 10.0, 13.4; receiving line: 60/748/5, 56/826/5, 78/1015/8."
           }
         }
       ]
@@ -1119,7 +1157,8 @@
             "production_0_100": 43.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1130,6 +1169,32 @@
             "best_season_fantasy_ppg": 23.7,
             "top_finish_band": "WR1 (>=20.0 PPR/G peak)",
             "years_1_to_3_summary": "2020-2022 PPR/G: 13.2, 14.6, 17.7; receiving line: 74/935/5, 79/1102/6, 107/1359/9."
+          }
+        },
+        {
+          "historical_player_id": "wr-treylon-burks-2022",
+          "player_name": "Treylon Burks",
+          "draft_year": 2022,
+          "position": "WR",
+          "similarity_score": 78.1221,
+          "distance": 0.218779,
+          "feature_snapshot": {
+            "ras_0_100": 57.8,
+            "production_0_100": 26.42,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 58.89,
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.6,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
           }
         },
         {
@@ -1144,17 +1209,18 @@
             "production_0_100": 53.02,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 20.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.2,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.2, 6.4, 4.1; receiving line: 39/420/0, 16/171/2, 27/169/1."
           }
         },
         {
@@ -1169,17 +1235,18 @@
             "production_0_100": 25.43,
             "draft_capital_proxy_0_100": 80.0,
             "size_context_0_100": 55.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 10.3,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.6, 8.9, 4.8; receiving line: 46/515/1, 15/285/2, 32/367/1."
           }
         },
         {
@@ -1194,7 +1261,8 @@
             "production_0_100": 1.06,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1205,31 +1273,6 @@
             "best_season_fantasy_ppg": 18.5,
             "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
             "years_1_to_3_summary": "2020-2022 PPR/G: 12.2, 15.7, 13.8; receiving line: 67/908/6, 74/1091/6, 74/1029/7."
-          }
-        },
-        {
-          "historical_player_id": "wr-brandon-aiyuk-2020",
-          "player_name": "Brandon Aiyuk",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 59.0865,
-          "distance": 0.409135,
-          "feature_snapshot": {
-            "ras_0_100": 84.6,
-            "production_0_100": 7.69,
-            "draft_capital_proxy_0_100": 75.0,
-            "size_context_0_100": 30.0,
-            "normalization_scope": "class-local"
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 15.6,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 15.4, 10.0, 13.4; receiving line: 60/748/5, 56/826/5, 78/1015/8."
           }
         }
       ]
@@ -1252,7 +1295,8 @@
             "production_0_100": 43.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1263,6 +1307,32 @@
             "best_season_fantasy_ppg": 23.7,
             "top_finish_band": "WR1 (>=20.0 PPR/G peak)",
             "years_1_to_3_summary": "2020-2022 PPR/G: 13.2, 14.6, 17.7; receiving line: 74/935/5, 79/1102/6, 107/1359/9."
+          }
+        },
+        {
+          "historical_player_id": "wr-treylon-burks-2022",
+          "player_name": "Treylon Burks",
+          "draft_year": 2022,
+          "position": "WR",
+          "similarity_score": 68.1823,
+          "distance": 0.318177,
+          "feature_snapshot": {
+            "ras_0_100": 57.8,
+            "production_0_100": 26.42,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 58.89,
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.6,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
           }
         },
         {
@@ -1277,17 +1347,18 @@
             "production_0_100": 53.02,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 20.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.2,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.2, 6.4, 4.1; receiving line: 39/420/0, 16/171/2, 27/169/1."
           }
         },
         {
@@ -1302,17 +1373,18 @@
             "production_0_100": 25.43,
             "draft_capital_proxy_0_100": 80.0,
             "size_context_0_100": 55.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 10.3,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.6, 8.9, 4.8; receiving line: 46/515/1, 15/285/2, 32/367/1."
           }
         },
         {
@@ -1327,7 +1399,8 @@
             "production_0_100": 100.0,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 45.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1338,31 +1411,6 @@
             "best_season_fantasy_ppg": 21.7,
             "top_finish_band": "WR1 (>=20.0 PPR/G peak)",
             "years_1_to_3_summary": "2020-2022 PPR/G: 17.1, 19.4, 21.7; receiving line: 88/1400/7, 108/1616/10, 128/1809/8."
-          }
-        },
-        {
-          "historical_player_id": "wr-tee-higgins-2020",
-          "player_name": "Tee Higgins",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 51.945,
-          "distance": 0.48055,
-          "feature_snapshot": {
-            "ras_0_100": 41.6,
-            "production_0_100": 1.06,
-            "draft_capital_proxy_0_100": 65.0,
-            "size_context_0_100": 50.0,
-            "normalization_scope": "class-local"
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 18.5,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 12.2, 15.7, 13.8; receiving line: 67/908/6, 74/1091/6, 74/1029/7."
           }
         }
       ]
@@ -1385,7 +1433,8 @@
             "production_0_100": 43.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1396,6 +1445,32 @@
             "best_season_fantasy_ppg": 23.7,
             "top_finish_band": "WR1 (>=20.0 PPR/G peak)",
             "years_1_to_3_summary": "2020-2022 PPR/G: 13.2, 14.6, 17.7; receiving line: 74/935/5, 79/1102/6, 107/1359/9."
+          }
+        },
+        {
+          "historical_player_id": "wr-treylon-burks-2022",
+          "player_name": "Treylon Burks",
+          "draft_year": 2022,
+          "position": "WR",
+          "similarity_score": 64.0084,
+          "distance": 0.359916,
+          "feature_snapshot": {
+            "ras_0_100": 57.8,
+            "production_0_100": 26.42,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 58.89,
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.6,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
           }
         },
         {
@@ -1410,17 +1485,18 @@
             "production_0_100": 53.02,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 20.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 8.2,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.2, 6.4, 4.1; receiving line: 39/420/0, 16/171/2, 27/169/1."
           }
         },
         {
@@ -1435,17 +1511,18 @@
             "production_0_100": 25.43,
             "draft_capital_proxy_0_100": 80.0,
             "size_context_0_100": 55.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "depth_peak",
+            "best_season_fantasy_ppg": 10.3,
+            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.6, 8.9, 4.8; receiving line: 46/515/1, 15/285/2, 32/367/1."
           }
         },
         {
@@ -1460,7 +1537,8 @@
             "production_0_100": 100.0,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 45.0,
-            "normalization_scope": "class-local"
+            "normalization_scope": "class-local",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1471,31 +1549,6 @@
             "best_season_fantasy_ppg": 21.7,
             "top_finish_band": "WR1 (>=20.0 PPR/G peak)",
             "years_1_to_3_summary": "2020-2022 PPR/G: 17.1, 19.4, 21.7; receiving line: 88/1400/7, 108/1616/10, 128/1809/8."
-          }
-        },
-        {
-          "historical_player_id": "wr-tee-higgins-2020",
-          "player_name": "Tee Higgins",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 49.0391,
-          "distance": 0.509609,
-          "feature_snapshot": {
-            "ras_0_100": 41.6,
-            "production_0_100": 1.06,
-            "draft_capital_proxy_0_100": 65.0,
-            "size_context_0_100": 50.0,
-            "normalization_scope": "class-local"
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 18.5,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 12.2, 15.7, 13.8; receiving line: 67/908/6, 74/1091/6, 74/1029/7."
           }
         }
       ]
