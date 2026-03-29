@@ -23,6 +23,7 @@ WR now includes multiple real draft vintages (2020 + 2021) while QB/TE remain sa
   - population scope does **not** match (15-row historical cohort vs. full CFBD WR population), so compatibility remains blocked.
 - WR rows that cannot be scored (opt-out/missing required receiving components/threshold miss/partial-season policy) use `normalization_scope = "historical-wr-cfbd-method-v1-null"` and keep `production_0_100 = null`.
 - WR rows preserve prior score in `production_0_100_legacy` to retain traceability to the prior `cross-class-wr-v0` pass.
+- Legacy `normalization_anchor` metadata from `cross-class-wr-v0` has been removed from WR rows to avoid stale min/max semantics under the new z-score method.
 - `scripts/compute_historical_comps.py` keeps `PRODUCTION_SCOPE_COMPATIBLE` intentionally empty in this pass, so `methodology_compatible` remains `false` by contract.
 - `historical-wr-cfbd-method-v1` is intentionally **not** added to the compatible set yet, because population scope parity is not established.
 - WR `methodology_compatible` remains false until both metric methodology and population scope are aligned.

@@ -484,6 +484,25 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
         self.assertTrue(all("production_0_100_legacy" in row for row in wr_rows))
         self.assertTrue(all("production_0_100_legacy" not in row for row in non_wr_rows))
 
+    def test_waddle_partial_season_policy_enforced(self) -> None:
+        features = json.loads(Path("data/historical/historical_prospect_features.sample.json").read_text(encoding="utf-8"))
+        waddle = [row for row in features if row.get("player_id") == "wr-jaylen-waddle-2021"][0]
+        self.assertIn("partial season", str(waddle.get("notes", "")).lower())
+        self.assertIsNone(waddle.get("production_0_100"))
+        self.assertEqual(waddle.get("normalization_scope"), "historical-wr-cfbd-method-v1-null")
+
+    def test_non_wr_feature_snapshots_omit_wr_only_fields(self) -> None:
+        artifact = json.loads(
+            Path("exports/promoted/historical-comps/2026_historical_comps_v0.json").read_text(encoding="utf-8")
+        )
+        qb_comps = [player for player in artifact["players"] if player["position"] == "QB"][0]["comps"]
+        self.assertTrue(qb_comps)
+        snapshot = qb_comps[0]["feature_snapshot"]
+        self.assertNotIn("production_0_100_legacy", snapshot)
+        self.assertNotIn("receptions", snapshot)
+        self.assertNotIn("receiving_yards", snapshot)
+        self.assertNotIn("receiving_tds", snapshot)
+
 
 if __name__ == "__main__":
     unittest.main()

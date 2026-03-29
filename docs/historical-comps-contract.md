@@ -82,13 +82,13 @@ Each row in `players[].comps[]`:
 - `feature_snapshot` (object)
   - `ras_0_100`
   - `production_0_100`
-  - `production_0_100_legacy` (present for WR rows when method-v1 replacement occurs)
   - `draft_capital_proxy_0_100`
   - `size_context_0_100`
   - `normalization_scope`
-  - `receptions`
-  - `receiving_yards`
-  - `receiving_tds`
+  - `production_0_100_legacy` (WR-only; present when method-v1 replacement occurs)
+  - `receptions` (WR-only)
+  - `receiving_yards` (WR-only)
+  - `receiving_tds` (WR-only)
 - `effective_features_used` (array of strings): exact non-null feature keys actually used in this comparison distance
 - `outcome_snapshot` (object | null)
   - `career_outcome_label`

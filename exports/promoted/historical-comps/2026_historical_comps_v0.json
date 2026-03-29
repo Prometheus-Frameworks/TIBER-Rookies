@@ -11,7 +11,7 @@
     },
     "notes": "v0 emits talent_comp by default; market_comp support is scaffolded and optional."
   },
-  "generated_at": "2026-03-29T22:17:09+00:00",
+  "generated_at": "2026-03-29T22:23:28+00:00",
   "season": 2026,
   "source_files_used": [
     "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
@@ -96,13 +96,9 @@
           "feature_snapshot": {
             "ras_0_100": 61.0,
             "production_0_100": 72.0,
-            "production_0_100_legacy": null,
             "draft_capital_proxy_0_100": 70.0,
             "size_context_0_100": 66.0,
             "normalization_scope": "cohort-local",
-            "receptions": null,
-            "receiving_yards": null,
-            "receiving_tds": null,
             "opt_out_season_flag": false
           },
           "effective_features_used": [
@@ -126,13 +122,9 @@
           "feature_snapshot": {
             "ras_0_100": 74.0,
             "production_0_100": 80.0,
-            "production_0_100_legacy": null,
             "draft_capital_proxy_0_100": 88.0,
             "size_context_0_100": 71.0,
             "normalization_scope": "cohort-local",
-            "receptions": null,
-            "receiving_yards": null,
-            "receiving_tds": null,
             "opt_out_season_flag": false
           },
           "effective_features_used": [
@@ -164,13 +156,9 @@
           "feature_snapshot": {
             "ras_0_100": 61.0,
             "production_0_100": 72.0,
-            "production_0_100_legacy": null,
             "draft_capital_proxy_0_100": 70.0,
             "size_context_0_100": 66.0,
             "normalization_scope": "cohort-local",
-            "receptions": null,
-            "receiving_yards": null,
-            "receiving_tds": null,
             "opt_out_season_flag": false
           },
           "effective_features_used": [
@@ -194,13 +182,9 @@
           "feature_snapshot": {
             "ras_0_100": 74.0,
             "production_0_100": 80.0,
-            "production_0_100_legacy": null,
             "draft_capital_proxy_0_100": 88.0,
             "size_context_0_100": 71.0,
             "normalization_scope": "cohort-local",
-            "receptions": null,
-            "receiving_yards": null,
-            "receiving_tds": null,
             "opt_out_season_flag": false
           },
           "effective_features_used": [
@@ -232,13 +216,9 @@
           "feature_snapshot": {
             "ras_0_100": 74.0,
             "production_0_100": 80.0,
-            "production_0_100_legacy": null,
             "draft_capital_proxy_0_100": 88.0,
             "size_context_0_100": 71.0,
             "normalization_scope": "cohort-local",
-            "receptions": null,
-            "receiving_yards": null,
-            "receiving_tds": null,
             "opt_out_season_flag": false
           },
           "effective_features_used": [
@@ -262,13 +242,9 @@
           "feature_snapshot": {
             "ras_0_100": 61.0,
             "production_0_100": 72.0,
-            "production_0_100_legacy": null,
             "draft_capital_proxy_0_100": 70.0,
             "size_context_0_100": 66.0,
             "normalization_scope": "cohort-local",
-            "receptions": null,
-            "receiving_yards": null,
-            "receiving_tds": null,
             "opt_out_season_flag": false
           },
           "effective_features_used": [
@@ -300,13 +276,9 @@
           "feature_snapshot": {
             "ras_0_100": 61.0,
             "production_0_100": 72.0,
-            "production_0_100_legacy": null,
             "draft_capital_proxy_0_100": 70.0,
             "size_context_0_100": 66.0,
             "normalization_scope": "cohort-local",
-            "receptions": null,
-            "receiving_yards": null,
-            "receiving_tds": null,
             "opt_out_season_flag": false
           },
           "effective_features_used": [
@@ -330,13 +302,9 @@
           "feature_snapshot": {
             "ras_0_100": 74.0,
             "production_0_100": 80.0,
-            "production_0_100_legacy": null,
             "draft_capital_proxy_0_100": 88.0,
             "size_context_0_100": 71.0,
             "normalization_scope": "cohort-local",
-            "receptions": null,
-            "receiving_yards": null,
-            "receiving_tds": null,
             "opt_out_season_flag": false
           },
           "effective_features_used": [
@@ -368,13 +336,9 @@
           "feature_snapshot": {
             "ras_0_100": 61.0,
             "production_0_100": 72.0,
-            "production_0_100_legacy": null,
             "draft_capital_proxy_0_100": 70.0,
             "size_context_0_100": 66.0,
             "normalization_scope": "cohort-local",
-            "receptions": null,
-            "receiving_yards": null,
-            "receiving_tds": null,
             "opt_out_season_flag": false
           },
           "effective_features_used": [
@@ -398,13 +362,9 @@
           "feature_snapshot": {
             "ras_0_100": 74.0,
             "production_0_100": 80.0,
-            "production_0_100_legacy": null,
             "draft_capital_proxy_0_100": 88.0,
             "size_context_0_100": 71.0,
             "normalization_scope": "cohort-local",
-            "receptions": null,
-            "receiving_yards": null,
-            "receiving_tds": null,
             "opt_out_season_flag": false
           },
           "effective_features_used": [
@@ -464,13 +424,9 @@
           "feature_snapshot": {
             "ras_0_100": null,
             "production_0_100": 69.0,
-            "production_0_100_legacy": null,
             "draft_capital_proxy_0_100": 58.0,
             "size_context_0_100": 77.0,
             "normalization_scope": "cohort-local",
-            "receptions": null,
-            "receiving_yards": null,
-            "receiving_tds": null,
             "opt_out_season_flag": false
           },
           "effective_features_used": [
@@ -501,13 +457,9 @@
           "feature_snapshot": {
             "ras_0_100": null,
             "production_0_100": 69.0,
-            "production_0_100_legacy": null,
             "draft_capital_proxy_0_100": 58.0,
             "size_context_0_100": 77.0,
             "normalization_scope": "cohort-local",
-            "receptions": null,
-            "receiving_yards": null,
-            "receiving_tds": null,
             "opt_out_season_flag": false
           },
           "effective_features_used": [
@@ -538,13 +490,9 @@
           "feature_snapshot": {
             "ras_0_100": null,
             "production_0_100": 69.0,
-            "production_0_100_legacy": null,
             "draft_capital_proxy_0_100": 58.0,
             "size_context_0_100": 77.0,
             "normalization_scope": "cohort-local",
-            "receptions": null,
-            "receiving_yards": null,
-            "receiving_tds": null,
             "opt_out_season_flag": false
           },
           "effective_features_used": [
@@ -570,19 +518,19 @@
           "player_name": "Tee Higgins",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 90.624,
-          "distance": 0.09376,
+          "similarity_score": 90.5032,
+          "distance": 0.094968,
           "feature_snapshot": {
             "ras_0_100": 41.6,
-            "production_0_100": 62.4,
-            "production_0_100_legacy": 62.88,
+            "production_0_100": 62.2,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.88,
             "receptions": 59,
             "receiving_yards": 1167,
-            "receiving_tds": 13,
-            "opt_out_season_flag": false
+            "receiving_tds": 13
           },
           "effective_features_used": [
             "ras_0_100",
@@ -600,19 +548,19 @@
           "player_name": "Treylon Burks",
           "draft_year": 2022,
           "position": "WR",
-          "similarity_score": 76.9809,
-          "distance": 0.230191,
+          "similarity_score": 76.8312,
+          "distance": 0.231688,
           "feature_snapshot": {
             "ras_0_100": 57.8,
-            "production_0_100": 50.8,
-            "production_0_100_legacy": 59.48,
+            "production_0_100": 50.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
             "receptions": 66,
             "receiving_yards": 1104,
-            "receiving_tds": 11,
-            "opt_out_season_flag": false
+            "receiving_tds": 11
           },
           "effective_features_used": [
             "ras_0_100",
@@ -630,19 +578,19 @@
           "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 71.6007,
-          "distance": 0.283993,
+          "similarity_score": 71.6096,
+          "distance": 0.283904,
           "feature_snapshot": {
             "ras_0_100": 74.5,
-            "production_0_100": 68.6,
-            "production_0_100_legacy": 71.5,
+            "production_0_100": 68.7,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 71.5,
             "receptions": 62,
             "receiving_yards": 1327,
-            "receiving_tds": 14,
-            "opt_out_season_flag": false
+            "receiving_tds": 14
           },
           "effective_features_used": [
             "ras_0_100",
@@ -660,19 +608,19 @@
           "player_name": "Jerry Jeudy",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 69.1402,
-          "distance": 0.308598,
+          "similarity_score": 69.048,
+          "distance": 0.30952,
           "feature_snapshot": {
             "ras_0_100": 67.8,
-            "production_0_100": 45.3,
-            "production_0_100_legacy": 62.66,
+            "production_0_100": 45.1,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 65.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.66,
             "receptions": 77,
             "receiving_yards": 1163,
-            "receiving_tds": 10,
-            "opt_out_season_flag": false
+            "receiving_tds": 10
           },
           "effective_features_used": [
             "ras_0_100",
@@ -695,14 +643,14 @@
           "feature_snapshot": {
             "ras_0_100": 84.6,
             "production_0_100": 52.1,
-            "production_0_100_legacy": 64.22,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 30.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 64.22,
             "receptions": 65,
             "receiving_yards": 1192,
-            "receiving_tds": 8,
-            "opt_out_season_flag": false
+            "receiving_tds": 8
           },
           "effective_features_used": [
             "ras_0_100",
@@ -728,19 +676,19 @@
           "player_name": "Treylon Burks",
           "draft_year": 2022,
           "position": "WR",
-          "similarity_score": 91.6526,
-          "distance": 0.083474,
+          "similarity_score": 91.4757,
+          "distance": 0.085243,
           "feature_snapshot": {
             "ras_0_100": 57.8,
-            "production_0_100": 50.8,
-            "production_0_100_legacy": 59.48,
+            "production_0_100": 50.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
             "receptions": 66,
             "receiving_yards": 1104,
-            "receiving_tds": 11,
-            "opt_out_season_flag": false
+            "receiving_tds": 11
           },
           "effective_features_used": [
             "ras_0_100",
@@ -758,19 +706,19 @@
           "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 90.8791,
-          "distance": 0.091209,
+          "similarity_score": 90.8351,
+          "distance": 0.091649,
           "feature_snapshot": {
             "ras_0_100": 74.5,
-            "production_0_100": 68.6,
-            "production_0_100_legacy": 71.5,
+            "production_0_100": 68.7,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 71.5,
             "receptions": 62,
             "receiving_yards": 1327,
-            "receiving_tds": 14,
-            "opt_out_season_flag": false
+            "receiving_tds": 14
           },
           "effective_features_used": [
             "ras_0_100",
@@ -788,19 +736,19 @@
           "player_name": "Jerry Jeudy",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 88.9145,
-          "distance": 0.110855,
+          "similarity_score": 88.7765,
+          "distance": 0.112235,
           "feature_snapshot": {
             "ras_0_100": 67.8,
-            "production_0_100": 45.3,
-            "production_0_100_legacy": 62.66,
+            "production_0_100": 45.1,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 65.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.66,
             "receptions": 77,
             "receiving_yards": 1163,
-            "receiving_tds": 10,
-            "opt_out_season_flag": false
+            "receiving_tds": 10
           },
           "effective_features_used": [
             "ras_0_100",
@@ -823,14 +771,14 @@
           "feature_snapshot": {
             "ras_0_100": 84.6,
             "production_0_100": 52.1,
-            "production_0_100_legacy": 64.22,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 30.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 64.22,
             "receptions": 65,
             "receiving_yards": 1192,
-            "receiving_tds": 8,
-            "opt_out_season_flag": false
+            "receiving_tds": 8
           },
           "effective_features_used": [
             "ras_0_100",
@@ -848,19 +796,19 @@
           "player_name": "Tee Higgins",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 83.8408,
-          "distance": 0.161592,
+          "similarity_score": 83.8513,
+          "distance": 0.161487,
           "feature_snapshot": {
             "ras_0_100": 41.6,
-            "production_0_100": 62.4,
-            "production_0_100_legacy": 62.88,
+            "production_0_100": 62.2,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.88,
             "receptions": 59,
             "receiving_yards": 1167,
-            "receiving_tds": 13,
-            "opt_out_season_flag": false
+            "receiving_tds": 13
           },
           "effective_features_used": [
             "ras_0_100",
@@ -886,19 +834,19 @@
           "player_name": "Tee Higgins",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 88.0952,
-          "distance": 0.119048,
+          "similarity_score": 88.0023,
+          "distance": 0.119977,
           "feature_snapshot": {
             "ras_0_100": 41.6,
-            "production_0_100": 62.4,
-            "production_0_100_legacy": 62.88,
+            "production_0_100": 62.2,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.88,
             "receptions": 59,
             "receiving_yards": 1167,
-            "receiving_tds": 13,
-            "opt_out_season_flag": false
+            "receiving_tds": 13
           },
           "effective_features_used": [
             "ras_0_100",
@@ -916,19 +864,19 @@
           "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 85.3501,
-          "distance": 0.146499,
+          "similarity_score": 85.3663,
+          "distance": 0.146337,
           "feature_snapshot": {
             "ras_0_100": 74.5,
-            "production_0_100": 68.6,
-            "production_0_100_legacy": 71.5,
+            "production_0_100": 68.7,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 71.5,
             "receptions": 62,
             "receiving_yards": 1327,
-            "receiving_tds": 14,
-            "opt_out_season_flag": false
+            "receiving_tds": 14
           },
           "effective_features_used": [
             "ras_0_100",
@@ -946,19 +894,19 @@
           "player_name": "Treylon Burks",
           "draft_year": 2022,
           "position": "WR",
-          "similarity_score": 83.8338,
-          "distance": 0.161662,
+          "similarity_score": 83.6241,
+          "distance": 0.163759,
           "feature_snapshot": {
             "ras_0_100": 57.8,
-            "production_0_100": 50.8,
-            "production_0_100_legacy": 59.48,
+            "production_0_100": 50.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
             "receptions": 66,
             "receiving_yards": 1104,
-            "receiving_tds": 11,
-            "opt_out_season_flag": false
+            "receiving_tds": 11
           },
           "effective_features_used": [
             "ras_0_100",
@@ -976,19 +924,19 @@
           "player_name": "Jerry Jeudy",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 77.9701,
-          "distance": 0.220299,
+          "similarity_score": 77.8425,
+          "distance": 0.221575,
           "feature_snapshot": {
             "ras_0_100": 67.8,
-            "production_0_100": 45.3,
-            "production_0_100_legacy": 62.66,
+            "production_0_100": 45.1,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 65.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.66,
             "receptions": 77,
             "receiving_yards": 1163,
-            "receiving_tds": 10,
-            "opt_out_season_flag": false
+            "receiving_tds": 10
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1011,14 +959,14 @@
           "feature_snapshot": {
             "ras_0_100": 84.6,
             "production_0_100": 52.1,
-            "production_0_100_legacy": 64.22,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 30.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 64.22,
             "receptions": 65,
             "receiving_yards": 1192,
-            "receiving_tds": 8,
-            "opt_out_season_flag": false
+            "receiving_tds": 8
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1044,19 +992,19 @@
           "player_name": "Tee Higgins",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 88.6635,
-          "distance": 0.113365,
+          "similarity_score": 88.6089,
+          "distance": 0.113911,
           "feature_snapshot": {
             "ras_0_100": 41.6,
-            "production_0_100": 62.4,
-            "production_0_100_legacy": 62.88,
+            "production_0_100": 62.2,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.88,
             "receptions": 59,
             "receiving_yards": 1167,
-            "receiving_tds": 13,
-            "opt_out_season_flag": false
+            "receiving_tds": 13
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1074,19 +1022,19 @@
           "player_name": "Treylon Burks",
           "draft_year": 2022,
           "position": "WR",
-          "similarity_score": 87.4466,
-          "distance": 0.125534,
+          "similarity_score": 87.2351,
+          "distance": 0.127649,
           "feature_snapshot": {
             "ras_0_100": 57.8,
-            "production_0_100": 50.8,
-            "production_0_100_legacy": 59.48,
+            "production_0_100": 50.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
             "receptions": 66,
             "receiving_yards": 1104,
-            "receiving_tds": 11,
-            "opt_out_season_flag": false
+            "receiving_tds": 11
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1104,19 +1052,19 @@
           "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 87.2198,
-          "distance": 0.127802,
+          "similarity_score": 87.2193,
+          "distance": 0.127807,
           "feature_snapshot": {
             "ras_0_100": 74.5,
-            "production_0_100": 68.6,
-            "production_0_100_legacy": 71.5,
+            "production_0_100": 68.7,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 71.5,
             "receptions": 62,
             "receiving_yards": 1327,
-            "receiving_tds": 14,
-            "opt_out_season_flag": false
+            "receiving_tds": 14
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1134,19 +1082,19 @@
           "player_name": "Jerry Jeudy",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 81.7298,
-          "distance": 0.182702,
+          "similarity_score": 81.6027,
+          "distance": 0.183973,
           "feature_snapshot": {
             "ras_0_100": 67.8,
-            "production_0_100": 45.3,
-            "production_0_100_legacy": 62.66,
+            "production_0_100": 45.1,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 65.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.66,
             "receptions": 77,
             "receiving_yards": 1163,
-            "receiving_tds": 10,
-            "opt_out_season_flag": false
+            "receiving_tds": 10
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1169,14 +1117,14 @@
           "feature_snapshot": {
             "ras_0_100": 84.6,
             "production_0_100": 52.1,
-            "production_0_100_legacy": 64.22,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 30.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 64.22,
             "receptions": 65,
             "receiving_yards": 1192,
-            "receiving_tds": 8,
-            "opt_out_season_flag": false
+            "receiving_tds": 8
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1202,19 +1150,19 @@
           "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 89.9537,
-          "distance": 0.100463,
+          "similarity_score": 89.9485,
+          "distance": 0.100515,
           "feature_snapshot": {
             "ras_0_100": 74.5,
-            "production_0_100": 68.6,
-            "production_0_100_legacy": 71.5,
+            "production_0_100": 68.7,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 71.5,
             "receptions": 62,
             "receiving_yards": 1327,
-            "receiving_tds": 14,
-            "opt_out_season_flag": false
+            "receiving_tds": 14
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1232,19 +1180,19 @@
           "player_name": "Treylon Burks",
           "draft_year": 2022,
           "position": "WR",
-          "similarity_score": 87.9869,
-          "distance": 0.120131,
+          "similarity_score": 87.7771,
+          "distance": 0.122229,
           "feature_snapshot": {
             "ras_0_100": 57.8,
-            "production_0_100": 50.8,
-            "production_0_100_legacy": 59.48,
+            "production_0_100": 50.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
             "receptions": 66,
             "receiving_yards": 1104,
-            "receiving_tds": 11,
-            "opt_out_season_flag": false
+            "receiving_tds": 11
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1262,19 +1210,19 @@
           "player_name": "Tee Higgins",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 86.2566,
-          "distance": 0.137434,
+          "similarity_score": 86.2181,
+          "distance": 0.137819,
           "feature_snapshot": {
             "ras_0_100": 41.6,
-            "production_0_100": 62.4,
-            "production_0_100_legacy": 62.88,
+            "production_0_100": 62.2,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.88,
             "receptions": 59,
             "receiving_yards": 1167,
-            "receiving_tds": 13,
-            "opt_out_season_flag": false
+            "receiving_tds": 13
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1292,19 +1240,19 @@
           "player_name": "Jerry Jeudy",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 83.3698,
-          "distance": 0.166302,
+          "similarity_score": 83.2357,
+          "distance": 0.167643,
           "feature_snapshot": {
             "ras_0_100": 67.8,
-            "production_0_100": 45.3,
-            "production_0_100_legacy": 62.66,
+            "production_0_100": 45.1,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 65.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.66,
             "receptions": 77,
             "receiving_yards": 1163,
-            "receiving_tds": 10,
-            "opt_out_season_flag": false
+            "receiving_tds": 10
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1327,14 +1275,14 @@
           "feature_snapshot": {
             "ras_0_100": 84.6,
             "production_0_100": 52.1,
-            "production_0_100_legacy": 64.22,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 30.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 64.22,
             "receptions": 65,
             "receiving_yards": 1192,
-            "receiving_tds": 8,
-            "opt_out_season_flag": false
+            "receiving_tds": 8
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1360,19 +1308,19 @@
           "player_name": "Treylon Burks",
           "draft_year": 2022,
           "position": "WR",
-          "similarity_score": 94.9583,
-          "distance": 0.050417,
+          "similarity_score": 94.767,
+          "distance": 0.05233,
           "feature_snapshot": {
             "ras_0_100": 57.8,
-            "production_0_100": 50.8,
-            "production_0_100_legacy": 59.48,
+            "production_0_100": 50.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
             "receptions": 66,
             "receiving_yards": 1104,
-            "receiving_tds": 11,
-            "opt_out_season_flag": false
+            "receiving_tds": 11
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1390,19 +1338,19 @@
           "player_name": "Tee Higgins",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 90.0621,
-          "distance": 0.099379,
+          "similarity_score": 90.1135,
+          "distance": 0.098865,
           "feature_snapshot": {
             "ras_0_100": 41.6,
-            "production_0_100": 62.4,
-            "production_0_100_legacy": 62.88,
+            "production_0_100": 62.2,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.88,
             "receptions": 59,
             "receiving_yards": 1167,
-            "receiving_tds": 13,
-            "opt_out_season_flag": false
+            "receiving_tds": 13
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1420,19 +1368,19 @@
           "player_name": "Jerry Jeudy",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 87.4631,
-          "distance": 0.125369,
+          "similarity_score": 87.3677,
+          "distance": 0.126323,
           "feature_snapshot": {
             "ras_0_100": 67.8,
-            "production_0_100": 45.3,
-            "production_0_100_legacy": 62.66,
+            "production_0_100": 45.1,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 65.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.66,
             "receptions": 77,
             "receiving_yards": 1163,
-            "receiving_tds": 10,
-            "opt_out_season_flag": false
+            "receiving_tds": 10
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1450,19 +1398,19 @@
           "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 83.8181,
-          "distance": 0.161819,
+          "similarity_score": 83.7828,
+          "distance": 0.162172,
           "feature_snapshot": {
             "ras_0_100": 74.5,
-            "production_0_100": 68.6,
-            "production_0_100_legacy": 71.5,
+            "production_0_100": 68.7,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 71.5,
             "receptions": 62,
             "receiving_yards": 1327,
-            "receiving_tds": 14,
-            "opt_out_season_flag": false
+            "receiving_tds": 14
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1485,14 +1433,14 @@
           "feature_snapshot": {
             "ras_0_100": 84.6,
             "production_0_100": 52.1,
-            "production_0_100_legacy": 64.22,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 30.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 64.22,
             "receptions": 65,
             "receiving_yards": 1192,
-            "receiving_tds": 8,
-            "opt_out_season_flag": false
+            "receiving_tds": 8
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1518,19 +1466,19 @@
           "player_name": "Tee Higgins",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 95.1893,
-          "distance": 0.048107,
+          "similarity_score": 95.052,
+          "distance": 0.04948,
           "feature_snapshot": {
             "ras_0_100": 41.6,
-            "production_0_100": 62.4,
-            "production_0_100_legacy": 62.88,
+            "production_0_100": 62.2,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.88,
             "receptions": 59,
             "receiving_yards": 1167,
-            "receiving_tds": 13,
-            "opt_out_season_flag": false
+            "receiving_tds": 13
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1548,19 +1496,19 @@
           "player_name": "Treylon Burks",
           "draft_year": 2022,
           "position": "WR",
-          "similarity_score": 83.524,
-          "distance": 0.16476,
+          "similarity_score": 83.3578,
+          "distance": 0.166422,
           "feature_snapshot": {
             "ras_0_100": 57.8,
-            "production_0_100": 50.8,
-            "production_0_100_legacy": 59.48,
+            "production_0_100": 50.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
             "receptions": 66,
             "receiving_yards": 1104,
-            "receiving_tds": 11,
-            "opt_out_season_flag": false
+            "receiving_tds": 11
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1578,19 +1526,19 @@
           "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 77.9017,
-          "distance": 0.220983,
+          "similarity_score": 77.9025,
+          "distance": 0.220975,
           "feature_snapshot": {
             "ras_0_100": 74.5,
-            "production_0_100": 68.6,
-            "production_0_100_legacy": 71.5,
+            "production_0_100": 68.7,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 71.5,
             "receptions": 62,
             "receiving_yards": 1327,
-            "receiving_tds": 14,
-            "opt_out_season_flag": false
+            "receiving_tds": 14
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1608,19 +1556,19 @@
           "player_name": "Jerry Jeudy",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 75.8717,
-          "distance": 0.241283,
+          "similarity_score": 75.7733,
+          "distance": 0.242267,
           "feature_snapshot": {
             "ras_0_100": 67.8,
-            "production_0_100": 45.3,
-            "production_0_100_legacy": 62.66,
+            "production_0_100": 45.1,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 65.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.66,
             "receptions": 77,
             "receiving_yards": 1163,
-            "receiving_tds": 10,
-            "opt_out_season_flag": false
+            "receiving_tds": 10
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1643,14 +1591,14 @@
           "feature_snapshot": {
             "ras_0_100": 84.6,
             "production_0_100": 52.1,
-            "production_0_100_legacy": 64.22,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 30.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 64.22,
             "receptions": 65,
             "receiving_yards": 1192,
-            "receiving_tds": 8,
-            "opt_out_season_flag": false
+            "receiving_tds": 8
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1676,19 +1624,19 @@
           "player_name": "Tee Higgins",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 91.9059,
-          "distance": 0.080941,
+          "similarity_score": 91.7748,
+          "distance": 0.082252,
           "feature_snapshot": {
             "ras_0_100": 41.6,
-            "production_0_100": 62.4,
-            "production_0_100_legacy": 62.88,
+            "production_0_100": 62.2,
             "draft_capital_proxy_0_100": 65.0,
             "size_context_0_100": 50.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.88,
             "receptions": 59,
             "receiving_yards": 1167,
-            "receiving_tds": 13,
-            "opt_out_season_flag": false
+            "receiving_tds": 13
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1706,19 +1654,19 @@
           "player_name": "Treylon Burks",
           "draft_year": 2022,
           "position": "WR",
-          "similarity_score": 78.6232,
-          "distance": 0.213768,
+          "similarity_score": 78.4669,
+          "distance": 0.215331,
           "feature_snapshot": {
             "ras_0_100": 57.8,
-            "production_0_100": 50.8,
-            "production_0_100_legacy": 59.48,
+            "production_0_100": 50.5,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 58.89,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
             "receptions": 66,
             "receiving_yards": 1104,
-            "receiving_tds": 11,
-            "opt_out_season_flag": false
+            "receiving_tds": 11
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1736,19 +1684,19 @@
           "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 73.4978,
-          "distance": 0.265022,
+          "similarity_score": 73.506,
+          "distance": 0.26494,
           "feature_snapshot": {
             "ras_0_100": 74.5,
-            "production_0_100": 68.6,
-            "production_0_100_legacy": 71.5,
+            "production_0_100": 68.7,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 75.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 71.5,
             "receptions": 62,
             "receiving_yards": 1327,
-            "receiving_tds": 14,
-            "opt_out_season_flag": false
+            "receiving_tds": 14
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1766,19 +1714,19 @@
           "player_name": "Jerry Jeudy",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 70.8556,
-          "distance": 0.291444,
+          "similarity_score": 70.7603,
+          "distance": 0.292397,
           "feature_snapshot": {
             "ras_0_100": 67.8,
-            "production_0_100": 45.3,
-            "production_0_100_legacy": 62.66,
+            "production_0_100": 45.1,
             "draft_capital_proxy_0_100": 85.0,
             "size_context_0_100": 65.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.66,
             "receptions": 77,
             "receiving_yards": 1163,
-            "receiving_tds": 10,
-            "opt_out_season_flag": false
+            "receiving_tds": 10
           },
           "effective_features_used": [
             "ras_0_100",
@@ -1801,14 +1749,14 @@
           "feature_snapshot": {
             "ras_0_100": 84.6,
             "production_0_100": 52.1,
-            "production_0_100_legacy": 64.22,
             "draft_capital_proxy_0_100": 75.0,
             "size_context_0_100": 30.0,
             "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 64.22,
             "receptions": 65,
             "receiving_yards": 1192,
-            "receiving_tds": 8,
-            "opt_out_season_flag": false
+            "receiving_tds": 8
           },
           "effective_features_used": [
             "ras_0_100",

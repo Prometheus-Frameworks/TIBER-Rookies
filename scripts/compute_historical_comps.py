@@ -302,6 +302,24 @@ def build_comp_candidates(
     output: list[dict[str, Any]] = []
     for distance, _, row, effective_features_used in ranked[:top_n]:
         outcome = outcomes_by_player_id.get(row["player_id"])
+        feature_snapshot = {
+            "ras_0_100": row.get("ras_0_100"),
+            "production_0_100": row.get("production_0_100"),
+            "draft_capital_proxy_0_100": row.get("draft_capital_proxy_0_100"),
+            "size_context_0_100": row.get("size_context_0_100"),
+            "normalization_scope": row.get("normalization_scope"),
+            "opt_out_season_flag": bool(row.get("opt_out_season_flag", False)),
+        }
+        if row.get("position") == "WR":
+            feature_snapshot.update(
+                {
+                    "production_0_100_legacy": row.get("production_0_100_legacy"),
+                    "receptions": row.get("receptions"),
+                    "receiving_yards": row.get("receiving_yards"),
+                    "receiving_tds": row.get("receiving_tds"),
+                }
+            )
+
         output.append(
             {
                 "historical_player_id": row["player_id"],
@@ -310,18 +328,7 @@ def build_comp_candidates(
                 "position": row["position"],
                 "similarity_score": similarity_score(distance),
                 "distance": round(distance, 6),
-                "feature_snapshot": {
-                    "ras_0_100": row.get("ras_0_100"),
-                    "production_0_100": row.get("production_0_100"),
-                    "production_0_100_legacy": row.get("production_0_100_legacy"),
-                    "draft_capital_proxy_0_100": row.get("draft_capital_proxy_0_100"),
-                    "size_context_0_100": row.get("size_context_0_100"),
-                    "normalization_scope": row.get("normalization_scope"),
-                    "receptions": row.get("receptions"),
-                    "receiving_yards": row.get("receiving_yards"),
-                    "receiving_tds": row.get("receiving_tds"),
-                    "opt_out_season_flag": bool(row.get("opt_out_season_flag", False)),
-                },
+                "feature_snapshot": feature_snapshot,
                 "effective_features_used": effective_features_used,
                 "outcome_snapshot": None
                 if outcome is None
