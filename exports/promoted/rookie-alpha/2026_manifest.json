@@ -1,8 +1,8 @@
 {
   "season": 2026,
   "model_version": "rookie-alpha-predraft-v0.1.0",
-  "generated_at": "2026-03-28T22:35:16+00:00",
-  "run_id": "rookie-alpha-2026-2026-03-28T22:35:16+00:00",
+  "generated_at": "2026-03-29T12:55:53+00:00",
+  "run_id": "rookie-alpha-2026-2026-03-29T12:55:53+00:00",
   "input_files": [
     {
       "path": "data/raw/2026_combine_results.json",
@@ -16,49 +16,49 @@
     },
     {
       "path": "data/processed/2026_draft_capital_proxy.json",
-      "sha256": "87d71738456fe597510442c0768722025e9daca9cfbc626b1f4f5349c9c33686",
+      "sha256": "a316e14bd1cc5bba83b6136256e3b6f32badd427c7b1eaf3980df25bc841503a",
       "row_count": 23
     }
   ],
   "coverage_summary": {
-    "players_total": 20,
+    "players_total": 23,
     "players_with_any_missing_input": 0,
-    "players_with_full_inputs": 20,
+    "players_with_full_inputs": 23,
     "input_alignment": {
       "duplicate_rows_skipped": 0,
       "identity_conflicts_skipped": 0,
       "missing_combine": 0,
       "missing_production": 0,
-      "missing_draft_proxy": 3,
-      "total_excluded": 3
+      "missing_draft_proxy": 0,
+      "total_excluded": 0
     }
   },
   "output_files": [
     {
       "path": "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
-      "sha256": "d3b201f907f7362ea4bfcfc3ab31c21ef7775b3de5a393c3fd734d661c5f8723"
+      "sha256": "00e2173d23a21313ef3ca9c787da40a26e3d5c666c82fa1abc5aa26fbeeef2df"
     },
     {
       "path": "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.csv",
-      "sha256": "5f5451bb1993d05c19d793e090fed05ecd9b3c90131890c3d4c7943bbc6610ef"
+      "sha256": "a2080ab211b32fb7c94a877a296d08e4c2ebcfa792d7f8223d3ace8fe2d0bbf0"
     }
   ],
   "export_metadata": {
     "season": 2026,
     "model_version": "rookie-alpha-predraft-v0.1.0",
-    "generated_at": "2026-03-28T22:35:16+00:00",
-    "run_id": "rookie-alpha-2026-2026-03-28T22:35:16+00:00",
+    "generated_at": "2026-03-29T12:55:53+00:00",
+    "run_id": "rookie-alpha-2026-2026-03-29T12:55:53+00:00",
     "coverage_summary": {
-      "players_total": 20,
+      "players_total": 23,
       "players_with_any_missing_input": 0,
-      "players_with_full_inputs": 20,
+      "players_with_full_inputs": 23,
       "input_alignment": {
         "duplicate_rows_skipped": 0,
         "identity_conflicts_skipped": 0,
         "missing_combine": 0,
         "missing_production": 0,
-        "missing_draft_proxy": 3,
-        "total_excluded": 3
+        "missing_draft_proxy": 0,
+        "total_excluded": 0
       }
     },
     "source_files_used": [

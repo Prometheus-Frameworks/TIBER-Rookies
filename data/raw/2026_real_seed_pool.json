@@ -200,12 +200,13 @@
     "broad_source": "PFF College via Twitter/X 2026 NFL Combine",
     "production_score_0_100": 62.8,
     "production_score_source": "CFBD 2025 season stats (normalized RB production score)",
-    "big_board_rank": null,
+    "big_board_rank": 66,
     "big_board_source": null,
-    "draft_capital_proxy_0_100": null,
-    "draft_capital_proxy_source": null,
+    "draft_capital_proxy_0_100": 55,
+    "draft_capital_proxy_source": "Tankathon consensus rank 66 \u2192 band 51-75 \u2192 proxy 55",
     "draft_capital_proxy_pending_conversion": false,
-    "notes": "Ran 4.33 at combine. 1,070 rush yards in 2025. Considered undervalued by analysts. Day 2 projection."
+    "notes": "Ran 4.33 at combine. 1,070 rush yards in 2025. Considered undervalued by analysts. Day 2 projection.",
+    "big_board_rank_source": "Tankathon 2026 consensus big board"
   },
   {
     "player_id": "rb-nick-singleton",
@@ -382,12 +383,13 @@
     "broad_source": null,
     "production_score_0_100": 75.5,
     "production_score_source": "CFBD 2025 season stats (normalized WR production score)",
-    "big_board_rank": null,
+    "big_board_rank": 137,
     "big_board_source": null,
-    "draft_capital_proxy_0_100": null,
-    "draft_capital_proxy_source": null,
+    "draft_capital_proxy_0_100": 35,
+    "draft_capital_proxy_source": "Tankathon consensus rank 137 \u2192 band 101-150 \u2192 proxy 35",
     "draft_capital_proxy_pending_conversion": false,
-    "notes": "Fastest WR at 2026 combine (4.26); 2nd-fastest ever recorded. Did not complete additional athletic testing. Speed-only profile; Day 3 projection."
+    "notes": "Fastest WR at 2026 combine (4.26); 2nd-fastest ever recorded. Did not complete additional athletic testing. Speed-only profile; Day 3 projection.",
+    "big_board_rank_source": "Tankathon 2026 consensus big board"
   },
   {
     "player_id": "wr-chris-brazzell-ii",
@@ -564,12 +566,13 @@
     "broad_source": null,
     "production_score_0_100": 49.5,
     "production_score_source": "CFBD 2025 season stats (normalized TE production score)",
-    "big_board_rank": null,
+    "big_board_rank": 135,
     "big_board_source": null,
-    "draft_capital_proxy_0_100": null,
-    "draft_capital_proxy_source": null,
+    "draft_capital_proxy_0_100": 35,
+    "draft_capital_proxy_source": "Tankathon consensus rank 135 \u2192 band 101-150 \u2192 proxy 35",
     "draft_capital_proxy_pending_conversion": false,
-    "notes": "Hairline fracture discovered at combine; did not run forty. Day 2/3 projection."
+    "notes": "Hairline fracture discovered at combine; did not run forty. Day 2/3 projection.",
+    "big_board_rank_source": "Tankathon 2026 consensus big board"
   },
   {
     "player_id": "te-eli-stowers",

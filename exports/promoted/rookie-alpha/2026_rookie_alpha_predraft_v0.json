@@ -11,20 +11,20 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-03-28T22:35:16+00:00",
-  "run_id": "rookie-alpha-2026-2026-03-28T22:35:16+00:00",
+  "generated_at": "2026-03-29T12:55:53+00:00",
+  "run_id": "rookie-alpha-2026-2026-03-29T12:55:53+00:00",
   "season": 2026,
   "coverage_summary": {
-    "players_total": 20,
+    "players_total": 23,
     "players_with_any_missing_input": 0,
-    "players_with_full_inputs": 20,
+    "players_with_full_inputs": 23,
     "input_alignment": {
       "duplicate_rows_skipped": 0,
       "identity_conflicts_skipped": 0,
       "missing_combine": 0,
       "missing_production": 0,
-      "missing_draft_proxy": 3,
-      "total_excluded": 3
+      "missing_draft_proxy": 0,
+      "total_excluded": 0
     }
   },
   "source_files_used": [
@@ -78,8 +78,8 @@
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 3,
-      "talent_rank": 6,
-      "draft_proxy_delta": 3
+      "talent_rank": 8,
+      "draft_proxy_delta": 5
     },
     {
       "player_id": "wr-chris-bell",
@@ -94,8 +94,8 @@
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 4,
-      "talent_rank": 8,
-      "draft_proxy_delta": 4
+      "talent_rank": 10,
+      "draft_proxy_delta": 6
     },
     {
       "player_id": "wr-carnell-tate",
@@ -110,8 +110,8 @@
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 5,
-      "talent_rank": 11,
-      "draft_proxy_delta": 6
+      "talent_rank": 14,
+      "draft_proxy_delta": 9
     },
     {
       "player_id": "wr-jordyn-tyson",
@@ -126,8 +126,8 @@
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 6,
-      "talent_rank": 14,
-      "draft_proxy_delta": 8
+      "talent_rank": 17,
+      "draft_proxy_delta": 11
     },
     {
       "player_id": "wr-chris-brazzell-ii",
@@ -142,8 +142,8 @@
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 7,
-      "talent_rank": 3,
-      "draft_proxy_delta": -4
+      "talent_rank": 4,
+      "draft_proxy_delta": -3
     },
     {
       "player_id": "qb-carson-beck",
@@ -158,8 +158,8 @@
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 8,
-      "talent_rank": 4,
-      "draft_proxy_delta": -4
+      "talent_rank": 5,
+      "draft_proxy_delta": -3
     },
     {
       "player_id": "wr-elijah-sarratt",
@@ -174,8 +174,24 @@
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 9,
-      "talent_rank": 5,
-      "draft_proxy_delta": -4
+      "talent_rank": 6,
+      "draft_proxy_delta": -3
+    },
+    {
+      "player_id": "rb-mike-washington-jr",
+      "player_name": "Mike Washington Jr.",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 66.2859,
+        "production_0_100": 62.8,
+        "draft_capital_proxy_0_100": 55.0,
+        "talent_score_0_100": 64.3251,
+        "rookie_alpha_0_100": 62.4601
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 10,
+      "talent_rank": 7,
+      "draft_proxy_delta": -3
     },
     {
       "player_id": "wr-kc-concepcion",
@@ -189,9 +205,9 @@
         "rookie_alpha_0_100": 61.1878
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 10,
-      "talent_rank": 9,
-      "draft_proxy_delta": -1
+      "rookie_alpha_rank": 11,
+      "talent_rank": 12,
+      "draft_proxy_delta": 1
     },
     {
       "player_id": "wr-makai-lemon",
@@ -205,9 +221,25 @@
         "rookie_alpha_0_100": 60.8978
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 11,
-      "talent_rank": 10,
-      "draft_proxy_delta": -1
+      "rookie_alpha_rank": 12,
+      "talent_rank": 13,
+      "draft_proxy_delta": 1
+    },
+    {
+      "player_id": "wr-brenen-thompson",
+      "player_name": "Brenen Thompson",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 52.8819,
+        "production_0_100": 75.5,
+        "draft_capital_proxy_0_100": 35.0,
+        "talent_score_0_100": 65.6046,
+        "rookie_alpha_0_100": 59.4837
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 13,
+      "talent_rank": 3,
+      "draft_proxy_delta": -10
     },
     {
       "player_id": "te-kenyon-sadiq",
@@ -221,9 +253,9 @@
         "rookie_alpha_0_100": 59.04
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 12,
-      "talent_rank": 17,
-      "draft_proxy_delta": 5
+      "rookie_alpha_rank": 14,
+      "talent_rank": 20,
+      "draft_proxy_delta": 6
     },
     {
       "player_id": "rb-nick-singleton",
@@ -237,8 +269,8 @@
         "rookie_alpha_0_100": 58.8852
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 13,
-      "talent_rank": 7,
+      "rookie_alpha_rank": 15,
+      "talent_rank": 9,
       "draft_proxy_delta": -6
     },
     {
@@ -253,9 +285,9 @@
         "rookie_alpha_0_100": 56.006
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 14,
-      "talent_rank": 13,
-      "draft_proxy_delta": -1
+      "rookie_alpha_rank": 16,
+      "talent_rank": 16,
+      "draft_proxy_delta": 0
     },
     {
       "player_id": "rb-jonah-coleman",
@@ -269,9 +301,9 @@
         "rookie_alpha_0_100": 54.1758
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 15,
-      "talent_rank": 12,
-      "draft_proxy_delta": -3
+      "rookie_alpha_rank": 17,
+      "talent_rank": 15,
+      "draft_proxy_delta": -2
     },
     {
       "player_id": "rb-jadarian-price",
@@ -285,9 +317,9 @@
         "rookie_alpha_0_100": 53.994
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 16,
-      "talent_rank": 18,
-      "draft_proxy_delta": 2
+      "rookie_alpha_rank": 18,
+      "talent_rank": 21,
+      "draft_proxy_delta": 3
     },
     {
       "player_id": "te-max-klare",
@@ -301,9 +333,9 @@
         "rookie_alpha_0_100": 53.8155
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 17,
-      "talent_rank": 16,
-      "draft_proxy_delta": -1
+      "rookie_alpha_rank": 19,
+      "talent_rank": 19,
+      "draft_proxy_delta": 0
     },
     {
       "player_id": "qb-drew-allar",
@@ -317,9 +349,9 @@
         "rookie_alpha_0_100": 53.7157
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 18,
-      "talent_rank": 15,
-      "draft_proxy_delta": -3
+      "rookie_alpha_rank": 20,
+      "talent_rank": 18,
+      "draft_proxy_delta": -2
     },
     {
       "player_id": "qb-ty-simpson",
@@ -333,9 +365,25 @@
         "rookie_alpha_0_100": 53.4138
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 19,
-      "talent_rank": 19,
-      "draft_proxy_delta": 0
+      "rookie_alpha_rank": 21,
+      "talent_rank": 22,
+      "draft_proxy_delta": 1
+    },
+    {
+      "player_id": "te-oscar-delp",
+      "player_name": "Oscar Delp",
+      "position": "TE",
+      "scores": {
+        "ras_0_100": 68.7173,
+        "production_0_100": 49.5,
+        "draft_capital_proxy_0_100": 35.0,
+        "talent_score_0_100": 57.9076,
+        "rookie_alpha_0_100": 53.326
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 22,
+      "talent_rank": 11,
+      "draft_proxy_delta": -11
     },
     {
       "player_id": "qb-garrett-nussmeier",
@@ -349,8 +397,8 @@
         "rookie_alpha_0_100": 44.52
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 20,
-      "talent_rank": 20,
+      "rookie_alpha_rank": 23,
+      "talent_rank": 23,
       "draft_proxy_delta": 0
     }
   ]

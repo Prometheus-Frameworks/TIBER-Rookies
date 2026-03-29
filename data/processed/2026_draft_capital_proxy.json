@@ -89,10 +89,10 @@
     "position": "RB",
     "school": "Arkansas",
     "class_year": 2026,
-    "big_board_rank": null,
-    "big_board_source": null,
-    "draft_capital_proxy_0_100": null,
-    "draft_capital_proxy_source": null,
+    "big_board_rank": 66,
+    "big_board_source": "Tankathon 2026 consensus big board",
+    "draft_capital_proxy_0_100": 55,
+    "draft_capital_proxy_source": "Tankathon consensus rank 66 \u2192 band 51-75 \u2192 proxy 55",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -173,10 +173,10 @@
     "position": "WR",
     "school": "Mississippi State",
     "class_year": 2026,
-    "big_board_rank": null,
-    "big_board_source": null,
-    "draft_capital_proxy_0_100": null,
-    "draft_capital_proxy_source": null,
+    "big_board_rank": 137,
+    "big_board_source": "Tankathon 2026 consensus big board",
+    "draft_capital_proxy_0_100": 35,
+    "draft_capital_proxy_source": "Tankathon consensus rank 137 \u2192 band 101-150 \u2192 proxy 35",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -257,10 +257,10 @@
     "position": "TE",
     "school": "Georgia",
     "class_year": 2026,
-    "big_board_rank": null,
-    "big_board_source": null,
-    "draft_capital_proxy_0_100": null,
-    "draft_capital_proxy_source": null,
+    "big_board_rank": 135,
+    "big_board_source": "Tankathon 2026 consensus big board",
+    "draft_capital_proxy_0_100": 35,
+    "draft_capital_proxy_source": "Tankathon consensus rank 135 \u2192 band 101-150 \u2192 proxy 35",
     "draft_capital_proxy_pending_conversion": false
   },
   {
