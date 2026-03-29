@@ -262,5 +262,6 @@ Emitted artifact path:
 Notes:
 
 - Sample historical files are scaffold fixtures, not a complete historical warehouse.
+- The committed `exports/promoted/historical-comps/2026_historical_comps_v0.json` is also sample/scaffold output generated from those fixtures.
 - Local operators can replace sample files with real locally prepared historical datasets that satisfy the documented schema and contract.
 - UI integration for comp pills/card surfaces is intentionally out of scope for this PR.

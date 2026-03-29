@@ -38,7 +38,9 @@ TALENT_WEIGHTS = {
     "size_context_0_100": 0.10,
 }
 MARKET_WEIGHTS = {
-    **TALENT_WEIGHTS,
+    "ras_0_100": 0.35,
+    "production_0_100": 0.35,
+    "size_context_0_100": 0.10,
     "draft_capital_proxy_0_100": 0.20,
 }
 
@@ -185,6 +187,8 @@ def build_comp_candidates(
     ranked: list[tuple[float, str, dict[str, Any]]] = []
     for historical_row in position_matches:
         distance = weighted_distance(rookie_row, historical_row, weights)
+        if distance == float("inf"):
+            continue
         ranked.append((distance, historical_row["player_id"], historical_row))
 
     ranked.sort(key=lambda item: (item[0], item[1]))
@@ -198,7 +202,7 @@ def build_comp_candidates(
                 "draft_year": row.get("draft_year"),
                 "position": row["position"],
                 "similarity_score": similarity_score(distance),
-                "distance": None if distance == float("inf") else round(distance, 6),
+                "distance": round(distance, 6),
                 "feature_snapshot": {
                     "ras_0_100": row.get("ras_0_100"),
                     "production_0_100": row.get("production_0_100"),

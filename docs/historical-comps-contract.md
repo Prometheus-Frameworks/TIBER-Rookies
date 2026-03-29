@@ -74,7 +74,7 @@ Each row in `players[].comps[]`:
 ## Comp modes
 
 - `talent_comp` (default v0 output): weighted by athleticism + production + optional size context.
-- `market_comp` (deferred output mode but supported in script): adds draft-capital context weight.
+- `market_comp` (deferred output mode but supported in script): uses explicit normalized weights that sum to 1.0 (`ras=0.35`, `production=0.35`, `size_context=0.10`, `draft_capital_proxy=0.20`).
 
 ## Validation expectations
 
@@ -84,9 +84,12 @@ Producer must validate:
 2. historical feature rows include required canonical fields,
 3. historical outcome rows include required canonical fields when provided,
 4. matching is position-only,
-5. similarity ordering is deterministic (stable tie-break by `historical_player_id`),
-6. artifact is machine-readable JSON and deterministic for identical inputs and `generated_at`.
+5. candidates with no shared comparable feature values are excluded (no zero-score/no-distance pseudo-comps),
+6. similarity ordering is deterministic (stable tie-break by `historical_player_id`),
+7. artifact is machine-readable JSON and deterministic for identical inputs and `generated_at`.
 
 ## Local population posture
 
 Because sandbox environments may not populate live historical APIs, this contract supports local operator population of historical files with real data while preserving the exact same row shape and artifact interface.
+
+The committed `exports/promoted/historical-comps/2026_historical_comps_v0.json` file in this repository is sample/scaffold output driven by sample fixture rows, not a full populated historical warehouse artifact.

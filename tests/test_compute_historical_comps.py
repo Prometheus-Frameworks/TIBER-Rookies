@@ -1,9 +1,9 @@
 import json
-import tempfile
 import unittest
 from pathlib import Path
 
 from scripts.compute_historical_comps import (
+    MARKET_WEIGHTS,
     REQUIRED_HISTORICAL_FEATURE_FIELDS,
     REQUIRED_HISTORICAL_OUTCOME_FIELDS,
     build_comp_candidates,
@@ -132,6 +132,38 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
         }
         distance = weighted_distance(rookie, historical, {"ras_0_100": 0.5, "production_0_100": 0.5})
         self.assertEqual(distance, 0.0)
+
+    def test_zero_overlap_candidates_are_excluded(self) -> None:
+        rookie = {
+            "player_id": "r4",
+            "player_name": "No Overlap Rookie",
+            "position": "TE",
+            "ras_0_100": None,
+            "production_0_100": None,
+            "size_context_0_100": None,
+            "draft_capital_proxy_0_100": None,
+        }
+        historical = normalize_historical_feature_rows(
+            [
+                {
+                    "player_id": "te-no-overlap",
+                    "player_name": "TE No Overlap",
+                    "position": "TE",
+                    "school": "X",
+                    "draft_year": 2019,
+                    "source_season": 2018,
+                    "ras_0_100": None,
+                    "production_0_100": None,
+                    "draft_capital_proxy_0_100": None,
+                    "size_context_0_100": None,
+                }
+            ]
+        )
+        comps = build_comp_candidates(rookie, historical, {}, comp_mode="talent_comp", top_n=5)
+        self.assertEqual(comps, [])
+
+    def test_market_weights_sum_to_one(self) -> None:
+        self.assertAlmostEqual(sum(MARKET_WEIGHTS.values()), 1.0)
 
     def test_artifact_shape_for_emitted_output(self) -> None:
         rookies = [
