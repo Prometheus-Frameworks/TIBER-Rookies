@@ -94,8 +94,9 @@ Producer must validate:
 The seeded real WR cohort in `data/historical/historical_prospect_features.sample.json` is intentionally low-featured in this first pass:
 
 - `ras_0_100` and `size_context_0_100` are currently null for the cohort.
-- Outcome fields in `data/historical/historical_player_outcomes.sample.json` are currently null.
+- Outcome fields for the seeded real WR cohort are now partially populated from sourced FantasyData PPR season rows.
 - `production_0_100` is currently a cohort-local min-max normalization over sourced receiving yards, not a full multi-signal historical production model.
+- `career_outcome_label` and `top_finish_band` for seeded WR rows are deterministic peak-`FPTS/G` bucket derivations, not yet a league-wide finalized finish model.
 
 Interpret current WR comp similarities accordingly: useful first real population pass, but not a fully featured historical nearest-neighbor space yet.
 
