@@ -58,7 +58,7 @@
     "freshman_total_yards": 264,
     "sophomore_total_yards": 739,
     "freshman_impact_flag": false,
-    "young_breakout_flag": true,
+    "young_breakout_flag": null,
     "career_yards_per_route_run": null,
     "best_season_yprr": null,
     "worst_season_yprr": null,
@@ -83,8 +83,7 @@
     "athletic_upside_flag": null,
     "path_disruption_flag": false,
     "evidence_tags": [
-      "early_declare",
-      "young_breakout"
+      "early_declare"
     ],
     "context_flags": [
       "limited_multi_season_data"
@@ -104,7 +103,7 @@
     "freshman_total_yards": 88,
     "sophomore_total_yards": 764,
     "freshman_impact_flag": false,
-    "young_breakout_flag": true,
+    "young_breakout_flag": null,
     "career_yards_per_route_run": null,
     "best_season_yprr": null,
     "worst_season_yprr": null,
@@ -129,8 +128,7 @@
     "athletic_upside_flag": null,
     "path_disruption_flag": false,
     "evidence_tags": [
-      "early_declare",
-      "young_breakout"
+      "early_declare"
     ],
     "context_flags": [
       "limited_multi_season_data"
@@ -176,8 +174,7 @@
     "path_disruption_flag": true,
     "evidence_tags": [
       "early_declare",
-      "injury_adjusted",
-      "one_year_context_suppression"
+      "injury_adjusted"
     ],
     "context_flags": [
       "injury_context",
@@ -223,8 +220,7 @@
     "athletic_upside_flag": true,
     "path_disruption_flag": false,
     "evidence_tags": [
-      "early_declare",
-      "one_year_context_suppression"
+      "early_declare"
     ],
     "context_flags": [
       "limited_multi_season_data"

@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-03-29T02:56:59+00:00",
-  "run_id": "rookie-alpha-2026-2026-03-29T02:56:59+00:00",
+  "generated_at": "2026-03-29T03:04:46+00:00",
+  "run_id": "rookie-alpha-2026-2026-03-29T03:04:46+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 20,
@@ -118,15 +118,12 @@
       },
       "evidence": {
         "evidence_tags": [
-          "early_declare",
-          "one_year_context_suppression"
+          "early_declare"
         ],
         "context_flags": [
           "limited_multi_season_data"
         ],
-        "translation_flags": [
-          "one_year_context_suppression"
-        ],
+        "translation_flags": [],
         "evidence_summary": "Sourced profile confirms 62-881-11 in 2025 and only 66 total receiving yards across his first two college seasons combined; year-by-year freshman/sophomore split is not explicitly published in currently available sources.",
         "context_source": "Wikipedia Denzel Boston college career summary and pre-draft measurables section, retrieved 2026-03-29."
       },
@@ -174,7 +171,7 @@
         "freshman_total_yards": 264,
         "sophomore_total_yards": 739,
         "freshman_impact_flag": false,
-        "young_breakout_flag": true,
+        "young_breakout_flag": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
         "worst_season_yprr": null,
@@ -201,15 +198,12 @@
       },
       "evidence": {
         "evidence_tags": [
-          "early_declare",
-          "young_breakout"
+          "early_declare"
         ],
         "context_flags": [
           "limited_multi_season_data"
         ],
-        "translation_flags": [
-          "young_breakout"
-        ],
+        "translation_flags": [],
         "evidence_summary": "Verified Ohio State progression from 264 freshman total yards to 739 sophomore total yards (733 receiving + 6 rushing), then 854 total yards in 2025.",
         "context_source": "Wikipedia Carnell Tate college statistics table (2023-2025 rows), retrieved 2026-03-29."
       },
@@ -269,16 +263,14 @@
       "evidence": {
         "evidence_tags": [
           "early_declare",
-          "injury_adjusted",
-          "one_year_context_suppression"
+          "injury_adjusted"
         ],
         "context_flags": [
           "injury_context",
           "path_disruption"
         ],
         "translation_flags": [
-          "injury_adjusted",
-          "one_year_context_suppression"
+          "injury_adjusted"
         ],
         "evidence_summary": "Sourced career path includes 470 receiving yards as a true freshman at Colorado, then an injury-limited 2023 season with no catches, plus a 2024 season-ending injury note before his 2025 draft cycle.",
         "context_source": "Wikipedia Jordyn Tyson college career summary and Arizona State official roster bio historical notes, retrieved 2026-03-29."
@@ -427,7 +419,7 @@
         "freshman_total_yards": 88,
         "sophomore_total_yards": 764,
         "freshman_impact_flag": false,
-        "young_breakout_flag": true,
+        "young_breakout_flag": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
         "worst_season_yprr": null,
@@ -454,15 +446,12 @@
       },
       "evidence": {
         "evidence_tags": [
-          "early_declare",
-          "young_breakout"
+          "early_declare"
         ],
         "context_flags": [
           "limited_multi_season_data"
         ],
-        "translation_flags": [
-          "young_breakout"
-        ],
+        "translation_flags": [],
         "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season is aligned with the sourced profile.",
         "context_source": "Wikipedia Makai Lemon statistics table (2023-2025 rows) plus awards section, retrieved 2026-03-29."
       },
