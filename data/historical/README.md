@@ -2,8 +2,8 @@
 
 This directory is the canonical staging lane for **historical prospect comp inputs**.
 
-The files currently committed here are **schema + sample fixtures only** so the contract is explicit and testable in-repo.
-They are not a fully populated historical warehouse.
+The files currently committed here are **schema + partial fixture population** so the contract is explicit and testable in-repo.
+WR is now seeded with a small real historical cohort while QB/TE remain sample scaffolding. This is still not a fully populated historical warehouse.
 
 ## Canonical files
 
@@ -11,12 +11,23 @@ They are not a fully populated historical warehouse.
 - `historical_prospect_features.sample.json`
 - `historical_player_outcomes.sample.json`
 
+## Current WR pass limitations (intentional for v0)
+
+- WR feature rows currently have `ras_0_100 = null` and `size_context_0_100 = null` across the seeded real cohort.
+- WR outcome rows are present for key alignment but currently keep outcome fields null.
+- WR `production_0_100` is a **cohort-local min-max normalization** over sourced receiving-yards values; it is a narrow proxy, not a full historical production model.
+- As a result, current WR similarity behavior is driven by a draft anchor plus narrow production proxy, not a fully populated historical feature set.
+
 ## Intentional posture
 
 - Deterministic, machine-readable row contracts.
 - Explicit `null` values for unavailable historical inputs.
 - No fabricated claims of complete historical population.
-- Local operators can replace `*.sample.json` with real locally generated files that follow the same row shape.
+- Local operators can continue expanding the lane position-by-position with real sourced rows that follow the same row shape.
+
+## Naming note
+
+`*.sample.json` is currently a mixed-state name: WR rows are real-sourced while other position groups in the same files can still be sample-backed. A future cleanup can rename/split files once more position groups are populated.
 
 ## Relationship to comp producer
 

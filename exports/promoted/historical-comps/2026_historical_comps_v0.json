@@ -11,7 +11,7 @@
     },
     "notes": "v0 emits talent_comp by default; market_comp support is scaffolded and optional."
   },
-  "generated_at": "2026-03-28T00:00:00+00:00",
+  "generated_at": "2026-03-29T00:00:00+00:00",
   "season": 2026,
   "source_files_used": [
     "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
@@ -378,17 +378,97 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "sample-wr-2020-a",
-          "player_name": "Sample WR Profile A",
+          "historical_player_id": "wr-ceedee-lamb-2020",
+          "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 66.3895,
-          "distance": 0.336105,
+          "similarity_score": 85.02,
+          "distance": 0.1498,
           "feature_snapshot": {
-            "ras_0_100": 82.0,
-            "production_0_100": 78.0,
-            "draft_capital_proxy_0_100": 76.0,
-            "size_context_0_100": 64.0
+            "ras_0_100": null,
+            "production_0_100": 58.72,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-justin-jefferson-2020",
+          "player_name": "Justin Jefferson",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 73.7,
+          "distance": 0.263,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 100.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-brandon-aiyuk-2020",
+          "player_name": "Brandon Aiyuk",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 30.56,
+          "distance": 0.6944,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 4.26,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-tee-higgins-2020",
+          "player_name": "Tee Higgins",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 27.36,
+          "distance": 0.7264,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 1.06,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-jerry-jeudy-2020",
+          "player_name": "Jerry Jeudy",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 26.3,
+          "distance": 0.737,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 0.0,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": null
           },
           "outcome_snapshot": {
             "career_outcome_label": null,
@@ -406,17 +486,97 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "sample-wr-2020-a",
-          "player_name": "Sample WR Profile A",
+          "historical_player_id": "wr-ceedee-lamb-2020",
+          "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 82.4905,
-          "distance": 0.175095,
+          "similarity_score": 98.12,
+          "distance": 0.0188,
           "feature_snapshot": {
-            "ras_0_100": 82.0,
-            "production_0_100": 78.0,
-            "draft_capital_proxy_0_100": 76.0,
-            "size_context_0_100": 64.0
+            "ras_0_100": null,
+            "production_0_100": 58.72,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-justin-jefferson-2020",
+          "player_name": "Justin Jefferson",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 60.6,
+          "distance": 0.394,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 100.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-brandon-aiyuk-2020",
+          "player_name": "Brandon Aiyuk",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 43.66,
+          "distance": 0.5634,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 4.26,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-tee-higgins-2020",
+          "player_name": "Tee Higgins",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 40.46,
+          "distance": 0.5954,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 1.06,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-jerry-jeudy-2020",
+          "player_name": "Jerry Jeudy",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 39.4,
+          "distance": 0.606,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 0.0,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": null
           },
           "outcome_snapshot": {
             "career_outcome_label": null,
@@ -434,17 +594,97 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "sample-wr-2020-a",
-          "player_name": "Sample WR Profile A",
+          "historical_player_id": "wr-ceedee-lamb-2020",
+          "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 80.1767,
-          "distance": 0.198233,
+          "similarity_score": 85.32,
+          "distance": 0.1468,
           "feature_snapshot": {
-            "ras_0_100": 82.0,
-            "production_0_100": 78.0,
-            "draft_capital_proxy_0_100": 76.0,
-            "size_context_0_100": 64.0
+            "ras_0_100": null,
+            "production_0_100": 58.72,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-justin-jefferson-2020",
+          "player_name": "Justin Jefferson",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 73.4,
+          "distance": 0.266,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 100.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-brandon-aiyuk-2020",
+          "player_name": "Brandon Aiyuk",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 30.86,
+          "distance": 0.6914,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 4.26,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-tee-higgins-2020",
+          "player_name": "Tee Higgins",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 27.66,
+          "distance": 0.7234,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 1.06,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-jerry-jeudy-2020",
+          "player_name": "Jerry Jeudy",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 26.6,
+          "distance": 0.734,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 0.0,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": null
           },
           "outcome_snapshot": {
             "career_outcome_label": null,
@@ -462,17 +702,97 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "sample-wr-2020-a",
-          "player_name": "Sample WR Profile A",
+          "historical_player_id": "wr-ceedee-lamb-2020",
+          "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 80.7093,
-          "distance": 0.192907,
+          "similarity_score": 90.22,
+          "distance": 0.0978,
           "feature_snapshot": {
-            "ras_0_100": 82.0,
-            "production_0_100": 78.0,
-            "draft_capital_proxy_0_100": 76.0,
-            "size_context_0_100": 64.0
+            "ras_0_100": null,
+            "production_0_100": 58.72,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-justin-jefferson-2020",
+          "player_name": "Justin Jefferson",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 68.5,
+          "distance": 0.315,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 100.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-brandon-aiyuk-2020",
+          "player_name": "Brandon Aiyuk",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 35.76,
+          "distance": 0.6424,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 4.26,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-tee-higgins-2020",
+          "player_name": "Tee Higgins",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 32.56,
+          "distance": 0.6744,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 1.06,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-jerry-jeudy-2020",
+          "player_name": "Jerry Jeudy",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 31.5,
+          "distance": 0.685,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 0.0,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": null
           },
           "outcome_snapshot": {
             "career_outcome_label": null,
@@ -490,17 +810,97 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "sample-wr-2020-a",
-          "player_name": "Sample WR Profile A",
+          "historical_player_id": "wr-ceedee-lamb-2020",
+          "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 83.0022,
-          "distance": 0.169978,
+          "similarity_score": 91.12,
+          "distance": 0.0888,
           "feature_snapshot": {
-            "ras_0_100": 82.0,
-            "production_0_100": 78.0,
-            "draft_capital_proxy_0_100": 76.0,
-            "size_context_0_100": 64.0
+            "ras_0_100": null,
+            "production_0_100": 58.72,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-justin-jefferson-2020",
+          "player_name": "Justin Jefferson",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 67.6,
+          "distance": 0.324,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 100.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-brandon-aiyuk-2020",
+          "player_name": "Brandon Aiyuk",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 36.66,
+          "distance": 0.6334,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 4.26,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-tee-higgins-2020",
+          "player_name": "Tee Higgins",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 33.46,
+          "distance": 0.6654,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 1.06,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-jerry-jeudy-2020",
+          "player_name": "Jerry Jeudy",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 32.4,
+          "distance": 0.676,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 0.0,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": null
           },
           "outcome_snapshot": {
             "career_outcome_label": null,
@@ -518,17 +918,97 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "sample-wr-2020-a",
-          "player_name": "Sample WR Profile A",
+          "historical_player_id": "wr-ceedee-lamb-2020",
+          "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 75.7072,
-          "distance": 0.242928,
+          "similarity_score": 98.48,
+          "distance": 0.0152,
           "feature_snapshot": {
-            "ras_0_100": 82.0,
-            "production_0_100": 78.0,
-            "draft_capital_proxy_0_100": 76.0,
-            "size_context_0_100": 64.0
+            "ras_0_100": null,
+            "production_0_100": 58.72,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-justin-jefferson-2020",
+          "player_name": "Justin Jefferson",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 57.2,
+          "distance": 0.428,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 100.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-brandon-aiyuk-2020",
+          "player_name": "Brandon Aiyuk",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 47.06,
+          "distance": 0.5294,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 4.26,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-tee-higgins-2020",
+          "player_name": "Tee Higgins",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 43.86,
+          "distance": 0.5614,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 1.06,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-jerry-jeudy-2020",
+          "player_name": "Jerry Jeudy",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 42.8,
+          "distance": 0.572,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 0.0,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": null
           },
           "outcome_snapshot": {
             "career_outcome_label": null,
@@ -546,17 +1026,97 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "sample-wr-2020-a",
-          "player_name": "Sample WR Profile A",
+          "historical_player_id": "wr-ceedee-lamb-2020",
+          "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 71.8709,
-          "distance": 0.281291,
+          "similarity_score": 89.72,
+          "distance": 0.1028,
           "feature_snapshot": {
-            "ras_0_100": 82.0,
-            "production_0_100": 78.0,
-            "draft_capital_proxy_0_100": 76.0,
-            "size_context_0_100": 64.0
+            "ras_0_100": null,
+            "production_0_100": 58.72,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-justin-jefferson-2020",
+          "player_name": "Justin Jefferson",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 69.0,
+          "distance": 0.31,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 100.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-brandon-aiyuk-2020",
+          "player_name": "Brandon Aiyuk",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 35.26,
+          "distance": 0.6474,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 4.26,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-tee-higgins-2020",
+          "player_name": "Tee Higgins",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 32.06,
+          "distance": 0.6794,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 1.06,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-jerry-jeudy-2020",
+          "player_name": "Jerry Jeudy",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 31.0,
+          "distance": 0.69,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 0.0,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": null
           },
           "outcome_snapshot": {
             "career_outcome_label": null,
@@ -574,17 +1134,97 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "sample-wr-2020-a",
-          "player_name": "Sample WR Profile A",
+          "historical_player_id": "wr-ceedee-lamb-2020",
+          "player_name": "CeeDee Lamb",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 68.1807,
-          "distance": 0.318193,
+          "similarity_score": 85.72,
+          "distance": 0.1428,
           "feature_snapshot": {
-            "ras_0_100": 82.0,
-            "production_0_100": 78.0,
-            "draft_capital_proxy_0_100": 76.0,
-            "size_context_0_100": 64.0
+            "ras_0_100": null,
+            "production_0_100": 58.72,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-justin-jefferson-2020",
+          "player_name": "Justin Jefferson",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 73.0,
+          "distance": 0.27,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 100.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-brandon-aiyuk-2020",
+          "player_name": "Brandon Aiyuk",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 31.26,
+          "distance": 0.6874,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 4.26,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-tee-higgins-2020",
+          "player_name": "Tee Higgins",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 28.06,
+          "distance": 0.7194,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 1.06,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": null
+          },
+          "outcome_snapshot": {
+            "career_outcome_label": null,
+            "best_season_fantasy_ppg": null,
+            "top_finish_band": null,
+            "years_1_to_3_summary": null
+          }
+        },
+        {
+          "historical_player_id": "wr-jerry-jeudy-2020",
+          "player_name": "Jerry Jeudy",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 27.0,
+          "distance": 0.73,
+          "feature_snapshot": {
+            "ras_0_100": null,
+            "production_0_100": 0.0,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": null
           },
           "outcome_snapshot": {
             "career_outcome_label": null,
