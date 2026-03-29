@@ -4,7 +4,10 @@ from pathlib import Path
 
 from scripts.compute_historical_comps import (
     MARKET_WEIGHTS,
+    WR_POPULATION_SCOPE,
+    _load_wr_reference_populations,
     apply_wr_historical_production_methodology,
+    build_methodology_compatible_by_position,
     build_ui_display_allowed,
     REQUIRED_HISTORICAL_FEATURE_FIELDS,
     REQUIRED_HISTORICAL_OUTCOME_FIELDS,
@@ -461,13 +464,99 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
                 },
             ]
         )
-        scored = apply_wr_historical_production_methodology(rows)
+        scored, compatible_scopes = apply_wr_historical_production_methodology(rows)
         scoreable = [row for row in scored if row["player_id"] == "wr-scoreable"][0]
         null_row = [row for row in scored if row["player_id"] == "wr-null-rec"][0]
         self.assertIsNotNone(scoreable["production_0_100"])
         self.assertEqual(scoreable["normalization_scope"], "historical-wr-cfbd-method-v1")
         self.assertIsNone(null_row["production_0_100"])
         self.assertEqual(null_row["normalization_scope"], "historical-wr-cfbd-method-v1-null")
+        self.assertEqual(compatible_scopes, frozenset())
+
+    def test_wr_reference_population_fallback_keeps_methodology_incompatible(self) -> None:
+        rows = normalize_historical_feature_rows(
+            [
+                {
+                    "player_id": "wr-scoreable",
+                    "player_name": "WR Scoreable",
+                    "position": "WR",
+                    "school": "Sample",
+                    "draft_year": 2021,
+                    "source_season": 2020,
+                    "ras_0_100": 70.0,
+                    "production_0_100": 55.0,
+                    "draft_capital_proxy_0_100": 70.0,
+                    "normalization_scope": "cross-class-wr-v0",
+                    "receptions": 60,
+                    "receiving_yards": 1000,
+                    "receiving_tds": 10,
+                }
+            ]
+        )
+        scored, compatible_scopes = apply_wr_historical_production_methodology(rows)
+        self.assertEqual(scored[0]["normalization_scope"], "historical-wr-cfbd-method-v1")
+        methodology = build_methodology_compatible_by_position({"WR"}, scored, compatible_scopes)
+        self.assertFalse(methodology["WR"])
+
+    def test_wr_reference_population_loader_ignores_missing_directory(self) -> None:
+        populations = _load_wr_reference_populations(Path("data/historical/does_not_exist"))
+        self.assertEqual(populations, {})
+
+    def test_wr_reference_population_file_enables_population_scope(self) -> None:
+        temp_dir = Path(".tmp_wr_reference_population_test")
+        temp_dir.mkdir(exist_ok=True)
+        try:
+            rows = []
+            for i in range(100):
+                rows.append(
+                    {
+                        "player_name": f"WR {i}",
+                        "position": "WR",
+                        "source_season": 2020,
+                        "receptions": 20 + (i % 40),
+                        "receiving_yards": 400 + (i * 3),
+                        "receiving_tds": 2 + (i % 8),
+                        "source_name": "CFBD",
+                        "source_url": "https://api.collegefootballdata.com/stats/player/season",
+                    }
+                )
+            population_file = temp_dir / "2020_wr_receiving_population.json"
+            population_file.write_text(json.dumps(rows), encoding="utf-8")
+
+            populations = _load_wr_reference_populations(temp_dir)
+            self.assertIn(2020, populations)
+            self.assertEqual(len(populations[2020]), 100)
+
+            features = normalize_historical_feature_rows(
+                [
+                    {
+                        "player_id": "wr-scoreable",
+                        "player_name": "WR Scoreable",
+                        "position": "WR",
+                        "school": "Sample",
+                        "draft_year": 2021,
+                        "source_season": 2020,
+                        "ras_0_100": 70.0,
+                        "production_0_100": 55.0,
+                        "draft_capital_proxy_0_100": 70.0,
+                        "normalization_scope": "cross-class-wr-v0",
+                        "receptions": 60,
+                        "receiving_yards": 1000,
+                        "receiving_tds": 10,
+                    }
+                ]
+            )
+            scored, compatible_scopes = apply_wr_historical_production_methodology(
+                features,
+                wr_reference_populations=populations,
+            )
+            self.assertEqual(scored[0]["normalization_scope"], WR_POPULATION_SCOPE)
+            self.assertIn(WR_POPULATION_SCOPE, compatible_scopes)
+        finally:
+            if temp_dir.exists():
+                for path in temp_dir.glob("*"):
+                    path.unlink()
+                temp_dir.rmdir()
 
     def test_artifact_wr_contract_flags_remain_conservative(self) -> None:
         artifact = json.loads(

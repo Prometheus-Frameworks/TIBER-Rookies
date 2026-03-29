@@ -10,6 +10,8 @@ WR now includes multiple real draft vintages (2020 + 2021) while QB/TE remain sa
 - `historical_prospect_features.schema.md`
 - `historical_prospect_features.sample.json`
 - `historical_player_outcomes.sample.json`
+- `wr_reference_populations/README.md`
+- `wr_reference_populations/template_wr_receiving_population.json`
 
 ## Current WR pass limitations (intentional for v0)
 
@@ -20,11 +22,15 @@ WR now includes multiple real draft vintages (2020 + 2021) while QB/TE remain sa
 - WR outcome rows for the seeded real cohort now include sourced PPR/G-based snapshots (`best_season_fantasy_ppg`, `years_1_to_3_summary`) plus deterministic label/band derivations.
 - WR `production_0_100` now uses `normalization_scope = "historical-wr-cfbd-method-v1"` when scoreable:
   - metric methodology now matches 2026 WR production (YPR + total yards + TD rate, same weights and score transform),
-  - population scope does **not** match (15-row historical cohort vs. full CFBD WR population), so compatibility remains blocked.
+  - population scope does **not** match by default (in-repo WR cohort fallback vs. full CFBD WR population), so compatibility remains blocked unless valid season population files are added.
 - WR rows that cannot be scored (opt-out/missing required receiving components/threshold miss/partial-season policy) use `normalization_scope = "historical-wr-cfbd-method-v1-null"` and keep `production_0_100 = null`.
 - WR rows preserve prior score in `production_0_100_legacy` to retain traceability to the prior `cross-class-wr-v0` pass.
 - Legacy `normalization_anchor` metadata from `cross-class-wr-v0` has been removed from WR rows to avoid stale min/max semantics under the new z-score method.
-- `scripts/compute_historical_comps.py` keeps `PRODUCTION_SCOPE_COMPATIBLE` intentionally empty in this pass, so `methodology_compatible` remains `false` by contract.
+- Historical WR season population infrastructure now exists at `data/historical/wr_reference_populations/`:
+  - file pattern: `{season}_wr_receiving_population.json`,
+  - minimum bar for compatibility: >=100 sourced WR rows (with `receptions >= 20`) for each target season,
+  - current committed state: no populated season files, so fallback behavior is active and `methodology_compatible` remains false.
+- `scripts/compute_historical_comps.py` keeps compatibility conservative unless valid population files are present, so `methodology_compatible` remains `false` in the current committed state.
 - `historical-wr-cfbd-method-v1` is intentionally **not** added to the compatible set yet, because population scope parity is not established.
 - WR `methodology_compatible` remains false until both metric methodology and population scope are aligned.
 - WR `career_outcome_label` and `top_finish_band` are currently deterministic derivations from each player's sourced peak `FPTS/G` (not yet a fully league-ranked finish model).
