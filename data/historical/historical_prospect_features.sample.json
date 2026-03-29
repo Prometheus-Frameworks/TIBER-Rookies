@@ -192,7 +192,7 @@
     "draft_capital_proxy_0_100": 90.0,
     "size_context_0_100": 45.0,
     "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page (player-level check for RAS; no explicit RAS value found in this pass)",
+    "source_name": "Wikipedia player page (college receiving stats + pre-draft measurables + draft pick); player-level RAS check returned null in this pass",
     "source_url": "https://en.wikipedia.org/wiki/Jaylen_Waddle",
     "notes": "pre-draft receiving yards: 557; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds). ras_0_100 remains null because no clean player-level RAS value (ras.football player page or explicit player Wikipedia RAS entry) was found in this pass.",
     "normalization_anchor": {
@@ -214,7 +214,7 @@
     "draft_capital_proxy_0_100": 85.0,
     "size_context_0_100": 50.0,
     "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page (player-level check for RAS; no explicit RAS value found in this pass)",
+    "source_name": "Wikipedia player page (college receiving stats + pre-draft measurables + draft pick); player-level RAS check returned null in this pass",
     "source_url": "https://en.wikipedia.org/wiki/DeVonta_Smith",
     "notes": "pre-draft receiving yards: 1856; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds). ras_0_100 remains null because no clean player-level RAS value (ras.football player page or explicit player Wikipedia RAS entry) was found in this pass.",
     "normalization_anchor": {
@@ -280,7 +280,7 @@
     "draft_capital_proxy_0_100": 95.0,
     "size_context_0_100": 44.44,
     "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page (player-level check for RAS; no explicit RAS value found in this pass)",
+    "source_name": "Wikipedia player page + FantasyData (college production sourcing); player-level RAS check returned null in this pass",
     "source_url": "https://en.wikipedia.org/wiki/Garrett_Wilson",
     "notes": "pre-draft receiving yards: 1058; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds). ras_0_100 remains null because no clean player-level RAS value (ras.football player page or explicit player Wikipedia RAS entry) was found in this pass.",
     "normalization_anchor": {
@@ -302,7 +302,7 @@
     "draft_capital_proxy_0_100": 95.0,
     "size_context_0_100": 70.0,
     "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page (player-level check for RAS; no explicit RAS value found in this pass)",
+    "source_name": "Wikipedia player page + FantasyData (college production sourcing); player-level RAS check returned null in this pass",
     "source_url": "https://en.wikipedia.org/wiki/Drake_London",
     "notes": "pre-draft receiving yards: 1084; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds). ras_0_100 remains null because no clean player-level RAS value (ras.football player page or explicit player Wikipedia RAS entry) was found in this pass.",
     "normalization_anchor": {
@@ -346,7 +346,7 @@
     "draft_capital_proxy_0_100": 85.0,
     "size_context_0_100": 36.67,
     "normalization_scope": "cross-class-wr-v0",
-    "source_name": "Wikipedia player page (player-level check for RAS; no explicit RAS value found in this pass)",
+    "source_name": "Wikipedia player page + FantasyData (college production sourcing); player-level RAS check returned null in this pass",
     "source_url": "https://en.wikipedia.org/wiki/Jameson_Williams",
     "notes": "pre-draft receiving yards: 1572; production_0_100 cross-class min-max across all 15 WR historical rows (min 0 yds / max 1856 yds). ras_0_100 remains null because no clean player-level RAS value (ras.football player page or explicit player Wikipedia RAS entry) was found in this pass.",
     "normalization_anchor": {
