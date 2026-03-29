@@ -50,6 +50,7 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
                     "ras_0_100": 70.0,
                     "production_0_100": 70.0,
                     "draft_capital_proxy_0_100": 70.0,
+                    "normalization_scope": "class-local",
                 },
                 {
                     "player_id": "qb-a",
@@ -61,6 +62,7 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
                     "ras_0_100": 70.0,
                     "production_0_100": 70.0,
                     "draft_capital_proxy_0_100": 70.0,
+                    "normalization_scope": "class-local",
                 },
             ]
         )
@@ -90,6 +92,7 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
                     "ras_0_100": 80.0,
                     "production_0_100": 82.0,
                     "draft_capital_proxy_0_100": 75.0,
+                    "normalization_scope": "class-local",
                 },
                 {
                     "player_id": "rb-1",
@@ -101,6 +104,7 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
                     "ras_0_100": 80.0,
                     "production_0_100": 82.0,
                     "draft_capital_proxy_0_100": 75.0,
+                    "normalization_scope": "class-local",
                 },
             ]
         )
@@ -129,9 +133,11 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
             "production_0_100": 55.0,
             "draft_capital_proxy_0_100": None,
             "size_context_0_100": None,
+            "normalization_scope": "class-local",
         }
-        distance = weighted_distance(rookie, historical, {"ras_0_100": 0.5, "production_0_100": 0.5})
+        distance, used = weighted_distance(rookie, historical, {"ras_0_100": 0.5, "production_0_100": 0.5})
         self.assertEqual(distance, 0.0)
+        self.assertEqual(used, ["production_0_100"])
 
     def test_zero_overlap_candidates_are_excluded(self) -> None:
         rookie = {
@@ -156,6 +162,7 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
                     "production_0_100": None,
                     "draft_capital_proxy_0_100": None,
                     "size_context_0_100": None,
+                    "normalization_scope": "class-local",
                 }
             ]
         )
@@ -190,6 +197,7 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
                     "production_0_100": 80.0,
                     "draft_capital_proxy_0_100": 90.0,
                     "size_context_0_100": 72.0,
+                    "normalization_scope": "class-local",
                 }
             ]
         )
@@ -223,7 +231,9 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
         self.assertEqual(artifact["model"]["comp_mode"], "talent_comp")
         self.assertEqual(len(artifact["players"]), 1)
         self.assertIn("comps", artifact["players"][0])
+        self.assertIn("comp_data_warnings", artifact)
         self.assertEqual(artifact["players"][0]["comps"][0]["historical_player_id"], "qb-h")
+        self.assertEqual(artifact["players"][0]["comps"][0]["effective_features_used"], ["ras_0_100", "production_0_100", "size_context_0_100"] )
 
 
 if __name__ == "__main__":

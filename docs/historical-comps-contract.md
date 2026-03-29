@@ -38,6 +38,9 @@ Example:
     "data/historical/historical_prospect_features.sample.json",
     "data/historical/historical_player_outcomes.sample.json"
   ],
+  "comp_data_warnings": {
+    "WR": "artifact-visible caveat string for partial lane quality (and explicit non-differentiation warning when #1 comp concentration exceeds threshold)"
+  },
   "players": [
     {
       "player_id": "...",
@@ -65,6 +68,8 @@ Each row in `players[].comps[]`:
   - `production_0_100`
   - `draft_capital_proxy_0_100`
   - `size_context_0_100`
+  - `normalization_scope`
+- `effective_features_used` (array of strings): exact non-null feature keys actually used in this comparison distance
 - `outcome_snapshot` (object | null)
   - `career_outcome_label`
   - `best_season_fantasy_ppg`
@@ -91,14 +96,17 @@ Producer must validate:
 
 ## Current WR cohort caveat (v0)
 
-The seeded real WR cohort in `data/historical/historical_prospect_features.sample.json` is intentionally low-featured in this first pass:
+The seeded real WR cohort in `data/historical/historical_prospect_features.sample.json` remains partial, but now spans more than one vintage:
 
-- `ras_0_100` and `size_context_0_100` are currently null for the cohort.
+- WR rows now include 2020 and 2021 class coverage in this artifact slice.
+- 2020 WR rows include sourced `ras_0_100`; some later rows preserve `ras_0_100 = null` where clean sourcing was not available.
+- `size_context_0_100` is now populated as a deterministic height/weight percentile context dimension.
 - Outcome fields for the seeded real WR cohort are now partially populated from sourced FantasyData PPR season rows.
-- `production_0_100` is currently a cohort-local min-max normalization over sourced receiving yards, not a full multi-signal historical production model.
+- `production_0_100` includes an explicit `normalization_scope` marker (currently class-local for WR rows in this pass), and should not be assumed cross-class comparable unless scope states so.
 - `career_outcome_label` and `top_finish_band` for seeded WR rows are deterministic peak-`FPTS/G` bucket derivations, not yet a league-wide finalized finish model.
+- `effective_features_used` must be used when reading similarities; metadata weights are not equivalent to active dimensions for every row.
 
-Interpret current WR comp similarities accordingly: useful first real population pass, but not a fully featured historical nearest-neighbor space yet.
+Interpret current WR comp similarities accordingly: upgraded beyond one-vintage/one-proxy behavior, but still not a fully featured historical nearest-neighbor space and still blocked for UI surfacing.
 
 ## Local population posture
 

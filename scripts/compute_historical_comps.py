@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -20,6 +21,7 @@ REQUIRED_HISTORICAL_FEATURE_FIELDS = {
     "ras_0_100",
     "production_0_100",
     "draft_capital_proxy_0_100",
+    "normalization_scope",
 }
 REQUIRED_HISTORICAL_OUTCOME_FIELDS = {
     "player_id",
@@ -89,6 +91,7 @@ def normalize_historical_feature_rows(rows: list[dict[str, Any]]) -> list[dict[s
                 "size_context_0_100": coerce_float_or_none(row.get("size_context_0_100")),
                 "source_name": row.get("source_name"),
                 "source_url": row.get("source_url"),
+                "normalization_scope": row.get("normalization_scope"),
             }
         )
     return normalized
@@ -150,9 +153,12 @@ def load_rookies(rookie_export_path: Path) -> tuple[int, list[dict[str, Any]]]:
     return season, rookies
 
 
-def weighted_distance(rookie_row: dict[str, Any], historical_row: dict[str, Any], weights: dict[str, float]) -> float:
+def weighted_distance(
+    rookie_row: dict[str, Any], historical_row: dict[str, Any], weights: dict[str, float]
+) -> tuple[float, list[str]]:
     squared_sum = 0.0
     used_weight = 0.0
+    effective_features_used: list[str] = []
     for feature, weight in weights.items():
         rookie_value = coerce_float_or_none(rookie_row.get(feature))
         historical_value = coerce_float_or_none(historical_row.get(feature))
@@ -161,10 +167,11 @@ def weighted_distance(rookie_row: dict[str, Any], historical_row: dict[str, Any]
         diff = (rookie_value - historical_value) / 100.0
         squared_sum += weight * (diff * diff)
         used_weight += weight
+        effective_features_used.append(feature)
 
     if used_weight == 0.0:
-        return float("inf")
-    return (squared_sum / used_weight) ** 0.5
+        return float("inf"), []
+    return (squared_sum / used_weight) ** 0.5, effective_features_used
 
 
 def similarity_score(distance: float) -> float:
@@ -184,16 +191,18 @@ def build_comp_candidates(
     weights = TALENT_WEIGHTS if comp_mode == "talent_comp" else MARKET_WEIGHTS
     position_matches = [row for row in historical_rows if row["position"] == rookie_row["position"]]
 
-    ranked: list[tuple[float, str, dict[str, Any]]] = []
+    ranked: list[tuple[float, str, dict[str, Any], list[str]]] = []
     for historical_row in position_matches:
-        distance = weighted_distance(rookie_row, historical_row, weights)
+        distance, effective_features_used = weighted_distance(rookie_row, historical_row, weights)
         if distance == float("inf"):
             continue
-        ranked.append((distance, historical_row["player_id"], historical_row))
+        if rookie_row["position"] == "WR" and len(effective_features_used) < 2:
+            continue
+        ranked.append((distance, historical_row["player_id"], historical_row, effective_features_used))
 
     ranked.sort(key=lambda item: (item[0], item[1]))
     output: list[dict[str, Any]] = []
-    for distance, _, row in ranked[:top_n]:
+    for distance, _, row, effective_features_used in ranked[:top_n]:
         outcome = outcomes_by_player_id.get(row["player_id"])
         output.append(
             {
@@ -208,7 +217,9 @@ def build_comp_candidates(
                     "production_0_100": row.get("production_0_100"),
                     "draft_capital_proxy_0_100": row.get("draft_capital_proxy_0_100"),
                     "size_context_0_100": row.get("size_context_0_100"),
+                    "normalization_scope": row.get("normalization_scope"),
                 },
+                "effective_features_used": effective_features_used,
                 "outcome_snapshot": None
                 if outcome is None
                 else {
@@ -254,6 +265,25 @@ def compute_historical_comps(
             }
         )
 
+    wr_top_1_counter: Counter[str] = Counter()
+    for player in players:
+        if player["position"] != "WR" or not player["comps"]:
+            continue
+        wr_top_1_counter[player["comps"][0]["player_name"]] += 1
+    wr_max_top_1 = max(wr_top_1_counter.values(), default=0)
+
+    warnings = {}
+    if wr_max_top_1 > 3:
+        warnings["WR"] = (
+            "WR lane remains insufficiently differentiated for UI use: at least one historical WR is the #1 comp for "
+            f"{wr_max_top_1} prospects (>3 threshold). Similarities remain directional only."
+        )
+    else:
+        warnings["WR"] = (
+            "WR lane is still partial and directional; do not surface in UI until broader cross-class and outcomes "
+            "coverage is added."
+        )
+
     return {
         "model": {
             "name": "historical_comps",
@@ -266,6 +296,7 @@ def compute_historical_comps(
         "generated_at": generated_at,
         "season": season,
         "source_files_used": source_files_used,
+        "comp_data_warnings": warnings,
         "players": players,
     }
 

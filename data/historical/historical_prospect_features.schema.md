@@ -13,6 +13,7 @@ Each row represents one historical drafted prospect candidate used for nearest-n
 - `ras_0_100` (number | null): normalized athletic profile signal.
 - `production_0_100` (number | null): normalized college production signal.
 - `draft_capital_proxy_0_100` (number | null): draft-market context proxy on the same 0-100 scale.
+- `normalization_scope` (string): declares how `production_0_100` was normalized (`cohort-local`, `class-local`, or `cross-class`).
 
 ## Optional fields
 
