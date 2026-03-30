@@ -11,7 +11,7 @@
     },
     "notes": "v0 emits talent_comp by default; market_comp support is scaffolded and optional."
   },
-  "generated_at": "2026-03-30T21:01:24+00:00",
+  "generated_at": "2026-03-30T00:00:00+00:00",
   "season": 2026,
   "source_files_used": [
     "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
@@ -19,7 +19,28 @@
     "data/historical/historical_player_outcomes.sample.json"
   ],
   "comp_data_warnings": {
-    "WR": "WR lane is still partial and directional; do not surface in UI until broader cross-class and outcomes coverage is added."
+    "WR": "WR lane coverage is insufficient for differentiation breadth/feature depth checks; failed_checks=unique_top1_count, pct_all_comps_with_3plus_features, pct_top1_comps_with_3plus_features. Similarities remain directional only."
+  },
+  "lane_coverage_by_position": {
+    "WR": {
+      "total_promoted_wrs": 8,
+      "rookie_wr_with_comps": 8,
+      "max_top1_count": 3,
+      "unique_top1_count": 4,
+      "unique_comp_pool_count": 9,
+      "all_comps_count": 40,
+      "all_comps_with_3plus_features_count": 23,
+      "top1_comps_count": 8,
+      "top1_comps_with_3plus_features_count": 3,
+      "pct_all_comps_with_3plus_features": 0.575,
+      "pct_top1_comps_with_3plus_features": 0.375,
+      "coverage_sufficient": false,
+      "failed_checks": [
+        "unique_top1_count",
+        "pct_all_comps_with_3plus_features",
+        "pct_top1_comps_with_3plus_features"
+      ]
+    }
   },
   "similarity_quality_by_position": {
     "QB": {

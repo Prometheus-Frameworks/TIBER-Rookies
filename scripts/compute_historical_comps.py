@@ -531,6 +531,78 @@ def build_similarity_quality_by_position(
             "requirements_checked": requirements_checked,
         }
     return output
+
+
+def build_wr_lane_coverage_summary(players: list[dict[str, Any]]) -> dict[str, Any]:
+    wr_players = [player for player in players if player.get("position") == "WR"]
+    total_promoted_wrs = len(wr_players)
+    wr_players_with_comps = [player for player in wr_players if isinstance(player.get("comps"), list) and player["comps"]]
+    rookie_wr_with_comps = len(wr_players_with_comps)
+
+    top1_counter: Counter[str] = Counter()
+    unique_comp_pool_ids: set[str] = set()
+    all_comps_count = 0
+    all_comps_with_3plus_features_count = 0
+    top1_comps_count = 0
+    top1_comps_with_3plus_features_count = 0
+
+    for player in wr_players_with_comps:
+        comps = player["comps"]
+        for index, comp in enumerate(comps):
+            effective_features = comp.get("effective_features_used", [])
+            feature_count = len(effective_features) if isinstance(effective_features, list) else 0
+            historical_player_id = comp.get("historical_player_id")
+            if historical_player_id is not None:
+                unique_comp_pool_ids.add(str(historical_player_id))
+
+            all_comps_count += 1
+            if feature_count >= 3:
+                all_comps_with_3plus_features_count += 1
+
+            if index == 0:
+                top1_comps_count += 1
+                if historical_player_id is not None:
+                    top1_counter[str(historical_player_id)] += 1
+                if feature_count >= 3:
+                    top1_comps_with_3plus_features_count += 1
+
+    max_top1_count = max(top1_counter.values(), default=0)
+    unique_top1_count = len(top1_counter)
+    unique_comp_pool_count = len(unique_comp_pool_ids)
+    pct_all_comps_with_3plus_features = (
+        all_comps_with_3plus_features_count / all_comps_count if all_comps_count else 0.0
+    )
+    pct_top1_comps_with_3plus_features = (
+        top1_comps_with_3plus_features_count / top1_comps_count if top1_comps_count else 0.0
+    )
+
+    checks = {
+        "rookie_wr_with_comps": rookie_wr_with_comps == total_promoted_wrs,
+        "max_top1_count": max_top1_count <= 3,
+        "unique_top1_count": unique_top1_count >= 5,
+        "unique_comp_pool_count": unique_comp_pool_count >= 8,
+        "pct_all_comps_with_3plus_features": pct_all_comps_with_3plus_features >= 0.75,
+        "pct_top1_comps_with_3plus_features": pct_top1_comps_with_3plus_features >= 0.50,
+    }
+    failed_checks = [name for name, passed in checks.items() if not passed]
+
+    return {
+        "total_promoted_wrs": total_promoted_wrs,
+        "rookie_wr_with_comps": rookie_wr_with_comps,
+        "max_top1_count": max_top1_count,
+        "unique_top1_count": unique_top1_count,
+        "unique_comp_pool_count": unique_comp_pool_count,
+        "all_comps_count": all_comps_count,
+        "all_comps_with_3plus_features_count": all_comps_with_3plus_features_count,
+        "top1_comps_count": top1_comps_count,
+        "top1_comps_with_3plus_features_count": top1_comps_with_3plus_features_count,
+        "pct_all_comps_with_3plus_features": pct_all_comps_with_3plus_features,
+        "pct_top1_comps_with_3plus_features": pct_top1_comps_with_3plus_features,
+        "coverage_sufficient": not failed_checks,
+        "failed_checks": failed_checks,
+    }
+
+
 def compute_historical_comps(
     season: int,
     rookies: list[dict[str, Any]],
@@ -564,27 +636,13 @@ def compute_historical_comps(
             }
         )
 
-    wr_top_1_counter: Counter[str] = Counter()
-    for player in players:
-        if player["position"] != "WR" or not player["comps"]:
-            continue
-        wr_top_1_counter[player["comps"][0]["player_name"]] += 1
-    wr_max_top_1 = max(wr_top_1_counter.values(), default=0)
-
+    wr_lane_coverage_summary = build_wr_lane_coverage_summary(players)
     warnings = {}
-    if wr_max_top_1 > 3:
-        # Known v0 behavior: even with added 2021/2022 WR rows, the promoted 2026 rookie WR
-        # feature cluster can still collapse to one nearest neighbor when RAS/size coverage is
-        # sparse or class-local normalization compresses variance across cohorts. Keep warning
-        # explicit rather than forcing synthetic differentiation in historical rows.
+    if not wr_lane_coverage_summary["coverage_sufficient"]:
+        failed_checks = ", ".join(wr_lane_coverage_summary["failed_checks"])
         warnings["WR"] = (
-            "WR lane remains insufficiently differentiated for UI use: at least one historical WR is the #1 comp for "
-            f"{wr_max_top_1} prospects (>3 threshold). Similarities remain directional only."
-        )
-    else:
-        warnings["WR"] = (
-            "WR lane is still partial and directional; do not surface in UI until broader cross-class and outcomes "
-            "coverage is added."
+            "WR lane coverage is insufficient for differentiation breadth/feature depth checks; "
+            f"failed_checks={failed_checks}. Similarities remain directional only."
         )
 
     positions = {str(player.get("position")) for player in players if player.get("position") is not None}
@@ -617,6 +675,7 @@ def compute_historical_comps(
         "season": season,
         "source_files_used": source_files_used,
         "comp_data_warnings": warnings,
+        "lane_coverage_by_position": {"WR": wr_lane_coverage_summary},
         "similarity_quality_by_position": similarity_quality_by_position,
         "methodology_compatibility_by_position": methodology_compatibility_by_position,
         "ui_display_allowed": ui_display_allowed,

@@ -39,6 +39,7 @@ WR now includes multiple real draft vintages (2018 + 2020 + 2021) while QB/TE re
 
 
 - Current 2026 repro still emits a WR comp-data warning: one historical WR can remain the #1 comp for all eight 2026 WR prospects. This is currently driven by sparse WR RAS coverage and remaining feature-shape compression across partial vintages; do not fabricate rows or synthetic deltas to suppress this warning.
+- Producer warning behavior is now deterministic via `lane_coverage_by_position.WR`: warning clears only when all WR lane coverage thresholds pass (`rookie_wr_with_comps`, `max_top1_count`, `unique_top1_count`, `unique_comp_pool_count`, `% all comps with 3+ features`, `% top-1 comps with 3+ features`).
 
 
 - 2018 WR cohort was added with source season 2017 (D.J. Moore, Calvin Ridley, Courtland Sutton, Christian Kirk).
