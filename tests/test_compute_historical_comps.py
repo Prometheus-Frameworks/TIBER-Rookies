@@ -558,6 +558,10 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
                     path.unlink()
                 temp_dir.rmdir()
 
+
+    def test_fetch_wr_reference_populations_script_exists(self) -> None:
+        self.assertTrue(Path("scripts/fetch_wr_reference_populations.py").is_file())
+
     def test_artifact_wr_contract_flags_remain_conservative(self) -> None:
         artifact = json.loads(
             Path("exports/promoted/historical-comps/2026_historical_comps_v0.json").read_text(encoding="utf-8")
