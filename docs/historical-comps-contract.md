@@ -187,6 +187,7 @@ It must not be independently computed from different logic.
 ## Historical WR reference population infrastructure
 
 - Optional static reference files are read from `data/historical/wr_reference_populations/{season}_wr_receiving_population.json`.
+- Historical WR cohort coverage now includes draft classes 2018, 2020, and 2021 (with 2018 sourced from source season 2017).
 - Required fields per row: `player_name`, `position`, `source_season`, `receptions`, `receiving_yards`, `receiving_tds`, `source_name`, `source_url`.
 - A file is considered valid for compatibility only when at least 100 rows qualify (`position == "WR"`, `receptions >= 20`, and sourced provenance present).
 - When valid population files are present for a row's `source_season`, WR rows are normalized using scope `historical-wr-cfbd-season-pop-v1`.

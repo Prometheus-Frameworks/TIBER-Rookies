@@ -26,6 +26,54 @@
     "notes": "sample/dev fixture only; no real outcomes populated"
   },
   {
+    "player_id": "wr-dj-moore-2018",
+    "player_name": "D.J. Moore",
+    "position": "WR",
+    "draft_year": 2018,
+    "career_outcome_label": "wr2_peak",
+    "best_season_fantasy_ppg": 16.9,
+    "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+    "years_1_to_3_summary": "2018-2020 PPR/G: 11.5, 15.4, 16.9; receiving line: 55/788/2, 87/1175/4, 66/1193/4.",
+    "source_name": "FantasyData player season fantasy stats (PPR scoring)",
+    "source_url": "https://fantasydata.com/nfl/dj-moore-fantasy/19865"
+  },
+  {
+    "player_id": "wr-calvin-ridley-2018",
+    "player_name": "Calvin Ridley",
+    "position": "WR",
+    "draft_year": 2018,
+    "career_outcome_label": "wr2_peak",
+    "best_season_fantasy_ppg": 16.5,
+    "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+    "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9.",
+    "source_name": "FantasyData player season fantasy stats (PPR scoring)",
+    "source_url": "https://fantasydata.com/nfl/calvin-ridley-fantasy/19868"
+  },
+  {
+    "player_id": "wr-courtland-sutton-2018",
+    "player_name": "Courtland Sutton",
+    "position": "WR",
+    "draft_year": 2018,
+    "career_outcome_label": "wr3_peak",
+    "best_season_fantasy_ppg": 14.4,
+    "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+    "years_1_to_3_summary": "2018-2020 PPR/G: 9.4, 14.4, 4.3; receiving line: 42/704/4, 72/1112/6, 40/519/2.",
+    "source_name": "FantasyData player season fantasy stats (PPR scoring)",
+    "source_url": "https://fantasydata.com/nfl/courtland-sutton-fantasy/19801"
+  },
+  {
+    "player_id": "wr-christian-kirk-2018",
+    "player_name": "Christian Kirk",
+    "position": "WR",
+    "draft_year": 2018,
+    "career_outcome_label": "wr3_peak",
+    "best_season_fantasy_ppg": 14.2,
+    "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+    "years_1_to_3_summary": "2018-2020 PPR/G: 9.6, 10.5, 12.1; receiving line: 43/590/3, 68/709/3, 48/621/6.",
+    "source_name": "FantasyData player season fantasy stats (PPR scoring)",
+    "source_url": "https://fantasydata.com/nfl/christian-kirk-fantasy/19863"
+  },
+  {
     "player_id": "wr-ceedee-lamb-2020",
     "player_name": "CeeDee Lamb",
     "position": "WR",

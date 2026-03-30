@@ -22,7 +22,6 @@ REQUIRED_HISTORICAL_FEATURE_FIELDS = {
     "ras_0_100",
     "production_0_100",
     "draft_capital_proxy_0_100",
-    "normalization_scope",
 }
 REQUIRED_HISTORICAL_OUTCOME_FIELDS = {
     "player_id",

@@ -574,8 +574,56 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
         features = json.loads(Path("data/historical/historical_prospect_features.sample.json").read_text(encoding="utf-8"))
         wr_rows = [row for row in features if row["position"] == "WR"]
         non_wr_rows = [row for row in features if row["position"] != "WR"]
-        self.assertTrue(all("production_0_100_legacy" in row for row in wr_rows))
+        legacy_seeded_rows = [row for row in wr_rows if row["draft_year"] in {2020, 2021, 2022}]
+        new_2018_rows = [row for row in wr_rows if row["draft_year"] == 2018]
+        self.assertTrue(all("production_0_100_legacy" in row for row in legacy_seeded_rows))
+        self.assertTrue(all("production_0_100_legacy" not in row for row in new_2018_rows))
         self.assertTrue(all("production_0_100_legacy" not in row for row in non_wr_rows))
+
+    def test_2018_wr_rows_are_present_and_candidate_eligible(self) -> None:
+        features = normalize_historical_feature_rows(
+            json.loads(Path("data/historical/historical_prospect_features.sample.json").read_text(encoding="utf-8"))
+        )
+        outcomes = normalize_outcome_rows(
+            json.loads(Path("data/historical/historical_player_outcomes.sample.json").read_text(encoding="utf-8"))
+        )
+        historical_by_position = [row for row in features if row["position"] == "WR" and row["draft_year"] == 2018]
+        self.assertTrue(historical_by_position)
+        rookie = {
+            "player_id": "rookie-wr-check",
+            "player_name": "Rookie WR Check",
+            "position": "WR",
+            "ras_0_100": 70.0,
+            "production_0_100": 60.0,
+            "size_context_0_100": 55.0,
+            "draft_capital_proxy_0_100": 70.0,
+        }
+        candidates = build_comp_candidates(rookie, features, outcomes, comp_mode="talent_comp", top_n=50)
+        candidate_ids = {row["historical_player_id"] for row in candidates}
+        self.assertTrue(any(player["player_id"] in candidate_ids for player in historical_by_position))
+
+    def test_missing_wr_reference_population_season_does_not_crash(self) -> None:
+        features = normalize_historical_feature_rows(
+            [
+                {
+                    "player_id": "wr-2018-missing-pop",
+                    "player_name": "WR 2018 Missing Pop",
+                    "position": "WR",
+                    "school": "Sample",
+                    "draft_year": 2018,
+                    "source_season": 2017,
+                    "ras_0_100": 70.0,
+                    "production_0_100": None,
+                    "draft_capital_proxy_0_100": 70.0,
+                    "receptions": 60,
+                    "receiving_yards": 900,
+                    "receiving_tds": 8,
+                }
+            ]
+        )
+        scored, compatible_scopes = apply_wr_historical_production_methodology(features, wr_reference_populations={})
+        self.assertEqual(scored[0]["normalization_scope"], "historical-wr-cfbd-method-v1")
+        self.assertFalse(compatible_scopes)
 
     def test_waddle_partial_season_policy_enforced(self) -> None:
         features = json.loads(Path("data/historical/historical_prospect_features.sample.json").read_text(encoding="utf-8"))
