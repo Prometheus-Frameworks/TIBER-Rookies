@@ -1,1 +1,3792 @@
-[]
+[
+  {
+    "player_name": "Aaron Young",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 100,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Adrian Hardy",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 33,
+    "receiving_yards": 440,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Ainias Smith",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 42,
+    "receiving_yards": 490,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Alexander Horvath",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 31,
+    "receiving_yards": 325,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Amari Rodgers",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 77,
+    "receiving_yards": 1020,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Amir Abdur-Rahman",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 26,
+    "receiving_yards": 402,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Amon-Ra St. Brown",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 41,
+    "receiving_yards": 478,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Andrew Parchment",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 197,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Anthony Queeley",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 37,
+    "receiving_yards": 378,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Anthony Schwartz",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 54,
+    "receiving_yards": 652,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Antoine Robinson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 221,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Antonio Nunn",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 36,
+    "receiving_yards": 579,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Antwan Davis",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 39,
+    "receiving_yards": 456,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Arik Gilbert",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 35,
+    "receiving_yards": 368,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Aron Cruickshank",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 36,
+    "receiving_yards": 243,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Artie Henry III",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 308,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Austin Jones",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 151,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Austin Ogunmakin",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 336,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Austin Stogner",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 26,
+    "receiving_yards": 422,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Austin Watkins",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 26,
+    "receiving_yards": 411,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Austin Williams",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 43,
+    "receiving_yards": 372,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Avery Davis",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 322,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "B.J. Smith",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 26,
+    "receiving_yards": 227,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Bailey Gaither",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 41,
+    "receiving_yards": 725,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Barrett Banister",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 27,
+    "receiving_yards": 252,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Ben Bresnahan",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 28,
+    "receiving_yards": 299,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Ben Ratzlaff",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 350,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Ben Skowronek",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 29,
+    "receiving_yards": 439,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Billy Kemp",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 67,
+    "receiving_yards": 644,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Blake Kern",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 201,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Blake Proehl",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 47,
+    "receiving_yards": 577,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Bo Melton",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 46,
+    "receiving_yards": 639,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Braden Galloway",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 27,
+    "receiving_yards": 369,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Braden Smith",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 27,
+    "receiving_yards": 370,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Branden Mack",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 26,
+    "receiving_yards": 291,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Brandon Bowling",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 39,
+    "receiving_yards": 507,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Brandon Smith",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 231,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Brant Kuithe",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 25,
+    "receiving_yards": 236,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Braydon Johnson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 248,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Breece Hall",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 180,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Brennan Eagles",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 28,
+    "receiving_yards": 469,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Brennon Dingle",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 27,
+    "receiving_yards": 266,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Bret Clark",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 159,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Brevin Jordan",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 38,
+    "receiving_yards": 576,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Briley Moore",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 338,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Bru McCoy",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 236,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Bryant Koback",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 228,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Bryce Miller",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 33,
+    "receiving_yards": 327,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Bryce Wheaton",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 27,
+    "receiving_yards": 416,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Calvin Austin III",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 63,
+    "receiving_yards": 1053,
+    "receiving_tds": 11,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Calvin Hill",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 173,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Calvin Turner",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 33,
+    "receiving_yards": 546,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Cam Johnson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 55,
+    "receiving_yards": 528,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Camm McDonald",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 262,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Cary Angeline",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 27,
+    "receiving_yards": 412,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Cee Jay Powell",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 37,
+    "receiving_yards": 271,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Chandler Speights",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 227,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Charleston Rambo",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 25,
+    "receiving_yards": 312,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Charlie Kolar",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 44,
+    "receiving_yards": 591,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Chase Lane",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 29,
+    "receiving_yards": 409,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Chatarius Atwell",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 46,
+    "receiving_yards": 625,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Chris Autman-Bell",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 430,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Chris Olave",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 50,
+    "receiving_yards": 729,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Chris Pierce",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 25,
+    "receiving_yards": 371,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Christian Trahan",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 294,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "CJ Lewis",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 28,
+    "receiving_yards": 460,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "CJ Marable",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 31,
+    "receiving_yards": 228,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "CJ Windham",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 31,
+    "receiving_yards": 331,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Cole Turner",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 49,
+    "receiving_yards": 605,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Corey Gammage",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 35,
+    "receiving_yards": 409,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Cornelius McCoy",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 31,
+    "receiving_yards": 447,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Cornell Powell",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 53,
+    "receiving_yards": 882,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Craig Burt Jr.",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 178,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "CT Thomas",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 347,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "D'Wayne Eskridge",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 33,
+    "receiving_yards": 768,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Dahu Green",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 32,
+    "receiving_yards": 542,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Damon Hazelton",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 30,
+    "receiving_yards": 397,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Daniel Bellinger",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 203,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Daniel Crawford",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 183,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Danny Gray",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 33,
+    "receiving_yards": 448,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Dante Wright",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 315,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "David Bell",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 53,
+    "receiving_yards": 625,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Dax Milne",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 70,
+    "receiving_yards": 1189,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Dayton Wade",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 180,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Dazz Newsome",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 54,
+    "receiving_yards": 684,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Dee Wiggins",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 31,
+    "receiving_yards": 358,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Demarcus Jones",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 28,
+    "receiving_yards": 263,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Demario Douglas",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 32,
+    "receiving_yards": 363,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Demetric Felton",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 159,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Deonte Simpson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 25,
+    "receiving_yards": 517,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Derrick Deese Jr.",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 240,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Deuce Vaughn",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 25,
+    "receiving_yards": 434,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Deven Thompkins",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 214,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Devin Carter",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 28,
+    "receiving_yards": 447,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "DeVonta Smith",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 117,
+    "receiving_yards": 1856,
+    "receiving_tds": 23,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "DeVontres Dukes",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 256,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Dez Fitzpatrick",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 43,
+    "receiving_yards": 833,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Dillon Johnson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 36,
+    "receiving_yards": 157,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Dillon Stoner",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 42,
+    "receiving_yards": 573,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Dimitri Stanley",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 335,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "DJ Stubbs",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 38,
+    "receiving_yards": 523,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "DJ Turner",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 44,
+    "receiving_yards": 634,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Donavon Greene",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 29,
+    "receiving_yards": 582,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Dontario Drummond",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 25,
+    "receiving_yards": 417,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Dontay Demus",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 365,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Drake London",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 33,
+    "receiving_yards": 502,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Drue Jackson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 244,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Duece Watts",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 31,
+    "receiving_yards": 512,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Dyami Brown",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 54,
+    "receiving_yards": 1084,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "E.J. Williams",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 306,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Eli Pancol",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 241,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Eli Stove",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 44,
+    "receiving_yards": 359,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Elijah Moore",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 86,
+    "receiving_yards": 1193,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Emeka Emezie",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 47,
+    "receiving_yards": 738,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Emmanuel Logan-Greene",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 30,
+    "receiving_yards": 277,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Eric Gray",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 30,
+    "receiving_yards": 254,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Erik Ezukanma",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 45,
+    "receiving_yards": 739,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Garrett Groshek",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 119,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Garrett Wilson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 43,
+    "receiving_yards": 723,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Gavin Holmes",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 33,
+    "receiving_yards": 244,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "George Pickens",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 36,
+    "receiving_yards": 513,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Greg Dulcich",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 26,
+    "receiving_yards": 517,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Gunner Romney",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 39,
+    "receiving_yards": 767,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Hassan Beydoun",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 40,
+    "receiving_yards": 508,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Hunter Long",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 57,
+    "receiving_yards": 685,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Ihmir Smith-Marsette",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 25,
+    "receiving_yards": 345,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Isaac Rex",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 37,
+    "receiving_yards": 429,
+    "receiving_tds": 12,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Graham",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 225,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Likely",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 30,
+    "receiving_yards": 601,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Isaiah McKoy",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 25,
+    "receiving_yards": 455,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Spiller",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 193,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Winstead",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 25,
+    "receiving_yards": 429,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "J.C. Santana",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 34,
+    "receiving_yards": 544,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Ja'Lynn Polk",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 28,
+    "receiving_yards": 264,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Ja'Shaun Poke",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 326,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jack Dunn",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 28,
+    "receiving_yards": 255,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jacob Copeland",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 435,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jacob Cowing",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 41,
+    "receiving_yards": 691,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jacob Harris",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 30,
+    "receiving_yards": 539,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jadan Blue",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 41,
+    "receiving_yards": 371,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jaden Walley",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 52,
+    "receiving_yards": 718,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jaelen Gill",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 29,
+    "receiving_yards": 435,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jaelon Darden",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 74,
+    "receiving_yards": 1190,
+    "receiving_tds": 19,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jahan Dotson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 52,
+    "receiving_yards": 884,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "JahMarae Sheread",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 29,
+    "receiving_yards": 334,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jahmyr Gibbs",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 303,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jaivon Heiligh",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 65,
+    "receiving_yards": 998,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jake Bailey",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 276,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jake Bobo",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 31,
+    "receiving_yards": 348,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jake Ferguson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 30,
+    "receiving_yards": 305,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jake Smith",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 294,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jalen Camp",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 25,
+    "receiving_yards": 392,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jalen Cropper",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 37,
+    "receiving_yards": 520,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jalen Knox",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 29,
+    "receiving_yards": 294,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jalen Nailor",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 26,
+    "receiving_yards": 515,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jalen Tolbert",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 64,
+    "receiving_yards": 1086,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jalen Virgil",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 225,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jalen Wayne",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 33,
+    "receiving_yards": 418,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jalen Williams",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 360,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jalen Wydermyer",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 46,
+    "receiving_yards": 506,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jalin Hyatt",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 276,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jalon Calhoun",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 38,
+    "receiving_yards": 341,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "James Mitchell",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 26,
+    "receiving_yards": 435,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jaquarii Roberson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 62,
+    "receiving_yards": 926,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jaray Jenkins",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 397,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jared Smart",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 36,
+    "receiving_yards": 320,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jared Wayne",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 326,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jarrin Pierce",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 59,
+    "receiving_yards": 584,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jason Brownlee",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 33,
+    "receiving_yards": 595,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Javon Ivory",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 356,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Javon McKinley",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 42,
+    "receiving_yards": 717,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Javonte Williams",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 25,
+    "receiving_yards": 305,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jayden Reed",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 33,
+    "receiving_yards": 407,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jaylen Waddle",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 28,
+    "receiving_yards": 591,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jaylon Redd",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 25,
+    "receiving_yards": 288,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jaylon Robinson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 54,
+    "receiving_yards": 957,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jayshon Jackson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 27,
+    "receiving_yards": 337,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jeremiah Haydel",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 40,
+    "receiving_yards": 408,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jermaine Burton",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 27,
+    "receiving_yards": 404,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jerreth Sterns",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 37,
+    "receiving_yards": 361,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jesse Matthews",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 326,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jha'Quan Jackson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 31,
+    "receiving_yards": 425,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jo'quavious Marks",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 60,
+    "receiving_yards": 268,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "John Metchie",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 55,
+    "receiving_yards": 916,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "John Raine",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 233,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jonathan Adams Jr.",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 79,
+    "receiving_yards": 1111,
+    "receiving_tds": 12,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jonathan Hodoh",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 244,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jonathan Mingo",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 27,
+    "receiving_yards": 379,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jordan Addison",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 60,
+    "receiving_yards": 666,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jordan Myers",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 209,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jordan Whittington",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 206,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Josh Ali",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 52,
+    "receiving_yards": 477,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Josh Fleeks",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 181,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Josh Imatorbhebhe",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 297,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Josh Johnson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 37,
+    "receiving_yards": 490,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Josh Kelly",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 330,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Josh Palmer",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 33,
+    "receiving_yards": 475,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Josh Pederson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 32,
+    "receiving_yards": 367,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Josh Whyle",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 28,
+    "receiving_yards": 353,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Joshua Cephus",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 58,
+    "receiving_yards": 547,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Joshua Moore",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 30,
+    "receiving_yards": 472,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Joshua Simon",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 33,
+    "receiving_yards": 370,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Jovany Ruiz",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 192,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Justin Garrett",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 38,
+    "receiving_yards": 510,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Justin Hall",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 49,
+    "receiving_yards": 665,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Justin Lockhart",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 26,
+    "receiving_yards": 235,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Justin Shorter",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 25,
+    "receiving_yards": 268,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kadarius Toney",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 70,
+    "receiving_yards": 984,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kalil Pimpleton",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 257,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kameron Brown",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 306,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kawaan Baker",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 50,
+    "receiving_yards": 656,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kaylon Geiger",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 64,
+    "receiving_yards": 752,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kayshon Boutte",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 42,
+    "receiving_yards": 688,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kearis Jackson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 36,
+    "receiving_yards": 514,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Keith Corbin",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 27,
+    "receiving_yards": 352,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Keke Chism",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 35,
+    "receiving_yards": 458,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kenny Yeboah",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 27,
+    "receiving_yards": 525,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Keric Wheatfall",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 363,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "KeSean Carter",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 30,
+    "receiving_yards": 310,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kevin Harris",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 159,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kevin Shaa",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 25,
+    "receiving_yards": 450,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Keylon Stokes",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 46,
+    "receiving_yards": 644,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Keyon Brooks",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 27,
+    "receiving_yards": 260,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Khalil McClain",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 32,
+    "receiving_yards": 383,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Khalil Shakir",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 52,
+    "receiving_yards": 719,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kimani Vidal",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 26,
+    "receiving_yards": 225,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kolby Taylor",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 224,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Koy Moore",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 170,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kwamie Lassiter II",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 43,
+    "receiving_yards": 458,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kylan Watkins",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 154,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kyle Philips",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 38,
+    "receiving_yards": 370,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kyle Pitts",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 43,
+    "receiving_yards": 770,
+    "receiving_tds": 12,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kyle Williams",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 35,
+    "receiving_yards": 426,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kylen Granson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 35,
+    "receiving_yards": 536,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kylin Hill",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 237,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kyren Lacy",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 28,
+    "receiving_yards": 364,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kyren Williams",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 35,
+    "receiving_yards": 313,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Kyric McGowan",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 34,
+    "receiving_yards": 366,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Landon Wolf",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 229,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Latrell Williams",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 260,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Leddie Brown",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 31,
+    "receiving_yards": 202,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Lopini Katoa",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 292,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Malachi Carter",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 290,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Malik Davis",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 31,
+    "receiving_yards": 377,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Malik Heath",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 37,
+    "receiving_yards": 307,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Malik Jackson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 189,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Malik Murray",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 260,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Malik Williams",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 41,
+    "receiving_yards": 536,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Marcell Barbee",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 40,
+    "receiving_yards": 584,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Mark Pope",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 33,
+    "receiving_yards": 403,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Marlon Williams",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 69,
+    "receiving_yards": 1017,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Marquez Stevenson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 307,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Marshon Ford",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 25,
+    "receiving_yards": 310,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Marvin Mims",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 37,
+    "receiving_yards": 610,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Melquan Stovall",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 34,
+    "receiving_yards": 258,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Melquise Stovall",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 31,
+    "receiving_yards": 232,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Micaleous Elder",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 264,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Michael Carter",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 25,
+    "receiving_yards": 267,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Michael Mayer",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 42,
+    "receiving_yards": 450,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Michael Woods",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 31,
+    "receiving_yards": 602,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Michael Young",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 29,
+    "receiving_yards": 332,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Mike Harley",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 57,
+    "receiving_yards": 799,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Miller Forristall",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 253,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Milton Wright",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 284,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Mitchell Tinsley",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 43,
+    "receiving_yards": 377,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Myles Price",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 28,
+    "receiving_yards": 300,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Myron Mitchell",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 29,
+    "receiving_yards": 436,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Najee Harris",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 43,
+    "receiving_yards": 425,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Nathaniel Dell",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 29,
+    "receiving_yards": 428,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Neil Pau'u",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 44,
+    "receiving_yards": 602,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Nick Muse",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 30,
+    "receiving_yards": 425,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Noah Gray",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 28,
+    "receiving_yards": 278,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Nykeim Johnson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 323,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Omarion Dollison",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 272,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Ontaria Wilson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 31,
+    "receiving_yards": 391,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Osirus Mitchell",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 47,
+    "receiving_yards": 505,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Parker Washington",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 36,
+    "receiving_yards": 489,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Pat Freiermuth",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 310,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Perry Carter",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 312,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Peter Leblanc",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 334,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Peyton Hendershot",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 144,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Porter Rooks",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 276,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Quentin Johnston",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 487,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Quian Williams",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 372,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Quintin Morris",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 248,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "R.J. Sneed",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 39,
+    "receiving_yards": 497,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Ramaud Chiaokhiao-Bowman",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 41,
+    "receiving_yards": 520,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Randle Jones",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 31,
+    "receiving_yards": 370,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Rashee Rice",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 48,
+    "receiving_yards": 683,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Rashod Bateman",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 36,
+    "receiving_yards": 472,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Reed Tyler",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 265,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Reggie Roberson Jr.",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 474,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Reginald Todd",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 43,
+    "receiving_yards": 530,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Renard Bell",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 33,
+    "receiving_yards": 337,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Rico Bussey Jr.",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 32,
+    "receiving_yards": 286,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Riley Lees",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 214,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Roger Carter",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 285,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Romeo Doubs",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 56,
+    "receiving_yards": 985,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Rondale Moore",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 35,
+    "receiving_yards": 270,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Ronnie Bell",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 26,
+    "receiving_yards": 401,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Ronnie Rivers",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 27,
+    "receiving_yards": 265,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Ryan O'Keefe",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 393,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Sam Crawford Jr.",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 28,
+    "receiving_yards": 373,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Sam James",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 31,
+    "receiving_yards": 300,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Sam LaPorta",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 27,
+    "receiving_yards": 271,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Sam Pinckney",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 47,
+    "receiving_yards": 815,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "SaRodorick Thompson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 124,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Sean Dykes",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 46,
+    "receiving_yards": 570,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Sean Ryan",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 25,
+    "receiving_yards": 264,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Sean Shaw Jr.",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 212,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Seth Williams",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 47,
+    "receiving_yards": 744,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Shameen Jones",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 33,
+    "receiving_yards": 361,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Shi Smith",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 55,
+    "receiving_yards": 621,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Shocky Jacques-Louis",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 26,
+    "receiving_yards": 327,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Simi Fehoko",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 37,
+    "receiving_yards": 584,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Sincere McCormick",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 131,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Skyy Moore",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 389,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Slade Bolden",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 270,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Smoke Harris",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 39,
+    "receiving_yards": 304,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Stanley Berryhill III",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 227,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "T.J. Chase",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 328,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "T.J. Graham",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 271,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "T.J. Simmons",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 380,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Tahj Washington",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 43,
+    "receiving_yards": 743,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Taj Harris",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 58,
+    "receiving_yards": 733,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Tamorrion Terry",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 289,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Tanner Knue",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 27,
+    "receiving_yards": 413,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Tauskie Dove",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 30,
+    "receiving_yards": 300,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Taye Barber",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 31,
+    "receiving_yards": 316,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Taylor Morin",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 32,
+    "receiving_yards": 405,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Taysir Mack",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 305,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Tayvion Robinson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 37,
+    "receiving_yards": 588,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Terrace Marshall Jr.",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 48,
+    "receiving_yards": 731,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Terrance Dixon",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 226,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Terrell Jana",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 36,
+    "receiving_yards": 423,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Thayer Thomas",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 42,
+    "receiving_yards": 529,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Theo Wease",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 37,
+    "receiving_yards": 530,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Thomas Hennigan",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 47,
+    "receiving_yards": 616,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Tim Jones",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 30,
+    "receiving_yards": 480,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Toa Taua",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 31,
+    "receiving_yards": 214,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Tony Poljan",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 34,
+    "receiving_yards": 367,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Tory Horton",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 336,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Travell Harris",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 29,
+    "receiving_yards": 340,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Travis Etienne",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 48,
+    "receiving_yards": 588,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Travis Levy",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 34,
+    "receiving_yards": 280,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Tray Eafford",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 34,
+    "receiving_yards": 394,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Tre Turner",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 34,
+    "receiving_yards": 529,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Tre Walker",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 45,
+    "receiving_yards": 627,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Trelon Smith",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 159,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Trestan Ebner",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 26,
+    "receiving_yards": 299,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Trevon Bradford",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 24,
+    "receiving_yards": 239,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Trevon Grimes",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 38,
+    "receiving_yards": 589,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Trey McBride",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 318,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Treylon Burks",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 51,
+    "receiving_yards": 820,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Ty Fryfogle",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 37,
+    "receiving_yards": 726,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Tylan Wallace",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 59,
+    "receiving_yards": 917,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Tyler Badie",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 28,
+    "receiving_yards": 333,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Tyler Page",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 39,
+    "receiving_yards": 422,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Tyler Snead",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 53,
+    "receiving_yards": 535,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Tyler Vaughns",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 33,
+    "receiving_yards": 406,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Tyrice Richie",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 52,
+    "receiving_yards": 584,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Ulysses Bentley IV",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 174,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Velus Jones Jr.",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 280,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Victor Tucker",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 30,
+    "receiving_yards": 400,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Vincent Davis",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 23,
+    "receiving_yards": 152,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Walter Dawn Jr.",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 202,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Wan'Dale Robinson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 51,
+    "receiving_yards": 461,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Whop Philyor",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 54,
+    "receiving_yards": 495,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Will Mallory",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 22,
+    "receiving_yards": 329,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Winston Wright",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 46,
+    "receiving_yards": 543,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Xavier Gaines",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 28,
+    "receiving_yards": 404,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Xavier Hutchinson",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 64,
+    "receiving_yards": 771,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Xavier Lane",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 34,
+    "receiving_yards": 376,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Xavier White",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 21,
+    "receiving_yards": 104,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Yo'Heinz Tyler",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 42,
+    "receiving_yards": 607,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Yusuf Ali",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 37,
+    "receiving_yards": 457,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Zakhari Franklin",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 49,
+    "receiving_yards": 694,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Zay Flowers",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 56,
+    "receiving_yards": 892,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  },
+  {
+    "player_name": "Zonovan Knight",
+    "position": "WR",
+    "source_season": 2020,
+    "receptions": 20,
+    "receiving_yards": 136,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2020)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving"
+  }
+]

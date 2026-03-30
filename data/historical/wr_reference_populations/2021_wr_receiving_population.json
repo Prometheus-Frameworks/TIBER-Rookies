@@ -1,1 +1,5672 @@
-[]
+[
+  {
+    "player_name": "A.T. Perry",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 71,
+    "receiving_yards": 1293,
+    "receiving_tds": 15,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Aaron Turner",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 33,
+    "receiving_yards": 232,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Adam Cofield",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 176,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Adonai Mitchell",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 29,
+    "receiving_yards": 426,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Adonicas Sanders",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 29,
+    "receiving_yards": 362,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ahmari Huggins-Bruce",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 29,
+    "receiving_yards": 444,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ainias Smith",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 47,
+    "receiving_yards": 509,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Alan Lamar",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 119,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Alec Pierce",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 52,
+    "receiving_yards": 884,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ali Jennings",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 62,
+    "receiving_yards": 1066,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Alton McCaskill",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 113,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Amad Anderson Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 283,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Amare Jones",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 351,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Amari Johnson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 138,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Andre Bodison",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 32,
+    "receiving_yards": 403,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Andrew Parchment",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 313,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Antoine Green",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 31,
+    "receiving_yards": 612,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Arland Bruce IV",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 209,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Aron Cruickshank",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 244,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ashtyn Hawkins",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 30,
+    "receiving_yards": 284,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Aubry Payne",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 251,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Audie Omotosho",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 40,
+    "receiving_yards": 493,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "August Pitre III",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 31,
+    "receiving_yards": 494,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Austin Allen",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 38,
+    "receiving_yards": 602,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Austin Jones",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 32,
+    "receiving_yards": 267,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Austin Osborne",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 64,
+    "receiving_yards": 546,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Austin Williams",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 52,
+    "receiving_yards": 617,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Avery Davis",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 386,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ayden Eberhardt",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 298,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "B.J. Smith",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 147,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Barrett Banister",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 31,
+    "receiving_yards": 226,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Beaux Collins",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 31,
+    "receiving_yards": 407,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ben Sims",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 31,
+    "receiving_yards": 361,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ben Yurosek",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 42,
+    "receiving_yards": 653,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Bijan Robinson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 295,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Billy Kemp",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 74,
+    "receiving_yards": 725,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "BJ Busbee",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 272,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Blaine Green",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 314,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Blake Corum",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 141,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Bo Melton",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 55,
+    "receiving_yards": 618,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Boobie Curry",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 233,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Braden Lenzy",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 32,
+    "receiving_yards": 350,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Brady Russell",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 307,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Brandon Bowling",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 56,
+    "receiving_yards": 835,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Brandon Edward Johnson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 38,
+    "receiving_yards": 565,
+    "receiving_tds": 11,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Brandon Lewis",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 619,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Brandon Robinson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 37,
+    "receiving_yards": 481,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Brant Kuithe",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 50,
+    "receiving_yards": 611,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Braydon Bennett",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 295,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Braylon Sanders",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 549,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Breece Hall",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 36,
+    "receiving_yards": 302,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Brenden Rice",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 299,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Brennan Presley",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 50,
+    "receiving_yards": 619,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Brenton Strange",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 225,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Brevyn Spann-Ford",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 296,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Brian Casteel",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 33,
+    "receiving_yards": 326,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Brian Cobbs",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 341,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Brian Robinson Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 35,
+    "receiving_yards": 296,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Brian Thomas Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 28,
+    "receiving_yards": 359,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Britain Covey",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 52,
+    "receiving_yards": 514,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Broc Thompson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 30,
+    "receiving_yards": 457,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Brock Bowers",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 56,
+    "receiving_yards": 882,
+    "receiving_tds": 13,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Bryant Koback",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 30,
+    "receiving_yards": 334,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Bryce Singleton",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 46,
+    "receiving_yards": 847,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Bryce Wheaton",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 42,
+    "receiving_yards": 575,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Brycen Tremayne",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 245,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Bryson Cannon",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 272,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "C.J. Daniels",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 37,
+    "receiving_yards": 629,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "C.J. Johnson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 35,
+    "receiving_yards": 520,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Cade Brewer",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 184,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Cade Otton",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 28,
+    "receiving_yards": 250,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Calvin Austin III",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 74,
+    "receiving_yards": 1149,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Calvin Jackson Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 66,
+    "receiving_yards": 987,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Calvin Turner Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 73,
+    "receiving_yards": 876,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Cam Johnson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 34,
+    "receiving_yards": 327,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Cameron Latu",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 410,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Cameron Odom",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 29,
+    "receiving_yards": 406,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Camm McDonald",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 243,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Carlos Carriere",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 316,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Casey Washington",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 294,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Caullin Lacy",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 41,
+    "receiving_yards": 291,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Cedric Patterson III",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 38,
+    "receiving_yards": 583,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Cedric Tillman",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 64,
+    "receiving_yards": 1081,
+    "receiving_tds": 12,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Chance Luper",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 203,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Charles Ross",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 305,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Charleston Rambo",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 79,
+    "receiving_yards": 1172,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Charlie Jones",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 323,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Charlie Kolar",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 62,
+    "receiving_yards": 756,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Chase Allen",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 284,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Chigoziem Okonkwo",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 52,
+    "receiving_yards": 447,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Chris Autman-Bell",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 36,
+    "receiving_yards": 506,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Chris Olave",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 65,
+    "receiving_yards": 936,
+    "receiving_tds": 13,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Chris Pierce",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 57,
+    "receiving_yards": 654,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Chris Tyree",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 258,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Christian Sims",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 41,
+    "receiving_yards": 418,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Christian Trahan",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 37,
+    "receiving_yards": 398,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "CJ Windham",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 236,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Cole Harrity",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 30,
+    "receiving_yards": 238,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Cole Tucker",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 41,
+    "receiving_yards": 575,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Cole Turner",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 62,
+    "receiving_yards": 677,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Connor Heyward",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 35,
+    "receiving_yards": 326,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Corey Crooms",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 44,
+    "receiving_yards": 768,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Corey Gammage",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 78,
+    "receiving_yards": 878,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Corey Rucker",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 59,
+    "receiving_yards": 816,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Corey Xavier Sutton",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 61,
+    "receiving_yards": 904,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Cornelius Johnson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 40,
+    "receiving_yards": 627,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Courtney Jackson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 37,
+    "receiving_yards": 389,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Curtis Hodges",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 373,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Cyrus Habibi-Likio",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 213,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Daewood Davis",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 43,
+    "receiving_yards": 763,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Dai'Jean Dixon",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 305,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Dakereon Joyner",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 221,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Dallas Dixon",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 45,
+    "receiving_yards": 701,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Dalton Kincaid",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 36,
+    "receiving_yards": 510,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Damon Ward Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 311,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Daniel Bellinger",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 31,
+    "receiving_yards": 357,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Daniel Jackson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 267,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Danny Davis III",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 32,
+    "receiving_yards": 478,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Danny Gray",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 49,
+    "receiving_yards": 803,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Dante Cephas",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 82,
+    "receiving_yards": 1240,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Dante Wright",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 44,
+    "receiving_yards": 554,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Darryl Jones",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 319,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "David Bell",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 93,
+    "receiving_yards": 1286,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Davis Allen",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 28,
+    "receiving_yards": 208,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Davontavean Martin",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 80,
+    "receiving_yards": 1046,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "De'Corian Clark",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 52,
+    "receiving_yards": 755,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "De'Zhaun Stribling",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 44,
+    "receiving_yards": 471,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Dedrick Parson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 28,
+    "receiving_yards": 279,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Demarcus Jones",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 185,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Demario Douglas",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 52,
+    "receiving_yards": 701,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Demetris Robertson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 37,
+    "receiving_yards": 489,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Derek Wright",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 48,
+    "receiving_yards": 789,
+    "receiving_tds": 11,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Derius Davis",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 36,
+    "receiving_yards": 518,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Derrick Deese Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 47,
+    "receiving_yards": 730,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Deshon Stoudemire",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 323,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Deuce Vaughn",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 49,
+    "receiving_yards": 468,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Devaughn Cooper",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 199,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Devaughn Vele",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 389,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Deven Thompkins",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 102,
+    "receiving_yards": 1704,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Devin Boddie Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 29,
+    "receiving_yards": 263,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Devin Carter",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 31,
+    "receiving_yards": 556,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Devin Culp",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 222,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Devin Maddox",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 41,
+    "receiving_yards": 567,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Devon Achane",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 261,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Devon Williams",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 35,
+    "receiving_yards": 557,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Dillon Johnson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 65,
+    "receiving_yards": 422,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "DJ England-Chisolm",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 28,
+    "receiving_yards": 295,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "DJ Stubbs",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 342,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Dominic Johnson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 34,
+    "receiving_yards": 457,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Dominic Lovett",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 173,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Donald Stewart",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 33,
+    "receiving_yards": 388,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Donovan Edwards",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 265,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Donovan Ollie",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 301,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Dontae Fleming",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 322,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Dontario Drummond",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 76,
+    "receiving_yards": 1028,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Dontay Demus",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 28,
+    "receiving_yards": 507,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Dontayvion Wicks",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 57,
+    "receiving_yards": 1203,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Drake London",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 88,
+    "receiving_yards": 1084,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Drew Estrada",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 30,
+    "receiving_yards": 367,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Duece Watts",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 331,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Dylan Drummond",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 64,
+    "receiving_yards": 704,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Eddie Lewis",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 349,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Elijah Higgins",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 44,
+    "receiving_yards": 502,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Elijah Kothe",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 31,
+    "receiving_yards": 418,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Elijah Spencer",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 28,
+    "receiving_yards": 381,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ellis Merriweather",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 165,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Emeka Emezie",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 60,
+    "receiving_yards": 802,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Emmanuel Stevenson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 193,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Eric Gray",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 229,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Erick All",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 38,
+    "receiving_yards": 437,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Erik Ezukanma",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 48,
+    "receiving_yards": 705,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Errol Rogers Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 215,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Evan Hull",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 33,
+    "receiving_yards": 264,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ezra Naylor",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 33,
+    "receiving_yards": 426,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Frank Gore Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 155,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Garrett Wilson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 70,
+    "receiving_yards": 1058,
+    "receiving_tds": 12,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Gary Bryant Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 44,
+    "receiving_yards": 579,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Gary Williams",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 287,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Gavin Bartholomew",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 28,
+    "receiving_yards": 326,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Gerrit Prince",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 36,
+    "receiving_yards": 699,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Giovanni Fauolo",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 173,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Grant Calcaterra",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 38,
+    "receiving_yards": 465,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Grant DuBose",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 62,
+    "receiving_yards": 892,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Greg Dulcich",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 42,
+    "receiving_yards": 725,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Griffin Hebert",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 289,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Gunner Romney",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 34,
+    "receiving_yards": 594,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Hassan Beydoun",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 97,
+    "receiving_yards": 1015,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Hayden Pittman",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 192,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Henry Parrish Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 173,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Alston",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 449,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Esdale",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 29,
+    "receiving_yards": 362,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Garcia-Castaneda",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 37,
+    "receiving_yards": 578,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Graham",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 283,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Hamilton",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 31,
+    "receiving_yards": 414,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Likely",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 59,
+    "receiving_yards": 912,
+    "receiving_tds": 12,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Neyor",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 44,
+    "receiving_yards": 878,
+    "receiving_tds": 12,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Spiller",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 189,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Williams",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 47,
+    "receiving_yards": 525,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Winstead",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 38,
+    "receiving_yards": 520,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Isiah Cox",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 30,
+    "receiving_yards": 362,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Isiah Paige",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 174,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Israel Abanikanda",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 197,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Izaiah Gathings",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 302,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "J.C. Santana",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 50,
+    "receiving_yards": 674,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ja'Cyais Credle",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 279,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ja'Shaun Poke",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 315,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jabre Barber",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 32,
+    "receiving_yards": 324,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jack Bech",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 43,
+    "receiving_yards": 489,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jack Sorenson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 76,
+    "receiving_yards": 1406,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jackson Anthrop",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 53,
+    "receiving_yards": 570,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jacob Copeland",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 41,
+    "receiving_yards": 642,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jacob Cowing",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 69,
+    "receiving_yards": 1354,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "JaCorey Sullivan",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 49,
+    "receiving_yards": 687,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jadan Blue",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 30,
+    "receiving_yards": 185,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jaden Walley",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 55,
+    "receiving_yards": 628,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jadon Haselwood",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 39,
+    "receiving_yards": 399,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jaelen Gill",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 269,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jaetavian Toles",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 338,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jahan Dotson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 91,
+    "receiving_yards": 1182,
+    "receiving_tds": 12,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jahcour Pearson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 392,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jaheim Bell",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 30,
+    "receiving_yards": 497,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jahmyr Gibbs",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 35,
+    "receiving_yards": 465,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jaivon Heiligh",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 66,
+    "receiving_yards": 1128,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jake Bailey",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 56,
+    "receiving_yards": 714,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jake Bobo",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 74,
+    "receiving_yards": 794,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jake Ferguson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 46,
+    "receiving_yards": 450,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jake Herslow",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 36,
+    "receiving_yards": 480,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jake Tonges",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 278,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jalen Cropper",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 85,
+    "receiving_yards": 899,
+    "receiving_tds": 11,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jalen McMillan",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 39,
+    "receiving_yards": 470,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jalen Nailor",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 37,
+    "receiving_yards": 695,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jalen Tolbert",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 82,
+    "receiving_yards": 1474,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jalen Walker",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 31,
+    "receiving_yards": 398,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jalen Wayne",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 53,
+    "receiving_yards": 630,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jalen Wydermyer",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 40,
+    "receiving_yards": 515,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jalin Hyatt",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 226,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jalon Calhoun",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 56,
+    "receiving_yards": 718,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jamari Gassett",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 270,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jamari Thrash",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 32,
+    "receiving_yards": 452,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "James Cook",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 284,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jameson Williams",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 79,
+    "receiving_yards": 1572,
+    "receiving_tds": 15,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jamire Calvin",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 29,
+    "receiving_yards": 220,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jaquarii Roberson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 71,
+    "receiving_yards": 1078,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jaray Jenkins",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 34,
+    "receiving_yards": 502,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jared Smart",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 414,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jared Sparks",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 30,
+    "receiving_yards": 336,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jared Wayne",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 47,
+    "receiving_yards": 658,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jared Wyatt",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 49,
+    "receiving_yards": 629,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jarrin Pierce",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 43,
+    "receiving_yards": 523,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jashaun Corbin",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 144,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jason Brownlee",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 46,
+    "receiving_yards": 643,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jason Pirtle",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 41,
+    "receiving_yards": 380,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Javen Banks",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 36,
+    "receiving_yards": 548,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Javon Ivory",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 29,
+    "receiving_yards": 413,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jaxon Smith-Njigba",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 95,
+    "receiving_yards": 1606,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jay Rose",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 283,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jayden Harrison",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 254,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jayden Reed",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 59,
+    "receiving_yards": 1026,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jaylan Knighton",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 280,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jaylen Hall",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 46,
+    "receiving_yards": 752,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jaylen Warren",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 225,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jaylin Lane",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 42,
+    "receiving_yards": 466,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jaylin Noel",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 38,
+    "receiving_yards": 265,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jayshon Jackson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 69,
+    "receiving_yards": 829,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Je'Quan Burton",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 483,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jeff Foreman",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 31,
+    "receiving_yards": 556,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jelani Woods",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 44,
+    "receiving_yards": 598,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jeremiah Hall",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 32,
+    "receiving_yards": 334,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jeremiah Hunter",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 388,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jeremiah Knight",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 45,
+    "receiving_yards": 588,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jeremy Ruckert",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 309,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jeremy Singleton",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 29,
+    "receiving_yards": 495,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jermaine Braddock",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 390,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jermaine Brown Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 200,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jermaine Burton",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 497,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jerome Ford",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 220,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jerreth Sterns",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 150,
+    "receiving_yards": 1902,
+    "receiving_tds": 17,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jerrion Ealy",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 32,
+    "receiving_yards": 218,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jerrod Means",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 430,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jesse Matthews",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 58,
+    "receiving_yards": 657,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jimmy Horn Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 30,
+    "receiving_yards": 408,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jimmy Marshall",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 45,
+    "receiving_yards": 510,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jo'quavious Marks",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 83,
+    "receiving_yards": 502,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Joel Wilson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 31,
+    "receiving_yards": 367,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "John Humphreys",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 287,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "John Metchie",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 96,
+    "receiving_yards": 1142,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "John Paul Richardson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 168,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "John Samuel Shenker",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 33,
+    "receiving_yards": 413,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Johnny Ford",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 280,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Johnny Johnson III",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 311,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Johnny Richardson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 226,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jonathan Mingo",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 346,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jordan Addison",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 100,
+    "receiving_yards": 1593,
+    "receiving_tds": 17,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jordan Mims",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 324,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jordan Myers",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 278,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jordan Watkins",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 35,
+    "receiving_yards": 529,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jordan Whittington",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 377,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Jose Barbon",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 39,
+    "receiving_yards": 431,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Joseph Ngata",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 438,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Josh Ali",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 41,
+    "receiving_yards": 601,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Josh Downs",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 101,
+    "receiving_yards": 1335,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Josh Johnson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 83,
+    "receiving_yards": 1114,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Josh Kelly",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 52,
+    "receiving_yards": 778,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Josh Vann",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 43,
+    "receiving_yards": 679,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Josh Whyle",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 332,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Joshua Cephus",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 71,
+    "receiving_yards": 803,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Joshua Cobbs",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 245,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Joshua Moore",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 265,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Justin Garrett",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 50,
+    "receiving_yards": 685,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Justin Hall",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 61,
+    "receiving_yards": 613,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Justin Lockhart",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 35,
+    "receiving_yards": 470,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Justin Marshall",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 322,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Justin McGriff",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 35,
+    "receiving_yards": 414,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Justin Rigg",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 189,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Justin Shorter",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 41,
+    "receiving_yards": 550,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Justyn Ross",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 46,
+    "receiving_yards": 514,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Juwuan Price",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 181,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kairee Robinson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 159,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kaleb Smith",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 260,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kalil Pimpleton",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 62,
+    "receiving_yards": 960,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kamari Morales",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 220,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kameron Brown",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 36,
+    "receiving_yards": 605,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kaylon Geiger",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 43,
+    "receiving_yards": 533,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kayshon Boutte",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 38,
+    "receiving_yards": 509,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ke'Shawn Williams",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 404,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Keandre Lambert",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 34,
+    "receiving_yards": 521,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Keaontay Ingram",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 156,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Keaton Mitchell",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 253,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Keelan Marion",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 28,
+    "receiving_yards": 474,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Keke Chism",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 41,
+    "receiving_yards": 511,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kekoa Crawford",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 40,
+    "receiving_yards": 513,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kemore Gamble",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 31,
+    "receiving_yards": 414,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kendric Pryor",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 32,
+    "receiving_yards": 416,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kenny McIntosh",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 242,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Keric Wheatfall",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 38,
+    "receiving_yards": 616,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "KeSean Carter",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 331,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Keshunn Abram",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 47,
+    "receiving_yards": 680,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kevens Clercius",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 260,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kevin Austin",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 48,
+    "receiving_yards": 888,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kevin Davis",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 208,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kevin Shaa",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 28,
+    "receiving_yards": 516,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Keyshawn Smith",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 33,
+    "receiving_yards": 405,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Keytaon Thompson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 78,
+    "receiving_yards": 990,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Khaleb Hood",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 41,
+    "receiving_yards": 497,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Khalil Shakir",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 77,
+    "receiving_yards": 1117,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kimani Vidal",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 134,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "King Doerue",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 156,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kobe Hudson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 44,
+    "receiving_yards": 580,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Konata Mumpfield",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 63,
+    "receiving_yards": 751,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kris Hutson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 31,
+    "receiving_yards": 419,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kwamie Lassiter II",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 59,
+    "receiving_yards": 653,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kyle Philips",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 59,
+    "receiving_yards": 739,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kyle Williams",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 42,
+    "receiving_yards": 601,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kyren Lacy",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 304,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kyren Williams",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 42,
+    "receiving_yards": 359,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Kyric McGowan",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 37,
+    "receiving_yards": 467,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ladd McConkey",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 31,
+    "receiving_yards": 447,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "LaJohntay Wester",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 65,
+    "receiving_yards": 702,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Lawrence Arnold",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 316,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Leddie Brown",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 36,
+    "receiving_yards": 217,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Leonard Taylor",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 28,
+    "receiving_yards": 268,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Lew Nichols",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 40,
+    "receiving_yards": 338,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Lideatrick Griffin",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 269,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Lincoln Pare",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 283,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Lincoln Sefcik",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 32,
+    "receiving_yards": 218,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Lincoln Victor",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 296,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Lorenzo Styles Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 344,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Lucas Krull",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 38,
+    "receiving_yards": 451,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Luke Grimm",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 349,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Luke Musgrave",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 304,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Luke Whittemore",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 357,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Luke Wysong",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 224,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "LV Bunkley-Shelton",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 33,
+    "receiving_yards": 418,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Mac Hippenhammer",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 48,
+    "receiving_yards": 786,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Makai Polk",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 105,
+    "receiving_yards": 1046,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Malachi Carter",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 38,
+    "receiving_yards": 494,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Malachi Corley",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 73,
+    "receiving_yards": 691,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Malik Davis",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 217,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Malik Heath",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 34,
+    "receiving_yards": 442,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Malik Knowles",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 29,
+    "receiving_yards": 441,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Malik Nabers",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 28,
+    "receiving_yards": 417,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Malik Washington",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 44,
+    "receiving_yards": 578,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Malik Williams",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 52,
+    "receiving_yards": 819,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Marcell Barbee",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 40,
+    "receiving_yards": 520,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Marcus Williams Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 202,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Mario Williams",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 35,
+    "receiving_yards": 380,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Marshon Ford",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 49,
+    "receiving_yards": 550,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Marvin Mims",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 32,
+    "receiving_yards": 705,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Mataeo Durant",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 256,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Matt Landers",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 514,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Melquan Stovall",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 56,
+    "receiving_yards": 643,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Micah Bernard",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 251,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Michael Mathison",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 56,
+    "receiving_yards": 706,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Michael Mayer",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 71,
+    "receiving_yards": 840,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Michael Wiley",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 33,
+    "receiving_yards": 297,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Michael Woods",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 35,
+    "receiving_yards": 400,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Michael Young",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 28,
+    "receiving_yards": 353,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Mike Brown-Stephens",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 392,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Mike Harley",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 57,
+    "receiving_yards": 543,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Mike Sainristil",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 305,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Miles Marshall",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 311,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Milton Wright",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 57,
+    "receiving_yards": 732,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Mitchell Tinsley",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 87,
+    "receiving_yards": 1402,
+    "receiving_tds": 14,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Myles Price",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 38,
+    "receiving_yards": 523,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Nathaniel Dell",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 90,
+    "receiving_yards": 1329,
+    "receiving_tds": 12,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Neal Johnson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 287,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Neil Pau'u",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 46,
+    "receiving_yards": 526,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Nick Mardner",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 46,
+    "receiving_yards": 913,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Nick Muse",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 222,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Nico Ragaini",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 331,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Nikko Remigio",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 38,
+    "receiving_yards": 238,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Nykeim Johnson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 55,
+    "receiving_yards": 626,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "O'Shann Allison",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 157,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Octavius Evans",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 34,
+    "receiving_yards": 409,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Omar Manning",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 380,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Omarion Dollison",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 218,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ontaria Wilson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 382,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Parker Washington",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 64,
+    "receiving_yards": 820,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Payne Durham",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 45,
+    "receiving_yards": 467,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Peter Leblanc",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 37,
+    "receiving_yards": 417,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Peyton Hendershot",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 46,
+    "receiving_yards": 543,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Phillip Brooks III",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 43,
+    "receiving_yards": 543,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Porter Rooks",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 298,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Puka Nacua",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 43,
+    "receiving_yards": 805,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Quentin Johnston",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 33,
+    "receiving_yards": 612,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Quian Williams",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 64,
+    "receiving_yards": 835,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "R.J. Sneed",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 46,
+    "receiving_yards": 573,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ra'Shaun Henry",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 34,
+    "receiving_yards": 603,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Rachaad White",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 43,
+    "receiving_yards": 456,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Raheem Blackshear",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 249,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Rahjai Harris",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 162,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "RaJae' Johnson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 394,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Rakim Jarrett",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 62,
+    "receiving_yards": 829,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Randall St. Felix",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 273,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Randle Jones",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 40,
+    "receiving_yards": 476,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Rashee Rice",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 64,
+    "receiving_yards": 670,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Rasheen Ali",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 46,
+    "receiving_yards": 342,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Reggie Roberson Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 51,
+    "receiving_yards": 625,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Reginald Todd",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 291,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Rick Wells",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 259,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ricky Pearsall",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 48,
+    "receiving_yards": 580,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ricky Person Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 28,
+    "receiving_yards": 240,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Rico Arnold",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 461,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Roderic Burns",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 58,
+    "receiving_yards": 802,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Roger Carter",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 323,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Roman Wilson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 420,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Rome Odunze",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 41,
+    "receiving_yards": 415,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Romeo Doubs",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 80,
+    "receiving_yards": 1109,
+    "receiving_tds": 11,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ron Cook Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 232,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ronnie Rivers",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 34,
+    "receiving_yards": 364,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ryan Jones",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 37,
+    "receiving_yards": 442,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ryan Luehrman",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 217,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ryan O'Keefe",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 84,
+    "receiving_yards": 812,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Sam Crawford Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 472,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Sam James",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 42,
+    "receiving_yards": 505,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Sam LaPorta",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 53,
+    "receiving_yards": 670,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Sam Pinckney",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 311,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Samori Toure",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 46,
+    "receiving_yards": 898,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Samson Nacua",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 329,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Sean Dykes",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 48,
+    "receiving_yards": 657,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Sean Ryan",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 399,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Sean Tucker",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 255,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Shadeed Ahmed",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 38,
+    "receiving_yards": 463,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Shadrick Byrd",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 248,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Shae Wyatt",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 33,
+    "receiving_yards": 376,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Shameen Jones",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 35,
+    "receiving_yards": 334,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Shaun Shivers",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 163,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Shedrick Jackson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 40,
+    "receiving_yards": 527,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Shocky Jacques-Louis",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 259,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Sincere McCormick",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 184,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Skyy Moore",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 95,
+    "receiving_yards": 1292,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Slade Bolden",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 42,
+    "receiving_yards": 408,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Smoke Harris",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 71,
+    "receiving_yards": 756,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Solomon Enis",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 22,
+    "receiving_yards": 248,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Stanley Berryhill III",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 83,
+    "receiving_yards": 744,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Stefan Cobbs",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 34,
+    "receiving_yards": 421,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Stephon Robinson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 46,
+    "receiving_yards": 625,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Steve Jenkins",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 46,
+    "receiving_yards": 694,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "T.J. Graham",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 290,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ta'Zhawn Henry",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 105,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tahj Washington",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 54,
+    "receiving_yards": 602,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Taj Davis",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 329,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tank Bigsby",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 184,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tanner Knue",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 32,
+    "receiving_yards": 342,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Taron Keith",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 244,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tauskie Dove",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 38,
+    "receiving_yards": 576,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Taye Barber",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 30,
+    "receiving_yards": 499,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Taylor Morin",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 43,
+    "receiving_yards": 621,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tayon Fleet-Davis",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 32,
+    "receiving_yards": 305,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Taysir Mack",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 461,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tayvion Robinson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 44,
+    "receiving_yards": 559,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Terrance Dixon",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 194,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Terrell Bynum",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 436,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Terrell Warner",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 38,
+    "receiving_yards": 334,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tevailance Hunt",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 52,
+    "receiving_yards": 758,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tez Johnson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 67,
+    "receiving_yards": 735,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Thayer Thomas",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 51,
+    "receiving_yards": 596,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Thomas Hennigan",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 60,
+    "receiving_yards": 823,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "TJ Sheffield",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 36,
+    "receiving_yards": 325,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Toa Taua",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 39,
+    "receiving_yards": 296,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tory Horton",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 52,
+    "receiving_yards": 659,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Trae Barry",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 362,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Traeshon Holden",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 239,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Travell Harris",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 76,
+    "receiving_yards": 814,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Travis Dye",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 46,
+    "receiving_yards": 402,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Travis Koontz",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 306,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Trayvon Rudolph",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 51,
+    "receiving_yards": 892,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tre Harris",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 40,
+    "receiving_yards": 572,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tre Mosley",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 35,
+    "receiving_yards": 530,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tre Tucker",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 34,
+    "receiving_yards": 426,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tre Turner",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 40,
+    "receiving_yards": 675,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tre'Shaun Harrison",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 29,
+    "receiving_yards": 401,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Trea Shropshire",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 703,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Treshaun Ward",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 185,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Trestan Ebner",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 28,
+    "receiving_yards": 284,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "TreVeyon Henderson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 312,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Trevon Bradford",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 42,
+    "receiving_yards": 631,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Trevon Clark",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 33,
+    "receiving_yards": 658,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Trevor Wilson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 27,
+    "receiving_yards": 364,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Trey Knox",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 141,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Trey Lowe",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 200,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Trey McBride",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 90,
+    "receiving_yards": 1121,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Trey Palmer",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 30,
+    "receiving_yards": 344,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Treylon Burks",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 66,
+    "receiving_yards": 1104,
+    "receiving_tds": 11,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tristian Brank",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 269,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ty Fryfogle",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 46,
+    "receiving_yards": 512,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Ty McCullouch",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 415,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tyler Allgeier",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 28,
+    "receiving_yards": 199,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tyler Badie",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 54,
+    "receiving_yards": 330,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tyler Goodson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 31,
+    "receiving_yards": 247,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tyler Scott",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 30,
+    "receiving_yards": 520,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tyler Snead",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 67,
+    "receiving_yards": 855,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tyler Walton",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 32,
+    "receiving_yards": 380,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tyquan Thornton",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 62,
+    "receiving_yards": 948,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tyrese Chambers",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 45,
+    "receiving_yards": 1074,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tyrice Richie",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 44,
+    "receiving_yards": 540,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tyrick James",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 31,
+    "receiving_yards": 429,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tyrin Smith",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 33,
+    "receiving_yards": 570,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tyrone Broden Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 36,
+    "receiving_yards": 596,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Tyson Morris",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 337,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Velus Jones Jr.",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 62,
+    "receiving_yards": 807,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Victor Tucker",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 51,
+    "receiving_yards": 639,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Vincent Davis",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 125,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Wan'Dale Robinson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 104,
+    "receiving_yards": 1334,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Will Derrick",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 353,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Will Mallory",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 30,
+    "receiving_yards": 347,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Will Sheppard",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 43,
+    "receiving_yards": 577,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Willie Johnson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 32,
+    "receiving_yards": 625,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Winston Wright",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 63,
+    "receiving_yards": 688,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Xavier Gaines",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 42,
+    "receiving_yards": 483,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Xavier Hutchinson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 83,
+    "receiving_yards": 987,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Xavier Restrepo",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 373,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Xavier Weaver",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 41,
+    "receiving_yards": 715,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Xavier Worthy",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 62,
+    "receiving_yards": 981,
+    "receiving_tds": 12,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Xazavian Valladay",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 23,
+    "receiving_yards": 233,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Xzavier Henderson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 26,
+    "receiving_yards": 277,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Yo'Heinz Tyler",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 49,
+    "receiving_yards": 487,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Yusuf Ali",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 45,
+    "receiving_yards": 472,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Zach Charbonnet",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 24,
+    "receiving_yards": 197,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Zachari Jackson",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 301,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Zack Kuntz",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 73,
+    "receiving_yards": 692,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Zakhari Franklin",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 81,
+    "receiving_yards": 1027,
+    "receiving_tds": 12,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Zane Pope",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 25,
+    "receiving_yards": 471,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Zavier Betts",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 286,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Zay Flowers",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 44,
+    "receiving_yards": 746,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Zeriah Beason",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 20,
+    "receiving_yards": 236,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  },
+  {
+    "player_name": "Zonovan Knight",
+    "position": "WR",
+    "source_season": 2021,
+    "receptions": 21,
+    "receiving_yards": 156,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2021)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving"
+  }
+]
