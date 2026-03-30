@@ -39,7 +39,28 @@ Example:
     "data/historical/historical_player_outcomes.sample.json"
   ],
   "comp_data_warnings": {
-    "WR": "artifact-visible caveat string for partial lane quality (and explicit non-differentiation warning when #1 comp concentration exceeds threshold)"
+    "WR": "artifact-visible caveat string that appears only when WR lane coverage thresholds fail"
+  },
+  "lane_coverage_by_position": {
+    "WR": {
+      "total_promoted_wrs": 8,
+      "rookie_wr_with_comps": 8,
+      "max_top1_count": 3,
+      "unique_top1_count": 4,
+      "unique_comp_pool_count": 9,
+      "all_comps_count": 40,
+      "all_comps_with_3plus_features_count": 23,
+      "top1_comps_count": 8,
+      "top1_comps_with_3plus_features_count": 3,
+      "pct_all_comps_with_3plus_features": 0.575,
+      "pct_top1_comps_with_3plus_features": 0.375,
+      "coverage_sufficient": false,
+      "failed_checks": [
+        "unique_top1_count",
+        "pct_all_comps_with_3plus_features",
+        "pct_top1_comps_with_3plus_features"
+      ]
+    }
   },
   "similarity_quality_by_position": {
     "WR": {
@@ -119,6 +140,26 @@ Shape and semantics:
   4. every emitted comp includes at least one non-market dimension in `effective_features_used` (`ras_0_100` or `size_context_0_100`),
   5. the position is methodology-compatible with current production normalization.
 - Any uncertainty or failed condition must resolve to `false`.
+- Clearing WR lane warning **alone** does not imply `ui_display_allowed["WR"] == true`; methodology compatibility and every other gating check still apply.
+
+## WR lane coverage diagnostics (`lane_coverage_by_position.WR`)
+
+Producer now emits deterministic WR lane diagnostics used for warning gating:
+
+- `coverage_sufficient` is true only if all six checks pass:
+  1. `rookie_wr_with_comps == total_promoted_wrs`
+  2. `max_top1_count <= 3`
+  3. `unique_top1_count >= 5`
+  4. `unique_comp_pool_count >= 8`
+  5. `pct_all_comps_with_3plus_features >= 0.75`
+  6. `pct_top1_comps_with_3plus_features >= 0.50`
+- If any check fails:
+  - `comp_data_warnings["WR"]` is present and includes `failed_checks`,
+  - `lane_coverage_by_position.WR.failed_checks` enumerates the failing threshold names.
+- If all checks pass:
+  - `comp_data_warnings["WR"]` is omitted from the artifact.
+
+This warning answers lane breadth/differentiation only; it must not be conflated with methodology compatibility checks.
 
 Consumer requirement:
 
