@@ -11,7 +11,7 @@
     },
     "notes": "v0 emits talent_comp by default; market_comp support is scaffolded and optional."
   },
-  "generated_at": "2026-03-30T11:13:10+00:00",
+  "generated_at": "2026-03-30T12:07:08+00:00",
   "season": 2026,
   "source_files_used": [
     "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
@@ -57,13 +57,13 @@
     },
     "WR": {
       "status": "directional_only",
-      "reason": "no_lane_warning: false",
+      "reason": "no_lane_warning: false; methodology_compatible: false",
       "requirements_checked": {
         "no_lane_warning": false,
         "min_effective_feature_count_met": true,
         "outcomes_present": true,
         "non_market_dimension_present": true,
-        "methodology_compatible": true
+        "methodology_compatible": false
       }
     }
   },
@@ -71,7 +71,7 @@
     "QB": false,
     "RB": false,
     "TE": false,
-    "WR": true
+    "WR": false
   },
   "ui_display_allowed": {
     "QB": false,
@@ -1379,6 +1379,37 @@
           }
         },
         {
+          "historical_player_id": "wr-calvin-ridley-2018",
+          "player_name": "Calvin Ridley",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 88.2772,
+          "distance": 0.117228,
+          "feature_snapshot": {
+            "ras_0_100": 51.4,
+            "production_0_100": 40.6,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": 49.1,
+            "normalization_scope": "historical-wr-cfbd-method-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 63,
+            "receiving_yards": 967,
+            "receiving_tds": 5
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100",
+            "size_context_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr2_peak",
+            "best_season_fantasy_ppg": 16.5,
+            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
+          }
+        },
+        {
           "historical_player_id": "wr-jerry-jeudy-2020",
           "player_name": "Jerry Jeudy",
           "draft_year": 2020,
@@ -1437,37 +1468,6 @@
             "best_season_fantasy_ppg": 14.8,
             "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
             "years_1_to_3_summary": "2022-2024 PPR/G: 12.7, 12.5, 14.8; receiving line: 83/1103/4, 95/1042/3, 101/1104/7."
-          }
-        },
-        {
-          "historical_player_id": "wr-rashod-bateman-2021",
-          "player_name": "Rashod Bateman",
-          "draft_year": 2021,
-          "position": "WR",
-          "similarity_score": 81.9238,
-          "distance": 0.180762,
-          "feature_snapshot": {
-            "ras_0_100": 80.4,
-            "production_0_100": 49.4,
-            "draft_capital_proxy_0_100": 80.0,
-            "size_context_0_100": 55.0,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": 25.43,
-            "receptions": 36,
-            "receiving_yards": 472,
-            "receiving_tds": 2
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "depth_peak",
-            "best_season_fantasy_ppg": 10.3,
-            "top_finish_band": "Depth (<12.0 PPR/G peak)",
-            "years_1_to_3_summary": "2021-2023 PPR/G: 8.6, 8.9, 4.8; receiving line: 46/515/1, 15/285/2, 32/367/1."
           }
         }
       ]
