@@ -36,7 +36,6 @@ def build_rows_for_year(year: int) -> tuple[list[dict[str, Any]], int, str]:
     filtered_out = 0
     for entry in pivoted.values():
         stats = entry.get("stats", {})
-        position = str(stats.get("POS", "")).strip().upper()
         receptions = stats.get("REC", 0.0)
         try:
             receptions_int = int(float(receptions))
@@ -44,7 +43,7 @@ def build_rows_for_year(year: int) -> tuple[list[dict[str, Any]], int, str]:
             filtered_out += 1
             continue
 
-        if position != "WR" or receptions_int < 20:
+        if receptions_int < 20:
             filtered_out += 1
             continue
 
