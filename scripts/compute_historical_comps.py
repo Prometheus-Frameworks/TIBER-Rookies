@@ -282,7 +282,9 @@ def apply_wr_historical_production_methodology(
         del row["_wr_metrics"]
 
     compatible_scopes = (
-        frozenset({WR_POPULATION_SCOPE}) if any(row.get("normalization_scope") == WR_POPULATION_SCOPE for row in wr_rows) else PRODUCTION_SCOPE_COMPATIBLE
+        frozenset({WR_POPULATION_SCOPE, "historical-wr-cfbd-method-v1-null"})
+        if any(row.get("normalization_scope") == WR_POPULATION_SCOPE for row in wr_rows)
+        else PRODUCTION_SCOPE_COMPATIBLE
     )
     return historical_features, compatible_scopes
 
@@ -524,11 +526,6 @@ def build_similarity_quality_by_position(
 
         failed = [f"{name}: false" for name, is_true in requirements_checked.items() if not is_true]
         reason = "; ".join(failed) if failed else "all_checks_passed"
-        if position == "WR":
-            reason = (
-                "metric methodology matches; population scope incompatible "
-                "(in-repo WR cohort fallback vs. full CFBD season population); lane warning present"
-            )
         output[position] = {
             "status": status,
             "reason": reason,

@@ -11,12 +11,12 @@
     },
     "notes": "v0 emits talent_comp by default; market_comp support is scaffolded and optional."
   },
-  "generated_at": "2026-03-30T01:06:02+00:00",
+  "generated_at": "2026-03-30T10:49:41+00:00",
   "season": 2026,
   "source_files_used": [
-    "exports\\promoted\\rookie-alpha\\2026_rookie_alpha_predraft_v0.json",
-    "data\\historical\\historical_prospect_features.sample.json",
-    "data\\historical\\historical_player_outcomes.sample.json"
+    "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
+    "data/historical/historical_prospect_features.sample.json",
+    "data/historical/historical_player_outcomes.sample.json"
   ],
   "comp_data_warnings": {
     "WR": "WR lane remains insufficiently differentiated for UI use: at least one historical WR is the #1 comp for 4 prospects (>3 threshold). Similarities remain directional only."
@@ -57,13 +57,13 @@
     },
     "WR": {
       "status": "directional_only",
-      "reason": "metric methodology matches; population scope incompatible (in-repo WR cohort fallback vs. full CFBD season population); lane warning present",
+      "reason": "no_lane_warning: false",
       "requirements_checked": {
         "no_lane_warning": false,
         "min_effective_feature_count_met": true,
         "outcomes_present": true,
         "non_market_dimension_present": true,
-        "methodology_compatible": false
+        "methodology_compatible": true
       }
     }
   },
@@ -71,7 +71,7 @@
     "QB": false,
     "RB": false,
     "TE": false,
-    "WR": false
+    "WR": true
   },
   "ui_display_allowed": {
     "QB": false,
