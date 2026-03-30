@@ -156,7 +156,7 @@ Field definitions in `requirements_checked`:
 1. `no_lane_warning`: no entry for that position in `comp_data_warnings`.
 2. `min_effective_feature_count_met`: every emitted comp for the position has at least two features in `effective_features_used`.
 3. `outcomes_present`: every emitted comp has non-null `outcome_snapshot.career_outcome_label`.
-4. `non_market_dimension_present`: every emitted comp includes at least one of `ras_0_100` or `size_context_0_100` in `effective_features_used`.
+4. `non_market_dimension_present`: every emitted comp includes at least one of `ras_0_100` or `size_context_0_100` in `effective_features_used`. Note: for the current WR lane this check passes via `size_context_0_100`, not `ras_0_100` — `ras_0_100` remains null for 8/15 historical WR rows and does not appear in WR comp `effective_features_used`.
 5. `methodology_compatible`: all historical feature rows for the position have `normalization_scope` values in `PRODUCTION_SCOPE_COMPATIBLE`.
 
 `reason` is always a non-empty string that enumerates failed checks (`<check>: false; ...`) or `all_checks_passed`.
