@@ -30,3 +30,9 @@ A season file only unlocks compatibility when at least **100 qualifying WR rows*
 If no valid season file is available for a historical WR row's `source_season`, the scorer falls
 back to in-cohort normalization (`historical-wr-cfbd-method-v1`) and `methodology_compatible`
 remains `false`.
+
+## Populate files locally
+
+If CFBD cannot be reached from the current environment, populate these season files locally with:
+
+`python scripts/fetch_wr_reference_populations.py --years 2019 2020 2021`
