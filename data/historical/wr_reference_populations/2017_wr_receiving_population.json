@@ -1,1 +1,5572 @@
-[]
+[
+  {
+    "player_name": "A.J. Brown",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 75,
+    "receiving_yards": 1252,
+    "receiving_tds": 11,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "A.J. Coney",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 43,
+    "receiving_yards": 551,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "A.J. Richardson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 33,
+    "receiving_yards": 494,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "A.J. Taylor",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 31,
+    "receiving_yards": 475,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Aaron Cephus",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 622,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Aaron Fuller",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 26,
+    "receiving_yards": 291,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Aaron McLean",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 31,
+    "receiving_yards": 472,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Adam Breneman",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 64,
+    "receiving_yards": 764,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Adonis Jennings",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 42,
+    "receiving_yards": 742,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Adrian Killins Jr.",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 169,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ahmmon Richards",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 439,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Akrum Wadley",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 28,
+    "receiving_yards": 353,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Albert Okwuegbunam",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 415,
+    "receiving_tds": 11,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Aleva Hifo",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 37,
+    "receiving_yards": 437,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Alex Bachman",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 365,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Alexander Mattison",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 28,
+    "receiving_yards": 284,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Alfonso Onunwor",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 64,
+    "receiving_yards": 856,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Allen Lazard",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 71,
+    "receiving_yards": 941,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Allenzae Staggers",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 44,
+    "receiving_yards": 471,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ammon Barker",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 39,
+    "receiving_yards": 398,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Andre Levrone",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 34,
+    "receiving_yards": 689,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Andre Wilson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 54,
+    "receiving_yards": 677,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Andrew Celis",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 194,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Andrew Meyer",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 35,
+    "receiving_yards": 483,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Andy Isabella",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 65,
+    "receiving_yards": 1020,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Anthony Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 76,
+    "receiving_yards": 1356,
+    "receiving_tds": 14,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Anthony Mahoungou",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 39,
+    "receiving_yards": 678,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Anthony Miller",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 96,
+    "receiving_yards": 1462,
+    "receiving_tds": 18,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Anthony Muse",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 40,
+    "receiving_yards": 455,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Anthony Ratliff-Williams",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 35,
+    "receiving_yards": 630,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Antoine Porter",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 46,
+    "receiving_yards": 548,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ari Werts",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 275,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Arkeel Newsome",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 541,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Armanti Foreman",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 31,
+    "receiving_yards": 280,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Auden Tate",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 40,
+    "receiving_yards": 548,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Austin Conway",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 61,
+    "receiving_yards": 549,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Austin Mack",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 343,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Austin Maloney",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 304,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Austin Proehl",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 337,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Austin Wolf",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 33,
+    "receiving_yards": 476,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Bailey Gaither",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 320,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ben Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 363,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ben Skowronek",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 45,
+    "receiving_yards": 644,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Binjimen Victor",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 349,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Blake Mack",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 48,
+    "receiving_yards": 618,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Boston Scott",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 181,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Brad Anderson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 33,
+    "receiving_yards": 338,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Brady Jones",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 26,
+    "receiving_yards": 325,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Braelon Roberts",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 285,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Brandon Edward Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 37,
+    "receiving_yards": 482,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Brandon Fritts",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 177,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Brandon Powell",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 42,
+    "receiving_yards": 406,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Brandon Presley",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 34,
+    "receiving_yards": 552,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Braxton Berrios",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 54,
+    "receiving_yards": 670,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Brendan Cope",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 35,
+    "receiving_yards": 494,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Brendan O'Leary-Orange",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 39,
+    "receiving_yards": 618,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Brenden Schooler",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 274,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Brennon Dingle",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 330,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Brian Williams",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 44,
+    "receiving_yards": 617,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Bryan Edwards",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 64,
+    "receiving_yards": 793,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Bryce Bobo",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 62,
+    "receiving_yards": 693,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Bryce Wolma",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 28,
+    "receiving_yards": 241,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Brycen Hopkins",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 349,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Byron Pringle",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 724,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "C.J. Duncan",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 52,
+    "receiving_yards": 517,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "C.J. Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 531,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Caleb Wilson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 38,
+    "receiving_yards": 490,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Calvin Ridley",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 63,
+    "receiving_yards": 967,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Cam Phillips",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 71,
+    "receiving_yards": 964,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Cam Serigne",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 44,
+    "receiving_yards": 556,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Cameron Batson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 59,
+    "receiving_yards": 487,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Cameron Echols-Luper",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 42,
+    "receiving_yards": 473,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Cameron Green",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 170,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Cameron Odom",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 308,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Cedrick Wilson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 83,
+    "receiving_yards": 1511,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "CeeDee Lamb",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 46,
+    "receiving_yards": 807,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Chad Beebe",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 28,
+    "receiving_yards": 417,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Charles Nelson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 32,
+    "receiving_yards": 404,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Charles Standberry",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 306,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Chase Claypool",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 402,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Chase Harrell",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 221,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Cheyenne O'Grady",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 132,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Chris Davis Jr.",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 262,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Chris Jones",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 26,
+    "receiving_yards": 536,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Chris Lacy",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 264,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Chris Murray",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 51,
+    "receiving_yards": 701,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Chris Taylor",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 332,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Christian Blake",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 41,
+    "receiving_yards": 442,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Christian Booker",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 363,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Christian Kirk",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 71,
+    "receiving_yards": 919,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Christopher Herndon IV",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 40,
+    "receiving_yards": 477,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "CJ Windham",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 351,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Cody Thompson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 28,
+    "receiving_yards": 537,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Cody White",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 35,
+    "receiving_yards": 490,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Cole Herdman",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 331,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Collin Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 54,
+    "receiving_yards": 765,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Collin Lisa",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 33,
+    "receiving_yards": 439,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Conner Cramer",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 33,
+    "receiving_yards": 277,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Connor Wedington",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 31,
+    "receiving_yards": 243,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Corey Willis",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 45,
+    "receiving_yards": 669,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Courtland Sutton",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 68,
+    "receiving_yards": 1085,
+    "receiving_tds": 12,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "D'Eriq King",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 264,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "D'Wayne Eskridge",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 506,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "D.J. Brown",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 42,
+    "receiving_yards": 365,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "D.J. Chark",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 40,
+    "receiving_yards": 874,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "D.J. Moore",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 80,
+    "receiving_yards": 1033,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "D.K. Metcalf",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 39,
+    "receiving_yards": 646,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Da'Mari Scott",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 57,
+    "receiving_yards": 566,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "DaeSean Hamilton",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 53,
+    "receiving_yards": 857,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Dalton Fackrell",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 313,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Dalton Schoen",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 470,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Dalton Schultz",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 212,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Dalyn Dawkins",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 26,
+    "receiving_yards": 310,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "DaMarkus Lodge",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 41,
+    "receiving_yards": 698,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Damion Ratley",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 694,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Damion Willis",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 42,
+    "receiving_yards": 620,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Damonte Coxie",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 323,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Daniel Hamm",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 100,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Daniel Helm",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 261,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Danny Davis III",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 26,
+    "receiving_yards": 418,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Dante Pettis",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 63,
+    "receiving_yards": 761,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Danzel McKinley-Lewis",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 319,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Darius Slayton",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 643,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Darnell Mooney",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 34,
+    "receiving_yards": 599,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Darnell Salomon",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 32,
+    "receiving_yards": 512,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Darrel Williams",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 331,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Darrell Henderson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 226,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Darrell Stewart Jr.",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 50,
+    "receiving_yards": 501,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Darren Andrews",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 60,
+    "receiving_yards": 773,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Darren Carrington II",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 70,
+    "receiving_yards": 980,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Darren Woods Jr.",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 366,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Darrius Scott",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 298,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Datrin Guyton",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 31,
+    "receiving_yards": 585,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "David Hood",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 172,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "David Montgomery",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 36,
+    "receiving_yards": 296,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "David Sills V",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 60,
+    "receiving_yards": 980,
+    "receiving_tds": 18,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "David Ungerer",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 39,
+    "receiving_yards": 432,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Davon Grayson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 59,
+    "receiving_yards": 886,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Davontavean Martin",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 31,
+    "receiving_yards": 366,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Dawson Knox",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 321,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Dax Raymond",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 41,
+    "receiving_yards": 456,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "De'Mornay Pierson-El",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 45,
+    "receiving_yards": 623,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "DeAndre McNeal",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 317,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "DeAndre Thompkins",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 28,
+    "receiving_yards": 443,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Deddrick Thomas",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 227,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Demari Simpkins",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 354,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Denzel Mims",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 61,
+    "receiving_yards": 1087,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Deon Cain",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 58,
+    "receiving_yards": 734,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Deon Stewart",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 33,
+    "receiving_yards": 404,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Deon Yelder",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 52,
+    "receiving_yards": 688,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Deondre Douglas",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 48,
+    "receiving_yards": 628,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Deondre Farrier",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 211,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Deontay Burnett",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 86,
+    "receiving_yards": 1114,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Deshaunte Jones",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 28,
+    "receiving_yards": 273,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Desmon White",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 41,
+    "receiving_yards": 423,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Detrich Clark",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 41,
+    "receiving_yards": 504,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Devin C. Butler",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 33,
+    "receiving_yards": 327,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Devin Gray",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 28,
+    "receiving_yards": 444,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Devin Ross",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 43,
+    "receiving_yards": 508,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Devonte Boyd",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 34,
+    "receiving_yards": 612,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Dez Fitzpatrick",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 45,
+    "receiving_yards": 699,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Dezmon Patmon",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 35,
+    "receiving_yards": 379,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Dijon Paschal",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 315,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Dillon Mitchell",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 42,
+    "receiving_yards": 517,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Dillon Stoner",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 44,
+    "receiving_yards": 576,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Dimitri Flowers",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 26,
+    "receiving_yards": 464,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Diocemy Saint Juste",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 28,
+    "receiving_yards": 157,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Diontae Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 74,
+    "receiving_yards": 1278,
+    "receiving_tds": 13,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Dominique Heath",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 196,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Donald Gray",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 214,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Doni Dowling",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 50,
+    "receiving_yards": 647,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Donnie Ernsberger",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 34,
+    "receiving_yards": 394,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Donovan Peoples-Jones",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 277,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Dredrick Snelson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 46,
+    "receiving_yards": 695,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Dylan Cantrell",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 71,
+    "receiving_yards": 816,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Dylan Collie",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 56,
+    "receiving_yards": 636,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Eli Stove",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 265,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Elijah King",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 52,
+    "receiving_yards": 750,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Emanuel Hall",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 33,
+    "receiving_yards": 817,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Emanuel Thompson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 38,
+    "receiving_yards": 420,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Equanimeous St. Brown",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 33,
+    "receiving_yards": 515,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Eric Cooper",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 285,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Eric Kumah",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 28,
+    "receiving_yards": 324,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ervin Philips",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 89,
+    "receiving_yards": 904,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ethan Wolf",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 246,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Evan Butts",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 32,
+    "receiving_yards": 266,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Evan Fairs",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 335,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Felton Davis III",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 55,
+    "receiving_yards": 776,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Flynn Nagel",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 48,
+    "receiving_yards": 489,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Foster Moreau",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 278,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Gabe Schrade",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 287,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Gabriel Davis",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 27,
+    "receiving_yards": 391,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Garrett Dickerson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 37,
+    "receiving_yards": 401,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Garrett Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 48,
+    "receiving_yards": 539,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Gary Jennings",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 97,
+    "receiving_yards": 1096,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Glenn Smith",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 47,
+    "receiving_yards": 377,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Grant Perry",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 307,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Greg Campbell Jr.",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 27,
+    "receiving_yards": 300,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Greg Dortch",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 53,
+    "receiving_yards": 722,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Gregory Hogan",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 26,
+    "receiving_yards": 272,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Gregory Phillips",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 44,
+    "receiving_yards": 424,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Hakeem Butler",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 41,
+    "receiving_yards": 697,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Harrison Bryant",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 32,
+    "receiving_yards": 408,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Hayden Hurst",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 44,
+    "receiving_yards": 559,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Hergy Mayala",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 43,
+    "receiving_yards": 615,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Hunter Bryant",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 331,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Hunter Renfrow",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 60,
+    "receiving_yards": 602,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Hussein Howe",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 219,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ian Thomas",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 376,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ike Lewis",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 51,
+    "receiving_yards": 733,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Harper",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 39,
+    "receiving_yards": 462,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Hodgins",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 31,
+    "receiving_yards": 275,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Johnson-Mack",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 60,
+    "receiving_yards": 555,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Jones",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 191,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Wright",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 46,
+    "receiving_yards": 668,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Isaiah Zuber",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 51,
+    "receiving_yards": 510,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ito Smith",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 40,
+    "receiving_yards": 396,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Izaiah Lottie",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 312,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "J'Mon Moore",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 65,
+    "receiving_yards": 1082,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "J.K. Dobbins",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 135,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ja'Marcus Bradley",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 39,
+    "receiving_yards": 475,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jackson Anthrop",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 47,
+    "receiving_yards": 423,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jacob Sannon",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 59,
+    "receiving_yards": 608,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jacques Patrick",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 171,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jaelon Darden",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 32,
+    "receiving_yards": 281,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jakairi Moses",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 158,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jake Roh",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 39,
+    "receiving_yards": 410,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jakobi Meyers",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 63,
+    "receiving_yards": 727,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jaleel Scott",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 76,
+    "receiving_yards": 1079,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jalen Guyton",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 49,
+    "receiving_yards": 775,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jalen Harvey",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 33,
+    "receiving_yards": 558,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jalen McCleskey",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 50,
+    "receiving_yards": 645,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jalen Reagor",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 33,
+    "receiving_yards": 576,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jalen Virgil",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 364,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jamal Morrow",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 60,
+    "receiving_yards": 506,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jamarius Way",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 47,
+    "receiving_yards": 762,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "James Gardner",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 47,
+    "receiving_yards": 927,
+    "receiving_tds": 11,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "James Price",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 282,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "James Proche",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 40,
+    "receiving_yards": 816,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "James Washington",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 74,
+    "receiving_yards": 1549,
+    "receiving_tds": 13,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "James Williams",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 71,
+    "receiving_yards": 482,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jamire Jordan",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 26,
+    "receiving_yards": 560,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "JaMycal Hasty",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 105,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "JaQuan Blackwell",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 32,
+    "receiving_yards": 437,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jared Murphy",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 38,
+    "receiving_yards": 430,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jared Pinkney",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 279,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jared Rice",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 388,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jaron Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 212,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jason Huntley",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 39,
+    "receiving_yards": 363,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Javon Wims",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 46,
+    "receiving_yards": 724,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jay Griffin IV",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 393,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jay MacIntyre",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 28,
+    "receiving_yards": 396,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jaylen Samuels",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 75,
+    "receiving_yards": 593,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jaylen Smith",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 60,
+    "receiving_yards": 980,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "JD Spielman",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 55,
+    "receiving_yards": 830,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jeff Badet",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 26,
+    "receiving_yards": 400,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jeff Smith",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 296,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jeffery Wilson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 168,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jeremiah Booker",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 287,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jeremy Cox",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 176,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jerome Washington",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 28,
+    "receiving_yards": 282,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jerrod Heard",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 156,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jesse Jackson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 27,
+    "receiving_yards": 276,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jessie Britt",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 422,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jester Weah",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 41,
+    "receiving_yards": 698,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jhamon Ausbon",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 50,
+    "receiving_yards": 571,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jimmy Williams",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 32,
+    "receiving_yards": 447,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "JJ Arcega-Whiteside",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 48,
+    "receiving_yards": 781,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Joe Reed",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 244,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Joey Magnifico",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 280,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "John Diarse",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 35,
+    "receiving_yards": 575,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "John Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 287,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "John Kelly",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 37,
+    "receiving_yards": 299,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "John Leday",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 141,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "John Niupalau",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 27,
+    "receiving_yards": 368,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "John Ursua",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 47,
+    "receiving_yards": 667,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Johnathan Boone",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 31,
+    "receiving_yards": 399,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Johnathan Lloyd",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 39,
+    "receiving_yards": 367,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Johnathon Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 41,
+    "receiving_yards": 724,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Johnny Johnson III",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 299,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jon Hilliman",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 155,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jon'Vea Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 42,
+    "receiving_yards": 689,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jonah Trinnaman",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 305,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jonathan Ifedi",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 190,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jonathan Nance",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 37,
+    "receiving_yards": 539,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jonathan Ward",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 48,
+    "receiving_yards": 470,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jordan Akins",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 32,
+    "receiving_yards": 515,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jordan Chunn",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 28,
+    "receiving_yards": 204,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jordan Cunningham",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 26,
+    "receiving_yards": 308,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jordan Ellis",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 137,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jordan Fisher",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 295,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jordan Jones",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 401,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jordan Lasley",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 69,
+    "receiving_yards": 1264,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jordan McCray",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 270,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jordan Nathan",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 324,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jordan Thomas",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 263,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jordan Veasy",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 38,
+    "receiving_yards": 491,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jordan Villamin",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 356,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jordan Wilkins",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 26,
+    "receiving_yards": 241,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Jordon Brown",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 237,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Josh Oliver",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 35,
+    "receiving_yards": 296,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Josh Stewart",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 39,
+    "receiving_yards": 512,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Julian Williams",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 307,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Justice Hill",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 31,
+    "receiving_yards": 190,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Justin Hall",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 78,
+    "receiving_yards": 801,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Justin Hobbs",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 55,
+    "receiving_yards": 830,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Justin Holmes",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 26,
+    "receiving_yards": 270,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Justin Jackson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 44,
+    "receiving_yards": 276,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Justin McInnis",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 49,
+    "receiving_yards": 800,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Justin Rankin",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 42,
+    "receiving_yards": 311,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Justin Stockton",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 27,
+    "receiving_yards": 235,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Juwan Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 54,
+    "receiving_yards": 701,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Juwann Winfree",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 325,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "K.J. Hill",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 56,
+    "receiving_yards": 549,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "K.J. Osborn",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 35,
+    "receiving_yards": 493,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ka'Raun White",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 61,
+    "receiving_yards": 1004,
+    "receiving_tds": 12,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kaden Smith",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 414,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kahlil Lewis",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 61,
+    "receiving_yards": 676,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kalen Ballage",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 91,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kalib Woods",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 619,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kalija Lipscomb",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 37,
+    "receiving_yards": 610,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kamathi Holsey",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 32,
+    "receiving_yards": 548,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kamrin Solomon",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 33,
+    "receiving_yards": 388,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kanawai Noa",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 56,
+    "receiving_yards": 788,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "KaVontae Turpin",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 41,
+    "receiving_yards": 394,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Keelan Ewaliko",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 26,
+    "receiving_yards": 299,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Keenan Barnes",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 37,
+    "receiving_yards": 539,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Keenen Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 44,
+    "receiving_yards": 539,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "KeeSean Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 77,
+    "receiving_yards": 1013,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Keishawn Watson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 41,
+    "receiving_yards": 374,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Keith Gavin",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 27,
+    "receiving_yards": 278,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Keith Kirkwood",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 45,
+    "receiving_yards": 671,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Keke Coutee",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 93,
+    "receiving_yards": 1429,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kelvin Harmon",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 69,
+    "receiving_yards": 1017,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kelvin Smith",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 27,
+    "receiving_yards": 264,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kendal Keys",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 27,
+    "receiving_yards": 260,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kendrick Edwards",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 38,
+    "receiving_yards": 434,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kenny Young",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 259,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kerry Thomas Jr.",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 35,
+    "receiving_yards": 453,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kerryon Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 194,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Keyion Dixon",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 33,
+    "receiving_yards": 360,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kobay White",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 34,
+    "receiving_yards": 423,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Korey Robertson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 76,
+    "receiving_yards": 1106,
+    "receiving_tds": 12,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kwadarrius Smith",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 34,
+    "receiving_yards": 726,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ky'Jon Tyler",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 313,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kyle Hicks",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 291,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kyle Sweet",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 58,
+    "receiving_yards": 533,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Kyle Williams",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 66,
+    "receiving_yards": 763,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "LaJuan Hunt",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 187,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Larry Rose III",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 55,
+    "receiving_yards": 522,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Lil'Jordan Humphrey",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 38,
+    "receiving_yards": 439,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Linell Bonner",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 80,
+    "receiving_yards": 889,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "LJ Scott",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 146,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Louis Dorsey",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 395,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Lucky Jackson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 39,
+    "receiving_yards": 600,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Luke Timian",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 68,
+    "receiving_yards": 589,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Macan Wilson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 32,
+    "receiving_yards": 446,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Malcolm Williams",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 38,
+    "receiving_yards": 724,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Malik Henry",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 268,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Malik Stanley",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 27,
+    "receiving_yards": 324,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Malik Turner",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 31,
+    "receiving_yards": 326,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Malik Williams",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 175,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Marcel Williams",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 41,
+    "receiving_yards": 512,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Marcell Ateman",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 59,
+    "receiving_yards": 1156,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Marchie Murdock",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 41,
+    "receiving_yards": 513,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Marcus Armstrong-Brown",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 184,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Marcus Baugh",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 28,
+    "receiving_yards": 304,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Marcus Green",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 55,
+    "receiving_yards": 847,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Marcus Simms",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 35,
+    "receiving_yards": 663,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Mark Andrews",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 62,
+    "receiving_yards": 958,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Mark Chapman",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 59,
+    "receiving_yards": 875,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Mark Quattlebaum",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 31,
+    "receiving_yards": 343,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Marlon Watts",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 319,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Marquez Callaway",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 406,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Marquez Valdes-Scantling",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 53,
+    "receiving_yards": 879,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Marquis Young",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 35,
+    "receiving_yards": 280,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Marquise Brown",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 57,
+    "receiving_yards": 1095,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Mathew Sexton",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 26,
+    "receiving_yards": 357,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Matt Bushman",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 49,
+    "receiving_yards": 520,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Matt Sokol",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 222,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Matt VandeBerg",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 28,
+    "receiving_yards": 384,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Matthew Eaton",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 208,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Maurice Ffrench",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 272,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "McLane Mannix",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 57,
+    "receiving_yards": 778,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Mecole Hardman",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 418,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Melvin Vaughn",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 33,
+    "receiving_yards": 354,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Micah Simon",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 27,
+    "receiving_yards": 386,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Michael Gallup",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 100,
+    "receiving_yards": 1413,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Michael Jacquet",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 31,
+    "receiving_yards": 288,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Michael Lawrence",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 62,
+    "receiving_yards": 819,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Michael Pittman Jr.",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 404,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Mikah Holder",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 43,
+    "receiving_yards": 602,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Mikale Wilbon",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 80,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Mike Boone",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 177,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Mike Dudek",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 262,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Mike Gesicki",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 57,
+    "receiving_yards": 563,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "N'Keal Harry",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 82,
+    "receiving_yards": 1142,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Nacarius Fant",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 74,
+    "receiving_yards": 704,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Nick Easley",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 51,
+    "receiving_yards": 530,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Nigel Carter",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 287,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Noah Fant",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 494,
+    "receiving_tds": 11,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Noah Togiai",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 34,
+    "receiving_yards": 461,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Nolan Givan",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 159,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Nyheim Hines",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 26,
+    "receiving_yards": 152,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Nyqwan Murray",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 40,
+    "receiving_yards": 604,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "OJ Clark",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 47,
+    "receiving_yards": 500,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Olabisi Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 41,
+    "receiving_yards": 595,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Olamide Zaccheaus",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 85,
+    "receiving_yards": 895,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Omar Bayless",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 32,
+    "receiving_yards": 439,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Omar Black",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 271,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "OrTre Smith",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 326,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Otis Anderson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 351,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Papi White",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 36,
+    "receiving_yards": 631,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Parris Campbell",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 40,
+    "receiving_yards": 584,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Patrick Laird",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 45,
+    "receiving_yards": 322,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Patrick Smith",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 329,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Penny Hart",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 74,
+    "receiving_yards": 1121,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Pharoah McKever",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 27,
+    "receiving_yards": 301,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Phil Mayhue",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 35,
+    "receiving_yards": 521,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Phillip Lindsay",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 257,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Pooh Stricklin",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 32,
+    "receiving_yards": 414,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Qadree Ollison",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 194,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Quan Hampton",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 145,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Quay Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 47,
+    "receiving_yards": 464,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Quayvon Skanes",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 35,
+    "receiving_yards": 335,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Quez Watkins",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 337,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Quin Jernighan",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 36,
+    "receiving_yards": 393,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Quintez Cephus",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 501,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Raelon Singleton",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 36,
+    "receiving_yards": 531,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Rafael Araujo-Lopes",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 43,
+    "receiving_yards": 531,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ravian Pierce",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 263,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ray-Ray McCloud",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 49,
+    "receiving_yards": 503,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Reggie Bonnafon",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 182,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Reggie Hemphill-Mapps",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 37,
+    "receiving_yards": 402,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Renard Bell",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 40,
+    "receiving_yards": 538,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Reuben Mwehla",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 251,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Rhashid Bonnette",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 33,
+    "receiving_yards": 582,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Richie James",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 31,
+    "receiving_yards": 290,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ricky Jeune",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 545,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ricky Smalling",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 31,
+    "receiving_yards": 510,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Rico Bussey Jr.",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 47,
+    "receiving_yards": 677,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Riley Miller",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 300,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "RJ Turner",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 39,
+    "receiving_yards": 686,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ron'quavion Tarver",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 48,
+    "receiving_yards": 569,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ronnie Rivers",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 129,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ronnie Turner Jr.",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 28,
+    "receiving_yards": 262,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Russell Gage",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 285,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ryan Davis",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 84,
+    "receiving_yards": 815,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ryan Izzo",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 317,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ryan Nall",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 27,
+    "receiving_yards": 240,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ryan Schadler",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 181,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ryan Smith",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 35,
+    "receiving_yards": 454,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ryan Yurachek",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 54,
+    "receiving_yards": 490,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ryheem Malone",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 44,
+    "receiving_yards": 676,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Sadiq Palmer",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 35,
+    "receiving_yards": 518,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Sam Harris",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 41,
+    "receiving_yards": 570,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Sam Martin",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 359,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Samson Nacua",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 294,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Saquon Barkley",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 54,
+    "receiving_yards": 632,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Scott Miller",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 63,
+    "receiving_yards": 722,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Scotty Washington",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 45,
+    "receiving_yards": 711,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Sean McKeon",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 31,
+    "receiving_yards": 301,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Sean Modster",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 32,
+    "receiving_yards": 335,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Sean Savoy",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 39,
+    "receiving_yards": 454,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Sergio Bailey II",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 54,
+    "receiving_yards": 878,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Seth Dawkins",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 42,
+    "receiving_yards": 642,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Shane Tucker",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 381,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Shane Wimann",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 283,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Shaun Wilson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 36,
+    "receiving_yards": 263,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Shay Fields",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 46,
+    "receiving_yards": 623,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Shi Smith",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 409,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Shun Brown",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 43,
+    "receiving_yards": 573,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Siaosi Wilson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 393,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Simmie Cobbs Jr.",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 72,
+    "receiving_yards": 841,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Spencer Tears",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 43,
+    "receiving_yards": 528,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Stanley Morgan Jr.",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 61,
+    "receiving_yards": 986,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Stephen Louis",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 37,
+    "receiving_yards": 583,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Steve Ishmael",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 105,
+    "receiving_yards": 1347,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Steven Dunbar",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 76,
+    "receiving_yards": 1070,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Steven Mitchell Jr.",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 41,
+    "receiving_yards": 644,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Steven Sims Jr.",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 59,
+    "receiving_yards": 839,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "T.J. Hockenson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 320,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "T.J. Rahming",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 65,
+    "receiving_yards": 795,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "T.J. Vasher",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 545,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "T.J. Watkins",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 295,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tabari Hines",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 53,
+    "receiving_yards": 683,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Taivon Jacobs",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 47,
+    "receiving_yards": 553,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Talon Shumway",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 257,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tamir Jones",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 33,
+    "receiving_yards": 396,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tavares Martin Jr.",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 70,
+    "receiving_yards": 831,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tavin Richardson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 27,
+    "receiving_yards": 371,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Taysir Mack",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 310,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Teddy Veal",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 74,
+    "receiving_yards": 950,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Teo Redding",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 45,
+    "receiving_yards": 624,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Terren Encalade",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 39,
+    "receiving_yards": 730,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Terry Godwin",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 38,
+    "receiving_yards": 639,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Terry Juniel",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 224,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Terry McLaurin",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 436,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Terry Swanson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 194,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Terry Wright",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 274,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tevaris McCormick",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 37,
+    "receiving_yards": 421,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Theo Howard",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 56,
+    "receiving_yards": 594,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Thomas Geddis",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 388,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Thomas Hennigan",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 45,
+    "receiving_yards": 585,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Thomas Owens",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 59,
+    "receiving_yards": 887,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Timmy Hernandez",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 357,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tommy Sweeney",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 36,
+    "receiving_yards": 512,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tony Ellison",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 37,
+    "receiving_yards": 598,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tony Gaiter IV",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 34,
+    "receiving_yards": 314,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tony Nicholson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 41,
+    "receiving_yards": 344,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tony Pollard",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 36,
+    "receiving_yards": 536,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tra Minter",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 247,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tra'Von Chapman",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 53,
+    "receiving_yards": 475,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Traveon Samuel",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 339,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Travis Fulgham",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 394,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Trayveon Williams",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 192,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tre Hartley",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 37,
+    "receiving_yards": 527,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tre Walker",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 26,
+    "receiving_yards": 288,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tre'Quan Smith",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 59,
+    "receiving_yards": 1171,
+    "receiving_tds": 13,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Trent Bostick",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 357,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Trent Sherfield",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 50,
+    "receiving_yards": 729,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Trenton Irwin",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 43,
+    "receiving_yards": 461,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Trestan Ebner",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 267,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Trever Ryen",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 47,
+    "receiving_yards": 469,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Trevon Brown",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 60,
+    "receiving_yards": 1069,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Trey Quinn",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 114,
+    "receiving_yards": 1236,
+    "receiving_tds": 13,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Troy Fumagalli",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 46,
+    "receiving_yards": 547,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Troy McCormick Jr.",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 183,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Turner Smiley",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 34,
+    "receiving_yards": 615,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ty Lee",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 79,
+    "receiving_yards": 955,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tyler Batson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 370,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tyler Cogswell",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 149,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tyler Conklin",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 35,
+    "receiving_yards": 504,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tyler Hoppes",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 34,
+    "receiving_yards": 377,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tyler Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 35,
+    "receiving_yards": 677,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tyler Mabry",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 24,
+    "receiving_yards": 242,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tyler Petite",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 23,
+    "receiving_yards": 307,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tyler Vaughns",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 57,
+    "receiving_yards": 809,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tyler Watts",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 40,
+    "receiving_yards": 332,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tyraiq Beals",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 30,
+    "receiving_yards": 266,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tyre Brady",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 62,
+    "receiving_yards": 942,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tyre McCants",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 36,
+    "receiving_yards": 686,
+    "receiving_tds": 7,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tyrell Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 301,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Tyrie Cleveland",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 22,
+    "receiving_yards": 410,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Van Jefferson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 42,
+    "receiving_yards": 456,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Ventell Bryant",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 280,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Vic Wharton III",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 67,
+    "receiving_yards": 871,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Whop Philyor",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 33,
+    "receiving_yards": 335,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Will Dissly",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 20,
+    "receiving_yards": 281,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Will Hastings",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 26,
+    "receiving_yards": 525,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Willie Johnson",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 36,
+    "receiving_yards": 443,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Willie Wright",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 56,
+    "receiving_yards": 657,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Workpeh Kofa",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 25,
+    "receiving_yards": 338,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Wyatt Demps",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 67,
+    "receiving_yards": 908,
+    "receiving_tds": 11,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Xavier Brown",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 21,
+    "receiving_yards": 228,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Xavier Lane",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 27,
+    "receiving_yards": 336,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  },
+  {
+    "player_name": "Zack Moss",
+    "position": "WR",
+    "source_season": 2017,
+    "receptions": 29,
+    "receiving_yards": 243,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2017)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2017&category=receiving"
+  }
+]
