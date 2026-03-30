@@ -18,7 +18,7 @@ WR now includes multiple real draft vintages (2018 + 2020 + 2021) while QB/TE re
 - WR feature rows now include mixed coverage:
   - 2020 cohort includes sourced `ras_0_100`.
   - Some added WR rows still have `ras_0_100 = null` where clean sourcing was not available in this pass.
-  - `size_context_0_100` is a deterministic size percentile context signal built from listed pre-draft height/weight across WR rows in this artifact.
+  - `size_context_0_100` is a deterministic height/weight percentile signal. Formula: `50 + composite_z * 15` where `composite_z = 0.55 * height_z + 0.45 * weight_z` against WR reference anchors (72.5 in / 197 lb). Historical WR rows were seeded from the same ingredients; 2026 rookie WR scores are sourced from `data/raw/2026_combine_results.json`.
 - WR outcome rows for the seeded real cohort now include sourced PPR/G-based snapshots (`best_season_fantasy_ppg`, `years_1_to_3_summary`) plus deterministic label/band derivations.
 - WR `production_0_100` now uses `normalization_scope = "historical-wr-cfbd-method-v1"` when scoreable:
   - metric methodology now matches 2026 WR production (YPR + total yards + TD rate, same weights and score transform),
@@ -29,16 +29,14 @@ WR now includes multiple real draft vintages (2018 + 2020 + 2021) while QB/TE re
 - Historical WR season population infrastructure now exists at `data/historical/wr_reference_populations/`:
   - file pattern: `{season}_wr_receiving_population.json`,
   - minimum bar for compatibility: >=100 sourced WR rows (with `receptions >= 20`) for each target season,
-  - current committed state: no populated season files, so fallback behavior is active and `methodology_compatible` remains false.
-- `scripts/compute_historical_comps.py` keeps compatibility conservative unless valid population files are present, so `methodology_compatible` remains `false` in the current committed state.
-- `historical-wr-cfbd-method-v1` is intentionally **not** added to the compatible set yet, because population scope parity is not established.
-- WR `methodology_compatible` remains false until both metric methodology and population scope are aligned.
+  - current committed state: 2019/2020/2021 population files are populated (560/379/567 qualifying rows respectively); `methodology_compatible["WR"]` is `true` when these files are present.
+- `scripts/compute_historical_comps.py` assigns `normalization_scope = "historical-wr-cfbd-season-pop-v1"` to scored WR rows when a valid season population is loaded; null-scored rows (opt-out / partial-season) retain `"historical-wr-cfbd-method-v1-null"`, which is included in the compatible set alongside `WR_POPULATION_SCOPE` when populations are active.
 - WR `career_outcome_label` and `top_finish_band` are currently deterministic derivations from each player's sourced peak `FPTS/G` (not yet a fully league-ranked finish model).
 - The promoted comp artifact now exposes `effective_features_used` per comp row plus `comp_data_warnings` so partial feature overlap is visible in-artifact.
 - As a result, current WR similarity behavior is improved versus one-vintage/one-proxy, but remains partial and not UI-ready.
 
 
-- Current 2026 repro still emits a WR comp-data warning: one historical WR can remain the #1 comp for all eight 2026 WR prospects. This is currently driven by sparse WR RAS coverage and remaining feature-shape compression across partial vintages; do not fabricate rows or synthetic deltas to suppress this warning.
+- Current 2026 repro emits a WR comp-data warning (coverage / partial lane): comp concentration dropped to max 3 prospects per #1 comp after `size_context_0_100` was added to the 2026 rookie WR profiles. The lane remains directional-only until broader cross-class and outcomes coverage is added; do not fabricate rows or synthetic deltas to suppress the warning.
 
 
 - 2018 WR cohort was added with source season 2017 (D.J. Moore, Calvin Ridley, Courtland Sutton, Christian Kirk).

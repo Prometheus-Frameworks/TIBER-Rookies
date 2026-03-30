@@ -226,7 +226,7 @@ The seeded real WR cohort in `data/historical/historical_prospect_features.sampl
 
 - WR rows now include 2020 and 2021 class coverage in this artifact slice.
 - 2020 WR rows include sourced `ras_0_100`; some later rows preserve `ras_0_100 = null` where clean sourcing was not available.
-- `size_context_0_100` is now populated as a deterministic height/weight percentile context dimension.
+- `size_context_0_100` is a deterministic height/weight percentile context dimension. WR formula: `max(0, min(100, round(50 + composite_z * 15, 1)))` where `composite_z = 0.55 * height_z + 0.45 * weight_z`, reference anchors 72.5 in / 197 lb (approximate NFL combine WR medians). 2026 rookie WR scores are sourced from `data/raw/2026_combine_results.json`; historical WR row values were seeded from the same ingredient set.
 - Outcome fields for the seeded real WR cohort are now partially populated from sourced FantasyData PPR season rows.
 - `production_0_100` includes an explicit `normalization_scope` marker (`historical-wr-cfbd-method-v1`, `historical-wr-cfbd-method-v1-null`, or `historical-wr-cfbd-season-pop-v1` when valid population files exist).
 - `career_outcome_label` and `top_finish_band` for seeded WR rows are deterministic peak-`FPTS/G` bucket derivations, not yet a league-wide finalized finish model.
