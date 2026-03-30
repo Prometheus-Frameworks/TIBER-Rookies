@@ -3,7 +3,7 @@
 This directory is the canonical staging lane for **historical prospect comp inputs**.
 
 The files currently committed here are **schema + partial fixture population** so the contract is explicit and testable in-repo.
-WR now includes multiple real draft vintages (2020 + 2021) while QB/TE remain sample scaffolding. This is still not a fully populated historical warehouse.
+WR now includes multiple real draft vintages (2018 + 2020 + 2021) while QB/TE remain sample scaffolding. This is still not a fully populated historical warehouse.
 
 ## Canonical files
 
@@ -39,6 +39,15 @@ WR now includes multiple real draft vintages (2020 + 2021) while QB/TE remain sa
 
 
 - Current 2026 repro still emits a WR comp-data warning: one historical WR can remain the #1 comp for all eight 2026 WR prospects. This is currently driven by sparse WR RAS coverage and remaining feature-shape compression across partial vintages; do not fabricate rows or synthetic deltas to suppress this warning.
+
+
+- 2018 WR cohort was added with source season 2017 (D.J. Moore, Calvin Ridley, Courtland Sutton, Christian Kirk).
+  - `production_0_100` is intentionally left null in the input rows and computed by pipeline methodology.
+  - `production_0_100_legacy` is intentionally absent for new 2018 rows because there is no prior cross-class seed score for that cohort.
+  - `ras_0_100` remains null only for D.J. Moore in this pass due to approved-source constraints; other 2018 rows use player-level ras.football sourcing.
+- A 2017 WR reference population placeholder file is committed as an empty array (`data/historical/wr_reference_populations/2017_wr_receiving_population.json`).
+  - This keeps fallback behavior active for source season 2017 and therefore keeps `methodology_compatibility_by_position["WR"] = false` until local operators fetch/populate 2017 data.
+  - To restore WR methodology compatibility locally, run `python scripts/fetch_wr_reference_populations.py --years 2017` and commit the populated file.
 
 ## Intentional posture
 

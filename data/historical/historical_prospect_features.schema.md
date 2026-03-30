@@ -13,11 +13,11 @@ Each row represents one historical drafted prospect candidate used for nearest-n
 - `ras_0_100` (number | null): normalized athletic profile signal.
 - `production_0_100` (number | null): normalized college production signal.
 - `draft_capital_proxy_0_100` (number | null): draft-market context proxy on the same 0-100 scale.
-- `normalization_scope` (string): declares how `production_0_100` was normalized (`cohort-local`, `class-local`, or `cross-class`).
 
 ## Optional fields
 
 - `size_context_0_100` (number | null): optional size/context signal for talent-profile tie-breaking.
+- `normalization_scope` (string | null): optional producer-assigned declaration of how `production_0_100` was normalized (for example `cohort-local`, `class-local`, `historical-wr-cfbd-method-v1`, or `historical-wr-cfbd-season-pop-v1`).
 - `normalization_anchor` (object | null): optional explicit min/max anchor metadata for the current `production_0_100` normalization regime (e.g., min/max player id and raw production values).
 - `source_name` (string | null): human-readable provenance source label.
 - `source_url` (string | null): provenance URL.
