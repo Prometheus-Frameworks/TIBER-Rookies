@@ -16,7 +16,7 @@ Each row represents one historical drafted prospect candidate used for nearest-n
 
 ## Optional fields
 
-- `size_context_0_100` (number | null): optional size/context signal for talent-profile tie-breaking.
+- `size_context_0_100` (number | null): deterministic height/weight percentile context signal for talent-profile tie-breaking. For WR, computed as `max(0, min(100, round(50 + composite_z * 15, 1)))` where `composite_z = 0.55 * height_z + 0.45 * weight_z`, `height_z = (height_in - 72.5) / 2.0`, `weight_z = (weight_lb - 197.0) / 18.0`. Reference anchors (72.5 in / 197 lb) are approximate NFL combine WR medians. Historical WR rows were seeded from the same ingredient set; 2026 rookie WR scores are derived from `data/raw/2026_combine_results.json`.
 - `normalization_scope` (string | null): optional producer-assigned declaration of how `production_0_100` was normalized (for example `cohort-local`, `class-local`, `historical-wr-cfbd-method-v1`, or `historical-wr-cfbd-season-pop-v1`).
 - `normalization_anchor` (object | null): optional explicit min/max anchor metadata for the current `production_0_100` normalization regime (e.g., min/max player id and raw production values).
 - `source_name` (string | null): human-readable provenance source label.
