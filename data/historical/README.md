@@ -36,13 +36,14 @@ WR now includes multiple real draft vintages (2018 + 2020 + 2021) while QB/TE re
 - As a result, current WR similarity behavior is improved versus one-vintage/one-proxy, but remains partial and not UI-ready.
 
 
-- Current 2026 repro emits a WR comp-data warning (coverage / partial lane): comp concentration dropped to max 3 prospects per #1 comp after `size_context_0_100` was added to the 2026 rookie WR profiles. The lane remains directional-only until broader cross-class and outcomes coverage is added; do not fabricate rows or synthetic deltas to suppress the warning.
+- Current 2026 repro still emits a WR comp-data warning: comp concentration remains above thresholds. This is driven by limited cross-class historical coverage; do not fabricate rows or synthetic deltas to suppress this warning.
+- Producer warning behavior is now deterministic via `lane_coverage_by_position.WR`: warning clears only when all WR lane coverage thresholds pass (`rookie_wr_with_comps`, `max_top1_count`, `unique_top1_count`, `unique_comp_pool_count`, `% all comps with 3+ features`, `% top-1 comps with 3+ features`).
 
 
 - 2018 WR cohort was added with source season 2017 (D.J. Moore, Calvin Ridley, Courtland Sutton, Christian Kirk).
   - `production_0_100` is intentionally left null in the input rows and computed by pipeline methodology.
   - `production_0_100_legacy` is intentionally absent for new 2018 rows because there is no prior cross-class seed score for that cohort.
-  - `ras_0_100` remains null only for D.J. Moore in this pass due to approved-source constraints; other 2018 rows use player-level ras.football sourcing.
+  - All four 2018 rows now have sourced `ras_0_100` from player-level ras.football pages. D.J. Moore's RAS (9.65/10) was confirmed via https://ras.football/2019/12/27/d-j-moore-ras-2/.
 - A 2017 WR reference population placeholder file is committed as an empty array (`data/historical/wr_reference_populations/2017_wr_receiving_population.json`).
   - This keeps fallback behavior active for source season 2017 and therefore keeps `methodology_compatibility_by_position["WR"] = false` until local operators fetch/populate 2017 data.
   - To restore WR methodology compatibility locally, run `python scripts/fetch_wr_reference_populations.py --years 2017` and commit the populated file.
