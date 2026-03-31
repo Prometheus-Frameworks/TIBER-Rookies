@@ -345,5 +345,18 @@
     "source_name": "Pro Football Reference player receiving and fantasy scoring tables",
     "source_url": "https://www.pro-football-reference.com/players/B/BrowMa04.htm",
     "notes": "PPR/G derived from yearly receiving lines using 1 pt/reception + 0.1 pts/yard + 6 pts/TD, divided by games played."
+  },
+  {
+    "player_id": "wr-michael-pittman-2020",
+    "player_name": "Michael Pittman Jr.",
+    "position": "WR",
+    "draft_year": 2020,
+    "career_outcome_label": "wr3_peak",
+    "best_season_fantasy_ppg": 13.7,
+    "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+    "years_1_to_3_summary": "2020-2022 PPR/G: 7.4, 13.7, 12.7; stat lines: 40/503/1, 88/1082/6, 99/925/4.",
+    "source_name": "Pro-Football-Reference player receiving tables (PPR/G computed manually)",
+    "source_url": "https://www.pro-football-reference.com/players/P/PittMi00.htm",
+    "notes": "best_season_fantasy_ppg uses max season PPR/G from first three seasons (2020-2022) via formula receptions + receiving_yards/10 + receiving_tds*6 divided by games played. Top finish band derived deterministically from fixed thresholds."
   }
 ]

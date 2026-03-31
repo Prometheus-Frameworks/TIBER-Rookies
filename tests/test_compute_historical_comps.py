@@ -412,12 +412,12 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
             self.assertIn("requirements_checked", quality, msg=position)
             self.assertEqual(set(quality["requirements_checked"].keys()), required_keys, msg=position)
 
-    def test_similarity_quality_wr_directional_only_when_warning_present(self) -> None:
+    def test_similarity_quality_wr_ui_safe_when_coverage_is_sufficient(self) -> None:
         artifact = json.loads(
             Path("exports/promoted/historical-comps/2026_historical_comps_v0.json").read_text(encoding="utf-8")
         )
-        self.assertIn("WR", artifact["comp_data_warnings"])
-        self.assertEqual(artifact["similarity_quality_by_position"]["WR"]["status"], "directional_only")
+        self.assertNotIn("WR", artifact["comp_data_warnings"])
+        self.assertEqual(artifact["similarity_quality_by_position"]["WR"]["status"], "ui_safe")
 
     def test_wr_lane_coverage_summary_fields_present(self) -> None:
         artifact = json.loads(
@@ -790,7 +790,7 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
     def test_fetch_wr_reference_populations_script_exists(self) -> None:
         self.assertTrue(Path("scripts/fetch_wr_reference_populations.py").is_file())
 
-    def test_artifact_wr_contract_flags_remain_conservative(self) -> None:
+    def test_artifact_wr_contract_flags_align_with_ui_safe_status(self) -> None:
         artifact = json.loads(
             Path("exports/promoted/historical-comps/2026_historical_comps_v0.json").read_text(encoding="utf-8")
         )
@@ -798,8 +798,8 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
             artifact["methodology_compatibility_by_position"]["WR"],
             artifact["similarity_quality_by_position"]["WR"]["requirements_checked"]["methodology_compatible"],
         )
-        self.assertEqual(artifact["similarity_quality_by_position"]["WR"]["status"], "directional_only")
-        self.assertFalse(artifact["ui_display_allowed"]["WR"])
+        self.assertEqual(artifact["similarity_quality_by_position"]["WR"]["status"], "ui_safe")
+        self.assertTrue(artifact["ui_display_allowed"]["WR"])
 
     def test_wr_legacy_score_populated_and_non_wr_legacy_absent(self) -> None:
         features = json.loads(Path("data/historical/historical_prospect_features.sample.json").read_text(encoding="utf-8"))

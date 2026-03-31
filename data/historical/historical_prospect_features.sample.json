@@ -511,5 +511,25 @@
     "receptions": 75,
     "receiving_yards": 1318,
     "receiving_tds": 10
+  },
+  {
+    "player_id": "wr-michael-pittman-2020",
+    "player_name": "Michael Pittman Jr.",
+    "position": "WR",
+    "school": "USC",
+    "draft_year": 2020,
+    "source_season": 2019,
+    "ras_0_100": 59.8,
+    "production_0_100": null,
+    "draft_capital_proxy_0_100": 80.0,
+    "size_context_0_100": 74.2,
+    "normalization_scope": "historical-wr-cfbd-method-v1",
+    "source_name": "CFBD receiving stats (2019 USC), ras.football player card, Pro-Football-Reference draft record",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2019&category=receiving",
+    "notes": "Added to fill WR RAS gap between Treylon Burks and Laviska Shenault Jr. 2019 USC receiving line used (101/1275/11). RAS sourced from ras.football (5.98 -> 59.8). Draft capital proxy set to 80.0 for No. 34 overall pick (round 2). size_context computed from schema formula with 76 in / 223 lb. production_0_100 intentionally null for runtime recompute.",
+    "receptions": 101,
+    "receiving_yards": 1275,
+    "receiving_tds": 11,
+    "production_0_100_legacy": null
   }
 ]
