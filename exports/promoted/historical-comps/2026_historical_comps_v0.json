@@ -11,7 +11,7 @@
     },
     "notes": "v0 emits talent_comp by default; market_comp support is scaffolded and optional."
   },
-  "generated_at": "2026-03-31T00:00:00+00:00",
+  "generated_at": "2026-03-31T22:26:23+00:00",
   "season": 2026,
   "source_files_used": [
     "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
@@ -557,9 +557,9 @@
             "size_context_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
+            "career_outcome_label": "wr1_peak",
             "best_season_fantasy_ppg": 18.5,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+            "top_finish_band": "WR1 (18.0+ PPR/G peak)",
             "years_1_to_3_summary": "2020-2022 PPR/G: 12.2, 15.7, 13.8; receiving line: 67/908/6, 74/1091/6, 74/1029/7."
           }
         },
@@ -590,7 +590,7 @@
           "outcome_snapshot": {
             "career_outcome_label": "wr2_peak",
             "best_season_fantasy_ppg": 16.5,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
             "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
           }
         },
@@ -620,7 +620,7 @@
           "outcome_snapshot": {
             "career_outcome_label": "wr2_peak",
             "best_season_fantasy_ppg": 16.8,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
             "years_1_to_3_summary": "2022-2024 PPR/G: 10.5, 10.9, 16.5; receiving line: 72/866/4, 69/905/2, 100/1271/9."
           }
         },
@@ -680,9 +680,9 @@
             "size_context_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": "depth_peak",
+            "career_outcome_label": "flex_peak",
             "best_season_fantasy_ppg": 8.6,
-            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
             "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
           }
         }
@@ -720,7 +720,7 @@
           "outcome_snapshot": {
             "career_outcome_label": "wr2_peak",
             "best_season_fantasy_ppg": 16.8,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
             "years_1_to_3_summary": "2022-2024 PPR/G: 10.5, 10.9, 16.5; receiving line: 72/866/4, 69/905/2, 100/1271/9."
           }
         },
@@ -842,9 +842,9 @@
             "size_context_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": "depth_peak",
+            "career_outcome_label": "flex_peak",
             "best_season_fantasy_ppg": 8.6,
-            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
             "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
           }
         }
@@ -881,9 +881,9 @@
             "size_context_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": "depth_peak",
+            "career_outcome_label": "flex_peak",
             "best_season_fantasy_ppg": 8.6,
-            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
             "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
           }
         },
@@ -914,7 +914,7 @@
           "outcome_snapshot": {
             "career_outcome_label": "wr2_peak",
             "best_season_fantasy_ppg": 16.5,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
             "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
           }
         },
@@ -1005,9 +1005,9 @@
             "size_context_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
+            "career_outcome_label": "wr1_peak",
             "best_season_fantasy_ppg": 18.5,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+            "top_finish_band": "WR1 (18.0+ PPR/G peak)",
             "years_1_to_3_summary": "2020-2022 PPR/G: 12.2, 15.7, 13.8; receiving line: 67/908/6, 74/1091/6, 74/1029/7."
           }
         }
@@ -1044,9 +1044,9 @@
             "size_context_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": "depth_peak",
+            "career_outcome_label": "flex_peak",
             "best_season_fantasy_ppg": 8.6,
-            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
             "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
           }
         },
@@ -1107,7 +1107,7 @@
           "outcome_snapshot": {
             "career_outcome_label": "wr2_peak",
             "best_season_fantasy_ppg": 16.8,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
             "years_1_to_3_summary": "2022-2024 PPR/G: 10.5, 10.9, 16.5; receiving line: 72/866/4, 69/905/2, 100/1271/9."
           }
         },
@@ -1138,7 +1138,7 @@
           "outcome_snapshot": {
             "career_outcome_label": "wr2_peak",
             "best_season_fantasy_ppg": 16.5,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
             "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
           }
         },
@@ -1206,9 +1206,9 @@
             "size_context_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": "depth_peak",
+            "career_outcome_label": "flex_peak",
             "best_season_fantasy_ppg": 8.6,
-            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
             "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
           }
         },
@@ -1331,7 +1331,7 @@
           "outcome_snapshot": {
             "career_outcome_label": "wr2_peak",
             "best_season_fantasy_ppg": 16.8,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
             "years_1_to_3_summary": "2022-2024 PPR/G: 10.5, 10.9, 16.5; receiving line: 72/866/4, 69/905/2, 100/1271/9."
           }
         }
@@ -1369,7 +1369,7 @@
           "outcome_snapshot": {
             "career_outcome_label": "wr2_peak",
             "best_season_fantasy_ppg": 16.8,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
             "years_1_to_3_summary": "2022-2024 PPR/G: 10.5, 10.9, 16.5; receiving line: 72/866/4, 69/905/2, 100/1271/9."
           }
         },
@@ -1400,7 +1400,7 @@
           "outcome_snapshot": {
             "career_outcome_label": "wr2_peak",
             "best_season_fantasy_ppg": 16.5,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
             "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
           }
         },
@@ -1491,9 +1491,9 @@
             "size_context_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": "depth_peak",
+            "career_outcome_label": "flex_peak",
             "best_season_fantasy_ppg": 8.6,
-            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
             "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
           }
         }
@@ -1532,7 +1532,7 @@
           "outcome_snapshot": {
             "career_outcome_label": "wr2_peak",
             "best_season_fantasy_ppg": 16.5,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
             "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
           }
         },
@@ -1561,9 +1561,9 @@
             "size_context_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
+            "career_outcome_label": "wr1_peak",
             "best_season_fantasy_ppg": 18.5,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+            "top_finish_band": "WR1 (18.0+ PPR/G peak)",
             "years_1_to_3_summary": "2020-2022 PPR/G: 12.2, 15.7, 13.8; receiving line: 67/908/6, 74/1091/6, 74/1029/7."
           }
         },
@@ -1623,9 +1623,9 @@
             "size_context_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": "depth_peak",
+            "career_outcome_label": "flex_peak",
             "best_season_fantasy_ppg": 8.6,
-            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
             "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
           }
         },
@@ -1655,7 +1655,7 @@
           "outcome_snapshot": {
             "career_outcome_label": "wr2_peak",
             "best_season_fantasy_ppg": 16.8,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
             "years_1_to_3_summary": "2022-2024 PPR/G: 10.5, 10.9, 16.5; receiving line: 72/866/4, 69/905/2, 100/1271/9."
           }
         }
@@ -1692,9 +1692,9 @@
             "size_context_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
+            "career_outcome_label": "wr1_peak",
             "best_season_fantasy_ppg": 18.5,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+            "top_finish_band": "WR1 (18.0+ PPR/G peak)",
             "years_1_to_3_summary": "2020-2022 PPR/G: 12.2, 15.7, 13.8; receiving line: 67/908/6, 74/1091/6, 74/1029/7."
           }
         },
@@ -1756,7 +1756,7 @@
           "outcome_snapshot": {
             "career_outcome_label": "wr2_peak",
             "best_season_fantasy_ppg": 16.5,
-            "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
             "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
           }
         },
@@ -1815,9 +1815,9 @@
             "size_context_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": "depth_peak",
+            "career_outcome_label": "flex_peak",
             "best_season_fantasy_ppg": 8.6,
-            "top_finish_band": "Depth (<12.0 PPR/G peak)",
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
             "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
           }
         }
