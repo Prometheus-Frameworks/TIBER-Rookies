@@ -32,7 +32,7 @@
     "draft_year": 2018,
     "career_outcome_label": "wr2_peak",
     "best_season_fantasy_ppg": 16.9,
-    "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+    "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
     "years_1_to_3_summary": "2018-2020 PPR/G: 11.5, 15.4, 16.9; receiving line: 55/788/2, 87/1175/4, 66/1193/4.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/dj-moore-fantasy/19865"
@@ -44,7 +44,7 @@
     "draft_year": 2018,
     "career_outcome_label": "wr2_peak",
     "best_season_fantasy_ppg": 16.5,
-    "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+    "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
     "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/calvin-ridley-fantasy/19868"
@@ -80,11 +80,11 @@
     "draft_year": 2020,
     "career_outcome_label": "wr1_peak",
     "best_season_fantasy_ppg": 23.7,
-    "top_finish_band": "WR1 (>=20.0 PPR/G peak)",
+    "top_finish_band": "WR1 (18.0+ PPR/G peak)",
     "years_1_to_3_summary": "2020-2022 PPR/G: 13.2, 14.6, 17.7; receiving line: 74/935/5, 79/1102/6, 107/1359/9.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/ceedee-lamb-fantasy/21679",
-    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
+    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=18 WR1, 15-17.9 WR2, 12-14.9 WR3, 8-11.9 flex, <8 depth_bust."
   },
   {
     "player_id": "wr-jerry-jeudy-2020",
@@ -97,7 +97,7 @@
     "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/jerry-jeudy-fantasy/21692",
-    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
+    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=18 WR1, 15-17.9 WR2, 12-14.9 WR3, 8-11.9 flex, <8 depth_bust."
   },
   {
     "player_id": "wr-justin-jefferson-2020",
@@ -106,11 +106,11 @@
     "draft_year": 2020,
     "career_outcome_label": "wr1_peak",
     "best_season_fantasy_ppg": 21.7,
-    "top_finish_band": "WR1 (>=20.0 PPR/G peak)",
+    "top_finish_band": "WR1 (18.0+ PPR/G peak)",
     "years_1_to_3_summary": "2020-2022 PPR/G: 17.1, 19.4, 21.7; receiving line: 88/1400/7, 108/1616/10, 128/1809/8.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/justin-jefferson-fantasy/21685",
-    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
+    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=18 WR1, 15-17.9 WR2, 12-14.9 WR3, 8-11.9 flex, <8 depth_bust."
   },
   {
     "player_id": "wr-brandon-aiyuk-2020",
@@ -119,24 +119,24 @@
     "draft_year": 2020,
     "career_outcome_label": "wr2_peak",
     "best_season_fantasy_ppg": 15.6,
-    "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+    "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
     "years_1_to_3_summary": "2020-2022 PPR/G: 15.4, 10.0, 13.4; receiving line: 60/748/5, 56/826/5, 78/1015/8.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/brandon-aiyuk-fantasy/21747",
-    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
+    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=18 WR1, 15-17.9 WR2, 12-14.9 WR3, 8-11.9 flex, <8 depth_bust."
   },
   {
     "player_id": "wr-tee-higgins-2020",
     "player_name": "Tee Higgins",
     "position": "WR",
     "draft_year": 2020,
-    "career_outcome_label": "wr2_peak",
+    "career_outcome_label": "wr1_peak",
     "best_season_fantasy_ppg": 18.5,
-    "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+    "top_finish_band": "WR1 (18.0+ PPR/G peak)",
     "years_1_to_3_summary": "2020-2022 PPR/G: 12.2, 15.7, 13.8; receiving line: 67/908/6, 74/1091/6, 74/1029/7.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/tee-higgins-fantasy/21690",
-    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
+    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=18 WR1, 15-17.9 WR2, 12-14.9 WR3, 8-11.9 flex, <8 depth_bust."
   },
   {
     "player_id": "sample-te-2021-a",
@@ -158,11 +158,11 @@
     "draft_year": 2021,
     "career_outcome_label": "wr1_peak",
     "best_season_fantasy_ppg": 23.7,
-    "top_finish_band": "WR1 (>=20.0 PPR/G peak)",
+    "top_finish_band": "WR1 (18.0+ PPR/G peak)",
     "years_1_to_3_summary": "2021-2023 PPR/G: 17.9, 20.2, 16.4; receiving line: 81/1455/13, 87/1046/9, 100/1216/7.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/ja-marr-chase-fantasy/22564",
-    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table (23.7 in 2024 season); top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
+    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table (23.7 in 2024 season); top_finish_band derived deterministically from that max using fixed bands: >=18 WR1, 15-17.9 WR2, 12-14.9 WR3, 8-11.9 flex, <8 depth_bust."
   },
   {
     "player_id": "wr-jaylen-waddle-2021",
@@ -171,11 +171,11 @@
     "draft_year": 2021,
     "career_outcome_label": "wr2_peak",
     "best_season_fantasy_ppg": 15.4,
-    "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+    "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
     "years_1_to_3_summary": "2021-2023 PPR/G: 15.4, 15.2, 14.2; receiving line: 104/1015/6, 75/1356/8, 72/1014/4.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/jaylen-waddle-fantasy/22598",
-    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
+    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=18 WR1, 15-17.9 WR2, 12-14.9 WR3, 8-11.9 flex, <8 depth_bust."
   },
   {
     "player_id": "wr-devonta-smith-2021",
@@ -184,37 +184,37 @@
     "draft_year": 2021,
     "career_outcome_label": "wr2_peak",
     "best_season_fantasy_ppg": 15.3,
-    "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+    "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
     "years_1_to_3_summary": "2021-2023 PPR/G: 10.9, 15.0, 14.2; receiving line: 64/916/5, 95/1196/7, 81/1066/7.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/devonta-smith-fantasy/21687",
-    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
+    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=18 WR1, 15-17.9 WR2, 12-14.9 WR3, 8-11.9 flex, <8 depth_bust."
   },
   {
     "player_id": "wr-kadarius-toney-2021",
     "player_name": "Kadarius Toney",
     "position": "WR",
     "draft_year": 2021,
-    "career_outcome_label": "depth_peak",
+    "career_outcome_label": "flex_peak",
     "best_season_fantasy_ppg": 8.2,
-    "top_finish_band": "Depth (<12.0 PPR/G peak)",
+    "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
     "years_1_to_3_summary": "2021-2023 PPR/G: 8.2, 6.4, 4.1; receiving line: 39/420/0, 16/171/2, 27/169/1.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/kadarius-toney-fantasy/22614",
-    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
+    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=18 WR1, 15-17.9 WR2, 12-14.9 WR3, 8-11.9 flex, <8 depth_bust."
   },
   {
     "player_id": "wr-rashod-bateman-2021",
     "player_name": "Rashod Bateman",
     "position": "WR",
     "draft_year": 2021,
-    "career_outcome_label": "depth_peak",
+    "career_outcome_label": "flex_peak",
     "best_season_fantasy_ppg": 10.3,
-    "top_finish_band": "Depth (<12.0 PPR/G peak)",
+    "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
     "years_1_to_3_summary": "2021-2023 PPR/G: 8.6, 8.9, 4.8; receiving line: 46/515/1, 15/285/2, 32/367/1.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/rashod-bateman-fantasy/22623",
-    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
+    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=18 WR1, 15-17.9 WR2, 12-14.9 WR3, 8-11.9 flex, <8 depth_bust."
   },
   {
     "player_id": "wr-garrett-wilson-2022",
@@ -227,7 +227,7 @@
     "years_1_to_3_summary": "2022-2024 PPR/G: 12.7, 12.5, 14.8; receiving line: 83/1103/4, 95/1042/3, 101/1104/7.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/garrett-wilson-fantasy/23122",
-    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
+    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=18 WR1, 15-17.9 WR2, 12-14.9 WR3, 8-11.9 flex, <8 depth_bust."
   },
   {
     "player_id": "wr-drake-london-2022",
@@ -236,11 +236,11 @@
     "draft_year": 2022,
     "career_outcome_label": "wr2_peak",
     "best_season_fantasy_ppg": 16.8,
-    "top_finish_band": "WR2 (15.0-19.9 PPR/G peak)",
+    "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
     "years_1_to_3_summary": "2022-2024 PPR/G: 10.5, 10.9, 16.5; receiving line: 72/866/4, 69/905/2, 100/1271/9.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/drake-london-fantasy/23151",
-    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
+    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=18 WR1, 15-17.9 WR2, 12-14.9 WR3, 8-11.9 flex, <8 depth_bust."
   },
   {
     "player_id": "wr-chris-olave-2022",
@@ -253,7 +253,7 @@
     "years_1_to_3_summary": "2022-2024 PPR/G: 13.2, 14.5, 9.6; receiving line: 72/1042/4, 87/1123/5, 32/400/1.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/chris-olave-fantasy/22565",
-    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
+    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=18 WR1, 15-17.9 WR2, 12-14.9 WR3, 8-11.9 flex, <8 depth_bust."
   },
   {
     "player_id": "wr-jameson-williams-2022",
@@ -266,20 +266,20 @@
     "years_1_to_3_summary": "2022-2024 PPR/G: 2.5, 6.7, 14.1; receiving line: 1/41/1, 24/354/2, 58/1001/7.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/jwilliams-fantasy/23234",
-    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
+    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=18 WR1, 15-17.9 WR2, 12-14.9 WR3, 8-11.9 flex, <8 depth_bust."
   },
   {
     "player_id": "wr-treylon-burks-2022",
     "player_name": "Treylon Burks",
     "position": "WR",
     "draft_year": 2022,
-    "career_outcome_label": "depth_peak",
+    "career_outcome_label": "flex_peak",
     "best_season_fantasy_ppg": 8.6,
-    "top_finish_band": "Depth (<12.0 PPR/G peak)",
+    "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
     "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0.",
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/treylon-burks-fantasy/23119",
-    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
+    "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=18 WR1, 15-17.9 WR2, 12-14.9 WR3, 8-11.9 flex, <8 depth_bust."
   },
   {
     "player_id": "wr-aj-brown-2019",
