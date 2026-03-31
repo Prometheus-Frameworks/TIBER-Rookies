@@ -139,6 +139,19 @@
     "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=18 WR1, 15-17.9 WR2, 12-14.9 WR3, 8-11.9 flex, <8 depth_bust."
   },
   {
+    "player_id": "wr-laviska-shenault-2020",
+    "player_name": "Laviska Shenault Jr.",
+    "position": "WR",
+    "draft_year": 2020,
+    "career_outcome_label": "flex_peak",
+    "best_season_fantasy_ppg": 11.2,
+    "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
+    "years_1_to_3_summary": "2020-2022 PPR/G: 11.2, 7.3, 4.6; stat lines: 58/600/5 + 18/91/0 rush, 63/619/0 + 18/41/0 rush, 27/272/1 + 7/42/0 rush.",
+    "source_name": "Pro-Football-Reference player receiving/rushing tables (PPR/G computed manually)",
+    "source_url": "https://www.pro-football-reference.com/players/S/ShenLa00.htm",
+    "notes": "Best-season PPR/G computed as max of first three seasons (2020-2022) using full-PPR formula: receptions + receiving yards/10 + receiving TD*6 + rushing yards/10 + rushing TD*6, divided by games played."
+  },
+  {
     "player_id": "sample-te-2021-a",
     "player_name": "Sample TE Profile A",
     "position": "TE",

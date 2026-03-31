@@ -220,6 +220,26 @@
     "production_0_100_legacy": 62.88
   },
   {
+    "player_id": "wr-laviska-shenault-2020",
+    "player_name": "Laviska Shenault Jr.",
+    "position": "WR",
+    "school": "Colorado",
+    "draft_year": 2020,
+    "source_season": 2019,
+    "ras_0_100": 63.2,
+    "production_0_100": null,
+    "draft_capital_proxy_0_100": 80.0,
+    "size_context_0_100": 63.3,
+    "normalization_scope": "historical-wr-cfbd-method-v1",
+    "source_name": "CFB Stats (2019 Colorado receiving), RAS.football player card, Pro-Football-Reference draft record",
+    "source_url": "https://www.sports-reference.com/cfb/players/laviska-shenault-jr-1.html",
+    "notes": "Added for WR lane coverage; 2019 Colorado receiving line used for source_season alignment (56/764/4). RAS from ras.football (6.32 -> 63.2). Draft capital proxy set to 80.0 for No. 42 overall (round 2). size_context computed from schema formula using 73 in / 227 lb. production_0_100 intentionally null for runtime recompute.",
+    "receptions": 56,
+    "receiving_yards": 764,
+    "receiving_tds": 4,
+    "production_0_100_legacy": null
+  },
+  {
     "player_id": "wr-jamarr-chase-2021",
     "player_name": "Ja'Marr Chase",
     "position": "WR",
