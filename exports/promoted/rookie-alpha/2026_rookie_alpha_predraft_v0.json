@@ -76,7 +76,8 @@
         "production_0_100": 68.5,
         "draft_capital_proxy_0_100": 85.0,
         "talent_score_0_100": 63.2178,
-        "rookie_alpha_0_100": 67.5742
+        "rookie_alpha_0_100": 67.5742,
+        "size_context_0_100": 70.1
       },
       "model_inputs_missing": [],
       "context": {
@@ -140,7 +141,8 @@
         "production_0_100": 60.6,
         "draft_capital_proxy_0_100": 75.0,
         "talent_score_0_100": 62.2545,
-        "rookie_alpha_0_100": 64.8036
+        "rookie_alpha_0_100": 64.8036,
+        "size_context_0_100": 65.0
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 4,
@@ -156,7 +158,8 @@
         "production_0_100": 73.7,
         "draft_capital_proxy_0_100": 95.0,
         "talent_score_0_100": 56.6211,
-        "rookie_alpha_0_100": 64.2969
+        "rookie_alpha_0_100": 64.2969,
+        "size_context_0_100": 54.3
       },
       "model_inputs_missing": [],
       "context": {
@@ -220,7 +223,8 @@
         "production_0_100": 57.2,
         "draft_capital_proxy_0_100": 95.0,
         "talent_score_0_100": 56.0874,
-        "rookie_alpha_0_100": 63.8699
+        "rookie_alpha_0_100": 63.8699,
+        "size_context_0_100": 58.4
       },
       "model_inputs_missing": [],
       "context": {
@@ -288,7 +292,8 @@
         "production_0_100": 73.4,
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 65.0637,
-        "rookie_alpha_0_100": 63.0509
+        "rookie_alpha_0_100": 63.0509,
+        "size_context_0_100": 64.8
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 7,
@@ -320,7 +325,8 @@
         "production_0_100": 67.6,
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 64.4183,
-        "rookie_alpha_0_100": 62.5347
+        "rookie_alpha_0_100": 62.5347,
+        "size_context_0_100": 63.1
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 9,
@@ -336,7 +342,8 @@
         "production_0_100": 69.0,
         "draft_capital_proxy_0_100": 75.0,
         "talent_score_0_100": 57.7348,
-        "rookie_alpha_0_100": 61.1878
+        "rookie_alpha_0_100": 61.1878,
+        "size_context_0_100": 47.6
       },
       "model_inputs_missing": [],
       "context": {
@@ -404,7 +411,8 @@
         "production_0_100": 73.0,
         "draft_capital_proxy_0_100": 75.0,
         "talent_score_0_100": 57.3723,
-        "rookie_alpha_0_100": 60.8978
+        "rookie_alpha_0_100": 60.8978,
+        "size_context_0_100": 41.9
       },
       "model_inputs_missing": [],
       "context": {

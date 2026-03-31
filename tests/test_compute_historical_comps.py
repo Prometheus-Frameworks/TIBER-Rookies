@@ -7,6 +7,7 @@ from scripts.compute_historical_comps import (
     WR_POPULATION_SCOPE,
     _load_wr_reference_populations,
     apply_wr_historical_production_methodology,
+    build_wr_lane_coverage_summary,
     build_methodology_compatible_by_position,
     build_ui_display_allowed,
     REQUIRED_HISTORICAL_FEATURE_FIELDS,
@@ -418,6 +419,233 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
         self.assertIn("WR", artifact["comp_data_warnings"])
         self.assertEqual(artifact["similarity_quality_by_position"]["WR"]["status"], "directional_only")
 
+    def test_wr_lane_coverage_summary_fields_present(self) -> None:
+        artifact = json.loads(
+            Path("exports/promoted/historical-comps/2026_historical_comps_v0.json").read_text(encoding="utf-8")
+        )
+        summary = artifact["lane_coverage_by_position"]["WR"]
+        expected_fields = {
+            "total_promoted_wrs",
+            "rookie_wr_with_comps",
+            "max_top1_count",
+            "unique_top1_count",
+            "unique_comp_pool_count",
+            "all_comps_count",
+            "all_comps_with_3plus_features_count",
+            "top1_comps_count",
+            "top1_comps_with_3plus_features_count",
+            "pct_all_comps_with_3plus_features",
+            "pct_top1_comps_with_3plus_features",
+            "coverage_sufficient",
+            "failed_checks",
+        }
+        self.assertEqual(set(summary.keys()), expected_fields)
+
+    def test_wr_coverage_insufficient_emits_warning(self) -> None:
+        players = [
+            {
+                "player_id": "wr-r1",
+                "player_name": "Rookie WR1",
+                "position": "WR",
+                "comps": [
+                    {"historical_player_id": "h1", "effective_features_used": ["a", "b"]},
+                    {"historical_player_id": "h2", "effective_features_used": ["a", "b"]},
+                ],
+            },
+            {
+                "player_id": "wr-r2",
+                "player_name": "Rookie WR2",
+                "position": "WR",
+                "comps": [
+                    {"historical_player_id": "h1", "effective_features_used": ["a", "b"]},
+                    {"historical_player_id": "h3", "effective_features_used": ["a", "b"]},
+                ],
+            },
+        ]
+        summary = build_wr_lane_coverage_summary(players)
+        self.assertFalse(summary["coverage_sufficient"])
+        self.assertTrue(summary["failed_checks"])
+
+    def test_wr_coverage_sufficient_clears_warning(self) -> None:
+        players = []
+        for i in range(8):
+            comps = []
+            for j in range(5):
+                feature_keys = ["ras_0_100", "production_0_100", "size_context_0_100"]
+                comps.append(
+                    {
+                        "historical_player_id": f"h{j + i}",
+                        "effective_features_used": feature_keys,
+                        "outcome_snapshot": {"career_outcome_label": "Starter"},
+                    }
+                )
+            comps[0]["historical_player_id"] = f"top{i}"
+            players.append(
+                {
+                    "player_id": f"wr-r{i}",
+                    "player_name": f"Rookie WR{i}",
+                    "position": "WR",
+                    "comps": comps,
+                }
+            )
+
+        summary = build_wr_lane_coverage_summary(players)
+        self.assertTrue(summary["coverage_sufficient"])
+        self.assertEqual(summary["failed_checks"], [])
+
+    def test_wr_coverage_sufficient_false_when_single_threshold_fails(self) -> None:
+        base_players = []
+        for i in range(8):
+            base_players.append(
+                {
+                    "player_id": f"wr-r{i}",
+                    "player_name": f"Rookie WR{i}",
+                    "position": "WR",
+                    "comps": [
+                        {
+                            "historical_player_id": f"top{i}",
+                            "effective_features_used": ["ras_0_100", "production_0_100", "size_context_0_100"],
+                        },
+                        {
+                            "historical_player_id": f"pool{i}",
+                            "effective_features_used": ["ras_0_100", "production_0_100", "size_context_0_100"],
+                        },
+                    ],
+                }
+            )
+        scenarios = {
+            "rookie_wr_with_comps": [dict(player, comps=[] if idx == 0 else player["comps"]) for idx, player in enumerate(base_players)],
+            "max_top1_count": [
+                dict(player, comps=[dict(player["comps"][0], historical_player_id="same"), player["comps"][1]])
+                for player in base_players
+            ],
+            "unique_top1_count": [
+                dict(player, comps=[dict(player["comps"][0], historical_player_id=f"top{idx % 4}"), player["comps"][1]])
+                for idx, player in enumerate(base_players)
+            ],
+            "unique_comp_pool_count": [
+                dict(player, comps=[dict(player["comps"][0], historical_player_id=f"top{idx % 5}"), dict(player["comps"][1], historical_player_id=f"top{idx % 5}")])
+                for idx, player in enumerate(base_players)
+            ],
+            "pct_all_comps_with_3plus_features": [
+                dict(player, comps=[dict(player["comps"][0], effective_features_used=["ras_0_100", "production_0_100"]), player["comps"][1]])
+                for player in base_players
+            ],
+            "pct_top1_comps_with_3plus_features": [
+                dict(player, comps=[dict(player["comps"][0], effective_features_used=["ras_0_100", "production_0_100"]), player["comps"][1]])
+                for player in base_players
+            ],
+        }
+        for failed_check, players in scenarios.items():
+            summary = build_wr_lane_coverage_summary(players)
+            self.assertFalse(summary["coverage_sufficient"])
+            self.assertIn(failed_check, summary["failed_checks"])
+
+    def test_compute_historical_comps_wr_warning_present_when_coverage_insufficient(self) -> None:
+        rookies = [
+            {
+                "player_id": f"wr-r{i}",
+                "player_name": f"Rookie WR{i}",
+                "position": "WR",
+                "ras_0_100": 80.0,
+                "production_0_100": 70.0,
+                "draft_capital_proxy_0_100": 80.0,
+                "size_context_0_100": 60.0,
+            }
+            for i in range(4)
+        ]
+        historical_features = normalize_historical_feature_rows(
+            [
+                {
+                    "player_id": "wr-h1",
+                    "player_name": "Hist WR1",
+                    "position": "WR",
+                    "school": "A",
+                    "draft_year": 2019,
+                    "source_season": 2018,
+                    "ras_0_100": 80.0,
+                    "production_0_100": 70.0,
+                    "draft_capital_proxy_0_100": 80.0,
+                    "size_context_0_100": 60.0,
+                    "normalization_scope": "class-local",
+                }
+            ]
+        )
+        artifact = compute_historical_comps(
+            season=2026,
+            rookies=rookies,
+            historical_features=historical_features,
+            outcomes_by_player_id={},
+            comp_mode="talent_comp",
+            top_n=1,
+            source_files_used=["a"],
+            generated_at="2026-03-30T00:00:00+00:00",
+        )
+        self.assertIn("WR", artifact["comp_data_warnings"])
+        self.assertFalse(artifact["lane_coverage_by_position"]["WR"]["coverage_sufficient"])
+
+    def test_compute_historical_comps_wr_warning_absent_when_coverage_sufficient(self) -> None:
+        rookies = [
+            {
+                "player_id": f"wr-r{i}",
+                "player_name": f"Rookie WR{i}",
+                "position": "WR",
+                "ras_0_100": 50.0 + (i * 5.0),
+                "production_0_100": 45.0 + (i * 5.0),
+                "draft_capital_proxy_0_100": 40.0 + (i * 5.0),
+                "size_context_0_100": 35.0 + (i * 5.0),
+            }
+            for i in range(8)
+        ]
+        historical_rows = []
+        for i in range(8):
+            historical_rows.append(
+                {
+                    "player_id": f"wr-h{i}",
+                    "player_name": f"Hist WR{i}",
+                    "position": "WR",
+                    "school": "A",
+                    "draft_year": 2010 + i,
+                    "source_season": 2009 + i,
+                    "ras_0_100": 50.0 + (i * 5.0),
+                    "production_0_100": 45.0 + (i * 5.0),
+                    "draft_capital_proxy_0_100": 40.0 + (i * 5.0),
+                    "size_context_0_100": 35.0 + (i * 5.0),
+                    "normalization_scope": "class-local",
+                }
+            )
+        historical_features = normalize_historical_feature_rows(historical_rows)
+        outcomes = normalize_outcome_rows(
+            [
+                {
+                    "player_id": row["player_id"],
+                    "player_name": row["player_name"],
+                    "position": "WR",
+                    "draft_year": row["draft_year"],
+                    "career_outcome_label": "Starter",
+                    "best_season_fantasy_ppg": 12.0,
+                    "top_finish_band": "WR2",
+                    "years_1_to_3_summary": "ok",
+                }
+                for row in historical_rows
+            ]
+        )
+        artifact = compute_historical_comps(
+            season=2026,
+            rookies=rookies,
+            historical_features=historical_features,
+            outcomes_by_player_id=outcomes,
+            comp_mode="talent_comp",
+            top_n=1,
+            source_files_used=["a"],
+            generated_at="2026-03-30T00:00:00+00:00",
+            production_scope_compatible=frozenset({"class-local"}),
+        )
+        self.assertNotIn("WR", artifact["comp_data_warnings"])
+        self.assertTrue(artifact["lane_coverage_by_position"]["WR"]["coverage_sufficient"])
+        self.assertTrue(artifact["methodology_compatibility_by_position"]["WR"])
+        self.assertTrue(artifact["ui_display_allowed"]["WR"])
+
     def test_methodology_compatibility_projection_matches_similarity_quality(self) -> None:
         artifact = json.loads(
             Path("exports/promoted/historical-comps/2026_historical_comps_v0.json").read_text(encoding="utf-8")
@@ -566,7 +794,10 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
         artifact = json.loads(
             Path("exports/promoted/historical-comps/2026_historical_comps_v0.json").read_text(encoding="utf-8")
         )
-        self.assertFalse(artifact["methodology_compatibility_by_position"]["WR"])
+        self.assertEqual(
+            artifact["methodology_compatibility_by_position"]["WR"],
+            artifact["similarity_quality_by_position"]["WR"]["requirements_checked"]["methodology_compatible"],
+        )
         self.assertEqual(artifact["similarity_quality_by_position"]["WR"]["status"], "directional_only")
         self.assertFalse(artifact["ui_display_allowed"]["WR"])
 
