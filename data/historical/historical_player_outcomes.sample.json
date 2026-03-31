@@ -280,5 +280,57 @@
     "source_name": "FantasyData player season fantasy stats (PPR scoring)",
     "source_url": "https://fantasydata.com/nfl/treylon-burks-fantasy/23119",
     "notes": "best_season_fantasy_ppg uses max season FPTS/G from cited table; top_finish_band derived deterministically from that max using fixed bands: >=20 WR1, >=15 WR2, >=12 WR3, <12 depth."
+  },
+  {
+    "player_id": "wr-aj-brown-2019",
+    "player_name": "A.J. Brown",
+    "position": "WR",
+    "draft_year": 2019,
+    "career_outcome_label": "wr2_peak",
+    "best_season_fantasy_ppg": 17.4,
+    "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+    "years_1_to_3_summary": "2019-2021 PPR/G: 12.8, 17.4, 13.8; receiving line: 52/1051/8, 70/1075/11, 63/869/5.",
+    "source_name": "Pro Football Reference player receiving and fantasy scoring tables",
+    "source_url": "https://www.pro-football-reference.com/players/B/BrowAJ00.htm",
+    "notes": "PPR/G derived from yearly receiving lines using 1 pt/reception + 0.1 pts/yard + 6 pts/TD, divided by games played."
+  },
+  {
+    "player_id": "wr-dk-metcalf-2019",
+    "player_name": "D.K. Metcalf",
+    "position": "WR",
+    "draft_year": 2019,
+    "career_outcome_label": "wr2_peak",
+    "best_season_fantasy_ppg": 17.1,
+    "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+    "years_1_to_3_summary": "2019-2021 PPR/G: 11.9, 17.1, 14.3; receiving line: 58/900/7, 83/1303/10, 75/967/12.",
+    "source_name": "Pro Football Reference player receiving and fantasy scoring tables",
+    "source_url": "https://www.pro-football-reference.com/players/M/MetcDK00.htm",
+    "notes": "PPR/G derived from yearly receiving lines using 1 pt/reception + 0.1 pts/yard + 6 pts/TD, divided by games played."
+  },
+  {
+    "player_id": "wr-deebo-samuel-2019",
+    "player_name": "Deebo Samuel",
+    "position": "WR",
+    "draft_year": 2019,
+    "career_outcome_label": "wr2_peak",
+    "best_season_fantasy_ppg": 15.8,
+    "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+    "years_1_to_3_summary": "2019-2021 PPR/G: 10.3, 11.2, 15.8; receiving line: 57/802/3, 33/391/1, 77/1405/6.",
+    "source_name": "Pro Football Reference player receiving and fantasy scoring tables",
+    "source_url": "https://www.pro-football-reference.com/players/S/SamuDe00.htm",
+    "notes": "2020 was injury-shortened; PPR/G derived from yearly receiving lines using 1 pt/reception + 0.1 pts/yard + 6 pts/TD, divided by games played."
+  },
+  {
+    "player_id": "wr-marquise-brown-2019",
+    "player_name": "Marquise Brown",
+    "position": "WR",
+    "draft_year": 2019,
+    "career_outcome_label": "wr3_peak",
+    "best_season_fantasy_ppg": 14.2,
+    "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+    "years_1_to_3_summary": "2019-2021 PPR/G: 10.5, 11.4, 14.2; receiving line: 46/584/7, 58/769/8, 91/1008/6.",
+    "source_name": "Pro Football Reference player receiving and fantasy scoring tables",
+    "source_url": "https://www.pro-football-reference.com/players/B/BrowMa04.htm",
+    "notes": "PPR/G derived from yearly receiving lines using 1 pt/reception + 0.1 pts/yard + 6 pts/TD, divided by games played."
   }
 ]
