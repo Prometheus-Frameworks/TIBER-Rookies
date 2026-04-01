@@ -66,7 +66,16 @@ def parse_depth_tag(play_text: str) -> str | None:
 def is_targeted_player(play_text: str, player_name: str) -> bool:
     normalized_text = normalize_identity(play_text)
     normalized_player = normalize_identity(player_name)
-    return normalized_player in normalized_text
+    if normalized_player in normalized_text:
+        return True
+    # CFBD play text uses abbreviated first names (e.g. "C. Tate" not "Carnell Tate").
+    # Also check first-initial + last-name form.
+    parts = normalized_player.split()
+    if len(parts) >= 2:
+        abbreviated = f"{parts[0][0]} {' '.join(parts[1:])}"
+        if abbreviated in normalized_text:
+            return True
+    return False
 
 
 def safe_rate(numerator: float, denominator: float) -> float | None:
