@@ -796,8 +796,8 @@ def build_te_lane_coverage_summary(players: list[dict[str, Any]]) -> dict[str, A
         "max_top1_count": max_top1_count <= 3,
         "unique_top1_count": unique_top1_count >= 2,
         "unique_comp_pool_count": unique_comp_pool_count >= 6,
-        "pct_all_comps_with_3plus_features": pct_all_comps_with_3plus_features >= 0.0,
-        "pct_top1_comps_with_3plus_features": pct_top1_comps_with_3plus_features >= 0.0,
+        "pct_all_comps_with_3plus_features": pct_all_comps_with_3plus_features >= 0.70,
+        "pct_top1_comps_with_3plus_features": pct_top1_comps_with_3plus_features >= 0.60,
     }
     failed_checks = [name for name, passed in checks.items() if not passed]
 
