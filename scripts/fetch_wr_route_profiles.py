@@ -88,27 +88,34 @@ def cfbd_headers() -> dict[str, str]:
 
 
 def fetch_team_plays(year: int, team: str, season_type: str) -> list[dict[str, Any]]:
+    # CFBD /plays requires a week parameter — fetch week-by-week and aggregate.
     season_types = ["regular", "postseason"] if season_type == "both" else ["regular"]
+    week_ranges = {"regular": range(1, 19), "postseason": range(1, 6)}
     plays: list[dict[str, Any]] = []
 
     for single_type in season_types:
-        params = urlencode({"year": year, "team": team, "seasonType": single_type})
-        url = f"{CFBD_BASE_URL}/plays?{params}"
-        request = Request(url=url, headers=cfbd_headers())
-        try:
-            with urlopen(request, timeout=60) as response:
-                payload = json.load(response)
-        except HTTPError as exc:
-            raise SystemExit(f"CFBD API request failed for {team} {year} ({single_type}): HTTP {exc.code}") from exc
-        except URLError as exc:
-            raise SystemExit(f"CFBD API request failed for {team} {year} ({single_type}): {exc.reason}") from exc
+        for week in week_ranges[single_type]:
+            params = urlencode({"year": year, "team": team, "seasonType": single_type, "week": week})
+            url = f"{CFBD_BASE_URL}/plays?{params}"
+            request = Request(url=url, headers=cfbd_headers())
+            try:
+                with urlopen(request, timeout=60) as response:
+                    payload = json.load(response)
+            except HTTPError as exc:
+                raise SystemExit(
+                    f"CFBD API request failed for {team} {year} week {week} ({single_type}): HTTP {exc.code}"
+                ) from exc
+            except URLError as exc:
+                raise SystemExit(
+                    f"CFBD API request failed for {team} {year} week {week} ({single_type}): {exc.reason}"
+                ) from exc
 
-        if not isinstance(payload, list):
-            raise SystemExit(
-                f"Unexpected CFBD response for {team} {year} ({single_type}): expected list, got {type(payload).__name__}"
-            )
+            if not isinstance(payload, list):
+                raise SystemExit(
+                    f"Unexpected CFBD response for {team} {year} week {week}: expected list, got {type(payload).__name__}"
+                )
 
-        plays.extend(payload)
+            plays.extend(payload)
 
     return plays
 
