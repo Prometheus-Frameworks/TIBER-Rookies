@@ -11,7 +11,7 @@
     },
     "notes": "v0 emits talent_comp by default; market_comp support is scaffolded and optional."
   },
-  "generated_at": "2026-03-31T23:38:41+00:00",
+  "generated_at": "2026-03-31T23:59:24+00:00",
   "season": 2026,
   "source_files_used": [
     "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
@@ -32,6 +32,21 @@
       "top1_comps_with_3plus_features_count": 6,
       "pct_all_comps_with_3plus_features": 0.85,
       "pct_top1_comps_with_3plus_features": 0.75,
+      "coverage_sufficient": true,
+      "failed_checks": []
+    },
+    "TE": {
+      "total_promoted_tes": 3,
+      "rookie_te_with_comps": 3,
+      "max_top1_count": 2,
+      "unique_top1_count": 2,
+      "unique_comp_pool_count": 6,
+      "all_comps_count": 15,
+      "all_comps_with_3plus_features_count": 0,
+      "top1_comps_count": 3,
+      "top1_comps_with_3plus_features_count": 0,
+      "pct_all_comps_with_3plus_features": 0.0,
+      "pct_top1_comps_with_3plus_features": 0.0,
       "coverage_sufficient": true,
       "failed_checks": []
     }
@@ -60,14 +75,14 @@
       }
     },
     "TE": {
-      "status": "directional_only",
-      "reason": "min_effective_feature_count_met: false; outcomes_present: false; non_market_dimension_present: false; methodology_compatible: false",
+      "status": "ui_safe",
+      "reason": "all_checks_passed",
       "requirements_checked": {
         "no_lane_warning": true,
-        "min_effective_feature_count_met": false,
-        "outcomes_present": false,
-        "non_market_dimension_present": false,
-        "methodology_compatible": false
+        "min_effective_feature_count_met": true,
+        "outcomes_present": true,
+        "non_market_dimension_present": true,
+        "methodology_compatible": true
       }
     },
     "WR": {
@@ -85,13 +100,13 @@
   "methodology_compatibility_by_position": {
     "QB": false,
     "RB": false,
-    "TE": false,
+    "TE": true,
     "WR": true
   },
   "ui_display_allowed": {
     "QB": false,
     "RB": false,
-    "TE": false,
+    "TE": true,
     "WR": true
   },
   "players": [
@@ -430,28 +445,133 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "sample-te-2021-a",
-          "player_name": "Sample TE Profile A",
-          "draft_year": 2021,
+          "historical_player_id": "te-dallas-goedert-2018",
+          "player_name": "Dallas Goedert",
+          "draft_year": 2018,
           "position": "TE",
-          "similarity_score": 91.5,
-          "distance": 0.085,
+          "similarity_score": 92.4588,
+          "distance": 0.075412,
           "feature_snapshot": {
-            "ras_0_100": null,
-            "production_0_100": 69.0,
-            "draft_capital_proxy_0_100": 58.0,
-            "size_context_0_100": 77.0,
-            "normalization_scope": "cohort-local",
+            "ras_0_100": 61.4,
+            "production_0_100": 61.7,
+            "draft_capital_proxy_0_100": 72.0,
+            "size_context_0_100": 79.2,
+            "normalization_scope": "historical-te-cfbd-season-pop-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
+            "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 10.7,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 6.6, Y2: 9.0, Y3: 10.7"
+          }
+        },
+        {
+          "historical_player_id": "te-cole-kmet-2020",
+          "player_name": "Cole Kmet",
+          "draft_year": 2020,
+          "position": "TE",
+          "similarity_score": 91.5087,
+          "distance": 0.084913,
+          "feature_snapshot": {
+            "ras_0_100": 58.4,
+            "production_0_100": 51.2,
+            "draft_capital_proxy_0_100": 74.0,
+            "size_context_0_100": 82.6,
+            "normalization_scope": "historical-te-cfbd-season-pop-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te3_peak",
+            "best_season_fantasy_ppg": 7.2,
+            "top_finish_band": "TE3",
+            "years_1_to_3_summary": "Y1: 3.2, Y2: 6.8, Y3: 7.2"
+          }
+        },
+        {
+          "historical_player_id": "te-trey-mcbride-2022",
+          "player_name": "Trey McBride",
+          "draft_year": 2022,
+          "position": "TE",
+          "similarity_score": 89.5605,
+          "distance": 0.104395,
+          "feature_snapshot": {
+            "ras_0_100": 65.5,
+            "production_0_100": 61.9,
+            "draft_capital_proxy_0_100": 68.0,
+            "size_context_0_100": 80.1,
+            "normalization_scope": "historical-te-cfbd-season-pop-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 10.9,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 1.6, Y2: 7.9, Y3: 10.9"
+          }
+        },
+        {
+          "historical_player_id": "te-isaiah-likely-2022",
+          "player_name": "Isaiah Likely",
+          "draft_year": 2022,
+          "position": "TE",
+          "similarity_score": 88.7193,
+          "distance": 0.112807,
+          "feature_snapshot": {
+            "ras_0_100": 61.2,
+            "production_0_100": 72.6,
+            "draft_capital_proxy_0_100": 63.0,
+            "size_context_0_100": 71.9,
+            "normalization_scope": "historical-te-cfbd-season-pop-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te3_peak",
+            "best_season_fantasy_ppg": 5.4,
+            "top_finish_band": "TE3",
+            "years_1_to_3_summary": "Y1: 1.6, Y2: 4.1, Y3: 5.4"
+          }
+        },
+        {
+          "historical_player_id": "te-pat-freiermuth-2021",
+          "player_name": "Pat Freiermuth",
+          "draft_year": 2021,
+          "position": "TE",
+          "similarity_score": 85.3191,
+          "distance": 0.146809,
+          "feature_snapshot": {
+            "ras_0_100": 69.7,
+            "production_0_100": 51.9,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 81.5,
+            "normalization_scope": "historical-te-cfbd-season-pop-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 11.1,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 8.7, Y2: 8.7, Y3: 11.1"
           }
         }
       ]
@@ -463,28 +583,133 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "sample-te-2021-a",
-          "player_name": "Sample TE Profile A",
-          "draft_year": 2021,
+          "historical_player_id": "te-cole-kmet-2020",
+          "player_name": "Cole Kmet",
+          "draft_year": 2020,
           "position": "TE",
-          "similarity_score": 89.4,
-          "distance": 0.106,
+          "similarity_score": 89.2614,
+          "distance": 0.107386,
           "feature_snapshot": {
-            "ras_0_100": null,
-            "production_0_100": 69.0,
-            "draft_capital_proxy_0_100": 58.0,
-            "size_context_0_100": 77.0,
-            "normalization_scope": "cohort-local",
+            "ras_0_100": 58.4,
+            "production_0_100": 51.2,
+            "draft_capital_proxy_0_100": 74.0,
+            "size_context_0_100": 82.6,
+            "normalization_scope": "historical-te-cfbd-season-pop-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
+            "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "te3_peak",
+            "best_season_fantasy_ppg": 7.2,
+            "top_finish_band": "TE3",
+            "years_1_to_3_summary": "Y1: 3.2, Y2: 6.8, Y3: 7.2"
+          }
+        },
+        {
+          "historical_player_id": "te-dallas-goedert-2018",
+          "player_name": "Dallas Goedert",
+          "draft_year": 2018,
+          "position": "TE",
+          "similarity_score": 88.1908,
+          "distance": 0.118092,
+          "feature_snapshot": {
+            "ras_0_100": 61.4,
+            "production_0_100": 61.7,
+            "draft_capital_proxy_0_100": 72.0,
+            "size_context_0_100": 79.2,
+            "normalization_scope": "historical-te-cfbd-season-pop-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 10.7,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 6.6, Y2: 9.0, Y3: 10.7"
+          }
+        },
+        {
+          "historical_player_id": "te-trey-mcbride-2022",
+          "player_name": "Trey McBride",
+          "draft_year": 2022,
+          "position": "TE",
+          "similarity_score": 85.3145,
+          "distance": 0.146855,
+          "feature_snapshot": {
+            "ras_0_100": 65.5,
+            "production_0_100": 61.9,
+            "draft_capital_proxy_0_100": 68.0,
+            "size_context_0_100": 80.1,
+            "normalization_scope": "historical-te-cfbd-season-pop-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 10.9,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 1.6, Y2: 7.9, Y3: 10.9"
+          }
+        },
+        {
+          "historical_player_id": "te-isaiah-likely-2022",
+          "player_name": "Isaiah Likely",
+          "draft_year": 2022,
+          "position": "TE",
+          "similarity_score": 84.7823,
+          "distance": 0.152177,
+          "feature_snapshot": {
+            "ras_0_100": 61.2,
+            "production_0_100": 72.6,
+            "draft_capital_proxy_0_100": 63.0,
+            "size_context_0_100": 71.9,
+            "normalization_scope": "historical-te-cfbd-season-pop-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te3_peak",
+            "best_season_fantasy_ppg": 5.4,
+            "top_finish_band": "TE3",
+            "years_1_to_3_summary": "Y1: 1.6, Y2: 4.1, Y3: 5.4"
+          }
+        },
+        {
+          "historical_player_id": "te-pat-freiermuth-2021",
+          "player_name": "Pat Freiermuth",
+          "draft_year": 2021,
+          "position": "TE",
+          "similarity_score": 81.9594,
+          "distance": 0.180406,
+          "feature_snapshot": {
+            "ras_0_100": 69.7,
+            "production_0_100": 51.9,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 81.5,
+            "normalization_scope": "historical-te-cfbd-season-pop-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 11.1,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 8.7, Y2: 8.7, Y3: 11.1"
           }
         }
       ]
@@ -496,28 +721,133 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "sample-te-2021-a",
-          "player_name": "Sample TE Profile A",
-          "draft_year": 2021,
+          "historical_player_id": "te-cole-kmet-2020",
+          "player_name": "Cole Kmet",
+          "draft_year": 2020,
           "position": "TE",
-          "similarity_score": 80.2,
-          "distance": 0.198,
+          "similarity_score": 98.5079,
+          "distance": 0.014921,
           "feature_snapshot": {
-            "ras_0_100": null,
-            "production_0_100": 69.0,
-            "draft_capital_proxy_0_100": 58.0,
-            "size_context_0_100": 77.0,
-            "normalization_scope": "cohort-local",
+            "ras_0_100": 58.4,
+            "production_0_100": 51.2,
+            "draft_capital_proxy_0_100": 74.0,
+            "size_context_0_100": 82.6,
+            "normalization_scope": "historical-te-cfbd-season-pop-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
+            "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": null,
-            "best_season_fantasy_ppg": null,
-            "top_finish_band": null,
-            "years_1_to_3_summary": null
+            "career_outcome_label": "te3_peak",
+            "best_season_fantasy_ppg": 7.2,
+            "top_finish_band": "TE3",
+            "years_1_to_3_summary": "Y1: 3.2, Y2: 6.8, Y3: 7.2"
+          }
+        },
+        {
+          "historical_player_id": "te-pat-freiermuth-2021",
+          "player_name": "Pat Freiermuth",
+          "draft_year": 2021,
+          "position": "TE",
+          "similarity_score": 92.2466,
+          "distance": 0.077534,
+          "feature_snapshot": {
+            "ras_0_100": 69.7,
+            "production_0_100": 51.9,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 81.5,
+            "normalization_scope": "historical-te-cfbd-season-pop-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 11.1,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 8.7, Y2: 8.7, Y3: 11.1"
+          }
+        },
+        {
+          "historical_player_id": "te-dallas-goedert-2018",
+          "player_name": "Dallas Goedert",
+          "draft_year": 2018,
+          "position": "TE",
+          "similarity_score": 91.0093,
+          "distance": 0.089907,
+          "feature_snapshot": {
+            "ras_0_100": 61.4,
+            "production_0_100": 61.7,
+            "draft_capital_proxy_0_100": 72.0,
+            "size_context_0_100": 79.2,
+            "normalization_scope": "historical-te-cfbd-season-pop-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 10.7,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 6.6, Y2: 9.0, Y3: 10.7"
+          }
+        },
+        {
+          "historical_player_id": "te-trey-mcbride-2022",
+          "player_name": "Trey McBride",
+          "draft_year": 2022,
+          "position": "TE",
+          "similarity_score": 89.9352,
+          "distance": 0.100648,
+          "feature_snapshot": {
+            "ras_0_100": 65.5,
+            "production_0_100": 61.9,
+            "draft_capital_proxy_0_100": 68.0,
+            "size_context_0_100": 80.1,
+            "normalization_scope": "historical-te-cfbd-season-pop-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 10.9,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 1.6, Y2: 7.9, Y3: 10.9"
+          }
+        },
+        {
+          "historical_player_id": "te-sam-laporta-2023",
+          "player_name": "Sam LaPorta",
+          "draft_year": 2023,
+          "position": "TE",
+          "similarity_score": 85.5198,
+          "distance": 0.144802,
+          "feature_snapshot": {
+            "ras_0_100": 72.1,
+            "production_0_100": 33.4,
+            "draft_capital_proxy_0_100": 76.0,
+            "size_context_0_100": 75.2,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te1_peak",
+            "best_season_fantasy_ppg": 14.3,
+            "top_finish_band": "TE1",
+            "years_1_to_3_summary": "Y1: 14.3, Y2: 11.8, Y3: n/a"
           }
         }
       ]

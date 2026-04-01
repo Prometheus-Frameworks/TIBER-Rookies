@@ -1,0 +1,452 @@
+[
+  {
+    "player_name": "A.J. Brown",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 85,
+    "receiving_yards": 1355,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "A.J. Ouellette",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 21,
+    "receiving_yards": 212,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "A.J. Richardson",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 54,
+    "receiving_yards": 825,
+    "receiving_tds": 8,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "A.J. Taylor",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 32,
+    "receiving_yards": 521,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Aaren Vaughns",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 33,
+    "receiving_yards": 581,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Aaron Cephus",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 40,
+    "receiving_yards": 565,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Aaron Fuller",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 58,
+    "receiving_yards": 874,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Aaron McLean",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 32,
+    "receiving_yards": 396,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Adrian Hardy",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 75,
+    "receiving_yards": 1146,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Akilian Butler",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 25,
+    "receiving_yards": 204,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Albert Okwuegbunam",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 43,
+    "receiving_yards": 466,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Aleva Hifo",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 28,
+    "receiving_yards": 358,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Alex Bachman",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 37,
+    "receiving_yards": 541,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Alex Barnes",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 20,
+    "receiving_yards": 194,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Alexander Mattison",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 27,
+    "receiving_yards": 173,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Alfred Smith",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 30,
+    "receiving_yards": 327,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Alize Mack",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 36,
+    "receiving_yards": 360,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Amari Rodgers",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 55,
+    "receiving_yards": 575,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Amon-Ra St. Brown",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 60,
+    "receiving_yards": 750,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Andre Baccellia",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 54,
+    "receiving_yards": 565,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Andre Williams",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 46,
+    "receiving_yards": 649,
+    "receiving_tds": 6,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Andre Wilson",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 30,
+    "receiving_yards": 486,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Andrew Beck",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 28,
+    "receiving_yards": 281,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Andrew Meyer",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 36,
+    "receiving_yards": 505,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Andy Isabella",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 101,
+    "receiving_yards": 1697,
+    "receiving_tds": 13,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Anthony Johnson",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 57,
+    "receiving_yards": 1011,
+    "receiving_tds": 11,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Anthony Muse",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 22,
+    "receiving_yards": 201,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Anthony Ratliff-Williams",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 42,
+    "receiving_yards": 696,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Anthony Schwartz",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 23,
+    "receiving_yards": 392,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Antoine Wesley",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 88,
+    "receiving_yards": 1410,
+    "receiving_tds": 9,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Antonio Gandy-Golden",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 71,
+    "receiving_yards": 1037,
+    "receiving_tds": 10,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Antwan Dixon",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 52,
+    "receiving_yards": 532,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Armani Levias",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 25,
+    "receiving_yards": 327,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Arthur Jackson III",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 46,
+    "receiving_yards": 592,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Austin Conway",
+    "position": "TE",
+    "source_season": 2018,
+    "receptions": 32,
+    "receiving_yards": 250,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Austin Mack",
+    "position": "H-BACK",
+    "source_season": 2018,
+    "receptions": 26,
+    "receiving_yards": 331,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Austin Maloney",
+    "position": "H-BACK",
+    "source_season": 2018,
+    "receptions": 30,
+    "receiving_yards": 610,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Austin Trammell",
+    "position": "H-BACK",
+    "source_season": 2018,
+    "receptions": 62,
+    "receiving_yards": 632,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Austin Walter",
+    "position": "H-BACK",
+    "source_season": 2018,
+    "receptions": 44,
+    "receiving_yards": 525,
+    "receiving_tds": 2,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "B.J. Farrow",
+    "position": "H-BACK",
+    "source_season": 2018,
+    "receptions": 40,
+    "receiving_yards": 546,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Ben Skowronek",
+    "position": "FB",
+    "source_season": 2018,
+    "receptions": 45,
+    "receiving_yards": 562,
+    "receiving_tds": 3,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Benny LeMay",
+    "position": "FB",
+    "source_season": 2018,
+    "receptions": 21,
+    "receiving_yards": 282,
+    "receiving_tds": 0,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Binjimen Victor",
+    "position": "FB",
+    "source_season": 2018,
+    "receptions": 21,
+    "receiving_yards": 354,
+    "receiving_tds": 4,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Blake Banham",
+    "position": "FB",
+    "source_season": 2018,
+    "receptions": 60,
+    "receiving_yards": 758,
+    "receiving_tds": 5,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  },
+  {
+    "player_name": "Blake Proehl",
+    "position": "FB",
+    "source_season": 2018,
+    "receptions": 30,
+    "receiving_yards": 358,
+    "receiving_tds": 1,
+    "source_name": "CFBD receiving stats (year=2018)",
+    "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2018&category=receiving"
+  }
+]
