@@ -476,7 +476,8 @@
         "production_0_100": 58.4,
         "draft_capital_proxy_0_100": 85.0,
         "talent_score_0_100": 52.55,
-        "rookie_alpha_0_100": 59.04
+        "rookie_alpha_0_100": 59.04,
+        "size_context_0_100": 41.8
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 12,
@@ -508,7 +509,8 @@
         "production_0_100": 60.5,
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 56.2575,
-        "rookie_alpha_0_100": 56.006
+        "rookie_alpha_0_100": 56.006,
+        "size_context_0_100": 44.0
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 14,
@@ -602,7 +604,8 @@
         "production_0_100": 49.2,
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 53.5193,
-        "rookie_alpha_0_100": 53.8155
+        "rookie_alpha_0_100": 53.8155,
+        "size_context_0_100": 46.3
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 17,
