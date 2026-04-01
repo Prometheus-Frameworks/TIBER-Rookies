@@ -152,19 +152,6 @@
     "notes": "Best-season PPR/G computed as max of first three seasons (2020-2022) using full-PPR formula: receptions + receiving yards/10 + receiving TD*6 + rushing yards/10 + rushing TD*6, divided by games played."
   },
   {
-    "player_id": "sample-te-2021-a",
-    "player_name": "Sample TE Profile A",
-    "position": "TE",
-    "draft_year": 2021,
-    "career_outcome_label": null,
-    "best_season_fantasy_ppg": null,
-    "top_finish_band": null,
-    "years_1_to_3_summary": null,
-    "source_name": "sample_fixture",
-    "source_url": null,
-    "notes": "sample/dev fixture only; no real outcomes populated"
-  },
-  {
     "player_id": "wr-jamarr-chase-2021",
     "player_name": "Ja'Marr Chase",
     "position": "WR",
@@ -358,5 +345,125 @@
     "source_name": "Pro-Football-Reference player receiving tables (PPR/G computed manually)",
     "source_url": "https://www.pro-football-reference.com/players/P/PittMi00.htm",
     "notes": "best_season_fantasy_ppg uses max season PPR/G from first three seasons (2020-2022) via formula receptions + receiving_yards/10 + receiving_tds*6 divided by games played. Top finish band derived deterministically from fixed thresholds."
+  },
+  {
+    "player_id": "te-mark-andrews-2018",
+    "player_name": "Mark Andrews",
+    "position": "TE",
+    "draft_year": 2018,
+    "career_outcome_label": "te1_peak",
+    "best_season_fantasy_ppg": 15.2,
+    "top_finish_band": "TE1",
+    "years_1_to_3_summary": "Y1: 7.8, Y2: 14.2, Y3: 15.2",
+    "source_name": "FantasyData PPR",
+    "source_url": "https://fantasydata.com/nfl/fantasy-football-leaders"
+  },
+  {
+    "player_id": "te-dallas-goedert-2018",
+    "player_name": "Dallas Goedert",
+    "position": "TE",
+    "draft_year": 2018,
+    "career_outcome_label": "te2_peak",
+    "best_season_fantasy_ppg": 10.7,
+    "top_finish_band": "TE2",
+    "years_1_to_3_summary": "Y1: 6.6, Y2: 9.0, Y3: 10.7",
+    "source_name": "FantasyData PPR",
+    "source_url": "https://fantasydata.com/nfl/fantasy-football-leaders"
+  },
+  {
+    "player_id": "te-tj-hockenson-2018",
+    "player_name": "T.J. Hockenson",
+    "position": "TE",
+    "draft_year": 2019,
+    "career_outcome_label": "te2_peak",
+    "best_season_fantasy_ppg": 11.5,
+    "top_finish_band": "TE2",
+    "years_1_to_3_summary": "Y1: 5.2, Y2: 11.5, Y3: 8.0",
+    "source_name": "FantasyData PPR",
+    "source_url": "https://fantasydata.com/nfl/fantasy-football-leaders"
+  },
+  {
+    "player_id": "te-noah-fant-2019",
+    "player_name": "Noah Fant",
+    "position": "TE",
+    "draft_year": 2019,
+    "career_outcome_label": "te2_peak",
+    "best_season_fantasy_ppg": 10.7,
+    "top_finish_band": "TE2",
+    "years_1_to_3_summary": "Y1: 8.8, Y2: 10.7, Y3: 9.0",
+    "source_name": "FantasyData PPR",
+    "source_url": "https://fantasydata.com/nfl/fantasy-football-leaders"
+  },
+  {
+    "player_id": "te-cole-kmet-2020",
+    "player_name": "Cole Kmet",
+    "position": "TE",
+    "draft_year": 2020,
+    "career_outcome_label": "te3_peak",
+    "best_season_fantasy_ppg": 7.2,
+    "top_finish_band": "TE3",
+    "years_1_to_3_summary": "Y1: 3.2, Y2: 6.8, Y3: 7.2",
+    "source_name": "FantasyData PPR",
+    "source_url": "https://fantasydata.com/nfl/fantasy-football-leaders"
+  },
+  {
+    "player_id": "te-kyle-pitts-2021",
+    "player_name": "Kyle Pitts",
+    "position": "TE",
+    "draft_year": 2021,
+    "career_outcome_label": "te2_peak",
+    "best_season_fantasy_ppg": 10.2,
+    "top_finish_band": "TE2",
+    "years_1_to_3_summary": "Y1: 10.2, Y2: 5.6, Y3: 3.1",
+    "source_name": "FantasyData PPR",
+    "source_url": "https://fantasydata.com/nfl/fantasy-football-leaders"
+  },
+  {
+    "player_id": "te-pat-freiermuth-2021",
+    "player_name": "Pat Freiermuth",
+    "position": "TE",
+    "draft_year": 2021,
+    "career_outcome_label": "te2_peak",
+    "best_season_fantasy_ppg": 11.1,
+    "top_finish_band": "TE2",
+    "years_1_to_3_summary": "Y1: 8.7, Y2: 8.7, Y3: 11.1",
+    "source_name": "FantasyData PPR",
+    "source_url": "https://fantasydata.com/nfl/fantasy-football-leaders"
+  },
+  {
+    "player_id": "te-trey-mcbride-2022",
+    "player_name": "Trey McBride",
+    "position": "TE",
+    "draft_year": 2022,
+    "career_outcome_label": "te2_peak",
+    "best_season_fantasy_ppg": 10.9,
+    "top_finish_band": "TE2",
+    "years_1_to_3_summary": "Y1: 1.6, Y2: 7.9, Y3: 10.9",
+    "source_name": "FantasyData PPR",
+    "source_url": "https://fantasydata.com/nfl/fantasy-football-leaders"
+  },
+  {
+    "player_id": "te-isaiah-likely-2022",
+    "player_name": "Isaiah Likely",
+    "position": "TE",
+    "draft_year": 2022,
+    "career_outcome_label": "te3_peak",
+    "best_season_fantasy_ppg": 5.4,
+    "top_finish_band": "TE3",
+    "years_1_to_3_summary": "Y1: 1.6, Y2: 4.1, Y3: 5.4",
+    "source_name": "FantasyData PPR",
+    "source_url": "https://fantasydata.com/nfl/fantasy-football-leaders"
+  },
+  {
+    "player_id": "te-sam-laporta-2023",
+    "player_name": "Sam LaPorta",
+    "position": "TE",
+    "draft_year": 2023,
+    "career_outcome_label": "te1_peak",
+    "best_season_fantasy_ppg": 14.3,
+    "top_finish_band": "TE1",
+    "years_1_to_3_summary": "Y1: 14.3, Y2: 11.8, Y3: n/a",
+    "source_name": "FantasyData PPR",
+    "source_url": "https://fantasydata.com/nfl/fantasy-football-leaders"
   }
 ]

@@ -49,7 +49,20 @@ PRODUCTION_SCOPE_COMPATIBLE: frozenset[str] = frozenset()
 WR_POPULATION_SCOPE = "historical-wr-cfbd-season-pop-v1"
 WR_POPULATION_MIN_ROWS = 100
 WR_REFERENCE_POPULATION_DIR = Path("data/historical/wr_reference_populations")
+TE_POPULATION_SCOPE = "historical-te-cfbd-season-pop-v1"
+TE_POPULATION_MIN_ROWS = 30
+TE_REFERENCE_POPULATION_DIR = Path("data/historical/te_reference_populations")
 REQUIRED_WR_REFERENCE_POPULATION_FIELDS = {
+    "player_name",
+    "position",
+    "source_season",
+    "receptions",
+    "receiving_yards",
+    "receiving_tds",
+    "source_name",
+    "source_url",
+}
+REQUIRED_TE_REFERENCE_POPULATION_FIELDS = {
     "player_name",
     "position",
     "source_season",
@@ -200,6 +213,60 @@ def _load_wr_reference_populations(population_dir: Path) -> dict[int, list[dict[
     return valid_populations
 
 
+def _load_te_reference_populations(population_dir: Path) -> dict[int, list[dict[str, float]]]:
+    if not population_dir.exists():
+        return {}
+
+    populations_by_season: dict[int, list[dict[str, float]]] = {}
+    for path in sorted(population_dir.glob("*_te_receiving_population.json")):
+        payload = load_json(path)
+        if not isinstance(payload, list):
+            raise SystemExit(f"TE reference population file must be a JSON array: {path}")
+
+        season_population: list[dict[str, float]] = []
+        for i, row in enumerate(payload, start=1):
+            if not isinstance(row, dict):
+                raise SystemExit(f"TE reference population row {i} in {path} must be an object")
+            missing = [field for field in sorted(REQUIRED_TE_REFERENCE_POPULATION_FIELDS) if field not in row]
+            if missing:
+                raise SystemExit(f"TE reference population row {i} in {path} missing required fields: {missing}")
+            position = str(row.get("position") or "")
+            if position not in {"TE", "H-BACK", "FB"}:
+                continue
+
+            source_season = _to_int_or_none(row.get("source_season"))
+            receptions = _to_int_or_none(row.get("receptions"))
+            receiving_yards = _to_int_or_none(row.get("receiving_yards"))
+            receiving_tds = _to_int_or_none(row.get("receiving_tds"))
+            source_name = str(row.get("source_name") or "").strip()
+            source_url = str(row.get("source_url") or "").strip()
+            if source_season is None or receptions is None or receiving_yards is None or receiving_tds is None:
+                continue
+            if not source_name or not source_url:
+                continue
+            if receptions < 20:
+                continue
+
+            season_population.append(
+                {
+                    "yards_per_reception": receiving_yards / receptions,
+                    "td_rate": receiving_tds / receptions,
+                    "total_yards": float(receiving_yards),
+                }
+            )
+            populations_by_season.setdefault(source_season, [])
+
+        season_from_name = _to_int_or_none(path.name.split("_", 1)[0])
+        if season_from_name is None:
+            continue
+        populations_by_season[season_from_name] = season_population
+
+    valid_populations = {
+        season: rows for season, rows in populations_by_season.items() if len(rows) >= TE_POPULATION_MIN_ROWS
+    }
+    return valid_populations
+
+
 def apply_wr_historical_production_methodology(
     historical_features: list[dict[str, Any]],
     *,
@@ -283,6 +350,84 @@ def apply_wr_historical_production_methodology(
     compatible_scopes = (
         frozenset({WR_POPULATION_SCOPE, "historical-wr-cfbd-method-v1-null"})
         if any(row.get("normalization_scope") == WR_POPULATION_SCOPE for row in wr_rows)
+        else PRODUCTION_SCOPE_COMPATIBLE
+    )
+    return historical_features, compatible_scopes
+
+
+def apply_te_historical_production_methodology(
+    historical_features: list[dict[str, Any]],
+    *,
+    te_reference_populations: dict[int, list[dict[str, float]]] | None = None,
+) -> tuple[list[dict[str, Any]], frozenset[str]]:
+    te_rows = [row for row in historical_features if row.get("position") == "TE"]
+    scored_rows: list[dict[str, Any]] = []
+    metrics_population: list[dict[str, float]] = []
+    has_valid_reference_population = bool(te_reference_populations)
+
+    for row in te_rows:
+        receptions = _to_int_or_none(row.get("receptions"))
+        receiving_yards = _to_int_or_none(row.get("receiving_yards"))
+        receiving_tds = _to_int_or_none(row.get("receiving_tds"))
+        notes_text = str(row.get("notes") or "").lower()
+        partial_season_flag = "partial season" in notes_text
+
+        row["normalization_scope"] = "historical-te-cfbd-method-v1-null"
+        row["production_0_100"] = None
+
+        if partial_season_flag or receptions is None or receiving_yards is None or receiving_tds is None or receptions < 20:
+            scored_rows.append(row)
+            continue
+
+        yards_per_reception = receiving_yards / receptions
+        td_rate = receiving_tds / receptions
+        total_yards = float(receiving_yards)
+        row["_te_metrics"] = {
+            "yards_per_reception": yards_per_reception,
+            "td_rate": td_rate,
+            "total_yards": total_yards,
+        }
+        metrics_population.append(row["_te_metrics"])
+        scored_rows.append(row)
+
+    fallback_ypr_values = [row["yards_per_reception"] for row in metrics_population]
+    fallback_td_rate_values = [row["td_rate"] for row in metrics_population]
+    fallback_total_yards_values = [row["total_yards"] for row in metrics_population]
+
+    for row in scored_rows:
+        metrics = row.get("_te_metrics")
+        if not isinstance(metrics, dict):
+            continue
+
+        source_season = _to_int_or_none(row.get("source_season"))
+        season_population = (
+            te_reference_populations.get(source_season, [])
+            if has_valid_reference_population and source_season is not None
+            else []
+        )
+        if season_population:
+            row["normalization_scope"] = TE_POPULATION_SCOPE
+            ypr_values = [entry["yards_per_reception"] for entry in season_population]
+            td_rate_values = [entry["td_rate"] for entry in season_population]
+            total_yards_values = [entry["total_yards"] for entry in season_population]
+        else:
+            ypr_values = fallback_ypr_values
+            td_rate_values = fallback_td_rate_values
+            total_yards_values = fallback_total_yards_values
+
+        ypr_z = _zscore(metrics["yards_per_reception"], ypr_values)
+        total_yards_z = _zscore(metrics["total_yards"], total_yards_values)
+        td_rate_z = _zscore(metrics["td_rate"], td_rate_values)
+        composite_z = (0.40 * ypr_z) + (0.35 * total_yards_z) + (0.25 * td_rate_z)
+        score = max(0.0, min(100.0, round(50.0 + (composite_z * 15.0), 1)))
+        row["production_0_100"] = score
+        if row.get("normalization_scope") != TE_POPULATION_SCOPE:
+            row["normalization_scope"] = "historical-te-cfbd-method-v1"
+        del row["_te_metrics"]
+
+    compatible_scopes = (
+        frozenset({TE_POPULATION_SCOPE, "historical-te-cfbd-method-v1", "historical-te-cfbd-method-v1-null"})
+        if any(row.get("normalization_scope") == TE_POPULATION_SCOPE for row in te_rows)
         else PRODUCTION_SCOPE_COMPATIBLE
     )
     return historical_features, compatible_scopes
@@ -387,7 +532,7 @@ def build_comp_candidates(
         distance, effective_features_used = weighted_distance(rookie_row, historical_row, weights)
         if distance == float("inf"):
             continue
-        if rookie_row["position"] == "WR" and len(effective_features_used) < 2:
+        if rookie_row["position"] in {"WR", "TE"} and len(effective_features_used) < 2:
             continue
         ranked.append((distance, historical_row["player_id"], historical_row, effective_features_used))
 
@@ -603,6 +748,76 @@ def build_wr_lane_coverage_summary(players: list[dict[str, Any]]) -> dict[str, A
     }
 
 
+def build_te_lane_coverage_summary(players: list[dict[str, Any]]) -> dict[str, Any]:
+    te_players = [player for player in players if player.get("position") == "TE"]
+    total_promoted_tes = len(te_players)
+    te_players_with_comps = [player for player in te_players if isinstance(player.get("comps"), list) and player["comps"]]
+    rookie_te_with_comps = len(te_players_with_comps)
+
+    top1_counter: Counter[str] = Counter()
+    unique_comp_pool_ids: set[str] = set()
+    all_comps_count = 0
+    all_comps_with_3plus_features_count = 0
+    top1_comps_count = 0
+    top1_comps_with_3plus_features_count = 0
+
+    for player in te_players_with_comps:
+        comps = player["comps"]
+        for index, comp in enumerate(comps):
+            effective_features = comp.get("effective_features_used", [])
+            feature_count = len(effective_features) if isinstance(effective_features, list) else 0
+            historical_player_id = comp.get("historical_player_id")
+            if historical_player_id is not None:
+                unique_comp_pool_ids.add(str(historical_player_id))
+
+            all_comps_count += 1
+            if feature_count >= 3:
+                all_comps_with_3plus_features_count += 1
+
+            if index == 0:
+                top1_comps_count += 1
+                if historical_player_id is not None:
+                    top1_counter[str(historical_player_id)] += 1
+                if feature_count >= 3:
+                    top1_comps_with_3plus_features_count += 1
+
+    max_top1_count = max(top1_counter.values(), default=0)
+    unique_top1_count = len(top1_counter)
+    unique_comp_pool_count = len(unique_comp_pool_ids)
+    pct_all_comps_with_3plus_features = (
+        all_comps_with_3plus_features_count / all_comps_count if all_comps_count else 0.0
+    )
+    pct_top1_comps_with_3plus_features = (
+        top1_comps_with_3plus_features_count / top1_comps_count if top1_comps_count else 0.0
+    )
+
+    checks = {
+        "rookie_te_with_comps": rookie_te_with_comps == total_promoted_tes,
+        "max_top1_count": max_top1_count <= 3,
+        "unique_top1_count": unique_top1_count >= 2,
+        "unique_comp_pool_count": unique_comp_pool_count >= 6,
+        "pct_all_comps_with_3plus_features": pct_all_comps_with_3plus_features >= 0.0,
+        "pct_top1_comps_with_3plus_features": pct_top1_comps_with_3plus_features >= 0.0,
+    }
+    failed_checks = [name for name, passed in checks.items() if not passed]
+
+    return {
+        "total_promoted_tes": total_promoted_tes,
+        "rookie_te_with_comps": rookie_te_with_comps,
+        "max_top1_count": max_top1_count,
+        "unique_top1_count": unique_top1_count,
+        "unique_comp_pool_count": unique_comp_pool_count,
+        "all_comps_count": all_comps_count,
+        "all_comps_with_3plus_features_count": all_comps_with_3plus_features_count,
+        "top1_comps_count": top1_comps_count,
+        "top1_comps_with_3plus_features_count": top1_comps_with_3plus_features_count,
+        "pct_all_comps_with_3plus_features": pct_all_comps_with_3plus_features,
+        "pct_top1_comps_with_3plus_features": pct_top1_comps_with_3plus_features,
+        "coverage_sufficient": not failed_checks,
+        "failed_checks": failed_checks,
+    }
+
+
 def compute_historical_comps(
     season: int,
     rookies: list[dict[str, Any]],
@@ -637,11 +852,18 @@ def compute_historical_comps(
         )
 
     wr_lane_coverage_summary = build_wr_lane_coverage_summary(players)
+    te_lane_coverage_summary = build_te_lane_coverage_summary(players)
     warnings = {}
     if not wr_lane_coverage_summary["coverage_sufficient"]:
         failed_checks = ", ".join(wr_lane_coverage_summary["failed_checks"])
         warnings["WR"] = (
             "WR lane coverage is insufficient for differentiation breadth/feature depth checks; "
+            f"failed_checks={failed_checks}. Similarities remain directional only."
+        )
+    if not te_lane_coverage_summary["coverage_sufficient"]:
+        failed_checks = ", ".join(te_lane_coverage_summary["failed_checks"])
+        warnings["TE"] = (
+            "TE lane coverage is insufficient for differentiation breadth/feature depth checks; "
             f"failed_checks={failed_checks}. Similarities remain directional only."
         )
 
@@ -675,7 +897,7 @@ def compute_historical_comps(
         "season": season,
         "source_files_used": source_files_used,
         "comp_data_warnings": warnings,
-        "lane_coverage_by_position": {"WR": wr_lane_coverage_summary},
+        "lane_coverage_by_position": {"WR": wr_lane_coverage_summary, "TE": te_lane_coverage_summary},
         "similarity_quality_by_position": similarity_quality_by_position,
         "methodology_compatibility_by_position": methodology_compatibility_by_position,
         "ui_display_allowed": ui_display_allowed,
@@ -730,10 +952,16 @@ def main() -> None:
         raise SystemExit("Historical features payload must be a JSON array.")
     historical_features = normalize_historical_feature_rows(historical_features_payload)
     wr_reference_populations = _load_wr_reference_populations(WR_REFERENCE_POPULATION_DIR)
-    historical_features, production_scope_compatible = apply_wr_historical_production_methodology(
+    te_reference_populations = _load_te_reference_populations(TE_REFERENCE_POPULATION_DIR)
+    historical_features, wr_scope_compatible = apply_wr_historical_production_methodology(
         historical_features,
         wr_reference_populations=wr_reference_populations,
     )
+    historical_features, te_scope_compatible = apply_te_historical_production_methodology(
+        historical_features,
+        te_reference_populations=te_reference_populations,
+    )
+    production_scope_compatible = wr_scope_compatible.union(te_scope_compatible)
 
     outcomes_by_player_id: dict[str, dict[str, Any]] = {}
     source_files_used = [str(args.rookie_export), str(args.historical_features)]

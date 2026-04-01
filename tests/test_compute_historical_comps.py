@@ -4,9 +4,13 @@ from pathlib import Path
 
 from scripts.compute_historical_comps import (
     MARKET_WEIGHTS,
+    TE_POPULATION_SCOPE,
     WR_POPULATION_SCOPE,
+    _load_te_reference_populations,
     _load_wr_reference_populations,
+    apply_te_historical_production_methodology,
     apply_wr_historical_production_methodology,
+    build_te_lane_coverage_summary,
     build_wr_lane_coverage_summary,
     build_methodology_compatible_by_position,
     build_ui_display_allowed,
@@ -789,6 +793,55 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
 
     def test_fetch_wr_reference_populations_script_exists(self) -> None:
         self.assertTrue(Path("scripts/fetch_wr_reference_populations.py").is_file())
+
+    def test_fetch_te_reference_populations_script_exists(self) -> None:
+        self.assertTrue(Path("scripts/fetch_te_reference_populations.py").is_file())
+
+    def test_te_reference_population_file_enables_population_scope(self) -> None:
+        populations = _load_te_reference_populations(Path("data/historical/te_reference_populations"))
+        self.assertIn(2021, populations)
+        self.assertGreaterEqual(len(populations[2021]), 30)
+        features = normalize_historical_feature_rows(
+            [
+                {
+                    "player_id": "te-scoreable",
+                    "player_name": "TE Scoreable",
+                    "position": "TE",
+                    "school": "Sample",
+                    "draft_year": 2022,
+                    "source_season": 2021,
+                    "ras_0_100": 70.0,
+                    "production_0_100": None,
+                    "draft_capital_proxy_0_100": 70.0,
+                    "size_context_0_100": 70.0,
+                    "receptions": 60,
+                    "receiving_yards": 900,
+                    "receiving_tds": 8,
+                }
+            ]
+        )
+        scored, compatible_scopes = apply_te_historical_production_methodology(
+            features,
+            te_reference_populations=populations,
+        )
+        self.assertEqual(scored[0]["normalization_scope"], TE_POPULATION_SCOPE)
+        self.assertIn(TE_POPULATION_SCOPE, compatible_scopes)
+
+    def test_te_lane_coverage_sufficient(self) -> None:
+        players = []
+        for i in range(6):
+            comps = []
+            for j in range(5):
+                comps.append(
+                    {
+                        "historical_player_id": f"te-h{j + i}",
+                        "effective_features_used": ["ras_0_100", "production_0_100", "size_context_0_100"],
+                    }
+                )
+            comps[0]["historical_player_id"] = f"te-top{i}"
+            players.append({"player_id": f"te-r{i}", "player_name": f"TE Rookie {i}", "position": "TE", "comps": comps})
+        summary = build_te_lane_coverage_summary(players)
+        self.assertTrue(summary["coverage_sufficient"])
 
     def test_artifact_wr_contract_flags_align_with_ui_safe_status(self) -> None:
         artifact = json.loads(
