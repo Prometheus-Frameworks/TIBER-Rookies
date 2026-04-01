@@ -11,7 +11,7 @@
     },
     "notes": "v0 emits talent_comp by default; market_comp support is scaffolded and optional."
   },
-  "generated_at": "2026-04-01T00:08:28+00:00",
+  "generated_at": "2026-04-01T12:59:41+00:00",
   "season": 2026,
   "source_files_used": [
     "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
@@ -42,11 +42,11 @@
       "unique_top1_count": 2,
       "unique_comp_pool_count": 6,
       "all_comps_count": 15,
-      "all_comps_with_3plus_features_count": 0,
+      "all_comps_with_3plus_features_count": 15,
       "top1_comps_count": 3,
-      "top1_comps_with_3plus_features_count": 0,
-      "pct_all_comps_with_3plus_features": 0.0,
-      "pct_top1_comps_with_3plus_features": 0.0,
+      "top1_comps_with_3plus_features_count": 3,
+      "pct_all_comps_with_3plus_features": 1.0,
+      "pct_top1_comps_with_3plus_features": 1.0,
       "coverage_sufficient": true,
       "failed_checks": []
     }
@@ -449,19 +449,20 @@
           "player_name": "Dallas Goedert",
           "draft_year": 2018,
           "position": "TE",
-          "similarity_score": 92.4588,
-          "distance": 0.075412,
+          "similarity_score": 92.4728,
+          "distance": 0.075272,
           "feature_snapshot": {
             "ras_0_100": 61.4,
             "production_0_100": 61.7,
             "draft_capital_proxy_0_100": 72.0,
-            "size_context_0_100": 79.2,
+            "size_context_0_100": 51.4,
             "normalization_scope": "historical-te-cfbd-season-pop-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100"
+            "production_0_100",
+            "size_context_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te2_peak",
@@ -475,19 +476,20 @@
           "player_name": "Cole Kmet",
           "draft_year": 2020,
           "position": "TE",
-          "similarity_score": 91.5087,
-          "distance": 0.084913,
+          "similarity_score": 90.9988,
+          "distance": 0.090012,
           "feature_snapshot": {
             "ras_0_100": 58.4,
             "production_0_100": 51.2,
             "draft_capital_proxy_0_100": 74.0,
-            "size_context_0_100": 82.6,
+            "size_context_0_100": 56.7,
             "normalization_scope": "historical-te-cfbd-season-pop-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100"
+            "production_0_100",
+            "size_context_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te3_peak",
@@ -501,19 +503,20 @@
           "player_name": "Trey McBride",
           "draft_year": 2022,
           "position": "TE",
-          "similarity_score": 89.5605,
-          "distance": 0.104395,
+          "similarity_score": 90.0944,
+          "distance": 0.099056,
           "feature_snapshot": {
             "ras_0_100": 65.5,
             "production_0_100": 61.9,
             "draft_capital_proxy_0_100": 68.0,
-            "size_context_0_100": 80.1,
+            "size_context_0_100": 43.4,
             "normalization_scope": "historical-te-cfbd-season-pop-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100"
+            "production_0_100",
+            "size_context_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te2_peak",
@@ -527,19 +530,20 @@
           "player_name": "Isaiah Likely",
           "draft_year": 2022,
           "position": "TE",
-          "similarity_score": 88.7193,
-          "distance": 0.112807,
+          "similarity_score": 89.2795,
+          "distance": 0.107205,
           "feature_snapshot": {
             "ras_0_100": 61.2,
             "production_0_100": 72.6,
             "draft_capital_proxy_0_100": 63.0,
-            "size_context_0_100": 71.9,
+            "size_context_0_100": 46.0,
             "normalization_scope": "historical-te-cfbd-season-pop-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100"
+            "production_0_100",
+            "size_context_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te3_peak",
@@ -553,19 +557,20 @@
           "player_name": "Pat Freiermuth",
           "draft_year": 2021,
           "position": "TE",
-          "similarity_score": 85.3191,
-          "distance": 0.146809,
+          "similarity_score": 85.8876,
+          "distance": 0.141124,
           "feature_snapshot": {
             "ras_0_100": 69.7,
             "production_0_100": 51.9,
             "draft_capital_proxy_0_100": 70.0,
-            "size_context_0_100": 81.5,
+            "size_context_0_100": 51.2,
             "normalization_scope": "historical-te-cfbd-season-pop-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100"
+            "production_0_100",
+            "size_context_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te2_peak",
@@ -587,19 +592,20 @@
           "player_name": "Cole Kmet",
           "draft_year": 2020,
           "position": "TE",
-          "similarity_score": 89.2614,
-          "distance": 0.107386,
+          "similarity_score": 88.7756,
+          "distance": 0.112244,
           "feature_snapshot": {
             "ras_0_100": 58.4,
             "production_0_100": 51.2,
             "draft_capital_proxy_0_100": 74.0,
-            "size_context_0_100": 82.6,
+            "size_context_0_100": 56.7,
             "normalization_scope": "historical-te-cfbd-season-pop-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100"
+            "production_0_100",
+            "size_context_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te3_peak",
@@ -613,19 +619,20 @@
           "player_name": "Dallas Goedert",
           "draft_year": 2018,
           "position": "TE",
-          "similarity_score": 88.1908,
-          "distance": 0.118092,
+          "similarity_score": 88.3928,
+          "distance": 0.116072,
           "feature_snapshot": {
             "ras_0_100": 61.4,
             "production_0_100": 61.7,
             "draft_capital_proxy_0_100": 72.0,
-            "size_context_0_100": 79.2,
+            "size_context_0_100": 51.4,
             "normalization_scope": "historical-te-cfbd-season-pop-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100"
+            "production_0_100",
+            "size_context_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te2_peak",
@@ -639,19 +646,20 @@
           "player_name": "Trey McBride",
           "draft_year": 2022,
           "position": "TE",
-          "similarity_score": 85.3145,
-          "distance": 0.146855,
+          "similarity_score": 86.0589,
+          "distance": 0.139411,
           "feature_snapshot": {
             "ras_0_100": 65.5,
             "production_0_100": 61.9,
             "draft_capital_proxy_0_100": 68.0,
-            "size_context_0_100": 80.1,
+            "size_context_0_100": 43.4,
             "normalization_scope": "historical-te-cfbd-season-pop-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100"
+            "production_0_100",
+            "size_context_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te2_peak",
@@ -665,19 +673,20 @@
           "player_name": "Isaiah Likely",
           "draft_year": 2022,
           "position": "TE",
-          "similarity_score": 84.7823,
-          "distance": 0.152177,
+          "similarity_score": 85.5023,
+          "distance": 0.144977,
           "feature_snapshot": {
             "ras_0_100": 61.2,
             "production_0_100": 72.6,
             "draft_capital_proxy_0_100": 63.0,
-            "size_context_0_100": 71.9,
+            "size_context_0_100": 46.0,
             "normalization_scope": "historical-te-cfbd-season-pop-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100"
+            "production_0_100",
+            "size_context_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te3_peak",
@@ -691,19 +700,20 @@
           "player_name": "Pat Freiermuth",
           "draft_year": 2021,
           "position": "TE",
-          "similarity_score": 81.9594,
-          "distance": 0.180406,
+          "similarity_score": 82.6289,
+          "distance": 0.173711,
           "feature_snapshot": {
             "ras_0_100": 69.7,
             "production_0_100": 51.9,
             "draft_capital_proxy_0_100": 70.0,
-            "size_context_0_100": 81.5,
+            "size_context_0_100": 51.2,
             "normalization_scope": "historical-te-cfbd-season-pop-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100"
+            "production_0_100",
+            "size_context_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te2_peak",
@@ -725,19 +735,20 @@
           "player_name": "Cole Kmet",
           "draft_year": 2020,
           "position": "TE",
-          "similarity_score": 98.5079,
-          "distance": 0.014921,
+          "similarity_score": 96.4195,
+          "distance": 0.035805,
           "feature_snapshot": {
             "ras_0_100": 58.4,
             "production_0_100": 51.2,
             "draft_capital_proxy_0_100": 74.0,
-            "size_context_0_100": 82.6,
+            "size_context_0_100": 56.7,
             "normalization_scope": "historical-te-cfbd-season-pop-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100"
+            "production_0_100",
+            "size_context_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te3_peak",
@@ -751,19 +762,20 @@
           "player_name": "Pat Freiermuth",
           "draft_year": 2021,
           "position": "TE",
-          "similarity_score": 92.2466,
-          "distance": 0.077534,
+          "similarity_score": 92.4831,
+          "distance": 0.075169,
           "feature_snapshot": {
             "ras_0_100": 69.7,
             "production_0_100": 51.9,
             "draft_capital_proxy_0_100": 70.0,
-            "size_context_0_100": 81.5,
+            "size_context_0_100": 51.2,
             "normalization_scope": "historical-te-cfbd-season-pop-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100"
+            "production_0_100",
+            "size_context_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te2_peak",
@@ -777,19 +789,20 @@
           "player_name": "Dallas Goedert",
           "draft_year": 2018,
           "position": "TE",
-          "similarity_score": 91.0093,
-          "distance": 0.089907,
+          "similarity_score": 91.3195,
+          "distance": 0.086805,
           "feature_snapshot": {
             "ras_0_100": 61.4,
             "production_0_100": 61.7,
             "draft_capital_proxy_0_100": 72.0,
-            "size_context_0_100": 79.2,
+            "size_context_0_100": 51.4,
             "normalization_scope": "historical-te-cfbd-season-pop-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100"
+            "production_0_100",
+            "size_context_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te2_peak",
@@ -803,19 +816,20 @@
           "player_name": "Trey McBride",
           "draft_year": 2022,
           "position": "TE",
-          "similarity_score": 89.9352,
-          "distance": 0.100648,
+          "similarity_score": 90.4078,
+          "distance": 0.095922,
           "feature_snapshot": {
             "ras_0_100": 65.5,
             "production_0_100": 61.9,
             "draft_capital_proxy_0_100": 68.0,
-            "size_context_0_100": 80.1,
+            "size_context_0_100": 43.4,
             "normalization_scope": "historical-te-cfbd-season-pop-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100"
+            "production_0_100",
+            "size_context_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te2_peak",
@@ -829,19 +843,20 @@
           "player_name": "Sam LaPorta",
           "draft_year": 2023,
           "position": "TE",
-          "similarity_score": 85.5198,
-          "distance": 0.144802,
+          "similarity_score": 86.2158,
+          "distance": 0.137842,
           "feature_snapshot": {
             "ras_0_100": 72.1,
             "production_0_100": 33.4,
             "draft_capital_proxy_0_100": 76.0,
-            "size_context_0_100": 75.2,
+            "size_context_0_100": 42.7,
             "normalization_scope": "historical-te-cfbd-method-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100"
+            "production_0_100",
+            "size_context_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te1_peak",
