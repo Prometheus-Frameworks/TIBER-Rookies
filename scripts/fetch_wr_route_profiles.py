@@ -144,7 +144,17 @@ def summarize_player(player: dict[str, Any], plays: list[dict[str, Any]], season
         except (TypeError, ValueError):
             return 0.0
 
-    team_pass_plays = [play for play in plays if play_type(play) in PASS_PLAY_TYPES]
+    # Only look at plays where this player's team is on offense.
+    # CFBD returns all plays from games involving the team (offense + defense),
+    # so without this filter we get false positive matches on opposing players.
+    player_team = normalize_identity(str(player.get("school", "") or player.get("team", "")))
+    offense_plays = [
+        play for play in plays
+        if not (play.get("offense") or play.get("offenseTeam"))  # no offense field: keep (test fixtures)
+        or normalize_identity(str(play.get("offense") or play.get("offenseTeam") or "")) == player_team
+    ]
+
+    team_pass_plays = [play for play in offense_plays if play_type(play) in PASS_PLAY_TYPES]
     team_screen_plays = [play for play in team_pass_plays if parse_screen_flag(play_text(play))]
 
     targeted: list[dict[str, Any]] = []
