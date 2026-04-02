@@ -66,7 +66,16 @@ def parse_depth_tag(play_text: str) -> str | None:
 def is_targeted_player(play_text: str, player_name: str) -> bool:
     normalized_text = normalize_identity(play_text)
     normalized_player = normalize_identity(player_name)
-    return normalized_player in normalized_text
+    if normalized_player in normalized_text:
+        return True
+    # CFBD play text uses abbreviated first names (e.g. "C. Tate" not "Carnell Tate").
+    # Also check first-initial + last-name form.
+    parts = normalized_player.split()
+    if len(parts) >= 2:
+        abbreviated = f"{parts[0][0]} {' '.join(parts[1:])}"
+        if abbreviated in normalized_text:
+            return True
+    return False
 
 
 def safe_rate(numerator: float, denominator: float) -> float | None:
@@ -121,40 +130,43 @@ def fetch_team_plays(year: int, team: str, season_type: str) -> list[dict[str, A
 
 
 def summarize_player(player: dict[str, Any], plays: list[dict[str, Any]], season_type: str) -> dict[str, Any]:
-    team_pass_plays = [play for play in plays if play.get("play_type") in PASS_PLAY_TYPES]
-    team_screen_plays = [play for play in team_pass_plays if parse_screen_flag(str(play.get("play_text", "")))]
+    # CFBD API returns camelCase keys: playType, playText, yardsGained
+    def play_type(p: dict[str, Any]) -> str:
+        return str(p.get("playType") or p.get("play_type") or "")
+
+    def play_text(p: dict[str, Any]) -> str:
+        return str(p.get("playText") or p.get("play_text") or "")
+
+    def yards_gained(p: dict[str, Any]) -> float:
+        val = p.get("yardsGained") if p.get("yardsGained") is not None else p.get("yards_gained", 0)
+        try:
+            return float(val)
+        except (TypeError, ValueError):
+            return 0.0
+
+    team_pass_plays = [play for play in plays if play_type(play) in PASS_PLAY_TYPES]
+    team_screen_plays = [play for play in team_pass_plays if parse_screen_flag(play_text(play))]
 
     targeted: list[dict[str, Any]] = []
     for play in team_pass_plays:
-        if is_targeted_player(str(play.get("play_text", "")), str(player.get("player_name", ""))):
+        if is_targeted_player(play_text(play), str(player.get("player_name", ""))):
             targeted.append(play)
 
-    screen_targets = [play for play in targeted if parse_screen_flag(str(play.get("play_text", "")))]
-    depth_tags = [parse_depth_tag(str(play.get("play_text", ""))) for play in targeted]
+    screen_targets = [play for play in targeted if parse_screen_flag(play_text(play))]
+    depth_tags = [parse_depth_tag(play_text(play)) for play in targeted]
     tagged_depths = [tag for tag in depth_tags if tag is not None]
 
     targets = len(targeted)
-    receptions = sum(1 for play in targeted if play.get("play_type") in COMPLETION_PLAY_TYPES)
+    receptions = sum(1 for play in targeted if play_type(play) in COMPLETION_PLAY_TYPES)
     screen_target_rate = safe_rate(len(screen_targets), targets)
 
-    yards_total = 0.0
-    for play in targeted:
-        yards = play.get("yards_gained", 0)
-        try:
-            yards_total += float(yards)
-        except (TypeError, ValueError):
-            continue
+    yards_total = sum(yards_gained(play) for play in targeted)
     yards_per_target = safe_rate(yards_total, targets)
 
     deep_target_rate = safe_rate(tagged_depths.count("deep"), len(tagged_depths))
     depth_tag_coverage_rate = safe_rate(len(tagged_depths), targets)
 
-    team_yards_sum = 0.0
-    for play in team_pass_plays:
-        try:
-            team_yards_sum += float(play.get("yards_gained", 0))
-        except (TypeError, ValueError):
-            continue
+    team_yards_sum = sum(yards_gained(play) for play in team_pass_plays)
     team_yards_per_pass = safe_rate(team_yards_sum, len(team_pass_plays))
 
     methodology_notes = METHODOLOGY_NOTE
