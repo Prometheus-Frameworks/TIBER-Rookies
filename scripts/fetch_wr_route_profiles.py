@@ -22,12 +22,20 @@ from scripts.compute_production_scores import CFBD_BASE_URL, normalize_identity
 
 DEFAULT_PLAYERS_INPUT = Path("data/processed/2026_college_production.json")
 DEFAULT_OUTPUT_DIR = Path("data/processed/wr_route_profiles")
-PASS_PLAY_TYPES = {"Pass Completion", "Pass Incompletion", "Pass Touchdown", "Passing Touchdown"}
-COMPLETION_PLAY_TYPES = {"Pass Completion", "Pass Touchdown", "Passing Touchdown"}
+PASS_PLAY_TYPES = {
+    "Pass Reception", "Pass Completion",           # CFBD uses "Pass Reception" in 2025+
+    "Pass Incompletion", "Pass Touchdown",
+    "Passing Touchdown",
+}
+COMPLETION_PLAY_TYPES = {
+    "Pass Reception", "Pass Completion",
+    "Pass Touchdown", "Passing Touchdown",
+}
 METHODOLOGY_NOTE = (
     "yards_per_target is YAC-inclusive; true aDOT not available from CFBD play-by-play. "
-    "screen_target_rate derived from play text containing 'screen'. "
-    "depth_tag_coverage_rate indicates fraction of this player's targets with a parseable depth descriptor."
+    "screen_target_rate and depth_tag_coverage_rate are always 0 for CFBD 2025 data — "
+    "play text does not include route/scheme descriptors (e.g. 'screen', 'deep left'). "
+    "These fields are retained for schema compatibility but carry no signal from this source."
 )
 
 _WARNED_MISSING_KEY = False
