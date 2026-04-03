@@ -8,6 +8,8 @@ import json
 import logging
 import os
 import sys
+import time
+from http.client import IncompleteRead
 from pathlib import Path
 from typing import Any
 from urllib.error import HTTPError, URLError
@@ -45,7 +47,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Fetch WR route profile proxies from CFBD play-by-play")
     parser.add_argument("--players-input", type=Path, default=DEFAULT_PLAYERS_INPUT)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
-    parser.add_argument("--season-type", choices=["regular", "both"], default="regular")
+    parser.add_argument("--season-type", choices=["regular", "both"], default="both")
     return parser.parse_args()
 
 
@@ -114,24 +116,31 @@ def fetch_team_plays(year: int, team: str, season_type: str) -> list[dict[str, A
         for week in week_ranges[single_type]:
             params = urlencode({"year": year, "team": team, "seasonType": single_type, "week": week})
             url = f"{CFBD_BASE_URL}/plays?{params}"
-            request = Request(url=url, headers=cfbd_headers())
-            try:
-                with urlopen(request, timeout=60) as response:
-                    payload = json.load(response)
-            except HTTPError as exc:
-                raise SystemExit(
-                    f"CFBD API request failed for {team} {year} week {week} ({single_type}): HTTP {exc.code}"
-                ) from exc
-            except URLError as exc:
-                raise SystemExit(
-                    f"CFBD API request failed for {team} {year} week {week} ({single_type}): {exc.reason}"
-                ) from exc
-
+            payload: list[dict[str, Any]] | None = None
+            for attempt in range(4):
+                try:
+                    request = Request(url=url, headers=cfbd_headers())
+                    with urlopen(request, timeout=60) as response:
+                        payload = json.load(response)
+                    break
+                except IncompleteRead as exc:
+                    wait = 2 ** attempt
+                    logging.warning("IncompleteRead for %s week %s attempt %s — retrying in %ss", team, week, attempt + 1, wait)
+                    time.sleep(wait)
+                except HTTPError as exc:
+                    raise SystemExit(
+                        f"CFBD API request failed for {team} {year} week {week} ({single_type}): HTTP {exc.code}"
+                    ) from exc
+                except URLError as exc:
+                    raise SystemExit(
+                        f"CFBD API request failed for {team} {year} week {week} ({single_type}): {exc.reason}"
+                    ) from exc
+            if payload is None:
+                raise SystemExit(f"CFBD API failed after 4 attempts for {team} {year} week {week}")
             if not isinstance(payload, list):
                 raise SystemExit(
                     f"Unexpected CFBD response for {team} {year} week {week}: expected list, got {type(payload).__name__}"
                 )
-
             plays.extend(payload)
 
     return plays
