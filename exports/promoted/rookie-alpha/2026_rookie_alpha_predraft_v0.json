@@ -11,21 +11,21 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-03-29T14:54:01+00:00",
-  "run_id": "rookie-alpha-2026-2026-03-29T14:54:01+00:00",
+  "generated_at": "2026-04-03T20:49:36+00:00",
+  "run_id": "rookie-alpha-2026-2026-04-03T20:49:36+00:00",
   "season": 2026,
   "coverage_summary": {
-    "players_total": 20,
+    "players_total": 22,
     "players_with_any_missing_input": 0,
-    "players_with_full_inputs": 20,
+    "players_with_full_inputs": 22,
     "players_with_context_fields": 6,
     "input_alignment": {
       "duplicate_rows_skipped": 0,
       "identity_conflicts_skipped": 0,
       "missing_combine": 0,
       "missing_production": 0,
-      "missing_draft_proxy": 3,
-      "total_excluded": 3
+      "missing_draft_proxy": 1,
+      "total_excluded": 1
     }
   },
   "source_files_used": [
@@ -76,8 +76,7 @@
         "production_0_100": 68.5,
         "draft_capital_proxy_0_100": 85.0,
         "talent_score_0_100": 63.2178,
-        "rookie_alpha_0_100": 67.5742,
-        "size_context_0_100": 70.1
+        "rookie_alpha_0_100": 67.5742
       },
       "model_inputs_missing": [],
       "context": {
@@ -129,8 +128,8 @@
         "context_source": "Wikipedia Denzel Boston college career summary and pre-draft measurables section, retrieved 2026-03-29."
       },
       "rookie_alpha_rank": 3,
-      "talent_rank": 6,
-      "draft_proxy_delta": 3
+      "talent_rank": 7,
+      "draft_proxy_delta": 4
     },
     {
       "player_id": "wr-chris-bell",
@@ -141,13 +140,12 @@
         "production_0_100": 60.6,
         "draft_capital_proxy_0_100": 75.0,
         "talent_score_0_100": 62.2545,
-        "rookie_alpha_0_100": 64.8036,
-        "size_context_0_100": 65.0
+        "rookie_alpha_0_100": 64.8036
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 4,
-      "talent_rank": 8,
-      "draft_proxy_delta": 4
+      "talent_rank": 9,
+      "draft_proxy_delta": 5
     },
     {
       "player_id": "wr-carnell-tate",
@@ -158,8 +156,7 @@
         "production_0_100": 73.7,
         "draft_capital_proxy_0_100": 95.0,
         "talent_score_0_100": 56.6211,
-        "rookie_alpha_0_100": 64.2969,
-        "size_context_0_100": 54.3
+        "rookie_alpha_0_100": 64.2969
       },
       "model_inputs_missing": [],
       "context": {
@@ -211,8 +208,8 @@
         "context_source": "Wikipedia Carnell Tate college statistics table (2023-2025 rows), retrieved 2026-03-29."
       },
       "rookie_alpha_rank": 5,
-      "talent_rank": 11,
-      "draft_proxy_delta": 6
+      "talent_rank": 13,
+      "draft_proxy_delta": 8
     },
     {
       "player_id": "wr-jordyn-tyson",
@@ -223,8 +220,7 @@
         "production_0_100": 57.2,
         "draft_capital_proxy_0_100": 95.0,
         "talent_score_0_100": 56.0874,
-        "rookie_alpha_0_100": 63.8699,
-        "size_context_0_100": 58.4
+        "rookie_alpha_0_100": 63.8699
       },
       "model_inputs_missing": [],
       "context": {
@@ -280,8 +276,8 @@
         "context_source": "Wikipedia Jordyn Tyson college career summary and Arizona State official roster bio historical notes, retrieved 2026-03-29."
       },
       "rookie_alpha_rank": 6,
-      "talent_rank": 14,
-      "draft_proxy_delta": 8
+      "talent_rank": 16,
+      "draft_proxy_delta": 10
     },
     {
       "player_id": "wr-chris-brazzell-ii",
@@ -292,8 +288,7 @@
         "production_0_100": 73.4,
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 65.0637,
-        "rookie_alpha_0_100": 63.0509,
-        "size_context_0_100": 64.8
+        "rookie_alpha_0_100": 63.0509
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 7,
@@ -325,12 +320,27 @@
         "production_0_100": 67.6,
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 64.4183,
-        "rookie_alpha_0_100": 62.5347,
-        "size_context_0_100": 63.1
+        "rookie_alpha_0_100": 62.5347
       },
       "model_inputs_missing": [],
       "rookie_alpha_rank": 9,
       "talent_rank": 5,
+      "draft_proxy_delta": -4
+    },
+    {
+      "player_id": "rb-mike-washington-jr",
+      "player_name": "Mike Washington Jr.",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 66.2859,
+        "production_0_100": 62.8,
+        "draft_capital_proxy_0_100": 55.0,
+        "talent_score_0_100": 64.3251,
+        "rookie_alpha_0_100": 62.4601
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 10,
+      "talent_rank": 6,
       "draft_proxy_delta": -4
     },
     {
@@ -342,8 +352,7 @@
         "production_0_100": 69.0,
         "draft_capital_proxy_0_100": 75.0,
         "talent_score_0_100": 57.7348,
-        "rookie_alpha_0_100": 61.1878,
-        "size_context_0_100": 47.6
+        "rookie_alpha_0_100": 61.1878
       },
       "model_inputs_missing": [],
       "context": {
@@ -398,9 +407,9 @@
         "evidence_summary": "Verified collegiate production: 1,159 total yards as a freshman (839 receiving + 320 rushing) and 496 as a sophomore (460 receiving + 36 rushing), indicating a real year-two production dip while retaining 70 career rush attempts as a multi-phase usage signal.",
         "context_source": "Wikipedia Kevin Concepcion stats table (2023-2025 season rows) and Sports-Reference-linked career totals, retrieved 2026-03-29."
       },
-      "rookie_alpha_rank": 10,
-      "talent_rank": 9,
-      "draft_proxy_delta": -1
+      "rookie_alpha_rank": 11,
+      "talent_rank": 11,
+      "draft_proxy_delta": 0
     },
     {
       "player_id": "wr-makai-lemon",
@@ -411,8 +420,7 @@
         "production_0_100": 73.0,
         "draft_capital_proxy_0_100": 75.0,
         "talent_score_0_100": 57.3723,
-        "rookie_alpha_0_100": 60.8978,
-        "size_context_0_100": 41.9
+        "rookie_alpha_0_100": 60.8978
       },
       "model_inputs_missing": [],
       "context": {
@@ -463,9 +471,9 @@
         "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season is aligned with the sourced profile.",
         "context_source": "Wikipedia Makai Lemon statistics table (2023-2025 rows) plus awards section, retrieved 2026-03-29."
       },
-      "rookie_alpha_rank": 11,
-      "talent_rank": 10,
-      "draft_proxy_delta": -1
+      "rookie_alpha_rank": 12,
+      "talent_rank": 12,
+      "draft_proxy_delta": 0
     },
     {
       "player_id": "te-kenyon-sadiq",
@@ -476,13 +484,12 @@
         "production_0_100": 58.4,
         "draft_capital_proxy_0_100": 85.0,
         "talent_score_0_100": 52.55,
-        "rookie_alpha_0_100": 59.04,
-        "size_context_0_100": 41.8
+        "rookie_alpha_0_100": 59.04
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 12,
-      "talent_rank": 17,
-      "draft_proxy_delta": 5
+      "rookie_alpha_rank": 13,
+      "talent_rank": 19,
+      "draft_proxy_delta": 6
     },
     {
       "player_id": "rb-nick-singleton",
@@ -496,8 +503,8 @@
         "rookie_alpha_0_100": 58.8852
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 13,
-      "talent_rank": 7,
+      "rookie_alpha_rank": 14,
+      "talent_rank": 8,
       "draft_proxy_delta": -6
     },
     {
@@ -509,13 +516,28 @@
         "production_0_100": 60.5,
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 56.2575,
-        "rookie_alpha_0_100": 56.006,
-        "size_context_0_100": 44.0
+        "rookie_alpha_0_100": 56.006
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 14,
-      "talent_rank": 13,
-      "draft_proxy_delta": -1
+      "rookie_alpha_rank": 15,
+      "talent_rank": 15,
+      "draft_proxy_delta": 0
+    },
+    {
+      "player_id": "te-oscar-delp",
+      "player_name": "Oscar Delp",
+      "position": "TE",
+      "scores": {
+        "ras_0_100": 68.7173,
+        "production_0_100": 49.5,
+        "draft_capital_proxy_0_100": 45.0,
+        "talent_score_0_100": 57.9076,
+        "rookie_alpha_0_100": 55.326
+      },
+      "model_inputs_missing": [],
+      "rookie_alpha_rank": 16,
+      "talent_rank": 10,
+      "draft_proxy_delta": -6
     },
     {
       "player_id": "rb-jonah-coleman",
@@ -575,8 +597,8 @@
         "evidence_summary": "RB context row seeded, but late-round dart evidence is intentionally withheld until non-proxy translation fields are sourced.",
         "context_source": "2026 seed pool identity + deterministic context scaffolding"
       },
-      "rookie_alpha_rank": 15,
-      "talent_rank": 12,
+      "rookie_alpha_rank": 17,
+      "talent_rank": 14,
       "draft_proxy_delta": -3
     },
     {
@@ -591,8 +613,8 @@
         "rookie_alpha_0_100": 53.994
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 16,
-      "talent_rank": 18,
+      "rookie_alpha_rank": 18,
+      "talent_rank": 20,
       "draft_proxy_delta": 2
     },
     {
@@ -604,12 +626,11 @@
         "production_0_100": 49.2,
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 53.5193,
-        "rookie_alpha_0_100": 53.8155,
-        "size_context_0_100": 46.3
+        "rookie_alpha_0_100": 53.8155
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 17,
-      "talent_rank": 16,
+      "rookie_alpha_rank": 19,
+      "talent_rank": 18,
       "draft_proxy_delta": -1
     },
     {
@@ -624,8 +645,8 @@
         "rookie_alpha_0_100": 53.7157
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 18,
-      "talent_rank": 15,
+      "rookie_alpha_rank": 20,
+      "talent_rank": 17,
       "draft_proxy_delta": -3
     },
     {
@@ -640,8 +661,8 @@
         "rookie_alpha_0_100": 53.4138
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 19,
-      "talent_rank": 19,
+      "rookie_alpha_rank": 21,
+      "talent_rank": 21,
       "draft_proxy_delta": 0
     },
     {
@@ -656,8 +677,8 @@
         "rookie_alpha_0_100": 44.52
       },
       "model_inputs_missing": [],
-      "rookie_alpha_rank": 20,
-      "talent_rank": 20,
+      "rookie_alpha_rank": 22,
+      "talent_rank": 22,
       "draft_proxy_delta": 0
     }
   ]
