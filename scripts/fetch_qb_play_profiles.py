@@ -45,7 +45,8 @@ BIG_PLAY_THRESHOLD = 20  # passing yards gained to count as a big play
 
 METHODOLOGY_NOTE = (
     "Pass attempts, completions, yards, and TDs attributed by QB name appearing in CFBD play text. "
-    "Interceptions inferred from pass plays containing 'intercept' in play text. "
+    "Interceptions are not included — CFBD logs INTs as separate defensive play types that cannot "
+    "be reliably attributed to the QB from play text alone. "
     "Rush stats include designed runs and scrambles where QB name appears in rush play text. "
     "Play text does not include scheme descriptors; big_play_rate counts completions >= "
     f"{BIG_PLAY_THRESHOLD} yards gained."
@@ -75,10 +76,6 @@ def summarize_player(player: dict[str, Any], plays: list[dict[str, Any]], season
     passing_tds = sum(
         1 for p in qb_pass_plays
         if play_type_of(p) in {"Pass Touchdown", "Passing Touchdown"}
-    )
-    interceptions = sum(
-        1 for p in qb_pass_plays
-        if "intercept" in play_text_of(p).lower()
     )
     big_pass_plays = sum(
         1 for p in qb_pass_plays
@@ -111,7 +108,6 @@ def summarize_player(player: dict[str, Any], plays: list[dict[str, Any]], season
         "completion_pct": safe_rate(completions * 100.0, pass_attempts),
         "passing_yards": passing_yards,
         "passing_tds": passing_tds,
-        "interceptions": interceptions,
         "yards_per_attempt": safe_rate(passing_yards, pass_attempts),
         "big_pass_plays": big_pass_plays,
         "big_play_rate": safe_rate(big_pass_plays, pass_attempts),
@@ -154,7 +150,7 @@ def main() -> None:
             print(
                 f"{summary['player_name']} ({summary['team']} {summary['season']}): "
                 f"{summary['pass_attempts']} att, {comp_pct:.1f}% comp, "
-                f"{ypa:.1f} YPA, {summary['passing_tds']} TD / {summary['interceptions']} INT, "
+                f"{ypa:.1f} YPA, {summary['passing_tds']} TD, "
                 f"{summary['rush_attempts']} rush att, {big_pct:.1f}% big plays"
             )
 
