@@ -241,25 +241,26 @@ def main() -> None:
         if player.get("position") != "WR":
             continue
         team = str(player.get("school", "")).strip()
-        season = int(player.get("source_season", player.get("class_year", 0) - 1))
-        if not team or season <= 0:
-            logging.warning("Skipping %s due to missing school/source_season", player.get("player_id", "unknown-player"))
+        class_year = int(player.get("class_year", 0))
+        if not team or class_year <= 0:
+            logging.warning("Skipping %s due to missing school/class_year", player.get("player_id", "unknown-player"))
             continue
 
-        team_plays = fetch_team_plays(season, team, args.season_type)
-        summary = summarize_player({**player, "source_season": season}, team_plays, args.season_type)
+        for season in (class_year - 2, class_year - 1):
+            team_plays = fetch_team_plays(season, team, args.season_type)
+            summary = summarize_player({**player, "source_season": season}, team_plays, args.season_type)
 
-        output_path = args.output_dir / f"{player.get('player_id')}_{season}.json"
-        write_json(output_path, summary)
+            output_path = args.output_dir / f"{player.get('player_id')}_{season}.json"
+            write_json(output_path, summary)
 
-        screen_pct = (summary["screen_target_rate"] or 0.0) * 100.0
-        depth_pct = (summary["depth_tag_coverage_rate"] or 0.0) * 100.0
-        ypt = summary["yards_per_target"] or 0.0
-        print(
-            f"{summary['player_name']} ({summary['team']} {summary['season']}): "
-            f"{summary['targets']} targets, {screen_pct:.1f}% screen rate, "
-            f"{ypt:.1f} yds/target, depth tag coverage {depth_pct:.0f}%"
-        )
+            screen_pct = (summary["screen_target_rate"] or 0.0) * 100.0
+            depth_pct = (summary["depth_tag_coverage_rate"] or 0.0) * 100.0
+            ypt = summary["yards_per_target"] or 0.0
+            print(
+                f"{summary['player_name']} ({summary['team']} {summary['season']}): "
+                f"{summary['targets']} targets, {screen_pct:.1f}% screen rate, "
+                f"{ypt:.1f} yds/target, depth tag coverage {depth_pct:.0f}%"
+            )
 
 
 if __name__ == "__main__":
