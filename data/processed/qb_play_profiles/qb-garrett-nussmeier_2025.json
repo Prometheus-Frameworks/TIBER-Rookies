@@ -1,0 +1,23 @@
+{
+  "player_id": "qb-garrett-nussmeier",
+  "player_name": "Garrett Nussmeier",
+  "team": "LSU",
+  "season": 2025,
+  "season_type": "both",
+  "pass_attempts": 261,
+  "completions": 175,
+  "completion_pct": 67.04980842911877,
+  "passing_yards": 1864.0,
+  "passing_tds": 12,
+  "yards_per_attempt": 7.14176245210728,
+  "big_pass_plays": 20,
+  "big_play_rate": 0.07662835249042145,
+  "rush_attempts": 12,
+  "rush_yards": 80.0,
+  "rush_tds": 1,
+  "yards_per_carry": 6.666666666666667,
+  "team_pass_plays": 434,
+  "source_name": "CFBD play-by-play (year=2025, team=LSU)",
+  "source_url": "https://api.collegefootballdata.com/plays?year=2025&team=LSU&seasonType=both",
+  "methodology_notes": "Pass attempts, completions, yards, and TDs attributed by QB name appearing in CFBD play text. Interceptions are not included \u2014 CFBD logs INTs as separate defensive play types that cannot be reliably attributed to the QB from play text alone. Rush stats include designed runs and scrambles where QB name appears in rush play text. Play text does not include scheme descriptors; big_play_rate counts completions >= 20 yards gained."
+}
