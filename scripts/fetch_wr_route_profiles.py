@@ -47,7 +47,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Fetch WR route profile proxies from CFBD play-by-play")
     parser.add_argument("--players-input", type=Path, default=DEFAULT_PLAYERS_INPUT)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
-    parser.add_argument("--season-type", choices=["regular", "both"], default="regular")
+    parser.add_argument("--season-type", choices=["regular", "both"], default="both")
     return parser.parse_args()
 
 
