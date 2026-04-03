@@ -1,0 +1,23 @@
+{
+  "player_id": "qb-carson-beck",
+  "player_name": "Carson Beck",
+  "team": "Miami (FL)",
+  "season": 2025,
+  "season_type": "both",
+  "pass_attempts": 0,
+  "completions": 0,
+  "completion_pct": null,
+  "passing_yards": 0,
+  "passing_tds": 0,
+  "yards_per_attempt": null,
+  "big_pass_plays": 0,
+  "big_play_rate": null,
+  "rush_attempts": 0,
+  "rush_yards": 0,
+  "rush_tds": 0,
+  "yards_per_carry": null,
+  "team_pass_plays": 0,
+  "source_name": "CFBD play-by-play (year=2025, team=Miami (FL))",
+  "source_url": "https://api.collegefootballdata.com/plays?year=2025&team=Miami+%28FL%29&seasonType=both",
+  "methodology_notes": "Pass attempts, completions, yards, and TDs attributed by QB name appearing in CFBD play text. Interceptions are not included \u2014 CFBD logs INTs as separate defensive play types that cannot be reliably attributed to the QB from play text alone. Rush stats include designed runs and scrambles where QB name appears in rush play text. Play text does not include scheme descriptors; big_play_rate counts completions >= 20 yards gained. No pass plays matched; attribution may have failed due to name mismatch."
+}
