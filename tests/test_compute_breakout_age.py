@@ -69,6 +69,12 @@ class BreakoutThresholdTests(unittest.TestCase):
     def test_young_breakout_max_age_is_20(self) -> None:
         self.assertEqual(YOUNG_BREAKOUT_MAX_AGE, 20)
 
+    def test_te_threshold_lower_than_wr(self) -> None:
+        wr_field, wr_val = BREAKOUT_THRESHOLDS["WR"]
+        te_field, te_val = BREAKOUT_THRESHOLDS["TE"]
+        self.assertEqual(wr_field, te_field)  # both use targets
+        self.assertLess(te_val, wr_val)       # TE bar is lower
+
 
 class ComputeBreakoutTests(unittest.TestCase):
     def _make_args(self, tmp_dir: Path) -> MagicMock:

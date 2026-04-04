@@ -12,9 +12,10 @@ default). Players whose breakout predates those seasons (e.g. Nick Singleton
 2022) will show breakout_age=null. This is a known data gap, not a bug.
 
 Breakout thresholds (inclusive):
-  WR / TE  — targets  >= 50
-  QB       — pass_attempts >= 150
-  RB       — rush_attempts >= 80
+  WR  — targets  >= 50
+  TE  — targets  >= 35  (lower bar; college TEs rarely exceed 50)
+  QB  — pass_attempts >= 150
+  RB  — rush_attempts >= 80
 
 young_breakout_flag: True if breakout_age <= 20
 """
@@ -45,7 +46,7 @@ DEFAULT_RB_DIR = Path("data/processed/rb_play_profiles")
 # Breakout thresholds by position
 BREAKOUT_THRESHOLDS: dict[str, tuple[str, int]] = {
     "WR": ("targets", 50),
-    "TE": ("targets", 50),
+    "TE": ("targets", 35),
     "QB": ("pass_attempts", 150),
     "RB": ("rush_attempts", 80),
 }
