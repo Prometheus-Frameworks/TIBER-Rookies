@@ -1,0 +1,21 @@
+{
+  "player_id": "te-eli-stowers",
+  "player_name": "Eli Stowers",
+  "team": "Vanderbilt",
+  "season": 2025,
+  "season_type": "both",
+  "targets": 38,
+  "receptions": 27,
+  "screen_targets": 0,
+  "screen_target_rate": 0.0,
+  "yards_per_target": 9.631578947368421,
+  "deep_target_rate": null,
+  "depth_tag_coverage_rate": 0.0,
+  "team_pass_plays": 388,
+  "team_screen_plays": 0,
+  "team_screen_rate": 0.0,
+  "team_yards_per_pass": 9.626288659793815,
+  "source_name": "CFBD play-by-play (year=2025, team=Vanderbilt)",
+  "source_url": "https://api.collegefootballdata.com/plays?year=2025&team=Vanderbilt&seasonType=both",
+  "methodology_notes": "yards_per_target is YAC-inclusive; true aDOT not available from CFBD play-by-play. screen_target_rate and depth_tag_coverage_rate are always 0 for CFBD 2025 data \u2014 play text does not include route/scheme descriptors (e.g. 'screen', 'deep left'). These fields are retained for schema compatibility but carry no signal from this source."
+}

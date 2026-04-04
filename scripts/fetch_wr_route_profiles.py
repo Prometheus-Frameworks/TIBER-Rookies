@@ -125,7 +125,7 @@ def main() -> None:
         raise SystemExit("players-input must be a JSON array")
 
     for player in players:
-        if player.get("position") != "WR":
+        if player.get("position") not in ("WR", "TE"):
             continue
         team = str(player.get("school", "")).strip()
         class_year = int(player.get("class_year", 0))
