@@ -93,7 +93,8 @@ def find_academic_year(roster: list[dict[str, Any]], player_name: str) -> int | 
     normalized_target = normalize_identity(player_name)
     for entry in roster:
         full = str(entry.get("fullName") or entry.get("full_name") or
-                   f"{entry.get('first_name', '')} {entry.get('last_name', '')}").strip()
+                   f"{entry.get('firstName', '') or entry.get('first_name', '')} "
+                   f"{entry.get('lastName', '') or entry.get('last_name', '')}").strip()
         if normalize_identity(full) == normalized_target:
             year = entry.get("year") or entry.get("eligibilityYear")
             if year is not None:

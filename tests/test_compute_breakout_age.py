@@ -39,6 +39,7 @@ class FindAcademicYearTests(unittest.TestCase):
             {"fullName": "Jane Doe", "year": 2},
             {"fullName": "John Smith", "year": 3},
             {"first_name": "Alice", "last_name": "Jones", "year": 1},
+            {"firstName": "Bob", "lastName": "Brown", "year": 4},
         ]
 
     def test_finds_by_full_name(self) -> None:
@@ -49,6 +50,9 @@ class FindAcademicYearTests(unittest.TestCase):
 
     def test_returns_none_when_not_found(self) -> None:
         self.assertIsNone(find_academic_year(self._roster(), "Nobody Here"))
+
+    def test_finds_by_camel_case_first_last_name(self) -> None:
+        self.assertEqual(find_academic_year(self._roster(), "Bob Brown"), 4)
 
     def test_case_insensitive(self) -> None:
         self.assertEqual(find_academic_year(self._roster(), "JANE DOE"), 2)
