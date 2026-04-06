@@ -85,7 +85,10 @@ class RookieAlphaTests(unittest.TestCase):
 
         players, diagnostics = merge_inputs(combine_rows, production_rows, draft_rows)
         self.assertEqual(players, [])
-        self.assertEqual(diagnostics.excluded_for_missing_sources["total_excluded"], 3)
+        # RAS (combine) is optional — only prod+draft are required.
+        # p2 has prod but no draft; p3 has draft but no prod → both excluded.
+        # p1 (combine only) is not in the prod/draft universe at all.
+        self.assertEqual(diagnostics.excluded_for_missing_sources["total_excluded"], 2)
 
     def test_merge_inputs_excludes_cross_source_identity_mismatches(self) -> None:
         combine_rows = [

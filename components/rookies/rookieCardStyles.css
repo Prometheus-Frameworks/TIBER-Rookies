@@ -5,13 +5,13 @@
   --panel-raised: #2A2218;
   --text: #F0E8DC;
   --muted: #9E8B7A;
-  --accent: #D97757;
-  --accent-soft: #E8A88A;
-  --accent-glow: rgba(217, 119, 87, 0.18);
+  --accent: #E8853D;
+  --accent-soft: #F0A870;
+  --accent-glow: rgba(232, 133, 61, 0.18);
   --teal: #4ECDC4;
   --teal-glow: rgba(78, 205, 196, 0.18);
   --border: #2E2318;
-  --border-accent: rgba(217, 119, 87, 0.35);
+  --border-accent: rgba(232, 133, 61, 0.35);
 }
 
 body {

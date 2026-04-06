@@ -11,18 +11,18 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-06T10:45:41+00:00",
-  "run_id": "rookie-alpha-2026-2026-04-06T10:45:41+00:00",
+  "generated_at": "2026-04-06T23:26:17+00:00",
+  "run_id": "rookie-alpha-2026-2026-04-06T23:26:17+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 22,
-    "players_with_any_missing_input": 0,
-    "players_with_full_inputs": 22,
+    "players_with_any_missing_input": 17,
+    "players_with_full_inputs": 5,
     "players_with_context_fields": 22,
     "input_alignment": {
       "duplicate_rows_skipped": 0,
       "identity_conflicts_skipped": 0,
-      "missing_combine": 0,
+      "missing_combine": 18,
       "missing_production": 0,
       "missing_draft_proxy": 1,
       "total_excluded": 1
@@ -40,14 +40,16 @@
       "player_name": "Jeremiyah Love",
       "position": "RB",
       "scores": {
-        "ras_0_100": 55.5775,
+        "ras_0_100": 50.0,
         "production_0_100": 90.0,
         "age_adjusted_production_0_100": 100.0,
         "draft_capital_proxy_0_100": 95.0,
-        "talent_score_0_100": 74.9402,
-        "rookie_alpha_0_100": 78.9521
+        "talent_score_0_100": 72.5,
+        "rookie_alpha_0_100": 77.0
       },
-      "model_inputs_missing": [],
+      "model_inputs_missing": [
+        "ras"
+      ],
       "context": {
         "player_id": "rb-jeremiyah-love",
         "player_name": "Jeremiyah Love",
@@ -105,14 +107,16 @@
       "player_name": "Jordyn Tyson",
       "position": "WR",
       "scores": {
-        "ras_0_100": 54.657,
+        "ras_0_100": 50.0,
         "production_0_100": 82.88,
         "age_adjusted_production_0_100": 100.0,
         "draft_capital_proxy_0_100": 95.0,
-        "talent_score_0_100": 70.5324,
-        "rookie_alpha_0_100": 75.4259
+        "talent_score_0_100": 68.495,
+        "rookie_alpha_0_100": 73.796
       },
-      "model_inputs_missing": [],
+      "model_inputs_missing": [
+        "ras"
+      ],
       "context": {
         "player_id": "wr-jordyn-tyson",
         "player_name": "Jordyn Tyson",
@@ -168,22 +172,91 @@
         "context_source": "Wikipedia Jordyn Tyson college career summary and Arizona State official roster bio historical notes, retrieved 2026-03-29."
       },
       "rookie_alpha_rank": 2,
-      "talent_rank": 2,
-      "draft_proxy_delta": 0
+      "talent_rank": 3,
+      "draft_proxy_delta": 1
+    },
+    {
+      "player_id": "qb-ty-simpson",
+      "player_name": "Ty Simpson",
+      "position": "QB",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 77.48,
+        "age_adjusted_production_0_100": 91.0,
+        "draft_capital_proxy_0_100": 85.0,
+        "talent_score_0_100": 65.4575,
+        "rookie_alpha_0_100": 69.366
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "qb-ty-simpson",
+        "player_name": "Ty Simpson",
+        "position": "QB",
+        "school": "Alabama",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 20,
+        "age_at_first_impact_season": 20,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": true,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [
+          "young_breakout"
+        ],
+        "context_flags": [],
+        "translation_flags": [
+          "young_breakout"
+        ],
+        "evidence_summary": null,
+        "context_source": "compute_breakout_age.py"
+      },
+      "rookie_alpha_rank": 3,
+      "talent_rank": 5,
+      "draft_proxy_delta": 2
     },
     {
       "player_id": "qb-fernando-mendoza",
       "player_name": "Fernando Mendoza",
       "position": "QB",
       "scores": {
-        "ras_0_100": 65.168,
+        "ras_0_100": 50.0,
         "production_0_100": 70.34,
         "age_adjusted_production_0_100": 63.1,
         "draft_capital_proxy_0_100": 95.0,
-        "talent_score_0_100": 68.0773,
-        "rookie_alpha_0_100": 73.4618
+        "talent_score_0_100": 61.4413,
+        "rookie_alpha_0_100": 68.153
       },
-      "model_inputs_missing": [],
+      "model_inputs_missing": [
+        "ras"
+      ],
       "context": {
         "player_id": "qb-fernando-mendoza",
         "player_name": "Fernando Mendoza",
@@ -232,9 +305,9 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 3,
-      "talent_rank": 4,
-      "draft_proxy_delta": 1
+      "rookie_alpha_rank": 4,
+      "talent_rank": 7,
+      "draft_proxy_delta": 3
     },
     {
       "player_id": "te-eli-stowers",
@@ -293,9 +366,72 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 4,
-      "talent_rank": 3,
-      "draft_proxy_delta": -1
+      "rookie_alpha_rank": 5,
+      "talent_rank": 2,
+      "draft_proxy_delta": -3
+    },
+    {
+      "player_id": "qb-garrett-nussmeier",
+      "player_name": "Garrett Nussmeier",
+      "position": "QB",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 80.52,
+        "age_adjusted_production_0_100": 100.0,
+        "draft_capital_proxy_0_100": 55.0,
+        "talent_score_0_100": 67.1675,
+        "rookie_alpha_0_100": 64.734
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "qb-garrett-nussmeier",
+        "player_name": "Garrett Nussmeier",
+        "position": "QB",
+        "school": "LSU",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 21,
+        "age_at_first_impact_season": 21,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": false,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [],
+        "context_flags": [],
+        "translation_flags": [],
+        "evidence_summary": null,
+        "context_source": "compute_breakout_age.py"
+      },
+      "rookie_alpha_rank": 6,
+      "talent_rank": 4,
+      "draft_proxy_delta": -2
     },
     {
       "player_id": "wr-denzel-boston",
@@ -361,35 +497,37 @@
         "evidence_summary": "Sourced profile confirms 62-881-11 in 2025 and only 66 total receiving yards across his first two college seasons combined; year-by-year freshman/sophomore split and combine-verified testing context are not explicitly published in currently available in-repo sources.",
         "context_source": "Wikipedia Denzel Boston college career summary and pre-draft measurables section, retrieved 2026-03-29."
       },
-      "rookie_alpha_rank": 5,
-      "talent_rank": 6,
+      "rookie_alpha_rank": 7,
+      "talent_rank": 8,
       "draft_proxy_delta": 1
     },
     {
-      "player_id": "qb-ty-simpson",
-      "player_name": "Ty Simpson",
-      "position": "QB",
+      "player_id": "wr-carnell-tate",
+      "player_name": "Carnell Tate",
+      "position": "WR",
       "scores": {
-        "ras_0_100": 30.4966,
-        "production_0_100": 77.48,
-        "age_adjusted_production_0_100": 91.0,
-        "draft_capital_proxy_0_100": 85.0,
-        "talent_score_0_100": 56.9248,
-        "rookie_alpha_0_100": 62.5398
+        "ras_0_100": 50.0,
+        "production_0_100": 54.2,
+        "age_adjusted_production_0_100": 41.2,
+        "draft_capital_proxy_0_100": 95.0,
+        "talent_score_0_100": 52.3625,
+        "rookie_alpha_0_100": 60.89
       },
-      "model_inputs_missing": [],
+      "model_inputs_missing": [
+        "ras"
+      ],
       "context": {
-        "player_id": "qb-ty-simpson",
-        "player_name": "Ty Simpson",
-        "position": "QB",
-        "school": "Alabama",
+        "player_id": "wr-carnell-tate",
+        "player_name": "Carnell Tate",
+        "position": "WR",
+        "school": "Ohio State",
         "class_year": 2026,
-        "early_declare_flag": null,
+        "early_declare_flag": true,
         "breakout_age": 20,
         "age_at_first_impact_season": 20,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
+        "freshman_total_yards": 264,
+        "sophomore_total_yards": 739,
+        "freshman_impact_flag": false,
         "young_breakout_flag": true,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
@@ -397,160 +535,249 @@
         "seasons_over_2_3_yprr": null,
         "single_season_efficiency_dip_flag": null,
         "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": null,
-        "injury_adjusted_profile_flag": null,
+        "injury_affected_season_count": 0,
+        "injury_adjusted_profile_flag": false,
         "broken_offense_context_flag": null,
         "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
+        "rush_attempts_or_rush_usage_signal": 2,
+        "rushing_production_signal": 22,
         "missed_tackles_forced_per_reception": null,
         "yac_proxy_per_reception": null,
         "contested_catch_rate": null,
         "inside_out_versatility_flag": null,
         "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
+        "power4_early_contributor_flag": true,
         "career_receiving_market_share": null,
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null
+        "path_disruption_flag": false
       },
       "evidence": {
         "evidence_tags": [
-          "young_breakout"
+          "young_breakout",
+          "early_declare"
         ],
-        "context_flags": [],
+        "context_flags": [
+          "limited_multi_season_data"
+        ],
         "translation_flags": [
           "young_breakout"
         ],
-        "evidence_summary": null,
-        "context_source": "compute_breakout_age.py"
-      },
-      "rookie_alpha_rank": 6,
-      "talent_rank": 10,
-      "draft_proxy_delta": 4
-    },
-    {
-      "player_id": "qb-drew-allar",
-      "player_name": "Drew Allar",
-      "position": "QB",
-      "scores": {
-        "ras_0_100": 61.2878,
-        "production_0_100": 63.7,
-        "age_adjusted_production_0_100": 71.7,
-        "draft_capital_proxy_0_100": 45.0,
-        "talent_score_0_100": 62.6446,
-        "rookie_alpha_0_100": 59.1157
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "qb-drew-allar",
-        "player_name": "Drew Allar",
-        "position": "QB",
-        "school": "Penn State",
-        "class_year": 2026,
-        "early_declare_flag": null,
-        "breakout_age": 21,
-        "age_at_first_impact_season": 21,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": false,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": null,
-        "injury_adjusted_profile_flag": null,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": null
-      },
-      "evidence": {
-        "evidence_tags": [],
-        "context_flags": [],
-        "translation_flags": [],
-        "evidence_summary": null,
-        "context_source": "compute_breakout_age.py"
-      },
-      "rookie_alpha_rank": 7,
-      "talent_rank": 5,
-      "draft_proxy_delta": -2
-    },
-    {
-      "player_id": "qb-garrett-nussmeier",
-      "player_name": "Garrett Nussmeier",
-      "position": "QB",
-      "scores": {
-        "ras_0_100": 29.8143,
-        "production_0_100": 80.52,
-        "age_adjusted_production_0_100": 100.0,
-        "draft_capital_proxy_0_100": 55.0,
-        "talent_score_0_100": 58.3363,
-        "rookie_alpha_0_100": 57.669
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "qb-garrett-nussmeier",
-        "player_name": "Garrett Nussmeier",
-        "position": "QB",
-        "school": "LSU",
-        "class_year": 2026,
-        "early_declare_flag": null,
-        "breakout_age": 21,
-        "age_at_first_impact_season": 21,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": false,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": null,
-        "injury_adjusted_profile_flag": null,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": null
-      },
-      "evidence": {
-        "evidence_tags": [],
-        "context_flags": [],
-        "translation_flags": [],
-        "evidence_summary": null,
-        "context_source": "compute_breakout_age.py"
+        "evidence_summary": "Verified Ohio State progression from 264 freshman total yards to 739 sophomore total yards (733 receiving + 6 rushing), then 854 total yards in 2025.",
+        "context_source": "Wikipedia Carnell Tate college statistics table (2023-2025 rows), retrieved 2026-03-29."
       },
       "rookie_alpha_rank": 8,
-      "talent_rank": 7,
-      "draft_proxy_delta": -1
+      "talent_rank": 13,
+      "draft_proxy_delta": 5
+    },
+    {
+      "player_id": "wr-makai-lemon",
+      "player_name": "Makai Lemon",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 61.6,
+        "age_adjusted_production_0_100": 54.0,
+        "draft_capital_proxy_0_100": 75.0,
+        "talent_score_0_100": 56.525,
+        "rookie_alpha_0_100": 60.22
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "wr-makai-lemon",
+        "player_name": "Makai Lemon",
+        "position": "WR",
+        "school": "USC",
+        "class_year": 2026,
+        "early_declare_flag": true,
+        "breakout_age": 20,
+        "age_at_first_impact_season": 20,
+        "freshman_total_yards": 88,
+        "sophomore_total_yards": 764,
+        "freshman_impact_flag": false,
+        "young_breakout_flag": true,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": 0,
+        "injury_adjusted_profile_flag": false,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": 9,
+        "rushing_production_signal": 4,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": true,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": false
+      },
+      "evidence": {
+        "evidence_tags": [
+          "young_breakout",
+          "early_declare"
+        ],
+        "context_flags": [
+          "limited_multi_season_data"
+        ],
+        "translation_flags": [
+          "young_breakout"
+        ],
+        "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season is aligned with the sourced profile.",
+        "context_source": "Wikipedia Makai Lemon statistics table (2023-2025 rows) plus awards section, retrieved 2026-03-29."
+      },
+      "rookie_alpha_rank": 9,
+      "talent_rank": 11,
+      "draft_proxy_delta": 2
+    },
+    {
+      "player_id": "rb-jonah-coleman",
+      "player_name": "Jonah Coleman",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 71.62,
+        "age_adjusted_production_0_100": 73.1,
+        "draft_capital_proxy_0_100": 45.0,
+        "talent_score_0_100": 62.1613,
+        "rookie_alpha_0_100": 58.729
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "rb-jonah-coleman",
+        "player_name": "Jonah Coleman",
+        "position": "RB",
+        "school": "Washington",
+        "class_year": 2026,
+        "early_declare_flag": false,
+        "breakout_age": 21,
+        "age_at_first_impact_season": 21,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": false,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": 0,
+        "injury_adjusted_profile_flag": false,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": false
+      },
+      "evidence": {
+        "evidence_tags": [],
+        "context_flags": [
+          "limited_multi_season_data"
+        ],
+        "translation_flags": [],
+        "evidence_summary": "RB context row seeded, but late-round dart evidence is intentionally withheld until non-proxy translation fields are sourced.",
+        "context_source": "2026 seed pool identity + deterministic context scaffolding"
+      },
+      "rookie_alpha_rank": 10,
+      "talent_rank": 6,
+      "draft_proxy_delta": -4
+    },
+    {
+      "player_id": "wr-kc-concepcion",
+      "player_name": "KC Concepcion",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 55.92,
+        "age_adjusted_production_0_100": 47.2,
+        "draft_capital_proxy_0_100": 75.0,
+        "talent_score_0_100": 53.33,
+        "rookie_alpha_0_100": 57.664
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "wr-kc-concepcion",
+        "player_name": "KC Concepcion",
+        "position": "WR",
+        "school": "Texas A&M",
+        "class_year": 2026,
+        "early_declare_flag": true,
+        "breakout_age": 20,
+        "age_at_first_impact_season": 20,
+        "freshman_total_yards": 1159,
+        "sophomore_total_yards": 496,
+        "freshman_impact_flag": true,
+        "young_breakout_flag": true,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": true,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": 0,
+        "injury_adjusted_profile_flag": false,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": 70,
+        "rushing_production_signal": 431,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": true,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": false
+      },
+      "evidence": {
+        "evidence_tags": [
+          "young_breakout",
+          "early_declare",
+          "rushing_signal"
+        ],
+        "context_flags": [
+          "limited_multi_season_data",
+          "single_season_efficiency_dip"
+        ],
+        "translation_flags": [
+          "young_breakout",
+          "rushing_signal"
+        ],
+        "evidence_summary": "Verified collegiate production: 1,159 total yards as a freshman (839 receiving + 320 rushing) and 496 as a sophomore (460 receiving + 36 rushing), indicating a real year-two production dip while retaining 70 career rush attempts as a multi-phase usage signal.",
+        "context_source": "Wikipedia Kevin Concepcion stats table (2023-2025 season rows) and Sports-Reference-linked career totals, retrieved 2026-03-29."
+      },
+      "rookie_alpha_rank": 11,
+      "talent_rank": 12,
+      "draft_proxy_delta": 1
     },
     {
       "player_id": "rb-mike-washington-jr",
@@ -609,298 +836,30 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 9,
-      "talent_rank": 9,
-      "draft_proxy_delta": 0
-    },
-    {
-      "player_id": "wr-makai-lemon",
-      "player_name": "Makai Lemon",
-      "position": "WR",
-      "scores": {
-        "ras_0_100": 37.2794,
-        "production_0_100": 61.6,
-        "age_adjusted_production_0_100": 54.0,
-        "draft_capital_proxy_0_100": 75.0,
-        "talent_score_0_100": 50.9598,
-        "rookie_alpha_0_100": 55.7678
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "wr-makai-lemon",
-        "player_name": "Makai Lemon",
-        "position": "WR",
-        "school": "USC",
-        "class_year": 2026,
-        "early_declare_flag": true,
-        "breakout_age": 20,
-        "age_at_first_impact_season": 20,
-        "freshman_total_yards": 88,
-        "sophomore_total_yards": 764,
-        "freshman_impact_flag": false,
-        "young_breakout_flag": true,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": 0,
-        "injury_adjusted_profile_flag": false,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": 9,
-        "rushing_production_signal": 4,
-        "missed_tackles_forced_per_reception": null,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": true,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": false
-      },
-      "evidence": {
-        "evidence_tags": [
-          "young_breakout",
-          "early_declare"
-        ],
-        "context_flags": [
-          "limited_multi_season_data"
-        ],
-        "translation_flags": [
-          "young_breakout"
-        ],
-        "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season is aligned with the sourced profile.",
-        "context_source": "Wikipedia Makai Lemon statistics table (2023-2025 rows) plus awards section, retrieved 2026-03-29."
-      },
-      "rookie_alpha_rank": 10,
-      "talent_rank": 13,
-      "draft_proxy_delta": 3
-    },
-    {
-      "player_id": "wr-carnell-tate",
-      "player_name": "Carnell Tate",
-      "position": "WR",
-      "scores": {
-        "ras_0_100": 34.6625,
-        "production_0_100": 54.2,
-        "age_adjusted_production_0_100": 41.2,
-        "draft_capital_proxy_0_100": 95.0,
-        "talent_score_0_100": 45.6523,
-        "rookie_alpha_0_100": 55.5219
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "wr-carnell-tate",
-        "player_name": "Carnell Tate",
-        "position": "WR",
-        "school": "Ohio State",
-        "class_year": 2026,
-        "early_declare_flag": true,
-        "breakout_age": 20,
-        "age_at_first_impact_season": 20,
-        "freshman_total_yards": 264,
-        "sophomore_total_yards": 739,
-        "freshman_impact_flag": false,
-        "young_breakout_flag": true,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": 0,
-        "injury_adjusted_profile_flag": false,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": 2,
-        "rushing_production_signal": 22,
-        "missed_tackles_forced_per_reception": null,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": true,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": false
-      },
-      "evidence": {
-        "evidence_tags": [
-          "young_breakout",
-          "early_declare"
-        ],
-        "context_flags": [
-          "limited_multi_season_data"
-        ],
-        "translation_flags": [
-          "young_breakout"
-        ],
-        "evidence_summary": "Verified Ohio State progression from 264 freshman total yards to 739 sophomore total yards (733 receiving + 6 rushing), then 854 total yards in 2025.",
-        "context_source": "Wikipedia Carnell Tate college statistics table (2023-2025 rows), retrieved 2026-03-29."
-      },
-      "rookie_alpha_rank": 11,
-      "talent_rank": 17,
-      "draft_proxy_delta": 6
-    },
-    {
-      "player_id": "wr-kc-concepcion",
-      "player_name": "KC Concepcion",
-      "position": "WR",
-      "scores": {
-        "ras_0_100": 43.2509,
-        "production_0_100": 55.92,
-        "age_adjusted_production_0_100": 47.2,
-        "draft_capital_proxy_0_100": 75.0,
-        "talent_score_0_100": 50.3773,
-        "rookie_alpha_0_100": 55.3018
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "wr-kc-concepcion",
-        "player_name": "KC Concepcion",
-        "position": "WR",
-        "school": "Texas A&M",
-        "class_year": 2026,
-        "early_declare_flag": true,
-        "breakout_age": 20,
-        "age_at_first_impact_season": 20,
-        "freshman_total_yards": 1159,
-        "sophomore_total_yards": 496,
-        "freshman_impact_flag": true,
-        "young_breakout_flag": true,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": true,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": 0,
-        "injury_adjusted_profile_flag": false,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": 70,
-        "rushing_production_signal": 431,
-        "missed_tackles_forced_per_reception": null,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": true,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": false
-      },
-      "evidence": {
-        "evidence_tags": [
-          "young_breakout",
-          "early_declare",
-          "rushing_signal"
-        ],
-        "context_flags": [
-          "limited_multi_season_data",
-          "single_season_efficiency_dip"
-        ],
-        "translation_flags": [
-          "young_breakout",
-          "rushing_signal"
-        ],
-        "evidence_summary": "Verified collegiate production: 1,159 total yards as a freshman (839 receiving + 320 rushing) and 496 as a sophomore (460 receiving + 36 rushing), indicating a real year-two production dip while retaining 70 career rush attempts as a multi-phase usage signal.",
-        "context_source": "Wikipedia Kevin Concepcion stats table (2023-2025 season rows) and Sports-Reference-linked career totals, retrieved 2026-03-29."
-      },
       "rookie_alpha_rank": 12,
-      "talent_rank": 14,
-      "draft_proxy_delta": 2
+      "talent_rank": 10,
+      "draft_proxy_delta": -2
     },
     {
-      "player_id": "rb-jonah-coleman",
-      "player_name": "Jonah Coleman",
-      "position": "RB",
+      "player_id": "qb-drew-allar",
+      "player_name": "Drew Allar",
+      "position": "QB",
       "scores": {
-        "ras_0_100": 39.845,
-        "production_0_100": 71.62,
-        "age_adjusted_production_0_100": 73.1,
+        "ras_0_100": 50.0,
+        "production_0_100": 63.7,
+        "age_adjusted_production_0_100": 71.7,
         "draft_capital_proxy_0_100": 45.0,
-        "talent_score_0_100": 57.7185,
-        "rookie_alpha_0_100": 55.1748
+        "talent_score_0_100": 57.7063,
+        "rookie_alpha_0_100": 55.165
       },
-      "model_inputs_missing": [],
+      "model_inputs_missing": [
+        "ras"
+      ],
       "context": {
-        "player_id": "rb-jonah-coleman",
-        "player_name": "Jonah Coleman",
-        "position": "RB",
-        "school": "Washington",
-        "class_year": 2026,
-        "early_declare_flag": false,
-        "breakout_age": 21,
-        "age_at_first_impact_season": 21,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": false,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": 0,
-        "injury_adjusted_profile_flag": false,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": false
-      },
-      "evidence": {
-        "evidence_tags": [],
-        "context_flags": [
-          "limited_multi_season_data"
-        ],
-        "translation_flags": [],
-        "evidence_summary": "RB context row seeded, but late-round dart evidence is intentionally withheld until non-proxy translation fields are sourced.",
-        "context_source": "2026 seed pool identity + deterministic context scaffolding"
-      },
-      "rookie_alpha_rank": 13,
-      "talent_rank": 8,
-      "draft_proxy_delta": -5
-    },
-    {
-      "player_id": "wr-chris-bell",
-      "player_name": "Chris Bell",
-      "position": "WR",
-      "scores": {
-        "ras_0_100": 64.3816,
-        "production_0_100": 38.58,
-        "age_adjusted_production_0_100": 23.9,
-        "draft_capital_proxy_0_100": 75.0,
-        "talent_score_0_100": 49.8682,
-        "rookie_alpha_0_100": 54.8946
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "wr-chris-bell",
-        "player_name": "Chris Bell",
-        "position": "WR",
-        "school": "Louisville",
+        "player_id": "qb-drew-allar",
+        "player_name": "Drew Allar",
+        "position": "QB",
+        "school": "Penn State",
         "class_year": 2026,
         "early_declare_flag": null,
         "breakout_age": 21,
@@ -940,9 +899,9 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 14,
-      "talent_rank": 15,
-      "draft_proxy_delta": 1
+      "rookie_alpha_rank": 13,
+      "talent_rank": 9,
+      "draft_proxy_delta": -4
     },
     {
       "player_id": "rb-jadarian-price",
@@ -1005,23 +964,25 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 15,
-      "talent_rank": 12,
-      "draft_proxy_delta": -3
+      "rookie_alpha_rank": 14,
+      "talent_rank": 14,
+      "draft_proxy_delta": 0
     },
     {
       "player_id": "wr-chris-brazzell-ii",
       "player_name": "Chris Brazzell II",
       "position": "WR",
       "scores": {
-        "ras_0_100": 54.3456,
+        "ras_0_100": 50.0,
         "production_0_100": 52.52,
         "age_adjusted_production_0_100": 38.6,
         "draft_capital_proxy_0_100": 55.0,
-        "talent_score_0_100": 53.3187,
-        "rookie_alpha_0_100": 53.6549
+        "talent_score_0_100": 51.4175,
+        "rookie_alpha_0_100": 52.134
       },
-      "model_inputs_missing": [],
+      "model_inputs_missing": [
+        "ras"
+      ],
       "context": {
         "player_id": "wr-chris-brazzell-ii",
         "player_name": "Chris Brazzell II",
@@ -1070,9 +1031,72 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
+      "rookie_alpha_rank": 15,
+      "talent_rank": 15,
+      "draft_proxy_delta": 0
+    },
+    {
+      "player_id": "wr-chris-bell",
+      "player_name": "Chris Bell",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 38.58,
+        "age_adjusted_production_0_100": 23.9,
+        "draft_capital_proxy_0_100": 75.0,
+        "talent_score_0_100": 43.5763,
+        "rookie_alpha_0_100": 49.861
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "wr-chris-bell",
+        "player_name": "Chris Bell",
+        "position": "WR",
+        "school": "Louisville",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 21,
+        "age_at_first_impact_season": 21,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": false,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [],
+        "context_flags": [],
+        "translation_flags": [],
+        "evidence_summary": null,
+        "context_source": "compute_breakout_age.py"
+      },
       "rookie_alpha_rank": 16,
-      "talent_rank": 11,
-      "draft_proxy_delta": -5
+      "talent_rank": 16,
+      "draft_proxy_delta": 0
     },
     {
       "player_id": "te-kenyon-sadiq",
@@ -1132,22 +1156,24 @@
         "context_source": "compute_breakout_age.py"
       },
       "rookie_alpha_rank": 17,
-      "talent_rank": 20,
-      "draft_proxy_delta": 3
+      "talent_rank": 18,
+      "draft_proxy_delta": 1
     },
     {
       "player_id": "wr-elijah-sarratt",
       "player_name": "Elijah Sarratt",
       "position": "WR",
       "scores": {
-        "ras_0_100": 60.3276,
+        "ras_0_100": 50.0,
         "production_0_100": 37.96,
         "age_adjusted_production_0_100": 18.2,
         "draft_capital_proxy_0_100": 55.0,
-        "talent_score_0_100": 47.7458,
-        "rookie_alpha_0_100": 49.1967
+        "talent_score_0_100": 43.2275,
+        "rookie_alpha_0_100": 45.582
       },
-      "model_inputs_missing": [],
+      "model_inputs_missing": [
+        "ras"
+      ],
       "context": {
         "player_id": "wr-elijah-sarratt",
         "player_name": "Elijah Sarratt",
@@ -1193,22 +1219,24 @@
         "context_source": "compute_breakout_age.py"
       },
       "rookie_alpha_rank": 18,
-      "talent_rank": 16,
-      "draft_proxy_delta": -2
+      "talent_rank": 17,
+      "draft_proxy_delta": -1
     },
     {
       "player_id": "qb-carson-beck",
       "player_name": "Carson Beck",
       "position": "QB",
       "scores": {
-        "ras_0_100": 63.2332,
+        "ras_0_100": 50.0,
         "production_0_100": 26.28,
         "age_adjusted_production_0_100": 0.0,
         "draft_capital_proxy_0_100": 55.0,
-        "talent_score_0_100": 42.447,
-        "rookie_alpha_0_100": 44.9576
+        "talent_score_0_100": 36.6575,
+        "rookie_alpha_0_100": 40.326
       },
-      "model_inputs_missing": [],
+      "model_inputs_missing": [
+        "ras"
+      ],
       "context": {
         "player_id": "qb-carson-beck",
         "player_name": "Carson Beck",
@@ -1254,83 +1282,24 @@
         "context_source": "compute_breakout_age.py"
       },
       "rookie_alpha_rank": 19,
-      "talent_rank": 18,
-      "draft_proxy_delta": -1
-    },
-    {
-      "player_id": "te-oscar-delp",
-      "player_name": "Oscar Delp",
-      "position": "TE",
-      "scores": {
-        "ras_0_100": 68.7173,
-        "production_0_100": 19.8,
-        "age_adjusted_production_0_100": 0.0,
-        "draft_capital_proxy_0_100": 45.0,
-        "talent_score_0_100": 41.2013,
-        "rookie_alpha_0_100": 41.961
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "te-oscar-delp",
-        "player_name": "Oscar Delp",
-        "position": "TE",
-        "school": "Georgia",
-        "class_year": 2026,
-        "early_declare_flag": null,
-        "breakout_age": null,
-        "age_at_first_impact_season": null,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": null,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": null,
-        "injury_adjusted_profile_flag": null,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": null
-      },
-      "evidence": {
-        "evidence_tags": [],
-        "context_flags": [],
-        "translation_flags": [],
-        "evidence_summary": null,
-        "context_source": "compute_breakout_age.py"
-      },
-      "rookie_alpha_rank": 20,
       "talent_rank": 19,
-      "draft_proxy_delta": -1
+      "draft_proxy_delta": 0
     },
     {
       "player_id": "rb-nick-singleton",
       "player_name": "Nick Singleton",
       "position": "RB",
       "scores": {
-        "ras_0_100": 58.0578,
+        "ras_0_100": 50.0,
         "production_0_100": 26.28,
         "age_adjusted_production_0_100": 0.0,
         "draft_capital_proxy_0_100": 45.0,
-        "talent_score_0_100": 40.1828,
-        "rookie_alpha_0_100": 41.1462
+        "talent_score_0_100": 36.6575,
+        "rookie_alpha_0_100": 38.326
       },
-      "model_inputs_missing": [],
+      "model_inputs_missing": [
+        "ras"
+      ],
       "context": {
         "player_id": "rb-nick-singleton",
         "player_name": "Nick Singleton",
@@ -1375,8 +1344,8 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 21,
-      "talent_rank": 21,
+      "rookie_alpha_rank": 20,
+      "talent_rank": 20,
       "draft_proxy_delta": 0
     },
     {
@@ -1384,19 +1353,84 @@
       "player_name": "Max Klare",
       "position": "TE",
       "scores": {
-        "ras_0_100": 59.0727,
+        "ras_0_100": 50.0,
         "production_0_100": 20.22,
         "age_adjusted_production_0_100": 0.9,
         "draft_capital_proxy_0_100": 55.0,
-        "talent_score_0_100": 37.2181,
-        "rookie_alpha_0_100": 40.7745
+        "talent_score_0_100": 33.2488,
+        "rookie_alpha_0_100": 37.599
       },
-      "model_inputs_missing": [],
+      "model_inputs_missing": [
+        "ras"
+      ],
       "context": {
         "player_id": "te-max-klare",
         "player_name": "Max Klare",
         "position": "TE",
         "school": "Ohio State",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": null,
+        "age_at_first_impact_season": null,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": null,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [],
+        "context_flags": [],
+        "translation_flags": [],
+        "evidence_summary": null,
+        "context_source": "compute_breakout_age.py"
+      },
+      "rookie_alpha_rank": 21,
+      "talent_rank": 21,
+      "draft_proxy_delta": 0
+    },
+    {
+      "player_id": "te-oscar-delp",
+      "player_name": "Oscar Delp",
+      "position": "TE",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 19.8,
+        "age_adjusted_production_0_100": 0.0,
+        "draft_capital_proxy_0_100": 45.0,
+        "talent_score_0_100": 33.0125,
+        "rookie_alpha_0_100": 35.41
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "te-oscar-delp",
+        "player_name": "Oscar Delp",
+        "position": "TE",
+        "school": "Georgia",
         "class_year": 2026,
         "early_declare_flag": null,
         "breakout_age": null,
