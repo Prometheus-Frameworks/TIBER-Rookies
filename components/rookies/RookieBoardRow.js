@@ -6,6 +6,32 @@ function esc(str) {
     .replace(/"/g, '&quot;');
 }
 
+const PPR_BAND_CLASS = {
+  Elite: 'ppr-band-elite',
+  Starter: 'ppr-band-starter',
+  Contributor: 'ppr-band-contributor',
+  Lottery: 'ppr-band-lottery',
+};
+
+function renderPprCell(row) {
+  const proj = row.pprProjection;
+  if (!proj) return '<div class="board-cell" data-label="PPR Range"><span class="ppr-na">—</span></div>';
+  const bandClass = PPR_BAND_CLASS[proj.band] ?? 'ppr-band-lottery';
+  return `
+    <div class="board-cell board-ppr" data-label="PPR Range">
+      <div class="ppr-range">${esc(proj.floor)}–${esc(proj.ceiling)}</div>
+      <div class="ppr-band ${bandClass}">${esc(proj.band)}</div>
+    </div>`;
+}
+
+function renderBreakoutBadge(row) {
+  if (row.breakoutAge == null) return '';
+  if (row.youngBreakoutFlag) {
+    return `<span class="breakout-badge breakout-young">⚡ Age ${esc(row.breakoutAge)}</span>`;
+  }
+  return `<span class="breakout-badge breakout-late">Age ${esc(row.breakoutAge)}</span>`;
+}
+
 export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = null } = {}) {
   const rank = row.classRank == null ? 'N/A' : `#${row.classRank}`;
   const grade = row.rookieGrade == null ? 'N/A' : row.rookieGrade.toFixed(1);
@@ -19,7 +45,7 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
     <article class="board-row ${isQueued ? 'board-row-queued' : ''}">
       <div class="board-cell board-rank" data-label="Rank">${esc(rank)}</div>
       <div class="board-cell board-player" data-label="Player">
-        <div class="board-player-name">${esc(row.name)}</div>
+        <div class="board-player-name">${esc(row.name)} ${renderBreakoutBadge(row)}</div>
         <div class="meta">${esc(row.profileSummary)}</div>
         ${translationPills.length ? `<div class="meta">${translationPills.map((flag) => `<span class="tag">${esc(String(flag).replace(/_/g, ' '))}</span>`).join('')}</div>` : ''}
         ${isQueued && queueTag ? `<div class="meta queue-inline-indicator">Queue tag: <span class="queue-tag-pill">${esc(queueTag)}</span></div>` : ''}
@@ -28,6 +54,7 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
       <div class="board-cell" data-label="School">${esc(row.school)}</div>
       <div class="board-cell board-grade" data-label="Rookie Grade">${esc(grade)}</div>
       <div class="board-cell" data-label="Tier"><span class="board-tier-pill">${esc(row.tier.label)}</span></div>
+      ${renderPprCell(row)}
       <div class="board-cell board-actions" data-label="Actions">
         <a class="nav-link" href="/cards/rookies/player.html?slug=${slug}">Detail</a>
         <a class="nav-link" href="${compareLeftHref}">Set Left</a>
