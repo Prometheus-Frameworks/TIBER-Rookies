@@ -74,6 +74,35 @@ function renderRadarChart(ras, production, draftCapital) {
   `;
 }
 
+function renderBreakoutAgeBadge(card) {
+  if (card.breakoutAge == null) return '';
+  if (card.youngBreakoutFlag) {
+    return `<span class="breakout-badge breakout-young">⚡ Age ${esc(card.breakoutAge)} breakout</span>`;
+  }
+  return `<span class="breakout-badge breakout-late">Age ${esc(card.breakoutAge)} breakout</span>`;
+}
+
+function renderPprProjection(ppr) {
+  if (!ppr) return '';
+  const bandClass = { Elite: 'ppr-band-elite', Starter: 'ppr-band-starter', Contributor: 'ppr-band-contributor', Lottery: 'ppr-band-lottery' }[ppr.band] ?? 'ppr-band-lottery';
+  return `
+    <div class="ppr-card-section">
+      <div class="section-title">Year 1 PPR Projection</div>
+      <div class="ppr-card-row">
+        <div class="ppr-card-stat"><div class="ppr-stat-label">Floor</div><div class="ppr-stat-value">${esc(ppr.floor)}</div></div>
+        <div class="ppr-card-stat ppr-median"><div class="ppr-stat-label">Median</div><div class="ppr-stat-value ppr-median-value">${esc(ppr.median)}</div></div>
+        <div class="ppr-card-stat"><div class="ppr-stat-label">Ceiling</div><div class="ppr-stat-value">${esc(ppr.ceiling)}</div></div>
+        <div class="ppr-card-band"><span class="ppr-band ${bandClass}">${esc(ppr.band)}</span></div>
+      </div>
+    </div>`;
+}
+
+function renderAgeAdjMetric(ageAdjustedProduction) {
+  if (ageAdjustedProduction == null) return '';
+  const width = Math.max(0, Math.min(100, ageAdjustedProduction));
+  return `<div class="metric-row"><div class="metric-header"><span>Age-Adjusted Production</span><strong>${esc(ageAdjustedProduction.toFixed(1))}</strong></div><div class="metric-track"><div class="metric-fill metric-fill-age-adj" style="width:${width}%"></div></div></div>`;
+}
+
 export function renderRookieCard(container, card) {
   const heroScore = card.summary.rookieGrade == null ? 'N/A' : card.summary.rookieGrade.toFixed(1);
   const identityBits = [
@@ -100,6 +129,7 @@ export function renderRookieCard(container, card) {
           <h1 class="player-name">${esc(card.identity.name)}</h1>
           <div class="meta">${esc(identityBits || 'Profile context not available')}</div>
           <div class="meta">${esc(card.summary.profileSummary ?? card.summary.identityNote ?? 'Identity summary unavailable')}</div>
+          ${renderBreakoutAgeBadge(card)}
         </div>
         <div class="hero-score">
           <div class="section-title">Rookie Grade</div>
@@ -121,9 +151,12 @@ export function renderRookieCard(container, card) {
 
       ${renderRadarChart(card.scores[1]?.value, card.scores[2]?.value, card.scores[3]?.value)}
 
+      ${renderPprProjection(card.pprProjection)}
+
       <section class="metrics">
         <div class="section-title">Position-aware Evidence</div>
         <div class="meta">${esc(card.evidence?.readinessLabel ?? 'Evidence readiness unavailable')}</div>
+        ${renderAgeAdjMetric(card.ageAdjustedProduction)}
         ${evidenceMetrics.map(metricRow).join('') || '<div class="meta">No evidence metrics available.</div>'}
       </section>
 
