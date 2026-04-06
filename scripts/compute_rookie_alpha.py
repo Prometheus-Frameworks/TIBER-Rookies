@@ -27,6 +27,7 @@ class PlayerInputs:
     ras_score_0_100: float | None
     production_score_0_100: float | None
     draft_capital_proxy_0_100: float | None
+    age_adjusted_production_0_100: float | None = None
 
 
 @dataclass(frozen=True)
@@ -265,6 +266,54 @@ def compute_ras_scores(combine_rows: list[dict[str, Any]]) -> dict[str, float]:
     return scores
 
 
+AGE_ADJUSTED_BLEND_WEIGHT = 0.60  # weight on age-adjusted score
+EXISTING_PRODUCTION_BLEND_WEIGHT = 0.40  # weight on existing efficiency-based score
+
+
+def blend_production_rows(
+    production_rows: list[dict[str, Any]],
+    age_adjusted_rows: list[dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Blend existing production scores with age-adjusted scores.
+
+    blended = 0.60 × age_adjusted_production + 0.40 × existing_production
+
+    Players with no age-adjusted entry retain their existing score unchanged.
+    The original score is preserved as ``raw_production_score_0_100``; the
+    blended value replaces ``production_score_0_100`` so downstream logic
+    requires no changes.
+    """
+    age_adj_by_id: dict[str, float] = {
+        row["player_id"]: float(row["age_adjusted_production_score"])
+        for row in age_adjusted_rows
+        if row.get("player_id") and row.get("age_adjusted_production_score") is not None
+    }
+
+    blended: list[dict[str, Any]] = []
+    for row in production_rows:
+        row = dict(row)  # shallow copy — don't mutate input
+        pid = row.get("player_id", "")
+        existing = row.get("production_score_0_100")
+        age_adj = age_adj_by_id.get(pid)
+
+        if existing is not None and age_adj is not None:
+            row["raw_production_score_0_100"] = existing
+            row["age_adjusted_production_0_100"] = age_adj
+            row["production_score_0_100"] = round(
+                AGE_ADJUSTED_BLEND_WEIGHT * age_adj
+                + EXISTING_PRODUCTION_BLEND_WEIGHT * float(existing),
+                4,
+            )
+        elif age_adj is not None:
+            # No existing score — use age-adjusted only
+            row["age_adjusted_production_0_100"] = age_adj
+            row["production_score_0_100"] = round(age_adj, 4)
+        # else: no age-adjusted entry — leave row unchanged
+
+        blended.append(row)
+    return blended
+
+
 def merge_inputs(
     combine_rows: list[dict[str, Any]],
     production_rows: list[dict[str, Any]],
@@ -327,6 +376,7 @@ def merge_inputs(
     ras_by_id = compute_ras_scores(combine_rows)
     warned_invalid_values: set[tuple[str, str, str, str]] = set()
     prod_by_id: dict[str, float] = {}
+    age_adj_by_id: dict[str, float] = {}
     for idx, row in enumerate(production_rows, start=1):
         normalized = normalize_row(row, "production input", idx)
         if normalized is None:
@@ -341,6 +391,15 @@ def merge_inputs(
         )
         if value is not None:
             prod_by_id[player_id] = value
+        age_adj = coerce_float(
+            row.get("age_adjusted_production_0_100"),
+            "age_adjusted_production_0_100",
+            player_id,
+            "production input",
+            warned_invalid_values,
+        )
+        if age_adj is not None:
+            age_adj_by_id[player_id] = age_adj
 
     draft_by_id: dict[str, float] = {}
     for idx, row in enumerate(draft_proxy_rows, start=1):
@@ -380,6 +439,7 @@ def merge_inputs(
                 ras_score_0_100=ras_by_id.get(pid),
                 production_score_0_100=prod_by_id.get(pid),
                 draft_capital_proxy_0_100=draft_by_id.get(pid),
+                age_adjusted_production_0_100=age_adj_by_id.get(pid),
             )
         )
     diagnostics = MergeDiagnostics(
@@ -543,6 +603,9 @@ def write_outputs(
                     p.production_score_0_100 if p.production_score_0_100 is not None else 50.0,
                     4,
                 ),
+                "age_adjusted_production_0_100": round(p.age_adjusted_production_0_100, 1)
+                if p.age_adjusted_production_0_100 is not None
+                else None,
                 "draft_capital_proxy_0_100": round(
                     p.draft_capital_proxy_0_100 if p.draft_capital_proxy_0_100 is not None else 50.0,
                     4,
@@ -749,6 +812,17 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Optional deterministic prospect context artifact; additive export enrichment only.",
     )
+    parser.add_argument(
+        "--age-adjusted-input",
+        type=Path,
+        default=None,
+        help=(
+            "Optional age-adjusted production artifact (2026_age_adjusted_production.json). "
+            "When provided, production scores are blended: "
+            f"{AGE_ADJUSTED_BLEND_WEIGHT:.0%} age-adjusted + "
+            f"{EXISTING_PRODUCTION_BLEND_WEIGHT:.0%} existing."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -763,6 +837,10 @@ def main() -> None:
     output_manifest = args.output_manifest or Path(f"exports/promoted/rookie-alpha/{args.season}_manifest.json")
     context_input = args.context_input or Path(f"data/processed/{args.season}_prospect_context.json")
 
+    age_adjusted_input = args.age_adjusted_input or Path(
+        f"data/processed/{args.season}_age_adjusted_production.json"
+    )
+
     combine_rows = load_json(combine_input)
     production_rows = load_json(production_input)
     draft_rows = load_json(draft_proxy_input)
@@ -772,6 +850,22 @@ def main() -> None:
         raise SystemExit(f"Expected list JSON in {production_input}, got {type(production_rows).__name__}")
     if not isinstance(draft_rows, list):
         raise SystemExit(f"Expected list JSON in {draft_proxy_input}, got {type(draft_rows).__name__}")
+
+    if age_adjusted_input.exists():
+        age_adjusted_rows = load_json(age_adjusted_input)
+        if isinstance(age_adjusted_rows, list):
+            production_rows = blend_production_rows(production_rows, age_adjusted_rows)
+            logging.info(
+                "Blended production scores from %s (%.0f%% age-adjusted, %.0f%% existing)",
+                age_adjusted_input,
+                AGE_ADJUSTED_BLEND_WEIGHT * 100,
+                EXISTING_PRODUCTION_BLEND_WEIGHT * 100,
+            )
+        else:
+            logging.warning("Age-adjusted input %s is not a list — skipping blend", age_adjusted_input)
+    else:
+        logging.warning("Age-adjusted input not found at %s — using unblended production scores", age_adjusted_input)
+
     players, merge_diagnostics = merge_inputs(combine_rows, production_rows, draft_rows)
     context_by_id = load_context_by_player_id(context_input)
     write_outputs(
