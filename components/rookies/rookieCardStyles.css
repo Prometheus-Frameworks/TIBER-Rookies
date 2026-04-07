@@ -142,11 +142,18 @@ body {
 .ppr-band-lottery { background: rgba(100, 90, 80, 0.1);  border: 1px solid rgba(100, 90, 80, 0.3);  color: #8a7a6a; }
 
 /* ─── Consensus delta (model edge) ───────────────────────────────────────── */
-.board-delta { font-weight: 700; font-size: 13px; }
-.delta-bull    { color: var(--accent); }
-.delta-bear    { color: var(--muted); }
-.delta-neutral { color: #8a9ab0; }
+.board-delta { font-size: 12px; display: flex; flex-direction: column; gap: 3px; }
+.delta-row   { display: flex; align-items: baseline; gap: 4px; }
+.delta-label { font-size: 10px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; min-width: 22px; }
+.delta-bull    { font-weight: 700; color: var(--accent); }
+.delta-bear    { font-weight: 700; color: var(--muted); }
+.delta-neutral { font-weight: 600; color: #8a9ab0; }
 .delta-na      { color: var(--muted); }
+
+/* ─── Volume trend indicator ──────────────────────────────────────────────── */
+.vol-trend  { font-size: 11px; font-weight: 700; margin-left: 3px; vertical-align: middle; }
+.vol-up     { color: var(--teal); }
+.vol-down   { color: var(--muted); }
 
 /* ─── Metric bars ─────────────────────────────────────────────────────────── */
 .metric-row { margin-bottom: 10px; }
@@ -235,7 +242,7 @@ body {
 /* 9 columns: Rank | Player | Pos | School | Grade | Tier | PPR Range | Model Edge | Actions */
 .board-row {
   display: grid;
-  grid-template-columns: 50px minmax(220px, 2fr) 50px 100px 80px 130px 110px 85px 130px;
+  grid-template-columns: 50px minmax(220px, 2fr) 50px 100px 80px 130px 110px 100px 130px;
   gap: 6px;
   align-items: center;
   border-top: 1px solid var(--border);
@@ -493,7 +500,7 @@ body {
 /* ─── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 1000px) {
   .board-row {
-    grid-template-columns: 44px minmax(160px, 2fr) 44px 80px 72px 110px 100px 72px 110px;
+    grid-template-columns: 44px minmax(160px, 2fr) 44px 80px 72px 110px 100px 88px 110px;
     font-size: 13px;
   }
 }
