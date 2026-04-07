@@ -141,6 +141,13 @@ body {
 .ppr-band-contributor { background: rgba(158, 139, 122, 0.12); border: 1px solid rgba(158, 139, 122, 0.35); color: #b8a898; }
 .ppr-band-lottery { background: rgba(100, 90, 80, 0.1);  border: 1px solid rgba(100, 90, 80, 0.3);  color: #8a7a6a; }
 
+/* ─── Consensus delta (model edge) ───────────────────────────────────────── */
+.board-delta { font-weight: 700; font-size: 13px; }
+.delta-bull    { color: var(--accent); }
+.delta-bear    { color: var(--muted); }
+.delta-neutral { color: #8a9ab0; }
+.delta-na      { color: var(--muted); }
+
 /* ─── Metric bars ─────────────────────────────────────────────────────────── */
 .metric-row { margin-bottom: 10px; }
 .metric-header { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 4px; color: var(--muted); }
@@ -228,7 +235,7 @@ body {
 /* 8 columns: Rank | Player | Pos | School | Grade | Tier | PPR | Actions */
 .board-row {
   display: grid;
-  grid-template-columns: 70px minmax(180px, 2fr) 70px 110px 100px 150px 110px 140px;
+  grid-template-columns: 70px minmax(180px, 2fr) 70px 110px 100px 150px 110px 90px 140px;
   gap: 8px;
   align-items: center;
   border-top: 1px solid var(--border);
@@ -467,7 +474,7 @@ body {
 /* ─── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 1000px) {
   .board-row {
-    grid-template-columns: 60px minmax(140px, 1.8fr) 55px 90px 90px 130px 100px 120px;
+    grid-template-columns: 60px minmax(140px, 1.8fr) 55px 90px 90px 130px 100px 75px 120px;
     font-size: 13px;
   }
 }

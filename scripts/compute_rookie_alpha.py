@@ -601,6 +601,8 @@ def write_outputs(
                 p.player_name,
                 ",".join(missing_components),
             )
+        draft_val = p.draft_capital_proxy_0_100 if p.draft_capital_proxy_0_100 is not None else 50.0
+        consensus_delta = round(alpha - draft_val, 1)
         row_payload = {
             "player_id": p.player_id,
             "player_name": p.player_name,
@@ -614,12 +616,10 @@ def write_outputs(
                 "age_adjusted_production_0_100": round(p.age_adjusted_production_0_100, 1)
                 if p.age_adjusted_production_0_100 is not None
                 else None,
-                "draft_capital_proxy_0_100": round(
-                    p.draft_capital_proxy_0_100 if p.draft_capital_proxy_0_100 is not None else 50.0,
-                    4,
-                ),
+                "draft_capital_proxy_0_100": round(draft_val, 4),
                 "talent_score_0_100": round(ts, 4),
                 "rookie_alpha_0_100": round(alpha, 4),
+                "consensus_delta": consensus_delta,
             },
             "model_inputs_missing": missing_components,
         }
@@ -693,6 +693,7 @@ def write_outputs(
                 "draft_capital_proxy_0_100",
                 "talent_score_0_100",
                 "rookie_alpha_0_100",
+                "consensus_delta",
                 "talent_rank",
                 "draft_proxy_delta",
                 "model_inputs_missing",
@@ -711,6 +712,7 @@ def write_outputs(
                     "draft_capital_proxy_0_100": row["scores"]["draft_capital_proxy_0_100"],
                     "talent_score_0_100": row["scores"]["talent_score_0_100"],
                     "rookie_alpha_0_100": row["scores"]["rookie_alpha_0_100"],
+                    "consensus_delta": row["scores"]["consensus_delta"],
                     "talent_rank": row["talent_rank"],
                     "draft_proxy_delta": row["draft_proxy_delta"],
                     "model_inputs_missing": ",".join(row["model_inputs_missing"]),
