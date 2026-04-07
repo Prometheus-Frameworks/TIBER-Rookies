@@ -14,8 +14,15 @@ function pill(label, value) {
 }
 
 function scoreCell(score) {
-  const rendered = score.value == null ? 'N/A' : score.value.toFixed(1);
-  return `<div class="core-score"><div class="pill-label">${esc(score.label)}</div><div class="core-score-value">${esc(rendered)}</div></div>`;
+  if (score.value == null) {
+    return `<div class="core-score"><div class="pill-label">${esc(score.label)}</div><div class="core-score-value">N/A</div></div>`;
+  }
+  const isEdge = score.label === 'Model Edge';
+  const formatted = isEdge
+    ? (score.value >= 0 ? `+${score.value.toFixed(1)}` : score.value.toFixed(1))
+    : score.value.toFixed(1);
+  const edgeClass = isEdge ? (score.value >= 3 ? ' delta-bull' : score.value <= -3 ? ' delta-bear' : ' delta-neutral') : '';
+  return `<div class="core-score"><div class="pill-label">${esc(score.label)}</div><div class="core-score-value${edgeClass}">${esc(formatted)}</div></div>`;
 }
 
 function metricRow(metric) {

@@ -24,6 +24,21 @@ function renderPprCell(row) {
     </div>`;
 }
 
+function renderConsensusDeltaCell(row) {
+  const delta = row.consensusDelta;
+  if (delta == null) {
+    return '<div class="board-cell board-delta" data-label="Model Edge"><span class="delta-na">—</span></div>';
+  }
+  const abs = Math.abs(delta).toFixed(1);
+  if (delta >= 3) {
+    return `<div class="board-cell board-delta" data-label="Model Edge"><span class="delta-bull">+${abs} ↑</span></div>`;
+  }
+  if (delta <= -3) {
+    return `<div class="board-cell board-delta" data-label="Model Edge"><span class="delta-bear">−${abs} ↓</span></div>`;
+  }
+  return `<div class="board-cell board-delta" data-label="Model Edge"><span class="delta-neutral">${delta >= 0 ? '+' : ''}${delta.toFixed(1)}</span></div>`;
+}
+
 function renderBreakoutBadge(row) {
   if (row.breakoutAge == null) return '';
   if (row.youngBreakoutFlag) {
@@ -55,6 +70,7 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
       <div class="board-cell board-grade" data-label="Rookie Grade">${esc(grade)}</div>
       <div class="board-cell" data-label="Tier"><span class="board-tier-pill">${esc(row.tier.label)}</span></div>
       ${renderPprCell(row)}
+      ${renderConsensusDeltaCell(row)}
       <div class="board-cell board-actions" data-label="Actions">
         <a class="nav-link" href="/cards/rookies/player.html?slug=${slug}">Detail</a>
         <a class="nav-link" href="${compareLeftHref}">Set Left</a>

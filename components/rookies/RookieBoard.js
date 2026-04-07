@@ -15,6 +15,7 @@ export function renderRookieBoard(rows, { view = 'tiered', queueSlugs = new Set(
       <div class="board-cell">Grade</div>
       <div class="board-cell">Tier</div>
       <div class="board-cell">PPR Range</div>
+      <div class="board-cell">Model Edge</div>
       <div class="board-cell">Actions</div>
     </div>
   `;
