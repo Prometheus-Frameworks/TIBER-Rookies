@@ -11,18 +11,18 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-07T00:29:44+00:00",
-  "run_id": "rookie-alpha-2026-2026-04-07T00:29:44+00:00",
+  "generated_at": "2026-04-07T22:43:18+00:00",
+  "run_id": "rookie-alpha-2026-2026-04-07T22:43:18+00:00",
   "season": 2026,
   "coverage_summary": {
-    "players_total": 22,
-    "players_with_any_missing_input": 17,
+    "players_total": 23,
+    "players_with_any_missing_input": 18,
     "players_with_full_inputs": 5,
-    "players_with_context_fields": 22,
+    "players_with_context_fields": 23,
     "input_alignment": {
       "duplicate_rows_skipped": 0,
       "identity_conflicts_skipped": 0,
-      "missing_combine": 18,
+      "missing_combine": 19,
       "missing_production": 0,
       "missing_draft_proxy": 1,
       "total_excluded": 1
@@ -144,7 +144,7 @@
         "suppressed_context_season_count": null,
         "rush_attempts_or_rush_usage_signal": null,
         "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
+        "missed_tackles_forced_per_reception": 0.07,
         "yac_proxy_per_reception": null,
         "contested_catch_rate": null,
         "inside_out_versatility_flag": null,
@@ -478,7 +478,7 @@
         "suppressed_context_season_count": null,
         "rush_attempts_or_rush_usage_signal": null,
         "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
+        "missed_tackles_forced_per_reception": 0.11,
         "yac_proxy_per_reception": null,
         "contested_catch_rate": null,
         "inside_out_versatility_flag": null,
@@ -549,7 +549,7 @@
         "suppressed_context_season_count": null,
         "rush_attempts_or_rush_usage_signal": 2,
         "rushing_production_signal": 22,
-        "missed_tackles_forced_per_reception": null,
+        "missed_tackles_forced_per_reception": 0.13,
         "yac_proxy_per_reception": null,
         "contested_catch_rate": null,
         "inside_out_versatility_flag": null,
@@ -576,8 +576,8 @@
         "context_source": "Wikipedia Carnell Tate college statistics table (2023-2025 rows), retrieved 2026-03-29."
       },
       "rookie_alpha_rank": 8,
-      "talent_rank": 13,
-      "draft_proxy_delta": 5
+      "talent_rank": 14,
+      "draft_proxy_delta": 6
     },
     {
       "player_id": "wr-makai-lemon",
@@ -620,7 +620,7 @@
         "suppressed_context_season_count": null,
         "rush_attempts_or_rush_usage_signal": 9,
         "rushing_production_signal": 4,
-        "missed_tackles_forced_per_reception": null,
+        "missed_tackles_forced_per_reception": 0.25,
         "yac_proxy_per_reception": null,
         "contested_catch_rate": null,
         "inside_out_versatility_flag": null,
@@ -757,7 +757,7 @@
         "suppressed_context_season_count": null,
         "rush_attempts_or_rush_usage_signal": 70,
         "rushing_production_signal": 431,
-        "missed_tackles_forced_per_reception": null,
+        "missed_tackles_forced_per_reception": 0.2,
         "yac_proxy_per_reception": null,
         "contested_catch_rate": null,
         "inside_out_versatility_flag": null,
@@ -787,8 +787,8 @@
         "context_source": "Wikipedia Kevin Concepcion stats table (2023-2025 season rows) and Sports-Reference-linked career totals, retrieved 2026-03-29."
       },
       "rookie_alpha_rank": 11,
-      "talent_rank": 12,
-      "draft_proxy_delta": 1
+      "talent_rank": 13,
+      "draft_proxy_delta": 2
     },
     {
       "player_id": "rb-mike-washington-jr",
@@ -979,8 +979,81 @@
         "context_source": "compute_breakout_age.py"
       },
       "rookie_alpha_rank": 14,
-      "talent_rank": 14,
-      "draft_proxy_delta": 0
+      "talent_rank": 15,
+      "draft_proxy_delta": 1
+    },
+    {
+      "player_id": "wr-antonio-williams",
+      "player_name": "Antonio Williams",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 56.0,
+        "age_adjusted_production_0_100": null,
+        "draft_capital_proxy_0_100": 55.0,
+        "talent_score_0_100": 53.375,
+        "rookie_alpha_0_100": 53.7,
+        "consensus_delta": -1.3
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "wr-antonio-williams",
+        "player_name": "Antonio Williams",
+        "position": "WR",
+        "school": "ACC (verify)",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 19,
+        "age_at_first_impact_season": 19,
+        "freshman_total_yards": 600,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": true,
+        "young_breakout_flag": true,
+        "career_yards_per_route_run": 2.94,
+        "best_season_yprr": 2.94,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": 1,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": 0,
+        "injury_adjusted_profile_flag": false,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": 0.15,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": 0.555,
+        "inside_out_versatility_flag": true,
+        "man_zone_versatility_flag": true,
+        "power4_early_contributor_flag": true,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": false
+      },
+      "evidence": {
+        "evidence_tags": [
+          "young_breakout",
+          "elite_early_producer",
+          "inside_out_versatility"
+        ],
+        "context_flags": [
+          "limited_multi_season_data"
+        ],
+        "translation_flags": [
+          "young_breakout",
+          "inside_out_versatility"
+        ],
+        "evidence_summary": "Age-19 freshman breakout (600 yards, ACC, Power 4). Career 124.1 passer rating when targeted (81st pct), 10.1% 1D/route run. 55.5% contested catch rate on 20+ aDOT. Inside-outside versatility despite slot label; identical efficiency in slot and out-wide in lone season >30% slot rate. 75th pct vs man, 64th pct vs zone (Reception Perception). Film grade 6.24 Zierlein (70th pct).",
+        "context_source": "@ffdataroma scouting note + @ScottBarrettDFB PFF chart, 2026-04-07"
+      },
+      "rookie_alpha_rank": 15,
+      "talent_rank": 12,
+      "draft_proxy_delta": -3
     },
     {
       "player_id": "wr-chris-brazzell-ii",
@@ -1023,7 +1096,7 @@
         "suppressed_context_season_count": null,
         "rush_attempts_or_rush_usage_signal": null,
         "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
+        "missed_tackles_forced_per_reception": 0.04,
         "yac_proxy_per_reception": null,
         "contested_catch_rate": null,
         "inside_out_versatility_flag": null,
@@ -1046,8 +1119,8 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 15,
-      "talent_rank": 15,
+      "rookie_alpha_rank": 16,
+      "talent_rank": 16,
       "draft_proxy_delta": 0
     },
     {
@@ -1091,7 +1164,7 @@
         "suppressed_context_season_count": null,
         "rush_attempts_or_rush_usage_signal": null,
         "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
+        "missed_tackles_forced_per_reception": 0.17,
         "yac_proxy_per_reception": null,
         "contested_catch_rate": null,
         "inside_out_versatility_flag": null,
@@ -1110,8 +1183,8 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 16,
-      "talent_rank": 16,
+      "rookie_alpha_rank": 17,
+      "talent_rank": 17,
       "draft_proxy_delta": 0
     },
     {
@@ -1172,8 +1245,8 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 17,
-      "talent_rank": 18,
+      "rookie_alpha_rank": 18,
+      "talent_rank": 19,
       "draft_proxy_delta": 1
     },
     {
@@ -1217,7 +1290,7 @@
         "suppressed_context_season_count": null,
         "rush_attempts_or_rush_usage_signal": null,
         "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
+        "missed_tackles_forced_per_reception": 0.13,
         "yac_proxy_per_reception": null,
         "contested_catch_rate": null,
         "inside_out_versatility_flag": null,
@@ -1236,8 +1309,8 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 18,
-      "talent_rank": 17,
+      "rookie_alpha_rank": 19,
+      "talent_rank": 18,
       "draft_proxy_delta": -1
     },
     {
@@ -1300,8 +1373,8 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 19,
-      "talent_rank": 19,
+      "rookie_alpha_rank": 20,
+      "talent_rank": 20,
       "draft_proxy_delta": 0
     },
     {
@@ -1364,8 +1437,8 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 20,
-      "talent_rank": 20,
+      "rookie_alpha_rank": 21,
+      "talent_rank": 21,
       "draft_proxy_delta": 0
     },
     {
@@ -1428,8 +1501,8 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 21,
-      "talent_rank": 21,
+      "rookie_alpha_rank": 22,
+      "talent_rank": 22,
       "draft_proxy_delta": 0
     },
     {
@@ -1492,8 +1565,8 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 22,
-      "talent_rank": 22,
+      "rookie_alpha_rank": 23,
+      "talent_rank": 23,
       "draft_proxy_delta": 0
     }
   ]

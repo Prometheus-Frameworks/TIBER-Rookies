@@ -274,5 +274,17 @@
     "draft_capital_proxy_0_100": 55,
     "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45)",
     "draft_capital_proxy_pending_conversion": false
+  },
+  {
+    "player_id": "wr-antonio-williams",
+    "player_name": "Antonio Williams",
+    "position": "WR",
+    "school": "ACC (verify)",
+    "class_year": 2026,
+    "big_board_rank": 60,
+    "big_board_source": "@ffdataroma scouting note (projected early 2nd dynasty; NFL round estimate 4th-5th)",
+    "draft_capital_proxy_0_100": 55,
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45)",
+    "draft_capital_proxy_pending_conversion": true
   }
 ]

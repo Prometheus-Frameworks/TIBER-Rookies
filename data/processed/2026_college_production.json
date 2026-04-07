@@ -205,5 +205,14 @@
     "class_year": 2026,
     "production_score_0_100": 60.5,
     "production_score_source": "CFBD 2025 season stats (normalized TE production score)"
+  },
+  {
+    "player_id": "wr-antonio-williams",
+    "player_name": "Antonio Williams",
+    "position": "WR",
+    "school": "ACC (verify)",
+    "class_year": 2026,
+    "production_score_0_100": 56.0,
+    "production_score_source": "Estimated from @ffdataroma scouting note \u2014 freshman 600 yards (ACC), career YPRR 2.94, limited multi-season data; verify with CFBD"
   }
 ]
