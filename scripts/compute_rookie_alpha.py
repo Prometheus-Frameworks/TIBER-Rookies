@@ -256,12 +256,17 @@ def compute_ras_scores(combine_rows: list[dict[str, Any]]) -> dict[str, float]:
             if size_parts:
                 components.append((0.15, mean(size_parts)))
 
-            if components:
+            # Require at least one explosive metric (vertical or broad) alongside
+            # the 40-yard dash. Without explosive metrics, the score is built
+            # almost entirely from 40 + size and is not a reliable RAS proxy —
+            # most often this means the player skipped testing (a non-signal for
+            # top picks), not that they lack athleticism. Omit rather than mislead.
+            has_explosive = vertical is not None or broad is not None
+            if components and has_explosive:
                 weight_sum = sum(weight for weight, _ in components)
                 weighted = sum(weight * score for weight, score in components) / weight_sum
                 scores[str(r["player_id"])] = clamp_0_100(weighted)
-            else:
-                scores[str(r["player_id"])] = 50.0
+            # else: leave player out of scores dict → RAS treated as null (→ 50.0 default in alpha)
 
     return scores
 
@@ -417,7 +422,10 @@ def merge_inputs(
         if value is not None:
             draft_by_id[player_id] = value
 
-    common_ids = sorted(set(ras_by_id) & set(prod_by_id) & set(draft_by_id))
+    # Production + draft capital are required; RAS is optional.
+    # Players who didn't test (or only have partial measurements) are included
+    # with ras_score_0_100=None, which defaults to 50.0 in the alpha formula.
+    common_ids = sorted(set(prod_by_id) & set(draft_by_id))
     missing_combine = (set(prod_by_id) | set(draft_by_id)) - set(ras_by_id)
     missing_production = (set(ras_by_id) | set(draft_by_id)) - set(prod_by_id)
     missing_draft = (set(ras_by_id) | set(prod_by_id)) - set(draft_by_id)
