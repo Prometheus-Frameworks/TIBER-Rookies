@@ -85,11 +85,11 @@ body {
 .breakout-badge {
   display: inline-block;
   border-radius: 999px;
-  padding: 3px 10px;
-  font-size: 12px;
+  padding: 2px 7px;
+  font-size: 11px;
   font-weight: 600;
   vertical-align: middle;
-  margin-left: 6px;
+  white-space: nowrap;
 }
 .breakout-young {
   background: var(--accent-glow);
@@ -232,14 +232,14 @@ body {
   background: rgba(14, 11, 9, 0.95);
 }
 
-/* 8 columns: Rank | Player | Pos | School | Grade | Tier | PPR | Actions */
+/* 9 columns: Rank | Player | Pos | School | Grade | Tier | PPR Range | Model Edge | Actions */
 .board-row {
   display: grid;
-  grid-template-columns: 70px minmax(180px, 2fr) 70px 110px 100px 150px 110px 90px 140px;
-  gap: 8px;
+  grid-template-columns: 50px minmax(220px, 2fr) 50px 100px 80px 130px 110px 85px 130px;
+  gap: 6px;
   align-items: center;
   border-top: 1px solid var(--border);
-  padding: 10px 12px;
+  padding: 6px 12px;
 }
 .board-row:first-child { border-top: none; }
 
@@ -253,10 +253,20 @@ body {
   font-weight: 700;
 }
 
-.board-cell { font-size: 14px; }
+.board-cell { font-size: 13px; }
 .board-rank { color: #C8B9A8; font-weight: 700; }
-.board-player-name { font-weight: 700; margin-bottom: 2px; }
-.board-grade { color: var(--accent); font-weight: 800; font-size: 16px; }
+.board-player-top { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.board-player-name { font-weight: 700; }
+.board-summary-line {
+  font-size: 11px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  margin-top: 2px;
+}
+.board-grade { color: var(--accent); font-weight: 800; font-size: 15px; }
 
 .board-tier-pill {
   display: inline-block;
@@ -264,11 +274,20 @@ body {
   border: 1px solid var(--border-accent);
   background: var(--accent-glow);
   color: var(--accent-soft);
-  font-size: 12px;
-  padding: 4px 8px;
+  font-size: 11px;
+  padding: 3px 7px;
 }
 
-.board-actions { display: flex; flex-direction: column; gap: 4px; }
+/* ─── Mini score chart ────────────────────────────────────────────────────── */
+.mini-score-chart {
+  display: block;
+  flex-shrink: 0;
+  opacity: 0.85;
+  vertical-align: middle;
+}
+.board-player:hover .mini-score-chart { opacity: 1; }
+
+.board-actions { display: flex; flex-direction: column; gap: 3px; }
 
 .board-tier-break {
   border-top: 1px solid var(--border);
@@ -474,7 +493,7 @@ body {
 /* ─── Responsive ──────────────────────────────────────────────────────────── */
 @media (max-width: 1000px) {
   .board-row {
-    grid-template-columns: 60px minmax(140px, 1.8fr) 55px 90px 90px 130px 100px 75px 120px;
+    grid-template-columns: 44px minmax(160px, 2fr) 44px 80px 72px 110px 100px 72px 110px;
     font-size: 13px;
   }
 }
