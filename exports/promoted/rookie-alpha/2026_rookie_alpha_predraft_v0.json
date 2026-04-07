@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-06T23:26:17+00:00",
-  "run_id": "rookie-alpha-2026-2026-04-06T23:26:17+00:00",
+  "generated_at": "2026-04-07T00:29:44+00:00",
+  "run_id": "rookie-alpha-2026-2026-04-07T00:29:44+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 22,
@@ -45,7 +45,8 @@
         "age_adjusted_production_0_100": 100.0,
         "draft_capital_proxy_0_100": 95.0,
         "talent_score_0_100": 72.5,
-        "rookie_alpha_0_100": 77.0
+        "rookie_alpha_0_100": 77.0,
+        "consensus_delta": -18.0
       },
       "model_inputs_missing": [
         "ras"
@@ -112,7 +113,8 @@
         "age_adjusted_production_0_100": 100.0,
         "draft_capital_proxy_0_100": 95.0,
         "talent_score_0_100": 68.495,
-        "rookie_alpha_0_100": 73.796
+        "rookie_alpha_0_100": 73.796,
+        "consensus_delta": -21.2
       },
       "model_inputs_missing": [
         "ras"
@@ -185,7 +187,8 @@
         "age_adjusted_production_0_100": 91.0,
         "draft_capital_proxy_0_100": 85.0,
         "talent_score_0_100": 65.4575,
-        "rookie_alpha_0_100": 69.366
+        "rookie_alpha_0_100": 69.366,
+        "consensus_delta": -15.6
       },
       "model_inputs_missing": [
         "ras"
@@ -252,7 +255,8 @@
         "age_adjusted_production_0_100": 63.1,
         "draft_capital_proxy_0_100": 95.0,
         "talent_score_0_100": 61.4413,
-        "rookie_alpha_0_100": 68.153
+        "rookie_alpha_0_100": 68.153,
+        "consensus_delta": -26.8
       },
       "model_inputs_missing": [
         "ras"
@@ -319,7 +323,8 @@
         "age_adjusted_production_0_100": 100.0,
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 69.5888,
-        "rookie_alpha_0_100": 66.671
+        "rookie_alpha_0_100": 66.671,
+        "consensus_delta": 11.7
       },
       "model_inputs_missing": [],
       "context": {
@@ -380,7 +385,8 @@
         "age_adjusted_production_0_100": 100.0,
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 67.1675,
-        "rookie_alpha_0_100": 64.734
+        "rookie_alpha_0_100": 64.734,
+        "consensus_delta": 9.7
       },
       "model_inputs_missing": [
         "ras"
@@ -443,7 +449,8 @@
         "age_adjusted_production_0_100": 56.7,
         "draft_capital_proxy_0_100": 85.0,
         "talent_score_0_100": 59.2353,
-        "rookie_alpha_0_100": 64.3882
+        "rookie_alpha_0_100": 64.3882,
+        "consensus_delta": -20.6
       },
       "model_inputs_missing": [],
       "context": {
@@ -511,7 +518,8 @@
         "age_adjusted_production_0_100": 41.2,
         "draft_capital_proxy_0_100": 95.0,
         "talent_score_0_100": 52.3625,
-        "rookie_alpha_0_100": 60.89
+        "rookie_alpha_0_100": 60.89,
+        "consensus_delta": -34.1
       },
       "model_inputs_missing": [
         "ras"
@@ -581,7 +589,8 @@
         "age_adjusted_production_0_100": 54.0,
         "draft_capital_proxy_0_100": 75.0,
         "talent_score_0_100": 56.525,
-        "rookie_alpha_0_100": 60.22
+        "rookie_alpha_0_100": 60.22,
+        "consensus_delta": -14.8
       },
       "model_inputs_missing": [
         "ras"
@@ -651,7 +660,8 @@
         "age_adjusted_production_0_100": 73.1,
         "draft_capital_proxy_0_100": 45.0,
         "talent_score_0_100": 62.1613,
-        "rookie_alpha_0_100": 58.729
+        "rookie_alpha_0_100": 58.729,
+        "consensus_delta": 13.7
       },
       "model_inputs_missing": [
         "ras"
@@ -716,7 +726,8 @@
         "age_adjusted_production_0_100": 47.2,
         "draft_capital_proxy_0_100": 75.0,
         "talent_score_0_100": 53.33,
-        "rookie_alpha_0_100": 57.664
+        "rookie_alpha_0_100": 57.664,
+        "consensus_delta": -17.3
       },
       "model_inputs_missing": [
         "ras"
@@ -789,7 +800,8 @@
         "age_adjusted_production_0_100": 42.2,
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 57.3726,
-        "rookie_alpha_0_100": 56.8981
+        "rookie_alpha_0_100": 56.8981,
+        "consensus_delta": 1.9
       },
       "model_inputs_missing": [],
       "context": {
@@ -850,7 +862,8 @@
         "age_adjusted_production_0_100": 71.7,
         "draft_capital_proxy_0_100": 45.0,
         "talent_score_0_100": 57.7063,
-        "rookie_alpha_0_100": 55.165
+        "rookie_alpha_0_100": 55.165,
+        "consensus_delta": 10.2
       },
       "model_inputs_missing": [
         "ras"
@@ -913,7 +926,8 @@
         "age_adjusted_production_0_100": 67.7,
         "draft_capital_proxy_0_100": 65.0,
         "talent_score_0_100": 51.5462,
-        "rookie_alpha_0_100": 54.237
+        "rookie_alpha_0_100": 54.237,
+        "consensus_delta": -10.8
       },
       "model_inputs_missing": [],
       "context": {
@@ -978,7 +992,8 @@
         "age_adjusted_production_0_100": 38.6,
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 51.4175,
-        "rookie_alpha_0_100": 52.134
+        "rookie_alpha_0_100": 52.134,
+        "consensus_delta": -2.9
       },
       "model_inputs_missing": [
         "ras"
@@ -1045,7 +1060,8 @@
         "age_adjusted_production_0_100": 23.9,
         "draft_capital_proxy_0_100": 75.0,
         "talent_score_0_100": 43.5763,
-        "rookie_alpha_0_100": 49.861
+        "rookie_alpha_0_100": 49.861,
+        "consensus_delta": -25.1
       },
       "model_inputs_missing": [
         "ras"
@@ -1108,7 +1124,8 @@
         "age_adjusted_production_0_100": 22.6,
         "draft_capital_proxy_0_100": 85.0,
         "talent_score_0_100": 40.4675,
-        "rookie_alpha_0_100": 49.374
+        "rookie_alpha_0_100": 49.374,
+        "consensus_delta": -35.6
       },
       "model_inputs_missing": [],
       "context": {
@@ -1169,7 +1186,8 @@
         "age_adjusted_production_0_100": 18.2,
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 43.2275,
-        "rookie_alpha_0_100": 45.582
+        "rookie_alpha_0_100": 45.582,
+        "consensus_delta": -9.4
       },
       "model_inputs_missing": [
         "ras"
@@ -1232,7 +1250,8 @@
         "age_adjusted_production_0_100": 0.0,
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 36.6575,
-        "rookie_alpha_0_100": 40.326
+        "rookie_alpha_0_100": 40.326,
+        "consensus_delta": -14.7
       },
       "model_inputs_missing": [
         "ras"
@@ -1295,7 +1314,8 @@
         "age_adjusted_production_0_100": 0.0,
         "draft_capital_proxy_0_100": 45.0,
         "talent_score_0_100": 36.6575,
-        "rookie_alpha_0_100": 38.326
+        "rookie_alpha_0_100": 38.326,
+        "consensus_delta": -6.7
       },
       "model_inputs_missing": [
         "ras"
@@ -1358,7 +1378,8 @@
         "age_adjusted_production_0_100": 0.9,
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 33.2488,
-        "rookie_alpha_0_100": 37.599
+        "rookie_alpha_0_100": 37.599,
+        "consensus_delta": -17.4
       },
       "model_inputs_missing": [
         "ras"
@@ -1421,7 +1442,8 @@
         "age_adjusted_production_0_100": 0.0,
         "draft_capital_proxy_0_100": 45.0,
         "talent_score_0_100": 33.0125,
-        "rookie_alpha_0_100": 35.41
+        "rookie_alpha_0_100": 35.41,
+        "consensus_delta": -9.6
       },
       "model_inputs_missing": [
         "ras"

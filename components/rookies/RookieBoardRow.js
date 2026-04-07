@@ -13,6 +13,30 @@ const PPR_BAND_CLASS = {
   Lottery: 'ppr-band-lottery',
 };
 
+/**
+ * Renders a compact 3-bar SVG showing RAS / Production / Draft Capital (0–100).
+ * Bars are colour-coded: RAS = steel blue, Production = teal, Draft = coral.
+ */
+function renderMiniScoreChart(row) {
+  const bars = [
+    { value: row.rasScore,          color: '#6B9FD4', label: 'R' },
+    { value: row.productionScore,   color: '#4ECDC4', label: 'P' },
+    { value: row.draftCapitalScore, color: '#E8853D', label: 'D' },
+  ];
+
+  const W = 54, H = 22, barW = 14, gap = 4;
+  const svgBars = bars.map((bar, i) => {
+    const x = i * (barW + gap);
+    const pct = bar.value != null ? Math.max(0, Math.min(100, bar.value)) : 0;
+    const barH = Math.max(2, Math.round((pct / 100) * H));
+    const y = H - barH;
+    const opacity = bar.value != null ? '1' : '0.25';
+    return `<rect x="${x}" y="${y}" width="${barW}" height="${barH}" rx="2" fill="${bar.color}" opacity="${opacity}"/>`;
+  }).join('');
+
+  return `<svg class="mini-score-chart" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" aria-hidden="true">${svgBars}</svg>`;
+}
+
 function renderPprCell(row) {
   const proj = row.pprProjection;
   if (!proj) return '<div class="board-cell" data-label="PPR Range"><span class="ppr-na">—</span></div>';
@@ -54,15 +78,17 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
   const compareLeftHref = `/cards/rookies/compare/index.html?left=${slug}`;
   const compareRightHref = `/cards/rookies/compare/index.html?right=${slug}`;
   const queueTag = queueAnnotation?.queueTag ?? '';
-  const translationPills = (row.translationFlags ?? []).slice(0, 3);
 
   return `
     <article class="board-row ${isQueued ? 'board-row-queued' : ''}">
       <div class="board-cell board-rank" data-label="Rank">${esc(rank)}</div>
       <div class="board-cell board-player" data-label="Player">
-        <div class="board-player-name">${esc(row.name)} ${renderBreakoutBadge(row)}</div>
-        <div class="meta">${esc(row.profileSummary)}</div>
-        ${translationPills.length ? `<div class="meta">${translationPills.map((flag) => `<span class="tag">${esc(String(flag).replace(/_/g, ' '))}</span>`).join('')}</div>` : ''}
+        <div class="board-player-top">
+          <span class="board-player-name">${esc(row.name)}</span>
+          ${renderBreakoutBadge(row)}
+          ${renderMiniScoreChart(row)}
+        </div>
+        <div class="meta board-summary-line">${esc(row.profileSummary)}</div>
         ${isQueued && queueTag ? `<div class="meta queue-inline-indicator">Queue tag: <span class="queue-tag-pill">${esc(queueTag)}</span></div>` : ''}
       </div>
       <div class="board-cell" data-label="Position">${esc(row.position)}</div>
