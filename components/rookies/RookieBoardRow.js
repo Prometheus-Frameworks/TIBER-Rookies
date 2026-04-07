@@ -48,19 +48,28 @@ function renderPprCell(row) {
     </div>`;
 }
 
-function renderConsensusDeltaCell(row) {
-  const delta = row.consensusDelta;
-  if (delta == null) {
-    return '<div class="board-cell board-delta" data-label="Model Edge"><span class="delta-na">—</span></div>';
-  }
+function deltaSpan(delta, label) {
+  if (delta == null) return `<span class="delta-row"><span class="delta-label">${label}</span><span class="delta-na">—</span></span>`;
   const abs = Math.abs(delta).toFixed(1);
-  if (delta >= 3) {
-    return `<div class="board-cell board-delta" data-label="Model Edge"><span class="delta-bull">+${abs} ↑</span></div>`;
-  }
-  if (delta <= -3) {
-    return `<div class="board-cell board-delta" data-label="Model Edge"><span class="delta-bear">−${abs} ↓</span></div>`;
-  }
-  return `<div class="board-cell board-delta" data-label="Model Edge"><span class="delta-neutral">${delta >= 0 ? '+' : ''}${delta.toFixed(1)}</span></div>`;
+  if (delta >= 3)  return `<span class="delta-row"><span class="delta-label">${label}</span><span class="delta-bull">+${abs} ↑</span></span>`;
+  if (delta <= -3) return `<span class="delta-row"><span class="delta-label">${label}</span><span class="delta-bear">−${abs} ↓</span></span>`;
+  return `<span class="delta-row"><span class="delta-label">${label}</span><span class="delta-neutral">${delta >= 0 ? '+' : ''}${delta.toFixed(1)}</span></span>`;
+}
+
+function renderConsensusDeltaCell(row) {
+  return `
+    <div class="board-cell board-delta" data-label="Model Edge">
+      ${deltaSpan(row.consensusDelta, 'NFL')}
+      ${deltaSpan(row.dynastyDelta, 'DYN')}
+    </div>`;
+}
+
+function renderVolumeTrend(row) {
+  const t = row.volumeTrend;
+  if (!t || t === 'neutral') return '';
+  if (t === 'up')   return '<span class="vol-trend vol-up" title="Volume up vs 2024">↑</span>';
+  if (t === 'down') return '<span class="vol-trend vol-down" title="Volume down vs 2024">↓</span>';
+  return '';
 }
 
 function renderBreakoutBadge(row) {
@@ -93,7 +102,7 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
       </div>
       <div class="board-cell" data-label="Position">${esc(row.position)}</div>
       <div class="board-cell" data-label="School">${esc(row.school)}</div>
-      <div class="board-cell board-grade" data-label="Rookie Grade">${esc(grade)}</div>
+      <div class="board-cell board-grade" data-label="Rookie Grade">${esc(grade)}${renderVolumeTrend(row)}</div>
       <div class="board-cell" data-label="Tier"><span class="board-tier-pill">${esc(row.tier.label)}</span></div>
       ${renderPprCell(row)}
       ${renderConsensusDeltaCell(row)}
