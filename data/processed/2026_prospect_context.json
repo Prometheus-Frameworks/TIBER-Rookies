@@ -230,7 +230,7 @@
     ],
     "evidence_summary": "Verified Ohio State progression from 264 freshman total yards to 739 sophomore total yards (733 receiving + 6 rushing), then 854 total yards in 2025.",
     "context_source": "Wikipedia Carnell Tate college statistics table (2023-2025 rows), retrieved 2026-03-29.",
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects"
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
   },
   {
     "player_id": "wr-jordyn-tyson",
@@ -279,7 +279,7 @@
     ],
     "evidence_summary": "Sourced career path includes 470 receiving yards as a true freshman at Colorado, then an injury-limited 2023 season with no catches, plus a 2024 season-ending injury note before his 2025 draft cycle.",
     "context_source": "Wikipedia Jordyn Tyson college career summary and Arizona State official roster bio historical notes, retrieved 2026-03-29.",
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects"
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
   },
   {
     "player_id": "wr-makai-lemon",
@@ -326,7 +326,7 @@
     ],
     "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season is aligned with the sourced profile.",
     "context_source": "Wikipedia Makai Lemon statistics table (2023-2025 rows) plus awards section, retrieved 2026-03-29.",
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects"
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
   },
   {
     "player_id": "wr-kc-concepcion",
@@ -375,7 +375,7 @@
     ],
     "evidence_summary": "Verified collegiate production: 1,159 total yards as a freshman (839 receiving + 320 rushing) and 496 as a sophomore (460 receiving + 36 rushing), indicating a real year-two production dip while retaining 70 career rush attempts as a multi-phase usage signal.",
     "context_source": "Wikipedia Kevin Concepcion stats table (2023-2025 season rows) and Sports-Reference-linked career totals, retrieved 2026-03-29.",
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects"
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
   },
   {
     "player_id": "wr-brenen-thompson",
@@ -392,7 +392,7 @@
     "evidence_summary": null,
     "context_source": "compute_breakout_age.py",
     "missed_tackles_forced_per_reception": 0.17,
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects"
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
   },
   {
     "player_id": "wr-chris-brazzell-ii",
@@ -411,7 +411,7 @@
     "evidence_summary": null,
     "context_source": "compute_breakout_age.py",
     "missed_tackles_forced_per_reception": 0.04,
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects"
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
   },
   {
     "player_id": "wr-denzel-boston",
@@ -458,7 +458,7 @@
     ],
     "evidence_summary": "Sourced profile confirms 62-881-11 in 2025 and only 66 total receiving yards across his first two college seasons combined; year-by-year freshman/sophomore split and combine-verified testing context are not explicitly published in currently available in-repo sources.",
     "context_source": "Wikipedia Denzel Boston college career summary and pre-draft measurables section, retrieved 2026-03-29.",
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects"
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
   },
   {
     "player_id": "wr-chris-bell",
@@ -475,7 +475,7 @@
     "evidence_summary": null,
     "context_source": "compute_breakout_age.py",
     "missed_tackles_forced_per_reception": 0.17,
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects"
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
   },
   {
     "player_id": "wr-elijah-sarratt",
@@ -492,7 +492,7 @@
     "evidence_summary": null,
     "context_source": "compute_breakout_age.py",
     "missed_tackles_forced_per_reception": 0.13,
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects"
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
   },
   {
     "player_id": "te-kenyon-sadiq",
@@ -580,7 +580,7 @@
     "rush_attempts_or_rush_usage_signal": null,
     "rushing_production_signal": null,
     "missed_tackles_forced_per_reception": 0.15,
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects",
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
     "yac_proxy_per_reception": null,
     "contested_catch_rate": 0.555,
     "inside_out_versatility_flag": true,
@@ -601,5 +601,134 @@
     ],
     "evidence_summary": "Age-19 freshman breakout (600 yards, ACC, Power 4). Career 124.1 passer rating when targeted (81st pct), 10.1% 1D/route run. 55.5% contested catch rate on 20+ aDOT. Inside-outside versatility despite slot label; identical efficiency in slot and out-wide in lone season >30% slot rate. 75th pct vs man, 64th pct vs zone (Reception Perception). Film grade 6.24 Zierlein (70th pct).",
     "context_source": "@ffdataroma scouting note + @ScottBarrettDFB PFF chart, 2026-04-07"
+  },
+  {
+    "player_id": "rb-kaytron-allen",
+    "player_name": "Kaytron Allen",
+    "position": "RB",
+    "school": "Penn State",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "freshman_total_yards": null,
+    "freshman_impact_flag": false,
+    "career_yards_per_route_run": 1.74,
+    "best_season_yprr": 1.74,
+    "evidence_tags": [
+      "multi_season_efficiency",
+      "rushing_signal",
+      "yac_signal"
+    ],
+    "context_flags": [],
+    "evidence_summary": "54-game career, 4167 rush yards (5.4 YPC), 39 TDs, 661 rec yards, 1.74 YPRR. 24.0% avoided tackle rate. High-volume Penn State back with elite receiving chops.",
+    "sophomore_total_yards": null,
+    "single_season_efficiency_dip_flag": null,
+    "multi_season_efficiency_flag": true,
+    "injury_affected_season_count": 0,
+    "injury_adjusted_profile_flag": false,
+    "broken_offense_context_flag": null,
+    "suppressed_context_season_count": null,
+    "rush_attempts_or_rush_usage_signal": null,
+    "rushing_production_signal": null,
+    "missed_tackles_forced_per_reception": null,
+    "yac_proxy_per_reception": null,
+    "contested_catch_rate": null,
+    "inside_out_versatility_flag": null,
+    "man_zone_versatility_flag": null,
+    "power4_early_contributor_flag": true,
+    "career_receiving_market_share": null,
+    "career_mtf_per_attempt": null,
+    "freshman_ypc": null,
+    "athletic_upside_flag": null,
+    "path_disruption_flag": false,
+    "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart, 2026-04-07"
+  },
+  {
+    "player_id": "rb-seth-mcgowan",
+    "player_name": "Seth McGowan",
+    "position": "RB",
+    "school": "Kentucky",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "freshman_total_yards": null,
+    "freshman_impact_flag": false,
+    "career_yards_per_route_run": 1.56,
+    "best_season_yprr": 1.56,
+    "evidence_tags": [
+      "multi_season_efficiency",
+      "yac_signal"
+    ],
+    "context_flags": [
+      "limited_multi_season_data"
+    ],
+    "evidence_summary": "31-game career (limited volume), 1924 rush yards (5.1 YPC), 18 TDs, 602 rec yards. 1.56 YPRR, 20.3% target rate \u2014 strong receiving back. 25.4% avoided tackle rate.",
+    "sophomore_total_yards": null,
+    "single_season_efficiency_dip_flag": null,
+    "multi_season_efficiency_flag": true,
+    "injury_affected_season_count": 0,
+    "injury_adjusted_profile_flag": false,
+    "broken_offense_context_flag": null,
+    "suppressed_context_season_count": null,
+    "rush_attempts_or_rush_usage_signal": null,
+    "rushing_production_signal": null,
+    "missed_tackles_forced_per_reception": null,
+    "yac_proxy_per_reception": null,
+    "contested_catch_rate": null,
+    "inside_out_versatility_flag": null,
+    "man_zone_versatility_flag": null,
+    "power4_early_contributor_flag": true,
+    "career_receiving_market_share": null,
+    "career_mtf_per_attempt": null,
+    "freshman_ypc": null,
+    "athletic_upside_flag": null,
+    "path_disruption_flag": false,
+    "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart, 2026-04-07"
+  },
+  {
+    "player_id": "rb-emmett-johnson",
+    "player_name": "Emmett Johnson",
+    "position": "RB",
+    "school": "Nebraska",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": false,
+    "freshman_total_yards": null,
+    "freshman_impact_flag": false,
+    "career_yards_per_route_run": 1.15,
+    "best_season_yprr": 1.15,
+    "evidence_tags": [
+      "multi_season_efficiency",
+      "rushing_signal"
+    ],
+    "context_flags": [],
+    "evidence_summary": "42-game career, 2458 rush yards (5.4 YPC), 15 TDs. 1.15 YPRR, 27.5% avoided tackle rate. Efficient runner, limited receiving role.",
+    "sophomore_total_yards": null,
+    "single_season_efficiency_dip_flag": null,
+    "multi_season_efficiency_flag": true,
+    "injury_affected_season_count": 0,
+    "injury_adjusted_profile_flag": false,
+    "broken_offense_context_flag": null,
+    "suppressed_context_season_count": null,
+    "rush_attempts_or_rush_usage_signal": null,
+    "rushing_production_signal": null,
+    "missed_tackles_forced_per_reception": null,
+    "yac_proxy_per_reception": null,
+    "contested_catch_rate": null,
+    "inside_out_versatility_flag": null,
+    "man_zone_versatility_flag": null,
+    "power4_early_contributor_flag": true,
+    "career_receiving_market_share": null,
+    "career_mtf_per_attempt": null,
+    "freshman_ypc": null,
+    "athletic_upside_flag": null,
+    "path_disruption_flag": false,
+    "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart, 2026-04-07"
   }
 ]

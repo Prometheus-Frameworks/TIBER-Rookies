@@ -159,5 +159,26 @@
     "position": "WR",
     "ktc_rank": null,
     "dynasty_adp_0_100": 46
+  },
+  {
+    "player_id": "rb-kaytron-allen",
+    "player_name": "Kaytron Allen",
+    "position": "RB",
+    "ktc_rank": null,
+    "dynasty_adp_0_100": 46
+  },
+  {
+    "player_id": "rb-seth-mcgowan",
+    "player_name": "Seth McGowan",
+    "position": "RB",
+    "ktc_rank": null,
+    "dynasty_adp_0_100": 40
+  },
+  {
+    "player_id": "rb-emmett-johnson",
+    "player_name": "Emmett Johnson",
+    "position": "RB",
+    "ktc_rank": null,
+    "dynasty_adp_0_100": 32
   }
 ]

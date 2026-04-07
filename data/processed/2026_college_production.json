@@ -214,5 +214,32 @@
     "class_year": 2026,
     "production_score_0_100": 56.0,
     "production_score_source": "Estimated from @ffdataroma scouting note \u2014 freshman 600 yards (ACC), career YPRR 2.94, limited multi-season data; verify with CFBD"
+  },
+  {
+    "player_id": "rb-kaytron-allen",
+    "player_name": "Kaytron Allen",
+    "position": "RB",
+    "school": "Penn State",
+    "class_year": 2026,
+    "production_score_0_100": 70.0,
+    "production_score_source": "Estimated from 2026 RB Advanced Metrics chart (@ScottBarrettDFB) \u2014 verify with CFBD when API key available"
+  },
+  {
+    "player_id": "rb-seth-mcgowan",
+    "player_name": "Seth McGowan",
+    "position": "RB",
+    "school": "Kentucky",
+    "class_year": 2026,
+    "production_score_0_100": 62.0,
+    "production_score_source": "Estimated from 2026 RB Advanced Metrics chart (@ScottBarrettDFB) \u2014 verify with CFBD when API key available"
+  },
+  {
+    "player_id": "rb-emmett-johnson",
+    "player_name": "Emmett Johnson",
+    "position": "RB",
+    "school": "Nebraska",
+    "class_year": 2026,
+    "production_score_0_100": 55.0,
+    "production_score_source": "Estimated from 2026 RB Advanced Metrics chart (@ScottBarrettDFB) \u2014 verify with CFBD when API key available"
   }
 ]

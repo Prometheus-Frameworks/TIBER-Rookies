@@ -286,5 +286,41 @@
     "draft_capital_proxy_0_100": 55,
     "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45)",
     "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "rb-kaytron-allen",
+    "player_name": "Kaytron Allen",
+    "position": "RB",
+    "school": "Penn State",
+    "class_year": 2026,
+    "big_board_rank": 42,
+    "big_board_source": "Estimated from 2026 RB draft projections \u2014 verify pre-draft",
+    "draft_capital_proxy_0_100": 65,
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands",
+    "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "rb-seth-mcgowan",
+    "player_name": "Seth McGowan",
+    "position": "RB",
+    "school": "Kentucky",
+    "class_year": 2026,
+    "big_board_rank": 62,
+    "big_board_source": "Estimated from 2026 RB draft projections \u2014 verify pre-draft",
+    "draft_capital_proxy_0_100": 55,
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands",
+    "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "rb-emmett-johnson",
+    "player_name": "Emmett Johnson",
+    "position": "RB",
+    "school": "Nebraska",
+    "class_year": 2026,
+    "big_board_rank": 80,
+    "big_board_source": "Estimated from 2026 RB draft projections \u2014 verify pre-draft",
+    "draft_capital_proxy_0_100": 45,
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands",
+    "draft_capital_proxy_pending_conversion": true
   }
 ]
