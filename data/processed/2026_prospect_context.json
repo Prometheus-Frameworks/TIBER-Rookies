@@ -124,7 +124,7 @@
     "player_id": "rb-mike-washington-jr",
     "player_name": "Mike Washington Jr.",
     "position": "RB",
-    "school": "Arkansas",
+    "school": "New Mexico State (2024) / Arkansas (2025)",
     "class_year": 2026,
     "early_declare_flag": null,
     "breakout_age": 21,
@@ -132,16 +132,19 @@
     "young_breakout_flag": false,
     "career_mtf_per_touch": 0.165,
     "yac_plus_catch_2nd_best_season": 47.6,
+    "broken_offense_context_flag": true,
     "evidence_tags": [
-      "elite_athleticism"
+      "elite_athleticism",
+      "broken_offense_context"
     ],
     "context_flags": [
       "bottom_10_mtf_day2_rb_since_2014",
       "yac_consistency_concern",
-      "senior_breakout_flag"
+      "senior_breakout_flag",
+      "poor_ol_context"
     ],
-    "evidence_summary": "Elite combine profile (4.33 / 39.0 vert / 128 broad, RAS 66) — athleticism is genuine. However: MTF/touch 0.165 ranks among worst Day 2 RBs since 2014 (9th worst in dataset); YAC+catch 2nd-best season 47.6 yd/game is in one-hit wonder tier alongside D.Harris, Sony Michel, CEH. Gap between athletic ceiling and production floor is a major red flag. Model currently overvalues via RAS without penalising MTF/YAC consistency.",
-    "context_source": "@ffdataroma research note 2026-04-08"
+    "evidence_summary": "Transfer: New Mexico State 2024 (lower competition, weak OL) → Arkansas 2025. Arkansas 2025 OL ranked 110th/133 FBS in sacks allowed; mid-season emergency line adjustments. Production season (62.8 score) was behind one of the worst OLs in FBS. Elite combine profile (4.33 / 39.0 vert / 128 broad, RAS 66) — athleticism is genuine. Red flags: MTF/touch 0.165 (9th-worst Day 2 RB since 2014); YAC+catch 2nd-best season 47.6 yd/game. Scouting consensus: thrives in gap/power with defined lanes; struggles in space; 'often taken down by first tackler' (PFF). OL context is mitigating but doesn't fully explain away the contact quality gap. Gap/power scheme + functional OL is prerequisite for upside.",
+    "context_source": "@ffdataroma research note 2026-04-08 + NFLDraftBuzz/PFF scouting 2026-04-08"
   },
   {
     "player_id": "rb-nick-singleton",
@@ -521,8 +524,8 @@
     "context_flags": [
       "senior_breakout_flag"
     ],
-    "evidence_summary": "75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR (non-R1 P4 WR since 2021) — matches Puka Nacua, Tank Dell, Troy Franklin efficiency tier. Late breakout (BOA 21) is noted red flag per historical calibration; Aiyuk/Watson are precedents for senior-breakout success, but base rate is poor. Model currently underweights production quality relative to BOA penalisation. MTF 0.13 (mid-tier). Dynasty market at WR80 likely understating efficiency signal.",
-    "context_source": "@ffdataroma research note 2026-04-08 + @ScottBarrettDFB PFF chart",
+    "evidence_summary": "75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR (non-R1 P4 WR since 2021) — matches Puka Nacua, Tank Dell, Troy Franklin efficiency tier. Nacua comp is strongest: 43-48 rec/yr at BYU (modest volume), 18.3 YPC, 128.0 QB rating when targeted — then 105 catches in NFL year 1 as a 5th-round pick. Efficiency held when target share increased. Sarratt profile: low college volume, elite per-route efficiency — same archetype. Late breakout (BOA 21) is model red flag; Aiyuk/Watson are precedents for senior-breakout success, but base rate is poor. MTF 0.13 (mid-tier). Model gap: volume-weighted age-adjusted production (18.2 age-adj, blend → 38) severely underweights efficiency; CFBD raw production score 67.6 is more representative.",
+    "context_source": "@ffdataroma research note 2026-04-08 + @ScottBarrettDFB PFF chart + NCAA.com Puka Nacua stats",
     "missed_tackles_forced_per_reception": 0.13,
     "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
   },
