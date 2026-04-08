@@ -228,10 +228,10 @@
     "weight_lb_source": "Pro Football Network 2026 NFL Combine Measurements",
     "forty": null,
     "forty_source": null,
-    "vertical": null,
-    "vertical_source": null,
-    "broad": null,
-    "broad_source": null
+    "vertical": 40.0,
+    "vertical_source": "SI.com / Detroit Lions 2026 NFL Combine Day 3 observations",
+    "broad": 129.0,
+    "broad_source": "SI.com / Detroit Lions 2026 NFL Combine Day 3 observations (10'9\")"
   },
   {
     "player_id": "wr-kc-concepcion",

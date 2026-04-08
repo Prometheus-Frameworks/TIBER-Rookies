@@ -5,10 +5,10 @@ rookie_alpha_rank,player_id,player_name,position,ras_0_100,production_0_100,draf
 4,qb-fernando-mendoza,Fernando Mendoza,QB,50.0,70.34,95.0,61.4413,68.153,-26.8,7,3,ras
 5,te-eli-stowers,Eli Stowers,TE,50.8029,84.2,55.0,69.5888,66.671,11.7,2,-3,
 6,qb-garrett-nussmeier,Garrett Nussmeier,QB,50.0,80.52,55.0,67.1675,64.734,9.7,4,-2,ras
-7,wr-denzel-boston,Denzel Boston,WR,56.4264,61.42,85.0,59.2353,64.3882,-20.6,9,2,
-8,rb-kaytron-allen,Kaytron Allen,RB,50.0,70.0,65.0,61.25,62.0,-3.0,8,0,ras
+7,rb-kaytron-allen,Kaytron Allen,RB,50.0,70.0,65.0,61.25,62.0,-3.0,8,1,ras
+8,wr-makai-lemon,Makai Lemon,WR,53.4748,61.6,75.0,58.0452,61.4362,-13.6,9,1,
 9,wr-carnell-tate,Carnell Tate,WR,50.0,54.2,95.0,52.3625,60.89,-34.1,17,8,ras
-10,wr-makai-lemon,Makai Lemon,WR,50.0,61.6,75.0,56.525,60.22,-14.8,14,4,ras
+10,wr-denzel-boston,Denzel Boston,WR,46.0097,61.42,85.0,54.678,60.7424,-24.3,14,4,
 11,rb-jonah-coleman,Jonah Coleman,RB,50.0,71.62,45.0,62.1613,58.729,13.7,6,-5,ras
 12,wr-kc-concepcion,KC Concepcion,WR,50.0,55.92,75.0,53.33,57.664,-17.3,15,3,ras
 13,rb-mike-washington-jr,Mike Washington Jr.,RB,66.2859,50.44,55.0,57.3726,56.8981,1.9,11,-2,

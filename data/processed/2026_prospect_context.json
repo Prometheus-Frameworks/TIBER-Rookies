@@ -266,19 +266,23 @@
     "career_receiving_market_share": null,
     "career_mtf_per_attempt": null,
     "freshman_ypc": null,
-    "athletic_upside_flag": null,
+    "athletic_upside_flag": true,
     "path_disruption_flag": true,
+    "combine_bench_reps_225": 26,
+    "combine_bench_note": "26 reps of 225lb at 2026 NFL Combine — one rep shy of WR all-time combine bench record (27). Skipped speed/jump drills due to hamstring; no 40/vert/broad available.",
     "evidence_tags": [
       "young_breakout",
       "early_declare",
-      "injury_adjusted"
+      "injury_adjusted",
+      "exceptional_strength"
     ],
     "context_flags": [
       "injury_context",
-      "path_disruption"
+      "path_disruption",
+      "combine_drills_skipped_hamstring"
     ],
-    "evidence_summary": "Sourced career path includes 470 receiving yards as a true freshman at Colorado, then an injury-limited 2023 season with no catches, plus a 2024 season-ending injury note before his 2025 draft cycle.",
-    "context_source": "Wikipedia Jordyn Tyson college career summary and Arizona State official roster bio historical notes, retrieved 2026-03-29.",
+    "evidence_summary": "Transfer path: 470 yards as true freshman at Colorado, injury-limited seasons 2023-24, then 2025 draft cycle at Arizona State. Combine: 26 bench reps (one shy of WR all-time record) — exceptional functional strength for position. Skipped speed/jump testing (hamstring). MTF 0.07 (lowest in class) — profile is separator/route-runner, not YAC threat. Athletic profile is strength-over-speed archetype.",
+    "context_source": "Wikipedia Jordyn Tyson career summary + arizonasports.com 2026 NFL Combine report, retrieved 2026-04-08.",
     "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
   },
   {

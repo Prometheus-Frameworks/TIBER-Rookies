@@ -11,18 +11,18 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-08T13:42:34+00:00",
-  "run_id": "rookie-alpha-2026-2026-04-08T13:42:34+00:00",
+  "generated_at": "2026-04-08T13:49:59+00:00",
+  "run_id": "rookie-alpha-2026-2026-04-08T13:49:59+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 26,
-    "players_with_any_missing_input": 21,
-    "players_with_full_inputs": 5,
+    "players_with_any_missing_input": 20,
+    "players_with_full_inputs": 6,
     "players_with_context_fields": 26,
     "input_alignment": {
       "duplicate_rows_skipped": 0,
       "identity_conflicts_skipped": 0,
-      "missing_combine": 22,
+      "missing_combine": 21,
       "missing_production": 0,
       "missing_draft_proxy": 1,
       "total_excluded": 1
@@ -153,7 +153,7 @@
         "career_receiving_market_share": null,
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
-        "athletic_upside_flag": null,
+        "athletic_upside_flag": true,
         "path_disruption_flag": true
       },
       "evidence": {
@@ -170,8 +170,8 @@
           "young_breakout",
           "injury_adjusted"
         ],
-        "evidence_summary": "Sourced career path includes 470 receiving yards as a true freshman at Colorado, then an injury-limited 2023 season with no catches, plus a 2024 season-ending injury note before his 2025 draft cycle.",
-        "context_source": "Wikipedia Jordyn Tyson college career summary and Arizona State official roster bio historical notes, retrieved 2026-03-29."
+        "evidence_summary": "Transfer path: 470 yards as true freshman at Colorado, injury-limited seasons 2023-24, then 2025 draft cycle at Arizona State. Combine: 26 bench reps (one shy of WR all-time record) \u2014 exceptional functional strength for position. Skipped speed/jump testing (hamstring). MTF 0.07 (lowest in class) \u2014 profile is separator/route-runner, not YAC threat. Athletic profile is strength-over-speed archetype.",
+        "context_source": "Wikipedia Jordyn Tyson career summary + arizonasports.com 2026 NFL Combine report, retrieved 2026-04-08."
       },
       "rookie_alpha_rank": 2,
       "talent_rank": 3,
@@ -440,75 +440,6 @@
       "draft_proxy_delta": -2
     },
     {
-      "player_id": "wr-denzel-boston",
-      "player_name": "Denzel Boston",
-      "position": "WR",
-      "scores": {
-        "ras_0_100": 56.4264,
-        "production_0_100": 61.42,
-        "age_adjusted_production_0_100": 56.7,
-        "draft_capital_proxy_0_100": 85.0,
-        "talent_score_0_100": 59.2353,
-        "rookie_alpha_0_100": 64.3882,
-        "consensus_delta": -20.6
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "wr-denzel-boston",
-        "player_name": "Denzel Boston",
-        "position": "WR",
-        "school": "Washington",
-        "class_year": 2026,
-        "early_declare_flag": true,
-        "breakout_age": 20,
-        "age_at_first_impact_season": 20,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": true,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": 0,
-        "injury_adjusted_profile_flag": false,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": 0.11,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": false
-      },
-      "evidence": {
-        "evidence_tags": [
-          "young_breakout",
-          "early_declare"
-        ],
-        "context_flags": [
-          "limited_multi_season_data"
-        ],
-        "translation_flags": [
-          "young_breakout"
-        ],
-        "evidence_summary": "Sourced profile confirms 62-881-11 in 2025 and only 66 total receiving yards across his first two college seasons combined; year-by-year freshman/sophomore split and combine-verified testing context are not explicitly published in currently available in-repo sources.",
-        "context_source": "Wikipedia Denzel Boston college career summary and pre-draft measurables section, retrieved 2026-03-29."
-      },
-      "rookie_alpha_rank": 7,
-      "talent_rank": 9,
-      "draft_proxy_delta": 2
-    },
-    {
       "player_id": "rb-kaytron-allen",
       "player_name": "Kaytron Allen",
       "position": "RB",
@@ -576,9 +507,78 @@
         "evidence_summary": "54-game career, 4167 rush yards (5.4 YPC), 39 TDs, 661 rec yards, 1.74 YPRR. 24.0% avoided tackle rate. High-volume Penn State back with elite receiving chops.",
         "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart, 2026-04-07"
       },
-      "rookie_alpha_rank": 8,
+      "rookie_alpha_rank": 7,
       "talent_rank": 8,
-      "draft_proxy_delta": 0
+      "draft_proxy_delta": 1
+    },
+    {
+      "player_id": "wr-makai-lemon",
+      "player_name": "Makai Lemon",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 53.4748,
+        "production_0_100": 61.6,
+        "age_adjusted_production_0_100": 54.0,
+        "draft_capital_proxy_0_100": 75.0,
+        "talent_score_0_100": 58.0452,
+        "rookie_alpha_0_100": 61.4362,
+        "consensus_delta": -13.6
+      },
+      "model_inputs_missing": [],
+      "context": {
+        "player_id": "wr-makai-lemon",
+        "player_name": "Makai Lemon",
+        "position": "WR",
+        "school": "USC",
+        "class_year": 2026,
+        "early_declare_flag": true,
+        "breakout_age": 20,
+        "age_at_first_impact_season": 20,
+        "freshman_total_yards": 88,
+        "sophomore_total_yards": 764,
+        "freshman_impact_flag": false,
+        "young_breakout_flag": true,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": 0,
+        "injury_adjusted_profile_flag": false,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": 9,
+        "rushing_production_signal": 4,
+        "missed_tackles_forced_per_reception": 0.25,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": true,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": false
+      },
+      "evidence": {
+        "evidence_tags": [
+          "young_breakout",
+          "early_declare"
+        ],
+        "context_flags": [
+          "limited_multi_season_data"
+        ],
+        "translation_flags": [
+          "young_breakout"
+        ],
+        "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season is aligned with the sourced profile.",
+        "context_source": "Wikipedia Makai Lemon statistics table (2023-2025 rows) plus awards section, retrieved 2026-03-29."
+      },
+      "rookie_alpha_rank": 8,
+      "talent_rank": 9,
+      "draft_proxy_delta": 1
     },
     {
       "player_id": "wr-carnell-tate",
@@ -652,33 +652,31 @@
       "draft_proxy_delta": 8
     },
     {
-      "player_id": "wr-makai-lemon",
-      "player_name": "Makai Lemon",
+      "player_id": "wr-denzel-boston",
+      "player_name": "Denzel Boston",
       "position": "WR",
       "scores": {
-        "ras_0_100": 50.0,
-        "production_0_100": 61.6,
-        "age_adjusted_production_0_100": 54.0,
-        "draft_capital_proxy_0_100": 75.0,
-        "talent_score_0_100": 56.525,
-        "rookie_alpha_0_100": 60.22,
-        "consensus_delta": -14.8
+        "ras_0_100": 46.0097,
+        "production_0_100": 61.42,
+        "age_adjusted_production_0_100": 56.7,
+        "draft_capital_proxy_0_100": 85.0,
+        "talent_score_0_100": 54.678,
+        "rookie_alpha_0_100": 60.7424,
+        "consensus_delta": -24.3
       },
-      "model_inputs_missing": [
-        "ras"
-      ],
+      "model_inputs_missing": [],
       "context": {
-        "player_id": "wr-makai-lemon",
-        "player_name": "Makai Lemon",
+        "player_id": "wr-denzel-boston",
+        "player_name": "Denzel Boston",
         "position": "WR",
-        "school": "USC",
+        "school": "Washington",
         "class_year": 2026,
         "early_declare_flag": true,
         "breakout_age": 20,
         "age_at_first_impact_season": 20,
-        "freshman_total_yards": 88,
-        "sophomore_total_yards": 764,
-        "freshman_impact_flag": false,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
         "young_breakout_flag": true,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
@@ -690,14 +688,14 @@
         "injury_adjusted_profile_flag": false,
         "broken_offense_context_flag": null,
         "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": 9,
-        "rushing_production_signal": 4,
-        "missed_tackles_forced_per_reception": 0.25,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": 0.11,
         "yac_proxy_per_reception": null,
         "contested_catch_rate": null,
         "inside_out_versatility_flag": null,
         "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": true,
+        "power4_early_contributor_flag": null,
         "career_receiving_market_share": null,
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
@@ -715,8 +713,8 @@
         "translation_flags": [
           "young_breakout"
         ],
-        "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season is aligned with the sourced profile.",
-        "context_source": "Wikipedia Makai Lemon statistics table (2023-2025 rows) plus awards section, retrieved 2026-03-29."
+        "evidence_summary": "Sourced profile confirms 62-881-11 in 2025 and only 66 total receiving yards across his first two college seasons combined; year-by-year freshman/sophomore split and combine-verified testing context are not explicitly published in currently available in-repo sources.",
+        "context_source": "Wikipedia Denzel Boston college career summary and pre-draft measurables section, retrieved 2026-03-29."
       },
       "rookie_alpha_rank": 10,
       "talent_rank": 14,
