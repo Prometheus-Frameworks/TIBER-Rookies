@@ -11,21 +11,21 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-08T13:57:39+00:00",
-  "run_id": "rookie-alpha-2026-2026-04-08T13:57:39+00:00",
+  "generated_at": "2026-04-08T22:32:38+00:00",
+  "run_id": "rookie-alpha-2026-2026-04-08T22:32:38+00:00",
   "season": 2026,
   "coverage_summary": {
-    "players_total": 26,
-    "players_with_any_missing_input": 20,
+    "players_total": 27,
+    "players_with_any_missing_input": 21,
     "players_with_full_inputs": 6,
-    "players_with_context_fields": 26,
+    "players_with_context_fields": 27,
     "input_alignment": {
-      "duplicate_rows_skipped": 0,
+      "duplicate_rows_skipped": 2,
       "identity_conflicts_skipped": 0,
       "missing_combine": 21,
       "missing_production": 0,
-      "missing_draft_proxy": 1,
-      "total_excluded": 1
+      "missing_draft_proxy": 0,
+      "total_excluded": 0
     }
   },
   "source_files_used": [
@@ -1779,6 +1779,70 @@
       },
       "rookie_alpha_rank": 26,
       "talent_rank": 26,
+      "draft_proxy_delta": 0
+    },
+    {
+      "player_id": "wr-brenen-thompson",
+      "player_name": "Brenen Thompson",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 16.0,
+        "age_adjusted_production_0_100": 0.0,
+        "draft_capital_proxy_0_100": 45.0,
+        "talent_score_0_100": 30.875,
+        "rookie_alpha_0_100": 33.7,
+        "consensus_delta": -11.3
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "wr-brenen-thompson",
+        "player_name": "Brenen Thompson",
+        "position": "WR",
+        "school": "Mississippi State",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": null,
+        "age_at_first_impact_season": null,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": null,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": 0,
+        "injury_adjusted_profile_flag": false,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": true,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": true,
+        "path_disruption_flag": false
+      },
+      "evidence": {
+        "evidence_tags": [],
+        "context_flags": [],
+        "translation_flags": [],
+        "evidence_summary": "Elite speed archetype \u2014 4.26 40-yard dash (fastest at 2026 combine, fastest WR since John Ross 4.22 in 2017). Frame concern: 5'9\", 164lb \u2014 durability and contested-catch limitations at NFL level. Mississippi State (SEC, Power 4). No jump testing data. Production profile pending CFBD fetch. Model may undervalue if route efficiency/YAC data not available; speed-only profile warrants dynasty discount until target share confirmed.",
+        "context_source": "2026 NFL Combine results (ESPN/NFL.com), retrieved 2026-04-08"
+      },
+      "rookie_alpha_rank": 27,
+      "talent_rank": 27,
       "draft_proxy_delta": 0
     }
   ]
