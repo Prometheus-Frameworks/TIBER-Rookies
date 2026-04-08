@@ -48,14 +48,41 @@ CONTEXT_EVIDENCE_TAG_VOCAB = {
     "yac_signal",
     "rushing_signal",
     "late_round_dart",
+    # efficiency / athleticism tier tags
+    "elite_efficiency_tier",
+    "r1_p4_wr_comps",
+    "non_r1_p4_wr_comps",
+    "elite_athleticism",
+    "elite_speed",
+    "exceptional_strength",
+    # volume / consistency tags
+    "elite_volume_producer",
+    "elite_yac_producer",
+    "multi_season_consistency",
+    # context tags
+    "broken_offense_context",
+    "late_breakout",
+    "size_concern",
 }
 
 CONTEXT_FLAG_VOCAB = {
     "limited_multi_season_data",
+    "limited_production_data",
     "single_season_efficiency_dip",
     "injury_context",
     "suppressed_offense_context",
     "path_disruption",
+    # research-sourced red flag flags
+    "bottom_10_mtf_day2_rb_since_2014",
+    "yac_consistency_concern",
+    "one_hit_wonder_risk",
+    "senior_breakout_flag",
+    "poor_ol_context",
+    "size_risk",
+    # combine context flags
+    "combine_drills_skipped_hamstring",
+    "injury_adjusted_2024_playoffs",
+    "combine_drills_skipped_injury",
 }
 
 TRANSLATION_FLAG_VOCAB = {
@@ -67,6 +94,8 @@ TRANSLATION_FLAG_VOCAB = {
     "yac_signal",
     "rushing_signal",
     "late_round_dart",
+    "elite_efficiency_tier",
+    "broken_offense_context",
 }
 
 
@@ -317,6 +346,110 @@ def blend_production_rows(
 
         blended.append(row)
     return blended
+
+
+# ---------------------------------------------------------------------------
+# Context-driven production adjustments
+# ---------------------------------------------------------------------------
+
+# WR efficiency tier: for WRs verified in 75th+ pctile YPRR / passer rating
+# with low-volume college profiles, the 60/40 age-adj blend underweights their
+# per-route efficiency. Flip to 40/60 (age-adj/raw) — but only when age-adj is
+# already pulling the score DOWN relative to the CFBD raw score (i.e., never harm
+# an early-breakout WR who is already getting the age multiplier boost).
+WR_EFFICIENCY_TIER_AGE_ADJ_WEIGHT = 0.40
+WR_EFFICIENCY_TIER_RAW_WEIGHT = 0.60
+
+# RB MTF penalty: career MTF/touch below threshold indicates poor contact quality
+# relative to day-2 peers. Applied as a tiered deduction to production score.
+RB_MTF_POOR_THRESHOLD = 0.18   # below → poor tier (−5 pts)
+RB_MTF_BELOW_AVG_THRESHOLD = 0.20  # below → below-average tier (−2.5 pts)
+
+
+def apply_context_production_adjustments(
+    production_rows: list[dict[str, Any]],
+    context_by_id: dict[str, dict[str, Any]],
+) -> list[dict[str, Any]]:
+    """Apply context-driven adjustments to blended production scores.
+
+    Two adjustments:
+
+    1. **WR elite_efficiency_tier re-blend** — for WRs with verified 75th+
+       pctile YPRR/passer-rating/TPRR whose age-adjusted score is pulling their
+       blended production *below* the CFBD raw efficiency score, flip the blend
+       weights to 40% age-adjusted / 60% raw.  This corrects the volume-bias for
+       low-target-share / high-efficiency WRs (Sarratt archetype; Nacua precedent).
+       Only applied when age_adj < raw — never harms early-breakout WRs.
+
+    2. **RB MTF penalty** — for RBs with ``career_mtf_per_touch`` below threshold,
+       apply a tiered production deduction:
+         < 0.18 → −5 pts   (poor tier: bottom ~10% of Day-2 RBs since 2014)
+         < 0.20 → −2.5 pts (below-average tier)
+       Corrects for the gap between RAS/combine athleticism and actual
+       after-contact production (Washington Jr. archetype).
+    """
+    adjusted: list[dict[str, Any]] = []
+    for row in production_rows:
+        row = dict(row)
+        pid = row.get("player_id", "")
+        ctx = context_by_id.get(pid, {})
+        position = ctx.get("position") or row.get("position", "")
+        evidence_tags: list[str] = ctx.get("evidence_tags", [])
+
+        # --- WR efficiency tier re-blend ---
+        if (
+            position == "WR"
+            and "elite_efficiency_tier" in evidence_tags
+            and row.get("raw_production_score_0_100") is not None
+            and row.get("age_adjusted_production_0_100") is not None
+            and float(row["age_adjusted_production_0_100"]) < float(row["raw_production_score_0_100"])
+        ):
+            raw = float(row["raw_production_score_0_100"])
+            age_adj = float(row["age_adjusted_production_0_100"])
+            old_blended = float(row["production_score_0_100"])
+            new_blended = round(
+                WR_EFFICIENCY_TIER_AGE_ADJ_WEIGHT * age_adj
+                + WR_EFFICIENCY_TIER_RAW_WEIGHT * raw,
+                4,
+            )
+            logging.info(
+                "WR efficiency-tier re-blend for %s: %.1f → %.1f "
+                "(raw=%.1f age_adj=%.1f weights=%.0f%%/%.0f%%)",
+                pid, old_blended, new_blended, raw, age_adj,
+                WR_EFFICIENCY_TIER_RAW_WEIGHT * 100,
+                WR_EFFICIENCY_TIER_AGE_ADJ_WEIGHT * 100,
+            )
+            row["production_score_0_100"] = new_blended
+            row["efficiency_tier_reblend"] = True
+
+        # --- RB MTF penalty ---
+        if position == "RB":
+            mtf = ctx.get("career_mtf_per_touch")
+            if mtf is not None:
+                mtf_val = float(mtf)
+                if mtf_val < RB_MTF_POOR_THRESHOLD:
+                    penalty = 5.0 if mtf_val < RB_MTF_POOR_THRESHOLD else 2.5
+                    old_score = float(row.get("production_score_0_100") or 50.0)
+                    new_score = clamp_0_100(old_score - penalty)
+                    logging.info(
+                        "RB MTF penalty for %s: mtf_per_touch=%.3f → −%.1f pts (%.1f → %.1f)",
+                        pid, mtf_val, penalty, old_score, new_score,
+                    )
+                    row["production_score_0_100"] = round(new_score, 4)
+                    row["mtf_production_penalty"] = penalty
+                elif mtf_val < RB_MTF_BELOW_AVG_THRESHOLD:
+                    penalty = 2.5
+                    old_score = float(row.get("production_score_0_100") or 50.0)
+                    new_score = clamp_0_100(old_score - penalty)
+                    logging.info(
+                        "RB MTF below-avg penalty for %s: mtf_per_touch=%.3f → −%.1f pts (%.1f → %.1f)",
+                        pid, mtf_val, penalty, old_score, new_score,
+                    )
+                    row["production_score_0_100"] = round(new_score, 4)
+                    row["mtf_production_penalty"] = penalty
+
+        adjusted.append(row)
+    return adjusted
 
 
 def merge_inputs(
@@ -861,6 +994,9 @@ def main() -> None:
     if not isinstance(draft_rows, list):
         raise SystemExit(f"Expected list JSON in {draft_proxy_input}, got {type(draft_rows).__name__}")
 
+    # Load context early — needed for context-driven production adjustments
+    context_by_id = load_context_by_player_id(context_input)
+
     if age_adjusted_input.exists():
         age_adjusted_rows = load_json(age_adjusted_input)
         if isinstance(age_adjusted_rows, list):
@@ -876,8 +1012,9 @@ def main() -> None:
     else:
         logging.warning("Age-adjusted input not found at %s — using unblended production scores", age_adjusted_input)
 
+    production_rows = apply_context_production_adjustments(production_rows, context_by_id)
+
     players, merge_diagnostics = merge_inputs(combine_rows, production_rows, draft_rows)
-    context_by_id = load_context_by_player_id(context_input)
     write_outputs(
         players=players,
         merge_diagnostics=merge_diagnostics,

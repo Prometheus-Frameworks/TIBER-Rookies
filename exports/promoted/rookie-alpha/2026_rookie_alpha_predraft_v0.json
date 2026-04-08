@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-08T23:03:40+00:00",
-  "run_id": "rookie-alpha-2026-2026-04-08T23:03:40+00:00",
+  "generated_at": "2026-04-08T23:09:34+00:00",
+  "run_id": "rookie-alpha-2026-2026-04-08T23:09:34+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 27,
@@ -91,9 +91,12 @@
       "evidence": {
         "evidence_tags": [
           "young_breakout",
+          "elite_volume_producer",
           "injury_adjusted"
         ],
-        "context_flags": [],
+        "context_flags": [
+          "injury_adjusted_2024_playoffs"
+        ],
         "translation_flags": [
           "young_breakout",
           "injury_adjusted"
@@ -162,11 +165,13 @@
         "evidence_tags": [
           "young_breakout",
           "early_declare",
-          "injury_adjusted"
+          "injury_adjusted",
+          "exceptional_strength"
         ],
         "context_flags": [
           "injury_context",
-          "path_disruption"
+          "path_disruption",
+          "combine_drills_skipped_hamstring"
         ],
         "translation_flags": [
           "young_breakout",
@@ -442,6 +447,78 @@
       "draft_proxy_delta": -2
     },
     {
+      "player_id": "wr-makai-lemon",
+      "player_name": "Makai Lemon",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 53.4748,
+        "production_0_100": 65.4,
+        "age_adjusted_production_0_100": 54.0,
+        "draft_capital_proxy_0_100": 75.0,
+        "talent_score_0_100": 60.1827,
+        "rookie_alpha_0_100": 63.1462,
+        "consensus_delta": -11.9
+      },
+      "model_inputs_missing": [],
+      "context": {
+        "player_id": "wr-makai-lemon",
+        "player_name": "Makai Lemon",
+        "position": "WR",
+        "school": "USC",
+        "class_year": 2026,
+        "early_declare_flag": true,
+        "breakout_age": 20,
+        "age_at_first_impact_season": 20,
+        "freshman_total_yards": 88,
+        "sophomore_total_yards": 764,
+        "freshman_impact_flag": false,
+        "young_breakout_flag": true,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": 0,
+        "injury_adjusted_profile_flag": false,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": 9,
+        "rushing_production_signal": 4,
+        "missed_tackles_forced_per_reception": 0.25,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": true,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": false
+      },
+      "evidence": {
+        "evidence_tags": [
+          "young_breakout",
+          "early_declare",
+          "elite_efficiency_tier",
+          "r1_p4_wr_comps"
+        ],
+        "context_flags": [
+          "limited_multi_season_data"
+        ],
+        "translation_flags": [
+          "young_breakout",
+          "elite_efficiency_tier"
+        ],
+        "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season. R1 P4 WR since 2021 with 75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR \u2014 same threshold tier as Ja'Marr Chase, Malik Nabers, Jaylen Waddle, Garrett Wilson, Chris Olave, JSN, Jordan Addison. Combine: vert 40.0\", broad 129\". MTF 0.25 (2nd in class). Model rank 8 is supported.",
+        "context_source": "Wikipedia Makai Lemon stats + @ffdataroma research note 2026-04-08"
+      },
+      "rookie_alpha_rank": 7,
+      "talent_rank": 9,
+      "draft_proxy_delta": 2
+    },
+    {
       "player_id": "rb-kaytron-allen",
       "player_name": "Kaytron Allen",
       "position": "RB",
@@ -509,78 +586,9 @@
         "evidence_summary": "54-game career, 4167 rush yards (5.4 YPC), 39 TDs, 661 rec yards, 1.74 YPRR. 24.0% avoided tackle rate. High-volume Penn State back with elite receiving chops.",
         "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart, 2026-04-07"
       },
-      "rookie_alpha_rank": 7,
-      "talent_rank": 8,
-      "draft_proxy_delta": 1
-    },
-    {
-      "player_id": "wr-makai-lemon",
-      "player_name": "Makai Lemon",
-      "position": "WR",
-      "scores": {
-        "ras_0_100": 53.4748,
-        "production_0_100": 61.6,
-        "age_adjusted_production_0_100": 54.0,
-        "draft_capital_proxy_0_100": 75.0,
-        "talent_score_0_100": 58.0452,
-        "rookie_alpha_0_100": 61.4362,
-        "consensus_delta": -13.6
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "wr-makai-lemon",
-        "player_name": "Makai Lemon",
-        "position": "WR",
-        "school": "USC",
-        "class_year": 2026,
-        "early_declare_flag": true,
-        "breakout_age": 20,
-        "age_at_first_impact_season": 20,
-        "freshman_total_yards": 88,
-        "sophomore_total_yards": 764,
-        "freshman_impact_flag": false,
-        "young_breakout_flag": true,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": 0,
-        "injury_adjusted_profile_flag": false,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": 9,
-        "rushing_production_signal": 4,
-        "missed_tackles_forced_per_reception": 0.25,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": true,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": false
-      },
-      "evidence": {
-        "evidence_tags": [
-          "young_breakout",
-          "early_declare"
-        ],
-        "context_flags": [
-          "limited_multi_season_data"
-        ],
-        "translation_flags": [
-          "young_breakout"
-        ],
-        "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season. R1 P4 WR since 2021 with 75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR \u2014 same threshold tier as Ja'Marr Chase, Malik Nabers, Jaylen Waddle, Garrett Wilson, Chris Olave, JSN, Jordan Addison. Combine: vert 40.0\", broad 129\". MTF 0.25 (2nd in class). Model rank 8 is supported.",
-        "context_source": "Wikipedia Makai Lemon stats + @ffdataroma research note 2026-04-08"
-      },
       "rookie_alpha_rank": 8,
-      "talent_rank": 9,
-      "draft_proxy_delta": 1
+      "talent_rank": 8,
+      "draft_proxy_delta": 0
     },
     {
       "player_id": "wr-carnell-tate",
@@ -719,8 +727,8 @@
         "context_source": "Wikipedia Denzel Boston college career summary and pre-draft measurables section, retrieved 2026-03-29."
       },
       "rookie_alpha_rank": 10,
-      "talent_rank": 14,
-      "draft_proxy_delta": 4
+      "talent_rank": 13,
+      "draft_proxy_delta": 3
     },
     {
       "player_id": "rb-jonah-coleman",
@@ -776,7 +784,11 @@
         "path_disruption_flag": false
       },
       "evidence": {
-        "evidence_tags": [],
+        "evidence_tags": [
+          "elite_volume_producer",
+          "elite_yac_producer",
+          "multi_season_consistency"
+        ],
         "context_flags": [
           "limited_multi_season_data"
         ],
@@ -863,68 +875,6 @@
       "draft_proxy_delta": 3
     },
     {
-      "player_id": "rb-mike-washington-jr",
-      "player_name": "Mike Washington Jr.",
-      "position": "RB",
-      "scores": {
-        "ras_0_100": 66.2859,
-        "production_0_100": 50.44,
-        "age_adjusted_production_0_100": 42.2,
-        "draft_capital_proxy_0_100": 55.0,
-        "talent_score_0_100": 57.3726,
-        "rookie_alpha_0_100": 56.8981,
-        "consensus_delta": 1.9
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "rb-mike-washington-jr",
-        "player_name": "Mike Washington Jr.",
-        "position": "RB",
-        "school": "New Mexico State (2024) / Arkansas (2025)",
-        "class_year": 2026,
-        "early_declare_flag": null,
-        "breakout_age": 21,
-        "age_at_first_impact_season": 21,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": false,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": null,
-        "injury_adjusted_profile_flag": null,
-        "broken_offense_context_flag": true,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": null
-      },
-      "evidence": {
-        "evidence_tags": [],
-        "context_flags": [],
-        "translation_flags": [],
-        "evidence_summary": "Transfer: New Mexico State 2024 (lower competition, weak OL) \u2192 Arkansas 2025. Arkansas 2025 OL ranked 110th/133 FBS in sacks allowed; mid-season emergency line adjustments. Production season (62.8 score) was behind one of the worst OLs in FBS. Elite combine profile (4.33 / 39.0 vert / 128 broad, RAS 66) \u2014 athleticism is genuine. Red flags: MTF/touch 0.165 (9th-worst Day 2 RB since 2014); YAC+catch 2nd-best season 47.6 yd/game. Scouting consensus: thrives in gap/power with defined lanes; struggles in space; 'often taken down by first tackler' (PFF). OL context is mitigating but doesn't fully explain away the contact quality gap. Gap/power scheme + functional OL is prerequisite for upside.",
-        "context_source": "@ffdataroma research note 2026-04-08 + NFLDraftBuzz/PFF scouting 2026-04-08"
-      },
-      "rookie_alpha_rank": 13,
-      "talent_rank": 11,
-      "draft_proxy_delta": -2
-    },
-    {
       "player_id": "rb-seth-mcgowan",
       "player_name": "Seth McGowan",
       "position": "RB",
@@ -992,8 +942,8 @@
         "evidence_summary": "31-game career (limited volume), 1924 rush yards (5.1 YPC), 18 TDs, 602 rec yards. 1.56 YPRR, 20.3% target rate \u2014 strong receiving back. 25.4% avoided tackle rate.",
         "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart, 2026-04-07"
       },
-      "rookie_alpha_rank": 14,
-      "talent_rank": 12,
+      "rookie_alpha_rank": 13,
+      "talent_rank": 11,
       "draft_proxy_delta": -2
     },
     {
@@ -1065,8 +1015,8 @@
         "evidence_summary": "Age-19 freshman breakout (600 yards, Clemson/ACC, Power 4). Career 208 rec / 2,336 yds / 21 TD (PFF). 124.1 passer rating when targeted (81st pct), 10.1% 1D/route run. 55.5% contested catch rate on 20+ aDOT. Inside-outside versatility despite slot label; identical efficiency in slot and out-wide. 75th pct vs man, 64th pct vs zone (Reception Perception). PFF WR11 projection, 2nd-round grade.",
         "context_source": "@ffdataroma scouting note + @ScottBarrettDFB PFF chart, 2026-04-07"
       },
-      "rookie_alpha_rank": 15,
-      "talent_rank": 13,
+      "rookie_alpha_rank": 14,
+      "talent_rank": 12,
       "draft_proxy_delta": -2
     },
     {
@@ -1129,9 +1079,81 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 16,
+      "rookie_alpha_rank": 15,
       "talent_rank": 10,
-      "draft_proxy_delta": -6
+      "draft_proxy_delta": -5
+    },
+    {
+      "player_id": "rb-mike-washington-jr",
+      "player_name": "Mike Washington Jr.",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 66.2859,
+        "production_0_100": 45.44,
+        "age_adjusted_production_0_100": 42.2,
+        "draft_capital_proxy_0_100": 55.0,
+        "talent_score_0_100": 54.5601,
+        "rookie_alpha_0_100": 54.6481,
+        "consensus_delta": -0.4
+      },
+      "model_inputs_missing": [],
+      "context": {
+        "player_id": "rb-mike-washington-jr",
+        "player_name": "Mike Washington Jr.",
+        "position": "RB",
+        "school": "New Mexico State (2024) / Arkansas (2025)",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 21,
+        "age_at_first_impact_season": 21,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": false,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": true,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [
+          "elite_athleticism",
+          "broken_offense_context"
+        ],
+        "context_flags": [
+          "bottom_10_mtf_day2_rb_since_2014",
+          "yac_consistency_concern",
+          "senior_breakout_flag",
+          "poor_ol_context"
+        ],
+        "translation_flags": [
+          "broken_offense_context"
+        ],
+        "evidence_summary": "Transfer: New Mexico State 2024 (lower competition, weak OL) \u2192 Arkansas 2025. Arkansas 2025 OL ranked 110th/133 FBS in sacks allowed; mid-season emergency line adjustments. Production season (62.8 score) was behind one of the worst OLs in FBS. Elite combine profile (4.33 / 39.0 vert / 128 broad, RAS 66) \u2014 athleticism is genuine. Red flags: MTF/touch 0.165 (9th-worst Day 2 RB since 2014); YAC+catch 2nd-best season 47.6 yd/game. Scouting consensus: thrives in gap/power with defined lanes; struggles in space; 'often taken down by first tackler' (PFF). OL context is mitigating but doesn't fully explain away the contact quality gap. Gap/power scheme + functional OL is prerequisite for upside.",
+        "context_source": "@ffdataroma research note 2026-04-08 + NFLDraftBuzz/PFF scouting 2026-04-08"
+      },
+      "rookie_alpha_rank": 16,
+      "talent_rank": 14,
+      "draft_proxy_delta": -2
     },
     {
       "player_id": "rb-jadarian-price",
@@ -1188,7 +1210,10 @@
         "evidence_tags": [
           "young_breakout"
         ],
-        "context_flags": [],
+        "context_flags": [
+          "yac_consistency_concern",
+          "one_hit_wonder_risk"
+        ],
         "translation_flags": [
           "young_breakout"
         ],
@@ -1338,6 +1363,78 @@
       "draft_proxy_delta": -3
     },
     {
+      "player_id": "wr-elijah-sarratt",
+      "player_name": "Elijah Sarratt",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 47.84,
+        "age_adjusted_production_0_100": 18.2,
+        "draft_capital_proxy_0_100": 55.0,
+        "talent_score_0_100": 48.785,
+        "rookie_alpha_0_100": 50.028,
+        "consensus_delta": -5.0
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "wr-elijah-sarratt",
+        "player_name": "Elijah Sarratt",
+        "position": "WR",
+        "school": "Indiana",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 21,
+        "age_at_first_impact_season": 21,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": false,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": 0.13,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [
+          "elite_efficiency_tier",
+          "non_r1_p4_wr_comps",
+          "late_breakout"
+        ],
+        "context_flags": [
+          "senior_breakout_flag"
+        ],
+        "translation_flags": [
+          "elite_efficiency_tier"
+        ],
+        "evidence_summary": "75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR (non-R1 P4 WR since 2021) \u2014 matches Puka Nacua, Tank Dell, Troy Franklin efficiency tier. Nacua comp is strongest: 43-48 rec/yr at BYU (modest volume), 18.3 YPC, 128.0 QB rating when targeted \u2014 then 105 catches in NFL year 1 as a 5th-round pick. Efficiency held when target share increased. Sarratt profile: low college volume, elite per-route efficiency \u2014 same archetype. Late breakout (BOA 21) is model red flag; Aiyuk/Watson are precedents for senior-breakout success, but base rate is poor. MTF 0.13 (mid-tier). Model gap: volume-weighted age-adjusted production (18.2 age-adj, blend \u2192 38) severely underweights efficiency; CFBD raw production score 67.6 is more representative.",
+        "context_source": "@ffdataroma research note 2026-04-08 + @ScottBarrettDFB PFF chart + NCAA.com Puka Nacua stats"
+      },
+      "rookie_alpha_rank": 20,
+      "talent_rank": 20,
+      "draft_proxy_delta": 0
+    },
+    {
       "player_id": "wr-chris-bell",
       "player_name": "Chris Bell",
       "position": "WR",
@@ -1397,8 +1494,8 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 20,
-      "talent_rank": 20,
+      "rookie_alpha_rank": 21,
+      "talent_rank": 21,
       "draft_proxy_delta": 0
     },
     {
@@ -1459,73 +1556,9 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 21,
-      "talent_rank": 22,
-      "draft_proxy_delta": 1
-    },
-    {
-      "player_id": "wr-elijah-sarratt",
-      "player_name": "Elijah Sarratt",
-      "position": "WR",
-      "scores": {
-        "ras_0_100": 50.0,
-        "production_0_100": 37.96,
-        "age_adjusted_production_0_100": 18.2,
-        "draft_capital_proxy_0_100": 55.0,
-        "talent_score_0_100": 43.2275,
-        "rookie_alpha_0_100": 45.582,
-        "consensus_delta": -9.4
-      },
-      "model_inputs_missing": [
-        "ras"
-      ],
-      "context": {
-        "player_id": "wr-elijah-sarratt",
-        "player_name": "Elijah Sarratt",
-        "position": "WR",
-        "school": "Indiana",
-        "class_year": 2026,
-        "early_declare_flag": null,
-        "breakout_age": 21,
-        "age_at_first_impact_season": 21,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": false,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": null,
-        "injury_adjusted_profile_flag": null,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": 0.13,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": null
-      },
-      "evidence": {
-        "evidence_tags": [],
-        "context_flags": [],
-        "translation_flags": [],
-        "evidence_summary": "75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR (non-R1 P4 WR since 2021) \u2014 matches Puka Nacua, Tank Dell, Troy Franklin efficiency tier. Nacua comp is strongest: 43-48 rec/yr at BYU (modest volume), 18.3 YPC, 128.0 QB rating when targeted \u2014 then 105 catches in NFL year 1 as a 5th-round pick. Efficiency held when target share increased. Sarratt profile: low college volume, elite per-route efficiency \u2014 same archetype. Late breakout (BOA 21) is model red flag; Aiyuk/Watson are precedents for senior-breakout success, but base rate is poor. MTF 0.13 (mid-tier). Model gap: volume-weighted age-adjusted production (18.2 age-adj, blend \u2192 38) severely underweights efficiency; CFBD raw production score 67.6 is more representative.",
-        "context_source": "@ffdataroma research note 2026-04-08 + @ScottBarrettDFB PFF chart + NCAA.com Puka Nacua stats"
-      },
       "rookie_alpha_rank": 22,
-      "talent_rank": 21,
-      "draft_proxy_delta": -1
+      "talent_rank": 22,
+      "draft_proxy_delta": 0
     },
     {
       "player_id": "qb-carson-beck",
@@ -1837,8 +1870,14 @@
         "path_disruption_flag": false
       },
       "evidence": {
-        "evidence_tags": [],
-        "context_flags": [],
+        "evidence_tags": [
+          "elite_speed",
+          "size_concern"
+        ],
+        "context_flags": [
+          "limited_production_data",
+          "size_risk"
+        ],
         "translation_flags": [],
         "evidence_summary": "Elite speed archetype \u2014 4.26 40-yard dash (fastest at 2026 combine, fastest WR since John Ross 4.22 in 2017). Frame concern: 5'9\", 164lb \u2014 durability and contested-catch limitations at NFL level. Mississippi State (SEC, Power 4). No jump testing data. Production profile pending CFBD fetch. Model may undervalue if route efficiency/YAC data not available; speed-only profile warrants dynasty discount until target share confirmed.",
         "context_source": "2026 NFL Combine results (ESPN/NFL.com), retrieved 2026-04-08"
