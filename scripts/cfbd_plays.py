@@ -36,6 +36,9 @@ def cfbd_headers() -> dict[str, str]:
     return headers
 
 
+REQUEST_DELAY_S = 1.1  # seconds between CFBD requests — stays well under rate limits
+
+
 def fetch_team_plays(year: int, team: str, season_type: str) -> list[dict[str, Any]]:
     """Fetch all plays for a team/year from CFBD, week-by-week with retry."""
     season_types = ["regular", "postseason"] if season_type == "both" else ["regular"]
@@ -47,8 +50,9 @@ def fetch_team_plays(year: int, team: str, season_type: str) -> list[dict[str, A
             params = urlencode({"year": year, "team": team, "seasonType": single_type, "week": week})
             url = f"{CFBD_BASE_URL}/plays?{params}"
             payload: list[dict[str, Any]] | None = None
-            for attempt in range(4):
+            for attempt in range(5):
                 try:
+                    time.sleep(REQUEST_DELAY_S)
                     request = Request(url=url, headers=cfbd_headers())
                     with urlopen(request, timeout=60) as response:
                         payload = json.load(response)
@@ -61,15 +65,23 @@ def fetch_team_plays(year: int, team: str, season_type: str) -> list[dict[str, A
                     )
                     time.sleep(wait)
                 except HTTPError as exc:
-                    raise SystemExit(
-                        f"CFBD API request failed for {team} {year} week {week} ({single_type}): HTTP {exc.code}"
-                    ) from exc
+                    if exc.code == 429:
+                        wait = 10 * (2 ** attempt)
+                        logging.warning(
+                            "Rate limited (429) for %s week %s attempt %s — retrying in %ss",
+                            team, week, attempt + 1, wait,
+                        )
+                        time.sleep(wait)
+                    else:
+                        raise SystemExit(
+                            f"CFBD API request failed for {team} {year} week {week} ({single_type}): HTTP {exc.code}"
+                        ) from exc
                 except URLError as exc:
                     raise SystemExit(
                         f"CFBD API request failed for {team} {year} week {week} ({single_type}): {exc.reason}"
                     ) from exc
             if payload is None:
-                raise SystemExit(f"CFBD API failed after 4 attempts for {team} {year} week {week}")
+                raise SystemExit(f"CFBD API failed after 5 attempts for {team} {year} week {week}")
             if not isinstance(payload, list):
                 raise SystemExit(
                     f"Unexpected CFBD response for {team} {year} week {week}: "
