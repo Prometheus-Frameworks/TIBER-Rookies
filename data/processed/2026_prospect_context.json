@@ -89,11 +89,15 @@
     "age_at_first_impact_season": 20,
     "young_breakout_flag": true,
     "evidence_tags": [
-      "young_breakout"
+      "young_breakout",
+      "elite_volume_producer",
+      "injury_adjusted"
     ],
-    "context_flags": [],
-    "evidence_summary": null,
-    "context_source": "compute_breakout_age.py"
+    "context_flags": [
+      "injury_adjusted_2024_playoffs"
+    ],
+    "evidence_summary": "Young breakout (BOA 20) at Notre Dame. Would have met 90+ total yd/game in 2+ seasons AND 70+ YAC/game in 2+ seasons thresholds if not for 2024 NFL playoffs, during which he played through a serious knee injury. True production ceiling suppressed in final measurable games; playoff stats should be treated as injury-affected outlier. Coleman (2026) is only peer to clear both thresholds unadjusted.",
+    "context_source": "@ffdataroma research note 2026-04-08"
   },
   {
     "player_id": "rb-jadarian-price",
@@ -105,12 +109,16 @@
     "breakout_age": 20,
     "age_at_first_impact_season": 20,
     "young_breakout_flag": true,
+    "yac_plus_catch_2nd_best_season": 39.9,
     "evidence_tags": [
       "young_breakout"
     ],
-    "context_flags": [],
-    "evidence_summary": null,
-    "context_source": "compute_breakout_age.py"
+    "context_flags": [
+      "yac_consistency_concern",
+      "one_hit_wonder_risk"
+    ],
+    "evidence_summary": "Young breakout (BOA 20) at Notre Dame (Power 4) is positive. Red flag: YAC+catch 2nd-best season 39.9 yd/game — among the worst in the top-100 DC RB dataset since 2017, alongside D.Harris, Sony Michel, Rashaad Penny, Clyde Edwards-Helaire. One-hit-wonder risk is high. Current model doesn't penalise for YAC consistency gap; rank likely overstated at 17.",
+    "context_source": "@ffdataroma research note 2026-04-08"
   },
   {
     "player_id": "rb-mike-washington-jr",
@@ -122,10 +130,18 @@
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
     "young_breakout_flag": false,
-    "evidence_tags": [],
-    "context_flags": [],
-    "evidence_summary": null,
-    "context_source": "compute_breakout_age.py"
+    "career_mtf_per_touch": 0.165,
+    "yac_plus_catch_2nd_best_season": 47.6,
+    "evidence_tags": [
+      "elite_athleticism"
+    ],
+    "context_flags": [
+      "bottom_10_mtf_day2_rb_since_2014",
+      "yac_consistency_concern",
+      "senior_breakout_flag"
+    ],
+    "evidence_summary": "Elite combine profile (4.33 / 39.0 vert / 128 broad, RAS 66) — athleticism is genuine. However: MTF/touch 0.165 ranks among worst Day 2 RBs since 2014 (9th worst in dataset); YAC+catch 2nd-best season 47.6 yd/game is in one-hit wonder tier alongside D.Harris, Sony Michel, CEH. Gap between athletic ceiling and production floor is a major red flag. Model currently overvalues via RAS without penalising MTF/YAC consistency.",
+    "context_source": "@ffdataroma research note 2026-04-08"
   },
   {
     "player_id": "rb-nick-singleton",
@@ -178,12 +194,16 @@
     "freshman_ypc": null,
     "athletic_upside_flag": null,
     "path_disruption_flag": false,
-    "evidence_tags": [],
+    "evidence_tags": [
+      "elite_volume_producer",
+      "elite_yac_producer",
+      "multi_season_consistency"
+    ],
     "context_flags": [
       "limited_multi_season_data"
     ],
-    "evidence_summary": "RB context row seeded, but late-round dart evidence is intentionally withheld until non-proxy translation fields are sourced.",
-    "context_source": "2026 seed pool identity + deterministic context scaffolding"
+    "evidence_summary": "Only 2026 RB to average 90+ total yards/game in 2+ seasons AND 70+ YAC+contact yards/game in 2+ seasons. 2025 class comparables at same thresholds: Jeanty, Hampton, Judkins, Henderson, Harvey, Monangai, Tuten, Brooks, Allen, Giddens, Neal, Gordon. Coleman is sole member of this elite tier in the 2026 class. Model bullish (+13.7 NFL, +25.7 DYN) — data supports that view.",
+    "context_source": "@ffdataroma research note 2026-04-08"
   },
   {
     "player_id": "wr-carnell-tate",
@@ -323,13 +343,15 @@
     "path_disruption_flag": false,
     "evidence_tags": [
       "young_breakout",
-      "early_declare"
+      "early_declare",
+      "elite_efficiency_tier",
+      "r1_p4_wr_comps"
     ],
     "context_flags": [
       "limited_multi_season_data"
     ],
-    "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season is aligned with the sourced profile.",
-    "context_source": "Wikipedia Makai Lemon statistics table (2023-2025 rows) plus awards section, retrieved 2026-03-29.",
+    "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season. R1 P4 WR since 2021 with 75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR — same threshold tier as Ja'Marr Chase, Malik Nabers, Jaylen Waddle, Garrett Wilson, Chris Olave, JSN, Jordan Addison. Combine: vert 40.0\", broad 129\". MTF 0.25 (2nd in class). Model rank 8 is supported.",
+    "context_source": "Wikipedia Makai Lemon stats + @ffdataroma research note 2026-04-08",
     "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
   },
   {
@@ -491,10 +513,16 @@
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
     "young_breakout_flag": false,
-    "evidence_tags": [],
-    "context_flags": [],
-    "evidence_summary": null,
-    "context_source": "compute_breakout_age.py",
+    "evidence_tags": [
+      "elite_efficiency_tier",
+      "non_r1_p4_wr_comps",
+      "late_breakout"
+    ],
+    "context_flags": [
+      "senior_breakout_flag"
+    ],
+    "evidence_summary": "75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR (non-R1 P4 WR since 2021) — matches Puka Nacua, Tank Dell, Troy Franklin efficiency tier. Late breakout (BOA 21) is noted red flag per historical calibration; Aiyuk/Watson are precedents for senior-breakout success, but base rate is poor. Model currently underweights production quality relative to BOA penalisation. MTF 0.13 (mid-tier). Dynasty market at WR80 likely understating efficiency signal.",
+    "context_source": "@ffdataroma research note 2026-04-08 + @ScottBarrettDFB PFF chart",
     "missed_tackles_forced_per_reception": 0.13,
     "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
   },

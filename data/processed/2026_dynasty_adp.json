@@ -125,7 +125,8 @@
     "player_name": "Elijah Sarratt",
     "position": "WR",
     "ktc_rank": "WR80",
-    "dynasty_adp_0_100": 28
+    "dynasty_adp_0_100": 44,
+    "dynasty_adp_note": "Manual adjustment from 28: KTC WR80 market understates efficiency signal (75th+ pctile YPRR/passer rating, same tier as Tank Dell / Puka Nacua / Troy Franklin)"
   },
   {
     "player_id": "rb-nick-singleton",
