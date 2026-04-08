@@ -87,8 +87,9 @@
     "player_id": "qb-fernando-mendoza",
     "player_name": "Fernando Mendoza",
     "position": "QB",
-    "ktc_rank": null,
-    "dynasty_adp_0_100": 32
+    "ktc_rank": "QB1(SF)",
+    "dynasty_adp_0_100": 91,
+    "format": "superflex"
   },
   {
     "player_id": "te-oscar-delp",
@@ -115,8 +116,9 @@
     "player_id": "qb-ty-simpson",
     "player_name": "Ty Simpson",
     "position": "QB",
-    "ktc_rank": null,
-    "dynasty_adp_0_100": 20
+    "ktc_rank": "QB2(SF)",
+    "dynasty_adp_0_100": 74,
+    "format": "superflex"
   },
   {
     "player_id": "wr-elijah-sarratt",
@@ -136,22 +138,25 @@
     "player_id": "qb-garrett-nussmeier",
     "player_name": "Garrett Nussmeier",
     "position": "QB",
-    "ktc_rank": null,
-    "dynasty_adp_0_100": 18
+    "ktc_rank": "QB3(SF)",
+    "dynasty_adp_0_100": 62,
+    "format": "superflex"
   },
   {
     "player_id": "qb-carson-beck",
     "player_name": "Carson Beck",
     "position": "QB",
-    "ktc_rank": null,
-    "dynasty_adp_0_100": 16
+    "ktc_rank": "QB4(SF)",
+    "dynasty_adp_0_100": 52,
+    "format": "superflex"
   },
   {
     "player_id": "qb-drew-allar",
     "player_name": "Drew Allar",
     "position": "QB",
-    "ktc_rank": null,
-    "dynasty_adp_0_100": 14
+    "ktc_rank": "QB5(SF)",
+    "dynasty_adp_0_100": 44,
+    "format": "superflex"
   },
   {
     "player_id": "wr-antonio-williams",
