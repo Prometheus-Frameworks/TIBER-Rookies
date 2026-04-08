@@ -210,10 +210,10 @@
     "player_id": "wr-antonio-williams",
     "player_name": "Antonio Williams",
     "position": "WR",
-    "school": "ACC (verify)",
+    "school": "Clemson",
     "class_year": 2026,
-    "production_score_0_100": 56.0,
-    "production_score_source": "Estimated from @ffdataroma scouting note \u2014 freshman 600 yards (ACC), career YPRR 2.94, limited multi-season data; verify with CFBD"
+    "production_score_0_100": 62.0,
+    "production_score_source": "Estimated from @ffdataroma scouting note + PFF profile \u2014 career 208 rec/2,336 yds/21 TD (Clemson/ACC), YPRR 2.94; verify with CFBD"
   },
   {
     "player_id": "rb-kaytron-allen",
