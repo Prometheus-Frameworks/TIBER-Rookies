@@ -103,7 +103,7 @@
     "player_id": "rb-jadarian-price",
     "player_name": "Jadarian Price",
     "position": "RB",
-    "school": "Notre Dame",
+    "school": "Notre Dame (2024) / Texas A&M (2025)",
     "class_year": 2026,
     "early_declare_flag": null,
     "breakout_age": 20,
@@ -111,14 +111,16 @@
     "young_breakout_flag": true,
     "yac_plus_catch_2nd_best_season": 39.9,
     "evidence_tags": [
-      "young_breakout"
+      "young_breakout",
+      "shared_backfield_context"
     ],
     "context_flags": [
       "yac_consistency_concern",
-      "one_hit_wonder_risk"
+      "one_hit_wonder_risk",
+      "shared_backfield_love_2024"
     ],
-    "evidence_summary": "Young breakout (BOA 20) at Notre Dame (Power 4) is positive. Red flag: YAC+catch 2nd-best season 39.9 yd/game — among the worst in the top-100 DC RB dataset since 2017, alongside D.Harris, Sony Michel, Rashaad Penny, Clyde Edwards-Helaire. One-hit-wonder risk is high. Current model doesn't penalise for YAC consistency gap; rank likely overstated at 17.",
-    "context_source": "@ffdataroma research note 2026-04-08"
+    "evidence_summary": "Transfer: Notre Dame (2024, shared backfield with Jeremiyah Love) → Texas A&M (2025). Breakout at age 20 at Notre Dame despite competing for carries with Love — a top-tier RB1 prospect. Production suppression from shared backfield is mitigating context for volume metrics. Dynasty community ranks him RB2 of class (overall top-5 rookie pick). Red flag: YAC+catch 2nd-best season 39.9 yd/game — among the worst in the top-100 DC RB dataset since 2017 (D.Harris, Sony Michel, Penny, CEH comps). One-hit-wonder risk remains; YAC consistency gap is the primary model concern.",
+    "context_source": "@ffdataroma research note 2026-04-08 + research agent 2026-04-09"
   },
   {
     "player_id": "rb-mike-washington-jr",
@@ -484,10 +486,15 @@
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
     "young_breakout_flag": false,
-    "evidence_tags": [],
-    "context_flags": [],
-    "evidence_summary": null,
-    "context_source": "compute_breakout_age.py",
+    "evidence_tags": [
+      "acl_injury_predraft"
+    ],
+    "context_flags": [
+      "injury_context",
+      "pre_draft_acl_march_2026"
+    ],
+    "evidence_summary": "Pre-draft ACL tear (March 2026). Was projected WR1-3 of the 2026 rookie class pre-injury; dynasty community had him in top-3 WR conversation. Post-ACL dynasty rank drops to approximately WR7-10 of class (KTC ~WR60 overall). Injury severely compresses first-year upside; year-1 contribution unlikely. Long-term profile may be intact if recovery is clean. Model scores reflect pre-injury production and combine profile, not injury-adjusted dynasty value — consensus_delta overstates model edge.",
+    "context_source": "Research agent 2026-04-09 (KeepTradeCut / Dynasty Nerds / PlayerProfiler post-injury consensus)",
     "missed_tackles_forced_per_reception": 0.17,
     "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
   },

@@ -52,7 +52,7 @@
     "player_id": "te-eli-stowers",
     "player_name": "Eli Stowers",
     "position": "TE",
-    "ktc_rank": "TE18",
+    "ktc_rank": "TE16",
     "dynasty_adp_0_100": 46
   },
   {
@@ -66,22 +66,23 @@
     "player_id": "te-max-klare",
     "player_name": "Max Klare",
     "position": "TE",
-    "ktc_rank": "TE22",
+    "ktc_rank": "TE20",
     "dynasty_adp_0_100": 38
   },
   {
     "player_id": "wr-chris-bell",
     "player_name": "Chris Bell",
     "position": "WR",
-    "ktc_rank": "WR82",
-    "dynasty_adp_0_100": 40
+    "ktc_rank": "WR60",
+    "dynasty_adp_0_100": 40,
+    "ktc_rank_note": "Post-ACL injury (March 2026); was projected WR1-3 of class pre-injury"
   },
   {
     "player_id": "rb-jadarian-price",
     "player_name": "Jadarian Price",
     "position": "RB",
-    "ktc_rank": "RB32",
-    "dynasty_adp_0_100": 42
+    "ktc_rank": "RB12",
+    "dynasty_adp_0_100": 65
   },
   {
     "player_id": "qb-fernando-mendoza",
@@ -109,8 +110,8 @@
     "player_id": "rb-mike-washington-jr",
     "player_name": "Mike Washington Jr.",
     "position": "RB",
-    "ktc_rank": "RB46",
-    "dynasty_adp_0_100": 30
+    "ktc_rank": "RB22",
+    "dynasty_adp_0_100": 52
   },
   {
     "player_id": "qb-ty-simpson",
@@ -163,35 +164,35 @@
     "player_id": "wr-antonio-williams",
     "player_name": "Antonio Williams",
     "position": "WR",
-    "ktc_rank": "WR65",
+    "ktc_rank": "WR70",
     "dynasty_adp_0_100": 46
   },
   {
     "player_id": "rb-kaytron-allen",
     "player_name": "Kaytron Allen",
     "position": "RB",
-    "ktc_rank": "RB25",
-    "dynasty_adp_0_100": 46
+    "ktc_rank": "RB28",
+    "dynasty_adp_0_100": 48
   },
   {
     "player_id": "rb-seth-mcgowan",
     "player_name": "Seth McGowan",
     "position": "RB",
-    "ktc_rank": "RB35",
-    "dynasty_adp_0_100": 40
+    "ktc_rank": "RB38",
+    "dynasty_adp_0_100": 38
   },
   {
     "player_id": "rb-emmett-johnson",
     "player_name": "Emmett Johnson",
     "position": "RB",
-    "ktc_rank": "RB43",
-    "dynasty_adp_0_100": 32
+    "ktc_rank": "RB25",
+    "dynasty_adp_0_100": 50
   },
   {
     "player_id": "wr-brenen-thompson",
     "player_name": "Brenen Thompson",
     "position": "WR",
-    "ktc_rank": "WR98",
+    "ktc_rank": "WR95",
     "dynasty_adp_0_100": 20
   }
 ]
