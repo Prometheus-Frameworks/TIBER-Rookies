@@ -52,7 +52,7 @@
     "player_id": "te-eli-stowers",
     "player_name": "Eli Stowers",
     "position": "TE",
-    "ktc_rank": null,
+    "ktc_rank": "TE18",
     "dynasty_adp_0_100": 46
   },
   {
@@ -66,21 +66,21 @@
     "player_id": "te-max-klare",
     "player_name": "Max Klare",
     "position": "TE",
-    "ktc_rank": null,
+    "ktc_rank": "TE22",
     "dynasty_adp_0_100": 38
   },
   {
     "player_id": "wr-chris-bell",
     "player_name": "Chris Bell",
     "position": "WR",
-    "ktc_rank": null,
+    "ktc_rank": "WR82",
     "dynasty_adp_0_100": 40
   },
   {
     "player_id": "rb-jadarian-price",
     "player_name": "Jadarian Price",
     "position": "RB",
-    "ktc_rank": null,
+    "ktc_rank": "RB32",
     "dynasty_adp_0_100": 42
   },
   {
@@ -95,7 +95,7 @@
     "player_id": "te-oscar-delp",
     "player_name": "Oscar Delp",
     "position": "TE",
-    "ktc_rank": null,
+    "ktc_rank": "TE26",
     "dynasty_adp_0_100": 33
   },
   {
@@ -109,7 +109,7 @@
     "player_id": "rb-mike-washington-jr",
     "player_name": "Mike Washington Jr.",
     "position": "RB",
-    "ktc_rank": null,
+    "ktc_rank": "RB46",
     "dynasty_adp_0_100": 30
   },
   {
@@ -163,35 +163,35 @@
     "player_id": "wr-antonio-williams",
     "player_name": "Antonio Williams",
     "position": "WR",
-    "ktc_rank": null,
+    "ktc_rank": "WR65",
     "dynasty_adp_0_100": 46
   },
   {
     "player_id": "rb-kaytron-allen",
     "player_name": "Kaytron Allen",
     "position": "RB",
-    "ktc_rank": null,
+    "ktc_rank": "RB25",
     "dynasty_adp_0_100": 46
   },
   {
     "player_id": "rb-seth-mcgowan",
     "player_name": "Seth McGowan",
     "position": "RB",
-    "ktc_rank": null,
+    "ktc_rank": "RB35",
     "dynasty_adp_0_100": 40
   },
   {
     "player_id": "rb-emmett-johnson",
     "player_name": "Emmett Johnson",
     "position": "RB",
-    "ktc_rank": null,
+    "ktc_rank": "RB43",
     "dynasty_adp_0_100": 32
   },
   {
     "player_id": "wr-brenen-thompson",
     "player_name": "Brenen Thompson",
     "position": "WR",
-    "ktc_rank": null,
+    "ktc_rank": "WR98",
     "dynasty_adp_0_100": 20
   }
 ]
