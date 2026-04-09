@@ -63,6 +63,10 @@ CONTEXT_EVIDENCE_TAG_VOCAB = {
     "broken_offense_context",
     "late_breakout",
     "size_concern",
+    # injury / pre-draft flags
+    "acl_injury_predraft",
+    # transfer / backfield context
+    "shared_backfield_context",
 }
 
 CONTEXT_FLAG_VOCAB = {
@@ -81,8 +85,14 @@ CONTEXT_FLAG_VOCAB = {
     "size_risk",
     # combine context flags
     "combine_drills_skipped_hamstring",
-    "injury_adjusted_2024_playoffs",
     "combine_drills_skipped_injury",
+    "injury_adjusted_2024_playoffs",
+    # injury flags
+    "pre_draft_acl_march_2026",
+    # backfield / teammate context
+    "shared_backfield_love_2024",
+    # data quality flags
+    "synthetic_profile_pending_cfbd",
 }
 
 TRANSLATION_FLAG_VOCAB = {
@@ -96,6 +106,7 @@ TRANSLATION_FLAG_VOCAB = {
     "late_round_dart",
     "elite_efficiency_tier",
     "broken_offense_context",
+    "acl_injury_predraft",
 }
 
 
@@ -365,6 +376,13 @@ WR_EFFICIENCY_TIER_RAW_WEIGHT = 0.60
 RB_MTF_POOR_THRESHOLD = 0.18   # below → poor tier (−5 pts)
 RB_MTF_BELOW_AVG_THRESHOLD = 0.20  # below → below-average tier (−2.5 pts)
 
+# RB YAC consistency penalty: yac_plus_catch_2nd_best_season < threshold flags
+# one-hit-wonder risk. Uses the 2nd-best season as a floor signal (a player's
+# worst relevant season tells you more about their floor than their peak).
+# Comps for the severe tier: D.Harris, Sony Michel, Rashaad Penny, CEH.
+RB_YAC_SEVERE_THRESHOLD = 40.0   # < 40 yd/game → −4 pts
+RB_YAC_CONCERN_THRESHOLD = 48.0  # < 48 yd/game → −2 pts
+
 
 def apply_context_production_adjustments(
     production_rows: list[dict[str, Any]],
@@ -447,6 +465,34 @@ def apply_context_production_adjustments(
                     )
                     row["production_score_0_100"] = round(new_score, 4)
                     row["mtf_production_penalty"] = penalty
+
+        # --- RB YAC consistency penalty ---
+        if position == "RB":
+            yac_floor = ctx.get("yac_plus_catch_2nd_best_season")
+            if yac_floor is not None:
+                yac_val = float(yac_floor)
+                if yac_val < RB_YAC_SEVERE_THRESHOLD:
+                    penalty = 4.0
+                    old_score = float(row.get("production_score_0_100") or 50.0)
+                    new_score = clamp_0_100(old_score - penalty)
+                    logging.info(
+                        "RB YAC floor penalty for %s: 2nd-best-season=%.1f yd/g → −%.1f pts (%.1f → %.1f) "
+                        "[severe: < %.0f]",
+                        pid, yac_val, penalty, old_score, new_score, RB_YAC_SEVERE_THRESHOLD,
+                    )
+                    row["production_score_0_100"] = round(new_score, 4)
+                    row["yac_floor_penalty"] = penalty
+                elif yac_val < RB_YAC_CONCERN_THRESHOLD:
+                    penalty = 2.0
+                    old_score = float(row.get("production_score_0_100") or 50.0)
+                    new_score = clamp_0_100(old_score - penalty)
+                    logging.info(
+                        "RB YAC floor penalty for %s: 2nd-best-season=%.1f yd/g → −%.1f pts (%.1f → %.1f) "
+                        "[concern: < %.0f]",
+                        pid, yac_val, penalty, old_score, new_score, RB_YAC_CONCERN_THRESHOLD,
+                    )
+                    row["production_score_0_100"] = round(new_score, 4)
+                    row["yac_floor_penalty"] = penalty
 
         adjusted.append(row)
     return adjusted
@@ -759,6 +805,27 @@ def write_outputs(
         if p.player_id in context_by_id:
             row_payload.update(normalize_context_entry(context_by_id[p.player_id]))
             players_with_context += 1
+
+        # Score caveats: surface cases where alpha score diverges from dynasty
+        # value for reasons the model doesn't capture (e.g. pre-draft injury).
+        caveats: list[str] = []
+        ctx_flags = row_payload.get("evidence", {}).get("context_flags", [])
+        ev_tags = row_payload.get("evidence", {}).get("evidence_tags", [])
+        if "pre_draft_acl_march_2026" in ctx_flags or "acl_injury_predraft" in ev_tags:
+            caveats.append(
+                "ACL tear (pre-draft 2026): alpha reflects pre-injury talent profile. "
+                "Dynasty value is materially lower than alpha implies; year-1 contribution "
+                "is unlikely. Consensus delta overstates model edge vs current dynasty market."
+            )
+        if "synthetic_profile_pending_cfbd" in ctx_flags:
+            caveats.append(
+                "Route profile estimated (pending CFBD fetch): age-adjusted production score "
+                "is based on synthetic target data derived from career totals. Ranking may shift "
+                "materially once real CFBD play-by-play data is available."
+            )
+        if caveats:
+            row_payload["scores"]["score_caveats"] = caveats
+
         ranked.append(row_payload)
 
     ranked.sort(key=lambda r: (-r["scores"]["rookie_alpha_0_100"], r["player_id"]))

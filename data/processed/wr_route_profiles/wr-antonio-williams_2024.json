@@ -1,0 +1,21 @@
+{
+  "player_id": "wr-antonio-williams",
+  "player_name": "Antonio Williams",
+  "team": "Clemson",
+  "season": 2024,
+  "season_type": "both",
+  "targets": 79,
+  "receptions": 55,
+  "screen_targets": 0,
+  "screen_target_rate": 0.0,
+  "yards_per_target": 10.8,
+  "deep_target_rate": null,
+  "depth_tag_coverage_rate": 0.0,
+  "team_pass_plays": null,
+  "team_screen_plays": 0,
+  "team_screen_rate": 0.0,
+  "team_yards_per_pass": null,
+  "source_name": "ESTIMATED — derived from career 208 rec / 2,336 yds at Clemson; CFBD fetch pending",
+  "source_url": null,
+  "methodology_notes": "Synthetic profile. Career split estimated: 55 freshman rec (2022, 600 yds known), ~40 sophomore, ~55 junior (2024), ~58 senior (2025). Targets calculated at 70% catch rate. YPRR 2.94 (career PFF). Verify and replace with CFBD play-by-play data when available."
+}

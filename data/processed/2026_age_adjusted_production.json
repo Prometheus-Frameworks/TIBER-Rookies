@@ -195,6 +195,21 @@
     "age_adjusted_production_score": 0.0
   },
   {
+    "player_id": "wr-antonio-williams",
+    "player_name": "Antonio Williams",
+    "position": "WR",
+    "breakout_age": 19,
+    "effective_breakout_age": 19,
+    "boa_adjustment": null,
+    "young_breakout_flag": true,
+    "best_season_volume": 83.0,
+    "recent_season_volume": 83.0,
+    "weighted_volume": 83.0,
+    "age_multiplier": 2.0,
+    "raw_score": 166.0,
+    "age_adjusted_production_score": 100.0
+  },
+  {
     "player_id": "wr-jordyn-tyson",
     "player_name": "Jordyn Tyson",
     "position": "WR",
@@ -207,7 +222,7 @@
     "weighted_volume": 88.0,
     "age_multiplier": 1.5,
     "raw_score": 132.0,
-    "age_adjusted_production_score": 100.0
+    "age_adjusted_production_score": 72.1
   },
   {
     "player_id": "wr-kc-concepcion",
@@ -222,7 +237,7 @@
     "weighted_volume": 57.0,
     "age_multiplier": 1.75,
     "raw_score": 99.75,
-    "age_adjusted_production_score": 75.6
+    "age_adjusted_production_score": 45.7
   },
   {
     "player_id": "wr-denzel-boston",
@@ -237,7 +252,7 @@
     "weighted_volume": 62.6,
     "age_multiplier": 1.5,
     "raw_score": 93.9,
-    "age_adjusted_production_score": 71.1
+    "age_adjusted_production_score": 40.9
   },
   {
     "player_id": "wr-carnell-tate",
@@ -252,7 +267,7 @@
     "weighted_volume": 53.5,
     "age_multiplier": 1.75,
     "raw_score": 93.62,
-    "age_adjusted_production_score": 70.9
+    "age_adjusted_production_score": 40.7
   },
   {
     "player_id": "wr-makai-lemon",
@@ -267,7 +282,7 @@
     "weighted_volume": 61.0,
     "age_multiplier": 1.5,
     "raw_score": 91.5,
-    "age_adjusted_production_score": 69.3
+    "age_adjusted_production_score": 38.9
   },
   {
     "player_id": "wr-chris-brazzell-ii",
@@ -282,7 +297,7 @@
     "weighted_volume": 52.0,
     "age_multiplier": 1.5,
     "raw_score": 78.0,
-    "age_adjusted_production_score": 59.1
+    "age_adjusted_production_score": 27.9
   },
   {
     "player_id": "wr-chris-bell",
@@ -297,7 +312,7 @@
     "weighted_volume": 65.0,
     "age_multiplier": 1.0,
     "raw_score": 65.0,
-    "age_adjusted_production_score": 49.2
+    "age_adjusted_production_score": 17.2
   },
   {
     "player_id": "wr-elijah-sarratt",
@@ -312,7 +327,7 @@
     "weighted_volume": 60.0,
     "age_multiplier": 1.0,
     "raw_score": 60.0,
-    "age_adjusted_production_score": 45.5
+    "age_adjusted_production_score": 13.1
   },
   {
     "player_id": "wr-brenen-thompson",
@@ -327,21 +342,6 @@
     "weighted_volume": 44.0,
     "age_multiplier": 1.0,
     "raw_score": 44.0,
-    "age_adjusted_production_score": 33.3
-  },
-  {
-    "player_id": "wr-antonio-williams",
-    "player_name": "Antonio Williams",
-    "position": "WR",
-    "breakout_age": 19,
-    "effective_breakout_age": 19,
-    "boa_adjustment": null,
-    "young_breakout_flag": true,
-    "best_season_volume": 0.0,
-    "recent_season_volume": 0.0,
-    "weighted_volume": 0.0,
-    "age_multiplier": 2.0,
-    "raw_score": 0.0,
     "age_adjusted_production_score": 0.0
   },
   {

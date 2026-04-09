@@ -116,19 +116,19 @@ def _primary_school(school_str: str) -> str:
     return re.sub(r"\s*\(\d{4}\)\s*$", "", last).strip()
 
 
-def school_boa_adjustment(school_str: str) -> float:
+def school_boa_adjustment(school_str: str) -> tuple[float, str]:
     """
-    Returns the BOA age-years adjustment for competition level.
-    Positive = makes effective BOA older (penalty).  Zero = P4, no change.
+    Returns (boa_adjustment, classification_label) for competition level.
+    Positive adjustment = makes effective BOA older (penalty). Zero = P4, no change.
     """
     school = _primary_school(school_str)
     for marker in NON_FBS_MARKERS:
         if marker.lower() in school.lower():
-            return NON_FBS_BOA_PENALTY
+            return NON_FBS_BOA_PENALTY, "non-FBS"
     if school in P4_SCHOOLS:
-        return 0.0
+        return 0.0, "P4"
     # G5 / non-P4 FBS
-    return NON_P4_BOA_PENALTY
+    return NON_P4_BOA_PENALTY, "G5"
 
 
 # ---------------------------------------------------------------------------
@@ -256,26 +256,31 @@ def compute(args: argparse.Namespace) -> list[dict[str, Any]]:
             breakout_age_val = player.get("breakout_age")
 
             # --- BOA context adjustment ---
-            school_adj = school_boa_adjustment(player.get("school", ""))
-            teammate_adj = (
-                -WR_R1R3_TEAMMATE_BONUS
-                if player.get("wr_r1r3_teammate_flag")
-                else 0.0
-            )
+            school_adj, school_class = school_boa_adjustment(player.get("school", ""))
+            teammate_flag = bool(player.get("wr_r1r3_teammate_flag"))
+            teammate_adj = -WR_R1R3_TEAMMATE_BONUS if teammate_flag else 0.0
             total_boa_adj = school_adj + teammate_adj
 
             effective_boa: int | float | None
-            if breakout_age_val is not None and total_boa_adj != 0.0:
-                effective_boa = breakout_age_val + total_boa_adj
-                logging.info(
-                    "  BOA adj  %-28s  raw=%s  adj=%+.1f  eff=%.1f",
-                    player["player_name"],
-                    breakout_age_val,
-                    total_boa_adj,
-                    effective_boa,
-                )
+            if breakout_age_val is not None:
+                effective_boa = breakout_age_val + total_boa_adj if total_boa_adj != 0.0 else breakout_age_val
             else:
-                effective_boa = breakout_age_val
+                effective_boa = None
+
+            # Full BOA audit log for every player
+            eff_str = f"{effective_boa:.1f}" if effective_boa is not None else "null"
+            raw_str = str(breakout_age_val) if breakout_age_val is not None else "null"
+            teammate_str = " +r1r3teammate(-0.5)" if teammate_flag else ""
+            adj_str = f"{total_boa_adj:+.1f}" if total_boa_adj != 0.0 else " 0.0"
+            logging.info(
+                "  BOA  %-26s  school=%-10s  raw=%-4s  adj=%s%s  eff=%s",
+                player["player_name"],
+                school_class,
+                raw_str,
+                adj_str,
+                teammate_str,
+                eff_str,
+            )
 
             wvol, best_vol, recent_vol = weighted_volume(
                 pid, class_year, field, directory
