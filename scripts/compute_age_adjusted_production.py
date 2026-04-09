@@ -35,7 +35,7 @@ from __future__ import annotations
 import argparse
 import json
 import logging
-import math
+import re
 from pathlib import Path
 from typing import Any
 
@@ -66,6 +66,69 @@ AGE_MULTIPLIER_FLOOR = 0.85  # penalty cap for late breakouts
 
 BEST_WEIGHT = 0.70
 RECENT_WEIGHT = 0.30
+
+# ---------------------------------------------------------------------------
+# School competition classification (BOA adjustment)
+# ---------------------------------------------------------------------------
+# Any school not in P4_SCHOOLS receives a +0.5 non-P4 penalty on effective BOA.
+# Schools in NON_FBS_MARKERS receive a +1.0 penalty instead.
+P4_SCHOOLS: frozenset[str] = frozenset({
+    # Big Ten
+    "Ohio State", "Michigan", "Penn State", "Wisconsin", "Iowa",
+    "Michigan State", "Indiana", "Purdue", "Illinois", "Minnesota",
+    "Nebraska", "Northwestern", "Maryland", "Rutgers", "UCLA", "USC",
+    "Washington", "Oregon",
+    # SEC
+    "Alabama", "Georgia", "LSU", "Florida", "Tennessee", "Texas A&M",
+    "Ole Miss", "Mississippi", "Mississippi State", "Auburn",
+    "South Carolina", "Vanderbilt", "Arkansas", "Missouri", "Kentucky",
+    "Texas", "Oklahoma",
+    # ACC
+    "Clemson", "Florida State", "NC State", "North Carolina", "Duke",
+    "Wake Forest", "Louisville", "Pittsburgh", "Virginia Tech", "Virginia",
+    "Boston College", "Georgia Tech", "Miami", "Miami (FL)", "Syracuse",
+    "California", "Stanford", "SMU",
+    # Big 12
+    "Texas Tech", "TCU", "Oklahoma State", "Baylor", "Kansas State",
+    "Kansas", "Iowa State", "West Virginia", "Cincinnati", "Houston",
+    "BYU", "UCF", "Arizona", "Arizona State", "Colorado", "Utah",
+    # P4-adjacent independents
+    "Notre Dame",
+})
+
+# Substrings that identify non-FBS programs (FCS/D2/D3)
+NON_FBS_MARKERS: tuple[str, ...] = (
+    "Indiana State", "Samford", "Eastern Washington", "Montana",
+    "North Dakota", "South Dakota", "Sacramento State", "Weber State",
+    "Murray State", "Villanova", "Maine", "Delaware", "James Madison",
+)
+
+NON_P4_BOA_PENALTY: float = 0.5   # added to effective BOA for G5/FBS non-P4
+NON_FBS_BOA_PENALTY: float = 1.0  # added to effective BOA for FCS/non-FBS
+WR_R1R3_TEAMMATE_BONUS: float = 0.5  # subtracted from effective BOA
+
+
+def _primary_school(school_str: str) -> str:
+    """Return the most recent school from strings like 'NMSU (2024) / Arkansas (2025)'."""
+    parts = [p.strip() for p in str(school_str or "").split("/")]
+    last = parts[-1]
+    # Strip year annotations like " (2025)"
+    return re.sub(r"\s*\(\d{4}\)\s*$", "", last).strip()
+
+
+def school_boa_adjustment(school_str: str) -> tuple[float, str]:
+    """
+    Returns (boa_adjustment, classification_label) for competition level.
+    Positive adjustment = makes effective BOA older (penalty). Zero = P4, no change.
+    """
+    school = _primary_school(school_str)
+    for marker in NON_FBS_MARKERS:
+        if marker.lower() in school.lower():
+            return NON_FBS_BOA_PENALTY, "non-FBS"
+    if school in P4_SCHOOLS:
+        return 0.0, "P4"
+    # G5 / non-P4 FBS
+    return NON_P4_BOA_PENALTY, "G5"
 
 
 # ---------------------------------------------------------------------------
@@ -192,10 +255,37 @@ def compute(args: argparse.Namespace) -> list[dict[str, Any]]:
             class_year = int(player.get("class_year") or 0)
             breakout_age_val = player.get("breakout_age")
 
+            # --- BOA context adjustment ---
+            school_adj, school_class = school_boa_adjustment(player.get("school", ""))
+            teammate_flag = bool(player.get("wr_r1r3_teammate_flag"))
+            teammate_adj = -WR_R1R3_TEAMMATE_BONUS if teammate_flag else 0.0
+            total_boa_adj = school_adj + teammate_adj
+
+            effective_boa: int | float | None
+            if breakout_age_val is not None:
+                effective_boa = breakout_age_val + total_boa_adj if total_boa_adj != 0.0 else breakout_age_val
+            else:
+                effective_boa = None
+
+            # Full BOA audit log for every player
+            eff_str = f"{effective_boa:.1f}" if effective_boa is not None else "null"
+            raw_str = str(breakout_age_val) if breakout_age_val is not None else "null"
+            teammate_str = " +r1r3teammate(-0.5)" if teammate_flag else ""
+            adj_str = f"{total_boa_adj:+.1f}" if total_boa_adj != 0.0 else " 0.0"
+            logging.info(
+                "  BOA  %-26s  school=%-10s  raw=%-4s  adj=%s%s  eff=%s",
+                player["player_name"],
+                school_class,
+                raw_str,
+                adj_str,
+                teammate_str,
+                eff_str,
+            )
+
             wvol, best_vol, recent_vol = weighted_volume(
                 pid, class_year, field, directory
             )
-            multiplier = age_multiplier(breakout_age_val)
+            multiplier = age_multiplier(effective_boa)
             raw = wvol * multiplier
 
             records.append(
@@ -204,6 +294,8 @@ def compute(args: argparse.Namespace) -> list[dict[str, Any]]:
                     "player_name": player["player_name"],
                     "position": pos,
                     "breakout_age": breakout_age_val,
+                    "effective_breakout_age": effective_boa,
+                    "boa_adjustment": round(total_boa_adj, 2) if total_boa_adj != 0.0 else None,
                     "young_breakout_flag": player.get("young_breakout_flag", False),
                     "best_season_volume": best_vol,
                     "recent_season_volume": recent_vol,

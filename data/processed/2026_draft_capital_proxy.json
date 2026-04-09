@@ -175,8 +175,8 @@
     "class_year": 2026,
     "big_board_rank": 137,
     "big_board_source": "NFL Mock Draft Database consensus 2026 big board (outside FantasyPros top 100; ESPN ~145, Tankathon 112)",
-    "draft_capital_proxy_0_100": null,
-    "draft_capital_proxy_source": null,
+    "draft_capital_proxy_0_100": 35,
+    "draft_capital_proxy_source": "Estimated from big_board_rank=137 (R4-5 projection; speed-first profile, size concerns 5'9\" 164lb)",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -321,18 +321,6 @@
     "big_board_source": "Estimated from 2026 RB draft projections \u2014 verify pre-draft",
     "draft_capital_proxy_0_100": 45,
     "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands",
-    "draft_capital_proxy_pending_conversion": true
-  },
-  {
-    "player_id": "wr-brenen-thompson",
-    "player_name": "Brenen Thompson",
-    "position": "WR",
-    "school": "Mississippi State",
-    "class_year": 2026,
-    "big_board_rank": 90,
-    "big_board_source": "Estimated \u2014 elite speed (4.26) offset by size concerns (5'9\", 164lb); late-round projection",
-    "draft_capital_proxy_0_100": 45,
-    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (76-100=45)",
     "draft_capital_proxy_pending_conversion": true
   }
 ]
