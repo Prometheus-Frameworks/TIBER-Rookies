@@ -80,6 +80,19 @@ function renderBreakoutBadge(row) {
   return `<span class="breakout-badge breakout-late">Age ${esc(row.breakoutAge)}</span>`;
 }
 
+const TIER_CSS = {
+  tier_1: 'tier-elite',
+  tier_2: 'tier-strong',
+  tier_3: 'tier-mid',
+  tier_4: 'tier-dart',
+};
+
+function renderPosBadge(position) {
+  const pos = String(position ?? '').toUpperCase();
+  const cls = ['QB','RB','WR','TE'].includes(pos) ? `pos-badge-${pos}` : '';
+  return `<span class="pos-badge ${cls}">${esc(pos)}</span>`;
+}
+
 export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = null } = {}) {
   const rank = row.classRank == null ? 'N/A' : `#${row.classRank}`;
   const grade = row.rookieGrade == null ? 'N/A' : row.rookieGrade.toFixed(1);
@@ -87,10 +100,11 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
   const compareLeftHref = `/cards/rookies/compare/index.html?left=${slug}`;
   const compareRightHref = `/cards/rookies/compare/index.html?right=${slug}`;
   const queueTag = queueAnnotation?.queueTag ?? '';
+  const tierCss = TIER_CSS[row.tier?.key] ?? 'tier-dart';
 
   return `
-    <article class="board-row ${isQueued ? 'board-row-queued' : ''}">
-      <div class="board-cell board-rank" data-label="Rank">${esc(rank)}</div>
+    <article class="board-row ${tierCss} ${isQueued ? 'board-row-queued' : ''}">
+      <div class="board-cell board-rank board-num" data-label="Rank">${esc(rank)}</div>
       <div class="board-cell board-player" data-label="Player">
         <div class="board-player-top">
           <span class="board-player-name">${esc(row.name)}</span>
@@ -100,9 +114,9 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
         <div class="meta board-summary-line">${esc(row.profileSummary)}</div>
         ${isQueued && queueTag ? `<div class="meta queue-inline-indicator">Queue tag: <span class="queue-tag-pill">${esc(queueTag)}</span></div>` : ''}
       </div>
-      <div class="board-cell" data-label="Position">${esc(row.position)}</div>
+      <div class="board-cell" data-label="Position">${renderPosBadge(row.position)}</div>
       <div class="board-cell" data-label="School">${esc(row.school)}</div>
-      <div class="board-cell board-grade" data-label="Rookie Grade">${esc(grade)}${renderVolumeTrend(row)}</div>
+      <div class="board-cell board-grade board-num" data-label="Rookie Grade">${esc(grade)}${renderVolumeTrend(row)}</div>
       <div class="board-cell" data-label="Tier"><span class="board-tier-pill">${esc(row.tier.label)}</span></div>
       ${renderPprCell(row)}
       ${renderConsensusDeltaCell(row)}
