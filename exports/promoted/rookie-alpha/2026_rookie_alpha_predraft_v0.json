@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-10T04:17:32+00:00",
-  "run_id": "rookie-alpha-2026-2026-04-10T04:17:32+00:00",
+  "generated_at": "2026-04-10T04:33:49+00:00",
+  "run_id": "rookie-alpha-2026-2026-04-10T04:33:49+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 28,
@@ -46,6 +46,7 @@
         "draft_capital_proxy_0_100": 95.0,
         "talent_score_0_100": 72.5,
         "rookie_alpha_0_100": 77.0,
+        "ceiling_bonus": null,
         "consensus_delta": -18.0
       },
       "model_inputs_missing": [
@@ -119,6 +120,7 @@
         "draft_capital_proxy_0_100": 85.0,
         "talent_score_0_100": 65.4575,
         "rookie_alpha_0_100": 69.366,
+        "ceiling_bonus": null,
         "consensus_delta": -15.6
       },
       "model_inputs_missing": [
@@ -187,6 +189,7 @@
         "draft_capital_proxy_0_100": 95.0,
         "talent_score_0_100": 61.4413,
         "rookie_alpha_0_100": 68.153,
+        "ceiling_bonus": null,
         "consensus_delta": -26.8
       },
       "model_inputs_missing": [
@@ -245,68 +248,6 @@
       "draft_proxy_delta": 4
     },
     {
-      "player_id": "te-eli-stowers",
-      "player_name": "Eli Stowers",
-      "position": "TE",
-      "scores": {
-        "ras_0_100": 50.8029,
-        "production_0_100": 84.2,
-        "age_adjusted_production_0_100": 100.0,
-        "draft_capital_proxy_0_100": 55.0,
-        "talent_score_0_100": 69.5888,
-        "rookie_alpha_0_100": 66.671,
-        "consensus_delta": 11.7
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "te-eli-stowers",
-        "player_name": "Eli Stowers",
-        "position": "TE",
-        "school": "Vanderbilt",
-        "class_year": 2026,
-        "early_declare_flag": null,
-        "breakout_age": 21,
-        "age_at_first_impact_season": 21,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": false,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": null,
-        "injury_adjusted_profile_flag": null,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": null
-      },
-      "evidence": {
-        "evidence_tags": [],
-        "context_flags": [],
-        "translation_flags": [],
-        "evidence_summary": null,
-        "context_source": "compute_breakout_age.py"
-      },
-      "rookie_alpha_rank": 4,
-      "talent_rank": 2,
-      "draft_proxy_delta": -2
-    },
-    {
       "player_id": "wr-antonio-williams",
       "player_name": "Antonio Williams",
       "position": "WR",
@@ -317,6 +258,7 @@
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 69.575,
         "rookie_alpha_0_100": 66.66,
+        "ceiling_bonus": null,
         "consensus_delta": 11.7,
         "score_caveats": [
           "Route profile estimated (pending CFBD fetch): age-adjusted production score is based on synthetic target data derived from career totals. Ranking may shift materially once real CFBD play-by-play data is available."
@@ -382,6 +324,69 @@
         "evidence_summary": "Age-19 freshman breakout (600 yards, Clemson/ACC, Power 4). Career 208 rec / 2,336 yds / 21 TD (PFF). YPRR 2.94 (career, elite efficiency tier); 124.1 passer rating when targeted (81st pct), 10.1% 1D/route run. 55.5% contested catch rate on 20+ aDOT. Inside-outside versatility despite slot label; identical efficiency in slot and out-wide. 75th pct vs man, 64th pct vs zone (Reception Perception). PFF WR11 projection, 2nd-round grade. Named comp screen (non-R1 P4 WR since 2020 with career 75th+ pctile passer rating when targeted + 50th+ pctile TPRR + BOA < 20): George Pickens, Antonio Williams, Elijah Sarratt, Josh Downs, Troy Franklin, Puka Nacua. FP/G floor in years 1-3: 7.4 (Franklin); 3 of 6 above 10+ FP/G. Route profiles estimated pending CFBD fetch.",
         "context_source": "@ffdataroma scouting note + @ScottBarrettDFB PFF chart, 2026-04-07"
       },
+      "rookie_alpha_rank": 4,
+      "talent_rank": 2,
+      "draft_proxy_delta": -2
+    },
+    {
+      "player_id": "te-eli-stowers",
+      "player_name": "Eli Stowers",
+      "position": "TE",
+      "scores": {
+        "ras_0_100": 49.9642,
+        "production_0_100": 84.2,
+        "age_adjusted_production_0_100": 100.0,
+        "draft_capital_proxy_0_100": 55.0,
+        "talent_score_0_100": 69.2219,
+        "rookie_alpha_0_100": 66.3775,
+        "ceiling_bonus": null,
+        "consensus_delta": 11.4
+      },
+      "model_inputs_missing": [],
+      "context": {
+        "player_id": "te-eli-stowers",
+        "player_name": "Eli Stowers",
+        "position": "TE",
+        "school": "Vanderbilt",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 21,
+        "age_at_first_impact_season": 21,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": false,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [],
+        "context_flags": [],
+        "translation_flags": [],
+        "evidence_summary": null,
+        "context_source": "compute_breakout_age.py"
+      },
       "rookie_alpha_rank": 5,
       "talent_rank": 3,
       "draft_proxy_delta": -2
@@ -397,6 +402,7 @@
         "draft_capital_proxy_0_100": 95.0,
         "talent_score_0_100": 59.0787,
         "rookie_alpha_0_100": 66.263,
+        "ceiling_bonus": null,
         "consensus_delta": -28.7
       },
       "model_inputs_missing": [
@@ -473,6 +479,7 @@
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 67.1675,
         "rookie_alpha_0_100": 64.734,
+        "ceiling_bonus": null,
         "consensus_delta": 9.7
       },
       "model_inputs_missing": [
@@ -537,6 +544,7 @@
         "draft_capital_proxy_0_100": 95.0,
         "talent_score_0_100": 52.1937,
         "rookie_alpha_0_100": 60.755,
+        "ceiling_bonus": null,
         "consensus_delta": -34.2
       },
       "model_inputs_missing": [
@@ -602,13 +610,14 @@
       "player_name": "Makai Lemon",
       "position": "WR",
       "scores": {
-        "ras_0_100": 53.4748,
+        "ras_0_100": 52.5914,
         "production_0_100": 59.36,
         "age_adjusted_production_0_100": 38.9,
         "draft_capital_proxy_0_100": 75.0,
-        "talent_score_0_100": 56.7852,
-        "rookie_alpha_0_100": 60.4282,
-        "consensus_delta": -14.6
+        "talent_score_0_100": 56.3987,
+        "rookie_alpha_0_100": 60.119,
+        "ceiling_bonus": null,
+        "consensus_delta": -14.9
       },
       "model_inputs_missing": [],
       "context": {
@@ -680,6 +689,7 @@
         "draft_capital_proxy_0_100": 45.0,
         "talent_score_0_100": 62.1613,
         "rookie_alpha_0_100": 58.729,
+        "ceiling_bonus": null,
         "consensus_delta": 13.7
       },
       "model_inputs_missing": [
@@ -751,6 +761,7 @@
         "draft_capital_proxy_0_100": 75.0,
         "talent_score_0_100": 52.8238,
         "rookie_alpha_0_100": 57.259,
+        "ceiling_bonus": null,
         "consensus_delta": -17.7
       },
       "model_inputs_missing": [
@@ -819,13 +830,14 @@
       "player_name": "Denzel Boston",
       "position": "WR",
       "scores": {
-        "ras_0_100": 46.0097,
+        "ras_0_100": 47.8206,
         "production_0_100": 51.94,
         "age_adjusted_production_0_100": 40.9,
         "draft_capital_proxy_0_100": 85.0,
-        "talent_score_0_100": 49.3455,
-        "rookie_alpha_0_100": 56.4764,
-        "consensus_delta": -28.5
+        "talent_score_0_100": 50.1378,
+        "rookie_alpha_0_100": 57.1102,
+        "ceiling_bonus": null,
+        "consensus_delta": -27.9
       },
       "model_inputs_missing": [],
       "context": {
@@ -880,8 +892,8 @@
         "context_source": "Wikipedia Denzel Boston college career summary and pre-draft measurables section, retrieved 2026-03-29."
       },
       "rookie_alpha_rank": 12,
-      "talent_rank": 15,
-      "draft_proxy_delta": 3
+      "talent_rank": 14,
+      "draft_proxy_delta": 2
     },
     {
       "player_id": "qb-drew-allar",
@@ -894,6 +906,7 @@
         "draft_capital_proxy_0_100": 45.0,
         "talent_score_0_100": 57.7063,
         "rookie_alpha_0_100": 55.165,
+        "ceiling_bonus": null,
         "consensus_delta": 10.2
       },
       "model_inputs_missing": [
@@ -952,12 +965,13 @@
       "player_name": "Mike Washington Jr.",
       "position": "RB",
       "scores": {
-        "ras_0_100": 69.6439,
+        "ras_0_100": 69.5937,
         "production_0_100": 43.44,
         "age_adjusted_production_0_100": 42.2,
         "draft_capital_proxy_0_100": 55.0,
-        "talent_score_0_100": 54.9042,
-        "rookie_alpha_0_100": 54.9233,
+        "talent_score_0_100": 54.8822,
+        "rookie_alpha_0_100": 54.9058,
+        "ceiling_bonus": null,
         "consensus_delta": -0.1
       },
       "model_inputs_missing": [],
@@ -1024,13 +1038,14 @@
       "player_name": "Jadarian Price",
       "position": "RB",
       "scores": {
-        "ras_0_100": 32.9564,
+        "ras_0_100": 33.069,
         "production_0_100": 63.34,
         "age_adjusted_production_0_100": 67.7,
         "draft_capital_proxy_0_100": 65.0,
-        "talent_score_0_100": 50.0472,
-        "rookie_alpha_0_100": 53.0377,
-        "consensus_delta": -12.0
+        "talent_score_0_100": 50.0964,
+        "rookie_alpha_0_100": 53.0771,
+        "ceiling_bonus": null,
+        "consensus_delta": -11.9
       },
       "model_inputs_missing": [],
       "context": {
@@ -1087,20 +1102,21 @@
         "context_source": "@ffdataroma research note 2026-04-08 + research agent 2026-04-09"
       },
       "rookie_alpha_rank": 15,
-      "talent_rank": 14,
-      "draft_proxy_delta": -1
+      "talent_rank": 15,
+      "draft_proxy_delta": 0
     },
     {
       "player_id": "te-kenyon-sadiq",
       "player_name": "Kenyon Sadiq",
       "position": "TE",
       "scores": {
-        "ras_0_100": 45.0286,
+        "ras_0_100": 45.1316,
         "production_0_100": 36.92,
         "age_adjusted_production_0_100": 22.6,
         "draft_capital_proxy_0_100": 85.0,
-        "talent_score_0_100": 40.4675,
-        "rookie_alpha_0_100": 49.374,
+        "talent_score_0_100": 40.5126,
+        "rookie_alpha_0_100": 49.4101,
+        "ceiling_bonus": null,
         "consensus_delta": -35.6
       },
       "model_inputs_missing": [],
@@ -1163,6 +1179,7 @@
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 47.8063,
         "rookie_alpha_0_100": 49.245,
+        "ceiling_bonus": null,
         "consensus_delta": -5.8
       },
       "model_inputs_missing": [
@@ -1231,6 +1248,7 @@
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 47.6375,
         "rookie_alpha_0_100": 49.11,
+        "ceiling_bonus": null,
         "consensus_delta": -5.9
       },
       "model_inputs_missing": [
@@ -1303,6 +1321,7 @@
         "draft_capital_proxy_0_100": 75.0,
         "talent_score_0_100": 41.315,
         "rookie_alpha_0_100": 48.052,
+        "ceiling_bonus": null,
         "consensus_delta": -26.9,
         "score_caveats": [
           "ACL tear (pre-draft 2026): alpha reflects pre-injury talent profile. Dynasty value is materially lower than alpha implies; year-1 contribution is unlikely. Consensus delta overstates model edge vs current dynasty market."
@@ -1367,94 +1386,33 @@
       "draft_proxy_delta": 0
     },
     {
-      "player_id": "rb-kaytron-allen",
-      "player_name": "Kaytron Allen",
-      "position": "RB",
-      "scores": {
-        "ras_0_100": 50.0,
-        "production_0_100": 28.0,
-        "age_adjusted_production_0_100": 0.0,
-        "draft_capital_proxy_0_100": 65.0,
-        "talent_score_0_100": 37.625,
-        "rookie_alpha_0_100": 43.1,
-        "consensus_delta": -21.9
-      },
-      "model_inputs_missing": [
-        "ras"
-      ],
-      "context": {
-        "player_id": "rb-kaytron-allen",
-        "player_name": "Kaytron Allen",
-        "position": "RB",
-        "school": "Penn State",
-        "class_year": 2026,
-        "early_declare_flag": null,
-        "breakout_age": 20,
-        "age_at_first_impact_season": 20,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": false,
-        "young_breakout_flag": true,
-        "career_yards_per_route_run": 1.74,
-        "best_season_yprr": 1.74,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": true,
-        "injury_affected_season_count": 0,
-        "injury_adjusted_profile_flag": false,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": true,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": false
-      },
-      "evidence": {
-        "evidence_tags": [
-          "multi_season_efficiency",
-          "rushing_signal",
-          "yac_signal"
-        ],
-        "context_flags": [],
-        "translation_flags": [
-          "multi_season_efficiency",
-          "rushing_signal",
-          "yac_signal"
-        ],
-        "evidence_summary": "54-game career, 4167 rush yards (5.4 YPC), 39 TDs, 661 rec yards, 1.74 YPRR. 24.0% avoided tackle rate. High-volume Penn State back with elite receiving chops.",
-        "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart, 2026-04-07"
-      },
-      "rookie_alpha_rank": 20,
-      "talent_rank": 22,
-      "draft_proxy_delta": 2
-    },
-    {
       "player_id": "rb-eli-heidenreich",
       "player_name": "Eli Heidenreich",
       "position": "RB",
       "scores": {
-        "ras_0_100": 40.6597,
+        "ras_0_100": 42.4035,
         "production_0_100": 45.7,
         "age_adjusted_production_0_100": 41.5,
         "draft_capital_proxy_0_100": 30.0,
-        "talent_score_0_100": 43.4949,
-        "rookie_alpha_0_100": 40.7959,
-        "consensus_delta": 10.8,
+        "talent_score_0_100": 44.2578,
+        "rookie_alpha_0_100": 44.4062,
+        "ceiling_bonus": 3.0,
+        "consensus_delta": 14.4,
         "score_caveats": [
           "Route profile estimated (pending CFBD fetch): age-adjusted production score is based on synthetic target data derived from career totals. Ranking may shift materially once real CFBD play-by-play data is available."
         ]
       },
       "model_inputs_missing": [],
+      "exceptional_metrics": [
+        {
+          "metric": "three_cone",
+          "value": 6.55,
+          "context": "6.55s 3-cone at 198lb \u2014 best weight-adjusted RB 3-cone since 2013 (0.02s faster than McCaffrey at same weight). Estimated top-1% historically among RBs. Within-group RAS normalization underweights this because only one player in the 2026 cohort has 3-cone data; ceiling bonus bridges the gap.",
+          "percentile_tier": "historic",
+          "alpha_bonus_eligible": true,
+          "source": "context"
+        }
+      ],
       "context": {
         "player_id": "rb-eli-heidenreich",
         "player_name": "Eli Heidenreich",
@@ -1514,9 +1472,82 @@
         "evidence_summary": "Dual-threat FB/RB/WR from Navy (G5 option offense). 2025: 941 receiving yards + 499 rushing yards, 9 total TDs, 18.3 YPC career average (deep-ball tracker). Elite athleticism: 4.44 40-yard dash + 6.55 3-cone at 6'0\" 198lb \u2014 best weight-adjusted 3-cone since 2013 per PFF (0.02s faster than CMC at same weight). Named comp group for weight-adjusted 3-cone since 2013: Christian McCaffrey, Le'Veon Bell, David Johnson, Ameer Abdullah; 3 of 10 finished as overall fantasy RB1. One career fumble (elite ball security). Capable blocker. Strong Shrine Bowl week. Concerns: Day 3 projection, Navy triple-option makes college stats difficult to project to NFL, limited arm length (29.25\"), limited route tree, not overly elusive in open field. Navy players require DoD waiver to enter draft immediately \u2014 presumed granted given model inclusion. G5 BOA penalty (+0.5) applied; effective BOA 22.5 \u2192 age multiplier 0.85x (floor). Production score estimated from dual-threat output competition-adjusted.",
         "context_source": "Shrine Bowl 2026 + scouting notes 2026-04-10"
       },
-      "rookie_alpha_rank": 21,
+      "rookie_alpha_rank": 20,
       "talent_rank": 18,
-      "draft_proxy_delta": -3
+      "draft_proxy_delta": -2
+    },
+    {
+      "player_id": "rb-kaytron-allen",
+      "player_name": "Kaytron Allen",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 28.0,
+        "age_adjusted_production_0_100": 0.0,
+        "draft_capital_proxy_0_100": 65.0,
+        "talent_score_0_100": 37.625,
+        "rookie_alpha_0_100": 43.1,
+        "ceiling_bonus": null,
+        "consensus_delta": -21.9
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "rb-kaytron-allen",
+        "player_name": "Kaytron Allen",
+        "position": "RB",
+        "school": "Penn State",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 20,
+        "age_at_first_impact_season": 20,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": false,
+        "young_breakout_flag": true,
+        "career_yards_per_route_run": 1.74,
+        "best_season_yprr": 1.74,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": true,
+        "injury_affected_season_count": 0,
+        "injury_adjusted_profile_flag": false,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": true,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": false
+      },
+      "evidence": {
+        "evidence_tags": [
+          "multi_season_efficiency",
+          "rushing_signal",
+          "yac_signal"
+        ],
+        "context_flags": [],
+        "translation_flags": [
+          "multi_season_efficiency",
+          "rushing_signal",
+          "yac_signal"
+        ],
+        "evidence_summary": "54-game career, 4167 rush yards (5.4 YPC), 39 TDs, 661 rec yards, 1.74 YPRR. 24.0% avoided tackle rate. High-volume Penn State back with elite receiving chops.",
+        "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart, 2026-04-07"
+      },
+      "rookie_alpha_rank": 21,
+      "talent_rank": 22,
+      "draft_proxy_delta": 1
     },
     {
       "player_id": "qb-carson-beck",
@@ -1529,6 +1560,7 @@
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 36.6575,
         "rookie_alpha_0_100": 40.326,
+        "ceiling_bonus": null,
         "consensus_delta": -14.7
       },
       "model_inputs_missing": [
@@ -1593,6 +1625,7 @@
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 35.825,
         "rookie_alpha_0_100": 39.66,
+        "ceiling_bonus": null,
         "consensus_delta": -15.3
       },
       "model_inputs_missing": [
@@ -1665,6 +1698,7 @@
         "draft_capital_proxy_0_100": 45.0,
         "talent_score_0_100": 36.6575,
         "rookie_alpha_0_100": 38.326,
+        "ceiling_bonus": null,
         "consensus_delta": -6.7
       },
       "model_inputs_missing": [
@@ -1729,6 +1763,7 @@
         "draft_capital_proxy_0_100": 35.0,
         "talent_score_0_100": 38.8625,
         "rookie_alpha_0_100": 38.09,
+        "ceiling_bonus": null,
         "consensus_delta": 3.1
       },
       "model_inputs_missing": [
@@ -1799,6 +1834,7 @@
         "draft_capital_proxy_0_100": 55.0,
         "talent_score_0_100": 33.2488,
         "rookie_alpha_0_100": 37.599,
+        "ceiling_bonus": null,
         "consensus_delta": -17.4
       },
       "model_inputs_missing": [
@@ -1863,6 +1899,7 @@
         "draft_capital_proxy_0_100": 45.0,
         "talent_score_0_100": 34.25,
         "rookie_alpha_0_100": 36.4,
+        "ceiling_bonus": null,
         "consensus_delta": -8.6
       },
       "model_inputs_missing": [
@@ -1935,6 +1972,7 @@
         "draft_capital_proxy_0_100": 45.0,
         "talent_score_0_100": 33.0125,
         "rookie_alpha_0_100": 35.41,
+        "ceiling_bonus": null,
         "consensus_delta": -9.6
       },
       "model_inputs_missing": [

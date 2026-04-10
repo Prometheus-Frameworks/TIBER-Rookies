@@ -862,6 +862,16 @@
       "synthetic_profile_pending_cfbd"
     ],
     "evidence_summary": "Dual-threat FB/RB/WR from Navy (G5 option offense). 2025: 941 receiving yards + 499 rushing yards, 9 total TDs, 18.3 YPC career average (deep-ball tracker). Elite athleticism: 4.44 40-yard dash + 6.55 3-cone at 6'0\" 198lb — best weight-adjusted 3-cone since 2013 per PFF (0.02s faster than CMC at same weight). Named comp group for weight-adjusted 3-cone since 2013: Christian McCaffrey, Le'Veon Bell, David Johnson, Ameer Abdullah; 3 of 10 finished as overall fantasy RB1. One career fumble (elite ball security). Capable blocker. Strong Shrine Bowl week. Concerns: Day 3 projection, Navy triple-option makes college stats difficult to project to NFL, limited arm length (29.25\"), limited route tree, not overly elusive in open field. Navy players require DoD waiver to enter draft immediately — presumed granted given model inclusion. G5 BOA penalty (+0.5) applied; effective BOA 22.5 → age multiplier 0.85x (floor). Production score estimated from dual-threat output competition-adjusted.",
-    "context_source": "Shrine Bowl 2026 + scouting notes 2026-04-10"
+    "context_source": "Shrine Bowl 2026 + scouting notes 2026-04-10",
+    "exceptional_metrics": [
+      {
+        "metric": "three_cone",
+        "value": 6.55,
+        "context": "6.55s 3-cone at 198lb — best weight-adjusted RB 3-cone since 2013 (0.02s faster than McCaffrey at same weight). Estimated top-1% historically among RBs. Within-group RAS normalization underweights this because only one player in the 2026 cohort has 3-cone data; ceiling bonus bridges the gap.",
+        "percentile_tier": "historic",
+        "alpha_bonus_eligible": true,
+        "source": "context"
+      }
+    ]
   }
 ]

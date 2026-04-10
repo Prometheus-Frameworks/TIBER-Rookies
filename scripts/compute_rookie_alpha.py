@@ -109,6 +109,24 @@ TRANSLATION_FLAG_VOCAB = {
     "acl_injury_predraft",
 }
 
+# ---------------------------------------------------------------------------
+# Exceptional metric detection and ceiling bonus
+# ---------------------------------------------------------------------------
+# Any combine metric with |z| >= EXCEPTIONAL_Z_THRESHOLD within the position
+# peer group is flagged as exceptional (informational; already captured by RAS).
+EXCEPTIONAL_Z_THRESHOLD = 1.65  # ~top/bottom 5% within group
+
+# Context-sourced exceptional_metrics entries (from 2026_prospect_context.json)
+# may carry a ceiling bonus to alpha when alpha_bonus_eligible=True.
+# Use this for metrics not captured by the model formula (e.g. contested catch
+# rate, historically elite 3-cone when peer group is too small to normalize).
+CEILING_BONUS_TIERS: dict[str, float] = {
+    "notable": 0.0,   # surface only; no alpha adjustment
+    "elite": 1.5,     # verified top ~5-10% historically
+    "historic": 3.0,  # verified top 1-2% historically; generational metric
+}
+CEILING_BONUS_CAP = 5.0  # max total ceiling bonus applied to alpha
+
 
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
@@ -193,7 +211,47 @@ def normalize_row(
     return (player_id, player_name, position)
 
 
-def compute_ras_scores(combine_rows: list[dict[str, Any]]) -> dict[str, float]:
+def _flag_exceptional(
+    metric: str,
+    value: float,
+    z: float,
+    position: str,
+    direction_positive: str,
+    direction_negative: str,
+    unit: str = "",
+) -> dict[str, Any]:
+    """Build an exceptional-metric entry for a combine measurement."""
+    tier = "historic" if abs(z) >= 2.5 else "elite"
+    direction = direction_positive if z > 0 else direction_negative
+    val_str = f"{value:.2f}{unit}" if unit != '"' else f'{value:.1f}"'
+    return {
+        "metric": metric,
+        "value": value,
+        "z_score": round(z, 2),
+        "context": f"{val_str} {metric.replace('_', ' ')} ({direction}; z={z:.2f} vs {position} peer group)",
+        "percentile_tier": tier,
+        "alpha_bonus_eligible": False,
+        "source": "combine",
+    }
+
+
+def compute_ras_scores(
+    combine_rows: list[dict[str, Any]],
+) -> tuple[dict[str, float], dict[str, list[dict[str, Any]]]]:
+    """Return ``(ras_scores_by_id, exceptional_combine_metrics_by_id)``.
+
+    RAS component weights:
+      forty 0.30 / vertical 0.20 / broad 0.20 / three_cone 0.15 / size 0.15.
+    Weights are renormalized over whichever components are present.
+
+    A score is computed only when at least one explosive/agility metric is
+    available (vertical, broad, or three_cone).  Players with only 40 + size
+    (typically top picks who skipped drills) default to 50.0.
+
+    Exceptional combine metrics are flagged when any individual metric z-score
+    reaches ±EXCEPTIONAL_Z_THRESHOLD within the position peer group.  These
+    are informational only — they are already captured in the RAS score.
+    """
     by_position: dict[str, list[dict[str, Any]]] = {}
     warned_invalid_values: set[tuple[str, str, str, str]] = set()
     for idx, row in enumerate(combine_rows, start=1):
@@ -204,89 +262,71 @@ def compute_ras_scores(combine_rows: list[dict[str, Any]]) -> dict[str, float]:
         by_position.setdefault(position, []).append({"player_id": pid, **row})
 
     scores: dict[str, float] = {}
+    exceptional_combine: dict[str, list[dict[str, Any]]] = {}
+
     for position, rows in by_position.items():
-        forties = [
-            value
-            for r in rows
-            for value in [
-                coerce_float(r.get("forty"), "forty", str(r["player_id"]), "combine input", warned_invalid_values)
+        def _vals(field: str) -> list[float]:
+            return [
+                v
+                for r in rows
+                for v in [coerce_float(r.get(field), field, str(r["player_id"]), "combine input", warned_invalid_values)]
+                if v is not None
             ]
-            if value is not None
-        ]
-        verticals = [
-            value
-            for r in rows
-            for value in [
-                coerce_float(r.get("vertical"), "vertical", str(r["player_id"]), "combine input", warned_invalid_values)
-            ]
-            if value is not None
-        ]
-        broads = [
-            value
-            for r in rows
-            for value in [
-                coerce_float(r.get("broad"), "broad", str(r["player_id"]), "combine input", warned_invalid_values)
-            ]
-            if value is not None
-        ]
-        heights = [
-            value
-            for r in rows
-            for value in [
-                coerce_float(r.get("height_in"), "height_in", str(r["player_id"]), "combine input", warned_invalid_values)
-            ]
-            if value is not None
-        ]
-        weights = [
-            value
-            for r in rows
-            for value in [
-                coerce_float(r.get("weight_lb"), "weight_lb", str(r["player_id"]), "combine input", warned_invalid_values)
-            ]
-            if value is not None
-        ]
+
+        forties = _vals("forty")
+        verticals = _vals("vertical")
+        broads = _vals("broad")
+        three_cones = _vals("three_cone")
+        heights = _vals("height_in")
+        weights = _vals("weight_lb")
 
         forty_mu, forty_sd = safe_stats(forties)
         vert_mu, vert_sd = safe_stats(verticals)
         broad_mu, broad_sd = safe_stats(broads)
+        cone_mu, cone_sd = safe_stats(three_cones)
         h_mu, h_sd = safe_stats(heights)
         w_mu, w_sd = safe_stats(weights)
 
         for r in rows:
+            pid = str(r["player_id"])
             components: list[tuple[float, float]] = []
-            forty = coerce_float(r.get("forty"), "forty", str(r["player_id"]), "combine input", warned_invalid_values)
-            vertical = coerce_float(
-                r.get("vertical"),
-                "vertical",
-                str(r["player_id"]),
-                "combine input",
-                warned_invalid_values,
-            )
-            broad = coerce_float(r.get("broad"), "broad", str(r["player_id"]), "combine input", warned_invalid_values)
-            height = coerce_float(
-                r.get("height_in"),
-                "height_in",
-                str(r["player_id"]),
-                "combine input",
-                warned_invalid_values,
-            )
-            weight = coerce_float(
-                r.get("weight_lb"),
-                "weight_lb",
-                str(r["player_id"]),
-                "combine input",
-                warned_invalid_values,
-            )
+            exceptional_for_player: list[dict[str, Any]] = []
+
+            forty = coerce_float(r.get("forty"), "forty", pid, "combine input", warned_invalid_values)
+            vertical = coerce_float(r.get("vertical"), "vertical", pid, "combine input", warned_invalid_values)
+            broad = coerce_float(r.get("broad"), "broad", pid, "combine input", warned_invalid_values)
+            three_cone = coerce_float(r.get("three_cone"), "three_cone", pid, "combine input", warned_invalid_values)
+            height = coerce_float(r.get("height_in"), "height_in", pid, "combine input", warned_invalid_values)
+            weight = coerce_float(r.get("weight_lb"), "weight_lb", pid, "combine input", warned_invalid_values)
 
             if forty is not None:
                 z = (forty_mu - forty) / forty_sd  # lower is better
-                components.append((0.35, z_to_score(z)))
+                components.append((0.30, z_to_score(z)))
+                if abs(z) >= EXCEPTIONAL_Z_THRESHOLD:
+                    exceptional_for_player.append(
+                        _flag_exceptional("forty", forty, z, position, "fast", "slow", "s")
+                    )
             if vertical is not None:
                 z = (vertical - vert_mu) / vert_sd
-                components.append((0.25, z_to_score(z)))
+                components.append((0.20, z_to_score(z)))
+                if abs(z) >= EXCEPTIONAL_Z_THRESHOLD:
+                    exceptional_for_player.append(
+                        _flag_exceptional("vertical", vertical, z, position, "high", "low", '"')
+                    )
             if broad is not None:
                 z = (broad - broad_mu) / broad_sd
-                components.append((0.25, z_to_score(z)))
+                components.append((0.20, z_to_score(z)))
+                if abs(z) >= EXCEPTIONAL_Z_THRESHOLD:
+                    exceptional_for_player.append(
+                        _flag_exceptional("broad", broad, z, position, "long", "short", '"')
+                    )
+            if three_cone is not None:
+                z = (cone_mu - three_cone) / cone_sd  # lower is better
+                components.append((0.15, z_to_score(z)))
+                if abs(z) >= EXCEPTIONAL_Z_THRESHOLD:
+                    exceptional_for_player.append(
+                        _flag_exceptional("three_cone", three_cone, z, position, "fast", "slow", "s")
+                    )
 
             size_parts: list[float] = []
             if height is not None:
@@ -296,19 +336,25 @@ def compute_ras_scores(combine_rows: list[dict[str, Any]]) -> dict[str, float]:
             if size_parts:
                 components.append((0.15, mean(size_parts)))
 
-            # Require at least one explosive metric (vertical or broad) alongside
+            # Require at least one explosive/agility metric (vertical, broad, or
+            # three_cone). Without these, the score is built almost entirely from
+            # 40 + size and is not a reliable RAS proxy — most often this means
+            # the player skipped testing (a non-signal for top picks), not that
+            # they lack athleticism. Omit rather than mislead.
             # the 40-yard dash. Without explosive metrics, the score is built
             # almost entirely from 40 + size and is not a reliable RAS proxy —
             # most often this means the player skipped testing (a non-signal for
             # top picks), not that they lack athleticism. Omit rather than mislead.
-            has_explosive = vertical is not None or broad is not None
+            has_explosive = vertical is not None or broad is not None or three_cone is not None
             if components and has_explosive:
-                weight_sum = sum(weight for weight, _ in components)
-                weighted = sum(weight * score for weight, score in components) / weight_sum
-                scores[str(r["player_id"])] = clamp_0_100(weighted)
+                weight_sum = sum(w for w, _ in components)
+                weighted = sum(w * s for w, s in components) / weight_sum
+                scores[pid] = clamp_0_100(weighted)
+                if exceptional_for_player:
+                    exceptional_combine[pid] = exceptional_for_player
             # else: leave player out of scores dict → RAS treated as null (→ 50.0 default in alpha)
 
-    return scores
+    return scores, exceptional_combine
 
 
 AGE_ADJUSTED_BLEND_WEIGHT = 0.60  # weight on age-adjusted score
@@ -557,7 +603,7 @@ def merge_inputs(
                 seen,
             )
 
-    ras_by_id = compute_ras_scores(combine_rows)
+    ras_by_id, exceptional_combine_by_id = compute_ras_scores(combine_rows)
     warned_invalid_values: set[tuple[str, str, str, str]] = set()
     prod_by_id: dict[str, float] = {}
     age_adj_by_id: dict[str, float] = {}
@@ -639,7 +685,7 @@ def merge_inputs(
             "total_excluded": len(excluded_ids | conflicting_across_sources),
         },
     )
-    return players, diagnostics
+    return players, diagnostics, exceptional_combine_by_id
 
 
 def load_context_by_player_id(context_path: Path | None) -> dict[str, dict[str, Any]]:
@@ -752,17 +798,45 @@ def write_outputs(
     output_manifest: Path,
     context_path: Path | None = None,
     context_by_id: dict[str, dict[str, Any]] | None = None,
+    exceptional_combine_by_id: dict[str, list[dict[str, Any]]] | None = None,
 ) -> None:
     generated_at = datetime.now(tz=timezone.utc).replace(microsecond=0).isoformat()
     run_id = f"rookie-alpha-{season}-{generated_at}"
 
     ranked: list[dict[str, Any]] = []
     context_by_id = context_by_id or {}
+    exceptional_combine_by_id = exceptional_combine_by_id or {}
     players_with_context = 0
     missing_any = 0
     for p in players:
         alpha = rookie_alpha_score(p)
         ts = talent_score(p)
+
+        # ------------------------------------------------------------------
+        # Exceptional metrics: combine-derived (informational, already in RAS)
+        # + context-sourced (may carry ceiling bonus when alpha_bonus_eligible).
+        # Computed before the scores dict so ceiling_bonus can adjust alpha.
+        # ------------------------------------------------------------------
+        player_exceptional: list[dict[str, Any]] = []
+
+        combine_exc = exceptional_combine_by_id.get(p.player_id, [])
+        player_exceptional.extend(combine_exc)
+
+        ctx_exc: list[dict[str, Any]] = context_by_id.get(p.player_id, {}).get("exceptional_metrics") or []
+        player_exceptional.extend(ctx_exc)
+
+        ceiling_bonus = 0.0
+        for em in ctx_exc:
+            if em.get("alpha_bonus_eligible", False):
+                ceiling_bonus += CEILING_BONUS_TIERS.get(em.get("percentile_tier", "notable"), 0.0)
+        ceiling_bonus = min(ceiling_bonus, CEILING_BONUS_CAP)
+        if ceiling_bonus > 0.0:
+            logging.info(
+                "Ceiling bonus for %s: +%.1f pts (alpha %.4f → %.4f)",
+                p.player_id, ceiling_bonus, alpha, min(100.0, alpha + ceiling_bonus),
+            )
+            alpha = clamp_0_100(alpha + ceiling_bonus)
+
         missing_components = [
             key
             for key, value in {
@@ -798,10 +872,14 @@ def write_outputs(
                 "draft_capital_proxy_0_100": round(draft_val, 4),
                 "talent_score_0_100": round(ts, 4),
                 "rookie_alpha_0_100": round(alpha, 4),
+                "ceiling_bonus": round(ceiling_bonus, 2) if ceiling_bonus > 0.0 else None,
                 "consensus_delta": consensus_delta,
             },
             "model_inputs_missing": missing_components,
         }
+        if player_exceptional:
+            row_payload["exceptional_metrics"] = player_exceptional
+
         if p.player_id in context_by_id:
             row_payload.update(normalize_context_entry(context_by_id[p.player_id]))
             players_with_context += 1
@@ -1081,7 +1159,7 @@ def main() -> None:
 
     production_rows = apply_context_production_adjustments(production_rows, context_by_id)
 
-    players, merge_diagnostics = merge_inputs(combine_rows, production_rows, draft_rows)
+    players, merge_diagnostics, exceptional_combine_by_id = merge_inputs(combine_rows, production_rows, draft_rows)
     write_outputs(
         players=players,
         merge_diagnostics=merge_diagnostics,
@@ -1094,6 +1172,7 @@ def main() -> None:
         output_manifest=output_manifest,
         context_path=context_input,
         context_by_id=context_by_id,
+        exceptional_combine_by_id=exceptional_combine_by_id,
     )
 
 
