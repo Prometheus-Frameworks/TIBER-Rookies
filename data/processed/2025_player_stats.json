@@ -1,0 +1,215 @@
+[
+  {
+    "player_id": "rb-ashton-jeanty",
+    "player_name": "Ashton Jeanty",
+    "position": "RB",
+    "school": "Boise State",
+    "season": 2024,
+    "stats": {
+      "rush_attempts": 374,
+      "rush_yards": 2601,
+      "rush_tds": 29,
+      "yards_per_carry": 6.96,
+      "receptions": 12,
+      "receiving_yards": 21
+    }
+  },
+  {
+    "player_id": "rb-omarion-hampton",
+    "player_name": "Omarion Hampton",
+    "position": "RB",
+    "school": "North Carolina",
+    "season": 2024,
+    "stats": {
+      "rush_attempts": 256,
+      "rush_yards": 1504,
+      "rush_tds": 15,
+      "yards_per_carry": 5.88,
+      "receptions": 34,
+      "receiving_yards": 300
+    }
+  },
+  {
+    "player_id": "rb-quinshon-judkins",
+    "player_name": "Quinshon Judkins",
+    "position": "RB",
+    "school": "Ohio State",
+    "season": 2024,
+    "stats": {
+      "rush_attempts": 202,
+      "rush_yards": 1060,
+      "rush_tds": 11,
+      "yards_per_carry": 5.25,
+      "receptions": 16,
+      "receiving_yards": 110
+    }
+  },
+  {
+    "player_id": "rb-trevon-henderson",
+    "player_name": "TreVeyon Henderson",
+    "position": "RB",
+    "school": "Ohio State",
+    "season": 2024,
+    "stats": {
+      "rush_attempts": 143,
+      "rush_yards": 890,
+      "rush_tds": 8,
+      "yards_per_carry": 6.22,
+      "receptions": 18,
+      "receiving_yards": 117
+    }
+  },
+  {
+    "player_id": "rb-kaleb-johnson",
+    "player_name": "Kaleb Johnson",
+    "position": "RB",
+    "school": "Iowa",
+    "season": 2024,
+    "stats": {
+      "rush_attempts": 252,
+      "rush_yards": 1537,
+      "rush_tds": 21,
+      "yards_per_carry": 6.1,
+      "receptions": 18,
+      "receiving_yards": 119
+    }
+  },
+  {
+    "player_id": "rb-cam-skattebo",
+    "player_name": "Cam Skattebo",
+    "position": "RB",
+    "school": "Arizona State",
+    "season": 2024,
+    "stats": {
+      "rush_attempts": 254,
+      "rush_yards": 1711,
+      "rush_tds": 18,
+      "yards_per_carry": 6.74,
+      "receptions": 39,
+      "receiving_yards": 335
+    }
+  },
+  {
+    "player_id": "wr-travis-hunter",
+    "player_name": "Travis Hunter",
+    "position": "WR",
+    "school": "Colorado",
+    "season": 2024,
+    "stats": {
+      "receptions": 96,
+      "receiving_yards": 1258,
+      "receiving_tds": 15,
+      "yards_per_reception": 13.1
+    }
+  },
+  {
+    "player_id": "wr-tetairoa-mcmillan",
+    "player_name": "Tetairoa McMillan",
+    "position": "WR",
+    "school": "Arizona",
+    "season": 2024,
+    "stats": {
+      "receptions": 84,
+      "receiving_yards": 1402,
+      "receiving_tds": 14,
+      "yards_per_reception": 16.7
+    }
+  },
+  {
+    "player_id": "wr-matthew-golden",
+    "player_name": "Matthew Golden",
+    "position": "WR",
+    "school": "Texas",
+    "season": 2024,
+    "stats": {
+      "receptions": 57,
+      "receiving_yards": 987,
+      "receiving_tds": 7,
+      "yards_per_reception": 17.3
+    }
+  },
+  {
+    "player_id": "wr-luther-burden-iii",
+    "player_name": "Luther Burden III",
+    "position": "WR",
+    "school": "Missouri",
+    "season": 2024,
+    "stats": {
+      "receptions": 86,
+      "receiving_yards": 1212,
+      "receiving_tds": 13,
+      "yards_per_reception": 14.1
+    }
+  },
+  {
+    "player_id": "wr-emeka-egbuka",
+    "player_name": "Emeka Egbuka",
+    "position": "WR",
+    "school": "Ohio State",
+    "season": 2024,
+    "stats": {
+      "receptions": 81,
+      "receiving_yards": 1147,
+      "receiving_tds": 10,
+      "yards_per_reception": 14.2
+    }
+  },
+  {
+    "player_id": "te-tyler-warren",
+    "player_name": "Tyler Warren",
+    "position": "TE",
+    "school": "Penn State",
+    "season": 2024,
+    "stats": {
+      "receptions": 73,
+      "receiving_yards": 1233,
+      "receiving_tds": 8,
+      "yards_per_reception": 16.9
+    }
+  },
+  {
+    "player_id": "te-colston-loveland",
+    "player_name": "Colston Loveland",
+    "position": "TE",
+    "school": "Michigan",
+    "season": 2024,
+    "stats": {
+      "receptions": 53,
+      "receiving_yards": 582,
+      "receiving_tds": 5,
+      "yards_per_reception": 11.0
+    }
+  },
+  {
+    "player_id": "qb-shedeur-sanders",
+    "player_name": "Shedeur Sanders",
+    "position": "QB",
+    "school": "Colorado",
+    "season": 2024,
+    "stats": {
+      "completions": 346,
+      "attempts": 469,
+      "completion_pct": 73.8,
+      "passing_yards": 4134,
+      "passing_tds": 37,
+      "interceptions": 10,
+      "yards_per_attempt": 8.8
+    }
+  },
+  {
+    "player_id": "qb-dillon-gabriel",
+    "player_name": "Dillon Gabriel",
+    "position": "QB",
+    "school": "Oregon",
+    "season": 2024,
+    "stats": {
+      "completions": 279,
+      "attempts": 387,
+      "completion_pct": 72.1,
+      "passing_yards": 3303,
+      "passing_tds": 30,
+      "interceptions": 6,
+      "yards_per_attempt": 8.5
+    }
+  }
+]

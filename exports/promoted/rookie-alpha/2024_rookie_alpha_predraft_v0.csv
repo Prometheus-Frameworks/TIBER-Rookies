@@ -1,0 +1,16 @@
+rookie_alpha_rank,player_id,player_name,position,ras_0_100,production_0_100,draft_capital_proxy_0_100,talent_score_0_100,rookie_alpha_0_100,consensus_delta,talent_rank,draft_proxy_delta,model_inputs_missing
+1,qb-jayden-daniels,Jayden Daniels,QB,62.1927,95.0,95.0,80.6468,83.5174,-11.5,1,0,
+2,wr-malik-nabers,Malik Nabers,WR,54.6235,92.0,90.0,75.6478,78.5182,-11.5,2,0,
+3,qb-caleb-williams,Caleb Williams,QB,50.0,91.0,98.0,73.0625,78.05,-19.9,4,1,ras
+4,te-brock-bowers,Brock Bowers,TE,50.0,95.0,85.0,75.3125,77.25,-7.8,3,-1,
+5,wr-rome-odunze,Rome Odunze,WR,43.2589,92.0,90.0,70.6757,74.5406,-15.5,5,0,
+6,wr-brian-thomas-jr,Brian Thomas Jr.,WR,53.7471,83.0,78.0,70.2019,71.7615,-6.2,7,1,
+7,wr-adonai-mitchell,Adonai Mitchell,WR,65.2345,72.5,68.0,69.3214,69.0571,1.1,8,1,
+8,qb-drake-maye,Drake Maye,QB,40.0593,80.0,95.0,62.5259,69.0207,-26.0,11,3,
+9,rb-trey-benson,Trey Benson,RB,57.9578,80.0,58.0,70.3565,67.8852,9.9,6,-3,
+10,wr-xavier-worthy,Xavier Worthy,WR,46.2563,68.0,78.0,58.4871,65.3897,-12.6,12,2,
+11,rb-jonathon-brooks,Jonathon Brooks,RB,46.5713,77.0,68.0,63.6874,64.5499,-3.5,10,-1,
+12,rb-marshawn-lloyd,MarShawn Lloyd,RB,69.1023,65.0,48.0,66.7947,63.0358,15.0,9,-3,
+13,wr-ladd-mcconkey,Ladd McConkey,WR,36.8796,65.0,68.0,52.6973,55.7579,-12.2,15,2,
+14,rb-blake-corum,Blake Corum,RB,32.8437,72.5,48.0,55.1504,53.7203,5.7,14,0,
+15,rb-braelon-allen,Braelon Allen,RB,43.5249,65.0,38.0,55.6047,52.0837,14.1,13,-2,

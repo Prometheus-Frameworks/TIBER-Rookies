@@ -1,0 +1,299 @@
+[
+  {
+    "player_id": "rb-ashton-jeanty",
+    "player_name": "Ashton Jeanty",
+    "position": "RB",
+    "school": "Boise State",
+    "class_year": 2025,
+    "early_declare_flag": true,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_production"
+    ],
+    "context_flags": [],
+    "evidence_summary": "2024 Heisman runner-up; 2,601 rushing yards and 29 TDs. Elite production at age 20 vs Mountain West competition.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-omarion-hampton",
+    "player_name": "Omarion Hampton",
+    "position": "RB",
+    "school": "North Carolina",
+    "class_year": 2025,
+    "early_declare_flag": true,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "early_declare",
+      "elite_production"
+    ],
+    "context_flags": [],
+    "evidence_summary": "Back-to-back 1,500+ yard seasons at UNC. ACC premier back with excellent YPC and pass-catching role.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-quinshon-judkins",
+    "player_name": "Quinshon Judkins",
+    "position": "RB",
+    "school": "Ohio State",
+    "class_year": 2025,
+    "early_declare_flag": true,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_production"
+    ],
+    "context_flags": [],
+    "evidence_summary": "First impact season at Ole Miss age 19 (1,567 rush yds). Transferred to Ohio State; combined CFP title run adds SEC+B1G bona fides.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-trevon-henderson",
+    "player_name": "TreVeyon Henderson",
+    "position": "RB",
+    "school": "Ohio State",
+    "class_year": 2025,
+    "early_declare_flag": false,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout"
+    ],
+    "context_flags": [
+      "injury_history"
+    ],
+    "evidence_summary": "Elite breakout at 19 (1,248 rush yds, B1G freshman). Injuries in 2022-2023 limited ceiling; injury risk a persistent context flag.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-kaleb-johnson",
+    "player_name": "Kaleb Johnson",
+    "position": "RB",
+    "school": "Iowa",
+    "class_year": 2025,
+    "early_declare_flag": true,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "early_declare",
+      "elite_production"
+    ],
+    "context_flags": [],
+    "evidence_summary": "Led B1G in rushing 2024 (1,537 yds, 21 TDs). Scheme-adjusted production strong despite Iowa's conservative offense.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-cam-skattebo",
+    "player_name": "Cam Skattebo",
+    "position": "RB",
+    "school": "Arizona State",
+    "class_year": 2025,
+    "early_declare_flag": false,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "elite_production"
+    ],
+    "context_flags": [
+      "older_prospect",
+      "graduate_transfer"
+    ],
+    "evidence_summary": "Super senior; 1,711 rush yards in 2024 for CFP-bound ASU. Age-adjusted production penalized; physical prime likely already at peak.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-travis-hunter",
+    "player_name": "Travis Hunter",
+    "position": "WR",
+    "school": "Colorado",
+    "class_year": 2025,
+    "early_declare_flag": true,
+    "breakout_age": 19,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_production",
+      "two_way_player"
+    ],
+    "context_flags": [
+      "severe_injury_recovery"
+    ],
+    "evidence_summary": "2024 Heisman winner (2-way; WR+CB). First true impact at 19 as Colorado freshman; recovered from gunshot injury in 2023. Dual-role usage at NFL level unlikely — evaluated purely as WR.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-tetairoa-mcmillan",
+    "player_name": "Tetairoa McMillan",
+    "position": "WR",
+    "school": "Arizona",
+    "class_year": 2025,
+    "early_declare_flag": true,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_production"
+    ],
+    "context_flags": [],
+    "evidence_summary": "1,402 receiving yards and 14 TDs in 2024. First impact season at 20; Pac-12 (now Big 12) elite WR with elite catch radius (6'4\").",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-matthew-golden",
+    "player_name": "Matthew Golden",
+    "position": "WR",
+    "school": "Texas",
+    "class_year": 2025,
+    "early_declare_flag": true,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare"
+    ],
+    "context_flags": [],
+    "evidence_summary": "Transfer from Houston; breakout at Texas in 2024 (987 rec yds). Elite speed (4.29 forty) at 185lb with solid route tree development.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-luther-burden-iii",
+    "player_name": "Luther Burden III",
+    "position": "WR",
+    "school": "Missouri",
+    "class_year": 2025,
+    "early_declare_flag": true,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_production"
+    ],
+    "context_flags": [],
+    "evidence_summary": "Transfer from Illinois; first major impact at Missouri age 19. 1,212 rec yds in 2024; SEC competition elevates production value.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-emeka-egbuka",
+    "player_name": "Emeka Egbuka",
+    "position": "WR",
+    "school": "Ohio State",
+    "class_year": 2025,
+    "early_declare_flag": false,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "elite_production"
+    ],
+    "context_flags": [],
+    "evidence_summary": "Senior declare from Ohio State. First impact at 20; played alongside Marvin Harrison Jr. sharing targets. 1,147 rec yds in 2024.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-tyler-warren",
+    "player_name": "Tyler Warren",
+    "position": "TE",
+    "school": "Penn State",
+    "class_year": 2025,
+    "early_declare_flag": false,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "elite_production"
+    ],
+    "context_flags": [
+      "late_bloomer"
+    ],
+    "evidence_summary": "73 rec, 1,233 yds, 8 TDs in 2024 — best TE production season in B1G history. Senior who bloomed late but dominated at 22; late breakout age is the main NFL alpha concern.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-colston-loveland",
+    "player_name": "Colston Loveland",
+    "position": "TE",
+    "school": "Michigan",
+    "class_year": 2025,
+    "early_declare_flag": true,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "early_declare"
+    ],
+    "context_flags": [],
+    "evidence_summary": "First impact at 21 in 2024 Michigan system; 53 rec, 582 yds in run-heavy scheme understates receiving upside. Projection-heavy grade.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "qb-shedeur-sanders",
+    "player_name": "Shedeur Sanders",
+    "position": "QB",
+    "school": "Colorado",
+    "class_year": 2025,
+    "early_declare_flag": false,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
+    "evidence_tags": [],
+    "context_flags": [
+      "draft_slide",
+      "scheme_fit_risk"
+    ],
+    "evidence_summary": "4,134 passing yards, 37 TDs in 2024. Significant draft slide (projected top-5, fell to ~4th round) introduces uncertainty. Production strong but behind weak OL at Colorado.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "qb-dillon-gabriel",
+    "player_name": "Dillon Gabriel",
+    "position": "QB",
+    "school": "Oregon",
+    "class_year": 2025,
+    "early_declare_flag": false,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "graduate_transfer"
+    ],
+    "context_flags": [
+      "older_prospect"
+    ],
+    "evidence_summary": "Super senior (started at UCF, Oklahoma, Oregon over 6 college seasons). Elite production everywhere but 24 years old at time of 2025 draft; limited upside runway.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  }
+]

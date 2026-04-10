@@ -1,0 +1,316 @@
+[
+  {
+    "player_id": "qb-caleb-williams",
+    "player_name": "Caleb Williams",
+    "position": "QB",
+    "school": "USC",
+    "class_year": 2024,
+    "early_declare_flag": true,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_production",
+      "heisman_winner"
+    ],
+    "context_flags": [],
+    "evidence_summary": "2022 Heisman winner at Oklahoma age 19; transferred to USC. 3,633 passing yards, 30 TDs at 20 in 2023. Consensus QB1 and 1st overall pick. Only USC's poor OL and thin WR room obscured efficiency.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "qb-jayden-daniels",
+    "player_name": "Jayden Daniels",
+    "position": "QB",
+    "school": "LSU",
+    "class_year": 2024,
+    "early_declare_flag": true,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "early_declare",
+      "elite_production",
+      "heisman_winner"
+    ],
+    "context_flags": [],
+    "evidence_summary": "2023 Heisman winner at LSU. 3,812 pass yds + 1,134 rush yds, 40 total TDs. Elite dual-threat floor. SEC; first elite impact at 21 after developing at Arizona State.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "qb-drake-maye",
+    "player_name": "Drake Maye",
+    "position": "QB",
+    "school": "North Carolina",
+    "class_year": 2024,
+    "early_declare_flag": true,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_production"
+    ],
+    "context_flags": [],
+    "evidence_summary": "4,321 pass yds, 38 TDs at 20 in 2022. Elite arm and mobility; ACC competition is the production discount. 3rd overall pick to Patriots.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-malik-nabers",
+    "player_name": "Malik Nabers",
+    "position": "WR",
+    "school": "LSU",
+    "class_year": 2024,
+    "early_declare_flag": true,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_production"
+    ],
+    "context_flags": [],
+    "evidence_summary": "1,569 rec yds and 14 TDs at LSU in 2023 at age 20. SEC dominant with exceptional contested catch ability. Elite YAC producer.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-rome-odunze",
+    "player_name": "Rome Odunze",
+    "position": "WR",
+    "school": "Washington",
+    "class_year": 2024,
+    "early_declare_flag": true,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "early_declare",
+      "elite_production"
+    ],
+    "context_flags": [],
+    "evidence_summary": "1,640 rec yds and 13 TDs at Washington in 2023. Pac-12 elite with 6'3\" frame and elite hands. BOA 21 is only knock vs Nabers.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-brian-thomas-jr",
+    "player_name": "Brian Thomas Jr.",
+    "position": "WR",
+    "school": "LSU",
+    "class_year": 2024,
+    "early_declare_flag": true,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_production"
+    ],
+    "context_flags": [],
+    "evidence_summary": "1,177 rec yds and 17 TDs at LSU in 2023 (age 21). 4.33 forty speed on 6'3\" frame; elite vertical threat. SEC production.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-xavier-worthy",
+    "player_name": "Xavier Worthy",
+    "position": "WR",
+    "school": "Texas",
+    "class_year": 2024,
+    "early_declare_flag": true,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare"
+    ],
+    "context_flags": [
+      "size_concern"
+    ],
+    "evidence_summary": "All-time combine 40 record (4.21s) at 165lb. Big 12 production at Texas; size (5'11\"/165) is the durability and contested-catch question. Blazer archetype.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": [
+      {
+        "metric": "forty",
+        "value": 4.21,
+        "context": "4.21s 40-yard dash — all-time NFL combine record (2024). Historic speed outlier; unprecedented at any weight class.",
+        "percentile_tier": "historic",
+        "alpha_bonus_eligible": true,
+        "source": "context"
+      }
+    ]
+  },
+  {
+    "player_id": "wr-ladd-mcconkey",
+    "player_name": "Ladd McConkey",
+    "position": "WR",
+    "school": "Georgia",
+    "class_year": 2024,
+    "early_declare_flag": false,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "elite_route_runner"
+    ],
+    "context_flags": [
+      "size_concern"
+    ],
+    "evidence_summary": "Senior from Georgia; 841 rec yds in 2023. Limited by elite WR room but exceptional YAC ability and route running for his size (5'11\"/186). 2nd round pick to LAC.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-brock-bowers",
+    "player_name": "Brock Bowers",
+    "position": "TE",
+    "school": "Georgia",
+    "class_year": 2024,
+    "early_declare_flag": true,
+    "breakout_age": 19,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_production"
+    ],
+    "context_flags": [],
+    "evidence_summary": "Georgia TE1 at age 19 in 2021 (882 rec yds). Three elite seasons including 1,182 yds in 2023. The rare TE breakout at 19; elite receiving TE archetype.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-jonathon-brooks",
+    "player_name": "Jonathon Brooks",
+    "position": "RB",
+    "school": "Texas",
+    "class_year": 2024,
+    "early_declare_flag": true,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_production"
+    ],
+    "context_flags": [
+      "injury_history"
+    ],
+    "evidence_summary": "1,139 rush yds at Texas in 2023 before torn ACL in November. Big 12 elite RB with elite vision; ACL recovery depressed draft stock significantly.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-blake-corum",
+    "player_name": "Blake Corum",
+    "position": "RB",
+    "school": "Michigan",
+    "class_year": 2024,
+    "early_declare_flag": false,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "elite_production"
+    ],
+    "context_flags": [
+      "size_concern",
+      "injury_history"
+    ],
+    "evidence_summary": "Senior from Michigan; 1,240 rush yds in 2023 CFP run. Compact (5'8\"/210) but elite contact balance and vision. Multiple injury seasons before breakout.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-trey-benson",
+    "player_name": "Trey Benson",
+    "position": "RB",
+    "school": "Florida State",
+    "class_year": 2024,
+    "early_declare_flag": true,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "early_declare",
+      "elite_production"
+    ],
+    "context_flags": [],
+    "evidence_summary": "1,401 rush yds at FSU in 2023 (ACC). Physical 6'0\"/216lb RB with excellent speed for size. 3rd round pick to Arizona.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-marshawn-lloyd",
+    "player_name": "MarShawn Lloyd",
+    "position": "RB",
+    "school": "USC",
+    "class_year": 2024,
+    "early_declare_flag": true,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "early_declare"
+    ],
+    "context_flags": [
+      "older_prospect",
+      "late_bloomer"
+    ],
+    "evidence_summary": "Transfer from South Carolina to USC; finally healthy in 2023 (969 rush yds). 4.38 speed at 191lb but BOA 22 is a concern for NFL alpha trajectory.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-braelon-allen",
+    "player_name": "Braelon Allen",
+    "position": "RB",
+    "school": "Wisconsin",
+    "class_year": 2024,
+    "early_declare_flag": true,
+    "breakout_age": 19,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_production"
+    ],
+    "context_flags": [
+      "size_concern_upside"
+    ],
+    "evidence_summary": "1,268 rush yds at Wisconsin in 2021 at age 17-18 (freshman); 1,242 rush yds in 2022. Elite breakout at 19. Power back at 235lb with elite motor. B1G production.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-adonai-mitchell",
+    "player_name": "Adonai Mitchell",
+    "position": "WR",
+    "school": "Texas",
+    "class_year": 2024,
+    "early_declare_flag": true,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare"
+    ],
+    "context_flags": [],
+    "evidence_summary": "Transfer from Georgia to Texas; 845 rec yds and 8 TDs in 2023. Elite athleticism (4.34/41.5\" vertical) on 6'3\" frame. Big 12 production with elite upside indicators.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  }
+]

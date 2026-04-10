@@ -1,0 +1,137 @@
+[
+  {
+    "player_id": "rb-ashton-jeanty",
+    "player_name": "Ashton Jeanty",
+    "position": "RB",
+    "school": "Boise State",
+    "class_year": 2025,
+    "production_score_0_100": 95.0,
+    "production_score_source": "manual_historical_seed (2024 season: 374 car/2601 yds/6.96 YPC/29 TD; led all FBS; z~3.0)"
+  },
+  {
+    "player_id": "rb-omarion-hampton",
+    "player_name": "Omarion Hampton",
+    "position": "RB",
+    "school": "North Carolina",
+    "class_year": 2025,
+    "production_score_0_100": 77.0,
+    "production_score_source": "manual_historical_seed (2024 season: 256 car/1504 yds/5.88 YPC/15 TD + 300 rec yds; z~1.8)"
+  },
+  {
+    "player_id": "rb-quinshon-judkins",
+    "player_name": "Quinshon Judkins",
+    "position": "RB",
+    "school": "Ohio State",
+    "class_year": 2025,
+    "production_score_0_100": 69.5,
+    "production_score_source": "manual_historical_seed (2024 season: shared backfield with Henderson; ~202 car/1060 yds/5.25 YPC/11 TD; z~1.3)"
+  },
+  {
+    "player_id": "rb-trevon-henderson",
+    "player_name": "TreVeyon Henderson",
+    "position": "RB",
+    "school": "Ohio State",
+    "class_year": 2025,
+    "production_score_0_100": 62.0,
+    "production_score_source": "manual_historical_seed (2024 season: limited role/143 car/890 yds/6.22 YPC/8 TD; z~0.8)"
+  },
+  {
+    "player_id": "rb-kaleb-johnson",
+    "player_name": "Kaleb Johnson",
+    "position": "RB",
+    "school": "Iowa",
+    "class_year": 2025,
+    "production_score_0_100": 80.0,
+    "production_score_source": "manual_historical_seed (2024 season: 252 car/1537 yds/6.10 YPC/21 TD; led B1G rushing; z~2.0)"
+  },
+  {
+    "player_id": "rb-cam-skattebo",
+    "player_name": "Cam Skattebo",
+    "position": "RB",
+    "school": "Arizona State",
+    "class_year": 2025,
+    "production_score_0_100": 87.5,
+    "production_score_source": "manual_historical_seed (2024 season: 254 car/1711 yds/6.74 YPC/18 TD + 335 rec yds; z~2.5)"
+  },
+  {
+    "player_id": "wr-travis-hunter",
+    "player_name": "Travis Hunter",
+    "position": "WR",
+    "school": "Colorado",
+    "class_year": 2025,
+    "production_score_0_100": 84.5,
+    "production_score_source": "manual_historical_seed (2024 season: 96 rec/1258 yds/13.1 YPR/15 TD; Heisman winner; z~2.3)"
+  },
+  {
+    "player_id": "wr-tetairoa-mcmillan",
+    "player_name": "Tetairoa McMillan",
+    "position": "WR",
+    "school": "Arizona",
+    "class_year": 2025,
+    "production_score_0_100": 87.5,
+    "production_score_source": "manual_historical_seed (2024 season: 84 rec/1402 yds/16.7 YPR/14 TD; z~2.5)"
+  },
+  {
+    "player_id": "wr-matthew-golden",
+    "player_name": "Matthew Golden",
+    "position": "WR",
+    "school": "Texas",
+    "class_year": 2025,
+    "production_score_0_100": 69.5,
+    "production_score_source": "manual_historical_seed (2024 season: 57 rec/987 yds/17.3 YPR/7 TD; z~1.3)"
+  },
+  {
+    "player_id": "wr-luther-burden-iii",
+    "player_name": "Luther Burden III",
+    "position": "WR",
+    "school": "Missouri",
+    "class_year": 2025,
+    "production_score_0_100": 80.0,
+    "production_score_source": "manual_historical_seed (2024 season: 86 rec/1212 yds/14.1 YPR/13 TD; SEC; z~2.0)"
+  },
+  {
+    "player_id": "wr-emeka-egbuka",
+    "player_name": "Emeka Egbuka",
+    "position": "WR",
+    "school": "Ohio State",
+    "class_year": 2025,
+    "production_score_0_100": 77.0,
+    "production_score_source": "manual_historical_seed (2024 season: 81 rec/1147 yds/14.2 YPR/10 TD; shared targets in elite WR room; z~1.8)"
+  },
+  {
+    "player_id": "te-tyler-warren",
+    "player_name": "Tyler Warren",
+    "position": "TE",
+    "school": "Penn State",
+    "class_year": 2025,
+    "production_score_0_100": 95.0,
+    "production_score_source": "manual_historical_seed (2024 season: 73 rec/1233 yds/16.9 YPR/8 TD; best TE season in B1G history; z~3.0)"
+  },
+  {
+    "player_id": "te-colston-loveland",
+    "player_name": "Colston Loveland",
+    "position": "TE",
+    "school": "Michigan",
+    "class_year": 2025,
+    "production_score_0_100": 57.5,
+    "production_score_source": "manual_historical_seed (2024 season: 53 rec/582 yds/11.0 YPR/5 TD; run-heavy Michigan scheme; z~0.5)"
+  },
+  {
+    "player_id": "qb-shedeur-sanders",
+    "player_name": "Shedeur Sanders",
+    "position": "QB",
+    "school": "Colorado",
+    "class_year": 2025,
+    "production_score_0_100": 87.5,
+    "production_score_source": "manual_historical_seed (2024 season: 469 att/73.7% comp/8.81 YPA/37 TD/10 INT; z~2.5)"
+  },
+  {
+    "player_id": "qb-dillon-gabriel",
+    "player_name": "Dillon Gabriel",
+    "position": "QB",
+    "school": "Oregon",
+    "class_year": 2025,
+    "production_score_0_100": 80.0,
+    "production_score_source": "manual_historical_seed (2024 season: 387 att/72.0% comp/8.53 YPA/30 TD/6 INT; z~2.0)"
+  }
+]

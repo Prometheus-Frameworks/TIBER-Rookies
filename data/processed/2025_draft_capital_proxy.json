@@ -1,0 +1,167 @@
+[
+  {
+    "player_id": "wr-travis-hunter",
+    "player_name": "Travis Hunter",
+    "position": "WR",
+    "class_year": 2025,
+    "big_board_rank": 2,
+    "big_board_source": "2025 NFL Draft pick #2 overall (verify)",
+    "draft_capital_proxy_0_100": 95,
+    "draft_capital_proxy_source": "Actual pick (verify exact)",
+    "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "rb-ashton-jeanty",
+    "player_name": "Ashton Jeanty",
+    "position": "RB",
+    "class_year": 2025,
+    "big_board_rank": 6,
+    "big_board_source": "2025 NFL Draft pick ~#6 overall Raiders (verify)",
+    "draft_capital_proxy_0_100": 90,
+    "draft_capital_proxy_source": "Actual pick (verify exact)",
+    "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "wr-tetairoa-mcmillan",
+    "player_name": "Tetairoa McMillan",
+    "position": "WR",
+    "class_year": 2025,
+    "big_board_rank": 8,
+    "big_board_source": "2025 NFL Draft pick ~#8 Panthers (verify)",
+    "draft_capital_proxy_0_100": 90,
+    "draft_capital_proxy_source": "Actual pick (verify exact)",
+    "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "rb-omarion-hampton",
+    "player_name": "Omarion Hampton",
+    "position": "RB",
+    "class_year": 2025,
+    "big_board_rank": 22,
+    "big_board_source": "2025 NFL Draft ~#22 Chargers (verify)",
+    "draft_capital_proxy_0_100": 78,
+    "draft_capital_proxy_source": "Actual pick (verify exact)",
+    "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "te-tyler-warren",
+    "player_name": "Tyler Warren",
+    "position": "TE",
+    "class_year": 2025,
+    "big_board_rank": 14,
+    "big_board_source": "2025 NFL Draft ~#14 Colts (verify)",
+    "draft_capital_proxy_0_100": 85,
+    "draft_capital_proxy_source": "Actual pick (verify exact)",
+    "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "te-colston-loveland",
+    "player_name": "Colston Loveland",
+    "position": "TE",
+    "class_year": 2025,
+    "big_board_rank": 10,
+    "big_board_source": "2025 NFL Draft ~#10 Bears (verify)",
+    "draft_capital_proxy_0_100": 90,
+    "draft_capital_proxy_source": "Actual pick (verify exact)",
+    "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "wr-emeka-egbuka",
+    "player_name": "Emeka Egbuka",
+    "position": "WR",
+    "class_year": 2025,
+    "big_board_rank": 33,
+    "big_board_source": "2025 NFL Draft ~#33 Buccaneers (verify)",
+    "draft_capital_proxy_0_100": 68,
+    "draft_capital_proxy_source": "Actual pick (verify exact)",
+    "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "wr-matthew-golden",
+    "player_name": "Matthew Golden",
+    "position": "WR",
+    "class_year": 2025,
+    "big_board_rank": 34,
+    "big_board_source": "2025 NFL Draft ~#34 Packers (verify)",
+    "draft_capital_proxy_0_100": 68,
+    "draft_capital_proxy_source": "Actual pick (verify exact)",
+    "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "wr-luther-burden-iii",
+    "player_name": "Luther Burden III",
+    "position": "WR",
+    "class_year": 2025,
+    "big_board_rank": 39,
+    "big_board_source": "2025 NFL Draft ~#39 Bears (verify)",
+    "draft_capital_proxy_0_100": 68,
+    "draft_capital_proxy_source": "Actual pick (verify exact)",
+    "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "rb-quinshon-judkins",
+    "player_name": "Quinshon Judkins",
+    "position": "RB",
+    "class_year": 2025,
+    "big_board_rank": 35,
+    "big_board_source": "2025 NFL Draft ~#35 Browns (verify)",
+    "draft_capital_proxy_0_100": 68,
+    "draft_capital_proxy_source": "Actual pick (verify exact)",
+    "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "rb-trevon-henderson",
+    "player_name": "TreVeyon Henderson",
+    "position": "RB",
+    "class_year": 2025,
+    "big_board_rank": 45,
+    "big_board_source": "2025 NFL Draft ~#45 Patriots (verify)",
+    "draft_capital_proxy_0_100": 68,
+    "draft_capital_proxy_source": "Actual pick (verify exact)",
+    "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "qb-dillon-gabriel",
+    "player_name": "Dillon Gabriel",
+    "position": "QB",
+    "class_year": 2025,
+    "big_board_rank": 55,
+    "big_board_source": "2025 NFL Draft ~#55 Steelers (verify)",
+    "draft_capital_proxy_0_100": 58,
+    "draft_capital_proxy_source": "Actual pick (verify exact)",
+    "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "rb-kaleb-johnson",
+    "player_name": "Kaleb Johnson",
+    "position": "RB",
+    "class_year": 2025,
+    "big_board_rank": 67,
+    "big_board_source": "2025 NFL Draft ~#67 Steelers (verify)",
+    "draft_capital_proxy_0_100": 58,
+    "draft_capital_proxy_source": "Actual pick (verify exact)",
+    "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "rb-cam-skattebo",
+    "player_name": "Cam Skattebo",
+    "position": "RB",
+    "class_year": 2025,
+    "big_board_rank": 95,
+    "big_board_source": "2025 NFL Draft ~R3-4 (verify)",
+    "draft_capital_proxy_0_100": 48,
+    "draft_capital_proxy_source": "Actual pick (verify exact)",
+    "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "qb-shedeur-sanders",
+    "player_name": "Shedeur Sanders",
+    "position": "QB",
+    "class_year": 2025,
+    "big_board_rank": 144,
+    "big_board_source": "2025 NFL Draft \u2014 slid significantly (verify exact pick/round)",
+    "draft_capital_proxy_0_100": 38,
+    "draft_capital_proxy_source": "Late-round actual pick (verify)",
+    "draft_capital_proxy_pending_conversion": true
+  }
+]

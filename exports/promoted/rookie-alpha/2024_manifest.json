@@ -1,0 +1,78 @@
+{
+  "season": 2024,
+  "model_version": "rookie-alpha-predraft-v0.2.0",
+  "generated_at": "2026-04-10T11:12:48+00:00",
+  "run_id": "rookie-alpha-2024-2026-04-10T11:12:48+00:00",
+  "input_files": [
+    {
+      "path": "data/raw/2024_combine_results.json",
+      "sha256": "be7cc4fa50dc05ba4635173b44e8004fa38aa8046f83b1db258cb5873378b5dd",
+      "row_count": 15
+    },
+    {
+      "path": "data/processed/2024_college_production.json",
+      "sha256": "204ab183882f722eb615d177cfe1958de46a72dd027db47a31174b1f78e95680",
+      "row_count": 15
+    },
+    {
+      "path": "data/processed/2024_draft_capital_proxy.json",
+      "sha256": "85cc0bebca928d52f667368a985139de4ff83dabe4a4208fe78ea62d53822081",
+      "row_count": 15
+    },
+    {
+      "path": "data/processed/2024_prospect_context.json",
+      "sha256": "3803cbff8403b0421a9345914954ca4ea83a9615407ad74438540c856303766c",
+      "row_count": 15
+    }
+  ],
+  "coverage_summary": {
+    "players_total": 15,
+    "players_with_any_missing_input": 1,
+    "players_with_full_inputs": 14,
+    "players_with_context_fields": 15,
+    "input_alignment": {
+      "duplicate_rows_skipped": 0,
+      "identity_conflicts_skipped": 0,
+      "missing_combine": 1,
+      "missing_production": 0,
+      "missing_draft_proxy": 0,
+      "total_excluded": 0
+    }
+  },
+  "output_files": [
+    {
+      "path": "exports/promoted/rookie-alpha/2024_rookie_alpha_predraft_v0.json",
+      "sha256": "df89fd83c4262fbd3ec07d4d48cca4608c9afbe9b91719c69e357b05545f48e0"
+    },
+    {
+      "path": "exports/promoted/rookie-alpha/2024_rookie_alpha_predraft_v0.csv",
+      "sha256": "66d23337fb545703fde5bc04579ee040b47552b38b5ee1680dee06d40039ffe4"
+    }
+  ],
+  "export_metadata": {
+    "season": 2024,
+    "model_version": "rookie-alpha-predraft-v0.2.0",
+    "generated_at": "2026-04-10T11:12:48+00:00",
+    "run_id": "rookie-alpha-2024-2026-04-10T11:12:48+00:00",
+    "coverage_summary": {
+      "players_total": 15,
+      "players_with_any_missing_input": 1,
+      "players_with_full_inputs": 14,
+      "players_with_context_fields": 15,
+      "input_alignment": {
+        "duplicate_rows_skipped": 0,
+        "identity_conflicts_skipped": 0,
+        "missing_combine": 1,
+        "missing_production": 0,
+        "missing_draft_proxy": 0,
+        "total_excluded": 0
+      }
+    },
+    "source_files_used": [
+      "data/raw/2024_combine_results.json",
+      "data/processed/2024_college_production.json",
+      "data/processed/2024_draft_capital_proxy.json",
+      "data/processed/2024_prospect_context.json"
+    ]
+  }
+}

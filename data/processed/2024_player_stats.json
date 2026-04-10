@@ -1,0 +1,219 @@
+[
+  {
+    "player_id": "qb-caleb-williams",
+    "player_name": "Caleb Williams",
+    "position": "QB",
+    "school": "USC",
+    "season": 2023,
+    "stats": {
+      "completions": 252,
+      "attempts": 373,
+      "completion_pct": 67.6,
+      "passing_yards": 3633,
+      "passing_tds": 30,
+      "interceptions": 5,
+      "yards_per_attempt": 9.7
+    }
+  },
+  {
+    "player_id": "qb-jayden-daniels",
+    "player_name": "Jayden Daniels",
+    "position": "QB",
+    "school": "LSU",
+    "season": 2023,
+    "stats": {
+      "completions": 300,
+      "attempts": 415,
+      "completion_pct": 72.3,
+      "passing_yards": 3812,
+      "passing_tds": 40,
+      "interceptions": 4,
+      "yards_per_attempt": 9.2,
+      "rush_yards": 1134,
+      "rush_tds": 10
+    }
+  },
+  {
+    "player_id": "qb-drake-maye",
+    "player_name": "Drake Maye",
+    "position": "QB",
+    "school": "North Carolina",
+    "season": 2023,
+    "stats": {
+      "completions": 276,
+      "attempts": 436,
+      "completion_pct": 63.3,
+      "passing_yards": 3608,
+      "passing_tds": 24,
+      "interceptions": 5,
+      "yards_per_attempt": 8.3
+    }
+  },
+  {
+    "player_id": "wr-malik-nabers",
+    "player_name": "Malik Nabers",
+    "position": "WR",
+    "school": "LSU",
+    "season": 2023,
+    "stats": {
+      "receptions": 89,
+      "receiving_yards": 1569,
+      "receiving_tds": 14,
+      "yards_per_reception": 17.6
+    }
+  },
+  {
+    "player_id": "wr-rome-odunze",
+    "player_name": "Rome Odunze",
+    "position": "WR",
+    "school": "Washington",
+    "season": 2023,
+    "stats": {
+      "receptions": 92,
+      "receiving_yards": 1640,
+      "receiving_tds": 13,
+      "yards_per_reception": 17.8
+    }
+  },
+  {
+    "player_id": "wr-brian-thomas-jr",
+    "player_name": "Brian Thomas Jr.",
+    "position": "WR",
+    "school": "LSU",
+    "season": 2023,
+    "stats": {
+      "receptions": 68,
+      "receiving_yards": 1177,
+      "receiving_tds": 17,
+      "yards_per_reception": 17.3
+    }
+  },
+  {
+    "player_id": "wr-xavier-worthy",
+    "player_name": "Xavier Worthy",
+    "position": "WR",
+    "school": "Texas",
+    "season": 2023,
+    "stats": {
+      "receptions": 57,
+      "receiving_yards": 760,
+      "receiving_tds": 9,
+      "yards_per_reception": 13.3
+    }
+  },
+  {
+    "player_id": "wr-ladd-mcconkey",
+    "player_name": "Ladd McConkey",
+    "position": "WR",
+    "school": "Georgia",
+    "season": 2023,
+    "stats": {
+      "receptions": 61,
+      "receiving_yards": 841,
+      "receiving_tds": 5,
+      "yards_per_reception": 13.8
+    }
+  },
+  {
+    "player_id": "te-brock-bowers",
+    "player_name": "Brock Bowers",
+    "position": "TE",
+    "school": "Georgia",
+    "season": 2023,
+    "stats": {
+      "receptions": 71,
+      "receiving_yards": 1182,
+      "receiving_tds": 6,
+      "yards_per_reception": 16.6
+    }
+  },
+  {
+    "player_id": "rb-jonathon-brooks",
+    "player_name": "Jonathon Brooks",
+    "position": "RB",
+    "school": "Texas",
+    "season": 2023,
+    "stats": {
+      "rush_attempts": 175,
+      "rush_yards": 1139,
+      "rush_tds": 10,
+      "yards_per_carry": 6.5,
+      "receptions": 21,
+      "receiving_yards": 147,
+      "note": "ACL torn Nov 2023; production pace before injury"
+    }
+  },
+  {
+    "player_id": "rb-blake-corum",
+    "player_name": "Blake Corum",
+    "position": "RB",
+    "school": "Michigan",
+    "season": 2023,
+    "stats": {
+      "rush_attempts": 226,
+      "rush_yards": 1240,
+      "rush_tds": 12,
+      "yards_per_carry": 5.5,
+      "receptions": 16,
+      "receiving_yards": 159
+    }
+  },
+  {
+    "player_id": "rb-trey-benson",
+    "player_name": "Trey Benson",
+    "position": "RB",
+    "school": "Florida State",
+    "season": 2023,
+    "stats": {
+      "rush_attempts": 213,
+      "rush_yards": 1401,
+      "rush_tds": 13,
+      "yards_per_carry": 6.6,
+      "receptions": 22,
+      "receiving_yards": 147
+    }
+  },
+  {
+    "player_id": "rb-marshawn-lloyd",
+    "player_name": "MarShawn Lloyd",
+    "position": "RB",
+    "school": "USC",
+    "season": 2023,
+    "stats": {
+      "rush_attempts": 156,
+      "rush_yards": 969,
+      "rush_tds": 9,
+      "yards_per_carry": 6.2,
+      "receptions": 14,
+      "receiving_yards": 97
+    }
+  },
+  {
+    "player_id": "rb-braelon-allen",
+    "player_name": "Braelon Allen",
+    "position": "RB",
+    "school": "Wisconsin",
+    "season": 2023,
+    "stats": {
+      "rush_attempts": 219,
+      "rush_yards": 1100,
+      "rush_tds": 12,
+      "yards_per_carry": 5.0,
+      "receptions": 29,
+      "receiving_yards": 205
+    }
+  },
+  {
+    "player_id": "wr-adonai-mitchell",
+    "player_name": "Adonai Mitchell",
+    "position": "WR",
+    "school": "Texas",
+    "season": 2023,
+    "stats": {
+      "receptions": 46,
+      "receiving_yards": 845,
+      "receiving_tds": 8,
+      "yards_per_reception": 18.4
+    }
+  }
+]
