@@ -202,13 +202,14 @@
     "evidence_tags": [
       "elite_volume_producer",
       "elite_yac_producer",
-      "multi_season_consistency"
+      "multi_season_consistency",
+      "elite_athleticism"
     ],
     "context_flags": [
       "limited_multi_season_data"
     ],
-    "evidence_summary": "Only 2026 RB to average 90+ total yards/game in 2+ seasons AND 70+ YAC+contact yards/game in 2+ seasons. 2025 class comparables at same thresholds: Jeanty, Hampton, Judkins, Henderson, Harvey, Monangai, Tuten, Brooks, Allen, Giddens, Neal, Gordon. Coleman is sole member of this elite tier in the 2026 class. Model bullish (+13.7 NFL, +25.7 DYN) — data supports that view.",
-    "context_source": "@ffdataroma research note 2026-04-08"
+    "evidence_summary": "Only 2026 RB to average 90+ total yards/game in 2+ seasons AND 70+ YAC+contact yards/game in 2+ seasons. 2025 class comparables at same thresholds: Jeanty, Hampton, Judkins, Henderson, Harvey, Monangai, Tuten, Brooks, Allen, Giddens, Neal, Gordon. Coleman is sole member of this elite tier in the 2026 class. Named comp screen (Day 2 Power Conference RBs since 2015 to rank 60th+ pctile in TPRR + YAC/attempt + MTF/attempt simultaneously): De'Von Achane, Joe Mixon, Javonte Williams, Jonah Coleman. Three-screen qualifier alongside Achane/Mixon/Williams is the strongest systemic comp available in the model. Model bullish (+13.7 NFL edge) — data supports and the comp class reinforces that view.",
+    "context_source": "@ffdataroma research note 2026-04-08; Day 2 RB 3-screen comp via notes 2026-04-10"
   },
   {
     "player_id": "wr-carnell-tate",
@@ -254,8 +255,8 @@
     "context_flags": [
       "limited_multi_season_data"
     ],
-    "evidence_summary": "Verified Ohio State progression from 264 freshman total yards to 739 sophomore total yards (733 receiving + 6 rushing), then 854 total yards in 2025.",
-    "context_source": "Wikipedia Carnell Tate college statistics table (2023-2025 rows), retrieved 2026-03-29.",
+    "evidence_summary": "Verified Ohio State progression from 264 freshman total yards to 739 sophomore total yards (733 receiving + 6 rushing), then 854 total yards in 2025. 40 time (4.53): market narrative labels this 'too slow' but 2026 WR leaders by career receiving YPG ran: Puka Nacua 4.57, JSN 4.52, Amon-Ra St. Brown 4.59, CeeDee Lamb 4.50, George Pickens 4.47, Nico Collins 4.45. Tate at 4.53 is squarely in the middle of this group. Speed narrative is not supported by outcome data at the WR position.",
+    "context_source": "Wikipedia Carnell Tate college statistics table (2023-2025 rows), retrieved 2026-03-29; speed comp via notes 2026-04-10",
     "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
   },
   {
@@ -516,7 +517,7 @@
     "context_flags": [
       "senior_breakout_flag"
     ],
-    "evidence_summary": "75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR (non-R1 P4 WR since 2021) — matches Puka Nacua, Tank Dell, Troy Franklin efficiency tier. Nacua comp is strongest: 43-48 rec/yr at BYU (modest volume), 18.3 YPC, 128.0 QB rating when targeted — then 105 catches in NFL year 1 as a 5th-round pick. Efficiency held when target share increased. Sarratt profile: low college volume, elite per-route efficiency — same archetype. Late breakout (BOA 21) is model red flag; Aiyuk/Watson are precedents for senior-breakout success, but base rate is poor. MTF 0.13 (mid-tier). Model gap: volume-weighted age-adjusted production (18.2 age-adj, blend → 38) severely underweights efficiency; CFBD raw production score 67.6 is more representative.",
+    "evidence_summary": "75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR (non-R1 P4 WR since 2021) — matches Puka Nacua, Tank Dell, Troy Franklin efficiency tier. Nacua comp is strongest: 43-48 rec/yr at BYU (modest volume), 18.3 YPC, 128.0 QB rating when targeted — then 105 catches in NFL year 1 as a 5th-round pick. Efficiency held when target share increased. Sarratt profile: low college volume, elite per-route efficiency — same archetype. Named comp screen (non-R1 P4 WR since 2020 with career 75th+ pctile passer rating when targeted + 50th+ pctile TPRR + BOA < 20): George Pickens, Antonio Williams, Elijah Sarratt, Josh Downs, Troy Franklin, Puka Nacua. FP/G floor in years 1-3: 7.4 (Franklin); 3 of 6 above 10+ FP/G. Late breakout (BOA 21) is model red flag; Aiyuk/Watson are precedents for senior-breakout success, but base rate is poor. MTF 0.13 (mid-tier). Model gap: volume-weighted age-adjusted production (18.2 age-adj, blend → 38) severely underweights efficiency; CFBD raw production score 67.6 is more representative.",
     "context_source": "@ffdataroma research note 2026-04-08 + @ScottBarrettDFB PFF chart + NCAA.com Puka Nacua stats",
     "missed_tackles_forced_per_reception": 0.13,
     "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
@@ -622,13 +623,14 @@
       "young_breakout",
       "elite_early_producer",
       "inside_out_versatility",
-      "elite_efficiency_tier"
+      "elite_efficiency_tier",
+      "non_r1_p4_wr_comps"
     ],
     "context_flags": [
       "limited_multi_season_data",
       "synthetic_profile_pending_cfbd"
     ],
-    "evidence_summary": "Age-19 freshman breakout (600 yards, Clemson/ACC, Power 4). Career 208 rec / 2,336 yds / 21 TD (PFF). YPRR 2.94 (career, elite efficiency tier); 124.1 passer rating when targeted (81st pct), 10.1% 1D/route run. 55.5% contested catch rate on 20+ aDOT. Inside-outside versatility despite slot label; identical efficiency in slot and out-wide. 75th pct vs man, 64th pct vs zone (Reception Perception). PFF WR11 projection, 2nd-round grade. Route profiles estimated pending CFBD fetch.",
+    "evidence_summary": "Age-19 freshman breakout (600 yards, Clemson/ACC, Power 4). Career 208 rec / 2,336 yds / 21 TD (PFF). YPRR 2.94 (career, elite efficiency tier); 124.1 passer rating when targeted (81st pct), 10.1% 1D/route run. 55.5% contested catch rate on 20+ aDOT. Inside-outside versatility despite slot label; identical efficiency in slot and out-wide. 75th pct vs man, 64th pct vs zone (Reception Perception). PFF WR11 projection, 2nd-round grade. Named comp screen (non-R1 P4 WR since 2020 with career 75th+ pctile passer rating when targeted + 50th+ pctile TPRR + BOA < 20): George Pickens, Antonio Williams, Elijah Sarratt, Josh Downs, Troy Franklin, Puka Nacua. FP/G floor in years 1-3: 7.4 (Franklin); 3 of 6 above 10+ FP/G. Route profiles estimated pending CFBD fetch.",
     "context_source": "@ffdataroma scouting note + @ScottBarrettDFB PFF chart, 2026-04-07"
   },
   {
@@ -736,8 +738,10 @@
       "multi_season_efficiency",
       "rushing_signal"
     ],
-    "context_flags": [],
-    "evidence_summary": "42-game career, 2458 rush yards (5.4 YPC), 15 TDs. 1.15 YPRR, 27.5% avoided tackle rate. Efficient runner, limited receiving role.",
+    "context_flags": [
+      "yac_consistency_concern"
+    ],
+    "evidence_summary": "42-game career, 2458 rush yards (5.4 YPC), 15 TDs. 1.15 YPRR, 27.5% avoided tackle rate. Efficient runner, limited receiving role. Final-season YACO/A: 2.95 — tied 3rd-worst among R3-4 P4/5 RBs since 2017 (comp group: Gallman 2.98, Conner 2.95*, Johnson 2.95, Shipley 2.92, Davis-Price 2.80, Kelley 2.80, Hill 2.68, Ballage 2.46, Corum 2.42; *Conner underwent chemotherapy). Comps trend toward poor NFL outcomes. Consistent with model skepticism (rank 26, alpha 36.4).",
     "sophomore_total_yards": null,
     "single_season_efficiency_dip_flag": null,
     "multi_season_efficiency_flag": true,
