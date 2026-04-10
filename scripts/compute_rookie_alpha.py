@@ -67,6 +67,10 @@ CONTEXT_EVIDENCE_TAG_VOCAB = {
     "acl_injury_predraft",
     # transfer / backfield context
     "shared_backfield_context",
+    # craft / technician tags (used by market-conviction RAS override)
+    "route_runner",           # technique-driven separation; not athleticism-dependent
+    "contested_catch_signal", # hands + body control; catch % in traffic above average
+    "yprr_elite",             # career or peak YPRR >= 2.3; most predictive WR efficiency metric
 }
 
 CONTEXT_FLAG_VOCAB = {
@@ -126,6 +130,54 @@ CEILING_BONUS_TIERS: dict[str, float] = {
     "historic": 3.0,  # verified top 1-2% historically; generational metric
 }
 CEILING_BONUS_CAP = 5.0  # max total ceiling bonus applied to alpha
+
+# ---------------------------------------------------------------------------
+# Market-conviction RAS override
+# ---------------------------------------------------------------------------
+# Fires ONLY when all of the following are true:
+#   1. Position is WR or TE (not RB — different failure mode)
+#   2. RAS was actually computed from combine data (not None / missing fallback)
+#   3. Confirmed RAS < MARKET_CONVICTION_RAS_CAP
+#   4. Draft capital proxy >= MARKET_CONVICTION_CAPITAL_FLOOR (Day 2+ investment)
+#   5. At least one craft/efficiency signal is present — either a qualifying
+#      evidence_tag OR a numeric context field above its threshold.
+#      Capital alone does not trigger; the market must be corroborated by
+#      something we independently observe in the context file.
+#
+# Rationale: RAS penalises technician WRs/TEs whose craft (route running,
+# contested catch, separation via timing) does not show up on a timing sheet.
+# When confirmed-low RAS conflicts with high draft investment AND an observed
+# craft signal, the model's athletic penalty is likely overstated.
+#
+# This is an additive post-score field. It never mutates the base formula.
+# It is logged clearly and surfaced in the output payload.
+MARKET_CONVICTION_POSITIONS: frozenset[str] = frozenset({"WR", "TE"})
+MARKET_CONVICTION_RAS_CAP = 45.0        # confirmed RAS must be strictly below this
+MARKET_CONVICTION_CAPITAL_FLOOR = 65.0  # proxy must be >= this (~pick 50 / Day 2)
+
+# Evidence tags that qualify as a craft signal
+MARKET_CONVICTION_CRAFT_TAGS: frozenset[str] = frozenset({
+    "elite_efficiency_tier",
+    "inside_out_versatility",
+    "yac_signal",
+    "elite_yac_producer",
+    "multi_season_efficiency",
+    "route_runner",
+    "contested_catch_signal",
+    "yprr_elite",
+    "r1_p4_wr_comps",
+})
+
+# Numeric context field thresholds that also qualify as a craft signal
+# (field_name, minimum_value)
+MARKET_CONVICTION_NUMERIC_SIGNALS: list[tuple[str, float]] = [
+    ("career_yards_per_route_run", 2.3),   # elite YPRR floor
+    ("best_season_yprr", 2.6),             # exceptional peak season
+    ("contested_catch_rate", 0.45),        # above-average in-traffic catch rate
+]
+
+MARKET_CONVICTION_BONUS_BASE = 2.5    # 1 craft signal
+MARKET_CONVICTION_BONUS_STRONG = 4.0  # 2+ craft signals
 
 
 def sha256_file(path: Path) -> str:
@@ -786,6 +838,67 @@ def talent_score(player: PlayerInputs) -> float:
     return clamp_0_100((0.4375 * ras) + (0.5625 * production))
 
 
+def compute_market_conviction_override(
+    position: str,
+    ras_score: float | None,
+    capital: float | None,
+    raw_context: dict[str, Any] | None,
+) -> tuple[float, str | None]:
+    """Return (bonus, reason) for the market-conviction RAS override.
+
+    Never fires if RAS is None (missing/defaulted) — only confirmed combine
+    scores below the threshold qualify. Capital alone is not sufficient; at
+    least one independently-observed craft signal is required.
+    """
+    if position not in MARKET_CONVICTION_POSITIONS:
+        return 0.0, None
+    if ras_score is None:
+        return 0.0, None  # missing/defaulted RAS must never trigger
+    if ras_score >= MARKET_CONVICTION_RAS_CAP:
+        return 0.0, None
+    cap_val = capital if capital is not None else 50.0
+    if cap_val < MARKET_CONVICTION_CAPITAL_FLOOR:
+        return 0.0, None
+    if not raw_context:
+        return 0.0, None
+
+    craft_signals: list[str] = []
+
+    # Tag-based signals
+    raw_tags = set(raw_context.get("evidence_tags", []))
+    for tag in sorted(MARKET_CONVICTION_CRAFT_TAGS):
+        if tag in raw_tags:
+            craft_signals.append(f"tag:{tag}")
+
+    # inside_out_versatility_flag (boolean field, separate from evidence tag)
+    if raw_context.get("inside_out_versatility_flag"):
+        signal = "field:inside_out_versatility_flag"
+        if signal not in craft_signals:
+            craft_signals.append(signal)
+
+    # Numeric field thresholds
+    for field, threshold in MARKET_CONVICTION_NUMERIC_SIGNALS:
+        val = raw_context.get(field)
+        if val is not None:
+            try:
+                if float(val) >= threshold:
+                    craft_signals.append(f"field:{field}>={threshold}")
+            except (TypeError, ValueError):
+                pass
+
+    if not craft_signals:
+        return 0.0, None
+
+    bonus = MARKET_CONVICTION_BONUS_STRONG if len(craft_signals) >= 2 else MARKET_CONVICTION_BONUS_BASE
+    reason = (
+        f"{position} craft override: confirmed RAS {ras_score:.1f} < {MARKET_CONVICTION_RAS_CAP} "
+        f"| capital {cap_val:.0f} >= {MARKET_CONVICTION_CAPITAL_FLOOR} "
+        f"| craft signals [{', '.join(craft_signals)}] "
+        f"| +{bonus:.1f} pts"
+    )
+    return bonus, reason
+
+
 def write_outputs(
     players: list[PlayerInputs],
     merge_diagnostics: MergeDiagnostics,
@@ -837,6 +950,22 @@ def write_outputs(
             )
             alpha = clamp_0_100(alpha + ceiling_bonus)
 
+        # Market-conviction RAS override — additive post-score, logged separately.
+        # Uses raw context row so numeric fields and unfiltered tags are accessible.
+        raw_ctx = context_by_id.get(p.player_id)
+        mc_bonus, mc_reason = compute_market_conviction_override(
+            p.position,
+            p.ras_score_0_100,           # None → confirmed missing → no trigger
+            p.draft_capital_proxy_0_100,
+            raw_ctx,
+        )
+        if mc_bonus > 0.0:
+            logging.info(
+                "Market conviction override for %s: %s",
+                p.player_id, mc_reason,
+            )
+            alpha = clamp_0_100(alpha + mc_bonus)
+
         missing_components = [
             key
             for key, value in {
@@ -873,6 +1002,8 @@ def write_outputs(
                 "talent_score_0_100": round(ts, 4),
                 "rookie_alpha_0_100": round(alpha, 4),
                 "ceiling_bonus": round(ceiling_bonus, 2) if ceiling_bonus > 0.0 else None,
+                "market_conviction_ras_override": round(mc_bonus, 2) if mc_bonus > 0.0 else None,
+                "market_conviction_reason": mc_reason,
                 "consensus_delta": consensus_delta,
             },
             "model_inputs_missing": missing_components,
@@ -923,7 +1054,7 @@ def write_outputs(
             "name": "tiber-rookie-alpha",
             "stage": "pre-draft",
             "label": "pre-draft v0",
-            "model_version": "rookie-alpha-predraft-v0.2.0",
+            "model_version": "rookie-alpha-predraft-v0.3.0",
             "formula": {
                 "ras_weight": 0.35,
                 "production_weight": 0.45,
@@ -975,6 +1106,7 @@ def write_outputs(
                 "talent_rank",
                 "draft_proxy_delta",
                 "model_inputs_missing",
+                "market_conviction_ras_override",
             ],
         )
         writer.writeheader()
@@ -994,6 +1126,7 @@ def write_outputs(
                     "talent_rank": row["talent_rank"],
                     "draft_proxy_delta": row["draft_proxy_delta"],
                     "model_inputs_missing": ",".join(row["model_inputs_missing"]),
+                    "market_conviction_ras_override": row["scores"].get("market_conviction_ras_override") or "",
                 }
             )
 

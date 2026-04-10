@@ -90,12 +90,15 @@
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
     "young_breakout_flag": false,
+    "contested_catch_rate": 0.52,
     "evidence_tags": [
       "early_declare",
-      "elite_production"
+      "elite_production",
+      "contested_catch_signal",
+      "inside_out_versatility"
     ],
     "context_flags": [],
-    "evidence_summary": "1,640 rec yds and 13 TDs at Washington in 2023. Pac-12 elite with 6'3\" frame and elite hands. BOA 21 is only knock vs Nabers.",
+    "evidence_summary": "1,640 rec yds and 13 TDs at Washington in 2023. Pac-12 elite with 6'3\" frame and elite hands. BOA 21 is only knock vs Nabers. RAS 43.3 below threshold — craft signal (contested catch, inside-out) justifies market-conviction override.",
     "context_source": "manual_historical_seed",
     "exceptional_metrics": []
   },
@@ -159,13 +162,16 @@
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
     "young_breakout_flag": false,
+    "inside_out_versatility_flag": true,
     "evidence_tags": [
-      "elite_route_runner"
+      "route_runner",
+      "inside_out_versatility",
+      "yac_signal"
     ],
     "context_flags": [
       "size_concern"
     ],
-    "evidence_summary": "Senior from Georgia; 841 rec yds in 2023. Limited by elite WR room but exceptional YAC ability and route running for his size (5'11\"/186). 2nd round pick to LAC.",
+    "evidence_summary": "Senior from Georgia; 841 rec yds in 2023. Limited by elite WR room but exceptional YAC ability and route running for his size (5'11\"/186). 2nd round pick to LAC. Pro Bowl rookie year — model's primary McConkey-pattern miss; market saw craft profile the RAS (36.9) couldn't.",
     "context_source": "manual_historical_seed",
     "exceptional_metrics": []
   },

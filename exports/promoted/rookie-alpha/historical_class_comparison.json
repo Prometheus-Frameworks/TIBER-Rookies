@@ -706,6 +706,22 @@
   {
     "draft_class": 2024,
     "class_rank": 2,
+    "player_id": "wr-rome-odunze",
+    "player_name": "Rome Odunze",
+    "position": "WR",
+    "ras_0_100": 43.2589,
+    "production_0_100": 92.0,
+    "draft_capital_proxy_0_100": 90.0,
+    "talent_score_0_100": 70.6757,
+    "rookie_alpha_0_100": 78.5406,
+    "consensus_delta": -11.5,
+    "talent_rank": 5,
+    "draft_proxy_delta": 3,
+    "model_inputs_missing": ""
+  },
+  {
+    "draft_class": 2024,
+    "class_rank": 3,
     "player_id": "wr-malik-nabers",
     "player_name": "Malik Nabers",
     "position": "WR",
@@ -716,12 +732,12 @@
     "rookie_alpha_0_100": 78.5182,
     "consensus_delta": -11.5,
     "talent_rank": 2,
-    "draft_proxy_delta": 0,
+    "draft_proxy_delta": -1,
     "model_inputs_missing": ""
   },
   {
     "draft_class": 2024,
-    "class_rank": 3,
+    "class_rank": 4,
     "player_id": "qb-caleb-williams",
     "player_name": "Caleb Williams",
     "position": "QB",
@@ -732,12 +748,12 @@
     "rookie_alpha_0_100": 78.05,
     "consensus_delta": -19.9,
     "talent_rank": 4,
-    "draft_proxy_delta": 1,
+    "draft_proxy_delta": 0,
     "model_inputs_missing": "ras"
   },
   {
     "draft_class": 2024,
-    "class_rank": 4,
+    "class_rank": 5,
     "player_id": "te-brock-bowers",
     "player_name": "Brock Bowers",
     "position": "TE",
@@ -748,23 +764,7 @@
     "rookie_alpha_0_100": 77.25,
     "consensus_delta": -7.8,
     "talent_rank": 3,
-    "draft_proxy_delta": -1,
-    "model_inputs_missing": ""
-  },
-  {
-    "draft_class": 2024,
-    "class_rank": 5,
-    "player_id": "wr-rome-odunze",
-    "player_name": "Rome Odunze",
-    "position": "WR",
-    "ras_0_100": 43.2589,
-    "production_0_100": 92.0,
-    "draft_capital_proxy_0_100": 90.0,
-    "talent_score_0_100": 70.6757,
-    "rookie_alpha_0_100": 74.5406,
-    "consensus_delta": -15.5,
-    "talent_rank": 5,
-    "draft_proxy_delta": 0,
+    "draft_proxy_delta": -2,
     "model_inputs_missing": ""
   },
   {
@@ -889,8 +889,8 @@
     "production_0_100": 65.0,
     "draft_capital_proxy_0_100": 68.0,
     "talent_score_0_100": 52.6973,
-    "rookie_alpha_0_100": 55.7579,
-    "consensus_delta": -12.2,
+    "rookie_alpha_0_100": 59.7579,
+    "consensus_delta": -8.2,
     "talent_rank": 15,
     "draft_proxy_delta": 2,
     "model_inputs_missing": ""

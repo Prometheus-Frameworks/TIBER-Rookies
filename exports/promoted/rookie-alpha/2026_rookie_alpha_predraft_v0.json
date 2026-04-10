@@ -3,7 +3,7 @@
     "name": "tiber-rookie-alpha",
     "stage": "pre-draft",
     "label": "pre-draft v0",
-    "model_version": "rookie-alpha-predraft-v0.2.0",
+    "model_version": "rookie-alpha-predraft-v0.3.0",
     "formula": {
       "ras_weight": 0.35,
       "production_weight": 0.45,
@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-10T04:33:49+00:00",
-  "run_id": "rookie-alpha-2026-2026-04-10T04:33:49+00:00",
+  "generated_at": "2026-04-10T20:17:52+00:00",
+  "run_id": "rookie-alpha-2026-2026-04-10T20:17:52+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 28,
@@ -47,6 +47,8 @@
         "talent_score_0_100": 72.5,
         "rookie_alpha_0_100": 77.0,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -18.0
       },
       "model_inputs_missing": [
@@ -121,6 +123,8 @@
         "talent_score_0_100": 65.4575,
         "rookie_alpha_0_100": 69.366,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -15.6
       },
       "model_inputs_missing": [
@@ -190,6 +194,8 @@
         "talent_score_0_100": 61.4413,
         "rookie_alpha_0_100": 68.153,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -26.8
       },
       "model_inputs_missing": [
@@ -259,6 +265,8 @@
         "talent_score_0_100": 69.575,
         "rookie_alpha_0_100": 66.66,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": 11.7,
         "score_caveats": [
           "Route profile estimated (pending CFBD fetch): age-adjusted production score is based on synthetic target data derived from career totals. Ranking may shift materially once real CFBD play-by-play data is available."
@@ -340,6 +348,8 @@
         "talent_score_0_100": 69.2219,
         "rookie_alpha_0_100": 66.3775,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": 11.4
       },
       "model_inputs_missing": [],
@@ -403,6 +413,8 @@
         "talent_score_0_100": 59.0787,
         "rookie_alpha_0_100": 66.263,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -28.7
       },
       "model_inputs_missing": [
@@ -480,6 +492,8 @@
         "talent_score_0_100": 67.1675,
         "rookie_alpha_0_100": 64.734,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": 9.7
       },
       "model_inputs_missing": [
@@ -545,6 +559,8 @@
         "talent_score_0_100": 52.1937,
         "rookie_alpha_0_100": 60.755,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -34.2
       },
       "model_inputs_missing": [
@@ -617,6 +633,8 @@
         "talent_score_0_100": 56.3987,
         "rookie_alpha_0_100": 60.119,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -14.9
       },
       "model_inputs_missing": [],
@@ -690,6 +708,8 @@
         "talent_score_0_100": 62.1613,
         "rookie_alpha_0_100": 58.729,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": 13.7
       },
       "model_inputs_missing": [
@@ -762,6 +782,8 @@
         "talent_score_0_100": 52.8238,
         "rookie_alpha_0_100": 57.259,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -17.7
       },
       "model_inputs_missing": [
@@ -837,6 +859,8 @@
         "talent_score_0_100": 50.1378,
         "rookie_alpha_0_100": 57.1102,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -27.9
       },
       "model_inputs_missing": [],
@@ -907,6 +931,8 @@
         "talent_score_0_100": 57.7063,
         "rookie_alpha_0_100": 55.165,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": 10.2
       },
       "model_inputs_missing": [
@@ -972,6 +998,8 @@
         "talent_score_0_100": 54.8822,
         "rookie_alpha_0_100": 54.9058,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -0.1
       },
       "model_inputs_missing": [],
@@ -1045,6 +1073,8 @@
         "talent_score_0_100": 50.0964,
         "rookie_alpha_0_100": 53.0771,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -11.9
       },
       "model_inputs_missing": [],
@@ -1117,6 +1147,8 @@
         "talent_score_0_100": 40.5126,
         "rookie_alpha_0_100": 49.4101,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -35.6
       },
       "model_inputs_missing": [],
@@ -1180,6 +1212,8 @@
         "talent_score_0_100": 47.8063,
         "rookie_alpha_0_100": 49.245,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -5.8
       },
       "model_inputs_missing": [
@@ -1249,6 +1283,8 @@
         "talent_score_0_100": 47.6375,
         "rookie_alpha_0_100": 49.11,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -5.9
       },
       "model_inputs_missing": [
@@ -1322,6 +1358,8 @@
         "talent_score_0_100": 41.315,
         "rookie_alpha_0_100": 48.052,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -26.9,
         "score_caveats": [
           "ACL tear (pre-draft 2026): alpha reflects pre-injury talent profile. Dynasty value is materially lower than alpha implies; year-1 contribution is unlikely. Consensus delta overstates model edge vs current dynasty market."
@@ -1397,6 +1435,8 @@
         "talent_score_0_100": 44.2578,
         "rookie_alpha_0_100": 44.4062,
         "ceiling_bonus": 3.0,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": 14.4,
         "score_caveats": [
           "Route profile estimated (pending CFBD fetch): age-adjusted production score is based on synthetic target data derived from career totals. Ranking may shift materially once real CFBD play-by-play data is available."
@@ -1488,6 +1528,8 @@
         "talent_score_0_100": 37.625,
         "rookie_alpha_0_100": 43.1,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -21.9
       },
       "model_inputs_missing": [
@@ -1561,6 +1603,8 @@
         "talent_score_0_100": 36.6575,
         "rookie_alpha_0_100": 40.326,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -14.7
       },
       "model_inputs_missing": [
@@ -1626,6 +1670,8 @@
         "talent_score_0_100": 35.825,
         "rookie_alpha_0_100": 39.66,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -15.3
       },
       "model_inputs_missing": [
@@ -1699,6 +1745,8 @@
         "talent_score_0_100": 36.6575,
         "rookie_alpha_0_100": 38.326,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -6.7
       },
       "model_inputs_missing": [
@@ -1764,6 +1812,8 @@
         "talent_score_0_100": 38.8625,
         "rookie_alpha_0_100": 38.09,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": 3.1
       },
       "model_inputs_missing": [
@@ -1835,6 +1885,8 @@
         "talent_score_0_100": 33.2488,
         "rookie_alpha_0_100": 37.599,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -17.4
       },
       "model_inputs_missing": [
@@ -1900,6 +1952,8 @@
         "talent_score_0_100": 34.25,
         "rookie_alpha_0_100": 36.4,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -8.6
       },
       "model_inputs_missing": [
@@ -1973,6 +2027,8 @@
         "talent_score_0_100": 33.0125,
         "rookie_alpha_0_100": 35.41,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -9.6
       },
       "model_inputs_missing": [

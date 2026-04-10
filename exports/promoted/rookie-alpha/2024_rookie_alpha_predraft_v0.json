@@ -3,7 +3,7 @@
     "name": "tiber-rookie-alpha",
     "stage": "pre-draft",
     "label": "pre-draft v0",
-    "model_version": "rookie-alpha-predraft-v0.2.0",
+    "model_version": "rookie-alpha-predraft-v0.3.0",
     "formula": {
       "ras_weight": 0.35,
       "production_weight": 0.45,
@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-10T11:12:48+00:00",
-  "run_id": "rookie-alpha-2024-2026-04-10T11:12:48+00:00",
+  "generated_at": "2026-04-10T20:17:52+00:00",
+  "run_id": "rookie-alpha-2024-2026-04-10T20:17:52+00:00",
   "season": 2024,
   "coverage_summary": {
     "players_total": 15,
@@ -47,6 +47,8 @@
         "talent_score_0_100": 80.6468,
         "rookie_alpha_0_100": 83.5174,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -11.5
       },
       "model_inputs_missing": [],
@@ -101,6 +103,77 @@
       "draft_proxy_delta": 0
     },
     {
+      "player_id": "wr-rome-odunze",
+      "player_name": "Rome Odunze",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 43.2589,
+        "production_0_100": 92.0,
+        "age_adjusted_production_0_100": null,
+        "draft_capital_proxy_0_100": 90.0,
+        "talent_score_0_100": 70.6757,
+        "rookie_alpha_0_100": 78.5406,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": 4.0,
+        "market_conviction_reason": "WR craft override: confirmed RAS 43.3 < 45.0 | capital 90 >= 65.0 | craft signals [tag:contested_catch_signal, tag:inside_out_versatility, field:contested_catch_rate>=0.45] | +4.0 pts",
+        "consensus_delta": -11.5
+      },
+      "model_inputs_missing": [],
+      "context": {
+        "player_id": "wr-rome-odunze",
+        "player_name": "Rome Odunze",
+        "position": "WR",
+        "school": "Washington",
+        "class_year": 2024,
+        "early_declare_flag": true,
+        "breakout_age": 21,
+        "age_at_first_impact_season": 21,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": false,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": 0.52,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [
+          "early_declare",
+          "contested_catch_signal",
+          "inside_out_versatility"
+        ],
+        "context_flags": [],
+        "translation_flags": [
+          "inside_out_versatility"
+        ],
+        "evidence_summary": "1,640 rec yds and 13 TDs at Washington in 2023. Pac-12 elite with 6'3\" frame and elite hands. BOA 21 is only knock vs Nabers. RAS 43.3 below threshold \u2014 craft signal (contested catch, inside-out) justifies market-conviction override.",
+        "context_source": "manual_historical_seed"
+      },
+      "rookie_alpha_rank": 2,
+      "talent_rank": 5,
+      "draft_proxy_delta": 3
+    },
+    {
       "player_id": "wr-malik-nabers",
       "player_name": "Malik Nabers",
       "position": "WR",
@@ -112,6 +185,8 @@
         "talent_score_0_100": 75.6478,
         "rookie_alpha_0_100": 78.5182,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -11.5
       },
       "model_inputs_missing": [],
@@ -164,9 +239,9 @@
         "evidence_summary": "1,569 rec yds and 14 TDs at LSU in 2023 at age 20. SEC dominant with exceptional contested catch ability. Elite YAC producer.",
         "context_source": "manual_historical_seed"
       },
-      "rookie_alpha_rank": 2,
+      "rookie_alpha_rank": 3,
       "talent_rank": 2,
-      "draft_proxy_delta": 0
+      "draft_proxy_delta": -1
     },
     {
       "player_id": "qb-caleb-williams",
@@ -180,6 +255,8 @@
         "talent_score_0_100": 73.0625,
         "rookie_alpha_0_100": 78.05,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -19.9
       },
       "model_inputs_missing": [
@@ -234,9 +311,9 @@
         "evidence_summary": "2022 Heisman winner at Oklahoma age 19; transferred to USC. 3,633 passing yards, 30 TDs at 20 in 2023. Consensus QB1 and 1st overall pick. Only USC's poor OL and thin WR room obscured efficiency.",
         "context_source": "manual_historical_seed"
       },
-      "rookie_alpha_rank": 3,
+      "rookie_alpha_rank": 4,
       "talent_rank": 4,
-      "draft_proxy_delta": 1
+      "draft_proxy_delta": 0
     },
     {
       "player_id": "te-brock-bowers",
@@ -250,6 +327,8 @@
         "talent_score_0_100": 75.3125,
         "rookie_alpha_0_100": 77.25,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -7.8
       },
       "model_inputs_missing": [],
@@ -302,74 +381,9 @@
         "evidence_summary": "Georgia TE1 at age 19 in 2021 (882 rec yds). Three elite seasons including 1,182 yds in 2023. The rare TE breakout at 19; elite receiving TE archetype.",
         "context_source": "manual_historical_seed"
       },
-      "rookie_alpha_rank": 4,
-      "talent_rank": 3,
-      "draft_proxy_delta": -1
-    },
-    {
-      "player_id": "wr-rome-odunze",
-      "player_name": "Rome Odunze",
-      "position": "WR",
-      "scores": {
-        "ras_0_100": 43.2589,
-        "production_0_100": 92.0,
-        "age_adjusted_production_0_100": null,
-        "draft_capital_proxy_0_100": 90.0,
-        "talent_score_0_100": 70.6757,
-        "rookie_alpha_0_100": 74.5406,
-        "ceiling_bonus": null,
-        "consensus_delta": -15.5
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "wr-rome-odunze",
-        "player_name": "Rome Odunze",
-        "position": "WR",
-        "school": "Washington",
-        "class_year": 2024,
-        "early_declare_flag": true,
-        "breakout_age": 21,
-        "age_at_first_impact_season": 21,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": false,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": null,
-        "injury_adjusted_profile_flag": null,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": null
-      },
-      "evidence": {
-        "evidence_tags": [
-          "early_declare"
-        ],
-        "context_flags": [],
-        "translation_flags": [],
-        "evidence_summary": "1,640 rec yds and 13 TDs at Washington in 2023. Pac-12 elite with 6'3\" frame and elite hands. BOA 21 is only knock vs Nabers.",
-        "context_source": "manual_historical_seed"
-      },
       "rookie_alpha_rank": 5,
-      "talent_rank": 5,
-      "draft_proxy_delta": 0
+      "talent_rank": 3,
+      "draft_proxy_delta": -2
     },
     {
       "player_id": "wr-brian-thomas-jr",
@@ -383,6 +397,8 @@
         "talent_score_0_100": 70.2019,
         "rookie_alpha_0_100": 71.7615,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -6.2
       },
       "model_inputs_missing": [],
@@ -451,6 +467,8 @@
         "talent_score_0_100": 69.3214,
         "rookie_alpha_0_100": 69.0571,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": 1.1
       },
       "model_inputs_missing": [],
@@ -519,6 +537,8 @@
         "talent_score_0_100": 62.5259,
         "rookie_alpha_0_100": 69.0207,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -26.0
       },
       "model_inputs_missing": [],
@@ -587,6 +607,8 @@
         "talent_score_0_100": 70.3565,
         "rookie_alpha_0_100": 67.8852,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": 9.9
       },
       "model_inputs_missing": [],
@@ -652,6 +674,8 @@
         "talent_score_0_100": 58.4871,
         "rookie_alpha_0_100": 65.3897,
         "ceiling_bonus": 3.0,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -12.6
       },
       "model_inputs_missing": [],
@@ -739,6 +763,8 @@
         "talent_score_0_100": 63.6874,
         "rookie_alpha_0_100": 64.5499,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": -3.5
       },
       "model_inputs_missing": [],
@@ -807,6 +833,8 @@
         "talent_score_0_100": 66.7947,
         "rookie_alpha_0_100": 63.0358,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": 15.0
       },
       "model_inputs_missing": [],
@@ -881,9 +909,11 @@
         "age_adjusted_production_0_100": null,
         "draft_capital_proxy_0_100": 68.0,
         "talent_score_0_100": 52.6973,
-        "rookie_alpha_0_100": 55.7579,
+        "rookie_alpha_0_100": 59.7579,
         "ceiling_bonus": null,
-        "consensus_delta": -12.2
+        "market_conviction_ras_override": 4.0,
+        "market_conviction_reason": "WR craft override: confirmed RAS 36.9 < 45.0 | capital 68 >= 65.0 | craft signals [tag:inside_out_versatility, tag:route_runner, tag:yac_signal, field:inside_out_versatility_flag] | +4.0 pts",
+        "consensus_delta": -8.2
       },
       "model_inputs_missing": [],
       "context": {
@@ -914,7 +944,7 @@
         "missed_tackles_forced_per_reception": null,
         "yac_proxy_per_reception": null,
         "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
+        "inside_out_versatility_flag": true,
         "man_zone_versatility_flag": null,
         "power4_early_contributor_flag": null,
         "career_receiving_market_share": null,
@@ -924,10 +954,17 @@
         "path_disruption_flag": null
       },
       "evidence": {
-        "evidence_tags": [],
+        "evidence_tags": [
+          "route_runner",
+          "inside_out_versatility",
+          "yac_signal"
+        ],
         "context_flags": [],
-        "translation_flags": [],
-        "evidence_summary": "Senior from Georgia; 841 rec yds in 2023. Limited by elite WR room but exceptional YAC ability and route running for his size (5'11\"/186). 2nd round pick to LAC.",
+        "translation_flags": [
+          "inside_out_versatility",
+          "yac_signal"
+        ],
+        "evidence_summary": "Senior from Georgia; 841 rec yds in 2023. Limited by elite WR room but exceptional YAC ability and route running for his size (5'11\"/186). 2nd round pick to LAC. Pro Bowl rookie year \u2014 model's primary McConkey-pattern miss; market saw craft profile the RAS (36.9) couldn't.",
         "context_source": "manual_historical_seed"
       },
       "rookie_alpha_rank": 13,
@@ -946,6 +983,8 @@
         "talent_score_0_100": 55.1504,
         "rookie_alpha_0_100": 53.7203,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": 5.7
       },
       "model_inputs_missing": [],
@@ -1009,6 +1048,8 @@
         "talent_score_0_100": 55.6047,
         "rookie_alpha_0_100": 52.0837,
         "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
         "consensus_delta": 14.1
       },
       "model_inputs_missing": [],
