@@ -10,19 +10,20 @@ rookie_alpha_rank,player_id,player_name,position,ras_0_100,production_0_100,draf
 9,wr-makai-lemon,Makai Lemon,WR,53.4748,59.36,75.0,56.7852,60.4282,-14.6,10,1,
 10,rb-jonah-coleman,Jonah Coleman,RB,50.0,71.62,45.0,62.1613,58.729,13.7,6,-4,ras
 11,wr-kc-concepcion,KC Concepcion,WR,50.0,55.02,75.0,52.8238,57.259,-17.7,12,1,ras
-12,wr-denzel-boston,Denzel Boston,WR,46.0097,51.94,85.0,49.3455,56.4764,-28.5,14,2,
+12,wr-denzel-boston,Denzel Boston,WR,46.0097,51.94,85.0,49.3455,56.4764,-28.5,15,3,
 13,qb-drew-allar,Drew Allar,QB,50.0,63.7,45.0,57.7063,55.165,10.2,9,-4,ras
-14,rb-mike-washington-jr,Mike Washington Jr.,RB,66.2859,43.44,55.0,53.4351,53.7481,-1.3,11,-3,
-15,rb-jadarian-price,Jadarian Price,RB,31.2399,63.34,65.0,49.2962,52.437,-12.6,15,0,
-16,te-kenyon-sadiq,Kenyon Sadiq,TE,45.0286,36.92,85.0,40.4675,49.374,-35.6,19,3,
+14,rb-mike-washington-jr,Mike Washington Jr.,RB,67.9569,43.44,55.0,54.1661,54.3329,-0.7,11,-3,
+15,rb-jadarian-price,Jadarian Price,RB,32.3019,63.34,65.0,49.7608,52.8087,-12.2,14,-1,
+16,te-kenyon-sadiq,Kenyon Sadiq,TE,45.0286,36.92,85.0,40.4675,49.374,-35.6,20,4,
 17,wr-chris-brazzell-ii,Chris Brazzell II,WR,50.0,46.1,55.0,47.8063,49.245,-5.8,16,-1,ras
 18,wr-elijah-sarratt,Elijah Sarratt,WR,50.0,45.8,55.0,47.6375,49.11,-5.9,17,-1,ras
-19,wr-chris-bell,Chris Bell,WR,50.0,34.56,75.0,41.315,48.052,-26.9,18,-1,ras
-20,rb-kaytron-allen,Kaytron Allen,RB,50.0,28.0,65.0,37.625,43.1,-21.9,21,1,ras
-21,qb-carson-beck,Carson Beck,QB,50.0,26.28,55.0,36.6575,40.326,-14.7,22,1,ras
-22,rb-seth-mcgowan,Seth McGowan,RB,50.0,24.8,55.0,35.825,39.66,-15.3,24,2,ras
-23,rb-nick-singleton,Nick Singleton,RB,50.0,26.28,45.0,36.6575,38.326,-6.7,23,0,ras
-24,wr-brenen-thompson,Brenen Thompson,WR,50.0,30.2,35.0,38.8625,38.09,3.1,20,-4,ras
-25,te-max-klare,Max Klare,TE,50.0,20.22,55.0,33.2488,37.599,-17.4,26,1,ras
-26,rb-emmett-johnson,Emmett Johnson,RB,50.0,22.0,45.0,34.25,36.4,-8.6,25,-1,ras
-27,te-oscar-delp,Oscar Delp,TE,50.0,19.8,45.0,33.0125,35.41,-9.6,27,0,ras
+19,wr-chris-bell,Chris Bell,WR,50.0,34.56,75.0,41.315,48.052,-26.9,19,0,ras
+20,rb-eli-heidenreich,Eli Heidenreich,RB,50.0,45.7,30.0,47.5812,44.065,14.1,18,-2,ras
+21,rb-kaytron-allen,Kaytron Allen,RB,50.0,28.0,65.0,37.625,43.1,-21.9,22,1,ras
+22,qb-carson-beck,Carson Beck,QB,50.0,26.28,55.0,36.6575,40.326,-14.7,23,1,ras
+23,rb-seth-mcgowan,Seth McGowan,RB,50.0,24.8,55.0,35.825,39.66,-15.3,25,2,ras
+24,rb-nick-singleton,Nick Singleton,RB,50.0,26.28,45.0,36.6575,38.326,-6.7,24,0,ras
+25,wr-brenen-thompson,Brenen Thompson,WR,50.0,30.2,35.0,38.8625,38.09,3.1,21,-4,ras
+26,te-max-klare,Max Klare,TE,50.0,20.22,55.0,33.2488,37.599,-17.4,27,1,ras
+27,rb-emmett-johnson,Emmett Johnson,RB,50.0,22.0,45.0,34.25,36.4,-8.6,26,-1,ras
+28,te-oscar-delp,Oscar Delp,TE,50.0,19.8,45.0,33.0125,35.41,-9.6,28,0,ras

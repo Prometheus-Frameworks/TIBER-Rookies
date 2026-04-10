@@ -412,5 +412,23 @@
     "vertical_source": "Yahoo Sports 2026 NFL Combine TE measurements",
     "broad": 135.0,
     "broad_source": "Yahoo Sports 2026 NFL Combine TE measurements"
+  },
+  {
+    "player_id": "rb-eli-heidenreich",
+    "player_name": "Eli Heidenreich",
+    "position": "RB",
+    "school": "Navy",
+    "class_year": 2026,
+    "combine_invited": false,
+    "height_in": 72.0,
+    "height_in_source": "Shrine Bowl 2026 measurements",
+    "weight_lb": 198,
+    "weight_lb_source": "Shrine Bowl 2026 measurements",
+    "forty": 4.44,
+    "forty_source": "Shrine Bowl 2026 Pro Day (reported)",
+    "vertical": null,
+    "vertical_source": null,
+    "broad": null,
+    "broad_source": null
   }
 ]
