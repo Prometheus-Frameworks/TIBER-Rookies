@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-11T12:22:07+00:00",
-  "run_id": "rookie-alpha-2026-2026-04-11T12:22:07+00:00",
+  "generated_at": "2026-04-11T13:22:14+00:00",
+  "run_id": "rookie-alpha-2026-2026-04-11T13:22:14+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 28,
@@ -473,8 +473,8 @@
         "missed_tackles_forced_per_reception": 0.07,
         "yac_proxy_per_reception": null,
         "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
+        "inside_out_versatility_flag": true,
+        "man_zone_versatility_flag": true,
         "power4_early_contributor_flag": true,
         "career_receiving_market_share": null,
         "career_mtf_per_attempt": null,
@@ -487,7 +487,10 @@
           "young_breakout",
           "early_declare",
           "injury_adjusted",
-          "exceptional_strength"
+          "exceptional_strength",
+          "contested_catch_signal",
+          "inside_out_versatility",
+          "route_runner"
         ],
         "context_flags": [
           "injury_context",
@@ -496,10 +499,11 @@
         ],
         "translation_flags": [
           "young_breakout",
-          "injury_adjusted"
+          "injury_adjusted",
+          "inside_out_versatility"
         ],
-        "evidence_summary": "Transfer path: 470 yards as true freshman at Colorado, injury-limited seasons 2023-24, then 2025 draft cycle at Arizona State. Combine: 26 bench reps (one shy of WR all-time record) \u2014 exceptional functional strength for position. Skipped speed/jump testing (hamstring). MTF 0.07 (lowest in class) \u2014 profile is separator/route-runner, not YAC threat. Athletic profile is strength-over-speed archetype.",
-        "context_source": "Wikipedia Jordyn Tyson career summary + arizonasports.com 2026 NFL Combine report, retrieved 2026-04-08."
+        "evidence_summary": "Transfer path: 470 yards as true freshman at Colorado, injury-limited seasons 2023-24, then 2025 draft cycle at Arizona State. Combine: 26 bench reps (one shy of WR all-time record) \u2014 exceptional functional strength. Skipped speed/jump testing (hamstring). MTF 0.07 (lowest in class) \u2014 profile is separator/route-runner, not YAC threat.\nScreen usage context: college offense ran high screen volume with Tyson. screen_yard_share estimate ~40-50% of targets (proxy; precise yard-share not confirmed). screen_yard_share NOT encoded \u2014 film review overrides proxy concern (see below).\nFilm review (2026-04-11, user-conducted):\nvs Texas State: lined up slot vs press man, beats press at 5 yards off LOS, wins outside leverage, adjusts frame on 40-yard gain with 1-handed contested catch while safety crashes \u2014 press win + vertical tracking + contested finish.\nvs Baylor: boundary short side, corner route up the seam in Cover 2, splits DB and LB, reads space and attacks window \u2014 spatial feel and route utility, not gadget spam.\nvs TCU (post): strong side boundary vs soft man, wins inside leverage on post for 15-yard gain \u2014 leverage win creating viable throwing window.\nvs TCU (60-yd TD): weak side boundary vs press man, sells screen look initially then torches press over the top for 60-yard walk-in TD \u2014 weaponizes screen expectation, which is the key distinction: manufactured usage may have been deployment choice, not ceiling.\nModel philosophy note: screen-yard share = production-translation risk, not evidence that the receiver cannot play. Film confirms press wins, leverage wins, vertical tracking, contested catch ability, and boundary route success. Screen-heavy college deployment reflects offense exploiting an easy button on a better-than-deployed player. screen_yard_share penalty WILL NOT be applied unless hard data confirms and film evidence is re-evaluated. deep_yard_share remains a valid caution flag if confirmed.",
+        "context_source": "Wikipedia Jordyn Tyson career summary + arizonasports.com 2026 NFL Combine report, retrieved 2026-04-08; film review notes 2026-04-11."
       },
       "rookie_alpha_rank": 6,
       "talent_rank": 8,
