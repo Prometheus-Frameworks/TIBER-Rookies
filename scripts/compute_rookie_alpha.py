@@ -481,6 +481,22 @@ RB_MTF_BELOW_AVG_THRESHOLD = 0.20  # below → below-average tier (−2.5 pts)
 RB_YAC_SEVERE_THRESHOLD = 40.0   # < 40 yd/game → −4 pts
 RB_YAC_CONCERN_THRESHOLD = 48.0  # < 48 yd/game → −2 pts
 
+# WR production translation penalties: penalize manufactured/low-translation
+# production profiles. Three independent signals — screen-heavy yards, lack of
+# vertical route evidence, and slot separation concern — each apply a tiered
+# deduction to production_score_0_100. Applied after the efficiency-tier reblend
+# so both quality signals hit the final production score independently.
+# All signals are null-safe: they fire only when the field is present in context.
+# Combined total is capped at WR_TRANSLATION_PENALTY_CAP to prevent triple-taxing
+# correlated archetypes (screen-heavy slot WRs tend to score poorly on all three).
+WR_SCREEN_CONCERN_THRESHOLD = 0.40   # screen_yard_share > → -3.0 pts
+WR_SCREEN_SEVERE_THRESHOLD  = 0.50   # screen_yard_share > → -5.0 pts
+WR_DEEP_CONCERN_THRESHOLD   = 0.245  # deep_yard_share < → -2.0 pts
+WR_DEEP_SEVERE_THRESHOLD    = 0.18   # deep_yard_share < → -4.0 pts
+WR_SLOT_CONTESTED_CONCERN   = 0.30   # slot_contested_target_rate > → -1.5 pts
+WR_SLOT_CONTESTED_SEVERE    = 0.40   # slot_contested_target_rate > → -3.0 pts
+WR_TRANSLATION_PENALTY_CAP  = 8.0    # max combined penalty across all three signals
+
 
 def apply_context_production_adjustments(
     production_rows: list[dict[str, Any]],
@@ -488,7 +504,7 @@ def apply_context_production_adjustments(
 ) -> list[dict[str, Any]]:
     """Apply context-driven adjustments to blended production scores.
 
-    Two adjustments:
+    Three adjustments (applied in order):
 
     1. **WR elite_efficiency_tier re-blend** — for WRs with verified 75th+
        pctile YPRR/passer-rating/TPRR whose age-adjusted score is pulling their
@@ -497,7 +513,17 @@ def apply_context_production_adjustments(
        low-target-share / high-efficiency WRs (Sarratt archetype; Nacua precedent).
        Only applied when age_adj < raw — never harms early-breakout WRs.
 
-    2. **RB MTF penalty** — for RBs with ``career_mtf_per_touch`` below threshold,
+    2. **WR production translation penalties** — three independent signals that
+       penalize manufactured/low-translation production profiles:
+         - screen_yard_share > 0.40 → −3.0 pts / > 0.50 → −5.0 pts
+         - deep_yard_share < 0.245 → −2.0 pts / < 0.18 → −4.0 pts
+         - slot_contested_target_rate > 0.30 → −1.5 pts / > 0.40 → −3.0 pts
+       Combined total capped at −8.0 to prevent triple-taxing correlated
+       archetypes (screen-heavy slot WRs tend to score poorly on all three).
+       Each signal is null-safe — fires only when the field exists in context.
+       Penalty amount stored as ``wr_translation_penalty`` on the row.
+
+    3. **RB MTF penalty** — for RBs with ``career_mtf_per_touch`` below threshold,
        apply a tiered production deduction:
          < 0.18 → −5 pts   (poor tier: bottom ~10% of Day-2 RBs since 2014)
          < 0.20 → −2.5 pts (below-average tier)
@@ -537,6 +563,66 @@ def apply_context_production_adjustments(
             )
             row["production_score_0_100"] = new_blended
             row["efficiency_tier_reblend"] = True
+
+        # --- WR production translation penalties ---
+        # Three independent signals; each null-safe. Applied after efficiency-
+        # tier reblend so both production-quality adjustments land separately.
+        # Combined total is capped at WR_TRANSLATION_PENALTY_CAP.
+        if position == "WR":
+            translation_signals: list[tuple[str, float]] = []  # (audit_label, penalty_pts)
+
+            screen = ctx.get("screen_yard_share")
+            if screen is not None:
+                sv = float(screen)
+                if sv > WR_SCREEN_SEVERE_THRESHOLD:
+                    translation_signals.append(
+                        (f"screen_yard_share={sv:.2f} > {WR_SCREEN_SEVERE_THRESHOLD}", 5.0)
+                    )
+                elif sv > WR_SCREEN_CONCERN_THRESHOLD:
+                    translation_signals.append(
+                        (f"screen_yard_share={sv:.2f} > {WR_SCREEN_CONCERN_THRESHOLD}", 3.0)
+                    )
+
+            deep = ctx.get("deep_yard_share")
+            if deep is not None:
+                dv = float(deep)
+                if dv < WR_DEEP_SEVERE_THRESHOLD:
+                    translation_signals.append(
+                        (f"deep_yard_share={dv:.2f} < {WR_DEEP_SEVERE_THRESHOLD}", 4.0)
+                    )
+                elif dv < WR_DEEP_CONCERN_THRESHOLD:
+                    translation_signals.append(
+                        (f"deep_yard_share={dv:.2f} < {WR_DEEP_CONCERN_THRESHOLD}", 2.0)
+                    )
+
+            slot_ct = ctx.get("slot_contested_target_rate")
+            if slot_ct is not None:
+                scv = float(slot_ct)
+                if scv > WR_SLOT_CONTESTED_SEVERE:
+                    translation_signals.append(
+                        (f"slot_contested_target_rate={scv:.2f} > {WR_SLOT_CONTESTED_SEVERE}", 3.0)
+                    )
+                elif scv > WR_SLOT_CONTESTED_CONCERN:
+                    translation_signals.append(
+                        (f"slot_contested_target_rate={scv:.2f} > {WR_SLOT_CONTESTED_CONCERN}", 1.5)
+                    )
+
+            if translation_signals:
+                raw_total = sum(pen for _, pen in translation_signals)
+                capped = min(raw_total, WR_TRANSLATION_PENALTY_CAP)
+                old_score = float(row.get("production_score_0_100") or 50.0)
+                new_score = clamp_0_100(old_score - capped)
+                detail_parts = [f"{label} → -{pen:.1f}" for label, pen in translation_signals]
+                if capped < raw_total:
+                    detail_parts.append(f"cap applied ({raw_total:.1f} → {capped:.1f})")
+                signal_detail = " | ".join(detail_parts)
+                logging.info(
+                    "WR translation penalty for %s: %.1f → %.1f (−%.1f) [%s]",
+                    pid, old_score, new_score, capped, signal_detail,
+                )
+                row["production_score_0_100"] = round(new_score, 4)
+                row["wr_translation_penalty"] = round(capped, 2)
+                row["wr_translation_signals"] = signal_detail
 
         # --- RB MTF penalty ---
         if position == "RB":
@@ -912,6 +998,7 @@ def write_outputs(
     context_path: Path | None = None,
     context_by_id: dict[str, dict[str, Any]] | None = None,
     exceptional_combine_by_id: dict[str, list[dict[str, Any]]] | None = None,
+    wr_translation_penalty_by_id: dict[str, tuple[float, str]] | None = None,
 ) -> None:
     generated_at = datetime.now(tz=timezone.utc).replace(microsecond=0).isoformat()
     run_id = f"rookie-alpha-{season}-{generated_at}"
@@ -1004,6 +1091,11 @@ def write_outputs(
                 "ceiling_bonus": round(ceiling_bonus, 2) if ceiling_bonus > 0.0 else None,
                 "market_conviction_ras_override": round(mc_bonus, 2) if mc_bonus > 0.0 else None,
                 "market_conviction_reason": mc_reason,
+                "wr_translation_penalty": round(
+                    (wr_translation_penalty_by_id or {}).get(p.player_id, (0.0, ""))[0], 2
+                ) if (wr_translation_penalty_by_id or {}).get(p.player_id) else None,
+                "wr_translation_signals": (wr_translation_penalty_by_id or {}).get(p.player_id, (None, None))[1]
+                or None,
                 "consensus_delta": consensus_delta,
             },
             "model_inputs_missing": missing_components,
@@ -1054,7 +1146,7 @@ def write_outputs(
             "name": "tiber-rookie-alpha",
             "stage": "pre-draft",
             "label": "pre-draft v0",
-            "model_version": "rookie-alpha-predraft-v0.3.0",
+            "model_version": "rookie-alpha-predraft-v0.4.0",
             "formula": {
                 "ras_weight": 0.35,
                 "production_weight": 0.45,
@@ -1107,6 +1199,7 @@ def write_outputs(
                 "draft_proxy_delta",
                 "model_inputs_missing",
                 "market_conviction_ras_override",
+                "wr_translation_penalty",
             ],
         )
         writer.writeheader()
@@ -1127,6 +1220,7 @@ def write_outputs(
                     "draft_proxy_delta": row["draft_proxy_delta"],
                     "model_inputs_missing": ",".join(row["model_inputs_missing"]),
                     "market_conviction_ras_override": row["scores"].get("market_conviction_ras_override") or "",
+                    "wr_translation_penalty": row["scores"].get("wr_translation_penalty") or "",
                 }
             )
 
@@ -1292,6 +1386,16 @@ def main() -> None:
 
     production_rows = apply_context_production_adjustments(production_rows, context_by_id)
 
+    # Extract WR translation penalties from the adjusted rows before merge strips them.
+    wr_translation_penalty_by_id: dict[str, tuple[float, str]] = {
+        row["player_id"]: (
+            float(row["wr_translation_penalty"]),
+            row.get("wr_translation_signals", ""),
+        )
+        for row in production_rows
+        if row.get("wr_translation_penalty") is not None and row.get("player_id")
+    }
+
     players, merge_diagnostics, exceptional_combine_by_id = merge_inputs(combine_rows, production_rows, draft_rows)
     write_outputs(
         players=players,
@@ -1306,6 +1410,7 @@ def main() -> None:
         context_path=context_input,
         context_by_id=context_by_id,
         exceptional_combine_by_id=exceptional_combine_by_id,
+        wr_translation_penalty_by_id=wr_translation_penalty_by_id,
     )
 
 

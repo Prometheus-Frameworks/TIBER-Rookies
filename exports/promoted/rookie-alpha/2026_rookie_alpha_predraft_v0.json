@@ -3,7 +3,7 @@
     "name": "tiber-rookie-alpha",
     "stage": "pre-draft",
     "label": "pre-draft v0",
-    "model_version": "rookie-alpha-predraft-v0.3.0",
+    "model_version": "rookie-alpha-predraft-v0.4.0",
     "formula": {
       "ras_weight": 0.35,
       "production_weight": 0.45,
@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-11T11:55:44+00:00",
-  "run_id": "rookie-alpha-2026-2026-04-11T11:55:44+00:00",
+  "generated_at": "2026-04-11T12:22:07+00:00",
+  "run_id": "rookie-alpha-2026-2026-04-11T12:22:07+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 28,
@@ -49,6 +49,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -18.0
       },
       "model_inputs_missing": [
@@ -125,6 +127,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -15.6
       },
       "model_inputs_missing": [
@@ -196,6 +200,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -26.8
       },
       "model_inputs_missing": [
@@ -267,6 +273,8 @@
         "ceiling_bonus": 1.5,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": 12.9
       },
       "model_inputs_missing": [],
@@ -345,6 +353,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": 11.7,
         "score_caveats": [
           "Route profile estimated (pending CFBD fetch): age-adjusted production score is based on synthetic target data derived from career totals. Ranking may shift materially once real CFBD play-by-play data is available."
@@ -428,6 +438,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -28.7
       },
       "model_inputs_missing": [
@@ -507,6 +519,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": 9.7
       },
       "model_inputs_missing": [
@@ -574,6 +588,8 @@
         "ceiling_bonus": 4.5,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": 18.2
       },
       "model_inputs_missing": [
@@ -666,6 +682,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -34.2
       },
       "model_inputs_missing": [
@@ -740,6 +758,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -14.9
       },
       "model_inputs_missing": [],
@@ -815,6 +835,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -17.7
       },
       "model_inputs_missing": [
@@ -892,6 +914,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -27.9
       },
       "model_inputs_missing": [],
@@ -964,6 +988,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": 10.2
       },
       "model_inputs_missing": [
@@ -1031,6 +1057,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -0.1
       },
       "model_inputs_missing": [],
@@ -1106,6 +1134,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -11.9
       },
       "model_inputs_missing": [],
@@ -1180,6 +1210,8 @@
         "ceiling_bonus": 3.0,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -32.6
       },
       "model_inputs_missing": [],
@@ -1258,6 +1290,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -5.8
       },
       "model_inputs_missing": [
@@ -1329,6 +1363,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -5.9
       },
       "model_inputs_missing": [
@@ -1404,6 +1440,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -26.9,
         "score_caveats": [
           "ACL tear (pre-draft 2026): alpha reflects pre-injury talent profile. Dynasty value is materially lower than alpha implies; year-1 contribution is unlikely. Consensus delta overstates model edge vs current dynasty market."
@@ -1481,6 +1519,8 @@
         "ceiling_bonus": 3.0,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": 14.4,
         "score_caveats": [
           "Route profile estimated (pending CFBD fetch): age-adjusted production score is based on synthetic target data derived from career totals. Ranking may shift materially once real CFBD play-by-play data is available."
@@ -1574,6 +1614,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -21.9
       },
       "model_inputs_missing": [
@@ -1649,6 +1691,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -14.7
       },
       "model_inputs_missing": [
@@ -1716,6 +1760,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -15.3
       },
       "model_inputs_missing": [
@@ -1791,6 +1837,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -6.7
       },
       "model_inputs_missing": [
@@ -1858,6 +1906,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": 3.1
       },
       "model_inputs_missing": [
@@ -1931,6 +1981,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -17.4
       },
       "model_inputs_missing": [
@@ -1998,6 +2050,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -8.6
       },
       "model_inputs_missing": [
@@ -2073,6 +2127,8 @@
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
         "consensus_delta": -9.6
       },
       "model_inputs_missing": [
