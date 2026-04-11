@@ -1,0 +1,178 @@
+[
+  {
+    "player_id": "rb-bijan-robinson",
+    "player_name": "Bijan Robinson",
+    "position": "RB",
+    "school": "Texas",
+    "class_year": 2023,
+    "historical_anchor_flag": true,
+    "early_declare_flag": true,
+    "breakout_age": 19,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_production",
+      "elite_athleticism"
+    ],
+    "context_flags": [],
+    "evidence_summary": "Pick #8 to Atlanta. Texas RB \u2014 703 rush yds as true freshman (age 18-19 in 2020). 1580 rush/18 TDs + receiving in 2022 at age 21. Elite RAS (9.56 official). Primary 2023 RB calibration anchor \u2014 the model should score him very high.",
+    "context_source": "manual_historical_seed_2023",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-jahmyr-gibbs",
+    "player_name": "Jahmyr Gibbs",
+    "position": "RB",
+    "school": "Alabama",
+    "class_year": 2023,
+    "historical_anchor_flag": false,
+    "early_declare_flag": true,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_athleticism",
+      "elite_production"
+    ],
+    "context_flags": [],
+    "evidence_summary": "Pick #12 to Detroit. Alabama RB (transferred from Georgia Tech). 926 rush + 444 rec at Alabama 2022; dual-threat elite. 4.36 forty at 199lb \u2014 elite athleticism profile. Young breakout at GT (1000+ yds age 19). Pro Bowl 2024.",
+    "context_source": "manual_historical_seed_2023",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-jaxon-smith-njigba",
+    "player_name": "Jaxon Smith-Njigba",
+    "position": "WR",
+    "school": "Ohio State",
+    "class_year": 2023,
+    "historical_anchor_flag": false,
+    "early_declare_flag": true,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_efficiency_tier",
+      "route_runner"
+    ],
+    "context_flags": [
+      "injury_context"
+    ],
+    "evidence_summary": "Pick #20 to Seattle. Ohio State WR \u2014 2021 Biletnikoff winner (95 rec/1606 yds/9 TDs at age 20 alongside Wilson and Olave). 2022 hamstring injury-limited (3 games). Production score reflects 2021 peak with injury discount for missing final season. Elite route runner; efficiency model comp: top-3 OSU WR in the 2022 draft class era.",
+    "context_source": "manual_historical_seed_2023",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-quentin-johnston",
+    "player_name": "Quentin Johnston",
+    "position": "WR",
+    "school": "TCU",
+    "class_year": 2023,
+    "historical_anchor_flag": false,
+    "early_declare_flag": true,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "early_declare"
+    ],
+    "context_flags": [
+      "capital_trap_outcome"
+    ],
+    "evidence_summary": "Pick #21 to Chargers. TCU WR \u2014 1007 yds/6 TDs in 2022 (Big 12). 6'4\"/215 with elite RAS athleticism but limited production depth and route-running refinement. Capital trap outcome \u2014 disappointing NFL career through 2024. Model should show talent-vs-capital tension.",
+    "context_source": "manual_historical_seed_2023",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-zay-flowers",
+    "player_name": "Zay Flowers",
+    "position": "WR",
+    "school": "Boston College",
+    "class_year": 2023,
+    "historical_anchor_flag": false,
+    "early_declare_flag": true,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "early_declare",
+      "elite_efficiency_tier",
+      "yac_signal"
+    ],
+    "context_flags": [],
+    "evidence_summary": "Pick #22 to Baltimore. BC WR \u2014 78 rec/1077 yds/12 TDs in 2022 (ACC non-P4 elite). Elite YPRR efficiency. Non-P4 conference discount on production score. Pro Bowl 2023 (first year). Validates that production quality > conference prestige.",
+    "context_source": "manual_historical_seed_2023",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-jordan-addison",
+    "player_name": "Jordan Addison",
+    "position": "WR",
+    "school": "USC",
+    "class_year": 2023,
+    "historical_anchor_flag": false,
+    "early_declare_flag": true,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_efficiency_tier"
+    ],
+    "context_flags": [],
+    "evidence_summary": "Pick #23 to Minnesota. Pitt \u2192 USC transfer. 2021 Biletnikoff winner at Pitt (100 rec/1593 yds/17 TDs, age 20). 2022 USC: 875 yds/5 TDs. Production score uses single-season USC data with 2021 Pitt context; efficiency tier confirmed by Biletnikoff.",
+    "context_source": "manual_historical_seed_2023",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-tank-dell",
+    "player_name": "Tank Dell",
+    "position": "WR",
+    "school": "Houston",
+    "class_year": 2023,
+    "historical_anchor_flag": false,
+    "early_declare_flag": false,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "elite_efficiency_tier",
+      "yac_signal"
+    ],
+    "context_flags": [
+      "size_concern"
+    ],
+    "evidence_summary": "Pick #110 to Texans (R4). Houston WR (non-P4/AAC) \u2014 88 rec/1134 yds/12 TDs in 2022. Small (5'6\"/165) but elite YPRR and YAC. Late-round value calibration anchor: model should give meaningful score despite low capital. Breakout NFL year as rookie before injury.",
+    "context_source": "manual_historical_seed_2023",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-puka-nacua",
+    "player_name": "Puka Nacua",
+    "position": "WR",
+    "school": "BYU",
+    "class_year": 2023,
+    "historical_anchor_flag": false,
+    "early_declare_flag": false,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "career_yards_per_route_run": 2.65,
+    "best_season_yprr": 2.65,
+    "evidence_tags": [
+      "elite_efficiency_tier",
+      "multi_season_efficiency",
+      "inside_out_versatility"
+    ],
+    "context_flags": [],
+    "evidence_summary": "Pick #177 to Rams (R5). BYU WR \u2014 1594 yds/10 TDs in 2022. Senior; non-P4; BOA 22 all work against him in this model. But: elite YPRR (2.65), 105 catches as NFL rookie \u2014 the extreme late-round efficiency calibration anchor. Model will score him low due to capital + age; that tension is the point.",
+    "context_source": "manual_historical_seed_2023",
+    "exceptional_metrics": []
+  }
+]

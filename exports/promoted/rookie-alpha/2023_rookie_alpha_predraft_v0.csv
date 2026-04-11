@@ -1,0 +1,9 @@
+rookie_alpha_rank,player_id,player_name,position,ras_0_100,production_0_100,draft_capital_proxy_0_100,talent_score_0_100,rookie_alpha_0_100,consensus_delta,talent_rank,draft_proxy_delta,model_inputs_missing,market_conviction_ras_override,wr_translation_penalty
+1,rb-bijan-robinson,Bijan Robinson,RB,43.3333,92.0,92.0,70.7083,74.9667,-17.0,1,0,,,
+2,rb-jahmyr-gibbs,Jahmyr Gibbs,RB,56.6667,80.0,88.0,69.7917,73.4333,-14.6,2,0,,,
+3,wr-zay-flowers,Zay Flowers,WR,68.1912,70.0,81.0,69.2086,71.5669,-9.4,3,0,,,
+4,wr-quentin-johnston,Quentin Johnston,WR,61.3965,68.0,82.0,65.111,68.4888,-13.5,4,0,,,
+5,wr-jaxon-smith-njigba,Jaxon Smith-Njigba,WR,49.7581,72.0,83.0,62.2692,66.4153,-16.6,5,0,,,
+6,wr-jordan-addison,Jordan Addison,WR,35.5119,70.0,80.0,54.9114,62.4292,-17.6,6,0,,2.5,
+7,wr-tank-dell,Tank Dell,WR,47.6005,60.0,40.0,54.5752,51.6602,11.7,7,0,,,
+8,wr-puka-nacua,Puka Nacua,WR,37.5419,62.0,27.0,51.2996,46.4397,19.4,8,0,,,

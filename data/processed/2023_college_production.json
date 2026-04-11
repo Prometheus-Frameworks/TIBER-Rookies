@@ -1,0 +1,74 @@
+[
+  {
+    "player_id": "rb-bijan-robinson",
+    "player_name": "Bijan Robinson",
+    "position": "RB",
+    "school": "Texas",
+    "class_year": 2023,
+    "production_score_0_100": 92.0,
+    "production_score_source": "manual_historical_seed (2022: 258 att/1580 yds/18 TDs + 19 rec/235 yds; Big 12 P4; dual-threat elite; age 21)"
+  },
+  {
+    "player_id": "rb-jahmyr-gibbs",
+    "player_name": "Jahmyr Gibbs",
+    "position": "RB",
+    "school": "Alabama",
+    "class_year": 2023,
+    "production_score_0_100": 80.0,
+    "production_score_source": "manual_historical_seed (2022: 151 att/926 yds/7 TDs + 44 rec/444 yds; SEC; dual-threat; transferred from GT; age 21)"
+  },
+  {
+    "player_id": "wr-jaxon-smith-njigba",
+    "player_name": "Jaxon Smith-Njigba",
+    "position": "WR",
+    "school": "Ohio State",
+    "class_year": 2023,
+    "production_score_0_100": 72.0,
+    "production_score_source": "manual_historical_seed (2021: 95 rec/1606 yds/9 TDs at age 20 \u2014 Biletnikoff winner; 2022 hamstring-limited to 3 games; injury discount applied to final score)"
+  },
+  {
+    "player_id": "wr-quentin-johnston",
+    "player_name": "Quentin Johnston",
+    "position": "WR",
+    "school": "TCU",
+    "class_year": 2023,
+    "production_score_0_100": 68.0,
+    "production_score_source": "manual_historical_seed (2022: 60 rec/1007 yds/6 TDs; Big 12; 6'4\"/215 frame; capital trap outcome \u2014 disappointing pro career)"
+  },
+  {
+    "player_id": "wr-zay-flowers",
+    "player_name": "Zay Flowers",
+    "position": "WR",
+    "school": "Boston College",
+    "class_year": 2023,
+    "production_score_0_100": 70.0,
+    "production_score_source": "manual_historical_seed (2022: 78 rec/1077 yds/12 TDs; ACC non-P4-elite; elite YPRR efficiency; age 22; conference discount applied)"
+  },
+  {
+    "player_id": "wr-jordan-addison",
+    "player_name": "Jordan Addison",
+    "position": "WR",
+    "school": "USC",
+    "class_year": 2023,
+    "production_score_0_100": 70.0,
+    "production_score_source": "manual_historical_seed (2022 USC: 875 yds/5 TDs; transferred from Pitt where 100 rec/1593 yds/17 TDs in 2021; age 21; discount for single season at new school)"
+  },
+  {
+    "player_id": "wr-tank-dell",
+    "player_name": "Tank Dell",
+    "position": "WR",
+    "school": "Houston",
+    "class_year": 2023,
+    "production_score_0_100": 60.0,
+    "production_score_source": "manual_historical_seed (2022: 88 rec/1134 yds/12 TDs; AAC non-P4; conference discount significant; elite efficiency metrics; age 22)"
+  },
+  {
+    "player_id": "wr-puka-nacua",
+    "player_name": "Puka Nacua",
+    "position": "WR",
+    "school": "BYU",
+    "class_year": 2023,
+    "production_score_0_100": 62.0,
+    "production_score_source": "manual_historical_seed (2022: 1594 yds/10 TDs BYU; senior BOA 22; non-P4; high volume but conference discount; elite efficiency archetype \u2014 105 catches NFL rookie year as R5 pick)"
+  }
+]

@@ -1,0 +1,139 @@
+[
+  {
+    "player_id": "wr-garrett-wilson",
+    "player_name": "Garrett Wilson",
+    "position": "WR",
+    "school": "Ohio State",
+    "class_year": 2022,
+    "historical_anchor_flag": true,
+    "early_declare_flag": true,
+    "breakout_age": 19,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_production"
+    ],
+    "context_flags": [],
+    "evidence_summary": "2022 OROY, 83 rec/1103 yds/4 TDs as NFL rookie. Ohio State WR; 432 yds as true freshman (age 18). Elite production at 21 (1058/12 TDs) sharing targets with Chris Olave. Primary 2022 WR calibration anchor \u2014 high talent + high capital + elite outcome.",
+    "context_source": "manual_historical_seed_2022",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-drake-london",
+    "player_name": "Drake London",
+    "position": "WR",
+    "school": "USC",
+    "class_year": 2022,
+    "historical_anchor_flag": true,
+    "early_declare_flag": true,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "contested_catch_rate": 0.54,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_production",
+      "contested_catch_signal"
+    ],
+    "context_flags": [
+      "injury_context"
+    ],
+    "evidence_summary": "Pick #8 to Atlanta. USC WR \u2014 1084 yds in 8 games (ankle fracture ended 2021 season); per-game pace projects to 1493 yds over 11 games. Elite contested catch profile (6'4\"/213). Anchor for high-capital big-bodied WR archetype with injury discount.",
+    "context_source": "manual_historical_seed_2022",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-chris-olave",
+    "player_name": "Chris Olave",
+    "position": "WR",
+    "school": "Ohio State",
+    "class_year": 2022,
+    "historical_anchor_flag": false,
+    "early_declare_flag": true,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "early_declare",
+      "elite_production",
+      "route_runner"
+    ],
+    "context_flags": [],
+    "evidence_summary": "Pick #11 to New Orleans. Ohio State WR sharing targets with Garrett Wilson; 936 yds/13 TDs in 2021. Route runner archetype \u2014 technically elite separator, somewhat suppressed by elite WR room.",
+    "context_source": "manual_historical_seed_2022",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-jameson-williams",
+    "player_name": "Jameson Williams",
+    "position": "WR",
+    "school": "Alabama",
+    "class_year": 2022,
+    "historical_anchor_flag": false,
+    "early_declare_flag": true,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "early_declare",
+      "elite_production",
+      "elite_athleticism"
+    ],
+    "context_flags": [
+      "injury_history",
+      "acl_predraft"
+    ],
+    "evidence_summary": "Pick #12 to Detroit. Alabama WR (transferred from Ohio State); 1572 yds/15 TDs in 2021 \u2014 best WR production in the 2022 class. Torn ACL in CFP Championship (Jan 2022); medically excluded from combine drills; missed full 2022 NFL season. 4.43 pro day. Deep threat archetype with elite speed. Injury context suppresses year-1 dynasty value significantly.",
+    "context_source": "manual_historical_seed_2022",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-treylon-burks",
+    "player_name": "Treylon Burks",
+    "position": "WR",
+    "school": "Arkansas",
+    "class_year": 2022,
+    "historical_anchor_flag": false,
+    "early_declare_flag": true,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "early_declare",
+      "elite_production"
+    ],
+    "context_flags": [
+      "capital_trap_outcome"
+    ],
+    "evidence_summary": "Pick #18 to Tennessee. Arkansas WR \u2014 1104 yds/11 TDs in 2021 (SEC, weaker program). YAC-first profile; scheme-dependent production. High capital relative to NFL translation. Disappointing pro career \u2014 capital trap reference case for model calibration.",
+    "context_source": "manual_historical_seed_2022",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-breece-hall",
+    "player_name": "Breece Hall",
+    "position": "RB",
+    "school": "Iowa State",
+    "class_year": 2022,
+    "historical_anchor_flag": false,
+    "early_declare_flag": true,
+    "breakout_age": 19,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare",
+      "elite_production",
+      "elite_athleticism"
+    ],
+    "context_flags": [
+      "injury_history"
+    ],
+    "evidence_summary": "Pick #36 to Jets (R2). Iowa State RB \u2014 1472 rush/348 rec/20 TDs in 2021; true freshman impact (980 yds age 18). Dual-threat profile, elite athleticism (4.39/40.5\" vert). Torn ACL October 2022 NFL rookie season. Talent-over-capital calibration anchor: R2 capital, elite talent, injured in-season year 1.",
+    "context_source": "manual_historical_seed_2022",
+    "exceptional_metrics": []
+  }
+]

@@ -1,0 +1,74 @@
+[
+  {
+    "player_id": "wr-drake-london",
+    "player_name": "Drake London",
+    "position": "WR",
+    "class_year": 2022,
+    "actual_pick": 8,
+    "actual_round": 1,
+    "picking_team": "Atlanta Falcons",
+    "draft_capital_proxy_0_100": 92.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "8th overall pick; top-10 capital"
+  },
+  {
+    "player_id": "wr-garrett-wilson",
+    "player_name": "Garrett Wilson",
+    "position": "WR",
+    "class_year": 2022,
+    "actual_pick": 10,
+    "actual_round": 1,
+    "picking_team": "New York Jets",
+    "draft_capital_proxy_0_100": 90.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "10th overall pick; top-10 capital"
+  },
+  {
+    "player_id": "wr-chris-olave",
+    "player_name": "Chris Olave",
+    "position": "WR",
+    "class_year": 2022,
+    "actual_pick": 11,
+    "actual_round": 1,
+    "picking_team": "New Orleans Saints",
+    "draft_capital_proxy_0_100": 88.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "11th overall pick"
+  },
+  {
+    "player_id": "wr-jameson-williams",
+    "player_name": "Jameson Williams",
+    "position": "WR",
+    "class_year": 2022,
+    "actual_pick": 12,
+    "actual_round": 1,
+    "picking_team": "Detroit Lions",
+    "draft_capital_proxy_0_100": 88.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "12th overall pick; ACL \u2014 year 1 missed"
+  },
+  {
+    "player_id": "wr-treylon-burks",
+    "player_name": "Treylon Burks",
+    "position": "WR",
+    "class_year": 2022,
+    "actual_pick": 18,
+    "actual_round": 1,
+    "picking_team": "Tennessee Titans",
+    "draft_capital_proxy_0_100": 82.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "18th overall pick"
+  },
+  {
+    "player_id": "rb-breece-hall",
+    "player_name": "Breece Hall",
+    "position": "RB",
+    "class_year": 2022,
+    "actual_pick": 36,
+    "actual_round": 2,
+    "picking_team": "New York Jets",
+    "draft_capital_proxy_0_100": 62.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "36th overall pick (R2P4); talent over capital archetype"
+  }
+]
