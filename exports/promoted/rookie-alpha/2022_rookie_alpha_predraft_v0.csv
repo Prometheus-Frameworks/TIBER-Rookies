@@ -1,0 +1,7 @@
+rookie_alpha_rank,player_id,player_name,position,ras_0_100,production_0_100,draft_capital_proxy_0_100,talent_score_0_100,rookie_alpha_0_100,consensus_delta,talent_rank,draft_proxy_delta,model_inputs_missing,market_conviction_ras_override,wr_translation_penalty
+1,wr-garrett-wilson,Garrett Wilson,WR,57.7843,85.0,90.0,73.0931,76.4745,-13.5,1,0,,,
+2,wr-jameson-williams,Jameson Williams,WR,50.0,88.0,88.0,71.375,74.7,-13.3,3,1,ras,,
+3,wr-chris-olave,Chris Olave,WR,58.8917,78.0,88.0,69.6401,73.3121,-14.7,4,1,,,
+4,wr-drake-london,Drake London,WR,38.4018,80.0,92.0,61.8008,71.8406,-20.2,5,1,,4.0,
+5,rb-breece-hall,Breece Hall,RB,50.0,88.0,62.0,71.375,69.5,7.5,2,-3,,,
+6,wr-treylon-burks,Treylon Burks,WR,46.1368,70.0,82.0,59.5599,64.0479,-18.0,6,0,,,

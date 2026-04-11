@@ -1,0 +1,56 @@
+[
+  {
+    "player_id": "wr-garrett-wilson",
+    "player_name": "Garrett Wilson",
+    "position": "WR",
+    "school": "Ohio State",
+    "class_year": 2022,
+    "production_score_0_100": 85.0,
+    "production_score_source": "manual_historical_seed (2021: 70 rec/1058 yds/12 TDs; B1G; shared target with Olave; age 21)"
+  },
+  {
+    "player_id": "wr-drake-london",
+    "player_name": "Drake London",
+    "position": "WR",
+    "school": "USC",
+    "class_year": 2022,
+    "production_score_0_100": 80.0,
+    "production_score_source": "manual_historical_seed (2021: 88 rec/1084 yds/7 TDs in 8 games \u2014 ankle fracture; per-game pace elite; Pac-12; age 20)"
+  },
+  {
+    "player_id": "wr-chris-olave",
+    "player_name": "Chris Olave",
+    "position": "WR",
+    "school": "Ohio State",
+    "class_year": 2022,
+    "production_score_0_100": 78.0,
+    "production_score_source": "manual_historical_seed (2021: 65 rec/936 yds/13 TDs; B1G; shared target with Wilson; age 21)"
+  },
+  {
+    "player_id": "wr-jameson-williams",
+    "player_name": "Jameson Williams",
+    "position": "WR",
+    "school": "Alabama",
+    "class_year": 2022,
+    "production_score_0_100": 88.0,
+    "production_score_source": "manual_historical_seed (2021: 79 rec/1572 yds/15 TDs; SEC; transferred from OSU; age 21; CFP ACL Jan 2022)"
+  },
+  {
+    "player_id": "wr-treylon-burks",
+    "player_name": "Treylon Burks",
+    "position": "WR",
+    "school": "Arkansas",
+    "class_year": 2022,
+    "production_score_0_100": 70.0,
+    "production_score_source": "manual_historical_seed (2021: 66 rec/1104 yds/11 TDs; SEC mid-tier; age 21; scheme-heavy YAC profile)"
+  },
+  {
+    "player_id": "rb-breece-hall",
+    "player_name": "Breece Hall",
+    "position": "RB",
+    "school": "Iowa State",
+    "class_year": 2022,
+    "production_score_0_100": 88.0,
+    "production_score_source": "manual_historical_seed (2021: 312 att/1472 yds/20 TDs + 60 rec/348 yds; Big 12; dual-threat elite; age 21)"
+  }
+]

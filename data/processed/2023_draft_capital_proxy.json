@@ -1,0 +1,98 @@
+[
+  {
+    "player_id": "rb-bijan-robinson",
+    "player_name": "Bijan Robinson",
+    "position": "RB",
+    "class_year": 2023,
+    "actual_pick": 8,
+    "actual_round": 1,
+    "picking_team": "Atlanta Falcons",
+    "draft_capital_proxy_0_100": 92.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "8th overall pick; primary 2023 RB calibration anchor"
+  },
+  {
+    "player_id": "rb-jahmyr-gibbs",
+    "player_name": "Jahmyr Gibbs",
+    "position": "RB",
+    "class_year": 2023,
+    "actual_pick": 12,
+    "actual_round": 1,
+    "picking_team": "Detroit Lions",
+    "draft_capital_proxy_0_100": 88.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "12th overall pick"
+  },
+  {
+    "player_id": "wr-jaxon-smith-njigba",
+    "player_name": "Jaxon Smith-Njigba",
+    "position": "WR",
+    "class_year": 2023,
+    "actual_pick": 20,
+    "actual_round": 1,
+    "picking_team": "Seattle Seahawks",
+    "draft_capital_proxy_0_100": 83.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "20th overall pick"
+  },
+  {
+    "player_id": "wr-quentin-johnston",
+    "player_name": "Quentin Johnston",
+    "position": "WR",
+    "class_year": 2023,
+    "actual_pick": 21,
+    "actual_round": 1,
+    "picking_team": "Los Angeles Chargers",
+    "draft_capital_proxy_0_100": 82.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "21st overall pick; capital trap \u2014 talent score vs alpha discrepancy expected"
+  },
+  {
+    "player_id": "wr-zay-flowers",
+    "player_name": "Zay Flowers",
+    "position": "WR",
+    "class_year": 2023,
+    "actual_pick": 22,
+    "actual_round": 1,
+    "picking_team": "Baltimore Ravens",
+    "draft_capital_proxy_0_100": 81.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "22nd overall pick"
+  },
+  {
+    "player_id": "wr-jordan-addison",
+    "player_name": "Jordan Addison",
+    "position": "WR",
+    "class_year": 2023,
+    "actual_pick": 23,
+    "actual_round": 1,
+    "picking_team": "Minnesota Vikings",
+    "draft_capital_proxy_0_100": 80.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "23rd overall pick"
+  },
+  {
+    "player_id": "wr-tank-dell",
+    "player_name": "Tank Dell",
+    "position": "WR",
+    "class_year": 2023,
+    "actual_pick": 110,
+    "actual_round": 4,
+    "picking_team": "Houston Texans",
+    "draft_capital_proxy_0_100": 40.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "110th overall pick (R4P14); late-round value hit calibration"
+  },
+  {
+    "player_id": "wr-puka-nacua",
+    "player_name": "Puka Nacua",
+    "position": "WR",
+    "class_year": 2023,
+    "actual_pick": 177,
+    "actual_round": 5,
+    "picking_team": "Los Angeles Rams",
+    "draft_capital_proxy_0_100": 27.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "177th overall pick (R5P36); extreme late-round efficiency hit \u2014 105 catches rookie year"
+  }
+]

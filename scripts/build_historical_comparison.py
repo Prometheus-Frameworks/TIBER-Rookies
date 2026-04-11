@@ -13,7 +13,7 @@ from pathlib import Path
 
 
 OUTPUT_DIR = Path("exports/promoted/rookie-alpha")
-SEASONS = [2026, 2025, 2024]
+SEASONS = [2026, 2025, 2024, 2023, 2022]
 
 FIELDNAMES = [
     "draft_class",
