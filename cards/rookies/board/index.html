@@ -3,13 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TIBER Rookie Board | 2026</title>
+    <title>TIBER Rookie Board | Multi-Class</title>
     <link rel="stylesheet" href="/components/rookies/rookieCardStyles.css" />
   </head>
   <body>
     <main class="page">
       <a class="nav-link" href="/cards/rookies/index.html">← Back to rookie gallery</a>
-      <div class="section-title" style="margin-top: 12px">TIBER 2026 Rookie Board</div>
+      <div class="section-title" style="margin-top: 12px">TIBER Rookie Board</div>
       <h1>Draft board surface</h1>
       <p class="meta">Ranking-first board powered by promoted Rookie Grade artifacts. Use tiers to spot cliffs, then jump to detail/compare.</p>
       <p style="margin-top: 10px"><a class="nav-link" href="/cards/rookies/compare/index.html">Open compare tool →</a></p>
@@ -38,7 +38,8 @@
       const queueJumpLink = document.getElementById('queue-jump-link');
       const SORT_OPTIONS = new Set(['grade', 'rank', 'position']);
       const VIEW_OPTIONS = new Set(['tiered', 'flat']);
-      const state = { sort: 'grade', position: 'ALL', view: 'tiered' };
+      const DRAFT_CLASS_OPTIONS = new Set(['ALL', '2026', '2025', '2024', '2023', '2022']);
+      const state = { sort: 'grade', position: 'ALL', draftClass: 'ALL', view: 'tiered' };
       const compareState = { left: null, right: null };
       const portabilityState = { mode: 'replace', tone: 'info', message: '' };
 
@@ -49,17 +50,20 @@
         const params = new URLSearchParams(window.location.search);
         const sort = params.get('sort');
         const position = params.get('position');
+        const draftClass = params.get('draftClass');
         const view = params.get('view');
 
         if (SORT_OPTIONS.has(sort)) state.sort = sort;
         if (VIEW_OPTIONS.has(view)) state.view = view;
         if (position && position.trim()) state.position = position.toUpperCase();
+        if (DRAFT_CLASS_OPTIONS.has(draftClass)) state.draftClass = draftClass;
       }
 
       function syncUrlState() {
         const next = new URL(window.location.href);
         next.searchParams.set('sort', state.sort);
         next.searchParams.set('position', state.position);
+        next.searchParams.set('draftClass', state.draftClass);
         next.searchParams.set('view', state.view);
         window.history.replaceState({}, '', next.toString());
       }
@@ -300,7 +304,7 @@
       function render(allRows) {
         const positions = collectPositions(allRows);
         if (state.position !== 'ALL' && !positions.includes(state.position)) state.position = 'ALL';
-        const filtered = filterRookieBoard(allRows, { position: state.position });
+        const filtered = filterRookieBoard(allRows, { position: state.position, draftClass: state.draftClass });
         const sorted = sortRookieBoard(filtered, state.sort);
         const queue = loadRookieQueue();
 
