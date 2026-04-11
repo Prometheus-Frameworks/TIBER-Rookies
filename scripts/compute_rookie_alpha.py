@@ -67,6 +67,10 @@ CONTEXT_EVIDENCE_TAG_VOCAB = {
     "acl_injury_predraft",
     # transfer / backfield context
     "shared_backfield_context",
+    # craft / technician tags (used by market-conviction RAS override)
+    "route_runner",           # technique-driven separation; not athleticism-dependent
+    "contested_catch_signal", # hands + body control; catch % in traffic above average
+    "yprr_elite",             # career or peak YPRR >= 2.3; most predictive WR efficiency metric
 }
 
 CONTEXT_FLAG_VOCAB = {
@@ -108,6 +112,72 @@ TRANSLATION_FLAG_VOCAB = {
     "broken_offense_context",
     "acl_injury_predraft",
 }
+
+# ---------------------------------------------------------------------------
+# Exceptional metric detection and ceiling bonus
+# ---------------------------------------------------------------------------
+# Any combine metric with |z| >= EXCEPTIONAL_Z_THRESHOLD within the position
+# peer group is flagged as exceptional (informational; already captured by RAS).
+EXCEPTIONAL_Z_THRESHOLD = 1.65  # ~top/bottom 5% within group
+
+# Context-sourced exceptional_metrics entries (from 2026_prospect_context.json)
+# may carry a ceiling bonus to alpha when alpha_bonus_eligible=True.
+# Use this for metrics not captured by the model formula (e.g. contested catch
+# rate, historically elite 3-cone when peer group is too small to normalize).
+CEILING_BONUS_TIERS: dict[str, float] = {
+    "notable": 0.0,   # surface only; no alpha adjustment
+    "elite": 1.5,     # verified top ~5-10% historically
+    "historic": 3.0,  # verified top 1-2% historically; generational metric
+}
+CEILING_BONUS_CAP = 5.0  # max total ceiling bonus applied to alpha
+
+# ---------------------------------------------------------------------------
+# Market-conviction RAS override
+# ---------------------------------------------------------------------------
+# Fires ONLY when all of the following are true:
+#   1. Position is WR or TE (not RB — different failure mode)
+#   2. RAS was actually computed from combine data (not None / missing fallback)
+#   3. Confirmed RAS < MARKET_CONVICTION_RAS_CAP
+#   4. Draft capital proxy >= MARKET_CONVICTION_CAPITAL_FLOOR (Day 2+ investment)
+#   5. At least one craft/efficiency signal is present — either a qualifying
+#      evidence_tag OR a numeric context field above its threshold.
+#      Capital alone does not trigger; the market must be corroborated by
+#      something we independently observe in the context file.
+#
+# Rationale: RAS penalises technician WRs/TEs whose craft (route running,
+# contested catch, separation via timing) does not show up on a timing sheet.
+# When confirmed-low RAS conflicts with high draft investment AND an observed
+# craft signal, the model's athletic penalty is likely overstated.
+#
+# This is an additive post-score field. It never mutates the base formula.
+# It is logged clearly and surfaced in the output payload.
+MARKET_CONVICTION_POSITIONS: frozenset[str] = frozenset({"WR", "TE"})
+MARKET_CONVICTION_RAS_CAP = 45.0        # confirmed RAS must be strictly below this
+MARKET_CONVICTION_CAPITAL_FLOOR = 65.0  # proxy must be >= this (~pick 50 / Day 2)
+
+# Evidence tags that qualify as a craft signal
+MARKET_CONVICTION_CRAFT_TAGS: frozenset[str] = frozenset({
+    "elite_efficiency_tier",
+    "inside_out_versatility",
+    "yac_signal",
+    "elite_yac_producer",
+    "multi_season_efficiency",
+    "route_runner",
+    "contested_catch_signal",
+    "yprr_elite",
+    "r1_p4_wr_comps",
+})
+
+# Numeric context field thresholds that also qualify as a craft signal
+# (field_name, minimum_value)
+MARKET_CONVICTION_NUMERIC_SIGNALS: list[tuple[str, float]] = [
+    ("career_yards_per_route_run", 2.3),   # elite YPRR floor
+    ("best_season_yprr", 2.6),             # exceptional peak season
+    ("contested_catch_rate", 0.45),        # above-average in-traffic catch rate
+]
+
+MARKET_CONVICTION_BONUS_BASE = 2.5    # 1 craft signal
+MARKET_CONVICTION_BONUS_STRONG = 4.0  # 2+ craft signals
 
 
 def sha256_file(path: Path) -> str:
@@ -193,7 +263,47 @@ def normalize_row(
     return (player_id, player_name, position)
 
 
-def compute_ras_scores(combine_rows: list[dict[str, Any]]) -> dict[str, float]:
+def _flag_exceptional(
+    metric: str,
+    value: float,
+    z: float,
+    position: str,
+    direction_positive: str,
+    direction_negative: str,
+    unit: str = "",
+) -> dict[str, Any]:
+    """Build an exceptional-metric entry for a combine measurement."""
+    tier = "historic" if abs(z) >= 2.5 else "elite"
+    direction = direction_positive if z > 0 else direction_negative
+    val_str = f"{value:.2f}{unit}" if unit != '"' else f'{value:.1f}"'
+    return {
+        "metric": metric,
+        "value": value,
+        "z_score": round(z, 2),
+        "context": f"{val_str} {metric.replace('_', ' ')} ({direction}; z={z:.2f} vs {position} peer group)",
+        "percentile_tier": tier,
+        "alpha_bonus_eligible": False,
+        "source": "combine",
+    }
+
+
+def compute_ras_scores(
+    combine_rows: list[dict[str, Any]],
+) -> tuple[dict[str, float], dict[str, list[dict[str, Any]]]]:
+    """Return ``(ras_scores_by_id, exceptional_combine_metrics_by_id)``.
+
+    RAS component weights:
+      forty 0.30 / vertical 0.20 / broad 0.20 / three_cone 0.15 / size 0.15.
+    Weights are renormalized over whichever components are present.
+
+    A score is computed only when at least one explosive/agility metric is
+    available (vertical, broad, or three_cone).  Players with only 40 + size
+    (typically top picks who skipped drills) default to 50.0.
+
+    Exceptional combine metrics are flagged when any individual metric z-score
+    reaches ±EXCEPTIONAL_Z_THRESHOLD within the position peer group.  These
+    are informational only — they are already captured in the RAS score.
+    """
     by_position: dict[str, list[dict[str, Any]]] = {}
     warned_invalid_values: set[tuple[str, str, str, str]] = set()
     for idx, row in enumerate(combine_rows, start=1):
@@ -204,89 +314,71 @@ def compute_ras_scores(combine_rows: list[dict[str, Any]]) -> dict[str, float]:
         by_position.setdefault(position, []).append({"player_id": pid, **row})
 
     scores: dict[str, float] = {}
+    exceptional_combine: dict[str, list[dict[str, Any]]] = {}
+
     for position, rows in by_position.items():
-        forties = [
-            value
-            for r in rows
-            for value in [
-                coerce_float(r.get("forty"), "forty", str(r["player_id"]), "combine input", warned_invalid_values)
+        def _vals(field: str) -> list[float]:
+            return [
+                v
+                for r in rows
+                for v in [coerce_float(r.get(field), field, str(r["player_id"]), "combine input", warned_invalid_values)]
+                if v is not None
             ]
-            if value is not None
-        ]
-        verticals = [
-            value
-            for r in rows
-            for value in [
-                coerce_float(r.get("vertical"), "vertical", str(r["player_id"]), "combine input", warned_invalid_values)
-            ]
-            if value is not None
-        ]
-        broads = [
-            value
-            for r in rows
-            for value in [
-                coerce_float(r.get("broad"), "broad", str(r["player_id"]), "combine input", warned_invalid_values)
-            ]
-            if value is not None
-        ]
-        heights = [
-            value
-            for r in rows
-            for value in [
-                coerce_float(r.get("height_in"), "height_in", str(r["player_id"]), "combine input", warned_invalid_values)
-            ]
-            if value is not None
-        ]
-        weights = [
-            value
-            for r in rows
-            for value in [
-                coerce_float(r.get("weight_lb"), "weight_lb", str(r["player_id"]), "combine input", warned_invalid_values)
-            ]
-            if value is not None
-        ]
+
+        forties = _vals("forty")
+        verticals = _vals("vertical")
+        broads = _vals("broad")
+        three_cones = _vals("three_cone")
+        heights = _vals("height_in")
+        weights = _vals("weight_lb")
 
         forty_mu, forty_sd = safe_stats(forties)
         vert_mu, vert_sd = safe_stats(verticals)
         broad_mu, broad_sd = safe_stats(broads)
+        cone_mu, cone_sd = safe_stats(three_cones)
         h_mu, h_sd = safe_stats(heights)
         w_mu, w_sd = safe_stats(weights)
 
         for r in rows:
+            pid = str(r["player_id"])
             components: list[tuple[float, float]] = []
-            forty = coerce_float(r.get("forty"), "forty", str(r["player_id"]), "combine input", warned_invalid_values)
-            vertical = coerce_float(
-                r.get("vertical"),
-                "vertical",
-                str(r["player_id"]),
-                "combine input",
-                warned_invalid_values,
-            )
-            broad = coerce_float(r.get("broad"), "broad", str(r["player_id"]), "combine input", warned_invalid_values)
-            height = coerce_float(
-                r.get("height_in"),
-                "height_in",
-                str(r["player_id"]),
-                "combine input",
-                warned_invalid_values,
-            )
-            weight = coerce_float(
-                r.get("weight_lb"),
-                "weight_lb",
-                str(r["player_id"]),
-                "combine input",
-                warned_invalid_values,
-            )
+            exceptional_for_player: list[dict[str, Any]] = []
+
+            forty = coerce_float(r.get("forty"), "forty", pid, "combine input", warned_invalid_values)
+            vertical = coerce_float(r.get("vertical"), "vertical", pid, "combine input", warned_invalid_values)
+            broad = coerce_float(r.get("broad"), "broad", pid, "combine input", warned_invalid_values)
+            three_cone = coerce_float(r.get("three_cone"), "three_cone", pid, "combine input", warned_invalid_values)
+            height = coerce_float(r.get("height_in"), "height_in", pid, "combine input", warned_invalid_values)
+            weight = coerce_float(r.get("weight_lb"), "weight_lb", pid, "combine input", warned_invalid_values)
 
             if forty is not None:
                 z = (forty_mu - forty) / forty_sd  # lower is better
-                components.append((0.35, z_to_score(z)))
+                components.append((0.30, z_to_score(z)))
+                if abs(z) >= EXCEPTIONAL_Z_THRESHOLD:
+                    exceptional_for_player.append(
+                        _flag_exceptional("forty", forty, z, position, "fast", "slow", "s")
+                    )
             if vertical is not None:
                 z = (vertical - vert_mu) / vert_sd
-                components.append((0.25, z_to_score(z)))
+                components.append((0.20, z_to_score(z)))
+                if abs(z) >= EXCEPTIONAL_Z_THRESHOLD:
+                    exceptional_for_player.append(
+                        _flag_exceptional("vertical", vertical, z, position, "high", "low", '"')
+                    )
             if broad is not None:
                 z = (broad - broad_mu) / broad_sd
-                components.append((0.25, z_to_score(z)))
+                components.append((0.20, z_to_score(z)))
+                if abs(z) >= EXCEPTIONAL_Z_THRESHOLD:
+                    exceptional_for_player.append(
+                        _flag_exceptional("broad", broad, z, position, "long", "short", '"')
+                    )
+            if three_cone is not None:
+                z = (cone_mu - three_cone) / cone_sd  # lower is better
+                components.append((0.15, z_to_score(z)))
+                if abs(z) >= EXCEPTIONAL_Z_THRESHOLD:
+                    exceptional_for_player.append(
+                        _flag_exceptional("three_cone", three_cone, z, position, "fast", "slow", "s")
+                    )
 
             size_parts: list[float] = []
             if height is not None:
@@ -296,19 +388,25 @@ def compute_ras_scores(combine_rows: list[dict[str, Any]]) -> dict[str, float]:
             if size_parts:
                 components.append((0.15, mean(size_parts)))
 
-            # Require at least one explosive metric (vertical or broad) alongside
+            # Require at least one explosive/agility metric (vertical, broad, or
+            # three_cone). Without these, the score is built almost entirely from
+            # 40 + size and is not a reliable RAS proxy — most often this means
+            # the player skipped testing (a non-signal for top picks), not that
+            # they lack athleticism. Omit rather than mislead.
             # the 40-yard dash. Without explosive metrics, the score is built
             # almost entirely from 40 + size and is not a reliable RAS proxy —
             # most often this means the player skipped testing (a non-signal for
             # top picks), not that they lack athleticism. Omit rather than mislead.
-            has_explosive = vertical is not None or broad is not None
+            has_explosive = vertical is not None or broad is not None or three_cone is not None
             if components and has_explosive:
-                weight_sum = sum(weight for weight, _ in components)
-                weighted = sum(weight * score for weight, score in components) / weight_sum
-                scores[str(r["player_id"])] = clamp_0_100(weighted)
+                weight_sum = sum(w for w, _ in components)
+                weighted = sum(w * s for w, s in components) / weight_sum
+                scores[pid] = clamp_0_100(weighted)
+                if exceptional_for_player:
+                    exceptional_combine[pid] = exceptional_for_player
             # else: leave player out of scores dict → RAS treated as null (→ 50.0 default in alpha)
 
-    return scores
+    return scores, exceptional_combine
 
 
 AGE_ADJUSTED_BLEND_WEIGHT = 0.60  # weight on age-adjusted score
@@ -383,6 +481,22 @@ RB_MTF_BELOW_AVG_THRESHOLD = 0.20  # below → below-average tier (−2.5 pts)
 RB_YAC_SEVERE_THRESHOLD = 40.0   # < 40 yd/game → −4 pts
 RB_YAC_CONCERN_THRESHOLD = 48.0  # < 48 yd/game → −2 pts
 
+# WR production translation penalties: penalize manufactured/low-translation
+# production profiles. Three independent signals — screen-heavy yards, lack of
+# vertical route evidence, and slot separation concern — each apply a tiered
+# deduction to production_score_0_100. Applied after the efficiency-tier reblend
+# so both quality signals hit the final production score independently.
+# All signals are null-safe: they fire only when the field is present in context.
+# Combined total is capped at WR_TRANSLATION_PENALTY_CAP to prevent triple-taxing
+# correlated archetypes (screen-heavy slot WRs tend to score poorly on all three).
+WR_SCREEN_CONCERN_THRESHOLD = 0.40   # screen_yard_share > → -3.0 pts
+WR_SCREEN_SEVERE_THRESHOLD  = 0.50   # screen_yard_share > → -5.0 pts
+WR_DEEP_CONCERN_THRESHOLD   = 0.245  # deep_yard_share < → -2.0 pts
+WR_DEEP_SEVERE_THRESHOLD    = 0.18   # deep_yard_share < → -4.0 pts
+WR_SLOT_CONTESTED_CONCERN   = 0.30   # slot_contested_target_rate > → -1.5 pts
+WR_SLOT_CONTESTED_SEVERE    = 0.40   # slot_contested_target_rate > → -3.0 pts
+WR_TRANSLATION_PENALTY_CAP  = 8.0    # max combined penalty across all three signals
+
 
 def apply_context_production_adjustments(
     production_rows: list[dict[str, Any]],
@@ -390,7 +504,7 @@ def apply_context_production_adjustments(
 ) -> list[dict[str, Any]]:
     """Apply context-driven adjustments to blended production scores.
 
-    Two adjustments:
+    Three adjustments (applied in order):
 
     1. **WR elite_efficiency_tier re-blend** — for WRs with verified 75th+
        pctile YPRR/passer-rating/TPRR whose age-adjusted score is pulling their
@@ -399,7 +513,17 @@ def apply_context_production_adjustments(
        low-target-share / high-efficiency WRs (Sarratt archetype; Nacua precedent).
        Only applied when age_adj < raw — never harms early-breakout WRs.
 
-    2. **RB MTF penalty** — for RBs with ``career_mtf_per_touch`` below threshold,
+    2. **WR production translation penalties** — three independent signals that
+       penalize manufactured/low-translation production profiles:
+         - screen_yard_share > 0.40 → −3.0 pts / > 0.50 → −5.0 pts
+         - deep_yard_share < 0.245 → −2.0 pts / < 0.18 → −4.0 pts
+         - slot_contested_target_rate > 0.30 → −1.5 pts / > 0.40 → −3.0 pts
+       Combined total capped at −8.0 to prevent triple-taxing correlated
+       archetypes (screen-heavy slot WRs tend to score poorly on all three).
+       Each signal is null-safe — fires only when the field exists in context.
+       Penalty amount stored as ``wr_translation_penalty`` on the row.
+
+    3. **RB MTF penalty** — for RBs with ``career_mtf_per_touch`` below threshold,
        apply a tiered production deduction:
          < 0.18 → −5 pts   (poor tier: bottom ~10% of Day-2 RBs since 2014)
          < 0.20 → −2.5 pts (below-average tier)
@@ -439,6 +563,66 @@ def apply_context_production_adjustments(
             )
             row["production_score_0_100"] = new_blended
             row["efficiency_tier_reblend"] = True
+
+        # --- WR production translation penalties ---
+        # Three independent signals; each null-safe. Applied after efficiency-
+        # tier reblend so both production-quality adjustments land separately.
+        # Combined total is capped at WR_TRANSLATION_PENALTY_CAP.
+        if position == "WR":
+            translation_signals: list[tuple[str, float]] = []  # (audit_label, penalty_pts)
+
+            screen = ctx.get("screen_yard_share")
+            if screen is not None:
+                sv = float(screen)
+                if sv > WR_SCREEN_SEVERE_THRESHOLD:
+                    translation_signals.append(
+                        (f"screen_yard_share={sv:.2f} > {WR_SCREEN_SEVERE_THRESHOLD}", 5.0)
+                    )
+                elif sv > WR_SCREEN_CONCERN_THRESHOLD:
+                    translation_signals.append(
+                        (f"screen_yard_share={sv:.2f} > {WR_SCREEN_CONCERN_THRESHOLD}", 3.0)
+                    )
+
+            deep = ctx.get("deep_yard_share")
+            if deep is not None:
+                dv = float(deep)
+                if dv < WR_DEEP_SEVERE_THRESHOLD:
+                    translation_signals.append(
+                        (f"deep_yard_share={dv:.2f} < {WR_DEEP_SEVERE_THRESHOLD}", 4.0)
+                    )
+                elif dv < WR_DEEP_CONCERN_THRESHOLD:
+                    translation_signals.append(
+                        (f"deep_yard_share={dv:.2f} < {WR_DEEP_CONCERN_THRESHOLD}", 2.0)
+                    )
+
+            slot_ct = ctx.get("slot_contested_target_rate")
+            if slot_ct is not None:
+                scv = float(slot_ct)
+                if scv > WR_SLOT_CONTESTED_SEVERE:
+                    translation_signals.append(
+                        (f"slot_contested_target_rate={scv:.2f} > {WR_SLOT_CONTESTED_SEVERE}", 3.0)
+                    )
+                elif scv > WR_SLOT_CONTESTED_CONCERN:
+                    translation_signals.append(
+                        (f"slot_contested_target_rate={scv:.2f} > {WR_SLOT_CONTESTED_CONCERN}", 1.5)
+                    )
+
+            if translation_signals:
+                raw_total = sum(pen for _, pen in translation_signals)
+                capped = min(raw_total, WR_TRANSLATION_PENALTY_CAP)
+                old_score = float(row.get("production_score_0_100") or 50.0)
+                new_score = clamp_0_100(old_score - capped)
+                detail_parts = [f"{label} → -{pen:.1f}" for label, pen in translation_signals]
+                if capped < raw_total:
+                    detail_parts.append(f"cap applied ({raw_total:.1f} → {capped:.1f})")
+                signal_detail = " | ".join(detail_parts)
+                logging.info(
+                    "WR translation penalty for %s: %.1f → %.1f (−%.1f) [%s]",
+                    pid, old_score, new_score, capped, signal_detail,
+                )
+                row["production_score_0_100"] = round(new_score, 4)
+                row["wr_translation_penalty"] = round(capped, 2)
+                row["wr_translation_signals"] = signal_detail
 
         # --- RB MTF penalty ---
         if position == "RB":
@@ -557,7 +741,7 @@ def merge_inputs(
                 seen,
             )
 
-    ras_by_id = compute_ras_scores(combine_rows)
+    ras_by_id, exceptional_combine_by_id = compute_ras_scores(combine_rows)
     warned_invalid_values: set[tuple[str, str, str, str]] = set()
     prod_by_id: dict[str, float] = {}
     age_adj_by_id: dict[str, float] = {}
@@ -639,7 +823,7 @@ def merge_inputs(
             "total_excluded": len(excluded_ids | conflicting_across_sources),
         },
     )
-    return players, diagnostics
+    return players, diagnostics, exceptional_combine_by_id
 
 
 def load_context_by_player_id(context_path: Path | None) -> dict[str, dict[str, Any]]:
@@ -740,6 +924,67 @@ def talent_score(player: PlayerInputs) -> float:
     return clamp_0_100((0.4375 * ras) + (0.5625 * production))
 
 
+def compute_market_conviction_override(
+    position: str,
+    ras_score: float | None,
+    capital: float | None,
+    raw_context: dict[str, Any] | None,
+) -> tuple[float, str | None]:
+    """Return (bonus, reason) for the market-conviction RAS override.
+
+    Never fires if RAS is None (missing/defaulted) — only confirmed combine
+    scores below the threshold qualify. Capital alone is not sufficient; at
+    least one independently-observed craft signal is required.
+    """
+    if position not in MARKET_CONVICTION_POSITIONS:
+        return 0.0, None
+    if ras_score is None:
+        return 0.0, None  # missing/defaulted RAS must never trigger
+    if ras_score >= MARKET_CONVICTION_RAS_CAP:
+        return 0.0, None
+    cap_val = capital if capital is not None else 50.0
+    if cap_val < MARKET_CONVICTION_CAPITAL_FLOOR:
+        return 0.0, None
+    if not raw_context:
+        return 0.0, None
+
+    craft_signals: list[str] = []
+
+    # Tag-based signals
+    raw_tags = set(raw_context.get("evidence_tags", []))
+    for tag in sorted(MARKET_CONVICTION_CRAFT_TAGS):
+        if tag in raw_tags:
+            craft_signals.append(f"tag:{tag}")
+
+    # inside_out_versatility_flag (boolean field, separate from evidence tag)
+    if raw_context.get("inside_out_versatility_flag"):
+        signal = "field:inside_out_versatility_flag"
+        if signal not in craft_signals:
+            craft_signals.append(signal)
+
+    # Numeric field thresholds
+    for field, threshold in MARKET_CONVICTION_NUMERIC_SIGNALS:
+        val = raw_context.get(field)
+        if val is not None:
+            try:
+                if float(val) >= threshold:
+                    craft_signals.append(f"field:{field}>={threshold}")
+            except (TypeError, ValueError):
+                pass
+
+    if not craft_signals:
+        return 0.0, None
+
+    bonus = MARKET_CONVICTION_BONUS_STRONG if len(craft_signals) >= 2 else MARKET_CONVICTION_BONUS_BASE
+    reason = (
+        f"{position} craft override: confirmed RAS {ras_score:.1f} < {MARKET_CONVICTION_RAS_CAP} "
+        f"| capital {cap_val:.0f} >= {MARKET_CONVICTION_CAPITAL_FLOOR} "
+        f"| craft signals [{', '.join(craft_signals)}] "
+        f"| +{bonus:.1f} pts"
+    )
+    return bonus, reason
+
+
 def write_outputs(
     players: list[PlayerInputs],
     merge_diagnostics: MergeDiagnostics,
@@ -752,17 +997,62 @@ def write_outputs(
     output_manifest: Path,
     context_path: Path | None = None,
     context_by_id: dict[str, dict[str, Any]] | None = None,
+    exceptional_combine_by_id: dict[str, list[dict[str, Any]]] | None = None,
+    wr_translation_penalty_by_id: dict[str, tuple[float, str]] | None = None,
 ) -> None:
     generated_at = datetime.now(tz=timezone.utc).replace(microsecond=0).isoformat()
     run_id = f"rookie-alpha-{season}-{generated_at}"
 
     ranked: list[dict[str, Any]] = []
     context_by_id = context_by_id or {}
+    exceptional_combine_by_id = exceptional_combine_by_id or {}
     players_with_context = 0
     missing_any = 0
     for p in players:
         alpha = rookie_alpha_score(p)
         ts = talent_score(p)
+
+        # ------------------------------------------------------------------
+        # Exceptional metrics: combine-derived (informational, already in RAS)
+        # + context-sourced (may carry ceiling bonus when alpha_bonus_eligible).
+        # Computed before the scores dict so ceiling_bonus can adjust alpha.
+        # ------------------------------------------------------------------
+        player_exceptional: list[dict[str, Any]] = []
+
+        combine_exc = exceptional_combine_by_id.get(p.player_id, [])
+        player_exceptional.extend(combine_exc)
+
+        ctx_exc: list[dict[str, Any]] = context_by_id.get(p.player_id, {}).get("exceptional_metrics") or []
+        player_exceptional.extend(ctx_exc)
+
+        ceiling_bonus = 0.0
+        for em in ctx_exc:
+            if em.get("alpha_bonus_eligible", False):
+                ceiling_bonus += CEILING_BONUS_TIERS.get(em.get("percentile_tier", "notable"), 0.0)
+        ceiling_bonus = min(ceiling_bonus, CEILING_BONUS_CAP)
+        if ceiling_bonus > 0.0:
+            logging.info(
+                "Ceiling bonus for %s: +%.1f pts (alpha %.4f → %.4f)",
+                p.player_id, ceiling_bonus, alpha, min(100.0, alpha + ceiling_bonus),
+            )
+            alpha = clamp_0_100(alpha + ceiling_bonus)
+
+        # Market-conviction RAS override — additive post-score, logged separately.
+        # Uses raw context row so numeric fields and unfiltered tags are accessible.
+        raw_ctx = context_by_id.get(p.player_id)
+        mc_bonus, mc_reason = compute_market_conviction_override(
+            p.position,
+            p.ras_score_0_100,           # None → confirmed missing → no trigger
+            p.draft_capital_proxy_0_100,
+            raw_ctx,
+        )
+        if mc_bonus > 0.0:
+            logging.info(
+                "Market conviction override for %s: %s",
+                p.player_id, mc_reason,
+            )
+            alpha = clamp_0_100(alpha + mc_bonus)
+
         missing_components = [
             key
             for key, value in {
@@ -798,10 +1088,21 @@ def write_outputs(
                 "draft_capital_proxy_0_100": round(draft_val, 4),
                 "talent_score_0_100": round(ts, 4),
                 "rookie_alpha_0_100": round(alpha, 4),
+                "ceiling_bonus": round(ceiling_bonus, 2) if ceiling_bonus > 0.0 else None,
+                "market_conviction_ras_override": round(mc_bonus, 2) if mc_bonus > 0.0 else None,
+                "market_conviction_reason": mc_reason,
+                "wr_translation_penalty": round(
+                    (wr_translation_penalty_by_id or {}).get(p.player_id, (0.0, ""))[0], 2
+                ) if (wr_translation_penalty_by_id or {}).get(p.player_id) else None,
+                "wr_translation_signals": (wr_translation_penalty_by_id or {}).get(p.player_id, (None, None))[1]
+                or None,
                 "consensus_delta": consensus_delta,
             },
             "model_inputs_missing": missing_components,
         }
+        if player_exceptional:
+            row_payload["exceptional_metrics"] = player_exceptional
+
         if p.player_id in context_by_id:
             row_payload.update(normalize_context_entry(context_by_id[p.player_id]))
             players_with_context += 1
@@ -845,7 +1146,7 @@ def write_outputs(
             "name": "tiber-rookie-alpha",
             "stage": "pre-draft",
             "label": "pre-draft v0",
-            "model_version": "rookie-alpha-predraft-v0.2.0",
+            "model_version": "rookie-alpha-predraft-v0.4.0",
             "formula": {
                 "ras_weight": 0.35,
                 "production_weight": 0.45,
@@ -897,6 +1198,8 @@ def write_outputs(
                 "talent_rank",
                 "draft_proxy_delta",
                 "model_inputs_missing",
+                "market_conviction_ras_override",
+                "wr_translation_penalty",
             ],
         )
         writer.writeheader()
@@ -916,6 +1219,8 @@ def write_outputs(
                     "talent_rank": row["talent_rank"],
                     "draft_proxy_delta": row["draft_proxy_delta"],
                     "model_inputs_missing": ",".join(row["model_inputs_missing"]),
+                    "market_conviction_ras_override": row["scores"].get("market_conviction_ras_override") or "",
+                    "wr_translation_penalty": row["scores"].get("wr_translation_penalty") or "",
                 }
             )
 
@@ -1081,7 +1386,17 @@ def main() -> None:
 
     production_rows = apply_context_production_adjustments(production_rows, context_by_id)
 
-    players, merge_diagnostics = merge_inputs(combine_rows, production_rows, draft_rows)
+    # Extract WR translation penalties from the adjusted rows before merge strips them.
+    wr_translation_penalty_by_id: dict[str, tuple[float, str]] = {
+        row["player_id"]: (
+            float(row["wr_translation_penalty"]),
+            row.get("wr_translation_signals", ""),
+        )
+        for row in production_rows
+        if row.get("wr_translation_penalty") is not None and row.get("player_id")
+    }
+
+    players, merge_diagnostics, exceptional_combine_by_id = merge_inputs(combine_rows, production_rows, draft_rows)
     write_outputs(
         players=players,
         merge_diagnostics=merge_diagnostics,
@@ -1094,6 +1409,8 @@ def main() -> None:
         output_manifest=output_manifest,
         context_path=context_input,
         context_by_id=context_by_id,
+        exceptional_combine_by_id=exceptional_combine_by_id,
+        wr_translation_penalty_by_id=wr_translation_penalty_by_id,
     )
 
 

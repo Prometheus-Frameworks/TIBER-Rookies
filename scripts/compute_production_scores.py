@@ -8,6 +8,7 @@ import json
 import logging
 import os
 import re
+import time
 from dataclasses import dataclass
 from pathlib import Path
 from statistics import mean, pstdev
@@ -108,7 +109,7 @@ def school_aliases(raw_school: str) -> set[str]:
     return aliases
 
 
-def fetch_cfbd_category(year: int, category: str) -> list[dict[str, Any]]:
+def fetch_cfbd_category(year: int, category: str, max_retries: int = 5) -> list[dict[str, Any]]:
     params = urlencode({"year": year, "category": category})
     url = f"{CFBD_BASE_URL}/stats/player/season?{params}"
     headers = {"Accept": "application/json"}
@@ -118,18 +119,36 @@ def fetch_cfbd_category(year: int, category: str) -> list[dict[str, Any]]:
     else:
         logging.warning("CFBD_API_KEY not set; using unauthenticated CFBD requests (may be rate-limited).")
 
-    request = Request(url=url, headers=headers)
-    try:
-        with urlopen(request, timeout=60) as response:
-            payload = json.load(response)
-    except HTTPError as exc:
-        raise SystemExit(f"CFBD API request failed for {category}: HTTP {exc.code}") from exc
-    except URLError as exc:
-        raise SystemExit(f"CFBD API request failed for {category}: {exc.reason}") from exc
+    for attempt in range(max_retries):
+        request = Request(url=url, headers=headers)
+        try:
+            with urlopen(request, timeout=60) as response:
+                payload = json.load(response)
+            if not isinstance(payload, list):
+                raise SystemExit(
+                    f"Unexpected CFBD response for {category}: expected list, got {type(payload).__name__}"
+                )
+            return payload
+        except HTTPError as exc:
+            if exc.code == 429:
+                wait = 10 * (2 ** attempt)  # 10s, 20s, 40s, 80s, 160s
+                logging.warning(
+                    "Rate limited (429) for %s year=%s attempt %d — retrying in %ds",
+                    category, year, attempt + 1, wait,
+                )
+                time.sleep(wait)
+            else:
+                raise SystemExit(
+                    f"CFBD API request failed for {category} year={year}: HTTP {exc.code}"
+                ) from exc
+        except URLError as exc:
+            raise SystemExit(
+                f"CFBD API request failed for {category} year={year}: {exc.reason}"
+            ) from exc
 
-    if not isinstance(payload, list):
-        raise SystemExit(f"Unexpected CFBD response for {category}: expected list, got {type(payload).__name__}")
-    return payload
+    raise SystemExit(
+        f"CFBD API failed after {max_retries} attempts for {category} year={year} (rate limited)"
+    )
 
 
 def pivot_stats(rows: list[dict[str, Any]]) -> dict[tuple[str, str], dict[str, Any]]:

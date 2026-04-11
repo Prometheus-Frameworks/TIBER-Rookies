@@ -1,0 +1,59 @@
+draft_class,class_rank,player_id,player_name,position,ras_0_100,production_0_100,draft_capital_proxy_0_100,talent_score_0_100,rookie_alpha_0_100,consensus_delta,talent_rank,draft_proxy_delta,model_inputs_missing
+2026,1,rb-jeremiyah-love,Jeremiyah Love,RB,50.0,90.0,95.0,72.5,77.0,-18.0,1,0,ras
+2026,2,qb-ty-simpson,Ty Simpson,QB,50.0,77.48,85.0,65.4575,69.366,-15.6,5,3,ras
+2026,3,qb-fernando-mendoza,Fernando Mendoza,QB,50.0,70.34,95.0,61.4413,68.153,-26.8,7,4,ras
+2026,4,te-eli-stowers,Eli Stowers,TE,49.9642,84.2,55.0,69.2219,67.8775,12.9,3,-1,
+2026,5,wr-antonio-williams,Antonio Williams,WR,50.0,84.8,55.0,69.575,66.66,11.7,2,-3,ras
+2026,6,wr-jordyn-tyson,Jordyn Tyson,WR,50.0,66.14,95.0,59.0787,66.263,-28.7,8,2,ras
+2026,7,qb-garrett-nussmeier,Garrett Nussmeier,QB,50.0,80.52,55.0,67.1675,64.734,9.7,4,-3,ras
+2026,8,rb-jonah-coleman,Jonah Coleman,RB,50.0,71.62,45.0,62.1613,63.229,18.2,6,-2,ras
+2026,9,wr-carnell-tate,Carnell Tate,WR,50.0,53.9,95.0,52.1937,60.755,-34.2,13,4,ras
+2026,10,wr-makai-lemon,Makai Lemon,WR,52.5914,59.36,75.0,56.3987,60.119,-14.9,10,0,
+2026,11,wr-kc-concepcion,KC Concepcion,WR,50.0,55.02,75.0,52.8238,57.259,-17.7,12,1,ras
+2026,12,wr-denzel-boston,Denzel Boston,WR,47.8206,51.94,85.0,50.1378,57.1102,-27.9,14,2,
+2026,13,qb-drew-allar,Drew Allar,QB,50.0,63.7,45.0,57.7063,55.165,10.2,9,-4,ras
+2026,14,rb-mike-washington-jr,Mike Washington Jr.,RB,69.5937,43.44,55.0,54.8822,54.9058,-0.1,11,-3,
+2026,15,rb-jadarian-price,Jadarian Price,RB,33.069,63.34,65.0,50.0964,53.0771,-11.9,15,0,
+2026,16,te-kenyon-sadiq,Kenyon Sadiq,TE,45.1316,36.92,85.0,40.5126,52.4101,-32.6,20,4,
+2026,17,wr-chris-brazzell-ii,Chris Brazzell II,WR,50.0,46.1,55.0,47.8063,49.245,-5.8,16,-1,ras
+2026,18,wr-elijah-sarratt,Elijah Sarratt,WR,50.0,45.8,55.0,47.6375,49.11,-5.9,17,-1,ras
+2026,19,wr-chris-bell,Chris Bell,WR,50.0,34.56,75.0,41.315,48.052,-26.9,19,0,ras
+2026,20,rb-eli-heidenreich,Eli Heidenreich,RB,42.4035,45.7,30.0,44.2578,44.4062,14.4,18,-2,
+2026,21,rb-kaytron-allen,Kaytron Allen,RB,50.0,28.0,65.0,37.625,43.1,-21.9,22,1,ras
+2026,22,qb-carson-beck,Carson Beck,QB,50.0,26.28,55.0,36.6575,40.326,-14.7,23,1,ras
+2026,23,rb-seth-mcgowan,Seth McGowan,RB,50.0,24.8,55.0,35.825,39.66,-15.3,25,2,ras
+2026,24,rb-nick-singleton,Nick Singleton,RB,50.0,26.28,45.0,36.6575,38.326,-6.7,24,0,ras
+2026,25,wr-brenen-thompson,Brenen Thompson,WR,50.0,30.2,35.0,38.8625,38.09,3.1,21,-4,ras
+2026,26,te-max-klare,Max Klare,TE,50.0,20.22,55.0,33.2488,37.599,-17.4,27,1,ras
+2026,27,rb-emmett-johnson,Emmett Johnson,RB,50.0,22.0,45.0,34.25,36.4,-8.6,26,-1,ras
+2026,28,te-oscar-delp,Oscar Delp,TE,50.0,19.8,45.0,33.0125,35.41,-9.6,28,0,ras
+2025,1,te-tyler-warren,Tyler Warren,TE,50.0,95.0,85.0,75.3125,77.25,-7.8,1,0,ras
+2025,2,wr-tetairoa-mcmillan,Tetairoa McMillan,WR,50.0,87.5,90.0,71.0938,74.875,-15.1,4,2,ras
+2025,3,rb-ashton-jeanty,Ashton Jeanty,RB,40.3497,95.0,90.0,71.0905,74.8724,-15.1,5,2,
+2025,4,wr-travis-hunter,Travis Hunter,WR,50.0,84.5,95.0,69.4062,74.525,-20.5,6,2,ras
+2025,5,rb-omarion-hampton,Omarion Hampton,RB,50.0,77.0,78.0,65.1875,67.75,-10.2,10,5,ras
+2025,6,wr-luther-burden-iii,Luther Burden III,WR,50.0,80.0,68.0,66.875,67.1,-0.9,9,3,ras
+2025,7,rb-cam-skattebo,Cam Skattebo,RB,50.0,87.5,48.0,71.0938,66.475,18.5,3,-4,ras
+2025,8,qb-dillon-gabriel,Dillon Gabriel,QB,50.0,80.0,58.0,66.875,65.1,7.1,7,-1,ras
+2025,9,rb-kaleb-johnson,Kaleb Johnson,RB,50.0,80.0,58.0,66.875,65.1,7.1,8,-1,ras
+2025,10,rb-quinshon-judkins,Quinshon Judkins,RB,56.1567,69.5,68.0,63.6623,64.5299,-3.5,11,1,
+2025,11,qb-shedeur-sanders,Shedeur Sanders,QB,50.0,87.5,38.0,71.0938,64.475,26.5,2,-9,ras
+2025,12,wr-emeka-egbuka,Emeka Egbuka,WR,50.0,73.0,68.0,62.9375,63.95,-4.0,12,0,ras
+2025,13,wr-matthew-golden,Matthew Golden,WR,50.0,69.5,68.0,60.9688,62.375,-5.6,13,0,ras
+2025,14,rb-trevon-henderson,TreVeyon Henderson,RB,56.9853,62.0,68.0,59.8061,61.4449,-6.6,14,0,
+2025,15,te-colston-loveland,Colston Loveland,TE,50.0,57.5,90.0,54.2188,61.375,-28.6,15,0,ras
+2024,1,qb-jayden-daniels,Jayden Daniels,QB,62.1927,95.0,95.0,80.6468,83.5174,-11.5,1,0,
+2024,2,wr-rome-odunze,Rome Odunze,WR,43.2589,92.0,90.0,70.6757,78.5406,-11.5,5,3,
+2024,3,wr-malik-nabers,Malik Nabers,WR,54.6235,92.0,90.0,75.6478,78.5182,-11.5,2,-1,
+2024,4,qb-caleb-williams,Caleb Williams,QB,50.0,91.0,98.0,73.0625,78.05,-19.9,4,0,ras
+2024,5,te-brock-bowers,Brock Bowers,TE,50.0,95.0,85.0,75.3125,77.25,-7.8,3,-2,
+2024,6,wr-brian-thomas-jr,Brian Thomas Jr.,WR,53.7471,83.0,78.0,70.2019,71.7615,-6.2,7,1,
+2024,7,wr-adonai-mitchell,Adonai Mitchell,WR,65.2345,72.5,68.0,69.3214,69.0571,1.1,8,1,
+2024,8,qb-drake-maye,Drake Maye,QB,40.0593,80.0,95.0,62.5259,69.0207,-26.0,11,3,
+2024,9,rb-trey-benson,Trey Benson,RB,57.9578,80.0,58.0,70.3565,67.8852,9.9,6,-3,
+2024,10,wr-xavier-worthy,Xavier Worthy,WR,46.2563,68.0,78.0,58.4871,65.3897,-12.6,12,2,
+2024,11,rb-jonathon-brooks,Jonathon Brooks,RB,46.5713,77.0,68.0,63.6874,64.5499,-3.5,10,-1,
+2024,12,rb-marshawn-lloyd,MarShawn Lloyd,RB,69.1023,65.0,48.0,66.7947,63.0358,15.0,9,-3,
+2024,13,wr-ladd-mcconkey,Ladd McConkey,WR,36.8796,65.0,68.0,52.6973,59.7579,-8.2,15,2,
+2024,14,rb-blake-corum,Blake Corum,RB,32.8437,72.5,48.0,55.1504,53.7203,5.7,14,0,
+2024,15,rb-braelon-allen,Braelon Allen,RB,43.5249,65.0,38.0,55.6047,52.0837,14.1,13,-2,

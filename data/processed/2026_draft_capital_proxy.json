@@ -322,5 +322,17 @@
     "draft_capital_proxy_0_100": 45,
     "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands",
     "draft_capital_proxy_pending_conversion": true
+  },
+  {
+    "player_id": "rb-eli-heidenreich",
+    "player_name": "Eli Heidenreich",
+    "position": "RB",
+    "school": "Navy",
+    "class_year": 2026,
+    "big_board_rank": 150,
+    "big_board_source": "Day 3 projection (R5-7); Navy option offense + FB/RB/WR hybrid, elite athleticism offset by competition level and DoD waiver requirement",
+    "draft_capital_proxy_0_100": 30,
+    "draft_capital_proxy_source": "Day 3 proxy (R5-7 projection band)",
+    "draft_capital_proxy_pending_conversion": true
   }
 ]

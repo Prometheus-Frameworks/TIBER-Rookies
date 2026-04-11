@@ -135,6 +135,21 @@
     "age_adjusted_production_score": 42.2
   },
   {
+    "player_id": "rb-eli-heidenreich",
+    "player_name": "Eli Heidenreich",
+    "position": "RB",
+    "breakout_age": 22,
+    "effective_breakout_age": 22.5,
+    "boa_adjustment": 0.5,
+    "young_breakout_flag": false,
+    "best_season_volume": 111.0,
+    "recent_season_volume": 111.0,
+    "weighted_volume": 111.0,
+    "age_multiplier": 0.85,
+    "raw_score": 94.35,
+    "age_adjusted_production_score": 41.5
+  },
+  {
     "player_id": "rb-nick-singleton",
     "player_name": "Nick Singleton",
     "position": "RB",

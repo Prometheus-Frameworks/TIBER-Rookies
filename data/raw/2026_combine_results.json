@@ -15,7 +15,9 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "qb-ty-simpson",
@@ -33,7 +35,9 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "qb-carson-beck",
@@ -51,7 +55,9 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "qb-drew-allar",
@@ -69,7 +75,9 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "qb-garrett-nussmeier",
@@ -87,7 +95,9 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "rb-jeremiyah-love",
@@ -105,7 +115,9 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "rb-jadarian-price",
@@ -123,7 +135,9 @@
     "vertical": 35.0,
     "vertical_source": "CBS Sports 2026 NFL Combine RB grades",
     "broad": 124.0,
-    "broad_source": "CBS Sports 2026 NFL Combine RB grades"
+    "broad_source": "CBS Sports 2026 NFL Combine RB grades",
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "rb-mike-washington-jr",
@@ -141,7 +155,9 @@
     "vertical": 39.0,
     "vertical_source": "PFF College via Twitter/X 2026 NFL Combine",
     "broad": 128.0,
-    "broad_source": "PFF College via Twitter/X 2026 NFL Combine"
+    "broad_source": "PFF College via Twitter/X 2026 NFL Combine",
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "rb-nick-singleton",
@@ -159,7 +175,9 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "rb-jonah-coleman",
@@ -177,7 +195,9 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "wr-carnell-tate",
@@ -195,7 +215,9 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "wr-jordyn-tyson",
@@ -213,7 +235,9 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "wr-makai-lemon",
@@ -231,7 +255,9 @@
     "vertical": 40.0,
     "vertical_source": "SI.com / Detroit Lions 2026 NFL Combine Day 3 observations",
     "broad": 129.0,
-    "broad_source": "SI.com / Detroit Lions 2026 NFL Combine Day 3 observations (10'9\")"
+    "broad_source": "SI.com / Detroit Lions 2026 NFL Combine Day 3 observations (10'9\")",
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "wr-kc-concepcion",
@@ -249,7 +275,9 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "wr-brenen-thompson",
@@ -267,7 +295,9 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "wr-chris-brazzell-ii",
@@ -285,7 +315,9 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "wr-denzel-boston",
@@ -303,7 +335,9 @@
     "vertical": 35.0,
     "vertical_source": "Yahoo Sports 2026 NFL Combine WR measurements",
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "wr-chris-bell",
@@ -321,7 +355,9 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "wr-elijah-sarratt",
@@ -339,7 +375,9 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "te-kenyon-sadiq",
@@ -357,7 +395,9 @@
     "vertical": 43.5,
     "vertical_source": "CBS Sports 2026 NFL Combine TE grades",
     "broad": 133.0,
-    "broad_source": "CBS Sports 2026 NFL Combine TE grades"
+    "broad_source": "CBS Sports 2026 NFL Combine TE grades",
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "te-max-klare",
@@ -375,7 +415,9 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "te-oscar-delp",
@@ -393,7 +435,9 @@
     "vertical": null,
     "vertical_source": null,
     "broad": null,
-    "broad_source": null
+    "broad_source": null,
+    "three_cone": null,
+    "three_cone_source": null
   },
   {
     "player_id": "te-eli-stowers",
@@ -411,6 +455,28 @@
     "vertical": 45.5,
     "vertical_source": "Yahoo Sports 2026 NFL Combine TE measurements",
     "broad": 135.0,
-    "broad_source": "Yahoo Sports 2026 NFL Combine TE measurements"
+    "broad_source": "Yahoo Sports 2026 NFL Combine TE measurements",
+    "three_cone": null,
+    "three_cone_source": null
+  },
+  {
+    "player_id": "rb-eli-heidenreich",
+    "player_name": "Eli Heidenreich",
+    "position": "RB",
+    "school": "Navy",
+    "class_year": 2026,
+    "combine_invited": false,
+    "height_in": 72.0,
+    "height_in_source": "Shrine Bowl 2026 measurements",
+    "weight_lb": 198,
+    "weight_lb_source": "Shrine Bowl 2026 measurements",
+    "forty": 4.44,
+    "forty_source": "Shrine Bowl 2026 Pro Day (reported)",
+    "vertical": 35.5,
+    "vertical_source": "NFL.com prospect profile (nfl.com/prospects/eli-heidenreich); 36\" reported by other sources \u2014 using NFL.com measurement",
+    "broad": null,
+    "broad_source": null,
+    "three_cone": 6.55,
+    "three_cone_source": "NFL.com prospect profile + Shrine Bowl / NFLPA combine; best weight-adjusted RB 3-cone since 2013 (0.02s faster than McCaffrey at same weight)"
   }
 ]

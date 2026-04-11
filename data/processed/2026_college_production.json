@@ -241,5 +241,14 @@
     "class_year": 2026,
     "production_score_0_100": 55.0,
     "production_score_source": "Estimated from 2026 RB Advanced Metrics chart (@ScottBarrettDFB) \u2014 verify with CFBD when API key available"
+  },
+  {
+    "player_id": "rb-eli-heidenreich",
+    "player_name": "Eli Heidenreich",
+    "position": "RB",
+    "school": "Navy",
+    "class_year": 2026,
+    "production_score_0_100": 52.0,
+    "production_score_source": "Estimated: 2025 941 rec yds + 499 rush yds / 9 TDs at Navy (G5 option offense). Competition-adjusted from raw dual-threat production. Verify when CFBD data available (option offense attribution may fail)."
   }
 ]

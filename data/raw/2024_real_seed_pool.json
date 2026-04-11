@@ -1,0 +1,137 @@
+[
+  {
+    "player_id": "qb-caleb-williams",
+    "player_name": "Caleb Williams",
+    "position": "QB",
+    "school": "USC",
+    "class_year": 2024,
+    "production_score_0_100": 91.0,
+    "production_score_source": "manual_historical_seed (2023 season: 373 att/67.7% comp/9.74 YPA/30 TD/5 INT; z~2.7)"
+  },
+  {
+    "player_id": "qb-jayden-daniels",
+    "player_name": "Jayden Daniels",
+    "position": "QB",
+    "school": "LSU",
+    "class_year": 2024,
+    "production_score_0_100": 95.0,
+    "production_score_source": "manual_historical_seed (2023 season: 415 att/72.4% comp/9.18 YPA/40 TD/4 INT + 1134 rush yds; z~3.0)"
+  },
+  {
+    "player_id": "qb-drake-maye",
+    "player_name": "Drake Maye",
+    "position": "QB",
+    "school": "North Carolina",
+    "class_year": 2024,
+    "production_score_0_100": 80.0,
+    "production_score_source": "manual_historical_seed (2023 season: 436 att/63.4% comp/8.27 YPA/24 TD/5 INT; z~2.0)"
+  },
+  {
+    "player_id": "wr-malik-nabers",
+    "player_name": "Malik Nabers",
+    "position": "WR",
+    "school": "LSU",
+    "class_year": 2024,
+    "production_score_0_100": 92.0,
+    "production_score_source": "manual_historical_seed (2023 season: 89 rec/1569 yds/17.6 YPR/14 TD; SEC elite; z~2.8)"
+  },
+  {
+    "player_id": "wr-rome-odunze",
+    "player_name": "Rome Odunze",
+    "position": "WR",
+    "school": "Washington",
+    "class_year": 2024,
+    "production_score_0_100": 92.0,
+    "production_score_source": "manual_historical_seed (2023 season: 92 rec/1640 yds/17.8 YPR/13 TD; Biletnikoff finalist; z~2.8)"
+  },
+  {
+    "player_id": "wr-brian-thomas-jr",
+    "player_name": "Brian Thomas Jr.",
+    "position": "WR",
+    "school": "LSU",
+    "class_year": 2024,
+    "production_score_0_100": 83.0,
+    "production_score_source": "manual_historical_seed (2023 season: 68 rec/1177 yds/17.3 YPR/17 TD; SEC; z~2.2)"
+  },
+  {
+    "player_id": "wr-xavier-worthy",
+    "player_name": "Xavier Worthy",
+    "position": "WR",
+    "school": "Texas",
+    "class_year": 2024,
+    "production_score_0_100": 68.0,
+    "production_score_source": "manual_historical_seed (2023 season: 57 rec/760 yds/13.3 YPR/9 TD; Big 12; z~1.2)"
+  },
+  {
+    "player_id": "wr-ladd-mcconkey",
+    "player_name": "Ladd McConkey",
+    "position": "WR",
+    "school": "Georgia",
+    "class_year": 2024,
+    "production_score_0_100": 65.0,
+    "production_score_source": "manual_historical_seed (2023 season: 61 rec/841 yds/13.8 YPR/5 TD; SECshared targets; z~1.0)"
+  },
+  {
+    "player_id": "te-brock-bowers",
+    "player_name": "Brock Bowers",
+    "position": "TE",
+    "school": "Georgia",
+    "class_year": 2024,
+    "production_score_0_100": 95.0,
+    "production_score_source": "manual_historical_seed (2023 season: 71 rec/1182 yds/16.6 YPR/6 TD; generational TE season; z~3.0)"
+  },
+  {
+    "player_id": "rb-jonathon-brooks",
+    "player_name": "Jonathon Brooks",
+    "position": "RB",
+    "school": "Texas",
+    "class_year": 2024,
+    "production_score_0_100": 77.0,
+    "production_score_source": "manual_historical_seed (2023 season: 175 car/1139 yds/6.51 YPC/10 TD pre-ACL; z~1.8)"
+  },
+  {
+    "player_id": "rb-blake-corum",
+    "player_name": "Blake Corum",
+    "position": "RB",
+    "school": "Michigan",
+    "class_year": 2024,
+    "production_score_0_100": 72.5,
+    "production_score_source": "manual_historical_seed (2023 season: 226 car/1240 yds/5.49 YPC/12 TD; CFP run; z~1.5)"
+  },
+  {
+    "player_id": "rb-trey-benson",
+    "player_name": "Trey Benson",
+    "position": "RB",
+    "school": "Florida State",
+    "class_year": 2024,
+    "production_score_0_100": 80.0,
+    "production_score_source": "manual_historical_seed (2023 season: 213 car/1401 yds/6.58 YPC/13 TD; ACC; z~2.0)"
+  },
+  {
+    "player_id": "rb-marshawn-lloyd",
+    "player_name": "MarShawn Lloyd",
+    "position": "RB",
+    "school": "USC",
+    "class_year": 2024,
+    "production_score_0_100": 65.0,
+    "production_score_source": "manual_historical_seed (2023 season: 156 car/969 yds/6.21 YPC/9 TD; z~1.0)"
+  },
+  {
+    "player_id": "rb-braelon-allen",
+    "player_name": "Braelon Allen",
+    "position": "RB",
+    "school": "Wisconsin",
+    "class_year": 2024,
+    "production_score_0_100": 65.0,
+    "production_score_source": "manual_historical_seed (2023 season: 219 car/1100 yds/5.02 YPC/12 TD; BOA peak was 2021 at age 17; z~1.0)"
+  },
+  {
+    "player_id": "wr-adonai-mitchell",
+    "player_name": "Adonai Mitchell",
+    "position": "WR",
+    "school": "Texas",
+    "class_year": 2024,
+    "production_score_0_100": 72.5,
+    "production_score_source": "manual_historical_seed (2023 season: 46 rec/845 yds/18.4 YPR/8 TD; Big 12; z~1.5)"
+  }
+]
