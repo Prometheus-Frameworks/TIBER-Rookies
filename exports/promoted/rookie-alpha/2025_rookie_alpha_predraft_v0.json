@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-11T12:22:07+00:00",
-  "run_id": "rookie-alpha-2025-2026-04-11T12:22:07+00:00",
+  "generated_at": "2026-04-11T12:33:02+00:00",
+  "run_id": "rookie-alpha-2025-2026-04-11T12:33:02+00:00",
   "season": 2025,
   "coverage_summary": {
     "players_total": 15,
@@ -456,14 +456,17 @@
       "evidence": {
         "evidence_tags": [
           "young_breakout",
-          "early_declare"
+          "early_declare",
+          "elite_yac_producer",
+          "yac_signal"
         ],
         "context_flags": [],
         "translation_flags": [
-          "young_breakout"
+          "young_breakout",
+          "yac_signal"
         ],
-        "evidence_summary": "Transfer from Illinois; first major impact at Missouri age 19. 1,212 rec yds in 2024; SEC competition elevates production value.",
-        "context_source": "manual_historical_seed"
+        "evidence_summary": "Transfer from Illinois; first major impact at Missouri age 19. 1,212 rec yds in 2024; SEC competition elevates production value. YAC-first profile \u2014 elite after-catch ability and burst, primarily slot/underneath usage. Screen production concern: research notes flag screen-heavy usage at Missouri as a potential production quality discount (manufactured vs. earned yards). screen_yard_share field pending precise data \u2014 current model does not apply translation penalty until confirmed. If screen_yard_share > 0.40 is confirmed, expect -3.0 to -5.0 pts on production. Natural comp to Deebo Samuel slot-first archetype; scheme fit at NFL level is a significant variable.",
+        "context_source": "manual_historical_seed; screen concern flag from research notes 2026-04-10"
       },
       "rookie_alpha_rank": 6,
       "talent_rank": 9,
@@ -539,79 +542,6 @@
       "draft_proxy_delta": -4
     },
     {
-      "player_id": "wr-emeka-egbuka",
-      "player_name": "Emeka Egbuka",
-      "position": "WR",
-      "scores": {
-        "ras_0_100": 50.0,
-        "production_0_100": 77.0,
-        "age_adjusted_production_0_100": null,
-        "draft_capital_proxy_0_100": 68.0,
-        "talent_score_0_100": 65.1875,
-        "rookie_alpha_0_100": 65.75,
-        "ceiling_bonus": null,
-        "market_conviction_ras_override": null,
-        "market_conviction_reason": null,
-        "wr_translation_penalty": null,
-        "wr_translation_signals": null,
-        "consensus_delta": -2.2
-      },
-      "model_inputs_missing": [
-        "ras"
-      ],
-      "context": {
-        "player_id": "wr-emeka-egbuka",
-        "player_name": "Emeka Egbuka",
-        "position": "WR",
-        "school": "Ohio State",
-        "class_year": 2025,
-        "early_declare_flag": false,
-        "breakout_age": 20,
-        "age_at_first_impact_season": 20,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": true,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": null,
-        "injury_adjusted_profile_flag": null,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": null
-      },
-      "evidence": {
-        "evidence_tags": [
-          "young_breakout"
-        ],
-        "context_flags": [],
-        "translation_flags": [
-          "young_breakout"
-        ],
-        "evidence_summary": "Senior declare from Ohio State. First impact at 20; played alongside Marvin Harrison Jr. sharing targets. 1,147 rec yds in 2024.",
-        "context_source": "manual_historical_seed"
-      },
-      "rookie_alpha_rank": 8,
-      "talent_rank": 11,
-      "draft_proxy_delta": 3
-    },
-    {
       "player_id": "qb-dillon-gabriel",
       "player_name": "Dillon Gabriel",
       "position": "QB",
@@ -676,9 +606,9 @@
         "evidence_summary": "Super senior (started at UCF, Oklahoma, Oregon over 6 college seasons). Elite production everywhere but 24 years old at time of 2025 draft; limited upside runway.",
         "context_source": "manual_historical_seed"
       },
-      "rookie_alpha_rank": 9,
+      "rookie_alpha_rank": 8,
       "talent_rank": 7,
-      "draft_proxy_delta": -2
+      "draft_proxy_delta": -1
     },
     {
       "player_id": "rb-kaleb-johnson",
@@ -747,9 +677,9 @@
         "evidence_summary": "Led B1G in rushing 2024 (1,537 yds, 21 TDs). Scheme-adjusted production strong despite Iowa's conservative offense.",
         "context_source": "manual_historical_seed"
       },
-      "rookie_alpha_rank": 10,
+      "rookie_alpha_rank": 9,
       "talent_rank": 8,
-      "draft_proxy_delta": -2
+      "draft_proxy_delta": -1
     },
     {
       "player_id": "rb-quinshon-judkins",
@@ -819,8 +749,8 @@
         "evidence_summary": "First impact season at Ole Miss age 19 (1,567 rush yds). Transferred to Ohio State; combined CFP title run adds SEC+B1G bona fides.",
         "context_source": "manual_historical_seed"
       },
-      "rookie_alpha_rank": 11,
-      "talent_rank": 12,
+      "rookie_alpha_rank": 10,
+      "talent_rank": 11,
       "draft_proxy_delta": 1
     },
     {
@@ -888,9 +818,85 @@
         "evidence_summary": "4,134 passing yards, 37 TDs in 2024. Significant draft slide (projected top-5, fell to ~4th round) introduces uncertainty. Production strong but behind weak OL at Colorado.",
         "context_source": "manual_historical_seed"
       },
-      "rookie_alpha_rank": 12,
+      "rookie_alpha_rank": 11,
       "talent_rank": 2,
-      "draft_proxy_delta": -10
+      "draft_proxy_delta": -9
+    },
+    {
+      "player_id": "wr-emeka-egbuka",
+      "player_name": "Emeka Egbuka",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 73.0,
+        "age_adjusted_production_0_100": null,
+        "draft_capital_proxy_0_100": 68.0,
+        "talent_score_0_100": 62.9375,
+        "rookie_alpha_0_100": 63.95,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": 4.0,
+        "wr_translation_signals": "deep_yard_share=0.17 < 0.18 \u2192 -4.0",
+        "consensus_delta": -4.0
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "wr-emeka-egbuka",
+        "player_name": "Emeka Egbuka",
+        "position": "WR",
+        "school": "Ohio State",
+        "class_year": 2025,
+        "early_declare_flag": false,
+        "breakout_age": 20,
+        "age_at_first_impact_season": 20,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": true,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [
+          "young_breakout",
+          "route_runner",
+          "inside_out_versatility"
+        ],
+        "context_flags": [],
+        "translation_flags": [
+          "young_breakout",
+          "inside_out_versatility"
+        ],
+        "evidence_summary": "Senior declare from Ohio State. First impact at 20; shared targets with Marvin Harrison Jr. for most of collegiate career \u2014 target suppression context applies. 1,147 rec yds in 2024 in a split-target offense. Deep-yard share: 16.6% (confirmed) \u2014 below severe threshold (18%). Ohio State used him primarily in slot/intermediate role rather than as a vertical threat; deep-yard share reflects role design rather than inability, but it still limits translation evidence for NFL alpha projection at early draft capital. Route-running and inside-out versatility are legitimate NFL skills; the deep-yard share discount is a production-quality adjustment, not a talent flag.",
+        "context_source": "manual_historical_seed; deep_yard_share from research notes 2026-04-10"
+      },
+      "rookie_alpha_rank": 12,
+      "talent_rank": 12,
+      "draft_proxy_delta": 0
     },
     {
       "player_id": "wr-matthew-golden",

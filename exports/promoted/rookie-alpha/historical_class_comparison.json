@@ -562,22 +562,6 @@
   {
     "draft_class": 2025,
     "class_rank": 8,
-    "player_id": "wr-emeka-egbuka",
-    "player_name": "Emeka Egbuka",
-    "position": "WR",
-    "ras_0_100": 50.0,
-    "production_0_100": 77.0,
-    "draft_capital_proxy_0_100": 68.0,
-    "talent_score_0_100": 65.1875,
-    "rookie_alpha_0_100": 65.75,
-    "consensus_delta": -2.2,
-    "talent_rank": 11,
-    "draft_proxy_delta": 3,
-    "model_inputs_missing": "ras"
-  },
-  {
-    "draft_class": 2025,
-    "class_rank": 9,
     "player_id": "qb-dillon-gabriel",
     "player_name": "Dillon Gabriel",
     "position": "QB",
@@ -588,12 +572,12 @@
     "rookie_alpha_0_100": 65.1,
     "consensus_delta": 7.1,
     "talent_rank": 7,
-    "draft_proxy_delta": -2,
+    "draft_proxy_delta": -1,
     "model_inputs_missing": "ras"
   },
   {
     "draft_class": 2025,
-    "class_rank": 10,
+    "class_rank": 9,
     "player_id": "rb-kaleb-johnson",
     "player_name": "Kaleb Johnson",
     "position": "RB",
@@ -604,12 +588,12 @@
     "rookie_alpha_0_100": 65.1,
     "consensus_delta": 7.1,
     "talent_rank": 8,
-    "draft_proxy_delta": -2,
+    "draft_proxy_delta": -1,
     "model_inputs_missing": "ras"
   },
   {
     "draft_class": 2025,
-    "class_rank": 11,
+    "class_rank": 10,
     "player_id": "rb-quinshon-judkins",
     "player_name": "Quinshon Judkins",
     "position": "RB",
@@ -619,13 +603,13 @@
     "talent_score_0_100": 63.6623,
     "rookie_alpha_0_100": 64.5299,
     "consensus_delta": -3.5,
-    "talent_rank": 12,
+    "talent_rank": 11,
     "draft_proxy_delta": 1,
     "model_inputs_missing": ""
   },
   {
     "draft_class": 2025,
-    "class_rank": 12,
+    "class_rank": 11,
     "player_id": "qb-shedeur-sanders",
     "player_name": "Shedeur Sanders",
     "position": "QB",
@@ -636,7 +620,23 @@
     "rookie_alpha_0_100": 64.475,
     "consensus_delta": 26.5,
     "talent_rank": 2,
-    "draft_proxy_delta": -10,
+    "draft_proxy_delta": -9,
+    "model_inputs_missing": "ras"
+  },
+  {
+    "draft_class": 2025,
+    "class_rank": 12,
+    "player_id": "wr-emeka-egbuka",
+    "player_name": "Emeka Egbuka",
+    "position": "WR",
+    "ras_0_100": 50.0,
+    "production_0_100": 73.0,
+    "draft_capital_proxy_0_100": 68.0,
+    "talent_score_0_100": 62.9375,
+    "rookie_alpha_0_100": 63.95,
+    "consensus_delta": -4.0,
+    "talent_rank": 12,
+    "draft_proxy_delta": 0,
     "model_inputs_missing": "ras"
   },
   {

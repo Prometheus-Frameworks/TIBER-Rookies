@@ -137,7 +137,7 @@
     "context_flags": [
       "severe_injury_recovery"
     ],
-    "evidence_summary": "2024 Heisman winner (2-way; WR+CB). First true impact at 19 as Colorado freshman; recovered from gunshot injury in 2023. Dual-role usage at NFL level unlikely — evaluated purely as WR.",
+    "evidence_summary": "2024 Heisman winner (2-way; WR+CB). First true impact at 19 as Colorado freshman; recovered from gunshot injury in 2023. Dual-role usage at NFL level unlikely \u2014 evaluated purely as WR.",
     "context_source": "manual_historical_seed",
     "exceptional_metrics": []
   },
@@ -193,11 +193,15 @@
     "evidence_tags": [
       "young_breakout",
       "early_declare",
-      "elite_production"
+      "elite_production",
+      "elite_yac_producer",
+      "yac_signal"
     ],
-    "context_flags": [],
-    "evidence_summary": "Transfer from Illinois; first major impact at Missouri age 19. 1,212 rec yds in 2024; SEC competition elevates production value.",
-    "context_source": "manual_historical_seed",
+    "context_flags": [
+      "screen_production_concern_pending_data"
+    ],
+    "evidence_summary": "Transfer from Illinois; first major impact at Missouri age 19. 1,212 rec yds in 2024; SEC competition elevates production value. YAC-first profile \u2014 elite after-catch ability and burst, primarily slot/underneath usage. Screen production concern: research notes flag screen-heavy usage at Missouri as a potential production quality discount (manufactured vs. earned yards). screen_yard_share field pending precise data \u2014 current model does not apply translation penalty until confirmed. If screen_yard_share > 0.40 is confirmed, expect -3.0 to -5.0 pts on production. Natural comp to Deebo Samuel slot-first archetype; scheme fit at NFL level is a significant variable.",
+    "context_source": "manual_historical_seed; screen concern flag from research notes 2026-04-10",
     "exceptional_metrics": []
   },
   {
@@ -212,12 +216,18 @@
     "young_breakout_flag": true,
     "evidence_tags": [
       "young_breakout",
-      "elite_production"
+      "elite_production",
+      "route_runner",
+      "inside_out_versatility"
     ],
-    "context_flags": [],
-    "evidence_summary": "Senior declare from Ohio State. First impact at 20; played alongside Marvin Harrison Jr. sharing targets. 1,147 rec yds in 2024.",
-    "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "context_flags": [
+      "low_deep_yard_share",
+      "suppressed_by_teammate"
+    ],
+    "evidence_summary": "Senior declare from Ohio State. First impact at 20; shared targets with Marvin Harrison Jr. for most of collegiate career \u2014 target suppression context applies. 1,147 rec yds in 2024 in a split-target offense. Deep-yard share: 16.6% (confirmed) \u2014 below severe threshold (18%). Ohio State used him primarily in slot/intermediate role rather than as a vertical threat; deep-yard share reflects role design rather than inability, but it still limits translation evidence for NFL alpha projection at early draft capital. Route-running and inside-out versatility are legitimate NFL skills; the deep-yard share discount is a production-quality adjustment, not a talent flag.",
+    "context_source": "manual_historical_seed; deep_yard_share from research notes 2026-04-10",
+    "exceptional_metrics": [],
+    "deep_yard_share": 0.166
   },
   {
     "player_id": "te-tyler-warren",
@@ -235,7 +245,7 @@
     "context_flags": [
       "late_bloomer"
     ],
-    "evidence_summary": "73 rec, 1,233 yds, 8 TDs in 2024 — best TE production season in B1G history. Senior who bloomed late but dominated at 22; late breakout age is the main NFL alpha concern.",
+    "evidence_summary": "73 rec, 1,233 yds, 8 TDs in 2024 \u2014 best TE production season in B1G history. Senior who bloomed late but dominated at 22; late breakout age is the main NFL alpha concern.",
     "context_source": "manual_historical_seed",
     "exceptional_metrics": []
   },
