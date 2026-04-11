@@ -1,8 +1,8 @@
 {
   "season": 2024,
-  "model_version": "rookie-alpha-predraft-v0.3.0",
-  "generated_at": "2026-04-10T20:17:52+00:00",
-  "run_id": "rookie-alpha-2024-2026-04-10T20:17:52+00:00",
+  "model_version": "rookie-alpha-predraft-v0.4.0",
+  "generated_at": "2026-04-11T12:22:06+00:00",
+  "run_id": "rookie-alpha-2024-2026-04-11T12:22:06+00:00",
   "input_files": [
     {
       "path": "data/raw/2024_combine_results.json",
@@ -42,18 +42,18 @@
   "output_files": [
     {
       "path": "exports/promoted/rookie-alpha/2024_rookie_alpha_predraft_v0.json",
-      "sha256": "d7d91254d9d4f8bc5a756801dcb6a3e81f10864e0fa66b0c5d44c5b3b64f1c8b"
+      "sha256": "678f98aaf1cf87e6c7d1235ad06a628af86f0f9023304924f4253bcbf4f95d77"
     },
     {
       "path": "exports/promoted/rookie-alpha/2024_rookie_alpha_predraft_v0.csv",
-      "sha256": "033bed45edb342cba238394a54f1cb21280139a5636d0bcaa58d2fc16ec96d19"
+      "sha256": "91810fc9954a778e21dfb330a7a92c915d3099a7c460156dafae08bbec248a33"
     }
   ],
   "export_metadata": {
     "season": 2024,
-    "model_version": "rookie-alpha-predraft-v0.3.0",
-    "generated_at": "2026-04-10T20:17:52+00:00",
-    "run_id": "rookie-alpha-2024-2026-04-10T20:17:52+00:00",
+    "model_version": "rookie-alpha-predraft-v0.4.0",
+    "generated_at": "2026-04-11T12:22:06+00:00",
+    "run_id": "rookie-alpha-2024-2026-04-11T12:22:06+00:00",
     "coverage_summary": {
       "players_total": 15,
       "players_with_any_missing_input": 1,
