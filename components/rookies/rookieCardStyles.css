@@ -764,7 +764,8 @@ body {
     font-family: 'JetBrains Mono', 'Fira Mono', ui-monospace, monospace;
   }
   .bmc-signal-capital { background: rgba(232, 133, 61, .18); color: #E8853D; border: 1px solid rgba(232, 133, 61, .35); }
-  .bmc-signal-ras     { background: rgba(107, 159, 212, .18); color: #6B9FD4; border: 1px solid rgba(107, 159, 212, .35); }
+  .bmc-signal-ath     { background: rgba(107, 159, 212, .18); color: #6B9FD4; border: 1px solid rgba(107, 159, 212, .35); }
+  .bmc-signal-ath-sporq { background: rgba(167, 139, 250, .18); color: #A78BFA; border: 1px solid rgba(167, 139, 250, .35); }
   .bmc-signal-prod    { background: rgba(78, 205, 196, .18); color: #4ECDC4; border: 1px solid rgba(78, 205, 196, .35); }
   .bmc-signal-boar-elite { background: rgba(232, 133, 61, .18); color: #E8853D; border: 1px solid rgba(232, 133, 61, .35); }
   .bmc-signal-boar-early { background: rgba(78, 205, 196, .14); color: #4ECDC4; border: 1px solid rgba(78, 205, 196, .30); }

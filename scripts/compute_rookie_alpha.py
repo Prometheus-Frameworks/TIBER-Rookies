@@ -28,6 +28,11 @@ class PlayerInputs:
     production_score_0_100: float | None
     draft_capital_proxy_0_100: float | None
     age_adjusted_production_0_100: float | None = None
+    # Generalized athletic input layer — abstracts over RAS / SPORQ / partial combine.
+    athletic_score_0_100: float | None = None
+    athletic_source: str | None = None        # "RAS", "SPORQ", "COMBINE_FALLBACK"
+    athletic_confidence: float = 0.0          # 0.0–1.0
+    athletic_explainer: str | None = None
 
 
 @dataclass(frozen=True)
@@ -289,8 +294,13 @@ def _flag_exceptional(
 
 def compute_ras_scores(
     combine_rows: list[dict[str, Any]],
-) -> tuple[dict[str, float], dict[str, list[dict[str, Any]]]]:
-    """Return ``(ras_scores_by_id, exceptional_combine_metrics_by_id)``.
+) -> tuple[
+    dict[str, float],
+    dict[str, list[dict[str, Any]]],
+    dict[str, int],
+    dict[str, tuple[float, int]],
+]:
+    """Return ``(ras_scores_by_id, exceptional_combine, component_counts, combine_fallback)``.
 
     RAS component weights:
       forty 0.30 / vertical 0.20 / broad 0.20 / three_cone 0.15 / size 0.15.
@@ -299,6 +309,13 @@ def compute_ras_scores(
     A score is computed only when at least one explosive/agility metric is
     available (vertical, broad, or three_cone).  Players with only 40 + size
     (typically top picks who skipped drills) default to 50.0.
+
+    ``component_counts``: maps player_id → number of component categories that
+    contributed to the RAS score (max 5: forty, vertical, broad, three_cone, size).
+
+    ``combine_fallback``: maps player_id → (score, metric_count) for players
+    who had some combine data but did not qualify for a full RAS score (missing
+    explosive metrics). These partial scores carry low confidence.
 
     Exceptional combine metrics are flagged when any individual metric z-score
     reaches ±EXCEPTIONAL_Z_THRESHOLD within the position peer group.  These
@@ -315,6 +332,8 @@ def compute_ras_scores(
 
     scores: dict[str, float] = {}
     exceptional_combine: dict[str, list[dict[str, Any]]] = {}
+    component_counts: dict[str, int] = {}
+    combine_fallback: dict[str, tuple[float, int]] = {}
 
     for position, rows in by_position.items():
         def _vals(field: str) -> list[float]:
@@ -393,20 +412,124 @@ def compute_ras_scores(
             # 40 + size and is not a reliable RAS proxy — most often this means
             # the player skipped testing (a non-signal for top picks), not that
             # they lack athleticism. Omit rather than mislead.
-            # the 40-yard dash. Without explosive metrics, the score is built
-            # almost entirely from 40 + size and is not a reliable RAS proxy —
-            # most often this means the player skipped testing (a non-signal for
-            # top picks), not that they lack athleticism. Omit rather than mislead.
             has_explosive = vertical is not None or broad is not None or three_cone is not None
             if components and has_explosive:
                 weight_sum = sum(w for w, _ in components)
                 weighted = sum(w * s for w, s in components) / weight_sum
                 scores[pid] = clamp_0_100(weighted)
+                component_counts[pid] = len(components)
                 if exceptional_for_player:
                     exceptional_combine[pid] = exceptional_for_player
-            # else: leave player out of scores dict → RAS treated as null (→ 50.0 default in alpha)
+            elif components:
+                # Has some combine data but no explosive metrics → fallback
+                weight_sum = sum(w for w, _ in components)
+                weighted = sum(w * s for w, s in components) / weight_sum
+                combine_fallback[pid] = (clamp_0_100(weighted), len(components))
 
-    return scores, exceptional_combine
+    return scores, exceptional_combine, component_counts, combine_fallback
+
+
+# ---------------------------------------------------------------------------
+# Generalized athletic input layer
+# ---------------------------------------------------------------------------
+# Position-aware SPORQ trust: controls whether SPORQ from exceptional_metrics
+# can be used as the primary athletic score when RAS is missing.
+#   "preferred"   — use SPORQ as primary when RAS unavailable (TE)
+#   "supplemental" — log it but don't substitute for RAS (WR)
+#   "ignore"      — do not use SPORQ at all (RB, QB)
+SPORQ_TRUST: dict[str, str] = {
+    "TE": "preferred",
+    "WR": "supplemental",
+    "RB": "ignore",
+    "QB": "ignore",
+}
+
+
+def _extract_sporq(context: dict[str, Any] | None) -> tuple[float | None, str | None]:
+    """Extract SPORQ percentile from exceptional_metrics in context.
+
+    Returns (sporq_value, sporq_context_str) or (None, None).
+    """
+    if not context:
+        return None, None
+    for em in context.get("exceptional_metrics") or []:
+        if em.get("metric") == "sporq_percentile" and em.get("value") is not None:
+            try:
+                return float(em["value"]), em.get("context")
+            except (TypeError, ValueError):
+                pass
+    return None, None
+
+
+def _ras_confidence(component_count: int) -> float:
+    """Confidence for a full RAS score based on how many combine components were used.
+
+    Max 5 components (forty, vertical, broad, three_cone, size).
+    """
+    if component_count >= 5:
+        return 1.0
+    if component_count >= 4:
+        return 0.95
+    if component_count >= 3:
+        return 0.85
+    return 0.80  # minimum (2 components — rare but possible)
+
+
+def resolve_athletic_input(
+    player_id: str,
+    position: str,
+    ras_score: float | None,
+    ras_metric_count: int,
+    combine_fallback_entry: tuple[float, int] | None,
+    context: dict[str, Any] | None,
+) -> tuple[float | None, str | None, float, str | None, bool]:
+    """Resolve the best available athletic score for a player.
+
+    Returns ``(score, source, confidence, explainer, sporq_used_as_athletic)``.
+
+    Priority:
+      1. RAS (full combine composite) — default for all positions
+      2. SPORQ (for TE only when trust=preferred and RAS missing)
+      3. COMBINE_FALLBACK (partial combine data, low confidence)
+      4. None (no athletic data)
+    """
+    # 1. RAS is the primary source
+    if ras_score is not None:
+        confidence = _ras_confidence(ras_metric_count)
+        return (
+            ras_score,
+            "RAS",
+            confidence,
+            f"RAS {ras_score:.1f} from {ras_metric_count} combine metrics",
+            False,
+        )
+
+    # 2. SPORQ — position-gated
+    sporq_val, sporq_ctx = _extract_sporq(context)
+    trust = SPORQ_TRUST.get(position, "ignore")
+    if sporq_val is not None and trust == "preferred":
+        return (
+            sporq_val,
+            "SPORQ",
+            0.75,
+            f"SPORQ {sporq_val:.0f}th percentile (no combine RAS available)",
+            True,
+        )
+
+    # 3. COMBINE_FALLBACK — partial combine data
+    if combine_fallback_entry is not None:
+        fallback_score, metric_count = combine_fallback_entry
+        confidence = 0.30 + 0.10 * min(metric_count, 2)  # 0.40–0.50
+        return (
+            fallback_score,
+            "COMBINE_FALLBACK",
+            confidence,
+            f"Partial combine ({metric_count} metrics, no explosive drills)",
+            False,
+        )
+
+    # 4. No athletic data
+    return (None, None, 0.0, None, False)
 
 
 AGE_ADJUSTED_BLEND_WEIGHT = 0.60  # weight on age-adjusted score
@@ -686,6 +809,7 @@ def merge_inputs(
     combine_rows: list[dict[str, Any]],
     production_rows: list[dict[str, Any]],
     draft_proxy_rows: list[dict[str, Any]],
+    context_by_id: dict[str, dict[str, Any]] | None = None,
 ) -> tuple[list[PlayerInputs], MergeDiagnostics]:
     def build_identity_map(
         rows: list[dict[str, Any]],
@@ -741,7 +865,7 @@ def merge_inputs(
                 seen,
             )
 
-    ras_by_id, exceptional_combine_by_id = compute_ras_scores(combine_rows)
+    ras_by_id, exceptional_combine_by_id, ras_component_counts, combine_fallback_by_id = compute_ras_scores(combine_rows)
     warned_invalid_values: set[tuple[str, str, str, str]] = set()
     prod_by_id: dict[str, float] = {}
     age_adj_by_id: dict[str, float] = {}
@@ -794,6 +918,7 @@ def merge_inputs(
     missing_draft = (set(ras_by_id) | set(prod_by_id)) - set(draft_by_id)
     excluded_ids = (set(ras_by_id) | set(prod_by_id) | set(draft_by_id)) - set(common_ids)
 
+    ctx = context_by_id or {}
     players: list[PlayerInputs] = []
     for pid in common_ids:
         if pid in conflicting_across_sources:
@@ -802,15 +927,26 @@ def merge_inputs(
             pid,
             "UNK",
         )
+        ras_val = ras_by_id.get(pid)
+        ath_score, ath_source, ath_conf, ath_explainer, _ = resolve_athletic_input(
+            pid, position, ras_val,
+            ras_component_counts.get(pid, 0),
+            combine_fallback_by_id.get(pid),
+            ctx.get(pid),
+        )
         players.append(
             PlayerInputs(
                 player_id=pid,
                 player_name=name,
                 position=position,
-                ras_score_0_100=ras_by_id.get(pid),
+                ras_score_0_100=ras_val,
                 production_score_0_100=prod_by_id.get(pid),
                 draft_capital_proxy_0_100=draft_by_id.get(pid),
                 age_adjusted_production_0_100=age_adj_by_id.get(pid),
+                athletic_score_0_100=ath_score,
+                athletic_source=ath_source,
+                athletic_confidence=ath_conf,
+                athletic_explainer=ath_explainer,
             )
         )
     diagnostics = MergeDiagnostics(
@@ -911,21 +1047,27 @@ def normalize_context_entry(context_row: dict[str, Any]) -> dict[str, Any]:
 
 
 def rookie_alpha_score(player: PlayerInputs) -> float:
-    ras = player.ras_score_0_100 if player.ras_score_0_100 is not None else 50.0
+    # Use resolved athletic score (RAS / SPORQ / COMBINE_FALLBACK), falling
+    # back to raw RAS, then to 50.0 (neutral) when nothing is available.
+    ath = player.athletic_score_0_100 if player.athletic_score_0_100 is not None else (
+        player.ras_score_0_100 if player.ras_score_0_100 is not None else 50.0
+    )
     production = player.production_score_0_100 if player.production_score_0_100 is not None else 50.0
     draft = player.draft_capital_proxy_0_100 if player.draft_capital_proxy_0_100 is not None else 50.0
-    return clamp_0_100((0.35 * ras) + (0.45 * production) + (0.20 * draft))
+    return clamp_0_100((0.35 * ath) + (0.45 * production) + (0.20 * draft))
 
 
 def talent_score(player: PlayerInputs) -> float:
-    """RAS + production only, renormalized to sum to 1.0.
+    """Athletic + production only, renormalized to sum to 1.0.
 
-    Weights derived from rookie_alpha formula: 0.35 / 0.80 = 0.4375 (RAS),
+    Weights derived from rookie_alpha formula: 0.35 / 0.80 = 0.4375 (ATH),
     0.45 / 0.80 = 0.5625 (production). Null inputs default to 50.0.
     """
-    ras = player.ras_score_0_100 if player.ras_score_0_100 is not None else 50.0
+    ath = player.athletic_score_0_100 if player.athletic_score_0_100 is not None else (
+        player.ras_score_0_100 if player.ras_score_0_100 is not None else 50.0
+    )
     production = player.production_score_0_100 if player.production_score_0_100 is not None else 50.0
-    return clamp_0_100((0.4375 * ras) + (0.5625 * production))
+    return clamp_0_100((0.4375 * ath) + (0.5625 * production))
 
 
 def compute_market_conviction_override(
@@ -1029,9 +1171,19 @@ def write_outputs(
         ctx_exc: list[dict[str, Any]] = context_by_id.get(p.player_id, {}).get("exceptional_metrics") or []
         player_exceptional.extend(ctx_exc)
 
+        # When SPORQ is used as the athletic score, suppress its ceiling bonus
+        # to avoid double-counting athleticism in the alpha formula.
+        sporq_used = p.athletic_source == "SPORQ"
+
         ceiling_bonus = 0.0
         for em in ctx_exc:
             if em.get("alpha_bonus_eligible", False):
+                if sporq_used and em.get("metric") == "sporq_percentile":
+                    logging.info(
+                        "Suppressing SPORQ ceiling bonus for %s — already used as athletic_score",
+                        p.player_id,
+                    )
+                    continue
                 ceiling_bonus += CEILING_BONUS_TIERS.get(em.get("percentile_tier", "notable"), 0.0)
         ceiling_bonus = min(ceiling_bonus, CEILING_BONUS_CAP)
         if ceiling_bonus > 0.0:
@@ -1060,7 +1212,7 @@ def write_outputs(
         missing_components = [
             key
             for key, value in {
-                "ras": p.ras_score_0_100,
+                "athletic": p.athletic_score_0_100,
                 "production": p.production_score_0_100,
                 "draft_capital_proxy": p.draft_capital_proxy_0_100,
             }.items()
@@ -1081,7 +1233,11 @@ def write_outputs(
             "player_name": p.player_name,
             "position": p.position,
             "scores": {
-                "ras_0_100": round(p.ras_score_0_100 if p.ras_score_0_100 is not None else 50.0, 4),
+                "ras_0_100": round(p.ras_score_0_100, 4) if p.ras_score_0_100 is not None else None,
+                "athletic_score_0_100": round(p.athletic_score_0_100, 4) if p.athletic_score_0_100 is not None else None,
+                "athletic_source": p.athletic_source,
+                "athletic_confidence": round(p.athletic_confidence, 2),
+                "athletic_explainer": p.athletic_explainer,
                 "production_0_100": round(
                     p.production_score_0_100 if p.production_score_0_100 is not None else 50.0,
                     4,
@@ -1194,6 +1350,8 @@ def write_outputs(
                 "player_name",
                 "position",
                 "ras_0_100",
+                "athletic_score_0_100",
+                "athletic_source",
                 "production_0_100",
                 "draft_capital_proxy_0_100",
                 "talent_score_0_100",
@@ -1214,7 +1372,9 @@ def write_outputs(
                     "player_id": row["player_id"],
                     "player_name": row["player_name"],
                     "position": row["position"],
-                    "ras_0_100": row["scores"]["ras_0_100"],
+                    "ras_0_100": row["scores"]["ras_0_100"] or "",
+                    "athletic_score_0_100": row["scores"]["athletic_score_0_100"] or "",
+                    "athletic_source": row["scores"]["athletic_source"] or "",
                     "production_0_100": row["scores"]["production_0_100"],
                     "draft_capital_proxy_0_100": row["scores"]["draft_capital_proxy_0_100"],
                     "talent_score_0_100": row["scores"]["talent_score_0_100"],
@@ -1410,7 +1570,9 @@ def main() -> None:
         if row.get("wr_translation_penalty") is not None and row.get("player_id")
     }
 
-    players, merge_diagnostics, exceptional_combine_by_id = merge_inputs(combine_rows, production_rows, draft_rows)
+    players, merge_diagnostics, exceptional_combine_by_id = merge_inputs(
+        combine_rows, production_rows, draft_rows, context_by_id=context_by_id,
+    )
     write_outputs(
         players=players,
         merge_diagnostics=merge_diagnostics,

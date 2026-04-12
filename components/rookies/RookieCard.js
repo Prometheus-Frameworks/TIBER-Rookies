@@ -51,12 +51,13 @@ function pointForValue(centerX, centerY, radius, angle, value) {
   return `${x.toFixed(1)},${y.toFixed(1)}`;
 }
 
-function renderRadarChart(ras, production, draftCapital) {
+function renderRadarChart(athleticScore, production, draftCapital, athleticSource) {
   const centerX = 100;
   const centerY = 100;
   const radius = 80;
+  const athLabel = athleticSource === 'SPORQ' ? 'ATH (SPORQ)' : athleticSource === 'COMBINE_FALLBACK' ? 'ATH (partial)' : 'ATH';
   const axes = [
-    { label: 'RAS', angle: -Math.PI / 2, value: ras },
+    { label: athLabel, angle: -Math.PI / 2, value: athleticScore },
     { label: 'Production', angle: Math.PI / 6, value: production },
     { label: 'Draft Capital', angle: (5 * Math.PI) / 6, value: draftCapital },
   ];
@@ -83,7 +84,7 @@ function renderRadarChart(ras, production, draftCapital) {
   return `
     <section class="metrics radar-section">
       <div class="section-title">Model Input Radar</div>
-      <svg class="radar-chart" viewBox="0 0 200 200" role="img" aria-label="Radar chart for RAS, production, and draft capital scores">
+      <svg class="radar-chart" viewBox="0 0 200 200" role="img" aria-label="Radar chart for athletic, production, and draft capital scores">
         ${rings}
         ${axesLines}
         <polygon points="${dataPoints}" fill="rgba(59, 130, 246, 0.25)" stroke="#3b82f6" stroke-width="2" />
@@ -241,7 +242,7 @@ export function renderRookieCard(container, card) {
         ${card.scores.map(scoreCell).join('')}
       </section>
 
-      ${renderRadarChart(card.scores[1]?.value, card.scores[2]?.value, card.scores[3]?.value)}
+      ${renderRadarChart(card.scores[1]?.value, card.scores[2]?.value, card.scores[3]?.value, card.athleticSource)}
 
       ${renderPprProjection(card.pprProjection)}
 

@@ -31,9 +31,21 @@ const PPR_BAND_CLASS = {
  * Renders a compact 3-bar SVG showing RAS / Production / Draft Capital (0–100).
  * Bars are colour-coded: RAS = steel blue, Production = teal, Draft = coral.
  */
+function athChipLabel(source) {
+  if (source === 'SPORQ') return 'SPORQ';
+  if (source === 'COMBINE_FALLBACK') return 'ATH*';
+  return 'RAS';
+}
+
+function athChipTitle(source) {
+  if (source === 'SPORQ') return 'Athletic score (SPORQ composite)';
+  if (source === 'COMBINE_FALLBACK') return 'Athletic score (partial combine)';
+  return 'Relative Athletic Score';
+}
+
 function renderMiniScoreChart(row) {
   const bars = [
-    { value: row.rasScore,          color: '#6B9FD4', label: 'R' },
+    { value: row.athleticScore,     color: '#6B9FD4', label: 'A' },
     { value: row.productionScore,   color: '#4ECDC4', label: 'P' },
     { value: row.draftCapitalScore, color: '#E8853D', label: 'D' },
   ];
@@ -186,7 +198,7 @@ function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}
       </div>
       <div class="bmc-signals">
         ${row.draftCapitalScore != null ? `<span class="bmc-signal-chip bmc-signal-capital" title="Draft Capital">CAP ${Math.round(row.draftCapitalScore)}</span>` : ''}
-        ${row.rasScore         != null ? `<span class="bmc-signal-chip bmc-signal-ras"     title="Relative Athletic Score">RAS ${Math.round(row.rasScore)}</span>` : ''}
+        ${row.athleticScore    != null ? `<span class="bmc-signal-chip bmc-signal-ath${row.athleticSource === 'SPORQ' ? ' bmc-signal-ath-sporq' : ''}" title="${athChipTitle(row.athleticSource)}">${athChipLabel(row.athleticSource)} ${Math.round(row.athleticScore)}</span>` : ''}
         ${row.productionScore  != null ? `<span class="bmc-signal-chip bmc-signal-prod"    title="Production Score">PRD ${Math.round(row.productionScore)}</span>` : ''}
         ${renderBoarChip(row)}
       </div>
