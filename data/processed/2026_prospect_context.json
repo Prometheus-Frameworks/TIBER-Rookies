@@ -1188,5 +1188,1387 @@
     ],
     "evidence_summary": "Western Kentucky transfer to Oregon; multi-year career in a shared backfield. Shows receiving ability and explosiveness but volume was limited in 2025. Day 3/UDFA range with injury history concerns.",
     "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification"
+  },
+  {
+    "player_id": "wr-aaron-anderson",
+    "player_name": "Aaron Anderson",
+    "position": "WR",
+    "school": "LSU",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "slot_receiver",
+      "limited_sample",
+      "injury_history",
+      "route_runner"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Early entrant who had 33 catches for 398 yards and 0 TDs in an injury-shortened 2025 (9 games, knee); his true breakout was 2024 (61 rec, 884 yds, 5 TD). Declined combine 40-yard dash due to concerns about testing poorly; undersized slot with strong separation ability but limited size and diminished recent production.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-vinny-anthony-ii",
+    "player_name": "Vinny Anthony II",
+    "position": "WR",
+    "school": "Wisconsin",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "speed_threat",
+      "limited_sample",
+      "raw_athlete"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Led Wisconsin with just 31 catches for 391 yards and 1 TD in 2025 in a dysfunctional passing offense (132nd nationally). His 2024 season (39 rec, 672 yds, 4 TD, 17.2 YPR) was more impressive; projects as a returner-first prospect with developmental receiver traits.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-dillon-bell",
+    "player_name": "Dillon Bell",
+    "position": "WR",
+    "school": "Georgia",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "yac_producer",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Only 27 catches for 269 yards and 2 TDs receiving in 2025 at Georgia, though he added 109 rushing yards as a gadget player. Career totals of 119 rec/1,269 yds over four years show modest volume; coach Kirby Smart praised his versatility as a 'positionless player' with jet-sweep and reversal usage.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-skyler-bell",
+    "player_name": "Skyler Bell",
+    "position": "WR",
+    "school": "UConn",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "elite_production",
+      "yac_producer",
+      "slot_receiver",
+      "speed_threat",
+      "strong_efficiency"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Posted elite volume at UConn with 101 catches for 1,278 yards and 13 TDs in 2025; Biletnikoff finalist and UConn's first consensus All-American. Averaged 8+ YAC per reception (2nd in FBS) and ranked 3rd in YPRR per PFF; small-school caveat applies but his athleticism (41\" vertical, 4.40 forty) confirms elite physical traits.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-malik-benson",
+    "player_name": "Malik Benson",
+    "position": "WR",
+    "school": "Oregon",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "speed_threat",
+      "outside_receiver",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Recorded 43 catches for 719 yards and 6 TDs at Oregon in 2025, averaging 16.7 YPR with five 40+ yard TD catches; excellent speed (4.37 forty) but vertical/broad jump underwhelmed at the combine. Projects as a Day 3 vertical threat/outside receiver with limited route tree.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-germie-bernard",
+    "player_name": "Germie Bernard",
+    "position": "WR",
+    "school": "Alabama",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "route_runner",
+      "outside_receiver"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Led Alabama with 64 catches for 862 yards and 7 TDs in 2025, earning Biletnikoff semifinalist honors; wins with route detail, toughness, and consistency rather than pure speed. Mel Kiper ranked him 9th among WRs; Tankathon projects him #50 overall; DJ Moore/Jarvis Landry comp.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-zachariah-branch",
+    "player_name": "Zachariah Branch",
+    "position": "WR",
+    "school": "Georgia",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 19,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "speed_threat",
+      "yac_producer",
+      "slot_receiver",
+      "raw_athlete"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Transferred from USC to Georgia for 2025 and posted 81 catches for 811 yards and 6 TDs; 78% of yards came after the catch on quick throws and screens, indicating gadget/speed-oriented usage. Bleacher Report ranks him #10 overall at WR (#49 overall); rare home-run threat limited by route refinement.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-barion-brown",
+    "player_name": "Barion Brown",
+    "position": "WR",
+    "school": "LSU",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 19,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "speed_threat",
+      "yac_producer",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Led LSU with just 53 catches for 532 yards and 1 TD in 2025 (transferred from Kentucky); much better career production at Kentucky including kick return touchdowns. Concerns include body catches, inconsistent hands, and limited route development; projects as returner/special teams contributor at the next level.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-deion-burks",
+    "player_name": "Deion Burks",
+    "position": "WR",
+    "school": "Oklahoma",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "raw_athlete",
+      "speed_threat",
+      "injury_history",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Electrifying combine performance (4.30 forty, 42.5\" vertical, 10'11\" broad \u2014 top scores among WRs) but 2025 production at Oklahoma was modest at 57 catches/620 yards/4 TDs after injury-shortened 2024. Has injury history (soft tissue, concussion); Bleacher Report ranks him #11 WR post-combine.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-jeff-caldwell",
+    "player_name": "Jeff Caldwell",
+    "position": "WR",
+    "school": "Cincinnati",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "raw_athlete",
+      "speed_threat",
+      "outside_receiver",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Freakish athleticism for his size (4.31 forty \u2014 fastest ever by a 6'1\"+ player at the combine, 42\" vertical) but only 32 catches for 478 yards and 6 TDs with 8.6% drop rate at Cincinnati in 2025. Raw, developmental big-body receiver; Day 3 projection despite the combine buzz.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-josh-cameron",
+    "player_name": "Josh Cameron",
+    "position": "WR",
+    "school": "Baylor",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "outside_receiver",
+      "contested_catch_signal"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Team leader at Baylor with 69 catches for 872 yards and 9 TDs in 2025; 2-time All-Big 12, physical possession receiver at 6'2\"/220 lbs. Tankathon has him at #183 overall; projects as Day 3 pick with dense build but limited change-of-direction.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-kevin-coleman-jr",
+    "player_name": "Kevin Coleman Jr.",
+    "position": "WR",
+    "school": "Missouri",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 18,
+    "age_at_first_impact_season": 18,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "slot_receiver",
+      "route_runner",
+      "strong_efficiency"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Led Missouri with 66 catches for 732 yards and 1 TD in 2025 after stints at Jackson State, Louisville, Mississippi State (74 rec/932 yds/6 TD in 2024), and Missouri; a prolific transfer portal journeyman with versatility. Projects as a slot/possession receiver with track record of 700+ yard seasons.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-omar-cooper-jr",
+    "player_name": "Omar Cooper Jr.",
+    "position": "WR",
+    "school": "Indiana",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "elite_production",
+      "slot_receiver",
+      "yac_producer",
+      "contested_catch_signal"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Led national champion Indiana with 69 catches for 937 yards and 13 TDs in 2025; Dane Brugler ranks him 22nd overall (The Athletic), Tankathon has him at #24. Physical slot receiver with exceptional YAC and hands; 24 career TDs and 1,798 career yards; rising first-round buzz.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-cj-daniels",
+    "player_name": "CJ Daniels",
+    "position": "WR",
+    "school": "Miami",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "route_runner",
+      "outside_receiver"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Six-year college career culminated with 50 catches for 557 yards and 7 TDs at Miami in 2025; career totals of 198 rec/2,996 yards/28 TDs. ESPN labeled him a 'Day 3 sleeper'; fluid route runner with natural ball-tracking ability but lacks top-end burst.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-caleb-douglas",
+    "player_name": "Caleb Douglas",
+    "position": "WR",
+    "school": "Texas Tech",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "outside_receiver",
+      "speed_threat",
+      "strong_efficiency"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Impressive 54 catches for 846 yards (15.7 YPR) and 7 TDs at Texas Tech in 2025; 135 career catches for 2,031 yards and 16 TDs. Ran a 4.39 forty at 6'3\"/206 lbs which is elite size/speed combination; projects as a Day 7 developmental outside receiver with an intriguing physical profile.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-malachi-fields",
+    "player_name": "Malachi Fields",
+    "position": "WR",
+    "school": "Notre Dame",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "raw_athlete",
+      "outside_receiver",
+      "contested_catch_signal",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "36 catches for 630 yards and 5 TDs at Notre Dame in 2025 with an elite 17.5 YPR; 9.98 RAS (top 2% ever) but 4.61 forty will be a concern for NFL evaluators. At 6'5\"/218 lbs he's a massive red-zone target; pure raw upside prospect limited by below-average speed.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-emmanuel-henderson-jr",
+    "player_name": "Emmanuel Henderson Jr.",
+    "position": "WR",
+    "school": "Kansas",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "speed_threat",
+      "outside_receiver"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Led Kansas with 45 catches for 766 yards and 5 TDs in 2025 (17.0 YPR), earning 3rd-team All-Big 12 as receiver and 1st-team as kick returner; 1,237 all-purpose yards. Projects primarily as a Day 3 receiver/returner; not among the top-ranked WRs on most boards.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-chris-hilton-jr",
+    "player_name": "Chris Hilton Jr.",
+    "position": "WR",
+    "school": "LSU",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "speed_threat",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Only 7\u201310 receptions for 54\u2013122 yards and 0 TDs in 2025 at LSU; career totals of 41 receptions across five years in college. His draft case rests almost entirely on all-star game appearance (Senior Bowl, Shrine Bowl, Hula Bowl, American Bowl \u2014 believed to be first player at all four), not production.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-jordan-hudson",
+    "player_name": "Jordan Hudson",
+    "position": "WR",
+    "school": "SMU",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "outside_receiver",
+      "route_runner"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "61 catches for 766 yards and 6 TDs at SMU in 2025 (career highs), including a 70-yard TD catch at Clemson; 3rd-team All-ACC. Transferred from TCU; ESPN Matt Miller ranks him 246th overall. Solid possession receiver but projected as a late-round or UDFA candidate.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-ted-hurst",
+    "player_name": "Ted Hurst",
+    "position": "WR",
+    "school": "Georgia State",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "strong_production",
+      "outside_receiver",
+      "contested_catch_signal",
+      "raw_athlete"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "First Georgia State player to cross 1,000 yards (71 rec/1,004 yds/6 TD in 2025); First Team All-Sun Belt and first Georgia State player on The Athletic's College Freaks List. Big (6'4\") with 99th-percentile broad jump; Sun Belt level of competition is a caveat but athleticism is genuine.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-caullin-lacy",
+    "player_name": "Caullin Lacy",
+    "position": "WR",
+    "school": "Louisville",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "slot_receiver",
+      "route_runner",
+      "yac_producer"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "60 catches for 635 yards and 2 TDs receiving at Louisville in 2025, but was a dominant return specialist (20.0 punt return average \u2014 3rd nationally, two punt return TDs, 2nd-team All-American as returner). Dane Brugler (The Athletic) projects him as a priority UDFA; slot receiver with elite short-area quickness.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-bryce-lance",
+    "player_name": "Bryce Lance",
+    "position": "WR",
+    "school": "North Dakota State",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "elite_production",
+      "fcs_production_caveat",
+      "speed_threat",
+      "raw_athlete",
+      "strong_production"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Set NDSU records with back-to-back 1,000-yard seasons (2024: 75 rec/1,071 yds/17 TD; 2025 comparable elite FCS numbers); 9.98 RAS \u2014 7th highest in NFL Combine history. ESPN Matt Miller projects him at pick 96 overall; FCS production caveat but athleticism and production are both elite.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-jakobi-lane",
+    "player_name": "Ja'Kobi Lane",
+    "position": "WR",
+    "school": "USC",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "outside_receiver",
+      "contested_catch_signal",
+      "raw_athlete"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "49 catches for 750 yards (15.3 YPR) and 4 TDs at USC in 2025; 77.6 overall PFF grade. Contested catch specialist who wins above the rim; Bleacher Report ranks him 21st among WRs; ESPN Scouts Inc. places him 91st overall. Route tree still developing but size/athletic combination is intriguing.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-kendrick-law",
+    "player_name": "Kendrick Law",
+    "position": "WR",
+    "school": "Kentucky",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "raw_athlete",
+      "speed_threat",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Led Kentucky with 53 catches for 540 yards and 3 TDs in 2025 (10.2 YPR); 42-inch vertical (3rd among all combine WRs) and 9.60 RAS show elite athleticism. However, he ran a narrow route tree built around screens and hitches with an average depth of target under 4 yards. Primarily Day 3/UDFA range.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-eric-mcalister",
+    "player_name": "Eric McAlister",
+    "position": "WR",
+    "school": "TCU",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "elite_production",
+      "outside_receiver",
+      "speed_threat",
+      "strong_efficiency"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Elite college production in 2025 with 72 catches for 1,190 yards (16.5 YPR) and 10 TDs at TCU; AP and Sporting News All-American, led the Big 12 in receiving yards. Record game vs. SMU (254 yds/3 TDs). Did not perform on-field drills at the combine; projects as WR24 at #154 overall per NFLDraftBuzz.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-donaven-mcculley",
+    "player_name": "Donaven McCulley",
+    "position": "WR",
+    "school": "Michigan",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "raw_athlete",
+      "outside_receiver",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "39 catches for 588 yards and 3 TDs at Michigan in 2025 starting all 13 games; began career as a QB at Indiana before converting. Measured 6'5\" and 215 lbs with huge hands (10.25\"). Projects as a developmental UDFA/late-round pick; PFF ranks him 228th among WRs in 2025.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-eric-rivers",
+    "player_name": "Eric Rivers",
+    "position": "WR",
+    "school": "Georgia Tech",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "speed_threat",
+      "outside_receiver"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "46 catches for 658 yards and 2 TDs at Georgia Tech in 2025; career totals of 140 rec/2,200 yds/16 TDs across Memphis, FIU, and Georgia Tech. Elite speed (4.35 forty) for his size; ranked #176 overall per Tankathon. Best as a vertical deep threat/special teams contributor.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-chase-roberts",
+    "player_name": "Chase Roberts",
+    "position": "WR",
+    "school": "BYU",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "contested_catch_signal",
+      "outside_receiver",
+      "route_runner"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "54 catches for 802 yards and 6 TDs at BYU in 2025; 8th all-time at BYU in receptions (170 career) and 7th in yards. Puka Nacua comparison but slower (4.64) and projects as Day 3 or UDFA per ESPN; wins with contested catches and contested body positioning rather than separation speed.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-dezhaun-stribling",
+    "player_name": "De'Zhaun Stribling",
+    "position": "WR",
+    "school": "Mississippi",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "speed_threat",
+      "outside_receiver"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "55 catches for 811 yards and 6 TDs at Ole Miss in 2025; transferred between Washington State, Oklahoma State, and Ole Miss. Heavily vertical route tree with recent development; showed 50+ catches and 800+ yards at multiple programs. Speed (4.36) is a genuine weapon but overall draft stock is Day 3/UDFA.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-j-michael-sturdivant",
+    "player_name": "J. Michael Sturdivant",
+    "position": "WR",
+    "school": "Florida",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 18,
+    "age_at_first_impact_season": 18,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "breakout_freshman",
+      "injury_history",
+      "limited_sample",
+      "outside_receiver"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Only 27 catches for 406 yards and 3 TDs at Florida in 2025 after transferring from Cal; was a breakout freshman at Cal in 2022 (65 rec/755 yds/7 TD \u2014 led all FBS freshmen). Long injury/transfer history has never let him build on his freshman season; high upside but low floor.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-zavion-thomas",
+    "player_name": "Zavion Thomas",
+    "position": "WR",
+    "school": "LSU",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "speed_threat",
+      "slot_receiver",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "41 catches for 488 yards and 4 TDs at LSU in 2025; ran the second-fastest 40 (4.28) at the entire combine among all positions. Limited route tree and volume but elite speed; ESPN Matt Miller projects him at pick 268. Projects as a specialty/speed player.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-reggie-virgil",
+    "player_name": "Reggie Virgil",
+    "position": "WR",
+    "school": "Texas Tech",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "outside_receiver",
+      "route_runner"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "57 catches for 705 yards and 6 TDs at Texas Tech in 2025; 100 career catches for 1,583 yards and 16 TDs across Miami (OH) and Texas Tech. Matt Miller projects him pick 181 (Detroit Lions, 5th round); Big 12 honorable mention with reliable hands but route tree needs refinement.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-harrison-wallace-iii",
+    "player_name": "Harrison Wallace III",
+    "position": "WR",
+    "school": "Mississippi",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "outside_receiver",
+      "route_runner"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "61 catches for 934 yards and 4 TDs at Ole Miss in 2025 (15.3 YPR) after transferring from Penn State; ranked 32nd nationally in receiving yards. Career totals of 132+ catches and 1,950+ yards across Penn State and Ole Miss. Functional route runner; Day 3 to UDFA range.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-jalen-walthall",
+    "player_name": "Jalen Walthall",
+    "position": "WR",
+    "school": "Incarnate Word",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "fcs_production_caveat",
+      "outside_receiver"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "70 catches for 847 yards and 8 TDs at Incarnate Word in 2025; had elite 2024 season (1,290 yds/14 TD) at the FCS level earning Southland Offensive Player of the Year. FCS competition is a significant caveat; #7 FCS prospect per FCS Football Central. Projects as UDFA/late Day 3.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-kaden-wetjen",
+    "player_name": "Kaden Wetjen",
+    "position": "WR",
+    "school": "Iowa",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "limited_sample",
+      "slot_receiver"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Only 20 catches for 151 yards as a receiver at Iowa in 2025, but a historic returner: 2x Jet Award winner (nation's best returner), 28.3 punt return average (#1 in NCAA), 4 return TDs (3 punt, 1 kick). His draft value is almost entirely return specialist based, not as a receiver.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-colbie-young",
+    "player_name": "Colbie Young",
+    "position": "WR",
+    "school": "Georgia",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "contested_catch_signal",
+      "outside_receiver",
+      "injury_history",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "26 catches for 358 yards and 1 TD in 8 games before suffering a fractured leg vs. Ole Miss in October 2025; returned for the College Football Playoff. Intriguing 6'5\"/218 lb frame with strong contested-catch ability but injury and legal history flagged; Steelers Depot grades him 6.2 (Pure Backup).",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-dallen-bentley",
+    "player_name": "Dallen Bentley",
+    "position": "TE",
+    "school": "Utah",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "strong_production",
+      "receiving_threat",
+      "move_te",
+      "route_runner",
+      "red_zone_target",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Broke out as a first-time full starter in 2025 with 48 catches for 620 yards and 6 TDs at Utah, earning Mackey Award semifinalist nod. A one-year production sample on a single-season breakout, but clean hands and intermediate route feel boost his upside.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-nate-boerkircher",
+    "player_name": "Nate Boerkircher",
+    "position": "TE",
+    "school": "Texas A&M",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "blocking_specialist",
+      "inline_te",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Blocking-first TE from Nebraska transfer who posted just 19 catches for 198 yards and 3 TDs in his final year at Texas A&M; ran a surprising 4.40 shuttle at the combine. Projects as a developmental run-blocker with limited receiving role.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-josh-cuevas",
+    "player_name": "Josh Cuevas",
+    "position": "TE",
+    "school": "Alabama",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "route_runner",
+      "move_te",
+      "dual_role"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Posted 37 catches for 411 yards and 4 TDs in 2025 at Alabama with advanced zone feel and smart route running; 118 career receptions across five seasons show steady production. Lacks prototypical TE size but projects as a functional rotational TE2.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-khalil-dinkins",
+    "player_name": "Khalil Dinkins",
+    "position": "TE",
+    "school": "Penn State",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "blocking_specialist",
+      "inline_te"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Spent his Penn State career primarily as a blocking TE with just 14 catches for 169 yards in 2025; excelled in 3-cone and shuttle at the combine, showing agility. Projects as a blocking specialist with minimal receiving ceiling.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-jack-endries",
+    "player_name": "Jack Endries",
+    "position": "TE",
+    "school": "Texas",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 23,
+    "age_at_first_impact_season": 23,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "dual_role",
+      "inline_te",
+      "route_runner",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Posted 33 catches for 346 yards and 3 TDs in his first year at Texas (transfer from Cal) while earning Arch Manning's trust as a dependable underneath option. Good size and dual-role capability make him an appealing Day 3 prospect.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-john-michael-gyllenborg",
+    "player_name": "John Michael Gyllenborg",
+    "position": "TE",
+    "school": "Wyoming",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "receiving_threat",
+      "move_te",
+      "athleticism_upside",
+      "injury_history",
+      "route_runner"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Explosive move TE from Wyoming who barely played football before college yet became an NFL prospect; hamstring injury in 2025 limited him to partial production across 80 career catches for 1,023 yards and 7 TDs. Rare burst and seam speed for the position; blocking is the clear limitation.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-matthew-hibner",
+    "player_name": "Matthew Hibner",
+    "position": "TE",
+    "school": "SMU",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 23,
+    "age_at_first_impact_season": 23,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "receiving_threat",
+      "athleticism_upside",
+      "move_te",
+      "route_runner"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Michigan transfer to SMU who posted 31 catches for 436 yards and 4 TDs in 2025; standout combine with a 4.57 40 and 37-inch vertical demonstrating above-average athleticism. Senior Bowl performer rising on draft boards with upside as a receiving TE2.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-justin-joly",
+    "player_name": "Justin Joly",
+    "position": "TE",
+    "school": "N.C. State",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "strong_production",
+      "receiving_threat",
+      "red_zone_target",
+      "route_runner",
+      "injury_history"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "First-team All-ACC in 2025 with 47 catches for 468 yards and 7 TDs, leading NC State with his red-zone presence; did not run the 40 at the combine due to a hamstring injury. Natural pass catcher with strong hands and zone feel but undersized frame raises NFL ceiling questions.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-will-kacmarek",
+    "player_name": "Will Kacmarek",
+    "position": "TE",
+    "school": "Ohio State",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "blocking_specialist",
+      "inline_te",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Blocking-first TE at Ohio State with just 15 catches for 168 yards and 2 TDs in 2025; used primarily to open holes in Ohio State's run-heavy sets. Limited receiving upside but respected as a technician in pass protection and short-area blocking.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-jaren-kanak",
+    "player_name": "Jaren Kanak",
+    "position": "TE",
+    "school": "Oklahoma",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "athleticism_upside",
+      "receiving_threat",
+      "move_te",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Converted linebacker \u2014 played LB at Kansas State before transferring to Oklahoma, where he switched to TE in 2025 and produced 44 catches for 533 yards with All-SEC Third Team recognition; elite 4.52 40-dash for the position reflects LB athleticism. Extreme developmental upside with only one year of TE experience.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-miles-kitselman",
+    "player_name": "Miles Kitselman",
+    "position": "TE",
+    "school": "Tennessee",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "inline_te",
+      "blocking_specialist"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Blocking-and-receiving TE at Tennessee with 26 catches for 261 yards and 2 TDs in 2025; heavy NFL-ready frame at 6'5\", 259 lbs but 4.90 40 time is a red flag for receiving role upside. Projects as a late-round blocking TE2/developmental prospect.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-marlin-klein",
+    "player_name": "Marlin Klein",
+    "position": "TE",
+    "school": "Michigan",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "athleticism_upside",
+      "inline_te",
+      "blocking_specialist",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "German-born, rare athletic specimen at 6'6\" with a 4.61 40 and exceptional combine testing; only 24 catches for 248 yards in 2025 as Michigan's blocking TE in a run-heavy scheme. Elite developmental upside if he refines route running and receives more targets.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-tanner-koziol",
+    "player_name": "Tanner Koziol",
+    "position": "TE",
+    "school": "Houston",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "elite_production",
+      "receiving_threat",
+      "red_zone_target",
+      "move_te",
+      "route_runner"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Led all FBS tight ends in receptions (74) and contested-catch percentage (74.1%) in 2025 with 727 yards and 6 TDs at Houston; at 6'7\" he is a red-zone mismatch with massive catch radius. Below-average athleticism after the catch limits YAC but his size and hands project well as a move TE2.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-rj-maryland",
+    "player_name": "RJ Maryland",
+    "position": "TE",
+    "school": "SMU",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "receiving_threat",
+      "athleticism_upside",
+      "move_te",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Son of Super Bowl champion Russell Maryland, posted 27 catches for 322 yards and 2 TDs at SMU in 2025 with elite seam speed (4.51 40) and alignment versatility; finished career as SMU's all-time leader in TE receiving yards. Receiving instincts and athleticism are clear, but blocking and route refinement need work.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-lake-mcree",
+    "player_name": "Lake McRee",
+    "position": "TE",
+    "school": "USC",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "receiving_threat",
+      "move_te",
+      "injury_history",
+      "route_runner"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Five-year USC starter who posted 30 catches for 450 yards and 4 TDs in his final season; two prior ACL tears (high school and 2023 at USC) raise durability flags. Smooth route runner with good hands but testing data from the combine was not publicly available.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-riley-nowakowski",
+    "player_name": "Riley Nowakowski",
+    "position": "TE",
+    "school": "Indiana",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 23,
+    "age_at_first_impact_season": 23,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "dual_role",
+      "move_te",
+      "route_runner"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Starter on Indiana's undefeated 2025 regular season squad with 32 catches for 387 yards and 2 TDs plus a rushing score; reliable blocker and intermediate target for the Big Ten champion Hoosiers. Best suited as an H-back/move TE in creative schemes.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-eli-raridon",
+    "player_name": "Eli Raridon",
+    "position": "TE",
+    "school": "Notre Dame",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "inline_te",
+      "injury_history",
+      "athleticism_upside",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "6'7\" frame with 32 catches for 482 yards in 2025 at Notre Dame; missed nearly two full seasons recovering from double ACL tears early in his career. Legitimate injury history clouds his floor but his size-speed combination and length at the catch point project as a moldable Y-TE.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-dj-rogers",
+    "player_name": "DJ Rogers",
+    "position": "TE",
+    "school": "TCU",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 23,
+    "age_at_first_impact_season": 23,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "inline_te",
+      "dual_role",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Late-blooming five-year TCU TE who finally broke out with 34 catches for 319 yards and 2 TDs in 2025 as the starter; did not run the 40 or perform drills at the combine. PFF ranks him 292nd overall; projects as a Day 3 depth/blocking TE.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-sam-roush",
+    "player_name": "Sam Roush",
+    "position": "TE",
+    "school": "Stanford",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "strong_production",
+      "inline_te",
+      "dual_role",
+      "athleticism_upside",
+      "route_runner"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "49 catches for 545 yards and 2 TDs in 2025, leading ACC TEs in receiving yards; posted the best 3-cone (7.08) among all TEs at the combine and a 38.5-inch vertical that locked up Day 2 consideration. Old-school Y-TE with elite effort and blocking willingness; drop issues need to be cleaned up.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-joe-royer",
+    "player_name": "Joe Royer",
+    "position": "TE",
+    "school": "Cincinnati",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 23,
+    "age_at_first_impact_season": 23,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "receiving_threat",
+      "route_runner",
+      "move_te"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Ohio State transfer who posted 29 catches for 416 yards and 4 TDs in 2025 final year at Cincinnati; returned for senior season specifically to be the first TE taken in 2026. Excellent hands and zone feel, but did not perform combine drills; blocking development is his NFL key.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-bauer-sharp",
+    "player_name": "Bauer Sharp",
+    "position": "TE",
+    "school": "LSU",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "athleticism_upside",
+      "inline_te",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Unique background: started as a QB at Southeastern Louisiana, transferred to Oklahoma (2024, 42 catches) then LSU (2025, 24 catches for 252 yards and 2 TDs). Journey player with multi-position athleticism but limited TE production at power programs.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-michael-trigg",
+    "player_name": "Michael Trigg",
+    "position": "TE",
+    "school": "Baylor",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "elite_production",
+      "receiving_threat",
+      "athleticism_upside",
+      "red_zone_target",
+      "route_runner",
+      "injury_history"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Two-time All-America TE at Baylor with 50 catches for 694 yards and 6 TDs in 2025, finishing 2nd nationally in TE receiving yards; hamstring pull forced him to shut down all combine testing. Three-time consensus All-American; contested-catch ability and vertical athleticism are elite but blocking needs major development.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-daequan-wright",
+    "player_name": "Dae'Quan Wright",
+    "position": "TE",
+    "school": "Mississippi",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "strong_production",
+      "receiving_threat",
+      "move_te",
+      "elite_efficiency_tier",
+      "injury_history"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "39 catches for 635 yards and 5 TDs at Ole Miss in 2025 with a 16.3 YPC average that ranked among the nation's best for TEs; played through an undisclosed injury all season. Aligned all over the formation with big-play ability, though he skipped combine drills and blocking is a notable weakness.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": []
   }
 ]
