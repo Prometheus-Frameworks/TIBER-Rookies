@@ -250,5 +250,113 @@
     "class_year": 2026,
     "production_score_0_100": 52.0,
     "production_score_source": "Estimated: 2025 941 rec yds + 499 rush yds / 9 TDs at Navy (G5 option offense). Competition-adjusted from raw dual-threat production. Verify when CFBD data available (option offense attribution may fail)."
+  },
+  {
+    "player_id": "rb-max-bredeson",
+    "player_name": "Max Bredeson",
+    "position": "RB",
+    "school": "Michigan",
+    "class_year": 2026,
+    "production_score_0_100": 42,
+    "production_score_source": "Research agent estimate \u2014 2025 season stats (low confidence; verify with CFBD)"
+  },
+  {
+    "player_id": "rb-demond-claiborne",
+    "player_name": "Demond Claiborne",
+    "position": "RB",
+    "school": "Wake Forest",
+    "class_year": 2026,
+    "production_score_0_100": 58,
+    "production_score_source": "Research agent estimate \u2014 2025 season stats (low confidence; verify with CFBD)"
+  },
+  {
+    "player_id": "rb-cj-donaldson-jr",
+    "player_name": "CJ Donaldson Jr.",
+    "position": "RB",
+    "school": "Ohio State",
+    "class_year": 2026,
+    "production_score_0_100": 48,
+    "production_score_source": "Research agent estimate \u2014 2025 season stats (low confidence; verify with CFBD)"
+  },
+  {
+    "player_id": "rb-rahsul-faison",
+    "player_name": "Rahsul Faison",
+    "position": "RB",
+    "school": "South Carolina",
+    "class_year": 2026,
+    "production_score_0_100": 57,
+    "production_score_source": "Research agent estimate \u2014 2025 season stats (low confidence; verify with CFBD)"
+  },
+  {
+    "player_id": "rb-roman-hemby",
+    "player_name": "Roman Hemby",
+    "position": "RB",
+    "school": "Indiana",
+    "class_year": 2026,
+    "production_score_0_100": 60,
+    "production_score_source": "Research agent estimate \u2014 2025 season stats (low confidence; verify with CFBD)"
+  },
+  {
+    "player_id": "rb-robert-henry-jr",
+    "player_name": "Robert Henry Jr.",
+    "position": "RB",
+    "school": "UTSA",
+    "class_year": 2026,
+    "production_score_0_100": 52,
+    "production_score_source": "Research agent estimate \u2014 2025 season stats (low confidence; verify with CFBD)"
+  },
+  {
+    "player_id": "rb-jam-miller",
+    "player_name": "Jam Miller",
+    "position": "RB",
+    "school": "Alabama",
+    "class_year": 2026,
+    "production_score_0_100": 62,
+    "production_score_source": "Research agent estimate \u2014 2025 season stats (low confidence; verify with CFBD)"
+  },
+  {
+    "player_id": "rb-leveon-moss",
+    "player_name": "Le'Veon Moss",
+    "position": "RB",
+    "school": "Texas A&M",
+    "class_year": 2026,
+    "production_score_0_100": 57,
+    "production_score_source": "Research agent estimate \u2014 2025 season stats (low confidence; verify with CFBD)"
+  },
+  {
+    "player_id": "rb-adam-randall",
+    "player_name": "Adam Randall",
+    "position": "RB",
+    "school": "Clemson",
+    "class_year": 2026,
+    "production_score_0_100": 45,
+    "production_score_source": "Research agent estimate \u2014 2025 season stats (low confidence; verify with CFBD)"
+  },
+  {
+    "player_id": "rb-desmond-reid",
+    "player_name": "Desmond Reid",
+    "position": "RB",
+    "school": "Pittsburgh",
+    "class_year": 2026,
+    "production_score_0_100": 63,
+    "production_score_source": "Research agent estimate \u2014 2025 season stats (low confidence; verify with CFBD)"
+  },
+  {
+    "player_id": "rb-jmari-taylor",
+    "player_name": "J'Mari Taylor",
+    "position": "RB",
+    "school": "Virginia",
+    "class_year": 2026,
+    "production_score_0_100": 48,
+    "production_score_source": "Research agent estimate \u2014 2025 season stats (low confidence; verify with CFBD)"
+  },
+  {
+    "player_id": "rb-noah-whittington",
+    "player_name": "Noah Whittington",
+    "position": "RB",
+    "school": "Oregon",
+    "class_year": 2026,
+    "production_score_0_100": 55,
+    "production_score_source": "Research agent estimate \u2014 2025 season stats (low confidence; verify with CFBD)"
   }
 ]
