@@ -116,6 +116,65 @@ body {
   color: var(--muted);
 }
 
+/* BOAR section (full player card) */
+.boar-section {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+.boar-chips {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.boa-chip, .boar-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  border-radius: 6px;
+  padding: 2px 7px;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', 'Fira Mono', ui-monospace, monospace;
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+.boa-chip {
+  background: rgba(158, 139, 122, 0.12);
+  border: 1px solid rgba(158, 139, 122, 0.3);
+  color: var(--muted);
+}
+.boa-label, .boar-label { font-size: 10px; opacity: 0.7; }
+.boar-elite {
+  background: rgba(232, 133, 61, 0.18);
+  border: 1px solid rgba(232, 133, 61, 0.4);
+  color: #E8853D;
+}
+.boar-early {
+  background: rgba(78, 205, 196, 0.18);
+  border: 1px solid rgba(78, 205, 196, 0.35);
+  color: #4ECDC4;
+}
+.boar-avg {
+  background: rgba(158, 139, 122, 0.12);
+  border: 1px solid rgba(158, 139, 122, 0.3);
+  color: var(--muted);
+}
+.boar-late {
+  background: rgba(120, 113, 108, 0.12);
+  border: 1px solid rgba(120, 113, 108, 0.25);
+  color: #78716C;
+}
+.boar-signal-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  font-style: italic;
+}
+
+
 /* ─── Model edge outlier badge ────────────────────────────────────────────── */
 .edge-outlier-badge {
   display: inline-block;
@@ -707,6 +766,10 @@ body {
   .bmc-signal-capital { background: rgba(232, 133, 61, .18); color: #E8853D; border: 1px solid rgba(232, 133, 61, .35); }
   .bmc-signal-ras     { background: rgba(107, 159, 212, .18); color: #6B9FD4; border: 1px solid rgba(107, 159, 212, .35); }
   .bmc-signal-prod    { background: rgba(78, 205, 196, .18); color: #4ECDC4; border: 1px solid rgba(78, 205, 196, .35); }
+  .bmc-signal-boar-elite { background: rgba(232, 133, 61, .18); color: #E8853D; border: 1px solid rgba(232, 133, 61, .35); }
+  .bmc-signal-boar-early { background: rgba(78, 205, 196, .14); color: #4ECDC4; border: 1px solid rgba(78, 205, 196, .30); }
+  .bmc-signal-boar-avg   { background: rgba(158, 139, 122, .12); color: #9E8B7A; border: 1px solid rgba(158, 139, 122, .25); }
+  .bmc-signal-boar-late  { background: rgba(120, 113, 108, .10); color: #78716C; border: 1px solid rgba(120, 113, 108, .20); }
   .bmc-stats {
     display: flex;
     flex-direction: column;

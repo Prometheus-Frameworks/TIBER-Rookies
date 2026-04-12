@@ -1,21 +1,33 @@
 #!/usr/bin/env python3
-"""Compute breakout_age and young_breakout_flag for 2026 prospects.
+"""Compute breakout_age, breakout_strength, breakout_confidence for 2026 prospects.
 
 For each player, finds the earliest season in their play profile data where
-they met the position-specific breakout threshold. Uses CFBD roster data to
-get academic year (1=FR, 2=SO, 3=JR, 4=SR, 5=5th year), then estimates age
-as 17 + academic_year. This is a ±1 year approximation; exact DOBs are not
+they met position-specific breakout criteria. Uses CFBD roster data to get
+academic year (1=FR, 2=SO, 3=JR, 4=SR, 5=5th year), then estimates age as
+17 + academic_year. This is a ±1 year approximation; exact DOBs are not
 available from CFBD.
+
+Breakout detection is position-aware with tiered criteria:
+
+  WR  — preferred: target_share >= 0.20 OR receiving_yard_share >= 0.25
+        fallback:  targets >= 50
+  TE  — preferred: target_share >= 0.15 OR receiving_yard_share >= 0.20
+        fallback:  targets >= 35  (lower bar; college TEs rarely exceed 50)
+  RB  — preferred: rush_share >= 0.30 OR rush_yard_share >= 0.30
+        fallback:  rush_attempts >= 80
+  QB  — pass_attempts >= 150  (lighter treatment, no share criteria)
+
+When a breakout is detected the script also computes:
+  breakout_strength  (0.0–1.0) — how convincingly the player exceeded the
+                                  threshold relative to the position bar.
+  breakout_confidence (0.0–1.0) — how complete the data picture is; lower
+                                  when fewer seasons are available or when
+                                  only raw volume (no share) data was used.
 
 Limitation: only looks at seasons present in play profile files (2024, 2025 by
 default). Players whose breakout predates those seasons (e.g. Nick Singleton
-2022) will show breakout_age=null. This is a known data gap, not a bug.
-
-Breakout thresholds (inclusive):
-  WR  — targets  >= 50
-  TE  — targets  >= 35  (lower bar; college TEs rarely exceed 50)
-  QB  — pass_attempts >= 150
-  RB  — rush_attempts >= 80
+2022) will show breakout_age=null. Missing earlier breakouts lower confidence
+rather than falsely implying no breakout.
 
 young_breakout_flag: True if breakout_age <= 20
 """
@@ -43,12 +55,21 @@ DEFAULT_WR_DIR = Path("data/processed/wr_route_profiles")
 DEFAULT_QB_DIR = Path("data/processed/qb_play_profiles")
 DEFAULT_RB_DIR = Path("data/processed/rb_play_profiles")
 
-# Breakout thresholds by position
+# Breakout thresholds by position — raw volume fallback
 BREAKOUT_THRESHOLDS: dict[str, tuple[str, int]] = {
     "WR": ("targets", 50),
     "TE": ("targets", 35),
     "QB": ("pass_attempts", 150),
     "RB": ("rush_attempts", 80),
+}
+
+# Position-aware share-based breakout criteria (preferred over raw volume).
+# Each entry is a list of (field, threshold) pairs — meeting ANY one qualifies.
+SHARE_BREAKOUT_CRITERIA: dict[str, list[tuple[str, float]]] = {
+    "WR": [("target_share", 0.20), ("receiving_yard_share", 0.25)],
+    "TE": [("target_share", 0.15), ("receiving_yard_share", 0.20)],
+    "RB": [("rush_share", 0.30), ("rush_yard_share", 0.30)],
+    "QB": [],  # QB uses raw volume only — lighter treatment
 }
 
 YOUNG_BREAKOUT_MAX_AGE = 20  # breakout_age <= this → young_breakout_flag = True
@@ -129,6 +150,79 @@ def load_profile_seasons(
     return results
 
 
+def _check_share_breakout(profile: dict[str, Any], position: str) -> tuple[bool, bool]:
+    """Check if a profile meets share-based breakout criteria for the position.
+
+    Returns (met_share_criteria, had_share_data).
+    """
+    criteria = SHARE_BREAKOUT_CRITERIA.get(position, [])
+    if not criteria:
+        return False, False
+    had_share_data = False
+    for field, threshold in criteria:
+        value = profile.get(field)
+        if value is not None:
+            had_share_data = True
+            try:
+                if float(value) >= threshold:
+                    return True, True
+            except (TypeError, ValueError):
+                pass
+    return False, had_share_data
+
+
+def _compute_breakout_strength(
+    stat_value: float,
+    threshold_value: int,
+    profile: dict[str, Any],
+    position: str,
+) -> float:
+    """How convincingly the player exceeded the breakout threshold (0.0–1.0).
+
+    Blends raw volume overshoot with share overshoot when share data is
+    available, giving a richer picture of breakout dominance.
+    """
+    # Volume overshoot: 0 at threshold, 1.0 at 2× threshold
+    if threshold_value > 0 and stat_value > 0:
+        ratio = min(2.0, stat_value / threshold_value)
+        volume_strength = max(0.0, ratio - 1.0)
+    else:
+        volume_strength = 0.0
+
+    # Share overshoot (if available)
+    share_criteria = SHARE_BREAKOUT_CRITERIA.get(position, [])
+    best_share_strength = 0.0
+    has_share = False
+    for field, threshold in share_criteria:
+        value = profile.get(field)
+        if value is not None:
+            has_share = True
+            try:
+                ratio = min(2.0, float(value) / threshold) if threshold > 0 else 0.0
+                best_share_strength = max(best_share_strength, max(0.0, ratio - 1.0))
+            except (TypeError, ValueError):
+                pass
+
+    if has_share:
+        return round(0.5 * volume_strength + 0.5 * best_share_strength, 3)
+    return round(volume_strength, 3)
+
+
+def _compute_breakout_confidence(
+    seasons_with_data: int,
+    used_share_data: bool,
+) -> float:
+    """How complete the data picture is (0.0–1.0).
+
+    Higher when more seasons are observed and richer share metrics are
+    available. A detected breakout starts at 0.70 base confidence.
+    """
+    base = 0.70
+    season_bonus = min(2, seasons_with_data) * 0.10   # up to +0.20
+    share_bonus = 0.10 if used_share_data else 0.0
+    return round(min(1.0, base + season_bonus + share_bonus), 2)
+
+
 def compute_breakout_for_player(
     player: dict[str, Any],
     args: argparse.Namespace,
@@ -145,19 +239,38 @@ def compute_breakout_for_player(
     seasons_to_check = [class_year - 2, class_year - 1]
     season_profiles = load_profile_seasons(player_id, profile_dir, seasons_to_check)
 
+    null_result = {
+        "breakout_age": None,
+        "age_at_first_impact_season": None,
+        "young_breakout_flag": None,
+        "breakout_strength": None,
+        "breakout_confidence": None,
+        "seasons_available": len(season_profiles),
+    }
+
     if position not in BREAKOUT_THRESHOLDS:
-        return {"breakout_age": None, "age_at_first_impact_season": None, "young_breakout_flag": None}
+        return null_result
 
     threshold_field, threshold_value = BREAKOUT_THRESHOLDS[position]
 
     breakout_age: int | None = None
     age_at_first_impact: int | None = None
+    breakout_strength: float | None = None
+    used_share_data = False
 
     for season, profile in season_profiles:
-        # Check if this season meets the breakout threshold
+        # --- Position-aware breakout detection ---
+        # 1. Preferred: share-based criteria (dominator-style)
+        met_share, had_share = _check_share_breakout(profile, position)
+        if had_share:
+            used_share_data = True
+
+        # 2. Fallback: raw volume threshold (current behaviour)
         stat_value = profile.get(threshold_field) or 0
-        if stat_value < threshold_value:
-            continue  # below threshold — not a breakout season
+        met_volume = stat_value >= threshold_value
+
+        if not met_share and not met_volume:
+            continue  # below all thresholds — not a breakout season
 
         # Fetch roster for academic year (cached)
         cache_key = (school, season)
@@ -182,16 +295,26 @@ def compute_breakout_for_player(
         # Breakout is the first qualifying season
         if breakout_age is None:
             breakout_age = age
+            breakout_strength = _compute_breakout_strength(
+                stat_value, threshold_value, profile, position,
+            )
             break  # earliest qualifying season found
 
     young_breakout_flag: bool | None = None
+    breakout_confidence: float | None = None
     if breakout_age is not None:
         young_breakout_flag = breakout_age <= YOUNG_BREAKOUT_MAX_AGE
+        breakout_confidence = _compute_breakout_confidence(
+            len(season_profiles), used_share_data,
+        )
 
     return {
         "breakout_age": breakout_age,
         "age_at_first_impact_season": age_at_first_impact,
         "young_breakout_flag": young_breakout_flag,
+        "breakout_strength": breakout_strength,
+        "breakout_confidence": breakout_confidence,
+        "seasons_available": len(season_profiles),
     }
 
 
@@ -205,6 +328,9 @@ def update_context_entry(
     updated["breakout_age"] = breakout_data["breakout_age"]
     updated["age_at_first_impact_season"] = breakout_data["age_at_first_impact_season"]
     updated["young_breakout_flag"] = breakout_data["young_breakout_flag"]
+    updated["breakout_strength"] = breakout_data["breakout_strength"]
+    updated["breakout_confidence"] = breakout_data["breakout_confidence"]
+    updated["seasons_available"] = breakout_data["seasons_available"]
 
     # Add/remove young_breakout evidence tag
     tags = list(updated.get("evidence_tags") or [])
@@ -238,6 +364,9 @@ def make_minimal_context_entry(
         "breakout_age": breakout_data["breakout_age"],
         "age_at_first_impact_season": breakout_data["age_at_first_impact_season"],
         "young_breakout_flag": breakout_data["young_breakout_flag"],
+        "breakout_strength": breakout_data["breakout_strength"],
+        "breakout_confidence": breakout_data["breakout_confidence"],
+        "seasons_available": breakout_data["seasons_available"],
         "evidence_tags": tags,
         "context_flags": [],
         "evidence_summary": None,
@@ -286,7 +415,9 @@ def main() -> None:
         flag_str = "young ✓" if breakout_data["young_breakout_flag"] else (
             "late" if breakout_data["young_breakout_flag"] is False else "unknown"
         )
-        print(f"{player_name:30} {position} breakout_age={age_str:4} ({flag_str})")
+        str_val = f" str={breakout_data['breakout_strength']:.2f}" if breakout_data["breakout_strength"] is not None else ""
+        conf_val = f" conf={breakout_data['breakout_confidence']:.2f}" if breakout_data["breakout_confidence"] is not None else ""
+        print(f"{player_name:30} {position} breakout_age={age_str:4} ({flag_str}){str_val}{conf_val}")
 
     write_json(args.context_path, updated_entries)
     logging.info("Updated %s with %d entries", args.context_path, len(updated_entries))

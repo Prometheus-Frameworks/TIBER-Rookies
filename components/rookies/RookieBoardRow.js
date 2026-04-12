@@ -106,6 +106,20 @@ function renderBreakoutBadge(row) {
   return `<span class="breakout-badge breakout-late">Age ${esc(row.breakoutAge)}</span>`;
 }
 
+function boarChipClass(boar) {
+  if (boar >= 75) return 'bmc-signal-boar-elite';
+  if (boar >= 60) return 'bmc-signal-boar-early';
+  if (boar >= 45) return 'bmc-signal-boar-avg';
+  return 'bmc-signal-boar-late';
+}
+
+function renderBoarChip(row) {
+  const boar = row.breakoutAgeRating;
+  if (boar == null) return '';
+  const tip = row.breakoutAge != null ? `Age ${row.breakoutAge} breakout` : 'Breakout Age Rating';
+  return `<span class="bmc-signal-chip ${boarChipClass(boar)}" title="${esc(tip)}">BOAR ${Math.round(boar)}</span>`;
+}
+
 function renderEdgeOutlierBadge(row) {
   const d = row.consensusDelta;
   if (d == null) return '';
@@ -174,6 +188,7 @@ function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}
         ${row.draftCapitalScore != null ? `<span class="bmc-signal-chip bmc-signal-capital" title="Draft Capital">CAP ${Math.round(row.draftCapitalScore)}</span>` : ''}
         ${row.rasScore         != null ? `<span class="bmc-signal-chip bmc-signal-ras"     title="Relative Athletic Score">RAS ${Math.round(row.rasScore)}</span>` : ''}
         ${row.productionScore  != null ? `<span class="bmc-signal-chip bmc-signal-prod"    title="Production Score">PRD ${Math.round(row.productionScore)}</span>` : ''}
+        ${renderBoarChip(row)}
       </div>
       <div class="bmc-stats">
         <div class="bmc-stat-row">
@@ -215,6 +230,7 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
           ${renderTeamLogos(row.school, row.nflTeam)}
           <span class="board-player-name">${esc(row.name)}</span>
           ${renderBreakoutBadge(row)}
+          ${renderBoarChip(row)}
           ${renderEdgeOutlierBadge(row)}
           ${renderMiniScoreChart(row)}
         </div>

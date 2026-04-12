@@ -12,7 +12,11 @@ from scripts.compute_breakout_age import (
     update_context_entry,
     make_minimal_context_entry,
     BREAKOUT_THRESHOLDS,
+    SHARE_BREAKOUT_CRITERIA,
     YOUNG_BREAKOUT_MAX_AGE,
+    _check_share_breakout,
+    _compute_breakout_strength,
+    _compute_breakout_confidence,
 )
 
 
@@ -101,6 +105,13 @@ class ComputeBreakoutTests(unittest.TestCase):
             result = compute_breakout_for_player(player, args, roster_cache)
             self.assertEqual(result["breakout_age"], 19)  # sophomore = 17+2
             self.assertTrue(result["young_breakout_flag"])
+            # New fields
+            self.assertIsNotNone(result["breakout_strength"])
+            self.assertIsNotNone(result["breakout_confidence"])
+            self.assertGreaterEqual(result["breakout_strength"], 0.0)
+            self.assertLessEqual(result["breakout_strength"], 1.0)
+            self.assertGreaterEqual(result["breakout_confidence"], 0.7)
+            self.assertEqual(result["seasons_available"], 2)
 
     def test_wr_late_breakout_senior(self) -> None:
         with tempfile.TemporaryDirectory() as td:
@@ -128,6 +139,9 @@ class ComputeBreakoutTests(unittest.TestCase):
             result = compute_breakout_for_player(player, args, roster_cache)
             self.assertIsNone(result["breakout_age"])
             self.assertIsNone(result["young_breakout_flag"])
+            self.assertIsNone(result["breakout_strength"])
+            self.assertIsNone(result["breakout_confidence"])
+            self.assertEqual(result["seasons_available"], 2)
 
     def test_qb_breakout_threshold(self) -> None:
         with tempfile.TemporaryDirectory() as td:
@@ -162,21 +176,120 @@ class ComputeBreakoutTests(unittest.TestCase):
             self.assertIsNone(result["breakout_age"])
 
 
+class ShareBreakoutTests(unittest.TestCase):
+    def test_wr_target_share_triggers_breakout(self) -> None:
+        profile = {"targets": 30, "target_share": 0.25}
+        met, had = _check_share_breakout(profile, "WR")
+        self.assertTrue(met)
+        self.assertTrue(had)
+
+    def test_wr_below_share_does_not_trigger(self) -> None:
+        profile = {"targets": 30, "target_share": 0.10}
+        met, had = _check_share_breakout(profile, "WR")
+        self.assertFalse(met)
+        self.assertTrue(had)
+
+    def test_qb_has_no_share_criteria(self) -> None:
+        profile = {"pass_attempts": 200}
+        met, had = _check_share_breakout(profile, "QB")
+        self.assertFalse(met)
+        self.assertFalse(had)
+
+    def test_no_share_data_returns_false_false(self) -> None:
+        profile = {"targets": 60}
+        met, had = _check_share_breakout(profile, "WR")
+        self.assertFalse(met)
+        self.assertFalse(had)
+
+    def test_wr_share_breakout_with_low_volume(self) -> None:
+        """A WR with high target share but below raw volume threshold should
+        still qualify via share-based criteria."""
+        with tempfile.TemporaryDirectory() as td:
+            tmp = Path(td)
+            args = MagicMock()
+            args.wr_dir = tmp
+            args.qb_dir = tmp
+            args.rb_dir = tmp
+            # 40 targets below raw threshold (50), but high target share
+            path = tmp / "wr-share-wr_2025.json"
+            path.write_text(json.dumps({"targets": 40, "target_share": 0.22}))
+            roster_cache = {("Share U", 2025): [{"fullName": "Share WR", "year": 3}]}
+            player = {"player_id": "wr-share-wr", "player_name": "Share WR",
+                      "position": "WR", "school": "Share U", "class_year": 2026}
+            result = compute_breakout_for_player(player, args, roster_cache)
+            self.assertEqual(result["breakout_age"], 20)
+            self.assertTrue(result["young_breakout_flag"])
+
+
+class BreakoutStrengthTests(unittest.TestCase):
+    def test_at_threshold_strength_is_zero(self) -> None:
+        strength = _compute_breakout_strength(50, 50, {"targets": 50}, "WR")
+        self.assertAlmostEqual(strength, 0.0)
+
+    def test_double_threshold_strength_is_max(self) -> None:
+        strength = _compute_breakout_strength(100, 50, {"targets": 100}, "WR")
+        self.assertAlmostEqual(strength, 1.0)
+
+    def test_share_data_blends_with_volume(self) -> None:
+        profile = {"targets": 75, "target_share": 0.30}  # 0.30 vs 0.20 threshold
+        strength = _compute_breakout_strength(75, 50, profile, "WR")
+        # volume part: (75/50 - 1) = 0.5; share part: (0.30/0.20 - 1) = 0.5
+        self.assertAlmostEqual(strength, 0.5)
+
+
+class BreakoutConfidenceTests(unittest.TestCase):
+    def test_two_seasons_no_share(self) -> None:
+        conf = _compute_breakout_confidence(2, False)
+        self.assertAlmostEqual(conf, 0.90)
+
+    def test_one_season_no_share(self) -> None:
+        conf = _compute_breakout_confidence(1, False)
+        self.assertAlmostEqual(conf, 0.80)
+
+    def test_two_seasons_with_share(self) -> None:
+        conf = _compute_breakout_confidence(2, True)
+        self.assertAlmostEqual(conf, 1.00)
+
+    def test_confidence_range(self) -> None:
+        for s in range(3):
+            for share in (True, False):
+                conf = _compute_breakout_confidence(s, share)
+                self.assertGreaterEqual(conf, 0.7)
+                self.assertLessEqual(conf, 1.0)
+
+
 class UpdateContextEntryTests(unittest.TestCase):
+    def _breakout_data(self, age, flag, strength=0.5, confidence=0.9):
+        return {
+            "breakout_age": age,
+            "age_at_first_impact_season": age,
+            "young_breakout_flag": flag,
+            "breakout_strength": strength,
+            "breakout_confidence": confidence,
+            "seasons_available": 2,
+        }
+
     def test_young_breakout_adds_evidence_tag(self) -> None:
         existing = {"player_id": "wr-x", "evidence_tags": [], "context_flags": []}
-        result = update_context_entry(existing, {"breakout_age": 19, "age_at_first_impact_season": 19, "young_breakout_flag": True}, {})
+        result = update_context_entry(existing, self._breakout_data(19, True), {})
         self.assertIn("young_breakout", result["evidence_tags"])
 
     def test_late_breakout_does_not_add_tag(self) -> None:
         existing = {"player_id": "wr-x", "evidence_tags": [], "context_flags": []}
-        result = update_context_entry(existing, {"breakout_age": 22, "age_at_first_impact_season": 22, "young_breakout_flag": False}, {})
+        result = update_context_entry(existing, self._breakout_data(22, False), {})
         self.assertNotIn("young_breakout", result["evidence_tags"])
 
     def test_removes_stale_young_breakout_tag(self) -> None:
         existing = {"player_id": "wr-x", "evidence_tags": ["young_breakout"], "context_flags": []}
-        result = update_context_entry(existing, {"breakout_age": 22, "age_at_first_impact_season": 22, "young_breakout_flag": False}, {})
+        result = update_context_entry(existing, self._breakout_data(22, False), {})
         self.assertNotIn("young_breakout", result["evidence_tags"])
+
+    def test_new_fields_present(self) -> None:
+        existing = {"player_id": "wr-x", "evidence_tags": [], "context_flags": []}
+        result = update_context_entry(existing, self._breakout_data(19, True, 0.8, 1.0), {})
+        self.assertEqual(result["breakout_strength"], 0.8)
+        self.assertEqual(result["breakout_confidence"], 1.0)
+        self.assertEqual(result["seasons_available"], 2)
 
 
 if __name__ == "__main__":

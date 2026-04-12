@@ -101,6 +101,36 @@ function renderBreakoutAgeBadge(card) {
   return `<span class="breakout-badge breakout-late">Age ${esc(card.breakoutAge)} breakout</span>`;
 }
 
+function boarTierClass(boar) {
+  if (boar >= 75) return 'boar-elite';
+  if (boar >= 60) return 'boar-early';
+  if (boar >= 45) return 'boar-avg';
+  return 'boar-late';
+}
+
+function renderBoarSection(card) {
+  const boar = card.breakoutAgeRating;
+  const boa = card.breakoutAge;
+  if (boar == null && boa == null) return '';
+
+  const boarChip = boar != null
+    ? `<span class="boar-chip ${boarTierClass(boar)}"><span class="boar-label">BOAR</span> <span class="boar-value">${Math.round(boar)}</span></span>`
+    : '';
+  const boaChip = boa != null
+    ? `<span class="boa-chip"><span class="boa-label">BOA</span> <span class="boa-value">${esc(boa)}</span></span>`
+    : '';
+  const labelText = card.breakoutLabel ?? null;
+  const labelSpan = labelText
+    ? `<span class="boar-signal-label">${esc(labelText)}</span>`
+    : '';
+
+  return `
+    <div class="boar-section">
+      <div class="boar-chips">${boaChip}${boarChip}</div>
+      ${labelSpan}
+    </div>`;
+}
+
 function renderPprProjection(ppr) {
   if (!ppr) return '';
   const bandClass = { Elite: 'ppr-band-elite', Starter: 'ppr-band-starter', Contributor: 'ppr-band-contributor', Lottery: 'ppr-band-lottery' }[ppr.band] ?? 'ppr-band-lottery';
@@ -191,7 +221,7 @@ export function renderRookieCard(container, card) {
           </h1>
           <div class="meta">${esc(identityBits || 'Profile context not available')}</div>
           <div class="meta">${esc(card.summary.profileSummary ?? card.summary.identityNote ?? 'Identity summary unavailable')}</div>
-          ${renderBreakoutAgeBadge(card)}
+          ${renderBoarSection(card)}
         </div>
         <div class="hero-score">
           <div class="section-title">Rookie Grade</div>

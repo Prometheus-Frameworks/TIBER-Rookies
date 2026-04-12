@@ -11,6 +11,8 @@ from scripts.compute_age_adjusted_production import (
     age_multiplier,
     normalize_scores,
     weighted_volume,
+    compute_boar,
+    boar_label,
 )
 
 
@@ -104,3 +106,76 @@ class WeightedVolumeTests(unittest.TestCase):
         young_raw = volume * age_multiplier(19)
         late_raw = volume * age_multiplier(21)
         self.assertGreater(young_raw, late_raw)
+
+
+class BoarComputationTests(unittest.TestCase):
+    def test_null_breakout_age_returns_none(self) -> None:
+        self.assertIsNone(compute_boar(None, "WR", 0.5, 0.9))
+
+    def test_young_wr_breakout_scores_high(self) -> None:
+        boar = compute_boar(19, "WR", 0.5, 1.0)
+        self.assertIsNotNone(boar)
+        self.assertGreater(boar, 80)
+
+    def test_late_wr_breakout_scores_low(self) -> None:
+        boar = compute_boar(22, "WR", 0.0, 1.0)
+        self.assertIsNotNone(boar)
+        self.assertLess(boar, 35)
+
+    def test_baseline_wr_breakout_near_50(self) -> None:
+        boar = compute_boar(21, "WR", 0.0, 1.0)
+        self.assertIsNotNone(boar)
+        self.assertAlmostEqual(boar, 50.0, delta=5.0)
+
+    def test_wr_higher_sensitivity_than_qb(self) -> None:
+        """WR should get more BOAR credit than QB for same breakout age."""
+        wr_boar = compute_boar(19, "WR", 0.5, 1.0)
+        qb_boar = compute_boar(19, "QB", 0.5, 1.0)
+        self.assertGreater(wr_boar, qb_boar)
+
+    def test_te_softer_than_wr(self) -> None:
+        """TE has slightly later baseline, so same age gives slightly higher BOAR."""
+        wr_boar = compute_boar(20, "WR", 0.5, 1.0)
+        te_boar = compute_boar(20, "TE", 0.5, 1.0)
+        self.assertGreater(te_boar, wr_boar)
+
+    def test_strength_bonus_raises_boar(self) -> None:
+        low = compute_boar(20, "WR", 0.0, 1.0)
+        high = compute_boar(20, "WR", 1.0, 1.0)
+        self.assertGreater(high, low)
+
+    def test_confidence_regresses_toward_50(self) -> None:
+        full = compute_boar(19, "WR", 0.5, 1.0)
+        partial = compute_boar(19, "WR", 0.5, 0.5)
+        # With low confidence, result moves toward 50
+        self.assertGreater(full, partial)
+        self.assertGreater(partial, 50.0)  # still above 50 for young breakout
+
+    def test_boar_clamped_0_100(self) -> None:
+        boar = compute_boar(17, "WR", 1.0, 1.0)  # extreme young
+        self.assertLessEqual(boar, 100.0)
+        self.assertGreaterEqual(boar, 0.0)
+
+    def test_boar_returns_float(self) -> None:
+        boar = compute_boar(20, "WR", 0.5, 0.9)
+        self.assertIsInstance(boar, float)
+
+
+class BoarLabelTests(unittest.TestCase):
+    def test_none_returns_none(self) -> None:
+        self.assertIsNone(boar_label(None))
+
+    def test_elite(self) -> None:
+        self.assertEqual(boar_label(85), "Elite breakout")
+
+    def test_early(self) -> None:
+        self.assertEqual(boar_label(65), "Early breakout")
+
+    def test_average(self) -> None:
+        self.assertEqual(boar_label(50), "Average breakout")
+
+    def test_late(self) -> None:
+        self.assertEqual(boar_label(35), "Late breakout")
+
+    def test_very_late(self) -> None:
+        self.assertEqual(boar_label(20), "Very late breakout")

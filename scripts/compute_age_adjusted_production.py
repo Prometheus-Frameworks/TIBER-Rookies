@@ -3,7 +3,9 @@
 compute_age_adjusted_production.py
 
 Computes an age-adjusted production score for each 2026 draft prospect by
-combining weighted season volume with a non-linear age multiplier.
+combining weighted season volume with a non-linear age multiplier.  Also
+computes breakout_age_rating_0_100 (BOAR), a derived display metric that
+surfaces hidden profile quality from early breakouts.
 
 Volume metric per position
   WR / TE  — targets
@@ -22,6 +24,12 @@ Age multiplier (non-linear)
   Breakout age 20 → 1.5×
   Breakout age 21 → 1.0×  (baseline)
   Breakout age 22 → 0.85×
+
+BOAR (breakout_age_rating_0_100)
+  Position-aware composite of breakout age, breakout strength, and data
+  confidence.  Intended for UI display and explainability — NOT as a duplicate
+  heavy weight in scoring.  WR carries the highest age-sensitivity; QB the
+  lightest.
 
 Final score
   raw_score = weighted_volume × age_multiplier
@@ -150,6 +158,80 @@ def age_multiplier(breakout_age: int | None) -> float:
 
 
 # ---------------------------------------------------------------------------
+# BOAR — Breakout Age Rating (0–100 display metric)
+# ---------------------------------------------------------------------------
+# Position-aware age sensitivity: points per year younger than baseline.
+# WR gets the most credit for youth; QB the least.
+BOAR_AGE_BASELINE: dict[str, float] = {
+    "WR": 21.0,
+    "TE": 21.5,
+    "RB": 21.0,
+    "QB": 21.5,
+}
+BOAR_AGE_SCALE: dict[str, float] = {
+    "WR": 20.0,   # WR: BOAR matters a lot
+    "TE": 18.0,   # TE: moderate, softer expectations
+    "RB": 16.0,   # RB: matters some, less than WR
+    "QB": 12.0,   # QB: light treatment, avoid fake precision
+}
+BOAR_STRENGTH_BONUS = 15.0  # max bonus points for dominant breakout strength
+
+
+def compute_boar(
+    breakout_age: int | None,
+    position: str,
+    breakout_strength: float | None,
+    breakout_confidence: float | None,
+) -> float | None:
+    """Compute breakout_age_rating_0_100 (BOAR).
+
+    Returns None when breakout_age is unknown (no signal to display).
+    Otherwise returns a 0–100 rating where:
+      - 75+ = elite/early breakout signal
+      - 60–74 = early breakout
+      - 45–59 = average breakout timing
+      - 30–44 = late breakout
+      - <30 = very late breakout
+    """
+    if breakout_age is None:
+        return None
+
+    baseline = BOAR_AGE_BASELINE.get(position, 21.0)
+    scale = BOAR_AGE_SCALE.get(position, 16.0)
+
+    # Age component: 50 at baseline age, higher for younger, lower for older
+    age_component = 50.0 + scale * (baseline - breakout_age)
+    age_component = max(0.0, min(100.0, age_component))
+
+    # Strength bonus: up to BOAR_STRENGTH_BONUS points for dominant breakout
+    strength = breakout_strength if breakout_strength is not None else 0.0
+    strength_bonus = strength * BOAR_STRENGTH_BONUS
+
+    raw_boar = age_component + strength_bonus
+
+    # Confidence regresses toward 50 (uncertain → neutral, not toward 0)
+    confidence = breakout_confidence if breakout_confidence is not None else 0.7
+    boar = 50.0 + (raw_boar - 50.0) * confidence
+
+    return round(max(0.0, min(100.0, boar)), 1)
+
+
+def boar_label(boar_value: float | None) -> str | None:
+    """Human-readable breakout label for UI display."""
+    if boar_value is None:
+        return None
+    if boar_value >= 75:
+        return "Elite breakout"
+    if boar_value >= 60:
+        return "Early breakout"
+    if boar_value >= 45:
+        return "Average breakout"
+    if boar_value >= 30:
+        return "Late breakout"
+    return "Very late breakout"
+
+
+# ---------------------------------------------------------------------------
 # Profile loading
 # ---------------------------------------------------------------------------
 def profile_dir(position: str, args: argparse.Namespace) -> Path:
@@ -254,6 +336,8 @@ def compute(args: argparse.Namespace) -> list[dict[str, Any]]:
             pid = player["player_id"]
             class_year = int(player.get("class_year") or 0)
             breakout_age_val = player.get("breakout_age")
+            breakout_strength_val = player.get("breakout_strength")
+            breakout_confidence_val = player.get("breakout_confidence")
 
             # --- BOA context adjustment ---
             school_adj, school_class = school_boa_adjustment(player.get("school", ""))
@@ -288,6 +372,12 @@ def compute(args: argparse.Namespace) -> list[dict[str, Any]]:
             multiplier = age_multiplier(effective_boa)
             raw = wvol * multiplier
 
+            # --- BOAR computation ---
+            boar_val = compute_boar(
+                breakout_age_val, pos, breakout_strength_val, breakout_confidence_val,
+            )
+            boar_label_val = boar_label(boar_val)
+
             records.append(
                 {
                     "player_id": pid,
@@ -297,6 +387,10 @@ def compute(args: argparse.Namespace) -> list[dict[str, Any]]:
                     "effective_breakout_age": effective_boa,
                     "boa_adjustment": round(total_boa_adj, 2) if total_boa_adj != 0.0 else None,
                     "young_breakout_flag": player.get("young_breakout_flag", False),
+                    "breakout_strength": breakout_strength_val,
+                    "breakout_confidence": breakout_confidence_val,
+                    "breakout_age_rating_0_100": boar_val,
+                    "breakout_label": boar_label_val,
                     "best_season_volume": best_vol,
                     "recent_season_volume": recent_vol,
                     "weighted_volume": round(wvol, 2),
@@ -318,14 +412,16 @@ def compute(args: argparse.Namespace) -> list[dict[str, Any]]:
         logging.info("Position %s (%d players):", pos, len(records))
         for r in records:
             flag = " (young ✓)" if r["young_breakout_flag"] else ""
+            boar_str = f"  BOAR={r['breakout_age_rating_0_100']:.0f}" if r["breakout_age_rating_0_100"] is not None else ""
             logging.info(
-                "  %-28s age=%s  mult=%.2f  wvol=%5.1f  score=%5.1f%s",
+                "  %-28s age=%s  mult=%.2f  wvol=%5.1f  score=%5.1f%s%s",
                 r["player_name"],
                 r["breakout_age"] if r["breakout_age"] is not None else "null",
                 r["age_multiplier"],
                 r["weighted_volume"],
                 r["age_adjusted_production_score"],
                 flag,
+                boar_str,
             )
 
     return results
