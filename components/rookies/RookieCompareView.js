@@ -1,5 +1,6 @@
 import { compareRookies } from '/lib/rookies/compareRookies.js';
 import { selectRookieEvidenceMetrics } from '/lib/rookies/selectRookieEvidenceMetrics.js';
+import { getCollegeLogoUrl, getNflTeamLogoUrl } from '/lib/rookies/teamLogos.js';
 
 function esc(str) {
   return String(str ?? '')
@@ -9,13 +10,26 @@ function esc(str) {
     .replace(/"/g, '&quot;');
 }
 
+function renderTeamLogos(school, nflTeam) {
+  const collegeUrl = getCollegeLogoUrl(school);
+  const nflUrl = getNflTeamLogoUrl(nflTeam);
+  if (!collegeUrl && !nflUrl) return '';
+  const imgs = [
+    collegeUrl ? `<img class="team-logo" src="${esc(collegeUrl)}" alt="${esc(school ?? '')}" loading="lazy" onerror="this.style.display='none'">` : '',
+    nflUrl     ? `<img class="team-logo" src="${esc(nflUrl)}" alt="${esc(nflTeam ?? '')}" loading="lazy" onerror="this.style.display='none'">` : '',
+  ].join('');
+  return `<span class="team-logos">${imgs}</span>`;
+}
+
 function gradeCell(label, card, side) {
   const grade = card?.summary?.rookieGrade == null ? 'N/A' : card.summary.rookieGrade.toFixed(1);
   const rank = card?.summary?.classRank == null ? 'N/A' : `#${card.summary.classRank}`;
   return `
     <article class="compare-player compare-${side}">
       <div class="section-title">${esc(label)}</div>
-      <h2 class="compare-name">${esc(card.identity.name)}</h2>
+      <h2 class="compare-name">
+        ${renderTeamLogos(card.identity.school, card.identity.nflTeam)}${esc(card.identity.name)}
+      </h2>
       <div class="meta">${esc(card.identity.positionLabel ?? card.identity.position)} • Class ${esc(card.identity.classYear)}${card.identity.schoolDisplay ? ` • ${esc(card.identity.schoolDisplay)}` : ''}</div>
       <div class="meta">${esc(card.summary.profileSummary ?? card.summary.identityNote ?? 'Identity summary unavailable')}</div>
       <div class="compare-grade">${esc(grade)}</div>
@@ -40,13 +54,31 @@ function evidenceRow(row) {
   return `<tr><td>${esc(row.label)}</td><td>${esc(row.leftDisplay)}</td><td>${esc(row.rightDisplay)}</td><td>${esc(edge)}</td></tr>`;
 }
 
+const STAT_LABELS = {
+  completions: 'Comp', attempts: 'Att', completion_pct: 'Comp%',
+  passing_yards: 'Pass Yds', passing_tds: 'Pass TD', interceptions: 'INT', yards_per_attempt: 'Y/A',
+  rush_attempts: 'Att', rush_yards: 'Rush Yds', rush_tds: 'Rush TD', yards_per_carry: 'YPC',
+  receptions: 'Rec', receiving_yards: 'Rec Yds', receiving_tds: 'Rec TD', yards_per_reception: 'YPR',
+  targets: 'Tgt', note: null,
+};
+
+function formatStatEntry(key, value) {
+  const label = STAT_LABELS[key];
+  if (label === null) return null;
+  const displayLabel = label ?? key.replace(/_/g, ' ');
+  const displayValue = key === 'completion_pct' ? `${value}%` : value;
+  return `${displayLabel}: ${displayValue}`;
+}
+
 function seasonSnapshot(card) {
   if (!card?.seasons?.length) {
-    return '<div class="meta">Season rows unavailable in current promoted artifacts.</div>';
+    return '<div class="meta">College stats not yet available for this player.</div>';
   }
-
   const top = card.seasons.slice(0, 2);
-  return `<table class="stats-table"><thead><tr><th>Season</th><th>Team</th><th>Games</th></tr></thead><tbody>${top.map((row) => `<tr><td>${esc(row.season)}</td><td>${esc(row.team)}</td><td>${esc(row.games ?? 'N/A')}</td></tr>`).join('')}</tbody></table>`;
+  return `<table class="stats-table"><thead><tr><th>Season</th><th>School</th><th>Stats</th></tr></thead><tbody>${top.map((row) => {
+    const statBits = Object.entries(row.statLine).map(([k, v]) => formatStatEntry(k, v)).filter(Boolean).join(' · ');
+    return `<tr><td>${esc(row.season)}</td><td>${esc(row.team)}</td><td>${esc(statBits)}</td></tr>`;
+  }).join('')}</tbody></table>`;
 }
 
 function translationSignals(card) {

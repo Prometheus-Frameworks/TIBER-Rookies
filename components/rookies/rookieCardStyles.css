@@ -222,6 +222,22 @@ body {
 .nav-link { color: var(--accent-soft); text-decoration: none; font-size: 13px; }
 .nav-link:hover { color: var(--accent); }
 
+/* ─── Board search ────────────────────────────────────────────────────────── */
+.board-search-row { display: flex; }
+.board-search-input {
+  flex: 1;
+  max-width: 340px;
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 14px;
+  outline: none;
+}
+.board-search-input::placeholder { color: var(--muted); }
+.board-search-input:focus { border-color: var(--accent); }
+
 /* ─── Gallery controls ────────────────────────────────────────────────────── */
 .gallery-controls {
   display: grid;
@@ -562,6 +578,28 @@ body {
 .queue-note-counter { text-align: right; }
 .queue-note-counter-limit { color: #ffb4b4; }
 
+/* ─── Team logo badges ────────────────────────────────────────────────────── */
+.team-logos {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+.team-logo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #1e2a3a;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.team-logo-sm {
+  width: 16px;
+  height: 16px;
+}
+
 /* ─── Mobile board card (hidden on desktop, shown via media query) ────────── */
 .board-mobile-card { display: none; }
 
@@ -650,8 +688,25 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+    margin-bottom: 8px;
+  }
+  .bmc-signals {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
     margin-bottom: 12px;
   }
+  .bmc-signal-chip {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .06em;
+    padding: 3px 7px;
+    border-radius: 6px;
+    font-family: 'JetBrains Mono', 'Fira Mono', ui-monospace, monospace;
+  }
+  .bmc-signal-capital { background: rgba(232, 133, 61, .18); color: #E8853D; border: 1px solid rgba(232, 133, 61, .35); }
+  .bmc-signal-ras     { background: rgba(107, 159, 212, .18); color: #6B9FD4; border: 1px solid rgba(107, 159, 212, .35); }
+  .bmc-signal-prod    { background: rgba(78, 205, 196, .18); color: #4ECDC4; border: 1px solid rgba(78, 205, 196, .35); }
   .bmc-stats {
     display: flex;
     flex-direction: column;
