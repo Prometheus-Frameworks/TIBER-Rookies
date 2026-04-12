@@ -51,8 +51,10 @@ function renderPprCell(row) {
 function deltaSpan(delta, label) {
   if (delta == null) return `<span class="delta-row"><span class="delta-label">${label}</span><span class="delta-na">—</span></span>`;
   const abs = Math.abs(delta).toFixed(1);
-  if (delta >= 3)  return `<span class="delta-row"><span class="delta-label">${label}</span><span class="delta-bull">+${abs} ↑</span></span>`;
-  if (delta <= -3) return `<span class="delta-row"><span class="delta-label">${label}</span><span class="delta-bear">−${abs} ↓</span></span>`;
+  if (delta >= 10)  return `<span class="delta-row"><span class="delta-label">${label}</span><span class="delta-extreme-bull">+${abs} ↑↑</span></span>`;
+  if (delta <= -10) return `<span class="delta-row"><span class="delta-label">${label}</span><span class="delta-extreme-bear">−${abs} ↓↓</span></span>`;
+  if (delta >= 3)   return `<span class="delta-row"><span class="delta-label">${label}</span><span class="delta-bull">+${abs} ↑</span></span>`;
+  if (delta <= -3)  return `<span class="delta-row"><span class="delta-label">${label}</span><span class="delta-bear">−${abs} ↓</span></span>`;
   return `<span class="delta-row"><span class="delta-label">${label}</span><span class="delta-neutral">${delta >= 0 ? '+' : ''}${delta.toFixed(1)}</span></span>`;
 }
 
@@ -78,6 +80,20 @@ function renderBreakoutBadge(row) {
     return `<span class="breakout-badge breakout-young">⚡ Age ${esc(row.breakoutAge)}</span>`;
   }
   return `<span class="breakout-badge breakout-late">Age ${esc(row.breakoutAge)}</span>`;
+}
+
+function renderEdgeOutlierBadge(row) {
+  const d = row.consensusDelta;
+  if (d == null) return '';
+  if (d >= 10) {
+    const abs = Math.abs(d).toFixed(1);
+    return `<span class="edge-outlier-badge edge-outlier-badge-bull" title="Model edge: +${abs} above NFL consensus">▲ EDGE +${abs}</span>`;
+  }
+  if (d <= -10) {
+    const abs = Math.abs(d).toFixed(1);
+    return `<span class="edge-outlier-badge edge-outlier-badge-bear" title="Model edge: −${abs} below NFL consensus">▽ −${abs}</span>`;
+  }
+  return '';
 }
 
 const TIER_CSS = {
@@ -109,6 +125,7 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
         <div class="board-player-top">
           <span class="board-player-name">${esc(row.name)}</span>
           ${renderBreakoutBadge(row)}
+          ${renderEdgeOutlierBadge(row)}
           ${renderMiniScoreChart(row)}
         </div>
         <div class="meta board-summary-line">${esc(row.profileSummary)}</div>
