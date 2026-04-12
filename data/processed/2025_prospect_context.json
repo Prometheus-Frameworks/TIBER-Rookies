@@ -305,5 +305,1234 @@
     "evidence_summary": "Super senior (started at UCF, Oklahoma, Oregon over 6 college seasons). Elite production everywhere but 24 years old at time of 2025 draft; limited upside runway.",
     "context_source": "manual_historical_seed",
     "exceptional_metrics": []
+  },
+  {
+    "player_id": "qb-cam-ward",
+    "player_name": "Cam Ward",
+    "position": "QB",
+    "school": "Miami (FL)",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "elite_production",
+      "elite_efficiency_tier",
+      "strong_production"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Ward threw for 4,123 yards, 39 TDs, and 7 INTs at Miami (FL) in 2024, leading the ACC and earning the #1 overall pick as the consensus best QB in the class. His elite volume, efficiency, and touchdown production place him in the top tier.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "qb-jaxson-dart",
+    "player_name": "Jaxson Dart",
+    "position": "QB",
+    "school": "Ole Miss",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "strong_production",
+      "elite_efficiency_tier"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Dart threw for 4,279 yards and 29 TDs with only 7 INTs at Ole Miss in 2024 under Lane Kiffin's pass-heavy system in the SEC, showing strong volume and decision-making. His late first-round selection to the Giants reflects a strong but not transcendent NFL projection.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "qb-tyler-shough",
+    "player_name": "Tyler Shough",
+    "position": "QB",
+    "school": "Louisville",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 24,
+    "age_at_first_impact_season": 24,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "strong_production",
+      "injury_history"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Shough threw for over 3,200 yards and approximately 23 TDs at Louisville in 2024, showing consistency as a tall, veteran pocket passer in the ACC after a lengthy injury-plagued career at Texas Tech. His size-arm talent combination attracted 2nd-round interest despite the injury history.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "qb-jalen-milroe",
+    "player_name": "Jalen Milroe",
+    "position": "QB",
+    "school": "Alabama",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "dual_role",
+      "athleticism_upside",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Milroe posted 2,834 passing yards, 19 TDs, and 9 INTs in 2024 at Alabama while adding 531 rushing yards, demonstrating elite dual-threat athleticism but struggling with accuracy and turnovers in the SEC. The Seahawks invested a 3rd-round pick in his mobility and development upside.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "qb-kyle-mccord",
+    "player_name": "Kyle McCord",
+    "position": "QB",
+    "school": "Syracuse",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "strong_production",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "McCord transferred from Ohio State to Syracuse and threw for 3,722 yards and 27 TDs in 2024, demonstrating strong ACC production but facing questions about arm strength and NFL-caliber competition. His late-round selection reflects developmental upside with limited immediate starting projection.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "qb-will-howard",
+    "player_name": "Will Howard",
+    "position": "QB",
+    "school": "Ohio State",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 23,
+    "age_at_first_impact_season": 23,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "strong_production",
+      "elite_efficiency_tier"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Howard threw for 3,917 yards, 33 TDs, and 5 INTs leading Ohio State to the 2024 national championship, showing elite efficiency and turnover avoidance in the Big Ten. The Eagles selected him in the 2nd round to develop behind their roster as the transfer-portal veteran with championship pedigree.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "qb-riley-leonard",
+    "player_name": "Riley Leonard",
+    "position": "QB",
+    "school": "Notre Dame",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "dual_role",
+      "athleticism_upside",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Leonard guided Notre Dame to the 2024 national championship game with 2,445 passing yards and 18 TDs alongside 506 rushing yards, but his modest passing volume reflected Notre Dame's run-first system. His mobility, leadership, and winning pedigree translated to a 4th-round Cowboys selection.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "qb-cam-miller",
+    "player_name": "Cam Miller",
+    "position": "QB",
+    "school": "North Dakota State",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "limited_sample",
+      "strong_production"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Miller was a productive FCS quarterback at North Dakota State with strong TD-to-INT ratios and multiple FCS championships, but his FCS-level competition heavily discounted his production in NFL evaluations. He went undrafted, reflecting the steep talent-level adjustment required.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "qb-quinn-ewers",
+    "player_name": "Quinn Ewers",
+    "position": "QB",
+    "school": "Texas",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "injury_history",
+      "athleticism_upside"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Ewers threw for 3,472 yards and 28 TDs in 2024 at Texas during the Longhorns' first SEC season, showing solid arm talent but dealing with injury concerns and inconsistency that dropped him to the 7th round. His upside as a former elite recruit and physical talent gives him developmental value with the 49ers.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-mason-taylor",
+    "player_name": "Mason Taylor",
+    "position": "TE",
+    "school": "LSU",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "receiving_threat",
+      "route_runner"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Taylor caught 66 passes for 792 yards and 7 TDs in 2024 at LSU, functioning as the primary pass-catching tight end in the SEC with reliable hands and a strong size-speed combination. His top-2 TE standing in the class earned him a 2nd-round selection by the Jets.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-terrance-ferguson",
+    "player_name": "Terrance Ferguson",
+    "position": "TE",
+    "school": "Oregon",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "receiving_threat",
+      "athleticism_upside",
+      "dual_role"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Ferguson totaled 43 receptions for 527 yards and 4 TDs in 2024 at Oregon in the Big Ten, projecting as an athletic move tight end with receiving upside and blocking versatility. His athleticism and ability to line up all over the formation drew the Rams' interest in the 2nd round.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-elijah-arroyo",
+    "player_name": "Elijah Arroyo",
+    "position": "TE",
+    "school": "Miami (FL)",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "receiving_threat",
+      "red_zone_target",
+      "athleticism_upside"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Arroyo caught 46 passes for 679 yards and 7 TDs at Miami (FL) in 2024, serving as the Hurricanes' top tight end with strong red-zone production and impressive athleticism. Seattle added him alongside Milroe in the 2025 draft, targeting his receiving ability and athletic upside.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-harold-fannin-jr",
+    "player_name": "Harold Fannin Jr.",
+    "position": "TE",
+    "school": "Bowling Green",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "elite_production",
+      "receiving_threat",
+      "red_zone_target",
+      "route_runner",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Fannin shattered MAC records in 2024 with 116 receptions, 1,503 receiving yards, and 10 TDs at Bowling Green, producing one of the most statistically dominant TE seasons in college football history. The Browns drafted him first pick of the 2nd round despite questions about MAC competition level.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-gunnar-helm",
+    "player_name": "Gunnar Helm",
+    "position": "TE",
+    "school": "Texas",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "strong_production",
+      "receiving_threat",
+      "dual_role"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Helm caught 50 passes for 622 yards and 4 TDs in 2024 at Texas in the program's first SEC season, providing reliable production as a starting tight end with dependable hands. Tennessee selected him in the 4th round as a complementary receiving and blocking tight end.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-mitchell-evans",
+    "player_name": "Mitchell Evans",
+    "position": "TE",
+    "school": "Notre Dame",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "blocking_specialist",
+      "dual_role",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Evans caught 35 passes for 466 yards and 5 TDs in 2024 at Notre Dame, operating primarily as a blocking tight end and secondary receiving option in the Fighting Irish's run-heavy system. His size and blocking ability drew Day 3 interest as a versatile H-back/TE hybrid.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-oronde-gadsden-ii",
+    "player_name": "Oronde Gadsden II",
+    "position": "TE",
+    "school": "Syracuse",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "receiving_threat",
+      "route_runner",
+      "athleticism_upside",
+      "red_zone_target"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Gadsden caught 58 passes for 711 yards and 8 TDs in 2024 at Syracuse, functioning as an in-line and split-out matchup weapon with elite athleticism for the position. The Dolphins targeted his receiving upside and natural catch radius in the 3rd round.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "te-jackson-hawes",
+    "player_name": "Jackson Hawes",
+    "position": "TE",
+    "school": "Georgia Tech",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "blocking_specialist",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Hawes totaled approximately 33 receptions for 380 yards and 2 TDs in 2024 at Georgia Tech in the ACC, contributing primarily as a blocking tight end with limited pass-catching usage. His modest athleticism and restricted receiving role left him undrafted as a UDFA candidate.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-jayden-higgins",
+    "player_name": "Jayden Higgins",
+    "position": "WR",
+    "school": "Iowa State",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 19,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "outside_receiver",
+      "young_breakout",
+      "fcs_production_caveat"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "87 receptions for 1,183 yards and 9 TDs in 2024 at Iowa State; AP Third-Team All-American with 2.66 YPRR. Transferred from Eastern Kentucky (FCS) where he first broke out at age 19.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-tre-harris",
+    "player_name": "Tre Harris",
+    "position": "WR",
+    "school": "Ole Miss",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "elite_efficiency_tier",
+      "route_runner",
+      "outside_receiver",
+      "injury_history"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "60 receptions, 1,030 yards, 7 TDs in just 8 games (2024); led all CFB with an unprecedented 5.15 YPRR \u2014 first Power-conference WR ever to exceed 5.00 YPRR (PFF). Injury limited his final year to 8 of 12 games.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-jack-bech",
+    "player_name": "Jack Bech",
+    "position": "WR",
+    "school": "TCU",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "contested_catch_signal",
+      "outside_receiver",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "62 receptions, 1,034 yards, 9 TDs in 2024 at TCU (Senior Bowl MVP); transferred from LSU after coaching change and battled injuries in 2023 before one-year breakout as senior.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-kyle-williams",
+    "player_name": "Kyle Williams",
+    "position": "WR",
+    "school": "Washington State",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "speed_threat",
+      "yac_producer",
+      "inside_out_versatility"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "70 receptions, 1,198 yards, 14 TDs in 2024 at Washington State (WSU single-season TD record); 2.71 YPRR ranked 12th in FBS. Transferred from UNLV, consistent multi-year producer.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-isaac-teslaa",
+    "player_name": "Isaac TeSlaa",
+    "position": "WR",
+    "school": "Arkansas",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "fcs_production_caveat",
+      "limited_sample",
+      "speed_threat",
+      "outside_receiver"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Only 28 receptions for 545 yards and 3 TDs in 2024 at Arkansas (P4 role player); elite 19.5 YPR and great combine athleticism (6'3.5\", 4.43). Previously dominant at Hillsdale (D2) with 68/1325/13 in 2022.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-pat-bryant",
+    "player_name": "Pat Bryant",
+    "position": "WR",
+    "school": "Illinois",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "contested_catch_signal",
+      "outside_receiver",
+      "route_runner"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "54 receptions, 984 yards, 10 TDs in 2024 at Illinois, tying the program single-season TD record; 18.2 YPR and three game-winning TDs. Slow 4.61 forty limits separation ceiling.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-jaylin-noel",
+    "player_name": "Jaylin Noel",
+    "position": "WR",
+    "school": "Iowa State",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "slot_receiver",
+      "speed_threat",
+      "yac_producer",
+      "elite_efficiency_tier"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "80 receptions, 1,194 yards, 8 TDs in 2024 at Iowa State (top-10 nationally in receiving yards); elite combine athleticism \u2014 best vertical (41.5\") and broad jump (11'2\") among WRs. 2.62 YPRR.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-savion-williams",
+    "player_name": "Savion Williams",
+    "position": "WR",
+    "school": "TCU",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "yac_producer",
+      "outside_receiver",
+      "speed_threat",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "60 receptions, 611 yards, 6 TDs receiving plus 322 rushing yards and 6 rushing TDs in 2024 at TCU; rare 6'4\"/222-lb athlete with 40-inch vertical. Low receiving volume but unique multi-phase versatility.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-tai-felton",
+    "player_name": "Tai Felton",
+    "position": "WR",
+    "school": "Maryland",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "strong_production",
+      "elite_production",
+      "slot_receiver",
+      "speed_threat",
+      "route_runner"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "96 receptions (led Big Ten and all Power-conference players), 1,124 yards, 9 TDs in 2024 at Maryland; first-team All-Big Ten and third-team All-American. Elite volume producer with 4.37 speed.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-chimere-dike",
+    "player_name": "Chimere Dike",
+    "position": "WR",
+    "school": "Florida",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "speed_threat",
+      "slot_receiver",
+      "yac_producer",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "42 receptions, 783 yards, 2 TDs in 2024 at Florida (transfer from Wisconsin); led Gators in catches but modest production. Known for special teams value \u2014 elite 4.34 speed and elite punt returner.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-donte-thornton-jr",
+    "player_name": "Dont'e Thornton Jr.",
+    "position": "WR",
+    "school": "Tennessee",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 23,
+    "age_at_first_impact_season": 23,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "speed_threat",
+      "outside_receiver",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "26 receptions for 661 yards and 6 TDs in 2024 at Tennessee, leading FBS at 25.4 YPR; 4.30 40-yard dash at 6'5\" is historically rare. Deep threat with limited route tree and raw route running.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-arian-smith",
+    "player_name": "Arian Smith",
+    "position": "WR",
+    "school": "Georgia",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "speed_threat",
+      "outside_receiver",
+      "injury_history",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "48 receptions, 817 yards, 4 TDs in 2024 at Georgia; led Bulldogs in receiving yards but had program-high 10 drops. Extensive injury history (wrist, knee, fibula, ankle) offset by elite 4.36 speed and two national championships.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-jaylin-lane",
+    "player_name": "Jaylin Lane",
+    "position": "WR",
+    "school": "Virginia Tech",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "speed_threat",
+      "yac_producer",
+      "slot_receiver",
+      "limited_sample"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "38 receptions, 466 yards, 2 TDs in 2024 at Virginia Tech (limited role); exceptional combine athleticism \u2014 4.34/40.0\"/11'0\" broad/6.75 3-cone. Twitchy slot with YAC ability but low collegiate volume.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-jalen-royals",
+    "player_name": "Jalen Royals",
+    "position": "WR",
+    "school": "Utah State",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "strong_production",
+      "injury_history",
+      "yac_producer",
+      "fcs_production_caveat"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "55 receptions, 834 yards, 6 TDs in just 7 games (2024) before foot injury ended season; in 2023 set Utah State record with 15 TDs (71/1080). Mountain West production caveat but elite rate stats suggest real talent.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-elic-ayomanor",
+    "player_name": "Elic Ayomanor",
+    "position": "WR",
+    "school": "Stanford",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "outside_receiver",
+      "contested_catch_signal",
+      "young_breakout"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "63 receptions, 831 yards, 6 TDs in 2024 at Stanford (second-team All-ACC); back-to-back 1,000+ yard equivalent seasons, including a school-record 294-yard game vs. Colorado in 2023. Young breakout in 2023 at age 20.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-tory-horton",
+    "player_name": "Tory Horton",
+    "position": "WR",
+    "school": "Colorado State",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "strong_production",
+      "injury_history",
+      "outside_receiver",
+      "fcs_production_caveat"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "Knee injury in 2024 (5 games, 26/353/1 TDs); 2023 was a full season with 71/1,131/8 TDs for first-team All-Mountain West. Two-time All-Mountain West selection but Mountain West competition level is a caveat.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-tez-johnson",
+    "player_name": "Tez Johnson",
+    "position": "WR",
+    "school": "Oregon",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "elite_efficiency_tier",
+      "route_runner",
+      "slot_receiver",
+      "yac_producer"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "83 receptions, 898 yards, 10 TDs in 2024 at Oregon (Big Ten Championship MVP); 3.45 YPRR in 2023 ranked 2nd among Power-5 WRs. Elite route runner and separator despite being the lightest player at the 2025 combine (154 lbs).",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-rj-harvey",
+    "player_name": "RJ Harvey",
+    "position": "RB",
+    "school": "UCF",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "elite_production",
+      "dual_threat_rb",
+      "speed_back",
+      "pass_catcher"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 1,577 rush yds, 22 rush TDs, 267 rec yds (25 total TDs) \u2014 led Big 12, set UCF career TD record (48). Elite volume scorer with big-play ability; 4.40 speed at 205 lbs.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-bhayshul-tuten",
+    "player_name": "Bhayshul Tuten",
+    "position": "RB",
+    "school": "Virginia Tech",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "speed_back",
+      "dual_threat_rb",
+      "fcs_production_caveat",
+      "young_breakout"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 1,159 rush yds, 15 TDs on 183 carries at VT. Elite combine athlete with fastest RB 40 (4.32) and highest vertical (40.5\"); FCS background at NC A&T tempers projection.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-trevor-etienne",
+    "player_name": "Trevor Etienne",
+    "position": "RB",
+    "school": "Georgia",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 18,
+    "age_at_first_impact_season": 18,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "dual_threat_rb",
+      "pass_catcher",
+      "receiving_back",
+      "young_breakout"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 609 rush yds, 9 TDs, 32 rec/194 yds in split backfield at Georgia. SEC Championship hero; young profile (born 2004) with pass-catching upside.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-woody-marks",
+    "player_name": "Woody Marks",
+    "position": "RB",
+    "school": "USC",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 23,
+    "age_at_first_impact_season": 23,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "strong_production",
+      "dual_threat_rb",
+      "pass_catcher",
+      "receiving_back"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 1,133 rush yds, 9 TDs, 47 rec/321 yds at USC \u2014 first Trojans 1,000-yard rusher since 2017. Elite 3-cone (4.24) and complete dual-threat profile.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-dylan-sampson",
+    "player_name": "Dylan Sampson",
+    "position": "RB",
+    "school": "Tennessee",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "elite_production",
+      "power_runner",
+      "young_breakout"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 1,491 rush yds, 22 TDs \u2014 SEC Offensive Player of Year; broke Tennessee single-season rushing TD record (1929). Elite scorer at 20 in the SEC.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-jordan-james",
+    "player_name": "Jordan James",
+    "position": "RB",
+    "school": "Oregon",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "dual_threat_rb",
+      "pass_catcher",
+      "young_breakout"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 1,267 rush yds, 15 TDs, 26 rec/209 yds \u2014 2nd-team All-Big Ten as a sophomore on CFP-bound Oregon team. Young profile (born 2004).",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-jaydon-blue",
+    "player_name": "Jaydon Blue",
+    "position": "RB",
+    "school": "Texas",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "speed_back",
+      "dual_threat_rb",
+      "receiving_back",
+      "pass_catcher",
+      "young_breakout"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 730 rush yds, 8 rush TDs plus 368 rec yds, 6 rec TDs in RBBC at Texas \u2014 elite 4.38 speed with 14 combined TDs.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-dj-giddens",
+    "player_name": "DJ Giddens",
+    "position": "RB",
+    "school": "Kansas State",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "dual_threat_rb",
+      "speed_back",
+      "pass_catcher"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 1,343 rush yds, 7 TDs, 21 rec/258 yds \u2014 All-Big 12 2nd team; career 6.0 YPC across 3,087 yds. Rare size-speed combo (6-0, 4.43).",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-ollie-gordon-ii",
+    "player_name": "Ollie Gordon II",
+    "position": "RB",
+    "school": "Oklahoma State",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 19,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "power_runner",
+      "dual_threat_rb"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 880 rush yds, 13 TDs \u2014 down year after Doak Walker 2023 (1,656 yds, 20 TDs). Physical 226-lb north-south runner with 36 career TDs.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-devin-neal",
+    "player_name": "Devin Neal",
+    "position": "RB",
+    "school": "Kansas",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 19,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "dual_threat_rb",
+      "pass_catcher"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 1,266 rush yds, 16 TDs, 24 rec/254 yds \u2014 first Jayhawk with three straight 1,000-yard seasons; KU all-time leader in rush yds (4,343) and TDs (53).",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-tahj-brooks",
+    "player_name": "Tahj Brooks",
+    "position": "RB",
+    "school": "Texas Tech",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "elite_production",
+      "power_runner",
+      "dual_threat_rb",
+      "pass_catcher"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 1,505 rush yds, 18 TDs, 28 rec \u2014 Texas Tech all-time leading rusher (4,557 yds); two straight 1,500-yard seasons; elite agility (4.06 3-cone).",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-damien-martinez",
+    "player_name": "Damien Martinez",
+    "position": "RB",
+    "school": "Miami (FL)",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "power_runner"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 1,002 rush yds, 10 TDs at Miami \u2014 first Hurricanes 1,000-yard rusher since 2016. Transfer from Oregon State with 3-year track record (2,167 yds at OSU).",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-kalel-mullings",
+    "player_name": "Kalel Mullings",
+    "position": "RB",
+    "school": "Michigan",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "limited_sample",
+      "power_runner",
+      "young_breakout"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 948 rush yds, 12 TDs at Michigan \u2014 only one full season as RB (converted from LB). Big Ten production; elite size (6-2, 226 lbs) with developmental upside.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-brashard-smith",
+    "player_name": "Brashard Smith",
+    "position": "RB",
+    "school": "SMU",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "elite_production",
+      "speed_back",
+      "dual_threat_rb",
+      "pass_catcher",
+      "receiving_back"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 1,332 rush yds, 39 rec/327 yds, 18 TDs at SMU \u2014 SMU single-season all-purpose record (1,977 yds); former Miami WR with 108 career receptions and 4.39 speed.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-kyle-monangai",
+    "player_name": "Kyle Monangai",
+    "position": "RB",
+    "school": "Rutgers",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "strong_production",
+      "power_runner"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 1,279 rush yds, 13 TDs \u2014 1st-team All-Big Ten; back-to-back 1,000-yard seasons (2nd in Rutgers history behind Ray Rice).",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-lequint-allen",
+    "player_name": "Lequint Allen",
+    "position": "RB",
+    "school": "Syracuse",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 19,
+    "age_at_first_impact_season": 19,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "elite_production",
+      "dual_threat_rb",
+      "receiving_back",
+      "pass_catcher",
+      "young_breakout"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 1,021 rush yds, 64 rec/521 yds, 20 TDs \u2014 one of only 2 FBS players with 1,000+ rush and 500+ rec yds; set Syracuse RB records for receptions and receiving yards.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-phil-mafah",
+    "player_name": "Phil Mafah",
+    "position": "RB",
+    "school": "Clemson",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "strong_production",
+      "power_runner",
+      "dual_threat_rb"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 1,115 rush yds, 8 TDs at Clemson \u2014 24th 1,000-yard season in school history. Big-bodied power runner (234 lbs) who opted out of combine testing.",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
+  },
+  {
+    "player_id": "rb-jacory-croskey-merritt",
+    "player_name": "Jacory Croskey-Merritt",
+    "position": "RB",
+    "school": "Arizona",
+    "class_year": 2025,
+    "early_declare_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "limited_sample",
+      "speed_back",
+      "fcs_production_caveat"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification"
+    ],
+    "evidence_summary": "2024: 1 game only (106 yds, 1 TD) due to NCAA eligibility issue at Arizona \u2014 prior peak: 1,190 yds/17 TDs at New Mexico (2023). Elite combine burst (41.5 vert).",
+    "context_source": "manual_historical_seed",
+    "exceptional_metrics": []
   }
 ]
