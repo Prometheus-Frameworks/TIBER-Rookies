@@ -870,6 +870,10 @@ def normalize_context_entry(context_row: dict[str, Any]) -> dict[str, Any]:
         "sophomore_total_yards": context_row.get("sophomore_total_yards"),
         "freshman_impact_flag": context_row.get("freshman_impact_flag"),
         "young_breakout_flag": context_row.get("young_breakout_flag"),
+        "breakout_strength": context_row.get("breakout_strength"),
+        "breakout_confidence": context_row.get("breakout_confidence"),
+        "breakout_age_rating_0_100": context_row.get("breakout_age_rating_0_100"),
+        "breakout_label": context_row.get("breakout_label"),
         "career_yards_per_route_run": context_row.get("career_yards_per_route_run"),
         "best_season_yprr": context_row.get("best_season_yprr"),
         "worst_season_yprr": context_row.get("worst_season_yprr"),
@@ -1379,6 +1383,16 @@ def main() -> None:
                 AGE_ADJUSTED_BLEND_WEIGHT * 100,
                 EXISTING_PRODUCTION_BLEND_WEIGHT * 100,
             )
+            # Merge BOAR fields from age-adjusted output into context entries
+            # so they flow through normalize_context_entry into the export.
+            boar_fields = ("breakout_strength", "breakout_confidence",
+                           "breakout_age_rating_0_100", "breakout_label")
+            for row in age_adjusted_rows:
+                pid = row.get("player_id", "")
+                if pid and pid in context_by_id:
+                    for field in boar_fields:
+                        if row.get(field) is not None:
+                            context_by_id[pid][field] = row[field]
         else:
             logging.warning("Age-adjusted input %s is not a list — skipping blend", age_adjusted_input)
     else:
