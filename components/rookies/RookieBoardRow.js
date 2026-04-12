@@ -170,6 +170,11 @@ function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}
         <span class="board-tier-pill">${esc(row.tier?.label ?? '')}</span>
         ${pprBand ? `<span class="ppr-band ${PPR_BAND_CLASS[pprBand] ?? 'ppr-band-lottery'}">${esc(pprBand)}</span>` : ''}
       </div>
+      <div class="bmc-signals">
+        ${row.draftCapitalScore != null ? `<span class="bmc-signal-chip bmc-signal-capital" title="Draft Capital">CAP ${Math.round(row.draftCapitalScore)}</span>` : ''}
+        ${row.rasScore         != null ? `<span class="bmc-signal-chip bmc-signal-ras"     title="Relative Athletic Score">RAS ${Math.round(row.rasScore)}</span>` : ''}
+        ${row.productionScore  != null ? `<span class="bmc-signal-chip bmc-signal-prod"    title="Production Score">PRD ${Math.round(row.productionScore)}</span>` : ''}
+      </div>
       <div class="bmc-stats">
         <div class="bmc-stat-row">
           <span class="bmc-stat-label">NFL Edge</span>

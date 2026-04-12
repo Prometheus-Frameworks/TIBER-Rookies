@@ -161,7 +161,8 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null
+        "path_disruption_flag": null,
+        "nfl_team": "Las Vegas Raiders"
       },
       "evidence": {
         "evidence_tags": [
@@ -235,7 +236,8 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null
+        "path_disruption_flag": null,
+        "nfl_team": "Indianapolis Colts"
       },
       "evidence": {
         "evidence_tags": [],
@@ -588,7 +590,8 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null
+        "path_disruption_flag": null,
+        "nfl_team": "New York Giants"
       },
       "evidence": {
         "evidence_tags": [
@@ -937,7 +940,8 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null
+        "path_disruption_flag": null,
+        "nfl_team": "Chicago Bears"
       },
       "evidence": {
         "evidence_tags": [
@@ -2030,7 +2034,8 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null
+        "path_disruption_flag": null,
+        "nfl_team": "Tampa Bay Buccaneers"
       },
       "evidence": {
         "evidence_tags": [
@@ -2479,7 +2484,8 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null
+        "path_disruption_flag": null,
+        "nfl_team": "Chicago Bears"
       },
       "evidence": {
         "evidence_tags": [

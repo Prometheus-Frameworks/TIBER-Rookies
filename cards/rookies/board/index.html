@@ -15,7 +15,10 @@
       <p style="margin-top: 10px"><a class="nav-link" href="/cards/rookies/compare/index.html">Open compare tool →</a></p>
 
       <section id="board-summary" class="board-summary" style="margin-top: 14px">Loading board summary…</section>
-      <section id="board-controls-root" style="margin-top: 10px">Loading board controls…</section>
+      <div class="board-search-row" style="margin-top: 10px">
+        <input type="search" id="board-name-search" class="board-search-input" placeholder="Search players…" autocomplete="off" spellcheck="false">
+      </div>
+      <section id="board-controls-root" style="margin-top: 8px">Loading board controls…</section>
       <p style="margin-top: 8px"><a class="nav-link" href="#queue-root" id="queue-jump-link">↓ Jump to shortlist queue</a></p>
       <section id="board-root" style="margin-top: 12px">Loading rookie board…</section>
       <section id="queue-root" style="margin-top: 16px">Loading shortlist queue…</section>
@@ -39,7 +42,7 @@
       const SORT_OPTIONS = new Set(['grade', 'rank', 'position', 'edge']);
       const VIEW_OPTIONS = new Set(['tiered', 'flat']);
       const DRAFT_CLASS_OPTIONS = new Set(['ALL', '2026', '2025', '2024', '2023', '2022']);
-      const state = { sort: 'grade', position: 'ALL', draftClass: 'ALL', view: 'tiered' };
+      const state = { sort: 'grade', position: 'ALL', draftClass: 'ALL', view: 'tiered', nameFilter: '' };
       const compareState = { left: null, right: null };
       const portabilityState = { mode: 'replace', tone: 'info', message: '' };
 
@@ -304,7 +307,7 @@
       function render(allRows) {
         const positions = collectPositions(allRows);
         if (state.position !== 'ALL' && !positions.includes(state.position)) state.position = 'ALL';
-        const filtered = filterRookieBoard(allRows, { position: state.position, draftClass: state.draftClass });
+        const filtered = filterRookieBoard(allRows, { position: state.position, draftClass: state.draftClass, nameFilter: state.nameFilter });
         const sorted = sortRookieBoard(filtered, state.sort);
         const queue = loadRookieQueue();
 
@@ -341,6 +344,16 @@
         const cards = await getAllRookieCards();
         const rows = buildRookieBoardRows(cards);
         render(rows);
+
+        // Wire search input once — it lives outside the re-rendered controls area
+        // so it keeps focus and value across renders.
+        const searchInput = document.getElementById('board-name-search');
+        if (searchInput) {
+          searchInput.addEventListener('input', () => {
+            state.nameFilter = searchInput.value;
+            render(rows);
+          });
+        }
       } catch (error) {
         summaryRoot.innerHTML = '';
         controlsRoot.innerHTML = '';

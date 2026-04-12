@@ -211,5 +211,253 @@
       "interceptions": 6,
       "yards_per_attempt": 8.5
     }
+  },
+  {
+    "player_id": "qb-cam-ward",
+    "player_name": "Cam Ward",
+    "position": "QB",
+    "school": "Miami (FL)",
+    "season": 2024,
+    "stats": {
+      "completions": 269,
+      "attempts": 394,
+      "completion_pct": 68.3,
+      "passing_yards": 4313,
+      "passing_tds": 36,
+      "interceptions": 7,
+      "yards_per_attempt": 10.9
+    }
+  },
+  {
+    "player_id": "qb-jaxson-dart",
+    "player_name": "Jaxson Dart",
+    "position": "QB",
+    "school": "Ole Miss",
+    "season": 2024,
+    "stats": {
+      "completions": 268,
+      "attempts": 388,
+      "completion_pct": 69.1,
+      "passing_yards": 4279,
+      "passing_tds": 29,
+      "interceptions": 4,
+      "yards_per_attempt": 11.0
+    }
+  },
+  {
+    "player_id": "qb-will-howard",
+    "player_name": "Will Howard",
+    "position": "QB",
+    "school": "Ohio State",
+    "season": 2024,
+    "stats": {
+      "completions": 247,
+      "attempts": 338,
+      "completion_pct": 73.1,
+      "passing_yards": 3918,
+      "passing_tds": 33,
+      "interceptions": 5,
+      "yards_per_attempt": 11.6,
+      "rush_yards": 119,
+      "rush_tds": 4
+    }
+  },
+  {
+    "player_id": "qb-tyler-shough",
+    "player_name": "Tyler Shough",
+    "position": "QB",
+    "school": "Louisville",
+    "season": 2024,
+    "stats": {
+      "completions": 197,
+      "attempts": 299,
+      "completion_pct": 65.9,
+      "passing_yards": 3195,
+      "passing_tds": 24,
+      "interceptions": 7,
+      "yards_per_attempt": 10.7
+    }
+  },
+  {
+    "player_id": "qb-jalen-milroe",
+    "player_name": "Jalen Milroe",
+    "position": "QB",
+    "school": "Alabama",
+    "season": 2024,
+    "stats": {
+      "completions": 204,
+      "attempts": 316,
+      "completion_pct": 64.6,
+      "passing_yards": 2844,
+      "passing_tds": 21,
+      "interceptions": 8,
+      "yards_per_attempt": 9.0,
+      "rush_yards": 726,
+      "rush_tds": 12
+    }
+  },
+  {
+    "player_id": "te-harold-fannin-jr",
+    "player_name": "Harold Fannin Jr.",
+    "position": "TE",
+    "school": "Bowling Green",
+    "season": 2024,
+    "stats": {
+      "receptions": 116,
+      "receiving_yards": 1623,
+      "receiving_tds": 10,
+      "yards_per_reception": 14.0
+    }
+  },
+  {
+    "player_id": "te-elijah-arroyo",
+    "player_name": "Elijah Arroyo",
+    "position": "TE",
+    "school": "Miami (FL)",
+    "season": 2024,
+    "stats": {
+      "receptions": 35,
+      "receiving_yards": 509,
+      "receiving_tds": 7,
+      "yards_per_reception": 14.5
+    }
+  },
+  {
+    "player_id": "te-mason-taylor",
+    "player_name": "Mason Taylor",
+    "position": "TE",
+    "school": "LSU",
+    "season": 2024,
+    "stats": {
+      "receptions": 56,
+      "receiving_yards": 735,
+      "receiving_tds": 5,
+      "yards_per_reception": 13.1
+    }
+  },
+  {
+    "player_id": "te-oronde-gadsden-ii",
+    "player_name": "Oronde Gadsden II",
+    "position": "TE",
+    "school": "Syracuse",
+    "season": 2024,
+    "stats": {
+      "receptions": 55,
+      "receiving_yards": 760,
+      "receiving_tds": 8,
+      "yards_per_reception": 13.8
+    }
+  },
+  {
+    "player_id": "te-terrance-ferguson",
+    "player_name": "Terrance Ferguson",
+    "position": "TE",
+    "school": "Oregon",
+    "season": 2024,
+    "stats": {
+      "receptions": 38,
+      "receiving_yards": 485,
+      "receiving_tds": 3,
+      "yards_per_reception": 12.8
+    }
+  },
+  {
+    "player_id": "wr-jayden-higgins",
+    "player_name": "Jayden Higgins",
+    "position": "WR",
+    "school": "Iowa State",
+    "season": 2024,
+    "stats": {
+      "receptions": 80,
+      "receiving_yards": 1174,
+      "receiving_tds": 10,
+      "yards_per_reception": 14.7
+    }
+  },
+  {
+    "player_id": "wr-jaylin-noel",
+    "player_name": "Jaylin Noel",
+    "position": "WR",
+    "school": "Iowa State",
+    "season": 2024,
+    "stats": {
+      "receptions": 56,
+      "receiving_yards": 779,
+      "receiving_tds": 6,
+      "yards_per_reception": 13.9
+    }
+  },
+  {
+    "player_id": "wr-tai-felton",
+    "player_name": "Tai Felton",
+    "position": "WR",
+    "school": "Maryland",
+    "season": 2024,
+    "stats": {
+      "receptions": 76,
+      "receiving_yards": 1011,
+      "receiving_tds": 7,
+      "yards_per_reception": 13.3
+    }
+  },
+  {
+    "player_id": "rb-rj-harvey",
+    "player_name": "RJ Harvey",
+    "position": "RB",
+    "school": "UCF",
+    "season": 2024,
+    "stats": {
+      "rush_attempts": 261,
+      "rush_yards": 1581,
+      "rush_tds": 21,
+      "yards_per_carry": 6.1,
+      "receptions": 33,
+      "receiving_yards": 339
+    }
+  },
+  {
+    "player_id": "rb-dylan-sampson",
+    "player_name": "Dylan Sampson",
+    "position": "RB",
+    "school": "Tennessee",
+    "season": 2024,
+    "stats": {
+      "rush_attempts": 234,
+      "rush_yards": 1516,
+      "rush_tds": 22,
+      "yards_per_carry": 6.5,
+      "receptions": 19,
+      "receiving_yards": 146
+    }
+  },
+  {
+    "player_id": "rb-dj-giddens",
+    "player_name": "DJ Giddens",
+    "position": "RB",
+    "school": "Kansas State",
+    "season": 2024,
+    "stats": {
+      "rush_attempts": 193,
+      "rush_yards": 1176,
+      "rush_tds": 12,
+      "yards_per_carry": 6.1,
+      "receptions": 22,
+      "receiving_yards": 200
+    }
+  },
+  {
+    "player_id": "rb-bhayshul-tuten",
+    "player_name": "Bhayshul Tuten",
+    "position": "RB",
+    "school": "Virginia Tech",
+    "season": 2024,
+    "stats": {
+      "rush_attempts": 232,
+      "rush_yards": 1340,
+      "rush_tds": 18,
+      "yards_per_carry": 5.8,
+      "receptions": 15,
+      "receiving_yards": 138
+    }
   }
 ]

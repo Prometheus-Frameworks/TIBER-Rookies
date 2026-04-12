@@ -122,6 +122,38 @@ function renderAgeAdjMetric(ageAdjustedProduction) {
   return `<div class="metric-row"><div class="metric-header"><span>Age-Adjusted Production</span><strong>${esc(ageAdjustedProduction.toFixed(1))}</strong></div><div class="metric-track"><div class="metric-fill metric-fill-age-adj" style="width:${width}%"></div></div></div>`;
 }
 
+const STAT_LABELS = {
+  // Passing
+  completions:      'Comp',
+  attempts:         'Att',
+  completion_pct:   'Comp%',
+  passing_yards:    'Pass Yds',
+  passing_tds:      'Pass TD',
+  interceptions:    'INT',
+  yards_per_attempt:'Y/A',
+  // Rushing
+  rush_attempts:    'Att',
+  rush_yards:       'Rush Yds',
+  rush_tds:         'Rush TD',
+  yards_per_carry:  'YPC',
+  // Receiving
+  receptions:       'Rec',
+  receiving_yards:  'Rec Yds',
+  receiving_tds:    'Rec TD',
+  yards_per_reception: 'YPR',
+  targets:          'Tgt',
+  // Skip non-numeric meta fields silently
+  note:             null,
+};
+
+function formatStatEntry(key, value) {
+  const label = STAT_LABELS[key];
+  if (label === null) return null; // explicitly suppressed
+  const displayLabel = label ?? key.replace(/_/g, ' ');
+  const displayValue = key === 'completion_pct' ? `${value}%` : value;
+  return `${displayLabel}: ${displayValue}`;
+}
+
 export function renderRookieCard(container, card) {
   const heroScore = card.summary.rookieGrade == null ? 'N/A' : card.summary.rookieGrade.toFixed(1);
   const identityBits = [
@@ -137,8 +169,17 @@ export function renderRookieCard(container, card) {
   const evidenceSummary = card.contextSignals?.evidenceSummary ?? null;
 
   const seasonsTable = card.seasons.length
-    ? `<table class="stats-table"><thead><tr><th>Season</th><th>Team</th><th>Games</th><th>Stat Line</th></tr></thead><tbody>${card.seasons.map((row) => `<tr><td>${esc(row.season)}</td><td>${esc(row.team)}</td><td>${esc(row.games ?? 'N/A')}</td><td>${esc(Object.entries(row.statLine).map(([k, v]) => `${k}: ${v}`).join(' | '))}</td></tr>`).join('')}</tbody></table>`
-    : '<div class="meta">Season stat rows are not available in the current promoted artifacts.</div>';
+    ? `<table class="stats-table">
+        <thead><tr><th>Season</th><th>School</th><th>Stats</th></tr></thead>
+        <tbody>${card.seasons.map((row) => {
+          const statBits = Object.entries(row.statLine)
+            .map(([k, v]) => formatStatEntry(k, v))
+            .filter(Boolean)
+            .join(' · ');
+          return `<tr><td>${esc(row.season)}</td><td>${esc(row.team)}</td><td>${esc(statBits)}</td></tr>`;
+        }).join('')}</tbody>
+       </table>`
+    : '<div class="meta">College stats not yet available for this player.</div>';
 
   container.innerHTML = `
     <article class="rookie-card">
