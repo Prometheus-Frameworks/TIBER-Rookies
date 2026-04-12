@@ -58,6 +58,16 @@ function deltaSpan(delta, label) {
   return `<span class="delta-row"><span class="delta-label">${label}</span><span class="delta-neutral">${delta >= 0 ? '+' : ''}${delta.toFixed(1)}</span></span>`;
 }
 
+function deltaSpanInline(delta) {
+  if (delta == null) return `<span class="delta-na">—</span>`;
+  const abs = Math.abs(delta).toFixed(1);
+  if (delta >= 10)  return `<span class="delta-extreme-bull">+${abs} ↑↑</span>`;
+  if (delta <= -10) return `<span class="delta-extreme-bear">−${abs} ↓↓</span>`;
+  if (delta >= 3)   return `<span class="delta-bull">+${abs} ↑</span>`;
+  if (delta <= -3)  return `<span class="delta-bear">−${abs} ↓</span>`;
+  return `<span class="delta-neutral">${delta >= 0 ? '+' : ''}${delta.toFixed(1)}</span>`;
+}
+
 function renderConsensusDeltaCell(row) {
   return `
     <div class="board-cell board-delta" data-label="Model Edge">
@@ -109,6 +119,64 @@ function renderPosBadge(position) {
   return `<span class="pos-badge ${cls}">${esc(pos)}</span>`;
 }
 
+function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}) {
+  const rank = row.classRank == null ? 'N/A' : `#${row.classRank}`;
+  const grade = row.rookieGrade == null ? 'N/A' : row.rookieGrade.toFixed(1);
+  const slug = encodeURIComponent(String(row.slug ?? ''));
+  const compareLeftHref = `/cards/rookies/compare/index.html?left=${slug}`;
+  const compareRightHref = `/cards/rookies/compare/index.html?right=${slug}`;
+  const queueTag = queueAnnotation?.queueTag ?? '';
+
+  const identityParts = [
+    row.position,
+    row.school,
+    row.draftClass ? String(row.draftClass) : null,
+  ].filter(Boolean);
+
+  const pprBand = row.pprProjection?.band ?? null;
+  const pprRange = row.pprProjection
+    ? `${esc(row.pprProjection.floor)}–${esc(row.pprProjection.ceiling)}`
+    : null;
+
+  return `
+    <div class="board-mobile-card">
+      <div class="bmc-header">
+        <span class="bmc-rank board-num">${esc(rank)}</span>
+        <span class="bmc-grade">Grade <strong class="bmc-grade-value">${esc(grade)}</strong></span>
+      </div>
+      <div class="bmc-name">
+        <span class="board-player-name">${esc(row.name)}</span>
+        ${renderBreakoutBadge(row)}
+        ${renderEdgeOutlierBadge(row)}
+      </div>
+      <div class="bmc-meta">${esc(identityParts.join(' • '))}</div>
+      <div class="bmc-thesis">${esc(row.profileSummary)}</div>
+      <div class="bmc-pills">
+        <span class="board-tier-pill">${esc(row.tier?.label ?? '')}</span>
+        ${pprBand ? `<span class="ppr-band ${PPR_BAND_CLASS[pprBand] ?? 'ppr-band-lottery'}">${esc(pprBand)}</span>` : ''}
+      </div>
+      <div class="bmc-stats">
+        <div class="bmc-stat-row">
+          <span class="bmc-stat-label">NFL Edge</span>
+          <span>${deltaSpanInline(row.consensusDelta)}</span>
+        </div>
+        <div class="bmc-stat-row">
+          <span class="bmc-stat-label">Dyn Edge</span>
+          <span>${deltaSpanInline(row.dynastyDelta)}</span>
+        </div>
+        ${pprRange ? `<div class="bmc-stat-row"><span class="bmc-stat-label">Range</span><span class="bmc-ppr-range">${pprRange} PPR</span></div>` : ''}
+      </div>
+      ${isQueued && queueTag ? `<div class="meta queue-inline-indicator" style="margin-bottom:6px">Queue tag: <span class="queue-tag-pill">${esc(queueTag)}</span></div>` : ''}
+      <div class="bmc-actions-utility">
+        <a class="nav-link" href="/cards/rookies/player.html?slug=${slug}">Detail</a>
+        <a class="nav-link" href="${compareLeftHref}">Compare L</a>
+        <a class="nav-link" href="${compareRightHref}">Compare R</a>
+      </div>
+      <button type="button" class="queue-toggle bmc-queue-btn ${isQueued ? 'is-queued' : ''}" data-queue-toggle="${esc(row.slug)}">${isQueued ? 'Queued ✓' : 'Add to queue'}</button>
+    </div>
+  `;
+}
+
 export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = null } = {}) {
   const rank = row.classRank == null ? 'N/A' : `#${row.classRank}`;
   const grade = row.rookieGrade == null ? 'N/A' : row.rookieGrade.toFixed(1);
@@ -120,6 +188,7 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
 
   return `
     <article class="board-row ${tierCss} ${isQueued ? 'board-row-queued' : ''}">
+      ${renderMobileCard(row, { isQueued, queueAnnotation })}
       <div class="board-cell board-rank board-num" data-label="Rank">${esc(rank)}</div>
       <div class="board-cell board-player" data-label="Player">
         <div class="board-player-top">
@@ -139,8 +208,8 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
       ${renderConsensusDeltaCell(row)}
       <div class="board-cell board-actions" data-label="Actions">
         <a class="nav-link" href="/cards/rookies/player.html?slug=${slug}">Detail</a>
-        <a class="nav-link" href="${compareLeftHref}">Set Left</a>
-        <a class="nav-link" href="${compareRightHref}">Set Right</a>
+        <a class="nav-link" href="${compareLeftHref}">Compare L</a>
+        <a class="nav-link" href="${compareRightHref}">Compare R</a>
         <button type="button" class="queue-toggle ${isQueued ? 'is-queued' : ''}" data-queue-toggle="${esc(row.slug)}">${isQueued ? 'Queued ✓' : 'Add to queue'}</button>
       </div>
     </article>
