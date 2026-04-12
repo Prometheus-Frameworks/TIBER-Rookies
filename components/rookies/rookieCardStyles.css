@@ -562,6 +562,28 @@ body {
 .queue-note-counter { text-align: right; }
 .queue-note-counter-limit { color: #ffb4b4; }
 
+/* ─── Team logo badges ────────────────────────────────────────────────────── */
+.team-logos {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+.team-logo {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: #1e2a3a;
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+.team-logo-sm {
+  width: 16px;
+  height: 16px;
+}
+
 /* ─── Mobile board card (hidden on desktop, shown via media query) ────────── */
 .board-mobile-card { display: none; }
 

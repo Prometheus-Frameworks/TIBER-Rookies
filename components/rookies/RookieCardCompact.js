@@ -1,4 +1,5 @@
 import { selectRookieEvidenceMetrics } from '/lib/rookies/selectRookieEvidenceMetrics.js';
+import { getCollegeLogoUrl, getNflTeamLogoUrl } from '/lib/rookies/teamLogos.js';
 
 function esc(str) {
   return String(str ?? '')
@@ -6,6 +7,17 @@ function esc(str) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+}
+
+function renderTeamLogos(school, nflTeam) {
+  const collegeUrl = getCollegeLogoUrl(school);
+  const nflUrl = getNflTeamLogoUrl(nflTeam);
+  if (!collegeUrl && !nflUrl) return '';
+  const imgs = [
+    collegeUrl ? `<img class="team-logo team-logo-sm" src="${collegeUrl}" alt="${esc(school ?? '')}" loading="lazy" onerror="this.style.display='none'">` : '',
+    nflUrl     ? `<img class="team-logo team-logo-sm" src="${nflUrl}" alt="${esc(nflTeam ?? '')}" loading="lazy" onerror="this.style.display='none'">` : '',
+  ].join('');
+  return `<span class="team-logos">${imgs}</span>`;
 }
 
 function compactMetric(metric) {
@@ -30,7 +42,9 @@ export function renderRookieCardCompact(card, { isQueued = false, queueAnnotatio
       <a class="compact-card-link" href="/cards/rookies/player.html?slug=${slug}">
         <div class="compact-header-row">
           <div>
-            <p class="compact-name">${esc(card.identity.name)}</p>
+            <p class="compact-name">
+              ${renderTeamLogos(card.identity.school, card.identity.nflTeam)}${esc(card.identity.name)}
+            </p>
             <div class="compact-meta">${esc(card.identity.positionLabel ?? card.identity.position)} • ${esc(card.identity.schoolDisplay ?? card.identity.school ?? 'School unavailable in current artifacts')} • Class ${esc(card.identity.classYear)}</div>
           </div>
           <div class="compact-rank">${card.summary.classRank != null ? '#' + esc(card.summary.classRank) : 'N/A'}</div>

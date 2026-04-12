@@ -1,9 +1,23 @@
+import { getCollegeLogoUrl, getNflTeamLogoUrl } from '/lib/rookies/teamLogos.js';
+
 function esc(str) {
   return String(str ?? '')
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+}
+
+function renderTeamLogos(school, nflTeam, { size = 'sm' } = {}) {
+  const cls = size === 'sm' ? 'team-logo team-logo-sm' : 'team-logo';
+  const collegeUrl = getCollegeLogoUrl(school);
+  const nflUrl = getNflTeamLogoUrl(nflTeam);
+  if (!collegeUrl && !nflUrl) return '';
+  const imgs = [
+    collegeUrl ? `<img class="${cls}" src="${esc(collegeUrl)}" alt="${esc(school ?? '')}" loading="lazy" onerror="this.style.display='none'">` : '',
+    nflUrl     ? `<img class="${cls}" src="${esc(nflUrl)}" alt="${esc(nflTeam ?? '')}" loading="lazy" onerror="this.style.display='none'">` : '',
+  ].join('');
+  return `<span class="team-logos">${imgs}</span>`;
 }
 
 const PPR_BAND_CLASS = {
@@ -145,6 +159,7 @@ function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}
         <span class="bmc-grade">Grade <strong class="bmc-grade-value">${esc(grade)}</strong></span>
       </div>
       <div class="bmc-name">
+        ${renderTeamLogos(row.school, row.nflTeam)}
         <span class="board-player-name">${esc(row.name)}</span>
         ${renderBreakoutBadge(row)}
         ${renderEdgeOutlierBadge(row)}
@@ -192,6 +207,7 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
       <div class="board-cell board-rank board-num" data-label="Rank">${esc(rank)}</div>
       <div class="board-cell board-player" data-label="Player">
         <div class="board-player-top">
+          ${renderTeamLogos(row.school, row.nflTeam)}
           <span class="board-player-name">${esc(row.name)}</span>
           ${renderBreakoutBadge(row)}
           ${renderEdgeOutlierBadge(row)}

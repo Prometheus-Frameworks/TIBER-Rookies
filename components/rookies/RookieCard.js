@@ -1,4 +1,5 @@
 import { selectRookieEvidenceMetrics } from '/lib/rookies/selectRookieEvidenceMetrics.js';
+import { getCollegeLogoUrl, getNflTeamLogoUrl } from '/lib/rookies/teamLogos.js';
 
 function esc(str) {
   return String(str ?? '')
@@ -6,6 +7,17 @@ function esc(str) {
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;');
+}
+
+function renderTeamLogos(school, nflTeam) {
+  const collegeUrl = getCollegeLogoUrl(school);
+  const nflUrl = getNflTeamLogoUrl(nflTeam);
+  if (!collegeUrl && !nflUrl) return '';
+  const imgs = [
+    collegeUrl ? `<img class="team-logo" src="${esc(collegeUrl)}" alt="${esc(school ?? '')}" loading="lazy" onerror="this.style.display='none'">` : '',
+    nflUrl     ? `<img class="team-logo" src="${esc(nflUrl)}" alt="${esc(nflTeam ?? '')}" loading="lazy" onerror="this.style.display='none'">` : '',
+  ].join('');
+  return `<span class="team-logos">${imgs}</span>`;
 }
 
 function pill(label, value) {
@@ -133,7 +145,9 @@ export function renderRookieCard(container, card) {
       <div class="header-grid">
         <div>
           <div class="section-title">TIBER Rookie Card</div>
-          <h1 class="player-name">${esc(card.identity.name)}</h1>
+          <h1 class="player-name">
+            ${renderTeamLogos(card.identity.school, card.identity.nflTeam)}${esc(card.identity.name)}
+          </h1>
           <div class="meta">${esc(identityBits || 'Profile context not available')}</div>
           <div class="meta">${esc(card.summary.profileSummary ?? card.summary.identityNote ?? 'Identity summary unavailable')}</div>
           ${renderBreakoutAgeBadge(card)}

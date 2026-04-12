@@ -89,7 +89,8 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null
+        "path_disruption_flag": null,
+        "nfl_team": "Tennessee Titans"
       },
       "evidence": {
         "evidence_tags": [
@@ -372,7 +373,8 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null
+        "path_disruption_flag": null,
+        "nfl_team": "Carolina Panthers"
       },
       "evidence": {
         "evidence_tags": [
@@ -446,7 +448,8 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null
+        "path_disruption_flag": null,
+        "nfl_team": "Jacksonville Jaguars"
       },
       "evidence": {
         "evidence_tags": [
@@ -1732,7 +1735,8 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null
+        "path_disruption_flag": null,
+        "nfl_team": "Cleveland Browns"
       },
       "evidence": {
         "evidence_tags": [],
