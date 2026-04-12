@@ -11,18 +11,18 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-11T13:31:55+00:00",
-  "run_id": "rookie-alpha-2026-2026-04-11T13:31:55+00:00",
+  "generated_at": "2026-04-12T12:34:41+00:00",
+  "run_id": "rookie-alpha-2026-2026-04-12T12:34:41+00:00",
   "season": 2026,
   "coverage_summary": {
-    "players_total": 28,
-    "players_with_any_missing_input": 21,
+    "players_total": 40,
+    "players_with_any_missing_input": 33,
     "players_with_full_inputs": 7,
-    "players_with_context_fields": 28,
+    "players_with_context_fields": 40,
     "input_alignment": {
       "duplicate_rows_skipped": 0,
       "identity_conflicts_skipped": 0,
-      "missing_combine": 21,
+      "missing_combine": 33,
       "missing_production": 0,
       "missing_draft_proxy": 0,
       "total_excluded": 0
@@ -745,8 +745,8 @@
         "context_source": "Wikipedia Carnell Tate college statistics table (2023-2025 rows), retrieved 2026-03-29; speed comp via notes 2026-04-10"
       },
       "rookie_alpha_rank": 9,
-      "talent_rank": 13,
-      "draft_proxy_delta": 4
+      "talent_rank": 20,
+      "draft_proxy_delta": 11
     },
     {
       "player_id": "wr-makai-lemon",
@@ -822,8 +822,8 @@
         "context_source": "Wikipedia Makai Lemon stats + @ffdataroma research note 2026-04-08"
       },
       "rookie_alpha_rank": 10,
-      "talent_rank": 10,
-      "draft_proxy_delta": 0
+      "talent_rank": 12,
+      "draft_proxy_delta": 2
     },
     {
       "player_id": "wr-kc-concepcion",
@@ -901,8 +901,8 @@
         "context_source": "Wikipedia Kevin Concepcion stats table (2023-2025 season rows) and Sports-Reference-linked career totals, retrieved 2026-03-29."
       },
       "rookie_alpha_rank": 11,
-      "talent_rank": 12,
-      "draft_proxy_delta": 1
+      "talent_rank": 18,
+      "draft_proxy_delta": 7
     },
     {
       "player_id": "wr-denzel-boston",
@@ -975,8 +975,8 @@
         "context_source": "Wikipedia Denzel Boston college career summary and pre-draft measurables section, retrieved 2026-03-29."
       },
       "rookie_alpha_rank": 12,
-      "talent_rank": 14,
-      "draft_proxy_delta": 2
+      "talent_rank": 22,
+      "draft_proxy_delta": 10
     },
     {
       "player_id": "qb-drew-allar",
@@ -1121,8 +1121,8 @@
         "context_source": "@ffdataroma research note 2026-04-08 + NFLDraftBuzz/PFF scouting 2026-04-08"
       },
       "rookie_alpha_rank": 14,
-      "talent_rank": 11,
-      "draft_proxy_delta": -3
+      "talent_rank": 14,
+      "draft_proxy_delta": 0
     },
     {
       "player_id": "rb-jadarian-price",
@@ -1197,8 +1197,8 @@
         "context_source": "@ffdataroma research note 2026-04-08 + research agent 2026-04-09"
       },
       "rookie_alpha_rank": 15,
-      "talent_rank": 15,
-      "draft_proxy_delta": 0
+      "talent_rank": 23,
+      "draft_proxy_delta": 8
     },
     {
       "player_id": "te-kenyon-sadiq",
@@ -1277,8 +1277,223 @@
         "context_source": "compute_breakout_age.py; SPORQ 2026 TE class notes 2026-04-10"
       },
       "rookie_alpha_rank": 16,
-      "talent_rank": 20,
-      "draft_proxy_delta": 4
+      "talent_rank": 32,
+      "draft_proxy_delta": 16
+    },
+    {
+      "player_id": "rb-desmond-reid",
+      "player_name": "Desmond Reid",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 63.0,
+        "age_adjusted_production_0_100": null,
+        "draft_capital_proxy_0_100": 25.0,
+        "talent_score_0_100": 57.3125,
+        "rookie_alpha_0_100": 50.85,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_delta": 25.9
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "rb-desmond-reid",
+        "player_name": "Desmond Reid",
+        "position": "RB",
+        "school": "Pittsburgh",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 20,
+        "age_at_first_impact_season": 20,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": true,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [
+          "young_breakout"
+        ],
+        "context_flags": [],
+        "translation_flags": [
+          "young_breakout"
+        ],
+        "evidence_summary": "Highly versatile Pitt back with elite receiving production from the backfield; genuine dual-threat upside with significant career receiving yards. Undersized frame limits three-down role but pass-catching specialists have real value in PPR.",
+        "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification"
+      },
+      "rookie_alpha_rank": 17,
+      "talent_rank": 10,
+      "draft_proxy_delta": -7
+    },
+    {
+      "player_id": "rb-jam-miller",
+      "player_name": "Jam Miller",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 62.0,
+        "age_adjusted_production_0_100": null,
+        "draft_capital_proxy_0_100": 25.0,
+        "talent_score_0_100": 56.75,
+        "rookie_alpha_0_100": 50.4,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_delta": 25.4
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "rb-jam-miller",
+        "player_name": "Jam Miller",
+        "position": "RB",
+        "school": "Alabama",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 21,
+        "age_at_first_impact_season": 21,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": false,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [],
+        "context_flags": [],
+        "translation_flags": [],
+        "evidence_summary": "Multi-year Alabama contributor in a timeshare SEC backfield; solid YPC efficiency and reliable receiver out of the backfield. Enough athleticism for an NFL roster spot as a change-of-pace/receiving back.",
+        "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification"
+      },
+      "rookie_alpha_rank": 18,
+      "talent_rank": 11,
+      "draft_proxy_delta": -7
+    },
+    {
+      "player_id": "rb-roman-hemby",
+      "player_name": "Roman Hemby",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 60.0,
+        "age_adjusted_production_0_100": null,
+        "draft_capital_proxy_0_100": 25.0,
+        "talent_score_0_100": 55.625,
+        "rookie_alpha_0_100": 49.5,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_delta": 24.5
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "rb-roman-hemby",
+        "player_name": "Roman Hemby",
+        "position": "RB",
+        "school": "Indiana",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 20,
+        "age_at_first_impact_season": 20,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": true,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [
+          "young_breakout"
+        ],
+        "context_flags": [],
+        "translation_flags": [
+          "young_breakout"
+        ],
+        "evidence_summary": "Transfer from Maryland to Indiana; complementary receiving-back role in the Hoosiers' offense. Pass-catching ability is the calling card; volume limited by committee usage and injury concerns.",
+        "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification"
+      },
+      "rookie_alpha_rank": 19,
+      "talent_rank": 13,
+      "draft_proxy_delta": -6
     },
     {
       "player_id": "wr-chris-brazzell-ii",
@@ -1349,9 +1564,9 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 17,
-      "talent_rank": 16,
-      "draft_proxy_delta": -1
+      "rookie_alpha_rank": 20,
+      "talent_rank": 26,
+      "draft_proxy_delta": 6
     },
     {
       "player_id": "wr-elijah-sarratt",
@@ -1426,9 +1641,216 @@
         "evidence_summary": "75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR (non-R1 P4 WR since 2021) \u2014 matches Puka Nacua, Tank Dell, Troy Franklin efficiency tier. Nacua comp is strongest: 43-48 rec/yr at BYU (modest volume), 18.3 YPC, 128.0 QB rating when targeted \u2014 then 105 catches in NFL year 1 as a 5th-round pick. Efficiency held when target share increased. Sarratt profile: low college volume, elite per-route efficiency \u2014 same archetype. Named comp screen (non-R1 P4 WR since 2020 with career 75th+ pctile passer rating when targeted + 50th+ pctile TPRR + BOA < 20): George Pickens, Antonio Williams, Elijah Sarratt, Josh Downs, Troy Franklin, Puka Nacua. FP/G floor in years 1-3: 7.4 (Franklin); 3 of 6 above 10+ FP/G. Late breakout (BOA 21) is model red flag; Aiyuk/Watson are precedents for senior-breakout success, but base rate is poor. MTF 0.13 (mid-tier). Model gap: volume-weighted age-adjusted production (18.2 age-adj, blend \u2192 38) severely underweights efficiency; CFBD raw production score 67.6 is more representative.",
         "context_source": "@ffdataroma research note 2026-04-08 + @ScottBarrettDFB PFF chart + NCAA.com Puka Nacua stats"
       },
-      "rookie_alpha_rank": 18,
+      "rookie_alpha_rank": 21,
+      "talent_rank": 27,
+      "draft_proxy_delta": 6
+    },
+    {
+      "player_id": "rb-demond-claiborne",
+      "player_name": "Demond Claiborne",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 58.0,
+        "age_adjusted_production_0_100": null,
+        "draft_capital_proxy_0_100": 25.0,
+        "talent_score_0_100": 54.5,
+        "rookie_alpha_0_100": 48.6,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_delta": 23.6
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "rb-demond-claiborne",
+        "player_name": "Demond Claiborne",
+        "position": "RB",
+        "school": "Wake Forest",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 21,
+        "age_at_first_impact_season": 21,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": false,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [],
+        "context_flags": [],
+        "translation_flags": [],
+        "evidence_summary": "Wake Forest lead back with multi-year ACC production; solid YPC with reliable pass-catching ability out of the backfield. Fringe Day 3/UDFA given competition context.",
+        "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification"
+      },
+      "rookie_alpha_rank": 22,
+      "talent_rank": 15,
+      "draft_proxy_delta": -7
+    },
+    {
+      "player_id": "rb-leveon-moss",
+      "player_name": "Le'Veon Moss",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 57.0,
+        "age_adjusted_production_0_100": null,
+        "draft_capital_proxy_0_100": 25.0,
+        "talent_score_0_100": 53.9375,
+        "rookie_alpha_0_100": 48.15,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_delta": 23.2
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "rb-leveon-moss",
+        "player_name": "Le'Veon Moss",
+        "position": "RB",
+        "school": "Texas A&M",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 21,
+        "age_at_first_impact_season": 21,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": false,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [],
+        "context_flags": [],
+        "translation_flags": [],
+        "evidence_summary": "Undersized receiving-specialist at Texas A&M; genuine pass-catching ability out of the backfield. Pure third-down/pass-catcher archetype; size limits three-down viability at NFL level.",
+        "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification"
+      },
+      "rookie_alpha_rank": 23,
+      "talent_rank": 16,
+      "draft_proxy_delta": -7
+    },
+    {
+      "player_id": "rb-rahsul-faison",
+      "player_name": "Rahsul Faison",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 57.0,
+        "age_adjusted_production_0_100": null,
+        "draft_capital_proxy_0_100": 25.0,
+        "talent_score_0_100": 53.9375,
+        "rookie_alpha_0_100": 48.15,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_delta": 23.2
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "rb-rahsul-faison",
+        "player_name": "Rahsul Faison",
+        "position": "RB",
+        "school": "South Carolina",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 21,
+        "age_at_first_impact_season": 21,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": false,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [],
+        "context_flags": [],
+        "translation_flags": [],
+        "evidence_summary": "South Carolina lead back with SEC production in 2025; compact and elusive with solid YPC in a run-first system. Day 3/UDFA range with limited receiving profile.",
+        "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification"
+      },
+      "rookie_alpha_rank": 24,
       "talent_rank": 17,
-      "draft_proxy_delta": -1
+      "draft_proxy_delta": -7
     },
     {
       "player_id": "wr-chris-bell",
@@ -1505,9 +1927,147 @@
         "evidence_summary": "Pre-draft ACL tear (March 2026). Was projected WR1-3 of the 2026 rookie class pre-injury; dynasty community had him in top-3 WR conversation. Post-ACL dynasty rank drops to approximately WR7-10 of class (KTC ~WR60 overall). Injury severely compresses first-year upside; year-1 contribution unlikely. Long-term profile may be intact if recovery is clean. Model scores reflect pre-injury production and combine profile, not injury-adjusted dynasty value \u2014 consensus_delta overstates model edge.",
         "context_source": "Research agent 2026-04-09 (KeepTradeCut / Dynasty Nerds / PlayerProfiler post-injury consensus)"
       },
-      "rookie_alpha_rank": 19,
+      "rookie_alpha_rank": 25,
+      "talent_rank": 31,
+      "draft_proxy_delta": 6
+    },
+    {
+      "player_id": "rb-noah-whittington",
+      "player_name": "Noah Whittington",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 55.0,
+        "age_adjusted_production_0_100": null,
+        "draft_capital_proxy_0_100": 25.0,
+        "talent_score_0_100": 52.8125,
+        "rookie_alpha_0_100": 47.25,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_delta": 22.2
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "rb-noah-whittington",
+        "player_name": "Noah Whittington",
+        "position": "RB",
+        "school": "Oregon",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 21,
+        "age_at_first_impact_season": 21,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": false,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [],
+        "context_flags": [],
+        "translation_flags": [],
+        "evidence_summary": "Western Kentucky transfer to Oregon; multi-year career in a shared backfield. Shows receiving ability and explosiveness but volume was limited in 2025. Day 3/UDFA range with injury history concerns.",
+        "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification"
+      },
+      "rookie_alpha_rank": 26,
       "talent_rank": 19,
-      "draft_proxy_delta": 0
+      "draft_proxy_delta": -7
+    },
+    {
+      "player_id": "rb-robert-henry-jr",
+      "player_name": "Robert Henry Jr.",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 52.0,
+        "age_adjusted_production_0_100": null,
+        "draft_capital_proxy_0_100": 25.0,
+        "talent_score_0_100": 51.125,
+        "rookie_alpha_0_100": 45.9,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_delta": 20.9
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "rb-robert-henry-jr",
+        "player_name": "Robert Henry Jr.",
+        "position": "RB",
+        "school": "UTSA",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": null,
+        "age_at_first_impact_season": null,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": null,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [],
+        "context_flags": [],
+        "translation_flags": [],
+        "evidence_summary": "UTSA lead back with solid Group of 5 production; metrics require competition-level discount versus Power 4. UDFA profile with minimal NFL board presence.",
+        "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification"
+      },
+      "rookie_alpha_rank": 27,
+      "talent_rank": 21,
+      "draft_proxy_delta": -6
     },
     {
       "player_id": "rb-eli-heidenreich",
@@ -1600,9 +2160,147 @@
         "evidence_summary": "Dual-threat FB/RB/WR from Navy (G5 option offense). 2025: 941 receiving yards + 499 rushing yards, 9 total TDs, 18.3 YPC career average (deep-ball tracker). Elite athleticism: 4.44 40-yard dash + 6.55 3-cone at 6'0\" 198lb \u2014 best weight-adjusted 3-cone since 2013 per PFF (0.02s faster than CMC at same weight). Named comp group for weight-adjusted 3-cone since 2013: Christian McCaffrey, Le'Veon Bell, David Johnson, Ameer Abdullah; 3 of 10 finished as overall fantasy RB1. One career fumble (elite ball security). Capable blocker. Strong Shrine Bowl week. Concerns: Day 3 projection, Navy triple-option makes college stats difficult to project to NFL, limited arm length (29.25\"), limited route tree, not overly elusive in open field. Navy players require DoD waiver to enter draft immediately \u2014 presumed granted given model inclusion. G5 BOA penalty (+0.5) applied; effective BOA 22.5 \u2192 age multiplier 0.85x (floor). Production score estimated from dual-threat output competition-adjusted.",
         "context_source": "Shrine Bowl 2026 + scouting notes 2026-04-10"
       },
-      "rookie_alpha_rank": 20,
-      "talent_rank": 18,
-      "draft_proxy_delta": -2
+      "rookie_alpha_rank": 28,
+      "talent_rank": 30,
+      "draft_proxy_delta": 2
+    },
+    {
+      "player_id": "rb-cj-donaldson-jr",
+      "player_name": "CJ Donaldson Jr.",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 48.0,
+        "age_adjusted_production_0_100": null,
+        "draft_capital_proxy_0_100": 25.0,
+        "talent_score_0_100": 48.875,
+        "rookie_alpha_0_100": 44.1,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_delta": 19.1
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "rb-cj-donaldson-jr",
+        "player_name": "CJ Donaldson Jr.",
+        "position": "RB",
+        "school": "Ohio State",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": null,
+        "age_at_first_impact_season": null,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": null,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [],
+        "context_flags": [],
+        "translation_flags": [],
+        "evidence_summary": "Physical power/short-yardage back in a crowded Ohio State backfield; limited volume behind higher-priority carries. Large frame and functional gap runner; minimal receiving involvement.",
+        "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification"
+      },
+      "rookie_alpha_rank": 29,
+      "talent_rank": 24,
+      "draft_proxy_delta": -5
+    },
+    {
+      "player_id": "rb-jmari-taylor",
+      "player_name": "J'Mari Taylor",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 48.0,
+        "age_adjusted_production_0_100": null,
+        "draft_capital_proxy_0_100": 25.0,
+        "talent_score_0_100": 48.875,
+        "rookie_alpha_0_100": 44.1,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_delta": 19.1
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "rb-jmari-taylor",
+        "player_name": "J'Mari Taylor",
+        "position": "RB",
+        "school": "Virginia",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": null,
+        "age_at_first_impact_season": null,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": null,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [],
+        "context_flags": [],
+        "translation_flags": [],
+        "evidence_summary": "Virginia lead back with modest ACC production; limited volume in a Cavaliers program with low NFL draft output at RB. UDFA profile with minimal NFL board presence.",
+        "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification"
+      },
+      "rookie_alpha_rank": 30,
+      "talent_rank": 25,
+      "draft_proxy_delta": -5
     },
     {
       "player_id": "rb-kaytron-allen",
@@ -1677,9 +2375,147 @@
         "evidence_summary": "54-game career, 4167 rush yards (5.4 YPC), 39 TDs, 661 rec yards, 1.74 YPRR. 24.0% avoided tackle rate. High-volume Penn State back with elite receiving chops.",
         "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart, 2026-04-07"
       },
-      "rookie_alpha_rank": 21,
-      "talent_rank": 22,
-      "draft_proxy_delta": 1
+      "rookie_alpha_rank": 31,
+      "talent_rank": 34,
+      "draft_proxy_delta": 3
+    },
+    {
+      "player_id": "rb-adam-randall",
+      "player_name": "Adam Randall",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 45.0,
+        "age_adjusted_production_0_100": null,
+        "draft_capital_proxy_0_100": 25.0,
+        "talent_score_0_100": 47.1875,
+        "rookie_alpha_0_100": 42.75,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_delta": 17.8
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "rb-adam-randall",
+        "player_name": "Adam Randall",
+        "position": "RB",
+        "school": "Clemson",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": null,
+        "age_at_first_impact_season": null,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": null,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [],
+        "context_flags": [],
+        "translation_flags": [],
+        "evidence_summary": "Clemson backup/committee back with limited individual volume in ACC competition; modest YPC with minimal receiving involvement. Fringe UDFA with low NFL draft board presence.",
+        "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification"
+      },
+      "rookie_alpha_rank": 32,
+      "talent_rank": 28,
+      "draft_proxy_delta": -4
+    },
+    {
+      "player_id": "rb-max-bredeson",
+      "player_name": "Max Bredeson",
+      "position": "RB",
+      "scores": {
+        "ras_0_100": 50.0,
+        "production_0_100": 42.0,
+        "age_adjusted_production_0_100": null,
+        "draft_capital_proxy_0_100": 25.0,
+        "talent_score_0_100": 45.5,
+        "rookie_alpha_0_100": 41.4,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_delta": 16.4
+      },
+      "model_inputs_missing": [
+        "ras"
+      ],
+      "context": {
+        "player_id": "rb-max-bredeson",
+        "player_name": "Max Bredeson",
+        "position": "RB",
+        "school": "Michigan",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": null,
+        "age_at_first_impact_season": null,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": null,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [],
+        "context_flags": [],
+        "translation_flags": [],
+        "evidence_summary": "Michigan fullback/H-back in a run-heavy system; primarily a blocker with limited individual carry volume. Fringe UDFA with sub-500 rush yards in final college season.",
+        "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification"
+      },
+      "rookie_alpha_rank": 33,
+      "talent_rank": 29,
+      "draft_proxy_delta": -4
     },
     {
       "player_id": "qb-carson-beck",
@@ -1746,8 +2582,8 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 22,
-      "talent_rank": 23,
+      "rookie_alpha_rank": 34,
+      "talent_rank": 35,
       "draft_proxy_delta": 1
     },
     {
@@ -1823,8 +2659,8 @@
         "evidence_summary": "31-game career (limited volume), 1924 rush yards (5.1 YPC), 18 TDs, 602 rec yards. 1.56 YPRR, 20.3% target rate \u2014 strong receiving back. 25.4% avoided tackle rate.",
         "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart, 2026-04-07"
       },
-      "rookie_alpha_rank": 23,
-      "talent_rank": 25,
+      "rookie_alpha_rank": 35,
+      "talent_rank": 37,
       "draft_proxy_delta": 2
     },
     {
@@ -1892,8 +2728,8 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 24,
-      "talent_rank": 24,
+      "rookie_alpha_rank": 36,
+      "talent_rank": 36,
       "draft_proxy_delta": 0
     },
     {
@@ -1967,8 +2803,8 @@
         "evidence_summary": "Elite speed archetype \u2014 4.26 40-yard dash (fastest at 2026 combine, fastest WR since John Ross 4.22 in 2017). Frame concern: 5'9\", 164lb \u2014 durability and contested-catch limitations at NFL level. Mississippi State (SEC, Power 4). No jump testing data. Production profile pending CFBD fetch. Model may undervalue if route efficiency/YAC data not available; speed-only profile warrants dynasty discount until target share confirmed.",
         "context_source": "2026 NFL Combine results (ESPN/NFL.com), retrieved 2026-04-08"
       },
-      "rookie_alpha_rank": 25,
-      "talent_rank": 21,
+      "rookie_alpha_rank": 37,
+      "talent_rank": 33,
       "draft_proxy_delta": -4
     },
     {
@@ -2036,8 +2872,8 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 26,
-      "talent_rank": 27,
+      "rookie_alpha_rank": 38,
+      "talent_rank": 39,
       "draft_proxy_delta": 1
     },
     {
@@ -2113,8 +2949,8 @@
         "evidence_summary": "42-game career, 2458 rush yards (5.4 YPC), 15 TDs. 1.15 YPRR, 27.5% avoided tackle rate. Efficient runner, limited receiving role. Qualifies for dual-threat RB flag (100+ rush YPG + 1.0+ receiving YPTPA/G; same list as Saquon, CMC, Bijan \u2014 2026 members: Skattebo, Hampton, Emmett Johnson). MTF/attempt 88th percentile \u2014 notable but sub-elite (elite threshold: 90th+). Final-season YACO/A: 2.95 \u2014 tied 3rd-worst among R3-4 P4/5 RBs since 2017 (comp group: Gallman 2.98, Conner 2.95*, Johnson 2.95, Shipley 2.92, Davis-Price 2.80, Kelley 2.80, Hill 2.68, Ballage 2.46, Corum 2.42; *Conner underwent chemotherapy). Dual-threat qualification is a positive signal; YACO/A comp trend toward poor NFL outcomes remains the key concern. Model skepticism (rank 26-27) still warranted.",
         "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart 2026-04-07; dual-threat + MTF notes 2026-04-10"
       },
-      "rookie_alpha_rank": 27,
-      "talent_rank": 26,
+      "rookie_alpha_rank": 39,
+      "talent_rank": 38,
       "draft_proxy_delta": -1
     },
     {
@@ -2182,8 +3018,8 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 28,
-      "talent_rank": 28,
+      "rookie_alpha_rank": 40,
+      "talent_rank": 40,
       "draft_proxy_delta": 0
     }
   ]
