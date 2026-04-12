@@ -22,6 +22,7 @@ export function renderRookieBoardControls({ positions, state }) {
           ${option('grade', 'Rookie Grade (desc)', state.sort)}
           ${option('rank', 'Class Rank (asc)', state.sort)}
           ${option('position', 'Position → Grade', state.sort)}
+          ${option('edge', 'Model Edge ↑', state.sort)}
         </select>
       </label>
 

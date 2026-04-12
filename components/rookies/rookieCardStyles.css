@@ -116,6 +116,27 @@ body {
   color: var(--muted);
 }
 
+/* ─── Model edge outlier badge ────────────────────────────────────────────── */
+.edge-outlier-badge {
+  display: inline-block;
+  border-radius: 999px;
+  padding: 2px 7px;
+  font-size: 11px;
+  font-weight: 700;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.edge-outlier-badge-bull {
+  background: var(--accent-glow);
+  border: 1px solid var(--border-accent);
+  color: var(--accent-soft);
+}
+.edge-outlier-badge-bear {
+  background: rgba(158, 139, 122, 0.1);
+  border: 1px solid rgba(158, 139, 122, 0.3);
+  color: var(--muted);
+}
+
 /* ─── PPR projection (card) ───────────────────────────────────────────────── */
 .ppr-card-section {
   margin-top: 16px;
@@ -159,6 +180,8 @@ body {
 .board-delta { font-size: 12px; display: flex; flex-direction: column; gap: 3px; }
 .delta-row   { display: flex; align-items: baseline; gap: 4px; }
 .delta-label { font-size: 10px; color: var(--muted); letter-spacing: .06em; text-transform: uppercase; min-width: 22px; }
+.delta-extreme-bull { font-weight: 800; color: var(--accent-soft); letter-spacing: 0.03em; }
+.delta-extreme-bear { font-weight: 800; color: var(--muted); font-style: italic; }
 .delta-bull    { font-weight: 700; color: var(--accent); }
 .delta-bear    { font-weight: 700; color: var(--muted); }
 .delta-neutral { font-weight: 600; color: #8a9ab0; }
