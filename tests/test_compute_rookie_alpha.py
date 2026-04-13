@@ -5,11 +5,15 @@ from pathlib import Path
 from scripts.compute_rookie_alpha import (
     MergeDiagnostics,
     PlayerInputs,
+    SPORQ_TRUST,
+    _extract_sporq,
+    _ras_confidence,
     load_context_by_player_id,
     coerce_float,
     compute_ras_scores,
     load_json,
     merge_inputs,
+    resolve_athletic_input,
     rookie_alpha_score,
     sha256_file,
     write_outputs,
@@ -41,7 +45,7 @@ class RookieAlphaTests(unittest.TestCase):
             },
         ]
 
-        scores = compute_ras_scores(combine_rows)
+        scores, _, _, _ = compute_ras_scores(combine_rows)
         self.assertIn("rb_fast", scores)
         self.assertIn("rb_slow", scores)
         self.assertGreater(scores["rb_fast"], scores["rb_slow"])
@@ -83,7 +87,7 @@ class RookieAlphaTests(unittest.TestCase):
             }
         ]
 
-        players, diagnostics = merge_inputs(combine_rows, production_rows, draft_rows)
+        players, diagnostics, _ = merge_inputs(combine_rows, production_rows, draft_rows)
         self.assertEqual(players, [])
         # RAS (combine) is optional — only prod+draft are required.
         # p2 has prod but no draft; p3 has draft but no prod → both excluded.
@@ -100,7 +104,7 @@ class RookieAlphaTests(unittest.TestCase):
         draft_rows = [
             {"player_id": "p1", "player_name": "Name One", "position": "WR", "draft_capital_proxy_0_100": 70},
         ]
-        players, diagnostics = merge_inputs(combine_rows, production_rows, draft_rows)
+        players, diagnostics, _ = merge_inputs(combine_rows, production_rows, draft_rows)
         self.assertEqual(players, [])
         self.assertEqual(diagnostics.identity_conflicts_skipped, 1)
 
@@ -175,7 +179,7 @@ class RookieAlphaTests(unittest.TestCase):
             self.assertEqual(manifest["output_files"][1]["sha256"], sha256_file(out_csv))
             self.assertEqual(manifest["input_files"][0]["row_count"], 0)
             self.assertEqual(manifest["export_metadata"]["coverage_summary"], manifest["coverage_summary"])
-            self.assertEqual(manifest["model_version"], "rookie-alpha-predraft-v0.2.0")
+            self.assertEqual(manifest["model_version"], "rookie-alpha-predraft-v0.4.0")
 
     def test_context_is_additive_and_optional(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -219,7 +223,7 @@ class RookieAlphaTests(unittest.TestCase):
         self.assertEqual(context_map, {})
 
     def test_missing_required_player_fields_are_skipped(self) -> None:
-        players, _ = merge_inputs(
+        players, _, _ = merge_inputs(
             combine_rows=[{"player_name": "No Id", "position": "WR", "forty": 4.5}],
             production_rows=[],
             draft_proxy_rows=[],
@@ -243,6 +247,182 @@ class RookieAlphaTests(unittest.TestCase):
             coerce_float("bad", "forty", "p1", "combine input")
             coerce_float("bad", "forty", "p1", "combine input")
         self.assertEqual(len(cm.output), 2)
+
+
+class ExtractSporqTests(unittest.TestCase):
+    def test_extracts_sporq_from_exceptional_metrics(self) -> None:
+        context = {
+            "exceptional_metrics": [
+                {"metric": "sporq_percentile", "value": 99.0, "context": "Elite SPORQ"},
+            ]
+        }
+        val, ctx = _extract_sporq(context)
+        self.assertAlmostEqual(val, 99.0)
+        self.assertEqual(ctx, "Elite SPORQ")
+
+    def test_returns_none_for_no_sporq(self) -> None:
+        context = {"exceptional_metrics": [{"metric": "other", "value": 50}]}
+        val, ctx = _extract_sporq(context)
+        self.assertIsNone(val)
+        self.assertIsNone(ctx)
+
+    def test_returns_none_for_empty_context(self) -> None:
+        val, ctx = _extract_sporq(None)
+        self.assertIsNone(val)
+        self.assertIsNone(ctx)
+
+    def test_returns_none_for_missing_value(self) -> None:
+        context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": None}]}
+        val, ctx = _extract_sporq(context)
+        self.assertIsNone(val)
+
+
+class RasConfidenceTests(unittest.TestCase):
+    def test_five_components_full_confidence(self) -> None:
+        self.assertAlmostEqual(_ras_confidence(5), 1.0)
+
+    def test_four_components(self) -> None:
+        self.assertAlmostEqual(_ras_confidence(4), 0.95)
+
+    def test_three_components(self) -> None:
+        self.assertAlmostEqual(_ras_confidence(3), 0.85)
+
+    def test_two_components(self) -> None:
+        self.assertAlmostEqual(_ras_confidence(2), 0.80)
+
+    def test_monotonic_increase(self) -> None:
+        self.assertLessEqual(_ras_confidence(2), _ras_confidence(3))
+        self.assertLessEqual(_ras_confidence(3), _ras_confidence(4))
+        self.assertLessEqual(_ras_confidence(4), _ras_confidence(5))
+
+
+class ResolveAthleticInputTests(unittest.TestCase):
+    def test_ras_is_preferred_over_sporq(self) -> None:
+        context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": 99.0}]}
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "TE", ras_score=80.0, ras_metric_count=5,
+            combine_fallback_entry=None, context=context,
+        )
+        self.assertAlmostEqual(score, 80.0)
+        self.assertEqual(source, "RAS")
+        self.assertAlmostEqual(conf, 1.0)
+        self.assertFalse(sporq_used)
+
+    def test_sporq_used_for_te_when_no_ras(self) -> None:
+        context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": 95.0, "context": "Top SPORQ"}]}
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "TE", ras_score=None, ras_metric_count=0,
+            combine_fallback_entry=None, context=context,
+        )
+        self.assertAlmostEqual(score, 95.0)
+        self.assertEqual(source, "SPORQ")
+        self.assertAlmostEqual(conf, 0.75)
+        self.assertTrue(sporq_used)
+
+    def test_sporq_ignored_for_wr(self) -> None:
+        context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": 95.0}]}
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "WR", ras_score=None, ras_metric_count=0,
+            combine_fallback_entry=None, context=context,
+        )
+        self.assertIsNone(score)
+        self.assertIsNone(source)
+        self.assertFalse(sporq_used)
+
+    def test_sporq_ignored_for_rb(self) -> None:
+        context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": 95.0}]}
+        score, source, conf, _, sporq_used = resolve_athletic_input(
+            "p1", "RB", ras_score=None, ras_metric_count=0,
+            combine_fallback_entry=None, context=context,
+        )
+        self.assertIsNone(score)
+        self.assertFalse(sporq_used)
+
+    def test_combine_fallback_used_when_no_ras_or_sporq(self) -> None:
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "WR", ras_score=None, ras_metric_count=0,
+            combine_fallback_entry=(55.0, 2), context=None,
+        )
+        self.assertAlmostEqual(score, 55.0)
+        self.assertEqual(source, "COMBINE_FALLBACK")
+        # confidence = 0.30 + 0.10 * min(2, 2) = 0.50
+        self.assertAlmostEqual(conf, 0.50)
+        self.assertFalse(sporq_used)
+
+    def test_combine_fallback_confidence_for_one_metric(self) -> None:
+        _, _, conf, _, _ = resolve_athletic_input(
+            "p1", "WR", ras_score=None, ras_metric_count=0,
+            combine_fallback_entry=(45.0, 1), context=None,
+        )
+        # confidence = 0.30 + 0.10 * min(1, 2) = 0.40
+        self.assertAlmostEqual(conf, 0.40)
+
+    def test_no_data_returns_none(self) -> None:
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "WR", ras_score=None, ras_metric_count=0,
+            combine_fallback_entry=None, context=None,
+        )
+        self.assertIsNone(score)
+        self.assertIsNone(source)
+        self.assertAlmostEqual(conf, 0.0)
+        self.assertIsNone(explainer)
+        self.assertFalse(sporq_used)
+
+    def test_ras_confidence_varies_by_metric_count(self) -> None:
+        _, _, conf5, _, _ = resolve_athletic_input(
+            "p1", "WR", ras_score=80.0, ras_metric_count=5,
+            combine_fallback_entry=None, context=None,
+        )
+        _, _, conf3, _, _ = resolve_athletic_input(
+            "p1", "WR", ras_score=80.0, ras_metric_count=3,
+            combine_fallback_entry=None, context=None,
+        )
+        self.assertGreater(conf5, conf3)
+
+
+class AthleticScoreInAlphaTests(unittest.TestCase):
+    def test_athletic_score_used_in_alpha_when_set(self) -> None:
+        player_with_ath = PlayerInputs(
+            player_id="p1", player_name="Player", position="WR",
+            ras_score_0_100=None, production_score_0_100=60.0,
+            draft_capital_proxy_0_100=70.0,
+            athletic_score_0_100=90.0, athletic_source="SPORQ",
+            athletic_confidence=0.75,
+        )
+        player_no_ath = PlayerInputs(
+            player_id="p2", player_name="Player2", position="WR",
+            ras_score_0_100=None, production_score_0_100=60.0,
+            draft_capital_proxy_0_100=70.0,
+            athletic_score_0_100=None, athletic_source=None,
+            athletic_confidence=0.0,
+        )
+        score_with = rookie_alpha_score(player_with_ath)
+        score_without = rookie_alpha_score(player_no_ath)
+        # Higher athletic score should produce higher alpha
+        self.assertGreater(score_with, score_without)
+
+    def test_ras_still_works_as_fallback(self) -> None:
+        player = PlayerInputs(
+            player_id="p1", player_name="Player", position="WR",
+            ras_score_0_100=80.0, production_score_0_100=60.0,
+            draft_capital_proxy_0_100=70.0,
+        )
+        # With no athletic_score_0_100 set, should fall back to ras_score_0_100
+        score = rookie_alpha_score(player)
+        self.assertIsNotNone(score)
+        self.assertGreater(score, 0)
+
+
+class SporqTrustConfigTests(unittest.TestCase):
+    def test_te_is_preferred(self) -> None:
+        self.assertEqual(SPORQ_TRUST["TE"], "preferred")
+
+    def test_wr_is_supplemental(self) -> None:
+        self.assertEqual(SPORQ_TRUST["WR"], "supplemental")
+
+    def test_rb_qb_are_ignore(self) -> None:
+        self.assertEqual(SPORQ_TRUST["RB"], "ignore")
+        self.assertEqual(SPORQ_TRUST["QB"], "ignore")
 
 
 if __name__ == "__main__":
