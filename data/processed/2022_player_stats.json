@@ -1,0 +1,82 @@
+[
+  {
+    "player_id": "wr-garrett-wilson",
+    "player_name": "Garrett Wilson",
+    "position": "WR",
+    "school": "Ohio State",
+    "season": 2021,
+    "stats": {
+      "receptions": 70,
+      "receiving_yards": 1058,
+      "receiving_tds": 12,
+      "yards_per_reception": 15.1
+    }
+  },
+  {
+    "player_id": "wr-drake-london",
+    "player_name": "Drake London",
+    "position": "WR",
+    "school": "USC",
+    "season": 2021,
+    "stats": {
+      "receptions": 88,
+      "receiving_yards": 1084,
+      "receiving_tds": 7,
+      "yards_per_reception": 12.3
+    }
+  },
+  {
+    "player_id": "wr-chris-olave",
+    "player_name": "Chris Olave",
+    "position": "WR",
+    "school": "Ohio State",
+    "season": 2021,
+    "stats": {
+      "receptions": 65,
+      "receiving_yards": 936,
+      "receiving_tds": 13,
+      "yards_per_reception": 14.4
+    }
+  },
+  {
+    "player_id": "wr-jameson-williams",
+    "player_name": "Jameson Williams",
+    "position": "WR",
+    "school": "Alabama",
+    "season": 2021,
+    "stats": {
+      "receptions": 79,
+      "receiving_yards": 1572,
+      "receiving_tds": 15,
+      "yards_per_reception": 19.9
+    }
+  },
+  {
+    "player_id": "wr-treylon-burks",
+    "player_name": "Treylon Burks",
+    "position": "WR",
+    "school": "Arkansas",
+    "season": 2021,
+    "stats": {
+      "receptions": 66,
+      "receiving_yards": 1104,
+      "receiving_tds": 11,
+      "yards_per_reception": 16.7
+    }
+  },
+  {
+    "player_id": "rb-breece-hall",
+    "player_name": "Breece Hall",
+    "position": "RB",
+    "school": "Iowa State",
+    "season": 2021,
+    "stats": {
+      "rush_attempts": 312,
+      "rush_yards": 1472,
+      "rush_tds": 20,
+      "yards_per_carry": 4.7,
+      "receptions": 60,
+      "receiving_yards": 348
+    }
+  }
+]

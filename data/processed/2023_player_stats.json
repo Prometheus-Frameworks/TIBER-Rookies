@@ -1,0 +1,106 @@
+[
+  {
+    "player_id": "rb-bijan-robinson",
+    "player_name": "Bijan Robinson",
+    "position": "RB",
+    "school": "Texas",
+    "season": 2022,
+    "stats": {
+      "rush_attempts": 258,
+      "rush_yards": 1580,
+      "rush_tds": 18,
+      "yards_per_carry": 6.1,
+      "receptions": 19,
+      "receiving_yards": 235
+    }
+  },
+  {
+    "player_id": "rb-jahmyr-gibbs",
+    "player_name": "Jahmyr Gibbs",
+    "position": "RB",
+    "school": "Alabama",
+    "season": 2022,
+    "stats": {
+      "rush_attempts": 151,
+      "rush_yards": 926,
+      "rush_tds": 7,
+      "yards_per_carry": 6.1,
+      "receptions": 44,
+      "receiving_yards": 444
+    }
+  },
+  {
+    "player_id": "wr-jaxon-smith-njigba",
+    "player_name": "Jaxon Smith-Njigba",
+    "position": "WR",
+    "school": "Ohio State",
+    "season": 2021,
+    "stats": {
+      "receptions": 95,
+      "receiving_yards": 1606,
+      "receiving_tds": 9,
+      "yards_per_reception": 16.9
+    }
+  },
+  {
+    "player_id": "wr-quentin-johnston",
+    "player_name": "Quentin Johnston",
+    "position": "WR",
+    "school": "TCU",
+    "season": 2022,
+    "stats": {
+      "receptions": 60,
+      "receiving_yards": 1007,
+      "receiving_tds": 6,
+      "yards_per_reception": 16.8
+    }
+  },
+  {
+    "player_id": "wr-zay-flowers",
+    "player_name": "Zay Flowers",
+    "position": "WR",
+    "school": "Boston College",
+    "season": 2022,
+    "stats": {
+      "receptions": 78,
+      "receiving_yards": 1077,
+      "receiving_tds": 12,
+      "yards_per_reception": 13.8
+    }
+  },
+  {
+    "player_id": "wr-jordan-addison",
+    "player_name": "Jordan Addison",
+    "position": "WR",
+    "school": "USC",
+    "season": 2022,
+    "stats": {
+      "receiving_yards": 875,
+      "receiving_tds": 5
+    }
+  },
+  {
+    "player_id": "wr-tank-dell",
+    "player_name": "Tank Dell",
+    "position": "WR",
+    "school": "Houston",
+    "season": 2022,
+    "stats": {
+      "receptions": 88,
+      "receiving_yards": 1134,
+      "receiving_tds": 12,
+      "yards_per_reception": 12.9
+    }
+  },
+  {
+    "player_id": "wr-puka-nacua",
+    "player_name": "Puka Nacua",
+    "position": "WR",
+    "school": "BYU",
+    "season": 2022,
+    "stats": {
+      "receiving_yards": 1594,
+      "receiving_tds": 10
+    }
+  }
+]
