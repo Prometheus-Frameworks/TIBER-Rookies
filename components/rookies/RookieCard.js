@@ -135,15 +135,23 @@ function renderBoarSection(card) {
 function renderPprProjection(ppr) {
   if (!ppr) return '';
   const bandClass = { Elite: 'ppr-band-elite', Starter: 'ppr-band-starter', Contributor: 'ppr-band-contributor', Lottery: 'ppr-band-lottery' }[ppr.band] ?? 'ppr-band-lottery';
+  const confClass = { High: 'ppr-conf-high', Medium: 'ppr-conf-med', Low: 'ppr-conf-low' }[ppr.confidence] ?? 'ppr-conf-med';
+  const volClass = { Stable: 'ppr-vol-stable', Balanced: 'ppr-vol-balanced', Volatile: 'ppr-vol-volatile' }[ppr.volatility] ?? 'ppr-vol-balanced';
+  const thesis = ppr.thesis ? `<div class="ppr-thesis">${esc(ppr.thesis)}</div>` : '';
   return `
     <div class="ppr-card-section">
-      <div class="section-title">Year 1 PPR Projection</div>
+      <div class="section-title">Rookie Season PPR Outlook</div>
       <div class="ppr-card-row">
         <div class="ppr-card-stat"><div class="ppr-stat-label">Floor</div><div class="ppr-stat-value">${esc(ppr.floor)}</div></div>
         <div class="ppr-card-stat ppr-median"><div class="ppr-stat-label">Median</div><div class="ppr-stat-value ppr-median-value">${esc(ppr.median)}</div></div>
         <div class="ppr-card-stat"><div class="ppr-stat-label">Ceiling</div><div class="ppr-stat-value">${esc(ppr.ceiling)}</div></div>
-        <div class="ppr-card-band"><span class="ppr-band ${bandClass}">${esc(ppr.band)}</span></div>
       </div>
+      <div class="ppr-meta-row">
+        <span class="ppr-band ${bandClass}">${esc(ppr.band)}</span>
+        ${ppr.confidence ? `<span class="ppr-conf-pill ${confClass}">${esc(ppr.confidence)} conf.</span>` : ''}
+        ${ppr.volatility ? `<span class="ppr-vol-pill ${volClass}">${esc(ppr.volatility)}</span>` : ''}
+      </div>
+      ${thesis}
     </div>`;
 }
 

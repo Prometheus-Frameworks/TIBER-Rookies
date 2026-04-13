@@ -63,14 +63,22 @@ function renderMiniScoreChart(row) {
   return `<svg class="mini-score-chart" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" aria-hidden="true">${svgBars}</svg>`;
 }
 
+function pprSublabel(proj) {
+  if (!proj.volatility) return '';
+  const labels = { Stable: 'stable floor', Balanced: 'balanced upside', Volatile: 'volatile bet' };
+  return labels[proj.volatility] ?? '';
+}
+
 function renderPprCell(row) {
   const proj = row.pprProjection;
   if (!proj) return '<div class="board-cell" data-label="PPR Range"><span class="ppr-na">—</span></div>';
   const bandClass = PPR_BAND_CLASS[proj.band] ?? 'ppr-band-lottery';
+  const sub = pprSublabel(proj);
   return `
-    <div class="board-cell board-ppr" data-label="PPR Range">
+    <div class="board-cell board-ppr" data-label="PPR Outlook">
       <div class="ppr-range">${esc(proj.floor)}–${esc(proj.ceiling)}</div>
       <div class="ppr-band ${bandClass}">${esc(proj.band)}</div>
+      ${sub ? `<div class="ppr-sublabel">${esc(sub)}</div>` : ''}
     </div>`;
 }
 
@@ -211,7 +219,7 @@ function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}
           <span class="bmc-stat-label">Dyn Edge</span>
           <span>${deltaSpanInline(row.dynastyDelta)}</span>
         </div>
-        ${pprRange ? `<div class="bmc-stat-row"><span class="bmc-stat-label">Range</span><span class="bmc-ppr-range">${pprRange} PPR</span></div>` : ''}
+        ${pprRange ? `<div class="bmc-stat-row"><span class="bmc-stat-label">Outlook</span><span class="bmc-ppr-range">${pprRange} PPR</span>${row.pprProjection?.volatility ? ` <span class="ppr-sublabel-inline">${esc(pprSublabel(row.pprProjection))}</span>` : ''}</div>` : ''}
       </div>
       ${isQueued && queueTag ? `<div class="meta queue-inline-indicator" style="margin-bottom:6px">Queue tag: <span class="queue-tag-pill">${esc(queueTag)}</span></div>` : ''}
       <div class="bmc-actions-utility">
