@@ -3,16 +3,91 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TIBER Rookie Board | Multi-Class</title>
+    <title>TIBER Rookie Board | NFL Draft Intelligence</title>
     <link rel="stylesheet" href="/components/rookies/rookieCardStyles.css" />
   </head>
   <body>
+    <!-- ── Site navigation ──────────────────────────────────────────────────── -->
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-logo" href="/cards/rookies/board/">
+          <span class="site-logo-text">TIBER</span>
+          <span class="site-logo-tagline">Rookie Board</span>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a class="site-nav-link active" href="/cards/rookies/board/">Board</a>
+          <a class="site-nav-link" href="/cards/rookies/">Gallery</a>
+          <a class="site-nav-link" href="/cards/rookies/compare/">Compare</a>
+        </nav>
+      </div>
+    </header>
+
     <main class="page">
-      <a class="nav-link" href="/cards/rookies/index.html">← Back to rookie gallery</a>
-      <div class="section-title" style="margin-top: 12px">TIBER Rookie Board</div>
-      <h1>Draft board surface</h1>
-      <p class="meta">Ranking-first board powered by promoted Rookie Grade artifacts. Use tiers to spot cliffs, then jump to detail/compare.</p>
-      <p style="margin-top: 10px"><a class="nav-link" href="/cards/rookies/compare/index.html">Open compare tool →</a></p>
+      <!-- ── Hero section ──────────────────────────────────────────────────── -->
+      <section class="hero-section" aria-label="Page introduction">
+        <div class="hero-label">NFL Draft Intelligence · 2022–2026 Classes</div>
+        <h1 class="hero-headline">Find and Compare<br>Top <em>NFL Draft Prospects</em></h1>
+        <p class="hero-sub">TIBER grades every rookie using athletic profile, production score, and draft capital — giving you a clear, ranked view of the best bets in each class.</p>
+        <div class="hero-ctas">
+          <a class="hero-cta-primary" href="#board-section">Explore the Board</a>
+          <a class="hero-cta-secondary" href="/cards/rookies/compare/">Compare Players</a>
+        </div>
+        <div class="hero-metrics-strip" id="hero-metrics"></div>
+      </section>
+
+      <!-- ── How it works ──────────────────────────────────────────────────── -->
+      <section class="how-it-works" aria-label="How TIBER works">
+        <div class="section-title">How It Works</div>
+        <div class="steps-grid">
+          <div class="step-card">
+            <div class="step-number">01</div>
+            <div class="step-title">Multi-Signal Grading</div>
+            <p class="step-desc">Each rookie receives a composite Rookie Grade combining athletic testing (SPORQ/combine), college production, and draft capital into a single 0–100 score.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">02</div>
+            <div class="step-title">Tier Classification</div>
+            <p class="step-desc">Players are sorted into four tiers — Top Cluster, Strong Starter, Development, and Swing — so you can instantly see where talent cliffs occur in each class.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-number">03</div>
+            <div class="step-title">Compare &amp; Shortlist</div>
+            <p class="step-desc">Use the compare tool for head-to-head breakdowns, then add players to your shortlist queue with custom tags and notes for draft-day decisions.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Tier guide ────────────────────────────────────────────────────── -->
+      <section class="tier-guide" aria-label="Tier descriptions">
+        <div class="section-title">Tier Guide</div>
+        <div class="tier-guide-grid">
+          <div class="tier-guide-card tier-guide-elite">
+            <div class="tier-guide-name">Top Cluster</div>
+            <div class="tier-guide-range">Grade ≥ 75</div>
+            <p class="tier-guide-desc">Franchise-caliber prospects with elite multi-signal profiles. Highest confidence, maximum upside.</p>
+          </div>
+          <div class="tier-guide-card tier-guide-strong">
+            <div class="tier-guide-name">Strong Starter</div>
+            <div class="tier-guide-range">Grade 70–74</div>
+            <p class="tier-guide-desc">High-floor prospects projected as reliable NFL starters with strong collegiate evidence.</p>
+          </div>
+          <div class="tier-guide-card tier-guide-dev">
+            <div class="tier-guide-name">Development</div>
+            <div class="tier-guide-range">Grade 65–69</div>
+            <p class="tier-guide-desc">Prospects with one or two above-average signals. Solid depth or eventual starter potential.</p>
+          </div>
+          <div class="tier-guide-card tier-guide-swing">
+            <div class="tier-guide-name">Swing Tier</div>
+            <div class="tier-guide-range">Grade &lt; 65</div>
+            <p class="tier-guide-desc">High-variance prospects or late-round bets. Check individual profiles for specific upside signals.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Board ─────────────────────────────────────────────────────────── -->
+      <div id="board-section" style="scroll-margin-top: 72px"></div>
+      <div class="section-title" style="margin-top: 4px">TIBER Rookie Board</div>
+      <p class="meta" style="margin-top: 4px">Ranking-first board powered by promoted Rookie Grade artifacts. Use tiers to spot cliffs, then jump to detail or compare.</p>
 
       <section id="board-summary" class="board-summary" style="margin-top: 14px">Loading board summary…</section>
       <div class="board-search-row" style="margin-top: 10px">
@@ -23,6 +98,19 @@
       <section id="board-root" style="margin-top: 12px">Loading rookie board…</section>
       <section id="queue-root" style="margin-top: 16px">Loading shortlist queue…</section>
     </main>
+
+    <!-- ── Site footer ───────────────────────────────────────────────────────── -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="site-footer-inner">
+        <span class="site-footer-brand">TIBER</span>
+        <nav class="site-footer-nav" aria-label="Footer navigation">
+          <a class="site-footer-link" href="/cards/rookies/board/">Board</a>
+          <a class="site-footer-link" href="/cards/rookies/">Gallery</a>
+          <a class="site-footer-link" href="/cards/rookies/compare/">Compare</a>
+        </nav>
+        <span class="site-footer-copy">Multi-class draft intelligence · 2022–2026</span>
+      </div>
+    </footer>
 
     <script type="module">
       import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
@@ -105,6 +193,31 @@
       function buildExportFilename() {
         const stamp = new Date().toISOString().replace(/[:.]/g, '-');
         return `tiber-rookie-queue-${stamp}.json`;
+      }
+
+      function renderHeroMetrics(allRows) {
+        const heroMetrics = document.getElementById('hero-metrics');
+        if (!heroMetrics) return;
+        const positions = new Set(allRows.map((r) => r.position).filter(Boolean));
+        const classes = new Set(allRows.map((r) => r.draftClass).filter(Boolean));
+        heroMetrics.innerHTML = `
+          <div class="hero-metric-card">
+            <div class="hero-metric-value">${allRows.length}</div>
+            <div class="hero-metric-label">Prospects Graded</div>
+          </div>
+          <div class="hero-metric-card">
+            <div class="hero-metric-value">${classes.size}</div>
+            <div class="hero-metric-label">Draft Classes</div>
+          </div>
+          <div class="hero-metric-card">
+            <div class="hero-metric-value">${positions.size}</div>
+            <div class="hero-metric-label">Positions Tracked</div>
+          </div>
+          <div class="hero-metric-card">
+            <div class="hero-metric-value">4</div>
+            <div class="hero-metric-label">Tier Bands</div>
+          </div>
+        `;
       }
 
       function renderSummary(allRows, activeRows) {
@@ -343,6 +456,7 @@
         hydrateStateFromUrl();
         const cards = await getAllRookieCards();
         const rows = buildRookieBoardRows(cards);
+        renderHeroMetrics(rows);
         render(rows);
 
         // Wire search input once — it lives outside the re-rendered controls area

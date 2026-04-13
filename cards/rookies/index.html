@@ -3,20 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TIBER Rookie Cards | 2026</title>
+    <title>TIBER Rookie Gallery | 2026</title>
     <link rel="stylesheet" href="/components/rookies/rookieCardStyles.css" />
   </head>
   <body>
+    <!-- ── Site navigation ──────────────────────────────────────────────────── -->
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-logo" href="/cards/rookies/board/">
+          <span class="site-logo-text">TIBER</span>
+          <span class="site-logo-tagline">Rookie Board</span>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a class="site-nav-link" href="/cards/rookies/board/">Board</a>
+          <a class="site-nav-link active" href="/cards/rookies/">Gallery</a>
+          <a class="site-nav-link" href="/cards/rookies/compare/">Compare</a>
+        </nav>
+      </div>
+    </header>
+
     <main class="page">
-      <div class="section-title">TIBER 2026 Rookie Gallery</div>
+      <div class="section-title" style="margin-top: 12px">TIBER 2026 Rookie Gallery</div>
       <h1>Browse rookie cards</h1>
       <p class="meta">Browse-first card gallery for profile inspection. For ranked draft decisions, use the dedicated board.</p>
-      <p style="margin-top: 10px"><a class="nav-link" href="/cards/rookies/board/index.html">Open rookie board →</a></p>
-      <p style="margin-top: 10px"><a class="nav-link" href="/cards/rookies/compare/index.html">Open rookie compare tool →</a></p>
+      <p style="margin-top: 10px"><a class="nav-link" href="/cards/rookies/board/">Open rookie board →</a></p>
+      <p style="margin-top: 10px"><a class="nav-link" href="/cards/rookies/compare/">Open rookie compare tool →</a></p>
       <div id="ranking-context" class="meta" style="margin-top: 8px">Loading class context…</div>
       <div id="controls-root">Loading controls…</div>
       <section id="gallery" class="gallery-grid">Loading rookie gallery…</section>
     </main>
+
+    <!-- ── Site footer ───────────────────────────────────────────────────────── -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="site-footer-inner">
+        <span class="site-footer-brand">TIBER</span>
+        <nav class="site-footer-nav" aria-label="Footer navigation">
+          <a class="site-footer-link" href="/cards/rookies/board/">Board</a>
+          <a class="site-footer-link" href="/cards/rookies/">Gallery</a>
+          <a class="site-footer-link" href="/cards/rookies/compare/">Compare</a>
+        </nav>
+        <span class="site-footer-copy">Multi-class draft intelligence · 2022–2026</span>
+      </div>
+    </footer>
 
     <script type="module">
       import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
