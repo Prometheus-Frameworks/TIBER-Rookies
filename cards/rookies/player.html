@@ -7,21 +7,50 @@
     <link rel="stylesheet" href="/components/rookies/rookieCardStyles.css" />
   </head>
   <body>
+    <!-- ── Site navigation ──────────────────────────────────────────────────── -->
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-logo" href="/cards/rookies/board/">
+          <span class="site-logo-text">TIBER</span>
+          <span class="site-logo-tagline">Rookie Board</span>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a class="site-nav-link" href="/cards/rookies/board/">Board</a>
+          <a class="site-nav-link" href="/cards/rookies/">Gallery</a>
+          <a class="site-nav-link" href="/cards/rookies/compare/">Compare</a>
+        </nav>
+      </div>
+    </header>
+
     <main class="page">
-      <a class="nav-link" href="/cards/rookies/index.html">← Back to rookies gallery</a>
-      <p style="margin-top: 10px"><a class="nav-link" href="/cards/rookies/board/index.html">Open board + shortlist queue →</a></p>
       <section id="detail-actions" style="margin-top: 12px"></section>
       <section id="card-root" style="margin-top: 12px">Loading rookie card…</section>
+      <section id="sporq-comps-root" style="margin-top: 0"></section>
     </main>
+
+    <!-- ── Site footer ───────────────────────────────────────────────────────── -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="site-footer-inner">
+        <span class="site-footer-brand">TIBER</span>
+        <nav class="site-footer-nav" aria-label="Footer navigation">
+          <a class="site-footer-link" href="/cards/rookies/board/">Board</a>
+          <a class="site-footer-link" href="/cards/rookies/">Gallery</a>
+          <a class="site-footer-link" href="/cards/rookies/compare/">Compare</a>
+        </nav>
+        <span class="site-footer-copy">Multi-class draft intelligence · 2022–2026</span>
+      </div>
+    </footer>
 
     <script type="module">
       import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
       import { renderRookieCard } from '/components/rookies/RookieCard.js';
       import { addRookieToQueue, getQueuedRookieAnnotation, isRookieQueued, removeRookieFromQueue } from '/lib/rookies/rookieQueueStore.js';
       import { deriveRookieTier } from '/lib/rookies/deriveRookieTier.js';
+      import { findSimilarAthletes, getSporqDistribution } from '/lib/rookies/sporqHistorical.js';
 
       const root = document.getElementById('card-root');
       const actionsRoot = document.getElementById('detail-actions');
+      const sporqCompsRoot = document.getElementById('sporq-comps-root');
       const params = new URLSearchParams(window.location.search);
       const slug = params.get('slug');
 
@@ -66,6 +95,104 @@
         });
       }
 
+      function esc(str) {
+        return String(str ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      }
+
+      function roundChipClass(round) {
+        if (round === 1) return 'round-1';
+        if (round === 2) return 'round-2';
+        return '';
+      }
+
+      async function renderSporqComps(card) {
+        const SPORQ_POSITIONS = ['RB', 'WR', 'TE'];
+        const pos = card.identity.position;
+        if (!SPORQ_POSITIONS.includes(pos)) return;
+
+        // Extract combine metrics from card.metrics array for matching
+        const getMetric = (label) => card.metrics?.find((m) => m.label === label)?.value ?? null;
+        const metrics = {
+          sporq: card.athleticSource === 'SPORQ' ? card.athleticScore : null,
+          forty: getMetric('40 Yard Dash (s)'),
+          vertical: getMetric('Vertical (in)'),
+          broad: getMetric('Broad Jump (in)'),
+          speed_score: card.athleticSource === 'SPORQ' ? card.athleticScore : null,
+        };
+
+        // Need at least one metric to do a meaningful comparison
+        const hasAnyMetric = Object.values(metrics).some((v) => v != null);
+        if (!hasAnyMetric) return;
+
+        try {
+          const [comps, dist] = await Promise.all([
+            findSimilarAthletes(pos, metrics, 5),
+            getSporqDistribution(pos),
+          ]);
+
+          if (!comps || comps.length === 0) return;
+
+          // Distribution bar: where does the current player's score fall?
+          const currentSporq = card.athleticSource === 'SPORQ' ? card.athleticScore : null;
+          const distBar = (dist && currentSporq != null) ? (() => {
+            const pct = Math.max(0, Math.min(100, ((currentSporq - dist.min) / (dist.max - dist.min)) * 100));
+            return `
+              <div style="margin:14px 0 4px">
+                <div class="section-title" style="margin-bottom:6px">SPORQ within ${esc(pos)} population (n=${dist.count})</div>
+                <div class="sporq-dist-bar-wrap">
+                  <div class="sporq-dist-bar-fill" style="width:${pct.toFixed(1)}%"></div>
+                  <div class="sporq-dist-marker" style="left:${pct.toFixed(1)}%"></div>
+                </div>
+                <div class="sporq-dist-labels"><span>0</span><span>p25: ${dist.p25}</span><span>p50: ${dist.p50}</span><span>p75: ${dist.p75}</span><span>100</span></div>
+              </div>`;
+          })() : '';
+
+          const rows = comps.map((comp) => {
+            const simWidth = Math.max(0, Math.min(100, comp.similarity));
+            const roundChip = comp.round
+              ? `<span class="sporq-comp-round-chip ${roundChipClass(comp.round)}">Rd ${comp.round}</span>`
+              : `<span class="sporq-comp-undrafted">${comp.year ? 'UDFA' : 'N/A'}</span>`;
+            return `
+              <tr>
+                <td>
+                  <div class="sporq-comp-name">${esc(comp.name)}</div>
+                  <div class="sporq-comp-school">${esc(comp.school ?? '')}${comp.year ? ` · ${comp.year}` : ''}</div>
+                </td>
+                <td>
+                  <div class="sporq-comp-score">${comp.sporq != null ? comp.sporq.toFixed(1) : '—'}</div>
+                  <div class="sporq-comp-pct">${comp.sporq_percentile != null ? `${comp.sporq_percentile}th pct` : ''}</div>
+                </td>
+                <td>${roundChip}</td>
+                <td>
+                  <span class="sporq-comp-sim-bar" style="width:${(simWidth * 0.6).toFixed(0)}px"></span>
+                  <span style="font-size:12px;color:var(--muted)">${simWidth}%</span>
+                </td>
+              </tr>`;
+          }).join('');
+
+          sporqCompsRoot.innerHTML = `
+            <div class="sporq-comps-section">
+              <div class="section-title">Historical SPORQ Athletic Comps · ${esc(pos)}</div>
+              ${distBar}
+              <table class="sporq-comps-table">
+                <thead>
+                  <tr>
+                    <th>Player</th>
+                    <th>SPORQ</th>
+                    <th>Draft</th>
+                    <th>Match</th>
+                  </tr>
+                </thead>
+                <tbody>${rows}</tbody>
+              </table>
+              <div class="sporq-comps-note">Similarity based on SPORQ composite${metrics.forty != null ? ', 40-yard dash' : ''}${metrics.vertical != null ? ', vertical' : ''}${metrics.broad != null ? ', broad jump' : ''} · ${dist ? `${dist.count} scored ${pos}s in dataset` : 'Historical SPORQ dataset'}</div>
+            </div>
+          `;
+        } catch (err) {
+          // Silently skip if SPORQ data not available
+        }
+      }
+
       try {
         const cards = await getAllRookieCards();
         const card = slug ? cards.find((candidate) => candidate.slug === slug) ?? null : cards[0] ?? null;
@@ -77,6 +204,7 @@
           document.title = `TIBER Rookie Card | ${card.identity.name}`;
           renderActions(card);
           renderRookieCard(root, card);
+          renderSporqComps(card);  // async, fills in after card renders
         }
       } catch (error) {
         actionsRoot.innerHTML = '';
