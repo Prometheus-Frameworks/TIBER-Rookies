@@ -186,7 +186,7 @@ function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}
       </div>
       <div class="bmc-name">
         ${renderTeamLogos(row.school, row.nflTeam)}
-        <span class="board-player-name">${esc(row.name)}</span>
+        <a class="board-player-name board-player-link" href="/cards/rookies/player.html?slug=${slug}">${esc(row.name)}</a>
         ${renderBreakoutBadge(row)}
         ${renderEdgeOutlierBadge(row)}
       </div>
@@ -240,7 +240,7 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
       <div class="board-cell board-player" data-label="Player">
         <div class="board-player-top">
           ${renderTeamLogos(row.school, row.nflTeam)}
-          <span class="board-player-name">${esc(row.name)}</span>
+          <a class="board-player-name board-player-link" href="/cards/rookies/player.html?slug=${slug}">${esc(row.name)}</a>
           ${renderBreakoutBadge(row)}
           ${renderBoarChip(row)}
           ${renderEdgeOutlierBadge(row)}
