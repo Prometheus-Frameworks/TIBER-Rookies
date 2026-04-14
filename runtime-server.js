@@ -29,6 +29,7 @@ const ROUTE_ALIASES = new Map([
   ['/cards/rookies/board', '/cards/rookies/board/index.html'],
   ['/cards/rookies/player', '/cards/rookies/player.html'],
   ['/cards/rookies/compare', '/cards/rookies/compare/index.html'],
+  ['/cards/rookies/swipe', '/cards/rookies/swipe/index.html'],
 ]);
 
 function sendJson(response, statusCode, payload) {
