@@ -10,6 +10,7 @@ Usage:
   python3 scripts/fetch_missing_stats.py --season 2025
   python3 scripts/fetch_missing_stats.py --season 2026
   python3 scripts/fetch_missing_stats.py --season 2025 --season 2026
+  python3 scripts/fetch_missing_stats.py --season 2025 --skip-qb
   python3 scripts/fetch_missing_stats.py --all
 
 Set CFBD_API_KEY env var for higher rate limits (optional but recommended).
@@ -283,7 +284,7 @@ def build_stat_line(player: dict, cfbd_year: int,
 
 # ── main ──────────────────────────────────────────────────────────────────────
 
-def process_season(season: int, dry_run: bool = False) -> None:
+def process_season(season: int, dry_run: bool = False, skip_qb: bool = False) -> None:
     cfbd_year = season - 1  # 2026 rookies → 2025 college season
     prod_path = DATA_PROCESSED / f"{season}_college_production.json"
     stats_path = DATA_PROCESSED / f"{season}_player_stats.json"
@@ -300,6 +301,14 @@ def process_season(season: int, dry_run: bool = False) -> None:
     if not targets:
         print(f"{season}: all {len(all_players)} players already have stats — nothing to do.")
         return
+
+    if skip_qb:
+        qb_targets = [p for p in targets if str(p.get("position", "")).upper() == "QB"]
+        print(f"{season}: Skipping QBs due to --skip-qb flag ({len(qb_targets)} excluded).")
+        targets = [p for p in targets if str(p.get("position", "")).upper() != "QB"]
+        if not targets:
+            print(f"{season}: no non-QB players remain after filtering — nothing to do.")
+            return
 
     print(f"{season}: fetching stats for {len(targets)} players (cfbd year={cfbd_year}) …")
 
@@ -364,6 +373,8 @@ def parse_args() -> argparse.Namespace:
                         metavar="YEAR", help="Draft class year (e.g. 2025). Repeatable.")
     parser.add_argument("--all", action="store_true", help="Process 2022–2026")
     parser.add_argument("--dry-run", action="store_true", help="Print targets without fetching")
+    parser.add_argument("--skip-qb", action="store_true",
+                        help="Exclude QB targets before category detection/fetching")
     return parser.parse_args()
 
 
@@ -381,7 +392,7 @@ def main() -> int:
         return 1
 
     for season in seasons:
-        process_season(season, dry_run=args.dry_run)
+        process_season(season, dry_run=args.dry_run, skip_qb=args.skip_qb)
 
     return 0
 
