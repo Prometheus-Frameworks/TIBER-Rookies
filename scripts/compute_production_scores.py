@@ -7,6 +7,7 @@ import argparse
 import json
 import logging
 import os
+import random
 import re
 import time
 from dataclasses import dataclass
@@ -135,7 +136,12 @@ def fetch_cfbd_category(year: int, category: str, max_retries: int = 5) -> list[
                 retry_after_seconds: int | None = None
                 if retry_after_header and retry_after_header.isdigit():
                     retry_after_seconds = int(retry_after_header)
-                wait = retry_after_seconds if retry_after_seconds is not None else 10 * (2 ** attempt)  # 10s, 20s, 40s, 80s, 160s
+                if retry_after_seconds is not None:
+                    wait = retry_after_seconds
+                else:
+                    base_wait = max(30, 10 * (2 ** attempt))
+                    jitter = random.randint(1, 5)
+                    wait = base_wait + jitter
                 logging.warning(
                     "Rate limited (429) for %s year=%s attempt %d — retrying in %ds",
                     category, year, attempt + 1, wait,
@@ -586,6 +592,7 @@ def main() -> int:
         raise SystemExit(f"Seed input must be a JSON array: {args.seed_input}")
 
     cfbd_year = args.season - 1
+    time.sleep(5)
     passing_rows = fetch_cfbd_category(cfbd_year, "passing")
     time.sleep(3)
     rushing_rows = fetch_cfbd_category(cfbd_year, "rushing")
