@@ -29,6 +29,9 @@
       <p style="margin-top: 10px"><a class="nav-link" href="/cards/rookies/board/">Open rookie board →</a></p>
       <p style="margin-top: 10px"><a class="nav-link" href="/cards/rookies/compare/">Open rookie compare tool →</a></p>
       <div id="ranking-context" class="meta" style="margin-top: 8px">Loading class context…</div>
+      <div class="board-search-row" style="margin-top: 10px">
+        <input type="search" id="gallery-name-search" class="board-search-input" placeholder="Search players…" autocomplete="off" spellcheck="false">
+      </div>
       <div id="controls-root">Loading controls…</div>
       <section id="gallery" class="gallery-grid">Loading rookie gallery…</section>
     </main>
@@ -57,7 +60,7 @@
       const gallery = document.getElementById('gallery');
       const controlsRoot = document.getElementById('controls-root');
       const rankingContext = document.getElementById('ranking-context');
-      const state = { sort: 'grade', position: 'ALL', tag: 'ALL' };
+      const state = { sort: 'grade', position: 'ALL', tag: 'ALL', nameFilter: '' };
 
       function queuePayload(card) {
         return {
@@ -122,6 +125,12 @@
         const cards = await getAllRookieCards();
         const filters = collectGalleryFilters(cards);
         render(cards, filters);
+
+        const searchInput = document.getElementById('gallery-name-search');
+        searchInput.addEventListener('input', () => {
+          state.nameFilter = searchInput.value;
+          render(cards, filters);
+        });
       } catch (error) {
         controlsRoot.innerHTML = '';
         rankingContext.textContent = '';
