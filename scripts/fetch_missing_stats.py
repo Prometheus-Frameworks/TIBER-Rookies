@@ -308,18 +308,31 @@ def process_season(season: int, dry_run: bool = False) -> None:
             print(f"  DRY RUN: would fetch {p['player_name']} ({p['position']}, {p['school']})")
         return
 
-    # Fetch all three stat categories for the year
-    print(f"  Fetching passing stats for {cfbd_year}…")
-    passing = pivot(fetch_category(cfbd_year, "passing"))
-    time.sleep(0.5)
+    # Only fetch categories needed by the target positions
+    positions = {str(p.get("position", "")).upper() for p in targets}
 
-    print(f"  Fetching rushing stats for {cfbd_year}…")
-    rushing = pivot(fetch_category(cfbd_year, "rushing"))
-    time.sleep(0.5)
+    need_passing   = "QB" in positions
+    need_rushing   = any(pos in {"RB", "QB"} for pos in positions)
+    need_receiving = any(pos in {"RB", "WR", "TE"} for pos in positions)
 
-    print(f"  Fetching receiving stats for {cfbd_year}…")
-    receiving = pivot(fetch_category(cfbd_year, "receiving"))
-    time.sleep(0.5)
+    passing   = {}
+    rushing   = {}
+    receiving = {}
+
+    if need_passing:
+        print(f"  Fetching passing stats for {cfbd_year}…")
+        passing = pivot(fetch_category(cfbd_year, "passing"))
+        time.sleep(1.0)
+
+    if need_rushing:
+        print(f"  Fetching rushing stats for {cfbd_year}…")
+        rushing = pivot(fetch_category(cfbd_year, "rushing"))
+        time.sleep(1.0)
+
+    if need_receiving:
+        print(f"  Fetching receiving stats for {cfbd_year}…")
+        receiving = pivot(fetch_category(cfbd_year, "receiving"))
+        time.sleep(1.0)
 
     new_entries: list[dict] = []
     matched = failed = 0
