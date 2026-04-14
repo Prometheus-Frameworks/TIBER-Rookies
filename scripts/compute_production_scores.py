@@ -113,7 +113,7 @@ def fetch_cfbd_category(year: int, category: str, max_retries: int = 5) -> list[
     params = urlencode({"year": year, "category": category})
     url = f"{CFBD_BASE_URL}/stats/player/season?{params}"
     headers = {"Accept": "application/json"}
-    api_key = os.getenv("CFBD_API_KEY")
+    api_key = os.getenv("CFBD_API_KEY", "").strip().strip('"').strip("'")
     if api_key:
         headers["Authorization"] = f"Bearer {api_key}"
     else:
@@ -131,7 +131,11 @@ def fetch_cfbd_category(year: int, category: str, max_retries: int = 5) -> list[
             return payload
         except HTTPError as exc:
             if exc.code == 429:
-                wait = 10 * (2 ** attempt)  # 10s, 20s, 40s, 80s, 160s
+                retry_after_header = exc.headers.get("Retry-After")
+                retry_after_seconds: int | None = None
+                if retry_after_header and retry_after_header.isdigit():
+                    retry_after_seconds = int(retry_after_header)
+                wait = retry_after_seconds if retry_after_seconds is not None else 10 * (2 ** attempt)  # 10s, 20s, 40s, 80s, 160s
                 logging.warning(
                     "Rate limited (429) for %s year=%s attempt %d — retrying in %ds",
                     category, year, attempt + 1, wait,
@@ -583,7 +587,9 @@ def main() -> int:
 
     cfbd_year = args.season - 1
     passing_rows = fetch_cfbd_category(cfbd_year, "passing")
+    time.sleep(3)
     rushing_rows = fetch_cfbd_category(cfbd_year, "rushing")
+    time.sleep(3)
     receiving_rows = fetch_cfbd_category(cfbd_year, "receiving")
 
     passing_stats = pivot_stats(passing_rows)
