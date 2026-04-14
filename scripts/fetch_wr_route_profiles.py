@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import logging
+import re
 import sys
 from pathlib import Path
 from typing import Any
@@ -41,6 +42,73 @@ METHODOLOGY_NOTE = (
     "screen_target_rate and depth_tag_coverage_rate are always null — "
     "season-level stats carry no route/scheme descriptors."
 )
+
+DEPTH_TAG_PATTERNS: tuple[tuple[str, tuple[str, ...]], ...] = (
+    ("deep", ("deep left", "deep middle", "deep right")),
+    ("short", ("short left", "short middle", "short right")),
+)
+
+
+def parse_screen_flag(play_text: str) -> bool:
+    """Return True when play text indicates a screen target."""
+    return "screen" in str(play_text).lower()
+
+
+def parse_depth_tag(play_text: str) -> str | None:
+    """Extract normalized depth bucket from play text."""
+    lowered = str(play_text).lower()
+    for depth_tag, phrases in DEPTH_TAG_PATTERNS:
+        if any(phrase in lowered for phrase in phrases):
+            return depth_tag
+    return None
+
+
+def _normalize_name(value: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "", value.lower())
+
+
+def is_targeted_player(play_text: str, player_name: str) -> bool:
+    """Heuristic target attribution by normalized player-name token inclusion."""
+    normalized_text = _normalize_name(str(play_text))
+    normalized_player = _normalize_name(str(player_name))
+    return bool(normalized_player) and normalized_player in normalized_text
+
+
+def summarize_player(
+    player: dict[str, Any],
+    plays: list[dict[str, Any]],
+    season_type: str,
+) -> dict[str, Any]:
+    """Summarize route profile metrics from play-level data."""
+    player_name = str(player.get("player_name", ""))
+    target_plays = [play for play in plays if is_targeted_player(play.get("play_text", ""), player_name)]
+    targets = len(target_plays)
+
+    completion_types = {"pass completion", "pass touchdown", "passing touchdown"}
+    receptions = sum(
+        1
+        for play in target_plays
+        if str(play.get("play_type", "")).strip().lower() in completion_types
+    )
+    screen_targets = sum(1 for play in target_plays if parse_screen_flag(play.get("play_text", "")))
+    tagged_targets = [play for play in target_plays if parse_depth_tag(play.get("play_text", "")) is not None]
+    deep_targets = sum(1 for play in tagged_targets if parse_depth_tag(play.get("play_text", "")) == "deep")
+    total_yards = sum(float(play.get("yards_gained", 0) or 0) for play in target_plays)
+
+    return {
+        "player_id": player.get("player_id"),
+        "player_name": player_name,
+        "team": player.get("school"),
+        "season": player.get("source_season"),
+        "season_type": season_type,
+        "targets": targets,
+        "receptions": receptions,
+        "screen_targets": screen_targets,
+        "screen_target_rate": (screen_targets / targets) if targets else None,
+        "yards_per_target": (total_yards / targets) if targets else None,
+        "deep_target_rate": (deep_targets / len(tagged_targets)) if tagged_targets else None,
+        "depth_tag_coverage_rate": (len(tagged_targets) / targets) if targets else None,
+    }
 
 
 def parse_args() -> argparse.Namespace:
