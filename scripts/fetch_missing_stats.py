@@ -43,6 +43,32 @@ PLAYER_NAME_ALIASES: dict[str, list[str]] = {
     "tre harris": ["treyaun harris"],
 }
 
+# Preferred CFBD team query variants for targeted requests.
+TEAM_QUERY_ALIASES: dict[str, list[str]] = {
+    "miami (fl)": ["Miami", "Miami (FL)"],
+    "miami fl": ["Miami", "Miami (FL)"],
+    "ole miss": ["Ole Miss", "Mississippi"],
+    "mississippi": ["Mississippi", "Ole Miss"],
+    "pitt": ["Pittsburgh", "Pitt"],
+    "pittsburgh": ["Pittsburgh", "Pitt"],
+    "ucf": ["UCF", "Central Florida"],
+    "central florida": ["Central Florida", "UCF"],
+    "usc": ["USC", "Southern California"],
+    "southern california": ["Southern California", "USC"],
+    "lsu": ["LSU", "Louisiana State"],
+    "louisiana state": ["Louisiana State", "LSU"],
+    "nc state": ["NC State", "North Carolina State"],
+    "north carolina state": ["North Carolina State", "NC State"],
+    "smu": ["SMU", "Southern Methodist"],
+    "southern methodist": ["Southern Methodist", "SMU"],
+    "tcu": ["TCU", "Texas Christian"],
+    "texas christian": ["Texas Christian", "TCU"],
+    "penn st": ["Penn State", "Penn St"],
+    "penn state": ["Penn State", "Penn St"],
+    "mississippi state": ["Mississippi State", "Miss St"],
+    "miss st": ["Mississippi State", "Miss St"],
+}
+
 
 # ── helpers ──────────────────────────────────────────────────────────────────
 
@@ -111,8 +137,17 @@ def rounded(v: float) -> int | float:
 
 # ── CFBD fetch ────────────────────────────────────────────────────────────────
 
-def fetch_category(year: int, category: str, max_retries: int = 5) -> list[dict]:
-    params = urlencode({"year": year, "category": category})
+def fetch_category(
+    year: int,
+    category: str,
+    *,
+    team: str | None = None,
+    max_retries: int = 5,
+) -> list[dict]:
+    query: dict[str, int | str] = {"year": year, "category": category}
+    if team:
+        query["team"] = team
+    params = urlencode(query)
     url = f"{CFBD_BASE_URL}/stats/player/season?{params}"
     headers = {"Accept": "application/json"}
     api_key = os.getenv("CFBD_API_KEY")
@@ -127,14 +162,76 @@ def fetch_category(year: int, category: str, max_retries: int = 5) -> list[dict]
         except HTTPError as exc:
             if exc.code == 429:
                 wait = 10 * (2 ** attempt)
-                logging.warning("Rate limited (429) for %s year=%s — retrying in %ds", category, year, wait)
+                scope = f"team={team}" if team else "season-wide"
+                logging.warning(
+                    "Rate limited (429) for %s year=%s %s — retrying in %ds",
+                    category,
+                    year,
+                    scope,
+                    wait,
+                )
                 time.sleep(wait)
             else:
-                raise SystemExit(f"CFBD HTTP {exc.code} for {category} year={year}") from exc
+                scope = f" team={team}" if team else ""
+                raise SystemExit(f"CFBD HTTP {exc.code} for {category} year={year}{scope}") from exc
         except URLError as exc:
-            raise SystemExit(f"CFBD URL error for {category} year={year}: {exc.reason}") from exc
+            scope = f" team={team}" if team else ""
+            raise SystemExit(f"CFBD URL error for {category} year={year}{scope}: {exc.reason}") from exc
 
-    raise SystemExit(f"CFBD gave up after {max_retries} attempts for {category} year={year}")
+    scope = f" team={team}" if team else ""
+    raise SystemExit(f"CFBD gave up after {max_retries} attempts for {category} year={year}{scope}")
+
+
+def team_query_names(raw_school: str) -> list[str]:
+    """
+    Candidate team names for CFBD targeted pulls.
+
+    We prefer explicit aliases first, then include the original school text and a
+    no-parentheses variant for cases like "Miami (FL)".
+    """
+    normalized_school = normalize(raw_school)
+    candidates = TEAM_QUERY_ALIASES.get(normalized_school, []).copy()
+    candidates.append(raw_school.strip())
+    no_parens = re.sub(r"[()]", "", raw_school).strip()
+    if no_parens:
+        candidates.append(no_parens)
+
+    out: list[str] = []
+    seen: set[str] = set()
+    for candidate in candidates:
+        value = " ".join(candidate.split())
+        if value and value.lower() not in seen:
+            out.append(value)
+            seen.add(value.lower())
+    return out
+
+
+def fetch_targeted_category(
+    year: int,
+    category: str,
+    schools: set[str],
+    cache: dict[tuple[int, str, str], list[dict]],
+) -> dict[tuple[str, str], dict]:
+    """
+    Fetch only team slices relevant to unresolved players.
+    """
+    all_rows: list[dict] = []
+    for school in sorted(schools):
+        rows_for_school: list[dict] = []
+        for team_name in team_query_names(school):
+            cache_key = (year, category, team_name.lower())
+            if cache_key in cache:
+                rows = cache[cache_key]
+            else:
+                rows = fetch_category(year, category, team=team_name)
+                cache[cache_key] = rows
+                time.sleep(0.4)
+            if rows:
+                rows_for_school.extend(rows)
+        if not rows_for_school:
+            logging.warning("No %s rows returned for school=%s", category, school)
+        all_rows.extend(rows_for_school)
+    return pivot(all_rows)
 
 
 def pivot(rows: list[dict]) -> dict[tuple[str, str], dict]:
@@ -317,31 +414,44 @@ def process_season(season: int, dry_run: bool = False, skip_qb: bool = False) ->
             print(f"  DRY RUN: would fetch {p['player_name']} ({p['position']}, {p['school']})")
         return
 
-    # Only fetch categories needed by the target positions
+    # Only fetch category/team slices needed by unresolved target positions.
     positions = {str(p.get("position", "")).upper() for p in targets}
 
     need_passing   = "QB" in positions
     need_rushing   = any(pos in {"RB", "QB"} for pos in positions)
     need_receiving = any(pos in {"RB", "WR", "TE"} for pos in positions)
 
-    passing   = {}
+    passing = {}
     rushing   = {}
     receiving = {}
+    cfbd_cache: dict[tuple[int, str, str], list[dict]] = {}
 
     if need_passing:
-        print(f"  Fetching passing stats for {cfbd_year}…")
-        passing = pivot(fetch_category(cfbd_year, "passing"))
-        time.sleep(1.0)
+        passing_schools = {
+            str(p.get("school", "")).strip()
+            for p in targets
+            if str(p.get("position", "")).upper() == "QB" and str(p.get("school", "")).strip()
+        }
+        print(f"  Fetching targeted passing stats for {cfbd_year} ({len(passing_schools)} schools)…")
+        passing = fetch_targeted_category(cfbd_year, "passing", passing_schools, cfbd_cache)
 
     if need_rushing:
-        print(f"  Fetching rushing stats for {cfbd_year}…")
-        rushing = pivot(fetch_category(cfbd_year, "rushing"))
-        time.sleep(1.0)
+        rushing_schools = {
+            str(p.get("school", "")).strip()
+            for p in targets
+            if str(p.get("position", "")).upper() in {"RB", "QB"} and str(p.get("school", "")).strip()
+        }
+        print(f"  Fetching targeted rushing stats for {cfbd_year} ({len(rushing_schools)} schools)…")
+        rushing = fetch_targeted_category(cfbd_year, "rushing", rushing_schools, cfbd_cache)
 
     if need_receiving:
-        print(f"  Fetching receiving stats for {cfbd_year}…")
-        receiving = pivot(fetch_category(cfbd_year, "receiving"))
-        time.sleep(1.0)
+        receiving_schools = {
+            str(p.get("school", "")).strip()
+            for p in targets
+            if str(p.get("position", "")).upper() in {"RB", "WR", "TE"} and str(p.get("school", "")).strip()
+        }
+        print(f"  Fetching targeted receiving stats for {cfbd_year} ({len(receiving_schools)} schools)…")
+        receiving = fetch_targeted_category(cfbd_year, "receiving", receiving_schools, cfbd_cache)
 
     new_entries: list[dict] = []
     matched = failed = 0
