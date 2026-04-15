@@ -24,7 +24,7 @@
     "school": "Ohio State",
     "class_year": 2023,
     "production_score_0_100": 72.0,
-    "production_score_source": "manual_historical_seed (2021: 95 rec/1606 yds/9 TDs at age 20 \u2014 Biletnikoff winner; 2022 hamstring-limited to 3 games; injury discount applied to final score)"
+    "production_score_source": "manual_historical_seed (2021: 95 rec/1606 yds/9 TDs at age 20 — Biletnikoff winner; 2022 hamstring-limited to 3 games; injury discount applied to final score)"
   },
   {
     "player_id": "wr-quentin-johnston",
@@ -33,7 +33,7 @@
     "school": "TCU",
     "class_year": 2023,
     "production_score_0_100": 68.0,
-    "production_score_source": "manual_historical_seed (2022: 60 rec/1007 yds/6 TDs; Big 12; 6'4\"/215 frame; capital trap outcome \u2014 disappointing pro career)"
+    "production_score_source": "manual_historical_seed (2022: 60 rec/1007 yds/6 TDs; Big 12; 6'4\"/215 frame; capital trap outcome — disappointing pro career)"
   },
   {
     "player_id": "wr-zay-flowers",
@@ -69,6 +69,51 @@
     "school": "BYU",
     "class_year": 2023,
     "production_score_0_100": 62.0,
-    "production_score_source": "manual_historical_seed (2022: 1594 yds/10 TDs BYU; senior BOA 22; non-P4; high volume but conference discount; elite efficiency archetype \u2014 105 catches NFL rookie year as R5 pick)"
+    "production_score_source": "manual_historical_seed (2022: 1594 yds/10 TDs BYU; senior BOA 22; non-P4; high volume but conference discount; elite efficiency archetype — 105 catches NFL rookie year as R5 pick)"
+  },
+  {
+    "player_id": "wr-rashee-rice",
+    "player_name": "Rashee Rice",
+    "position": "WR",
+    "school": "SMU",
+    "class_year": 2023,
+    "production_score_0_100": 68.0,
+    "production_score_source": "manual_historical_seed (2022: 96 rec/1355 yds/10 TDs; AAC; elite volume; conference discount applied; age 22)"
+  },
+  {
+    "player_id": "rb-devon-achane",
+    "player_name": "De'Von Achane",
+    "position": "RB",
+    "school": "Texas A&M",
+    "class_year": 2023,
+    "production_score_0_100": 70.0,
+    "production_score_source": "manual_historical_seed (2022: 119 att/910 yds/9 TDs + 25 rec/151 yds; SEC; volume-limited but elite efficiency; 7.6 YPC; age 21)"
+  },
+  {
+    "player_id": "rb-chase-brown",
+    "player_name": "Chase Brown",
+    "position": "RB",
+    "school": "Illinois",
+    "class_year": 2023,
+    "production_score_0_100": 80.0,
+    "production_score_source": "manual_historical_seed (2022: 263 att/1643 yds/8 TDs + 31 rec/237 yds; B1G; elite carry volume; 6.25 YPC; age 22)"
+  },
+  {
+    "player_id": "wr-michael-wilson",
+    "player_name": "Michael Wilson",
+    "position": "WR",
+    "school": "Stanford",
+    "class_year": 2023,
+    "production_score_0_100": 48.0,
+    "production_score_source": "manual_historical_seed (2022: limited by injury; ~43 rec/627 yds/3 TDs; Pac-12; injury discount applied; verify stats with CFBD)"
+  },
+  {
+    "player_id": "wr-parker-washington",
+    "player_name": "Parker Washington",
+    "position": "WR",
+    "school": "Penn State",
+    "class_year": 2023,
+    "production_score_0_100": 58.0,
+    "production_score_source": "manual_historical_seed (2022: 63 rec/768 yds/3 TDs; B1G; slot role; moderate production; low TD rate; age 21)"
   }
 ]

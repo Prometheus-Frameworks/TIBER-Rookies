@@ -45,7 +45,7 @@
     "picking_team": "Detroit Lions",
     "draft_capital_proxy_0_100": 88.0,
     "draft_capital_proxy_pending_conversion": false,
-    "proxy_note": "12th overall pick; ACL \u2014 year 1 missed"
+    "proxy_note": "12th overall pick; ACL — year 1 missed"
   },
   {
     "player_id": "wr-treylon-burks",
@@ -70,5 +70,113 @@
     "draft_capital_proxy_0_100": 62.0,
     "draft_capital_proxy_pending_conversion": false,
     "proxy_note": "36th overall pick (R2P4); talent over capital archetype"
+  },
+  {
+    "player_id": "rb-kenneth-walker-iii",
+    "player_name": "Kenneth Walker III",
+    "position": "RB",
+    "class_year": 2022,
+    "actual_pick": 41,
+    "actual_round": 2,
+    "picking_team": "Seattle Seahawks",
+    "draft_capital_proxy_0_100": 57.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "41st overall pick (R2P9); Doak Walker winner — talent well above capital slot"
+  },
+  {
+    "player_id": "wr-wandale-robinson",
+    "player_name": "Wan'Dale Robinson",
+    "position": "WR",
+    "class_year": 2022,
+    "actual_pick": 43,
+    "actual_round": 2,
+    "picking_team": "New York Giants",
+    "draft_capital_proxy_0_100": 55.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "43rd overall pick (R2P11)"
+  },
+  {
+    "player_id": "wr-george-pickens",
+    "player_name": "George Pickens",
+    "position": "WR",
+    "class_year": 2022,
+    "actual_pick": 52,
+    "actual_round": 2,
+    "picking_team": "Pittsburgh Steelers",
+    "draft_capital_proxy_0_100": 46.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "52nd overall pick (R2P20); athleticism-led pick; injury and limited 2021 sample"
+  },
+  {
+    "player_id": "wr-alec-pierce",
+    "player_name": "Alec Pierce",
+    "position": "WR",
+    "class_year": 2022,
+    "actual_pick": 53,
+    "actual_round": 2,
+    "picking_team": "Indianapolis Colts",
+    "draft_capital_proxy_0_100": 45.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "53rd overall pick (R2P21)"
+  },
+  {
+    "player_id": "te-trey-mcbride",
+    "player_name": "Trey McBride",
+    "position": "TE",
+    "class_year": 2022,
+    "actual_pick": 55,
+    "actual_round": 2,
+    "picking_team": "Arizona Cardinals",
+    "draft_capital_proxy_0_100": 43.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "55th overall pick (R2P23); Mackey Award winner"
+  },
+  {
+    "player_id": "rb-james-cook",
+    "player_name": "James Cook",
+    "position": "RB",
+    "class_year": 2022,
+    "actual_pick": 63,
+    "actual_round": 2,
+    "picking_team": "Buffalo Bills",
+    "draft_capital_proxy_0_100": 35.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "63rd overall pick (R2P31); late Day 2 RB capital"
+  },
+  {
+    "player_id": "te-jake-ferguson",
+    "player_name": "Jake Ferguson",
+    "position": "TE",
+    "class_year": 2022,
+    "actual_pick": 129,
+    "actual_round": 4,
+    "picking_team": "Dallas Cowboys",
+    "draft_capital_proxy_0_100": 20.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "129th overall pick (R4P30)"
+  },
+  {
+    "player_id": "rb-kyren-williams",
+    "player_name": "Kyren Williams",
+    "position": "RB",
+    "class_year": 2022,
+    "actual_pick": 165,
+    "actual_round": 5,
+    "picking_team": "Los Angeles Rams",
+    "draft_capital_proxy_0_100": 12.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "165th overall pick (R5P26); extreme late-round capital — talent vs capital divergence"
+  },
+  {
+    "player_id": "rb-jaylen-warren",
+    "player_name": "Jaylen Warren",
+    "position": "RB",
+    "class_year": 2022,
+    "actual_pick": null,
+    "actual_round": null,
+    "picking_team": "Pittsburgh Steelers (UDFA)",
+    "draft_capital_proxy_0_100": 8.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "Undrafted free agent; signed Pittsburgh Steelers — minimum draft capital floor"
   }
 ]

@@ -45,7 +45,7 @@
     "picking_team": "Los Angeles Chargers",
     "draft_capital_proxy_0_100": 82.0,
     "draft_capital_proxy_pending_conversion": false,
-    "proxy_note": "21st overall pick; capital trap \u2014 talent score vs alpha discrepancy expected"
+    "proxy_note": "21st overall pick; capital trap — talent score vs alpha discrepancy expected"
   },
   {
     "player_id": "wr-zay-flowers",
@@ -93,6 +93,66 @@
     "picking_team": "Los Angeles Rams",
     "draft_capital_proxy_0_100": 27.0,
     "draft_capital_proxy_pending_conversion": false,
-    "proxy_note": "177th overall pick (R5P36); extreme late-round efficiency hit \u2014 105 catches rookie year"
+    "proxy_note": "177th overall pick (R5P36); extreme late-round efficiency hit — 105 catches rookie year"
+  },
+  {
+    "player_id": "wr-rashee-rice",
+    "player_name": "Rashee Rice",
+    "position": "WR",
+    "class_year": 2023,
+    "actual_pick": 55,
+    "actual_round": 2,
+    "picking_team": "Kansas City Chiefs",
+    "draft_capital_proxy_0_100": 43.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "55th overall pick (R2P23)"
+  },
+  {
+    "player_id": "rb-devon-achane",
+    "player_name": "De'Von Achane",
+    "position": "RB",
+    "class_year": 2023,
+    "actual_pick": 84,
+    "actual_round": 3,
+    "picking_team": "Miami Dolphins",
+    "draft_capital_proxy_0_100": 34.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "84th overall pick (R3P21)"
+  },
+  {
+    "player_id": "rb-chase-brown",
+    "player_name": "Chase Brown",
+    "position": "RB",
+    "class_year": 2023,
+    "actual_pick": 138,
+    "actual_round": 4,
+    "picking_team": "Cincinnati Bengals",
+    "draft_capital_proxy_0_100": 17.0,
+    "draft_capital_proxy_pending_conversion": false,
+    "proxy_note": "138th overall pick (R4P35); late Day 3 value hit"
+  },
+  {
+    "player_id": "wr-michael-wilson",
+    "player_name": "Michael Wilson",
+    "position": "WR",
+    "class_year": 2023,
+    "actual_pick": 94,
+    "actual_round": 3,
+    "picking_team": "Arizona Cardinals",
+    "draft_capital_proxy_0_100": 30.0,
+    "draft_capital_proxy_pending_conversion": true,
+    "proxy_note": "~94th overall pick (R3); verify exact pick number"
+  },
+  {
+    "player_id": "wr-parker-washington",
+    "player_name": "Parker Washington",
+    "position": "WR",
+    "class_year": 2023,
+    "actual_pick": 150,
+    "actual_round": 5,
+    "picking_team": "Jacksonville Jaguars",
+    "draft_capital_proxy_0_100": 15.0,
+    "draft_capital_proxy_pending_conversion": true,
+    "proxy_note": "~150th overall pick (R5); verify exact pick number"
   }
 ]
