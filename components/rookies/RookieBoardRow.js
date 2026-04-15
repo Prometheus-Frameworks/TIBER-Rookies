@@ -97,8 +97,7 @@ function deltaSpanInline(delta) {
 function renderConsensusDeltaCell(row) {
   return `
     <div class="board-cell board-delta" data-label="Model Edge">
-      ${deltaSpan(row.consensusDelta, 'NFL')}
-      ${deltaSpan(row.dynastyDelta, 'DYN')}
+      ${deltaSpanInline(row.consensusDelta)}
     </div>`;
 }
 
@@ -204,12 +203,8 @@ function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}
       </div>
       <div class="bmc-stats">
         <div class="bmc-stat-row">
-          <span class="bmc-stat-label">NFL Edge</span>
+          <span class="bmc-stat-label">vs. Consensus</span>
           <span>${deltaSpanInline(row.consensusDelta)}</span>
-        </div>
-        <div class="bmc-stat-row">
-          <span class="bmc-stat-label">Dyn Edge</span>
-          <span>${deltaSpanInline(row.dynastyDelta)}</span>
         </div>
         ${pprRange ? `<div class="bmc-stat-row"><span class="bmc-stat-label">Range</span><span class="bmc-ppr-range">${pprRange} PPR</span></div>` : ''}
       </div>
