@@ -1,23 +1,23 @@
 {
   "season": 2023,
   "model_version": "rookie-alpha-predraft-v0.4.0",
-  "generated_at": "2026-04-11T13:51:32+00:00",
-  "run_id": "rookie-alpha-2023-2026-04-11T13:51:32+00:00",
+  "generated_at": "2026-04-15T00:13:29+00:00",
+  "run_id": "rookie-alpha-2023-2026-04-15T00:13:29+00:00",
   "input_files": [
     {
       "path": "data/raw/2023_combine_results.json",
-      "sha256": "d7c32000b422910eb50654fb660c26d6a169b1ade918e15c9fc6032d02f7ca2a",
-      "row_count": 8
+      "sha256": "35cbc98df75767ef9592b64b2e4f8351b2c02af8be4e69c9646b1ee039c2aa9f",
+      "row_count": 13
     },
     {
       "path": "data/processed/2023_college_production.json",
-      "sha256": "4db51cf4977aa9065ceca5f0a500af6b482b371746643d508246e54b4514908a",
-      "row_count": 8
+      "sha256": "0960bb72b28a32d1a616b1f73c52e362744910400318b337cb06e9a221b7f9cc",
+      "row_count": 13
     },
     {
       "path": "data/processed/2023_draft_capital_proxy.json",
-      "sha256": "02bbc597b40c670123a00c7ec15b44b1c2e29c2987b6d9148745a60e2e64c3ae",
-      "row_count": 8
+      "sha256": "fdae10c5419c9656787e953311fb21b4487e381f831635822cce6fb7d79e4792",
+      "row_count": 13
     },
     {
       "path": "data/processed/2023_prospect_context.json",
@@ -26,14 +26,14 @@
     }
   ],
   "coverage_summary": {
-    "players_total": 8,
+    "players_total": 13,
     "players_with_any_missing_input": 0,
-    "players_with_full_inputs": 8,
+    "players_with_full_inputs": 13,
     "players_with_context_fields": 8,
     "input_alignment": {
       "duplicate_rows_skipped": 0,
       "identity_conflicts_skipped": 0,
-      "missing_combine": 0,
+      "missing_combine": 5,
       "missing_production": 0,
       "missing_draft_proxy": 0,
       "total_excluded": 0
@@ -42,27 +42,27 @@
   "output_files": [
     {
       "path": "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.json",
-      "sha256": "a33a0c759ec9a4893f0b9d6b402f9dd63bffc42983e1995a52c962cd2d4d2fec"
+      "sha256": "88be25a8b5978cba56b6a4902f6489382914725bf7d887d4ca78ac82155c44df"
     },
     {
       "path": "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.csv",
-      "sha256": "3c423ede9547f8594bd7fe15de68e8a966e4963e95fce3cb6081c7f314ce0080"
+      "sha256": "cc0355fdb75160ba02680ab0f2077c88c43f729b5f1a02b4b07592c657467663"
     }
   ],
   "export_metadata": {
     "season": 2023,
     "model_version": "rookie-alpha-predraft-v0.4.0",
-    "generated_at": "2026-04-11T13:51:32+00:00",
-    "run_id": "rookie-alpha-2023-2026-04-11T13:51:32+00:00",
+    "generated_at": "2026-04-15T00:13:29+00:00",
+    "run_id": "rookie-alpha-2023-2026-04-15T00:13:29+00:00",
     "coverage_summary": {
-      "players_total": 8,
+      "players_total": 13,
       "players_with_any_missing_input": 0,
-      "players_with_full_inputs": 8,
+      "players_with_full_inputs": 13,
       "players_with_context_fields": 8,
       "input_alignment": {
         "duplicate_rows_skipped": 0,
         "identity_conflicts_skipped": 0,
-        "missing_combine": 0,
+        "missing_combine": 5,
         "missing_production": 0,
         "missing_draft_proxy": 0,
         "total_excluded": 0

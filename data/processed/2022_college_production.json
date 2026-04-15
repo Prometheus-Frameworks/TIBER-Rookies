@@ -15,7 +15,7 @@
     "school": "USC",
     "class_year": 2022,
     "production_score_0_100": 80.0,
-    "production_score_source": "manual_historical_seed (2021: 88 rec/1084 yds/7 TDs in 8 games \u2014 ankle fracture; per-game pace elite; Pac-12; age 20)"
+    "production_score_source": "manual_historical_seed (2021: 88 rec/1084 yds/7 TDs in 8 games — ankle fracture; per-game pace elite; Pac-12; age 20)"
   },
   {
     "player_id": "wr-chris-olave",
@@ -52,5 +52,86 @@
     "class_year": 2022,
     "production_score_0_100": 88.0,
     "production_score_source": "manual_historical_seed (2021: 312 att/1472 yds/20 TDs + 60 rec/348 yds; Big 12; dual-threat elite; age 21)"
+  },
+  {
+    "player_id": "rb-kenneth-walker-iii",
+    "player_name": "Kenneth Walker III",
+    "position": "RB",
+    "school": "Michigan State",
+    "class_year": 2022,
+    "production_score_0_100": 90.0,
+    "production_score_source": "manual_historical_seed (2021: 263 att/1636 yds/18 TDs + receiving work; B1G; Doak Walker Award; 6.22 YPC; age 21; one-year starter)"
+  },
+  {
+    "player_id": "rb-james-cook",
+    "player_name": "James Cook",
+    "position": "RB",
+    "school": "Georgia",
+    "class_year": 2022,
+    "production_score_0_100": 60.0,
+    "production_score_source": "manual_historical_seed (2021: ~78 att/728 yds/7 TDs + 27 rec/284 yds; SEC; limited volume in Georgia rotation alongside Z. White; pass-catching role; age 22)"
+  },
+  {
+    "player_id": "rb-kyren-williams",
+    "player_name": "Kyren Williams",
+    "position": "RB",
+    "school": "Notre Dame",
+    "class_year": 2022,
+    "production_score_0_100": 66.0,
+    "production_score_source": "manual_historical_seed (2021: 143 att/783 yds/14 TDs + 21 rec/181 yds; ACC-independent; strong TD rate; volume-limited; age 21)"
+  },
+  {
+    "player_id": "rb-jaylen-warren",
+    "player_name": "Jaylen Warren",
+    "position": "RB",
+    "school": "Utah State",
+    "class_year": 2022,
+    "production_score_0_100": 66.0,
+    "production_score_source": "manual_historical_seed (2021: ~270 att/1219 yds/13 TDs; MWC; transferred from Oklahoma State; strong volume; undrafted; verify with CFBD)"
+  },
+  {
+    "player_id": "wr-george-pickens",
+    "player_name": "George Pickens",
+    "position": "WR",
+    "school": "Georgia",
+    "class_year": 2022,
+    "production_score_0_100": 45.0,
+    "production_score_source": "manual_historical_seed (2021: ACL in bowl prep — 3 games/3 rec/43 yds; reference 2020: 36 rec/513 yds/8 TDs at Georgia/SEC; heavy injury discount applied; athleticism-led profile)"
+  },
+  {
+    "player_id": "wr-wandale-robinson",
+    "player_name": "Wan'Dale Robinson",
+    "position": "WR",
+    "school": "Kentucky",
+    "class_year": 2022,
+    "production_score_0_100": 82.0,
+    "production_score_source": "manual_historical_seed (2021: 104 rec/1334 yds/7 TDs; SEC; led conference in receiving; transferred from Nebraska; age 21; size concern noted)"
+  },
+  {
+    "player_id": "wr-alec-pierce",
+    "player_name": "Alec Pierce",
+    "position": "WR",
+    "school": "Cincinnati",
+    "class_year": 2022,
+    "production_score_0_100": 65.0,
+    "production_score_source": "manual_historical_seed (2021: 52 rec/884 yds/8 TDs; AAC; solid efficiency; conference discount applied; age 22)"
+  },
+  {
+    "player_id": "te-trey-mcbride",
+    "player_name": "Trey McBride",
+    "position": "TE",
+    "school": "Colorado State",
+    "class_year": 2022,
+    "production_score_0_100": 78.0,
+    "production_score_source": "manual_historical_seed (2021: 90 rec/1121 yds/6 TDs; MWC; Mackey Award winner; elite receiving volume for position; conference discount applied; age 22)"
+  },
+  {
+    "player_id": "te-jake-ferguson",
+    "player_name": "Jake Ferguson",
+    "position": "TE",
+    "school": "Wisconsin",
+    "class_year": 2022,
+    "production_score_0_100": 62.0,
+    "production_score_source": "manual_historical_seed (2021: 35 rec/448 yds/5 TDs; B1G; solid inline TE production; not a volume receiver; age 22)"
   }
 ]
