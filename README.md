@@ -164,6 +164,26 @@ python3 scripts/validate_promoted_export.py \
 
 Validation checks field presence, metadata consistency, hashes, and row-count expectations.
 
+
+## Parallel ML evaluation lane (phase 1, experimental)
+
+This repo now includes an **experimental parallel ML lane** that evaluates rookie hit probabilities from historical labeled rows. It is strictly additive and does **not** replace deterministic Rookie Alpha scoring.
+
+Run from repo root:
+
+```bash
+python3 scripts/compute_rookie_ml_lane.py
+```
+
+Default outputs are written to `exports/promoted/rookie-ml-lane/`:
+
+- `historical_labeled_dataset.json` / `.csv`
+- `feature_table.json`
+- `evaluation_report.json`
+- `heldout_probabilities.json` / `.csv`
+
+The evaluator uses time-aware draft-class splits, logistic baselines, required feature-subset baselines, and non-ML baseline comparisons.
+
 ## Run standalone static lab locally
 
 Requires Node.js 20+.
