@@ -1,0 +1,117 @@
+{
+  "class_year": 2024,
+  "sources": [
+    {
+      "source": "nfl_draft_order_2024",
+      "snapshot_date": "2024-04-27",
+      "notes": "Positional consensus ranks derived from actual 2024 NFL Draft pick order, filtered to skill positions covered by TIBER model (QB/RB/WR/TE). Represents market consensus at draft time. Replaces overall-board draft capital proxy for positional delta computation.",
+      "entries": [
+        {
+          "player_id": "qb-caleb-williams",
+          "player_name": "Caleb Williams",
+          "position": "QB",
+          "positional_rank": 1,
+          "overall_rank": 1
+        },
+        {
+          "player_id": "qb-jayden-daniels",
+          "player_name": "Jayden Daniels",
+          "position": "QB",
+          "positional_rank": 2,
+          "overall_rank": 2
+        },
+        {
+          "player_id": "qb-drake-maye",
+          "player_name": "Drake Maye",
+          "position": "QB",
+          "positional_rank": 3,
+          "overall_rank": 3
+        },
+        {
+          "player_id": "rb-jonathon-brooks",
+          "player_name": "Jonathon Brooks",
+          "position": "RB",
+          "positional_rank": 1,
+          "overall_rank": 46
+        },
+        {
+          "player_id": "rb-trey-benson",
+          "player_name": "Trey Benson",
+          "position": "RB",
+          "positional_rank": 2,
+          "overall_rank": 66
+        },
+        {
+          "player_id": "rb-blake-corum",
+          "player_name": "Blake Corum",
+          "position": "RB",
+          "positional_rank": 3,
+          "overall_rank": 89
+        },
+        {
+          "player_id": "rb-marshawn-lloyd",
+          "player_name": "MarShawn Lloyd",
+          "position": "RB",
+          "positional_rank": 4,
+          "overall_rank": 99
+        },
+        {
+          "player_id": "rb-braelon-allen",
+          "player_name": "Braelon Allen",
+          "position": "RB",
+          "positional_rank": 5,
+          "overall_rank": 119
+        },
+        {
+          "player_id": "te-brock-bowers",
+          "player_name": "Brock Bowers",
+          "position": "TE",
+          "positional_rank": 1,
+          "overall_rank": 13
+        },
+        {
+          "player_id": "wr-malik-nabers",
+          "player_name": "Malik Nabers",
+          "position": "WR",
+          "positional_rank": 1,
+          "overall_rank": 6
+        },
+        {
+          "player_id": "wr-rome-odunze",
+          "player_name": "Rome Odunze",
+          "position": "WR",
+          "positional_rank": 2,
+          "overall_rank": 9
+        },
+        {
+          "player_id": "wr-brian-thomas-jr",
+          "player_name": "Brian Thomas Jr.",
+          "position": "WR",
+          "positional_rank": 3,
+          "overall_rank": 23
+        },
+        {
+          "player_id": "wr-xavier-worthy",
+          "player_name": "Xavier Worthy",
+          "position": "WR",
+          "positional_rank": 4,
+          "overall_rank": 28
+        },
+        {
+          "player_id": "wr-ladd-mcconkey",
+          "player_name": "Ladd McConkey",
+          "position": "WR",
+          "positional_rank": 5,
+          "overall_rank": 34
+        },
+        {
+          "player_id": "wr-adonai-mitchell",
+          "player_name": "Adonai Mitchell",
+          "position": "WR",
+          "positional_rank": 6,
+          "overall_rank": 50
+        }
+      ]
+    }
+  ]
+}

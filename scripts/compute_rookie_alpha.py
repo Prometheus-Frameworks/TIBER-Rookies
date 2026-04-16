@@ -184,6 +184,77 @@ MARKET_CONVICTION_NUMERIC_SIGNALS: list[tuple[str, float]] = [
 MARKET_CONVICTION_BONUS_BASE = 2.5    # 1 craft signal
 MARKET_CONVICTION_BONUS_STRONG = 4.0  # 2+ craft signals
 
+# ---------------------------------------------------------------------------
+# Positional consensus score curves
+# ---------------------------------------------------------------------------
+# Maps positional rank (1 = best) to an expected score on the 0-100 alpha scale.
+# These values represent the consensus expectation for a player at each positional
+# rank — NOT derived from overall board pick bands.  Calibrated so that a player
+# whose model score matches positional consensus shows a near-zero delta, while
+# genuine model disagreements produce proportionate signals.
+#
+# Design properties:
+#   - Monotonically decreasing within each position
+#   - Fit to the alpha scale (typical top-10 picks score 60-85)
+#   - Modular: each position can be tuned independently
+#   - Ranks beyond the table decay by _POSITIONAL_CURVE_TAIL_STEP per rank,
+#     floored at _POSITIONAL_CURVE_FLOOR
+#
+# To tune: adjust values here without touching compute logic.
+POSITIONAL_SCORE_CURVES: dict[str, list[float]] = {
+    #         1     2     3     4     5     6     7     8     9    10    11    12    13    14    15
+    "QB": [82.0, 77.0, 72.0, 67.0, 62.0, 58.0, 54.0, 51.0, 48.0, 46.0, 44.0, 42.0, 40.0, 38.0, 37.0],
+    "WR": [80.0, 75.0, 71.0, 67.0, 63.0, 60.0, 57.0, 54.0, 51.0, 49.0, 47.0, 45.0, 43.0, 42.0, 41.0],
+    "RB": [79.0, 74.0, 69.0, 65.0, 61.0, 58.0, 55.0, 52.0, 50.0, 48.0, 46.0, 44.0, 43.0, 42.0, 41.0],
+    "TE": [79.0, 73.0, 67.0, 63.0, 59.0, 56.0, 53.0, 50.0, 47.0, 45.0, 43.0, 41.0, 40.0, 39.0, 38.0],
+}
+_POSITIONAL_CURVE_TAIL_STEP = 0.5   # score drop per rank beyond the table
+_POSITIONAL_CURVE_FLOOR = 28.0      # minimum consensus score for any rank
+
+
+def positional_rank_to_score(position: str, rank: int) -> float:
+    """Convert a blended positional consensus rank to a 0-100 score.
+
+    Uses per-position curves calibrated to the alpha scale.  Falls back to
+    the WR curve for unrecognised positions.  Extends past the table with a
+    linear tail.
+    """
+    curve = POSITIONAL_SCORE_CURVES.get(position, POSITIONAL_SCORE_CURVES["WR"])
+    if rank <= len(curve):
+        return curve[rank - 1]
+    extra = rank - len(curve)
+    return max(_POSITIONAL_CURVE_FLOOR, curve[-1] - extra * _POSITIONAL_CURVE_TAIL_STEP)
+
+
+def load_positional_consensus(path: Path) -> dict[str, dict]:
+    """Load a positional consensus artifact and return a per-player lookup.
+
+    Returns ``{player_id: {"ranks": [int, ...], "sources": [str, ...]}}``
+    keyed on player_id.  Returns an empty dict when the file does not exist
+    (positional consensus is optional).
+
+    The artifact supports multiple sources per class year; all source entries
+    are merged into the per-player ranks list so blending happens at compute
+    time.
+    """
+    if not path.exists():
+        logging.warning("Positional consensus file not found at %s — positional delta fields will be null.", path)
+        return {}
+    data = load_json(path)
+    result: dict[str, dict] = {}
+    for source_entry in data.get("sources", []):
+        source_name = source_entry.get("source", "unknown")
+        for entry in source_entry.get("entries", []):
+            pid = entry.get("player_id")
+            rank = entry.get("positional_rank")
+            if not pid or rank is None:
+                continue
+            if pid not in result:
+                result[pid] = {"ranks": [], "sources": []}
+            result[pid]["ranks"].append(int(rank))
+            result[pid]["sources"].append(source_name)
+    return result
+
 
 def sha256_file(path: Path) -> str:
     digest = hashlib.sha256()
@@ -1145,6 +1216,8 @@ def write_outputs(
     context_by_id: dict[str, dict[str, Any]] | None = None,
     exceptional_combine_by_id: dict[str, list[dict[str, Any]]] | None = None,
     wr_translation_penalty_by_id: dict[str, tuple[float, str]] | None = None,
+    positional_consensus_path: Path | None = None,
+    positional_consensus_by_id: dict[str, dict] | None = None,
 ) -> None:
     generated_at = datetime.now(tz=timezone.utc).replace(microsecond=0).isoformat()
     run_id = f"rookie-alpha-{season}-{generated_at}"
@@ -1227,7 +1300,29 @@ def write_outputs(
                 ",".join(missing_components),
             )
         draft_val = p.draft_capital_proxy_0_100 if p.draft_capital_proxy_0_100 is not None else 50.0
-        consensus_delta = round(alpha - draft_val, 1)
+        # DEPRECATED: alpha minus overall draft-capital proxy.  Kept for backward
+        # compatibility only — this comparison is structurally misleading because
+        # draft_capital_proxy_0_100 reflects overall board investment (incl. defenders,
+        # OL) while alpha is a skill-position talent composite.  Use
+        # consensus_delta_positional for model-vs-consensus signal.
+        market_investment_delta_legacy = round(alpha - draft_val, 1)
+
+        # --- Positional consensus delta (position-aware) ---------------------
+        # Compares model alpha against a position-specific consensus expectation
+        # score derived from positional rank curves, not overall draft capital.
+        pos_entry = (positional_consensus_by_id or {}).get(p.player_id, {})
+        pos_ranks = pos_entry.get("ranks", [])
+        if pos_ranks:
+            blended_rank = round(mean(pos_ranks))
+            sources_count: int | None = len(pos_ranks)
+            consensus_score_pos: float | None = round(positional_rank_to_score(p.position, blended_rank), 1)
+            consensus_delta_pos: float | None = round(alpha - consensus_score_pos, 1)
+        else:
+            blended_rank = None
+            sources_count = None
+            consensus_score_pos = None
+            consensus_delta_pos = None
+
         row_payload = {
             "player_id": p.player_id,
             "player_name": p.player_name,
@@ -1256,7 +1351,14 @@ def write_outputs(
                 ) if (wr_translation_penalty_by_id or {}).get(p.player_id) else None,
                 "wr_translation_signals": (wr_translation_penalty_by_id or {}).get(p.player_id, (None, None))[1]
                 or None,
-                "consensus_delta": consensus_delta,
+                # Positional consensus fields (position-aware, not overall-board-based)
+                "consensus_position_rank_blended": blended_rank,
+                "consensus_position_rank_sources_count": sources_count,
+                "consensus_score_positional_0_100": consensus_score_pos,
+                "consensus_delta_positional": consensus_delta_pos,
+                # Legacy field — kept for backward compat; semantics are misleading
+                # (compares alpha against overall draft capital, not positional consensus)
+                "market_investment_delta_legacy": market_investment_delta_legacy,
             },
             "model_inputs_missing": missing_components,
         }
@@ -1333,6 +1435,8 @@ def write_outputs(
     }
     if context_path is not None and context_path.exists():
         payload["source_files_used"].append(str(context_path))
+    if positional_consensus_path is not None and positional_consensus_path.exists():
+        payload["source_files_used"].append(str(positional_consensus_path))
     output_json.parent.mkdir(parents=True, exist_ok=True)
     output_csv.parent.mkdir(parents=True, exist_ok=True)
     output_manifest.parent.mkdir(parents=True, exist_ok=True)
@@ -1356,7 +1460,10 @@ def write_outputs(
                 "draft_capital_proxy_0_100",
                 "talent_score_0_100",
                 "rookie_alpha_0_100",
-                "consensus_delta",
+                "consensus_position_rank_blended",
+                "consensus_score_positional_0_100",
+                "consensus_delta_positional",
+                "market_investment_delta_legacy",
                 "talent_rank",
                 "draft_proxy_delta",
                 "model_inputs_missing",
@@ -1379,7 +1486,10 @@ def write_outputs(
                     "draft_capital_proxy_0_100": row["scores"]["draft_capital_proxy_0_100"],
                     "talent_score_0_100": row["scores"]["talent_score_0_100"],
                     "rookie_alpha_0_100": row["scores"]["rookie_alpha_0_100"],
-                    "consensus_delta": row["scores"]["consensus_delta"],
+                    "consensus_position_rank_blended": row["scores"].get("consensus_position_rank_blended") or "",
+                    "consensus_score_positional_0_100": row["scores"].get("consensus_score_positional_0_100") or "",
+                    "consensus_delta_positional": row["scores"].get("consensus_delta_positional") if row["scores"].get("consensus_delta_positional") is not None else "",
+                    "market_investment_delta_legacy": row["scores"].get("market_investment_delta_legacy") or "",
                     "talent_rank": row["talent_rank"],
                     "draft_proxy_delta": row["draft_proxy_delta"],
                     "model_inputs_missing": ",".join(row["model_inputs_missing"]),
@@ -1411,6 +1521,18 @@ def write_outputs(
                 "path": str(context_path),
                 "sha256": sha256_file(context_path),
                 "row_count": len(load_json(context_path)),
+            }
+        )
+    if positional_consensus_path is not None and positional_consensus_path.exists():
+        pc_data = load_json(positional_consensus_path)
+        entry_count = sum(
+            len(s.get("entries", [])) for s in pc_data.get("sources", [])
+        )
+        input_files.append(
+            {
+                "path": str(positional_consensus_path),
+                "sha256": sha256_file(positional_consensus_path),
+                "row_count": entry_count,
             }
         )
     output_files = [
@@ -1502,6 +1624,18 @@ def parse_args() -> argparse.Namespace:
             f"{EXISTING_PRODUCTION_BLEND_WEIGHT:.0%} existing."
         ),
     )
+    parser.add_argument(
+        "--positional-consensus-input",
+        type=Path,
+        default=None,
+        help=(
+            "Optional positional consensus rankings artifact "
+            "(e.g. data/processed/2026_positional_consensus.json). "
+            "When provided, enables consensus_delta_positional and related fields. "
+            "When absent, those fields are null. "
+            "Defaults to data/processed/{season}_positional_consensus.json."
+        ),
+    )
     return parser.parse_args()
 
 
@@ -1518,6 +1652,9 @@ def main() -> None:
 
     age_adjusted_input = args.age_adjusted_input or Path(
         f"data/processed/{args.season}_age_adjusted_production.json"
+    )
+    positional_consensus_input = args.positional_consensus_input or Path(
+        f"data/processed/{args.season}_positional_consensus.json"
     )
 
     combine_rows = load_json(combine_input)
@@ -1570,6 +1707,8 @@ def main() -> None:
         if row.get("wr_translation_penalty") is not None and row.get("player_id")
     }
 
+    positional_consensus_by_id = load_positional_consensus(positional_consensus_input)
+
     players, merge_diagnostics, exceptional_combine_by_id = merge_inputs(
         combine_rows, production_rows, draft_rows, context_by_id=context_by_id,
     )
@@ -1587,6 +1726,8 @@ def main() -> None:
         context_by_id=context_by_id,
         exceptional_combine_by_id=exceptional_combine_by_id,
         wr_translation_penalty_by_id=wr_translation_penalty_by_id,
+        positional_consensus_path=positional_consensus_input,
+        positional_consensus_by_id=positional_consensus_by_id,
     )
 
 

@@ -1,0 +1,467 @@
+{
+  "class_year": 2025,
+  "sources": [
+    {
+      "source": "nfl_draft_order_2025",
+      "snapshot_date": "2025-04-26",
+      "notes": "Positional consensus ranks derived from 2025 NFL Draft pick order (big_board_rank represents actual or near-actual draft position), filtered to skill positions. Note: Sanders big_board_rank=144 reflects actual late pick, not pre-draft consensus.",
+      "entries": [
+        {
+          "player_id": "qb-cam-ward",
+          "player_name": "Cam Ward",
+          "position": "QB",
+          "positional_rank": 1,
+          "overall_rank": 1
+        },
+        {
+          "player_id": "qb-jaxson-dart",
+          "player_name": "Jaxson Dart",
+          "position": "QB",
+          "positional_rank": 2,
+          "overall_rank": 25
+        },
+        {
+          "player_id": "qb-tyler-shough",
+          "player_name": "Tyler Shough",
+          "position": "QB",
+          "positional_rank": 3,
+          "overall_rank": 40
+        },
+        {
+          "player_id": "qb-dillon-gabriel",
+          "player_name": "Dillon Gabriel",
+          "position": "QB",
+          "positional_rank": 4,
+          "overall_rank": 55
+        },
+        {
+          "player_id": "qb-will-howard",
+          "player_name": "Will Howard",
+          "position": "QB",
+          "positional_rank": 5,
+          "overall_rank": 64
+        },
+        {
+          "player_id": "qb-jalen-milroe",
+          "player_name": "Jalen Milroe",
+          "position": "QB",
+          "positional_rank": 6,
+          "overall_rank": 92
+        },
+        {
+          "player_id": "qb-riley-leonard",
+          "player_name": "Riley Leonard",
+          "position": "QB",
+          "positional_rank": 7,
+          "overall_rank": 123
+        },
+        {
+          "player_id": "qb-shedeur-sanders",
+          "player_name": "Shedeur Sanders",
+          "position": "QB",
+          "positional_rank": 8,
+          "overall_rank": 144
+        },
+        {
+          "player_id": "qb-kyle-mccord",
+          "player_name": "Kyle McCord",
+          "position": "QB",
+          "positional_rank": 9,
+          "overall_rank": 196
+        },
+        {
+          "player_id": "qb-quinn-ewers",
+          "player_name": "Quinn Ewers",
+          "position": "QB",
+          "positional_rank": 10,
+          "overall_rank": 219
+        },
+        {
+          "player_id": "rb-ashton-jeanty",
+          "player_name": "Ashton Jeanty",
+          "position": "RB",
+          "positional_rank": 1,
+          "overall_rank": 6
+        },
+        {
+          "player_id": "rb-omarion-hampton",
+          "player_name": "Omarion Hampton",
+          "position": "RB",
+          "positional_rank": 2,
+          "overall_rank": 22
+        },
+        {
+          "player_id": "rb-quinshon-judkins",
+          "player_name": "Quinshon Judkins",
+          "position": "RB",
+          "positional_rank": 3,
+          "overall_rank": 35
+        },
+        {
+          "player_id": "rb-trevon-henderson",
+          "player_name": "TreVeyon Henderson",
+          "position": "RB",
+          "positional_rank": 4,
+          "overall_rank": 45
+        },
+        {
+          "player_id": "rb-rj-harvey",
+          "player_name": "RJ Harvey",
+          "position": "RB",
+          "positional_rank": 5,
+          "overall_rank": 60
+        },
+        {
+          "player_id": "rb-kaleb-johnson",
+          "player_name": "Kaleb Johnson",
+          "position": "RB",
+          "positional_rank": 6,
+          "overall_rank": 67
+        },
+        {
+          "player_id": "rb-cam-skattebo",
+          "player_name": "Cam Skattebo",
+          "position": "RB",
+          "positional_rank": 7,
+          "overall_rank": 95
+        },
+        {
+          "player_id": "rb-bhayshul-tuten",
+          "player_name": "Bhayshul Tuten",
+          "position": "RB",
+          "positional_rank": 8,
+          "overall_rank": 104
+        },
+        {
+          "player_id": "rb-trevor-etienne",
+          "player_name": "Trevor Etienne",
+          "position": "RB",
+          "positional_rank": 9,
+          "overall_rank": 114
+        },
+        {
+          "player_id": "rb-woody-marks",
+          "player_name": "Woody Marks",
+          "position": "RB",
+          "positional_rank": 10,
+          "overall_rank": 116
+        },
+        {
+          "player_id": "rb-dylan-sampson",
+          "player_name": "Dylan Sampson",
+          "position": "RB",
+          "positional_rank": 11,
+          "overall_rank": 126
+        },
+        {
+          "player_id": "rb-jordan-james",
+          "player_name": "Jordan James",
+          "position": "RB",
+          "positional_rank": 12,
+          "overall_rank": 147
+        },
+        {
+          "player_id": "rb-jaydon-blue",
+          "player_name": "Jaydon Blue",
+          "position": "RB",
+          "positional_rank": 13,
+          "overall_rank": 149
+        },
+        {
+          "player_id": "rb-dj-giddens",
+          "player_name": "DJ Giddens",
+          "position": "RB",
+          "positional_rank": 14,
+          "overall_rank": 151
+        },
+        {
+          "player_id": "rb-ollie-gordon-ii",
+          "player_name": "Ollie Gordon II",
+          "position": "RB",
+          "positional_rank": 15,
+          "overall_rank": 179
+        },
+        {
+          "player_id": "rb-devin-neal",
+          "player_name": "Devin Neal",
+          "position": "RB",
+          "positional_rank": 16,
+          "overall_rank": 184
+        },
+        {
+          "player_id": "rb-kalel-mullings",
+          "player_name": "Kalel Mullings",
+          "position": "RB",
+          "positional_rank": 17,
+          "overall_rank": 188
+        },
+        {
+          "player_id": "rb-tahj-brooks",
+          "player_name": "Tahj Brooks",
+          "position": "RB",
+          "positional_rank": 18,
+          "overall_rank": 193
+        },
+        {
+          "player_id": "rb-damien-martinez",
+          "player_name": "Damien Martinez",
+          "position": "RB",
+          "positional_rank": 19,
+          "overall_rank": 223
+        },
+        {
+          "player_id": "rb-brashard-smith",
+          "player_name": "Brashard Smith",
+          "position": "RB",
+          "positional_rank": 20,
+          "overall_rank": 228
+        },
+        {
+          "player_id": "rb-kyle-monangai",
+          "player_name": "Kyle Monangai",
+          "position": "RB",
+          "positional_rank": 21,
+          "overall_rank": 233
+        },
+        {
+          "player_id": "rb-lequint-allen",
+          "player_name": "Lequint Allen",
+          "position": "RB",
+          "positional_rank": 22,
+          "overall_rank": 236
+        },
+        {
+          "player_id": "rb-phil-mafah",
+          "player_name": "Phil Mafah",
+          "position": "RB",
+          "positional_rank": 23,
+          "overall_rank": 239
+        },
+        {
+          "player_id": "rb-jacory-croskey-merritt",
+          "player_name": "Jacory Croskey-Merritt",
+          "position": "RB",
+          "positional_rank": 24,
+          "overall_rank": 245
+        },
+        {
+          "player_id": "te-colston-loveland",
+          "player_name": "Colston Loveland",
+          "position": "TE",
+          "positional_rank": 1,
+          "overall_rank": 10
+        },
+        {
+          "player_id": "te-tyler-warren",
+          "player_name": "Tyler Warren",
+          "position": "TE",
+          "positional_rank": 2,
+          "overall_rank": 14
+        },
+        {
+          "player_id": "te-harold-fannin-jr",
+          "player_name": "Harold Fannin Jr.",
+          "position": "TE",
+          "positional_rank": 3,
+          "overall_rank": 33
+        },
+        {
+          "player_id": "te-mason-taylor",
+          "player_name": "Mason Taylor",
+          "position": "TE",
+          "positional_rank": 4,
+          "overall_rank": 42
+        },
+        {
+          "player_id": "te-terrance-ferguson",
+          "player_name": "Terrance Ferguson",
+          "position": "TE",
+          "positional_rank": 5,
+          "overall_rank": 52
+        },
+        {
+          "player_id": "te-elijah-arroyo",
+          "player_name": "Elijah Arroyo",
+          "position": "TE",
+          "positional_rank": 6,
+          "overall_rank": 57
+        },
+        {
+          "player_id": "te-oronde-gadsden-ii",
+          "player_name": "Oronde Gadsden II",
+          "position": "TE",
+          "positional_rank": 7,
+          "overall_rank": 77
+        },
+        {
+          "player_id": "te-mitchell-evans",
+          "player_name": "Mitchell Evans",
+          "position": "TE",
+          "positional_rank": 8,
+          "overall_rank": 116
+        },
+        {
+          "player_id": "te-gunnar-helm",
+          "player_name": "Gunnar Helm",
+          "position": "TE",
+          "positional_rank": 9,
+          "overall_rank": 130
+        },
+        {
+          "player_id": "wr-travis-hunter",
+          "player_name": "Travis Hunter",
+          "position": "WR",
+          "positional_rank": 1,
+          "overall_rank": 2
+        },
+        {
+          "player_id": "wr-tetairoa-mcmillan",
+          "player_name": "Tetairoa McMillan",
+          "position": "WR",
+          "positional_rank": 2,
+          "overall_rank": 8
+        },
+        {
+          "player_id": "wr-emeka-egbuka",
+          "player_name": "Emeka Egbuka",
+          "position": "WR",
+          "positional_rank": 3,
+          "overall_rank": 33
+        },
+        {
+          "player_id": "wr-matthew-golden",
+          "player_name": "Matthew Golden",
+          "position": "WR",
+          "positional_rank": 4,
+          "overall_rank": 34
+        },
+        {
+          "player_id": "wr-jayden-higgins",
+          "player_name": "Jayden Higgins",
+          "position": "WR",
+          "positional_rank": 4,
+          "overall_rank": 34
+        },
+        {
+          "player_id": "wr-luther-burden-iii",
+          "player_name": "Luther Burden III",
+          "position": "WR",
+          "positional_rank": 5,
+          "overall_rank": 39
+        },
+        {
+          "player_id": "wr-tre-harris",
+          "player_name": "Tre Harris",
+          "position": "WR",
+          "positional_rank": 6,
+          "overall_rank": 55
+        },
+        {
+          "player_id": "wr-jack-bech",
+          "player_name": "Jack Bech",
+          "position": "WR",
+          "positional_rank": 7,
+          "overall_rank": 58
+        },
+        {
+          "player_id": "wr-kyle-williams",
+          "player_name": "Kyle Williams",
+          "position": "WR",
+          "positional_rank": 8,
+          "overall_rank": 69
+        },
+        {
+          "player_id": "wr-isaac-teslaa",
+          "player_name": "Isaac TeSlaa",
+          "position": "WR",
+          "positional_rank": 9,
+          "overall_rank": 70
+        },
+        {
+          "player_id": "wr-pat-bryant",
+          "player_name": "Pat Bryant",
+          "position": "WR",
+          "positional_rank": 10,
+          "overall_rank": 74
+        },
+        {
+          "player_id": "wr-jaylin-noel",
+          "player_name": "Jaylin Noel",
+          "position": "WR",
+          "positional_rank": 11,
+          "overall_rank": 79
+        },
+        {
+          "player_id": "wr-savion-williams",
+          "player_name": "Savion Williams",
+          "position": "WR",
+          "positional_rank": 12,
+          "overall_rank": 87
+        },
+        {
+          "player_id": "wr-tai-felton",
+          "player_name": "Tai Felton",
+          "position": "WR",
+          "positional_rank": 13,
+          "overall_rank": 102
+        },
+        {
+          "player_id": "wr-chimere-dike",
+          "player_name": "Chimere Dike",
+          "position": "WR",
+          "positional_rank": 14,
+          "overall_rank": 103
+        },
+        {
+          "player_id": "wr-donte-thornton-jr",
+          "player_name": "Dont'e Thornton Jr.",
+          "position": "WR",
+          "positional_rank": 15,
+          "overall_rank": 108
+        },
+        {
+          "player_id": "wr-arian-smith",
+          "player_name": "Arian Smith",
+          "position": "WR",
+          "positional_rank": 16,
+          "overall_rank": 110
+        },
+        {
+          "player_id": "wr-jaylin-lane",
+          "player_name": "Jaylin Lane",
+          "position": "WR",
+          "positional_rank": 17,
+          "overall_rank": 128
+        },
+        {
+          "player_id": "wr-jalen-royals",
+          "player_name": "Jalen Royals",
+          "position": "WR",
+          "positional_rank": 18,
+          "overall_rank": 133
+        },
+        {
+          "player_id": "wr-elic-ayomanor",
+          "player_name": "Elic Ayomanor",
+          "position": "WR",
+          "positional_rank": 19,
+          "overall_rank": 136
+        },
+        {
+          "player_id": "wr-tory-horton",
+          "player_name": "Tory Horton",
+          "position": "WR",
+          "positional_rank": 20,
+          "overall_rank": 166
+        },
+        {
+          "player_id": "wr-tez-johnson",
+          "player_name": "Tez Johnson",
+          "position": "WR",
+          "positional_rank": 21,
+          "overall_rank": 235
+        }
+      ]
+    }
+  ]
+}
