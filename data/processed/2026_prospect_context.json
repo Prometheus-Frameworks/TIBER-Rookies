@@ -6,16 +6,17 @@
     "school": "Indiana",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 20,
-    "age_at_first_impact_season": 20,
-    "young_breakout_flag": true,
-    "evidence_tags": [
-      "young_breakout"
-    ],
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
+    "evidence_tags": [],
     "context_flags": [],
     "evidence_summary": null,
     "context_source": "compute_breakout_age.py",
-    "dob": "2003-10-01"
+    "dob": "2003-10-01",
+    "breakout_strength": 0.22,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
   },
   {
     "player_id": "qb-ty-simpson",
@@ -24,16 +25,17 @@
     "school": "Alabama",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 20,
-    "age_at_first_impact_season": 20,
-    "young_breakout_flag": true,
-    "evidence_tags": [
-      "young_breakout"
-    ],
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
+    "evidence_tags": [],
     "context_flags": [],
     "evidence_summary": null,
     "context_source": "compute_breakout_age.py",
-    "dob": "2002-12-21"
+    "dob": "2002-12-21",
+    "breakout_strength": 0.76,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
   },
   {
     "player_id": "qb-carson-beck",
@@ -49,7 +51,10 @@
     "context_flags": [],
     "evidence_summary": null,
     "context_source": "compute_breakout_age.py",
-    "dob": "2002-11-19"
+    "dob": "2002-11-19",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 2
   },
   {
     "player_id": "qb-drew-allar",
@@ -58,14 +63,19 @@
     "school": "Penn State",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
-    "evidence_tags": [],
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout"
+    ],
     "context_flags": [],
     "evidence_summary": null,
     "context_source": "compute_breakout_age.py",
-    "dob": "2004-03-08"
+    "dob": "2004-03-08",
+    "breakout_strength": 1.0,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
   },
   {
     "player_id": "qb-garrett-nussmeier",
@@ -74,14 +84,17 @@
     "school": "LSU",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
     "young_breakout_flag": false,
     "evidence_tags": [],
     "context_flags": [],
     "evidence_summary": null,
     "context_source": "compute_breakout_age.py",
-    "dob": "2002-02-07"
+    "dob": "2002-02-07",
+    "breakout_strength": 1.0,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
   },
   {
     "player_id": "rb-jeremiyah-love",
@@ -90,8 +103,8 @@
     "school": "Notre Dame",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 20,
-    "age_at_first_impact_season": 20,
+    "breakout_age": 19,
+    "age_at_first_impact_season": 19,
     "young_breakout_flag": true,
     "evidence_tags": [
       "young_breakout",
@@ -103,7 +116,10 @@
     ],
     "evidence_summary": "Young breakout (BOA 20) at Notre Dame. Would have met 90+ total yd/game in 2+ seasons AND 70+ YAC/game in 2+ seasons thresholds if not for 2024 NFL playoffs, during which he played through a serious knee injury. True production ceiling suppressed in final measurable games; playoff stats should be treated as injury-affected outlier. Coleman (2026) is only peer to clear both thresholds unadjusted.",
     "context_source": "@ffdataroma research note 2026-04-08",
-    "dob": "2005-05-31"
+    "dob": "2005-05-31",
+    "breakout_strength": 0.505,
+    "breakout_confidence": 1.0,
+    "seasons_available": 2
   },
   {
     "player_id": "rb-jadarian-price",
@@ -125,9 +141,12 @@
       "one_hit_wonder_risk",
       "shared_backfield_love_2024"
     ],
-    "evidence_summary": "Transfer: Notre Dame (2024, shared backfield with Jeremiyah Love) → Texas A&M (2025). Breakout at age 20 at Notre Dame despite competing for carries with Love — a top-tier RB1 prospect. Production suppression from shared backfield is mitigating context for volume metrics. Dynasty community ranks him RB2 of class (overall top-5 rookie pick). Red flag: YAC+catch 2nd-best season 39.9 yd/game — among the worst in the top-100 DC RB dataset since 2017 (D.Harris, Sony Michel, Penny, CEH comps). One-hit-wonder risk remains; YAC consistency gap is the primary model concern.",
+    "evidence_summary": "Transfer: Notre Dame (2024, shared backfield with Jeremiyah Love) \u2192 Texas A&M (2025). Breakout at age 20 at Notre Dame despite competing for carries with Love \u2014 a top-tier RB1 prospect. Production suppression from shared backfield is mitigating context for volume metrics. Dynasty community ranks him RB2 of class (overall top-5 rookie pick). Red flag: YAC+catch 2nd-best season 39.9 yd/game \u2014 among the worst in the top-100 DC RB dataset since 2017 (D.Harris, Sony Michel, Penny, CEH comps). One-hit-wonder risk remains; YAC consistency gap is the primary model concern.",
     "context_source": "@ffdataroma research note 2026-04-08 + research agent 2026-04-09",
-    "dob": "2003-10-09"
+    "dob": "2003-10-09",
+    "breakout_strength": 0.219,
+    "breakout_confidence": 1.0,
+    "seasons_available": 2
   },
   {
     "player_id": "rb-mike-washington-jr",
@@ -136,8 +155,8 @@
     "school": "New Mexico State (2024) / Arkansas (2025)",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
     "young_breakout_flag": false,
     "career_mtf_per_touch": 0.165,
     "yac_plus_catch_2nd_best_season": 47.6,
@@ -152,9 +171,12 @@
       "senior_breakout_flag",
       "poor_ol_context"
     ],
-    "evidence_summary": "Transfer: New Mexico State 2024 (lower competition, weak OL) → Arkansas 2025. Arkansas 2025 OL ranked 110th/133 FBS in sacks allowed; mid-season emergency line adjustments. Production season (62.8 score) was behind one of the worst OLs in FBS. Elite combine profile (4.33 / 39.0 vert / 128 broad, RAS 66) — athleticism is genuine. Red flags: MTF/touch 0.165 (9th-worst Day 2 RB since 2014); YAC+catch 2nd-best season 47.6 yd/game. Scouting consensus: thrives in gap/power with defined lanes; struggles in space; 'often taken down by first tackler' (PFF). OL context is mitigating but doesn't fully explain away the contact quality gap. Gap/power scheme + functional OL is prerequisite for upside.",
+    "evidence_summary": "Transfer: New Mexico State 2024 (lower competition, weak OL) \u2192 Arkansas 2025. Arkansas 2025 OL ranked 110th/133 FBS in sacks allowed; mid-season emergency line adjustments. Production season (62.8 score) was behind one of the worst OLs in FBS. Elite combine profile (4.33 / 39.0 vert / 128 broad, RAS 66) \u2014 athleticism is genuine. Red flags: MTF/touch 0.165 (9th-worst Day 2 RB since 2014); YAC+catch 2nd-best season 47.6 yd/game. Scouting consensus: thrives in gap/power with defined lanes; struggles in space; 'often taken down by first tackler' (PFF). OL context is mitigating but doesn't fully explain away the contact quality gap. Gap/power scheme + functional OL is prerequisite for upside.",
     "context_source": "@ffdataroma research note 2026-04-08 + NFLDraftBuzz/PFF scouting 2026-04-08",
-    "dob": "2003-07-03"
+    "dob": "2003-07-03",
+    "breakout_strength": 0.1,
+    "breakout_confidence": 1.0,
+    "seasons_available": 2
   },
   {
     "player_id": "rb-nick-singleton",
@@ -170,7 +192,10 @@
     "context_flags": [],
     "evidence_summary": null,
     "context_source": "compute_breakout_age.py",
-    "dob": "2004-01-06"
+    "dob": "2004-01-06",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 2
   },
   {
     "player_id": "rb-jonah-coleman",
@@ -218,7 +243,7 @@
     "context_flags": [
       "limited_multi_season_data"
     ],
-    "evidence_summary": "Only 2026 RB to average 90+ total yards/game in 2+ seasons AND 70+ YAC+contact yards/game in 2+ seasons. Named comp screen (Day 2 P4 RBs since 2015, 60th+ pctile in TPRR + YAC/attempt + MTF/attempt): De'Von Achane, Joe Mixon, Javonte Williams, Jonah Coleman. Advanced efficiency context (2026-04-10 notes): YAC/reception 99.6th pctile, MTF/attempt 97th pctile, YPRR 93rd pctile — by all three advanced metrics, stacks closest to Jeremiyah Love among 2026 RBs. Qualifies for dual-threat RB flag (100+ rush YPG + 1.0+ receiving YPTPA/G; same list: Saquon, CMC, Bijan). Model bullish (+13.7 NFL edge) — comp class and advanced efficiency data reinforce that view.",
+    "evidence_summary": "Only 2026 RB to average 90+ total yards/game in 2+ seasons AND 70+ YAC+contact yards/game in 2+ seasons. Named comp screen (Day 2 P4 RBs since 2015, 60th+ pctile in TPRR + YAC/attempt + MTF/attempt): De'Von Achane, Joe Mixon, Javonte Williams, Jonah Coleman. Advanced efficiency context (2026-04-10 notes): YAC/reception 99.6th pctile, MTF/attempt 97th pctile, YPRR 93rd pctile \u2014 by all three advanced metrics, stacks closest to Jeremiyah Love among 2026 RBs. Qualifies for dual-threat RB flag (100+ rush YPG + 1.0+ receiving YPTPA/G; same list: Saquon, CMC, Bijan). Model bullish (+13.7 NFL edge) \u2014 comp class and advanced efficiency data reinforce that view.",
     "context_source": "@ffdataroma research note 2026-04-08; Day 2 RB 3-screen comp + advanced metrics notes 2026-04-10",
     "dual_threat_rb_flag": true,
     "exceptional_metrics": [
@@ -239,7 +264,10 @@
         "source": "notes_2026-04-10"
       }
     ],
-    "dob": "2003-08-20"
+    "dob": "2003-08-20",
+    "breakout_strength": 0.84,
+    "breakout_confidence": 1.0,
+    "seasons_available": 2
   },
   {
     "player_id": "wr-carnell-tate",
@@ -249,8 +277,8 @@
     "class_year": 2026,
     "early_declare_flag": true,
     "wr_r1r3_teammate_flag": true,
-    "breakout_age": 20,
-    "age_at_first_impact_season": 20,
+    "breakout_age": 19,
+    "age_at_first_impact_season": 19,
     "freshman_total_yards": 264,
     "sophomore_total_yards": 739,
     "freshman_impact_flag": false,
@@ -287,7 +315,7 @@
     ],
     "evidence_summary": "Verified Ohio State progression from 264 freshman total yards to 739 sophomore total yards (733 receiving + 6 rushing), then 854 total yards in 2025. 40 time (4.53): market narrative labels this 'too slow' but 2026 WR leaders by career receiving YPG ran: Puka Nacua 4.57, JSN 4.52, Amon-Ra St. Brown 4.59, CeeDee Lamb 4.50, George Pickens 4.47, Nico Collins 4.45. Tate at 4.53 is squarely in the middle of this group. Speed narrative is not supported by outcome data at the WR position.",
     "context_source": "Wikipedia Carnell Tate college statistics table (2023-2025 rows), retrieved 2026-03-29; speed comp via notes 2026-04-10",
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects",
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
     "first_down_per_route_run": 0.0982,
     "first_down_per_route_run_tier": "average",
     "first_down_per_route_run_source": "manual_seed_2026",
@@ -305,7 +333,10 @@
       "avoided_tackle_rate": 0.14,
       "yac_per_reception": 4.8
     },
-    "dob": "2005-01-19"
+    "dob": "2005-01-19",
+    "breakout_strength": 0.16,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
   },
   {
     "player_id": "wr-jordyn-tyson",
@@ -344,7 +375,7 @@
     "athletic_upside_flag": true,
     "path_disruption_flag": true,
     "combine_bench_reps_225": 26,
-    "combine_bench_note": "26 reps of 225lb at 2026 NFL Combine — one rep shy of WR all-time combine bench record (27). Skipped speed/jump drills due to hamstring; no 40/vert/broad available.",
+    "combine_bench_note": "26 reps of 225lb at 2026 NFL Combine \u2014 one rep shy of WR all-time combine bench record (27). Skipped speed/jump drills due to hamstring; no 40/vert/broad available.",
     "evidence_tags": [
       "young_breakout",
       "early_declare",
@@ -363,9 +394,9 @@
       "elite_1d_rr",
       "elite_man_yprr"
     ],
-    "evidence_summary": "Transfer path: 470 yards as true freshman at Colorado, injury-limited seasons 2023-24, then 2025 draft cycle at Arizona State. Combine: 26 bench reps (one shy of WR all-time record) — exceptional functional strength. Skipped speed/jump testing (hamstring). MTF 0.07 (lowest in class) — profile is separator/route-runner, not YAC threat.\nScreen usage context: college offense ran high screen volume with Tyson. screen_yard_share estimate ~40-50% of targets (proxy; precise yard-share not confirmed). screen_yard_share NOT encoded — film review overrides proxy concern (see below).\nFilm review (2026-04-11, user-conducted):\nvs Texas State: lined up slot vs press man, beats press at 5 yards off LOS, wins outside leverage, adjusts frame on 40-yard gain with 1-handed contested catch while safety crashes — press win + vertical tracking + contested finish.\nvs Baylor: boundary short side, corner route up the seam in Cover 2, splits DB and LB, reads space and attacks window — spatial feel and route utility, not gadget spam.\nvs TCU (post): strong side boundary vs soft man, wins inside leverage on post for 15-yard gain — leverage win creating viable throwing window.\nvs TCU (60-yd TD): weak side boundary vs press man, sells screen look initially then torches press over the top for 60-yard walk-in TD — weaponizes screen expectation, which is the key distinction: manufactured usage may have been deployment choice, not ceiling.\nModel philosophy note: screen-yard share = production-translation risk, not evidence that the receiver cannot play. Film confirms press wins, leverage wins, vertical tracking, contested catch ability, and boundary route success. Screen-heavy college deployment reflects offense exploiting an easy button on a better-than-deployed player. screen_yard_share penalty WILL NOT be applied unless hard data confirms and film evidence is re-evaluated. deep_yard_share remains a valid caution flag if confirmed.",
+    "evidence_summary": "Transfer path: 470 yards as true freshman at Colorado, injury-limited seasons 2023-24, then 2025 draft cycle at Arizona State. Combine: 26 bench reps (one shy of WR all-time record) \u2014 exceptional functional strength. Skipped speed/jump testing (hamstring). MTF 0.07 (lowest in class) \u2014 profile is separator/route-runner, not YAC threat.\nScreen usage context: college offense ran high screen volume with Tyson. screen_yard_share estimate ~40-50% of targets (proxy; precise yard-share not confirmed). screen_yard_share NOT encoded \u2014 film review overrides proxy concern (see below).\nFilm review (2026-04-11, user-conducted):\nvs Texas State: lined up slot vs press man, beats press at 5 yards off LOS, wins outside leverage, adjusts frame on 40-yard gain with 1-handed contested catch while safety crashes \u2014 press win + vertical tracking + contested finish.\nvs Baylor: boundary short side, corner route up the seam in Cover 2, splits DB and LB, reads space and attacks window \u2014 spatial feel and route utility, not gadget spam.\nvs TCU (post): strong side boundary vs soft man, wins inside leverage on post for 15-yard gain \u2014 leverage win creating viable throwing window.\nvs TCU (60-yd TD): weak side boundary vs press man, sells screen look initially then torches press over the top for 60-yard walk-in TD \u2014 weaponizes screen expectation, which is the key distinction: manufactured usage may have been deployment choice, not ceiling.\nModel philosophy note: screen-yard share = production-translation risk, not evidence that the receiver cannot play. Film confirms press wins, leverage wins, vertical tracking, contested catch ability, and boundary route success. Screen-heavy college deployment reflects offense exploiting an easy button on a better-than-deployed player. screen_yard_share penalty WILL NOT be applied unless hard data confirms and film evidence is re-evaluated. deep_yard_share remains a valid caution flag if confirmed.",
     "context_source": "Wikipedia Jordyn Tyson career summary + arizonasports.com 2026 NFL Combine report, retrieved 2026-04-08; film review notes 2026-04-11.",
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects",
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
     "first_down_per_route_run": 0.1249,
     "first_down_per_route_run_tier": "elite",
     "first_down_per_route_run_source": "manual_seed_2026",
@@ -383,7 +414,10 @@
       "avoided_tackle_rate": 0.082,
       "yac_per_reception": 5.1
     },
-    "dob": "2004-08-12"
+    "dob": "2004-08-12",
+    "breakout_strength": 0.48,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
   },
   {
     "player_id": "wr-makai-lemon",
@@ -432,9 +466,9 @@
       "elite_1d_rr",
       "elite_man_yprr"
     ],
-    "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season. R1 P4 WR since 2021 with 75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR — same threshold tier as Ja'Marr Chase, Malik Nabers, Jaylen Waddle, Garrett Wilson, Chris Olave, JSN, Jordan Addison. Combine: vert 40.0\", broad 129\". MTF 0.25 (2nd in class). Model rank 8 is supported.",
+    "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season. R1 P4 WR since 2021 with 75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR \u2014 same threshold tier as Ja'Marr Chase, Malik Nabers, Jaylen Waddle, Garrett Wilson, Chris Olave, JSN, Jordan Addison. Combine: vert 40.0\", broad 129\". MTF 0.25 (2nd in class). Model rank 8 is supported.",
     "context_source": "Wikipedia Makai Lemon stats + @ffdataroma research note 2026-04-08",
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects",
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
     "first_down_per_route_run": 0.1295,
     "first_down_per_route_run_tier": "elite",
     "first_down_per_route_run_source": "manual_seed_2026",
@@ -452,7 +486,10 @@
       "avoided_tackle_rate": 0.263,
       "yac_per_reception": 6.8
     },
-    "dob": "2004-06-04"
+    "dob": "2004-06-04",
+    "breakout_strength": 0.14,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
   },
   {
     "player_id": "wr-kc-concepcion",
@@ -502,7 +539,7 @@
     ],
     "evidence_summary": "Verified collegiate production: 1,159 total yards as a freshman (839 receiving + 320 rushing) and 496 as a sophomore (460 receiving + 36 rushing), indicating a real year-two production dip while retaining 70 career rush attempts as a multi-phase usage signal.",
     "context_source": "Wikipedia Kevin Concepcion stats table (2023-2025 season rows) and Sports-Reference-linked career totals, retrieved 2026-03-29.",
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects",
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
     "first_down_per_route_run": 0.0968,
     "first_down_per_route_run_tier": "average",
     "first_down_per_route_run_source": "manual_seed_2026",
@@ -520,490 +557,10 @@
       "avoided_tackle_rate": 0.21,
       "yac_per_reception": 6.6
     },
-    "dob": "2004-09-24"
-  },
-  {
-    "player_id": "wr-chris-brazzell-ii",
-    "player_name": "Chris Brazzell II",
-    "position": "WR",
-    "school": "Tennessee",
-    "class_year": 2026,
-    "early_declare_flag": null,
-    "breakout_age": 20,
-    "age_at_first_impact_season": 20,
-    "young_breakout_flag": true,
-    "evidence_tags": [
-      "young_breakout"
-    ],
-    "context_flags": [],
-    "evidence_summary": null,
-    "context_source": "compute_breakout_age.py",
-    "missed_tackles_forced_per_reception": 0.04,
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects",
-    "first_down_per_route_run": 0.0994,
-    "first_down_per_route_run_tier": "average",
-    "first_down_per_route_run_source": "manual_seed_2026",
-    "advanced_receiving_stats": {
-      "source": "fantasy_points_data_2026",
-      "qbr_when_targeted": 114.8,
-      "career_yprr": 2.09,
-      "zone_yprr": 2.29,
-      "man_yprr": 1.82,
-      "target_rate": 0.219,
-      "open_target_rate": 0.778,
-      "contested_catch_rate": 0.417,
-      "one_d_rate": 0.099,
-      "td_rate": 0.016,
-      "avoided_tackle_rate": 0.067,
-      "yac_per_reception": 3.4
-    },
-    "dob": "2003-10-23"
-  },
-  {
-    "player_id": "wr-denzel-boston",
-    "player_name": "Denzel Boston",
-    "position": "WR",
-    "school": "Washington",
-    "class_year": 2026,
-    "early_declare_flag": true,
-    "breakout_age": 20,
-    "age_at_first_impact_season": 20,
-    "freshman_total_yards": null,
-    "sophomore_total_yards": null,
-    "freshman_impact_flag": null,
-    "young_breakout_flag": true,
-    "career_yards_per_route_run": null,
-    "best_season_yprr": null,
-    "worst_season_yprr": null,
-    "seasons_over_2_3_yprr": null,
-    "single_season_efficiency_dip_flag": null,
-    "multi_season_efficiency_flag": null,
-    "injury_affected_season_count": 0,
-    "injury_adjusted_profile_flag": false,
-    "broken_offense_context_flag": null,
-    "suppressed_context_season_count": null,
-    "rush_attempts_or_rush_usage_signal": null,
-    "rushing_production_signal": null,
-    "missed_tackles_forced_per_reception": 0.11,
-    "yac_proxy_per_reception": null,
-    "contested_catch_rate": null,
-    "inside_out_versatility_flag": null,
-    "man_zone_versatility_flag": null,
-    "power4_early_contributor_flag": null,
-    "career_receiving_market_share": null,
-    "career_mtf_per_attempt": null,
-    "freshman_ypc": null,
-    "athletic_upside_flag": null,
-    "path_disruption_flag": false,
-    "evidence_tags": [
-      "young_breakout",
-      "early_declare"
-    ],
-    "context_flags": [
-      "limited_multi_season_data"
-    ],
-    "evidence_summary": "Sourced profile confirms 62-881-11 in 2025 and only 66 total receiving yards across his first two college seasons combined; year-by-year freshman/sophomore split and combine-verified testing context are not explicitly published in currently available in-repo sources.",
-    "context_source": "Wikipedia Denzel Boston college career summary and pre-draft measurables section, retrieved 2026-03-29.",
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects",
-    "first_down_per_route_run": 0.1135,
-    "first_down_per_route_run_tier": "strong",
-    "first_down_per_route_run_source": "manual_seed_2026",
-    "advanced_receiving_stats": {
-      "source": "fantasy_points_data_2026",
-      "qbr_when_targeted": 106.7,
-      "career_yprr": 2.02,
-      "zone_yprr": 1.79,
-      "man_yprr": 2.34,
-      "target_rate": 0.232,
-      "open_target_rate": 0.824,
-      "contested_catch_rate": 0.611,
-      "one_d_rate": 0.114,
-      "td_rate": 0.023,
-      "avoided_tackle_rate": 0.114,
-      "yac_per_reception": 5.0
-    },
-    "dob": "2003-12-06"
-  },
-  {
-    "player_id": "wr-chris-bell",
-    "player_name": "Chris Bell",
-    "position": "WR",
-    "school": "Louisville",
-    "class_year": 2026,
-    "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
-    "evidence_tags": [
-      "acl_injury_predraft"
-    ],
-    "context_flags": [
-      "injury_context",
-      "pre_draft_acl_march_2026",
-      "low_1d_rr_below_avg"
-    ],
-    "evidence_summary": "Pre-draft ACL tear (March 2026). Was projected WR1-3 of the 2026 rookie class pre-injury; dynasty community had him in top-3 WR conversation. Post-ACL dynasty rank drops to approximately WR7-10 of class (KTC ~WR60 overall). Injury severely compresses first-year upside; year-1 contribution unlikely. Long-term profile may be intact if recovery is clean. Model scores reflect pre-injury production and combine profile, not injury-adjusted dynasty value — consensus_delta overstates model edge.",
-    "context_source": "Research agent 2026-04-09 (KeepTradeCut / Dynasty Nerds / PlayerProfiler post-injury consensus)",
-    "missed_tackles_forced_per_reception": 0.17,
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects",
-    "first_down_per_route_run": 0.0891,
-    "first_down_per_route_run_tier": "below_average",
-    "first_down_per_route_run_source": "manual_seed_2026",
-    "advanced_receiving_stats": {
-      "source": "fantasy_points_data_2026",
-      "qbr_when_targeted": 113.2,
-      "career_yprr": 2.01,
-      "zone_yprr": 1.94,
-      "man_yprr": 2.25,
-      "target_rate": 0.207,
-      "open_target_rate": 0.735,
-      "contested_catch_rate": 0.559,
-      "one_d_rate": 0.089,
-      "td_rate": 0.011,
-      "avoided_tackle_rate": 0.166,
-      "yac_per_reception": 5.8
-    },
-    "dob": "2004-06-07"
-  },
-  {
-    "player_id": "wr-elijah-sarratt",
-    "player_name": "Elijah Sarratt",
-    "position": "WR",
-    "school": "Indiana",
-    "class_year": 2026,
-    "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
-    "evidence_tags": [
-      "elite_efficiency_tier",
-      "non_r1_p4_wr_comps",
-      "late_breakout"
-    ],
-    "context_flags": [
-      "senior_breakout_flag",
-      "elite_1d_rr",
-      "elite_man_yprr"
-    ],
-    "evidence_summary": "75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR (non-R1 P4 WR since 2021) — matches Puka Nacua, Tank Dell, Troy Franklin efficiency tier. Nacua comp is strongest: 43-48 rec/yr at BYU (modest volume), 18.3 YPC, 128.0 QB rating when targeted — then 105 catches in NFL year 1 as a 5th-round pick. Efficiency held when target share increased. Sarratt profile: low college volume, elite per-route efficiency — same archetype. Named comp screen (non-R1 P4 WR since 2020 with career 75th+ pctile passer rating when targeted + 50th+ pctile TPRR + BOA < 20): George Pickens, Antonio Williams, Elijah Sarratt, Josh Downs, Troy Franklin, Puka Nacua. FP/G floor in years 1-3: 7.4 (Franklin); 3 of 6 above 10+ FP/G. Late breakout (BOA 21) is model red flag; Aiyuk/Watson are precedents for senior-breakout success, but base rate is poor. MTF 0.13 (mid-tier). Model gap: volume-weighted age-adjusted production (18.2 age-adj, blend → 38) severely underweights efficiency; CFBD raw production score 67.6 is more representative.",
-    "context_source": "@ffdataroma research note 2026-04-08 + @ScottBarrettDFB PFF chart + NCAA.com Puka Nacua stats",
-    "missed_tackles_forced_per_reception": 0.13,
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects",
-    "first_down_per_route_run": 0.1246,
-    "first_down_per_route_run_tier": "elite",
-    "first_down_per_route_run_source": "manual_seed_2026",
-    "advanced_receiving_stats": {
-      "source": "fantasy_points_data_2026",
-      "qbr_when_targeted": 148.0,
-      "career_yprr": 2.6,
-      "zone_yprr": 2.77,
-      "man_yprr": 3.0,
-      "target_rate": 0.235,
-      "open_target_rate": 0.726,
-      "contested_catch_rate": 0.6,
-      "one_d_rate": 0.127,
-      "td_rate": 0.032,
-      "avoided_tackle_rate": 0.122,
-      "yac_per_reception": 5.1
-    },
-    "dob": "2003-05-28"
-  },
-  {
-    "player_id": "te-kenyon-sadiq",
-    "player_name": "Kenyon Sadiq",
-    "position": "TE",
-    "school": "Oregon",
-    "class_year": 2026,
-    "early_declare_flag": true,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 20,
-    "young_breakout_flag": false,
-    "evidence_tags": [
-      "elite_athleticism",
-      "early_declare",
-      "elite_production"
-    ],
-    "context_flags": [],
-    "evidence_summary": "Oregon TE. 100.0 SPORQ — top composite athleticism in the 2026 TE class (no other TE clears 90th percentile). Historic SPORQ outlier; at TE where athleticism is more outcome-predictive than at WR, this is a ceiling-expanding signal. Day 2 draft capital (85 proxy). Production context limited; SPORQ-first profile warranting athletic ceiling bonus.",
-    "context_source": "compute_breakout_age.py; SPORQ 2026 TE class notes 2026-04-10",
-    "exceptional_metrics": [
-      {
-        "metric": "sporq_percentile",
-        "value": 100.0,
-        "context": "100.0 SPORQ — perfect composite athleticism score. Historic outlier at the TE position; no other TE in the 2026 class clears 90th percentile. Best SPORQ in this TE draft class.",
-        "percentile_tier": "historic",
-        "alpha_bonus_eligible": true,
-        "source": "notes_2026-04-10"
-      }
-    ],
-    "dob": "2005-03-04"
-  },
-  {
-    "player_id": "te-max-klare",
-    "player_name": "Max Klare",
-    "position": "TE",
-    "school": "Ohio State",
-    "class_year": 2026,
-    "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
-    "evidence_tags": [],
-    "context_flags": [],
-    "evidence_summary": null,
-    "context_source": "compute_breakout_age.py",
-    "dob": "2003-07-08"
-  },
-  {
-    "player_id": "te-oscar-delp",
-    "player_name": "Oscar Delp",
-    "position": "TE",
-    "school": "Georgia",
-    "class_year": 2026,
-    "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
-    "evidence_tags": [],
-    "context_flags": [],
-    "evidence_summary": null,
-    "context_source": "compute_breakout_age.py",
-    "dob": "2003-07-04"
-  },
-  {
-    "player_id": "te-eli-stowers",
-    "player_name": "Eli Stowers",
-    "position": "TE",
-    "school": "Vanderbilt",
-    "class_year": 2026,
-    "early_declare_flag": true,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
-    "evidence_tags": [
-      "elite_athleticism",
-      "early_declare"
-    ],
-    "context_flags": [],
-    "evidence_summary": "Vanderbilt TE. 99.0 SPORQ — 2nd best in 2026 TE class behind Sadiq (100.0). Elite composite athleticism at TE where SPORQ is a meaningful upside signal. Early declare with 2026 draft capital. Production profile limited at Vanderbilt; athletic ceiling warrants a modest bonus relative to production-only score.",
-    "context_source": "compute_breakout_age.py; SPORQ 2026 TE class notes 2026-04-10",
-    "exceptional_metrics": [
-      {
-        "metric": "sporq_percentile",
-        "value": 99.0,
-        "context": "99.0 SPORQ — elite composite athleticism at the TE position. 2nd best SPORQ in the 2026 TE class behind Sadiq (100.0). Consistent with athletic ceiling upside at the position.",
-        "percentile_tier": "elite",
-        "alpha_bonus_eligible": true,
-        "source": "notes_2026-04-10"
-      }
-    ],
-    "dob": "2003-04-15"
-  },
-  {
-    "player_id": "wr-antonio-williams",
-    "player_name": "Antonio Williams",
-    "position": "WR",
-    "school": "Clemson",
-    "class_year": 2026,
-    "early_declare_flag": null,
-    "breakout_age": 19,
-    "age_at_first_impact_season": 19,
-    "freshman_total_yards": 600,
-    "sophomore_total_yards": null,
-    "freshman_impact_flag": true,
-    "young_breakout_flag": true,
-    "career_yards_per_route_run": 2.94,
-    "best_season_yprr": 2.94,
-    "worst_season_yprr": null,
-    "seasons_over_2_3_yprr": 1,
-    "single_season_efficiency_dip_flag": null,
-    "multi_season_efficiency_flag": null,
-    "injury_affected_season_count": 0,
-    "injury_adjusted_profile_flag": false,
-    "broken_offense_context_flag": null,
-    "suppressed_context_season_count": null,
-    "rush_attempts_or_rush_usage_signal": null,
-    "rushing_production_signal": null,
-    "missed_tackles_forced_per_reception": 0.15,
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) — College Career MTF per Reception, 2026 WR prospects",
-    "yac_proxy_per_reception": null,
-    "contested_catch_rate": 0.555,
-    "inside_out_versatility_flag": true,
-    "man_zone_versatility_flag": true,
-    "power4_early_contributor_flag": true,
-    "career_receiving_market_share": null,
-    "career_mtf_per_attempt": null,
-    "freshman_ypc": null,
-    "athletic_upside_flag": null,
-    "path_disruption_flag": false,
-    "evidence_tags": [
-      "young_breakout",
-      "elite_early_producer",
-      "inside_out_versatility",
-      "elite_efficiency_tier",
-      "non_r1_p4_wr_comps"
-    ],
-    "context_flags": [
-      "limited_multi_season_data",
-      "synthetic_profile_pending_cfbd"
-    ],
-    "evidence_summary": "Age-19 freshman breakout (600 yards, Clemson/ACC, Power 4). Career 208 rec / 2,336 yds / 21 TD (PFF). YPRR 2.94 (career, elite efficiency tier); 124.1 passer rating when targeted (81st pct), 10.1% 1D/route run. 55.5% contested catch rate on 20+ aDOT. Inside-outside versatility despite slot label; identical efficiency in slot and out-wide. 75th pct vs man, 64th pct vs zone (Reception Perception). PFF WR11 projection, 2nd-round grade. Named comp screen (non-R1 P4 WR since 2020 with career 75th+ pctile passer rating when targeted + 50th+ pctile TPRR + BOA < 20): George Pickens, Antonio Williams, Elijah Sarratt, Josh Downs, Troy Franklin, Puka Nacua. FP/G floor in years 1-3: 7.4 (Franklin); 3 of 6 above 10+ FP/G. Route profiles estimated pending CFBD fetch.",
-    "context_source": "@ffdataroma scouting note + @ScottBarrettDFB PFF chart, 2026-04-07",
-    "first_down_per_route_run": 0.0948,
-    "first_down_per_route_run_tier": "average",
-    "first_down_per_route_run_source": "manual_seed_2026",
-    "advanced_receiving_stats": {
-      "source": "fantasy_points_data_2026",
-      "qbr_when_targeted": 124.1,
-      "career_yprr": 1.97,
-      "zone_yprr": 1.7,
-      "man_yprr": 2.61,
-      "target_rate": 0.233,
-      "open_target_rate": 0.815,
-      "contested_catch_rate": 0.49,
-      "one_d_rate": 0.095,
-      "td_rate": 0.018,
-      "avoided_tackle_rate": 0.15,
-      "yac_per_reception": 5.3
-    },
-    "dob": "2004-07-14"
-  },
-  {
-    "player_id": "rb-kaytron-allen",
-    "player_name": "Kaytron Allen",
-    "position": "RB",
-    "school": "Penn State",
-    "class_year": 2026,
-    "early_declare_flag": null,
-    "breakout_age": 20,
-    "age_at_first_impact_season": 20,
-    "young_breakout_flag": true,
-    "freshman_total_yards": null,
-    "freshman_impact_flag": false,
-    "career_yards_per_route_run": 1.74,
-    "best_season_yprr": 1.74,
-    "evidence_tags": [
-      "multi_season_efficiency",
-      "rushing_signal",
-      "yac_signal"
-    ],
-    "context_flags": [],
-    "evidence_summary": "54-game career, 4167 rush yards (5.4 YPC), 39 TDs, 661 rec yards, 1.74 YPRR. 24.0% avoided tackle rate. High-volume Penn State back with elite receiving chops.",
-    "sophomore_total_yards": null,
-    "single_season_efficiency_dip_flag": null,
-    "multi_season_efficiency_flag": true,
-    "injury_affected_season_count": 0,
-    "injury_adjusted_profile_flag": false,
-    "broken_offense_context_flag": null,
-    "suppressed_context_season_count": null,
-    "rush_attempts_or_rush_usage_signal": null,
-    "rushing_production_signal": null,
-    "missed_tackles_forced_per_reception": null,
-    "yac_proxy_per_reception": null,
-    "contested_catch_rate": null,
-    "inside_out_versatility_flag": null,
-    "man_zone_versatility_flag": null,
-    "power4_early_contributor_flag": true,
-    "career_receiving_market_share": null,
-    "career_mtf_per_attempt": null,
-    "freshman_ypc": null,
-    "athletic_upside_flag": null,
-    "path_disruption_flag": false,
-    "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart, 2026-04-07",
-    "dob": "2003-01-08"
-  },
-  {
-    "player_id": "rb-seth-mcgowan",
-    "player_name": "Seth McGowan",
-    "position": "RB",
-    "school": "Kentucky",
-    "class_year": 2026,
-    "early_declare_flag": null,
-    "breakout_age": 20,
-    "age_at_first_impact_season": 20,
-    "young_breakout_flag": true,
-    "freshman_total_yards": null,
-    "freshman_impact_flag": false,
-    "career_yards_per_route_run": 1.56,
-    "best_season_yprr": 1.56,
-    "evidence_tags": [
-      "multi_season_efficiency",
-      "yac_signal"
-    ],
-    "context_flags": [
-      "limited_multi_season_data"
-    ],
-    "evidence_summary": "31-game career (limited volume), 1924 rush yards (5.1 YPC), 18 TDs, 602 rec yards. 1.56 YPRR, 20.3% target rate — strong receiving back. 25.4% avoided tackle rate.",
-    "sophomore_total_yards": null,
-    "single_season_efficiency_dip_flag": null,
-    "multi_season_efficiency_flag": true,
-    "injury_affected_season_count": 0,
-    "injury_adjusted_profile_flag": false,
-    "broken_offense_context_flag": null,
-    "suppressed_context_season_count": null,
-    "rush_attempts_or_rush_usage_signal": null,
-    "rushing_production_signal": null,
-    "missed_tackles_forced_per_reception": null,
-    "yac_proxy_per_reception": null,
-    "contested_catch_rate": null,
-    "inside_out_versatility_flag": null,
-    "man_zone_versatility_flag": null,
-    "power4_early_contributor_flag": true,
-    "career_receiving_market_share": null,
-    "career_mtf_per_attempt": null,
-    "freshman_ypc": null,
-    "athletic_upside_flag": null,
-    "path_disruption_flag": false,
-    "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart, 2026-04-07",
-    "dob": "2000-10-17"
-  },
-  {
-    "player_id": "rb-emmett-johnson",
-    "player_name": "Emmett Johnson",
-    "position": "RB",
-    "school": "Nebraska",
-    "class_year": 2026,
-    "early_declare_flag": null,
-    "breakout_age": 20,
-    "age_at_first_impact_season": 20,
-    "young_breakout_flag": false,
-    "freshman_total_yards": null,
-    "freshman_impact_flag": false,
-    "career_yards_per_route_run": 1.15,
-    "best_season_yprr": 1.15,
-    "evidence_tags": [
-      "multi_season_efficiency",
-      "rushing_signal",
-      "dual_threat_rb"
-    ],
-    "context_flags": [
-      "yac_consistency_concern"
-    ],
-    "evidence_summary": "42-game career, 2458 rush yards (5.4 YPC), 15 TDs. 1.15 YPRR, 27.5% avoided tackle rate. Efficient runner, limited receiving role. Qualifies for dual-threat RB flag (100+ rush YPG + 1.0+ receiving YPTPA/G; same list as Saquon, CMC, Bijan — 2026 members: Skattebo, Hampton, Emmett Johnson). MTF/attempt 88th percentile — notable but sub-elite (elite threshold: 90th+). Final-season YACO/A: 2.95 — tied 3rd-worst among R3-4 P4/5 RBs since 2017 (comp group: Gallman 2.98, Conner 2.95*, Johnson 2.95, Shipley 2.92, Davis-Price 2.80, Kelley 2.80, Hill 2.68, Ballage 2.46, Corum 2.42; *Conner underwent chemotherapy). Dual-threat qualification is a positive signal; YACO/A comp trend toward poor NFL outcomes remains the key concern. Model skepticism (rank 26-27) still warranted.",
-    "sophomore_total_yards": null,
-    "single_season_efficiency_dip_flag": null,
-    "multi_season_efficiency_flag": true,
-    "injury_affected_season_count": 0,
-    "injury_adjusted_profile_flag": false,
-    "broken_offense_context_flag": null,
-    "suppressed_context_season_count": null,
-    "rush_attempts_or_rush_usage_signal": null,
-    "rushing_production_signal": null,
-    "missed_tackles_forced_per_reception": null,
-    "yac_proxy_per_reception": null,
-    "contested_catch_rate": null,
-    "inside_out_versatility_flag": null,
-    "man_zone_versatility_flag": null,
-    "power4_early_contributor_flag": true,
-    "career_receiving_market_share": null,
-    "career_mtf_per_attempt": 0.28,
-    "freshman_ypc": null,
-    "athletic_upside_flag": null,
-    "path_disruption_flag": false,
-    "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart 2026-04-07; dual-threat + MTF notes 2026-04-10",
-    "dual_threat_rb_flag": true,
-    "exceptional_metrics": [],
-    "dob": "2003-10-10"
+    "dob": "2004-09-24",
+    "breakout_strength": 0.14,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
   },
   {
     "player_id": "wr-brenen-thompson",
@@ -1052,7 +609,7 @@
       "size_risk",
       "low_1d_rr_below_avg"
     ],
-    "evidence_summary": "Elite speed archetype — 4.26 40-yard dash (fastest at 2026 combine, fastest WR since John Ross 4.22 in 2017). Frame concern: 5'9\", 164lb — durability and contested-catch limitations at NFL level. Mississippi State (SEC, Power 4). No jump testing data. Production profile pending CFBD fetch. Model may undervalue if route efficiency/YAC data not available; speed-only profile warrants dynasty discount until target share confirmed.",
+    "evidence_summary": "Elite speed archetype \u2014 4.26 40-yard dash (fastest at 2026 combine, fastest WR since John Ross 4.22 in 2017). Frame concern: 5'9\", 164lb \u2014 durability and contested-catch limitations at NFL level. Mississippi State (SEC, Power 4). No jump testing data. Production profile pending CFBD fetch. Model may undervalue if route efficiency/YAC data not available; speed-only profile warrants dynasty discount until target share confirmed.",
     "context_source": "2026 NFL Combine results (ESPN/NFL.com), retrieved 2026-04-08",
     "first_down_per_route_run": 0.0807,
     "first_down_per_route_run_tier": "below_average",
@@ -1071,7 +628,529 @@
       "avoided_tackle_rate": 0.167,
       "yac_per_reception": 4.9
     },
-    "dob": "2003-07-25"
+    "dob": "2003-07-25",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 2
+  },
+  {
+    "player_id": "wr-chris-brazzell-ii",
+    "player_name": "Chris Brazzell II",
+    "position": "WR",
+    "school": "Tennessee",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
+    "evidence_tags": [
+      "young_breakout"
+    ],
+    "context_flags": [],
+    "evidence_summary": null,
+    "context_source": "compute_breakout_age.py",
+    "missed_tackles_forced_per_reception": 0.04,
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
+    "first_down_per_route_run": 0.0994,
+    "first_down_per_route_run_tier": "average",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 114.8,
+      "career_yprr": 2.09,
+      "zone_yprr": 2.29,
+      "man_yprr": 1.82,
+      "target_rate": 0.219,
+      "open_target_rate": 0.778,
+      "contested_catch_rate": 0.417,
+      "one_d_rate": 0.099,
+      "td_rate": 0.016,
+      "avoided_tackle_rate": 0.067,
+      "yac_per_reception": 3.4
+    },
+    "dob": "2003-10-23",
+    "breakout_strength": 0.0,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
+  },
+  {
+    "player_id": "wr-denzel-boston",
+    "player_name": "Denzel Boston",
+    "position": "WR",
+    "school": "Washington",
+    "class_year": 2026,
+    "early_declare_flag": true,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "freshman_total_yards": null,
+    "sophomore_total_yards": null,
+    "freshman_impact_flag": null,
+    "young_breakout_flag": true,
+    "career_yards_per_route_run": null,
+    "best_season_yprr": null,
+    "worst_season_yprr": null,
+    "seasons_over_2_3_yprr": null,
+    "single_season_efficiency_dip_flag": null,
+    "multi_season_efficiency_flag": null,
+    "injury_affected_season_count": 0,
+    "injury_adjusted_profile_flag": false,
+    "broken_offense_context_flag": null,
+    "suppressed_context_season_count": null,
+    "rush_attempts_or_rush_usage_signal": null,
+    "rushing_production_signal": null,
+    "missed_tackles_forced_per_reception": 0.11,
+    "yac_proxy_per_reception": null,
+    "contested_catch_rate": null,
+    "inside_out_versatility_flag": null,
+    "man_zone_versatility_flag": null,
+    "power4_early_contributor_flag": null,
+    "career_receiving_market_share": null,
+    "career_mtf_per_attempt": null,
+    "freshman_ypc": null,
+    "athletic_upside_flag": null,
+    "path_disruption_flag": false,
+    "evidence_tags": [
+      "young_breakout",
+      "early_declare"
+    ],
+    "context_flags": [
+      "limited_multi_season_data"
+    ],
+    "evidence_summary": "Sourced profile confirms 62-881-11 in 2025 and only 66 total receiving yards across his first two college seasons combined; year-by-year freshman/sophomore split and combine-verified testing context are not explicitly published in currently available in-repo sources.",
+    "context_source": "Wikipedia Denzel Boston college career summary and pre-draft measurables section, retrieved 2026-03-29.",
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
+    "first_down_per_route_run": 0.1135,
+    "first_down_per_route_run_tier": "strong",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 106.7,
+      "career_yprr": 2.02,
+      "zone_yprr": 1.79,
+      "man_yprr": 2.34,
+      "target_rate": 0.232,
+      "open_target_rate": 0.824,
+      "contested_catch_rate": 0.611,
+      "one_d_rate": 0.114,
+      "td_rate": 0.023,
+      "avoided_tackle_rate": 0.114,
+      "yac_per_reception": 5.0
+    },
+    "dob": "2003-12-06",
+    "breakout_strength": 0.3,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
+  },
+  {
+    "player_id": "wr-chris-bell",
+    "player_name": "Chris Bell",
+    "position": "WR",
+    "school": "Louisville",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "acl_injury_predraft"
+    ],
+    "context_flags": [
+      "injury_context",
+      "pre_draft_acl_march_2026",
+      "low_1d_rr_below_avg"
+    ],
+    "evidence_summary": "Pre-draft ACL tear (March 2026). Was projected WR1-3 of the 2026 rookie class pre-injury; dynasty community had him in top-3 WR conversation. Post-ACL dynasty rank drops to approximately WR7-10 of class (KTC ~WR60 overall). Injury severely compresses first-year upside; year-1 contribution unlikely. Long-term profile may be intact if recovery is clean. Model scores reflect pre-injury production and combine profile, not injury-adjusted dynasty value \u2014 consensus_delta overstates model edge.",
+    "context_source": "Research agent 2026-04-09 (KeepTradeCut / Dynasty Nerds / PlayerProfiler post-injury consensus)",
+    "missed_tackles_forced_per_reception": 0.17,
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
+    "first_down_per_route_run": 0.0891,
+    "first_down_per_route_run_tier": "below_average",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 113.2,
+      "career_yprr": 2.01,
+      "zone_yprr": 1.94,
+      "man_yprr": 2.25,
+      "target_rate": 0.207,
+      "open_target_rate": 0.735,
+      "contested_catch_rate": 0.559,
+      "one_d_rate": 0.089,
+      "td_rate": 0.011,
+      "avoided_tackle_rate": 0.166,
+      "yac_per_reception": 5.8
+    },
+    "dob": "2004-06-07",
+    "breakout_strength": 0.3,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
+  },
+  {
+    "player_id": "wr-elijah-sarratt",
+    "player_name": "Elijah Sarratt",
+    "position": "WR",
+    "school": "Indiana",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "elite_efficiency_tier",
+      "non_r1_p4_wr_comps",
+      "late_breakout"
+    ],
+    "context_flags": [
+      "senior_breakout_flag",
+      "elite_1d_rr",
+      "elite_man_yprr"
+    ],
+    "evidence_summary": "75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR (non-R1 P4 WR since 2021) \u2014 matches Puka Nacua, Tank Dell, Troy Franklin efficiency tier. Nacua comp is strongest: 43-48 rec/yr at BYU (modest volume), 18.3 YPC, 128.0 QB rating when targeted \u2014 then 105 catches in NFL year 1 as a 5th-round pick. Efficiency held when target share increased. Sarratt profile: low college volume, elite per-route efficiency \u2014 same archetype. Named comp screen (non-R1 P4 WR since 2020 with career 75th+ pctile passer rating when targeted + 50th+ pctile TPRR + BOA < 20): George Pickens, Antonio Williams, Elijah Sarratt, Josh Downs, Troy Franklin, Puka Nacua. FP/G floor in years 1-3: 7.4 (Franklin); 3 of 6 above 10+ FP/G. Late breakout (BOA 21) is model red flag; Aiyuk/Watson are precedents for senior-breakout success, but base rate is poor. MTF 0.13 (mid-tier). Model gap: volume-weighted age-adjusted production (18.2 age-adj, blend \u2192 38) severely underweights efficiency; CFBD raw production score 67.6 is more representative.",
+    "context_source": "@ffdataroma research note 2026-04-08 + @ScottBarrettDFB PFF chart + NCAA.com Puka Nacua stats",
+    "missed_tackles_forced_per_reception": 0.13,
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
+    "first_down_per_route_run": 0.1246,
+    "first_down_per_route_run_tier": "elite",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 148.0,
+      "career_yprr": 2.6,
+      "zone_yprr": 2.77,
+      "man_yprr": 3.0,
+      "target_rate": 0.235,
+      "open_target_rate": 0.726,
+      "contested_catch_rate": 0.6,
+      "one_d_rate": 0.127,
+      "td_rate": 0.032,
+      "avoided_tackle_rate": 0.122,
+      "yac_per_reception": 5.1
+    },
+    "dob": "2003-05-28",
+    "breakout_strength": 0.18,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
+  },
+  {
+    "player_id": "te-kenyon-sadiq",
+    "player_name": "Kenyon Sadiq",
+    "position": "TE",
+    "school": "Oregon",
+    "class_year": 2026,
+    "early_declare_flag": true,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
+    "evidence_tags": [
+      "elite_athleticism",
+      "early_declare",
+      "elite_production"
+    ],
+    "context_flags": [],
+    "evidence_summary": "Oregon TE. 100.0 SPORQ \u2014 top composite athleticism in the 2026 TE class (no other TE clears 90th percentile). Historic SPORQ outlier; at TE where athleticism is more outcome-predictive than at WR, this is a ceiling-expanding signal. Day 2 draft capital (85 proxy). Production context limited; SPORQ-first profile warranting athletic ceiling bonus.",
+    "context_source": "compute_breakout_age.py; SPORQ 2026 TE class notes 2026-04-10",
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 100.0,
+        "context": "100.0 SPORQ \u2014 perfect composite athleticism score. Historic outlier at the TE position; no other TE in the 2026 class clears 90th percentile. Best SPORQ in this TE draft class.",
+        "percentile_tier": "historic",
+        "alpha_bonus_eligible": true,
+        "source": "notes_2026-04-10"
+      }
+    ],
+    "dob": "2005-03-04",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 2
+  },
+  {
+    "player_id": "te-max-klare",
+    "player_name": "Max Klare",
+    "position": "TE",
+    "school": "Ohio State",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
+    "evidence_tags": [],
+    "context_flags": [],
+    "evidence_summary": null,
+    "context_source": "compute_breakout_age.py",
+    "dob": "2003-07-08",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 2
+  },
+  {
+    "player_id": "te-oscar-delp",
+    "player_name": "Oscar Delp",
+    "position": "TE",
+    "school": "Georgia",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
+    "evidence_tags": [],
+    "context_flags": [],
+    "evidence_summary": null,
+    "context_source": "compute_breakout_age.py",
+    "dob": "2003-07-04",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 2
+  },
+  {
+    "player_id": "te-eli-stowers",
+    "player_name": "Eli Stowers",
+    "position": "TE",
+    "school": "Vanderbilt",
+    "class_year": 2026,
+    "early_declare_flag": true,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "elite_athleticism",
+      "early_declare"
+    ],
+    "context_flags": [],
+    "evidence_summary": "Vanderbilt TE. 99.0 SPORQ \u2014 2nd best in 2026 TE class behind Sadiq (100.0). Elite composite athleticism at TE where SPORQ is a meaningful upside signal. Early declare with 2026 draft capital. Production profile limited at Vanderbilt; athletic ceiling warrants a modest bonus relative to production-only score.",
+    "context_source": "compute_breakout_age.py; SPORQ 2026 TE class notes 2026-04-10",
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 99.0,
+        "context": "99.0 SPORQ \u2014 elite composite athleticism at the TE position. 2nd best SPORQ in the 2026 TE class behind Sadiq (100.0). Consistent with athletic ceiling upside at the position.",
+        "percentile_tier": "elite",
+        "alpha_bonus_eligible": true,
+        "source": "notes_2026-04-10"
+      }
+    ],
+    "dob": "2003-04-15",
+    "breakout_strength": 0.486,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
+  },
+  {
+    "player_id": "wr-antonio-williams",
+    "player_name": "Antonio Williams",
+    "position": "WR",
+    "school": "Clemson",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "freshman_total_yards": 600,
+    "sophomore_total_yards": null,
+    "freshman_impact_flag": true,
+    "young_breakout_flag": true,
+    "career_yards_per_route_run": 2.94,
+    "best_season_yprr": 2.94,
+    "worst_season_yprr": null,
+    "seasons_over_2_3_yprr": 1,
+    "single_season_efficiency_dip_flag": null,
+    "multi_season_efficiency_flag": null,
+    "injury_affected_season_count": 0,
+    "injury_adjusted_profile_flag": false,
+    "broken_offense_context_flag": null,
+    "suppressed_context_season_count": null,
+    "rush_attempts_or_rush_usage_signal": null,
+    "rushing_production_signal": null,
+    "missed_tackles_forced_per_reception": 0.15,
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
+    "yac_proxy_per_reception": null,
+    "contested_catch_rate": 0.555,
+    "inside_out_versatility_flag": true,
+    "man_zone_versatility_flag": true,
+    "power4_early_contributor_flag": true,
+    "career_receiving_market_share": null,
+    "career_mtf_per_attempt": null,
+    "freshman_ypc": null,
+    "athletic_upside_flag": null,
+    "path_disruption_flag": false,
+    "evidence_tags": [
+      "young_breakout",
+      "elite_early_producer",
+      "inside_out_versatility",
+      "elite_efficiency_tier",
+      "non_r1_p4_wr_comps"
+    ],
+    "context_flags": [
+      "limited_multi_season_data",
+      "synthetic_profile_pending_cfbd"
+    ],
+    "evidence_summary": "Age-19 freshman breakout (600 yards, Clemson/ACC, Power 4). Career 208 rec / 2,336 yds / 21 TD (PFF). YPRR 2.94 (career, elite efficiency tier); 124.1 passer rating when targeted (81st pct), 10.1% 1D/route run. 55.5% contested catch rate on 20+ aDOT. Inside-outside versatility despite slot label; identical efficiency in slot and out-wide. 75th pct vs man, 64th pct vs zone (Reception Perception). PFF WR11 projection, 2nd-round grade. Named comp screen (non-R1 P4 WR since 2020 with career 75th+ pctile passer rating when targeted + 50th+ pctile TPRR + BOA < 20): George Pickens, Antonio Williams, Elijah Sarratt, Josh Downs, Troy Franklin, Puka Nacua. FP/G floor in years 1-3: 7.4 (Franklin); 3 of 6 above 10+ FP/G. Route profiles estimated pending CFBD fetch.",
+    "context_source": "@ffdataroma scouting note + @ScottBarrettDFB PFF chart, 2026-04-07",
+    "first_down_per_route_run": 0.0948,
+    "first_down_per_route_run_tier": "average",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 124.1,
+      "career_yprr": 1.97,
+      "zone_yprr": 1.7,
+      "man_yprr": 2.61,
+      "target_rate": 0.233,
+      "open_target_rate": 0.815,
+      "contested_catch_rate": 0.49,
+      "one_d_rate": 0.095,
+      "td_rate": 0.018,
+      "avoided_tackle_rate": 0.15,
+      "yac_per_reception": 5.3
+    },
+    "dob": "2004-07-14",
+    "breakout_strength": 0.58,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
+  },
+  {
+    "player_id": "rb-kaytron-allen",
+    "player_name": "Kaytron Allen",
+    "position": "RB",
+    "school": "Penn State",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
+    "freshman_total_yards": null,
+    "freshman_impact_flag": false,
+    "career_yards_per_route_run": 1.74,
+    "best_season_yprr": 1.74,
+    "evidence_tags": [
+      "multi_season_efficiency",
+      "rushing_signal",
+      "yac_signal"
+    ],
+    "context_flags": [],
+    "evidence_summary": "54-game career, 4167 rush yards (5.4 YPC), 39 TDs, 661 rec yards, 1.74 YPRR. 24.0% avoided tackle rate. High-volume Penn State back with elite receiving chops.",
+    "sophomore_total_yards": null,
+    "single_season_efficiency_dip_flag": null,
+    "multi_season_efficiency_flag": true,
+    "injury_affected_season_count": 0,
+    "injury_adjusted_profile_flag": false,
+    "broken_offense_context_flag": null,
+    "suppressed_context_season_count": null,
+    "rush_attempts_or_rush_usage_signal": null,
+    "rushing_production_signal": null,
+    "missed_tackles_forced_per_reception": null,
+    "yac_proxy_per_reception": null,
+    "contested_catch_rate": null,
+    "inside_out_versatility_flag": null,
+    "man_zone_versatility_flag": null,
+    "power4_early_contributor_flag": true,
+    "career_receiving_market_share": null,
+    "career_mtf_per_attempt": null,
+    "freshman_ypc": null,
+    "athletic_upside_flag": null,
+    "path_disruption_flag": false,
+    "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart, 2026-04-07",
+    "dob": "2003-01-08",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
+  },
+  {
+    "player_id": "rb-seth-mcgowan",
+    "player_name": "Seth McGowan",
+    "position": "RB",
+    "school": "Kentucky",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
+    "freshman_total_yards": null,
+    "freshman_impact_flag": false,
+    "career_yards_per_route_run": 1.56,
+    "best_season_yprr": 1.56,
+    "evidence_tags": [
+      "multi_season_efficiency",
+      "yac_signal"
+    ],
+    "context_flags": [
+      "limited_multi_season_data"
+    ],
+    "evidence_summary": "31-game career (limited volume), 1924 rush yards (5.1 YPC), 18 TDs, 602 rec yards. 1.56 YPRR, 20.3% target rate \u2014 strong receiving back. 25.4% avoided tackle rate.",
+    "sophomore_total_yards": null,
+    "single_season_efficiency_dip_flag": null,
+    "multi_season_efficiency_flag": true,
+    "injury_affected_season_count": 0,
+    "injury_adjusted_profile_flag": false,
+    "broken_offense_context_flag": null,
+    "suppressed_context_season_count": null,
+    "rush_attempts_or_rush_usage_signal": null,
+    "rushing_production_signal": null,
+    "missed_tackles_forced_per_reception": null,
+    "yac_proxy_per_reception": null,
+    "contested_catch_rate": null,
+    "inside_out_versatility_flag": null,
+    "man_zone_versatility_flag": null,
+    "power4_early_contributor_flag": true,
+    "career_receiving_market_share": null,
+    "career_mtf_per_attempt": null,
+    "freshman_ypc": null,
+    "athletic_upside_flag": null,
+    "path_disruption_flag": false,
+    "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart, 2026-04-07",
+    "dob": "2000-10-17",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
+  },
+  {
+    "player_id": "rb-emmett-johnson",
+    "player_name": "Emmett Johnson",
+    "position": "RB",
+    "school": "Nebraska",
+    "class_year": 2026,
+    "early_declare_flag": null,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
+    "freshman_total_yards": null,
+    "freshman_impact_flag": false,
+    "career_yards_per_route_run": 1.15,
+    "best_season_yprr": 1.15,
+    "evidence_tags": [
+      "multi_season_efficiency",
+      "rushing_signal",
+      "dual_threat_rb"
+    ],
+    "context_flags": [
+      "yac_consistency_concern"
+    ],
+    "evidence_summary": "42-game career, 2458 rush yards (5.4 YPC), 15 TDs. 1.15 YPRR, 27.5% avoided tackle rate. Efficient runner, limited receiving role. Qualifies for dual-threat RB flag (100+ rush YPG + 1.0+ receiving YPTPA/G; same list as Saquon, CMC, Bijan \u2014 2026 members: Skattebo, Hampton, Emmett Johnson). MTF/attempt 88th percentile \u2014 notable but sub-elite (elite threshold: 90th+). Final-season YACO/A: 2.95 \u2014 tied 3rd-worst among R3-4 P4/5 RBs since 2017 (comp group: Gallman 2.98, Conner 2.95*, Johnson 2.95, Shipley 2.92, Davis-Price 2.80, Kelley 2.80, Hill 2.68, Ballage 2.46, Corum 2.42; *Conner underwent chemotherapy). Dual-threat qualification is a positive signal; YACO/A comp trend toward poor NFL outcomes remains the key concern. Model skepticism (rank 26-27) still warranted.",
+    "sophomore_total_yards": null,
+    "single_season_efficiency_dip_flag": null,
+    "multi_season_efficiency_flag": true,
+    "injury_affected_season_count": 0,
+    "injury_adjusted_profile_flag": false,
+    "broken_offense_context_flag": null,
+    "suppressed_context_season_count": null,
+    "rush_attempts_or_rush_usage_signal": null,
+    "rushing_production_signal": null,
+    "missed_tackles_forced_per_reception": null,
+    "yac_proxy_per_reception": null,
+    "contested_catch_rate": null,
+    "inside_out_versatility_flag": null,
+    "man_zone_versatility_flag": null,
+    "power4_early_contributor_flag": true,
+    "career_receiving_market_share": null,
+    "career_mtf_per_attempt": 0.28,
+    "freshman_ypc": null,
+    "athletic_upside_flag": null,
+    "path_disruption_flag": false,
+    "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart 2026-04-07; dual-threat + MTF notes 2026-04-10",
+    "dual_threat_rb_flag": true,
+    "exceptional_metrics": [],
+    "dob": "2003-10-10",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "rb-eli-heidenreich",
@@ -1121,19 +1200,22 @@
       "limited_production_data",
       "synthetic_profile_pending_cfbd"
     ],
-    "evidence_summary": "Dual-threat FB/RB/WR from Navy (G5 option offense). 2025: 941 receiving yards + 499 rushing yards, 9 total TDs, 18.3 YPC career average (deep-ball tracker). Elite athleticism: 4.44 40-yard dash + 6.55 3-cone at 6'0\" 198lb — best weight-adjusted 3-cone since 2013 per PFF (0.02s faster than CMC at same weight). Named comp group for weight-adjusted 3-cone since 2013: Christian McCaffrey, Le'Veon Bell, David Johnson, Ameer Abdullah; 3 of 10 finished as overall fantasy RB1. One career fumble (elite ball security). Capable blocker. Strong Shrine Bowl week. Concerns: Day 3 projection, Navy triple-option makes college stats difficult to project to NFL, limited arm length (29.25\"), limited route tree, not overly elusive in open field. Navy players require DoD waiver to enter draft immediately — presumed granted given model inclusion. G5 BOA penalty (+0.5) applied; effective BOA 22.5 → age multiplier 0.85x (floor). Production score estimated from dual-threat output competition-adjusted.",
+    "evidence_summary": "Dual-threat FB/RB/WR from Navy (G5 option offense). 2025: 941 receiving yards + 499 rushing yards, 9 total TDs, 18.3 YPC career average (deep-ball tracker). Elite athleticism: 4.44 40-yard dash + 6.55 3-cone at 6'0\" 198lb \u2014 best weight-adjusted 3-cone since 2013 per PFF (0.02s faster than CMC at same weight). Named comp group for weight-adjusted 3-cone since 2013: Christian McCaffrey, Le'Veon Bell, David Johnson, Ameer Abdullah; 3 of 10 finished as overall fantasy RB1. One career fumble (elite ball security). Capable blocker. Strong Shrine Bowl week. Concerns: Day 3 projection, Navy triple-option makes college stats difficult to project to NFL, limited arm length (29.25\"), limited route tree, not overly elusive in open field. Navy players require DoD waiver to enter draft immediately \u2014 presumed granted given model inclusion. G5 BOA penalty (+0.5) applied; effective BOA 22.5 \u2192 age multiplier 0.85x (floor). Production score estimated from dual-threat output competition-adjusted.",
     "context_source": "Shrine Bowl 2026 + scouting notes 2026-04-10",
     "exceptional_metrics": [
       {
         "metric": "three_cone",
         "value": 6.55,
-        "context": "6.55s 3-cone at 198lb — best weight-adjusted RB 3-cone since 2013 (0.02s faster than McCaffrey at same weight). Estimated top-1% historically among RBs. Within-group RAS normalization underweights this because only one player in the 2026 cohort has 3-cone data; ceiling bonus bridges the gap.",
+        "context": "6.55s 3-cone at 198lb \u2014 best weight-adjusted RB 3-cone since 2013 (0.02s faster than McCaffrey at same weight). Estimated top-1% historically among RBs. Within-group RAS normalization underweights this because only one player in the 2026 cohort has 3-cone data; ceiling bonus bridges the gap.",
         "percentile_tier": "historic",
         "alpha_bonus_eligible": true,
         "source": "context"
       }
     ],
-    "dob": "2003-07-28"
+    "dob": "2003-07-28",
+    "breakout_strength": 0.387,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
   },
   {
     "player_id": "rb-max-bredeson",
@@ -1154,8 +1236,11 @@
       "pending_cfbd_verification"
     ],
     "evidence_summary": "Michigan fullback/H-back in a run-heavy system; primarily a blocker with limited individual carry volume. Fringe UDFA with sub-500 rush yards in final college season.",
-    "context_source": "Research agent estimate 2026-04-12 — pending CFBD verification",
-    "dob": "2002-10-04"
+    "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification",
+    "dob": "2002-10-04",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "rb-demond-claiborne",
@@ -1164,9 +1249,9 @@
     "school": "Wake Forest",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "dual_threat_rb_flag": true,
     "evidence_tags": [
       "limited_draft_capital_context",
@@ -1177,8 +1262,11 @@
       "pending_cfbd_verification"
     ],
     "evidence_summary": "Wake Forest lead back with multi-year ACC production; solid YPC with reliable pass-catching ability out of the backfield. Fringe Day 3/UDFA given competition context.",
-    "context_source": "Research agent estimate 2026-04-12 — pending CFBD verification",
-    "dob": "2003-10-09"
+    "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification",
+    "dob": "2003-10-09",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "rb-cj-donaldson-jr",
@@ -1199,8 +1287,11 @@
       "pending_cfbd_verification"
     ],
     "evidence_summary": "Physical power/short-yardage back in a crowded Ohio State backfield; limited volume behind higher-priority carries. Large frame and functional gap runner; minimal receiving involvement.",
-    "context_source": "Research agent estimate 2026-04-12 — pending CFBD verification",
-    "dob": "2004-07-09"
+    "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification",
+    "dob": "2004-07-09",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "rb-rahsul-faison",
@@ -1209,9 +1300,9 @@
     "school": "South Carolina",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "dual_threat_rb_flag": false,
     "evidence_tags": [
       "limited_draft_capital_context"
@@ -1221,8 +1312,11 @@
       "pending_cfbd_verification"
     ],
     "evidence_summary": "South Carolina lead back with SEC production in 2025; compact and elusive with solid YPC in a run-first system. Day 3/UDFA range with limited receiving profile.",
-    "context_source": "Research agent estimate 2026-04-12 — pending CFBD verification",
-    "dob": "2000-02-20"
+    "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification",
+    "dob": "2000-02-20",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "rb-roman-hemby",
@@ -1231,22 +1325,24 @@
     "school": "Indiana",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 20,
-    "age_at_first_impact_season": 20,
-    "young_breakout_flag": true,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "dual_threat_rb_flag": true,
     "evidence_tags": [
       "limited_draft_capital_context",
-      "dual_threat_rb_signal",
-      "young_breakout"
+      "dual_threat_rb_signal"
     ],
     "context_flags": [
       "low_confidence_seed",
       "pending_cfbd_verification"
     ],
     "evidence_summary": "Transfer from Maryland to Indiana; complementary receiving-back role in the Hoosiers' offense. Pass-catching ability is the calling card; volume limited by committee usage and injury concerns.",
-    "context_source": "Research agent estimate 2026-04-12 — pending CFBD verification",
-    "dob": "2002-08-16"
+    "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification",
+    "dob": "2002-08-16",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "rb-robert-henry-jr",
@@ -1267,8 +1363,11 @@
       "pending_cfbd_verification"
     ],
     "evidence_summary": "UTSA lead back with solid Group of 5 production; metrics require competition-level discount versus Power 4. UDFA profile with minimal NFL board presence.",
-    "context_source": "Research agent estimate 2026-04-12 — pending CFBD verification",
-    "dob": "2001-12-31"
+    "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification",
+    "dob": "2001-12-31",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "rb-jam-miller",
@@ -1277,9 +1376,9 @@
     "school": "Alabama",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "dual_threat_rb_flag": true,
     "evidence_tags": [
       "limited_draft_capital_context",
@@ -1290,8 +1389,11 @@
       "pending_cfbd_verification"
     ],
     "evidence_summary": "Multi-year Alabama contributor in a timeshare SEC backfield; solid YPC efficiency and reliable receiver out of the backfield. Enough athleticism for an NFL roster spot as a change-of-pace/receiving back.",
-    "context_source": "Research agent estimate 2026-04-12 — pending CFBD verification",
-    "dob": "2004-04-29"
+    "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification",
+    "dob": "2004-04-29",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "rb-leveon-moss",
@@ -1300,9 +1402,9 @@
     "school": "Texas A&M",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "dual_threat_rb_flag": true,
     "evidence_tags": [
       "limited_draft_capital_context",
@@ -1313,8 +1415,11 @@
       "pending_cfbd_verification"
     ],
     "evidence_summary": "Undersized receiving-specialist at Texas A&M; genuine pass-catching ability out of the backfield. Pure third-down/pass-catcher archetype; size limits three-down viability at NFL level.",
-    "context_source": "Research agent estimate 2026-04-12 — pending CFBD verification",
-    "dob": "2002-11-15"
+    "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification",
+    "dob": "2002-11-15",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "rb-adam-randall",
@@ -1335,8 +1440,11 @@
       "pending_cfbd_verification"
     ],
     "evidence_summary": "Clemson backup/committee back with limited individual volume in ACC competition; modest YPC with minimal receiving involvement. Fringe UDFA with low NFL draft board presence.",
-    "context_source": "Research agent estimate 2026-04-12 — pending CFBD verification",
-    "dob": "2004-07-14"
+    "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification",
+    "dob": "2004-07-14",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "rb-desmond-reid",
@@ -1345,22 +1453,24 @@
     "school": "Pittsburgh",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 20,
-    "age_at_first_impact_season": 20,
-    "young_breakout_flag": true,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "dual_threat_rb_flag": true,
     "evidence_tags": [
       "limited_draft_capital_context",
-      "dual_threat_rb_signal",
-      "young_breakout"
+      "dual_threat_rb_signal"
     ],
     "context_flags": [
       "low_confidence_seed",
       "pending_cfbd_verification"
     ],
     "evidence_summary": "Highly versatile Pitt back with elite receiving production from the backfield; genuine dual-threat upside with significant career receiving yards. Undersized frame limits three-down role but pass-catching specialists have real value in PPR.",
-    "context_source": "Research agent estimate 2026-04-12 — pending CFBD verification",
-    "dob": "2004-07-29"
+    "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification",
+    "dob": "2004-07-29",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "rb-jmari-taylor",
@@ -1381,8 +1491,11 @@
       "pending_cfbd_verification"
     ],
     "evidence_summary": "Virginia lead back with modest ACC production; limited volume in a Cavaliers program with low NFL draft output at RB. UDFA profile with minimal NFL board presence.",
-    "context_source": "Research agent estimate 2026-04-12 — pending CFBD verification",
-    "dob": "2002-03-15"
+    "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification",
+    "dob": "2002-03-15",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "rb-noah-whittington",
@@ -1391,9 +1504,9 @@
     "school": "Oregon",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "dual_threat_rb_flag": true,
     "evidence_tags": [
       "limited_draft_capital_context",
@@ -1404,8 +1517,11 @@
       "pending_cfbd_verification"
     ],
     "evidence_summary": "Western Kentucky transfer to Oregon; multi-year career in a shared backfield. Shows receiving ability and explosiveness but volume was limited in 2025. Day 3/UDFA range with injury history concerns.",
-    "context_source": "Research agent estimate 2026-04-12 — pending CFBD verification",
-    "dob": "2001-05-26"
+    "context_source": "Research agent estimate 2026-04-12 \u2014 pending CFBD verification",
+    "dob": "2001-05-26",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-aaron-anderson",
@@ -1414,9 +1530,9 @@
     "school": "LSU",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 20,
-    "age_at_first_impact_season": 20,
-    "young_breakout_flag": true,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "slot_receiver",
       "limited_sample",
@@ -1433,7 +1549,10 @@
     "first_down_per_route_run": 0.0946,
     "first_down_per_route_run_tier": "average",
     "first_down_per_route_run_source": "manual_seed_2026",
-    "dob": "2002-12-02"
+    "dob": "2002-12-02",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-vinny-anthony-ii",
@@ -1442,9 +1561,9 @@
     "school": "Wisconsin",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "speed_threat",
       "limited_sample",
@@ -1457,7 +1576,10 @@
     "evidence_summary": "Led Wisconsin with just 31 catches for 391 yards and 1 TD in 2025 in a dysfunctional passing offense (132nd nationally). His 2024 season (39 rec, 672 yds, 4 TD, 17.2 YPR) was more impressive; projects as a returner-first prospect with developmental receiver traits.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2003-06-27"
+    "dob": "2003-06-27",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-dillon-bell",
@@ -1468,7 +1590,7 @@
     "early_declare_flag": null,
     "breakout_age": null,
     "age_at_first_impact_season": null,
-    "young_breakout_flag": false,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "yac_producer",
       "limited_sample"
@@ -1480,7 +1602,10 @@
     "evidence_summary": "Only 27 catches for 269 yards and 2 TDs receiving in 2025 at Georgia, though he added 109 rushing yards as a gadget player. Career totals of 119 rec/1,269 yds over four years show modest volume; coach Kirby Smart praised his versatility as a 'positionless player' with jet-sweep and reversal usage.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2003-11-06"
+    "dob": "2003-11-06",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-skyler-bell",
@@ -1489,9 +1614,9 @@
     "school": "UConn",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "elite_production",
       "yac_producer",
@@ -1524,7 +1649,10 @@
       "avoided_tackle_rate": 0.136,
       "yac_per_reception": 6.4
     },
-    "dob": "2002-07-05"
+    "dob": "2002-07-05",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-malik-benson",
@@ -1533,9 +1661,9 @@
     "school": "Oregon",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "speed_threat",
       "outside_receiver",
@@ -1548,7 +1676,10 @@
     "evidence_summary": "Recorded 43 catches for 719 yards and 6 TDs at Oregon in 2025, averaging 16.7 YPR with five 40+ yard TD catches; excellent speed (4.37 forty) but vertical/broad jump underwhelmed at the combine. Projects as a Day 3 vertical threat/outside receiver with limited route tree.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2002-10-17"
+    "dob": "2002-10-17",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-germie-bernard",
@@ -1557,9 +1688,9 @@
     "school": "Alabama",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "strong_production",
       "route_runner",
@@ -1589,7 +1720,10 @@
       "avoided_tackle_rate": 0.237,
       "yac_per_reception": 6.4
     },
-    "dob": "2003-12-02"
+    "dob": "2003-12-02",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-zachariah-branch",
@@ -1598,9 +1732,9 @@
     "school": "Georgia",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 19,
-    "age_at_first_impact_season": 19,
-    "young_breakout_flag": true,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "speed_threat",
       "yac_producer",
@@ -1631,7 +1765,10 @@
       "avoided_tackle_rate": 0.213,
       "yac_per_reception": 8.0
     },
-    "dob": "2004-03-29"
+    "dob": "2004-03-29",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-barion-brown",
@@ -1640,9 +1777,9 @@
     "school": "LSU",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 19,
-    "age_at_first_impact_season": 19,
-    "young_breakout_flag": true,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "speed_threat",
       "yac_producer",
@@ -1655,7 +1792,10 @@
     "evidence_summary": "Led LSU with just 53 catches for 532 yards and 1 TD in 2025 (transferred from Kentucky); much better career production at Kentucky including kick return touchdowns. Concerns include body catches, inconsistent hands, and limited route development; projects as returner/special teams contributor at the next level.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2003-12-12"
+    "dob": "2003-12-12",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-deion-burks",
@@ -1664,9 +1804,9 @@
     "school": "Oklahoma",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 20,
-    "age_at_first_impact_season": 20,
-    "young_breakout_flag": true,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "raw_athlete",
       "speed_threat",
@@ -1679,7 +1819,7 @@
       "low_1d_rr_danger",
       "poor_career_yprr"
     ],
-    "evidence_summary": "Electrifying combine performance (4.30 forty, 42.5\" vertical, 10'11\" broad — top scores among WRs) but 2025 production at Oklahoma was modest at 57 catches/620 yards/4 TDs after injury-shortened 2024. Has injury history (soft tissue, concussion); Bleacher Report ranks him #11 WR post-combine.",
+    "evidence_summary": "Electrifying combine performance (4.30 forty, 42.5\" vertical, 10'11\" broad \u2014 top scores among WRs) but 2025 production at Oklahoma was modest at 57 catches/620 yards/4 TDs after injury-shortened 2024. Has injury history (soft tissue, concussion); Bleacher Report ranks him #11 WR post-combine.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
     "first_down_per_route_run": 0.0669,
@@ -1699,7 +1839,10 @@
       "avoided_tackle_rate": 0.23,
       "yac_per_reception": 4.7
     },
-    "dob": "2003-01-08"
+    "dob": "2003-01-08",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-jeff-caldwell",
@@ -1710,7 +1853,7 @@
     "early_declare_flag": null,
     "breakout_age": null,
     "age_at_first_impact_season": null,
-    "young_breakout_flag": false,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "raw_athlete",
       "speed_threat",
@@ -1721,10 +1864,13 @@
       "low_confidence_seed",
       "pending_cfbd_verification"
     ],
-    "evidence_summary": "Freakish athleticism for his size (4.31 forty — fastest ever by a 6'1\"+ player at the combine, 42\" vertical) but only 32 catches for 478 yards and 6 TDs with 8.6% drop rate at Cincinnati in 2025. Raw, developmental big-body receiver; Day 3 projection despite the combine buzz.",
+    "evidence_summary": "Freakish athleticism for his size (4.31 forty \u2014 fastest ever by a 6'1\"+ player at the combine, 42\" vertical) but only 32 catches for 478 yards and 6 TDs with 8.6% drop rate at Cincinnati in 2025. Raw, developmental big-body receiver; Day 3 projection despite the combine buzz.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2001-03-05"
+    "dob": "2001-03-05",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-josh-cameron",
@@ -1733,9 +1879,9 @@
     "school": "Baylor",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "strong_production",
       "outside_receiver",
@@ -1767,7 +1913,10 @@
       "avoided_tackle_rate": 0.165,
       "yac_per_reception": 5.1
     },
-    "dob": "2003-03-18"
+    "dob": "2003-03-18",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-kevin-coleman-jr",
@@ -1776,9 +1925,9 @@
     "school": "Missouri",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 18,
-    "age_at_first_impact_season": 18,
-    "young_breakout_flag": true,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "slot_receiver",
       "route_runner",
@@ -1808,7 +1957,10 @@
       "avoided_tackle_rate": 0.255,
       "yac_per_reception": 6.1
     },
-    "dob": "2003-09-10"
+    "dob": "2003-09-10",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-omar-cooper-jr",
@@ -1817,9 +1969,9 @@
     "school": "Indiana",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "elite_production",
       "slot_receiver",
@@ -1850,7 +2002,10 @@
       "avoided_tackle_rate": 0.3,
       "yac_per_reception": 6.3
     },
-    "dob": "2003-12-14"
+    "dob": "2003-12-14",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-cj-daniels",
@@ -1859,9 +2014,9 @@
     "school": "Miami",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "route_runner",
       "outside_receiver"
@@ -1891,7 +2046,10 @@
       "avoided_tackle_rate": 0.182,
       "yac_per_reception": 4.7
     },
-    "dob": "2002-01-04"
+    "dob": "2002-01-04",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-caleb-douglas",
@@ -1900,9 +2058,9 @@
     "school": "Texas Tech",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "outside_receiver",
       "speed_threat",
@@ -1915,7 +2073,10 @@
     "evidence_summary": "Impressive 54 catches for 846 yards (15.7 YPR) and 7 TDs at Texas Tech in 2025; 135 career catches for 2,031 yards and 16 TDs. Ran a 4.39 forty at 6'3\"/206 lbs which is elite size/speed combination; projects as a Day 7 developmental outside receiver with an intriguing physical profile.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2003-09-09"
+    "dob": "2003-09-09",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-malachi-fields",
@@ -1924,9 +2085,9 @@
     "school": "Notre Dame",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "raw_athlete",
       "outside_receiver",
@@ -1958,7 +2119,10 @@
       "avoided_tackle_rate": 0.176,
       "yac_per_reception": 4.7
     },
-    "dob": "2002-07-02"
+    "dob": "2002-07-02",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-emmanuel-henderson-jr",
@@ -1967,9 +2131,9 @@
     "school": "Kansas",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "speed_threat",
       "outside_receiver"
@@ -1981,7 +2145,10 @@
     "evidence_summary": "Led Kansas with 45 catches for 766 yards and 5 TDs in 2025 (17.0 YPR), earning 3rd-team All-Big 12 as receiver and 1st-team as kick returner; 1,237 all-purpose yards. Projects primarily as a Day 3 receiver/returner; not among the top-ranked WRs on most boards.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2003-01-21"
+    "dob": "2003-01-21",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-chris-hilton-jr",
@@ -1992,7 +2159,7 @@
     "early_declare_flag": null,
     "breakout_age": null,
     "age_at_first_impact_season": null,
-    "young_breakout_flag": false,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "speed_threat",
       "limited_sample"
@@ -2001,10 +2168,13 @@
       "low_confidence_seed",
       "pending_cfbd_verification"
     ],
-    "evidence_summary": "Only 7–10 receptions for 54–122 yards and 0 TDs in 2025 at LSU; career totals of 41 receptions across five years in college. His draft case rests almost entirely on all-star game appearance (Senior Bowl, Shrine Bowl, Hula Bowl, American Bowl — believed to be first player at all four), not production.",
+    "evidence_summary": "Only 7\u201310 receptions for 54\u2013122 yards and 0 TDs in 2025 at LSU; career totals of 41 receptions across five years in college. His draft case rests almost entirely on all-star game appearance (Senior Bowl, Shrine Bowl, Hula Bowl, American Bowl \u2014 believed to be first player at all four), not production.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2002-10-11"
+    "dob": "2002-10-11",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-jordan-hudson",
@@ -2013,9 +2183,9 @@
     "school": "SMU",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "outside_receiver",
       "route_runner"
@@ -2041,7 +2211,10 @@
       "avoided_tackle_rate": 0.2,
       "yac_per_reception": 5.1
     },
-    "dob": "2003-11-22"
+    "dob": "2003-11-22",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-ted-hurst",
@@ -2050,9 +2223,9 @@
     "school": "Georgia State",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "strong_production",
       "outside_receiver",
@@ -2083,7 +2256,10 @@
       "avoided_tackle_rate": 0.205,
       "yac_per_reception": 4.6
     },
-    "dob": "2004-07-02"
+    "dob": "2004-07-02",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-caullin-lacy",
@@ -2092,9 +2268,9 @@
     "school": "Louisville",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "slot_receiver",
       "route_runner",
@@ -2104,10 +2280,13 @@
       "low_confidence_seed",
       "pending_cfbd_verification"
     ],
-    "evidence_summary": "60 catches for 635 yards and 2 TDs receiving at Louisville in 2025, but was a dominant return specialist (20.0 punt return average — 3rd nationally, two punt return TDs, 2nd-team All-American as returner). Dane Brugler (The Athletic) projects him as a priority UDFA; slot receiver with elite short-area quickness.",
+    "evidence_summary": "60 catches for 635 yards and 2 TDs receiving at Louisville in 2025, but was a dominant return specialist (20.0 punt return average \u2014 3rd nationally, two punt return TDs, 2nd-team All-American as returner). Dane Brugler (The Athletic) projects him as a priority UDFA; slot receiver with elite short-area quickness.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2001-12-22"
+    "dob": "2001-12-22",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-bryce-lance",
@@ -2116,9 +2295,9 @@
     "school": "North Dakota State",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "elite_production",
       "fcs_production_caveat",
@@ -2131,7 +2310,7 @@
       "pending_cfbd_verification",
       "elite_1d_rr"
     ],
-    "evidence_summary": "Set NDSU records with back-to-back 1,000-yard seasons (2024: 75 rec/1,071 yds/17 TD; 2025 comparable elite FCS numbers); 9.98 RAS — 7th highest in NFL Combine history. ESPN Matt Miller projects him at pick 96 overall; FCS production caveat but athleticism and production are both elite.",
+    "evidence_summary": "Set NDSU records with back-to-back 1,000-yard seasons (2024: 75 rec/1,071 yds/17 TD; 2025 comparable elite FCS numbers); 9.98 RAS \u2014 7th highest in NFL Combine history. ESPN Matt Miller projects him at pick 96 overall; FCS production caveat but athleticism and production are both elite.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
     "first_down_per_route_run": 0.1287,
@@ -2151,7 +2330,10 @@
       "avoided_tackle_rate": 0.126,
       "yac_per_reception": 5.1
     },
-    "dob": "2001-09-20"
+    "dob": "2001-09-20",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-jakobi-lane",
@@ -2160,9 +2342,9 @@
     "school": "USC",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "outside_receiver",
       "contested_catch_signal",
@@ -2192,7 +2374,10 @@
       "avoided_tackle_rate": 0.202,
       "yac_per_reception": 3.8
     },
-    "dob": "2004-08-05"
+    "dob": "2004-08-05",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-kendrick-law",
@@ -2201,9 +2386,9 @@
     "school": "Kentucky",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "raw_athlete",
       "speed_threat",
@@ -2216,7 +2401,10 @@
     "evidence_summary": "Led Kentucky with 53 catches for 540 yards and 3 TDs in 2025 (10.2 YPR); 42-inch vertical (3rd among all combine WRs) and 9.60 RAS show elite athleticism. However, he ran a narrow route tree built around screens and hitches with an average depth of target under 4 yards. Primarily Day 3/UDFA range.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2003-01-27"
+    "dob": "2003-01-27",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-eric-mcalister",
@@ -2225,9 +2413,9 @@
     "school": "TCU",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "elite_production",
       "outside_receiver",
@@ -2260,7 +2448,10 @@
       "avoided_tackle_rate": 0.298,
       "yac_per_reception": 7.4
     },
-    "dob": "2003-09-29"
+    "dob": "2003-09-29",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-donaven-mcculley",
@@ -2271,7 +2462,7 @@
     "early_declare_flag": null,
     "breakout_age": null,
     "age_at_first_impact_season": null,
-    "young_breakout_flag": false,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "raw_athlete",
       "outside_receiver",
@@ -2284,7 +2475,10 @@
     "evidence_summary": "39 catches for 588 yards and 3 TDs at Michigan in 2025 starting all 13 games; began career as a QB at Indiana before converting. Measured 6'5\" and 215 lbs with huge hands (10.25\"). Projects as a developmental UDFA/late-round pick; PFF ranks him 228th among WRs in 2025.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2003-01-15"
+    "dob": "2003-01-15",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-eric-rivers",
@@ -2293,9 +2487,9 @@
     "school": "Georgia Tech",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "speed_threat",
       "outside_receiver"
@@ -2324,7 +2518,10 @@
       "avoided_tackle_rate": 0.203,
       "yac_per_reception": 5.8
     },
-    "dob": "2002-09-17"
+    "dob": "2002-09-17",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-chase-roberts",
@@ -2333,9 +2530,9 @@
     "school": "BYU",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 20,
-    "age_at_first_impact_season": 20,
-    "young_breakout_flag": true,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "contested_catch_signal",
       "outside_receiver",
@@ -2362,7 +2559,10 @@
       "avoided_tackle_rate": 0.129,
       "yac_per_reception": 4.7
     },
-    "dob": "2001-01-21"
+    "dob": "2001-01-21",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-dezhaun-stribling",
@@ -2371,9 +2571,9 @@
     "school": "Mississippi",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "speed_threat",
       "outside_receiver"
@@ -2385,7 +2585,10 @@
     "evidence_summary": "55 catches for 811 yards and 6 TDs at Ole Miss in 2025; transferred between Washington State, Oklahoma State, and Ole Miss. Heavily vertical route tree with recent development; showed 50+ catches and 800+ yards at multiple programs. Speed (4.36) is a genuine weapon but overall draft stock is Day 3/UDFA.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2002-12-18"
+    "dob": "2002-12-18",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-j-michael-sturdivant",
@@ -2394,9 +2597,9 @@
     "school": "Florida",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 18,
-    "age_at_first_impact_season": 18,
-    "young_breakout_flag": true,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "breakout_freshman",
       "injury_history",
@@ -2407,10 +2610,13 @@
       "low_confidence_seed",
       "pending_cfbd_verification"
     ],
-    "evidence_summary": "Only 27 catches for 406 yards and 3 TDs at Florida in 2025 after transferring from Cal; was a breakout freshman at Cal in 2022 (65 rec/755 yds/7 TD — led all FBS freshmen). Long injury/transfer history has never let him build on his freshman season; high upside but low floor.",
+    "evidence_summary": "Only 27 catches for 406 yards and 3 TDs at Florida in 2025 after transferring from Cal; was a breakout freshman at Cal in 2022 (65 rec/755 yds/7 TD \u2014 led all FBS freshmen). Long injury/transfer history has never let him build on his freshman season; high upside but low floor.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2002-09-06"
+    "dob": "2002-09-06",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-zavion-thomas",
@@ -2419,9 +2625,9 @@
     "school": "LSU",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 20,
-    "age_at_first_impact_season": 20,
-    "young_breakout_flag": true,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "speed_threat",
       "slot_receiver",
@@ -2434,7 +2640,10 @@
     "evidence_summary": "41 catches for 488 yards and 4 TDs at LSU in 2025; ran the second-fastest 40 (4.28) at the entire combine among all positions. Limited route tree and volume but elite speed; ESPN Matt Miller projects him at pick 268. Projects as a specialty/speed player.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2004-09-14"
+    "dob": "2004-09-14",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-reggie-virgil",
@@ -2443,9 +2652,9 @@
     "school": "Texas Tech",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "outside_receiver",
       "route_runner"
@@ -2457,7 +2666,10 @@
     "evidence_summary": "57 catches for 705 yards and 6 TDs at Texas Tech in 2025; 100 career catches for 1,583 yards and 16 TDs across Miami (OH) and Texas Tech. Matt Miller projects him pick 181 (Detroit Lions, 5th round); Big 12 honorable mention with reliable hands but route tree needs refinement.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2004-05-14"
+    "dob": "2004-05-14",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-harrison-wallace-iii",
@@ -2466,9 +2678,9 @@
     "school": "Mississippi",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "outside_receiver",
       "route_runner"
@@ -2494,7 +2706,10 @@
       "avoided_tackle_rate": 0.117,
       "yac_per_reception": 4.9
     },
-    "dob": "2003-04-23"
+    "dob": "2003-04-23",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-jalen-walthall",
@@ -2503,9 +2718,9 @@
     "school": "Incarnate Word",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 20,
-    "age_at_first_impact_season": 20,
-    "young_breakout_flag": true,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "strong_production",
       "fcs_production_caveat",
@@ -2518,7 +2733,10 @@
     "evidence_summary": "70 catches for 847 yards and 8 TDs at Incarnate Word in 2025; had elite 2024 season (1,290 yds/14 TD) at the FCS level earning Southland Offensive Player of the Year. FCS competition is a significant caveat; #7 FCS prospect per FCS Football Central. Projects as UDFA/late Day 3.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2002-10-14"
+    "dob": "2002-10-14",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-kaden-wetjen",
@@ -2529,7 +2747,7 @@
     "early_declare_flag": null,
     "breakout_age": null,
     "age_at_first_impact_season": null,
-    "young_breakout_flag": false,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "limited_sample",
       "slot_receiver"
@@ -2541,7 +2759,10 @@
     "evidence_summary": "Only 20 catches for 151 yards as a receiver at Iowa in 2025, but a historic returner: 2x Jet Award winner (nation's best returner), 28.3 punt return average (#1 in NCAA), 4 return TDs (3 punt, 1 kick). His draft value is almost entirely return specialist based, not as a receiver.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2002-03-09"
+    "dob": "2002-03-09",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-colbie-young",
@@ -2552,7 +2773,7 @@
     "early_declare_flag": null,
     "breakout_age": null,
     "age_at_first_impact_season": null,
-    "young_breakout_flag": false,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "contested_catch_signal",
       "outside_receiver",
@@ -2566,7 +2787,10 @@
     "evidence_summary": "26 catches for 358 yards and 1 TD in 8 games before suffering a fractured leg vs. Ole Miss in October 2025; returned for the College Football Playoff. Intriguing 6'5\"/218 lb frame with strong contested-catch ability but injury and legal history flagged; Steelers Depot grades him 6.2 (Pure Backup).",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2002-07-24"
+    "dob": "2002-07-24",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-dallen-bentley",
@@ -2575,9 +2799,9 @@
     "school": "Utah",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "strong_production",
       "receiving_threat",
@@ -2593,7 +2817,10 @@
     "evidence_summary": "Broke out as a first-time full starter in 2025 with 48 catches for 620 yards and 6 TDs at Utah, earning Mackey Award semifinalist nod. A one-year production sample on a single-season breakout, but clean hands and intermediate route feel boost his upside.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2001-01-01"
+    "dob": "2001-01-01",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-nate-boerkircher",
@@ -2604,7 +2831,7 @@
     "early_declare_flag": null,
     "breakout_age": null,
     "age_at_first_impact_season": null,
-    "young_breakout_flag": false,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "blocking_specialist",
       "inline_te",
@@ -2617,7 +2844,10 @@
     "evidence_summary": "Blocking-first TE from Nebraska transfer who posted just 19 catches for 198 yards and 3 TDs in his final year at Texas A&M; ran a surprising 4.40 shuttle at the combine. Projects as a developmental run-blocker with limited receiving role.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2001-09-04"
+    "dob": "2001-09-04",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-josh-cuevas",
@@ -2626,9 +2856,9 @@
     "school": "Alabama",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "route_runner",
       "move_te",
@@ -2641,7 +2871,10 @@
     "evidence_summary": "Posted 37 catches for 411 yards and 4 TDs in 2025 at Alabama with advanced zone feel and smart route running; 118 career receptions across five seasons show steady production. Lacks prototypical TE size but projects as a functional rotational TE2.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2003-09-15"
+    "dob": "2003-09-15",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-khalil-dinkins",
@@ -2652,7 +2885,7 @@
     "early_declare_flag": null,
     "breakout_age": null,
     "age_at_first_impact_season": null,
-    "young_breakout_flag": false,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "blocking_specialist",
       "inline_te"
@@ -2663,7 +2896,10 @@
     ],
     "evidence_summary": "Spent his Penn State career primarily as a blocking TE with just 14 catches for 169 yards in 2025; excelled in 3-cone and shuttle at the combine, showing agility. Projects as a blocking specialist with minimal receiving ceiling.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-jack-endries",
@@ -2672,9 +2908,9 @@
     "school": "Texas",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 23,
-    "age_at_first_impact_season": 23,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "dual_role",
       "inline_te",
@@ -2688,7 +2924,10 @@
     "evidence_summary": "Posted 33 catches for 346 yards and 3 TDs in his first year at Texas (transfer from Cal) while earning Arch Manning's trust as a dependable underneath option. Good size and dual-role capability make him an appealing Day 3 prospect.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2004-03-26"
+    "dob": "2004-03-26",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-john-michael-gyllenborg",
@@ -2697,9 +2936,9 @@
     "school": "Wyoming",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "receiving_threat",
       "move_te",
@@ -2713,7 +2952,10 @@
     ],
     "evidence_summary": "Explosive move TE from Wyoming who barely played football before college yet became an NFL prospect; hamstring injury in 2025 limited him to partial production across 80 career catches for 1,023 yards and 7 TDs. Rare burst and seam speed for the position; blocking is the clear limitation.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-matthew-hibner",
@@ -2722,9 +2964,9 @@
     "school": "SMU",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 23,
-    "age_at_first_impact_season": 23,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "receiving_threat",
       "athleticism_upside",
@@ -2738,7 +2980,10 @@
     "evidence_summary": "Michigan transfer to SMU who posted 31 catches for 436 yards and 4 TDs in 2025; standout combine with a 4.57 40 and 37-inch vertical demonstrating above-average athleticism. Senior Bowl performer rising on draft boards with upside as a receiving TE2.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2002-03-09"
+    "dob": "2002-03-09",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-justin-joly",
@@ -2747,9 +2992,9 @@
     "school": "N.C. State",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "strong_production",
       "receiving_threat",
@@ -2764,7 +3009,10 @@
     "evidence_summary": "First-team All-ACC in 2025 with 47 catches for 468 yards and 7 TDs, leading NC State with his red-zone presence; did not run the 40 at the combine due to a hamstring injury. Natural pass catcher with strong hands and zone feel but undersized frame raises NFL ceiling questions.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2004-07-09"
+    "dob": "2004-07-09",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-will-kacmarek",
@@ -2775,7 +3023,7 @@
     "early_declare_flag": null,
     "breakout_age": null,
     "age_at_first_impact_season": null,
-    "young_breakout_flag": false,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "blocking_specialist",
       "inline_te",
@@ -2788,7 +3036,10 @@
     "evidence_summary": "Blocking-first TE at Ohio State with just 15 catches for 168 yards and 2 TDs in 2025; used primarily to open holes in Ohio State's run-heavy sets. Limited receiving upside but respected as a technician in pass protection and short-area blocking.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2003-02-12"
+    "dob": "2003-02-12",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-jaren-kanak",
@@ -2797,9 +3048,9 @@
     "school": "Oklahoma",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "athleticism_upside",
       "receiving_threat",
@@ -2810,10 +3061,13 @@
       "low_confidence_seed",
       "pending_cfbd_verification"
     ],
-    "evidence_summary": "Converted linebacker — played LB at Kansas State before transferring to Oklahoma, where he switched to TE in 2025 and produced 44 catches for 533 yards with All-SEC Third Team recognition; elite 4.52 40-dash for the position reflects LB athleticism. Extreme developmental upside with only one year of TE experience.",
+    "evidence_summary": "Converted linebacker \u2014 played LB at Kansas State before transferring to Oklahoma, where he switched to TE in 2025 and produced 44 catches for 533 yards with All-SEC Third Team recognition; elite 4.52 40-dash for the position reflects LB athleticism. Extreme developmental upside with only one year of TE experience.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2004-02-10"
+    "dob": "2004-02-10",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-miles-kitselman",
@@ -2824,7 +3078,7 @@
     "early_declare_flag": null,
     "breakout_age": null,
     "age_at_first_impact_season": null,
-    "young_breakout_flag": false,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "inline_te",
       "blocking_specialist"
@@ -2836,7 +3090,10 @@
     "evidence_summary": "Blocking-and-receiving TE at Tennessee with 26 catches for 261 yards and 2 TDs in 2025; heavy NFL-ready frame at 6'5\", 259 lbs but 4.90 40 time is a red flag for receiving role upside. Projects as a late-round blocking TE2/developmental prospect.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2002-09-25"
+    "dob": "2002-09-25",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-marlin-klein",
@@ -2847,7 +3104,7 @@
     "early_declare_flag": null,
     "breakout_age": null,
     "age_at_first_impact_season": null,
-    "young_breakout_flag": false,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "athleticism_upside",
       "inline_te",
@@ -2861,7 +3118,10 @@
     "evidence_summary": "German-born, rare athletic specimen at 6'6\" with a 4.61 40 and exceptional combine testing; only 24 catches for 248 yards in 2025 as Michigan's blocking TE in a run-heavy scheme. Elite developmental upside if he refines route running and receives more targets.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2002-09-17"
+    "dob": "2002-09-17",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-tanner-koziol",
@@ -2870,9 +3130,9 @@
     "school": "Houston",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "elite_production",
       "receiving_threat",
@@ -2886,7 +3146,10 @@
     ],
     "evidence_summary": "Led all FBS tight ends in receptions (74) and contested-catch percentage (74.1%) in 2025 with 727 yards and 6 TDs at Houston; at 6'7\" he is a red-zone mismatch with massive catch radius. Below-average athleticism after the catch limits YAC but his size and hands project well as a move TE2.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-rj-maryland",
@@ -2895,9 +3158,9 @@
     "school": "SMU",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "receiving_threat",
       "athleticism_upside",
@@ -2911,7 +3174,10 @@
     "evidence_summary": "Son of Super Bowl champion Russell Maryland, posted 27 catches for 322 yards and 2 TDs at SMU in 2025 with elite seam speed (4.51 40) and alignment versatility; finished career as SMU's all-time leader in TE receiving yards. Receiving instincts and athleticism are clear, but blocking and route refinement need work.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2004-07-09"
+    "dob": "2004-07-09",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-lake-mcree",
@@ -2920,9 +3186,9 @@
     "school": "USC",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "receiving_threat",
       "move_te",
@@ -2936,7 +3202,10 @@
     "evidence_summary": "Five-year USC starter who posted 30 catches for 450 yards and 4 TDs in his final season; two prior ACL tears (high school and 2023 at USC) raise durability flags. Smooth route runner with good hands but testing data from the combine was not publicly available.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2002-09-04"
+    "dob": "2002-09-04",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-riley-nowakowski",
@@ -2945,9 +3214,9 @@
     "school": "Indiana",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 23,
-    "age_at_first_impact_season": 23,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "dual_role",
       "move_te",
@@ -2959,7 +3228,10 @@
     ],
     "evidence_summary": "Starter on Indiana's undefeated 2025 regular season squad with 32 catches for 387 yards and 2 TDs plus a rushing score; reliable blocker and intermediate target for the Big Ten champion Hoosiers. Best suited as an H-back/move TE in creative schemes.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-eli-raridon",
@@ -2968,9 +3240,9 @@
     "school": "Notre Dame",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "inline_te",
       "injury_history",
@@ -2984,7 +3256,10 @@
     "evidence_summary": "6'7\" frame with 32 catches for 482 yards in 2025 at Notre Dame; missed nearly two full seasons recovering from double ACL tears early in his career. Legitimate injury history clouds his floor but his size-speed combination and length at the catch point project as a moldable Y-TE.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2004-02-12"
+    "dob": "2004-02-12",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-dj-rogers",
@@ -2993,9 +3268,9 @@
     "school": "TCU",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 23,
-    "age_at_first_impact_season": 23,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "inline_te",
       "dual_role",
@@ -3007,7 +3282,10 @@
     ],
     "evidence_summary": "Late-blooming five-year TCU TE who finally broke out with 34 catches for 319 yards and 2 TDs in 2025 as the starter; did not run the 40 or perform drills at the combine. PFF ranks him 292nd overall; projects as a Day 3 depth/blocking TE.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-sam-roush",
@@ -3016,9 +3294,9 @@
     "school": "Stanford",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "strong_production",
       "inline_te",
@@ -3033,7 +3311,10 @@
     "evidence_summary": "49 catches for 545 yards and 2 TDs in 2025, leading ACC TEs in receiving yards; posted the best 3-cone (7.08) among all TEs at the combine and a 38.5-inch vertical that locked up Day 2 consideration. Old-school Y-TE with elite effort and blocking willingness; drop issues need to be cleaned up.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2003-09-06"
+    "dob": "2003-09-06",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-joe-royer",
@@ -3042,9 +3323,9 @@
     "school": "Cincinnati",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 23,
-    "age_at_first_impact_season": 23,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "receiving_threat",
       "route_runner",
@@ -3056,7 +3337,10 @@
     ],
     "evidence_summary": "Ohio State transfer who posted 29 catches for 416 yards and 4 TDs in 2025 final year at Cincinnati; returned for senior season specifically to be the first TE taken in 2026. Excellent hands and zone feel, but did not perform combine drills; blocking development is his NFL key.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-bauer-sharp",
@@ -3067,7 +3351,7 @@
     "early_declare_flag": null,
     "breakout_age": null,
     "age_at_first_impact_season": null,
-    "young_breakout_flag": false,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "athleticism_upside",
       "inline_te",
@@ -3079,7 +3363,10 @@
     ],
     "evidence_summary": "Unique background: started as a QB at Southeastern Louisiana, transferred to Oklahoma (2024, 42 catches) then LSU (2025, 24 catches for 252 yards and 2 TDs). Journey player with multi-position athleticism but limited TE production at power programs.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-michael-trigg",
@@ -3088,9 +3375,9 @@
     "school": "Baylor",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "elite_production",
       "receiving_threat",
@@ -3106,7 +3393,10 @@
     "evidence_summary": "Two-time All-America TE at Baylor with 50 catches for 694 yards and 6 TDs in 2025, finishing 2nd nationally in TE receiving yards; hamstring pull forced him to shut down all combine testing. Three-time consensus All-American; contested-catch ability and vertical athleticism are elite but blocking needs major development.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2002-06-27"
+    "dob": "2002-06-27",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "te-daequan-wright",
@@ -3115,9 +3405,9 @@
     "school": "Mississippi",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 22,
-    "age_at_first_impact_season": 22,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "strong_production",
       "receiving_threat",
@@ -3132,7 +3422,10 @@
     "evidence_summary": "39 catches for 635 yards and 5 TDs at Ole Miss in 2025 with a 16.3 YPC average that ranked among the nation's best for TEs; played through an undisclosed injury all season. Aligned all over the formation with big-play ability, though he skipped combine drills and blocking is a notable weakness.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
-    "dob": "2003-09-21"
+    "dob": "2003-09-21",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   },
   {
     "player_id": "wr-cameron-dorner",
@@ -3140,9 +3433,9 @@
     "position": "WR",
     "school": "North Texas",
     "class_year": 2026,
-    "breakout_age": 23,
-    "age_at_first_impact_season": 23,
-    "young_breakout_flag": false,
+    "breakout_age": null,
+    "age_at_first_impact_season": null,
+    "young_breakout_flag": null,
     "evidence_tags": [
       "elite_qbr_when_targeted",
       "elite_man_yprr",
@@ -3156,7 +3449,7 @@
       "single_fbs_season",
       "elite_man_yprr"
     ],
-    "evidence_summary": "D2 transfer (Shepherd → North Texas) with one FBS season: 44 rec/769 yds/6 TD in 2025. Elite efficiency metrics — QBR when targeted 160.4 (2nd in class), man YPRR 3.01, 1D rate 12.0%, avoided tackle rate 27.6%. Late-round/UDFA projection due to limited FBS sample and modest pro day testing (4.59/37.5\"/6.96 3-cone). Zero drops in 2025 season.",
+    "evidence_summary": "D2 transfer (Shepherd \u2192 North Texas) with one FBS season: 44 rec/769 yds/6 TD in 2025. Elite efficiency metrics \u2014 QBR when targeted 160.4 (2nd in class), man YPRR 3.01, 1D rate 12.0%, avoided tackle rate 27.6%. Late-round/UDFA projection due to limited FBS sample and modest pro day testing (4.59/37.5\"/6.96 3-cone). Zero drops in 2025 season.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
     "advanced_receiving_stats": {
@@ -3175,6 +3468,9 @@
     },
     "first_down_per_route_run": 0.12,
     "first_down_per_route_run_tier": "strong",
-    "first_down_per_route_run_source": "fantasy_points_data_2026"
+    "first_down_per_route_run_source": "fantasy_points_data_2026",
+    "breakout_strength": null,
+    "breakout_confidence": null,
+    "seasons_available": 0
   }
 ]
