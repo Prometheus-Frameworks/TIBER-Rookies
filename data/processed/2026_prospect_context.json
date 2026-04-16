@@ -1222,7 +1222,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "speed_threat",
       "limited_sample",
@@ -1265,9 +1265,9 @@
     "school": "UConn",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "elite_production",
       "yac_producer",
@@ -1292,7 +1292,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "speed_threat",
       "outside_receiver",
@@ -1315,7 +1315,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "strong_production",
       "route_runner",
@@ -1433,7 +1433,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "strong_production",
       "outside_receiver",
@@ -1479,7 +1479,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "elite_production",
       "slot_receiver",
@@ -1503,7 +1503,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "route_runner",
       "outside_receiver"
@@ -1525,7 +1525,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "outside_receiver",
       "speed_threat",
@@ -1685,7 +1685,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "elite_production",
       "fcs_production_caveat",
@@ -1710,7 +1710,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "outside_receiver",
       "contested_catch_signal",
@@ -1803,7 +1803,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "speed_threat",
       "outside_receiver"
@@ -1848,7 +1848,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "speed_threat",
       "outside_receiver"
