@@ -38,6 +38,7 @@ import argparse
 import json
 import logging
 import sys
+import time
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlencode
@@ -93,21 +94,44 @@ def profile_dir_for_position(position: str, args: argparse.Namespace) -> Path:
     return args.wr_dir  # WR and TE
 
 
-def fetch_roster(team: str, year: int) -> list[dict[str, Any]]:
-    """Fetch CFBD roster for team/year. Returns empty list on failure."""
+def fetch_roster(team: str, year: int, max_retries: int = 5) -> list[dict[str, Any]]:
+    """Fetch CFBD roster for team/year with exponential backoff on 429. Returns empty list on failure."""
     from urllib.request import Request, urlopen
     from urllib.error import HTTPError, URLError
 
     params = urlencode({"team": team, "year": year})
     url = f"{CFBD_BASE_URL}/roster?{params}"
-    try:
-        req = Request(url, headers=cfbd_headers())
-        with urlopen(req, timeout=30) as resp:
-            data = json.loads(resp.read())
-        return data if isinstance(data, list) else []
-    except (HTTPError, URLError, Exception) as exc:
-        logging.warning("Could not fetch roster for %s %s: %s", team, year, exc)
-        return []
+
+    for attempt in range(max_retries):
+        try:
+            req = Request(url, headers=cfbd_headers())
+            with urlopen(req, timeout=30) as resp:
+                data = json.loads(resp.read())
+            return data if isinstance(data, list) else []
+        except HTTPError as exc:
+            if exc.code == 429:
+                # Rate limited; check Retry-After header
+                retry_after_header = exc.headers.get("Retry-After")
+                wait = None
+                if retry_after_header and retry_after_header.isdigit():
+                    wait = int(retry_after_header)
+                else:
+                    wait = max(10, 5 * (2 ** attempt))  # exponential backoff: 10, 20, 40, 80, 160s
+
+                if attempt < max_retries - 1:
+                    logging.warning("Rate limited (429) for %s %s attempt %d — retrying in %ds", team, year, attempt + 1, wait)
+                    time.sleep(wait)
+                else:
+                    logging.warning("Could not fetch roster for %s %s: rate limited after %d attempts", team, year, max_retries)
+                    return []
+            else:
+                logging.warning("Could not fetch roster for %s %s: %s", team, year, exc)
+                return []
+        except (URLError, Exception) as exc:
+            logging.warning("Could not fetch roster for %s %s: %s", team, year, exc)
+            return []
+
+    return []
 
 
 def find_academic_year(roster: list[dict[str, Any]], player_name: str) -> int | None:
