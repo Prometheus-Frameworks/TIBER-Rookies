@@ -32,12 +32,14 @@ FEATURE_COLUMNS = [
     "deterministic_grade_0_100",
 ]
 
+FULL_MODEL_FEATURE_COLUMNS = [col for col in FEATURE_COLUMNS if col != "deterministic_grade_0_100"]
+
 BASELINE_MODEL_FEATURES = {
     "draft_capital_only": ["draft_capital_proxy_0_100"],
     "draft_capital_plus_age": ["draft_capital_proxy_0_100", "age_at_draft"],
     "draft_capital_plus_production": ["draft_capital_proxy_0_100", "production_0_100"],
     "deterministic_grade_only": ["deterministic_grade_0_100"],
-    "logistic_full": FEATURE_COLUMNS,
+    "logistic_full": FULL_MODEL_FEATURE_COLUMNS,
 }
 
 
@@ -119,14 +121,22 @@ def _parse_top_finish_rank(value: Any) -> int | None:
     text = str(value).upper().strip()
     if not text:
         return None
-    for pattern in (r"TOP\s*[-_ ]?(\d+)", r"(?:QB|RB|WR|TE)\s*[-_ ]?(\d+)", r"RANK\s*[:=]?\s*(\d+)"):
+
+    tier_match = re.fullmatch(r"(QB|RB|WR|TE)\s*[-_ ]?(\d{1,2})", text)
+    if tier_match:
+        tier_or_rank = int(tier_match.group(2))
+        # Tier-style labels (WR1/WR2/WR3, etc.) are groupings of 12 players.
+        # For larger values (e.g. QB15), treat as direct positional rank.
+        return tier_or_rank * 12 if tier_or_rank <= 6 else tier_or_rank
+
+    for pattern in (r"TOP\s*[-_ ]?(\d+)", r"RANK\s*[:=]?\s*(\d+)"):
         m = re.search(pattern, text)
         if m:
             return int(m.group(1))
-    if text.endswith("1") and text[:2] in {"QB", "RB", "WR", "TE"}:
-        return 12
-    if text.endswith("2") and text[:2] in {"WR", "RB"}:
-        return 24
+
+    pos_rank_match = re.search(r"(?:QB|RB|WR|TE)\s*[-_ ]?(\d+)", text)
+    if pos_rank_match:
+        return int(pos_rank_match.group(1))
     return None
 
 
@@ -224,20 +234,30 @@ def time_split(rows: list[dict[str, Any]], holdout_year: int | None = None) -> S
     test_year = holdout_year if holdout_year is not None else years[-1]
     if test_year not in years:
         raise SystemExit(f"Holdout year {test_year} not found in labeled dataset years={years}")
+
     prior = [y for y in years if y < test_year]
-    validation_year = prior[-1] if prior else test_year
+    if not prior:
+        raise SystemExit(
+            "Time-aware split requires at least one prior class before holdout test year."
+        )
+
+    validation_year = prior[-1]
     train_years = [y for y in years if y < validation_year]
+    if not train_years:
+        raise SystemExit(
+            "Time-aware split requires at least two prior classes (train + validation) before holdout test year."
+        )
 
     train = [r for r in rows if int(r["draft_year"]) in train_years]
     validation = [r for r in rows if int(r["draft_year"]) == validation_year]
     test = [r for r in rows if int(r["draft_year"]) == test_year]
 
-    if not train and validation:
-        train = validation
-    if not validation:
-        validation = train
-
-    return SplitBundle(train, validation, test, {"train": train_years, "validation": [validation_year], "test": [test_year]})
+    return SplitBundle(
+        train,
+        validation,
+        test,
+        {"train": train_years, "validation": [validation_year], "test": [test_year]},
+    )
 
 
 def _median(values: list[float]) -> float:
