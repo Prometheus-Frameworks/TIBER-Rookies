@@ -35,6 +35,7 @@ young_breakout_flag: True if breakout_age <= 20
 from __future__ import annotations
 
 import argparse
+import datetime
 import json
 import logging
 import sys
@@ -156,6 +157,19 @@ def estimated_age(academic_year: int) -> int:
     return 17 + academic_year
 
 
+def age_from_dob(dob: str, season: int) -> int | None:
+    """Exact age as of September 1 of the given season. dob must be YYYY-MM-DD."""
+    try:
+        born = datetime.date.fromisoformat(dob)
+        season_start = datetime.date(season, 9, 1)
+        age = season_start.year - born.year - (
+            (season_start.month, season_start.day) < (born.month, born.day)
+        )
+        return age
+    except (ValueError, TypeError):
+        return None
+
+
 def load_profile_seasons(
     player_id: str,
     profile_dir: Path,
@@ -251,6 +265,7 @@ def compute_breakout_for_player(
     player: dict[str, Any],
     args: argparse.Namespace,
     roster_cache: dict[tuple[str, int], list[dict[str, Any]]],
+    dob: str | None = None,
 ) -> dict[str, Any]:
     """Return breakout fields for one player."""
     player_id = str(player.get("player_id", ""))
@@ -296,21 +311,27 @@ def compute_breakout_for_player(
         if not met_share and not met_volume:
             continue  # below all thresholds — not a breakout season
 
-        # Fetch roster for academic year (cached)
-        cache_key = (school, season)
-        if cache_key not in roster_cache:
-            roster_cache[cache_key] = fetch_roster(school, season)
-        roster = roster_cache[cache_key]
+        # Prefer exact DOB; fall back to CFBD roster when not available
+        if dob:
+            age = age_from_dob(dob, season)
+            if age is None:
+                logging.warning("Invalid dob %r for %s; skipping season", dob, player_name)
+                continue
+        else:
+            cache_key = (school, season)
+            if cache_key not in roster_cache:
+                roster_cache[cache_key] = fetch_roster(school, season)
+            roster = roster_cache[cache_key]
 
-        academic_yr = find_academic_year(roster, player_name)
-        if academic_yr is None:
-            logging.warning(
-                "Could not find %s in %s %s roster; skipping season for age calc",
-                player_name, school, season,
-            )
-            continue
+            academic_yr = find_academic_year(roster, player_name)
+            if academic_yr is None:
+                logging.warning(
+                    "Could not find %s in %s %s roster; skipping season for age calc",
+                    player_name, school, season,
+                )
+                continue
 
-        age = estimated_age(academic_yr)
+            age = estimated_age(academic_yr)
 
         # Track earliest impact season
         if age_at_first_impact is None:
@@ -426,7 +447,8 @@ def main() -> None:
             logging.info("Skipping %s (%s) — no breakout threshold defined", player_name, position)
             continue
 
-        breakout_data = compute_breakout_for_player(player, args, roster_cache)
+        dob = context_by_id.get(player_id, {}).get("dob")
+        breakout_data = compute_breakout_for_player(player, args, roster_cache, dob=dob)
 
         if player_id in context_by_id:
             entry = update_context_entry(context_by_id[player_id], breakout_data, player)
