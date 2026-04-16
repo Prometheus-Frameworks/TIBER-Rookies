@@ -889,5 +889,14 @@
     "class_year": 2026,
     "production_score_0_100": 77.0,
     "production_score_source": "manual_seed (2025 season; strong_production, receiving_threat)"
+  },
+  {
+    "player_id": "wr-cameron-dorner",
+    "player_name": "Cameron Dorner",
+    "position": "WR",
+    "school": "North Texas",
+    "class_year": 2026,
+    "production_score_0_100": 58.0,
+    "production_score_source": "manual_seed \u2014 2025 North Texas: 44 rec/769 yds/6 TD (1 FBS season, D2 transfer)"
   }
 ]

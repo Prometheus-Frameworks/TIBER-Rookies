@@ -277,7 +277,24 @@
     ],
     "evidence_summary": "Verified Ohio State progression from 264 freshman total yards to 739 sophomore total yards (733 receiving + 6 rushing), then 854 total yards in 2025. 40 time (4.53): market narrative labels this 'too slow' but 2026 WR leaders by career receiving YPG ran: Puka Nacua 4.57, JSN 4.52, Amon-Ra St. Brown 4.59, CeeDee Lamb 4.50, George Pickens 4.47, Nico Collins 4.45. Tate at 4.53 is squarely in the middle of this group. Speed narrative is not supported by outcome data at the WR position.",
     "context_source": "Wikipedia Carnell Tate college statistics table (2023-2025 rows), retrieved 2026-03-29; speed comp via notes 2026-04-10",
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
+    "first_down_per_route_run": 0.0982,
+    "first_down_per_route_run_tier": "average",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 134.4,
+      "career_yprr": 2.27,
+      "zone_yprr": 2.49,
+      "man_yprr": 1.69,
+      "target_rate": 0.195,
+      "open_target_rate": 0.801,
+      "contested_catch_rate": 0.688,
+      "one_d_rate": 0.098,
+      "td_rate": 0.017,
+      "avoided_tackle_rate": 0.14,
+      "yac_per_reception": 4.8
+    }
   },
   {
     "player_id": "wr-jordyn-tyson",
@@ -331,11 +348,30 @@
       "path_disruption",
       "combine_drills_skipped_hamstring",
       "screen_production_concern_pending_data",
-      "screen_penalty_film_override"
+      "screen_penalty_film_override",
+      "elite_1d_rr",
+      "elite_man_yprr"
     ],
     "evidence_summary": "Transfer path: 470 yards as true freshman at Colorado, injury-limited seasons 2023-24, then 2025 draft cycle at Arizona State. Combine: 26 bench reps (one shy of WR all-time record) \u2014 exceptional functional strength. Skipped speed/jump testing (hamstring). MTF 0.07 (lowest in class) \u2014 profile is separator/route-runner, not YAC threat.\nScreen usage context: college offense ran high screen volume with Tyson. screen_yard_share estimate ~40-50% of targets (proxy; precise yard-share not confirmed). screen_yard_share NOT encoded \u2014 film review overrides proxy concern (see below).\nFilm review (2026-04-11, user-conducted):\nvs Texas State: lined up slot vs press man, beats press at 5 yards off LOS, wins outside leverage, adjusts frame on 40-yard gain with 1-handed contested catch while safety crashes \u2014 press win + vertical tracking + contested finish.\nvs Baylor: boundary short side, corner route up the seam in Cover 2, splits DB and LB, reads space and attacks window \u2014 spatial feel and route utility, not gadget spam.\nvs TCU (post): strong side boundary vs soft man, wins inside leverage on post for 15-yard gain \u2014 leverage win creating viable throwing window.\nvs TCU (60-yd TD): weak side boundary vs press man, sells screen look initially then torches press over the top for 60-yard walk-in TD \u2014 weaponizes screen expectation, which is the key distinction: manufactured usage may have been deployment choice, not ceiling.\nModel philosophy note: screen-yard share = production-translation risk, not evidence that the receiver cannot play. Film confirms press wins, leverage wins, vertical tracking, contested catch ability, and boundary route success. Screen-heavy college deployment reflects offense exploiting an easy button on a better-than-deployed player. screen_yard_share penalty WILL NOT be applied unless hard data confirms and film evidence is re-evaluated. deep_yard_share remains a valid caution flag if confirmed.",
     "context_source": "Wikipedia Jordyn Tyson career summary + arizonasports.com 2026 NFL Combine report, retrieved 2026-04-08; film review notes 2026-04-11.",
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
+    "first_down_per_route_run": 0.1249,
+    "first_down_per_route_run_tier": "elite",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 105.7,
+      "career_yprr": 2.71,
+      "zone_yprr": 2.39,
+      "man_yprr": 3.44,
+      "target_rate": 0.312,
+      "open_target_rate": 0.84,
+      "contested_catch_rate": 0.524,
+      "one_d_rate": 0.125,
+      "td_rate": 0.026,
+      "avoided_tackle_rate": 0.082,
+      "yac_per_reception": 5.1
+    }
   },
   {
     "player_id": "wr-makai-lemon",
@@ -380,11 +416,30 @@
       "r1_p4_wr_comps"
     ],
     "context_flags": [
-      "limited_multi_season_data"
+      "limited_multi_season_data",
+      "elite_1d_rr",
+      "elite_man_yprr"
     ],
     "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season. R1 P4 WR since 2021 with 75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR \u2014 same threshold tier as Ja'Marr Chase, Malik Nabers, Jaylen Waddle, Garrett Wilson, Chris Olave, JSN, Jordan Addison. Combine: vert 40.0\", broad 129\". MTF 0.25 (2nd in class). Model rank 8 is supported.",
     "context_source": "Wikipedia Makai Lemon stats + @ffdataroma research note 2026-04-08",
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
+    "first_down_per_route_run": 0.1295,
+    "first_down_per_route_run_tier": "elite",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 122.0,
+      "career_yprr": 3.02,
+      "zone_yprr": 3.22,
+      "man_yprr": 3.05,
+      "target_rate": 0.276,
+      "open_target_rate": 0.847,
+      "contested_catch_rate": 0.571,
+      "one_d_rate": 0.13,
+      "td_rate": 0.021,
+      "avoided_tackle_rate": 0.263,
+      "yac_per_reception": 6.8
+    }
   },
   {
     "player_id": "wr-kc-concepcion",
@@ -434,7 +489,24 @@
     ],
     "evidence_summary": "Verified collegiate production: 1,159 total yards as a freshman (839 receiving + 320 rushing) and 496 as a sophomore (460 receiving + 36 rushing), indicating a real year-two production dip while retaining 70 career rush attempts as a multi-phase usage signal.",
     "context_source": "Wikipedia Kevin Concepcion stats table (2023-2025 season rows) and Sports-Reference-linked career totals, retrieved 2026-03-29.",
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
+    "first_down_per_route_run": 0.0968,
+    "first_down_per_route_run_tier": "average",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 100.8,
+      "career_yprr": 2.03,
+      "zone_yprr": 1.82,
+      "man_yprr": 2.64,
+      "target_rate": 0.268,
+      "open_target_rate": 0.881,
+      "contested_catch_rate": 0.486,
+      "one_d_rate": 0.097,
+      "td_rate": 0.023,
+      "avoided_tackle_rate": 0.21,
+      "yac_per_reception": 6.6
+    }
   },
   {
     "player_id": "wr-chris-brazzell-ii",
@@ -453,7 +525,24 @@
     "evidence_summary": null,
     "context_source": "compute_breakout_age.py",
     "missed_tackles_forced_per_reception": 0.04,
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
+    "first_down_per_route_run": 0.0994,
+    "first_down_per_route_run_tier": "average",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 114.8,
+      "career_yprr": 2.09,
+      "zone_yprr": 2.29,
+      "man_yprr": 1.82,
+      "target_rate": 0.219,
+      "open_target_rate": 0.778,
+      "contested_catch_rate": 0.417,
+      "one_d_rate": 0.099,
+      "td_rate": 0.016,
+      "avoided_tackle_rate": 0.067,
+      "yac_per_reception": 3.4
+    }
   },
   {
     "player_id": "wr-denzel-boston",
@@ -500,7 +589,24 @@
     ],
     "evidence_summary": "Sourced profile confirms 62-881-11 in 2025 and only 66 total receiving yards across his first two college seasons combined; year-by-year freshman/sophomore split and combine-verified testing context are not explicitly published in currently available in-repo sources.",
     "context_source": "Wikipedia Denzel Boston college career summary and pre-draft measurables section, retrieved 2026-03-29.",
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
+    "first_down_per_route_run": 0.1135,
+    "first_down_per_route_run_tier": "strong",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 106.7,
+      "career_yprr": 2.02,
+      "zone_yprr": 1.79,
+      "man_yprr": 2.34,
+      "target_rate": 0.232,
+      "open_target_rate": 0.824,
+      "contested_catch_rate": 0.611,
+      "one_d_rate": 0.114,
+      "td_rate": 0.023,
+      "avoided_tackle_rate": 0.114,
+      "yac_per_reception": 5.0
+    }
   },
   {
     "player_id": "wr-chris-bell",
@@ -517,12 +623,30 @@
     ],
     "context_flags": [
       "injury_context",
-      "pre_draft_acl_march_2026"
+      "pre_draft_acl_march_2026",
+      "low_1d_rr_below_avg"
     ],
     "evidence_summary": "Pre-draft ACL tear (March 2026). Was projected WR1-3 of the 2026 rookie class pre-injury; dynasty community had him in top-3 WR conversation. Post-ACL dynasty rank drops to approximately WR7-10 of class (KTC ~WR60 overall). Injury severely compresses first-year upside; year-1 contribution unlikely. Long-term profile may be intact if recovery is clean. Model scores reflect pre-injury production and combine profile, not injury-adjusted dynasty value \u2014 consensus_delta overstates model edge.",
     "context_source": "Research agent 2026-04-09 (KeepTradeCut / Dynasty Nerds / PlayerProfiler post-injury consensus)",
     "missed_tackles_forced_per_reception": 0.17,
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
+    "first_down_per_route_run": 0.0891,
+    "first_down_per_route_run_tier": "below_average",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 113.2,
+      "career_yprr": 2.01,
+      "zone_yprr": 1.94,
+      "man_yprr": 2.25,
+      "target_rate": 0.207,
+      "open_target_rate": 0.735,
+      "contested_catch_rate": 0.559,
+      "one_d_rate": 0.089,
+      "td_rate": 0.011,
+      "avoided_tackle_rate": 0.166,
+      "yac_per_reception": 5.8
+    }
   },
   {
     "player_id": "wr-elijah-sarratt",
@@ -540,12 +664,31 @@
       "late_breakout"
     ],
     "context_flags": [
-      "senior_breakout_flag"
+      "senior_breakout_flag",
+      "elite_1d_rr",
+      "elite_man_yprr"
     ],
     "evidence_summary": "75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR (non-R1 P4 WR since 2021) \u2014 matches Puka Nacua, Tank Dell, Troy Franklin efficiency tier. Nacua comp is strongest: 43-48 rec/yr at BYU (modest volume), 18.3 YPC, 128.0 QB rating when targeted \u2014 then 105 catches in NFL year 1 as a 5th-round pick. Efficiency held when target share increased. Sarratt profile: low college volume, elite per-route efficiency \u2014 same archetype. Named comp screen (non-R1 P4 WR since 2020 with career 75th+ pctile passer rating when targeted + 50th+ pctile TPRR + BOA < 20): George Pickens, Antonio Williams, Elijah Sarratt, Josh Downs, Troy Franklin, Puka Nacua. FP/G floor in years 1-3: 7.4 (Franklin); 3 of 6 above 10+ FP/G. Late breakout (BOA 21) is model red flag; Aiyuk/Watson are precedents for senior-breakout success, but base rate is poor. MTF 0.13 (mid-tier). Model gap: volume-weighted age-adjusted production (18.2 age-adj, blend \u2192 38) severely underweights efficiency; CFBD raw production score 67.6 is more representative.",
     "context_source": "@ffdataroma research note 2026-04-08 + @ScottBarrettDFB PFF chart + NCAA.com Puka Nacua stats",
     "missed_tackles_forced_per_reception": 0.13,
-    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects"
+    "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
+    "first_down_per_route_run": 0.1246,
+    "first_down_per_route_run_tier": "elite",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 148.0,
+      "career_yprr": 2.6,
+      "zone_yprr": 2.77,
+      "man_yprr": 3.0,
+      "target_rate": 0.235,
+      "open_target_rate": 0.726,
+      "contested_catch_rate": 0.6,
+      "one_d_rate": 0.127,
+      "td_rate": 0.032,
+      "avoided_tackle_rate": 0.122,
+      "yac_per_reception": 5.1
+    }
   },
   {
     "player_id": "te-kenyon-sadiq",
@@ -683,7 +826,24 @@
       "synthetic_profile_pending_cfbd"
     ],
     "evidence_summary": "Age-19 freshman breakout (600 yards, Clemson/ACC, Power 4). Career 208 rec / 2,336 yds / 21 TD (PFF). YPRR 2.94 (career, elite efficiency tier); 124.1 passer rating when targeted (81st pct), 10.1% 1D/route run. 55.5% contested catch rate on 20+ aDOT. Inside-outside versatility despite slot label; identical efficiency in slot and out-wide. 75th pct vs man, 64th pct vs zone (Reception Perception). PFF WR11 projection, 2nd-round grade. Named comp screen (non-R1 P4 WR since 2020 with career 75th+ pctile passer rating when targeted + 50th+ pctile TPRR + BOA < 20): George Pickens, Antonio Williams, Elijah Sarratt, Josh Downs, Troy Franklin, Puka Nacua. FP/G floor in years 1-3: 7.4 (Franklin); 3 of 6 above 10+ FP/G. Route profiles estimated pending CFBD fetch.",
-    "context_source": "@ffdataroma scouting note + @ScottBarrettDFB PFF chart, 2026-04-07"
+    "context_source": "@ffdataroma scouting note + @ScottBarrettDFB PFF chart, 2026-04-07",
+    "first_down_per_route_run": 0.0948,
+    "first_down_per_route_run_tier": "average",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 124.1,
+      "career_yprr": 1.97,
+      "zone_yprr": 1.7,
+      "man_yprr": 2.61,
+      "target_rate": 0.233,
+      "open_target_rate": 0.815,
+      "contested_catch_rate": 0.49,
+      "one_d_rate": 0.095,
+      "td_rate": 0.018,
+      "avoided_tackle_rate": 0.15,
+      "yac_per_reception": 5.3
+    }
   },
   {
     "player_id": "rb-kaytron-allen",
@@ -863,10 +1023,28 @@
     ],
     "context_flags": [
       "limited_production_data",
-      "size_risk"
+      "size_risk",
+      "low_1d_rr_below_avg"
     ],
     "evidence_summary": "Elite speed archetype \u2014 4.26 40-yard dash (fastest at 2026 combine, fastest WR since John Ross 4.22 in 2017). Frame concern: 5'9\", 164lb \u2014 durability and contested-catch limitations at NFL level. Mississippi State (SEC, Power 4). No jump testing data. Production profile pending CFBD fetch. Model may undervalue if route efficiency/YAC data not available; speed-only profile warrants dynasty discount until target share confirmed.",
-    "context_source": "2026 NFL Combine results (ESPN/NFL.com), retrieved 2026-04-08"
+    "context_source": "2026 NFL Combine results (ESPN/NFL.com), retrieved 2026-04-08",
+    "first_down_per_route_run": 0.0807,
+    "first_down_per_route_run_tier": "below_average",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 107.4,
+      "career_yprr": 2.21,
+      "zone_yprr": 2.32,
+      "man_yprr": 2.41,
+      "target_rate": 0.198,
+      "open_target_rate": 0.879,
+      "contested_catch_rate": 0.353,
+      "one_d_rate": 0.081,
+      "td_rate": 0.014,
+      "avoided_tackle_rate": 0.167,
+      "yac_per_reception": 4.9
+    }
   },
   {
     "player_id": "rb-eli-heidenreich",
@@ -1211,7 +1389,10 @@
     ],
     "evidence_summary": "Early entrant who had 33 catches for 398 yards and 0 TDs in an injury-shortened 2025 (9 games, knee); his true breakout was 2024 (61 rec, 884 yds, 5 TD). Declined combine 40-yard dash due to concerns about testing poorly; undersized slot with strong separation ability but limited size and diminished recent production.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "first_down_per_route_run": 0.0946,
+    "first_down_per_route_run_tier": "average",
+    "first_down_per_route_run_source": "manual_seed_2026"
   },
   {
     "player_id": "wr-vinny-anthony-ii",
@@ -1222,7 +1403,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "speed_threat",
       "limited_sample",
@@ -1265,9 +1446,9 @@
     "school": "UConn",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": 21,
-    "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "elite_production",
       "yac_producer",
@@ -1277,11 +1458,29 @@
     ],
     "context_flags": [
       "low_confidence_seed",
-      "pending_cfbd_verification"
+      "pending_cfbd_verification",
+      "low_1d_rr_below_avg"
     ],
     "evidence_summary": "Posted elite volume at UConn with 101 catches for 1,278 yards and 13 TDs in 2025; Biletnikoff finalist and UConn's first consensus All-American. Averaged 8+ YAC per reception (2nd in FBS) and ranked 3rd in YPRR per PFF; small-school caveat applies but his athleticism (41\" vertical, 4.40 forty) confirms elite physical traits.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "first_down_per_route_run": 0.0863,
+    "first_down_per_route_run_tier": "below_average",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 101.9,
+      "career_yprr": 2.15,
+      "zone_yprr": 2.35,
+      "man_yprr": 2.01,
+      "target_rate": 0.258,
+      "open_target_rate": 0.844,
+      "contested_catch_rate": 0.5,
+      "one_d_rate": 0.086,
+      "td_rate": 0.018,
+      "avoided_tackle_rate": 0.136,
+      "yac_per_reception": 6.4
+    }
   },
   {
     "player_id": "wr-malik-benson",
@@ -1292,7 +1491,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "speed_threat",
       "outside_receiver",
@@ -1315,7 +1514,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "strong_production",
       "route_runner",
@@ -1327,7 +1526,24 @@
     ],
     "evidence_summary": "Led Alabama with 64 catches for 862 yards and 7 TDs in 2025, earning Biletnikoff semifinalist honors; wins with route detail, toughness, and consistency rather than pure speed. Mel Kiper ranked him 9th among WRs; Tankathon projects him #50 overall; DJ Moore/Jarvis Landry comp.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "first_down_per_route_run": 0.0909,
+    "first_down_per_route_run_tier": "average",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 105.8,
+      "career_yprr": 1.9,
+      "zone_yprr": 2.1,
+      "man_yprr": 1.52,
+      "target_rate": 0.199,
+      "open_target_rate": 0.866,
+      "contested_catch_rate": 0.387,
+      "one_d_rate": 0.091,
+      "td_rate": 0.011,
+      "avoided_tackle_rate": 0.237,
+      "yac_per_reception": 6.4
+    }
   },
   {
     "player_id": "wr-zachariah-branch",
@@ -1351,7 +1567,24 @@
     ],
     "evidence_summary": "Transferred from USC to Georgia for 2025 and posted 81 catches for 811 yards and 6 TDs; 78% of yards came after the catch on quick throws and screens, indicating gadget/speed-oriented usage. Bleacher Report ranks him #10 overall at WR (#49 overall); rare home-run threat limited by route refinement.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "first_down_per_route_run": 0.0955,
+    "first_down_per_route_run_tier": "average",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 105.8,
+      "career_yprr": 2.03,
+      "zone_yprr": 1.94,
+      "man_yprr": 2.79,
+      "target_rate": 0.262,
+      "open_target_rate": 0.9,
+      "contested_catch_rate": 0.381,
+      "one_d_rate": 0.096,
+      "td_rate": 0.011,
+      "avoided_tackle_rate": 0.213,
+      "yac_per_reception": 8.0
+    }
   },
   {
     "player_id": "wr-barion-brown",
@@ -1394,11 +1627,30 @@
     ],
     "context_flags": [
       "low_confidence_seed",
-      "pending_cfbd_verification"
+      "pending_cfbd_verification",
+      "low_1d_rr_danger",
+      "poor_career_yprr"
     ],
     "evidence_summary": "Electrifying combine performance (4.30 forty, 42.5\" vertical, 10'11\" broad \u2014 top scores among WRs) but 2025 production at Oklahoma was modest at 57 catches/620 yards/4 TDs after injury-shortened 2024. Has injury history (soft tissue, concussion); Bleacher Report ranks him #11 WR post-combine.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "first_down_per_route_run": 0.0669,
+    "first_down_per_route_run_tier": "danger",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 79.5,
+      "career_yprr": 1.35,
+      "zone_yprr": 1.23,
+      "man_yprr": 1.75,
+      "target_rate": 0.207,
+      "open_target_rate": 0.776,
+      "contested_catch_rate": 0.368,
+      "one_d_rate": 0.067,
+      "td_rate": 0.011,
+      "avoided_tackle_rate": 0.23,
+      "yac_per_reception": 4.7
+    }
   },
   {
     "player_id": "wr-jeff-caldwell",
@@ -1433,7 +1685,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "strong_production",
       "outside_receiver",
@@ -1441,11 +1693,30 @@
     ],
     "context_flags": [
       "low_confidence_seed",
-      "pending_cfbd_verification"
+      "pending_cfbd_verification",
+      "low_1d_rr_below_avg",
+      "poor_man_yprr"
     ],
     "evidence_summary": "Team leader at Baylor with 69 catches for 872 yards and 9 TDs in 2025; 2-time All-Big 12, physical possession receiver at 6'2\"/220 lbs. Tankathon has him at #183 overall; projects as Day 3 pick with dense build but limited change-of-direction.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "first_down_per_route_run": 0.0833,
+    "first_down_per_route_run_tier": "below_average",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 103.5,
+      "career_yprr": 1.59,
+      "zone_yprr": 1.77,
+      "man_yprr": 1.0,
+      "target_rate": 0.186,
+      "open_target_rate": 0.785,
+      "contested_catch_rate": 0.464,
+      "one_d_rate": 0.083,
+      "td_rate": 0.014,
+      "avoided_tackle_rate": 0.165,
+      "yac_per_reception": 5.1
+    }
   },
   {
     "player_id": "wr-kevin-coleman-jr",
@@ -1468,7 +1739,24 @@
     ],
     "evidence_summary": "Led Missouri with 66 catches for 732 yards and 1 TD in 2025 after stints at Jackson State, Louisville, Mississippi State (74 rec/932 yds/6 TD in 2024), and Missouri; a prolific transfer portal journeyman with versatility. Projects as a slot/possession receiver with track record of 700+ yard seasons.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "first_down_per_route_run": 0.0905,
+    "first_down_per_route_run_tier": "average",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 107.8,
+      "career_yprr": 1.98,
+      "zone_yprr": 1.81,
+      "man_yprr": 2.51,
+      "target_rate": 0.213,
+      "open_target_rate": 0.801,
+      "contested_catch_rate": 0.537,
+      "one_d_rate": 0.09,
+      "td_rate": 0.009,
+      "avoided_tackle_rate": 0.255,
+      "yac_per_reception": 6.1
+    }
   },
   {
     "player_id": "wr-omar-cooper-jr",
@@ -1479,7 +1767,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "elite_production",
       "slot_receiver",
@@ -1492,7 +1780,24 @@
     ],
     "evidence_summary": "Led national champion Indiana with 69 catches for 937 yards and 13 TDs in 2025; Dane Brugler ranks him 22nd overall (The Athletic), Tankathon has him at #24. Physical slot receiver with exceptional YAC and hands; 24 career TDs and 1,798 career yards; rising first-round buzz.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "first_down_per_route_run": 0.1099,
+    "first_down_per_route_run_tier": "strong",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 138.9,
+      "career_yprr": 2.47,
+      "zone_yprr": 2.49,
+      "man_yprr": 2.44,
+      "target_rate": 0.234,
+      "open_target_rate": 0.799,
+      "contested_catch_rate": 0.545,
+      "one_d_rate": 0.109,
+      "td_rate": 0.031,
+      "avoided_tackle_rate": 0.3,
+      "yac_per_reception": 6.3
+    }
   },
   {
     "player_id": "wr-cj-daniels",
@@ -1503,18 +1808,36 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "route_runner",
       "outside_receiver"
     ],
     "context_flags": [
       "low_confidence_seed",
-      "pending_cfbd_verification"
+      "pending_cfbd_verification",
+      "low_1d_rr_below_avg"
     ],
     "evidence_summary": "Six-year college career culminated with 50 catches for 557 yards and 7 TDs at Miami in 2025; career totals of 198 rec/2,996 yards/28 TDs. ESPN labeled him a 'Day 3 sleeper'; fluid route runner with natural ball-tracking ability but lacks top-end burst.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "first_down_per_route_run": 0.0878,
+    "first_down_per_route_run_tier": "below_average",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 120.6,
+      "career_yprr": 2.21,
+      "zone_yprr": 2.72,
+      "man_yprr": 1.49,
+      "target_rate": 0.215,
+      "open_target_rate": 0.844,
+      "contested_catch_rate": 0.806,
+      "one_d_rate": 0.097,
+      "td_rate": 0.018,
+      "avoided_tackle_rate": 0.182,
+      "yac_per_reception": 4.7
+    }
   },
   {
     "player_id": "wr-caleb-douglas",
@@ -1525,7 +1848,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "outside_receiver",
       "speed_threat",
@@ -1557,11 +1880,29 @@
     ],
     "context_flags": [
       "low_confidence_seed",
-      "pending_cfbd_verification"
+      "pending_cfbd_verification",
+      "low_1d_rr_below_avg"
     ],
     "evidence_summary": "36 catches for 630 yards and 5 TDs at Notre Dame in 2025 with an elite 17.5 YPR; 9.98 RAS (top 2% ever) but 4.61 forty will be a concern for NFL evaluators. At 6'5\"/218 lbs he's a massive red-zone target; pure raw upside prospect limited by below-average speed.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "first_down_per_route_run": 0.0898,
+    "first_down_per_route_run_tier": "below_average",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 88.5,
+      "career_yprr": 1.94,
+      "zone_yprr": 2.1,
+      "man_yprr": 1.52,
+      "target_rate": 0.217,
+      "open_target_rate": 0.741,
+      "contested_catch_rate": 0.472,
+      "one_d_rate": 0.09,
+      "td_rate": 0.012,
+      "avoided_tackle_rate": 0.176,
+      "yac_per_reception": 4.7
+    }
   },
   {
     "player_id": "wr-emmanuel-henderson-jr",
@@ -1627,7 +1968,21 @@
     ],
     "evidence_summary": "61 catches for 766 yards and 6 TDs at SMU in 2025 (career highs), including a 70-yard TD catch at Clemson; 3rd-team All-ACC. Transferred from TCU; ESPN Matt Miller ranks him 246th overall. Solid possession receiver but projected as a late-round or UDFA candidate.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 109.6,
+      "career_yprr": 1.92,
+      "zone_yprr": 1.64,
+      "man_yprr": 2.24,
+      "target_rate": 0.236,
+      "open_target_rate": 0.795,
+      "contested_catch_rate": 0.467,
+      "one_d_rate": 0.09,
+      "td_rate": 0.022,
+      "avoided_tackle_rate": 0.2,
+      "yac_per_reception": 5.1
+    }
   },
   {
     "player_id": "wr-ted-hurst",
@@ -1651,7 +2006,24 @@
     ],
     "evidence_summary": "First Georgia State player to cross 1,000 yards (71 rec/1,004 yds/6 TD in 2025); First Team All-Sun Belt and first Georgia State player on The Athletic's College Freaks List. Big (6'4\") with 99th-percentile broad jump; Sun Belt level of competition is a caveat but athleticism is genuine.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "first_down_per_route_run": 0.1054,
+    "first_down_per_route_run_tier": "strong",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 83.6,
+      "career_yprr": 2.25,
+      "zone_yprr": 2.63,
+      "man_yprr": 2.0,
+      "target_rate": 0.258,
+      "open_target_rate": 0.76,
+      "contested_catch_rate": 0.611,
+      "one_d_rate": 0.103,
+      "td_rate": 0.017,
+      "avoided_tackle_rate": 0.205,
+      "yac_per_reception": 4.6
+    }
   },
   {
     "player_id": "wr-caullin-lacy",
@@ -1685,7 +2057,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "elite_production",
       "fcs_production_caveat",
@@ -1695,11 +2067,29 @@
     ],
     "context_flags": [
       "low_confidence_seed",
-      "pending_cfbd_verification"
+      "pending_cfbd_verification",
+      "elite_1d_rr"
     ],
     "evidence_summary": "Set NDSU records with back-to-back 1,000-yard seasons (2024: 75 rec/1,071 yds/17 TD; 2025 comparable elite FCS numbers); 9.98 RAS \u2014 7th highest in NFL Combine history. ESPN Matt Miller projects him at pick 96 overall; FCS production caveat but athleticism and production are both elite.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "first_down_per_route_run": 0.1287,
+    "first_down_per_route_run_tier": "elite",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 162.2,
+      "career_yprr": 3.07,
+      "zone_yprr": 2.36,
+      "man_yprr": 2.67,
+      "target_rate": 0.241,
+      "open_target_rate": 0.769,
+      "contested_catch_rate": 0.615,
+      "one_d_rate": 0.13,
+      "td_rate": 0.036,
+      "avoided_tackle_rate": 0.126,
+      "yac_per_reception": 5.1
+    }
   },
   {
     "player_id": "wr-jakobi-lane",
@@ -1710,7 +2100,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "outside_receiver",
       "contested_catch_signal",
@@ -1722,7 +2112,24 @@
     ],
     "evidence_summary": "49 catches for 750 yards (15.3 YPR) and 4 TDs at USC in 2025; 77.6 overall PFF grade. Contested catch specialist who wins above the rim; Bleacher Report ranks him 21st among WRs; ESPN Scouts Inc. places him 91st overall. Route tree still developing but size/athletic combination is intriguing.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "first_down_per_route_run": 0.1083,
+    "first_down_per_route_run_tier": "strong",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 127.6,
+      "career_yprr": 1.95,
+      "zone_yprr": 1.77,
+      "man_yprr": 2.34,
+      "target_rate": 0.212,
+      "open_target_rate": 0.671,
+      "contested_catch_rate": 0.49,
+      "one_d_rate": 0.108,
+      "td_rate": 0.026,
+      "avoided_tackle_rate": 0.202,
+      "yac_per_reception": 3.8
+    }
   },
   {
     "player_id": "wr-kendrick-law",
@@ -1765,11 +2172,30 @@
     ],
     "context_flags": [
       "low_confidence_seed",
-      "pending_cfbd_verification"
+      "pending_cfbd_verification",
+      "elite_1d_rr",
+      "elite_man_yprr"
     ],
     "evidence_summary": "Elite college production in 2025 with 72 catches for 1,190 yards (16.5 YPR) and 10 TDs at TCU; AP and Sporting News All-American, led the Big 12 in receiving yards. Record game vs. SMU (254 yds/3 TDs). Did not perform on-field drills at the combine; projects as WR24 at #154 overall per NFLDraftBuzz.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "first_down_per_route_run": 0.1222,
+    "first_down_per_route_run_tier": "elite",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 108.7,
+      "career_yprr": 2.86,
+      "zone_yprr": 2.63,
+      "man_yprr": 4.0,
+      "target_rate": 0.271,
+      "open_target_rate": 0.749,
+      "contested_catch_rate": 0.452,
+      "one_d_rate": 0.122,
+      "td_rate": 0.022,
+      "avoided_tackle_rate": 0.298,
+      "yac_per_reception": 7.4
+    }
   },
   {
     "player_id": "wr-donaven-mcculley",
@@ -1803,7 +2229,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "speed_threat",
       "outside_receiver"
@@ -1814,7 +2240,24 @@
     ],
     "evidence_summary": "46 catches for 658 yards and 2 TDs at Georgia Tech in 2025; career totals of 140 rec/2,200 yds/16 TDs across Memphis, FIU, and Georgia Tech. Elite speed (4.35 forty) for his size; ranked #176 overall per Tankathon. Best as a vertical deep threat/special teams contributor.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "first_down_per_route_run": 0.1033,
+    "first_down_per_route_run_tier": "average",
+    "first_down_per_route_run_source": "manual_seed_2026",
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 118.2,
+      "career_yprr": 2.4,
+      "zone_yprr": 2.78,
+      "man_yprr": 2.44,
+      "target_rate": 0.231,
+      "open_target_rate": 0.875,
+      "contested_catch_rate": 0.385,
+      "one_d_rate": 0.103,
+      "td_rate": 0.018,
+      "avoided_tackle_rate": 0.203,
+      "yac_per_reception": 5.8
+    }
   },
   {
     "player_id": "wr-chase-roberts",
@@ -1837,7 +2280,21 @@
     ],
     "evidence_summary": "54 catches for 802 yards and 6 TDs at BYU in 2025; 8th all-time at BYU in receptions (170 career) and 7th in yards. Puka Nacua comparison but slower (4.64) and projects as Day 3 or UDFA per ESPN; wins with contested catches and contested body positioning rather than separation speed.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 102.8,
+      "career_yprr": 2.33,
+      "zone_yprr": 2.48,
+      "man_yprr": 2.06,
+      "target_rate": 0.246,
+      "open_target_rate": 0.803,
+      "contested_catch_rate": 0.543,
+      "one_d_rate": 0.115,
+      "td_rate": 0.016,
+      "avoided_tackle_rate": 0.129,
+      "yac_per_reception": 4.7
+    }
   },
   {
     "player_id": "wr-dezhaun-stribling",
@@ -1848,7 +2305,7 @@
     "early_declare_flag": null,
     "breakout_age": 21,
     "age_at_first_impact_season": 21,
-    "young_breakout_flag": true,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "speed_threat",
       "outside_receiver"
@@ -1950,7 +2407,21 @@
     ],
     "evidence_summary": "61 catches for 934 yards and 4 TDs at Ole Miss in 2025 (15.3 YPR) after transferring from Penn State; ranked 32nd nationally in receiving yards. Career totals of 132+ catches and 1,950+ yards across Penn State and Ole Miss. Functional route runner; Day 3 to UDFA range.",
     "context_source": "manual_seed_2026",
-    "exceptional_metrics": []
+    "exceptional_metrics": [],
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 95.7,
+      "career_yprr": 1.86,
+      "zone_yprr": 2.07,
+      "man_yprr": 1.69,
+      "target_rate": 0.202,
+      "open_target_rate": 0.774,
+      "contested_catch_rate": 0.528,
+      "one_d_rate": 0.089,
+      "td_rate": 0.009,
+      "avoided_tackle_rate": 0.117,
+      "yac_per_reception": 4.9
+    }
   },
   {
     "player_id": "wr-jalen-walthall",
@@ -2570,5 +3041,48 @@
     "evidence_summary": "39 catches for 635 yards and 5 TDs at Ole Miss in 2025 with a 16.3 YPC average that ranked among the nation's best for TEs; played through an undisclosed injury all season. Aligned all over the formation with big-play ability, though he skipped combine drills and blocking is a notable weakness.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-cameron-dorner",
+    "player_name": "Cameron Dorner",
+    "position": "WR",
+    "school": "North Texas",
+    "class_year": 2026,
+    "breakout_age": 23,
+    "age_at_first_impact_season": 23,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "elite_qbr_when_targeted",
+      "elite_man_yprr",
+      "strong_1d_rate",
+      "yac_producer"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification",
+      "d2_transfer",
+      "single_fbs_season",
+      "elite_man_yprr"
+    ],
+    "evidence_summary": "D2 transfer (Shepherd \u2192 North Texas) with one FBS season: 44 rec/769 yds/6 TD in 2025. Elite efficiency metrics \u2014 QBR when targeted 160.4 (2nd in class), man YPRR 3.01, 1D rate 12.0%, avoided tackle rate 27.6%. Late-round/UDFA projection due to limited FBS sample and modest pro day testing (4.59/37.5\"/6.96 3-cone). Zero drops in 2025 season.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": [],
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 160.4,
+      "career_yprr": 2.5,
+      "zone_yprr": 2.71,
+      "man_yprr": 3.01,
+      "target_rate": 0.188,
+      "open_target_rate": 0.833,
+      "contested_catch_rate": 0.583,
+      "one_d_rate": 0.12,
+      "td_rate": 0.024,
+      "avoided_tackle_rate": 0.276,
+      "yac_per_reception": 6.3
+    },
+    "first_down_per_route_run": 0.12,
+    "first_down_per_route_run_tier": "strong",
+    "first_down_per_route_run_source": "fantasy_points_data_2026"
   }
 ]
