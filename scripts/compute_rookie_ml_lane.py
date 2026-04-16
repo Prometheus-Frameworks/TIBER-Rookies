@@ -46,6 +46,16 @@ TRACKED_POSITIONS = ["WR", "RB", "TE", "QB"]
 WEAK_COVERAGE_THRESHOLD = 0.60
 SPARSE_POSITION_THRESHOLD = 8
 MIN_PRIOR_CLASS_COUNT = 2
+STRONG_LABEL_SOURCES = {
+    "best_season_positional_finish_by_year_3",
+    "best_season_positional_finish",
+    "top_finish_band",
+}
+WEAK_LABEL_SOURCES = {
+    "years_1_to_3_summary",
+    "career_outcome_label",
+}
+STRONG_FEATURE_COMPLETENESS_THRESHOLD = 0.70
 
 
 @dataclass
@@ -168,6 +178,77 @@ def _extract_hit_label(row: dict[str, Any]) -> int | None:
     return None
 
 
+def _derive_outcome_bucket(hit_label: int | None, best_finish: int | None, threshold: int | None) -> str | None:
+    if hit_label is None:
+        return None
+    if hit_label == 1:
+        if best_finish is not None and threshold is not None and best_finish <= max(1, threshold // 2):
+            return "high_impact_hit"
+        return "hit"
+    return "miss"
+
+
+def build_canonical_historical_outcomes(outcomes_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    canonical_rows: list[dict[str, Any]] = []
+    for row in outcomes_rows:
+        position = str(row.get("position") or "").upper().strip()
+        threshold = 24 if position in {"WR", "RB"} else 12 if position == "TE" else 15 if position == "QB" else None
+        label_sources_used: list[str] = []
+        best_finish = None
+        for field in (
+            "best_season_positional_finish_by_year_3",
+            "best_season_positional_finish",
+            "top_finish_band",
+            "years_1_to_3_summary",
+        ):
+            parsed = _parse_top_finish_rank(row.get(field))
+            if parsed is not None:
+                best_finish = parsed
+                label_sources_used.append(field)
+                break
+
+        hit_label = None
+        if best_finish is not None and threshold is not None:
+            hit_label = int(best_finish <= threshold)
+        else:
+            label_text = str(row.get("career_outcome_label") or "").lower()
+            if "hit" in label_text:
+                hit_label = 1
+                label_sources_used.append("career_outcome_label")
+            elif "miss" in label_text:
+                hit_label = 0
+                label_sources_used.append("career_outcome_label")
+
+        best_ppr_points = _to_float(row.get("best_ppr_points_by_year_3"))
+        if best_ppr_points is None:
+            best_ppr_points = _to_float(row.get("best_season_fantasy_ppg"))
+
+        primary_source = label_sources_used[0] if label_sources_used else None
+        canonical_rows.append(
+            {
+                "player_id": str(row.get("player_id") or ""),
+                "player_name": row.get("player_name"),
+                "position": position or row.get("position"),
+                "draft_year": int(row.get("draft_year") or 0),
+                "best_season_positional_finish_by_year_3": best_finish,
+                "best_ppr_points_by_year_3": best_ppr_points,
+                "fantasy_relevant_hit_by_rule": hit_label,
+                "outcome_bucket": _derive_outcome_bucket(hit_label, best_finish, threshold),
+                "label_source_fields_used": label_sources_used,
+                "label_source_primary": primary_source,
+                "label_is_weak_fallback": primary_source in WEAK_LABEL_SOURCES if primary_source else False,
+                "canonical_label_built": hit_label is not None,
+                "target_threshold_rule": "WR/RB<=24, TE<=12, QB<=15 by year 3" if threshold is not None else None,
+                "source_snapshot": {
+                    "top_finish_band": row.get("top_finish_band"),
+                    "years_1_to_3_summary": row.get("years_1_to_3_summary"),
+                    "career_outcome_label": row.get("career_outcome_label"),
+                },
+            }
+        )
+    return canonical_rows
+
+
 def _load_deterministic_scores(rookie_alpha_dir: Path) -> dict[tuple[str, int], float]:
     scores: dict[tuple[str, int], float] = {}
     if not rookie_alpha_dir.exists():
@@ -185,10 +266,10 @@ def _load_deterministic_scores(rookie_alpha_dir: Path) -> dict[tuple[str, int], 
 
 def build_labeled_rows(
     features_rows: list[dict[str, Any]],
-    outcomes_rows: list[dict[str, Any]],
+    canonical_outcomes_rows: list[dict[str, Any]],
     deterministic_scores: dict[tuple[str, int], float],
 ) -> list[dict[str, Any]]:
-    outcomes_by_player = {str(row.get("player_id")): row for row in outcomes_rows}
+    outcomes_by_player = {str(row.get("player_id")): row for row in canonical_outcomes_rows}
     labeled: list[dict[str, Any]] = []
     for feat in features_rows:
         player_id = str(feat.get("player_id") or "")
@@ -197,17 +278,23 @@ def build_labeled_rows(
         outcome = outcomes_by_player.get(player_id)
         if not outcome:
             continue
-        label = _extract_hit_label(outcome)
+        label = outcome.get("fantasy_relevant_hit_by_rule")
         if label is None:
             continue
 
         draft_year = int(feat.get("draft_year") or outcome.get("draft_year") or 0)
+        athletic_source = "athleticism_0_100"
         athletic = _to_float(feat.get("athleticism_0_100"))
         if athletic is None:
             athletic = _to_float(feat.get("ras_0_100"))
+            if athletic is not None:
+                athletic_source = "ras_0_100"
+        speed_source = "speed_proxy_0_100"
         speed = _to_float(feat.get("speed_proxy_0_100"))
         if speed is None:
             speed = athletic
+            if speed is not None:
+                speed_source = "athleticism_fallback"
 
         deterministic = deterministic_scores.get((player_id, draft_year))
         row = {
@@ -226,6 +313,12 @@ def build_labeled_rows(
             "early_declare_flag": 1.0 if feat.get("early_declare_flag") else 0.0 if feat.get("early_declare_flag") is not None else None,
             "deterministic_grade_0_100": deterministic,
             "target_threshold": "WR/RB<=24, TE<=12, QB<=15 by year 3",
+            "outcome_bucket": outcome.get("outcome_bucket"),
+            "label_source_fields_used": outcome.get("label_source_fields_used", []),
+            "label_source_primary": outcome.get("label_source_primary"),
+            "label_is_weak_fallback": bool(outcome.get("label_is_weak_fallback")),
+            "athleticism_source": athletic_source if athletic is not None else None,
+            "speed_proxy_source": speed_source if speed is not None else None,
         }
         labeled.append(row)
     return labeled
@@ -488,10 +581,149 @@ def build_feature_coverage_report(rows: list[dict[str, Any]], feature_names: lis
     return report
 
 
+def build_historical_label_provenance_report(canonical_rows: list[dict[str, Any]]) -> dict[str, Any]:
+    by_source: dict[str, int] = {}
+    by_position_source: dict[str, int] = {}
+    weak_fallback_rows = 0
+    missing = 0
+    for row in canonical_rows:
+        source = str(row.get("label_source_primary") or "unresolved")
+        position = str(row.get("position") or "UNK")
+        by_source[source] = by_source.get(source, 0) + 1
+        key = f"{position}|{source}"
+        by_position_source[key] = by_position_source.get(key, 0) + 1
+        if row.get("label_is_weak_fallback"):
+            weak_fallback_rows += 1
+        if not row.get("canonical_label_built"):
+            missing += 1
+    return {
+        "total_rows": len(canonical_rows),
+        "row_count_by_source_field": by_source,
+        "row_count_by_position_and_source_field": by_position_source,
+        "weak_fallback_label_rows": weak_fallback_rows,
+        "rows_without_canonical_label": missing,
+    }
+
+
+def build_historical_feature_consistency_report(rows: list[dict[str, Any]], feature_names: list[str]) -> dict[str, Any]:
+    positions = sorted({str(r.get("position") or "") for r in rows})
+    years = sorted({int(r.get("draft_year") or 0) for r in rows})
+    report: dict[str, Any] = {"total_rows": len(rows), "features": {}}
+    source_map = {
+        "athleticism_0_100": "athleticism_source",
+        "speed_proxy_0_100": "speed_proxy_source",
+    }
+    for feature in feature_names:
+        source_field = source_map.get(feature)
+        fallback_count = 0
+        primary_count = 0
+        if source_field:
+            for row in rows:
+                source = str(row.get(source_field) or "")
+                if not source:
+                    continue
+                if source in {feature, "speed_proxy_0_100"}:
+                    primary_count += 1
+                else:
+                    fallback_count += 1
+        detail = build_feature_coverage_report(rows, [feature])["features"][feature]
+        by_position_year: dict[str, float | None] = {}
+        for position in positions:
+            for year in years:
+                subset = [r for r in rows if str(r.get("position") or "") == position and int(r.get("draft_year") or 0) == year]
+                present = sum(1 for r in subset if _to_float(r.get(feature)) is not None)
+                by_position_year[f"{position}|{year}"] = _rate(present, len(subset))
+        report["features"][feature] = {
+            **detail,
+            "coverage_pct_by_position_draft_year": by_position_year,
+            "value_source_field": source_field,
+            "primary_source_count": primary_count,
+            "fallback_source_count": fallback_count,
+        }
+    return report
+
+
+def build_historical_class_coverage_report(
+    features_rows: list[dict[str, Any]],
+    labeled_rows: list[dict[str, Any]],
+    canonical_rows: list[dict[str, Any]],
+    split: SplitBundle,
+) -> dict[str, Any]:
+    usable_by_year = _counts_by_keys(labeled_rows, ["draft_year"])
+    usable_by_position = _counts_by_keys(labeled_rows, ["position"])
+    usable_by_year_position = _counts_by_keys(labeled_rows, ["draft_year", "position"])
+
+    complete_by_year: dict[str, int] = {}
+    for row in labeled_rows:
+        year = str(int(row.get("draft_year") or 0))
+        complete = sum(1 for f in FEATURE_COLUMNS if _to_float(row.get(f)) is not None)
+        if complete >= 6:
+            complete_by_year[year] = complete_by_year.get(year, 0) + 1
+
+    canonical_by_year: dict[str, int] = {}
+    for row in canonical_rows:
+        if row.get("canonical_label_built"):
+            year = str(int(row.get("draft_year") or 0))
+            canonical_by_year[year] = canonical_by_year.get(year, 0) + 1
+
+    surviving = {
+        "train": _counts_by_keys(split.train, ["draft_year", "position"]),
+        "validation": _counts_by_keys(split.validation, ["draft_year", "position"]),
+        "test": _counts_by_keys(split.test, ["draft_year", "position"]),
+    }
+    return {
+        "input_feature_rows": len(features_rows),
+        "total_usable_historical_rows": len(labeled_rows),
+        "usable_rows_by_draft_year": usable_by_year,
+        "usable_rows_by_position": usable_by_position,
+        "usable_rows_by_draft_year_position": usable_by_year_position,
+        "rows_with_strong_feature_completeness_by_draft_year": complete_by_year,
+        "rows_with_canonical_outcomes_by_draft_year": canonical_by_year,
+        "rows_surviving_ml_lane_filtering_by_stage_draft_year_position": surviving,
+    }
+
+
+def build_historical_position_slices_report(
+    labeled_rows: list[dict[str, Any]],
+    canonical_rows: list[dict[str, Any]],
+) -> dict[str, Any]:
+    canonical_by_player = {str(r.get("player_id") or ""): r for r in canonical_rows}
+    positions_report: dict[str, Any] = {}
+    for position in TRACKED_POSITIONS:
+        subset = [r for r in labeled_rows if str(r.get("position") or "").upper() == position]
+        canonical_count = sum(1 for r in subset if canonical_by_player.get(str(r.get("player_id") or ""), {}).get("canonical_label_built"))
+        strong_feature = 0
+        for row in subset:
+            non_null = sum(1 for feature in FEATURE_COLUMNS if _to_float(row.get(feature)) is not None)
+            if _rate(non_null, len(FEATURE_COLUMNS)) is not None and float(non_null / len(FEATURE_COLUMNS)) >= STRONG_FEATURE_COMPLETENESS_THRESHOLD:
+                strong_feature += 1
+        hit_rate = _rate(sum(int(r.get("hit_label") or 0) for r in subset), len(subset))
+        years = sorted({int(r.get("draft_year") or 0) for r in subset})
+        warnings: list[str] = []
+        if len(subset) < SPARSE_POSITION_THRESHOLD:
+            warnings.append(f"Thin position coverage: {position} has only {len(subset)} labeled rows.")
+        if canonical_count < len(subset):
+            warnings.append(f"{position} has {len(subset) - canonical_count} rows without canonical outcomes.")
+        if subset and (strong_feature / len(subset)) < STRONG_FEATURE_COMPLETENESS_THRESHOLD:
+            warnings.append(f"{position} has weak feature completeness (<{int(STRONG_FEATURE_COMPLETENESS_THRESHOLD * 100)}%).")
+        positions_report[position] = {
+            "labeled_rows": len(subset),
+            "rows_with_canonical_outcomes": canonical_count,
+            "rows_with_strong_feature_completeness": strong_feature,
+            "hit_rate": hit_rate,
+            "draft_years_represented": years,
+            "weak_spots": warnings,
+            "ready_for_standalone_modeling": len(warnings) == 0,
+        }
+    return {"positions": positions_report}
+
+
 def build_data_warnings(
     split: SplitBundle,
     coverage: dict[str, Any],
     diagnostics: dict[str, Any],
+    provenance_report: dict[str, Any] | None = None,
+    position_slices_report: dict[str, Any] | None = None,
 ) -> list[str]:
     warnings: list[str] = []
     if len(split.years.get("train", [])) < MIN_PRIOR_CLASS_COUNT:
@@ -516,6 +748,24 @@ def build_data_warnings(
     det_cov = coverage.get("features", {}).get("deterministic_grade_0_100", {}).get("coverage_pct_overall")
     if det_cov is not None and float(det_cov) < WEAK_COVERAGE_THRESHOLD:
         warnings.append("Deterministic grade is unavailable for many historical rows.")
+
+    if provenance_report:
+        weak = int(provenance_report.get("weak_fallback_label_rows") or 0)
+        total = int(provenance_report.get("total_rows") or 0)
+        if total > 0 and (weak / total) > 0.20:
+            warnings.append(
+                f"Label provenance leans on weak fallback sources for {weak}/{total} rows."
+            )
+        unresolved = int(provenance_report.get("rows_without_canonical_label") or 0)
+        if unresolved > 0:
+            warnings.append(f"{unresolved} historical rows could not receive canonical labels.")
+
+    if position_slices_report:
+        for position, detail in (position_slices_report.get("positions") or {}).items():
+            if not detail.get("ready_for_standalone_modeling"):
+                warnings.append(
+                    f"Position {position} not ready for standalone modeling: {'; '.join(detail.get('weak_spots') or [])}"
+                )
 
     return warnings
 
@@ -683,8 +933,9 @@ def main() -> None:
     features = load_json(Path(args.historical_features))
     outcomes = load_json(Path(args.historical_outcomes))
     deterministic_scores = _load_deterministic_scores(Path(args.rookie_alpha_dir))
+    canonical_outcomes = build_canonical_historical_outcomes(outcomes)
 
-    labeled = build_labeled_rows(features, outcomes, deterministic_scores)
+    labeled = build_labeled_rows(features, canonical_outcomes, deterministic_scores)
     if not labeled:
         raise SystemExit("No labeled rows available. Populate historical outcomes with finish info/labels first.")
 
@@ -718,7 +969,11 @@ def main() -> None:
 
     diagnostics = build_dataset_diagnostics(labeled, split)
     coverage = build_feature_coverage_report(labeled, FEATURE_COLUMNS)
-    warnings = build_data_warnings(split, coverage, diagnostics)
+    provenance_report = build_historical_label_provenance_report(canonical_outcomes)
+    feature_consistency_report = build_historical_feature_consistency_report(labeled, FEATURE_COLUMNS)
+    class_coverage_report = build_historical_class_coverage_report(features, labeled, canonical_outcomes, split)
+    position_slices_report = build_historical_position_slices_report(labeled, canonical_outcomes)
+    warnings = build_data_warnings(split, coverage, diagnostics, provenance_report, position_slices_report)
     missingness_summary = build_missingness_summary(coverage)
 
     final_scores = heldout_scores_by_model.get("logistic_full") or next(iter(heldout_scores_by_model.values()))
@@ -745,6 +1000,11 @@ def main() -> None:
     )
 
     output_dir = Path(args.output_dir)
+    write_json(output_dir / "historical_outcomes_canonical.json", canonical_outcomes)
+    write_json(output_dir / "historical_label_provenance_report.json", provenance_report)
+    write_json(output_dir / "historical_feature_consistency_report.json", feature_consistency_report)
+    write_json(output_dir / "historical_class_coverage_report.json", class_coverage_report)
+    write_json(output_dir / "historical_position_slices_report.json", position_slices_report)
     write_json(output_dir / "historical_labeled_dataset.json", labeled)
     write_csv(output_dir / "historical_labeled_dataset.csv", labeled)
     write_json(output_dir / "feature_table.json", [{k: row.get(k) for k in ["player_id", "draft_year", "position", *FEATURE_COLUMNS, "hit_label"]} for row in labeled])
@@ -760,6 +1020,15 @@ def main() -> None:
         "n_labeled_rows": len(labeled),
         "n_test_rows": len(split.test),
         "dataset_warnings": warnings,
+        "historical_truth_summary": {
+            "weak_label_fallback_rows": provenance_report["weak_fallback_label_rows"],
+            "rows_without_canonical_label": provenance_report["rows_without_canonical_label"],
+            "positions_not_ready_for_standalone_modeling": [
+                position
+                for position, detail in position_slices_report["positions"].items()
+                if not detail.get("ready_for_standalone_modeling")
+            ],
+        },
         "missingness_summary": missingness_summary,
         "ml_models": models_report,
         "non_ml_baselines": non_ml_report,

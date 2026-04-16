@@ -8,10 +8,15 @@ from scripts.compute_rookie_ml_lane import (
     BASELINE_MODEL_FEATURES,
     SplitBundle,
     _extract_hit_label,
+    build_canonical_historical_outcomes,
     build_data_warnings,
     build_dataset_diagnostics,
     build_feature_coverage_report,
     build_feature_importance_report,
+    build_historical_class_coverage_report,
+    build_historical_feature_consistency_report,
+    build_historical_label_provenance_report,
+    build_historical_position_slices_report,
     build_missingness_summary,
     build_labeled_rows,
     pr_auc,
@@ -55,14 +60,39 @@ class RookieMlLaneTests(unittest.TestCase):
                 "ras_0_100": 40,
             },
         ]
-        outcomes = [
+        outcomes = build_canonical_historical_outcomes([
             {"player_id": "a", "position": "WR", "top_finish_band": "TOP-24"},
             {"player_id": "b", "position": "WR", "top_finish_band": None},
-        ]
+        ])
         rows = build_labeled_rows(features, outcomes, {})
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]["player_id"], "a")
         self.assertEqual(rows[0]["hit_label"], 1)
+
+    def test_canonical_historical_outcomes_builds_provenance(self) -> None:
+        outcomes = [
+            {"player_id": "a", "position": "WR", "draft_year": 2020, "top_finish_band": "TOP-24"},
+            {"player_id": "b", "position": "RB", "draft_year": 2020, "years_1_to_3_summary": "RB40"},
+            {"player_id": "c", "position": "TE", "draft_year": 2020, "career_outcome_label": "miss"},
+        ]
+        canonical = build_canonical_historical_outcomes(outcomes)
+        self.assertEqual(canonical[0]["label_source_primary"], "top_finish_band")
+        self.assertFalse(canonical[0]["label_is_weak_fallback"])
+        self.assertTrue(canonical[1]["label_is_weak_fallback"])
+        self.assertEqual(canonical[2]["fantasy_relevant_hit_by_rule"], 0)
+
+    def test_label_provenance_reporting_structure(self) -> None:
+        canonical = build_canonical_historical_outcomes(
+            [
+                {"player_id": "a", "position": "WR", "draft_year": 2020, "top_finish_band": "TOP-24"},
+                {"player_id": "b", "position": "WR", "draft_year": 2021, "career_outcome_label": "hit"},
+                {"player_id": "c", "position": "RB", "draft_year": 2022},
+            ]
+        )
+        report = build_historical_label_provenance_report(canonical)
+        self.assertIn("row_count_by_source_field", report)
+        self.assertGreaterEqual(report["weak_fallback_label_rows"], 1)
+        self.assertGreaterEqual(report["rows_without_canonical_label"], 1)
 
     def test_time_split_uses_class_years(self) -> None:
         rows = [
@@ -138,6 +168,44 @@ class RookieMlLaneTests(unittest.TestCase):
         diagnostics = build_dataset_diagnostics(split.train + split.validation + split.test, split)
         warnings = build_data_warnings(split, coverage, diagnostics)
         self.assertTrue(any("Deterministic grade" in w for w in warnings))
+
+    def test_feature_consistency_and_class_coverage_reports(self) -> None:
+        features = [
+            {"player_id": "a", "position": "WR", "draft_year": 2020, "draft_capital_proxy_0_100": 70, "ras_0_100": 80},
+            {"player_id": "b", "position": "RB", "draft_year": 2021, "draft_capital_proxy_0_100": 65, "athleticism_0_100": 75, "speed_proxy_0_100": 74},
+            {"player_id": "c", "position": "TE", "draft_year": 2022, "draft_capital_proxy_0_100": 62},
+        ]
+        canonical = build_canonical_historical_outcomes(
+            [
+                {"player_id": "a", "position": "WR", "draft_year": 2020, "top_finish_band": "TOP-24"},
+                {"player_id": "b", "position": "RB", "draft_year": 2021, "top_finish_band": "RB30"},
+                {"player_id": "c", "position": "TE", "draft_year": 2022, "career_outcome_label": "miss"},
+            ]
+        )
+        labeled = build_labeled_rows(features, canonical, {})
+        split = time_split(labeled, holdout_year=2022)
+        consistency = build_historical_feature_consistency_report(labeled, ["athleticism_0_100", "speed_proxy_0_100"])
+        self.assertIn("fallback_source_count", consistency["features"]["athleticism_0_100"])
+        coverage = build_historical_class_coverage_report(features, labeled, canonical, split)
+        self.assertIn("usable_rows_by_draft_year_position", coverage)
+
+    def test_position_slice_report_and_thin_warning(self) -> None:
+        features = [
+            {"player_id": "a", "player_name": "A", "position": "WR", "draft_year": 2020, "draft_capital_proxy_0_100": 70},
+            {"player_id": "b", "player_name": "B", "position": "RB", "draft_year": 2021, "draft_capital_proxy_0_100": 68},
+            {"player_id": "c", "player_name": "C", "position": "QB", "draft_year": 2022, "draft_capital_proxy_0_100": 74},
+        ]
+        canonical = build_canonical_historical_outcomes(
+            [
+                {"player_id": "a", "position": "WR", "draft_year": 2020, "top_finish_band": "TOP-24"},
+                {"player_id": "b", "position": "RB", "draft_year": 2021, "top_finish_band": "RB30"},
+                {"player_id": "c", "position": "QB", "draft_year": 2022, "top_finish_band": "QB20"},
+            ]
+        )
+        labeled = build_labeled_rows(features, canonical, {})
+        report = build_historical_position_slices_report(labeled, canonical)
+        self.assertIn("WR", report["positions"])
+        self.assertFalse(report["positions"]["WR"]["ready_for_standalone_modeling"])
 
     def test_feature_importance_ordering(self) -> None:
         report = build_feature_importance_report(
@@ -215,6 +283,11 @@ class RookieMlLaneTests(unittest.TestCase):
             self.assertIn("draft_capital_only", report["draft_capital_dominance_check"])
             self.assertIn("test_by_position", report["ml_models"]["logistic_full"])
             self.assertEqual(set(report["ml_models"]["logistic_full"]["test_by_position"].keys()), {"WR", "RB", "TE", "QB"})
+            self.assertTrue((output_dir / "historical_outcomes_canonical.json").exists())
+            self.assertTrue((output_dir / "historical_label_provenance_report.json").exists())
+            self.assertTrue((output_dir / "historical_feature_consistency_report.json").exists())
+            self.assertTrue((output_dir / "historical_class_coverage_report.json").exists())
+            self.assertTrue((output_dir / "historical_position_slices_report.json").exists())
 
 
 if __name__ == "__main__":
