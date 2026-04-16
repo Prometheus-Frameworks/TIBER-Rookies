@@ -1186,5 +1186,17 @@
     "draft_capital_proxy_0_100": 25,
     "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
+  },
+  {
+    "player_id": "wr-cameron-dorner",
+    "player_name": "Cameron Dorner",
+    "position": "WR",
+    "school": "North Texas",
+    "class_year": 2026,
+    "big_board_rank": null,
+    "big_board_source": null,
+    "draft_capital_proxy_0_100": 35,
+    "draft_capital_proxy_source": "Manual floor \u2014 not ranked on any tracked big board (D2 transfer, UDFA projection)",
+    "draft_capital_proxy_pending_conversion": false
   }
 ]

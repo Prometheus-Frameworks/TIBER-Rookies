@@ -3041,5 +3041,48 @@
     "evidence_summary": "39 catches for 635 yards and 5 TDs at Ole Miss in 2025 with a 16.3 YPC average that ranked among the nation's best for TEs; played through an undisclosed injury all season. Aligned all over the formation with big-play ability, though he skipped combine drills and blocking is a notable weakness.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": []
+  },
+  {
+    "player_id": "wr-cameron-dorner",
+    "player_name": "Cameron Dorner",
+    "position": "WR",
+    "school": "North Texas",
+    "class_year": 2026,
+    "breakout_age": 23,
+    "age_at_first_impact_season": 23,
+    "young_breakout_flag": false,
+    "evidence_tags": [
+      "elite_qbr_when_targeted",
+      "elite_man_yprr",
+      "strong_1d_rate",
+      "yac_producer"
+    ],
+    "context_flags": [
+      "low_confidence_seed",
+      "pending_cfbd_verification",
+      "d2_transfer",
+      "single_fbs_season",
+      "elite_man_yprr"
+    ],
+    "evidence_summary": "D2 transfer (Shepherd \u2192 North Texas) with one FBS season: 44 rec/769 yds/6 TD in 2025. Elite efficiency metrics \u2014 QBR when targeted 160.4 (2nd in class), man YPRR 3.01, 1D rate 12.0%, avoided tackle rate 27.6%. Late-round/UDFA projection due to limited FBS sample and modest pro day testing (4.59/37.5\"/6.96 3-cone). Zero drops in 2025 season.",
+    "context_source": "manual_seed_2026",
+    "exceptional_metrics": [],
+    "advanced_receiving_stats": {
+      "source": "fantasy_points_data_2026",
+      "qbr_when_targeted": 160.4,
+      "career_yprr": 2.5,
+      "zone_yprr": 2.71,
+      "man_yprr": 3.01,
+      "target_rate": 0.188,
+      "open_target_rate": 0.833,
+      "contested_catch_rate": 0.583,
+      "one_d_rate": 0.12,
+      "td_rate": 0.024,
+      "avoided_tackle_rate": 0.276,
+      "yac_per_reception": 6.3
+    },
+    "first_down_per_route_run": 0.12,
+    "first_down_per_route_run_tier": "strong",
+    "first_down_per_route_run_source": "fantasy_points_data_2026"
   }
 ]

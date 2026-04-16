@@ -1426,5 +1426,25 @@
     "vertical": null,
     "broad": null,
     "three_cone": null
+  },
+  {
+    "player_id": "wr-cameron-dorner",
+    "player_name": "Cameron Dorner",
+    "position": "WR",
+    "school": "North Texas",
+    "class_year": 2026,
+    "combine_invited": false,
+    "height_in": 73.0,
+    "height_in_source": "ESPN profile",
+    "weight_lb": 192,
+    "weight_lb_source": "ESPN profile",
+    "forty": 4.59,
+    "forty_source": "North Texas Pro Day 2026-03-26",
+    "vertical": 37.5,
+    "vertical_source": "North Texas Pro Day 2026-03-26",
+    "broad": 121,
+    "broad_source": "North Texas Pro Day 2026-03-26",
+    "three_cone": 6.96,
+    "three_cone_source": "North Texas Pro Day 2026-03-26"
   }
 ]
