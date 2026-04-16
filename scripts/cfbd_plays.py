@@ -27,7 +27,7 @@ _WARNED_MISSING_KEY = False
 def cfbd_headers() -> dict[str, str]:
     global _WARNED_MISSING_KEY
     headers = {"Accept": "application/json"}
-    api_key = os.getenv("CFBD_API_KEY")
+    api_key = (os.getenv("CFBD_API_KEY") or "").strip().strip('"').strip("'")
     if api_key:
         headers["Authorization"] = f"Bearer {api_key}"
     elif not _WARNED_MISSING_KEY:

@@ -124,7 +124,7 @@ def build_receiving_lookup(year: int) -> dict[tuple[str, str], dict[str, float]]
     """
     Returns a dict keyed by (norm_player_name, norm_team) → {REC, YDS, TD, TGT, ...}.
     """
-    rows = fetch_cfbd_category(year, "receiving")
+    rows = fetch_cfbd_category(year, "receiving", max_retries=10)
     pivoted = pivot_stats(rows)
     result: dict[tuple[str, str], dict[str, float]] = {}
     for key, entry in pivoted.items():
