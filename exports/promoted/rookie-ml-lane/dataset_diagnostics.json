@@ -1,0 +1,64 @@
+{
+  "total_labeled_rows": 37,
+  "labeled_row_count_by_position": {
+    "QB": 2,
+    "WR": 25,
+    "TE": 10
+  },
+  "labeled_row_count_by_draft_year": {
+    "2018": 7,
+    "2019": 7,
+    "2020": 8,
+    "2021": 7,
+    "2022": 7,
+    "2023": 1
+  },
+  "labeled_row_count_by_position_draft_year": {
+    "QB|2018": 1,
+    "QB|2019": 1,
+    "WR|2018": 4,
+    "WR|2020": 7,
+    "WR|2021": 5,
+    "WR|2022": 5,
+    "WR|2019": 4,
+    "TE|2018": 2,
+    "TE|2019": 2,
+    "TE|2020": 1,
+    "TE|2021": 2,
+    "TE|2022": 2,
+    "TE|2023": 1
+  },
+  "split_row_counts": {
+    "train": 29,
+    "validation": 7,
+    "test": 1
+  },
+  "split_row_counts_by_position": {
+    "train": {
+      "QB": 2,
+      "WR": 20,
+      "TE": 7
+    },
+    "validation": {
+      "WR": 5,
+      "TE": 2
+    },
+    "test": {
+      "TE": 1
+    }
+  },
+  "target_hit_rate_overall": 0.621622,
+  "target_hit_rate_by_position": {
+    "QB": 0.5,
+    "TE": 0.5,
+    "WR": 0.68
+  },
+  "target_hit_rate_by_draft_year": {
+    "2018": 0.714286,
+    "2019": 0.571429,
+    "2020": 0.625,
+    "2021": 0.571429,
+    "2022": 0.571429,
+    "2023": 1.0
+  }
+}

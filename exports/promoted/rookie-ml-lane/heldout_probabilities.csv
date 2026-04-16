@@ -1,0 +1,2 @@
+deterministic_disagreement,deterministic_grade_0_100,draft_year,hit_label,hit_probability,miss_probability,model_confidence,model_name,player_id,player_name,position
+,,2023,1,0.536683,0.463317,0.073366,logistic_full,te-sam-laporta-2023,Sam LaPorta,TE

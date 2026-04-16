@@ -164,6 +164,56 @@ python3 scripts/validate_promoted_export.py \
 
 Validation checks field presence, metadata consistency, hashes, and row-count expectations.
 
+
+## Parallel ML evaluation lane (phase 1, experimental)
+
+This repo now includes an **experimental parallel ML lane** that evaluates rookie hit probabilities from historical labeled rows. It is strictly additive and does **not** replace deterministic Rookie Alpha scoring.
+
+Run from repo root:
+
+```bash
+python3 scripts/compute_rookie_ml_lane.py
+```
+
+Default outputs are written to `exports/promoted/rookie-ml-lane/`:
+
+- `historical_outcomes_canonical.json`
+- `historical_label_provenance_report.json`
+- `historical_feature_consistency_report.json`
+- `historical_class_coverage_report.json`
+- `historical_position_slices_report.json`
+- `historical_labeled_dataset.json` / `.csv`
+- `feature_table.json`
+- `dataset_diagnostics.json`
+- `feature_coverage_report.json`
+- `feature_importance_report.json`
+- `evaluation_report.json`
+- `heldout_probabilities.json` / `.csv`
+
+The evaluator uses time-aware draft-class splits, logistic baselines, required feature-subset baselines, and non-ML baseline comparisons.
+
+### Historical truth layer checklist (inspect before trusting ML metrics)
+
+Use the artifacts above to decide whether the lane is trustworthy enough to keep iterating. The intent is explicit, provenance-aware historical truth, not extra model complexity:
+
+- **Canonical outcomes first:** inspect `historical_outcomes_canonical.json` to verify each player row has explicit by-year-3 outcome fields, a canonical hit label, an outcome bucket, and `label_source_fields_used`.
+- **Label provenance honesty:** inspect `historical_label_provenance_report.json` for row counts by label source, position+source breakdown, weak fallback usage counts, and unresolved-canonical-label counts.
+- **Feature consistency + fallback visibility:** inspect `historical_feature_consistency_report.json` for feature availability by year/position/(position+year), plus fallback/proxy usage counts for derived fields.
+- **Class coverage realism:** inspect `historical_class_coverage_report.json` for usable rows and thin cohorts by draft year, position, and year+position, including rows with strong feature completeness and rows surviving split filters.
+- **Position readiness slices:** inspect `historical_position_slices_report.json` for WR/RB/TE/QB labeled counts, canonical outcome counts, feature completeness, hit rate, draft year representation, and warnings.
+
+- **Historical data volume:** open `dataset_diagnostics.json` for total labeled rows, rows by position/year, split counts, and hit rates.
+- **Feature completeness:** open `feature_coverage_report.json` for per-feature null/non-null counts plus coverage by position and draft year.
+- **Thin-data warnings:** `evaluation_report.json` includes `dataset_warnings`, `historical_truth_summary`, and `missingness_summary` (including warnings for weak label provenance, sparse positions, and frequent fallback usage).
+- **Position stability:** check `test_by_position` metrics (WR/RB/TE/QB) under each model and non-ML baseline in `evaluation_report.json`.
+- **Draft-capital dominance:** inspect `draft_capital_dominance_check` in `evaluation_report.json` to see test PR-AUC deltas between `logistic_full` and:
+  - `draft_capital_only`
+  - `draft_capital_plus_production`
+  - `deterministic_grade_only`
+- **Coefficient interpretability:** use `feature_importance_report.json` for coefficient sign, absolute magnitude ranking, and normalized importance ordering for `logistic_full`.
+
+If warnings indicate very sparse position slices, weak feature coverage, or tiny pre-holdout history, treat the ML lane as directional diagnostics rather than production-grade forecasting.
+
 ## Run standalone static lab locally
 
 Requires Node.js 20+.

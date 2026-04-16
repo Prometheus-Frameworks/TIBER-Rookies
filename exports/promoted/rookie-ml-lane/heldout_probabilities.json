@@ -1,0 +1,15 @@
+[
+  {
+    "player_id": "te-sam-laporta-2023",
+    "player_name": "Sam LaPorta",
+    "position": "TE",
+    "draft_year": 2023,
+    "hit_probability": 0.536683,
+    "miss_probability": 0.463317,
+    "model_confidence": 0.073366,
+    "model_name": "logistic_full",
+    "deterministic_grade_0_100": null,
+    "deterministic_disagreement": null,
+    "hit_label": 1
+  }
+]
