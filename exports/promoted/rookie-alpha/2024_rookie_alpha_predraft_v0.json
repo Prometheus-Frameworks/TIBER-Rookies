@@ -11,13 +11,13 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-11T13:31:54+00:00",
-  "run_id": "rookie-alpha-2024-2026-04-11T13:31:54+00:00",
+  "generated_at": "2026-04-16T00:51:10+00:00",
+  "run_id": "rookie-alpha-2024-2026-04-16T00:51:10+00:00",
   "season": 2024,
   "coverage_summary": {
     "players_total": 15,
-    "players_with_any_missing_input": 1,
-    "players_with_full_inputs": 14,
+    "players_with_any_missing_input": 0,
+    "players_with_full_inputs": 15,
     "players_with_context_fields": 15,
     "input_alignment": {
       "duplicate_rows_skipped": 0,
@@ -32,7 +32,8 @@
     "data/raw/2024_combine_results.json",
     "data/processed/2024_college_production.json",
     "data/processed/2024_draft_capital_proxy.json",
-    "data/processed/2024_prospect_context.json"
+    "data/processed/2024_prospect_context.json",
+    "data/processed/2024_positional_consensus.json"
   ],
   "players": [
     {
@@ -41,6 +42,10 @@
       "position": "QB",
       "scores": {
         "ras_0_100": 62.1927,
+        "athletic_score_0_100": 62.1927,
+        "athletic_source": "RAS",
+        "athletic_confidence": 0.95,
+        "athletic_explainer": "RAS 62.2 from 4 combine metrics",
         "production_0_100": 95.0,
         "age_adjusted_production_0_100": null,
         "draft_capital_proxy_0_100": 95.0,
@@ -51,7 +56,11 @@
         "market_conviction_reason": null,
         "wr_translation_penalty": null,
         "wr_translation_signals": null,
-        "consensus_delta": -11.5
+        "consensus_position_rank_blended": 2,
+        "consensus_position_rank_sources_count": 1,
+        "consensus_score_positional_0_100": 77.0,
+        "consensus_delta_positional": 6.5,
+        "market_investment_delta_legacy": -11.5
       },
       "model_inputs_missing": [],
       "context": {
@@ -67,6 +76,10 @@
         "sophomore_total_yards": null,
         "freshman_impact_flag": null,
         "young_breakout_flag": false,
+        "breakout_strength": null,
+        "breakout_confidence": null,
+        "breakout_age_rating_0_100": null,
+        "breakout_label": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
         "worst_season_yprr": null,
@@ -89,8 +102,7 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null,
-        "nfl_team": "Washington Commanders"
+        "path_disruption_flag": null
       },
       "evidence": {
         "evidence_tags": [
@@ -111,6 +123,10 @@
       "position": "WR",
       "scores": {
         "ras_0_100": 43.2589,
+        "athletic_score_0_100": 43.2589,
+        "athletic_source": "RAS",
+        "athletic_confidence": 0.95,
+        "athletic_explainer": "RAS 43.3 from 4 combine metrics",
         "production_0_100": 92.0,
         "age_adjusted_production_0_100": null,
         "draft_capital_proxy_0_100": 90.0,
@@ -121,7 +137,11 @@
         "market_conviction_reason": "WR craft override: confirmed RAS 43.3 < 45.0 | capital 90 >= 65.0 | craft signals [tag:contested_catch_signal, tag:inside_out_versatility, field:contested_catch_rate>=0.45] | +4.0 pts",
         "wr_translation_penalty": null,
         "wr_translation_signals": null,
-        "consensus_delta": -11.5
+        "consensus_position_rank_blended": 2,
+        "consensus_position_rank_sources_count": 1,
+        "consensus_score_positional_0_100": 75.0,
+        "consensus_delta_positional": 3.5,
+        "market_investment_delta_legacy": -11.5
       },
       "model_inputs_missing": [],
       "context": {
@@ -137,6 +157,10 @@
         "sophomore_total_yards": null,
         "freshman_impact_flag": null,
         "young_breakout_flag": false,
+        "breakout_strength": null,
+        "breakout_confidence": null,
+        "breakout_age_rating_0_100": null,
+        "breakout_label": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
         "worst_season_yprr": null,
@@ -159,8 +183,7 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null,
-        "nfl_team": "Chicago Bears"
+        "path_disruption_flag": null
       },
       "evidence": {
         "evidence_tags": [
@@ -176,8 +199,8 @@
         "context_source": "manual_historical_seed"
       },
       "rookie_alpha_rank": 2,
-      "talent_rank": 5,
-      "draft_proxy_delta": 3
+      "talent_rank": 4,
+      "draft_proxy_delta": 2
     },
     {
       "player_id": "wr-malik-nabers",
@@ -185,6 +208,10 @@
       "position": "WR",
       "scores": {
         "ras_0_100": 54.6235,
+        "athletic_score_0_100": 54.6235,
+        "athletic_source": "RAS",
+        "athletic_confidence": 0.95,
+        "athletic_explainer": "RAS 54.6 from 4 combine metrics",
         "production_0_100": 92.0,
         "age_adjusted_production_0_100": null,
         "draft_capital_proxy_0_100": 90.0,
@@ -195,7 +222,11 @@
         "market_conviction_reason": null,
         "wr_translation_penalty": null,
         "wr_translation_signals": null,
-        "consensus_delta": -11.5
+        "consensus_position_rank_blended": 1,
+        "consensus_position_rank_sources_count": 1,
+        "consensus_score_positional_0_100": 80.0,
+        "consensus_delta_positional": -1.5,
+        "market_investment_delta_legacy": -11.5
       },
       "model_inputs_missing": [],
       "context": {
@@ -211,6 +242,10 @@
         "sophomore_total_yards": null,
         "freshman_impact_flag": null,
         "young_breakout_flag": true,
+        "breakout_strength": null,
+        "breakout_confidence": null,
+        "breakout_age_rating_0_100": null,
+        "breakout_label": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
         "worst_season_yprr": null,
@@ -233,8 +268,7 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null,
-        "nfl_team": "New York Giants"
+        "path_disruption_flag": null
       },
       "evidence": {
         "evidence_tags": [
@@ -253,86 +287,15 @@
       "draft_proxy_delta": -1
     },
     {
-      "player_id": "qb-caleb-williams",
-      "player_name": "Caleb Williams",
-      "position": "QB",
-      "scores": {
-        "ras_0_100": 50.0,
-        "production_0_100": 91.0,
-        "age_adjusted_production_0_100": null,
-        "draft_capital_proxy_0_100": 98.0,
-        "talent_score_0_100": 73.0625,
-        "rookie_alpha_0_100": 78.05,
-        "ceiling_bonus": null,
-        "market_conviction_ras_override": null,
-        "market_conviction_reason": null,
-        "wr_translation_penalty": null,
-        "wr_translation_signals": null,
-        "consensus_delta": -19.9
-      },
-      "model_inputs_missing": [
-        "ras"
-      ],
-      "context": {
-        "player_id": "qb-caleb-williams",
-        "player_name": "Caleb Williams",
-        "position": "QB",
-        "school": "USC",
-        "class_year": 2024,
-        "early_declare_flag": true,
-        "breakout_age": 20,
-        "age_at_first_impact_season": 19,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": true,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": null,
-        "injury_adjusted_profile_flag": null,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": null,
-        "nfl_team": "Chicago Bears"
-      },
-      "evidence": {
-        "evidence_tags": [
-          "young_breakout",
-          "early_declare"
-        ],
-        "context_flags": [],
-        "translation_flags": [
-          "young_breakout"
-        ],
-        "evidence_summary": "2022 Heisman winner at Oklahoma age 19; transferred to USC. 3,633 passing yards, 30 TDs at 20 in 2023. Consensus QB1 and 1st overall pick. Only USC's poor OL and thin WR room obscured efficiency.",
-        "context_source": "manual_historical_seed"
-      },
-      "rookie_alpha_rank": 4,
-      "talent_rank": 4,
-      "draft_proxy_delta": 0
-    },
-    {
       "player_id": "te-brock-bowers",
       "player_name": "Brock Bowers",
       "position": "TE",
       "scores": {
         "ras_0_100": 50.0,
+        "athletic_score_0_100": 50.0,
+        "athletic_source": "RAS",
+        "athletic_confidence": 0.95,
+        "athletic_explainer": "RAS 50.0 from 4 combine metrics",
         "production_0_100": 95.0,
         "age_adjusted_production_0_100": null,
         "draft_capital_proxy_0_100": 85.0,
@@ -343,7 +306,11 @@
         "market_conviction_reason": null,
         "wr_translation_penalty": null,
         "wr_translation_signals": null,
-        "consensus_delta": -7.8
+        "consensus_position_rank_blended": 1,
+        "consensus_position_rank_sources_count": 1,
+        "consensus_score_positional_0_100": 79.0,
+        "consensus_delta_positional": -1.8,
+        "market_investment_delta_legacy": -7.8
       },
       "model_inputs_missing": [],
       "context": {
@@ -359,6 +326,10 @@
         "sophomore_total_yards": null,
         "freshman_impact_flag": null,
         "young_breakout_flag": true,
+        "breakout_strength": null,
+        "breakout_confidence": null,
+        "breakout_age_rating_0_100": null,
+        "breakout_label": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
         "worst_season_yprr": null,
@@ -381,8 +352,7 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null,
-        "nfl_team": "Las Vegas Raiders"
+        "path_disruption_flag": null
       },
       "evidence": {
         "evidence_tags": [
@@ -396,9 +366,93 @@
         "evidence_summary": "Georgia TE1 at age 19 in 2021 (882 rec yds). Three elite seasons including 1,182 yds in 2023. The rare TE breakout at 19; elite receiving TE archetype.",
         "context_source": "manual_historical_seed"
       },
-      "rookie_alpha_rank": 5,
+      "rookie_alpha_rank": 4,
       "talent_rank": 3,
-      "draft_proxy_delta": -2
+      "draft_proxy_delta": -1
+    },
+    {
+      "player_id": "qb-caleb-williams",
+      "player_name": "Caleb Williams",
+      "position": "QB",
+      "scores": {
+        "ras_0_100": null,
+        "athletic_score_0_100": 37.239,
+        "athletic_source": "COMBINE_FALLBACK",
+        "athletic_confidence": 0.4,
+        "athletic_explainer": "Partial combine (1 metrics, no explosive drills)",
+        "production_0_100": 91.0,
+        "age_adjusted_production_0_100": null,
+        "draft_capital_proxy_0_100": 98.0,
+        "talent_score_0_100": 67.4796,
+        "rookie_alpha_0_100": 73.5837,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_position_rank_blended": 1,
+        "consensus_position_rank_sources_count": 1,
+        "consensus_score_positional_0_100": 82.0,
+        "consensus_delta_positional": -8.4,
+        "market_investment_delta_legacy": -24.4
+      },
+      "model_inputs_missing": [],
+      "context": {
+        "player_id": "qb-caleb-williams",
+        "player_name": "Caleb Williams",
+        "position": "QB",
+        "school": "USC",
+        "class_year": 2024,
+        "early_declare_flag": true,
+        "breakout_age": 20,
+        "age_at_first_impact_season": 19,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": true,
+        "breakout_strength": null,
+        "breakout_confidence": null,
+        "breakout_age_rating_0_100": null,
+        "breakout_label": null,
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [
+          "young_breakout",
+          "early_declare"
+        ],
+        "context_flags": [],
+        "translation_flags": [
+          "young_breakout"
+        ],
+        "evidence_summary": "2022 Heisman winner at Oklahoma age 19; transferred to USC. 3,633 passing yards, 30 TDs at 20 in 2023. Consensus QB1 and 1st overall pick. Only USC's poor OL and thin WR room obscured efficiency.",
+        "context_source": "manual_historical_seed"
+      },
+      "rookie_alpha_rank": 5,
+      "talent_rank": 8,
+      "draft_proxy_delta": 3
     },
     {
       "player_id": "wr-brian-thomas-jr",
@@ -406,6 +460,10 @@
       "position": "WR",
       "scores": {
         "ras_0_100": 53.7471,
+        "athletic_score_0_100": 53.7471,
+        "athletic_source": "RAS",
+        "athletic_confidence": 0.95,
+        "athletic_explainer": "RAS 53.7 from 4 combine metrics",
         "production_0_100": 83.0,
         "age_adjusted_production_0_100": null,
         "draft_capital_proxy_0_100": 78.0,
@@ -416,7 +474,11 @@
         "market_conviction_reason": null,
         "wr_translation_penalty": null,
         "wr_translation_signals": null,
-        "consensus_delta": -6.2
+        "consensus_position_rank_blended": 3,
+        "consensus_position_rank_sources_count": 1,
+        "consensus_score_positional_0_100": 71.0,
+        "consensus_delta_positional": 0.8,
+        "market_investment_delta_legacy": -6.2
       },
       "model_inputs_missing": [],
       "context": {
@@ -432,6 +494,10 @@
         "sophomore_total_yards": null,
         "freshman_impact_flag": null,
         "young_breakout_flag": true,
+        "breakout_strength": null,
+        "breakout_confidence": null,
+        "breakout_age_rating_0_100": null,
+        "breakout_label": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
         "worst_season_yprr": null,
@@ -454,8 +520,7 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null,
-        "nfl_team": "Jacksonville Jaguars"
+        "path_disruption_flag": null
       },
       "evidence": {
         "evidence_tags": [
@@ -470,8 +535,8 @@
         "context_source": "manual_historical_seed"
       },
       "rookie_alpha_rank": 6,
-      "talent_rank": 7,
-      "draft_proxy_delta": 1
+      "talent_rank": 6,
+      "draft_proxy_delta": 0
     },
     {
       "player_id": "wr-adonai-mitchell",
@@ -479,6 +544,10 @@
       "position": "WR",
       "scores": {
         "ras_0_100": 65.2345,
+        "athletic_score_0_100": 65.2345,
+        "athletic_source": "RAS",
+        "athletic_confidence": 0.95,
+        "athletic_explainer": "RAS 65.2 from 4 combine metrics",
         "production_0_100": 72.5,
         "age_adjusted_production_0_100": null,
         "draft_capital_proxy_0_100": 68.0,
@@ -489,7 +558,11 @@
         "market_conviction_reason": null,
         "wr_translation_penalty": null,
         "wr_translation_signals": null,
-        "consensus_delta": 1.1
+        "consensus_position_rank_blended": 6,
+        "consensus_position_rank_sources_count": 1,
+        "consensus_score_positional_0_100": 60.0,
+        "consensus_delta_positional": 9.1,
+        "market_investment_delta_legacy": 1.1
       },
       "model_inputs_missing": [],
       "context": {
@@ -505,6 +578,10 @@
         "sophomore_total_yards": null,
         "freshman_impact_flag": null,
         "young_breakout_flag": true,
+        "breakout_strength": null,
+        "breakout_confidence": null,
+        "breakout_age_rating_0_100": null,
+        "breakout_label": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
         "worst_season_yprr": null,
@@ -527,8 +604,7 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null,
-        "nfl_team": "Indianapolis Colts"
+        "path_disruption_flag": null
       },
       "evidence": {
         "evidence_tags": [
@@ -543,8 +619,8 @@
         "context_source": "manual_historical_seed"
       },
       "rookie_alpha_rank": 7,
-      "talent_rank": 8,
-      "draft_proxy_delta": 1
+      "talent_rank": 7,
+      "draft_proxy_delta": 0
     },
     {
       "player_id": "qb-drake-maye",
@@ -552,6 +628,10 @@
       "position": "QB",
       "scores": {
         "ras_0_100": 40.0593,
+        "athletic_score_0_100": 40.0593,
+        "athletic_source": "RAS",
+        "athletic_confidence": 0.95,
+        "athletic_explainer": "RAS 40.1 from 4 combine metrics",
         "production_0_100": 80.0,
         "age_adjusted_production_0_100": null,
         "draft_capital_proxy_0_100": 95.0,
@@ -562,7 +642,11 @@
         "market_conviction_reason": null,
         "wr_translation_penalty": null,
         "wr_translation_signals": null,
-        "consensus_delta": -26.0
+        "consensus_position_rank_blended": 3,
+        "consensus_position_rank_sources_count": 1,
+        "consensus_score_positional_0_100": 72.0,
+        "consensus_delta_positional": -3.0,
+        "market_investment_delta_legacy": -26.0
       },
       "model_inputs_missing": [],
       "context": {
@@ -578,6 +662,10 @@
         "sophomore_total_yards": null,
         "freshman_impact_flag": null,
         "young_breakout_flag": true,
+        "breakout_strength": null,
+        "breakout_confidence": null,
+        "breakout_age_rating_0_100": null,
+        "breakout_label": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
         "worst_season_yprr": null,
@@ -600,8 +688,7 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null,
-        "nfl_team": "New England Patriots"
+        "path_disruption_flag": null
       },
       "evidence": {
         "evidence_tags": [
@@ -625,6 +712,10 @@
       "position": "RB",
       "scores": {
         "ras_0_100": 57.9578,
+        "athletic_score_0_100": 57.9578,
+        "athletic_source": "RAS",
+        "athletic_confidence": 0.95,
+        "athletic_explainer": "RAS 58.0 from 4 combine metrics",
         "production_0_100": 80.0,
         "age_adjusted_production_0_100": null,
         "draft_capital_proxy_0_100": 58.0,
@@ -635,7 +726,11 @@
         "market_conviction_reason": null,
         "wr_translation_penalty": null,
         "wr_translation_signals": null,
-        "consensus_delta": 9.9
+        "consensus_position_rank_blended": 2,
+        "consensus_position_rank_sources_count": 1,
+        "consensus_score_positional_0_100": 74.0,
+        "consensus_delta_positional": -6.1,
+        "market_investment_delta_legacy": 9.9
       },
       "model_inputs_missing": [],
       "context": {
@@ -651,6 +746,10 @@
         "sophomore_total_yards": null,
         "freshman_impact_flag": null,
         "young_breakout_flag": false,
+        "breakout_strength": null,
+        "breakout_confidence": null,
+        "breakout_age_rating_0_100": null,
+        "breakout_label": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
         "worst_season_yprr": null,
@@ -673,8 +772,7 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null,
-        "nfl_team": "Arizona Cardinals"
+        "path_disruption_flag": null
       },
       "evidence": {
         "evidence_tags": [
@@ -686,8 +784,8 @@
         "context_source": "manual_historical_seed"
       },
       "rookie_alpha_rank": 9,
-      "talent_rank": 6,
-      "draft_proxy_delta": -3
+      "talent_rank": 5,
+      "draft_proxy_delta": -4
     },
     {
       "player_id": "wr-xavier-worthy",
@@ -695,6 +793,10 @@
       "position": "WR",
       "scores": {
         "ras_0_100": 46.2563,
+        "athletic_score_0_100": 46.2563,
+        "athletic_source": "RAS",
+        "athletic_confidence": 0.95,
+        "athletic_explainer": "RAS 46.3 from 4 combine metrics",
         "production_0_100": 68.0,
         "age_adjusted_production_0_100": null,
         "draft_capital_proxy_0_100": 78.0,
@@ -705,7 +807,11 @@
         "market_conviction_reason": null,
         "wr_translation_penalty": null,
         "wr_translation_signals": null,
-        "consensus_delta": -12.6
+        "consensus_position_rank_blended": 4,
+        "consensus_position_rank_sources_count": 1,
+        "consensus_score_positional_0_100": 67.0,
+        "consensus_delta_positional": -1.6,
+        "market_investment_delta_legacy": -12.6
       },
       "model_inputs_missing": [],
       "exceptional_metrics": [
@@ -740,6 +846,10 @@
         "sophomore_total_yards": null,
         "freshman_impact_flag": null,
         "young_breakout_flag": true,
+        "breakout_strength": null,
+        "breakout_confidence": null,
+        "breakout_age_rating_0_100": null,
+        "breakout_label": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
         "worst_season_yprr": null,
@@ -762,8 +872,7 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null,
-        "nfl_team": "Kansas City Chiefs"
+        "path_disruption_flag": null
       },
       "evidence": {
         "evidence_tags": [
@@ -787,6 +896,10 @@
       "position": "RB",
       "scores": {
         "ras_0_100": 46.5713,
+        "athletic_score_0_100": 46.5713,
+        "athletic_source": "RAS",
+        "athletic_confidence": 0.95,
+        "athletic_explainer": "RAS 46.6 from 4 combine metrics",
         "production_0_100": 77.0,
         "age_adjusted_production_0_100": null,
         "draft_capital_proxy_0_100": 68.0,
@@ -797,7 +910,11 @@
         "market_conviction_reason": null,
         "wr_translation_penalty": null,
         "wr_translation_signals": null,
-        "consensus_delta": -3.5
+        "consensus_position_rank_blended": 1,
+        "consensus_position_rank_sources_count": 1,
+        "consensus_score_positional_0_100": 79.0,
+        "consensus_delta_positional": -14.5,
+        "market_investment_delta_legacy": -3.5
       },
       "model_inputs_missing": [],
       "context": {
@@ -813,6 +930,10 @@
         "sophomore_total_yards": null,
         "freshman_impact_flag": null,
         "young_breakout_flag": true,
+        "breakout_strength": null,
+        "breakout_confidence": null,
+        "breakout_age_rating_0_100": null,
+        "breakout_label": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
         "worst_season_yprr": null,
@@ -835,8 +956,7 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null,
-        "nfl_team": "Carolina Panthers"
+        "path_disruption_flag": null
       },
       "evidence": {
         "evidence_tags": [
@@ -860,6 +980,10 @@
       "position": "RB",
       "scores": {
         "ras_0_100": 69.1023,
+        "athletic_score_0_100": 69.1023,
+        "athletic_source": "RAS",
+        "athletic_confidence": 0.95,
+        "athletic_explainer": "RAS 69.1 from 4 combine metrics",
         "production_0_100": 65.0,
         "age_adjusted_production_0_100": null,
         "draft_capital_proxy_0_100": 48.0,
@@ -870,7 +994,11 @@
         "market_conviction_reason": null,
         "wr_translation_penalty": null,
         "wr_translation_signals": null,
-        "consensus_delta": 15.0
+        "consensus_position_rank_blended": 4,
+        "consensus_position_rank_sources_count": 1,
+        "consensus_score_positional_0_100": 65.0,
+        "consensus_delta_positional": -2.0,
+        "market_investment_delta_legacy": 15.0
       },
       "model_inputs_missing": [],
       "exceptional_metrics": [
@@ -897,6 +1025,10 @@
         "sophomore_total_yards": null,
         "freshman_impact_flag": null,
         "young_breakout_flag": false,
+        "breakout_strength": null,
+        "breakout_confidence": null,
+        "breakout_age_rating_0_100": null,
+        "breakout_label": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
         "worst_season_yprr": null,
@@ -919,8 +1051,7 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null,
-        "nfl_team": "Houston Texans"
+        "path_disruption_flag": null
       },
       "evidence": {
         "evidence_tags": [
@@ -941,6 +1072,10 @@
       "position": "WR",
       "scores": {
         "ras_0_100": 36.8796,
+        "athletic_score_0_100": 36.8796,
+        "athletic_source": "RAS",
+        "athletic_confidence": 0.95,
+        "athletic_explainer": "RAS 36.9 from 4 combine metrics",
         "production_0_100": 65.0,
         "age_adjusted_production_0_100": null,
         "draft_capital_proxy_0_100": 68.0,
@@ -951,7 +1086,11 @@
         "market_conviction_reason": "WR craft override: confirmed RAS 36.9 < 45.0 | capital 68 >= 65.0 | craft signals [tag:inside_out_versatility, tag:route_runner, tag:yac_signal, field:inside_out_versatility_flag] | +4.0 pts",
         "wr_translation_penalty": null,
         "wr_translation_signals": null,
-        "consensus_delta": -8.2
+        "consensus_position_rank_blended": 5,
+        "consensus_position_rank_sources_count": 1,
+        "consensus_score_positional_0_100": 63.0,
+        "consensus_delta_positional": -3.2,
+        "market_investment_delta_legacy": -8.2
       },
       "model_inputs_missing": [],
       "context": {
@@ -967,6 +1106,10 @@
         "sophomore_total_yards": null,
         "freshman_impact_flag": null,
         "young_breakout_flag": false,
+        "breakout_strength": null,
+        "breakout_confidence": null,
+        "breakout_age_rating_0_100": null,
+        "breakout_label": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
         "worst_season_yprr": null,
@@ -989,8 +1132,7 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null,
-        "nfl_team": "Los Angeles Chargers"
+        "path_disruption_flag": null
       },
       "evidence": {
         "evidence_tags": [
@@ -1016,6 +1158,10 @@
       "position": "RB",
       "scores": {
         "ras_0_100": 32.8437,
+        "athletic_score_0_100": 32.8437,
+        "athletic_source": "RAS",
+        "athletic_confidence": 0.95,
+        "athletic_explainer": "RAS 32.8 from 4 combine metrics",
         "production_0_100": 72.5,
         "age_adjusted_production_0_100": null,
         "draft_capital_proxy_0_100": 48.0,
@@ -1026,7 +1172,11 @@
         "market_conviction_reason": null,
         "wr_translation_penalty": null,
         "wr_translation_signals": null,
-        "consensus_delta": 5.7
+        "consensus_position_rank_blended": 3,
+        "consensus_position_rank_sources_count": 1,
+        "consensus_score_positional_0_100": 69.0,
+        "consensus_delta_positional": -15.3,
+        "market_investment_delta_legacy": 5.7
       },
       "model_inputs_missing": [],
       "context": {
@@ -1042,6 +1192,10 @@
         "sophomore_total_yards": null,
         "freshman_impact_flag": null,
         "young_breakout_flag": false,
+        "breakout_strength": null,
+        "breakout_confidence": null,
+        "breakout_age_rating_0_100": null,
+        "breakout_label": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
         "worst_season_yprr": null,
@@ -1064,8 +1218,7 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null,
-        "nfl_team": "Los Angeles Rams"
+        "path_disruption_flag": null
       },
       "evidence": {
         "evidence_tags": [],
@@ -1084,6 +1237,10 @@
       "position": "RB",
       "scores": {
         "ras_0_100": 43.5249,
+        "athletic_score_0_100": 43.5249,
+        "athletic_source": "RAS",
+        "athletic_confidence": 0.95,
+        "athletic_explainer": "RAS 43.5 from 4 combine metrics",
         "production_0_100": 65.0,
         "age_adjusted_production_0_100": null,
         "draft_capital_proxy_0_100": 38.0,
@@ -1094,7 +1251,11 @@
         "market_conviction_reason": null,
         "wr_translation_penalty": null,
         "wr_translation_signals": null,
-        "consensus_delta": 14.1
+        "consensus_position_rank_blended": 5,
+        "consensus_position_rank_sources_count": 1,
+        "consensus_score_positional_0_100": 61.0,
+        "consensus_delta_positional": -8.9,
+        "market_investment_delta_legacy": 14.1
       },
       "model_inputs_missing": [],
       "context": {
@@ -1110,6 +1271,10 @@
         "sophomore_total_yards": null,
         "freshman_impact_flag": null,
         "young_breakout_flag": true,
+        "breakout_strength": null,
+        "breakout_confidence": null,
+        "breakout_age_rating_0_100": null,
+        "breakout_label": null,
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
         "worst_season_yprr": null,
@@ -1132,8 +1297,7 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null,
-        "nfl_team": "New York Jets"
+        "path_disruption_flag": null
       },
       "evidence": {
         "evidence_tags": [

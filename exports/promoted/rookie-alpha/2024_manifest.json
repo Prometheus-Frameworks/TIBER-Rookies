@@ -1,8 +1,8 @@
 {
   "season": 2024,
   "model_version": "rookie-alpha-predraft-v0.4.0",
-  "generated_at": "2026-04-11T13:31:54+00:00",
-  "run_id": "rookie-alpha-2024-2026-04-11T13:31:54+00:00",
+  "generated_at": "2026-04-16T00:51:10+00:00",
+  "run_id": "rookie-alpha-2024-2026-04-16T00:51:10+00:00",
   "input_files": [
     {
       "path": "data/raw/2024_combine_results.json",
@@ -23,12 +23,17 @@
       "path": "data/processed/2024_prospect_context.json",
       "sha256": "a22749b4451fc8954181d1b4bec4e91b237cf2920f0be166937b4c49e34a4da4",
       "row_count": 15
+    },
+    {
+      "path": "data/processed/2024_positional_consensus.json",
+      "sha256": "1edff9cfe73dda441eea6acda322d61c34836405d544d826710be18c882e6b3c",
+      "row_count": 15
     }
   ],
   "coverage_summary": {
     "players_total": 15,
-    "players_with_any_missing_input": 1,
-    "players_with_full_inputs": 14,
+    "players_with_any_missing_input": 0,
+    "players_with_full_inputs": 15,
     "players_with_context_fields": 15,
     "input_alignment": {
       "duplicate_rows_skipped": 0,
@@ -42,22 +47,22 @@
   "output_files": [
     {
       "path": "exports/promoted/rookie-alpha/2024_rookie_alpha_predraft_v0.json",
-      "sha256": "51c70d6c7b18a8b1e282992df38ea953176a29dce7cb316f428efca363b2185d"
+      "sha256": "95836f726af5d00b3e8278feffef94f13b2349926be2c402836b4f186548cd13"
     },
     {
       "path": "exports/promoted/rookie-alpha/2024_rookie_alpha_predraft_v0.csv",
-      "sha256": "91810fc9954a778e21dfb330a7a92c915d3099a7c460156dafae08bbec248a33"
+      "sha256": "74e1b98a750519802f65f069257513b06cffa39c7e9b695df69683bf47536bd9"
     }
   ],
   "export_metadata": {
     "season": 2024,
     "model_version": "rookie-alpha-predraft-v0.4.0",
-    "generated_at": "2026-04-11T13:31:54+00:00",
-    "run_id": "rookie-alpha-2024-2026-04-11T13:31:54+00:00",
+    "generated_at": "2026-04-16T00:51:10+00:00",
+    "run_id": "rookie-alpha-2024-2026-04-16T00:51:10+00:00",
     "coverage_summary": {
       "players_total": 15,
-      "players_with_any_missing_input": 1,
-      "players_with_full_inputs": 14,
+      "players_with_any_missing_input": 0,
+      "players_with_full_inputs": 15,
       "players_with_context_fields": 15,
       "input_alignment": {
         "duplicate_rows_skipped": 0,
@@ -72,7 +77,8 @@
       "data/raw/2024_combine_results.json",
       "data/processed/2024_college_production.json",
       "data/processed/2024_draft_capital_proxy.json",
-      "data/processed/2024_prospect_context.json"
+      "data/processed/2024_prospect_context.json",
+      "data/processed/2024_positional_consensus.json"
     ]
   }
 }
