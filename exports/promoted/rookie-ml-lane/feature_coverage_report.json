@@ -1,0 +1,168 @@
+{
+  "total_rows": 37,
+  "weak_coverage_threshold": 0.6,
+  "features": {
+    "draft_capital_proxy_0_100": {
+      "non_null_count": 37,
+      "null_count": 0,
+      "coverage_pct_overall": 1.0,
+      "coverage_pct_by_position": {
+        "QB": 1.0,
+        "TE": 1.0,
+        "WR": 1.0
+      },
+      "coverage_pct_by_draft_year": {
+        "2018": 1.0,
+        "2019": 1.0,
+        "2020": 1.0,
+        "2021": 1.0,
+        "2022": 1.0,
+        "2023": 1.0
+      }
+    },
+    "age_at_draft": {
+      "non_null_count": 0,
+      "null_count": 37,
+      "coverage_pct_overall": 0.0,
+      "coverage_pct_by_position": {
+        "QB": 0.0,
+        "TE": 0.0,
+        "WR": 0.0
+      },
+      "coverage_pct_by_draft_year": {
+        "2018": 0.0,
+        "2019": 0.0,
+        "2020": 0.0,
+        "2021": 0.0,
+        "2022": 0.0,
+        "2023": 0.0
+      }
+    },
+    "breakout_age": {
+      "non_null_count": 0,
+      "null_count": 37,
+      "coverage_pct_overall": 0.0,
+      "coverage_pct_by_position": {
+        "QB": 0.0,
+        "TE": 0.0,
+        "WR": 0.0
+      },
+      "coverage_pct_by_draft_year": {
+        "2018": 0.0,
+        "2019": 0.0,
+        "2020": 0.0,
+        "2021": 0.0,
+        "2022": 0.0,
+        "2023": 0.0
+      }
+    },
+    "production_0_100": {
+      "non_null_count": 15,
+      "null_count": 22,
+      "coverage_pct_overall": 0.405405,
+      "coverage_pct_by_position": {
+        "QB": 1.0,
+        "TE": 0.0,
+        "WR": 0.52
+      },
+      "coverage_pct_by_draft_year": {
+        "2018": 0.142857,
+        "2019": 0.142857,
+        "2020": 0.625,
+        "2021": 0.428571,
+        "2022": 0.714286,
+        "2023": 0.0
+      }
+    },
+    "athleticism_0_100": {
+      "non_null_count": 33,
+      "null_count": 4,
+      "coverage_pct_overall": 0.891892,
+      "coverage_pct_by_position": {
+        "QB": 1.0,
+        "TE": 1.0,
+        "WR": 0.84
+      },
+      "coverage_pct_by_draft_year": {
+        "2018": 1.0,
+        "2019": 1.0,
+        "2020": 1.0,
+        "2021": 0.714286,
+        "2022": 0.714286,
+        "2023": 1.0
+      }
+    },
+    "size_context_0_100": {
+      "non_null_count": 37,
+      "null_count": 0,
+      "coverage_pct_overall": 1.0,
+      "coverage_pct_by_position": {
+        "QB": 1.0,
+        "TE": 1.0,
+        "WR": 1.0
+      },
+      "coverage_pct_by_draft_year": {
+        "2018": 1.0,
+        "2019": 1.0,
+        "2020": 1.0,
+        "2021": 1.0,
+        "2022": 1.0,
+        "2023": 1.0
+      }
+    },
+    "speed_proxy_0_100": {
+      "non_null_count": 33,
+      "null_count": 4,
+      "coverage_pct_overall": 0.891892,
+      "coverage_pct_by_position": {
+        "QB": 1.0,
+        "TE": 1.0,
+        "WR": 0.84
+      },
+      "coverage_pct_by_draft_year": {
+        "2018": 1.0,
+        "2019": 1.0,
+        "2020": 1.0,
+        "2021": 0.714286,
+        "2022": 0.714286,
+        "2023": 1.0
+      }
+    },
+    "early_declare_flag": {
+      "non_null_count": 0,
+      "null_count": 37,
+      "coverage_pct_overall": 0.0,
+      "coverage_pct_by_position": {
+        "QB": 0.0,
+        "TE": 0.0,
+        "WR": 0.0
+      },
+      "coverage_pct_by_draft_year": {
+        "2018": 0.0,
+        "2019": 0.0,
+        "2020": 0.0,
+        "2021": 0.0,
+        "2022": 0.0,
+        "2023": 0.0
+      }
+    },
+    "deterministic_grade_0_100": {
+      "non_null_count": 0,
+      "null_count": 37,
+      "coverage_pct_overall": 0.0,
+      "coverage_pct_by_position": {
+        "QB": 0.0,
+        "TE": 0.0,
+        "WR": 0.0
+      },
+      "coverage_pct_by_draft_year": {
+        "2018": 0.0,
+        "2019": 0.0,
+        "2020": 0.0,
+        "2021": 0.0,
+        "2022": 0.0,
+        "2023": 0.0
+      }
+    }
+  }
+}

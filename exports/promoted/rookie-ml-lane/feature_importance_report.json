@@ -1,0 +1,45 @@
+{
+  "model_name": "logistic_full",
+  "features_ranked": [
+    {
+      "feature": "production_0_100",
+      "coefficient": -0.43724,
+      "sign": "negative",
+      "abs_magnitude": 0.43724,
+      "normalized_importance": 1.0,
+      "abs_magnitude_rank": 1
+    },
+    {
+      "feature": "size_context_0_100",
+      "coefficient": 0.408358,
+      "sign": "positive",
+      "abs_magnitude": 0.408358,
+      "normalized_importance": 0.933945,
+      "abs_magnitude_rank": 2
+    },
+    {
+      "feature": "draft_capital_proxy_0_100",
+      "coefficient": -0.005627,
+      "sign": "negative",
+      "abs_magnitude": 0.005627,
+      "normalized_importance": 0.012869,
+      "abs_magnitude_rank": 3
+    },
+    {
+      "feature": "athleticism_0_100",
+      "coefficient": 0.00539,
+      "sign": "positive",
+      "abs_magnitude": 0.00539,
+      "normalized_importance": 0.012327,
+      "abs_magnitude_rank": 4
+    },
+    {
+      "feature": "speed_proxy_0_100",
+      "coefficient": 0.00539,
+      "sign": "positive",
+      "abs_magnitude": 0.00539,
+      "normalized_importance": 0.012327,
+      "abs_magnitude_rank": 5
+    }
+  ]
+}

@@ -179,10 +179,29 @@ Default outputs are written to `exports/promoted/rookie-ml-lane/`:
 
 - `historical_labeled_dataset.json` / `.csv`
 - `feature_table.json`
+- `dataset_diagnostics.json`
+- `feature_coverage_report.json`
+- `feature_importance_report.json`
 - `evaluation_report.json`
 - `heldout_probabilities.json` / `.csv`
 
 The evaluator uses time-aware draft-class splits, logistic baselines, required feature-subset baselines, and non-ML baseline comparisons.
+
+### Trustworthiness inspection checklist (ML lane)
+
+Use the artifacts above to decide whether the lane is trustworthy enough to keep iterating:
+
+- **Historical data volume:** open `dataset_diagnostics.json` for total labeled rows, rows by position/year, split counts, and hit rates.
+- **Feature completeness:** open `feature_coverage_report.json` for per-feature null/non-null counts plus coverage by position and draft year.
+- **Thin-data warnings:** `evaluation_report.json` now includes `dataset_warnings` and `missingness_summary` (including explicit warnings for sub-60% feature coverage).
+- **Position stability:** check `test_by_position` metrics (WR/RB/TE/QB) under each model and non-ML baseline in `evaluation_report.json`.
+- **Draft-capital dominance:** inspect `draft_capital_dominance_check` in `evaluation_report.json` to see test PR-AUC deltas between `logistic_full` and:
+  - `draft_capital_only`
+  - `draft_capital_plus_production`
+  - `deterministic_grade_only`
+- **Coefficient interpretability:** use `feature_importance_report.json` for coefficient sign, absolute magnitude ranking, and normalized importance ordering for `logistic_full`.
+
+If warnings indicate very sparse position slices, weak feature coverage, or tiny pre-holdout history, treat the ML lane as directional diagnostics rather than production-grade forecasting.
 
 ## Run standalone static lab locally
 

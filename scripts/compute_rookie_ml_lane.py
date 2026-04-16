@@ -42,6 +42,11 @@ BASELINE_MODEL_FEATURES = {
     "logistic_full": FULL_MODEL_FEATURE_COLUMNS,
 }
 
+TRACKED_POSITIONS = ["WR", "RB", "TE", "QB"]
+WEAK_COVERAGE_THRESHOLD = 0.60
+SPARSE_POSITION_THRESHOLD = 8
+MIN_PRIOR_CLASS_COUNT = 2
+
 
 @dataclass
 class SplitBundle:
@@ -384,6 +389,201 @@ def evaluate(y_true: list[int], y_prob: list[float], k: int = 5) -> dict[str, fl
     }
 
 
+def _rate(num: int, denom: int) -> float | None:
+    if denom <= 0:
+        return None
+    return round(num / denom, 6)
+
+
+def _safe_round(value: float | None, digits: int = 6) -> float | None:
+    if value is None:
+        return None
+    return round(value, digits)
+
+
+def _counts_by_keys(
+    rows: list[dict[str, Any]],
+    key_names: list[str],
+) -> dict[str, int]:
+    out: dict[str, int] = {}
+    for row in rows:
+        key = "|".join(str(row.get(name) or "") for name in key_names)
+        out[key] = out.get(key, 0) + 1
+    return out
+
+
+def build_dataset_diagnostics(labeled: list[dict[str, Any]], split: SplitBundle) -> dict[str, Any]:
+    by_position = _counts_by_keys(labeled, ["position"])
+    by_year = _counts_by_keys(labeled, ["draft_year"])
+    by_position_year = _counts_by_keys(labeled, ["position", "draft_year"])
+    train_by_position = _counts_by_keys(split.train, ["position"])
+    val_by_position = _counts_by_keys(split.validation, ["position"])
+    test_by_position = _counts_by_keys(split.test, ["position"])
+
+    def _hit_rate(rows: list[dict[str, Any]]) -> float | None:
+        if not rows:
+            return None
+        hits = sum(int(r["hit_label"]) for r in rows)
+        return _rate(hits, len(rows))
+
+    hit_by_position: dict[str, float | None] = {}
+    for position in sorted({str(r.get("position") or "") for r in labeled}):
+        subset = [r for r in labeled if str(r.get("position") or "") == position]
+        hit_by_position[position] = _hit_rate(subset)
+
+    hit_by_year: dict[str, float | None] = {}
+    for year in sorted({int(r.get("draft_year") or 0) for r in labeled}):
+        subset = [r for r in labeled if int(r.get("draft_year") or 0) == year]
+        hit_by_year[str(year)] = _hit_rate(subset)
+
+    return {
+        "total_labeled_rows": len(labeled),
+        "labeled_row_count_by_position": by_position,
+        "labeled_row_count_by_draft_year": by_year,
+        "labeled_row_count_by_position_draft_year": by_position_year,
+        "split_row_counts": {
+            "train": len(split.train),
+            "validation": len(split.validation),
+            "test": len(split.test),
+        },
+        "split_row_counts_by_position": {
+            "train": train_by_position,
+            "validation": val_by_position,
+            "test": test_by_position,
+        },
+        "target_hit_rate_overall": _hit_rate(labeled),
+        "target_hit_rate_by_position": hit_by_position,
+        "target_hit_rate_by_draft_year": hit_by_year,
+    }
+
+
+def build_feature_coverage_report(rows: list[dict[str, Any]], feature_names: list[str]) -> dict[str, Any]:
+    positions = sorted({str(r.get("position") or "") for r in rows})
+    years = sorted({int(r.get("draft_year") or 0) for r in rows})
+    report: dict[str, Any] = {
+        "total_rows": len(rows),
+        "weak_coverage_threshold": WEAK_COVERAGE_THRESHOLD,
+        "features": {},
+    }
+    for feature in feature_names:
+        non_null = sum(1 for r in rows if _to_float(r.get(feature)) is not None)
+        null = len(rows) - non_null
+        by_position: dict[str, float | None] = {}
+        by_year: dict[str, float | None] = {}
+        for pos in positions:
+            subset = [r for r in rows if str(r.get("position") or "") == pos]
+            present = sum(1 for r in subset if _to_float(r.get(feature)) is not None)
+            by_position[pos] = _rate(present, len(subset))
+        for year in years:
+            subset = [r for r in rows if int(r.get("draft_year") or 0) == year]
+            present = sum(1 for r in subset if _to_float(r.get(feature)) is not None)
+            by_year[str(year)] = _rate(present, len(subset))
+        report["features"][feature] = {
+            "non_null_count": non_null,
+            "null_count": null,
+            "coverage_pct_overall": _rate(non_null, len(rows)),
+            "coverage_pct_by_position": by_position,
+            "coverage_pct_by_draft_year": by_year,
+        }
+    return report
+
+
+def build_data_warnings(
+    split: SplitBundle,
+    coverage: dict[str, Any],
+    diagnostics: dict[str, Any],
+) -> list[str]:
+    warnings: list[str] = []
+    if len(split.years.get("train", [])) < MIN_PRIOR_CLASS_COUNT:
+        warnings.append("Insufficient prior draft classes for robust pre-holdout training signal.")
+
+    for position in TRACKED_POSITIONS:
+        n = int(diagnostics["split_row_counts_by_position"]["test"].get(position, 0))
+        if n < SPARSE_POSITION_THRESHOLD:
+            warnings.append(f"Test slice for {position} is sparse (n={n}); position metrics may be unstable.")
+
+    weak_features = []
+    for feature, detail in coverage.get("features", {}).items():
+        overall = detail.get("coverage_pct_overall")
+        if overall is not None and float(overall) < WEAK_COVERAGE_THRESHOLD:
+            weak_features.append(feature)
+    if weak_features:
+        warnings.append(
+            "Weak feature coverage below threshold "
+            f"({int(WEAK_COVERAGE_THRESHOLD * 100)}%): {', '.join(sorted(weak_features))}."
+        )
+
+    det_cov = coverage.get("features", {}).get("deterministic_grade_0_100", {}).get("coverage_pct_overall")
+    if det_cov is not None and float(det_cov) < WEAK_COVERAGE_THRESHOLD:
+        warnings.append("Deterministic grade is unavailable for many historical rows.")
+
+    return warnings
+
+
+def evaluate_by_position(rows: list[dict[str, Any]], probs: list[float]) -> dict[str, Any]:
+    slices: dict[str, Any] = {}
+    for position in TRACKED_POSITIONS:
+        idxs = [i for i, r in enumerate(rows) if str(r.get("position") or "").upper() == position]
+        y = [int(rows[i]["hit_label"]) for i in idxs]
+        p = [probs[i] for i in idxs]
+        slices[position] = evaluate(y, p) if idxs else {"roc_auc": None, "pr_auc": None, "log_loss": None, "calibration_mae": None, "precision_at_k": None, "n": 0, "positives": 0}
+    return slices
+
+
+def build_feature_importance_report(
+    model_name: str,
+    feature_names: list[str],
+    coefficients: dict[str, float],
+) -> dict[str, Any]:
+    rows = []
+    max_abs = max((abs(float(coefficients.get(name, 0.0))) for name in feature_names), default=0.0)
+    for name in feature_names:
+        coef = float(coefficients.get(name, 0.0))
+        abs_coef = abs(coef)
+        rows.append(
+            {
+                "feature": name,
+                "coefficient": round(coef, 6),
+                "sign": "positive" if coef > 0 else "negative" if coef < 0 else "neutral",
+                "abs_magnitude": round(abs_coef, 6),
+                "normalized_importance": round((abs_coef / max_abs), 6) if max_abs > 0 else 0.0,
+            }
+        )
+    rows.sort(key=lambda r: r["abs_magnitude"], reverse=True)
+    for i, row in enumerate(rows, start=1):
+        row["abs_magnitude_rank"] = i
+    return {"model_name": model_name, "features_ranked": rows}
+
+
+def build_missingness_summary(coverage: dict[str, Any]) -> dict[str, Any]:
+    weak_features: list[dict[str, Any]] = []
+    weak_by_position: dict[str, list[str]] = {}
+    weak_by_year: dict[str, list[str]] = {}
+    for feature, detail in coverage.get("features", {}).items():
+        overall = detail.get("coverage_pct_overall")
+        if overall is not None and float(overall) < WEAK_COVERAGE_THRESHOLD:
+            weak_features.append({"feature": feature, "coverage_pct_overall": overall})
+
+        for position, pct in detail.get("coverage_pct_by_position", {}).items():
+            if pct is not None and float(pct) < WEAK_COVERAGE_THRESHOLD:
+                weak_by_position.setdefault(position, []).append(feature)
+        for year, pct in detail.get("coverage_pct_by_draft_year", {}).items():
+            if pct is not None and float(pct) < WEAK_COVERAGE_THRESHOLD:
+                weak_by_year.setdefault(year, []).append(feature)
+
+    warnings = [
+        f"{item['feature']} coverage below {int(WEAK_COVERAGE_THRESHOLD * 100)}% (overall={item['coverage_pct_overall']})"
+        for item in sorted(weak_features, key=lambda x: x["coverage_pct_overall"])
+    ]
+    return {
+        "coverage_threshold": WEAK_COVERAGE_THRESHOLD,
+        "weak_features_overall": weak_features,
+        "thin_positions": {k: sorted(v) for k, v in weak_by_position.items()},
+        "thin_draft_years": {k: sorted(v) for k, v in weak_by_year.items()},
+        "warnings": warnings,
+    }
+
+
 def deterministic_non_ml_baseline(rows: list[dict[str, Any]], key: str) -> list[float]:
     probs = []
     for row in rows:
@@ -420,7 +620,7 @@ def run_model(
     model_name: str,
     feature_names: list[str],
     split: SplitBundle,
-) -> tuple[dict[str, Any], list[dict[str, Any]]]:
+) -> tuple[dict[str, Any], list[dict[str, Any]], list[float]]:
     train = split.train
     validation = split.validation
     test = split.test
@@ -441,13 +641,14 @@ def run_model(
     metrics = {
         "validation": evaluate(y_val, val_probs),
         "test": evaluate(y_test, test_probs),
+        "test_by_position": evaluate_by_position(test, test_probs),
         "features": feature_names,
         "coefficients": {name: round(w, 6) for name, w in zip(feature_names, model.weights)},
         "bias": round(model.bias, 6),
     }
 
     scored = _attach_predictions(test, test_probs, model_name)
-    return metrics, scored
+    return metrics, scored, test_probs
 
 
 def write_json(path: Path, payload: Any) -> None:
@@ -498,7 +699,7 @@ def main() -> None:
         usable = [name for name in feature_names if any(_to_float(r.get(name)) is not None for r in split.train)]
         if not usable:
             continue
-        metrics, scored = run_model(model_name, usable, split)
+        metrics, scored, _ = run_model(model_name, usable, split)
         models_report[model_name] = metrics
         heldout_scores_by_model[model_name] = scored
 
@@ -507,15 +708,50 @@ def main() -> None:
         "deterministic_grade_rescaled": deterministic_non_ml_baseline(split.test, "deterministic_grade_0_100"),
     }
     y_test = [int(r["hit_label"]) for r in split.test]
-    non_ml_report = {name: evaluate(y_test, probs) for name, probs in non_ml.items()}
+    non_ml_report = {
+        name: {
+            "test": evaluate(y_test, probs),
+            "test_by_position": evaluate_by_position(split.test, probs),
+        }
+        for name, probs in non_ml.items()
+    }
+
+    diagnostics = build_dataset_diagnostics(labeled, split)
+    coverage = build_feature_coverage_report(labeled, FEATURE_COLUMNS)
+    warnings = build_data_warnings(split, coverage, diagnostics)
+    missingness_summary = build_missingness_summary(coverage)
 
     final_scores = heldout_scores_by_model.get("logistic_full") or next(iter(heldout_scores_by_model.values()))
+    full_model_metrics = models_report.get("logistic_full", {}).get("test", {})
+    baseline_delta = {}
+    for baseline in ("draft_capital_only", "draft_capital_plus_production", "deterministic_grade_only"):
+        if baseline in models_report:
+            baseline_pr_auc = models_report[baseline]["test"]["pr_auc"]
+            full_pr_auc = full_model_metrics.get("pr_auc")
+            baseline_delta[baseline] = {
+                "test_pr_auc_delta_vs_logistic_full": _safe_round(
+                    None if baseline_pr_auc is None or full_pr_auc is None else float(full_pr_auc) - float(baseline_pr_auc)
+                )
+            }
+
+    feature_importance_report = (
+        build_feature_importance_report(
+            "logistic_full",
+            models_report["logistic_full"]["features"],
+            models_report["logistic_full"]["coefficients"],
+        )
+        if "logistic_full" in models_report
+        else {"model_name": None, "features_ranked": []}
+    )
 
     output_dir = Path(args.output_dir)
     write_json(output_dir / "historical_labeled_dataset.json", labeled)
     write_csv(output_dir / "historical_labeled_dataset.csv", labeled)
     write_json(output_dir / "feature_table.json", [{k: row.get(k) for k in ["player_id", "draft_year", "position", *FEATURE_COLUMNS, "hit_label"]} for row in labeled])
 
+    write_json(output_dir / "dataset_diagnostics.json", diagnostics)
+    write_json(output_dir / "feature_coverage_report.json", coverage)
+    write_json(output_dir / "feature_importance_report.json", feature_importance_report)
     report = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "lane": "parallel_ml_evaluation_only",
@@ -523,8 +759,11 @@ def main() -> None:
         "split_years": split.years,
         "n_labeled_rows": len(labeled),
         "n_test_rows": len(split.test),
+        "dataset_warnings": warnings,
+        "missingness_summary": missingness_summary,
         "ml_models": models_report,
         "non_ml_baselines": non_ml_report,
+        "draft_capital_dominance_check": baseline_delta,
         "winning_model_by_test_pr_auc": max(
             models_report.keys(),
             key=lambda name: (models_report[name]["test"]["pr_auc"] if models_report[name]["test"]["pr_auc"] is not None else -1),
