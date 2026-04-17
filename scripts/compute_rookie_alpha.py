@@ -565,8 +565,8 @@ def resolve_wr_athletic_input(
       4) No usable RAS + valid SPORQ -> SPORQ, conf 0.65
       5) Neither -> neutral 50.0, conf 0.50
     """
+    has_full_ras = ras_score is not None and ras_metric_count >= 5
     has_partial_ras = ras_score is not None and ras_metric_count in (3, 4)
-    has_full_ras = ras_score is not None and not has_partial_ras
     valid_sporq = _is_valid_percentile(sporq_val)
 
     if has_full_ras:

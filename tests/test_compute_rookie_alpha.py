@@ -441,6 +441,17 @@ class ResolveAthleticInputTests(unittest.TestCase):
         self.assertIsNotNone(explainer)
         self.assertFalse(sporq_used)
 
+    def test_wr_two_metric_ras_without_sporq_is_treated_as_unusable_and_defaults_neutral(self) -> None:
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "WR", ras_score=68.0, ras_metric_count=2,
+            combine_fallback_entry=None, context=None,
+        )
+        self.assertAlmostEqual(score, 50.0)
+        self.assertEqual(source, "NEUTRAL_DEFAULT")
+        self.assertAlmostEqual(conf, 0.50)
+        self.assertIsNotNone(explainer)
+        self.assertFalse(sporq_used)
+
     def test_ras_confidence_varies_by_metric_count(self) -> None:
         _, _, conf5, _, _ = resolve_athletic_input(
             "p1", "WR", ras_score=80.0, ras_metric_count=5,
