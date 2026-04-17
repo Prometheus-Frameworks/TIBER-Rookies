@@ -9,6 +9,7 @@ from scripts.compute_rookie_alpha import (
     _extract_sporq,
     _ras_confidence,
     cap_consensus_delta_by_completeness,
+    classify_output_evidence_tier,
     compute_evidence_completeness_score,
     load_context_by_player_id,
     coerce_float,
@@ -661,6 +662,126 @@ class ConsensusEvidenceGuardrailTests(unittest.TestCase):
         capped, _, _ = cap_consensus_delta_by_completeness(27.0, completeness)
         self.assertEqual(completeness, 0.15)
         self.assertEqual(capped, 5.0)
+
+    def test_evidence_tier_strong_supported_edge(self) -> None:
+        player = PlayerInputs("p1", "Player", "WR", 88.0, 80.0, 72.0, athletic_source="RAS")
+        tier, _, capped = classify_output_evidence_tier(
+            player=player,
+            raw_context={"seasons_available": 3, "context_flags": []},
+            evidence_completeness_score=0.85,
+            consensus_delta_positional_raw=12.0,
+            consensus_delta_positional=12.0,
+        )
+        self.assertEqual(tier, "strong_supported_edge")
+        self.assertFalse(capped)
+
+    def test_evidence_tier_moderate_edge(self) -> None:
+        player = PlayerInputs("p2", "Player", "RB", 70.0, 68.0, 66.0, athletic_source="RAS")
+        tier, _, _ = classify_output_evidence_tier(
+            player=player,
+            raw_context={"seasons_available": 2, "context_flags": []},
+            evidence_completeness_score=0.65,
+            consensus_delta_positional_raw=7.0,
+            consensus_delta_positional=7.0,
+        )
+        self.assertEqual(tier, "moderate_edge")
+
+    def test_evidence_tier_consensus_aligned(self) -> None:
+        player = PlayerInputs("p3", "Player", "TE", 70.0, 68.0, 66.0, athletic_source="RAS")
+        tier, _, _ = classify_output_evidence_tier(
+            player=player,
+            raw_context={"seasons_available": 2, "context_flags": []},
+            evidence_completeness_score=0.75,
+            consensus_delta_positional_raw=3.0,
+            consensus_delta_positional=3.0,
+        )
+        self.assertEqual(tier, "consensus_aligned")
+
+    def test_evidence_tier_watchlist_outlier_when_capped(self) -> None:
+        player = PlayerInputs("p4", "Player", "WR", 75.0, 74.0, 73.0, athletic_source="RAS")
+        tier, reason, capped = classify_output_evidence_tier(
+            player=player,
+            raw_context={"seasons_available": 2, "context_flags": []},
+            evidence_completeness_score=0.70,
+            consensus_delta_positional_raw=21.0,
+            consensus_delta_positional=10.0,
+        )
+        self.assertEqual(tier, "watchlist_outlier")
+        self.assertIn("capped", reason.lower())
+        self.assertTrue(capped)
+
+    def test_evidence_tier_insufficient_evidence(self) -> None:
+        player = PlayerInputs("p5", "Player", "WR", None, 74.0, 73.0, athletic_source="SPORQ")
+        tier, _, _ = classify_output_evidence_tier(
+            player=player,
+            raw_context={"seasons_available": 0, "context_flags": ["low_confidence_seed"]},
+            evidence_completeness_score=0.20,
+            consensus_delta_positional_raw=12.0,
+            consensus_delta_positional=5.0,
+        )
+        self.assertEqual(tier, "insufficient_evidence")
+
+    def test_export_includes_evidence_tier_semantics(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            combine = tmp_path / "combine.json"
+            production = tmp_path / "production.json"
+            draft = tmp_path / "draft.json"
+            context = tmp_path / "context.json"
+            positional = tmp_path / "positional_consensus.json"
+            out_json = tmp_path / "out.json"
+            out_csv = tmp_path / "out.csv"
+            out_manifest = tmp_path / "manifest.json"
+            for p in (combine, production, draft):
+                p.write_text("[]\n", encoding="utf-8")
+            context.write_text(
+                '[{"player_id":"wr1","player_name":"WR One","position":"WR","seasons_available":2,"context_flags":[]}]',
+                encoding="utf-8",
+            )
+            positional.write_text(
+                '{"sources":[{"source":"test","entries":[{"player_id":"wr1","positional_rank":12}]}]}',
+                encoding="utf-8",
+            )
+            player = PlayerInputs(
+                player_id="wr1",
+                player_name="WR One",
+                position="WR",
+                ras_score_0_100=90.0,
+                production_score_0_100=88.0,
+                draft_capital_proxy_0_100=82.0,
+                athletic_score_0_100=90.0,
+                athletic_source="RAS",
+            )
+            write_outputs(
+                players=[player],
+                merge_diagnostics=MergeDiagnostics(0, 0, {"missing_combine": 0, "missing_production": 0, "missing_draft_proxy": 0, "total_excluded": 0}),
+                season=2026,
+                combine_path=combine,
+                production_path=production,
+                draft_proxy_path=draft,
+                output_json=out_json,
+                output_csv=out_csv,
+                output_manifest=out_manifest,
+                context_path=context,
+                context_by_id=load_context_by_player_id(context),
+                positional_consensus_path=positional,
+                positional_consensus_by_id={"wr1": {"ranks": [12], "sources": ["test"]}},
+            )
+            scores = load_json(out_json)["players"][0]["scores"]
+            self.assertIn(scores["evidence_tier"], {"strong_supported_edge", "moderate_edge", "watchlist_outlier", "consensus_aligned", "insufficient_evidence"})
+            self.assertIsInstance(scores["evidence_tier_reason"], str)
+            self.assertIn("is_capped_disagreement", scores)
+
+    def test_bell_style_outlier_never_classifies_as_strong_supported_edge(self) -> None:
+        player = PlayerInputs("bell2", "Bell2", "WR", 92.0, 91.0, 88.0, athletic_source="COMBINE_FALLBACK")
+        tier, _, _ = classify_output_evidence_tier(
+            player=player,
+            raw_context={"seasons_available": 0, "context_flags": ["low_confidence_seed"]},
+            evidence_completeness_score=0.25,
+            consensus_delta_positional_raw=28.0,
+            consensus_delta_positional=5.0,
+        )
+        self.assertIn(tier, {"watchlist_outlier", "insufficient_evidence"})
 
 
 if __name__ == "__main__":

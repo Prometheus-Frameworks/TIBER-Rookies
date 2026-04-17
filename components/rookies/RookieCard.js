@@ -102,6 +102,22 @@ function renderBreakoutAgeBadge(card) {
   return `<span class="breakout-badge breakout-late">Age ${esc(card.breakoutAge)} breakout</span>`;
 }
 
+const EVIDENCE_TIER_LABELS = {
+  strong_supported_edge: 'Strong Supported Edge',
+  moderate_edge: 'Moderate Edge',
+  consensus_aligned: 'Consensus Aligned',
+  watchlist_outlier: 'Watchlist Outlier',
+  insufficient_evidence: 'Insufficient Evidence',
+};
+
+function renderEvidenceTierBadge(card) {
+  const tier = card.evidenceTier;
+  if (!tier) return '';
+  const label = EVIDENCE_TIER_LABELS[tier] ?? String(tier).replace(/_/g, ' ');
+  const reason = card.evidenceTierReason ?? 'Evidence tier classification';
+  return `<span class="evidence-tier-badge" title="${esc(reason)}">${esc(label)}</span>`;
+}
+
 function boarTierClass(boar) {
   if (boar >= 75) return 'boar-elite';
   if (boar >= 60) return 'boar-early';
@@ -236,7 +252,9 @@ export function renderRookieCard(container, card) {
         ${pill('Projection', card.summary.projection)}
         ${pill('High-end comp', card.comps.high)}
         ${pill('Low-end comp', card.comps.low)}
+        ${pill('Evidence Tier', EVIDENCE_TIER_LABELS[card.evidenceTier] ?? null)}
       </section>
+      ${renderEvidenceTierBadge(card)}
 
       <section class="core-row">
         ${card.scores.map(scoreCell).join('')}

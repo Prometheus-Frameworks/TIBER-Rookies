@@ -158,6 +158,20 @@ function renderPosBadge(position) {
   return `<span class="pos-badge ${cls}">${esc(pos)}</span>`;
 }
 
+const EVIDENCE_TIER_LABELS = {
+  strong_supported_edge: 'Strong Supported Edge',
+  moderate_edge: 'Moderate Edge',
+  consensus_aligned: 'Consensus Aligned',
+  watchlist_outlier: 'Watchlist Outlier',
+  insufficient_evidence: 'Insufficient Evidence',
+};
+
+function renderEvidenceTierBadge(tier, reason) {
+  if (!tier) return '';
+  const label = EVIDENCE_TIER_LABELS[tier] ?? String(tier).replace(/_/g, ' ');
+  return `<span class="evidence-tier-badge" title="${esc(reason ?? 'Evidence tier classification')}">${esc(label)}</span>`;
+}
+
 function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}) {
   const rank = row.classRank == null ? 'N/A' : `#${row.classRank}`;
   const grade = row.rookieGrade == null ? 'N/A' : row.rookieGrade.toFixed(1);
@@ -190,6 +204,7 @@ function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}
         ${renderEdgeOutlierBadge(row)}
       </div>
       <div class="bmc-meta">${esc(identityParts.join(' • '))}</div>
+      ${row.evidenceTier ? `<div class="meta bmc-evidence-line">${renderEvidenceTierBadge(row.evidenceTier, row.evidenceTierReason)}</div>` : ''}
       <div class="bmc-thesis">${esc(row.profileSummary)}</div>
       <div class="bmc-pills">
         <span class="board-tier-pill">${esc(row.tier?.label ?? '')}</span>
@@ -242,6 +257,7 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
           ${renderMiniScoreChart(row)}
         </div>
         <div class="meta board-summary-line">${esc(row.profileSummary)}</div>
+        ${row.evidenceTier ? `<div class="meta board-summary-line">${renderEvidenceTierBadge(row.evidenceTier, row.evidenceTierReason)}</div>` : ''}
         ${isQueued && queueTag ? `<div class="meta queue-inline-indicator">Queue tag: <span class="queue-tag-pill">${esc(queueTag)}</span></div>` : ''}
       </div>
       <div class="board-cell" data-label="Position">${renderPosBadge(row.position)}</div>
