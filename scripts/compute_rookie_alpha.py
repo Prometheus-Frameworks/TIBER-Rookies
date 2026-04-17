@@ -288,6 +288,76 @@ def cap_consensus_delta_by_completeness(raw_delta: float, completeness_score: fl
     return max(-5.0, min(5.0, raw_delta)), 5.0, "<0.40"
 
 
+def classify_output_evidence_tier(
+    *,
+    player: PlayerInputs,
+    raw_context: dict[str, Any] | None,
+    evidence_completeness_score: float,
+    consensus_delta_positional_raw: float | None,
+    consensus_delta_positional: float | None,
+) -> tuple[str, str, bool]:
+    """Classify output confidence semantics for board/card labeling.
+
+    Returns (evidence_tier, evidence_tier_reason, is_capped_disagreement).
+    """
+    ctx = raw_context or {}
+    flags = set(ctx.get("context_flags") or [])
+    low_confidence_seed = ctx.get("low_confidence_seed") is True or "low_confidence_seed" in flags
+    major_caution = low_confidence_seed or "synthetic_profile_pending_cfbd" in flags
+    severe_caution = major_caution or "pre_draft_acl_march_2026" in flags
+    fallback_heavy_profile = player.athletic_source in {None, "COMBINE_FALLBACK"}
+    wr_neutral_athletic_default = player.position == "WR" and player.athletic_source == "COMBINE_FALLBACK"
+    seasons_available = ctx.get("seasons_available")
+    try:
+        seasons_available_i = int(seasons_available) if seasons_available is not None else None
+    except (TypeError, ValueError):
+        seasons_available_i = None
+    key_lanes_incomplete = (
+        (seasons_available_i is not None and seasons_available_i <= 0)
+        and ctx.get("career_yards_per_route_run") is None
+        and ctx.get("one_d_rr") is None
+    )
+
+    if consensus_delta_positional_raw is None or consensus_delta_positional is None:
+        return "insufficient_evidence", "Positional consensus unavailable for confidence labeling", False
+
+    raw_abs = abs(consensus_delta_positional_raw)
+    capped_abs = abs(consensus_delta_positional)
+    is_capped_disagreement = raw_abs - capped_abs >= 1.0
+
+    if evidence_completeness_score < 0.40 or key_lanes_incomplete or fallback_heavy_profile:
+        return "insufficient_evidence", "Profile relies on sparse evidence or fallback inputs", is_capped_disagreement
+
+    if capped_abs < 5.0:
+        return "consensus_aligned", "Near consensus after evidence guardrails", is_capped_disagreement
+
+    if (
+        capped_abs > 10.0
+        and evidence_completeness_score >= 0.80
+        and not major_caution
+        and not low_confidence_seed
+        and not wr_neutral_athletic_default
+    ):
+        return "strong_supported_edge", "High completeness and meaningful edge vs positional consensus", is_capped_disagreement
+
+    if 5.0 <= capped_abs <= 18.0 and evidence_completeness_score >= 0.60 and not severe_caution:
+        if is_capped_disagreement:
+            return "watchlist_outlier", "Large disagreement exists but capped due to evidence guardrails", is_capped_disagreement
+        return "moderate_edge", "Meaningful disagreement with adequate evidence support", is_capped_disagreement
+
+    if (
+        capped_abs >= 5.0
+        and (
+            evidence_completeness_score < 0.80
+            or severe_caution
+            or is_capped_disagreement
+        )
+    ):
+        return "watchlist_outlier", "Disagreement present, but caution or incompleteness limits confidence", is_capped_disagreement
+
+    return "moderate_edge", "Meaningful disagreement with adequate evidence support", is_capped_disagreement
+
+
 def load_positional_consensus(path: Path) -> dict[str, dict]:
     """Load a positional consensus artifact and return a per-player lookup.
 
@@ -1477,6 +1547,13 @@ def write_outputs(
             )
             consensus_delta_cap_limit = None
             consensus_delta_cap_tier = None
+        evidence_tier, evidence_tier_reason, is_capped_disagreement = classify_output_evidence_tier(
+            player=p,
+            raw_context=context_by_id.get(p.player_id),
+            evidence_completeness_score=evidence_completeness_score,
+            consensus_delta_positional_raw=consensus_delta_pos_raw,
+            consensus_delta_positional=consensus_delta_pos,
+        )
 
         row_payload = {
             "player_id": p.player_id,
@@ -1515,6 +1592,9 @@ def write_outputs(
                 "consensus_delta_positional_cap_limit": consensus_delta_cap_limit,
                 "consensus_delta_positional_cap_tier": consensus_delta_cap_tier,
                 "consensus_delta_positional": consensus_delta_pos,
+                "evidence_tier": evidence_tier,
+                "evidence_tier_reason": evidence_tier_reason,
+                "is_capped_disagreement": is_capped_disagreement,
                 # Legacy field — kept for backward compat; semantics are misleading
                 # (compares alpha against overall draft capital, not positional consensus)
                 "market_investment_delta_legacy": market_investment_delta_legacy,
@@ -1626,6 +1706,9 @@ def write_outputs(
                 "consensus_delta_positional_cap_limit",
                 "consensus_delta_positional_cap_tier",
                 "consensus_delta_positional",
+                "evidence_tier",
+                "evidence_tier_reason",
+                "is_capped_disagreement",
                 "market_investment_delta_legacy",
                 "talent_rank",
                 "draft_proxy_delta",
@@ -1656,6 +1739,9 @@ def write_outputs(
                     "consensus_delta_positional_cap_limit": row["scores"].get("consensus_delta_positional_cap_limit") if row["scores"].get("consensus_delta_positional_cap_limit") is not None else "",
                     "consensus_delta_positional_cap_tier": row["scores"].get("consensus_delta_positional_cap_tier") or "",
                     "consensus_delta_positional": row["scores"].get("consensus_delta_positional") if row["scores"].get("consensus_delta_positional") is not None else "",
+                    "evidence_tier": row["scores"].get("evidence_tier") or "",
+                    "evidence_tier_reason": row["scores"].get("evidence_tier_reason") or "",
+                    "is_capped_disagreement": row["scores"].get("is_capped_disagreement"),
                     "market_investment_delta_legacy": row["scores"].get("market_investment_delta_legacy") or "",
                     "talent_rank": row["talent_rank"],
                     "draft_proxy_delta": row["draft_proxy_delta"],
