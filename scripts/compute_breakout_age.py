@@ -35,9 +35,11 @@ young_breakout_flag: True if breakout_age <= 20
 from __future__ import annotations
 
 import argparse
+import datetime
 import json
 import logging
 import sys
+import time
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlencode
@@ -93,21 +95,44 @@ def profile_dir_for_position(position: str, args: argparse.Namespace) -> Path:
     return args.wr_dir  # WR and TE
 
 
-def fetch_roster(team: str, year: int) -> list[dict[str, Any]]:
-    """Fetch CFBD roster for team/year. Returns empty list on failure."""
+def fetch_roster(team: str, year: int, max_retries: int = 5) -> list[dict[str, Any]]:
+    """Fetch CFBD roster for team/year with exponential backoff on 429. Returns empty list on failure."""
     from urllib.request import Request, urlopen
     from urllib.error import HTTPError, URLError
 
     params = urlencode({"team": team, "year": year})
     url = f"{CFBD_BASE_URL}/roster?{params}"
-    try:
-        req = Request(url, headers=cfbd_headers())
-        with urlopen(req, timeout=30) as resp:
-            data = json.loads(resp.read())
-        return data if isinstance(data, list) else []
-    except (HTTPError, URLError, Exception) as exc:
-        logging.warning("Could not fetch roster for %s %s: %s", team, year, exc)
-        return []
+
+    for attempt in range(max_retries):
+        try:
+            req = Request(url, headers=cfbd_headers())
+            with urlopen(req, timeout=30) as resp:
+                data = json.loads(resp.read())
+            return data if isinstance(data, list) else []
+        except HTTPError as exc:
+            if exc.code == 429:
+                # Rate limited; check Retry-After header
+                retry_after_header = exc.headers.get("Retry-After")
+                wait = None
+                if retry_after_header and retry_after_header.isdigit():
+                    wait = int(retry_after_header)
+                else:
+                    wait = max(10, 5 * (2 ** attempt))  # exponential backoff: 10, 20, 40, 80, 160s
+
+                if attempt < max_retries - 1:
+                    logging.warning("Rate limited (429) for %s %s attempt %d — retrying in %ds", team, year, attempt + 1, wait)
+                    time.sleep(wait)
+                else:
+                    logging.warning("Could not fetch roster for %s %s: rate limited after %d attempts", team, year, max_retries)
+                    return []
+            else:
+                logging.warning("Could not fetch roster for %s %s: %s", team, year, exc)
+                return []
+        except (URLError, Exception) as exc:
+            logging.warning("Could not fetch roster for %s %s: %s", team, year, exc)
+            return []
+
+    return []
 
 
 def find_academic_year(roster: list[dict[str, Any]], player_name: str) -> int | None:
@@ -130,6 +155,19 @@ def find_academic_year(roster: list[dict[str, Any]], player_name: str) -> int | 
 def estimated_age(academic_year: int) -> int:
     """Approximate age at season start given college academic year (1–5)."""
     return 17 + academic_year
+
+
+def age_from_dob(dob: str, season: int) -> int | None:
+    """Exact age as of September 1 of the given season. dob must be YYYY-MM-DD."""
+    try:
+        born = datetime.date.fromisoformat(dob)
+        season_start = datetime.date(season, 9, 1)
+        age = season_start.year - born.year - (
+            (season_start.month, season_start.day) < (born.month, born.day)
+        )
+        return age
+    except (ValueError, TypeError):
+        return None
 
 
 def load_profile_seasons(
@@ -227,6 +265,7 @@ def compute_breakout_for_player(
     player: dict[str, Any],
     args: argparse.Namespace,
     roster_cache: dict[tuple[str, int], list[dict[str, Any]]],
+    dob: str | None = None,
 ) -> dict[str, Any]:
     """Return breakout fields for one player."""
     player_id = str(player.get("player_id", ""))
@@ -272,21 +311,27 @@ def compute_breakout_for_player(
         if not met_share and not met_volume:
             continue  # below all thresholds — not a breakout season
 
-        # Fetch roster for academic year (cached)
-        cache_key = (school, season)
-        if cache_key not in roster_cache:
-            roster_cache[cache_key] = fetch_roster(school, season)
-        roster = roster_cache[cache_key]
+        # Prefer exact DOB; fall back to CFBD roster when not available
+        if dob:
+            age = age_from_dob(dob, season)
+            if age is None:
+                logging.warning("Invalid dob %r for %s; skipping season", dob, player_name)
+                continue
+        else:
+            cache_key = (school, season)
+            if cache_key not in roster_cache:
+                roster_cache[cache_key] = fetch_roster(school, season)
+            roster = roster_cache[cache_key]
 
-        academic_yr = find_academic_year(roster, player_name)
-        if academic_yr is None:
-            logging.warning(
-                "Could not find %s in %s %s roster; skipping season for age calc",
-                player_name, school, season,
-            )
-            continue
+            academic_yr = find_academic_year(roster, player_name)
+            if academic_yr is None:
+                logging.warning(
+                    "Could not find %s in %s %s roster; skipping season for age calc",
+                    player_name, school, season,
+                )
+                continue
 
-        age = estimated_age(academic_yr)
+            age = estimated_age(academic_yr)
 
         # Track earliest impact season
         if age_at_first_impact is None:
@@ -402,7 +447,8 @@ def main() -> None:
             logging.info("Skipping %s (%s) — no breakout threshold defined", player_name, position)
             continue
 
-        breakout_data = compute_breakout_for_player(player, args, roster_cache)
+        dob = context_by_id.get(player_id, {}).get("dob")
+        breakout_data = compute_breakout_for_player(player, args, roster_cache, dob=dob)
 
         if player_id in context_by_id:
             entry = update_context_entry(context_by_id[player_id], breakout_data, player)

@@ -8,6 +8,9 @@ from scripts.compute_rookie_alpha import (
     SPORQ_TRUST,
     _extract_sporq,
     _ras_confidence,
+    cap_consensus_delta_by_completeness,
+    classify_output_evidence_tier,
+    compute_evidence_completeness_score,
     load_context_by_player_id,
     coerce_float,
     compute_ras_scores,
@@ -58,8 +61,48 @@ class RookieAlphaTests(unittest.TestCase):
             ras_score_0_100=80.0,
             production_score_0_100=60.0,
             draft_capital_proxy_0_100=70.0,
+            age_adjusted_production_0_100=58.0,
         )
         self.assertAlmostEqual(rookie_alpha_score(player), 69.0)
+
+    def test_rookie_alpha_preserves_raw_production_when_age_adjusted_run_artifact_unavailable(self) -> None:
+        player = PlayerInputs(
+            player_id="p1",
+            player_name="Player 1",
+            position="WR",
+            ras_score_0_100=80.0,
+            production_score_0_100=60.0,
+            draft_capital_proxy_0_100=70.0,
+            age_adjusted_production_0_100=None,
+        )
+        # Run-level age-adjusted artifact absent: keep raw production.
+        self.assertAlmostEqual(rookie_alpha_score(player, age_adjusted_available_for_run=False), 69.0)
+
+    def test_rookie_alpha_applies_production_fallback_when_run_has_age_adjusted_artifact(self) -> None:
+        player = PlayerInputs(
+            player_id="p1",
+            player_name="Player 1",
+            position="WR",
+            ras_score_0_100=80.0,
+            production_score_0_100=60.0,
+            draft_capital_proxy_0_100=70.0,
+            age_adjusted_production_0_100=None,
+        )
+        # Run-level artifact present but player-level age-adjusted value missing.
+        # effective production = 60 * 0.85 = 51
+        self.assertAlmostEqual(rookie_alpha_score(player, age_adjusted_available_for_run=True), 64.95)
+
+    def test_rookie_alpha_keeps_production_when_age_adjusted_present(self) -> None:
+        player = PlayerInputs(
+            player_id="p1",
+            player_name="Player 1",
+            position="WR",
+            ras_score_0_100=80.0,
+            production_score_0_100=60.0,
+            draft_capital_proxy_0_100=70.0,
+            age_adjusted_production_0_100=58.0,
+        )
+        self.assertAlmostEqual(rookie_alpha_score(player, age_adjusted_available_for_run=True), 69.0)
 
     def test_merge_inputs(self) -> None:
         combine_rows = [
@@ -179,7 +222,7 @@ class RookieAlphaTests(unittest.TestCase):
             self.assertEqual(manifest["output_files"][1]["sha256"], sha256_file(out_csv))
             self.assertEqual(manifest["input_files"][0]["row_count"], 0)
             self.assertEqual(manifest["export_metadata"]["coverage_summary"], manifest["coverage_summary"])
-            self.assertEqual(manifest["model_version"], "rookie-alpha-predraft-v0.4.0")
+            self.assertEqual(manifest["model_version"], "rookie-alpha-predraft-v0.5.0")
 
     def test_context_is_additive_and_optional(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -221,6 +264,57 @@ class RookieAlphaTests(unittest.TestCase):
     def test_missing_context_file_does_not_fail(self) -> None:
         context_map = load_context_by_player_id(Path("/tmp/missing-context-file.json"))
         self.assertEqual(context_map, {})
+
+    def test_sporq_bonus_suppressed_when_wr_athletic_source_is_ras_sporq_blend(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            combine = tmp_path / "combine.json"
+            production = tmp_path / "production.json"
+            draft = tmp_path / "draft.json"
+            context = tmp_path / "context.json"
+            out_json = tmp_path / "out.json"
+            out_csv = tmp_path / "out.csv"
+            out_manifest = tmp_path / "manifest.json"
+            combine.write_text("[]\n", encoding="utf-8")
+            production.write_text("[]\n", encoding="utf-8")
+            draft.write_text("[]\n", encoding="utf-8")
+            context.write_text(
+                '[{"player_id":"wr1","player_name":"WR One","position":"WR","school":"School","class_year":2026,'
+                '"exceptional_metrics":[{"metric":"sporq_percentile","value":94.0,"percentile_tier":"historic",'
+                '"alpha_bonus_eligible":true,"context":"SPORQ test metric"}]}]',
+                encoding="utf-8",
+            )
+
+            player = PlayerInputs(
+                player_id="wr1",
+                player_name="WR One",
+                position="WR",
+                ras_score_0_100=72.0,
+                production_score_0_100=60.0,
+                draft_capital_proxy_0_100=70.0,
+                athletic_score_0_100=81.9,  # partial RAS + SPORQ blended athletic input
+                athletic_source="RAS_SPORQ_BLEND",
+                athletic_confidence=0.75,
+            )
+            baseline_alpha = round(rookie_alpha_score(player), 4)
+
+            write_outputs(
+                players=[player],
+                merge_diagnostics=MergeDiagnostics(0, 0, {"missing_combine": 0, "missing_production": 0, "missing_draft_proxy": 0, "total_excluded": 0}),
+                season=2026,
+                combine_path=combine,
+                production_path=production,
+                draft_proxy_path=draft,
+                output_json=out_json,
+                output_csv=out_csv,
+                output_manifest=out_manifest,
+                context_path=context,
+                context_by_id=load_context_by_player_id(context),
+            )
+            payload = load_json(out_json)
+            scores = payload["players"][0]["scores"]
+            self.assertAlmostEqual(scores["rookie_alpha_0_100"], baseline_alpha)
+            self.assertIsNone(scores["ceiling_bonus"])
 
     def test_missing_required_player_fields_are_skipped(self) -> None:
         players, _, _ = merge_inputs(
@@ -319,14 +413,36 @@ class ResolveAthleticInputTests(unittest.TestCase):
         self.assertAlmostEqual(conf, 0.75)
         self.assertTrue(sporq_used)
 
-    def test_sporq_ignored_for_wr(self) -> None:
+    def test_wr_full_ras_uses_ras_with_normal_confidence(self) -> None:
         context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": 95.0}]}
         score, source, conf, explainer, sporq_used = resolve_athletic_input(
-            "p1", "WR", ras_score=None, ras_metric_count=0,
+            "p1", "WR", ras_score=88.0, ras_metric_count=5,
             combine_fallback_entry=None, context=context,
         )
-        self.assertIsNone(score)
-        self.assertIsNone(source)
+        self.assertAlmostEqual(score, 88.0)
+        self.assertEqual(source, "RAS")
+        self.assertAlmostEqual(conf, 1.0)
+        self.assertFalse(sporq_used)
+
+    def test_wr_partial_ras_with_sporq_blends_and_reduces_confidence(self) -> None:
+        context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": 95.0}]}
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "WR", ras_score=70.0, ras_metric_count=4,
+            combine_fallback_entry=None, context=context,
+        )
+        self.assertAlmostEqual(score, 81.25)
+        self.assertEqual(source, "RAS_SPORQ_BLEND")
+        self.assertAlmostEqual(conf, 0.75)
+        self.assertTrue(sporq_used)
+
+    def test_wr_partial_ras_without_sporq_uses_partial_ras_with_lower_confidence(self) -> None:
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "WR", ras_score=70.0, ras_metric_count=3,
+            combine_fallback_entry=None, context=None,
+        )
+        self.assertAlmostEqual(score, 70.0)
+        self.assertEqual(source, "RAS_PARTIAL")
+        self.assertAlmostEqual(conf, 0.70)
         self.assertFalse(sporq_used)
 
     def test_sporq_ignored_for_rb(self) -> None:
@@ -338,9 +454,20 @@ class ResolveAthleticInputTests(unittest.TestCase):
         self.assertIsNone(score)
         self.assertFalse(sporq_used)
 
-    def test_combine_fallback_used_when_no_ras_or_sporq(self) -> None:
+    def test_wr_sporq_only_is_used_with_moderate_confidence(self) -> None:
+        context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": 92.0}]}
         score, source, conf, explainer, sporq_used = resolve_athletic_input(
             "p1", "WR", ras_score=None, ras_metric_count=0,
+            combine_fallback_entry=None, context=context,
+        )
+        self.assertAlmostEqual(score, 92.0)
+        self.assertEqual(source, "SPORQ")
+        self.assertAlmostEqual(conf, 0.65)
+        self.assertTrue(sporq_used)
+
+    def test_combine_fallback_used_when_no_ras_or_sporq_for_non_wr(self) -> None:
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "QB", ras_score=None, ras_metric_count=0,
             combine_fallback_entry=(55.0, 2), context=None,
         )
         self.assertAlmostEqual(score, 55.0)
@@ -349,24 +476,47 @@ class ResolveAthleticInputTests(unittest.TestCase):
         self.assertAlmostEqual(conf, 0.50)
         self.assertFalse(sporq_used)
 
-    def test_combine_fallback_confidence_for_one_metric(self) -> None:
+    def test_combine_fallback_confidence_for_one_metric_non_wr(self) -> None:
         _, _, conf, _, _ = resolve_athletic_input(
-            "p1", "WR", ras_score=None, ras_metric_count=0,
+            "p1", "QB", ras_score=None, ras_metric_count=0,
             combine_fallback_entry=(45.0, 1), context=None,
         )
         # confidence = 0.30 + 0.10 * min(1, 2) = 0.40
         self.assertAlmostEqual(conf, 0.40)
 
-    def test_no_data_returns_none(self) -> None:
+    def test_wr_no_signal_returns_neutral_default_with_honest_confidence(self) -> None:
         score, source, conf, explainer, sporq_used = resolve_athletic_input(
             "p1", "WR", ras_score=None, ras_metric_count=0,
             combine_fallback_entry=None, context=None,
         )
-        self.assertIsNone(score)
-        self.assertIsNone(source)
-        self.assertAlmostEqual(conf, 0.0)
-        self.assertIsNone(explainer)
+        self.assertAlmostEqual(score, 50.0)
+        self.assertEqual(source, "NEUTRAL_DEFAULT")
+        self.assertAlmostEqual(conf, 0.50)
+        self.assertIsNotNone(explainer)
         self.assertFalse(sporq_used)
+
+    def test_wr_two_metric_ras_without_sporq_is_treated_as_unusable_and_defaults_neutral(self) -> None:
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "WR", ras_score=68.0, ras_metric_count=2,
+            combine_fallback_entry=None, context=None,
+        )
+        self.assertAlmostEqual(score, 50.0)
+        self.assertEqual(source, "NEUTRAL_DEFAULT")
+        self.assertAlmostEqual(conf, 0.50)
+        self.assertIsNotNone(explainer)
+        self.assertFalse(sporq_used)
+
+    def test_wr_two_metric_ras_with_sporq_uses_sporq_only_path_not_ras(self) -> None:
+        context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": 91.0}]}
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "WR", ras_score=68.0, ras_metric_count=2,
+            combine_fallback_entry=None, context=context,
+        )
+        self.assertAlmostEqual(score, 91.0)
+        self.assertEqual(source, "SPORQ")
+        self.assertAlmostEqual(conf, 0.65)
+        self.assertIsNotNone(explainer)
+        self.assertTrue(sporq_used)
 
     def test_ras_confidence_varies_by_metric_count(self) -> None:
         _, _, conf5, _, _ = resolve_athletic_input(
@@ -423,6 +573,237 @@ class SporqTrustConfigTests(unittest.TestCase):
     def test_rb_qb_are_ignore(self) -> None:
         self.assertEqual(SPORQ_TRUST["RB"], "ignore")
         self.assertEqual(SPORQ_TRUST["QB"], "ignore")
+
+
+class ConsensusEvidenceGuardrailTests(unittest.TestCase):
+    def test_completeness_score_high_and_low_profiles(self) -> None:
+        high_player = PlayerInputs("high", "High", "WR", 85.0, 75.0, 80.0, athletic_source="RAS")
+        high_ctx = {
+            "seasons_available": 3,
+            "career_yards_per_route_run": 2.7,
+            "one_d_rr": 0.34,
+            "dob_seeded": True,
+            "power4_early_contributor_flag": True,
+            "context_flags": [],
+        }
+        low_player = PlayerInputs("low", "Low", "WR", None, 75.0, 80.0, athletic_source="SPORQ")
+        low_ctx = {
+            "seasons_available": 0,
+            "context_flags": ["low_confidence_seed"],
+        }
+        self.assertAlmostEqual(compute_evidence_completeness_score(high_player, high_ctx), 1.0)
+        self.assertAlmostEqual(compute_evidence_completeness_score(low_player, low_ctx), 0.0)
+
+    def test_cap_bands_and_sign_preservation(self) -> None:
+        self.assertEqual(cap_consensus_delta_by_completeness(40.0, 0.80), (30.0, 30.0, ">=0.80"))
+        self.assertEqual(cap_consensus_delta_by_completeness(-40.0, 0.80), (-30.0, 30.0, ">=0.80"))
+        self.assertEqual(cap_consensus_delta_by_completeness(40.0, 0.70), (18.0, 18.0, "0.60-0.79"))
+        self.assertEqual(cap_consensus_delta_by_completeness(-40.0, 0.50), (-10.0, 10.0, "0.40-0.59"))
+        self.assertEqual(cap_consensus_delta_by_completeness(40.0, 0.20), (5.0, 5.0, "<0.40"))
+
+    def test_raw_vs_capped_export_semantics(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            combine = tmp_path / "combine.json"
+            production = tmp_path / "production.json"
+            draft = tmp_path / "draft.json"
+            context = tmp_path / "context.json"
+            positional = tmp_path / "positional_consensus.json"
+            out_json = tmp_path / "out.json"
+            out_csv = tmp_path / "out.csv"
+            out_manifest = tmp_path / "manifest.json"
+            for p in (combine, production, draft):
+                p.write_text("[]\n", encoding="utf-8")
+            context.write_text(
+                '[{"player_id":"wr1","player_name":"WR One","position":"WR","seasons_available":0,'
+                '"context_flags":["low_confidence_seed"]}]',
+                encoding="utf-8",
+            )
+            positional.write_text(
+                '{"sources":[{"source":"test","entries":[{"player_id":"wr1","positional_rank":5}]}]}',
+                encoding="utf-8",
+            )
+
+            player = PlayerInputs(
+                player_id="wr1",
+                player_name="WR One",
+                position="WR",
+                ras_score_0_100=99.0,
+                production_score_0_100=99.0,
+                draft_capital_proxy_0_100=99.0,
+                athletic_score_0_100=99.0,
+                athletic_source="RAS",
+            )
+            write_outputs(
+                players=[player],
+                merge_diagnostics=MergeDiagnostics(0, 0, {"missing_combine": 0, "missing_production": 0, "missing_draft_proxy": 0, "total_excluded": 0}),
+                season=2026,
+                combine_path=combine,
+                production_path=production,
+                draft_proxy_path=draft,
+                output_json=out_json,
+                output_csv=out_csv,
+                output_manifest=out_manifest,
+                context_path=context,
+                context_by_id=load_context_by_player_id(context),
+                positional_consensus_path=positional,
+                positional_consensus_by_id={"wr1": {"ranks": [5], "sources": ["test"]}},
+            )
+            scores = load_json(out_json)["players"][0]["scores"]
+            self.assertGreater(scores["consensus_delta_positional_raw"], 30.0)
+            self.assertEqual(scores["consensus_delta_positional"], 5.0)
+            self.assertEqual(scores["consensus_delta_positional_cap_tier"], "<0.40")
+            self.assertEqual(scores["consensus_delta_positional_cap_limit"], 5.0)
+
+    def test_bell_style_incomplete_evidence_restrains_large_delta(self) -> None:
+        player = PlayerInputs("bell", "Bell", "WR", 90.0, 90.0, 90.0, athletic_source="RAS")
+        sparse_ctx = {"seasons_available": 0, "context_flags": ["low_confidence_seed"]}
+        completeness = compute_evidence_completeness_score(player, sparse_ctx)
+        capped, _, _ = cap_consensus_delta_by_completeness(27.0, completeness)
+        self.assertEqual(completeness, 0.15)
+        self.assertEqual(capped, 5.0)
+
+    def test_evidence_tier_strong_supported_edge(self) -> None:
+        player = PlayerInputs("p1", "Player", "WR", 88.0, 80.0, 72.0, athletic_source="RAS")
+        tier, _, capped = classify_output_evidence_tier(
+            player=player,
+            raw_context={"seasons_available": 3, "context_flags": []},
+            evidence_completeness_score=0.85,
+            consensus_delta_positional_raw=12.0,
+            consensus_delta_positional=12.0,
+        )
+        self.assertEqual(tier, "strong_supported_edge")
+        self.assertFalse(capped)
+
+    def test_evidence_tier_moderate_edge(self) -> None:
+        player = PlayerInputs("p2", "Player", "RB", 70.0, 68.0, 66.0, athletic_source="RAS")
+        tier, _, _ = classify_output_evidence_tier(
+            player=player,
+            raw_context={"seasons_available": 2, "context_flags": []},
+            evidence_completeness_score=0.65,
+            consensus_delta_positional_raw=7.0,
+            consensus_delta_positional=7.0,
+        )
+        self.assertEqual(tier, "moderate_edge")
+
+    def test_evidence_tier_consensus_aligned(self) -> None:
+        player = PlayerInputs("p3", "Player", "TE", 70.0, 68.0, 66.0, athletic_source="RAS")
+        tier, _, _ = classify_output_evidence_tier(
+            player=player,
+            raw_context={"seasons_available": 2, "context_flags": []},
+            evidence_completeness_score=0.75,
+            consensus_delta_positional_raw=3.0,
+            consensus_delta_positional=3.0,
+        )
+        self.assertEqual(tier, "consensus_aligned")
+
+    def test_evidence_tier_watchlist_outlier_when_capped(self) -> None:
+        player = PlayerInputs("p4", "Player", "WR", 75.0, 74.0, 73.0, athletic_source="RAS")
+        tier, reason, capped = classify_output_evidence_tier(
+            player=player,
+            raw_context={"seasons_available": 2, "context_flags": []},
+            evidence_completeness_score=0.70,
+            consensus_delta_positional_raw=21.0,
+            consensus_delta_positional=10.0,
+        )
+        self.assertEqual(tier, "watchlist_outlier")
+        self.assertIn("capped", reason.lower())
+        self.assertTrue(capped)
+
+    def test_evidence_tier_insufficient_evidence(self) -> None:
+        player = PlayerInputs("p5", "Player", "WR", None, 74.0, 73.0, athletic_source="SPORQ")
+        tier, _, _ = classify_output_evidence_tier(
+            player=player,
+            raw_context={"seasons_available": 0, "context_flags": ["low_confidence_seed"]},
+            evidence_completeness_score=0.20,
+            consensus_delta_positional_raw=12.0,
+            consensus_delta_positional=5.0,
+        )
+        self.assertEqual(tier, "insufficient_evidence")
+
+    def test_sporq_only_profile_not_auto_insufficient_when_other_signals_are_healthy(self) -> None:
+        player = PlayerInputs("p6", "Player", "WR", None, 74.0, 73.0, athletic_source="SPORQ")
+        tier, _, _ = classify_output_evidence_tier(
+            player=player,
+            raw_context={"seasons_available": 2, "context_flags": []},
+            evidence_completeness_score=0.72,
+            consensus_delta_positional_raw=8.0,
+            consensus_delta_positional=8.0,
+        )
+        self.assertEqual(tier, "moderate_edge")
+
+    def test_severe_caution_does_not_fall_through_to_moderate_edge(self) -> None:
+        player = PlayerInputs("p7", "Player", "WR", 84.0, 80.0, 79.0, athletic_source="RAS")
+        tier, _, _ = classify_output_evidence_tier(
+            player=player,
+            raw_context={"seasons_available": 3, "context_flags": ["pre_draft_acl_march_2026"]},
+            evidence_completeness_score=0.85,
+            consensus_delta_positional_raw=7.0,
+            consensus_delta_positional=7.0,
+        )
+        self.assertEqual(tier, "watchlist_outlier")
+
+    def test_export_includes_evidence_tier_semantics(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            combine = tmp_path / "combine.json"
+            production = tmp_path / "production.json"
+            draft = tmp_path / "draft.json"
+            context = tmp_path / "context.json"
+            positional = tmp_path / "positional_consensus.json"
+            out_json = tmp_path / "out.json"
+            out_csv = tmp_path / "out.csv"
+            out_manifest = tmp_path / "manifest.json"
+            for p in (combine, production, draft):
+                p.write_text("[]\n", encoding="utf-8")
+            context.write_text(
+                '[{"player_id":"wr1","player_name":"WR One","position":"WR","seasons_available":2,"context_flags":[]}]',
+                encoding="utf-8",
+            )
+            positional.write_text(
+                '{"sources":[{"source":"test","entries":[{"player_id":"wr1","positional_rank":12}]}]}',
+                encoding="utf-8",
+            )
+            player = PlayerInputs(
+                player_id="wr1",
+                player_name="WR One",
+                position="WR",
+                ras_score_0_100=90.0,
+                production_score_0_100=88.0,
+                draft_capital_proxy_0_100=82.0,
+                athletic_score_0_100=90.0,
+                athletic_source="RAS",
+            )
+            write_outputs(
+                players=[player],
+                merge_diagnostics=MergeDiagnostics(0, 0, {"missing_combine": 0, "missing_production": 0, "missing_draft_proxy": 0, "total_excluded": 0}),
+                season=2026,
+                combine_path=combine,
+                production_path=production,
+                draft_proxy_path=draft,
+                output_json=out_json,
+                output_csv=out_csv,
+                output_manifest=out_manifest,
+                context_path=context,
+                context_by_id=load_context_by_player_id(context),
+                positional_consensus_path=positional,
+                positional_consensus_by_id={"wr1": {"ranks": [12], "sources": ["test"]}},
+            )
+            scores = load_json(out_json)["players"][0]["scores"]
+            self.assertIn(scores["evidence_tier"], {"strong_supported_edge", "moderate_edge", "watchlist_outlier", "consensus_aligned", "insufficient_evidence"})
+            self.assertIsInstance(scores["evidence_tier_reason"], str)
+            self.assertIn("is_capped_disagreement", scores)
+
+    def test_bell_style_outlier_never_classifies_as_strong_supported_edge(self) -> None:
+        player = PlayerInputs("bell2", "Bell2", "WR", 92.0, 91.0, 88.0, athletic_source="COMBINE_FALLBACK")
+        tier, _, _ = classify_output_evidence_tier(
+            player=player,
+            raw_context={"seasons_available": 0, "context_flags": ["low_confidence_seed"]},
+            evidence_completeness_score=0.25,
+            consensus_delta_positional_raw=28.0,
+            consensus_delta_positional=5.0,
+        )
+        self.assertIn(tier, {"watchlist_outlier", "insufficient_evidence"})
 
 
 if __name__ == "__main__":

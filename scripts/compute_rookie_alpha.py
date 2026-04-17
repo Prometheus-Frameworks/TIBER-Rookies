@@ -210,6 +210,12 @@ POSITIONAL_SCORE_CURVES: dict[str, list[float]] = {
 }
 _POSITIONAL_CURVE_TAIL_STEP = 0.5   # score drop per rank beyond the table
 _POSITIONAL_CURVE_FLOOR = 28.0      # minimum consensus score for any rank
+CONSENSUS_DELTA_CAP_BANDS: tuple[tuple[float, float, str], ...] = (
+    (0.80, 30.0, ">=0.80"),
+    (0.60, 18.0, "0.60-0.79"),
+    (0.40, 10.0, "0.40-0.59"),
+    (0.00, 5.0, "<0.40"),
+)
 
 
 def positional_rank_to_score(position: str, rank: int) -> float:
@@ -224,6 +230,132 @@ def positional_rank_to_score(position: str, rank: int) -> float:
         return curve[rank - 1]
     extra = rank - len(curve)
     return max(_POSITIONAL_CURVE_FLOOR, curve[-1] - extra * _POSITIONAL_CURVE_TAIL_STEP)
+
+
+def compute_evidence_completeness_score(
+    player: PlayerInputs,
+    raw_context: dict[str, Any] | None = None,
+) -> float:
+    """Compute evidence completeness score on [0.0, 1.0]."""
+    raw_context = raw_context or {}
+    score = 0.0
+
+    seasons_available = raw_context.get("seasons_available")
+    if seasons_available is not None:
+        try:
+            if int(seasons_available) > 0:
+                score += 0.25
+        except (TypeError, ValueError):
+            pass
+
+    advanced_receiving_present = any(
+        raw_context.get(field) is not None
+        for field in (
+            "career_yards_per_route_run",
+            "best_season_yprr",
+            "career_receiving_market_share",
+        )
+    )
+    if advanced_receiving_present:
+        score += 0.15
+
+    if raw_context.get("one_d_rr") is not None:
+        score += 0.10
+
+    if raw_context.get("dob_seeded") is True:
+        score += 0.10
+
+    if player.athletic_source == "RAS":
+        score += 0.15
+
+    if raw_context.get("power4_early_contributor_flag") is True:
+        score += 0.15
+
+    flags = raw_context.get("context_flags") or []
+    low_confidence_flagged = raw_context.get("low_confidence_seed") is True or "low_confidence_seed" in flags
+    if not low_confidence_flagged:
+        score += 0.10
+
+    return round(clamp_0_100(score * 100.0) / 100.0, 2)
+
+
+def cap_consensus_delta_by_completeness(raw_delta: float, completeness_score: float) -> tuple[float, float, str]:
+    """Return (capped_delta, cap_limit, cap_tier_label) for display semantics."""
+    bounded_completeness = max(0.0, min(1.0, completeness_score))
+    for threshold, cap, label in CONSENSUS_DELTA_CAP_BANDS:
+        if bounded_completeness >= threshold:
+            return max(-cap, min(cap, raw_delta)), cap, label
+    return max(-5.0, min(5.0, raw_delta)), 5.0, "<0.40"
+
+
+def classify_output_evidence_tier(
+    *,
+    player: PlayerInputs,
+    raw_context: dict[str, Any] | None,
+    evidence_completeness_score: float,
+    consensus_delta_positional_raw: float | None,
+    consensus_delta_positional: float | None,
+) -> tuple[str, str, bool]:
+    """Classify output confidence semantics for board/card labeling.
+
+    Returns (evidence_tier, evidence_tier_reason, is_capped_disagreement).
+    """
+    ctx = raw_context or {}
+    flags = set(ctx.get("context_flags") or [])
+    low_confidence_seed = ctx.get("low_confidence_seed") is True or "low_confidence_seed" in flags
+    major_caution = low_confidence_seed or "synthetic_profile_pending_cfbd" in flags
+    severe_caution = major_caution or "pre_draft_acl_march_2026" in flags
+    fallback_heavy_profile = player.athletic_source in {None, "COMBINE_FALLBACK"}
+    wr_neutral_athletic_default = player.position == "WR" and player.athletic_source == "COMBINE_FALLBACK"
+    seasons_available = ctx.get("seasons_available")
+    try:
+        seasons_available_i = int(seasons_available) if seasons_available is not None else None
+    except (TypeError, ValueError):
+        seasons_available_i = None
+    key_lanes_incomplete = (
+        (seasons_available_i is not None and seasons_available_i <= 0)
+        and ctx.get("career_yards_per_route_run") is None
+        and ctx.get("one_d_rr") is None
+    )
+
+    if consensus_delta_positional_raw is None or consensus_delta_positional is None:
+        return "insufficient_evidence", "Positional consensus unavailable for confidence labeling", False
+
+    raw_abs = abs(consensus_delta_positional_raw)
+    capped_abs = abs(consensus_delta_positional)
+    is_capped_disagreement = raw_abs - capped_abs >= 1.0
+
+    if evidence_completeness_score < 0.40 or key_lanes_incomplete or fallback_heavy_profile:
+        return "insufficient_evidence", "Profile relies on sparse evidence or fallback inputs", is_capped_disagreement
+
+    if capped_abs < 5.0:
+        return "consensus_aligned", "Near consensus after evidence guardrails", is_capped_disagreement
+
+    if (
+        capped_abs > 10.0
+        and evidence_completeness_score >= 0.80
+        and not major_caution
+        and not low_confidence_seed
+        and not wr_neutral_athletic_default
+    ):
+        return "strong_supported_edge", "High completeness and meaningful edge vs positional consensus", is_capped_disagreement
+
+    if 5.0 <= capped_abs <= 18.0 and evidence_completeness_score >= 0.60 and not severe_caution:
+        if is_capped_disagreement:
+            return "watchlist_outlier", "Large disagreement exists but capped due to evidence guardrails", is_capped_disagreement
+        return "moderate_edge", "Meaningful disagreement with adequate evidence support", is_capped_disagreement
+
+    if (
+        capped_abs >= 5.0
+        and (
+            evidence_completeness_score < 0.80
+            or severe_caution
+            or is_capped_disagreement
+        )
+    ):
+        return "watchlist_outlier", "Disagreement present, but caution or incompleteness limits confidence", is_capped_disagreement
+
+    return "moderate_edge", "Meaningful disagreement with adequate evidence support", is_capped_disagreement
 
 
 def load_positional_consensus(path: Path) -> dict[str, dict]:
@@ -532,6 +664,11 @@ def _extract_sporq(context: dict[str, Any] | None) -> tuple[float | None, str | 
     return None, None
 
 
+def _is_valid_percentile(value: float | None) -> bool:
+    """Return True when value is a bounded percentile [0, 100]."""
+    return value is not None and 0.0 <= value <= 100.0
+
+
 def _ras_confidence(component_count: int) -> float:
     """Confidence for a full RAS score based on how many combine components were used.
 
@@ -544,6 +681,65 @@ def _ras_confidence(component_count: int) -> float:
     if component_count >= 3:
         return 0.85
     return 0.80  # minimum (2 components — rare but possible)
+
+
+def resolve_wr_athletic_input(
+    ras_score: float | None,
+    ras_metric_count: int,
+    sporq_val: float | None,
+) -> tuple[float, str, float, str | None, bool]:
+    """Resolve WR athletic score/confidence with honest partial-data handling.
+
+    Cases:
+      1) Full RAS available -> use RAS with normal confidence
+      2) Partial RAS (3-4 metrics) + valid SPORQ -> 55/45 blend, conf 0.75
+      3) Partial RAS (3-4 metrics) only -> partial RAS, conf 0.70
+      4) No usable RAS + valid SPORQ -> SPORQ, conf 0.65
+      5) Neither -> neutral 50.0, conf 0.50
+    """
+    has_full_ras = ras_score is not None and ras_metric_count >= 5
+    has_partial_ras = ras_score is not None and ras_metric_count in (3, 4)
+    valid_sporq = _is_valid_percentile(sporq_val)
+
+    if has_full_ras:
+        confidence = _ras_confidence(ras_metric_count)
+        return (
+            float(ras_score),
+            "RAS",
+            confidence,
+            f"RAS {ras_score:.1f} from {ras_metric_count} combine metrics",
+            False,
+        )
+
+    if has_partial_ras and valid_sporq:
+        blended = 0.55 * float(ras_score) + 0.45 * float(sporq_val)
+        return (
+            round(blended, 4),
+            "RAS_SPORQ_BLEND",
+            0.75,
+            f"Partial RAS ({ras_metric_count} metrics) blended with SPORQ ({ras_score:.1f} / {sporq_val:.1f})",
+            True,
+        )
+
+    if has_partial_ras:
+        return (
+            float(ras_score),
+            "RAS_PARTIAL",
+            0.70,
+            f"Partial RAS {ras_score:.1f} from {ras_metric_count} combine metrics (no SPORQ supplement)",
+            False,
+        )
+
+    if valid_sporq:
+        return (
+            float(sporq_val),
+            "SPORQ",
+            0.65,
+            f"SPORQ {sporq_val:.0f}th percentile (no usable RAS available)",
+            True,
+        )
+
+    return (50.0, "NEUTRAL_DEFAULT", 0.50, "No usable RAS/SPORQ; neutral athletic default", False)
 
 
 def resolve_athletic_input(
@@ -564,6 +760,13 @@ def resolve_athletic_input(
       3. COMBINE_FALLBACK (partial combine data, low confidence)
       4. None (no athletic data)
     """
+    sporq_val, sporq_ctx = _extract_sporq(context)
+    trust = SPORQ_TRUST.get(position, "ignore")
+
+    # WR-specific honesty logic: partial RAS and SPORQ-aware blending/default.
+    if position == "WR":
+        return resolve_wr_athletic_input(ras_score, ras_metric_count, sporq_val)
+
     # 1. RAS is the primary source
     if ras_score is not None:
         confidence = _ras_confidence(ras_metric_count)
@@ -576,8 +779,6 @@ def resolve_athletic_input(
         )
 
     # 2. SPORQ — position-gated
-    sporq_val, sporq_ctx = _extract_sporq(context)
-    trust = SPORQ_TRUST.get(position, "ignore")
     if sporq_val is not None and trust == "preferred":
         return (
             sporq_val,
@@ -1117,13 +1318,20 @@ def normalize_context_entry(context_row: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def rookie_alpha_score(player: PlayerInputs) -> float:
+def rookie_alpha_score(player: PlayerInputs, age_adjusted_available_for_run: bool = False) -> float:
     # Use resolved athletic score (RAS / SPORQ / COMBINE_FALLBACK), falling
     # back to raw RAS, then to 50.0 (neutral) when nothing is available.
     ath = player.athletic_score_0_100 if player.athletic_score_0_100 is not None else (
         player.ras_score_0_100 if player.ras_score_0_100 is not None else 50.0
     )
-    production = player.production_score_0_100 if player.production_score_0_100 is not None else 50.0
+    if player.production_score_0_100 is None:
+        production = 50.0
+    elif age_adjusted_available_for_run and player.age_adjusted_production_0_100 is None:
+        # Evidence-discipline fallback: if age-adjusted production is missing,
+        # do not preserve full raw production credit.
+        production = player.production_score_0_100 * 0.85
+    else:
+        production = player.production_score_0_100
     draft = player.draft_capital_proxy_0_100 if player.draft_capital_proxy_0_100 is not None else 50.0
     return clamp_0_100((0.35 * ath) + (0.45 * production) + (0.20 * draft))
 
@@ -1218,6 +1426,7 @@ def write_outputs(
     wr_translation_penalty_by_id: dict[str, tuple[float, str]] | None = None,
     positional_consensus_path: Path | None = None,
     positional_consensus_by_id: dict[str, dict] | None = None,
+    age_adjusted_available_for_run: bool = False,
 ) -> None:
     generated_at = datetime.now(tz=timezone.utc).replace(microsecond=0).isoformat()
     run_id = f"rookie-alpha-{season}-{generated_at}"
@@ -1228,7 +1437,7 @@ def write_outputs(
     players_with_context = 0
     missing_any = 0
     for p in players:
-        alpha = rookie_alpha_score(p)
+        alpha = rookie_alpha_score(p, age_adjusted_available_for_run=age_adjusted_available_for_run)
         ts = talent_score(p)
 
         # ------------------------------------------------------------------
@@ -1246,7 +1455,7 @@ def write_outputs(
 
         # When SPORQ is used as the athletic score, suppress its ceiling bonus
         # to avoid double-counting athleticism in the alpha formula.
-        sporq_used = p.athletic_source == "SPORQ"
+        sporq_used = p.athletic_source in {"SPORQ", "RAS_SPORQ_BLEND"}
 
         ceiling_bonus = 0.0
         for em in ctx_exc:
@@ -1316,12 +1525,35 @@ def write_outputs(
             blended_rank = round(mean(pos_ranks))
             sources_count: int | None = len(pos_ranks)
             consensus_score_pos: float | None = round(positional_rank_to_score(p.position, blended_rank), 1)
-            consensus_delta_pos: float | None = round(alpha - consensus_score_pos, 1)
+            consensus_delta_pos_raw: float | None = round(alpha - consensus_score_pos, 1)
+            evidence_completeness_score = compute_evidence_completeness_score(
+                player=p,
+                raw_context=context_by_id.get(p.player_id),
+            )
+            consensus_delta_pos, consensus_delta_cap_limit, consensus_delta_cap_tier = cap_consensus_delta_by_completeness(
+                raw_delta=consensus_delta_pos_raw,
+                completeness_score=evidence_completeness_score,
+            )
+            consensus_delta_pos = round(consensus_delta_pos, 1)
         else:
             blended_rank = None
             sources_count = None
             consensus_score_pos = None
+            consensus_delta_pos_raw = None
             consensus_delta_pos = None
+            evidence_completeness_score = compute_evidence_completeness_score(
+                player=p,
+                raw_context=context_by_id.get(p.player_id),
+            )
+            consensus_delta_cap_limit = None
+            consensus_delta_cap_tier = None
+        evidence_tier, evidence_tier_reason, is_capped_disagreement = classify_output_evidence_tier(
+            player=p,
+            raw_context=context_by_id.get(p.player_id),
+            evidence_completeness_score=evidence_completeness_score,
+            consensus_delta_positional_raw=consensus_delta_pos_raw,
+            consensus_delta_positional=consensus_delta_pos,
+        )
 
         row_payload = {
             "player_id": p.player_id,
@@ -1355,7 +1587,14 @@ def write_outputs(
                 "consensus_position_rank_blended": blended_rank,
                 "consensus_position_rank_sources_count": sources_count,
                 "consensus_score_positional_0_100": consensus_score_pos,
+                "evidence_completeness_score": evidence_completeness_score,
+                "consensus_delta_positional_raw": consensus_delta_pos_raw,
+                "consensus_delta_positional_cap_limit": consensus_delta_cap_limit,
+                "consensus_delta_positional_cap_tier": consensus_delta_cap_tier,
                 "consensus_delta_positional": consensus_delta_pos,
+                "evidence_tier": evidence_tier,
+                "evidence_tier_reason": evidence_tier_reason,
+                "is_capped_disagreement": is_capped_disagreement,
                 # Legacy field — kept for backward compat; semantics are misleading
                 # (compares alpha against overall draft capital, not positional consensus)
                 "market_investment_delta_legacy": market_investment_delta_legacy,
@@ -1408,7 +1647,7 @@ def write_outputs(
             "name": "tiber-rookie-alpha",
             "stage": "pre-draft",
             "label": "pre-draft v0",
-            "model_version": "rookie-alpha-predraft-v0.4.0",
+            "model_version": "rookie-alpha-predraft-v0.5.0",
             "formula": {
                 "ras_weight": 0.35,
                 "production_weight": 0.45,
@@ -1462,7 +1701,14 @@ def write_outputs(
                 "rookie_alpha_0_100",
                 "consensus_position_rank_blended",
                 "consensus_score_positional_0_100",
+                "evidence_completeness_score",
+                "consensus_delta_positional_raw",
+                "consensus_delta_positional_cap_limit",
+                "consensus_delta_positional_cap_tier",
                 "consensus_delta_positional",
+                "evidence_tier",
+                "evidence_tier_reason",
+                "is_capped_disagreement",
                 "market_investment_delta_legacy",
                 "talent_rank",
                 "draft_proxy_delta",
@@ -1488,7 +1734,14 @@ def write_outputs(
                     "rookie_alpha_0_100": row["scores"]["rookie_alpha_0_100"],
                     "consensus_position_rank_blended": row["scores"].get("consensus_position_rank_blended") or "",
                     "consensus_score_positional_0_100": row["scores"].get("consensus_score_positional_0_100") or "",
+                    "evidence_completeness_score": row["scores"].get("evidence_completeness_score") if row["scores"].get("evidence_completeness_score") is not None else "",
+                    "consensus_delta_positional_raw": row["scores"].get("consensus_delta_positional_raw") if row["scores"].get("consensus_delta_positional_raw") is not None else "",
+                    "consensus_delta_positional_cap_limit": row["scores"].get("consensus_delta_positional_cap_limit") if row["scores"].get("consensus_delta_positional_cap_limit") is not None else "",
+                    "consensus_delta_positional_cap_tier": row["scores"].get("consensus_delta_positional_cap_tier") or "",
                     "consensus_delta_positional": row["scores"].get("consensus_delta_positional") if row["scores"].get("consensus_delta_positional") is not None else "",
+                    "evidence_tier": row["scores"].get("evidence_tier") or "",
+                    "evidence_tier_reason": row["scores"].get("evidence_tier_reason") or "",
+                    "is_capped_disagreement": row["scores"].get("is_capped_disagreement"),
                     "market_investment_delta_legacy": row["scores"].get("market_investment_delta_legacy") or "",
                     "talent_rank": row["talent_rank"],
                     "draft_proxy_delta": row["draft_proxy_delta"],
@@ -1670,9 +1923,11 @@ def main() -> None:
     # Load context early — needed for context-driven production adjustments
     context_by_id = load_context_by_player_id(context_input)
 
+    age_adjusted_available_for_run = False
     if age_adjusted_input.exists():
         age_adjusted_rows = load_json(age_adjusted_input)
         if isinstance(age_adjusted_rows, list):
+            age_adjusted_available_for_run = True
             production_rows = blend_production_rows(production_rows, age_adjusted_rows)
             logging.info(
                 "Blended production scores from %s (%.0f%% age-adjusted, %.0f%% existing)",
@@ -1728,6 +1983,7 @@ def main() -> None:
         wr_translation_penalty_by_id=wr_translation_penalty_by_id,
         positional_consensus_path=positional_consensus_input,
         positional_consensus_by_id=positional_consensus_by_id,
+        age_adjusted_available_for_run=age_adjusted_available_for_run,
     )
 
 

@@ -29,6 +29,14 @@ function notePreview(note) {
   return note.length > 60 ? `${note.slice(0, 60)}…` : note;
 }
 
+const EVIDENCE_TIER_LABELS = {
+  strong_supported_edge: 'Strong Supported Edge',
+  moderate_edge: 'Moderate Edge',
+  consensus_aligned: 'Consensus Aligned',
+  watchlist_outlier: 'Watchlist Outlier',
+  insufficient_evidence: 'Insufficient Evidence',
+};
+
 export function renderRookieCardCompact(card, { isQueued = false, queueAnnotation = null } = {}) {
   const score = card.summary.rookieGrade == null ? 'N/A' : card.summary.rookieGrade.toFixed(1);
   const slug = encodeURIComponent(String(card.slug ?? ''));
@@ -51,6 +59,7 @@ export function renderRookieCardCompact(card, { isQueued = false, queueAnnotatio
         </div>
         <div class="section-title">Rookie Grade</div>
         <div class="compact-score">${esc(score)}</div>
+        ${card.evidenceTier ? `<div class="meta"><span class="evidence-tier-badge" title="${esc(card.evidenceTierReason ?? 'Evidence tier classification')}">${esc(EVIDENCE_TIER_LABELS[card.evidenceTier] ?? card.evidenceTier)}</span></div>` : ''}
         ${isQueued && queueTag ? `<div class="meta queue-inline-indicator">Queue tag: <span class="queue-tag-pill">${esc(queueTag)}</span></div>` : ''}
         ${isQueued && queueNote ? `<div class="meta">“${esc(notePreview(queueNote))}”</div>` : ''}
         ${snippets.length ? `<div class="compact-snippets">${snippets.map(compactMetric).join('')}</div>` : ''}
