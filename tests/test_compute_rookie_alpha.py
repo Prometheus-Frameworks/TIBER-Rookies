@@ -62,7 +62,7 @@ class RookieAlphaTests(unittest.TestCase):
         )
         self.assertAlmostEqual(rookie_alpha_score(player), 69.0)
 
-    def test_rookie_alpha_applies_production_fallback_when_age_adjusted_missing(self) -> None:
+    def test_rookie_alpha_preserves_raw_production_when_age_adjusted_run_artifact_unavailable(self) -> None:
         player = PlayerInputs(
             player_id="p1",
             player_name="Player 1",
@@ -72,8 +72,22 @@ class RookieAlphaTests(unittest.TestCase):
             draft_capital_proxy_0_100=70.0,
             age_adjusted_production_0_100=None,
         )
+        # Run-level age-adjusted artifact absent: keep raw production.
+        self.assertAlmostEqual(rookie_alpha_score(player, age_adjusted_available_for_run=False), 69.0)
+
+    def test_rookie_alpha_applies_production_fallback_when_run_has_age_adjusted_artifact(self) -> None:
+        player = PlayerInputs(
+            player_id="p1",
+            player_name="Player 1",
+            position="WR",
+            ras_score_0_100=80.0,
+            production_score_0_100=60.0,
+            draft_capital_proxy_0_100=70.0,
+            age_adjusted_production_0_100=None,
+        )
+        # Run-level artifact present but player-level age-adjusted value missing.
         # effective production = 60 * 0.85 = 51
-        self.assertAlmostEqual(rookie_alpha_score(player), 64.95)
+        self.assertAlmostEqual(rookie_alpha_score(player, age_adjusted_available_for_run=True), 64.95)
 
     def test_rookie_alpha_keeps_production_when_age_adjusted_present(self) -> None:
         player = PlayerInputs(
@@ -85,7 +99,7 @@ class RookieAlphaTests(unittest.TestCase):
             draft_capital_proxy_0_100=70.0,
             age_adjusted_production_0_100=58.0,
         )
-        self.assertAlmostEqual(rookie_alpha_score(player), 69.0)
+        self.assertAlmostEqual(rookie_alpha_score(player, age_adjusted_available_for_run=True), 69.0)
 
     def test_merge_inputs(self) -> None:
         combine_rows = [

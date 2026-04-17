@@ -1117,7 +1117,7 @@ def normalize_context_entry(context_row: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def rookie_alpha_score(player: PlayerInputs) -> float:
+def rookie_alpha_score(player: PlayerInputs, age_adjusted_available_for_run: bool = False) -> float:
     # Use resolved athletic score (RAS / SPORQ / COMBINE_FALLBACK), falling
     # back to raw RAS, then to 50.0 (neutral) when nothing is available.
     ath = player.athletic_score_0_100 if player.athletic_score_0_100 is not None else (
@@ -1125,7 +1125,7 @@ def rookie_alpha_score(player: PlayerInputs) -> float:
     )
     if player.production_score_0_100 is None:
         production = 50.0
-    elif player.age_adjusted_production_0_100 is None:
+    elif age_adjusted_available_for_run and player.age_adjusted_production_0_100 is None:
         # Evidence-discipline fallback: if age-adjusted production is missing,
         # do not preserve full raw production credit.
         production = player.production_score_0_100 * 0.85
@@ -1225,6 +1225,7 @@ def write_outputs(
     wr_translation_penalty_by_id: dict[str, tuple[float, str]] | None = None,
     positional_consensus_path: Path | None = None,
     positional_consensus_by_id: dict[str, dict] | None = None,
+    age_adjusted_available_for_run: bool = False,
 ) -> None:
     generated_at = datetime.now(tz=timezone.utc).replace(microsecond=0).isoformat()
     run_id = f"rookie-alpha-{season}-{generated_at}"
@@ -1235,7 +1236,7 @@ def write_outputs(
     players_with_context = 0
     missing_any = 0
     for p in players:
-        alpha = rookie_alpha_score(p)
+        alpha = rookie_alpha_score(p, age_adjusted_available_for_run=age_adjusted_available_for_run)
         ts = talent_score(p)
 
         # ------------------------------------------------------------------
@@ -1677,9 +1678,11 @@ def main() -> None:
     # Load context early — needed for context-driven production adjustments
     context_by_id = load_context_by_player_id(context_input)
 
+    age_adjusted_available_for_run = False
     if age_adjusted_input.exists():
         age_adjusted_rows = load_json(age_adjusted_input)
         if isinstance(age_adjusted_rows, list):
+            age_adjusted_available_for_run = True
             production_rows = blend_production_rows(production_rows, age_adjusted_rows)
             logging.info(
                 "Blended production scores from %s (%.0f%% age-adjusted, %.0f%% existing)",
@@ -1735,6 +1738,7 @@ def main() -> None:
         wr_translation_penalty_by_id=wr_translation_penalty_by_id,
         positional_consensus_path=positional_consensus_input,
         positional_consensus_by_id=positional_consensus_by_id,
+        age_adjusted_available_for_run=age_adjusted_available_for_run,
     )
 
 
