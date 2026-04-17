@@ -8,6 +8,8 @@ from scripts.compute_rookie_alpha import (
     SPORQ_TRUST,
     _extract_sporq,
     _ras_confidence,
+    cap_consensus_delta_by_completeness,
+    compute_evidence_completeness_score,
     load_context_by_player_id,
     coerce_float,
     compute_ras_scores,
@@ -219,7 +221,7 @@ class RookieAlphaTests(unittest.TestCase):
             self.assertEqual(manifest["output_files"][1]["sha256"], sha256_file(out_csv))
             self.assertEqual(manifest["input_files"][0]["row_count"], 0)
             self.assertEqual(manifest["export_metadata"]["coverage_summary"], manifest["coverage_summary"])
-            self.assertEqual(manifest["model_version"], "rookie-alpha-predraft-v0.4.0")
+            self.assertEqual(manifest["model_version"], "rookie-alpha-predraft-v0.5.0")
 
     def test_context_is_additive_and_optional(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -570,6 +572,95 @@ class SporqTrustConfigTests(unittest.TestCase):
     def test_rb_qb_are_ignore(self) -> None:
         self.assertEqual(SPORQ_TRUST["RB"], "ignore")
         self.assertEqual(SPORQ_TRUST["QB"], "ignore")
+
+
+class ConsensusEvidenceGuardrailTests(unittest.TestCase):
+    def test_completeness_score_high_and_low_profiles(self) -> None:
+        high_player = PlayerInputs("high", "High", "WR", 85.0, 75.0, 80.0, athletic_source="RAS")
+        high_ctx = {
+            "seasons_available": 3,
+            "career_yards_per_route_run": 2.7,
+            "one_d_rr": 0.34,
+            "dob_seeded": True,
+            "power4_early_contributor_flag": True,
+            "context_flags": [],
+        }
+        low_player = PlayerInputs("low", "Low", "WR", None, 75.0, 80.0, athletic_source="SPORQ")
+        low_ctx = {
+            "seasons_available": 0,
+            "context_flags": ["low_confidence_seed"],
+        }
+        self.assertAlmostEqual(compute_evidence_completeness_score(high_player, high_ctx), 1.0)
+        self.assertAlmostEqual(compute_evidence_completeness_score(low_player, low_ctx), 0.0)
+
+    def test_cap_bands_and_sign_preservation(self) -> None:
+        self.assertEqual(cap_consensus_delta_by_completeness(40.0, 0.80), (30.0, 30.0, ">=0.80"))
+        self.assertEqual(cap_consensus_delta_by_completeness(-40.0, 0.80), (-30.0, 30.0, ">=0.80"))
+        self.assertEqual(cap_consensus_delta_by_completeness(40.0, 0.70), (18.0, 18.0, "0.60-0.79"))
+        self.assertEqual(cap_consensus_delta_by_completeness(-40.0, 0.50), (-10.0, 10.0, "0.40-0.59"))
+        self.assertEqual(cap_consensus_delta_by_completeness(40.0, 0.20), (5.0, 5.0, "<0.40"))
+
+    def test_raw_vs_capped_export_semantics(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            combine = tmp_path / "combine.json"
+            production = tmp_path / "production.json"
+            draft = tmp_path / "draft.json"
+            context = tmp_path / "context.json"
+            positional = tmp_path / "positional_consensus.json"
+            out_json = tmp_path / "out.json"
+            out_csv = tmp_path / "out.csv"
+            out_manifest = tmp_path / "manifest.json"
+            for p in (combine, production, draft):
+                p.write_text("[]\n", encoding="utf-8")
+            context.write_text(
+                '[{"player_id":"wr1","player_name":"WR One","position":"WR","seasons_available":0,'
+                '"context_flags":["low_confidence_seed"]}]',
+                encoding="utf-8",
+            )
+            positional.write_text(
+                '{"sources":[{"source":"test","entries":[{"player_id":"wr1","positional_rank":5}]}]}',
+                encoding="utf-8",
+            )
+
+            player = PlayerInputs(
+                player_id="wr1",
+                player_name="WR One",
+                position="WR",
+                ras_score_0_100=99.0,
+                production_score_0_100=99.0,
+                draft_capital_proxy_0_100=99.0,
+                athletic_score_0_100=99.0,
+                athletic_source="RAS",
+            )
+            write_outputs(
+                players=[player],
+                merge_diagnostics=MergeDiagnostics(0, 0, {"missing_combine": 0, "missing_production": 0, "missing_draft_proxy": 0, "total_excluded": 0}),
+                season=2026,
+                combine_path=combine,
+                production_path=production,
+                draft_proxy_path=draft,
+                output_json=out_json,
+                output_csv=out_csv,
+                output_manifest=out_manifest,
+                context_path=context,
+                context_by_id=load_context_by_player_id(context),
+                positional_consensus_path=positional,
+                positional_consensus_by_id={"wr1": {"ranks": [5], "sources": ["test"]}},
+            )
+            scores = load_json(out_json)["players"][0]["scores"]
+            self.assertGreater(scores["consensus_delta_positional_raw"], 30.0)
+            self.assertEqual(scores["consensus_delta_positional"], 5.0)
+            self.assertEqual(scores["consensus_delta_positional_cap_tier"], "<0.40")
+            self.assertEqual(scores["consensus_delta_positional_cap_limit"], 5.0)
+
+    def test_bell_style_incomplete_evidence_restrains_large_delta(self) -> None:
+        player = PlayerInputs("bell", "Bell", "WR", 90.0, 90.0, 90.0, athletic_source="RAS")
+        sparse_ctx = {"seasons_available": 0, "context_flags": ["low_confidence_seed"]}
+        completeness = compute_evidence_completeness_score(player, sparse_ctx)
+        capped, _, _ = cap_consensus_delta_by_completeness(27.0, completeness)
+        self.assertEqual(completeness, 0.15)
+        self.assertEqual(capped, 5.0)
 
 
 if __name__ == "__main__":

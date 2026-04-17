@@ -210,6 +210,12 @@ POSITIONAL_SCORE_CURVES: dict[str, list[float]] = {
 }
 _POSITIONAL_CURVE_TAIL_STEP = 0.5   # score drop per rank beyond the table
 _POSITIONAL_CURVE_FLOOR = 28.0      # minimum consensus score for any rank
+CONSENSUS_DELTA_CAP_BANDS: tuple[tuple[float, float, str], ...] = (
+    (0.80, 30.0, ">=0.80"),
+    (0.60, 18.0, "0.60-0.79"),
+    (0.40, 10.0, "0.40-0.59"),
+    (0.00, 5.0, "<0.40"),
+)
 
 
 def positional_rank_to_score(position: str, rank: int) -> float:
@@ -224,6 +230,62 @@ def positional_rank_to_score(position: str, rank: int) -> float:
         return curve[rank - 1]
     extra = rank - len(curve)
     return max(_POSITIONAL_CURVE_FLOOR, curve[-1] - extra * _POSITIONAL_CURVE_TAIL_STEP)
+
+
+def compute_evidence_completeness_score(
+    player: PlayerInputs,
+    raw_context: dict[str, Any] | None = None,
+) -> float:
+    """Compute evidence completeness score on [0.0, 1.0]."""
+    raw_context = raw_context or {}
+    score = 0.0
+
+    seasons_available = raw_context.get("seasons_available")
+    if seasons_available is not None:
+        try:
+            if int(seasons_available) > 0:
+                score += 0.25
+        except (TypeError, ValueError):
+            pass
+
+    advanced_receiving_present = any(
+        raw_context.get(field) is not None
+        for field in (
+            "career_yards_per_route_run",
+            "best_season_yprr",
+            "career_receiving_market_share",
+        )
+    )
+    if advanced_receiving_present:
+        score += 0.15
+
+    if raw_context.get("one_d_rr") is not None:
+        score += 0.10
+
+    if raw_context.get("dob_seeded") is True:
+        score += 0.10
+
+    if player.athletic_source == "RAS":
+        score += 0.15
+
+    if raw_context.get("power4_early_contributor_flag") is True:
+        score += 0.15
+
+    flags = raw_context.get("context_flags") or []
+    low_confidence_flagged = raw_context.get("low_confidence_seed") is True or "low_confidence_seed" in flags
+    if not low_confidence_flagged:
+        score += 0.10
+
+    return round(clamp_0_100(score * 100.0) / 100.0, 2)
+
+
+def cap_consensus_delta_by_completeness(raw_delta: float, completeness_score: float) -> tuple[float, float, str]:
+    """Return (capped_delta, cap_limit, cap_tier_label) for display semantics."""
+    bounded_completeness = max(0.0, min(1.0, completeness_score))
+    for threshold, cap, label in CONSENSUS_DELTA_CAP_BANDS:
+        if bounded_completeness >= threshold:
+            return max(-cap, min(cap, raw_delta)), cap, label
+    return max(-5.0, min(5.0, raw_delta)), 5.0, "<0.40"
 
 
 def load_positional_consensus(path: Path) -> dict[str, dict]:
@@ -1393,12 +1455,28 @@ def write_outputs(
             blended_rank = round(mean(pos_ranks))
             sources_count: int | None = len(pos_ranks)
             consensus_score_pos: float | None = round(positional_rank_to_score(p.position, blended_rank), 1)
-            consensus_delta_pos: float | None = round(alpha - consensus_score_pos, 1)
+            consensus_delta_pos_raw: float | None = round(alpha - consensus_score_pos, 1)
+            evidence_completeness_score = compute_evidence_completeness_score(
+                player=p,
+                raw_context=context_by_id.get(p.player_id),
+            )
+            consensus_delta_pos, consensus_delta_cap_limit, consensus_delta_cap_tier = cap_consensus_delta_by_completeness(
+                raw_delta=consensus_delta_pos_raw,
+                completeness_score=evidence_completeness_score,
+            )
+            consensus_delta_pos = round(consensus_delta_pos, 1)
         else:
             blended_rank = None
             sources_count = None
             consensus_score_pos = None
+            consensus_delta_pos_raw = None
             consensus_delta_pos = None
+            evidence_completeness_score = compute_evidence_completeness_score(
+                player=p,
+                raw_context=context_by_id.get(p.player_id),
+            )
+            consensus_delta_cap_limit = None
+            consensus_delta_cap_tier = None
 
         row_payload = {
             "player_id": p.player_id,
@@ -1432,6 +1510,10 @@ def write_outputs(
                 "consensus_position_rank_blended": blended_rank,
                 "consensus_position_rank_sources_count": sources_count,
                 "consensus_score_positional_0_100": consensus_score_pos,
+                "evidence_completeness_score": evidence_completeness_score,
+                "consensus_delta_positional_raw": consensus_delta_pos_raw,
+                "consensus_delta_positional_cap_limit": consensus_delta_cap_limit,
+                "consensus_delta_positional_cap_tier": consensus_delta_cap_tier,
                 "consensus_delta_positional": consensus_delta_pos,
                 # Legacy field — kept for backward compat; semantics are misleading
                 # (compares alpha against overall draft capital, not positional consensus)
@@ -1485,7 +1567,7 @@ def write_outputs(
             "name": "tiber-rookie-alpha",
             "stage": "pre-draft",
             "label": "pre-draft v0",
-            "model_version": "rookie-alpha-predraft-v0.4.0",
+            "model_version": "rookie-alpha-predraft-v0.5.0",
             "formula": {
                 "ras_weight": 0.35,
                 "production_weight": 0.45,
@@ -1539,6 +1621,10 @@ def write_outputs(
                 "rookie_alpha_0_100",
                 "consensus_position_rank_blended",
                 "consensus_score_positional_0_100",
+                "evidence_completeness_score",
+                "consensus_delta_positional_raw",
+                "consensus_delta_positional_cap_limit",
+                "consensus_delta_positional_cap_tier",
                 "consensus_delta_positional",
                 "market_investment_delta_legacy",
                 "talent_rank",
@@ -1565,6 +1651,10 @@ def write_outputs(
                     "rookie_alpha_0_100": row["scores"]["rookie_alpha_0_100"],
                     "consensus_position_rank_blended": row["scores"].get("consensus_position_rank_blended") or "",
                     "consensus_score_positional_0_100": row["scores"].get("consensus_score_positional_0_100") or "",
+                    "evidence_completeness_score": row["scores"].get("evidence_completeness_score") if row["scores"].get("evidence_completeness_score") is not None else "",
+                    "consensus_delta_positional_raw": row["scores"].get("consensus_delta_positional_raw") if row["scores"].get("consensus_delta_positional_raw") is not None else "",
+                    "consensus_delta_positional_cap_limit": row["scores"].get("consensus_delta_positional_cap_limit") if row["scores"].get("consensus_delta_positional_cap_limit") is not None else "",
+                    "consensus_delta_positional_cap_tier": row["scores"].get("consensus_delta_positional_cap_tier") or "",
                     "consensus_delta_positional": row["scores"].get("consensus_delta_positional") if row["scores"].get("consensus_delta_positional") is not None else "",
                     "market_investment_delta_legacy": row["scores"].get("market_investment_delta_legacy") or "",
                     "talent_rank": row["talent_rank"],
