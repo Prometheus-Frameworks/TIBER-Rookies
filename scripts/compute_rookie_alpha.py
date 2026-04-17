@@ -248,7 +248,10 @@ def compute_evidence_completeness_score(
         except (TypeError, ValueError):
             pass
 
-    advanced_receiving_present = any(
+    advanced_receiving_present = (
+        isinstance(raw_context.get("advanced_receiving_stats"), dict)
+        and raw_context["advanced_receiving_stats"].get("career_yprr") is not None
+    ) or any(
         raw_context.get(field) is not None
         for field in (
             "career_yards_per_route_run",
@@ -259,10 +262,13 @@ def compute_evidence_completeness_score(
     if advanced_receiving_present:
         score += 0.15
 
-    if raw_context.get("one_d_rr") is not None:
+    if (
+        raw_context.get("first_down_per_route_run") is not None
+        or raw_context.get("one_d_rr") is not None
+    ):
         score += 0.10
 
-    if raw_context.get("dob_seeded") is True:
+    if raw_context.get("dob") or raw_context.get("dob_seeded") is True:
         score += 0.10
 
     if player.athletic_source == "RAS":
