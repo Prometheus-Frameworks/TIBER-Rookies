@@ -532,6 +532,11 @@ def _extract_sporq(context: dict[str, Any] | None) -> tuple[float | None, str | 
     return None, None
 
 
+def _is_valid_percentile(value: float | None) -> bool:
+    """Return True when value is a bounded percentile [0, 100]."""
+    return value is not None and 0.0 <= value <= 100.0
+
+
 def _ras_confidence(component_count: int) -> float:
     """Confidence for a full RAS score based on how many combine components were used.
 
@@ -544,6 +549,65 @@ def _ras_confidence(component_count: int) -> float:
     if component_count >= 3:
         return 0.85
     return 0.80  # minimum (2 components — rare but possible)
+
+
+def resolve_wr_athletic_input(
+    ras_score: float | None,
+    ras_metric_count: int,
+    sporq_val: float | None,
+) -> tuple[float, str, float, str | None, bool]:
+    """Resolve WR athletic score/confidence with honest partial-data handling.
+
+    Cases:
+      1) Full RAS available -> use RAS with normal confidence
+      2) Partial RAS (3-4 metrics) + valid SPORQ -> 55/45 blend, conf 0.75
+      3) Partial RAS (3-4 metrics) only -> partial RAS, conf 0.70
+      4) No usable RAS + valid SPORQ -> SPORQ, conf 0.65
+      5) Neither -> neutral 50.0, conf 0.50
+    """
+    has_partial_ras = ras_score is not None and ras_metric_count in (3, 4)
+    has_full_ras = ras_score is not None and not has_partial_ras
+    valid_sporq = _is_valid_percentile(sporq_val)
+
+    if has_full_ras:
+        confidence = _ras_confidence(ras_metric_count)
+        return (
+            float(ras_score),
+            "RAS",
+            confidence,
+            f"RAS {ras_score:.1f} from {ras_metric_count} combine metrics",
+            False,
+        )
+
+    if has_partial_ras and valid_sporq:
+        blended = 0.55 * float(ras_score) + 0.45 * float(sporq_val)
+        return (
+            round(blended, 4),
+            "RAS_SPORQ_BLEND",
+            0.75,
+            f"Partial RAS ({ras_metric_count} metrics) blended with SPORQ ({ras_score:.1f} / {sporq_val:.1f})",
+            True,
+        )
+
+    if has_partial_ras:
+        return (
+            float(ras_score),
+            "RAS_PARTIAL",
+            0.70,
+            f"Partial RAS {ras_score:.1f} from {ras_metric_count} combine metrics (no SPORQ supplement)",
+            False,
+        )
+
+    if valid_sporq:
+        return (
+            float(sporq_val),
+            "SPORQ",
+            0.65,
+            f"SPORQ {sporq_val:.0f}th percentile (no usable RAS available)",
+            True,
+        )
+
+    return (50.0, "NEUTRAL_DEFAULT", 0.50, "No usable RAS/SPORQ; neutral athletic default", False)
 
 
 def resolve_athletic_input(
@@ -564,6 +628,13 @@ def resolve_athletic_input(
       3. COMBINE_FALLBACK (partial combine data, low confidence)
       4. None (no athletic data)
     """
+    sporq_val, sporq_ctx = _extract_sporq(context)
+    trust = SPORQ_TRUST.get(position, "ignore")
+
+    # WR-specific honesty logic: partial RAS and SPORQ-aware blending/default.
+    if position == "WR":
+        return resolve_wr_athletic_input(ras_score, ras_metric_count, sporq_val)
+
     # 1. RAS is the primary source
     if ras_score is not None:
         confidence = _ras_confidence(ras_metric_count)
@@ -576,8 +647,6 @@ def resolve_athletic_input(
         )
 
     # 2. SPORQ — position-gated
-    sporq_val, sporq_ctx = _extract_sporq(context)
-    trust = SPORQ_TRUST.get(position, "ignore")
     if sporq_val is not None and trust == "preferred":
         return (
             sporq_val,

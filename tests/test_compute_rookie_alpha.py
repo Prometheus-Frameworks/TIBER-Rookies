@@ -359,14 +359,36 @@ class ResolveAthleticInputTests(unittest.TestCase):
         self.assertAlmostEqual(conf, 0.75)
         self.assertTrue(sporq_used)
 
-    def test_sporq_ignored_for_wr(self) -> None:
+    def test_wr_full_ras_uses_ras_with_normal_confidence(self) -> None:
         context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": 95.0}]}
         score, source, conf, explainer, sporq_used = resolve_athletic_input(
-            "p1", "WR", ras_score=None, ras_metric_count=0,
+            "p1", "WR", ras_score=88.0, ras_metric_count=5,
             combine_fallback_entry=None, context=context,
         )
-        self.assertIsNone(score)
-        self.assertIsNone(source)
+        self.assertAlmostEqual(score, 88.0)
+        self.assertEqual(source, "RAS")
+        self.assertAlmostEqual(conf, 1.0)
+        self.assertFalse(sporq_used)
+
+    def test_wr_partial_ras_with_sporq_blends_and_reduces_confidence(self) -> None:
+        context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": 95.0}]}
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "WR", ras_score=70.0, ras_metric_count=4,
+            combine_fallback_entry=None, context=context,
+        )
+        self.assertAlmostEqual(score, 81.25)
+        self.assertEqual(source, "RAS_SPORQ_BLEND")
+        self.assertAlmostEqual(conf, 0.75)
+        self.assertTrue(sporq_used)
+
+    def test_wr_partial_ras_without_sporq_uses_partial_ras_with_lower_confidence(self) -> None:
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "WR", ras_score=70.0, ras_metric_count=3,
+            combine_fallback_entry=None, context=None,
+        )
+        self.assertAlmostEqual(score, 70.0)
+        self.assertEqual(source, "RAS_PARTIAL")
+        self.assertAlmostEqual(conf, 0.70)
         self.assertFalse(sporq_used)
 
     def test_sporq_ignored_for_rb(self) -> None:
@@ -378,9 +400,20 @@ class ResolveAthleticInputTests(unittest.TestCase):
         self.assertIsNone(score)
         self.assertFalse(sporq_used)
 
-    def test_combine_fallback_used_when_no_ras_or_sporq(self) -> None:
+    def test_wr_sporq_only_is_used_with_moderate_confidence(self) -> None:
+        context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": 92.0}]}
         score, source, conf, explainer, sporq_used = resolve_athletic_input(
             "p1", "WR", ras_score=None, ras_metric_count=0,
+            combine_fallback_entry=None, context=context,
+        )
+        self.assertAlmostEqual(score, 92.0)
+        self.assertEqual(source, "SPORQ")
+        self.assertAlmostEqual(conf, 0.65)
+        self.assertTrue(sporq_used)
+
+    def test_combine_fallback_used_when_no_ras_or_sporq_for_non_wr(self) -> None:
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "QB", ras_score=None, ras_metric_count=0,
             combine_fallback_entry=(55.0, 2), context=None,
         )
         self.assertAlmostEqual(score, 55.0)
@@ -389,23 +422,23 @@ class ResolveAthleticInputTests(unittest.TestCase):
         self.assertAlmostEqual(conf, 0.50)
         self.assertFalse(sporq_used)
 
-    def test_combine_fallback_confidence_for_one_metric(self) -> None:
+    def test_combine_fallback_confidence_for_one_metric_non_wr(self) -> None:
         _, _, conf, _, _ = resolve_athletic_input(
-            "p1", "WR", ras_score=None, ras_metric_count=0,
+            "p1", "QB", ras_score=None, ras_metric_count=0,
             combine_fallback_entry=(45.0, 1), context=None,
         )
         # confidence = 0.30 + 0.10 * min(1, 2) = 0.40
         self.assertAlmostEqual(conf, 0.40)
 
-    def test_no_data_returns_none(self) -> None:
+    def test_wr_no_signal_returns_neutral_default_with_honest_confidence(self) -> None:
         score, source, conf, explainer, sporq_used = resolve_athletic_input(
             "p1", "WR", ras_score=None, ras_metric_count=0,
             combine_fallback_entry=None, context=None,
         )
-        self.assertIsNone(score)
-        self.assertIsNone(source)
-        self.assertAlmostEqual(conf, 0.0)
-        self.assertIsNone(explainer)
+        self.assertAlmostEqual(score, 50.0)
+        self.assertEqual(source, "NEUTRAL_DEFAULT")
+        self.assertAlmostEqual(conf, 0.50)
+        self.assertIsNotNone(explainer)
         self.assertFalse(sporq_used)
 
     def test_ras_confidence_varies_by_metric_count(self) -> None:
