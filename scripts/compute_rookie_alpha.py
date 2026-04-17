@@ -1323,7 +1323,7 @@ def write_outputs(
 
         # When SPORQ is used as the athletic score, suppress its ceiling bonus
         # to avoid double-counting athleticism in the alpha formula.
-        sporq_used = p.athletic_source == "SPORQ"
+        sporq_used = p.athletic_source in {"SPORQ", "RAS_SPORQ_BLEND"}
 
         ceiling_bonus = 0.0
         for em in ctx_exc:
