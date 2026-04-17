@@ -262,6 +262,57 @@ class RookieAlphaTests(unittest.TestCase):
         context_map = load_context_by_player_id(Path("/tmp/missing-context-file.json"))
         self.assertEqual(context_map, {})
 
+    def test_sporq_bonus_suppressed_when_wr_athletic_source_is_ras_sporq_blend(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_path = Path(tmp)
+            combine = tmp_path / "combine.json"
+            production = tmp_path / "production.json"
+            draft = tmp_path / "draft.json"
+            context = tmp_path / "context.json"
+            out_json = tmp_path / "out.json"
+            out_csv = tmp_path / "out.csv"
+            out_manifest = tmp_path / "manifest.json"
+            combine.write_text("[]\n", encoding="utf-8")
+            production.write_text("[]\n", encoding="utf-8")
+            draft.write_text("[]\n", encoding="utf-8")
+            context.write_text(
+                '[{"player_id":"wr1","player_name":"WR One","position":"WR","school":"School","class_year":2026,'
+                '"exceptional_metrics":[{"metric":"sporq_percentile","value":94.0,"percentile_tier":"historic",'
+                '"alpha_bonus_eligible":true,"context":"SPORQ test metric"}]}]',
+                encoding="utf-8",
+            )
+
+            player = PlayerInputs(
+                player_id="wr1",
+                player_name="WR One",
+                position="WR",
+                ras_score_0_100=72.0,
+                production_score_0_100=60.0,
+                draft_capital_proxy_0_100=70.0,
+                athletic_score_0_100=81.9,  # partial RAS + SPORQ blended athletic input
+                athletic_source="RAS_SPORQ_BLEND",
+                athletic_confidence=0.75,
+            )
+            baseline_alpha = round(rookie_alpha_score(player), 4)
+
+            write_outputs(
+                players=[player],
+                merge_diagnostics=MergeDiagnostics(0, 0, {"missing_combine": 0, "missing_production": 0, "missing_draft_proxy": 0, "total_excluded": 0}),
+                season=2026,
+                combine_path=combine,
+                production_path=production,
+                draft_proxy_path=draft,
+                output_json=out_json,
+                output_csv=out_csv,
+                output_manifest=out_manifest,
+                context_path=context,
+                context_by_id=load_context_by_player_id(context),
+            )
+            payload = load_json(out_json)
+            scores = payload["players"][0]["scores"]
+            self.assertAlmostEqual(scores["rookie_alpha_0_100"], baseline_alpha)
+            self.assertIsNone(scores["ceiling_bonus"])
+
     def test_missing_required_player_fields_are_skipped(self) -> None:
         players, _, _ = merge_inputs(
             combine_rows=[{"player_name": "No Id", "position": "WR", "forty": 4.5}],
@@ -359,14 +410,36 @@ class ResolveAthleticInputTests(unittest.TestCase):
         self.assertAlmostEqual(conf, 0.75)
         self.assertTrue(sporq_used)
 
-    def test_sporq_ignored_for_wr(self) -> None:
+    def test_wr_full_ras_uses_ras_with_normal_confidence(self) -> None:
         context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": 95.0}]}
         score, source, conf, explainer, sporq_used = resolve_athletic_input(
-            "p1", "WR", ras_score=None, ras_metric_count=0,
+            "p1", "WR", ras_score=88.0, ras_metric_count=5,
             combine_fallback_entry=None, context=context,
         )
-        self.assertIsNone(score)
-        self.assertIsNone(source)
+        self.assertAlmostEqual(score, 88.0)
+        self.assertEqual(source, "RAS")
+        self.assertAlmostEqual(conf, 1.0)
+        self.assertFalse(sporq_used)
+
+    def test_wr_partial_ras_with_sporq_blends_and_reduces_confidence(self) -> None:
+        context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": 95.0}]}
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "WR", ras_score=70.0, ras_metric_count=4,
+            combine_fallback_entry=None, context=context,
+        )
+        self.assertAlmostEqual(score, 81.25)
+        self.assertEqual(source, "RAS_SPORQ_BLEND")
+        self.assertAlmostEqual(conf, 0.75)
+        self.assertTrue(sporq_used)
+
+    def test_wr_partial_ras_without_sporq_uses_partial_ras_with_lower_confidence(self) -> None:
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "WR", ras_score=70.0, ras_metric_count=3,
+            combine_fallback_entry=None, context=None,
+        )
+        self.assertAlmostEqual(score, 70.0)
+        self.assertEqual(source, "RAS_PARTIAL")
+        self.assertAlmostEqual(conf, 0.70)
         self.assertFalse(sporq_used)
 
     def test_sporq_ignored_for_rb(self) -> None:
@@ -378,9 +451,20 @@ class ResolveAthleticInputTests(unittest.TestCase):
         self.assertIsNone(score)
         self.assertFalse(sporq_used)
 
-    def test_combine_fallback_used_when_no_ras_or_sporq(self) -> None:
+    def test_wr_sporq_only_is_used_with_moderate_confidence(self) -> None:
+        context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": 92.0}]}
         score, source, conf, explainer, sporq_used = resolve_athletic_input(
             "p1", "WR", ras_score=None, ras_metric_count=0,
+            combine_fallback_entry=None, context=context,
+        )
+        self.assertAlmostEqual(score, 92.0)
+        self.assertEqual(source, "SPORQ")
+        self.assertAlmostEqual(conf, 0.65)
+        self.assertTrue(sporq_used)
+
+    def test_combine_fallback_used_when_no_ras_or_sporq_for_non_wr(self) -> None:
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "QB", ras_score=None, ras_metric_count=0,
             combine_fallback_entry=(55.0, 2), context=None,
         )
         self.assertAlmostEqual(score, 55.0)
@@ -389,24 +473,47 @@ class ResolveAthleticInputTests(unittest.TestCase):
         self.assertAlmostEqual(conf, 0.50)
         self.assertFalse(sporq_used)
 
-    def test_combine_fallback_confidence_for_one_metric(self) -> None:
+    def test_combine_fallback_confidence_for_one_metric_non_wr(self) -> None:
         _, _, conf, _, _ = resolve_athletic_input(
-            "p1", "WR", ras_score=None, ras_metric_count=0,
+            "p1", "QB", ras_score=None, ras_metric_count=0,
             combine_fallback_entry=(45.0, 1), context=None,
         )
         # confidence = 0.30 + 0.10 * min(1, 2) = 0.40
         self.assertAlmostEqual(conf, 0.40)
 
-    def test_no_data_returns_none(self) -> None:
+    def test_wr_no_signal_returns_neutral_default_with_honest_confidence(self) -> None:
         score, source, conf, explainer, sporq_used = resolve_athletic_input(
             "p1", "WR", ras_score=None, ras_metric_count=0,
             combine_fallback_entry=None, context=None,
         )
-        self.assertIsNone(score)
-        self.assertIsNone(source)
-        self.assertAlmostEqual(conf, 0.0)
-        self.assertIsNone(explainer)
+        self.assertAlmostEqual(score, 50.0)
+        self.assertEqual(source, "NEUTRAL_DEFAULT")
+        self.assertAlmostEqual(conf, 0.50)
+        self.assertIsNotNone(explainer)
         self.assertFalse(sporq_used)
+
+    def test_wr_two_metric_ras_without_sporq_is_treated_as_unusable_and_defaults_neutral(self) -> None:
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "WR", ras_score=68.0, ras_metric_count=2,
+            combine_fallback_entry=None, context=None,
+        )
+        self.assertAlmostEqual(score, 50.0)
+        self.assertEqual(source, "NEUTRAL_DEFAULT")
+        self.assertAlmostEqual(conf, 0.50)
+        self.assertIsNotNone(explainer)
+        self.assertFalse(sporq_used)
+
+    def test_wr_two_metric_ras_with_sporq_uses_sporq_only_path_not_ras(self) -> None:
+        context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": 91.0}]}
+        score, source, conf, explainer, sporq_used = resolve_athletic_input(
+            "p1", "WR", ras_score=68.0, ras_metric_count=2,
+            combine_fallback_entry=None, context=context,
+        )
+        self.assertAlmostEqual(score, 91.0)
+        self.assertEqual(source, "SPORQ")
+        self.assertAlmostEqual(conf, 0.65)
+        self.assertIsNotNone(explainer)
+        self.assertTrue(sporq_used)
 
     def test_ras_confidence_varies_by_metric_count(self) -> None:
         _, _, conf5, _, _ = resolve_athletic_input(
