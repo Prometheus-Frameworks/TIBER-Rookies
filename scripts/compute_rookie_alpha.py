@@ -1123,7 +1123,14 @@ def rookie_alpha_score(player: PlayerInputs) -> float:
     ath = player.athletic_score_0_100 if player.athletic_score_0_100 is not None else (
         player.ras_score_0_100 if player.ras_score_0_100 is not None else 50.0
     )
-    production = player.production_score_0_100 if player.production_score_0_100 is not None else 50.0
+    if player.production_score_0_100 is None:
+        production = 50.0
+    elif player.age_adjusted_production_0_100 is None:
+        # Evidence-discipline fallback: if age-adjusted production is missing,
+        # do not preserve full raw production credit.
+        production = player.production_score_0_100 * 0.85
+    else:
+        production = player.production_score_0_100
     draft = player.draft_capital_proxy_0_100 if player.draft_capital_proxy_0_100 is not None else 50.0
     return clamp_0_100((0.35 * ath) + (0.45 * production) + (0.20 * draft))
 
