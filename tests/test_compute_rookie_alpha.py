@@ -721,6 +721,28 @@ class ConsensusEvidenceGuardrailTests(unittest.TestCase):
         )
         self.assertEqual(tier, "insufficient_evidence")
 
+    def test_sporq_only_profile_not_auto_insufficient_when_other_signals_are_healthy(self) -> None:
+        player = PlayerInputs("p6", "Player", "WR", None, 74.0, 73.0, athletic_source="SPORQ")
+        tier, _, _ = classify_output_evidence_tier(
+            player=player,
+            raw_context={"seasons_available": 2, "context_flags": []},
+            evidence_completeness_score=0.72,
+            consensus_delta_positional_raw=8.0,
+            consensus_delta_positional=8.0,
+        )
+        self.assertEqual(tier, "moderate_edge")
+
+    def test_severe_caution_does_not_fall_through_to_moderate_edge(self) -> None:
+        player = PlayerInputs("p7", "Player", "WR", 84.0, 80.0, 79.0, athletic_source="RAS")
+        tier, _, _ = classify_output_evidence_tier(
+            player=player,
+            raw_context={"seasons_available": 3, "context_flags": ["pre_draft_acl_march_2026"]},
+            evidence_completeness_score=0.85,
+            consensus_delta_positional_raw=7.0,
+            consensus_delta_positional=7.0,
+        )
+        self.assertEqual(tier, "watchlist_outlier")
+
     def test_export_includes_evidence_tier_semantics(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = Path(tmp)

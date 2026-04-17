@@ -305,7 +305,7 @@ def classify_output_evidence_tier(
     low_confidence_seed = ctx.get("low_confidence_seed") is True or "low_confidence_seed" in flags
     major_caution = low_confidence_seed or "synthetic_profile_pending_cfbd" in flags
     severe_caution = major_caution or "pre_draft_acl_march_2026" in flags
-    fallback_heavy_profile = player.athletic_source in {None, "COMBINE_FALLBACK", "SPORQ"}
+    fallback_heavy_profile = player.athletic_source in {None, "COMBINE_FALLBACK"}
     wr_neutral_athletic_default = player.position == "WR" and player.athletic_source == "COMBINE_FALLBACK"
     seasons_available = ctx.get("seasons_available")
     try:
@@ -349,7 +349,7 @@ def classify_output_evidence_tier(
         capped_abs >= 5.0
         and (
             evidence_completeness_score < 0.80
-            or major_caution
+            or severe_caution
             or is_capped_disagreement
         )
     ):
