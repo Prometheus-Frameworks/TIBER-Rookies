@@ -1732,10 +1732,11 @@
     "school": "Georgia",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
     "evidence_tags": [
+      "young_breakout",
       "speed_threat",
       "yac_producer",
       "slot_receiver",
@@ -1766,9 +1767,9 @@
       "yac_per_reception": 8.0
     },
     "dob": "2004-03-29",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.34,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "wr-barion-brown",
@@ -2005,7 +2006,7 @@
     "dob": "2003-12-14",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 1
   },
   {
     "player_id": "wr-cj-daniels",
@@ -2085,9 +2086,9 @@
     "school": "Notre Dame",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "raw_athlete",
       "outside_receiver",
@@ -2120,9 +2121,9 @@
       "yac_per_reception": 4.7
     },
     "dob": "2002-07-02",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.58,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "wr-emmanuel-henderson-jr",
@@ -3375,9 +3376,9 @@
     "school": "Baylor",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "elite_production",
       "receiving_threat",
@@ -3394,9 +3395,9 @@
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
     "dob": "2002-06-27",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.229,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "te-daequan-wright",
