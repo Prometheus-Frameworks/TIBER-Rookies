@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-18T03:47:44+00:00",
-  "run_id": "rookie-alpha-2026-2026-04-18T03:47:44+00:00",
+  "generated_at": "2026-04-18T03:50:51+00:00",
+  "run_id": "rookie-alpha-2026-2026-04-18T03:50:51+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 100,
@@ -327,11 +327,11 @@
         "athletic_source": "RAS_PARTIAL",
         "athletic_confidence": 0.7,
         "athletic_explainer": "Partial RAS 56.4 from 3 combine metrics (no SPORQ supplement)",
-        "production_0_100": 68.32,
-        "age_adjusted_production_0_100": 68.2,
+        "production_0_100": 68.62,
+        "age_adjusted_production_0_100": 68.7,
         "draft_capital_proxy_0_100": 85.0,
-        "talent_score_0_100": 63.1136,
-        "rookie_alpha_0_100": 67.4909,
+        "talent_score_0_100": 63.2823,
+        "rookie_alpha_0_100": 67.6259,
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
@@ -341,14 +341,14 @@
         "consensus_position_rank_sources_count": 3,
         "consensus_score_positional_0_100": 67.0,
         "evidence_completeness_score": 1.0,
-        "consensus_delta_positional_raw": 0.5,
+        "consensus_delta_positional_raw": 0.6,
         "consensus_delta_positional_cap_limit": 30.0,
         "consensus_delta_positional_cap_tier": ">=0.80",
-        "consensus_delta_positional": 0.5,
+        "consensus_delta_positional": 0.6,
         "evidence_tier": "consensus_aligned",
         "evidence_tier_reason": "Near consensus after evidence guardrails",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -17.5
+        "market_investment_delta_legacy": -17.4
       },
       "model_inputs_missing": [],
       "context": {
@@ -360,20 +360,20 @@
         "early_declare_flag": false,
         "breakout_age": 20,
         "age_at_first_impact_season": 20,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
+        "freshman_total_yards": 15,
+        "sophomore_total_yards": 51,
         "freshman_impact_flag": false,
         "young_breakout_flag": true,
-        "breakout_strength": 0.3,
+        "breakout_strength": 0.8,
         "breakout_confidence": 0.9,
-        "breakout_age_rating_0_100": 72.0,
-        "breakout_label": "Early breakout",
+        "breakout_age_rating_0_100": 78.8,
+        "breakout_label": "Elite breakout",
         "career_yards_per_route_run": 2.02,
         "best_season_yprr": 2.02,
         "worst_season_yprr": null,
         "seasons_over_2_3_yprr": 0,
         "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
+        "multi_season_efficiency_flag": true,
         "injury_affected_season_count": 0,
         "injury_adjusted_profile_flag": false,
         "broken_offense_context_flag": true,
@@ -396,13 +396,11 @@
         "evidence_tags": [
           "young_breakout"
         ],
-        "context_flags": [
-          "limited_multi_season_data"
-        ],
+        "context_flags": [],
         "translation_flags": [
           "young_breakout"
         ],
-        "evidence_summary": "FR+SO combined yards: 68 (lowest in 2026 R1 WR class; 7 receptions in 18 combined games). Waited behind Rome Odunze, Ja'Lynn Polk, Jalen McMillan, and Germie Bernard \u2014 all drafted R1-R3 \u2014 as Washington WR depth systematically suppressed his early role. JR breakout at age 20 before 62-881-11 senior season (73.4 YPG). Zone specialist: 6.25% contested target rate vs zone (gets open cleanly vs off-coverage). Man coverage challenge: 25.71% contested target rate vs man \u2014 saved by 76.9% contested catch rate (10/13 in 2025). 1D/RR 0.136 (#3 in class, elite tier). Career YPRR 2.02 \u2014 barely above 2.00 threshold, flagged as historically risky comp group (1/15 hit rate on 1,000-yard NFL seasons for <2.10 YPRR before age 21). Pro day: 6.80 3-cone, 4.30 shuttle, 37.5\" vert at 210 lbs \u2014 positive scout feedback on route work. Best RZ receiver in class per multiple evaluators (uses 6'4\" frame to box out, rip-away technique). 3.1% drop rate. YAC/R 4.40 (near bottom of R1 class since 2016). Closest production comp: Michael Wilson (Stanford) \u2014 borderline Tier 3 above-average NFL starter projection. 17.74% TD rate. 82.4% open target rate. QBR when targeted: 106.7. Non-early declare; 4 full college seasons. Late declare flag applies.",
+        "evidence_summary": "FR: 2 rec/15 yds (2022). SO: 5 rec/51 yds (2023) \u2014 suppressed by depth chart behind Rome Odunze, Ja'Lynn Polk, Jalen McMillan, Germie Bernard (all drafted R1-R3). JR 2024 (age 20): 63 rec / 834 yds / 9 TD \u2014 led Washington in receiving yards and TDs, honorable mention All-Big Ten. SR 2025 (age 21): 62 rec / 881 yds / 11 TD. Two consecutive elite seasons; consistent production profile. Historical YPG comp: 73.4 YPG best season places Boston in R1 success group (Kelvin Benjamin 72.2, Xavier Worthy 72.4, Quentin Johnston 76.2). Zone specialist: 6.25% contested target rate vs zone. Man coverage challenge: 25.71% CTT vs man \u2014 saved by 76.9% contested catch rate (10/13 in 2025). 1D/RR 0.136 (#3 in class, elite). Career YPRR 2.02 \u2014 at the 2.00 threshold; historically risky comp group (<2.10 YPRR before age 21: 1/15 hit rate on 1,000-yard seasons). Pro day: 6.80 3-cone, 4.30 shuttle, 37.5\" vert at 210 lbs. Best RZ receiver in class per multiple evaluators. 3.1% drop rate. ADOT 14.4, man_YPRR 2.58 vs zone_YPRR 2.20. YAC/rec 5.3. Closest comp: Michael Wilson (Stanford). Non-early declare; 4 full seasons.",
         "context_source": "Wikipedia + X research (2026 R1 FR/SO chart, zone/man splits, pro day data, contested catch analysis, production comps), retrieved 2026-04-18."
       },
       "rookie_alpha_rank": 4,
