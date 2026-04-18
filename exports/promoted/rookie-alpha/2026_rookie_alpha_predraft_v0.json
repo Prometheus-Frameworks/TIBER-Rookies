@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-18T03:50:51+00:00",
-  "run_id": "rookie-alpha-2026-2026-04-18T03:50:51+00:00",
+  "generated_at": "2026-04-18T12:20:12+00:00",
+  "run_id": "rookie-alpha-2026-2026-04-18T12:20:12+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 100,
@@ -318,6 +318,108 @@
       "draft_proxy_delta": -1
     },
     {
+      "player_id": "wr-jordyn-tyson",
+      "player_name": "Jordyn Tyson",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": null,
+        "athletic_score_0_100": 50.0,
+        "athletic_source": "NEUTRAL_DEFAULT",
+        "athletic_confidence": 0.5,
+        "athletic_explainer": "No usable RAS/SPORQ; neutral athletic default",
+        "production_0_100": 69.44,
+        "age_adjusted_production_0_100": 77.6,
+        "draft_capital_proxy_0_100": 95.0,
+        "talent_score_0_100": 60.935,
+        "rookie_alpha_0_100": 67.748,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_position_rank_blended": 3,
+        "consensus_position_rank_sources_count": 3,
+        "consensus_score_positional_0_100": 71.0,
+        "evidence_completeness_score": 0.85,
+        "consensus_delta_positional_raw": -3.3,
+        "consensus_delta_positional_cap_limit": 30.0,
+        "consensus_delta_positional_cap_tier": ">=0.80",
+        "consensus_delta_positional": -3.3,
+        "evidence_tier": "consensus_aligned",
+        "evidence_tier_reason": "Near consensus after evidence guardrails",
+        "is_capped_disagreement": false,
+        "market_investment_delta_legacy": -27.3
+      },
+      "model_inputs_missing": [],
+      "context": {
+        "player_id": "wr-jordyn-tyson",
+        "player_name": "Jordyn Tyson",
+        "position": "WR",
+        "school": "Arizona State",
+        "class_year": 2026,
+        "early_declare_flag": true,
+        "breakout_age": 20,
+        "age_at_first_impact_season": 20,
+        "freshman_total_yards": 470,
+        "sophomore_total_yards": 0,
+        "freshman_impact_flag": true,
+        "young_breakout_flag": true,
+        "breakout_strength": 1.0,
+        "breakout_confidence": 0.9,
+        "breakout_age_rating_0_100": 81.5,
+        "breakout_label": "Elite breakout",
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": 2,
+        "injury_adjusted_profile_flag": true,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": 0.07,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": true,
+        "man_zone_versatility_flag": true,
+        "power4_early_contributor_flag": true,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": true,
+        "path_disruption_flag": true
+      },
+      "evidence": {
+        "evidence_tags": [
+          "young_breakout",
+          "early_declare",
+          "injury_adjusted",
+          "exceptional_strength",
+          "contested_catch_signal",
+          "inside_out_versatility",
+          "route_runner"
+        ],
+        "context_flags": [
+          "injury_context",
+          "path_disruption",
+          "combine_drills_skipped_hamstring"
+        ],
+        "translation_flags": [
+          "young_breakout",
+          "injury_adjusted",
+          "inside_out_versatility"
+        ],
+        "evidence_summary": "Transfer path: 470 yards as true freshman at Colorado, injury-limited seasons 2023-24, then 2025 draft cycle at Arizona State. Combine: 26 bench reps (one shy of WR all-time record) \u2014 exceptional functional strength. Skipped speed/jump testing (hamstring). MTF 0.07 (lowest in class) \u2014 profile is separator/route-runner, not YAC threat.\nScreen usage context: college offense ran high screen volume with Tyson. screen_yard_share estimate ~40-50% of targets (proxy; precise yard-share not confirmed). screen_yard_share NOT encoded \u2014 film review overrides proxy concern (see below).\nFilm review (2026-04-11, user-conducted):\nvs Texas State: lined up slot vs press man, beats press at 5 yards off LOS, wins outside leverage, adjusts frame on 40-yard gain with 1-handed contested catch while safety crashes \u2014 press win + vertical tracking + contested finish.\nvs Baylor: boundary short side, corner route up the seam in Cover 2, splits DB and LB, reads space and attacks window \u2014 spatial feel and route utility, not gadget spam.\nvs TCU (post): strong side boundary vs soft man, wins inside leverage on post for 15-yard gain \u2014 leverage win creating viable throwing window.\nvs TCU (60-yd TD): weak side boundary vs press man, sells screen look initially then torches press over the top for 60-yard walk-in TD \u2014 weaponizes screen expectation, which is the key distinction: manufactured usage may have been deployment choice, not ceiling.\nModel philosophy note: screen-yard share = production-translation risk, not evidence that the receiver cannot play. Film confirms press wins, leverage wins, vertical tracking, contested catch ability, and boundary route success. Screen-heavy college deployment reflects offense exploiting an easy button on a better-than-deployed player. screen_yard_share penalty WILL NOT be applied unless hard data confirms and film evidence is re-evaluated. deep_yard_share remains a valid caution flag if confirmed.",
+        "context_source": "Wikipedia Jordyn Tyson career summary + arizonasports.com 2026 NFL Combine report, retrieved 2026-04-08; film review notes 2026-04-11."
+      },
+      "rookie_alpha_rank": 4,
+      "talent_rank": 11,
+      "draft_proxy_delta": 7
+    },
+    {
       "player_id": "wr-denzel-boston",
       "player_name": "Denzel Boston",
       "position": "WR",
@@ -403,8 +505,8 @@
         "evidence_summary": "FR: 2 rec/15 yds (2022). SO: 5 rec/51 yds (2023) \u2014 suppressed by depth chart behind Rome Odunze, Ja'Lynn Polk, Jalen McMillan, Germie Bernard (all drafted R1-R3). JR 2024 (age 20): 63 rec / 834 yds / 9 TD \u2014 led Washington in receiving yards and TDs, honorable mention All-Big Ten. SR 2025 (age 21): 62 rec / 881 yds / 11 TD. Two consecutive elite seasons; consistent production profile. Historical YPG comp: 73.4 YPG best season places Boston in R1 success group (Kelvin Benjamin 72.2, Xavier Worthy 72.4, Quentin Johnston 76.2). Zone specialist: 6.25% contested target rate vs zone. Man coverage challenge: 25.71% CTT vs man \u2014 saved by 76.9% contested catch rate (10/13 in 2025). 1D/RR 0.136 (#3 in class, elite). Career YPRR 2.02 \u2014 at the 2.00 threshold; historically risky comp group (<2.10 YPRR before age 21: 1/15 hit rate on 1,000-yard seasons). Pro day: 6.80 3-cone, 4.30 shuttle, 37.5\" vert at 210 lbs. Best RZ receiver in class per multiple evaluators. 3.1% drop rate. ADOT 14.4, man_YPRR 2.58 vs zone_YPRR 2.20. YAC/rec 5.3. Closest comp: Michael Wilson (Stanford). Non-early declare; 4 full seasons.",
         "context_source": "Wikipedia + X research (2026 R1 FR/SO chart, zone/man splits, pro day data, contested catch analysis, production comps), retrieved 2026-04-18."
       },
-      "rookie_alpha_rank": 4,
-      "talent_rank": 8,
+      "rookie_alpha_rank": 5,
+      "talent_rank": 9,
       "draft_proxy_delta": 4
     },
     {
@@ -493,9 +595,9 @@
         "evidence_summary": "Transferred from USC to Georgia for 2025 and posted 81 catches for 811 yards and 6 TDs; 78% of yards came after the catch on quick throws and screens, indicating gadget/speed-oriented usage. Bleacher Report ranks him #10 overall at WR (#49 overall); rare home-run threat limited by route refinement.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 5,
+      "rookie_alpha_rank": 6,
       "talent_rank": 5,
-      "draft_proxy_delta": 0
+      "draft_proxy_delta": -1
     },
     {
       "player_id": "qb-fernando-mendoza",
@@ -579,9 +681,9 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 6,
-      "talent_rank": 10,
-      "draft_proxy_delta": 4
+      "rookie_alpha_rank": 7,
+      "talent_rank": 12,
+      "draft_proxy_delta": 5
     },
     {
       "player_id": "qb-drew-allar",
@@ -669,9 +771,9 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 7,
+      "rookie_alpha_rank": 8,
       "talent_rank": 3,
-      "draft_proxy_delta": -4
+      "draft_proxy_delta": -5
     },
     {
       "player_id": "wr-carnell-tate",
@@ -762,111 +864,9 @@
         "evidence_summary": "Verified Ohio State progression from 264 freshman total yards to 739 sophomore total yards (733 receiving + 6 rushing), then 854 total yards in 2025. 40 time (4.53): market narrative labels this 'too slow' but 2026 WR leaders by career receiving YPG ran: Puka Nacua 4.57, JSN 4.52, Amon-Ra St. Brown 4.59, CeeDee Lamb 4.50, George Pickens 4.47, Nico Collins 4.45. Tate at 4.53 is squarely in the middle of this group. Speed narrative is not supported by outcome data at the WR position.",
         "context_source": "Wikipedia Carnell Tate college statistics table (2023-2025 rows), retrieved 2026-03-29; speed comp via notes 2026-04-10"
       },
-      "rookie_alpha_rank": 8,
-      "talent_rank": 14,
-      "draft_proxy_delta": 6
-    },
-    {
-      "player_id": "wr-jordyn-tyson",
-      "player_name": "Jordyn Tyson",
-      "position": "WR",
-      "scores": {
-        "ras_0_100": null,
-        "athletic_score_0_100": 50.0,
-        "athletic_source": "NEUTRAL_DEFAULT",
-        "athletic_confidence": 0.5,
-        "athletic_explainer": "No usable RAS/SPORQ; neutral athletic default",
-        "production_0_100": 63.32,
-        "age_adjusted_production_0_100": 67.4,
-        "draft_capital_proxy_0_100": 95.0,
-        "talent_score_0_100": 57.4925,
-        "rookie_alpha_0_100": 64.994,
-        "ceiling_bonus": null,
-        "market_conviction_ras_override": null,
-        "market_conviction_reason": null,
-        "wr_translation_penalty": null,
-        "wr_translation_signals": null,
-        "consensus_position_rank_blended": 3,
-        "consensus_position_rank_sources_count": 3,
-        "consensus_score_positional_0_100": 71.0,
-        "evidence_completeness_score": 0.85,
-        "consensus_delta_positional_raw": -6.0,
-        "consensus_delta_positional_cap_limit": 30.0,
-        "consensus_delta_positional_cap_tier": ">=0.80",
-        "consensus_delta_positional": -6.0,
-        "evidence_tier": "moderate_edge",
-        "evidence_tier_reason": "Meaningful disagreement with adequate evidence support",
-        "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -30.0
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "wr-jordyn-tyson",
-        "player_name": "Jordyn Tyson",
-        "position": "WR",
-        "school": "Arizona State",
-        "class_year": 2026,
-        "early_declare_flag": true,
-        "breakout_age": 20,
-        "age_at_first_impact_season": 20,
-        "freshman_total_yards": 470,
-        "sophomore_total_yards": 0,
-        "freshman_impact_flag": true,
-        "young_breakout_flag": true,
-        "breakout_strength": 0.48,
-        "breakout_confidence": 0.9,
-        "breakout_age_rating_0_100": 74.5,
-        "breakout_label": "Early breakout",
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": 2,
-        "injury_adjusted_profile_flag": true,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": 0.07,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": true,
-        "man_zone_versatility_flag": true,
-        "power4_early_contributor_flag": true,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": true,
-        "path_disruption_flag": true
-      },
-      "evidence": {
-        "evidence_tags": [
-          "young_breakout",
-          "early_declare",
-          "injury_adjusted",
-          "exceptional_strength",
-          "contested_catch_signal",
-          "inside_out_versatility",
-          "route_runner"
-        ],
-        "context_flags": [
-          "injury_context",
-          "path_disruption",
-          "combine_drills_skipped_hamstring"
-        ],
-        "translation_flags": [
-          "young_breakout",
-          "injury_adjusted",
-          "inside_out_versatility"
-        ],
-        "evidence_summary": "Transfer path: 470 yards as true freshman at Colorado, injury-limited seasons 2023-24, then 2025 draft cycle at Arizona State. Combine: 26 bench reps (one shy of WR all-time record) \u2014 exceptional functional strength. Skipped speed/jump testing (hamstring). MTF 0.07 (lowest in class) \u2014 profile is separator/route-runner, not YAC threat.\nScreen usage context: college offense ran high screen volume with Tyson. screen_yard_share estimate ~40-50% of targets (proxy; precise yard-share not confirmed). screen_yard_share NOT encoded \u2014 film review overrides proxy concern (see below).\nFilm review (2026-04-11, user-conducted):\nvs Texas State: lined up slot vs press man, beats press at 5 yards off LOS, wins outside leverage, adjusts frame on 40-yard gain with 1-handed contested catch while safety crashes \u2014 press win + vertical tracking + contested finish.\nvs Baylor: boundary short side, corner route up the seam in Cover 2, splits DB and LB, reads space and attacks window \u2014 spatial feel and route utility, not gadget spam.\nvs TCU (post): strong side boundary vs soft man, wins inside leverage on post for 15-yard gain \u2014 leverage win creating viable throwing window.\nvs TCU (60-yd TD): weak side boundary vs press man, sells screen look initially then torches press over the top for 60-yard walk-in TD \u2014 weaponizes screen expectation, which is the key distinction: manufactured usage may have been deployment choice, not ceiling.\nModel philosophy note: screen-yard share = production-translation risk, not evidence that the receiver cannot play. Film confirms press wins, leverage wins, vertical tracking, contested catch ability, and boundary route success. Screen-heavy college deployment reflects offense exploiting an easy button on a better-than-deployed player. screen_yard_share penalty WILL NOT be applied unless hard data confirms and film evidence is re-evaluated. deep_yard_share remains a valid caution flag if confirmed.",
-        "context_source": "Wikipedia Jordyn Tyson career summary + arizonasports.com 2026 NFL Combine report, retrieved 2026-04-08; film review notes 2026-04-11."
-      },
       "rookie_alpha_rank": 9,
-      "talent_rank": 16,
-      "draft_proxy_delta": 7
+      "talent_rank": 15,
+      "draft_proxy_delta": 6
     },
     {
       "player_id": "te-kenyon-sadiq",
@@ -878,11 +878,11 @@
         "athletic_source": "RAS",
         "athletic_confidence": 0.95,
         "athletic_explainer": "RAS 75.6 from 4 combine metrics",
-        "production_0_100": 40.34,
-        "age_adjusted_production_0_100": 28.3,
+        "production_0_100": 41.9,
+        "age_adjusted_production_0_100": 30.9,
         "draft_capital_proxy_0_100": 85.0,
-        "talent_score_0_100": 55.7675,
-        "rookie_alpha_0_100": 64.614,
+        "talent_score_0_100": 56.645,
+        "rookie_alpha_0_100": 65.316,
         "ceiling_bonus": 3.0,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
@@ -892,14 +892,14 @@
         "consensus_position_rank_sources_count": 3,
         "consensus_score_positional_0_100": 79.0,
         "evidence_completeness_score": 0.6,
-        "consensus_delta_positional_raw": -14.4,
+        "consensus_delta_positional_raw": -13.7,
         "consensus_delta_positional_cap_limit": 18.0,
         "consensus_delta_positional_cap_tier": "0.60-0.79",
-        "consensus_delta_positional": -14.4,
+        "consensus_delta_positional": -13.7,
         "evidence_tier": "moderate_edge",
         "evidence_tier_reason": "Meaningful disagreement with adequate evidence support",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -20.4
+        "market_investment_delta_legacy": -19.7
       },
       "model_inputs_missing": [],
       "exceptional_metrics": [
@@ -995,6 +995,123 @@
       "draft_proxy_delta": 8
     },
     {
+      "player_id": "te-eli-stowers",
+      "player_name": "Eli Stowers",
+      "position": "TE",
+      "scores": {
+        "ras_0_100": 73.9726,
+        "athletic_score_0_100": 73.9726,
+        "athletic_source": "RAS",
+        "athletic_confidence": 0.95,
+        "athletic_explainer": "RAS 74.0 from 4 combine metrics",
+        "production_0_100": 58.4,
+        "age_adjusted_production_0_100": 57.0,
+        "draft_capital_proxy_0_100": 55.0,
+        "talent_score_0_100": 65.213,
+        "rookie_alpha_0_100": 64.6704,
+        "ceiling_bonus": 1.5,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_position_rank_blended": 2,
+        "consensus_position_rank_sources_count": 3,
+        "consensus_score_positional_0_100": 73.0,
+        "evidence_completeness_score": 0.6,
+        "consensus_delta_positional_raw": -8.3,
+        "consensus_delta_positional_cap_limit": 18.0,
+        "consensus_delta_positional_cap_tier": "0.60-0.79",
+        "consensus_delta_positional": -8.3,
+        "evidence_tier": "moderate_edge",
+        "evidence_tier_reason": "Meaningful disagreement with adequate evidence support",
+        "is_capped_disagreement": false,
+        "market_investment_delta_legacy": 9.7
+      },
+      "model_inputs_missing": [],
+      "exceptional_metrics": [
+        {
+          "metric": "vertical",
+          "value": 45.5,
+          "z_score": 2.84,
+          "context": "45.5\" vertical (high; z=2.84 vs TE peer group)",
+          "percentile_tier": "historic",
+          "alpha_bonus_eligible": false,
+          "source": "combine"
+        },
+        {
+          "metric": "broad",
+          "value": 135.0,
+          "z_score": 2.5,
+          "context": "135.0\" broad (long; z=2.50 vs TE peer group)",
+          "percentile_tier": "elite",
+          "alpha_bonus_eligible": false,
+          "source": "combine"
+        },
+        {
+          "metric": "sporq_percentile",
+          "value": 99.0,
+          "context": "99.0 SPORQ \u2014 elite composite athleticism at the TE position. 2nd best SPORQ in the 2026 TE class behind Sadiq (100.0). Consistent with athletic ceiling upside at the position.",
+          "percentile_tier": "elite",
+          "alpha_bonus_eligible": true,
+          "source": "notes_2026-04-10"
+        }
+      ],
+      "context": {
+        "player_id": "te-eli-stowers",
+        "player_name": "Eli Stowers",
+        "position": "TE",
+        "school": "Vanderbilt",
+        "class_year": 2026,
+        "early_declare_flag": true,
+        "breakout_age": 21,
+        "age_at_first_impact_season": 21,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": false,
+        "breakout_strength": 1.0,
+        "breakout_confidence": 0.9,
+        "breakout_age_rating_0_100": 71.6,
+        "breakout_label": "Early breakout",
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [
+          "elite_athleticism",
+          "early_declare"
+        ],
+        "context_flags": [],
+        "translation_flags": [],
+        "evidence_summary": "Vanderbilt TE. 99.0 SPORQ \u2014 2nd best in 2026 TE class behind Sadiq (100.0). Elite composite athleticism at TE where SPORQ is a meaningful upside signal. Early declare with 2026 draft capital. Production profile limited at Vanderbilt; athletic ceiling warrants a modest bonus relative to production-only score.",
+        "context_source": "compute_breakout_age.py; SPORQ 2026 TE class notes 2026-04-10"
+      },
+      "rookie_alpha_rank": 11,
+      "talent_rank": 7,
+      "draft_proxy_delta": -4
+    },
+    {
       "player_id": "wr-makai-lemon",
       "player_name": "Makai Lemon",
       "position": "WR",
@@ -1004,11 +1121,11 @@
         "athletic_source": "RAS_PARTIAL",
         "athletic_confidence": 0.7,
         "athletic_explainer": "Partial RAS 56.2 from 3 combine metrics (no SPORQ supplement)",
-        "production_0_100": 62.48,
-        "age_adjusted_production_0_100": 46.7,
+        "production_0_100": 65.28,
+        "age_adjusted_production_0_100": 53.7,
         "draft_capital_proxy_0_100": 75.0,
-        "talent_score_0_100": 59.7293,
-        "rookie_alpha_0_100": 62.7834,
+        "talent_score_0_100": 61.3043,
+        "rookie_alpha_0_100": 64.0434,
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
@@ -1018,14 +1135,14 @@
         "consensus_position_rank_sources_count": 3,
         "consensus_score_positional_0_100": 67.0,
         "evidence_completeness_score": 1.0,
-        "consensus_delta_positional_raw": -4.2,
+        "consensus_delta_positional_raw": -3.0,
         "consensus_delta_positional_cap_limit": 30.0,
         "consensus_delta_positional_cap_tier": ">=0.80",
-        "consensus_delta_positional": -4.2,
+        "consensus_delta_positional": -3.0,
         "evidence_tier": "consensus_aligned",
         "evidence_tier_reason": "Near consensus after evidence guardrails",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -12.2
+        "market_investment_delta_legacy": -11.0
       },
       "model_inputs_missing": [],
       "context": {
@@ -1041,9 +1158,9 @@
         "sophomore_total_yards": 764,
         "freshman_impact_flag": false,
         "young_breakout_flag": true,
-        "breakout_strength": 0.14,
+        "breakout_strength": 0.48,
         "breakout_confidence": 0.9,
-        "breakout_age_rating_0_100": 69.9,
+        "breakout_age_rating_0_100": 74.5,
         "breakout_label": "Early breakout",
         "career_yards_per_route_run": null,
         "best_season_yprr": null,
@@ -1086,9 +1203,9 @@
         "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season. R1 P4 WR since 2021 with 75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR \u2014 same threshold tier as Ja'Marr Chase, Malik Nabers, Jaylen Waddle, Garrett Wilson, Chris Olave, JSN, Jordan Addison. Combine: vert 40.0\", broad 129\". MTF 0.25 (2nd in class). Model rank 8 is supported.",
         "context_source": "Wikipedia Makai Lemon stats + @ffdataroma research note 2026-04-08"
       },
-      "rookie_alpha_rank": 11,
-      "talent_rank": 11,
-      "draft_proxy_delta": 0
+      "rookie_alpha_rank": 12,
+      "talent_rank": 10,
+      "draft_proxy_delta": -2
     },
     {
       "player_id": "wr-omar-cooper-jr",
@@ -1174,8 +1291,8 @@
         "evidence_summary": "Led national champion Indiana with 69 catches for 937 yards and 13 TDs in 2025; Dane Brugler ranks him 22nd overall (The Athletic), Tankathon has him at #24. Physical slot receiver with exceptional YAC and hands; 24 career TDs and 1,798 career yards; rising first-round buzz.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 12,
-      "talent_rank": 12,
+      "rookie_alpha_rank": 13,
+      "talent_rank": 13,
       "draft_proxy_delta": 0
     },
     {
@@ -1260,126 +1377,9 @@
         "evidence_summary": "Posted elite volume at UConn with 101 catches for 1,278 yards and 13 TDs in 2025; Biletnikoff finalist and UConn's first consensus All-American. Averaged 8+ YAC per reception (2nd in FBS) and ranked 3rd in YPRR per PFF; small-school caveat applies but his athleticism (41\" vertical, 4.40 forty) confirms elite physical traits.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 13,
-      "talent_rank": 6,
-      "draft_proxy_delta": -7
-    },
-    {
-      "player_id": "te-eli-stowers",
-      "player_name": "Eli Stowers",
-      "position": "TE",
-      "scores": {
-        "ras_0_100": 73.9726,
-        "athletic_score_0_100": 73.9726,
-        "athletic_source": "RAS",
-        "athletic_confidence": 0.95,
-        "athletic_explainer": "RAS 74.0 from 4 combine metrics",
-        "production_0_100": 51.26,
-        "age_adjusted_production_0_100": 45.1,
-        "draft_capital_proxy_0_100": 55.0,
-        "talent_score_0_100": 61.1967,
-        "rookie_alpha_0_100": 61.4574,
-        "ceiling_bonus": 1.5,
-        "market_conviction_ras_override": null,
-        "market_conviction_reason": null,
-        "wr_translation_penalty": null,
-        "wr_translation_signals": null,
-        "consensus_position_rank_blended": 2,
-        "consensus_position_rank_sources_count": 3,
-        "consensus_score_positional_0_100": 73.0,
-        "evidence_completeness_score": 0.6,
-        "consensus_delta_positional_raw": -11.5,
-        "consensus_delta_positional_cap_limit": 18.0,
-        "consensus_delta_positional_cap_tier": "0.60-0.79",
-        "consensus_delta_positional": -11.5,
-        "evidence_tier": "moderate_edge",
-        "evidence_tier_reason": "Meaningful disagreement with adequate evidence support",
-        "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 6.5
-      },
-      "model_inputs_missing": [],
-      "exceptional_metrics": [
-        {
-          "metric": "vertical",
-          "value": 45.5,
-          "z_score": 2.84,
-          "context": "45.5\" vertical (high; z=2.84 vs TE peer group)",
-          "percentile_tier": "historic",
-          "alpha_bonus_eligible": false,
-          "source": "combine"
-        },
-        {
-          "metric": "broad",
-          "value": 135.0,
-          "z_score": 2.5,
-          "context": "135.0\" broad (long; z=2.50 vs TE peer group)",
-          "percentile_tier": "elite",
-          "alpha_bonus_eligible": false,
-          "source": "combine"
-        },
-        {
-          "metric": "sporq_percentile",
-          "value": 99.0,
-          "context": "99.0 SPORQ \u2014 elite composite athleticism at the TE position. 2nd best SPORQ in the 2026 TE class behind Sadiq (100.0). Consistent with athletic ceiling upside at the position.",
-          "percentile_tier": "elite",
-          "alpha_bonus_eligible": true,
-          "source": "notes_2026-04-10"
-        }
-      ],
-      "context": {
-        "player_id": "te-eli-stowers",
-        "player_name": "Eli Stowers",
-        "position": "TE",
-        "school": "Vanderbilt",
-        "class_year": 2026,
-        "early_declare_flag": true,
-        "breakout_age": 21,
-        "age_at_first_impact_season": 21,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": false,
-        "breakout_strength": 0.486,
-        "breakout_confidence": 0.9,
-        "breakout_age_rating_0_100": 64.7,
-        "breakout_label": "Early breakout",
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": null,
-        "injury_adjusted_profile_flag": null,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": null
-      },
-      "evidence": {
-        "evidence_tags": [
-          "elite_athleticism",
-          "early_declare"
-        ],
-        "context_flags": [],
-        "translation_flags": [],
-        "evidence_summary": "Vanderbilt TE. 99.0 SPORQ \u2014 2nd best in 2026 TE class behind Sadiq (100.0). Elite composite athleticism at TE where SPORQ is a meaningful upside signal. Early declare with 2026 draft capital. Production profile limited at Vanderbilt; athletic ceiling warrants a modest bonus relative to production-only score.",
-        "context_source": "compute_breakout_age.py; SPORQ 2026 TE class notes 2026-04-10"
-      },
       "rookie_alpha_rank": 14,
-      "talent_rank": 9,
-      "draft_proxy_delta": -5
+      "talent_rank": 6,
+      "draft_proxy_delta": -8
     },
     {
       "player_id": "te-sam-roush",
@@ -1466,8 +1466,106 @@
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 15,
-      "talent_rank": 7,
-      "draft_proxy_delta": -8
+      "talent_rank": 8,
+      "draft_proxy_delta": -7
+    },
+    {
+      "player_id": "wr-chris-bell",
+      "player_name": "Chris Bell",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": null,
+        "athletic_score_0_100": 50.0,
+        "athletic_source": "NEUTRAL_DEFAULT",
+        "athletic_confidence": 0.5,
+        "athletic_explainer": "No usable RAS/SPORQ; neutral athletic default",
+        "production_0_100": 54.12,
+        "age_adjusted_production_0_100": 49.8,
+        "draft_capital_proxy_0_100": 75.0,
+        "talent_score_0_100": 52.3175,
+        "rookie_alpha_0_100": 56.854,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_position_rank_blended": 7,
+        "consensus_position_rank_sources_count": 3,
+        "consensus_score_positional_0_100": 57.0,
+        "evidence_completeness_score": 0.7,
+        "consensus_delta_positional_raw": -0.1,
+        "consensus_delta_positional_cap_limit": 18.0,
+        "consensus_delta_positional_cap_tier": "0.60-0.79",
+        "consensus_delta_positional": -0.1,
+        "evidence_tier": "consensus_aligned",
+        "evidence_tier_reason": "Near consensus after evidence guardrails",
+        "is_capped_disagreement": false,
+        "market_investment_delta_legacy": -18.1,
+        "score_caveats": [
+          "ACL tear (pre-draft 2026): alpha reflects pre-injury talent profile. Dynasty value is materially lower than alpha implies; year-1 contribution is unlikely. Consensus delta overstates model edge vs current dynasty market."
+        ]
+      },
+      "model_inputs_missing": [],
+      "context": {
+        "player_id": "wr-chris-bell",
+        "player_name": "Chris Bell",
+        "position": "WR",
+        "school": "Louisville",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 20,
+        "age_at_first_impact_season": 20,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": true,
+        "breakout_strength": 0.22,
+        "breakout_confidence": 0.9,
+        "breakout_age_rating_0_100": 71.0,
+        "breakout_label": "Early breakout",
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": 0.17,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [
+          "young_breakout",
+          "acl_injury_predraft"
+        ],
+        "context_flags": [
+          "injury_context",
+          "pre_draft_acl_march_2026"
+        ],
+        "translation_flags": [
+          "young_breakout",
+          "acl_injury_predraft"
+        ],
+        "evidence_summary": "Pre-draft ACL tear (March 2026). Was projected WR1-3 of the 2026 rookie class pre-injury; dynasty community had him in top-3 WR conversation. Post-ACL dynasty rank drops to approximately WR7-10 of class (KTC ~WR60 overall). Injury severely compresses first-year upside; year-1 contribution unlikely. Long-term profile may be intact if recovery is clean. Model scores reflect pre-injury production and combine profile, not injury-adjusted dynasty value \u2014 consensus_delta overstates model edge.",
+        "context_source": "Research agent 2026-04-09 (KeepTradeCut / Dynasty Nerds / PlayerProfiler post-injury consensus)"
+      },
+      "rookie_alpha_rank": 16,
+      "talent_rank": 29,
+      "draft_proxy_delta": 13
     },
     {
       "player_id": "wr-antonio-williams",
@@ -1567,9 +1665,9 @@
         "evidence_summary": "Age-19 freshman breakout (600 yards, Clemson/ACC, Power 4). Career 208 rec / 2,336 yds / 21 TD (PFF). YPRR 2.94 (career, elite efficiency tier); 124.1 passer rating when targeted (81st pct), 10.1% 1D/route run. 55.5% contested catch rate on 20+ aDOT. Inside-outside versatility despite slot label; identical efficiency in slot and out-wide. 75th pct vs man, 64th pct vs zone (route running grades). PFF WR11 projection, 2nd-round grade. Named comp screen (non-R1 P4 WR since 2020 with career 75th+ pctile passer rating when targeted + 50th+ pctile TPRR + BOA < 20): George Pickens, Antonio Williams, Elijah Sarratt, Josh Downs, Troy Franklin, Puka Nacua. FP/G floor in years 1-3: 7.4 (Franklin); 3 of 6 above 10+ FP/G. Route profiles estimated pending CFBD fetch.",
         "context_source": "@ffdataroma scouting note + @ScottBarrettDFB PFF chart, 2026-04-07"
       },
-      "rookie_alpha_rank": 16,
+      "rookie_alpha_rank": 17,
       "talent_rank": 17,
-      "draft_proxy_delta": 1
+      "draft_proxy_delta": 0
     },
     {
       "player_id": "wr-ted-hurst",
@@ -1655,8 +1753,8 @@
         "evidence_summary": "First Georgia State player to cross 1,000 yards (71 rec/1,004 yds/6 TD in 2025); First Team All-Sun Belt and first Georgia State player on The Athletic's College Freaks List. Big (6'4\") with 99th-percentile broad jump; Sun Belt level of competition is a caveat but athleticism is genuine.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 17,
-      "talent_rank": 15,
+      "rookie_alpha_rank": 18,
+      "talent_rank": 16,
       "draft_proxy_delta": -2
     },
     {
@@ -1743,9 +1841,9 @@
         "evidence_summary": "Led Alabama with 64 catches for 862 yards and 7 TDs in 2025, earning Biletnikoff semifinalist honors; wins with route detail, toughness, and consistency rather than pure speed. Mel Kiper ranked him 9th among WRs; Tankathon projects him #50 overall; DJ Moore/Jarvis Landry comp.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 18,
+      "rookie_alpha_rank": 19,
       "talent_rank": 26,
-      "draft_proxy_delta": 8
+      "draft_proxy_delta": 7
     },
     {
       "player_id": "rb-jonah-coleman",
@@ -1854,8 +1952,8 @@
         "evidence_summary": "Only 2026 RB to average 90+ total yards/game in 2+ seasons AND 70+ YAC+contact yards/game in 2+ seasons. Named comp screen (Day 2 P4 RBs since 2015, 60th+ pctile in TPRR + YAC/attempt + MTF/attempt): De'Von Achane, Joe Mixon, Javonte Williams, Jonah Coleman. Advanced efficiency context (2026-04-10 notes): YAC/reception 99.6th pctile, MTF/attempt 97th pctile, YPRR 93rd pctile \u2014 by all three advanced metrics, stacks closest to Jeremiyah Love among 2026 RBs. Qualifies for dual-threat RB flag (100+ rush YPG + 1.0+ receiving YPTPA/G; same list: Saquon, CMC, Bijan). Model bullish (+13.7 NFL edge) \u2014 comp class and advanced efficiency data reinforce that view.",
         "context_source": "@ffdataroma research note 2026-04-08; Day 2 RB 3-screen comp + advanced metrics notes 2026-04-10"
       },
-      "rookie_alpha_rank": 19,
-      "talent_rank": 31,
+      "rookie_alpha_rank": 20,
+      "talent_rank": 32,
       "draft_proxy_delta": 12
     },
     {
@@ -1940,9 +2038,103 @@
         "evidence_summary": "Set NDSU records with back-to-back 1,000-yard seasons (2024: 75 rec/1,071 yds/17 TD; 2025 comparable elite FCS numbers); 9.98 RAS \u2014 7th highest in NFL Combine history. ESPN Matt Miller projects him at pick 96 overall; FCS production caveat but athleticism and production are both elite.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 20,
+      "rookie_alpha_rank": 21,
       "talent_rank": 20,
-      "draft_proxy_delta": 0
+      "draft_proxy_delta": -1
+    },
+    {
+      "player_id": "wr-elijah-sarratt",
+      "player_name": "Elijah Sarratt",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": null,
+        "athletic_score_0_100": 50.0,
+        "athletic_source": "NEUTRAL_DEFAULT",
+        "athletic_confidence": 0.5,
+        "athletic_explainer": "No usable RAS/SPORQ; neutral athletic default",
+        "production_0_100": 55.12,
+        "age_adjusted_production_0_100": 36.4,
+        "draft_capital_proxy_0_100": 55.0,
+        "talent_score_0_100": 52.88,
+        "rookie_alpha_0_100": 53.304,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_position_rank_blended": 9,
+        "consensus_position_rank_sources_count": 3,
+        "consensus_score_positional_0_100": 51.0,
+        "evidence_completeness_score": 0.7,
+        "consensus_delta_positional_raw": 2.3,
+        "consensus_delta_positional_cap_limit": 18.0,
+        "consensus_delta_positional_cap_tier": "0.60-0.79",
+        "consensus_delta_positional": 2.3,
+        "evidence_tier": "consensus_aligned",
+        "evidence_tier_reason": "Near consensus after evidence guardrails",
+        "is_capped_disagreement": false,
+        "market_investment_delta_legacy": -1.7
+      },
+      "model_inputs_missing": [],
+      "context": {
+        "player_id": "wr-elijah-sarratt",
+        "player_name": "Elijah Sarratt",
+        "position": "WR",
+        "school": "Indiana",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 21,
+        "age_at_first_impact_season": 21,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": false,
+        "breakout_strength": 0.52,
+        "breakout_confidence": 0.9,
+        "breakout_age_rating_0_100": 57.0,
+        "breakout_label": "Average breakout",
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": 0.13,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [
+          "elite_efficiency_tier",
+          "non_r1_p4_wr_comps",
+          "late_breakout"
+        ],
+        "context_flags": [
+          "senior_breakout_flag"
+        ],
+        "translation_flags": [
+          "elite_efficiency_tier"
+        ],
+        "evidence_summary": "75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR (non-R1 P4 WR since 2021) \u2014 matches Puka Nacua, Tank Dell, Troy Franklin efficiency tier. Nacua comp is strongest: 43-48 rec/yr at BYU (modest volume), 18.3 YPC, 128.0 QB rating when targeted \u2014 then 105 catches in NFL year 1 as a 5th-round pick. Efficiency held when target share increased. Sarratt profile: low college volume, elite per-route efficiency \u2014 same archetype. Named comp screen (non-R1 P4 WR since 2020 with career 75th+ pctile passer rating when targeted + 50th+ pctile TPRR + BOA < 20): George Pickens, Antonio Williams, Elijah Sarratt, Josh Downs, Troy Franklin, Puka Nacua. FP/G floor in years 1-3: 7.4 (Franklin); 3 of 6 above 10+ FP/G. Late breakout (BOA 21) is model red flag; Aiyuk/Watson are precedents for senior-breakout success, but base rate is poor. MTF 0.13 (mid-tier). Model gap: volume-weighted age-adjusted production (18.2 age-adj, blend \u2192 38) severely underweights efficiency; CFBD raw production score 67.6 is more representative.",
+        "context_source": "@ffdataroma research note 2026-04-08 + @ScottBarrettDFB PFF chart + NCAA.com Puka Nacua stats"
+      },
+      "rookie_alpha_rank": 22,
+      "talent_rank": 27,
+      "draft_proxy_delta": 5
     },
     {
       "player_id": "wr-eric-mcalister",
@@ -2026,9 +2218,9 @@
         "evidence_summary": "Elite college production in 2025 with 72 catches for 1,190 yards (16.5 YPR) and 10 TDs at TCU; AP and Sporting News All-American, led the Big 12 in receiving yards. Record game vs. SMU (254 yds/3 TDs). Did not perform on-field drills at the combine; projects as WR24 at #154 overall per NFLDraftBuzz.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 21,
-      "talent_rank": 13,
-      "draft_proxy_delta": -8
+      "rookie_alpha_rank": 23,
+      "talent_rank": 14,
+      "draft_proxy_delta": -9
     },
     {
       "player_id": "wr-chris-brazzell-ii",
@@ -2116,199 +2308,9 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 22,
-      "talent_rank": 28,
-      "draft_proxy_delta": 6
-    },
-    {
-      "player_id": "wr-chris-bell",
-      "player_name": "Chris Bell",
-      "position": "WR",
-      "scores": {
-        "ras_0_100": null,
-        "athletic_score_0_100": 50.0,
-        "athletic_source": "NEUTRAL_DEFAULT",
-        "athletic_confidence": 0.5,
-        "athletic_explainer": "No usable RAS/SPORQ; neutral athletic default",
-        "production_0_100": 44.16,
-        "age_adjusted_production_0_100": 33.2,
-        "draft_capital_proxy_0_100": 75.0,
-        "talent_score_0_100": 46.715,
-        "rookie_alpha_0_100": 52.372,
-        "ceiling_bonus": null,
-        "market_conviction_ras_override": null,
-        "market_conviction_reason": null,
-        "wr_translation_penalty": null,
-        "wr_translation_signals": null,
-        "consensus_position_rank_blended": 7,
-        "consensus_position_rank_sources_count": 3,
-        "consensus_score_positional_0_100": 57.0,
-        "evidence_completeness_score": 0.7,
-        "consensus_delta_positional_raw": -4.6,
-        "consensus_delta_positional_cap_limit": 18.0,
-        "consensus_delta_positional_cap_tier": "0.60-0.79",
-        "consensus_delta_positional": -4.6,
-        "evidence_tier": "consensus_aligned",
-        "evidence_tier_reason": "Near consensus after evidence guardrails",
-        "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -22.6,
-        "score_caveats": [
-          "ACL tear (pre-draft 2026): alpha reflects pre-injury talent profile. Dynasty value is materially lower than alpha implies; year-1 contribution is unlikely. Consensus delta overstates model edge vs current dynasty market."
-        ]
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "wr-chris-bell",
-        "player_name": "Chris Bell",
-        "position": "WR",
-        "school": "Louisville",
-        "class_year": 2026,
-        "early_declare_flag": null,
-        "breakout_age": 21,
-        "age_at_first_impact_season": 21,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": false,
-        "breakout_strength": 0.3,
-        "breakout_confidence": 0.9,
-        "breakout_age_rating_0_100": 54.0,
-        "breakout_label": "Average breakout",
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": null,
-        "injury_adjusted_profile_flag": null,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": 0.17,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": null
-      },
-      "evidence": {
-        "evidence_tags": [
-          "acl_injury_predraft"
-        ],
-        "context_flags": [
-          "injury_context",
-          "pre_draft_acl_march_2026"
-        ],
-        "translation_flags": [
-          "acl_injury_predraft"
-        ],
-        "evidence_summary": "Pre-draft ACL tear (March 2026). Was projected WR1-3 of the 2026 rookie class pre-injury; dynasty community had him in top-3 WR conversation. Post-ACL dynasty rank drops to approximately WR7-10 of class (KTC ~WR60 overall). Injury severely compresses first-year upside; year-1 contribution unlikely. Long-term profile may be intact if recovery is clean. Model scores reflect pre-injury production and combine profile, not injury-adjusted dynasty value \u2014 consensus_delta overstates model edge.",
-        "context_source": "Research agent 2026-04-09 (KeepTradeCut / Dynasty Nerds / PlayerProfiler post-injury consensus)"
-      },
-      "rookie_alpha_rank": 23,
-      "talent_rank": 43,
-      "draft_proxy_delta": 20
-    },
-    {
-      "player_id": "wr-elijah-sarratt",
-      "player_name": "Elijah Sarratt",
-      "position": "WR",
-      "scores": {
-        "ras_0_100": null,
-        "athletic_score_0_100": 50.0,
-        "athletic_source": "NEUTRAL_DEFAULT",
-        "athletic_confidence": 0.5,
-        "athletic_explainer": "No usable RAS/SPORQ; neutral athletic default",
-        "production_0_100": 52.84,
-        "age_adjusted_production_0_100": 30.7,
-        "draft_capital_proxy_0_100": 55.0,
-        "talent_score_0_100": 51.5975,
-        "rookie_alpha_0_100": 52.278,
-        "ceiling_bonus": null,
-        "market_conviction_ras_override": null,
-        "market_conviction_reason": null,
-        "wr_translation_penalty": null,
-        "wr_translation_signals": null,
-        "consensus_position_rank_blended": 9,
-        "consensus_position_rank_sources_count": 3,
-        "consensus_score_positional_0_100": 51.0,
-        "evidence_completeness_score": 0.7,
-        "consensus_delta_positional_raw": 1.3,
-        "consensus_delta_positional_cap_limit": 18.0,
-        "consensus_delta_positional_cap_tier": "0.60-0.79",
-        "consensus_delta_positional": 1.3,
-        "evidence_tier": "consensus_aligned",
-        "evidence_tier_reason": "Near consensus after evidence guardrails",
-        "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -2.7
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "wr-elijah-sarratt",
-        "player_name": "Elijah Sarratt",
-        "position": "WR",
-        "school": "Indiana",
-        "class_year": 2026,
-        "early_declare_flag": null,
-        "breakout_age": 21,
-        "age_at_first_impact_season": 21,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": false,
-        "breakout_strength": 0.18,
-        "breakout_confidence": 0.9,
-        "breakout_age_rating_0_100": 52.4,
-        "breakout_label": "Average breakout",
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": null,
-        "injury_adjusted_profile_flag": null,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": 0.13,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": null
-      },
-      "evidence": {
-        "evidence_tags": [
-          "elite_efficiency_tier",
-          "non_r1_p4_wr_comps",
-          "late_breakout"
-        ],
-        "context_flags": [
-          "senior_breakout_flag"
-        ],
-        "translation_flags": [
-          "elite_efficiency_tier"
-        ],
-        "evidence_summary": "75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR (non-R1 P4 WR since 2021) \u2014 matches Puka Nacua, Tank Dell, Troy Franklin efficiency tier. Nacua comp is strongest: 43-48 rec/yr at BYU (modest volume), 18.3 YPC, 128.0 QB rating when targeted \u2014 then 105 catches in NFL year 1 as a 5th-round pick. Efficiency held when target share increased. Sarratt profile: low college volume, elite per-route efficiency \u2014 same archetype. Named comp screen (non-R1 P4 WR since 2020 with career 75th+ pctile passer rating when targeted + 50th+ pctile TPRR + BOA < 20): George Pickens, Antonio Williams, Elijah Sarratt, Josh Downs, Troy Franklin, Puka Nacua. FP/G floor in years 1-3: 7.4 (Franklin); 3 of 6 above 10+ FP/G. Late breakout (BOA 21) is model red flag; Aiyuk/Watson are precedents for senior-breakout success, but base rate is poor. MTF 0.13 (mid-tier). Model gap: volume-weighted age-adjusted production (18.2 age-adj, blend \u2192 38) severely underweights efficiency; CFBD raw production score 67.6 is more representative.",
-        "context_source": "@ffdataroma research note 2026-04-08 + @ScottBarrettDFB PFF chart + NCAA.com Puka Nacua stats"
-      },
       "rookie_alpha_rank": 24,
-      "talent_rank": 29,
-      "draft_proxy_delta": 5
+      "talent_rank": 30,
+      "draft_proxy_delta": 6
     },
     {
       "player_id": "qb-garrett-nussmeier",
@@ -2393,8 +2395,8 @@
         "context_source": "compute_breakout_age.py"
       },
       "rookie_alpha_rank": 25,
-      "talent_rank": 32,
-      "draft_proxy_delta": 7
+      "talent_rank": 33,
+      "draft_proxy_delta": 8
     },
     {
       "player_id": "te-dallen-bentley",
@@ -2655,8 +2657,94 @@
         "context_source": "compute_breakout_age.py"
       },
       "rookie_alpha_rank": 28,
-      "talent_rank": 49,
-      "draft_proxy_delta": 21
+      "talent_rank": 50,
+      "draft_proxy_delta": 22
+    },
+    {
+      "player_id": "te-max-klare",
+      "player_name": "Max Klare",
+      "position": "TE",
+      "scores": {
+        "ras_0_100": null,
+        "athletic_score_0_100": 45.8929,
+        "athletic_source": "COMBINE_FALLBACK",
+        "athletic_confidence": 0.4,
+        "athletic_explainer": "Partial combine (1 metrics, no explosive drills)",
+        "production_0_100": 52.86,
+        "age_adjusted_production_0_100": 55.3,
+        "draft_capital_proxy_0_100": 55.0,
+        "talent_score_0_100": 49.8119,
+        "rookie_alpha_0_100": 50.8495,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_position_rank_blended": 4,
+        "consensus_position_rank_sources_count": 3,
+        "consensus_score_positional_0_100": 63.0,
+        "evidence_completeness_score": 0.45,
+        "consensus_delta_positional_raw": -12.2,
+        "consensus_delta_positional_cap_limit": 10.0,
+        "consensus_delta_positional_cap_tier": "0.40-0.59",
+        "consensus_delta_positional": -10.0,
+        "evidence_tier": "insufficient_evidence",
+        "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
+        "is_capped_disagreement": true,
+        "market_investment_delta_legacy": -4.2
+      },
+      "model_inputs_missing": [],
+      "context": {
+        "player_id": "te-max-klare",
+        "player_name": "Max Klare",
+        "position": "TE",
+        "school": "Ohio State",
+        "class_year": 2026,
+        "early_declare_flag": null,
+        "breakout_age": 21,
+        "age_at_first_impact_season": 21,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": false,
+        "breakout_strength": 1.0,
+        "breakout_confidence": 0.9,
+        "breakout_age_rating_0_100": 71.6,
+        "breakout_label": "Early breakout",
+        "career_yards_per_route_run": null,
+        "best_season_yprr": null,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": null,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": null,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": null,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [],
+        "context_flags": [],
+        "translation_flags": [],
+        "evidence_summary": null,
+        "context_source": "compute_breakout_age.py"
+      },
+      "rookie_alpha_rank": 29,
+      "talent_rank": 36,
+      "draft_proxy_delta": 7
     },
     {
       "player_id": "rb-mike-washington-jr",
@@ -2750,9 +2838,9 @@
         "evidence_summary": "Transfer: New Mexico State 2024 (lower competition, weak OL) \u2192 Arkansas 2025. Arkansas 2025 OL ranked 110th/133 FBS in sacks allowed; mid-season emergency line adjustments. Production season (62.8 score) was behind one of the worst OLs in FBS. Elite combine profile (4.33 / 39.0 vert / 128 broad, RAS 66) \u2014 athleticism is genuine. Red flags: MTF/touch 0.165 (9th-worst Day 2 RB since 2014); YAC+catch 2nd-best season 47.6 yd/game. Scouting consensus: thrives in gap/power with defined lanes; struggles in space; 'often taken down by first tackler' (PFF). OL context is mitigating but doesn't fully explain away the contact quality gap. Gap/power scheme + functional OL is prerequisite for upside.",
         "context_source": "@ffdataroma research note 2026-04-08 + NFLDraftBuzz/PFF scouting 2026-04-08"
       },
-      "rookie_alpha_rank": 29,
-      "talent_rank": 35,
-      "draft_proxy_delta": 6
+      "rookie_alpha_rank": 30,
+      "talent_rank": 37,
+      "draft_proxy_delta": 7
     },
     {
       "player_id": "te-justin-joly",
@@ -2838,9 +2926,9 @@
         "evidence_summary": "First-team All-ACC in 2025 with 47 catches for 468 yards and 7 TDs, leading NC State with his red-zone presence; did not run the 40 at the combine due to a hamstring injury. Natural pass catcher with strong hands and zone feel but undersized frame raises NFL ceiling questions.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 30,
+      "rookie_alpha_rank": 31,
       "talent_rank": 23,
-      "draft_proxy_delta": -7
+      "draft_proxy_delta": -8
     },
     {
       "player_id": "te-daequan-wright",
@@ -2928,9 +3016,9 @@
         "evidence_summary": "39 catches for 635 yards and 5 TDs at Ole Miss in 2025 with a 16.3 YPC average that ranked among the nation's best for TEs; played through an undisclosed injury all season. Aligned all over the formation with big-play ability, though he skipped combine drills and blocking is a notable weakness.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 31,
+      "rookie_alpha_rank": 32,
       "talent_rank": 21,
-      "draft_proxy_delta": -10
+      "draft_proxy_delta": -11
     },
     {
       "player_id": "rb-jadarian-price",
@@ -3023,8 +3111,8 @@
         "evidence_summary": "Transfer: Notre Dame (2024, shared backfield with Jeremiyah Love) \u2192 Texas A&M (2025). Breakout at age 20 at Notre Dame despite competing for carries with Love \u2014 a top-tier RB1 prospect. Production suppression from shared backfield is mitigating context for volume metrics. Dynasty community ranks him RB2 of class (overall top-5 rookie pick). Red flag: YAC+catch 2nd-best season 39.9 yd/game \u2014 among the worst in the top-100 DC RB dataset since 2017 (D.Harris, Sony Michel, Penny, CEH comps). One-hit-wonder risk remains; YAC consistency gap is the primary model concern.",
         "context_source": "@ffdataroma research note 2026-04-08 + research agent 2026-04-09"
       },
-      "rookie_alpha_rank": 32,
-      "talent_rank": 46,
+      "rookie_alpha_rank": 33,
+      "talent_rank": 47,
       "draft_proxy_delta": 14
     },
     {
@@ -3109,8 +3197,8 @@
         "evidence_summary": "Freakish athleticism for his size (4.31 forty \u2014 fastest ever by a 6'1\"+ player at the combine, 42\" vertical) but only 32 catches for 478 yards and 6 TDs with 8.6% drop rate at Cincinnati in 2025. Raw, developmental big-body receiver; Day 3 projection despite the combine buzz.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 33,
-      "talent_rank": 30,
+      "rookie_alpha_rank": 34,
+      "talent_rank": 31,
       "draft_proxy_delta": -3
     },
     {
@@ -3195,8 +3283,8 @@
         "evidence_summary": "6'7\" frame with 32 catches for 482 yards in 2025 at Notre Dame; missed nearly two full seasons recovering from double ACL tears early in his career. Legitimate injury history clouds his floor but his size-speed combination and length at the catch point project as a moldable Y-TE.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 34,
-      "talent_rank": 33,
+      "rookie_alpha_rank": 35,
+      "talent_rank": 34,
       "draft_proxy_delta": -1
     },
     {
@@ -3281,9 +3369,9 @@
         "evidence_summary": "Late-blooming five-year TCU TE who finally broke out with 34 catches for 319 yards and 2 TDs in 2025 as the starter; did not run the 40 or perform drills at the combine. PFF ranks him 292nd overall; projects as a Day 3 depth/blocking TE.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 35,
+      "rookie_alpha_rank": 36,
       "talent_rank": 24,
-      "draft_proxy_delta": -11
+      "draft_proxy_delta": -12
     },
     {
       "player_id": "te-joe-royer",
@@ -3369,8 +3457,8 @@
         "evidence_summary": "Ohio State transfer who posted 29 catches for 416 yards and 4 TDs in 2025 final year at Cincinnati; returned for senior season specifically to be the first TE taken in 2026. Excellent hands and zone feel, but did not perform combine drills; blocking development is his NFL key.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 36,
-      "talent_rank": 34,
+      "rookie_alpha_rank": 37,
+      "talent_rank": 35,
       "draft_proxy_delta": -2
     },
     {
@@ -3455,9 +3543,9 @@
         "evidence_summary": "55 catches for 811 yards and 6 TDs at Ole Miss in 2025; transferred between Washington State, Oklahoma State, and Ole Miss. Heavily vertical route tree with recent development; showed 50+ catches and 800+ yards at multiple programs. Speed (4.36) is a genuine weapon but overall draft stock is Day 3/UDFA.",
         "context_source": "Grok/Sports-Reference verification (April 2026); multi-program Power-4 career confirmed"
       },
-      "rookie_alpha_rank": 37,
+      "rookie_alpha_rank": 38,
       "talent_rank": 25,
-      "draft_proxy_delta": -12
+      "draft_proxy_delta": -13
     },
     {
       "player_id": "wr-josh-cameron",
@@ -3543,8 +3631,8 @@
         "evidence_summary": "Team leader at Baylor with 69 catches for 872 yards and 9 TDs in 2025; 2-time All-Big 12, physical possession receiver at 6'2\"/220 lbs. Tankathon has him at #183 overall; projects as Day 3 pick with dense build but limited change-of-direction.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 38,
-      "talent_rank": 27,
+      "rookie_alpha_rank": 39,
+      "talent_rank": 28,
       "draft_proxy_delta": -11
     },
     {
@@ -3631,9 +3719,9 @@
         "evidence_summary": "Michigan transfer to SMU who posted 31 catches for 436 yards and 4 TDs in 2025; standout combine with a 4.57 40 and 37-inch vertical demonstrating above-average athleticism. Senior Bowl performer rising on draft boards with upside as a receiving TE2.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 39,
-      "talent_rank": 41,
-      "draft_proxy_delta": 2
+      "rookie_alpha_rank": 40,
+      "talent_rank": 43,
+      "draft_proxy_delta": 3
     },
     {
       "player_id": "qb-carson-beck",
@@ -3717,8 +3805,8 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 40,
-      "talent_rank": 48,
+      "rookie_alpha_rank": 41,
+      "talent_rank": 49,
       "draft_proxy_delta": 8
     },
     {
@@ -3805,9 +3893,9 @@
         "evidence_summary": "Led Missouri with 66 catches for 732 yards and 1 TD in 2025 after stints at Jackson State, Louisville, Mississippi State (74 rec/932 yds/6 TD in 2024), and Missouri; a prolific transfer portal journeyman with versatility. Projects as a slot/possession receiver with track record of 700+ yard seasons.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 41,
-      "talent_rank": 36,
-      "draft_proxy_delta": -5
+      "rookie_alpha_rank": 42,
+      "talent_rank": 38,
+      "draft_proxy_delta": -4
     },
     {
       "player_id": "te-john-michael-gyllenborg",
@@ -3893,9 +3981,9 @@
         "evidence_summary": "Explosive move TE from Wyoming who barely played football before college yet became an NFL prospect; hamstring injury in 2025 limited him to partial production across 80 career catches for 1,023 yards and 7 TDs. Rare burst and seam speed for the position; blocking is the clear limitation.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 42,
-      "talent_rank": 37,
-      "draft_proxy_delta": -5
+      "rookie_alpha_rank": 43,
+      "talent_rank": 39,
+      "draft_proxy_delta": -4
     },
     {
       "player_id": "wr-brenen-thompson",
@@ -3985,8 +4073,8 @@
         "evidence_summary": "Elite speed archetype \u2014 4.26 40-yard dash (fastest at 2026 combine, fastest WR since John Ross 4.22 in 2017). Frame concern: 5'9\", 164lb \u2014 durability and contested-catch limitations at NFL level. Mississippi State (SEC, Power 4). No jump testing data. Production profile pending CFBD fetch. Model may undervalue if route efficiency/YAC data not available; speed-only profile warrants dynasty discount until target share confirmed.",
         "context_source": "2026 NFL Combine results (ESPN/NFL.com), retrieved 2026-04-08"
       },
-      "rookie_alpha_rank": 43,
-      "talent_rank": 44,
+      "rookie_alpha_rank": 44,
+      "talent_rank": 45,
       "draft_proxy_delta": 1
     },
     {
@@ -4073,9 +4161,9 @@
         "evidence_summary": "Posted 33 catches for 346 yards and 3 TDs in his first year at Texas (transfer from Cal) while earning Arch Manning's trust as a dependable underneath option. Good size and dual-role capability make him an appealing Day 3 prospect.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 44,
-      "talent_rank": 38,
-      "draft_proxy_delta": -6
+      "rookie_alpha_rank": 45,
+      "talent_rank": 40,
+      "draft_proxy_delta": -5
     },
     {
       "player_id": "te-josh-cuevas",
@@ -4161,9 +4249,9 @@
         "evidence_summary": "Posted 37 catches for 411 yards and 4 TDs in 2025 at Alabama with advanced zone feel and smart route running; 118 career receptions across five seasons show steady production. Lacks prototypical TE size but projects as a functional rotational TE2.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 45,
-      "talent_rank": 39,
-      "draft_proxy_delta": -6
+      "rookie_alpha_rank": 46,
+      "talent_rank": 41,
+      "draft_proxy_delta": -5
     },
     {
       "player_id": "te-nate-boerkircher",
@@ -4247,9 +4335,9 @@
         "evidence_summary": "Blocking-first TE from Nebraska transfer who posted just 19 catches for 198 yards and 3 TDs in his final year at Texas A&M; ran a surprising 4.40 shuttle at the combine. Projects as a developmental run-blocker with limited receiving role.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 46,
-      "talent_rank": 40,
-      "draft_proxy_delta": -6
+      "rookie_alpha_rank": 47,
+      "talent_rank": 42,
+      "draft_proxy_delta": -5
     },
     {
       "player_id": "rb-kaytron-allen",
@@ -4343,9 +4431,9 @@
         "evidence_summary": "54-game career, 4167 rush yards (5.4 YPC), 39 TDs, 661 rec yards, 1.74 YPRR. 24.0% avoided tackle rate. High-volume Penn State back with elite receiving chops.",
         "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart, 2026-04-07"
       },
-      "rookie_alpha_rank": 47,
+      "rookie_alpha_rank": 48,
       "talent_rank": 59,
-      "draft_proxy_delta": 12
+      "draft_proxy_delta": 11
     },
     {
       "player_id": "wr-reggie-virgil",
@@ -4431,9 +4519,9 @@
         "evidence_summary": "57 catches for 705 yards and 6 TDs at Texas Tech in 2025; 100 career catches for 1,583 yards and 16 TDs across Miami (OH) and Texas Tech. Matt Miller projects him pick 181 (Detroit Lions, 5th round); Big 12 honorable mention with reliable hands but route tree needs refinement.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 48,
-      "talent_rank": 42,
-      "draft_proxy_delta": -6
+      "rookie_alpha_rank": 49,
+      "talent_rank": 44,
+      "draft_proxy_delta": -5
     },
     {
       "player_id": "wr-deion-burks",
@@ -4528,95 +4616,9 @@
         "evidence_summary": "Electrifying combine performance (4.30 forty, 42.5\" vertical, 10'11\" broad \u2014 top scores among WRs) but 2025 production at Oklahoma was modest at 57 catches/620 yards/4 TDs after injury-shortened 2024. Has injury history (soft tissue, concussion); Bleacher Report ranks him #11 WR post-combine.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 49,
-      "talent_rank": 50,
-      "draft_proxy_delta": 1
-    },
-    {
-      "player_id": "te-max-klare",
-      "player_name": "Max Klare",
-      "position": "TE",
-      "scores": {
-        "ras_0_100": null,
-        "athletic_score_0_100": 45.8929,
-        "athletic_source": "COMBINE_FALLBACK",
-        "athletic_confidence": 0.4,
-        "athletic_explainer": "Partial combine (1 metrics, no explosive drills)",
-        "production_0_100": 33.84,
-        "age_adjusted_production_0_100": 23.6,
-        "draft_capital_proxy_0_100": 55.0,
-        "talent_score_0_100": 39.1132,
-        "rookie_alpha_0_100": 42.2905,
-        "ceiling_bonus": null,
-        "market_conviction_ras_override": null,
-        "market_conviction_reason": null,
-        "wr_translation_penalty": null,
-        "wr_translation_signals": null,
-        "consensus_position_rank_blended": 4,
-        "consensus_position_rank_sources_count": 3,
-        "consensus_score_positional_0_100": 63.0,
-        "evidence_completeness_score": 0.45,
-        "consensus_delta_positional_raw": -20.7,
-        "consensus_delta_positional_cap_limit": 10.0,
-        "consensus_delta_positional_cap_tier": "0.40-0.59",
-        "consensus_delta_positional": -10.0,
-        "evidence_tier": "insufficient_evidence",
-        "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
-        "is_capped_disagreement": true,
-        "market_investment_delta_legacy": -12.7
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "te-max-klare",
-        "player_name": "Max Klare",
-        "position": "TE",
-        "school": "Ohio State",
-        "class_year": 2026,
-        "early_declare_flag": null,
-        "breakout_age": null,
-        "age_at_first_impact_season": null,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": null,
-        "breakout_strength": null,
-        "breakout_confidence": null,
-        "breakout_age_rating_0_100": null,
-        "breakout_label": null,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": null,
-        "injury_adjusted_profile_flag": null,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": null
-      },
-      "evidence": {
-        "evidence_tags": [],
-        "context_flags": [],
-        "translation_flags": [],
-        "evidence_summary": null,
-        "context_source": "compute_breakout_age.py"
-      },
       "rookie_alpha_rank": 50,
-      "talent_rank": 56,
-      "draft_proxy_delta": 6
+      "talent_rank": 51,
+      "draft_proxy_delta": 1
     },
     {
       "player_id": "te-oscar-delp",
@@ -4701,8 +4703,8 @@
         "context_source": "compute_breakout_age.py"
       },
       "rookie_alpha_rank": 51,
-      "talent_rank": 51,
-      "draft_proxy_delta": 0
+      "talent_rank": 52,
+      "draft_proxy_delta": 1
     },
     {
       "player_id": "rb-nick-singleton",
@@ -4787,8 +4789,8 @@
         "context_source": "compute_breakout_age.py"
       },
       "rookie_alpha_rank": 52,
-      "talent_rank": 52,
-      "draft_proxy_delta": 0
+      "talent_rank": 53,
+      "draft_proxy_delta": 1
     },
     {
       "player_id": "rb-eli-heidenreich",
@@ -4901,8 +4903,8 @@
         "context_source": "Shrine Bowl 2026 + scouting notes 2026-04-10"
       },
       "rookie_alpha_rank": 53,
-      "talent_rank": 53,
-      "draft_proxy_delta": 0
+      "talent_rank": 54,
+      "draft_proxy_delta": 1
     },
     {
       "player_id": "wr-eric-rivers",
@@ -4987,8 +4989,8 @@
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 54,
-      "talent_rank": 45,
-      "draft_proxy_delta": -9
+      "talent_rank": 46,
+      "draft_proxy_delta": -8
     },
     {
       "player_id": "wr-jakobi-lane",
@@ -5259,8 +5261,8 @@
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 57,
-      "talent_rank": 47,
-      "draft_proxy_delta": -10
+      "talent_rank": 48,
+      "draft_proxy_delta": -9
     },
     {
       "player_id": "te-bauer-sharp",
@@ -5345,8 +5347,8 @@
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 58,
-      "talent_rank": 54,
-      "draft_proxy_delta": -4
+      "talent_rank": 55,
+      "draft_proxy_delta": -3
     },
     {
       "player_id": "te-marlin-klein",
@@ -5431,8 +5433,8 @@
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 59,
-      "talent_rank": 55,
-      "draft_proxy_delta": -4
+      "talent_rank": 56,
+      "draft_proxy_delta": -3
     },
     {
       "player_id": "rb-emmett-johnson",
