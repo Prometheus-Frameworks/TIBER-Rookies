@@ -539,16 +539,16 @@
     "effective_breakout_age": 20,
     "boa_adjustment": null,
     "young_breakout_flag": true,
-    "breakout_strength": 0.3,
+    "breakout_strength": 0.8,
     "breakout_confidence": 0.9,
-    "breakout_age_rating_0_100": 72.0,
-    "breakout_label": "Early breakout",
-    "best_season_volume": 89.0,
+    "breakout_age_rating_0_100": 78.8,
+    "breakout_label": "Elite breakout",
+    "best_season_volume": 90.0,
     "recent_season_volume": 89.0,
-    "weighted_volume": 89.0,
+    "weighted_volume": 89.7,
     "age_multiplier": 1.5,
-    "raw_score": 133.5,
-    "age_adjusted_production_score": 68.2
+    "raw_score": 134.55,
+    "age_adjusted_production_score": 68.7
   },
   {
     "player_id": "wr-jordyn-tyson",
