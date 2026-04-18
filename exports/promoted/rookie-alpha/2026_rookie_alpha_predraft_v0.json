@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-18T12:28:12+00:00",
-  "run_id": "rookie-alpha-2026-2026-04-18T12:28:12+00:00",
+  "generated_at": "2026-04-18T13:00:06+00:00",
+  "run_id": "rookie-alpha-2026-2026-04-18T13:00:06+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 100,
@@ -318,6 +318,101 @@
       "draft_proxy_delta": -1
     },
     {
+      "player_id": "wr-makai-lemon",
+      "player_name": "Makai Lemon",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 56.1926,
+        "athletic_score_0_100": 56.1926,
+        "athletic_source": "RAS_PARTIAL",
+        "athletic_confidence": 0.7,
+        "athletic_explainer": "Partial RAS 56.2 from 3 combine metrics (no SPORQ supplement)",
+        "production_0_100": 76.16,
+        "age_adjusted_production_0_100": 86.6,
+        "draft_capital_proxy_0_100": 75.0,
+        "talent_score_0_100": 67.4243,
+        "rookie_alpha_0_100": 68.9394,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": 5.0,
+        "wr_translation_signals": "screen_yard_share=0.51 > 0.5 \u2192 -5.0",
+        "consensus_position_rank_blended": 4,
+        "consensus_position_rank_sources_count": 3,
+        "consensus_score_positional_0_100": 67.0,
+        "evidence_completeness_score": 1.0,
+        "consensus_delta_positional_raw": 1.9,
+        "consensus_delta_positional_cap_limit": 30.0,
+        "consensus_delta_positional_cap_tier": ">=0.80",
+        "consensus_delta_positional": 1.9,
+        "evidence_tier": "consensus_aligned",
+        "evidence_tier_reason": "Near consensus after evidence guardrails",
+        "is_capped_disagreement": false,
+        "market_investment_delta_legacy": -6.1
+      },
+      "model_inputs_missing": [],
+      "context": {
+        "player_id": "wr-makai-lemon",
+        "player_name": "Makai Lemon",
+        "position": "WR",
+        "school": "USC",
+        "class_year": 2026,
+        "early_declare_flag": true,
+        "breakout_age": 20,
+        "age_at_first_impact_season": 20,
+        "freshman_total_yards": 88,
+        "sophomore_total_yards": 764,
+        "freshman_impact_flag": false,
+        "young_breakout_flag": true,
+        "breakout_strength": 0.48,
+        "breakout_confidence": 0.9,
+        "breakout_age_rating_0_100": 74.5,
+        "breakout_label": "Early breakout",
+        "career_yards_per_route_run": 3.02,
+        "best_season_yprr": 3.13,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": 2,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": true,
+        "injury_affected_season_count": 0,
+        "injury_adjusted_profile_flag": false,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": 9,
+        "rushing_production_signal": 4,
+        "missed_tackles_forced_per_reception": 0.25,
+        "yac_proxy_per_reception": 6.4,
+        "contested_catch_rate": 0.667,
+        "inside_out_versatility_flag": false,
+        "man_zone_versatility_flag": true,
+        "power4_early_contributor_flag": true,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": false
+      },
+      "evidence": {
+        "evidence_tags": [
+          "young_breakout",
+          "early_declare",
+          "elite_efficiency_tier",
+          "r1_p4_wr_comps",
+          "yprr_elite"
+        ],
+        "context_flags": [],
+        "translation_flags": [
+          "young_breakout",
+          "elite_efficiency_tier"
+        ],
+        "evidence_summary": "Zone YPRR 3.60 \u2014 elite (comp: AJ Brown 3.28, Ja'Marr Chase 3.75, Malik Nabers 4.42). Man YPRR 3.26 \u2014 one of only 2 WRs in 2026 class with 3+ YPRR vs both man AND zone (Cooper is the other). 1D/RR 0.135 career / 0.136 in 2025 \u2014 #5 all-time among Day 1+2 WRs since 2016 with >85th pctile SOS (Olave 0.135, Marquise Brown 0.134, MHJ 0.137, JSN 0.144 above him). One of only 3 CFB WRs with 3+ zone YPRR AND 85+ PFF grade (Jeremiah Smith, Cooper, Lemon). 66.7% contested catch rate. 2.5% drop rate. 130.0 passer rating when targeted. Zone CTT% 12.12% (elite \u2014 rarely contested vs zone). 76th percentile separation. Next Gen Stats prospect model: 84.74 (#2 in class). MTF over expected: #6 in class. MTF/rec 25.32%, YAC/rec 6.40. FR+SO: 88+764=852 yards (solid early production for class). JR 2025: 79 rec / 1,156 yds / 11 TD \u2014 Biletnikoff finalist. YPRR 3.13 (#5 in CFB). Historical zone comp group: Elijah Moore (3.87), Jerry Jeudy (3.78), Freddie Swain (3.52). Concerns: 27.9% wide rate (slot-primary); catch radius at 5'11\"; screen_yard_share 51% in 2025 (penalty applied); man YPRR 3.26 below elite 4.25 threshold. Bearish case: unique combo of zone-specialist metrics without the man dominance or boundary usage. Bullish case: zone YPRR comp group and 1D/RR suggest legit R1 NFL starter floor.",
+        "context_source": "Wikipedia + X research (FPD production profile images, zone/man splits, 1D/RR leaderboards, NGS model, historical comp tables), retrieved 2026-04-18."
+      },
+      "rookie_alpha_rank": 4,
+      "talent_rank": 5,
+      "draft_proxy_delta": 1
+    },
+    {
       "player_id": "wr-jordyn-tyson",
       "player_name": "Jordyn Tyson",
       "position": "WR",
@@ -415,8 +510,8 @@
         "evidence_summary": "Transfer path: 470 yards as true freshman at Colorado, injury-limited seasons 2023-24, then 2025 draft cycle at Arizona State. Combine: 26 bench reps (one shy of WR all-time record) \u2014 exceptional functional strength. Skipped speed/jump testing (hamstring). MTF 0.07 (lowest in class) \u2014 profile is separator/route-runner, not YAC threat.\nScreen usage context: college offense ran high screen volume with Tyson. screen_yard_share estimate ~40-50% of targets (proxy; precise yard-share not confirmed). screen_yard_share NOT encoded \u2014 film review overrides proxy concern (see below).\nFilm review (2026-04-11, user-conducted):\nvs Texas State: lined up slot vs press man, beats press at 5 yards off LOS, wins outside leverage, adjusts frame on 40-yard gain with 1-handed contested catch while safety crashes \u2014 press win + vertical tracking + contested finish.\nvs Baylor: boundary short side, corner route up the seam in Cover 2, splits DB and LB, reads space and attacks window \u2014 spatial feel and route utility, not gadget spam.\nvs TCU (post): strong side boundary vs soft man, wins inside leverage on post for 15-yard gain \u2014 leverage win creating viable throwing window.\nvs TCU (60-yd TD): weak side boundary vs press man, sells screen look initially then torches press over the top for 60-yard walk-in TD \u2014 weaponizes screen expectation, which is the key distinction: manufactured usage may have been deployment choice, not ceiling.\nModel philosophy note: screen-yard share = production-translation risk, not evidence that the receiver cannot play. Film confirms press wins, leverage wins, vertical tracking, contested catch ability, and boundary route success. Screen-heavy college deployment reflects offense exploiting an easy button on a better-than-deployed player. screen_yard_share penalty WILL NOT be applied unless hard data confirms and film evidence is re-evaluated. deep_yard_share remains a valid caution flag if confirmed.",
         "context_source": "Wikipedia Jordyn Tyson career summary + arizonasports.com 2026 NFL Combine report, retrieved 2026-04-08; film review notes 2026-04-11."
       },
-      "rookie_alpha_rank": 4,
-      "talent_rank": 10,
+      "rookie_alpha_rank": 5,
+      "talent_rank": 11,
       "draft_proxy_delta": 6
     },
     {
@@ -505,8 +600,8 @@
         "evidence_summary": "FR: 2 rec/15 yds (2022). SO: 5 rec/51 yds (2023) \u2014 suppressed by depth chart behind Rome Odunze, Ja'Lynn Polk, Jalen McMillan, Germie Bernard (all drafted R1-R3). JR 2024 (age 20): 63 rec / 834 yds / 9 TD \u2014 led Washington in receiving yards and TDs, honorable mention All-Big Ten. SR 2025 (age 21): 62 rec / 881 yds / 11 TD. Two consecutive elite seasons; consistent production profile. Historical YPG comp: 73.4 YPG best season places Boston in R1 success group (Kelvin Benjamin 72.2, Xavier Worthy 72.4, Quentin Johnston 76.2). Zone specialist: 6.25% contested target rate vs zone. Man coverage challenge: 25.71% CTT vs man \u2014 saved by 76.9% contested catch rate (10/13 in 2025). 1D/RR 0.136 (#3 in class, elite). Career YPRR 2.02 \u2014 at the 2.00 threshold; historically risky comp group (<2.10 YPRR before age 21: 1/15 hit rate on 1,000-yard seasons). Pro day: 6.80 3-cone, 4.30 shuttle, 37.5\" vert at 210 lbs. Best RZ receiver in class per multiple evaluators. 3.1% drop rate. ADOT 14.4, man_YPRR 2.58 vs zone_YPRR 2.20. YAC/rec 5.3. Closest comp: Michael Wilson (Stanford). Non-early declare; 4 full seasons.",
         "context_source": "Wikipedia + X research (2026 R1 FR/SO chart, zone/man splits, pro day data, contested catch analysis, production comps), retrieved 2026-04-18."
       },
-      "rookie_alpha_rank": 5,
-      "talent_rank": 9,
+      "rookie_alpha_rank": 6,
+      "talent_rank": 10,
       "draft_proxy_delta": 4
     },
     {
@@ -591,8 +686,8 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 6,
-      "talent_rank": 11,
+      "rookie_alpha_rank": 7,
+      "talent_rank": 12,
       "draft_proxy_delta": 5
     },
     {
@@ -681,9 +776,9 @@
         "evidence_summary": null,
         "context_source": "compute_breakout_age.py"
       },
-      "rookie_alpha_rank": 7,
+      "rookie_alpha_rank": 8,
       "talent_rank": 3,
-      "draft_proxy_delta": -4
+      "draft_proxy_delta": -5
     },
     {
       "player_id": "wr-carnell-tate",
@@ -774,8 +869,8 @@
         "evidence_summary": "Verified Ohio State progression from 264 freshman total yards to 739 sophomore total yards (733 receiving + 6 rushing), then 854 total yards in 2025. 40 time (4.53): market narrative labels this 'too slow' but 2026 WR leaders by career receiving YPG ran: Puka Nacua 4.57, JSN 4.52, Amon-Ra St. Brown 4.59, CeeDee Lamb 4.50, George Pickens 4.47, Nico Collins 4.45. Tate at 4.53 is squarely in the middle of this group. Speed narrative is not supported by outcome data at the WR position.",
         "context_source": "Wikipedia Carnell Tate college statistics table (2023-2025 rows), retrieved 2026-03-29; speed comp via notes 2026-04-10"
       },
-      "rookie_alpha_rank": 8,
-      "talent_rank": 13,
+      "rookie_alpha_rank": 9,
+      "talent_rank": 14,
       "draft_proxy_delta": 5
     },
     {
@@ -900,9 +995,9 @@
         "evidence_summary": "Oregon TE. 100.0 SPORQ \u2014 top composite athleticism in the 2026 TE class (no other TE clears 90th percentile). Historic SPORQ outlier; at TE where athleticism is more outcome-predictive than at WR, this is a ceiling-expanding signal. Day 2 draft capital (85 proxy). Production context limited; SPORQ-first profile warranting athletic ceiling bonus.",
         "context_source": "compute_breakout_age.py; SPORQ 2026 TE class notes 2026-04-10"
       },
-      "rookie_alpha_rank": 9,
+      "rookie_alpha_rank": 10,
       "talent_rank": 18,
-      "draft_proxy_delta": 9
+      "draft_proxy_delta": 8
     },
     {
       "player_id": "wr-zachariah-branch",
@@ -980,14 +1075,18 @@
         "path_disruption_flag": null
       },
       "evidence": {
-        "evidence_tags": [],
+        "evidence_tags": [
+          "young_breakout"
+        ],
         "context_flags": [],
-        "translation_flags": [],
+        "translation_flags": [
+          "young_breakout"
+        ],
         "evidence_summary": "43% of career targets on screens (#1 all-time among drafted P4 WRs since 2015). 50% of career rec yards on screens + slot fades; 52% in 2025. 58% of career catches thrown behind the line of scrimmage. Career aDOT 5.25 (#1 lowest for R1-2 WRs). Career YPRR 2.03 (same as KC Concepcion); best season 2.57. YPRR minus screens: 1.7 \u2014 below the 2.0 threshold; historically risky. Zone YPRR 1.94 vs man YPRR 2.79 \u2014 zone is a concern given NFL is ~75% zone. Contested catch rate 38% (below average). MTF per screen reception 0.34 (above FBS avg 0.26) \u2014 legitimate YAC threat on manufactured touches. ~80% of career rec yards came after the catch; YAC/rec 8.0. Next Gen Stats prospect model: 79.46 (#4 in class). 5-star recruit (99 prospect grade). 4.35 40-time. Jet Award winner as freshman at USC. 2nd team All-SEC 2025 at Georgia. Analytical consensus: \"worst analytics profile of any projected Day 1-2 WR ever.\" High-end comp: Marvin Mims. Low-end: Anthony Schwartz. Non-early declare; 4 full college seasons at 22 years old at draft.",
         "context_source": "X research (screen %, zone/man splits, aDOT, historical comps, NGS model), retrieved 2026-04-18."
       },
-      "rookie_alpha_rank": 10,
-      "talent_rank": 7,
+      "rookie_alpha_rank": 11,
+      "talent_rank": 8,
       "draft_proxy_delta": -3
     },
     {
@@ -1103,8 +1202,8 @@
         "evidence_summary": "Vanderbilt TE. 99.0 SPORQ \u2014 2nd best in 2026 TE class behind Sadiq (100.0). Elite composite athleticism at TE where SPORQ is a meaningful upside signal. Early declare with 2026 draft capital. Production profile limited at Vanderbilt; athletic ceiling warrants a modest bonus relative to production-only score.",
         "context_source": "compute_breakout_age.py; SPORQ 2026 TE class notes 2026-04-10"
       },
-      "rookie_alpha_rank": 11,
-      "talent_rank": 6,
+      "rookie_alpha_rank": 12,
+      "talent_rank": 7,
       "draft_proxy_delta": -5
     },
     {
@@ -1189,105 +1288,9 @@
         "evidence_summary": "Posted elite volume at UConn with 101 catches for 1,278 yards and 13 TDs in 2025; Biletnikoff finalist and UConn's first consensus All-American. Averaged 8+ YAC per reception (2nd in FBS) and ranked 3rd in YPRR per PFF; small-school caveat applies but his athleticism (41\" vertical, 4.40 forty) confirms elite physical traits.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 12,
-      "talent_rank": 5,
-      "draft_proxy_delta": -7
-    },
-    {
-      "player_id": "wr-makai-lemon",
-      "player_name": "Makai Lemon",
-      "position": "WR",
-      "scores": {
-        "ras_0_100": 56.1926,
-        "athletic_score_0_100": 56.1926,
-        "athletic_source": "RAS_PARTIAL",
-        "athletic_confidence": 0.7,
-        "athletic_explainer": "Partial RAS 56.2 from 3 combine metrics (no SPORQ supplement)",
-        "production_0_100": 60.28,
-        "age_adjusted_production_0_100": 53.7,
-        "draft_capital_proxy_0_100": 75.0,
-        "talent_score_0_100": 58.4918,
-        "rookie_alpha_0_100": 61.7934,
-        "ceiling_bonus": null,
-        "market_conviction_ras_override": null,
-        "market_conviction_reason": null,
-        "wr_translation_penalty": 5.0,
-        "wr_translation_signals": "screen_yard_share=0.51 > 0.5 \u2192 -5.0",
-        "consensus_position_rank_blended": 4,
-        "consensus_position_rank_sources_count": 3,
-        "consensus_score_positional_0_100": 67.0,
-        "evidence_completeness_score": 1.0,
-        "consensus_delta_positional_raw": -5.2,
-        "consensus_delta_positional_cap_limit": 30.0,
-        "consensus_delta_positional_cap_tier": ">=0.80",
-        "consensus_delta_positional": -5.2,
-        "evidence_tier": "moderate_edge",
-        "evidence_tier_reason": "Meaningful disagreement with adequate evidence support",
-        "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -13.2
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "wr-makai-lemon",
-        "player_name": "Makai Lemon",
-        "position": "WR",
-        "school": "USC",
-        "class_year": 2026,
-        "early_declare_flag": true,
-        "breakout_age": 20,
-        "age_at_first_impact_season": 20,
-        "freshman_total_yards": 88,
-        "sophomore_total_yards": 764,
-        "freshman_impact_flag": false,
-        "young_breakout_flag": true,
-        "breakout_strength": 0.48,
-        "breakout_confidence": 0.9,
-        "breakout_age_rating_0_100": 74.5,
-        "breakout_label": "Early breakout",
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": 0,
-        "injury_adjusted_profile_flag": false,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": 9,
-        "rushing_production_signal": 4,
-        "missed_tackles_forced_per_reception": 0.25,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": true,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": false
-      },
-      "evidence": {
-        "evidence_tags": [
-          "young_breakout",
-          "early_declare",
-          "elite_efficiency_tier",
-          "r1_p4_wr_comps"
-        ],
-        "context_flags": [
-          "limited_multi_season_data"
-        ],
-        "translation_flags": [
-          "young_breakout",
-          "elite_efficiency_tier"
-        ],
-        "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season. R1 P4 WR since 2021 with 75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR \u2014 same threshold tier as Ja'Marr Chase, Malik Nabers, Jaylen Waddle, Garrett Wilson, Chris Olave, JSN, Jordan Addison. Combine: vert 40.0\", broad 129\". MTF 0.25 (2nd in class). Model rank 8 is supported.",
-        "context_source": "Wikipedia Makai Lemon stats + @ffdataroma research note 2026-04-08"
-      },
       "rookie_alpha_rank": 13,
-      "talent_rank": 14,
-      "draft_proxy_delta": 1
+      "talent_rank": 6,
+      "draft_proxy_delta": -7
     },
     {
       "player_id": "wr-omar-cooper-jr",
@@ -1462,8 +1465,8 @@
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 15,
-      "talent_rank": 8,
-      "draft_proxy_delta": -7
+      "talent_rank": 9,
+      "draft_proxy_delta": -6
     },
     {
       "player_id": "wr-chris-bell",
@@ -2215,8 +2218,8 @@
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 23,
-      "talent_rank": 12,
-      "draft_proxy_delta": -11
+      "talent_rank": 13,
+      "draft_proxy_delta": -10
     },
     {
       "player_id": "wr-chris-brazzell-ii",
