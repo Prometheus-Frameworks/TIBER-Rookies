@@ -125,27 +125,18 @@ function boarTierClass(boar) {
   return 'boar-late';
 }
 
-function renderBoarSection(card) {
+function breakoutPillValue(card) {
+  if (card.breakoutAge == null) return null;
+  const label = card.breakoutLabel ?? null;
+  return label ? `Age ${card.breakoutAge} · ${label}` : `Age ${card.breakoutAge}`;
+}
+
+function renderBoarMetricRow(card) {
   const boar = card.breakoutAgeRating;
-  const boa = card.breakoutAge;
-  if (boar == null && boa == null) return '';
-
-  const boarChip = boar != null
-    ? `<span class="boar-chip ${boarTierClass(boar)}"><span class="boar-label">BOAR</span> <span class="boar-value">${Math.round(boar)}</span></span>`
-    : '';
-  const boaChip = boa != null
-    ? `<span class="boa-chip"><span class="boa-label">BOA</span> <span class="boa-value">${esc(boa)}</span></span>`
-    : '';
-  const labelText = card.breakoutLabel ?? null;
-  const labelSpan = labelText
-    ? `<span class="boar-signal-label">${esc(labelText)}</span>`
-    : '';
-
-  return `
-    <div class="boar-section">
-      <div class="boar-chips">${boaChip}${boarChip}</div>
-      ${labelSpan}
-    </div>`;
+  if (boar == null) return '';
+  const width = Math.max(0, Math.min(100, boar));
+  const tierClass = boarTierClass(boar);
+  return `<div class="metric-row"><div class="metric-header"><span>Breakout Age Rating (BOAR)</span><strong class="${tierClass}">${Math.round(boar)}</strong></div><div class="metric-track"><div class="metric-fill metric-fill-boar ${tierClass}" style="width:${width}%"></div></div></div>`;
 }
 
 function renderPprProjection(ppr) {
@@ -238,7 +229,6 @@ export function renderRookieCard(container, card) {
           </h1>
           <div class="meta">${esc(identityBits || 'Profile context not available')}</div>
           <div class="meta">${esc(card.summary.profileSummary ?? card.summary.identityNote ?? 'Identity summary unavailable')}</div>
-          ${renderBoarSection(card)}
         </div>
         <div class="hero-score">
           <div class="section-title">Rookie Grade</div>
@@ -252,6 +242,7 @@ export function renderRookieCard(container, card) {
         ${pill('Projection', card.summary.projection)}
         ${pill('High-end comp', card.comps.high)}
         ${pill('Low-end comp', card.comps.low)}
+        ${pill('Breakout', breakoutPillValue(card))}
         ${pill('Evidence Tier', EVIDENCE_TIER_LABELS[card.evidenceTier] ?? null)}
       </section>
       ${renderEvidenceTierBadge(card)}
@@ -268,6 +259,7 @@ export function renderRookieCard(container, card) {
         <div class="section-title">Position-aware Evidence</div>
         <div class="meta">${esc(card.evidence?.readinessLabel ?? 'Evidence readiness unavailable')}</div>
         ${renderAgeAdjMetric(card.ageAdjustedProduction)}
+        ${renderBoarMetricRow(card)}
         ${evidenceMetrics.map(metricRow).join('') || '<div class="meta">No evidence metrics available.</div>'}
       </section>
 

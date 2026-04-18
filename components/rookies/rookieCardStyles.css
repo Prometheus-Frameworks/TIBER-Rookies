@@ -117,36 +117,6 @@ body {
 }
 
 /* BOAR section (full player card) */
-.boar-section {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-top: 6px;
-  flex-wrap: wrap;
-}
-.boar-chips {
-  display: flex;
-  gap: 6px;
-  align-items: center;
-}
-.boa-chip, .boar-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 3px;
-  border-radius: 6px;
-  padding: 2px 7px;
-  font-size: 12px;
-  font-weight: 700;
-  font-family: 'JetBrains Mono', 'Fira Mono', ui-monospace, monospace;
-  letter-spacing: .04em;
-  white-space: nowrap;
-}
-.boa-chip {
-  background: rgba(158, 139, 122, 0.12);
-  border: 1px solid rgba(158, 139, 122, 0.3);
-  color: var(--muted);
-}
-.boa-label, .boar-label { font-size: 10px; opacity: 0.7; }
 .boar-elite {
   background: rgba(232, 133, 61, 0.18);
   border: 1px solid rgba(232, 133, 61, 0.4);
@@ -167,14 +137,6 @@ body {
   border: 1px solid rgba(120, 113, 108, 0.25);
   color: #78716C;
 }
-.boar-signal-label {
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--muted);
-  font-style: italic;
-}
-
-
 /* ─── Model edge outlier badge ────────────────────────────────────────────── */
 .edge-outlier-badge {
   display: inline-block;
@@ -272,6 +234,14 @@ body {
 .metric-track { height: 8px; background: #0E0B08; border-radius: 999px; overflow: hidden; border: 1px solid var(--border); }
 .metric-fill { height: 100%; background: linear-gradient(90deg, #D97757, #F0B080); }
 .metric-fill-age-adj { background: linear-gradient(90deg, #4ECDC4, #A8EDEA); }
+.metric-fill-boar { background: linear-gradient(90deg, #78716C, #9E8B7A); }
+.metric-fill-boar.boar-elite { background: linear-gradient(90deg, #D97757, #E8853D); }
+.metric-fill-boar.boar-early { background: linear-gradient(90deg, #3DB9B0, #4ECDC4); }
+.metric-fill-boar.boar-avg   { background: linear-gradient(90deg, #6F8098, #9E8B7A); }
+.metric-header strong.boar-elite { color: #E8853D; }
+.metric-header strong.boar-early { color: #4ECDC4; }
+.metric-header strong.boar-avg   { color: #9E8B7A; }
+.metric-header strong.boar-late  { color: #78716C; }
 
 /* ─── Radar chart ─────────────────────────────────────────────────────────── */
 .radar-section { display: grid; place-items: center; }
