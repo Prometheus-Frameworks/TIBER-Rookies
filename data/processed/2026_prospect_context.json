@@ -688,7 +688,7 @@
     "age_at_first_impact_season": 20,
     "freshman_total_yards": null,
     "sophomore_total_yards": null,
-    "freshman_impact_flag": null,
+    "freshman_impact_flag": false,
     "young_breakout_flag": true,
     "career_yards_per_route_run": 2.02,
     "best_season_yprr": 2.02,
@@ -724,7 +724,7 @@
       "limited_multi_season_data",
       "broken_offense_context"
     ],
-    "evidence_summary": "Historical YPG comp: 73.4 YPG in best NCAA season (2025) places Boston in R1 historical group (Kelvin Benjamin 72.2, Xavier Worthy 72.4, Quentin Johnston 76.2) \u2014 low per-game volume driven by Washington's suppressed passing offense, not receiver limitations. 1D/RR 0.136 (#3 in 2026 class behind J.Smith 0.152, Sarratt 0.142) \u2014 elite tier. 77th percentile separation. 54.8% of routes run vs press coverage. Career YPRR 2.02; man_YPRR 2.34 vs zone_YPRR 1.79 \u2014 better vs press/man. 61.1% contested catch rate. MTF/rec 0.11 with 5.0 YAC per reception. QBR when targeted: 106.7. Open target rate: 82.4%. Volume suppressed by Washington offense context (73.4 YPG best season); efficiency metrics carry elevated signal weight given system constraints.",
+    "evidence_summary": "FR+SO combined yards: 68 (2026 R1 WR class lowest) \u2014 minimal early production, breakout arrived in JR year at age 20. Historical YPG comp: 73.4 YPG in best NCAA season (2025) places Boston in R1 historical group (Kelvin Benjamin 72.2, Xavier Worthy 72.4, Quentin Johnston 76.2) \u2014 low per-game volume driven by Washington's suppressed passing offense, not receiver limitations. 1D/RR 0.136 (#3 in 2026 class behind J.Smith 0.152, Sarratt 0.142) \u2014 elite tier. 77th percentile separation. 54.8% of routes run vs press coverage. Career YPRR 2.02; man_YPRR 2.34 vs zone_YPRR 1.79 \u2014 better vs press/man. 61.1% contested catch rate. MTF/rec 0.11 with 5.0 YAC per reception. QBR when targeted: 106.7. Open target rate: 82.4%. Volume suppressed by Washington offense context (73.4 YPG best season); efficiency metrics carry elevated signal weight given system constraints.",
     "context_source": "Wikipedia + X research (1D/RR leaderboard, separation chart, press coverage %, YPG historical comp, advanced_receiving_stats FPD 2026), retrieved 2026-04-18.",
     "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
     "first_down_per_route_run": 0.136,
@@ -2014,7 +2014,8 @@
     "dob": "2003-12-14",
     "breakout_strength": 0.98,
     "breakout_confidence": 0.9,
-    "seasons_available": 2
+    "seasons_available": 2,
+    "freshman_impact_flag": false
   },
   {
     "player_id": "wr-cj-daniels",

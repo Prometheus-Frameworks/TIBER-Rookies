@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-18T03:26:04+00:00",
-  "run_id": "rookie-alpha-2026-2026-04-18T03:26:04+00:00",
+  "generated_at": "2026-04-18T03:31:15+00:00",
+  "run_id": "rookie-alpha-2026-2026-04-18T03:31:15+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 100,
@@ -721,7 +721,7 @@
         "age_at_first_impact_season": 20,
         "freshman_total_yards": null,
         "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
+        "freshman_impact_flag": false,
         "young_breakout_flag": true,
         "breakout_strength": 0.3,
         "breakout_confidence": 0.9,
@@ -762,7 +762,7 @@
         "translation_flags": [
           "young_breakout"
         ],
-        "evidence_summary": "Historical YPG comp: 73.4 YPG in best NCAA season (2025) places Boston in R1 historical group (Kelvin Benjamin 72.2, Xavier Worthy 72.4, Quentin Johnston 76.2) \u2014 low per-game volume driven by Washington's suppressed passing offense, not receiver limitations. 1D/RR 0.136 (#3 in 2026 class behind J.Smith 0.152, Sarratt 0.142) \u2014 elite tier. 77th percentile separation. 54.8% of routes run vs press coverage. Career YPRR 2.02; man_YPRR 2.34 vs zone_YPRR 1.79 \u2014 better vs press/man. 61.1% contested catch rate. MTF/rec 0.11 with 5.0 YAC per reception. QBR when targeted: 106.7. Open target rate: 82.4%. Volume suppressed by Washington offense context (73.4 YPG best season); efficiency metrics carry elevated signal weight given system constraints.",
+        "evidence_summary": "FR+SO combined yards: 68 (2026 R1 WR class lowest) \u2014 minimal early production, breakout arrived in JR year at age 20. Historical YPG comp: 73.4 YPG in best NCAA season (2025) places Boston in R1 historical group (Kelvin Benjamin 72.2, Xavier Worthy 72.4, Quentin Johnston 76.2) \u2014 low per-game volume driven by Washington's suppressed passing offense, not receiver limitations. 1D/RR 0.136 (#3 in 2026 class behind J.Smith 0.152, Sarratt 0.142) \u2014 elite tier. 77th percentile separation. 54.8% of routes run vs press coverage. Career YPRR 2.02; man_YPRR 2.34 vs zone_YPRR 1.79 \u2014 better vs press/man. 61.1% contested catch rate. MTF/rec 0.11 with 5.0 YAC per reception. QBR when targeted: 106.7. Open target rate: 82.4%. Volume suppressed by Washington offense context (73.4 YPG best season); efficiency metrics carry elevated signal weight given system constraints.",
         "context_source": "Wikipedia + X research (1D/RR leaderboard, separation chart, press coverage %, YPG historical comp, advanced_receiving_stats FPD 2026), retrieved 2026-04-18."
       },
       "rookie_alpha_rank": 8,
@@ -1138,7 +1138,7 @@
         "age_at_first_impact_season": 21,
         "freshman_total_yards": null,
         "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
+        "freshman_impact_flag": false,
         "young_breakout_flag": false,
         "breakout_strength": 0.98,
         "breakout_confidence": 0.9,
