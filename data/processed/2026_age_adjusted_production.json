@@ -532,6 +532,25 @@
     "age_adjusted_production_score": 88.9
   },
   {
+    "player_id": "wr-makai-lemon",
+    "player_name": "Makai Lemon",
+    "position": "WR",
+    "breakout_age": 20,
+    "effective_breakout_age": 20,
+    "boa_adjustment": null,
+    "young_breakout_flag": true,
+    "breakout_strength": 0.48,
+    "breakout_confidence": 0.9,
+    "breakout_age_rating_0_100": 74.5,
+    "breakout_label": "Early breakout",
+    "best_season_volume": 113.0,
+    "recent_season_volume": 113.0,
+    "weighted_volume": 113.0,
+    "age_multiplier": 1.5,
+    "raw_score": 169.5,
+    "age_adjusted_production_score": 86.6
+  },
+  {
     "player_id": "wr-jordyn-tyson",
     "player_name": "Jordyn Tyson",
     "position": "WR",
@@ -625,25 +644,6 @@
     "age_multiplier": 2.25,
     "raw_score": 120.37,
     "age_adjusted_production_score": 61.5
-  },
-  {
-    "player_id": "wr-makai-lemon",
-    "player_name": "Makai Lemon",
-    "position": "WR",
-    "breakout_age": 20,
-    "effective_breakout_age": 20,
-    "boa_adjustment": null,
-    "young_breakout_flag": true,
-    "breakout_strength": 0.48,
-    "breakout_confidence": 0.9,
-    "breakout_age_rating_0_100": 74.5,
-    "breakout_label": "Early breakout",
-    "best_season_volume": 74.0,
-    "recent_season_volume": 61.0,
-    "weighted_volume": 70.1,
-    "age_multiplier": 1.5,
-    "raw_score": 105.15,
-    "age_adjusted_production_score": 53.7
   },
   {
     "player_id": "wr-eric-mcalister",
