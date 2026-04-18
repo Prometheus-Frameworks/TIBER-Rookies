@@ -49,6 +49,11 @@ export function renderRookieBoardControls({ positions, state }) {
           ${option('flat', 'Flat ranking', state.view)}
         </select>
       </label>
+
+      <div class="control-field">
+        <span class="control-label">Export</span>
+        <button type="button" class="btn" data-board-csv-export>↓ Export CSV</button>
+      </div>
     </form>
   `;
 }
