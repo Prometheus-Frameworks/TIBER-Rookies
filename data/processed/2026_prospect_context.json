@@ -2572,24 +2572,22 @@
     "school": "Mississippi",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "speed_threat",
       "outside_receiver"
     ],
-    "context_flags": [
-      "low_confidence_seed",
-      "pending_cfbd_verification"
-    ],
+    "context_flags": [],
     "evidence_summary": "55 catches for 811 yards and 6 TDs at Ole Miss in 2025; transferred between Washington State, Oklahoma State, and Ole Miss. Heavily vertical route tree with recent development; showed 50+ catches and 800+ yards at multiple programs. Speed (4.36) is a genuine weapon but overall draft stock is Day 3/UDFA.",
-    "context_source": "manual_seed_2026",
+    "context_source": "Grok/Sports-Reference verification (April 2026); multi-program Power-4 career confirmed",
     "exceptional_metrics": [],
     "dob": "2002-12-18",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.48,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2,
+    "power4_early_contributor_flag": true
   },
   {
     "player_id": "wr-j-michael-sturdivant",
