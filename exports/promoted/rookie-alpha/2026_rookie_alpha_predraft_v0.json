@@ -192,7 +192,7 @@
         "breakout_age_rating_0_100": 71.0,
         "breakout_label": "Early breakout",
         "career_yards_per_route_run": 1.66,
-        "best_season_yprr": 2.25,
+        "best_season_yprr": 2.26,
         "worst_season_yprr": null,
         "seasons_over_2_3_yprr": null,
         "single_season_efficiency_dip_flag": null,
@@ -232,9 +232,9 @@
           "low_draft_capital_for_profile"
         ],
         "translation_flags": [
-          "zone_yprr_concern",
           "blocking_limitation",
-          "low_yac_despite_short_adot"
+          "low_yac_despite_short_adot",
+          "man_yprr_below_average"
         ],
         "evidence_summary": "BOA 19 true freshman impact at Ball State (31.1 rec ypg, 91.0 PFF receiving grade). Led all FBS TEs in combined receptions 2024-2025 (168, tied Vandeross). Career: 237 rec / 2,236 yds / 24 TDs \u2014 leads all TE prospects since 2019 in routes, targets, receptions, and first downs. Slot YPRR 2.25 overall in 2025, 2.64 slot YPRR (3rd best P4 TE since 2014 behind Mark Andrews 2.94, Loveland 2.87). Career 61.3% contested catch rate (3rd all-time P4 history, min 25 contested targets; Warren 63.6, Joly 66.0). Zone YPRR > 3.00 in a single season + career contested catch > 50%: comp group = Mark Andrews, Brock Bowers, Trey McBride, Isaiah Likely. KEY CONCERN: career zone YPRR 1.21 vs man YPRR 1.95 \u2014 zone-heavy NFL is a genuine translation risk. 1D/RR 0.125 (7th among all WR/TEs last 2 seasons; Pitts/McBride/Bowers/Kincaid/Warren tier). Reception share 33.6% (2024) / 30.6% (2025) \u2014 comp tier: Harold Fannin, Tyler Warren, Trey McBride. 87.6 PFF receiving grade vs P4 (2nd in class behind Stowers 89.1). 1.86 YPRR vs P4 competition (3rd in class). KLP RAS 9.72 (size-adjusted elite; system ras_0_100 = 49.0 reflects speed-heavy formula, 4.71 40 / 54th pctile speed score). WEAKNESSES: zone YPRR 1.21, YAC 3.51/rec (bottom 3rd pctile despite 8.12 ADOT), 7.6% MTF rate, poor blocking (only 41% inline snaps, lacks leverage). Only 5% deep target share \u2014 short-intermediate floor role. NFL comp: Mike Gesicki. Day 3 draft projection. TEP premium target.",
         "context_source": "X research batch (April 2026): @ffdataroma, PFF, Scott Barrett, various FFX accounts; Sports-Reference cross-verification"
