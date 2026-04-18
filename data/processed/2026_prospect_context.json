@@ -885,17 +885,25 @@
     "school": "Oregon",
     "class_year": 2026,
     "early_declare_flag": true,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
     "evidence_tags": [
       "elite_athleticism",
       "early_declare",
-      "elite_production"
+      "elite_mtf_receiver",
+      "man_coverage_separator",
+      "run_blocker",
+      "early_volume_producer",
+      "reliable_hands"
     ],
-    "context_flags": [],
-    "evidence_summary": "Oregon TE. 100.0 SPORQ \u2014 top composite athleticism in the 2026 TE class (no other TE clears 90th percentile). Historic SPORQ outlier; at TE where athleticism is more outcome-predictive than at WR, this is a ceiling-expanding signal. Day 2 draft capital (85 proxy). Production context limited; SPORQ-first profile warranting athletic ceiling bonus.",
-    "context_source": "compute_breakout_age.py; SPORQ 2026 TE class notes 2026-04-10",
+    "context_flags": [
+      "zone_yprr_concern",
+      "low_volume_early_declare",
+      "three_season_career_only"
+    ],
+    "evidence_summary": "Early declare (3 seasons), projected R1 (~19th overall). SPORQ 100.0 \u2014 perfect composite athleticism score; speed score 129.8 (3rd best TE combine history behind Vernon Davis 138.0, Kyle Pitts 130.7). Burst score 176.5 (2nd best TE combine history, behind Stowers 180.5). Career MTF/reception 0.246 \u2014 comp group: Njoku (.312), Washington (.311), Fannin (.288), Kraft (.262). MTF/G 0.63 (4th among R1 TEs since 2015; Bowers 1.23, Njoku 0.77, Warren 0.70). Career YPRR 1.72 (3 seasons); peer comp at same career stage: McBride 1.65, LaPorta 1.75, Warren 1.25. 51 receptions before age 21 (4th among R1 TEs: Bowers 63, Loveland 56, Pitts 54, Sadiq 51). 53.3% career contested catch rate. 3.8% drop rate. 78.0 run blocking grade (above average). 0.00% contested target rate vs man \u2014 elite separation against man coverage. CONCERN: zone YPRR 1.85 (described as 'well below average'). Run blocking grade > 75.0 + 40 < 4.60 + drop rate < 7.0%: comp group = George Kittle, Trey McBride (entry 16). Early-declare + R1 DC historical hit rate: Vernon Davis, Ebron, Njoku, Hockenson, Fant, Pitts, Bowers, Loveland \u2014 all but Fant had 80+ rec OR 1000+ yds OR 10+ TDs in at least one NFL season. Historical model rank (since 2017): #9 all-time TEs, between Kincaid (#5) and Stowers (#10). KNN comps: Noah Fant / Vernon Davis. Floor: Luke Musgrave.",
+    "context_source": "X research batch (April 2026): @ffdataroma, Scott Barrett, PFF, various FFX accounts; Sports-Reference cross-verification",
     "exceptional_metrics": [
       {
         "metric": "sporq_percentile",
@@ -907,9 +915,35 @@
       }
     ],
     "dob": "2005-03-04",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 2
+    "breakout_strength": 0.68,
+    "breakout_confidence": 0.85,
+    "seasons_available": 3,
+    "breakout_age_rating_0_100": 78.8,
+    "breakout_label": "Elite breakout",
+    "career_yards_per_route_run": 1.72,
+    "best_season_yprr": 1.85,
+    "contested_catch_rate": 0.533,
+    "yac_proxy_per_reception": 4.9,
+    "missed_tackles_forced_per_reception": 0.246,
+    "man_zone_versatility_flag": false,
+    "advanced_receiving_stats": {
+      "source": "PFF / FFX research batch April 2026",
+      "career_yprr": 1.72,
+      "best_season_yprr": 1.85,
+      "zone_yprr": 1.85,
+      "man_contested_target_rate": 0.0,
+      "contested_catch_rate_career": 0.533,
+      "yac_per_reception": 4.9,
+      "mtf_per_reception": 0.246,
+      "mtf_per_game": 0.63,
+      "drop_rate_career": 0.038,
+      "pff_run_blocking_grade": 78.0,
+      "passer_rating_when_targeted": 139.9,
+      "receptions_before_age_21": 51
+    },
+    "sporq_score": 100.0,
+    "speed_score_combine_history_rank": 3,
+    "burst_score_combine_history_rank": 2
   },
   {
     "player_id": "te-max-klare",
@@ -3245,7 +3279,8 @@
       "career_receiving_tds": 24
     },
     "ras_klp": 9.72,
-    "ras_klp_note": "KLP RAS 9.72 size-adjusted; system ras_0_100 49.0 uses speed-heavy formula (4.71 40, 54th pctile speed score)"
+    "ras_klp_note": "SPORQ 70.2 (replaces system ras_0_100 49.0 which over-penalized 4.71 40 time); KLP RAS 9.72 size-adjusted",
+    "sporq_score": 70.2
   },
   {
     "player_id": "te-rj-maryland",
