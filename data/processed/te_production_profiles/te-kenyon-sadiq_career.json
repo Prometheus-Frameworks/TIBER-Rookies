@@ -1,0 +1,121 @@
+{
+  "player_id": "te-kenyon-sadiq",
+  "player_name": "Kenyon Sadiq",
+  "position": "TE",
+  "school": "Oregon",
+  "conference": "Big-12",
+  "class_year": 2026,
+  "draft_year": 2026,
+  "seasons": 3,
+  "early_declare": true,
+  "age_at_draft": 21,
+  "height_in": 75.125,
+  "weight_lb": 241,
+
+  "career": {
+    "routes": 448,
+    "yards_per_game": 25.5,
+    "drop_rate": 0.038,
+    "contested_catch_rate": 0.533,
+    "mtf_per_reception_career": 0.246,
+    "mtf_per_reception_best_season": 0.40,
+    "mtf_per_game": 0.63,
+    "yac_per_reception_best_season": 10.10,
+    "passer_rating_when_targeted": 139.9,
+    "receptions_before_age_21": 51,
+    "reception_share_best_season": 0.163
+  },
+
+  "efficiency": {
+    "yprr_career": 1.72,
+    "yprr_best_season": 2.17,
+    "zone_yprr": 1.85,
+    "man_yprr": 1.61,
+    "contested_target_rate_career": 0.1429,
+    "note": "Zone YPRR (1.85) > Man YPRR (1.61). Zone-specialist pattern. Early-declare context: career YPRR 1.72 vs Warren 1.25, McBride 1.65, LaPorta 1.75 at same 3-season stage."
+  },
+
+  "coverage_splits": {
+    "zone_yprr": 1.85,
+    "man_yprr": 1.61,
+    "man_contested_target_rate_single_season": 0.0,
+    "zone_specialist": true,
+    "note": "Zone > man. '0.00% contested vs man' from entry 17 is a single-season read; career CTT% = 14.29% (image 2)."
+  },
+
+  "athleticism": {
+    "sporq": 100.0,
+    "ras_klp": 9.58,
+    "forty": 4.39,
+    "vertical": 43.5,
+    "broad": 133,
+    "speed_score": 129.8,
+    "speed_score_combine_history_rank": 3,
+    "burst_score": 176.5,
+    "burst_score_combine_history_rank": 2,
+    "speed_score_tier": "Vernon Davis (138.0) / Kyle Pitts (130.7) / Kenyon Sadiq (129.8)",
+    "burst_score_tier": "Eli Stowers (180.5) / Kenyon Sadiq (176.5) / Jacob Harris (173.5)"
+  },
+
+  "blocking": {
+    "run_blocking_grade_pff": 78.0,
+    "run_blocking_tier": "above average",
+    "note": "Above average run blocker (78.0 PFF). Kittle/McBride comp group via entry 16: only TEs since 2017 to run <4.60 with run blocking grade >75.0 and drop rate <7.0%."
+  },
+
+  "comp_groups": {
+    "nfl_knn": "Noah Fant / Vernon Davis",
+    "nfl_floor": "Luke Musgrave",
+    "mtf_tier": "Njoku (.312) / Washington (.311) / Fannin (.288) / Kraft (.262) / Sadiq (.246)",
+    "run_block_speed_tier": "George Kittle / Trey McBride (entry 16)",
+    "contested_catch_speed_tier": "Kyle Pitts / Trey McBride (53.3% CTC + sub-4.60 40)",
+    "early_declare_r1_dc_tier": "Vernon Davis / Ebron / Njoku / Hockenson / Fant / Pitts / Bowers / Loveland",
+    "historical_model_rank_all_time": 9,
+    "historical_model_rank_note": "9th all-time TEs since 2017 (between Kincaid #5 and Stowers #10) per entry 25"
+  },
+
+  "draft_context": {
+    "pff_big_board_rank": 14,
+    "pff_career_score_pctile": 70.5,
+    "consensus_position_rank": 1,
+    "projected_round": "Round 1",
+    "projected_pick": "~19th overall",
+    "early_declare_note": "All R1 early-declare TEs last 25 years (except Fant) had 80+ rec OR 1000+ yds OR 10+ TDs in at least one NFL season"
+  },
+
+  "season_log": [
+    {
+      "season": 2023,
+      "school": "Oregon",
+      "note": "Limited role as backup. Stats pending verification — CFBD undercount likely."
+    },
+    {
+      "season": 2024,
+      "school": "Oregon",
+      "targets_estimated": 34,
+      "receptions": 24,
+      "yards_per_target": 9.06,
+      "source": "Grok/Sports-Reference estimated",
+      "note": "CFBD play-by-play undercount on attribution. Route-level stats not available."
+    },
+    {
+      "season": 2025,
+      "school": "Oregon",
+      "targets_cfbd": 30,
+      "receptions_cfbd": 21,
+      "note": "CFBD 2025 undercount — actual stats higher. Detailed season breakdown needs PFF/FPD verification."
+    }
+  ],
+
+  "data_gaps": [
+    "Season-by-season route count not confirmed (only career 448 routes known)",
+    "2025 season stats not verified beyond CFBD undercount (30 tgt / 21 rec is floor, not actual)",
+    "YAC per reception career figure not confirmed (best season 10.10, one weak season 4.9)",
+    "Exact best-season YPRR season year not confirmed (2.17 from image 2)"
+  ],
+
+  "source_name": "X research batch (April 2026): @ffdataroma, Scott Barrett, PFF, various FFX accounts; production profile images",
+  "source_url": null,
+  "last_updated": "2026-04-18",
+  "methodology_notes": "Career stats are aggregates from research notes and comparison charts; season-level detail is incomplete due to early declare + CFBD undercount. Zone/man YPRR from entry 17 text (zone 1.85, man 1.61). Best-season YPRR 2.17 from image 2 comparison table. YAC 10.10 from image 5 filtered comp group (best season). Career MTF/rec 0.246 from entry 19; best season 40.00% from image 3."
+}

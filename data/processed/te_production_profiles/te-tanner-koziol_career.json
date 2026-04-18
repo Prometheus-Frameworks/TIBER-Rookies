@@ -1,0 +1,182 @@
+{
+  "player_id": "te-tanner-koziol",
+  "player_name": "Tanner Koziol",
+  "position": "TE",
+  "school": "Houston",
+  "conference": "Big-12",
+  "class_year": 2026,
+  "draft_year": 2026,
+  "seasons": 4,
+  "age_at_draft": 22,
+  "height_in": 79,
+  "weight_lb": 247,
+
+  "career": {
+    "games": 50,
+    "routes": 1349,
+    "targets": 337,
+    "receptions": 237,
+    "yards": 2236,
+    "touchdowns": 24,
+    "first_downs": 136,
+    "drops": 13,
+    "drop_rate": 0.040,
+    "yards_per_reception": 9.4,
+    "yards_per_game": 45.6,
+    "air_yards": 1404,
+    "yac": 832,
+    "yac_per_reception": 3.51,
+    "adot": 8.12,
+    "mtf_rate": 0.076,
+    "catch_rate": 0.703,
+    "open_target_rate": 0.724,
+    "contested_catch_rate": 0.613,
+    "qbr_when_targeted": 97.2,
+    "target_rate": 0.250,
+    "reception_share_career": null
+  },
+
+  "efficiency": {
+    "yprr_career": 1.66,
+    "yprr_best_season": 2.26,
+    "zone_yprr": 1.95,
+    "man_yprr": 1.21,
+    "slot_yprr_2025": 2.64,
+    "first_down_per_route_run": 0.125,
+    "td_rate": 0.018,
+    "rprr": 0.176
+  },
+
+  "coverage_splits": {
+    "zone_yprr": 1.95,
+    "man_yprr": 1.21,
+    "zone_yards_career": 1526,
+    "man_yards_career": 472,
+    "zone_specialist": true,
+    "note": "Zone YPRR (1.95, 72.7th pctile) > Man YPRR (1.21, 34.7th pctile). Text entry 21 had these backwards — production card is authoritative."
+  },
+
+  "athleticism": {
+    "sporq": 70.2,
+    "ras_klp": 9.72,
+    "ras_klp_composite_size": "GOOD",
+    "ras_klp_composite_speed": "GREAT",
+    "ras_klp_composite_explosion": "ELITE",
+    "forty": 4.70,
+    "forty_grade_klp": 8.05,
+    "twenty_split": 2.71,
+    "ten_split": 1.62,
+    "vertical": 36.5,
+    "vertical_grade_klp": 9.21,
+    "broad": 122,
+    "broad_grade_klp": 9.11,
+    "hand_size": 9.63,
+    "arm_length": 33.75,
+    "note": "System ras_0_100=49.0 over-penalized speed; SPORQ 70.2 is the operative athletic score in alpha."
+  },
+
+  "blocking": {
+    "run_block_score_fpd": 5.2,
+    "pass_block_score_fpd": 6.5,
+    "inline_snap_rate": 0.41,
+    "note": "Poor inline blocker — lacks leverage and strength. Only 41% of snaps inline. Limits NFL role versatility."
+  },
+
+  "comp_groups": {
+    "nfl_high_end": "Mike Gesicki",
+    "slot_yprr_historical": "3rd best P4 TE since 2014 (Andrews 2.94, Loveland 2.87, Koziol 2.64)",
+    "contested_catch_historical": "3rd best P4 TE in PFF college history min 25 contested targets (Joly 66.0%, Warren 63.6%, Koziol 61.3%)",
+    "reception_share_tier": "Harold Fannin / Tyler Warren / Trey McBride",
+    "one_d_rr_tier": "Kyle Pitts / Trey McBride / Brock Bowers / Dalton Kincaid / Tyler Warren"
+  },
+
+  "draft_context": {
+    "pff_big_board_rank": 195,
+    "pff_career_score_pctile": 89.3,
+    "projection": "4th Round",
+    "reception_share_2024": 0.336,
+    "reception_share_2025": 0.306,
+    "fbs_receptions_2024_2025_rank": "T-1st (168, tied Vandeross)"
+  },
+
+  "season_log": [
+    {
+      "season": 2022,
+      "school": "Ball State",
+      "games": 12,
+      "routes": 307,
+      "targets": 60,
+      "receptions": 35,
+      "yards": 379,
+      "touchdowns": 7,
+      "drops": 3,
+      "yards_per_reception": 10.8,
+      "yards_per_game": 31.6,
+      "air_yards": 305,
+      "yac": 74,
+      "adot": 11.7,
+      "yprr": 1.23,
+      "contested_receptions": 2.1
+    },
+    {
+      "season": 2023,
+      "school": "Ball State",
+      "games": 12,
+      "routes": 304,
+      "targets": 55,
+      "receptions": 34,
+      "yards": 290,
+      "touchdowns": 3,
+      "drops": 1,
+      "yards_per_reception": 6.5,
+      "yards_per_game": 24.2,
+      "air_yards": 162,
+      "yac": 128,
+      "adot": 8.5,
+      "yprr": 0.95,
+      "contested_receptions": 3.8
+    },
+    {
+      "season": 2024,
+      "school": "Houston",
+      "games": 13,
+      "routes": 416,
+      "targets": 128,
+      "receptions": 94,
+      "yards": 840,
+      "touchdowns": 8,
+      "drops": 4,
+      "yards_per_reception": 8.9,
+      "yards_per_game": 70.0,
+      "air_yards": 501,
+      "yac": 339,
+      "adot": 7.0,
+      "yprr": 2.02,
+      "contested_receptions": 3.6,
+      "note": "Transfer breakout at Houston (Big-12). Top-10 FBS receiver in receptions."
+    },
+    {
+      "season": 2025,
+      "school": "Houston",
+      "games": 13,
+      "routes": 322,
+      "targets": 94,
+      "receptions": 74,
+      "yards": 727,
+      "touchdowns": 6,
+      "drops": 2,
+      "yards_per_reception": 9.8,
+      "yards_per_game": 55.9,
+      "air_yards": 436,
+      "yac": 291,
+      "adot": 6.9,
+      "yprr": 2.26,
+      "contested_receptions": 3.9
+    }
+  ],
+
+  "source_name": "Fantasy Points Data production profile card (April 2026); X research batch (April 2026); KLP RAS card; PFF Big Board",
+  "source_url": null,
+  "last_updated": "2026-04-18",
+  "methodology_notes": "Season log sourced from FPD production card (image). Zone/man YPRR from FPD card (zone=1.95, man=1.21); text entry 21 had these reversed. Contested catch rate career 61.3% from PFF. SPORQ 70.2 from Scott Barrett / Fantasy Points Data 2026 TE class release."
+}
