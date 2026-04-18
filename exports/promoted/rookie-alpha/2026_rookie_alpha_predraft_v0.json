@@ -42,15 +42,15 @@
       "position": "RB",
       "scores": {
         "ras_0_100": null,
-        "athletic_score_0_100": 58.8888,
-        "athletic_source": "COMBINE_FALLBACK",
-        "athletic_confidence": 0.5,
-        "athletic_explainer": "Partial combine (2 metrics, no explosive drills)",
+        "athletic_score_0_100": 95.6,
+        "athletic_source": "SPORQ",
+        "athletic_confidence": 0.85,
+        "athletic_explainer": "SPORQ 95.6 (preliminary \u2014 4.36 40-time, 98th pctile speed score; may increase post-bench)",
         "production_0_100": 90.0,
         "age_adjusted_production_0_100": 100.0,
         "draft_capital_proxy_0_100": 95.0,
         "talent_score_0_100": 76.3889,
-        "rookie_alpha_0_100": 80.1111,
+        "rookie_alpha_0_100": 92.96,
         "ceiling_bonus": null,
         "market_conviction_ras_override": null,
         "market_conviction_reason": null,
@@ -59,7 +59,7 @@
         "consensus_position_rank_blended": 1,
         "consensus_position_rank_sources_count": 3,
         "consensus_score_positional_0_100": 79.0,
-        "evidence_completeness_score": 0.45,
+        "evidence_completeness_score": 0.82,
         "consensus_delta_positional_raw": 1.1,
         "consensus_delta_positional_cap_limit": 10.0,
         "consensus_delta_positional_cap_tier": "0.40-0.59",
@@ -67,7 +67,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -14.9
+        "market_investment_delta_legacy": -14.9,
+        "rookie_alpha_rank": 1
       },
       "model_inputs_missing": [],
       "context": {
@@ -76,7 +77,7 @@
         "position": "RB",
         "school": "Notre Dame",
         "class_year": 2026,
-        "early_declare_flag": null,
+        "early_declare_flag": true,
         "breakout_age": 19,
         "age_at_first_impact_season": 19,
         "freshman_total_yards": null,
@@ -87,8 +88,8 @@
         "breakout_confidence": 1.0,
         "breakout_age_rating_0_100": 89.6,
         "breakout_label": "Elite breakout",
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
+        "career_yards_per_route_run": 1.6,
+        "best_season_yprr": 1.83,
         "worst_season_yprr": null,
         "seasons_over_2_3_yprr": null,
         "single_season_efficiency_dip_flag": null,
@@ -106,7 +107,7 @@
         "man_zone_versatility_flag": null,
         "power4_early_contributor_flag": null,
         "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
+        "career_mtf_per_attempt": 0.335,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
         "path_disruption_flag": null
@@ -115,21 +116,271 @@
         "evidence_tags": [
           "young_breakout",
           "elite_volume_producer",
+          "elite_tackle_breaker",
+          "elite_yac_rusher",
+          "receiving_threat",
+          "pass_protection_strength",
           "injury_adjusted"
         ],
         "context_flags": [
-          "injury_adjusted_2024_playoffs"
+          "injury_adjusted_2024_playoffs",
+          "sporq_preliminary"
         ],
         "translation_flags": [
           "young_breakout",
           "injury_adjusted"
         ],
-        "evidence_summary": "Young breakout (BOA 20) at Notre Dame. Would have met 90+ total yd/game in 2+ seasons AND 70+ YAC/game in 2+ seasons thresholds if not for 2024 NFL playoffs, during which he played through a serious knee injury. True production ceiling suppressed in final measurable games; playoff stats should be treated as injury-affected outlier. Coleman (2026) is only peer to clear both thresholds unadjusted.",
-        "context_source": "@ffdataroma research note 2026-04-08"
+        "evidence_summary": "BOA 19, youngest RB in 2026 class (early declare). Career 0.335 MTF/touch (P4, min 425 carries since 2014): 4th all-time behind Bijan Robinson, David Montgomery, Bucky Irving \u2014 round 1-3 comp group. Career 4.35 YAC/carry (94th pctile, 3rd all-time since 2014 behind Etienne 4.513 and Bijan 4.397). 4.36 40-time, 98th pctile speed score. SPORQ 95.6 (preliminary, may rise post-bench). Best season YPRR 1.83 (94th pctile RB), career YPRR 1.60 (84th pctile). QBR when targeted: 126.9 (class leader). PBE 98.3% (elite pass protector, 3.17% pressure rate). Career fumble rate 0.23%. TD rate 10.43% + MTF > 33.3%: comp group (P4 since 2015) = Javonte Williams, Dameon Pierce, Miyan Williams, Blake Corum. PFF Offense Grade 89.9 (class leader). Notre Dame SOS +5.35 (above avg SEC). 2024 playoff injury context: knee injury suppressed late-season YAC output; would have cleared 70+ YA/G in 2+ seasons unadjusted alongside Coleman.",
+        "context_source": "X research batch (April 2026): @ffdataroma, Scott Barrett, various FFX accounts; PFF/Sports-Reference cross-verification",
+        "evidence_tier": "strong_supported_edge",
+        "evidence_tier_reason": "Multi-source X/PFF research confirms elite creation metrics (MTF, YAC, SPORQ); production and capital aligned; athletic score upgraded to SPORQ 95.6 (preliminary)"
       },
       "rookie_alpha_rank": 1,
       "talent_rank": 1,
       "draft_proxy_delta": 0
+    },
+    {
+      "player_id": "te-tanner-koziol",
+      "player_name": "Tanner Koziol",
+      "position": "TE",
+      "scores": {
+        "ras_0_100": null,
+        "athletic_score_0_100": 70.2,
+        "athletic_source": "SPORQ",
+        "athletic_confidence": 0.9,
+        "athletic_explainer": "SPORQ 70.2 (replaces system RAS 49.0 which over-penalized 4.71 40; KLP RAS 9.72 size-adjusted)",
+        "production_0_100": 95.2,
+        "age_adjusted_production_0_100": 100.0,
+        "draft_capital_proxy_0_100": 45.0,
+        "talent_score_0_100": 74.9938,
+        "rookie_alpha_0_100": 76.41,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_position_rank_blended": 10,
+        "consensus_position_rank_sources_count": 3,
+        "consensus_score_positional_0_100": 45.0,
+        "evidence_completeness_score": 0.78,
+        "consensus_delta_positional_raw": 24.0,
+        "consensus_delta_positional_cap_limit": 10.0,
+        "consensus_delta_positional_cap_tier": "0.40-0.59",
+        "consensus_delta_positional": 10.0,
+        "evidence_tier": "moderate_edge",
+        "evidence_tier_reason": "Research confirms elite production metrics (slot YPRR, contested catch, reception share) supporting model premium; zone YPRR 1.21 and poor blocking are legitimate NFL translation risks that partially explain market discount. KLP RAS 9.72 is size-adjusted elite; system formula weights speed, producing lower raw score.",
+        "is_capped_disagreement": true,
+        "market_investment_delta_legacy": 24.0,
+        "rookie_alpha_rank": 2
+      },
+      "model_inputs_missing": [],
+      "context": {
+        "player_id": "te-tanner-koziol",
+        "player_name": "Tanner Koziol",
+        "position": "TE",
+        "school": "Houston",
+        "class_year": 2026,
+        "early_declare_flag": false,
+        "breakout_age": 19,
+        "age_at_first_impact_season": 19,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": true,
+        "young_breakout_flag": true,
+        "breakout_strength": 0.72,
+        "breakout_confidence": 0.9,
+        "breakout_age_rating_0_100": 71.0,
+        "breakout_label": "Early breakout",
+        "career_yards_per_route_run": 1.66,
+        "best_season_yprr": 2.25,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": 0.076,
+        "yac_proxy_per_reception": 3.51,
+        "contested_catch_rate": 0.613,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": false,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [
+          "elite_volume_producer",
+          "elite_contested_catcher",
+          "red_zone_target",
+          "move_te",
+          "high_floor_receiver",
+          "slot_yprr_leader",
+          "freshman_impact"
+        ],
+        "context_flags": [
+          "zone_yprr_concern",
+          "blocking_limitation",
+          "sos_transition_ball_state_to_houston",
+          "low_draft_capital_for_profile"
+        ],
+        "translation_flags": [
+          "zone_yprr_concern",
+          "blocking_limitation",
+          "low_yac_despite_short_adot"
+        ],
+        "evidence_summary": "BOA 19 true freshman impact at Ball State (31.1 rec ypg, 91.0 PFF receiving grade). Led all FBS TEs in combined receptions 2024-2025 (168, tied Vandeross). Career: 237 rec / 2,236 yds / 24 TDs \u2014 leads all TE prospects since 2019 in routes, targets, receptions, and first downs. Slot YPRR 2.25 overall in 2025, 2.64 slot YPRR (3rd best P4 TE since 2014 behind Mark Andrews 2.94, Loveland 2.87). Career 61.3% contested catch rate (3rd all-time P4 history, min 25 contested targets; Warren 63.6, Joly 66.0). Zone YPRR > 3.00 in a single season + career contested catch > 50%: comp group = Mark Andrews, Brock Bowers, Trey McBride, Isaiah Likely. KEY CONCERN: career zone YPRR 1.21 vs man YPRR 1.95 \u2014 zone-heavy NFL is a genuine translation risk. 1D/RR 0.125 (7th among all WR/TEs last 2 seasons; Pitts/McBride/Bowers/Kincaid/Warren tier). Reception share 33.6% (2024) / 30.6% (2025) \u2014 comp tier: Harold Fannin, Tyler Warren, Trey McBride. 87.6 PFF receiving grade vs P4 (2nd in class behind Stowers 89.1). 1.86 YPRR vs P4 competition (3rd in class). KLP RAS 9.72 (size-adjusted elite; system ras_0_100 = 49.0 reflects speed-heavy formula, 4.71 40 / 54th pctile speed score). WEAKNESSES: zone YPRR 1.21, YAC 3.51/rec (bottom 3rd pctile despite 8.12 ADOT), 7.6% MTF rate, poor blocking (only 41% inline snaps, lacks leverage). Only 5% deep target share \u2014 short-intermediate floor role. NFL comp: Mike Gesicki. Day 3 draft projection. TEP premium target.",
+        "context_source": "X research batch (April 2026): @ffdataroma, PFF, Scott Barrett, various FFX accounts; Sports-Reference cross-verification"
+      },
+      "rookie_alpha_rank": 3,
+      "talent_rank": 2,
+      "draft_proxy_delta": -1
+    },
+    {
+      "player_id": "te-kenyon-sadiq",
+      "player_name": "Kenyon Sadiq",
+      "position": "TE",
+      "scores": {
+        "ras_0_100": null,
+        "athletic_score_0_100": 100.0,
+        "athletic_source": "SPORQ",
+        "athletic_confidence": 0.95,
+        "athletic_explainer": "SPORQ 100.0 \u2014 perfect composite score; speed score 129.8 (3rd all-time TE combine history)",
+        "production_0_100": 41.9,
+        "age_adjusted_production_0_100": 30.9,
+        "draft_capital_proxy_0_100": 85.0,
+        "talent_score_0_100": 56.645,
+        "rookie_alpha_0_100": 73.855,
+        "ceiling_bonus": 3.0,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_position_rank_blended": 1,
+        "consensus_position_rank_sources_count": 3,
+        "consensus_score_positional_0_100": 79.0,
+        "evidence_completeness_score": 0.82,
+        "consensus_delta_positional_raw": -13.7,
+        "consensus_delta_positional_cap_limit": 18.0,
+        "consensus_delta_positional_cap_tier": "0.60-0.79",
+        "consensus_delta_positional": -13.7,
+        "evidence_tier": "consensus_aligned",
+        "evidence_tier_reason": "Research confirms elite athleticism (SPORQ 100.0, Vernon Davis/Pitts speed score tier) and early-declare production context. Alpha now converges toward market view. Zone YPRR (1.85, described as well below average) is the primary translation risk.",
+        "is_capped_disagreement": false,
+        "market_investment_delta_legacy": -19.7,
+        "rookie_alpha_rank": 3
+      },
+      "model_inputs_missing": [],
+      "exceptional_metrics": [
+        {
+          "metric": "forty",
+          "value": 4.39,
+          "z_score": 1.93,
+          "context": "4.39s forty (fast; z=1.93 vs TE peer group)",
+          "percentile_tier": "elite",
+          "alpha_bonus_eligible": false,
+          "source": "combine"
+        },
+        {
+          "metric": "vertical",
+          "value": 43.5,
+          "z_score": 2.22,
+          "context": "43.5\" vertical (high; z=2.22 vs TE peer group)",
+          "percentile_tier": "elite",
+          "alpha_bonus_eligible": false,
+          "source": "combine"
+        },
+        {
+          "metric": "broad",
+          "value": 133.0,
+          "z_score": 2.12,
+          "context": "133.0\" broad (long; z=2.12 vs TE peer group)",
+          "percentile_tier": "elite",
+          "alpha_bonus_eligible": false,
+          "source": "combine"
+        },
+        {
+          "metric": "sporq_percentile",
+          "value": 100.0,
+          "context": "100.0 SPORQ \u2014 perfect composite athleticism score. Historic outlier at the TE position; no other TE in the 2026 class clears 90th percentile. Best SPORQ in this TE draft class.",
+          "percentile_tier": "historic",
+          "alpha_bonus_eligible": true,
+          "source": "notes_2026-04-10"
+        }
+      ],
+      "context": {
+        "player_id": "te-kenyon-sadiq",
+        "player_name": "Kenyon Sadiq",
+        "position": "TE",
+        "school": "Oregon",
+        "class_year": 2026,
+        "early_declare_flag": true,
+        "breakout_age": 20,
+        "age_at_first_impact_season": 20,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": true,
+        "breakout_strength": 0.68,
+        "breakout_confidence": 0.85,
+        "breakout_age_rating_0_100": 78.8,
+        "breakout_label": "Elite breakout",
+        "career_yards_per_route_run": 1.72,
+        "best_season_yprr": 1.85,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": null,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": null,
+        "injury_adjusted_profile_flag": null,
+        "broken_offense_context_flag": null,
+        "suppressed_context_season_count": null,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": 0.246,
+        "yac_proxy_per_reception": 4.9,
+        "contested_catch_rate": 0.533,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": false,
+        "power4_early_contributor_flag": null,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": null
+      },
+      "evidence": {
+        "evidence_tags": [
+          "elite_athleticism",
+          "early_declare",
+          "elite_mtf_receiver",
+          "man_coverage_separator",
+          "run_blocker",
+          "early_volume_producer",
+          "reliable_hands"
+        ],
+        "context_flags": [
+          "zone_yprr_concern",
+          "low_volume_early_declare",
+          "three_season_career_only"
+        ],
+        "translation_flags": [
+          "zone_yprr_concern",
+          "early_declare_volume_discount"
+        ],
+        "evidence_summary": "Early declare (3 seasons), projected R1 (~19th overall). SPORQ 100.0 \u2014 perfect composite athleticism score; speed score 129.8 (3rd best TE combine history behind Vernon Davis 138.0, Kyle Pitts 130.7). Burst score 176.5 (2nd best TE combine history, behind Stowers 180.5). Career MTF/reception 0.246 \u2014 comp group: Njoku (.312), Washington (.311), Fannin (.288), Kraft (.262). MTF/G 0.63 (4th among R1 TEs since 2015; Bowers 1.23, Njoku 0.77, Warren 0.70). Career YPRR 1.72 (3 seasons); peer comp at same career stage: McBride 1.65, LaPorta 1.75, Warren 1.25. 51 receptions before age 21 (4th among R1 TEs: Bowers 63, Loveland 56, Pitts 54, Sadiq 51). 53.3% career contested catch rate. 3.8% drop rate. 78.0 run blocking grade (above average). 0.00% contested target rate vs man \u2014 elite separation against man coverage. CONCERN: zone YPRR 1.85 (described as 'well below average'). Run blocking grade > 75.0 + 40 < 4.60 + drop rate < 7.0%: comp group = George Kittle, Trey McBride (entry 16). Early-declare + R1 DC historical hit rate: Vernon Davis, Ebron, Njoku, Hockenson, Fant, Pitts, Bowers, Loveland \u2014 all but Fant had 80+ rec OR 1000+ yds OR 10+ TDs in at least one NFL season. Historical model rank (since 2017): #9 all-time TEs, between Kincaid (#5) and Stowers (#10). KNN comps: Noah Fant / Vernon Davis. Floor: Luke Musgrave.",
+        "context_source": "X research batch (April 2026): @ffdataroma, Scott Barrett, PFF, various FFX accounts; Sports-Reference cross-verification"
+      },
+      "rookie_alpha_rank": 10,
+      "talent_rank": 18,
+      "draft_proxy_delta": 8
     },
     {
       "player_id": "wr-kc-concepcion",
@@ -162,7 +413,8 @@
         "evidence_tier": "consensus_aligned",
         "evidence_tier_reason": "Near consensus after evidence guardrails",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -3.1
+        "market_investment_delta_legacy": -3.1,
+        "rookie_alpha_rank": 4
       },
       "model_inputs_missing": [],
       "context": {
@@ -230,94 +482,6 @@
       "draft_proxy_delta": 2
     },
     {
-      "player_id": "te-tanner-koziol",
-      "player_name": "Tanner Koziol",
-      "position": "TE",
-      "scores": {
-        "ras_0_100": 49.0144,
-        "athletic_score_0_100": 49.0144,
-        "athletic_source": "RAS",
-        "athletic_confidence": 0.95,
-        "athletic_explainer": "RAS 49.0 from 4 combine metrics",
-        "production_0_100": 95.2,
-        "age_adjusted_production_0_100": 100.0,
-        "draft_capital_proxy_0_100": 45.0,
-        "talent_score_0_100": 74.9938,
-        "rookie_alpha_0_100": 68.995,
-        "ceiling_bonus": null,
-        "market_conviction_ras_override": null,
-        "market_conviction_reason": null,
-        "wr_translation_penalty": null,
-        "wr_translation_signals": null,
-        "consensus_position_rank_blended": 10,
-        "consensus_position_rank_sources_count": 3,
-        "consensus_score_positional_0_100": 45.0,
-        "evidence_completeness_score": 0.4,
-        "consensus_delta_positional_raw": 24.0,
-        "consensus_delta_positional_cap_limit": 10.0,
-        "consensus_delta_positional_cap_tier": "0.40-0.59",
-        "consensus_delta_positional": 10.0,
-        "evidence_tier": "watchlist_outlier",
-        "evidence_tier_reason": "Disagreement present, but caution or incompleteness limits confidence",
-        "is_capped_disagreement": true,
-        "market_investment_delta_legacy": 24.0
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "te-tanner-koziol",
-        "player_name": "Tanner Koziol",
-        "position": "TE",
-        "school": "Houston",
-        "class_year": 2026,
-        "early_declare_flag": null,
-        "breakout_age": null,
-        "age_at_first_impact_season": null,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": null,
-        "breakout_strength": null,
-        "breakout_confidence": null,
-        "breakout_age_rating_0_100": null,
-        "breakout_label": null,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": null,
-        "injury_adjusted_profile_flag": null,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": null
-      },
-      "evidence": {
-        "evidence_tags": [
-          "route_runner"
-        ],
-        "context_flags": [],
-        "translation_flags": [],
-        "evidence_summary": "Led all FBS tight ends in receptions (74) and contested-catch percentage (74.1%) in 2025 with 727 yards and 6 TDs at Houston; at 6'7\" he is a red-zone mismatch with massive catch radius. Below-average athleticism after the catch limits YAC but his size and hands project well as a move TE2.",
-        "context_source": "manual_seed_2026"
-      },
-      "rookie_alpha_rank": 3,
-      "talent_rank": 2,
-      "draft_proxy_delta": -1
-    },
-    {
       "player_id": "wr-makai-lemon",
       "player_name": "Makai Lemon",
       "position": "WR",
@@ -348,7 +512,8 @@
         "evidence_tier": "consensus_aligned",
         "evidence_tier_reason": "Near consensus after evidence guardrails",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -6.1
+        "market_investment_delta_legacy": -6.1,
+        "rookie_alpha_rank": 5
       },
       "model_inputs_missing": [],
       "context": {
@@ -443,7 +608,8 @@
         "evidence_tier": "consensus_aligned",
         "evidence_tier_reason": "Near consensus after evidence guardrails",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -27.3
+        "market_investment_delta_legacy": -27.3,
+        "rookie_alpha_rank": 6
       },
       "model_inputs_missing": [],
       "context": {
@@ -545,7 +711,8 @@
         "evidence_tier": "consensus_aligned",
         "evidence_tier_reason": "Near consensus after evidence guardrails",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -17.4
+        "market_investment_delta_legacy": -17.4,
+        "rookie_alpha_rank": 7
       },
       "model_inputs_missing": [],
       "context": {
@@ -635,7 +802,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": -28.0
+        "market_investment_delta_legacy": -28.0,
+        "rookie_alpha_rank": 8
       },
       "model_inputs_missing": [],
       "context": {
@@ -721,7 +889,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": 21.8
+        "market_investment_delta_legacy": 21.8,
+        "rookie_alpha_rank": 9
       },
       "model_inputs_missing": [],
       "context": {
@@ -811,7 +980,8 @@
         "evidence_tier": "strong_supported_edge",
         "evidence_tier_reason": "High completeness and meaningful edge vs positional consensus",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -28.6
+        "market_investment_delta_legacy": -28.6,
+        "rookie_alpha_rank": 10
       },
       "model_inputs_missing": [],
       "context": {
@@ -874,132 +1044,6 @@
       "draft_proxy_delta": 5
     },
     {
-      "player_id": "te-kenyon-sadiq",
-      "player_name": "Kenyon Sadiq",
-      "position": "TE",
-      "scores": {
-        "ras_0_100": 75.6028,
-        "athletic_score_0_100": 75.6028,
-        "athletic_source": "RAS",
-        "athletic_confidence": 0.95,
-        "athletic_explainer": "RAS 75.6 from 4 combine metrics",
-        "production_0_100": 41.9,
-        "age_adjusted_production_0_100": 30.9,
-        "draft_capital_proxy_0_100": 85.0,
-        "talent_score_0_100": 56.645,
-        "rookie_alpha_0_100": 65.316,
-        "ceiling_bonus": 3.0,
-        "market_conviction_ras_override": null,
-        "market_conviction_reason": null,
-        "wr_translation_penalty": null,
-        "wr_translation_signals": null,
-        "consensus_position_rank_blended": 1,
-        "consensus_position_rank_sources_count": 3,
-        "consensus_score_positional_0_100": 79.0,
-        "evidence_completeness_score": 0.6,
-        "consensus_delta_positional_raw": -13.7,
-        "consensus_delta_positional_cap_limit": 18.0,
-        "consensus_delta_positional_cap_tier": "0.60-0.79",
-        "consensus_delta_positional": -13.7,
-        "evidence_tier": "moderate_edge",
-        "evidence_tier_reason": "Meaningful disagreement with adequate evidence support",
-        "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -19.7
-      },
-      "model_inputs_missing": [],
-      "exceptional_metrics": [
-        {
-          "metric": "forty",
-          "value": 4.39,
-          "z_score": 1.93,
-          "context": "4.39s forty (fast; z=1.93 vs TE peer group)",
-          "percentile_tier": "elite",
-          "alpha_bonus_eligible": false,
-          "source": "combine"
-        },
-        {
-          "metric": "vertical",
-          "value": 43.5,
-          "z_score": 2.22,
-          "context": "43.5\" vertical (high; z=2.22 vs TE peer group)",
-          "percentile_tier": "elite",
-          "alpha_bonus_eligible": false,
-          "source": "combine"
-        },
-        {
-          "metric": "broad",
-          "value": 133.0,
-          "z_score": 2.12,
-          "context": "133.0\" broad (long; z=2.12 vs TE peer group)",
-          "percentile_tier": "elite",
-          "alpha_bonus_eligible": false,
-          "source": "combine"
-        },
-        {
-          "metric": "sporq_percentile",
-          "value": 100.0,
-          "context": "100.0 SPORQ \u2014 perfect composite athleticism score. Historic outlier at the TE position; no other TE in the 2026 class clears 90th percentile. Best SPORQ in this TE draft class.",
-          "percentile_tier": "historic",
-          "alpha_bonus_eligible": true,
-          "source": "notes_2026-04-10"
-        }
-      ],
-      "context": {
-        "player_id": "te-kenyon-sadiq",
-        "player_name": "Kenyon Sadiq",
-        "position": "TE",
-        "school": "Oregon",
-        "class_year": 2026,
-        "early_declare_flag": true,
-        "breakout_age": null,
-        "age_at_first_impact_season": null,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": null,
-        "breakout_strength": null,
-        "breakout_confidence": null,
-        "breakout_age_rating_0_100": null,
-        "breakout_label": null,
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": null,
-        "injury_adjusted_profile_flag": null,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": null,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": null
-      },
-      "evidence": {
-        "evidence_tags": [
-          "elite_athleticism",
-          "early_declare"
-        ],
-        "context_flags": [],
-        "translation_flags": [],
-        "evidence_summary": "Oregon TE. 100.0 SPORQ \u2014 top composite athleticism in the 2026 TE class (no other TE clears 90th percentile). Historic SPORQ outlier; at TE where athleticism is more outcome-predictive than at WR, this is a ceiling-expanding signal. Day 2 draft capital (85 proxy). Production context limited; SPORQ-first profile warranting athletic ceiling bonus.",
-        "context_source": "compute_breakout_age.py; SPORQ 2026 TE class notes 2026-04-10"
-      },
-      "rookie_alpha_rank": 10,
-      "talent_rank": 18,
-      "draft_proxy_delta": 8
-    },
-    {
       "player_id": "wr-zachariah-branch",
       "player_name": "Zachariah Branch",
       "position": "WR",
@@ -1030,7 +1074,8 @@
         "evidence_tier": "strong_supported_edge",
         "evidence_tier_reason": "High completeness and meaningful edge vs positional consensus",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 0.0
+        "market_investment_delta_legacy": 0.0,
+        "rookie_alpha_rank": 11
       },
       "model_inputs_missing": [],
       "context": {
@@ -1120,7 +1165,8 @@
         "evidence_tier": "moderate_edge",
         "evidence_tier_reason": "Meaningful disagreement with adequate evidence support",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 9.7
+        "market_investment_delta_legacy": 9.7,
+        "rookie_alpha_rank": 12
       },
       "model_inputs_missing": [],
       "exceptional_metrics": [
@@ -1237,7 +1283,8 @@
         "evidence_tier": "watchlist_outlier",
         "evidence_tier_reason": "Disagreement present, but caution or incompleteness limits confidence",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": 17.3
+        "market_investment_delta_legacy": 17.3,
+        "rookie_alpha_rank": 13
       },
       "model_inputs_missing": [],
       "context": {
@@ -1323,7 +1370,8 @@
         "evidence_tier": "watchlist_outlier",
         "evidence_tier_reason": "Disagreement present, but caution or incompleteness limits confidence",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -13.7
+        "market_investment_delta_legacy": -13.7,
+        "rookie_alpha_rank": 14
       },
       "model_inputs_missing": [],
       "context": {
@@ -1411,7 +1459,8 @@
         "evidence_tier": "consensus_aligned",
         "evidence_tier_reason": "Near consensus after evidence guardrails",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 23.9
+        "market_investment_delta_legacy": 23.9,
+        "rookie_alpha_rank": 15
       },
       "model_inputs_missing": [],
       "context": {
@@ -1502,7 +1551,8 @@
         "market_investment_delta_legacy": -18.1,
         "score_caveats": [
           "ACL tear (pre-draft 2026): alpha reflects pre-injury talent profile. Dynasty value is materially lower than alpha implies; year-1 contribution is unlikely. Consensus delta overstates model edge vs current dynasty market."
-        ]
+        ],
+        "rookie_alpha_rank": 16
       },
       "model_inputs_missing": [],
       "context": {
@@ -1600,7 +1650,8 @@
         "market_investment_delta_legacy": 1.8,
         "score_caveats": [
           "Route profile estimated (pending CFBD fetch): age-adjusted production score is based on synthetic target data derived from career totals. Ranking may shift materially once real CFBD play-by-play data is available."
-        ]
+        ],
+        "rookie_alpha_rank": 17
       },
       "model_inputs_missing": [],
       "context": {
@@ -1699,7 +1750,8 @@
         "evidence_tier": "watchlist_outlier",
         "evidence_tier_reason": "Disagreement present, but caution or incompleteness limits confidence",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 10.7
+        "market_investment_delta_legacy": 10.7,
+        "rookie_alpha_rank": 18
       },
       "model_inputs_missing": [],
       "context": {
@@ -1787,7 +1839,8 @@
         "evidence_tier": "watchlist_outlier",
         "evidence_tier_reason": "Disagreement present, but caution or incompleteness limits confidence",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -9.5
+        "market_investment_delta_legacy": -9.5,
+        "rookie_alpha_rank": 19
       },
       "model_inputs_missing": [],
       "context": {
@@ -1875,7 +1928,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 9.6
+        "market_investment_delta_legacy": 9.6,
+        "rookie_alpha_rank": 20
       },
       "model_inputs_missing": [],
       "exceptional_metrics": [
@@ -1986,7 +2040,8 @@
         "evidence_tier": "watchlist_outlier",
         "evidence_tier_reason": "Disagreement present, but caution or incompleteness limits confidence",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 8.4
+        "market_investment_delta_legacy": 8.4,
+        "rookie_alpha_rank": 21
       },
       "model_inputs_missing": [],
       "context": {
@@ -2072,7 +2127,8 @@
         "evidence_tier": "consensus_aligned",
         "evidence_tier_reason": "Near consensus after evidence guardrails",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -1.7
+        "market_investment_delta_legacy": -1.7,
+        "rookie_alpha_rank": 22
       },
       "model_inputs_missing": [],
       "context": {
@@ -2166,7 +2222,8 @@
         "evidence_tier": "watchlist_outlier",
         "evidence_tier_reason": "Disagreement present, but caution or incompleteness limits confidence",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 27.5
+        "market_investment_delta_legacy": 27.5,
+        "rookie_alpha_rank": 23
       },
       "model_inputs_missing": [],
       "context": {
@@ -2252,7 +2309,8 @@
         "evidence_tier": "consensus_aligned",
         "evidence_tier_reason": "Near consensus after evidence guardrails",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -2.5
+        "market_investment_delta_legacy": -2.5,
+        "rookie_alpha_rank": 24
       },
       "model_inputs_missing": [],
       "context": {
@@ -2342,7 +2400,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": -3.0
+        "market_investment_delta_legacy": -3.0,
+        "rookie_alpha_rank": 25
       },
       "model_inputs_missing": [],
       "context": {
@@ -2428,7 +2487,8 @@
         "evidence_tier": "watchlist_outlier",
         "evidence_tier_reason": "Disagreement present, but caution or incompleteness limits confidence",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 16.5
+        "market_investment_delta_legacy": 16.5,
+        "rookie_alpha_rank": 26
       },
       "model_inputs_missing": [],
       "context": {
@@ -2516,7 +2576,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 16.0
+        "market_investment_delta_legacy": 16.0,
+        "rookie_alpha_rank": 27
       },
       "model_inputs_missing": [],
       "context": {
@@ -2604,7 +2665,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": -34.1
+        "market_investment_delta_legacy": -34.1,
+        "rookie_alpha_rank": 28
       },
       "model_inputs_missing": [],
       "context": {
@@ -2690,7 +2752,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": -4.2
+        "market_investment_delta_legacy": -4.2,
+        "rookie_alpha_rank": 29
       },
       "model_inputs_missing": [],
       "context": {
@@ -2776,7 +2839,8 @@
         "evidence_tier": "moderate_edge",
         "evidence_tier_reason": "Meaningful disagreement with adequate evidence support",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -4.2
+        "market_investment_delta_legacy": -4.2,
+        "rookie_alpha_rank": 30
       },
       "model_inputs_missing": [],
       "context": {
@@ -2872,7 +2936,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 15.7
+        "market_investment_delta_legacy": 15.7,
+        "rookie_alpha_rank": 31
       },
       "model_inputs_missing": [],
       "context": {
@@ -2960,7 +3025,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": 24.2
+        "market_investment_delta_legacy": 24.2,
+        "rookie_alpha_rank": 32
       },
       "model_inputs_missing": [],
       "context": {
@@ -3050,7 +3116,8 @@
         "evidence_tier": "watchlist_outlier",
         "evidence_tier_reason": "Large disagreement exists but capped due to evidence guardrails",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": -16.5
+        "market_investment_delta_legacy": -16.5,
+        "rookie_alpha_rank": 33
       },
       "model_inputs_missing": [],
       "context": {
@@ -3145,7 +3212,8 @@
         "evidence_tier": "watchlist_outlier",
         "evidence_tier_reason": "Disagreement present, but caution or incompleteness limits confidence",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 13.2
+        "market_investment_delta_legacy": 13.2,
+        "rookie_alpha_rank": 34
       },
       "model_inputs_missing": [],
       "context": {
@@ -3231,7 +3299,8 @@
         "evidence_tier": "consensus_aligned",
         "evidence_tier_reason": "Near consensus after evidence guardrails",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 13.0
+        "market_investment_delta_legacy": 13.0,
+        "rookie_alpha_rank": 35
       },
       "model_inputs_missing": [],
       "context": {
@@ -3317,7 +3386,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Positional consensus unavailable for confidence labeling",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 23.0
+        "market_investment_delta_legacy": 23.0,
+        "rookie_alpha_rank": 36
       },
       "model_inputs_missing": [],
       "context": {
@@ -3403,7 +3473,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 12.9
+        "market_investment_delta_legacy": 12.9,
+        "rookie_alpha_rank": 37
       },
       "model_inputs_missing": [],
       "context": {
@@ -3491,7 +3562,8 @@
         "evidence_tier": "moderate_edge",
         "evidence_tier_reason": "Meaningful disagreement with adequate evidence support",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 22.5
+        "market_investment_delta_legacy": 22.5,
+        "rookie_alpha_rank": 38
       },
       "model_inputs_missing": [],
       "context": {
@@ -3577,7 +3649,8 @@
         "evidence_tier": "watchlist_outlier",
         "evidence_tier_reason": "Disagreement present, but caution or incompleteness limits confidence",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 22.1
+        "market_investment_delta_legacy": 22.1,
+        "rookie_alpha_rank": 39
       },
       "model_inputs_missing": [],
       "context": {
@@ -3665,7 +3738,8 @@
         "evidence_tier": "watchlist_outlier",
         "evidence_tier_reason": "Disagreement present, but caution or incompleteness limits confidence",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 1.9
+        "market_investment_delta_legacy": 1.9,
+        "rookie_alpha_rank": 40
       },
       "model_inputs_missing": [],
       "context": {
@@ -3753,7 +3827,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": -10.0
+        "market_investment_delta_legacy": -10.0,
+        "rookie_alpha_rank": 41
       },
       "model_inputs_missing": [],
       "context": {
@@ -3839,7 +3914,8 @@
         "evidence_tier": "watchlist_outlier",
         "evidence_tier_reason": "Disagreement present, but caution or incompleteness limits confidence",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 19.6
+        "market_investment_delta_legacy": 19.6,
+        "rookie_alpha_rank": 42
       },
       "model_inputs_missing": [],
       "context": {
@@ -3927,7 +4003,8 @@
         "evidence_tier": "watchlist_outlier",
         "evidence_tier_reason": "Disagreement present, but caution or incompleteness limits confidence",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 19.3
+        "market_investment_delta_legacy": 19.3,
+        "rookie_alpha_rank": 43
       },
       "model_inputs_missing": [],
       "context": {
@@ -4015,7 +4092,8 @@
         "evidence_tier": "consensus_aligned",
         "evidence_tier_reason": "Near consensus after evidence guardrails",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 9.2
+        "market_investment_delta_legacy": 9.2,
+        "rookie_alpha_rank": 44
       },
       "model_inputs_missing": [],
       "context": {
@@ -4107,7 +4185,8 @@
         "evidence_tier": "watchlist_outlier",
         "evidence_tier_reason": "Disagreement present, but caution or incompleteness limits confidence",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 19.1
+        "market_investment_delta_legacy": 19.1,
+        "rookie_alpha_rank": 45
       },
       "model_inputs_missing": [],
       "context": {
@@ -4195,7 +4274,8 @@
         "evidence_tier": "consensus_aligned",
         "evidence_tier_reason": "Near consensus after evidence guardrails",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 18.8
+        "market_investment_delta_legacy": 18.8,
+        "rookie_alpha_rank": 46
       },
       "model_inputs_missing": [],
       "context": {
@@ -4283,7 +4363,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 18.4
+        "market_investment_delta_legacy": 18.4,
+        "rookie_alpha_rank": 47
       },
       "model_inputs_missing": [],
       "context": {
@@ -4369,7 +4450,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": -21.9
+        "market_investment_delta_legacy": -21.9,
+        "rookie_alpha_rank": 48
       },
       "model_inputs_missing": [
         "athletic"
@@ -4465,7 +4547,8 @@
         "evidence_tier": "consensus_aligned",
         "evidence_tier_reason": "Near consensus after evidence guardrails",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 17.4
+        "market_investment_delta_legacy": 17.4,
+        "rookie_alpha_rank": 49
       },
       "model_inputs_missing": [],
       "context": {
@@ -4553,7 +4636,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -2.6
+        "market_investment_delta_legacy": -2.6,
+        "rookie_alpha_rank": 50
       },
       "model_inputs_missing": [],
       "exceptional_metrics": [
@@ -4650,7 +4734,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": -2.9
+        "market_investment_delta_legacy": -2.9,
+        "rookie_alpha_rank": 51
       },
       "model_inputs_missing": [],
       "context": {
@@ -4736,7 +4821,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": -3.4
+        "market_investment_delta_legacy": -3.4,
+        "rookie_alpha_rank": 52
       },
       "model_inputs_missing": [],
       "context": {
@@ -4825,7 +4911,8 @@
         "market_investment_delta_legacy": 11.6,
         "score_caveats": [
           "Route profile estimated (pending CFBD fetch): age-adjusted production score is based on synthetic target data derived from career totals. Ranking may shift materially once real CFBD play-by-play data is available."
-        ]
+        ],
+        "rookie_alpha_rank": 53
       },
       "model_inputs_missing": [],
       "exceptional_metrics": [
@@ -4936,7 +5023,8 @@
         "evidence_tier": "consensus_aligned",
         "evidence_tier_reason": "Near consensus after evidence guardrails",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 16.3
+        "market_investment_delta_legacy": 16.3,
+        "rookie_alpha_rank": 54
       },
       "model_inputs_missing": [],
       "context": {
@@ -5022,7 +5110,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -4.9
+        "market_investment_delta_legacy": -4.9,
+        "rookie_alpha_rank": 55
       },
       "model_inputs_missing": [],
       "context": {
@@ -5110,7 +5199,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": -15.3
+        "market_investment_delta_legacy": -15.3,
+        "rookie_alpha_rank": 56
       },
       "model_inputs_missing": [
         "athletic"
@@ -5206,7 +5296,8 @@
         "evidence_tier": "watchlist_outlier",
         "evidence_tier_reason": "Disagreement present, but caution or incompleteness limits confidence",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 14.5
+        "market_investment_delta_legacy": 14.5,
+        "rookie_alpha_rank": 57
       },
       "model_inputs_missing": [],
       "context": {
@@ -5294,7 +5385,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Positional consensus unavailable for confidence labeling",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 12.5
+        "market_investment_delta_legacy": 12.5,
+        "rookie_alpha_rank": 58
       },
       "model_inputs_missing": [],
       "context": {
@@ -5380,7 +5472,8 @@
         "evidence_tier": "watchlist_outlier",
         "evidence_tier_reason": "Disagreement present, but caution or incompleteness limits confidence",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 12.0
+        "market_investment_delta_legacy": 12.0,
+        "rookie_alpha_rank": 59
       },
       "model_inputs_missing": [],
       "context": {
@@ -5466,7 +5559,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": -8.6
+        "market_investment_delta_legacy": -8.6,
+        "rookie_alpha_rank": 60
       },
       "model_inputs_missing": [
         "athletic"
@@ -5562,7 +5656,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": 10.5
+        "market_investment_delta_legacy": 10.5,
+        "rookie_alpha_rank": 61
       },
       "model_inputs_missing": [],
       "context": {
@@ -5650,7 +5745,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 9.9
+        "market_investment_delta_legacy": 9.9,
+        "rookie_alpha_rank": 62
       },
       "model_inputs_missing": [],
       "exceptional_metrics": [
@@ -5747,7 +5843,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 9.4
+        "market_investment_delta_legacy": 9.4,
+        "rookie_alpha_rank": 63
       },
       "model_inputs_missing": [],
       "context": {
@@ -5833,7 +5930,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 9.0
+        "market_investment_delta_legacy": 9.0,
+        "rookie_alpha_rank": 64
       },
       "model_inputs_missing": [],
       "context": {
@@ -5921,7 +6019,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 8.9
+        "market_investment_delta_legacy": 8.9,
+        "rookie_alpha_rank": 65
       },
       "model_inputs_missing": [],
       "context": {
@@ -6007,7 +6106,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": 8.8
+        "market_investment_delta_legacy": 8.8,
+        "rookie_alpha_rank": 66
       },
       "model_inputs_missing": [
         "athletic"
@@ -6095,7 +6195,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Positional consensus unavailable for confidence labeling",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 8.7
+        "market_investment_delta_legacy": 8.7,
+        "rookie_alpha_rank": 67
       },
       "model_inputs_missing": [
         "athletic"
@@ -6183,7 +6284,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 8.5
+        "market_investment_delta_legacy": 8.5,
+        "rookie_alpha_rank": 68
       },
       "model_inputs_missing": [],
       "exceptional_metrics": [
@@ -6280,7 +6382,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": 8.3
+        "market_investment_delta_legacy": 8.3,
+        "rookie_alpha_rank": 69
       },
       "model_inputs_missing": [
         "athletic"
@@ -6368,7 +6471,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Positional consensus unavailable for confidence labeling",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 8.0
+        "market_investment_delta_legacy": 8.0,
+        "rookie_alpha_rank": 70
       },
       "model_inputs_missing": [],
       "context": {
@@ -6454,7 +6558,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": 7.9
+        "market_investment_delta_legacy": 7.9,
+        "rookie_alpha_rank": 71
       },
       "model_inputs_missing": [
         "athletic"
@@ -6542,7 +6647,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": 7.8
+        "market_investment_delta_legacy": 7.8,
+        "rookie_alpha_rank": 72
       },
       "model_inputs_missing": [
         "athletic"
@@ -6630,7 +6736,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": 7.8
+        "market_investment_delta_legacy": 7.8,
+        "rookie_alpha_rank": 73
       },
       "model_inputs_missing": [
         "athletic"
@@ -6718,7 +6825,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": 7.4
+        "market_investment_delta_legacy": 7.4,
+        "rookie_alpha_rank": 74
       },
       "model_inputs_missing": [
         "athletic"
@@ -6806,7 +6914,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 7.4
+        "market_investment_delta_legacy": 7.4,
+        "rookie_alpha_rank": 75
       },
       "model_inputs_missing": [],
       "context": {
@@ -6894,7 +7003,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Positional consensus unavailable for confidence labeling",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 7.1
+        "market_investment_delta_legacy": 7.1,
+        "rookie_alpha_rank": 76
       },
       "model_inputs_missing": [],
       "exceptional_metrics": [
@@ -6991,7 +7101,8 @@
         "evidence_tier": "consensus_aligned",
         "evidence_tier_reason": "Near consensus after evidence guardrails",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 7.0
+        "market_investment_delta_legacy": 7.0,
+        "rookie_alpha_rank": 77
       },
       "model_inputs_missing": [],
       "context": {
@@ -7077,7 +7188,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": 6.9
+        "market_investment_delta_legacy": 6.9,
+        "rookie_alpha_rank": 78
       },
       "model_inputs_missing": [
         "athletic"
@@ -7165,7 +7277,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 6.7
+        "market_investment_delta_legacy": 6.7,
+        "rookie_alpha_rank": 79
       },
       "model_inputs_missing": [],
       "context": {
@@ -7251,7 +7364,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Positional consensus unavailable for confidence labeling",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 6.4
+        "market_investment_delta_legacy": 6.4,
+        "rookie_alpha_rank": 80
       },
       "model_inputs_missing": [],
       "context": {
@@ -7337,7 +7451,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 6.2
+        "market_investment_delta_legacy": 6.2,
+        "rookie_alpha_rank": 81
       },
       "model_inputs_missing": [],
       "exceptional_metrics": [
@@ -7437,7 +7552,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": 6.1
+        "market_investment_delta_legacy": 6.1,
+        "rookie_alpha_rank": 82
       },
       "model_inputs_missing": [
         "athletic"
@@ -7525,7 +7641,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": 6.1
+        "market_investment_delta_legacy": 6.1,
+        "rookie_alpha_rank": 83
       },
       "model_inputs_missing": [
         "athletic"
@@ -7613,7 +7730,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 6.1
+        "market_investment_delta_legacy": 6.1,
+        "rookie_alpha_rank": 84
       },
       "model_inputs_missing": [],
       "context": {
@@ -7701,7 +7819,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Positional consensus unavailable for confidence labeling",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -3.9
+        "market_investment_delta_legacy": -3.9,
+        "rookie_alpha_rank": 85
       },
       "model_inputs_missing": [],
       "context": {
@@ -7787,7 +7906,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 5.8
+        "market_investment_delta_legacy": 5.8,
+        "rookie_alpha_rank": 86
       },
       "model_inputs_missing": [],
       "context": {
@@ -7873,7 +7993,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": 5.6
+        "market_investment_delta_legacy": 5.6,
+        "rookie_alpha_rank": 87
       },
       "model_inputs_missing": [
         "athletic"
@@ -7961,7 +8082,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 5.5
+        "market_investment_delta_legacy": 5.5,
+        "rookie_alpha_rank": 88
       },
       "model_inputs_missing": [],
       "context": {
@@ -8047,7 +8169,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 5.4
+        "market_investment_delta_legacy": 5.4,
+        "rookie_alpha_rank": 89
       },
       "model_inputs_missing": [],
       "context": {
@@ -8133,7 +8256,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 5.1
+        "market_investment_delta_legacy": 5.1,
+        "rookie_alpha_rank": 90
       },
       "model_inputs_missing": [],
       "context": {
@@ -8219,7 +8343,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Positional consensus unavailable for confidence labeling",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 5.1
+        "market_investment_delta_legacy": 5.1,
+        "rookie_alpha_rank": 91
       },
       "model_inputs_missing": [
         "athletic"
@@ -8307,7 +8432,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 4.7
+        "market_investment_delta_legacy": 4.7,
+        "rookie_alpha_rank": 92
       },
       "model_inputs_missing": [],
       "context": {
@@ -8395,7 +8521,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Positional consensus unavailable for confidence labeling",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 4.5
+        "market_investment_delta_legacy": 4.5,
+        "rookie_alpha_rank": 93
       },
       "model_inputs_missing": [],
       "context": {
@@ -8483,7 +8610,8 @@
         "evidence_tier": "watchlist_outlier",
         "evidence_tier_reason": "Disagreement present, but caution or incompleteness limits confidence",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 4.2
+        "market_investment_delta_legacy": 4.2,
+        "rookie_alpha_rank": 94
       },
       "model_inputs_missing": [],
       "context": {
@@ -8569,7 +8697,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 4.2
+        "market_investment_delta_legacy": 4.2,
+        "rookie_alpha_rank": 95
       },
       "model_inputs_missing": [],
       "context": {
@@ -8655,7 +8784,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Positional consensus unavailable for confidence labeling",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 0.3
+        "market_investment_delta_legacy": 0.3,
+        "rookie_alpha_rank": 96
       },
       "model_inputs_missing": [],
       "context": {
@@ -8741,7 +8871,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": 0.2
+        "market_investment_delta_legacy": 0.2,
+        "rookie_alpha_rank": 97
       },
       "model_inputs_missing": [],
       "exceptional_metrics": [
@@ -8840,7 +8971,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Positional consensus unavailable for confidence labeling",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -0.5
+        "market_investment_delta_legacy": -0.5,
+        "rookie_alpha_rank": 98
       },
       "model_inputs_missing": [],
       "context": {
@@ -8926,7 +9058,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -1.5
+        "market_investment_delta_legacy": -1.5,
+        "rookie_alpha_rank": 99
       },
       "model_inputs_missing": [],
       "exceptional_metrics": [
@@ -9023,7 +9156,8 @@
         "evidence_tier": "insufficient_evidence",
         "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
         "is_capped_disagreement": true,
-        "market_investment_delta_legacy": -7.0
+        "market_investment_delta_legacy": -7.0,
+        "rookie_alpha_rank": 100
       },
       "model_inputs_missing": [],
       "exceptional_metrics": [
