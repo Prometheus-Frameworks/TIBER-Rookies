@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-04-18T02:55:31+00:00",
-  "run_id": "rookie-alpha-2026-2026-04-18T02:55:31+00:00",
+  "generated_at": "2026-04-18T03:26:04+00:00",
+  "run_id": "rookie-alpha-2026-2026-04-18T03:26:04+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 100,
@@ -490,8 +490,8 @@
         "context_source": "compute_breakout_age.py"
       },
       "rookie_alpha_rank": 5,
-      "talent_rank": 9,
-      "draft_proxy_delta": 4
+      "talent_rank": 10,
+      "draft_proxy_delta": 5
     },
     {
       "player_id": "qb-drew-allar",
@@ -673,8 +673,101 @@
         "context_source": "Wikipedia Carnell Tate college statistics table (2023-2025 rows), retrieved 2026-03-29; speed comp via notes 2026-04-10"
       },
       "rookie_alpha_rank": 7,
-      "talent_rank": 13,
-      "draft_proxy_delta": 6
+      "talent_rank": 14,
+      "draft_proxy_delta": 7
+    },
+    {
+      "player_id": "wr-denzel-boston",
+      "player_name": "Denzel Boston",
+      "position": "WR",
+      "scores": {
+        "ras_0_100": 52.5763,
+        "athletic_score_0_100": 50.0,
+        "athletic_source": "NEUTRAL_DEFAULT",
+        "athletic_confidence": 0.5,
+        "athletic_explainer": "No usable RAS/SPORQ; neutral athletic default",
+        "production_0_100": 68.32,
+        "age_adjusted_production_0_100": 68.2,
+        "draft_capital_proxy_0_100": 85.0,
+        "talent_score_0_100": 60.305,
+        "rookie_alpha_0_100": 65.244,
+        "ceiling_bonus": null,
+        "market_conviction_ras_override": null,
+        "market_conviction_reason": null,
+        "wr_translation_penalty": null,
+        "wr_translation_signals": null,
+        "consensus_position_rank_blended": 4,
+        "consensus_position_rank_sources_count": 3,
+        "consensus_score_positional_0_100": 67.0,
+        "evidence_completeness_score": 0.85,
+        "consensus_delta_positional_raw": -1.8,
+        "consensus_delta_positional_cap_limit": 30.0,
+        "consensus_delta_positional_cap_tier": ">=0.80",
+        "consensus_delta_positional": -1.8,
+        "evidence_tier": "consensus_aligned",
+        "evidence_tier_reason": "Near consensus after evidence guardrails",
+        "is_capped_disagreement": false,
+        "market_investment_delta_legacy": -19.8
+      },
+      "model_inputs_missing": [],
+      "context": {
+        "player_id": "wr-denzel-boston",
+        "player_name": "Denzel Boston",
+        "position": "WR",
+        "school": "Washington",
+        "class_year": 2026,
+        "early_declare_flag": true,
+        "breakout_age": 20,
+        "age_at_first_impact_season": 20,
+        "freshman_total_yards": null,
+        "sophomore_total_yards": null,
+        "freshman_impact_flag": null,
+        "young_breakout_flag": true,
+        "breakout_strength": 0.3,
+        "breakout_confidence": 0.9,
+        "breakout_age_rating_0_100": 72.0,
+        "breakout_label": "Early breakout",
+        "career_yards_per_route_run": 2.02,
+        "best_season_yprr": 2.02,
+        "worst_season_yprr": null,
+        "seasons_over_2_3_yprr": 0,
+        "single_season_efficiency_dip_flag": null,
+        "multi_season_efficiency_flag": null,
+        "injury_affected_season_count": 0,
+        "injury_adjusted_profile_flag": false,
+        "broken_offense_context_flag": true,
+        "suppressed_context_season_count": 1,
+        "rush_attempts_or_rush_usage_signal": null,
+        "rushing_production_signal": null,
+        "missed_tackles_forced_per_reception": 0.11,
+        "yac_proxy_per_reception": null,
+        "contested_catch_rate": 0.611,
+        "inside_out_versatility_flag": null,
+        "man_zone_versatility_flag": true,
+        "power4_early_contributor_flag": true,
+        "career_receiving_market_share": null,
+        "career_mtf_per_attempt": null,
+        "freshman_ypc": null,
+        "athletic_upside_flag": null,
+        "path_disruption_flag": false
+      },
+      "evidence": {
+        "evidence_tags": [
+          "young_breakout",
+          "early_declare"
+        ],
+        "context_flags": [
+          "limited_multi_season_data"
+        ],
+        "translation_flags": [
+          "young_breakout"
+        ],
+        "evidence_summary": "Historical YPG comp: 73.4 YPG in best NCAA season (2025) places Boston in R1 historical group (Kelvin Benjamin 72.2, Xavier Worthy 72.4, Quentin Johnston 76.2) \u2014 low per-game volume driven by Washington's suppressed passing offense, not receiver limitations. 1D/RR 0.136 (#3 in 2026 class behind J.Smith 0.152, Sarratt 0.142) \u2014 elite tier. 77th percentile separation. 54.8% of routes run vs press coverage. Career YPRR 2.02; man_YPRR 2.34 vs zone_YPRR 1.79 \u2014 better vs press/man. 61.1% contested catch rate. MTF/rec 0.11 with 5.0 YAC per reception. QBR when targeted: 106.7. Open target rate: 82.4%. Volume suppressed by Washington offense context (73.4 YPG best season); efficiency metrics carry elevated signal weight given system constraints.",
+        "context_source": "Wikipedia + X research (1D/RR leaderboard, separation chart, press coverage %, YPG historical comp, advanced_receiving_stats FPD 2026), retrieved 2026-04-18."
+      },
+      "rookie_alpha_rank": 8,
+      "talent_rank": 9,
+      "draft_proxy_delta": 1
     },
     {
       "player_id": "wr-jordyn-tyson",
@@ -774,8 +867,8 @@
         "evidence_summary": "Transfer path: 470 yards as true freshman at Colorado, injury-limited seasons 2023-24, then 2025 draft cycle at Arizona State. Combine: 26 bench reps (one shy of WR all-time record) \u2014 exceptional functional strength. Skipped speed/jump testing (hamstring). MTF 0.07 (lowest in class) \u2014 profile is separator/route-runner, not YAC threat.\nScreen usage context: college offense ran high screen volume with Tyson. screen_yard_share estimate ~40-50% of targets (proxy; precise yard-share not confirmed). screen_yard_share NOT encoded \u2014 film review overrides proxy concern (see below).\nFilm review (2026-04-11, user-conducted):\nvs Texas State: lined up slot vs press man, beats press at 5 yards off LOS, wins outside leverage, adjusts frame on 40-yard gain with 1-handed contested catch while safety crashes \u2014 press win + vertical tracking + contested finish.\nvs Baylor: boundary short side, corner route up the seam in Cover 2, splits DB and LB, reads space and attacks window \u2014 spatial feel and route utility, not gadget spam.\nvs TCU (post): strong side boundary vs soft man, wins inside leverage on post for 15-yard gain \u2014 leverage win creating viable throwing window.\nvs TCU (60-yd TD): weak side boundary vs press man, sells screen look initially then torches press over the top for 60-yard walk-in TD \u2014 weaponizes screen expectation, which is the key distinction: manufactured usage may have been deployment choice, not ceiling.\nModel philosophy note: screen-yard share = production-translation risk, not evidence that the receiver cannot play. Film confirms press wins, leverage wins, vertical tracking, contested catch ability, and boundary route success. Screen-heavy college deployment reflects offense exploiting an easy button on a better-than-deployed player. screen_yard_share penalty WILL NOT be applied unless hard data confirms and film evidence is re-evaluated. deep_yard_share remains a valid caution flag if confirmed.",
         "context_source": "Wikipedia Jordyn Tyson career summary + arizonasports.com 2026 NFL Combine report, retrieved 2026-04-08; film review notes 2026-04-11."
       },
-      "rookie_alpha_rank": 8,
-      "talent_rank": 15,
+      "rookie_alpha_rank": 9,
+      "talent_rank": 16,
       "draft_proxy_delta": 7
     },
     {
@@ -900,8 +993,8 @@
         "evidence_summary": "Oregon TE. 100.0 SPORQ \u2014 top composite athleticism in the 2026 TE class (no other TE clears 90th percentile). Historic SPORQ outlier; at TE where athleticism is more outcome-predictive than at WR, this is a ceiling-expanding signal. Day 2 draft capital (85 proxy). Production context limited; SPORQ-first profile warranting athletic ceiling bonus.",
         "context_source": "compute_breakout_age.py; SPORQ 2026 TE class notes 2026-04-10"
       },
-      "rookie_alpha_rank": 9,
-      "talent_rank": 17,
+      "rookie_alpha_rank": 10,
+      "talent_rank": 18,
       "draft_proxy_delta": 8
     },
     {
@@ -996,8 +1089,8 @@
         "evidence_summary": "Verified USC receiving ladder from 88 freshman yards to 764 sophomore yards and 1,156 junior receiving yards; 2025 Biletnikoff season. R1 P4 WR since 2021 with 75th+ pctile career YPRR + passer rating when targeted + 50th+ pctile TPRR \u2014 same threshold tier as Ja'Marr Chase, Malik Nabers, Jaylen Waddle, Garrett Wilson, Chris Olave, JSN, Jordan Addison. Combine: vert 40.0\", broad 129\". MTF 0.25 (2nd in class). Model rank 8 is supported.",
         "context_source": "Wikipedia Makai Lemon stats + @ffdataroma research note 2026-04-08"
       },
-      "rookie_alpha_rank": 10,
-      "talent_rank": 10,
+      "rookie_alpha_rank": 11,
+      "talent_rank": 11,
       "draft_proxy_delta": 0
     },
     {
@@ -1084,8 +1177,8 @@
         "evidence_summary": "Led national champion Indiana with 69 catches for 937 yards and 13 TDs in 2025; Dane Brugler ranks him 22nd overall (The Athletic), Tankathon has him at #24. Physical slot receiver with exceptional YAC and hands; 24 career TDs and 1,798 career yards; rising first-round buzz.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 11,
-      "talent_rank": 11,
+      "rookie_alpha_rank": 12,
+      "talent_rank": 12,
       "draft_proxy_delta": 0
     },
     {
@@ -1170,9 +1263,9 @@
         "evidence_summary": "Posted elite volume at UConn with 101 catches for 1,278 yards and 13 TDs in 2025; Biletnikoff finalist and UConn's first consensus All-American. Averaged 8+ YAC per reception (2nd in FBS) and ranked 3rd in YPRR per PFF; small-school caveat applies but his athleticism (41\" vertical, 4.40 forty) confirms elite physical traits.",
         "context_source": "manual_seed_2026"
       },
-      "rookie_alpha_rank": 12,
+      "rookie_alpha_rank": 13,
       "talent_rank": 6,
-      "draft_proxy_delta": -6
+      "draft_proxy_delta": -7
     },
     {
       "player_id": "te-eli-stowers",
@@ -1287,102 +1380,9 @@
         "evidence_summary": "Vanderbilt TE. 99.0 SPORQ \u2014 2nd best in 2026 TE class behind Sadiq (100.0). Elite composite athleticism at TE where SPORQ is a meaningful upside signal. Early declare with 2026 draft capital. Production profile limited at Vanderbilt; athletic ceiling warrants a modest bonus relative to production-only score.",
         "context_source": "compute_breakout_age.py; SPORQ 2026 TE class notes 2026-04-10"
       },
-      "rookie_alpha_rank": 13,
-      "talent_rank": 8,
-      "draft_proxy_delta": -5
-    },
-    {
-      "player_id": "wr-denzel-boston",
-      "player_name": "Denzel Boston",
-      "position": "WR",
-      "scores": {
-        "ras_0_100": 52.5763,
-        "athletic_score_0_100": 50.0,
-        "athletic_source": "NEUTRAL_DEFAULT",
-        "athletic_confidence": 0.5,
-        "athletic_explainer": "No usable RAS/SPORQ; neutral athletic default",
-        "production_0_100": 56.2,
-        "age_adjusted_production_0_100": 48.0,
-        "draft_capital_proxy_0_100": 85.0,
-        "talent_score_0_100": 53.4875,
-        "rookie_alpha_0_100": 59.79,
-        "ceiling_bonus": null,
-        "market_conviction_ras_override": null,
-        "market_conviction_reason": null,
-        "wr_translation_penalty": null,
-        "wr_translation_signals": null,
-        "consensus_position_rank_blended": 4,
-        "consensus_position_rank_sources_count": 3,
-        "consensus_score_positional_0_100": 67.0,
-        "evidence_completeness_score": 0.7,
-        "consensus_delta_positional_raw": -7.2,
-        "consensus_delta_positional_cap_limit": 18.0,
-        "consensus_delta_positional_cap_tier": "0.60-0.79",
-        "consensus_delta_positional": -7.2,
-        "evidence_tier": "moderate_edge",
-        "evidence_tier_reason": "Meaningful disagreement with adequate evidence support",
-        "is_capped_disagreement": false,
-        "market_investment_delta_legacy": -25.2
-      },
-      "model_inputs_missing": [],
-      "context": {
-        "player_id": "wr-denzel-boston",
-        "player_name": "Denzel Boston",
-        "position": "WR",
-        "school": "Washington",
-        "class_year": 2026,
-        "early_declare_flag": true,
-        "breakout_age": 20,
-        "age_at_first_impact_season": 20,
-        "freshman_total_yards": null,
-        "sophomore_total_yards": null,
-        "freshman_impact_flag": null,
-        "young_breakout_flag": true,
-        "breakout_strength": 0.3,
-        "breakout_confidence": 0.9,
-        "breakout_age_rating_0_100": 72.0,
-        "breakout_label": "Early breakout",
-        "career_yards_per_route_run": null,
-        "best_season_yprr": null,
-        "worst_season_yprr": null,
-        "seasons_over_2_3_yprr": null,
-        "single_season_efficiency_dip_flag": null,
-        "multi_season_efficiency_flag": null,
-        "injury_affected_season_count": 0,
-        "injury_adjusted_profile_flag": false,
-        "broken_offense_context_flag": null,
-        "suppressed_context_season_count": null,
-        "rush_attempts_or_rush_usage_signal": null,
-        "rushing_production_signal": null,
-        "missed_tackles_forced_per_reception": 0.11,
-        "yac_proxy_per_reception": null,
-        "contested_catch_rate": null,
-        "inside_out_versatility_flag": null,
-        "man_zone_versatility_flag": null,
-        "power4_early_contributor_flag": null,
-        "career_receiving_market_share": null,
-        "career_mtf_per_attempt": null,
-        "freshman_ypc": null,
-        "athletic_upside_flag": null,
-        "path_disruption_flag": false
-      },
-      "evidence": {
-        "evidence_tags": [
-          "young_breakout",
-          "early_declare"
-        ],
-        "context_flags": [
-          "limited_multi_season_data"
-        ],
-        "translation_flags": [
-          "young_breakout"
-        ],
-        "evidence_summary": "Sourced profile confirms 62-881-11 in 2025 and only 66 total receiving yards across his first two college seasons combined; year-by-year freshman/sophomore split and combine-verified testing context are not explicitly published in currently available in-repo sources.",
-        "context_source": "Wikipedia Denzel Boston college career summary and pre-draft measurables section, retrieved 2026-03-29."
-      },
       "rookie_alpha_rank": 14,
-      "talent_rank": 24,
-      "draft_proxy_delta": 10
+      "talent_rank": 8,
+      "draft_proxy_delta": -6
     },
     {
       "player_id": "te-sam-roush",
@@ -1571,8 +1571,8 @@
         "context_source": "@ffdataroma scouting note + @ScottBarrettDFB PFF chart, 2026-04-07"
       },
       "rookie_alpha_rank": 16,
-      "talent_rank": 16,
-      "draft_proxy_delta": 0
+      "talent_rank": 17,
+      "draft_proxy_delta": 1
     },
     {
       "player_id": "wr-ted-hurst",
@@ -1659,8 +1659,8 @@
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 17,
-      "talent_rank": 14,
-      "draft_proxy_delta": -3
+      "talent_rank": 15,
+      "draft_proxy_delta": -2
     },
     {
       "player_id": "wr-germie-bernard",
@@ -1955,8 +1955,8 @@
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 20,
-      "talent_rank": 18,
-      "draft_proxy_delta": -2
+      "talent_rank": 19,
+      "draft_proxy_delta": -1
     },
     {
       "player_id": "wr-eric-mcalister",
@@ -2041,8 +2041,8 @@
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 21,
-      "talent_rank": 12,
-      "draft_proxy_delta": -9
+      "talent_rank": 13,
+      "draft_proxy_delta": -8
     },
     {
       "player_id": "wr-chris-brazzell-ii",
@@ -2495,8 +2495,8 @@
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 26,
-      "talent_rank": 19,
-      "draft_proxy_delta": -7
+      "talent_rank": 20,
+      "draft_proxy_delta": -6
     },
     {
       "player_id": "te-michael-trigg",
@@ -2583,8 +2583,8 @@
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 27,
-      "talent_rank": 21,
-      "draft_proxy_delta": -6
+      "talent_rank": 22,
+      "draft_proxy_delta": -5
     },
     {
       "player_id": "qb-ty-simpson",
@@ -2853,8 +2853,8 @@
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 30,
-      "talent_rank": 22,
-      "draft_proxy_delta": -8
+      "talent_rank": 23,
+      "draft_proxy_delta": -7
     },
     {
       "player_id": "te-daequan-wright",
@@ -2943,8 +2943,8 @@
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 31,
-      "talent_rank": 20,
-      "draft_proxy_delta": -11
+      "talent_rank": 21,
+      "draft_proxy_delta": -10
     },
     {
       "player_id": "rb-jadarian-price",
@@ -3296,8 +3296,8 @@
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 35,
-      "talent_rank": 23,
-      "draft_proxy_delta": -12
+      "talent_rank": 24,
+      "draft_proxy_delta": -11
     },
     {
       "player_id": "te-joe-royer",

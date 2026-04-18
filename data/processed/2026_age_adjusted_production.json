@@ -532,6 +532,25 @@
     "age_adjusted_production_score": 88.9
   },
   {
+    "player_id": "wr-denzel-boston",
+    "player_name": "Denzel Boston",
+    "position": "WR",
+    "breakout_age": 20,
+    "effective_breakout_age": 20,
+    "boa_adjustment": null,
+    "young_breakout_flag": true,
+    "breakout_strength": 0.3,
+    "breakout_confidence": 0.9,
+    "breakout_age_rating_0_100": 72.0,
+    "breakout_label": "Early breakout",
+    "best_season_volume": 89.0,
+    "recent_season_volume": 89.0,
+    "weighted_volume": 89.0,
+    "age_multiplier": 1.5,
+    "raw_score": 133.5,
+    "age_adjusted_production_score": 68.2
+  },
+  {
     "player_id": "wr-jordyn-tyson",
     "player_name": "Jordyn Tyson",
     "position": "WR",
@@ -644,25 +663,6 @@
     "age_multiplier": 1.0,
     "raw_score": 99.0,
     "age_adjusted_production_score": 50.6
-  },
-  {
-    "player_id": "wr-denzel-boston",
-    "player_name": "Denzel Boston",
-    "position": "WR",
-    "breakout_age": 20,
-    "effective_breakout_age": 20,
-    "boa_adjustment": null,
-    "young_breakout_flag": true,
-    "breakout_strength": 0.3,
-    "breakout_confidence": 0.9,
-    "breakout_age_rating_0_100": 72.0,
-    "breakout_label": "Early breakout",
-    "best_season_volume": 65.0,
-    "recent_season_volume": 57.0,
-    "weighted_volume": 62.6,
-    "age_multiplier": 1.5,
-    "raw_score": 93.9,
-    "age_adjusted_production_score": 48.0
   },
   {
     "player_id": "wr-kevin-coleman-jr",
