@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIBER · Rookie Card Prototype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-logo" href="#">
+          <span class="site-logo-mark">◆</span>
+          <span class="site-logo-text">TIBER</span>
+          <span class="site-logo-tagline">Rookie Intelligence · 2026</span>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a class="site-nav-link" href="#">Board</a>
+          <a class="site-nav-link" href="#">Gallery</a>
+          <a class="site-nav-link active" href="#">Card</a>
+          <a class="site-nav-link" href="#">Compare</a>
+          <a class="site-nav-link" href="#">Conviction</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="#">Board</a>
+        <span class="crumb-sep">/</span>
+        <span class="crumb-pos" id="crumb-pos">WR</span>
+        <span class="crumb-sep">/</span>
+        <span class="crumb-current" id="crumb-name">Marcus Trenton</span>
+      </nav>
+
+      <div class="player-switcher" id="player-switcher"></div>
+
+      <section id="card-root"></section>
+    </main>
+
+    <!-- Tweaks panel -->
+    <aside id="tweaks-panel" class="tweaks-panel" hidden>
+      <div class="tweaks-header">
+        <strong>Tweaks</strong>
+        <button id="tweaks-close" aria-label="Close">×</button>
+      </div>
+      <div class="tweaks-body" id="tweaks-body"></div>
+    </aside>
+
+    <script src="data.js"></script>
+    <script src="card.js"></script>
+    <script src="tweaks.js"></script>
+  </body>
+</html>
