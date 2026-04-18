@@ -123,6 +123,7 @@
       import { renderRookieBoard } from '/components/rookies/RookieBoard.js';
       import { renderRookieQueuePanel } from '/components/rookies/RookieQueuePanel.js';
       import { addRookieToQueue, clearQueuedRookieNote, clearQueuedRookieTag, clearRookieQueue, getRookieQueueNoteMaxLength, getRookieQueueTagOptions, importRookieQueue, isRookieQueued, loadRookieQueue, moveQueuedRookie, removeRookieFromQueue, serializeRookieQueue, updateQueuedRookieNote, updateQueuedRookieTag } from '/lib/rookies/rookieQueueStore.js';
+      import { buildBoardCsv, downloadCsv } from '/lib/rookies/exportCsv.js';
 
       const summaryRoot = document.getElementById('board-summary');
       const controlsRoot = document.getElementById('board-controls-root');
@@ -449,6 +450,14 @@
             render(allRows);
           });
         });
+
+        const csvButton = controlsRoot.querySelector('[data-board-csv-export]');
+        if (csvButton) {
+          csvButton.addEventListener('click', () => {
+            const stamp = new Date().toISOString().slice(0, 10);
+            downloadCsv(buildBoardCsv(sorted), `tiber-board-${stamp}.csv`);
+          });
+        }
 
         wireBoardActions(allRows);
         wireQueueActions(allRows);

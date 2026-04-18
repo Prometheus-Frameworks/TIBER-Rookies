@@ -141,6 +141,9 @@ export function renderRookieCompareView(container, leftCard, rightCard) {
       <section class="metrics">
         <div class="section-title">Compare notes</div>
         <ul class="compare-notes">${compared.notes.map((note) => `<li>${esc(note)}</li>`).join('')}</ul>
+        <div style="margin-top: 12px">
+          <button type="button" class="btn" data-compare-csv-export>↓ Export comparison CSV</button>
+        </div>
       </section>
     </section>
   `;

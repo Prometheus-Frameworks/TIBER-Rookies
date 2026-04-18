@@ -1,0 +1,21 @@
+{
+  "player_id": "te-nate-boerkircher",
+  "player_name": "Nate Boerkircher",
+  "team": "Texas A&M",
+  "season": 2025,
+  "season_type": "regular",
+  "targets": 27,
+  "receptions": 19,
+  "screen_targets": 0,
+  "screen_target_rate": null,
+  "yards_per_target": 7.3,
+  "deep_target_rate": null,
+  "depth_tag_coverage_rate": null,
+  "team_pass_plays": null,
+  "team_screen_plays": null,
+  "team_screen_rate": null,
+  "team_yards_per_pass": null,
+  "source_name": "Grok/Sports-Reference cross-verification (season=2025, team=Texas A&M); targets estimated (REC / 0.70)",
+  "source_url": null,
+  "methodology_notes": "Stats sourced from Grok research against Sports-Reference and ESPN box scores (2025 final college season). Targets estimated as receptions / 0.70 (industry avg catch rate). screen_target_rate, deep_target_rate, and depth_tag_coverage_rate are null \u2014 season-level stats carry no route/scheme descriptors."
+}

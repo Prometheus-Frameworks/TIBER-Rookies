@@ -49,6 +49,7 @@
       import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
       import { renderRookieCompareSelector } from '/components/rookies/RookieCompareSelector.js';
       import { renderRookieCompareView } from '/components/rookies/RookieCompareView.js';
+      import { buildCompareCsv, downloadCsv } from '/lib/rookies/exportCsv.js';
 
       const selectorRoot = document.getElementById('compare-selector-root');
       const compareRoot = document.getElementById('compare-root');
@@ -73,6 +74,15 @@
         return { leftCard, rightCard };
       }
 
+      function wireCompareExport(leftCard, rightCard) {
+        const btn = compareRoot.querySelector('[data-compare-csv-export]');
+        if (!btn) return;
+        btn.addEventListener('click', () => {
+          const csv = buildCompareCsv(leftCard, rightCard);
+          downloadCsv(csv, `tiber-compare-${leftCard.slug}-vs-${rightCard.slug}.csv`);
+        });
+      }
+
       function render(cards) {
         const pair = resolvePair(cards);
         if (!pair) {
@@ -88,6 +98,7 @@
           rightSlug: pair.rightCard.slug,
         });
         renderRookieCompareView(compareRoot, pair.leftCard, pair.rightCard);
+        wireCompareExport(pair.leftCard, pair.rightCard);
 
         const form = document.getElementById('compare-selector');
         const leftSelect = form.querySelector('select[name="left"]');
@@ -100,6 +111,7 @@
 
           syncParams(leftCard.slug, rightCard.slug);
           renderRookieCompareView(compareRoot, leftCard, rightCard);
+          wireCompareExport(leftCard, rightCard);
         }
 
         leftSelect.addEventListener('change', onChange);

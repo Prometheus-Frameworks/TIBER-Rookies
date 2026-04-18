@@ -1579,7 +1579,7 @@
     "dob": "2003-06-27",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 1
   },
   {
     "player_id": "wr-dillon-bell",
@@ -1614,9 +1614,9 @@
     "school": "UConn",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 23,
+    "age_at_first_impact_season": 23,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "elite_production",
       "yac_producer",
@@ -1650,9 +1650,9 @@
       "yac_per_reception": 6.4
     },
     "dob": "2002-07-05",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 1.0,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "wr-malik-benson",
@@ -1688,9 +1688,9 @@
     "school": "Alabama",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "strong_production",
       "route_runner",
@@ -1721,9 +1721,9 @@
       "yac_per_reception": 6.4
     },
     "dob": "2003-12-02",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.82,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "wr-zachariah-branch",
@@ -1732,10 +1732,11 @@
     "school": "Georgia",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 20,
+    "age_at_first_impact_season": 20,
+    "young_breakout_flag": true,
     "evidence_tags": [
+      "young_breakout",
       "speed_threat",
       "yac_producer",
       "slot_receiver",
@@ -1766,9 +1767,9 @@
       "yac_per_reception": 8.0
     },
     "dob": "2004-03-29",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.34,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
   },
   {
     "player_id": "wr-barion-brown",
@@ -1870,7 +1871,7 @@
     "dob": "2001-03-05",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 1
   },
   {
     "player_id": "wr-josh-cameron",
@@ -1879,9 +1880,9 @@
     "school": "Baylor",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "strong_production",
       "outside_receiver",
@@ -1914,9 +1915,9 @@
       "yac_per_reception": 5.1
     },
     "dob": "2003-03-18",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.98,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "wr-kevin-coleman-jr",
@@ -1925,9 +1926,9 @@
     "school": "Missouri",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "slot_receiver",
       "route_runner",
@@ -1958,9 +1959,9 @@
       "yac_per_reception": 6.1
     },
     "dob": "2003-09-10",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.88,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "wr-omar-cooper-jr",
@@ -1969,9 +1970,9 @@
     "school": "Indiana",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "elite_production",
       "slot_receiver",
@@ -2003,9 +2004,9 @@
       "yac_per_reception": 6.3
     },
     "dob": "2003-12-14",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.98,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
   },
   {
     "player_id": "wr-cj-daniels",
@@ -2085,9 +2086,9 @@
     "school": "Notre Dame",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "raw_athlete",
       "outside_receiver",
@@ -2120,9 +2121,9 @@
       "yac_per_reception": 4.7
     },
     "dob": "2002-07-02",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.58,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
   },
   {
     "player_id": "wr-emmanuel-henderson-jr",
@@ -2223,9 +2224,9 @@
     "school": "Georgia State",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "strong_production",
       "outside_receiver",
@@ -2257,9 +2258,9 @@
       "yac_per_reception": 4.6
     },
     "dob": "2004-07-02",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 1.0,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "wr-caullin-lacy",
@@ -2295,9 +2296,9 @@
     "school": "North Dakota State",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 23,
+    "age_at_first_impact_season": 23,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "elite_production",
       "fcs_production_caveat",
@@ -2331,9 +2332,9 @@
       "yac_per_reception": 5.1
     },
     "dob": "2001-09-20",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.46,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "wr-jakobi-lane",
@@ -2413,9 +2414,9 @@
     "school": "TCU",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "elite_production",
       "outside_receiver",
@@ -2449,9 +2450,9 @@
       "yac_per_reception": 7.4
     },
     "dob": "2003-09-29",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 1.0,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "wr-donaven-mcculley",
@@ -2487,9 +2488,9 @@
     "school": "Georgia Tech",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "speed_threat",
       "outside_receiver"
@@ -2519,9 +2520,9 @@
       "yac_per_reception": 5.8
     },
     "dob": "2002-09-17",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.32,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "wr-chase-roberts",
@@ -2652,9 +2653,9 @@
     "school": "Texas Tech",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "outside_receiver",
       "route_runner"
@@ -2667,9 +2668,9 @@
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
     "dob": "2004-05-14",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.62,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "wr-harrison-wallace-iii",
@@ -2799,9 +2800,9 @@
     "school": "Utah",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 24,
+    "age_at_first_impact_season": 24,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "strong_production",
       "receiving_threat",
@@ -2818,9 +2819,9 @@
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
     "dob": "2001-01-01",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.971,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "te-nate-boerkircher",
@@ -2847,7 +2848,7 @@
     "dob": "2001-09-04",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 1
   },
   {
     "player_id": "te-josh-cuevas",
@@ -2856,9 +2857,9 @@
     "school": "Alabama",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "route_runner",
       "move_te",
@@ -2872,9 +2873,9 @@
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
     "dob": "2003-09-15",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.514,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "te-khalil-dinkins",
@@ -2908,9 +2909,9 @@
     "school": "Texas",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "dual_role",
       "inline_te",
@@ -2925,9 +2926,9 @@
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
     "dob": "2004-03-26",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.343,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "te-john-michael-gyllenborg",
@@ -2955,7 +2956,7 @@
     "exceptional_metrics": [],
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 1
   },
   {
     "player_id": "te-matthew-hibner",
@@ -2964,9 +2965,9 @@
     "school": "SMU",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 23,
+    "age_at_first_impact_season": 23,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "receiving_threat",
       "athleticism_upside",
@@ -2981,9 +2982,9 @@
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
     "dob": "2002-03-09",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.257,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "te-justin-joly",
@@ -2992,9 +2993,9 @@
     "school": "N.C. State",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "strong_production",
       "receiving_threat",
@@ -3010,9 +3011,9 @@
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
     "dob": "2004-07-09",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 1.0,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "te-will-kacmarek",
@@ -3039,7 +3040,7 @@
     "dob": "2003-02-12",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 1
   },
   {
     "player_id": "te-jaren-kanak",
@@ -3076,9 +3077,9 @@
     "school": "Tennessee",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "inline_te",
       "blocking_specialist"
@@ -3091,9 +3092,9 @@
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
     "dob": "2002-09-25",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.057,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "te-marlin-klein",
@@ -3121,7 +3122,7 @@
     "dob": "2002-09-17",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 1
   },
   {
     "player_id": "te-tanner-koziol",
@@ -3149,7 +3150,7 @@
     "exceptional_metrics": [],
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 1
   },
   {
     "player_id": "te-rj-maryland",
@@ -3240,9 +3241,9 @@
     "school": "Notre Dame",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "inline_te",
       "injury_history",
@@ -3257,9 +3258,9 @@
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
     "dob": "2004-02-12",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.314,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "te-dj-rogers",
@@ -3285,7 +3286,7 @@
     "exceptional_metrics": [],
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 1
   },
   {
     "player_id": "te-sam-roush",
@@ -3294,9 +3295,9 @@
     "school": "Stanford",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "strong_production",
       "inline_te",
@@ -3312,9 +3313,9 @@
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
     "dob": "2003-09-06",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 1.0,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "te-joe-royer",
@@ -3340,7 +3341,7 @@
     "exceptional_metrics": [],
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 1
   },
   {
     "player_id": "te-bauer-sharp",
@@ -3366,7 +3367,7 @@
     "exceptional_metrics": [],
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 1
   },
   {
     "player_id": "te-michael-trigg",
@@ -3375,9 +3376,9 @@
     "school": "Baylor",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 22,
+    "age_at_first_impact_season": 22,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "elite_production",
       "receiving_threat",
@@ -3394,9 +3395,9 @@
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
     "dob": "2002-06-27",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.229,
+    "breakout_confidence": 0.9,
+    "seasons_available": 2
   },
   {
     "player_id": "te-daequan-wright",
@@ -3405,9 +3406,9 @@
     "school": "Mississippi",
     "class_year": 2026,
     "early_declare_flag": null,
-    "breakout_age": null,
-    "age_at_first_impact_season": null,
-    "young_breakout_flag": null,
+    "breakout_age": 21,
+    "age_at_first_impact_season": 21,
+    "young_breakout_flag": false,
     "evidence_tags": [
       "strong_production",
       "receiving_threat",
@@ -3423,9 +3424,9 @@
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
     "dob": "2003-09-21",
-    "breakout_strength": null,
-    "breakout_confidence": null,
-    "seasons_available": 0
+    "breakout_strength": 0.6,
+    "breakout_confidence": 0.8,
+    "seasons_available": 1
   },
   {
     "player_id": "wr-cameron-dorner",
