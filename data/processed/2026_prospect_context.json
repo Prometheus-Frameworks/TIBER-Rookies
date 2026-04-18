@@ -489,7 +489,8 @@
     "dob": "2004-06-04",
     "breakout_strength": 0.48,
     "breakout_confidence": 0.9,
-    "seasons_available": 2
+    "seasons_available": 2,
+    "screen_yard_share": 0.51
   },
   {
     "player_id": "wr-kc-concepcion",
@@ -768,14 +769,16 @@
     "young_breakout_flag": true,
     "evidence_tags": [
       "young_breakout",
-      "acl_injury_predraft"
+      "acl_injury_predraft",
+      "elite_man_coverage",
+      "contested_catch_specialist"
     ],
     "context_flags": [
       "injury_context",
       "pre_draft_acl_march_2026",
       "low_1d_rr_below_avg"
     ],
-    "evidence_summary": "Pre-draft ACL tear (March 2026). Was projected WR1-3 of the 2026 rookie class pre-injury; dynasty community had him in top-3 WR conversation. Post-ACL dynasty rank drops to approximately WR7-10 of class (KTC ~WR60 overall). Injury severely compresses first-year upside; year-1 contribution unlikely. Long-term profile may be intact if recovery is clean. Model scores reflect pre-injury production and combine profile, not injury-adjusted dynasty value \u2014 consensus_delta overstates model edge.",
+    "evidence_summary": "Pre-draft ACL tear (November 2025). 2025 YPRR: 2.55. Career YPRR 2.01. Best season man YPRR > 4.25 + passer rating > 130.0 when targeted \u2014 one of only 8 P4 WRs to hit both thresholds since 2019 (comp group: DeVonta Smith, Ja'Marr Chase, Tee Higgins, JSN, Jaylen Waddle, Justyn Ross, Kyle Williams, Marquise Brown). 75th pctile success rate vs man, 64th vs zone (Reception Perception). 69.6% success rate vs man, 68.8% vs press. Career 56.1% contested catch rate. 5.3% drop rate in 2025. QBR when targeted: 113.2. Open target rate: 73.5%. Separation: 58th percentile. Adjusted contested target rate: bottom-5 in class (limited separation ability). 6'2\", 227 lbs \u2014 size/physicality profile. Limited route tree at Louisville. <2.10 YPRR before age 21 (historical 1/15 hit rate comp group). Year-1 NFL contribution unlikely due to ACL recovery. Long-term ceiling intact if recovery is clean.",
     "context_source": "Research agent 2026-04-09 (KeepTradeCut / Dynasty Nerds / PlayerProfiler post-injury consensus)",
     "missed_tackles_forced_per_reception": 0.17,
     "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
@@ -786,8 +789,8 @@
       "source": "fantasy_points_data_2026",
       "qbr_when_targeted": 113.2,
       "career_yprr": 2.01,
-      "zone_yprr": 1.94,
-      "man_yprr": 2.25,
+      "zone_yprr": 2.53,
+      "man_yprr": 3.21,
       "target_rate": 0.207,
       "open_target_rate": 0.735,
       "contested_catch_rate": 0.559,
@@ -799,7 +802,11 @@
     "dob": "2004-06-07",
     "breakout_strength": 0.22,
     "breakout_confidence": 0.9,
-    "seasons_available": 2
+    "seasons_available": 2,
+    "career_yards_per_route_run": 2.01,
+    "best_season_yprr": 2.55,
+    "contested_catch_rate": 0.561,
+    "man_zone_versatility_flag": true
   },
   {
     "player_id": "wr-elijah-sarratt",
@@ -1747,23 +1754,23 @@
     "position": "WR",
     "school": "Georgia",
     "class_year": 2026,
-    "early_declare_flag": null,
+    "early_declare_flag": false,
     "breakout_age": 20,
     "age_at_first_impact_season": 20,
     "young_breakout_flag": true,
     "evidence_tags": [
-      "young_breakout",
       "speed_threat",
       "yac_producer",
       "slot_receiver",
-      "raw_athlete"
+      "screen_specialist"
     ],
     "context_flags": [
-      "low_confidence_seed",
-      "pending_cfbd_verification"
+      "heavy_screen_reliance",
+      "zone_coverage_concern",
+      "late_declare"
     ],
-    "evidence_summary": "Transferred from USC to Georgia for 2025 and posted 81 catches for 811 yards and 6 TDs; 78% of yards came after the catch on quick throws and screens, indicating gadget/speed-oriented usage. Bleacher Report ranks him #10 overall at WR (#49 overall); rare home-run threat limited by route refinement.",
-    "context_source": "manual_seed_2026",
+    "evidence_summary": "43% of career targets on screens (#1 all-time among drafted P4 WRs since 2015). 50% of career rec yards on screens + slot fades; 52% in 2025. 58% of career catches thrown behind the line of scrimmage. Career aDOT 5.25 (#1 lowest for R1-2 WRs). Career YPRR 2.03 (same as KC Concepcion); best season 2.57. YPRR minus screens: 1.7 \u2014 below the 2.0 threshold; historically risky. Zone YPRR 1.94 vs man YPRR 2.79 \u2014 zone is a concern given NFL is ~75% zone. Contested catch rate 38% (below average). MTF per screen reception 0.34 (above FBS avg 0.26) \u2014 legitimate YAC threat on manufactured touches. ~80% of career rec yards came after the catch; YAC/rec 8.0. Next Gen Stats prospect model: 79.46 (#4 in class). 5-star recruit (99 prospect grade). 4.35 40-time. Jet Award winner as freshman at USC. 2nd team All-SEC 2025 at Georgia. Analytical consensus: \"worst analytics profile of any projected Day 1-2 WR ever.\" High-end comp: Marvin Mims. Low-end: Anthony Schwartz. Non-early declare; 4 full college seasons at 22 years old at draft.",
+    "context_source": "X research (screen %, zone/man splits, aDOT, historical comps, NGS model), retrieved 2026-04-18.",
     "exceptional_metrics": [],
     "first_down_per_route_run": 0.0955,
     "first_down_per_route_run_tier": "average",
@@ -1785,7 +1792,12 @@
     "dob": "2004-03-29",
     "breakout_strength": 0.34,
     "breakout_confidence": 0.9,
-    "seasons_available": 2
+    "seasons_available": 2,
+    "screen_yard_share": 0.52,
+    "career_yards_per_route_run": 2.03,
+    "best_season_yprr": 2.57,
+    "contested_catch_rate": 0.381,
+    "man_zone_versatility_flag": false
   },
   {
     "player_id": "wr-barion-brown",
@@ -2023,7 +2035,8 @@
     "breakout_strength": 0.98,
     "breakout_confidence": 0.9,
     "seasons_available": 2,
-    "freshman_impact_flag": false
+    "freshman_impact_flag": false,
+    "screen_yard_share": 0.45
   },
   {
     "player_id": "wr-cj-daniels",
