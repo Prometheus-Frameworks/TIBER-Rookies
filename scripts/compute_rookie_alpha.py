@@ -271,7 +271,7 @@ def compute_evidence_completeness_score(
     if raw_context.get("dob") or raw_context.get("dob_seeded") is True:
         score += 0.10
 
-    if player.athletic_source == "RAS":
+    if player.athletic_source in ("RAS", "RAS_PARTIAL"):
         score += 0.15
 
     if raw_context.get("power4_early_contributor_flag") is True:
