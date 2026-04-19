@@ -110,7 +110,9 @@
         "career_mtf_per_attempt": 0.335,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": null
+        "path_disruption_flag": null,
+        "combine_bench_reps_225": 21,
+        "combine_bench_note": "21 reps of 225lb at 2026 NFL Combine."
       },
       "evidence": {
         "evidence_tags": [
