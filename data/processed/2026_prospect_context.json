@@ -119,7 +119,7 @@
       "injury_adjusted_2024_playoffs",
       "sporq_preliminary"
     ],
-    "evidence_summary": "BOA 19, youngest RB in 2026 class (early declare). Career 0.335 MTF/touch (P4, min 425 carries since 2014): 4th all-time behind Bijan Robinson, David Montgomery, Bucky Irving \u2014 round 1-3 comp group. Career 4.35 YAC/carry (94th pctile, 3rd all-time since 2014 behind Etienne 4.513 and Bijan 4.397). 4.36 40-time, 98th pctile speed score. SPORQ 95.6 (preliminary, may rise post-bench). Best season YPRR 1.83 (94th pctile RB), career YPRR 1.60 (84th pctile). QBR when targeted: 126.9 (class leader). PBE 98.3% (elite pass protector, 3.17% pressure rate). Career fumble rate 0.23%. TD rate 10.43% + MTF > 33.3%: comp group (P4 since 2015) = Javonte Williams, Dameon Pierce, Miyan Williams, Blake Corum. PFF Offense Grade 89.9 (class leader). Notre Dame SOS +5.35 (above avg SEC). 2024 playoff injury context: knee injury suppressed late-season YAC output; would have cleared 70+ YA/G in 2+ seasons unadjusted alongside Coleman.",
+    "evidence_summary": "BOA 19, youngest RB in 2026 class (early declare). Career 0.335 MTF/touch (P4, min 425 carries since 2014): 4th all-time behind Bijan Robinson, David Montgomery, Bucky Irving \u2014 round 1-3 comp group. Career 4.35 YAC/carry (94th pctile, 3rd all-time since 2014 behind Etienne 4.513 and Bijan 4.397). 4.36 40-time, 98th pctile speed score. SPORQ 95.6. Combine bench: 21 reps of 225lb. Best season YPRR 1.83 (94th pctile RB), career YPRR 1.60 (84th pctile). QBR when targeted: 126.9 (class leader). PBE 98.3% (elite pass protector, 3.17% pressure rate). Career fumble rate 0.23%. TD rate 10.43% + MTF > 33.3%: comp group (P4 since 2015) = Javonte Williams, Dameon Pierce, Miyan Williams, Blake Corum. PFF Offense Grade 89.9 (class leader). Notre Dame SOS +5.35 (above avg SEC). 2024 playoff injury context: knee injury suppressed late-season YAC output; would have cleared 70+ YA/G in 2+ seasons unadjusted alongside Coleman.",
     "context_source": "X research batch (April 2026): @ffdataroma, Scott Barrett, various FFX accounts; PFF/Sports-Reference cross-verification",
     "dob": "2005-05-31",
     "breakout_strength": 0.505,
@@ -128,13 +128,15 @@
     "career_mtf_per_attempt": 0.335,
     "career_yards_per_route_run": 1.6,
     "best_season_yprr": 1.83,
-    "sporq_score_preliminary": 95.6,
     "pff_offense_grade_career": 89.9,
     "career_yac_per_carry": 4.35,
     "pass_protection_efficiency": 98.3,
     "qbr_when_targeted": 126.9,
     "career_fumble_rate": 0.0023,
-    "breakaway_run_rate_career": 0.102
+    "breakaway_run_rate_career": 0.102,
+    "combine_bench_reps_225": 21,
+    "combine_bench_note": "21 reps of 225lb at 2026 NFL Combine.",
+    "sporq_score": 95.6
   },
   {
     "player_id": "rb-jadarian-price",
