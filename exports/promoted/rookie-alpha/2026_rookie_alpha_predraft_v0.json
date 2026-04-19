@@ -45,7 +45,7 @@
         "athletic_score_0_100": 95.6,
         "athletic_source": "SPORQ",
         "athletic_confidence": 0.85,
-        "athletic_explainer": "SPORQ 95.6 (preliminary \u2014 4.36 40-time, 98th pctile speed score; may increase post-bench)",
+        "athletic_explainer": "SPORQ 95.6 \u2014 4.36 40-time (98th pctile speed score). Combine bench: 21 reps of 225lb.",
         "production_0_100": 90.0,
         "age_adjusted_production_0_100": 100.0,
         "draft_capital_proxy_0_100": 95.0,
@@ -64,8 +64,8 @@
         "consensus_delta_positional_cap_limit": 10.0,
         "consensus_delta_positional_cap_tier": "0.40-0.59",
         "consensus_delta_positional": 1.1,
-        "evidence_tier": "insufficient_evidence",
-        "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
+        "evidence_tier": "consensus_aligned",
+        "evidence_tier_reason": "Near consensus (delta 1.1); elite evidence completeness (0.82). Athletic source SPORQ 95.6 confirmed post-combine bench (21 reps).",
         "is_capped_disagreement": false,
         "market_investment_delta_legacy": -14.9,
         "rookie_alpha_rank": 1
@@ -125,17 +125,16 @@
           "injury_adjusted"
         ],
         "context_flags": [
-          "injury_adjusted_2024_playoffs",
-          "sporq_preliminary"
+          "injury_adjusted_2024_playoffs"
         ],
         "translation_flags": [
           "young_breakout",
           "injury_adjusted"
         ],
-        "evidence_summary": "BOA 19, youngest RB in 2026 class (early declare). Career 0.335 MTF/touch (P4, min 425 carries since 2014): 4th all-time behind Bijan Robinson, David Montgomery, Bucky Irving \u2014 round 1-3 comp group. Career 4.35 YAC/carry (94th pctile, 3rd all-time since 2014 behind Etienne 4.513 and Bijan 4.397). 4.36 40-time, 98th pctile speed score. SPORQ 95.6 (preliminary, may rise post-bench). Best season YPRR 1.83 (94th pctile RB), career YPRR 1.60 (84th pctile). QBR when targeted: 126.9 (class leader). PBE 98.3% (elite pass protector, 3.17% pressure rate). Career fumble rate 0.23%. TD rate 10.43% + MTF > 33.3%: comp group (P4 since 2015) = Javonte Williams, Dameon Pierce, Miyan Williams, Blake Corum. PFF Offense Grade 89.9 (class leader). Notre Dame SOS +5.35 (above avg SEC). 2024 playoff injury context: knee injury suppressed late-season YAC output; would have cleared 70+ YA/G in 2+ seasons unadjusted alongside Coleman.",
+        "evidence_summary": "BOA 19, youngest RB in 2026 class (early declare). Career 0.335 MTF/touch (P4, min 425 carries since 2014): 4th all-time behind Bijan Robinson, David Montgomery, Bucky Irving \u2014 round 1-3 comp group. Career 4.35 YAC/carry (94th pctile, 3rd all-time since 2014 behind Etienne 4.513 and Bijan 4.397). 4.36 40-time, 98th pctile speed score. SPORQ 95.6. Combine bench: 21 reps of 225lb. Best season YPRR 1.83 (94th pctile RB), career YPRR 1.60 (84th pctile). QBR when targeted: 126.9 (class leader). PBE 98.3% (elite pass protector, 3.17% pressure rate). Career fumble rate 0.23%. TD rate 10.43% + MTF > 33.3%: comp group (P4 since 2015) = Javonte Williams, Dameon Pierce, Miyan Williams, Blake Corum. PFF Offense Grade 89.9 (class leader). Notre Dame SOS +5.35 (above avg SEC). 2024 playoff injury context: knee injury suppressed late-season YAC output; would have cleared 70+ YA/G in 2+ seasons unadjusted alongside Coleman.",
         "context_source": "X research batch (April 2026): @ffdataroma, Scott Barrett, various FFX accounts; PFF/Sports-Reference cross-verification",
-        "evidence_tier": "strong_supported_edge",
-        "evidence_tier_reason": "Multi-source X/PFF research confirms elite creation metrics (MTF, YAC, SPORQ); production and capital aligned; athletic score upgraded to SPORQ 95.6 (preliminary)"
+        "evidence_tier": "consensus_aligned",
+        "evidence_tier_reason": "Near consensus (delta 1.1); elite evidence completeness (0.82). Athletic source SPORQ 95.6 confirmed post-combine bench (21 reps)."
       },
       "rookie_alpha_rank": 1,
       "talent_rank": 1,
