@@ -28,8 +28,8 @@ const PPR_BAND_CLASS = {
 };
 
 /**
- * Renders a compact 3-bar SVG showing RAS / Production / Draft Capital (0–100).
- * Bars are colour-coded: RAS = steel blue, Production = teal, Draft = coral.
+ * Renders a compact 3-bar SVG showing Athletic / Production / Draft Capital (0–100).
+ * Bars are colour-coded: Athletic (RAS/SPORQ/partial) = steel blue, Production = teal, Draft = coral.
  */
 function athChipLabel(source) {
   if (source === 'SPORQ') return 'SPORQ';
