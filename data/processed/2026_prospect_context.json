@@ -353,7 +353,18 @@
     "dob": "2005-01-19",
     "breakout_strength": 0.16,
     "breakout_confidence": 0.9,
-    "seasons_available": 2
+    "seasons_available": 2,
+    "qb_accuracy_context": {
+      "qb_name": "Julian Sayin",
+      "qb_team": "Ohio State",
+      "qb_accuracy_rank_fbs_2025": 1,
+      "qb_accurate_pct": 0.738,
+      "qb_inaccurate_catchable_pct": 0.105,
+      "qb_uncatchable_pct": 0.157,
+      "qb_attempts": 370,
+      "qb_accuracy_note": "#1 FBS accuracy (73.8% accurate, 15.7% uncatchable). Elite ball placement inflates receiver QBR and YAC context \u2014 production numbers partially benefited from elite QB precision.",
+      "source": "PFF 2025 FBS Most Accurate Passers (true attempts only, excluding throwaways/spikes)"
+    }
   },
   {
     "player_id": "wr-jordyn-tyson",
@@ -455,7 +466,18 @@
     "breakout_confidence": 0.9,
     "seasons_available": 2,
     "breakout_age_rating_0_100": 90.5,
-    "breakout_label": "Elite breakout"
+    "breakout_label": "Elite breakout",
+    "qb_accuracy_context": {
+      "qb_name": "Sam Leavitt",
+      "qb_team": "Arizona State",
+      "qb_accuracy_rank_fbs_2025": null,
+      "qb_accurate_pct": null,
+      "qb_inaccurate_catchable_pct": null,
+      "qb_uncatchable_pct": null,
+      "qb_attempts": null,
+      "qb_accuracy_note": "QB did not rank in top 50 FBS accuracy (2025). Man YPRR 4.63 best season and 31.2% target rate achieved behind a below-average accuracy QB. Bullish signal for route separation quality.",
+      "source": "PFF 2025 FBS Most Accurate Passers (true attempts only, excluding throwaways/spikes)"
+    }
   },
   {
     "player_id": "wr-makai-lemon",
@@ -537,7 +559,18 @@
     "breakout_strength": 0.48,
     "breakout_confidence": 0.9,
     "seasons_available": 2,
-    "screen_yard_share": 0.51
+    "screen_yard_share": 0.51,
+    "qb_accuracy_context": {
+      "qb_name": "Jayden Maiava",
+      "qb_team": "USC",
+      "qb_accuracy_rank_fbs_2025": 34,
+      "qb_accurate_pct": 0.615,
+      "qb_inaccurate_catchable_pct": 0.152,
+      "qb_uncatchable_pct": 0.233,
+      "qb_attempts": 382,
+      "qb_accuracy_note": "#34 FBS accuracy (61.5% accurate, 23.3% uncatchable \u2014 one of higher uncatchable rates in top 50). Lemon posted 122.0 QBR when targeted and 3.0+ YPRR vs both coverages despite significant QB-induced noise. Bullish signal: efficiency achieved without clean ball placement.",
+      "source": "PFF 2025 FBS Most Accurate Passers (true attempts only, excluding throwaways/spikes)"
+    }
   },
   {
     "player_id": "wr-kc-concepcion",
@@ -899,7 +932,18 @@
     "dob": "2003-05-28",
     "breakout_strength": 0.52,
     "breakout_confidence": 0.9,
-    "seasons_available": 2
+    "seasons_available": 2,
+    "qb_accuracy_context": {
+      "qb_name": "Fernando Mendoza",
+      "qb_team": "Indiana",
+      "qb_accuracy_rank_fbs_2025": 3,
+      "qb_accurate_pct": 0.69,
+      "qb_inaccurate_catchable_pct": 0.146,
+      "qb_uncatchable_pct": 0.163,
+      "qb_attempts": 355,
+      "qb_accuracy_note": "#3 FBS accuracy (69.0% accurate, 16.3% uncatchable). Sarratt's 148.0 QBR when targeted is extremely high \u2014 elite QB placement is a significant contributor and should be discounted accordingly.",
+      "source": "PFF 2025 FBS Most Accurate Passers (true attempts only, excluding throwaways/spikes)"
+    }
   },
   {
     "player_id": "te-kenyon-sadiq",
@@ -2128,7 +2172,18 @@
     "breakout_confidence": 0.9,
     "seasons_available": 2,
     "freshman_impact_flag": false,
-    "screen_yard_share": 0.45
+    "screen_yard_share": 0.45,
+    "qb_accuracy_context": {
+      "qb_name": "Fernando Mendoza",
+      "qb_team": "Indiana",
+      "qb_accuracy_rank_fbs_2025": 3,
+      "qb_accurate_pct": 0.69,
+      "qb_inaccurate_catchable_pct": 0.146,
+      "qb_uncatchable_pct": 0.163,
+      "qb_attempts": 355,
+      "qb_accuracy_note": "#3 FBS accuracy (69.0% accurate, 16.3% uncatchable). Elite QB precision context \u2014 Cooper's 138.9 QBR when targeted partially reflects clean ball placement, not solely separation quality.",
+      "source": "PFF 2025 FBS Most Accurate Passers (true attempts only, excluding throwaways/spikes)"
+    }
   },
   {
     "player_id": "wr-cj-daniels",
@@ -2500,7 +2555,18 @@
     "dob": "2004-08-05",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 0,
+    "qb_accuracy_context": {
+      "qb_name": "Jayden Maiava",
+      "qb_team": "USC",
+      "qb_accuracy_rank_fbs_2025": 34,
+      "qb_accurate_pct": 0.615,
+      "qb_inaccurate_catchable_pct": 0.152,
+      "qb_uncatchable_pct": 0.233,
+      "qb_attempts": 382,
+      "qb_accuracy_note": "#34 FBS accuracy (61.5% accurate, 23.3% uncatchable). Same QB context as Lemon \u2014 production at 127.6 QBR when targeted despite elevated uncatchable rate.",
+      "source": "PFF 2025 FBS Most Accurate Passers (true attempts only, excluding throwaways/spikes)"
+    }
   },
   {
     "player_id": "wr-kendrick-law",
