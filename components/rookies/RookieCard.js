@@ -55,7 +55,7 @@ function renderRadarChart(athleticScore, production, draftCapital, athleticSourc
   const centerX = 100;
   const centerY = 100;
   const radius = 80;
-  const athLabel = athleticSource === 'SPORQ' ? 'ATH (SPORQ)' : athleticSource === 'COMBINE_FALLBACK' ? 'ATH (partial)' : 'ATH';
+  const athLabel = athleticSource === 'SPORQ' ? 'ATH (SPORQ)' : athleticSource === 'COMBINE_FALLBACK' ? 'ATH (partial)' : 'RAS';
   const axes = [
     { label: athLabel, angle: -Math.PI / 2, value: athleticScore },
     { label: 'Production', angle: Math.PI / 6, value: production },
