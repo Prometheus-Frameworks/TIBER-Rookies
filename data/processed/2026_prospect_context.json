@@ -662,7 +662,69 @@
       "deep_ball_off_target_rate_15plus_2025": 0.42
     },
     "qb_adjusted_yprr_2025_estimate": 3.0,
-    "qb_adjusted_yprr_note": "158 yards from 3.0 YPRR in 2025 per research note. QB off-target rate of 42% on 15+ air yards (class worst) is the primary gap. Adjusted estimate ~3.0."
+    "qb_adjusted_yprr_note": "158 yards from 3.0 YPRR in 2025 per research note. QB off-target rate of 42% on 15+ air yards (class worst) is the primary gap. Adjusted estimate ~3.0.",
+    "field_sources": {
+      "freshman_total_yards": {
+        "value": 1159,
+        "source_type": "manual_x_research",
+        "source_description": "X research batch April 2026 \u2014 NC State 2023 receiving + rushing yards, age 18",
+        "date": "2026-04-15"
+      },
+      "sophomore_total_yards": {
+        "value": 496,
+        "source_type": "manual_x_research",
+        "source_description": "X research batch April 2026 \u2014 NC State 2024 yards (transfer/broken offense context)",
+        "date": "2026-04-15"
+      },
+      "career_yards_per_route_run": {
+        "value": 2.03,
+        "source_type": "manual_x_research",
+        "source_description": "X research batch April 2026 \u2014 career YPRR from YPRR tier posts",
+        "date": "2026-04-15"
+      },
+      "best_season_yprr": {
+        "value": 2.56,
+        "source_type": "manual_research_note",
+        "source_description": "User research note April 2026 \u2014 KCC 2025 YPRR (corrected from 2.30 which was also manual_x_research); 158 yards from 3.0",
+        "date": "2026-04-20"
+      },
+      "worst_season_yprr": {
+        "value": 1.29,
+        "source_type": "manual_x_research",
+        "source_description": "X research batch April 2026 \u2014 2024 sophomore season dip (NC State\u2192A&M transition)",
+        "date": "2026-04-15"
+      },
+      "contested_catch_rate": {
+        "value": 0.667,
+        "source_type": "manual_x_research",
+        "source_description": "X research batch April 2026 \u2014 2025 season contested catch rate",
+        "date": "2026-04-15"
+      },
+      "missed_tackles_forced_per_reception": {
+        "value": 0.2,
+        "source_type": "manual_x_research",
+        "source_description": "X research batch April 2026 \u2014 MTF/rec from Scott Barrett / PFF chart",
+        "date": "2026-04-15"
+      },
+      "first_down_per_route_run": {
+        "value": 0.128,
+        "source_type": "manual_x_research",
+        "source_description": "X/@ffdataroma 2025 P5 WR leaderboard (Hudl IQ) \u2014 6th among P5 WRs with 250+ routes",
+        "date": "2026-04-15"
+      },
+      "qb_adjusted_yprr_2025_estimate": {
+        "value": 3.0,
+        "source_type": "manual_research_note",
+        "source_description": "User research note April 2026 \u2014 158 yards from 3.0 YPRR; 42% QB off-target rate on 15+ air yards",
+        "date": "2026-04-20"
+      },
+      "qb_accuracy_context.deep_ball_off_target_rate_15plus_2025": {
+        "value": 0.42,
+        "source_type": "manual_research_note",
+        "source_description": "User research note April 2026 \u2014 PFF sourced off-target rate on 15+ air yards",
+        "date": "2026-04-20"
+      }
+    }
   },
   {
     "player_id": "wr-brenen-thompson",
