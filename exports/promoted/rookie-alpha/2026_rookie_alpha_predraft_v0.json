@@ -436,7 +436,7 @@
         "breakout_age_rating_0_100": 93.0,
         "breakout_label": "Elite breakout",
         "career_yards_per_route_run": 2.03,
-        "best_season_yprr": 2.3,
+        "best_season_yprr": 2.56,
         "worst_season_yprr": 1.29,
         "seasons_over_2_3_yprr": 2,
         "single_season_efficiency_dip_flag": true,
@@ -457,7 +457,10 @@
         "career_mtf_per_attempt": null,
         "freshman_ypc": null,
         "athletic_upside_flag": null,
-        "path_disruption_flag": false
+        "path_disruption_flag": false,
+        "qb_adjusted_yprr_2025_estimate": 3.0,
+        "qb_adjusted_yprr_note": "158 yards from 3.0 YPRR in 2025. QB off-target rate 42% on 15+ air yards (class worst). Adjusted estimate ~3.0.",
+        "deep_ball_off_target_rate_15plus_2025": 0.42
       },
       "evidence": {
         "evidence_tags": [
