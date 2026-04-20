@@ -363,7 +363,8 @@
       "qb_uncatchable_pct": 0.157,
       "qb_attempts": 370,
       "qb_accuracy_note": "#1 FBS accuracy (73.8% accurate, 15.7% uncatchable). Elite ball placement inflates receiver QBR and YAC context \u2014 production numbers partially benefited from elite QB precision.",
-      "source": "PFF 2025 FBS Most Accurate Passers (true attempts only, excluding throwaways/spikes)"
+      "source": "PFF 2025 FBS Most Accurate Passers (true attempts only, excluding throwaways/spikes)",
+      "deep_ball_off_target_rate_15plus_2025": 0.32
     }
   },
   {
@@ -476,7 +477,8 @@
       "qb_uncatchable_pct": null,
       "qb_attempts": null,
       "qb_accuracy_note": "QB did not rank in top 50 FBS accuracy (2025). Man YPRR 4.63 best season and 31.2% target rate achieved behind a below-average accuracy QB. Bullish signal for route separation quality.",
-      "source": "PFF 2025 FBS Most Accurate Passers (true attempts only, excluding throwaways/spikes)"
+      "source": "PFF 2025 FBS Most Accurate Passers (true attempts only, excluding throwaways/spikes)",
+      "deep_ball_off_target_rate_15plus_2025": 0.31
     }
   },
   {
@@ -569,7 +571,8 @@
       "qb_uncatchable_pct": 0.233,
       "qb_attempts": 382,
       "qb_accuracy_note": "#34 FBS accuracy (61.5% accurate, 23.3% uncatchable \u2014 one of higher uncatchable rates in top 50). Lemon posted 122.0 QBR when targeted and 3.0+ YPRR vs both coverages despite significant QB-induced noise. Bullish signal: efficiency achieved without clean ball placement.",
-      "source": "PFF 2025 FBS Most Accurate Passers (true attempts only, excluding throwaways/spikes)"
+      "source": "PFF 2025 FBS Most Accurate Passers (true attempts only, excluding throwaways/spikes)",
+      "deep_ball_off_target_rate_15plus_2025": 0.22
     }
   },
   {
@@ -587,7 +590,7 @@
     "freshman_impact_flag": true,
     "young_breakout_flag": true,
     "career_yards_per_route_run": 2.03,
-    "best_season_yprr": 2.3,
+    "best_season_yprr": 2.56,
     "worst_season_yprr": 1.29,
     "seasons_over_2_3_yprr": 2,
     "single_season_efficiency_dip_flag": true,
@@ -645,7 +648,21 @@
     "dob": "2004-09-24",
     "breakout_strength": 0.52,
     "breakout_confidence": 0.9,
-    "seasons_available": 2
+    "seasons_available": 2,
+    "qb_accuracy_context": {
+      "qb_name": "Marcel Reed",
+      "qb_team": "Texas A&M",
+      "qb_accuracy_rank_fbs_2025": null,
+      "qb_accurate_pct": null,
+      "qb_inaccurate_catchable_pct": null,
+      "qb_uncatchable_pct": null,
+      "qb_attempts": null,
+      "qb_accuracy_note": "QB did not rank in top 50 FBS accuracy (2025). KCC averaged 2.56 YPRR with 42% off-target rate on 15+ air yards \u2014 worst in class. 158 yards from 3.0 YPRR. QB-adjusted YPRR estimate ~3.0.",
+      "source": "PFF 2025 FBS Most Accurate Passers; research note April 2026",
+      "deep_ball_off_target_rate_15plus_2025": 0.42
+    },
+    "qb_adjusted_yprr_2025_estimate": 3.0,
+    "qb_adjusted_yprr_note": "158 yards from 3.0 YPRR in 2025 per research note. QB off-target rate of 42% on 15+ air yards (class worst) is the primary gap. Adjusted estimate ~3.0."
   },
   {
     "player_id": "wr-brenen-thompson",
@@ -756,7 +773,19 @@
     "dob": "2003-10-23",
     "breakout_strength": 0.0,
     "breakout_confidence": 0.9,
-    "seasons_available": 2
+    "seasons_available": 2,
+    "qb_accuracy_context": {
+      "qb_name": "Joey Aguilar",
+      "qb_team": "Tennessee",
+      "qb_accuracy_rank_fbs_2025": 2,
+      "qb_accurate_pct": 0.691,
+      "qb_inaccurate_catchable_pct": 0.133,
+      "qb_uncatchable_pct": 0.177,
+      "qb_attempts": 385,
+      "qb_accuracy_note": "#2 FBS accuracy (69.1% accurate, 17.7% uncatchable). Only 19% off-target on deep throws \u2014 Brazzell benefited from elite QB placement on vertical routes.",
+      "source": "PFF 2025 FBS Most Accurate Passers",
+      "deep_ball_off_target_rate_15plus_2025": 0.19
+    }
   },
   {
     "player_id": "wr-denzel-boston",
@@ -835,7 +864,19 @@
     "dob": "2003-12-06",
     "breakout_strength": 0.8,
     "breakout_confidence": 0.9,
-    "seasons_available": 2
+    "seasons_available": 2,
+    "qb_accuracy_context": {
+      "qb_name": "Demond Williams Jr.",
+      "qb_team": "Washington",
+      "qb_accuracy_rank_fbs_2025": 8,
+      "qb_accurate_pct": 0.654,
+      "qb_inaccurate_catchable_pct": 0.156,
+      "qb_uncatchable_pct": 0.19,
+      "qb_attempts": 327,
+      "qb_accuracy_note": "#8 FBS accuracy (65.4% accurate, 19.0% uncatchable). Boston had 33% off-target rate on deep throws \u2014 above class median despite a top-10 accurate QB.",
+      "source": "PFF 2025 FBS Most Accurate Passers",
+      "deep_ball_off_target_rate_15plus_2025": 0.33
+    }
   },
   {
     "player_id": "wr-chris-bell",
@@ -886,7 +927,19 @@
     "career_yards_per_route_run": 2.01,
     "best_season_yprr": 2.55,
     "contested_catch_rate": 0.561,
-    "man_zone_versatility_flag": true
+    "man_zone_versatility_flag": true,
+    "qb_accuracy_context": {
+      "qb_name": "Miller Moss",
+      "qb_team": "Louisville",
+      "qb_accuracy_rank_fbs_2025": 26,
+      "qb_accurate_pct": 0.624,
+      "qb_inaccurate_catchable_pct": 0.155,
+      "qb_uncatchable_pct": 0.22,
+      "qb_attempts": 354,
+      "qb_accuracy_note": "#26 FBS accuracy (62.4% accurate, 22.0% uncatchable). Bell had 24% off-target rate on deep throws \u2014 near class median.",
+      "source": "PFF 2025 FBS Most Accurate Passers",
+      "deep_ball_off_target_rate_15plus_2025": 0.24
+    }
   },
   {
     "player_id": "wr-elijah-sarratt",
@@ -942,7 +995,8 @@
       "qb_uncatchable_pct": 0.163,
       "qb_attempts": 355,
       "qb_accuracy_note": "#3 FBS accuracy (69.0% accurate, 16.3% uncatchable). Sarratt's 148.0 QBR when targeted is extremely high \u2014 elite QB placement is a significant contributor and should be discounted accordingly.",
-      "source": "PFF 2025 FBS Most Accurate Passers (true attempts only, excluding throwaways/spikes)"
+      "source": "PFF 2025 FBS Most Accurate Passers (true attempts only, excluding throwaways/spikes)",
+      "deep_ball_off_target_rate_15plus_2025": 0.05
     }
   },
   {
@@ -1810,7 +1864,19 @@
     "dob": "2002-07-05",
     "breakout_strength": 1.0,
     "breakout_confidence": 0.8,
-    "seasons_available": 1
+    "seasons_available": 1,
+    "qb_accuracy_context": {
+      "qb_name": null,
+      "qb_team": "UConn",
+      "qb_accuracy_rank_fbs_2025": null,
+      "qb_accurate_pct": null,
+      "qb_inaccurate_catchable_pct": null,
+      "qb_uncatchable_pct": null,
+      "qb_attempts": null,
+      "qb_accuracy_note": "QB not in top 50 FBS accuracy chart (2025). Bell had 26% off-target rate on deep throws.",
+      "source": "PFF 2025 FBS Most Accurate Passers",
+      "deep_ball_off_target_rate_15plus_2025": 0.26
+    }
   },
   {
     "player_id": "wr-malik-benson",
@@ -2182,7 +2248,8 @@
       "qb_uncatchable_pct": 0.163,
       "qb_attempts": 355,
       "qb_accuracy_note": "#3 FBS accuracy (69.0% accurate, 16.3% uncatchable). Elite QB precision context \u2014 Cooper's 138.9 QBR when targeted partially reflects clean ball placement, not solely separation quality.",
-      "source": "PFF 2025 FBS Most Accurate Passers (true attempts only, excluding throwaways/spikes)"
+      "source": "PFF 2025 FBS Most Accurate Passers (true attempts only, excluding throwaways/spikes)",
+      "deep_ball_off_target_rate_15plus_2025": 0.21
     }
   },
   {
@@ -2300,7 +2367,19 @@
     "dob": "2002-07-02",
     "breakout_strength": 0.58,
     "breakout_confidence": 0.9,
-    "seasons_available": 2
+    "seasons_available": 2,
+    "qb_accuracy_context": {
+      "qb_name": "CJ Carr",
+      "qb_team": "Notre Dame",
+      "qb_accuracy_rank_fbs_2025": 21,
+      "qb_accurate_pct": 0.63,
+      "qb_inaccurate_catchable_pct": 0.127,
+      "qb_uncatchable_pct": 0.243,
+      "qb_attempts": 284,
+      "qb_accuracy_note": "#21 FBS accuracy (63.0% accurate, 24.3% uncatchable). Fields had 41% off-target rate on deep throws \u2014 second worst in class. Explains suppressed QBR when targeted (88.5).",
+      "source": "PFF 2025 FBS Most Accurate Passers",
+      "deep_ball_off_target_rate_15plus_2025": 0.41
+    }
   },
   {
     "player_id": "wr-emmanuel-henderson-jr",
