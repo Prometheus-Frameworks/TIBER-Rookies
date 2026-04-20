@@ -45,7 +45,7 @@
         "athletic_score_0_100": 95.6,
         "athletic_source": "SPORQ",
         "athletic_confidence": 0.85,
-        "athletic_explainer": "SPORQ 95.6 (preliminary \u2014 4.36 40-time, 98th pctile speed score; may increase post-bench)",
+        "athletic_explainer": "SPORQ 95.6 \u2014 4.36 40-time (98th pctile speed score). Combine bench: 21 reps of 225lb.",
         "production_0_100": 90.0,
         "age_adjusted_production_0_100": 100.0,
         "draft_capital_proxy_0_100": 95.0,
@@ -64,8 +64,8 @@
         "consensus_delta_positional_cap_limit": 10.0,
         "consensus_delta_positional_cap_tier": "0.40-0.59",
         "consensus_delta_positional": 1.1,
-        "evidence_tier": "insufficient_evidence",
-        "evidence_tier_reason": "Profile relies on sparse evidence or fallback inputs",
+        "evidence_tier": "consensus_aligned",
+        "evidence_tier_reason": "Near consensus (delta 1.1); elite evidence completeness (0.82). Athletic source SPORQ 95.6 confirmed post-combine bench (21 reps).",
         "is_capped_disagreement": false,
         "market_investment_delta_legacy": -14.9,
         "rookie_alpha_rank": 1
@@ -125,17 +125,16 @@
           "injury_adjusted"
         ],
         "context_flags": [
-          "injury_adjusted_2024_playoffs",
-          "sporq_preliminary"
+          "injury_adjusted_2024_playoffs"
         ],
         "translation_flags": [
           "young_breakout",
           "injury_adjusted"
         ],
-        "evidence_summary": "BOA 19, youngest RB in 2026 class (early declare). Career 0.335 MTF/touch (P4, min 425 carries since 2014): 4th all-time behind Bijan Robinson, David Montgomery, Bucky Irving \u2014 round 1-3 comp group. Career 4.35 YAC/carry (94th pctile, 3rd all-time since 2014 behind Etienne 4.513 and Bijan 4.397). 4.36 40-time, 98th pctile speed score. SPORQ 95.6 (preliminary, may rise post-bench). Best season YPRR 1.83 (94th pctile RB), career YPRR 1.60 (84th pctile). QBR when targeted: 126.9 (class leader). PBE 98.3% (elite pass protector, 3.17% pressure rate). Career fumble rate 0.23%. TD rate 10.43% + MTF > 33.3%: comp group (P4 since 2015) = Javonte Williams, Dameon Pierce, Miyan Williams, Blake Corum. PFF Offense Grade 89.9 (class leader). Notre Dame SOS +5.35 (above avg SEC). 2024 playoff injury context: knee injury suppressed late-season YAC output; would have cleared 70+ YA/G in 2+ seasons unadjusted alongside Coleman.",
+        "evidence_summary": "BOA 19, youngest RB in 2026 class (early declare). Career 0.335 MTF/touch (P4, min 425 carries since 2014): 4th all-time behind Bijan Robinson, David Montgomery, Bucky Irving \u2014 round 1-3 comp group. Career 4.35 YAC/carry (94th pctile, 3rd all-time since 2014 behind Etienne 4.513 and Bijan 4.397). 4.36 40-time, 98th pctile speed score. SPORQ 95.6. Combine bench: 21 reps of 225lb. Best season YPRR 1.83 (94th pctile RB), career YPRR 1.60 (84th pctile). QBR when targeted: 126.9 (class leader). PBE 98.3% (elite pass protector, 3.17% pressure rate). Career fumble rate 0.23%. TD rate 10.43% + MTF > 33.3%: comp group (P4 since 2015) = Javonte Williams, Dameon Pierce, Miyan Williams, Blake Corum. PFF Offense Grade 89.9 (class leader). Notre Dame SOS +5.35 (above avg SEC). 2024 playoff injury context: knee injury suppressed late-season YAC output; would have cleared 70+ YA/G in 2+ seasons unadjusted alongside Coleman.",
         "context_source": "X research batch (April 2026): @ffdataroma, Scott Barrett, various FFX accounts; PFF/Sports-Reference cross-verification",
-        "evidence_tier": "strong_supported_edge",
-        "evidence_tier_reason": "Multi-source X/PFF research confirms elite creation metrics (MTF, YAC, SPORQ); production and capital aligned; athletic score upgraded to SPORQ 95.6 (preliminary)"
+        "evidence_tier": "consensus_aligned",
+        "evidence_tier_reason": "Near consensus (delta 1.1); elite evidence completeness (0.82). Athletic source SPORQ 95.6 confirmed post-combine bench (21 reps)."
       },
       "rookie_alpha_rank": 1,
       "talent_rank": 1,
@@ -572,7 +571,7 @@
           "young_breakout",
           "elite_efficiency_tier"
         ],
-        "evidence_summary": "Zone YPRR 3.60 \u2014 elite (comp: AJ Brown 3.28, Ja'Marr Chase 3.75, Malik Nabers 4.42). Man YPRR 3.26 \u2014 one of only 2 WRs in 2026 class with 3+ YPRR vs both man AND zone (Cooper is the other). 1D/RR 0.135 career / 0.136 in 2025 \u2014 #5 all-time among Day 1+2 WRs since 2016 with >85th pctile SOS (Olave 0.135, Marquise Brown 0.134, MHJ 0.137, JSN 0.144 above him). One of only 3 CFB WRs with 3+ zone YPRR AND 85+ PFF grade (Jeremiah Smith, Cooper, Lemon). 66.7% contested catch rate. 2.5% drop rate. 130.0 passer rating when targeted. Zone CTT% 12.12% (elite \u2014 rarely contested vs zone). 76th percentile separation. Next Gen Stats prospect model: 84.74 (#2 in class). MTF over expected: #6 in class. MTF/rec 25.32%, YAC/rec 6.40. FR+SO: 88+764=852 yards (solid early production for class). JR 2025: 79 rec / 1,156 yds / 11 TD \u2014 Biletnikoff finalist. YPRR 3.13 (#5 in CFB). Historical zone comp group: Elijah Moore (3.87), Jerry Jeudy (3.78), Freddie Swain (3.52). Concerns: 27.9% wide rate (slot-primary); catch radius at 5'11\"; screen_yard_share 51% in 2025 (penalty applied); man YPRR 3.26 below elite 4.25 threshold. Bearish case: unique combo of zone-specialist metrics without the man dominance or boundary usage. Bullish case: zone YPRR comp group and 1D/RR suggest legit R1 NFL starter floor.",
+        "evidence_summary": "Zone YPRR 3.60 \u2014 elite (comp: AJ Brown 3.28, Ja'Marr Chase 3.75, Malik Nabers 4.42). Man YPRR 3.26 \u2014 one of only 2 WRs in 2026 class with 3+ YPRR vs both man AND zone (Cooper is the other). Historical precedent (PFF, WRs since 2021 with 3.0+ YPRR vs both man AND zone): JSN (R1 2023), Waddle (R1 2021), Chase (R1 2021), DeVonta Smith (R1 2021), Eskridge (R2 2021) \u2014 4 of 5 were Round 1. Data gap: YPRR excluding screens and slot fades is not publicly available; applied -5 pt screen penalty (51% screen yard share) does not fully account for slot fade route inflation. 1D/RR 0.135 career / 0.136 in 2025 \u2014 #5 all-time among Day 1+2 WRs since 2016 with >85th pctile SOS (Olave 0.135, Marquise Brown 0.134, MHJ 0.137, JSN 0.144 above him). One of only 3 CFB WRs with 3+ zone YPRR AND 85+ PFF grade (Jeremiah Smith, Cooper, Lemon). 66.7% contested catch rate. 2.5% drop rate. 130.0 passer rating when targeted. Zone CTT% 12.12% (elite \u2014 rarely contested vs zone). 76th percentile separation. Next Gen Stats prospect model: 84.74 (#2 in class). MTF over expected: #6 in class. MTF/rec 25.32%, YAC/rec 6.40. FR+SO: 88+764=852 yards (solid early production for class). JR 2025: 79 rec / 1,156 yds / 11 TD \u2014 Biletnikoff finalist. YPRR 3.13 (#5 in CFB). Historical zone comp group: Elijah Moore (3.87), Jerry Jeudy (3.78), Freddie Swain (3.52). Concerns: 27.9% wide rate (slot-primary); catch radius at 5'11\"; screen_yard_share 51% in 2025 (penalty applied); man YPRR 3.26 below elite 4.25 threshold. Bearish case: unique combo of zone-specialist metrics without the man dominance or boundary usage. Bullish case: zone YPRR comp group and 1D/RR suggest legit R1 NFL starter floor.",
         "context_source": "Wikipedia + X research (FPD production profile images, zone/man splits, 1D/RR leaderboards, NGS model, historical comp tables), retrieved 2026-04-18."
       },
       "rookie_alpha_rank": 4,
