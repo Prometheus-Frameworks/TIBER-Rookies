@@ -21,9 +21,9 @@ No. PR #153 introduced an isolated prototype implementation under `prototype/`, 
 2. **Prototype is explicitly documented as prototype/static**
    - `docs/rookie-card-prototype.md` describes this surface as static and explicitly “scoped as a prototype surface, not a production draft room.”
 
-3. **Prototype uses fabricated local data model**
-   - `prototype/data.js` states: “Placeholder rookie data … NOT real 2026 prospects.”
-   - Data is loaded from a local global `window.ROOKIES` array.
+3. **Isolated prototype data model is distinct from routed surfaces**
+   - The isolated `prototype/` directory uses fabricated local sample data via `window.ROOKIES`.
+   - Routed `/cards/rookies/*` surfaces are documented and implemented as artifact-backed flows.
 
 4. **Live rookie card route uses canonical module pipeline, not prototype files**
    - `cards/rookies/player.html` imports `getAllRookieCards` from `lib/rookies/getRookieCardData.js` and renders with `components/rookies/RookieCard.js`.
