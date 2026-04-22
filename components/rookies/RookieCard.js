@@ -27,14 +27,28 @@ function pill(label, value) {
 
 function scoreCell(score) {
   if (score.value == null) {
-    return `<div class="core-score"><div class="pill-label">${esc(score.label)}</div><div class="core-score-value">N/A</div></div>`;
+    return `<div class="core-score"><div class="pill-label">${esc(score.label)}</div><div class="core-score-value">N/A</div><div class="score-track is-empty"></div></div>`;
   }
   const isEdge = score.label === 'Model Edge';
   const formatted = isEdge
     ? (score.value >= 0 ? `+${score.value.toFixed(1)}` : score.value.toFixed(1))
     : score.value.toFixed(1);
   const edgeClass = isEdge ? (score.value >= 3 ? ' delta-bull' : score.value <= -3 ? ' delta-bear' : ' delta-neutral') : '';
-  return `<div class="core-score"><div class="pill-label">${esc(score.label)}</div><div class="core-score-value${edgeClass}">${esc(formatted)}</div></div>`;
+  const normalizedWidth = isEdge
+    ? Math.max(0, Math.min(100, Math.abs(score.value) * 10))
+    : Math.max(0, Math.min(100, score.value));
+  const trackFillClass = isEdge
+    ? (score.value >= 0 ? 'score-fill-edge-pos' : 'score-fill-edge-neg')
+    : 'score-fill-standard';
+  return `
+    <div class="core-score">
+      <div class="pill-label">${esc(score.label)}</div>
+      <div class="core-score-value${edgeClass}">${esc(formatted)}</div>
+      <div class="score-track">
+        <div class="score-fill ${trackFillClass}" style="width:${normalizedWidth}%"></div>
+      </div>
+    </div>
+  `;
 }
 
 function metricRow(metric) {
@@ -142,6 +156,16 @@ function renderBoarMetricRow(card) {
 function renderPprProjection(ppr) {
   if (!ppr) return '';
   const bandClass = { Elite: 'ppr-band-elite', Starter: 'ppr-band-starter', Contributor: 'ppr-band-contributor', Lottery: 'ppr-band-lottery' }[ppr.band] ?? 'ppr-band-lottery';
+  const floor = Number(ppr.floor);
+  const median = Number(ppr.median);
+  const ceiling = Number(ppr.ceiling);
+  const hasRange = Number.isFinite(floor) && Number.isFinite(median) && Number.isFinite(ceiling) && ceiling >= floor;
+  const maxForScale = hasRange
+    ? Math.max(1, Math.ceil(Math.max(floor, median, ceiling) / 25) * 25)
+    : 1;
+  const rangeLeft = hasRange ? Math.max(0, Math.min(100, (floor / maxForScale) * 100)) : 0;
+  const rangeWidth = hasRange ? Math.max(0, Math.min(100 - rangeLeft, ((ceiling - floor) / maxForScale) * 100)) : 0;
+  const medianLeft = hasRange ? Math.max(0, Math.min(100, (median / maxForScale) * 100)) : 0;
   return `
     <div class="ppr-card-section">
       <div class="section-title">Year 1 PPR Projection</div>
@@ -151,6 +175,12 @@ function renderPprProjection(ppr) {
         <div class="ppr-card-stat"><div class="ppr-stat-label">Ceiling</div><div class="ppr-stat-value">${esc(ppr.ceiling)}</div></div>
         <div class="ppr-card-band"><span class="ppr-band ${bandClass}">${esc(ppr.band)}</span></div>
       </div>
+      <div class="ppr-range-viz">
+        <div class="ppr-range-track">
+          ${hasRange ? `<div class="ppr-range-fill" style="left:${rangeLeft}%; width:${rangeWidth}%"></div>
+          <div class="ppr-range-median-marker" style="left:${medianLeft}%" aria-label="Median projection marker"></div>` : ''}
+        </div>
+      </div>
     </div>`;
 }
 
@@ -158,6 +188,20 @@ function renderAgeAdjMetric(ageAdjustedProduction) {
   if (ageAdjustedProduction == null) return '';
   const width = Math.max(0, Math.min(100, ageAdjustedProduction));
   return `<div class="metric-row"><div class="metric-header"><span>Age-Adjusted Production</span><strong>${esc(ageAdjustedProduction.toFixed(1))}</strong></div><div class="metric-track"><div class="metric-fill metric-fill-age-adj" style="width:${width}%"></div></div></div>`;
+}
+
+function normalizeMetricFamily(family) {
+  if (!family) return 'uncategorized';
+  return String(family).trim().toLowerCase();
+}
+
+function metricFamilyLabel(family) {
+  if (family === 'all') return 'All';
+  return family
+    .split(/[_\s-]+/)
+    .filter(Boolean)
+    .map((token) => token.charAt(0).toUpperCase() + token.slice(1))
+    .join(' ');
 }
 
 const STAT_LABELS = {
@@ -202,9 +246,11 @@ export function renderRookieCard(container, card) {
     card.identity.weight,
   ].filter(Boolean).join(' • ');
   const evidenceMetrics = selectRookieEvidenceMetrics(card, 'full');
+  const metricFamilies = ['all', ...Array.from(new Set(evidenceMetrics.map((metric) => normalizeMetricFamily(metric.family))))];
   const translationFlags = Array.isArray(card.translationFlags) ? card.translationFlags : [];
   const contextFlags = Array.isArray(card.contextSignals?.contextFlags) ? card.contextSignals.contextFlags : [];
   const evidenceSummary = card.contextSignals?.evidenceSummary ?? null;
+  let selectedMetricFamily = 'all';
 
   const seasonsTable = card.seasons.length
     ? `<table class="stats-table">
@@ -219,7 +265,14 @@ export function renderRookieCard(container, card) {
        </table>`
     : '<div class="meta">College stats not yet available for this player.</div>';
 
-  container.innerHTML = `
+  function render() {
+    const filteredEvidenceMetrics = evidenceMetrics.filter((metric) => {
+      if (selectedMetricFamily === 'all') return true;
+      return normalizeMetricFamily(metric.family) === selectedMetricFamily;
+    });
+    const includeProductionSpecials = selectedMetricFamily === 'all' || selectedMetricFamily === 'production';
+
+    container.innerHTML = `
     <article class="rookie-card">
       <div class="header-grid">
         <div>
@@ -247,8 +300,12 @@ export function renderRookieCard(container, card) {
       </section>
       ${renderEvidenceTierBadge(card)}
 
-      <section class="core-row">
+      <section class="metrics">
+        <div class="section-title">Model Scores</div>
+        <div class="meta">Deterministic model components from canonical artifacts.</div>
+        <div class="core-row model-score-grid">
         ${card.scores.map(scoreCell).join('')}
+        </div>
       </section>
 
       ${renderRadarChart(card.scores[1]?.value, card.scores[2]?.value, card.scores[3]?.value, card.athleticSource)}
@@ -258,9 +315,14 @@ export function renderRookieCard(container, card) {
       <section class="metrics">
         <div class="section-title">Position-aware Evidence</div>
         <div class="meta">${esc(card.evidence?.readinessLabel ?? 'Evidence readiness unavailable')}</div>
-        ${renderAgeAdjMetric(card.ageAdjustedProduction)}
-        ${renderBoarMetricRow(card)}
-        ${evidenceMetrics.map(metricRow).join('') || '<div class="meta">No evidence metrics available.</div>'}
+        <div class="metric-family-filters" aria-label="Filter evidence metrics by family">
+          ${metricFamilies.map((family) => `
+            <button type="button" class="metric-family-btn ${selectedMetricFamily === family ? 'is-active' : ''}" data-metric-family="${esc(family)}" aria-pressed="${selectedMetricFamily === family ? 'true' : 'false'}">${esc(metricFamilyLabel(family))}</button>
+          `).join('')}
+        </div>
+        ${includeProductionSpecials ? renderAgeAdjMetric(card.ageAdjustedProduction) : ''}
+        ${includeProductionSpecials ? renderBoarMetricRow(card) : ''}
+        ${filteredEvidenceMetrics.map(metricRow).join('') || '<div class="meta">No evidence metrics available.</div>'}
       </section>
 
       <section class="metrics">
@@ -284,4 +346,16 @@ export function renderRookieCard(container, card) {
         : ''}
     </article>
   `;
+
+    container.querySelectorAll('[data-metric-family]').forEach((button) => {
+      button.addEventListener('click', () => {
+        const nextFamily = button.getAttribute('data-metric-family') ?? 'all';
+        if (!metricFamilies.includes(nextFamily) || selectedMetricFamily === nextFamily) return;
+        selectedMetricFamily = nextFamily;
+        render();
+      });
+    });
+  }
+
+  render();
 }
