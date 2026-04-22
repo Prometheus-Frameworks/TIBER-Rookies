@@ -596,5 +596,31 @@
     "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45)",
     "draft_capital_proxy_pending_conversion": false,
     "notes": "2025 Mackey Award winner. Set NFL Combine records for TE vertical (45.5\") and broad jump (11'3\"). Day 2 projection."
+  },
+  {
+    "player_id": "te-daequan-wright",
+    "player_name": "Dae'Quan Wright",
+    "position": "TE",
+    "school": "Mississippi",
+    "class_year": 2026,
+    "combine_invited": true,
+    "height_in": 76.0,
+    "height_in_source": "2026 NFL Combine measurements",
+    "weight_lb": 246,
+    "weight_lb_source": "2026 NFL Combine measurements",
+    "forty": null,
+    "forty_source": null,
+    "vertical": null,
+    "vertical_source": null,
+    "broad": null,
+    "broad_source": null,
+    "production_score_0_100": 83.5,
+    "production_score_source": "notes_2026-04-22 (multi-season; YAC/Rec 94th pctile, MTF/Rec 92nd pctile, year2 YPTPA 81st pctile; CFBD verification pending)",
+    "big_board_rank": null,
+    "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
+    "draft_capital_proxy_0_100": 25,
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+    "draft_capital_proxy_pending_conversion": true,
+    "notes": "Skipped all combine drills; 6'4\" 246 lb move TE. Two seasons at Ole Miss: Year 2 39 rec / 635 yds / 5 TD (16.3 YPC), played through undisclosed injury. Year 2 YPTPA 1.03 (81st pctile), MTF/Rec 0.26 (92nd pctile), YAC/Rec 8.4 (94th pctile), career YPRR 1.80 (74th pctile) among 145 TE prospects since 2017. No athleticism profile; blocking weakness."
   }
 ]

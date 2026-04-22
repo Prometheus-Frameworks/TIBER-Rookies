@@ -3793,16 +3793,57 @@
       "injury_history"
     ],
     "context_flags": [
-      "low_confidence_seed",
-      "pending_cfbd_verification"
+      "pending_cfbd_verification",
+      "no_combine_athleticism_data",
+      "blocking_weakness",
+      "injury_history_2025"
     ],
-    "evidence_summary": "39 catches for 635 yards and 5 TDs at Ole Miss in 2025 with a 16.3 YPC average that ranked among the nation's best for TEs; played through an undisclosed injury all season. Aligned all over the formation with big-play ability, though he skipped combine drills and blocking is a notable weakness.",
-    "context_source": "manual_seed_2026",
-    "exceptional_metrics": [],
+    "evidence_summary": "Two seasons at Ole Miss: Year 1 YPTPA 0.60 (90th pctile among 145 TE prospects since 2017), Year 2 YPTPA 1.03 (81st pctile) \u2014 year 2 figure exceeds Sadiq career YPTPA and is in line with Kyle Pitts / Tyler Warren. Year 2: 39 catches for 635 yards and 5 TDs (16.3 YPC), played through an undisclosed injury. MTF/Rec 0.26 (92nd pctile), YAC/Rec 8.4 (94th pctile), career YPRR 1.80 (74th pctile). Aligned all over the formation with big-play ability. Skipped combine drills (no athleticism profile). Blocking is a notable weakness.",
+    "context_source": "manual_seed_2026; notes_2026-04-22 (TIBER review batch)",
+    "exceptional_metrics": [
+      {
+        "metric": "yac_per_reception",
+        "value": 8.4,
+        "context": "94th percentile among 145 TE prospects since 2017. Comparable to Brock Bowers (9.30) and Mark Andrews (9.80) tier in YAC production.",
+        "percentile_tier": "elite",
+        "alpha_bonus_eligible": true,
+        "source": "notes_2026-04-22"
+      },
+      {
+        "metric": "mtf_per_reception",
+        "value": 0.26,
+        "context": "92nd percentile among 145 TE prospects since 2017. Matches Kenyon Sadiq career MTF/Rec (0.246) \u2014 elite open-field elusiveness tier.",
+        "percentile_tier": "elite",
+        "alpha_bonus_eligible": true,
+        "source": "notes_2026-04-22"
+      },
+      {
+        "metric": "year2_yptpa",
+        "value": 1.03,
+        "context": "81st percentile among 145 TE prospects since 2017. Exceeds Sadiq career YPTPA (0.67); on par with Pitts (1.07) and Warren (1.06) R1 peer group.",
+        "percentile_tier": "strong",
+        "alpha_bonus_eligible": false,
+        "source": "notes_2026-04-22"
+      }
+    ],
     "dob": "2003-09-21",
     "breakout_strength": 0.6,
     "breakout_confidence": 0.8,
-    "seasons_available": 1
+    "seasons_available": 2,
+    "advanced_receiving_stats": {
+      "source": "notes_2026-04-22 (TIBER review batch; CFBD verification pending)",
+      "year1_yptpa": 0.6,
+      "year1_yptpa_percentile_145te_since2017": 90,
+      "year2_yptpa": 1.03,
+      "year2_yptpa_percentile_145te_since2017": 81,
+      "career_yprr": 1.8,
+      "career_yprr_percentile_145te_since2017": 74,
+      "mtf_per_reception": 0.26,
+      "mtf_per_reception_percentile_145te_since2017": 92,
+      "yac_per_reception": 8.4,
+      "yac_per_reception_percentile_145te_since2017": 94
+    },
+    "career_yards_per_route_run": 1.8
   },
   {
     "player_id": "wr-cameron-dorner",
