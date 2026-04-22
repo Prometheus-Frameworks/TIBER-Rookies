@@ -29,15 +29,15 @@ function scoreCell(score) {
   if (score.value == null) {
     return `<div class="core-score"><div class="pill-label">${esc(score.label)}</div><div class="core-score-value">N/A</div><div class="score-track is-empty"></div></div>`;
   }
-  const isEdge = score.label === 'Model Edge';
-  const formatted = isEdge
+  const isSignedDelta = score.label === 'Model Edge' || score.label === 'Delta';
+  const formatted = isSignedDelta
     ? (score.value >= 0 ? `+${score.value.toFixed(1)}` : score.value.toFixed(1))
     : score.value.toFixed(1);
-  const edgeClass = isEdge ? (score.value >= 3 ? ' delta-bull' : score.value <= -3 ? ' delta-bear' : ' delta-neutral') : '';
-  const normalizedWidth = isEdge
+  const edgeClass = isSignedDelta ? (score.value >= 3 ? ' delta-bull' : score.value <= -3 ? ' delta-bear' : ' delta-neutral') : '';
+  const normalizedWidth = isSignedDelta
     ? Math.max(0, Math.min(100, Math.abs(score.value) * 10))
     : Math.max(0, Math.min(100, score.value));
-  const trackFillClass = isEdge
+  const trackFillClass = isSignedDelta
     ? (score.value >= 0 ? 'score-fill-edge-pos' : 'score-fill-edge-neg')
     : 'score-fill-standard';
   return `
@@ -287,8 +287,9 @@ export function renderRookieCard(container, card) {
             <p class="profile-summary">${esc(card.summary.profileSummary ?? card.summary.identityNote ?? 'Identity summary unavailable')}</p>
           </div>
           <div class="hero-score">
-            <div class="section-title">Rookie Grade</div>
+            <div class="section-title">Pre-Draft Grade</div>
             <div class="score">${esc(heroScore)}</div>
+            <div class="meta">Post-Draft Adjusted Grade: ${esc(card.postDraftAdjustedGrade == null ? 'N/A' : card.postDraftAdjustedGrade.toFixed(1))} · Delta ${esc(card.postDraftDelta == null ? 'N/A' : (card.postDraftDelta >= 0 ? '+' : '') + card.postDraftDelta.toFixed(1))}</div>
             <div class="meta">Class #${esc(card.summary.classRank ?? 'N/A')} · ${esc(card.identity.position)} #${esc(card.summary.posRank ?? 'N/A')}</div>
             ${renderEvidenceTierBadge(card)}
           </div>
@@ -343,7 +344,7 @@ export function renderRookieCard(container, card) {
 
         <div class="card-col">
           <section class="card-panel">
-            ${renderRadarChart(card.scores[1]?.value, card.scores[2]?.value, card.scores[3]?.value, card.athleticSource)}
+            ${renderRadarChart(card.athleticScore, card.productionScore, card.draftCapitalScore, card.athleticSource)}
           </section>
 
           ${renderPprProjection(card.pprProjection)}
