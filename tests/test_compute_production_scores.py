@@ -3,6 +3,7 @@ import unittest
 from scripts.compute_production_scores import (
     apply_results,
     build_stat_lines,
+    build_team_passing_totals,
     compute_scores_for_seed,
     normalize_identity,
     pivot_stats,
@@ -90,6 +91,44 @@ class ComputeProductionScoresTests(unittest.TestCase):
         self.assertEqual(stat_lines[0]["stats"]["yards_per_attempt"], 12.5)
         self.assertEqual(stat_lines[1]["stats"], {})
 
+
+
+    def test_dominator_rating_wr(self) -> None:
+        passing_rows = [
+            {"player": "QB One", "team": "Oregon", "statType": "YDS", "stat": "3000"},
+            {"player": "QB One", "team": "Oregon", "statType": "TD", "stat": "20"},
+        ]
+        receiving_rows = [
+            {"player": "WR One", "team": "Oregon", "statType": "REC", "stat": "80"},
+            {"player": "WR One", "team": "Oregon", "statType": "YDS", "stat": "1000"},
+            {"player": "WR One", "team": "Oregon", "statType": "TD", "stat": "8"},
+        ]
+        seed_rows = [
+            {"player_id": "wr-one", "player_name": "WR One", "position": "WR", "school": "Oregon"},
+        ]
+        passing_stats = pivot_stats(passing_rows)
+        receiving_stats = pivot_stats(receiving_rows)
+        team_totals = build_team_passing_totals(passing_stats)
+        results = compute_scores_for_seed(seed_rows, passing_stats, {}, receiving_stats)
+        stat_lines = build_stat_lines(seed_rows, results, passing_stats, {}, receiving_stats, 2025, team_totals)
+        self.assertEqual(len(stat_lines), 1)
+        # dominator_rating = (1000 + 8*20) / (3000 + 20*20) = 1160 / 3400
+        expected = round(1160 / 3400, 1)
+        self.assertAlmostEqual(stat_lines[0]["stats"]["dominator_rating"], expected, places=1)
+
+    def test_dominator_rating_absent_without_team_totals(self) -> None:
+        receiving_rows = [
+            {"player": "WR One", "team": "Oregon", "statType": "REC", "stat": "80"},
+            {"player": "WR One", "team": "Oregon", "statType": "YDS", "stat": "1000"},
+            {"player": "WR One", "team": "Oregon", "statType": "TD", "stat": "8"},
+        ]
+        seed_rows = [
+            {"player_id": "wr-one", "player_name": "WR One", "position": "WR", "school": "Oregon"},
+        ]
+        receiving_stats = pivot_stats(receiving_rows)
+        results = compute_scores_for_seed(seed_rows, {}, {}, receiving_stats)
+        stat_lines = build_stat_lines(seed_rows, results, {}, {}, receiving_stats, 2025)
+        self.assertNotIn("dominator_rating", stat_lines[0]["stats"])
 
 
 if __name__ == "__main__":
