@@ -3479,10 +3479,38 @@
     "evidence_summary": "BOA 19 true freshman impact at Ball State (31.1 rec ypg, 91.0 PFF receiving grade). Led all FBS TEs in combined receptions 2024-2025 (168, tied Vandeross). Career: 237 rec / 2,236 yds / 24 TDs \u2014 leads all TE prospects since 2019 in routes, targets, receptions, and first downs. Slot YPRR 2.25 overall in 2025, 2.64 slot YPRR (3rd best P4 TE since 2014 behind Mark Andrews 2.94, Loveland 2.87). Career 61.3% contested catch rate (3rd all-time P4 history, min 25 contested targets; Warren 63.6, Joly 66.0). Zone YPRR > 3.00 in a single season + career contested catch > 50%: comp group = Mark Andrews, Brock Bowers, Trey McBride, Isaiah Likely. KEY CONCERN: career man YPRR 1.21 (34.7th pctile); zone YPRR 1.95 (72.7th pctile) \u2014 zone-scheme fit is actually POSITIVE for NFL translation vs man YPRR 1.95 \u2014 zone-heavy NFL is a genuine translation risk. 1D/RR 0.125 (7th among all WR/TEs last 2 seasons; Pitts/McBride/Bowers/Kincaid/Warren tier). Reception share 33.6% (2024) / 30.6% (2025) \u2014 comp tier: Harold Fannin, Tyler Warren, Trey McBride. 87.6 PFF receiving grade vs P4 (2nd in class behind Stowers 89.1). 1.86 YPRR vs P4 competition (3rd in class). KLP RAS 9.72 (size-adjusted elite; system ras_0_100 = 49.0 reflects speed-heavy formula, 4.71 40 / 54th pctile speed score). WEAKNESSES: zone YPRR 1.21, YAC 3.51/rec (bottom 3rd pctile despite 8.12 ADOT), 7.6% MTF rate, poor blocking (only 41% inline snaps, lacks leverage). Only 5% deep target share \u2014 short-intermediate floor role. NFL comp: Mike Gesicki. Day 3 draft projection. TEP premium target.",
     "context_source": "X research batch (April 2026): @ffdataroma, PFF, Scott Barrett, various FFX accounts; Sports-Reference cross-verification",
     "exceptional_metrics": [
-      "slot_yprr_3rd_all_time_p4",
-      "contested_catch_3rd_all_time_p4",
-      "reception_share_mayer_mcbride_tier",
-      "1d_rr_pitts_mcbride_bowers_tier"
+      {
+        "metric": "slot_yprr_2025",
+        "value": 2.64,
+        "context": "Slot YPRR 2.64 in 2025 — 3rd best P4 TE since 2014 (behind Mark Andrews 2.94, Loveland 2.87)",
+        "percentile_tier": "historic",
+        "alpha_bonus_eligible": false,
+        "source": "PFF / FFX research batch April 2026"
+      },
+      {
+        "metric": "contested_catch_rate_career",
+        "value": 0.613,
+        "context": "Career 61.3% contested catch rate — 3rd all-time P4 (min 25 contested targets; Warren 63.6, Joly 66.0)",
+        "percentile_tier": "historic",
+        "alpha_bonus_eligible": false,
+        "source": "PFF / FFX research batch April 2026"
+      },
+      {
+        "metric": "reception_share_2024",
+        "value": 0.336,
+        "context": "Reception share 33.6% (2024) / 30.6% (2025) — comp tier: Harold Fannin, Tyler Warren, Trey McBride",
+        "percentile_tier": "elite",
+        "alpha_bonus_eligible": false,
+        "source": "PFF / FFX research batch April 2026"
+      },
+      {
+        "metric": "first_down_per_route_run_career",
+        "value": 0.125,
+        "context": "1D/RR 0.125 — 7th among all WR/TEs last 2 seasons (Pitts/McBride/Bowers/Kincaid/Warren tier)",
+        "percentile_tier": "historic",
+        "alpha_bonus_eligible": false,
+        "source": "PFF / FFX research batch April 2026"
+      }
     ],
     "breakout_strength": 0.72,
     "breakout_confidence": 0.9,
