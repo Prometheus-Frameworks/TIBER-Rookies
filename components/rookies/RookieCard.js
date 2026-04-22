@@ -96,7 +96,7 @@ function renderRadarChart(athleticScore, production, draftCapital, athleticSourc
   }).join('');
 
   return `
-    <section class="metrics radar-section">
+    <div class="radar-section">
       <div class="section-title">Model Input Radar</div>
       <svg class="radar-chart" viewBox="0 0 200 200" role="img" aria-label="Radar chart for athletic, production, and draft capital scores">
         ${rings}
@@ -104,7 +104,7 @@ function renderRadarChart(athleticScore, production, draftCapital, athleticSourc
         <polygon points="${dataPoints}" fill="rgba(59, 130, 246, 0.25)" stroke="#3b82f6" stroke-width="2" />
         ${labels}
       </svg>
-    </section>
+    </div>
   `;
 }
 
@@ -250,6 +250,7 @@ export function renderRookieCard(container, card) {
   const translationFlags = Array.isArray(card.translationFlags) ? card.translationFlags : [];
   const contextFlags = Array.isArray(card.contextSignals?.contextFlags) ? card.contextSignals.contextFlags : [];
   const evidenceSummary = card.contextSignals?.evidenceSummary ?? null;
+  const quickPprMedian = card.pprProjection?.median ?? null;
   let selectedMetricFamily = 'all';
 
   const seasonsTable = card.seasons.length
@@ -273,77 +274,104 @@ export function renderRookieCard(container, card) {
     const includeProductionSpecials = selectedMetricFamily === 'all' || selectedMetricFamily === 'production';
 
     container.innerHTML = `
-    <article class="rookie-card">
-      <div class="header-grid">
-        <div>
-          <div class="section-title">TIBER Rookie Card</div>
-          <h1 class="player-name">
-            ${renderTeamLogos(card.identity.school, card.identity.nflTeam)}${esc(card.identity.name)}
-          </h1>
-          <div class="meta">${esc(identityBits || 'Profile context not available')}</div>
-          <div class="meta">${esc(card.summary.profileSummary ?? card.summary.identityNote ?? 'Identity summary unavailable')}</div>
+    <article class="rookie-card rookie-card-layout">
+      <section class="hero-panel">
+        <div class="hero-top">
+          <div class="hero-left">
+            <div class="section-title">TIBER Rookie Card</div>
+            <h1 class="player-name">
+              <span class="avatar-pos pos-${esc(card.identity.position)}">${esc(card.identity.position)}</span>
+              ${renderTeamLogos(card.identity.school, card.identity.nflTeam)}${esc(card.identity.name)}
+            </h1>
+            <div class="meta">${esc(identityBits || 'Profile context not available')}</div>
+            <p class="profile-summary">${esc(card.summary.profileSummary ?? card.summary.identityNote ?? 'Identity summary unavailable')}</p>
+          </div>
+          <div class="hero-score">
+            <div class="section-title">Rookie Grade</div>
+            <div class="score">${esc(heroScore)}</div>
+            <div class="meta">Class #${esc(card.summary.classRank ?? 'N/A')} · ${esc(card.identity.position)} #${esc(card.summary.posRank ?? 'N/A')}</div>
+            ${renderEvidenceTierBadge(card)}
+          </div>
         </div>
-        <div class="hero-score">
-          <div class="section-title">Rookie Grade</div>
-          <div class="score">${esc(heroScore)}</div>
-          <div class="meta">Class rank #${esc(card.summary.classRank ?? 'N/A')}</div>
+        <div class="identity-strip">
+          ${pill('Archetype', card.summary.archetype)}
+          ${pill('Projection', card.summary.projection)}
+          ${pill('Year 1 Median PPR', quickPprMedian)}
+          ${pill('Breakout', breakoutPillValue(card))}
+        </div>
+      </section>
+
+      <section class="card-actions-row">
+        <div class="card-actions-copy">
+          <div class="section-title">Next Steps</div>
+          <div class="meta">Continue scouting this profile with board context or head-to-head comparison.</div>
+        </div>
+        <div class="card-actions-links">
+          <a class="nav-link nav-link-action" href="/cards/rookies/board/">← Back to board</a>
+          <a class="nav-link nav-link-action" href="/cards/rookies/compare/?left=${esc(card.slug)}">Compare this profile →</a>
+        </div>
+      </section>
+
+      <div class="card-columns">
+        <div class="card-col">
+          <section class="metrics card-panel">
+            <div class="section-title">Model Scores</div>
+            <div class="meta">Deterministic model components from canonical artifacts.</div>
+            <div class="core-row model-score-grid">
+              ${card.scores.map(scoreCell).join('')}
+            </div>
+          </section>
+
+          <section class="metrics card-panel">
+            <div class="section-title">Position-aware Evidence</div>
+            <div class="meta">${esc(card.evidence?.readinessLabel ?? 'Evidence readiness unavailable')}</div>
+            <div class="metric-family-filters" aria-label="Filter evidence metrics by family">
+              ${metricFamilies.map((family) => `
+                <button type="button" class="metric-family-btn ${selectedMetricFamily === family ? 'is-active' : ''}" data-metric-family="${esc(family)}" aria-pressed="${selectedMetricFamily === family ? 'true' : 'false'}">${esc(metricFamilyLabel(family))}</button>
+              `).join('')}
+            </div>
+            ${includeProductionSpecials ? renderAgeAdjMetric(card.ageAdjustedProduction) : ''}
+            ${includeProductionSpecials ? renderBoarMetricRow(card) : ''}
+            ${filteredEvidenceMetrics.map(metricRow).join('') || '<div class="meta">No evidence metrics available.</div>'}
+          </section>
+
+          <section class="metrics card-panel">
+            <div class="section-title">Season Stats</div>
+            ${seasonsTable}
+          </section>
+        </div>
+
+        <div class="card-col">
+          <section class="card-panel">
+            ${renderRadarChart(card.scores[1]?.value, card.scores[2]?.value, card.scores[3]?.value, card.athleticSource)}
+          </section>
+
+          ${renderPprProjection(card.pprProjection)}
+
+          <section class="metrics card-panel">
+            <div class="section-title">Projection Comps</div>
+            <div class="comp-grid">
+              <div class="comp-card"><div class="pill-label">High-end</div><div class="comp-name">${esc(card.comps.high ?? 'N/A')}</div></div>
+              <div class="comp-card"><div class="pill-label">Low-end</div><div class="comp-name">${esc(card.comps.low ?? 'N/A')}</div></div>
+            </div>
+          </section>
+
+          <section class="metrics card-panel">
+            <div class="section-title">Translation & Evidence Signals</div>
+            <div class="meta">${esc(evidenceSummary ?? 'Translation summary unavailable in current artifacts.')}</div>
+            ${translationFlags.length
+              ? `<div class="tags tags-translation">${translationFlags.map((flag) => `<span class="tag">${esc(String(flag).replace(/_/g, ' '))}</span>`).join('')}</div>`
+              : '<div class="meta">No translation evidence tags available.</div>'}
+            ${contextFlags.length
+              ? `<div class="tags tags-context">${contextFlags.map((flag) => `<span class="tag tag-context">${esc(String(flag).replace(/_/g, ' '))}</span>`).join('')}</div>`
+              : ''}
+          </section>
+
+          ${card.tags.length
+            ? `<section class="metrics card-panel"><div class="section-title">Scouting Tags</div><div class="tags">${card.tags.map((tag) => `<span class="tag">${esc(tag)}</span>`).join('')}</div></section>`
+            : ''}
         </div>
       </div>
-
-      <section class="identity-strip">
-        ${pill('Archetype', card.summary.archetype)}
-        ${pill('Projection', card.summary.projection)}
-        ${pill('High-end comp', card.comps.high)}
-        ${pill('Low-end comp', card.comps.low)}
-        ${pill('Breakout', breakoutPillValue(card))}
-        ${pill('Evidence Tier', EVIDENCE_TIER_LABELS[card.evidenceTier] ?? null)}
-      </section>
-      ${renderEvidenceTierBadge(card)}
-
-      <section class="metrics">
-        <div class="section-title">Model Scores</div>
-        <div class="meta">Deterministic model components from canonical artifacts.</div>
-        <div class="core-row model-score-grid">
-        ${card.scores.map(scoreCell).join('')}
-        </div>
-      </section>
-
-      ${renderRadarChart(card.scores[1]?.value, card.scores[2]?.value, card.scores[3]?.value, card.athleticSource)}
-
-      ${renderPprProjection(card.pprProjection)}
-
-      <section class="metrics">
-        <div class="section-title">Position-aware Evidence</div>
-        <div class="meta">${esc(card.evidence?.readinessLabel ?? 'Evidence readiness unavailable')}</div>
-        <div class="metric-family-filters" aria-label="Filter evidence metrics by family">
-          ${metricFamilies.map((family) => `
-            <button type="button" class="metric-family-btn ${selectedMetricFamily === family ? 'is-active' : ''}" data-metric-family="${esc(family)}" aria-pressed="${selectedMetricFamily === family ? 'true' : 'false'}">${esc(metricFamilyLabel(family))}</button>
-          `).join('')}
-        </div>
-        ${includeProductionSpecials ? renderAgeAdjMetric(card.ageAdjustedProduction) : ''}
-        ${includeProductionSpecials ? renderBoarMetricRow(card) : ''}
-        ${filteredEvidenceMetrics.map(metricRow).join('') || '<div class="meta">No evidence metrics available.</div>'}
-      </section>
-
-      <section class="metrics">
-        <div class="section-title">Why this profile translates (deterministic)</div>
-        <div class="meta">${esc(evidenceSummary ?? 'Translation summary unavailable in current artifacts.')}</div>
-        ${translationFlags.length
-          ? `<div class="tags">${translationFlags.map((flag) => `<span class="tag">${esc(String(flag).replace(/_/g, ' '))}</span>`).join('')}</div>`
-          : '<div class="meta">No translation evidence tags available.</div>'}
-        ${contextFlags.length
-          ? `<div class="meta">Context flags: ${esc(contextFlags.map((flag) => String(flag).replace(/_/g, ' ')).join(' • '))}</div>`
-          : ''}
-      </section>
-
-      <section class="metrics">
-        <div class="section-title">Season Stats</div>
-        ${seasonsTable}
-      </section>
-
-      ${card.tags.length
-        ? `<section class="tags">${card.tags.map((tag) => `<span class="tag">${esc(tag)}</span>`).join('')}</section>`
-        : ''}
     </article>
   `;
 
