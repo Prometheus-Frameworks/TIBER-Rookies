@@ -52,7 +52,7 @@ Static HTML routes under `cards/rookies/` currently include:
 - board: `/cards/rookies/board/index.html`
 - detail: `/cards/rookies/player.html?slug=<player_id>`
 - compare: `/cards/rookies/compare/index.html?left=<slug>&right=<slug>`
-- direct player page example: `/cards/rookies/wr-malik-ford/index.html`
+- direct player page example: `/cards/rookies/wr-jordyn-tyson/index.html`
 
 Behavioral scope today:
 

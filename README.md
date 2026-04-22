@@ -227,8 +227,8 @@ Then open:
 - `http://localhost:3000/` (redirects to rookie board)
 - `http://localhost:3000/cards/rookies/index.html`
 - `http://localhost:3000/cards/rookies/board/index.html`
-- `http://localhost:3000/cards/rookies/player.html?slug=wr-malik-ford`
-- `http://localhost:3000/cards/rookies/compare/index.html?left=wr-malik-ford&right=te-owen-hale`
+- `http://localhost:3000/cards/rookies/player.html?slug=wr-jordyn-tyson`
+- `http://localhost:3000/cards/rookies/compare/index.html?left=wr-jordyn-tyson&right=te-kenyon-sadiq`
 - `http://localhost:3000/health`
 
 ## Railway deploy contract
@@ -256,7 +256,7 @@ See the operator runbooks:
 ## Current limitations
 
 - Model is still **pre-draft v0** (no landing-spot or NFL transition phase yet).
-- 2026 canonical inputs are aligned to the **23-player real seed pool**, not synthetic placeholder identities.
+- 2026 canonical inputs are aligned to the **24-player real seed pool**, not synthetic placeholder identities.
 - 2026 remains **proxy-limited** (college production and draft capital are normalized proxy inputs, not final NFL outcomes).
 - Missing `production_score_0_100` values are expected for some players in this phase; identity alignment does not imply production-score completeness.
 - Queue is **browser-local only** (no auth, no multi-device sync, no league persistence).
