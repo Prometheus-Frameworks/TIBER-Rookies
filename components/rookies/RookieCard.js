@@ -315,9 +315,9 @@ export function renderRookieCard(container, card) {
       <section class="metrics">
         <div class="section-title">Position-aware Evidence</div>
         <div class="meta">${esc(card.evidence?.readinessLabel ?? 'Evidence readiness unavailable')}</div>
-        <div class="metric-family-filters" role="tablist" aria-label="Filter evidence metrics by family">
+        <div class="metric-family-filters" aria-label="Filter evidence metrics by family">
           ${metricFamilies.map((family) => `
-            <button type="button" class="metric-family-btn ${selectedMetricFamily === family ? 'is-active' : ''}" data-metric-family="${esc(family)}">${esc(metricFamilyLabel(family))}</button>
+            <button type="button" class="metric-family-btn ${selectedMetricFamily === family ? 'is-active' : ''}" data-metric-family="${esc(family)}" aria-pressed="${selectedMetricFamily === family ? 'true' : 'false'}">${esc(metricFamilyLabel(family))}</button>
           `).join('')}
         </div>
         ${includeProductionSpecials ? renderAgeAdjMetric(card.ageAdjustedProduction) : ''}
