@@ -174,7 +174,9 @@ function renderEvidenceTierBadge(tier, reason) {
 
 function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}) {
   const rank = row.classRank == null ? 'N/A' : `#${row.classRank}`;
-  const grade = row.rookieGrade == null ? 'N/A' : row.rookieGrade.toFixed(1);
+  const preDraftGrade = row.preDraftGrade == null ? 'N/A' : row.preDraftGrade.toFixed(1);
+  const adjustedGrade = row.postDraftAdjustedGrade == null ? 'N/A' : row.postDraftAdjustedGrade.toFixed(1);
+  const hasPostDraft = row.postDraftAdjustedGrade != null;
   const slug = encodeURIComponent(String(row.slug ?? ''));
   const compareLeftHref = `/cards/rookies/compare/index.html?left=${slug}`;
   const compareRightHref = `/cards/rookies/compare/index.html?right=${slug}`;
@@ -195,7 +197,9 @@ function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}
     <div class="board-mobile-card">
       <div class="bmc-header">
         <span class="bmc-rank board-num">${esc(rank)}</span>
-        <span class="bmc-grade">Grade <strong class="bmc-grade-value">${esc(grade)}</strong></span>
+        <span class="bmc-grade">${hasPostDraft
+    ? `Pre <strong class="bmc-grade-value">${esc(preDraftGrade)}</strong> · Post <strong class="bmc-grade-value">${esc(adjustedGrade)}</strong>`
+    : `Pre <strong class="bmc-grade-value">${esc(preDraftGrade)}</strong> · Post-Draft pending`}</span>
       </div>
       <div class="bmc-name">
         ${renderTeamLogos(row.school, row.nflTeam)}
@@ -217,10 +221,8 @@ function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}
         ${renderBoarChip(row)}
       </div>
       <div class="bmc-stats">
-        <div class="bmc-stat-row">
-          <span class="bmc-stat-label">vs. Consensus</span>
-          <span>${deltaSpanInline(row.consensusDelta)}</span>
-        </div>
+        ${hasPostDraft ? `<div class="bmc-stat-row"><span class="bmc-stat-label">Post-Draft Delta</span><span>${deltaSpanInline(row.postDraftDelta)}</span></div>` : ''}
+        <div class="bmc-stat-row"><span class="bmc-stat-label">vs. Consensus</span><span>${deltaSpanInline(row.consensusDelta)}</span></div>
         ${pprRange ? `<div class="bmc-stat-row"><span class="bmc-stat-label">Range</span><span class="bmc-ppr-range">${pprRange} PPR</span></div>` : ''}
       </div>
       ${isQueued && queueTag ? `<div class="meta queue-inline-indicator" style="margin-bottom:6px">Queue tag: <span class="queue-tag-pill">${esc(queueTag)}</span></div>` : ''}
@@ -236,7 +238,9 @@ function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}
 
 export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = null } = {}) {
   const rank = row.classRank == null ? 'N/A' : `#${row.classRank}`;
-  const grade = row.rookieGrade == null ? 'N/A' : row.rookieGrade.toFixed(1);
+  const preDraftGrade = row.preDraftGrade == null ? 'N/A' : row.preDraftGrade.toFixed(1);
+  const adjustedGrade = row.postDraftAdjustedGrade == null ? 'N/A' : row.postDraftAdjustedGrade.toFixed(1);
+  const hasPostDraft = row.postDraftAdjustedGrade != null;
   const slug = encodeURIComponent(String(row.slug ?? ''));
   const compareLeftHref = `/cards/rookies/compare/index.html?left=${slug}`;
   const compareRightHref = `/cards/rookies/compare/index.html?right=${slug}`;
@@ -262,7 +266,11 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
       </div>
       <div class="board-cell" data-label="Position">${renderPosBadge(row.position)}</div>
       <div class="board-cell" data-label="School">${esc(row.school)}</div>
-      <div class="board-cell board-grade board-num" data-label="Rookie Grade">${esc(grade)}${renderVolumeTrend(row)}</div>
+      <div class="board-cell board-grade board-num" data-label="Pre/Post Grade">
+        <div>Pre ${esc(preDraftGrade)}</div>
+        <div class="meta">${hasPostDraft ? `Post ${esc(adjustedGrade)} · Δ ${deltaSpanInline(row.postDraftDelta)}` : 'Post-Draft pending'}</div>
+        ${renderVolumeTrend(row)}
+      </div>
       <div class="board-cell" data-label="Tier"><span class="board-tier-pill">${esc(row.tier.label)}</span></div>
       ${renderPprCell(row)}
       ${renderConsensusDeltaCell(row)}
