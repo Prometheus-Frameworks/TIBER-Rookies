@@ -138,12 +138,39 @@ body {
   margin-top: 12px;
   border: 1px solid var(--border);
   border-radius: 12px;
-  background: var(--panel);
+  background: linear-gradient(180deg, rgba(32, 26, 20, 0.9), rgba(22, 18, 14, 0.92));
   padding: 10px 12px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.card-actions-copy {
+  min-width: 240px;
+  max-width: 620px;
+}
+.card-actions-copy .section-title { margin-bottom: 4px; }
+.card-actions-links {
+  display: flex;
   gap: 8px;
   flex-wrap: wrap;
+}
+.nav-link-action {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--accent-soft);
+  padding: 7px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: border-color 0.15s, transform 0.15s, color 0.15s;
+}
+.nav-link-action:hover {
+  border-color: var(--border-accent);
+  color: var(--accent);
+  transform: translateY(-1px);
 }
 .card-columns {
   margin-top: 14px;
@@ -848,6 +875,8 @@ body {
   .hero-score { width: 100%; min-width: 0; }
   .card-columns { grid-template-columns: 1fr; }
   .comp-grid { grid-template-columns: 1fr; }
+  .card-actions-links { width: 100%; }
+  .nav-link-action { flex: 1 1 220px; text-align: center; }
 
   /* ── Board rows: switch to block, surface mobile card ───────────────────── */
   .board-row { grid-template-columns: 1fr; gap: 0; padding: 12px; }

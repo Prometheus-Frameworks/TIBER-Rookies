@@ -250,6 +250,7 @@ export function renderRookieCard(container, card) {
   const translationFlags = Array.isArray(card.translationFlags) ? card.translationFlags : [];
   const contextFlags = Array.isArray(card.contextSignals?.contextFlags) ? card.contextSignals.contextFlags : [];
   const evidenceSummary = card.contextSignals?.evidenceSummary ?? null;
+  const quickPprMedian = card.pprProjection?.median ?? null;
   let selectedMetricFamily = 'all';
 
   const seasonsTable = card.seasons.length
@@ -277,7 +278,7 @@ export function renderRookieCard(container, card) {
       <section class="hero-panel">
         <div class="hero-top">
           <div class="hero-left">
-            <div class="section-title">TIBER Rookie Card · Canonical Artifact Surface</div>
+            <div class="section-title">TIBER Rookie Card</div>
             <h1 class="player-name">
               <span class="avatar-pos pos-${esc(card.identity.position)}">${esc(card.identity.position)}</span>
               ${renderTeamLogos(card.identity.school, card.identity.nflTeam)}${esc(card.identity.name)}
@@ -295,14 +296,20 @@ export function renderRookieCard(container, card) {
         <div class="identity-strip">
           ${pill('Archetype', card.summary.archetype)}
           ${pill('Projection', card.summary.projection)}
+          ${pill('Year 1 Median PPR', quickPprMedian)}
           ${pill('Breakout', breakoutPillValue(card))}
-          ${pill('Evidence Tier', EVIDENCE_TIER_LABELS[card.evidenceTier] ?? null)}
         </div>
       </section>
 
       <section class="card-actions-row">
-        <a class="nav-link" href="/cards/rookies/board/">← Back to board</a>
-        <a class="nav-link" href="/cards/rookies/compare/?left=${esc(card.slug)}">Compare this profile →</a>
+        <div class="card-actions-copy">
+          <div class="section-title">Next Steps</div>
+          <div class="meta">Continue scouting this profile with board context or head-to-head comparison.</div>
+        </div>
+        <div class="card-actions-links">
+          <a class="nav-link nav-link-action" href="/cards/rookies/board/">← Back to board</a>
+          <a class="nav-link nav-link-action" href="/cards/rookies/compare/?left=${esc(card.slug)}">Compare this profile →</a>
+        </div>
       </section>
 
       <div class="card-columns">
