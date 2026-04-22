@@ -24,9 +24,9 @@
     </header>
 
     <main class="page">
-      <section id="detail-actions" style="margin-top: 12px"></section>
-      <section id="card-root" style="margin-top: 12px">Loading rookie card…</section>
-      <section id="sporq-comps-root" style="margin-top: 0"></section>
+      <section id="detail-actions" class="detail-actions-shell"></section>
+      <section id="card-root" class="card-root-shell">Loading rookie card…</section>
+      <section id="sporq-comps-root" class="sporq-shell"></section>
     </main>
 
     <!-- ── Site footer ───────────────────────────────────────────────────────── -->
@@ -78,10 +78,10 @@
         ].filter(Boolean);
 
         actionsRoot.innerHTML = `
-          <div class="rookie-card" style="padding: 12px 14px; display: flex; justify-content: space-between; gap: 10px; align-items: center;">
-            <div>
+          <div class="detail-actions-panel">
+            <div class="detail-actions-copy">
               <div class="meta">Shortlist status for ${card.identity.name}: <strong>${queued ? 'Queued' : 'Not queued'}</strong></div>
-              ${queued && annotationBits.length ? `<div class="meta" style="margin-top: 4px;">${annotationBits.join(' • ')}</div>` : ''}
+              ${queued && annotationBits.length ? `<div class="meta detail-actions-note">${annotationBits.join(' • ')}</div>` : ''}
             </div>
             <button type="button" class="queue-toggle ${queued ? 'is-queued' : ''}" id="detail-queue-toggle">${queued ? 'Remove from queue' : 'Add to queue'}</button>
           </div>
