@@ -251,6 +251,7 @@ export function renderRookieCard(container, card) {
   const contextFlags = Array.isArray(card.contextSignals?.contextFlags) ? card.contextSignals.contextFlags : [];
   const evidenceSummary = card.contextSignals?.evidenceSummary ?? null;
   const quickPprMedian = card.pprProjection?.median ?? null;
+  const hasPostDraft = card.postDraftAdjustedGrade != null;
   let selectedMetricFamily = 'all';
 
   const seasonsTable = card.seasons.length
@@ -289,7 +290,9 @@ export function renderRookieCard(container, card) {
           <div class="hero-score">
             <div class="section-title">Pre-Draft Grade</div>
             <div class="score">${esc(heroScore)}</div>
-            <div class="meta">Post-Draft Adjusted Grade: ${esc(card.postDraftAdjustedGrade == null ? 'N/A' : card.postDraftAdjustedGrade.toFixed(1))} · Delta ${esc(card.postDraftDelta == null ? 'N/A' : (card.postDraftDelta >= 0 ? '+' : '') + card.postDraftDelta.toFixed(1))}</div>
+            <div class="meta">${hasPostDraft
+    ? `Post-Draft Adjusted Grade: ${esc(card.postDraftAdjustedGrade.toFixed(1))} · Delta ${esc((card.postDraftDelta >= 0 ? '+' : '') + card.postDraftDelta.toFixed(1))}`
+    : 'Post-draft adjustments pending official draft outcomes.'}</div>
             <div class="meta">Class #${esc(card.summary.classRank ?? 'N/A')} · ${esc(card.identity.position)} #${esc(card.summary.posRank ?? 'N/A')}</div>
             ${renderEvidenceTierBadge(card)}
           </div>
