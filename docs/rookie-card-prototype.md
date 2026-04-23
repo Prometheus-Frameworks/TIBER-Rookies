@@ -20,7 +20,7 @@ It is intentionally:
   - detail view for a single rookie
 - `/cards/rookies/compare/index.html?left=<slug>&right=<slug>`
   - two-player compare view
-- `/cards/rookies/wr-malik-ford/index.html`
+- `/cards/rookies/wr-jordyn-tyson/index.html`
   - direct single-player entry example
 
 ## Data sources

@@ -59,8 +59,8 @@ Replace `<DEPLOYED_URL>` with the Railway environment URL.
 - `<DEPLOYED_URL>/`
 - `<DEPLOYED_URL>/cards/rookies/index.html`
 - `<DEPLOYED_URL>/cards/rookies/board/index.html`
-- `<DEPLOYED_URL>/cards/rookies/player.html?slug=wr-malik-ford`
-- `<DEPLOYED_URL>/cards/rookies/compare/index.html?left=wr-malik-ford&right=te-owen-hale`
+- `<DEPLOYED_URL>/cards/rookies/player.html?slug=wr-jordyn-tyson`
+- `<DEPLOYED_URL>/cards/rookies/compare/index.html?left=wr-jordyn-tyson&right=te-kenyon-sadiq`
 
 ### Deep-link verification examples
 
@@ -68,8 +68,8 @@ Run these from a shell to validate route behavior in deployment-style access:
 
 ```bash
 curl -i "<DEPLOYED_URL>/"
-curl -i "<DEPLOYED_URL>/cards/rookies/player?slug=wr-malik-ford"
-curl -i "<DEPLOYED_URL>/cards/rookies/compare?left=wr-malik-ford&right=te-owen-hale"
+curl -i "<DEPLOYED_URL>/cards/rookies/player?slug=wr-jordyn-tyson"
+curl -i "<DEPLOYED_URL>/cards/rookies/compare?left=wr-jordyn-tyson&right=te-kenyon-sadiq"
 curl -i "<DEPLOYED_URL>/components/rookies/rookieCardStyles.css"
 ```
 

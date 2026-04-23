@@ -17,7 +17,7 @@ This runbook is the operational rehearsal path for draft week.
    - `data/raw/2026_combine_results.json`
    - `data/processed/2026_college_production.json`
    - `data/processed/2026_draft_capital_proxy.json`
-   - all three files represent the same 23-player real seed pool identity set (matching `player_id`/`player_name`/`position`/`school`/`class_year`)
+   - all three files represent the same 24-player real seed pool identity set (matching `player_id`/`player_name`/`position`/`school`/`class_year`)
    - `production_score_0_100` may still be `null` for a subset of players; this runbook requires canonical identity alignment, not production-score completeness
 4. You have write access to `exports/promoted/rookie-alpha/`.
 5. You have a handoff channel/path to TIBER-Fantasy (manual bridge).
@@ -80,8 +80,8 @@ Optional deployed probe (Railway URL):
 ```bash
 curl -fsS https://<tiber-rookies-url>/health
 curl -fsSI https://<tiber-rookies-url>/
-curl -fsSI "https://<tiber-rookies-url>/cards/rookies/player.html?slug=wr-malik-ford"
-curl -fsSI "https://<tiber-rookies-url>/cards/rookies/compare/index.html?left=wr-malik-ford&right=te-owen-hale"
+curl -fsSI "https://<tiber-rookies-url>/cards/rookies/player.html?slug=wr-jordyn-tyson"
+curl -fsSI "https://<tiber-rookies-url>/cards/rookies/compare/index.html?left=wr-jordyn-tyson&right=te-kenyon-sadiq"
 ```
 
 Expected:
@@ -100,6 +100,60 @@ Manual bridge (explicitly still manual):
    - `2026_manifest.json`
 2. Preserve filenames exactly.
 3. Record source commit SHA from this repo in handoff notes.
+
+### 4b) Post-draft: populate `2026_draft_results.json` and regenerate
+
+After picks are announced, populate `data/processed/2026_draft_results.json` with one entry per drafted or UDFA seed-pool player. The file must be a JSON array — it starts as `[]`.
+
+**Required fields per entry:**
+
+| field | type | notes |
+|---|---|---|
+| `player_id` | string | must match the seed-pool `player_id` exactly |
+| `nfl_team` | string | team abbreviation (e.g. `"KC"`, `"PHI"`) |
+| `draft_round` | integer | 1–7 |
+| `overall_pick` | integer | overall selection number |
+| `is_udfa` | boolean | `true` only for undrafted free agents; omit or set `false` for drafted players |
+
+`draft_day` (1/2/3) and `draft_capital_tier` are derived automatically by `lib/rookies/draftResults.js` and do not need to be populated manually.
+
+**Example — one Day 1 pick, one Day 3 pick, one UDFA:**
+
+```json
+[
+  {
+    "player_id": "wr-jordyn-tyson",
+    "nfl_team": "PHI",
+    "draft_round": 1,
+    "overall_pick": 22,
+    "is_udfa": false
+  },
+  {
+    "player_id": "te-tanner-koziol",
+    "nfl_team": "KC",
+    "draft_round": 5,
+    "overall_pick": 158,
+    "is_udfa": false
+  },
+  {
+    "player_id": "wr-brenen-thompson",
+    "nfl_team": "DEN",
+    "draft_round": 7,
+    "overall_pick": 245,
+    "is_udfa": false
+  }
+]
+```
+
+Seed-pool players who go undrafted and do not sign as UDFAs can be omitted from the file entirely; the UI will treat them as `post_draft_pending`.
+
+After populating, re-run the rehearsal to regenerate artifacts with real draft-capital outcomes:
+
+```bash
+npm run ops:rehearse-2026
+```
+
+The post-draft UI layer (`postDraftAdjustments.js`) will then apply draft-capital deltas when cards are loaded. Note that only the `computeDraftCapitalAdjustment` function is implemented in v0 — landing-spot, opportunity-path, environment-fit, and insulation adjustments are reserved for future research and return `delta: 0` in this phase.
 
 ### 5) Verify `/rookies` in TIBER-Fantasy after ingest
 
