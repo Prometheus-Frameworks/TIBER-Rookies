@@ -35,20 +35,20 @@ function buildOptions(cards, selectedSlug) {
 
 export function renderRookieCompareSelector({ cards, leftSlug, rightSlug }) {
   return `
-    <form id="compare-selector" class="compare-selector">
-      <label class="control-field">
-        <span class="control-label">Left rookie</span>
+    <form id="compare-selector" class="compare-selector compare-selector-redesign">
+      <label class="control-field compare-control-panel compare-control-panel-left">
+        <span class="control-label">Player A</span>
         <select name="left" data-compare-control="left">
           ${buildOptions(cards, leftSlug)}
         </select>
       </label>
-      <label class="control-field">
-        <span class="control-label">Right rookie</span>
+      <button type="button" id="swap-compare-sides" class="compare-button compare-button-swap" aria-label="Swap compare sides">⇄</button>
+      <label class="control-field compare-control-panel compare-control-panel-right">
+        <span class="control-label">Player B</span>
         <select name="right" data-compare-control="right">
           ${buildOptions(cards, rightSlug)}
         </select>
       </label>
-      <button type="button" id="swap-compare-sides" class="compare-button">Swap</button>
     </form>
   `;
 }

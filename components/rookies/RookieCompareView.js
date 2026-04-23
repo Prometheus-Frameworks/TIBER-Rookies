@@ -158,13 +158,14 @@ function render3ColRow(leftHtml, labelHtml, rightHtml, winner, delta) {
   const absD = Math.abs(delta ?? 0);
   const edgeCls = winner === 'left' ? ' edge-left' : winner === 'right' ? ' edge-right' : '';
   const strongCls = absD >= 4 ? ' is-strong-edge' : absD >= 1.5 ? ' is-lean-edge' : '';
+  const centerLabel = `<span class="compare-3col-label">${labelHtml}</span>`;
   const edgeTag = winner && winner !== 'tie'
     ? `<span class="compare-3col-edge-tag compare-3col-edge-${esc(winner)}">${winner === 'left' ? '◀' : '▶'} ${absD >= 4 ? 'STRONG' : 'EDGE'}</span>`
     : '';
   return `
     <div class="compare-3col-row${edgeCls}${strongCls}">
       <div class="compare-3col-left">${leftHtml}</div>
-      <div class="compare-3col-center">${labelHtml}${edgeTag}</div>
+      <div class="compare-3col-center">${centerLabel}${edgeTag}</div>
       <div class="compare-3col-right">${rightHtml}</div>
     </div>`;
 }
@@ -343,6 +344,14 @@ function renderPprSideBySide(leftCard, rightCard) {
 
 export function renderRookieCompareView(container, leftCard, rightCard) {
   const compared = compareRookies(leftCard, rightCard);
+  const deltaClass = compared.overallDelta == null
+    ? 'delta-chip-neutral'
+    : compared.overallDelta > 0
+      ? 'delta-chip-left'
+      : compared.overallDelta < 0
+        ? 'delta-chip-right'
+        : 'delta-chip-neutral';
+  const deltaPrefix = compared.overallDelta != null && compared.overallDelta > 0 ? '+' : '';
 
   container.innerHTML = `
     <section class="compare-layout">
@@ -353,7 +362,7 @@ export function renderRookieCompareView(container, leftCard, rightCard) {
           <strong>${esc(compared.verdict.headline)}</strong>
           <p class="meta">${esc(compared.verdict.detail)}</p>
         </div>
-        <div class="delta-chip">Grade Δ ${compared.overallDelta == null ? 'N/A' : esc(compared.overallDelta.toFixed(1))}</div>
+        <div class="delta-chip ${deltaClass}">Grade Δ ${compared.overallDelta == null ? 'N/A' : `${deltaPrefix}${esc(compared.overallDelta.toFixed(1))}`}</div>
       </div>
 
       <div class="compare-grid">
