@@ -31,12 +31,12 @@ test('standalone runtime smoke routes', async (t) => {
   const htmlRoutes = [
     '/cards/rookies/index.html',
     '/cards/rookies/board/index.html',
-    '/cards/rookies/player.html?slug=wr-malik-ford',
-    '/cards/rookies/compare/index.html?left=wr-malik-ford&right=te-owen-hale',
+    '/cards/rookies/player.html?slug=wr-jordyn-tyson',
+    '/cards/rookies/compare/index.html?left=wr-jordyn-tyson&right=te-kenyon-sadiq',
     '/cards/rookies',
     '/cards/rookies/board',
-    '/cards/rookies/player?slug=wr-malik-ford',
-    '/cards/rookies/compare?left=wr-malik-ford&right=te-owen-hale',
+    '/cards/rookies/player?slug=wr-jordyn-tyson',
+    '/cards/rookies/compare?left=wr-jordyn-tyson&right=te-kenyon-sadiq',
   ];
 
   for (const route of htmlRoutes) {
