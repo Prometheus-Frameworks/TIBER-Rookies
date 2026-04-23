@@ -348,7 +348,9 @@
       "one_d_rate": 0.098,
       "td_rate": 0.017,
       "avoided_tackle_rate": 0.14,
-      "yac_per_reception": 4.8
+      "yac_per_reception": 4.8,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2005-01-19",
     "breakout_strength": 0.16,
@@ -460,7 +462,9 @@
       "ngs_model_rank_class": 1,
       "ngs_model_score": 86.19,
       "adjusted_ctt_rank_class": 3,
-      "yprr_2025": 2.37
+      "yprr_2025": 2.37,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2004-08-12",
     "breakout_strength": 1.0,
@@ -555,7 +559,9 @@
       "man_ctt_pct": 0.1786,
       "zone_ctt_pct": 0.1212,
       "passer_rating_when_targeted": 130.0,
-      "wide_pct": 0.279
+      "wide_pct": 0.279,
+      "slot_rate": 0.721,
+      "slot_yprr": null
     },
     "dob": "2004-06-04",
     "breakout_strength": 0.48,
@@ -643,7 +649,9 @@
       "one_d_rate": 0.097,
       "td_rate": 0.023,
       "avoided_tackle_rate": 0.21,
-      "yac_per_reception": 6.6
+      "yac_per_reception": 6.6,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2004-09-24",
     "breakout_strength": 0.52,
@@ -790,7 +798,9 @@
       "one_d_rate": 0.081,
       "td_rate": 0.014,
       "avoided_tackle_rate": 0.167,
-      "yac_per_reception": 4.9
+      "yac_per_reception": 4.9,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2003-07-25",
     "breakout_strength": null,
@@ -830,7 +840,9 @@
       "one_d_rate": 0.099,
       "td_rate": 0.016,
       "avoided_tackle_rate": 0.067,
-      "yac_per_reception": 3.4
+      "yac_per_reception": 3.4,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2003-10-23",
     "breakout_strength": 0.0,
@@ -921,7 +933,9 @@
       "contested_catch_rate_2025": 0.769,
       "td_rate_2025": 0.1774,
       "adot": 14.4,
-      "drop_rate": 0.031
+      "drop_rate": 0.031,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2003-12-06",
     "breakout_strength": 0.8,
@@ -980,7 +994,9 @@
       "one_d_rate": 0.089,
       "td_rate": 0.011,
       "avoided_tackle_rate": 0.166,
-      "yac_per_reception": 5.8
+      "yac_per_reception": 5.8,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2004-06-07",
     "breakout_strength": 0.22,
@@ -1042,7 +1058,9 @@
       "one_d_rate": 0.127,
       "td_rate": 0.032,
       "avoided_tackle_rate": 0.122,
-      "yac_per_reception": 5.1
+      "yac_per_reception": 5.1,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2003-05-28",
     "breakout_strength": 0.52,
@@ -1273,7 +1291,9 @@
       "one_d_rate": 0.095,
       "td_rate": 0.018,
       "avoided_tackle_rate": 0.15,
-      "yac_per_reception": 5.3
+      "yac_per_reception": 5.3,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2004-07-14",
     "breakout_strength": 0.58,
@@ -1826,7 +1846,11 @@
     "dob": "2002-12-02",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 0,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-vinny-anthony-ii",
@@ -1853,7 +1877,11 @@
     "dob": "2003-06-27",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 1
+    "seasons_available": 1,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-dillon-bell",
@@ -1879,7 +1907,11 @@
     "dob": "2003-11-06",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 0,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-skyler-bell",
@@ -1921,7 +1953,9 @@
       "one_d_rate": 0.086,
       "td_rate": 0.018,
       "avoided_tackle_rate": 0.136,
-      "yac_per_reception": 6.4
+      "yac_per_reception": 6.4,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2002-07-05",
     "breakout_strength": 1.0,
@@ -1965,7 +1999,11 @@
     "dob": "2002-10-17",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 0,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-germie-bernard",
@@ -2004,7 +2042,9 @@
       "one_d_rate": 0.091,
       "td_rate": 0.011,
       "avoided_tackle_rate": 0.237,
-      "yac_per_reception": 6.4
+      "yac_per_reception": 6.4,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2003-12-02",
     "breakout_strength": 0.82,
@@ -2051,7 +2091,9 @@
       "one_d_rate": 0.096,
       "td_rate": 0.011,
       "avoided_tackle_rate": 0.213,
-      "yac_per_reception": 8.0
+      "yac_per_reception": 8.0,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2004-03-29",
     "breakout_strength": 0.34,
@@ -2088,7 +2130,11 @@
     "dob": "2003-12-12",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 0,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-deion-burks",
@@ -2130,7 +2176,9 @@
       "one_d_rate": 0.067,
       "td_rate": 0.011,
       "avoided_tackle_rate": 0.23,
-      "yac_per_reception": 4.7
+      "yac_per_reception": 4.7,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2003-01-08",
     "breakout_strength": null,
@@ -2163,7 +2211,11 @@
     "dob": "2001-03-05",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 1
+    "seasons_available": 1,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-josh-cameron",
@@ -2204,7 +2256,9 @@
       "one_d_rate": 0.083,
       "td_rate": 0.014,
       "avoided_tackle_rate": 0.165,
-      "yac_per_reception": 5.1
+      "yac_per_reception": 5.1,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2003-03-18",
     "breakout_strength": 0.98,
@@ -2248,7 +2302,9 @@
       "one_d_rate": 0.09,
       "td_rate": 0.009,
       "avoided_tackle_rate": 0.255,
-      "yac_per_reception": 6.1
+      "yac_per_reception": 6.1,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2003-09-10",
     "breakout_strength": 0.88,
@@ -2293,7 +2349,9 @@
       "one_d_rate": 0.109,
       "td_rate": 0.031,
       "avoided_tackle_rate": 0.3,
-      "yac_per_reception": 6.3
+      "yac_per_reception": 6.3,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2003-12-14",
     "breakout_strength": 0.98,
@@ -2351,7 +2409,9 @@
       "one_d_rate": 0.097,
       "td_rate": 0.018,
       "avoided_tackle_rate": 0.182,
-      "yac_per_reception": 4.7
+      "yac_per_reception": 4.7,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2002-01-04",
     "breakout_strength": null,
@@ -2383,7 +2443,11 @@
     "dob": "2003-09-09",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 0,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-malachi-fields",
@@ -2424,7 +2488,9 @@
       "one_d_rate": 0.09,
       "td_rate": 0.012,
       "avoided_tackle_rate": 0.176,
-      "yac_per_reception": 4.7
+      "yac_per_reception": 4.7,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2002-07-02",
     "breakout_strength": 0.58,
@@ -2467,7 +2533,11 @@
     "dob": "2003-01-21",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 0,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-chris-hilton-jr",
@@ -2493,7 +2563,11 @@
     "dob": "2002-10-11",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 0,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-jordan-hudson",
@@ -2528,7 +2602,9 @@
       "one_d_rate": 0.09,
       "td_rate": 0.022,
       "avoided_tackle_rate": 0.2,
-      "yac_per_reception": 5.1
+      "yac_per_reception": 5.1,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2003-11-22",
     "breakout_strength": null,
@@ -2573,7 +2649,9 @@
       "one_d_rate": 0.103,
       "td_rate": 0.017,
       "avoided_tackle_rate": 0.205,
-      "yac_per_reception": 4.6
+      "yac_per_reception": 4.6,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2004-07-02",
     "breakout_strength": 1.0,
@@ -2605,7 +2683,11 @@
     "dob": "2001-12-22",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 0,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-bryce-lance",
@@ -2647,7 +2729,9 @@
       "one_d_rate": 0.13,
       "td_rate": 0.036,
       "avoided_tackle_rate": 0.126,
-      "yac_per_reception": 5.1
+      "yac_per_reception": 5.1,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2001-09-20",
     "breakout_strength": 0.46,
@@ -2691,7 +2775,9 @@
       "one_d_rate": 0.108,
       "td_rate": 0.026,
       "avoided_tackle_rate": 0.202,
-      "yac_per_reception": 3.8
+      "yac_per_reception": 3.8,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2004-08-05",
     "breakout_strength": null,
@@ -2734,7 +2820,11 @@
     "dob": "2003-01-27",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 0,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-eric-mcalister",
@@ -2776,7 +2866,9 @@
       "one_d_rate": 0.122,
       "td_rate": 0.022,
       "avoided_tackle_rate": 0.298,
-      "yac_per_reception": 7.4
+      "yac_per_reception": 7.4,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2003-09-29",
     "breakout_strength": 1.0,
@@ -2808,7 +2900,11 @@
     "dob": "2003-01-15",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 0,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-eric-rivers",
@@ -2846,7 +2942,9 @@
       "one_d_rate": 0.103,
       "td_rate": 0.018,
       "avoided_tackle_rate": 0.203,
-      "yac_per_reception": 5.8
+      "yac_per_reception": 5.8,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2002-09-17",
     "breakout_strength": 0.32,
@@ -2887,7 +2985,9 @@
       "one_d_rate": 0.115,
       "td_rate": 0.016,
       "avoided_tackle_rate": 0.129,
-      "yac_per_reception": 4.7
+      "yac_per_reception": 4.7,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2001-01-21",
     "breakout_strength": null,
@@ -2916,7 +3016,11 @@
     "breakout_strength": 0.48,
     "breakout_confidence": 0.9,
     "seasons_available": 2,
-    "power4_early_contributor_flag": true
+    "power4_early_contributor_flag": true,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-j-michael-sturdivant",
@@ -2944,7 +3048,11 @@
     "dob": "2002-09-06",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 0,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-zavion-thomas",
@@ -2971,7 +3079,11 @@
     "dob": "2004-09-14",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 0,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-reggie-virgil",
@@ -2997,7 +3109,11 @@
     "dob": "2004-05-14",
     "breakout_strength": 0.62,
     "breakout_confidence": 0.8,
-    "seasons_available": 1
+    "seasons_available": 1,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-harrison-wallace-iii",
@@ -3032,7 +3148,9 @@
       "one_d_rate": 0.089,
       "td_rate": 0.009,
       "avoided_tackle_rate": 0.117,
-      "yac_per_reception": 4.9
+      "yac_per_reception": 4.9,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "dob": "2003-04-23",
     "breakout_strength": null,
@@ -3064,7 +3182,11 @@
     "dob": "2002-10-14",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 0,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-kaden-wetjen",
@@ -3090,7 +3212,11 @@
     "dob": "2002-03-09",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 0,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "wr-colbie-young",
@@ -3118,7 +3244,11 @@
     "dob": "2002-07-24",
     "breakout_strength": null,
     "breakout_confidence": null,
-    "seasons_available": 0
+    "seasons_available": 0,
+    "advanced_receiving_stats": {
+      "slot_rate": null,
+      "slot_yprr": null
+    }
   },
   {
     "player_id": "te-dallen-bentley",
@@ -3910,7 +4040,9 @@
       "one_d_rate": 0.12,
       "td_rate": 0.024,
       "avoided_tackle_rate": 0.276,
-      "yac_per_reception": 6.3
+      "yac_per_reception": 6.3,
+      "slot_rate": null,
+      "slot_yprr": null
     },
     "first_down_per_route_run": 0.12,
     "first_down_per_route_run_tier": "strong",

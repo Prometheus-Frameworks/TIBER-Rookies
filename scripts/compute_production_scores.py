@@ -195,6 +195,19 @@ def safe_div(numerator: float, denominator: float) -> float | None:
     return numerator / denominator
 
 
+def build_team_passing_totals(
+    passing_stats: dict[tuple[str, str], dict[str, Any]]
+) -> dict[str, dict[str, float]]:
+    """Sum passing yards and TDs per team for dominator rating computation."""
+    totals: dict[str, dict[str, float]] = {}
+    for (_, norm_team), data in passing_stats.items():
+        stats = data["stats"]
+        t = totals.setdefault(norm_team, {"pass_yards": 0.0, "pass_tds": 0.0})
+        t["pass_yards"] += stats.get("YDS", 0.0)
+        t["pass_tds"] += stats.get("TD", 0.0)
+    return totals
+
+
 def build_population(
     position: str,
     passing_stats: dict[tuple[str, str], dict[str, Any]],
@@ -475,6 +488,7 @@ def build_stat_lines(
     rushing_stats: dict[tuple[str, str], dict[str, Any]],
     receiving_stats: dict[tuple[str, str], dict[str, Any]],
     cfbd_year: int,
+    team_passing_totals: dict[str, dict[str, float]] | None = None,
 ) -> list[dict[str, Any]]:
     populations: dict[str, list[PopulationPlayer]] = {
         "QB": build_population("QB", passing_stats, rushing_stats, receiving_stats),
@@ -541,15 +555,28 @@ def build_stat_lines(
                     receiving = receiving_stats.get(key, {}).get("stats", {})
                     receptions = receiving.get("REC")
                     receiving_yards = receiving.get("YDS")
+                    receiving_tds = receiving.get("TD")
 
                     add_stat(stats, "receptions", receptions)
                     add_stat(stats, "receiving_yards", receiving_yards)
-                    add_stat(stats, "receiving_tds", receiving.get("TD"))
+                    add_stat(stats, "receiving_tds", receiving_tds)
                     add_stat(
                         stats,
                         "yards_per_reception",
                         safe_div(receiving_yards, receptions) if receiving_yards is not None and receptions is not None else None,
                     )
+                    if team_passing_totals is not None and receiving_yards is not None:
+                        school = str(row.get("school", ""))
+                        team_total = next(
+                            (team_passing_totals[a] for a in school_aliases(school) if a in team_passing_totals),
+                            None,
+                        )
+                        if team_total:
+                            denom = team_total["pass_yards"] + team_total["pass_tds"] * 20
+                            if denom > 0:
+                                p_yards = receiving_yards or 0.0
+                                p_tds = receiving_tds or 0.0
+                                add_stat(stats, "dominator_rating", (p_yards + p_tds * 20) / denom)
 
         stat_lines.append(
             {
@@ -609,7 +636,8 @@ def main() -> int:
 
     write_json(args.seed_output, updated_seed)
     write_json(args.production_output, production_rows)
-    stat_lines = build_stat_lines(seed_rows, results, passing_stats, rushing_stats, receiving_stats, cfbd_year)
+    team_passing_totals = build_team_passing_totals(passing_stats)
+    stat_lines = build_stat_lines(seed_rows, results, passing_stats, rushing_stats, receiving_stats, cfbd_year, team_passing_totals)
     write_json(args.stats_output, stat_lines)
 
     print_summary(results)
