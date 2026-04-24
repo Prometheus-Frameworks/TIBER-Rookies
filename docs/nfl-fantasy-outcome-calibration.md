@@ -22,6 +22,8 @@ No proprietary analyst rankings, projections, screenshots, or scraped paid conte
 - Cohort summaries:
   - `exports/promoted/nfl-fantasy-outcomes/context_flag_outcome_summary_v1.json`
   - `exports/promoted/nfl-fantasy-outcomes/context_flag_outcome_summary_v1.csv`
+- Source freshness sidecar:
+  - `exports/promoted/nfl-fantasy-outcomes/source_metadata_v1.json`
 
 ## PPR formula
 
@@ -55,6 +57,31 @@ The cohort summary script separates:
 
 It reports both in `incomplete_notes`, along with small-sample warnings.
 
+## Source freshness checks
+
+The build script now reports source freshness diagnostics every run:
+- `player_stats` row count
+- `draft_picks` row count
+- `latest_stats_season` (max season present in player stats rows)
+- `latest_draft_year` (max season/draft year present in draft rows)
+- detected source mode (`seasonal_source` or `weekly_aggregated`)
+
+You can optionally set an expected season floor:
+
+```bash
+python scripts/build_nfl_fantasy_outcomes.py --refresh --expected-latest-season 2025
+```
+
+If source rows lag that expectation, the script prints a loud warning.
+
+To fail fast before writing promoted outputs when stale:
+
+```bash
+python scripts/build_nfl_fantasy_outcomes.py --refresh --expected-latest-season 2025 --fail-on-stale-source
+```
+
+The sidecar metadata file includes staleness fields (`expected_latest_season`, `is_stale_relative_to_expected`) so downstream summarization can log current coverage context. Cohort interpretations are only as current as `latest_stats_season`.
+
 ## Why separate from Rookie Alpha
 
 This lane is descriptive/historical calibration and **does not alter**:
@@ -77,6 +104,23 @@ From repo root:
 python scripts/build_nfl_fantasy_outcomes.py --refresh
 python scripts/summarize_context_flag_outcomes.py
 ```
+
+Optional cohort-inclusion validation for known 2025 top-10 skill picks:
+
+```bash
+python scripts/summarize_context_flag_outcomes.py --validate-known-2025-skill-picks
+```
+
+Current expected validation set:
+- Travis Hunter (WR, 2025, pick 2)
+- Tetairoa McMillan (WR, 2025, pick 8)
+- Colston Loveland (TE, 2025, pick 10)
+
+If expected players are missing, the summarizer prints warnings with likely reasons:
+- missing 2025 draft data
+- missing 2025 player stats
+- position mismatch
+- ID join mismatch
 
 If network access is unavailable, pre-populate caches at:
 - `data/external/nflverse/player_stats.csv`

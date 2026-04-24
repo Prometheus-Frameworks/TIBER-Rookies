@@ -7,6 +7,7 @@ import argparse
 import csv
 import json
 import statistics
+import re
 from pathlib import Path
 from typing import Any
 
@@ -14,6 +15,12 @@ INPUT_JSON = Path("exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcome
 OUTPUT_DIR = Path("exports/promoted/nfl-fantasy-outcomes")
 OUTPUT_JSON = OUTPUT_DIR / "context_flag_outcome_summary_v1.json"
 OUTPUT_CSV = OUTPUT_DIR / "context_flag_outcome_summary_v1.csv"
+SOURCE_METADATA_JSON = OUTPUT_DIR / "source_metadata_v1.json"
+EXPECTED_2025_SKILL_PICKS = [
+    {"player_name": "Travis Hunter", "position": "WR", "draft_year": 2025, "overall_pick": 2},
+    {"player_name": "Tetairoa McMillan", "position": "WR", "draft_year": 2025, "overall_pick": 8},
+    {"player_name": "Colston Loveland", "position": "TE", "draft_year": 2025, "overall_pick": 10},
+]
 
 COHORTS = {
     "wr_top10_since_2022": {"position": "WR", "since": 2022, "max_pick": 10},
@@ -139,17 +146,161 @@ def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
         writer.writerows(rows)
 
 
+def read_csv_rows(path: Path) -> list[dict[str, str]]:
+    with path.open(encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+def extract_cache_paths_from_source_notes(source_notes: str) -> tuple[Path | None, Path | None]:
+    stats_match = re.search(r"player_stats=[^:]+:([^;]+)", source_notes)
+    draft_match = re.search(r"draft_picks=[^:]+:([^;]+)", source_notes)
+    stats_path = Path(stats_match.group(1)) if stats_match else None
+    draft_path = Path(draft_match.group(1)) if draft_match else None
+    return stats_path, draft_path
+
+
+def normalize_name(value: str) -> str:
+    normalized = (value or "").strip().lower().replace(".", " ")
+    return " ".join(normalized.split())
+
+
+def name_tokens(value: str) -> tuple[str, str] | None:
+    normalized = normalize_name(value)
+    if not normalized:
+        return None
+    parts = normalized.split()
+    if len(parts) < 2:
+        return None
+    first = parts[0]
+    last = parts[-1]
+    return first, last
+
+
+def name_matches_expected(candidate_name: str, expected_name: str) -> bool:
+    candidate = name_tokens(candidate_name)
+    expected = name_tokens(expected_name)
+    if not candidate or not expected:
+        return normalize_name(candidate_name) == normalize_name(expected_name)
+
+    candidate_first, candidate_last = candidate
+    expected_first, expected_last = expected
+    if candidate_last != expected_last:
+        return False
+    if candidate_first == expected_first:
+        return True
+    return candidate_first[:1] == expected_first[:1]
+
+
+def detect_missing_player_reason(
+    expected: dict[str, Any],
+    outcome_rows: list[dict[str, Any]],
+    draft_source_rows: list[dict[str, str]],
+    stats_source_rows: list[dict[str, str]],
+    latest_stats_season: int,
+    latest_draft_year: int,
+) -> str:
+    expected_name = expected["player_name"]
+    expected_draft_year = expected["draft_year"]
+    expected_pick = expected["overall_pick"]
+    expected_position = expected["position"]
+
+    if latest_draft_year and latest_draft_year < expected_draft_year:
+        return "missing 2025 draft data"
+    if latest_stats_season and latest_stats_season < expected_draft_year:
+        return "missing 2025 player stats"
+
+    draft_name_rows = [
+        row for row in draft_source_rows if name_matches_expected(row.get("player_name", ""), expected_name)
+    ]
+    stats_name_rows = [
+        row
+        for row in stats_source_rows
+        if name_matches_expected(row.get("player_name", ""), expected_name) and to_int(row.get("season")) == expected_draft_year
+    ]
+    outcome_name_rows = [
+        row
+        for row in outcome_rows
+        if name_matches_expected(row.get("player_name", ""), expected_name) and row["draft_year"] == expected_draft_year
+    ]
+
+    if not draft_name_rows:
+        return "missing 2025 draft data"
+    if not stats_name_rows:
+        return "missing 2025 player stats"
+    if not outcome_name_rows:
+        return "ID join mismatch"
+
+    for row in outcome_name_rows:
+        if row["position"] != expected_position:
+            return "position mismatch"
+        if row["overall_pick"] != expected_pick:
+            return "ID join mismatch"
+    return "position mismatch"
+
+
+def validate_known_2025_skill_picks(
+    normalized_rows: list[dict[str, Any]],
+    source_metadata: dict[str, Any] | None,
+) -> list[str]:
+    latest_stats_season = to_int((source_metadata or {}).get("latest_stats_season"))
+    latest_draft_year = to_int((source_metadata or {}).get("latest_draft_year"))
+    draft_source_rows: list[dict[str, str]] = []
+    stats_source_rows: list[dict[str, str]] = []
+
+    if source_metadata and source_metadata.get("source_notes"):
+        stats_path, draft_path = extract_cache_paths_from_source_notes(source_metadata["source_notes"])
+        if stats_path and stats_path.exists():
+            stats_source_rows = read_csv_rows(stats_path)
+        if draft_path and draft_path.exists():
+            draft_source_rows = read_csv_rows(draft_path)
+
+    warnings: list[str] = []
+    for expected in EXPECTED_2025_SKILL_PICKS:
+        matching_rows = [
+            row
+            for row in normalized_rows
+            if name_matches_expected(row["player_name"], expected["player_name"])
+            and row["draft_year"] == expected["draft_year"]
+            and row["overall_pick"] == expected["overall_pick"]
+            and row["position"] == expected["position"]
+        ]
+        if matching_rows:
+            continue
+
+        reason = detect_missing_player_reason(
+            expected=expected,
+            outcome_rows=normalized_rows,
+            draft_source_rows=draft_source_rows,
+            stats_source_rows=stats_source_rows,
+            latest_stats_season=latest_stats_season,
+            latest_draft_year=latest_draft_year,
+        )
+        warnings.append(
+            f"{expected['player_name']} ({expected['position']}, pick {expected['overall_pick']}): {reason}"
+        )
+    return warnings
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Summarize context-flag fantasy outcome cohorts")
     parser.add_argument("--input", type=Path, default=INPUT_JSON)
     parser.add_argument("--output-json", type=Path, default=OUTPUT_JSON)
     parser.add_argument("--output-csv", type=Path, default=OUTPUT_CSV)
+    parser.add_argument("--source-metadata", type=Path, default=SOURCE_METADATA_JSON)
+    parser.add_argument(
+        "--validate-known-2025-skill-picks",
+        action="store_true",
+        help="Validate expected 2025 top-10 skill picks are represented in cohort-ready outcomes.",
+    )
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
     rows = json.loads(args.input.read_text(encoding="utf-8"))
+    source_metadata: dict[str, Any] | None = None
+    if args.source_metadata.exists():
+        source_metadata = json.loads(args.source_metadata.read_text(encoding="utf-8"))
 
     normalized_rows = []
     for row in rows:
@@ -167,6 +318,9 @@ def main() -> None:
         )
 
     latest_nfl_season = max((r["nfl_season"] for r in normalized_rows), default=0)
+    metadata_latest_stats_season = to_int((source_metadata or {}).get("latest_stats_season"))
+    if metadata_latest_stats_season > 0:
+        latest_nfl_season = max(latest_nfl_season, metadata_latest_stats_season)
     summaries: list[dict[str, Any]] = []
 
     for cohort_name, rule in COHORTS.items():
@@ -207,6 +361,25 @@ def main() -> None:
     write_csv(args.output_csv, summaries)
 
     print(f"Built {len(summaries)} cohort summaries")
+    if source_metadata:
+        print(
+            "Source metadata: "
+            f"latest_stats_season={source_metadata.get('latest_stats_season')}, "
+            f"latest_draft_year={source_metadata.get('latest_draft_year')}, "
+            f"is_stale_relative_to_expected={source_metadata.get('is_stale_relative_to_expected')}, "
+            f"expected_latest_season={source_metadata.get('expected_latest_season')}"
+        )
+    else:
+        print("Source metadata: unavailable (sidecar file not found)")
+    print(f"Season coverage baseline: latest_nfl_season={latest_nfl_season}")
+    if args.validate_known_2025_skill_picks:
+        missing_players = validate_known_2025_skill_picks(normalized_rows, source_metadata)
+        if missing_players:
+            print("!!! VALIDATION WARNING: missing expected 2025 skill picks:")
+            for item in missing_players:
+                print(f"  - {item}")
+        else:
+            print("Known 2025 skill-pick validation: all expected players found.")
     print(f"JSON -> {args.output_json}")
     print(f"CSV  -> {args.output_csv}")
 
