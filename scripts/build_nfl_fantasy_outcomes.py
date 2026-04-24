@@ -14,6 +14,7 @@ import io
 import json
 import re
 import urllib.request
+from collections import defaultdict
 from pathlib import Path
 from typing import Any
 
@@ -33,6 +34,7 @@ NFLVERSE_DRAFT_PICKS_URL = (
 )
 
 POSITIONS = {"WR", "RB", "TE", "QB"}
+WEEKLY_MODE_COLUMNS = {"week", "game_id", "recent_team", "opponent_team"}
 
 FIELDNAMES = [
     "player_id",
@@ -129,6 +131,15 @@ def load_source_rows(url: str, cache_path: Path, refresh: bool) -> tuple[list[di
     return rows, "download"
 
 
+def detect_source_mode(stats_rows: list[dict[str, str]]) -> str:
+    if not stats_rows:
+        return "seasonal_source"
+    sample_columns = set(stats_rows[0].keys())
+    if WEEKLY_MODE_COLUMNS.intersection(sample_columns):
+        return "weekly_aggregated"
+    return "seasonal_source"
+
+
 def build_draft_index(draft_rows: list[dict[str, str]]) -> dict[str, dict[str, Any]]:
     index: dict[str, dict[str, Any]] = {}
     for row in draft_rows:
@@ -168,11 +179,21 @@ def map_stat_row_to_drafted_player(stat_row: dict[str, str], draft_index: dict[s
 
     name = stat_row.get("player_name", "")
     season = to_int(stat_row.get("season"), 0)
-    # Fallback name+draft_year lookup for datasets lacking common IDs.
     for rec in draft_index.values():
         if rec["player_name"].strip().lower() == name.strip().lower() and rec["draft_year"] <= season:
             return rec
     return None
+
+
+def has_participation(row: dict[str, str]) -> bool:
+    return (
+        to_float(row.get("receptions")) > 0
+        or to_float(row.get("receiving_yards")) > 0
+        or to_float(row.get("receiving_tds")) > 0
+        or to_float(row.get("rushing_yards")) > 0
+        or to_float(row.get("rushing_tds")) > 0
+        or to_int(row.get("games")) > 0
+    )
 
 
 def build_player_outcome_rows(
@@ -181,7 +202,9 @@ def build_player_outcome_rows(
     source_notes: str,
 ) -> list[dict[str, Any]]:
     draft_index = build_draft_index(draft_rows)
-    out: list[dict[str, Any]] = []
+    source_mode = detect_source_mode(stats_rows)
+    grouped: dict[tuple[str, int], dict[str, Any]] = {}
+    weekly_keys: dict[tuple[str, int], set[str]] = defaultdict(set)
 
     for row in stats_rows:
         pos = (row.get("position") or row.get("pos") or "").upper()
@@ -196,18 +219,9 @@ def build_player_outcome_rows(
         if nfl_season <= 0:
             continue
 
-        receptions = to_float(row.get("receptions"))
-        receiving_yards = to_float(row.get("receiving_yards"))
-        receiving_tds = to_float(row.get("receiving_tds"))
-        rushing_yards = to_float(row.get("rushing_yards"))
-        rushing_tds = to_float(row.get("rushing_tds"))
-        games = to_int(row.get("games"), 0)
-
-        ppr_points = round(compute_ppr(receptions, receiving_yards, receiving_tds, rushing_yards, rushing_tds), 2)
-        ppr_per_game = round(ppr_points / games, 3) if games > 0 else 0.0
-
-        out.append(
-            {
+        key = (draft["player_id"], nfl_season)
+        if key not in grouped:
+            grouped[key] = {
                 "player_id": draft["player_id"],
                 "player_name": draft["player_name"] or row.get("player_name", ""),
                 "position": draft["position"],
@@ -217,16 +231,52 @@ def build_player_outcome_rows(
                 "nfl_team_drafted": draft["nfl_team_drafted"],
                 "nfl_season": nfl_season,
                 "career_year": career_year_for_season(draft["draft_year"], nfl_season),
-                "games": games,
+                "games": 0,
+                "receptions": 0.0,
+                "receiving_yards": 0.0,
+                "receiving_tds": 0.0,
+                "rushing_yards": 0.0,
+                "rushing_tds": 0.0,
+            }
+
+        rec = grouped[key]
+        rec["receptions"] += to_float(row.get("receptions"))
+        rec["receiving_yards"] += to_float(row.get("receiving_yards"))
+        rec["receiving_tds"] += to_float(row.get("receiving_tds"))
+        rec["rushing_yards"] += to_float(row.get("rushing_yards"))
+        rec["rushing_tds"] += to_float(row.get("rushing_tds"))
+
+        if source_mode == "weekly_aggregated":
+            if has_participation(row):
+                marker = row.get("game_id") or row.get("week") or f"row-{len(weekly_keys[key]) + 1}"
+                weekly_keys[key].add(str(marker))
+        else:
+            rec["games"] = max(rec["games"], to_int(row.get("games"), 0))
+
+    out: list[dict[str, Any]] = []
+    for key, rec in grouped.items():
+        if source_mode == "weekly_aggregated":
+            rec["games"] = len(weekly_keys.get(key, set()))
+
+        ppr_points = round(
+            compute_ppr(
+                rec["receptions"],
+                rec["receiving_yards"],
+                rec["receiving_tds"],
+                rec["rushing_yards"],
+                rec["rushing_tds"],
+            ),
+            2,
+        )
+        ppr_per_game = round(ppr_points / rec["games"], 3) if rec["games"] > 0 else 0.0
+
+        out.append(
+            {
+                **rec,
                 "ppr_points": ppr_points,
                 "ppr_per_game": ppr_per_game,
-                "receptions": receptions,
-                "receiving_yards": receiving_yards,
-                "receiving_tds": receiving_tds,
-                "rushing_yards": rushing_yards,
-                "rushing_tds": rushing_tds,
                 "source": "nflverse_public_release",
-                "source_notes": source_notes,
+                "source_notes": f"{source_notes}; source_mode={source_mode}",
             }
         )
 

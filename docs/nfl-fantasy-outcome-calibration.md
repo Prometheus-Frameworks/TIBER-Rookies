@@ -29,7 +29,15 @@ Initial focus is WR/RB/TE-style receiving/rushing PPR:
 
 `PPR = receptions*1 + receiving_yards*0.1 + receiving_tds*6 + rushing_yards*0.1 + rushing_tds*6`
 
-QB passing fantasy scoring is not included in the base formula in v1; QB cohorts are still included with the same rushing/receiving-only formula for now and should be interpreted cautiously.
+QB passing fantasy scoring is not included in the base formula in v1; QB cohort outputs are therefore **rushing/receiving-only** in v1 and should be interpreted cautiously.
+
+## Source mode visibility
+
+Each output row carries a `source_notes` marker with one of:
+- `source_mode=seasonal_source` (source rows already seasonal)
+- `source_mode=weekly_aggregated` (multiple weekly/game rows were aggregated to one player-season row)
+
+When `weekly_aggregated` is used, receiving/rushing stats are summed across rows and `games` is computed from distinct participated game/week markers.
 
 ## Career-year definition
 
