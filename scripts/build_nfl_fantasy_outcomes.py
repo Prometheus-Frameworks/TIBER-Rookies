@@ -14,6 +14,7 @@ import gzip
 import io
 import json
 import re
+import urllib.error
 import urllib.request
 from collections import defaultdict
 from pathlib import Path
@@ -25,12 +26,15 @@ OUTPUT_CSV = OUTPUT_DIR / "player_year_ppr_outcomes_v1.csv"
 OUTPUT_SOURCE_METADATA = OUTPUT_DIR / "source_metadata_v1.json"
 
 CACHE_DIR = Path("data/external/nflverse")
-STATS_CACHE = CACHE_DIR / "player_stats.csv"
+LEGACY_STATS_CACHE = CACHE_DIR / "player_stats.csv"
+STATS_PLAYER_CACHE = CACHE_DIR / "stats_player_reg.csv"
 DRAFT_CACHE = CACHE_DIR / "draft_picks.csv"
 
-NFLVERSE_PLAYER_STATS_URL = (
+NFLVERSE_LEGACY_PLAYER_STATS_URL = (
     "https://github.com/nflverse/nflverse-data/releases/download/player_stats/player_stats.csv.gz"
 )
+NFLVERSE_STATS_PLAYER_RELEASE_API = "https://api.github.com/repos/nflverse/nflverse-data/releases/tags/stats_player"
+NFLVERSE_STATS_PLAYER_BASE_URL = "https://github.com/nflverse/nflverse-data/releases/download/stats_player/"
 NFLVERSE_DRAFT_PICKS_URL = (
     "https://github.com/nflverse/nflverse-data/releases/download/draft_picks/draft_picks.csv.gz"
 )
@@ -98,11 +102,14 @@ def career_year_for_season(draft_year: int, nfl_season: int) -> int:
     return nfl_season - draft_year + 1
 
 
-def download_csv_gz(url: str) -> list[dict[str, str]]:
+def download_csv(url: str) -> list[dict[str, str]]:
     with urllib.request.urlopen(url, timeout=60) as response:
-        compressed = response.read()
-    with gzip.GzipFile(fileobj=io.BytesIO(compressed)) as gz:
-        text = gz.read().decode("utf-8")
+        payload = response.read()
+    if url.endswith(".gz"):
+        with gzip.GzipFile(fileobj=io.BytesIO(payload)) as gz:
+            text = gz.read().decode("utf-8")
+    else:
+        text = payload.decode("utf-8")
     return list(csv.DictReader(io.StringIO(text)))
 
 
@@ -122,15 +129,69 @@ def read_csv(path: Path) -> list[dict[str, str]]:
 def load_source_rows(url: str, cache_path: Path, refresh: bool) -> tuple[list[dict[str, str]], str]:
     cache_path.parent.mkdir(parents=True, exist_ok=True)
     if refresh:
-        rows = download_csv_gz(url)
+        rows = download_csv(url)
         write_csv(cache_path, rows, list(rows[0].keys()) if rows else [])
         return rows, "download"
     if cache_path.exists():
         return read_csv(cache_path), "cache"
 
-    rows = download_csv_gz(url)
+    rows = download_csv(url)
     write_csv(cache_path, rows, list(rows[0].keys()) if rows else [])
     return rows, "download"
+
+
+def fetch_release_asset_names(release_api_url: str) -> list[str]:
+    request = urllib.request.Request(
+        release_api_url,
+        headers={"Accept": "application/vnd.github+json", "User-Agent": "tiber-rookies-source-check"},
+    )
+    with urllib.request.urlopen(request, timeout=60) as response:
+        payload = json.loads(response.read().decode("utf-8"))
+    return [asset.get("name", "") for asset in payload.get("assets", []) if asset.get("name")]
+
+
+def select_stats_player_asset_name(asset_names: list[str], expected_latest_season: int | None = None) -> str | None:
+    # Naming convention in the `stats_player` release includes summary-level assets
+    # such as `stats_player_reg.csv.gz` and year-sliced files like
+    # `stats_player_reg_<season>.csv.gz`.
+    aggregate_priority = [
+        "stats_player_reg.csv.gz",
+        "stats_player_reg.csv",
+    ]
+    available = set(asset_names)
+    for candidate in aggregate_priority:
+        if candidate in available:
+            return candidate
+
+    season_pattern = re.compile(r"^stats_player_reg_(\d{4})\.(csv\.gz|csv)$")
+    seasonal: list[tuple[int, str]] = []
+    for name in asset_names:
+        match = season_pattern.match(name)
+        if not match:
+            continue
+        seasonal.append((int(match.group(1)), name))
+
+    if not seasonal:
+        return None
+
+    seasonal.sort(key=lambda x: x[0], reverse=True)
+    if expected_latest_season is not None:
+        for season, name in seasonal:
+            if season >= expected_latest_season:
+                return name
+    return seasonal[0][1]
+
+
+def resolve_stats_player_url(expected_latest_season: int | None = None) -> tuple[str | None, str]:
+    try:
+        asset_names = fetch_release_asset_names(NFLVERSE_STATS_PLAYER_RELEASE_API)
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError) as exc:
+        return None, f"stats_player_release_lookup_failed:{exc}"
+
+    selected_asset = select_stats_player_asset_name(asset_names, expected_latest_season=expected_latest_season)
+    if not selected_asset:
+        return None, "stats_player_release_lookup_failed:no_supported_reg_csv_asset"
+    return f"{NFLVERSE_STATS_PLAYER_BASE_URL}{selected_asset}", f"stats_player_asset={selected_asset}"
 
 
 def detect_source_mode(stats_rows: list[dict[str, str]]) -> str:
@@ -162,6 +223,8 @@ def build_source_metadata(
     source_mode: str,
     expected_latest_season: int | None,
     source_notes: str,
+    stats_source: str,
+    stats_url: str,
 ) -> dict[str, Any]:
     latest_season = latest_stats_season(stats_rows)
     latest_draft = latest_draft_year(draft_rows)
@@ -173,6 +236,8 @@ def build_source_metadata(
         "latest_stats_season": latest_season,
         "latest_draft_year": latest_draft,
         "source_mode": source_mode,
+        "stats_source": stats_source,
+        "stats_url": stats_url,
         "expected_latest_season": expected_latest_season,
         "is_stale_relative_to_expected": stale,
         "source_notes": source_notes,
@@ -326,7 +391,19 @@ def build_player_outcome_rows(
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build NFL fantasy outcome calibration player-year artifacts")
     parser.add_argument("--refresh", action="store_true", help="Force download fresh nflverse source snapshots")
-    parser.add_argument("--stats-cache", type=Path, default=STATS_CACHE)
+    parser.add_argument("--stats-cache", type=Path, default=None)
+    parser.add_argument(
+        "--stats-source",
+        choices=["legacy_player_stats", "stats_player"],
+        default="stats_player",
+        help="Stats source family. `stats_player` prefers regular-season summary assets; falls back to legacy player_stats when needed.",
+    )
+    parser.add_argument(
+        "--stats-source-url",
+        type=str,
+        default=None,
+        help="Optional explicit URL override for player stats source asset.",
+    )
     parser.add_argument("--draft-cache", type=Path, default=DRAFT_CACHE)
     parser.add_argument("--output-json", type=Path, default=OUTPUT_JSON)
     parser.add_argument("--output-csv", type=Path, default=OUTPUT_CSV)
@@ -348,10 +425,48 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
 
-    stats_rows, stats_mode = load_source_rows(NFLVERSE_PLAYER_STATS_URL, args.stats_cache, refresh=args.refresh)
+    resolved_stats_url = args.stats_source_url
+    stats_resolution_note = "manual_stats_source_url"
+    resolved_stats_source = args.stats_source
+    if not resolved_stats_url:
+        if args.stats_source == "legacy_player_stats":
+            resolved_stats_url = NFLVERSE_LEGACY_PLAYER_STATS_URL
+            stats_resolution_note = "legacy_player_stats_default_url"
+        else:
+            stats_player_url, resolution_note = resolve_stats_player_url(
+                expected_latest_season=args.expected_latest_season
+            )
+            if stats_player_url:
+                resolved_stats_url = stats_player_url
+                stats_resolution_note = resolution_note
+            else:
+                resolved_stats_url = NFLVERSE_LEGACY_PLAYER_STATS_URL
+                resolved_stats_source = "legacy_player_stats"
+                stats_resolution_note = f"{resolution_note}; fallback=legacy_player_stats"
+
+    stats_cache = args.stats_cache or (
+        STATS_PLAYER_CACHE if resolved_stats_source == "stats_player" else LEGACY_STATS_CACHE
+    )
+
+    try:
+        stats_rows, stats_mode = load_source_rows(resolved_stats_url, stats_cache, refresh=args.refresh)
+    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as exc:
+        if args.stats_source == "stats_player" and not args.stats_source_url:
+            print(f"stats_player source load failed ({exc}); retrying with legacy_player_stats fallback.")
+            resolved_stats_url = NFLVERSE_LEGACY_PLAYER_STATS_URL
+            resolved_stats_source = "legacy_player_stats"
+            stats_cache = args.stats_cache or LEGACY_STATS_CACHE
+            stats_rows, stats_mode = load_source_rows(resolved_stats_url, stats_cache, refresh=args.refresh)
+            stats_resolution_note = f"{stats_resolution_note}; download_fallback=legacy_player_stats"
+        else:
+            raise
+
     draft_rows, draft_mode = load_source_rows(NFLVERSE_DRAFT_PICKS_URL, args.draft_cache, refresh=args.refresh)
 
-    notes = f"player_stats={stats_mode}:{args.stats_cache}; draft_picks={draft_mode}:{args.draft_cache}"
+    notes = (
+        f"stats_source={resolved_stats_source}; stats_resolution={stats_resolution_note}; "
+        f"player_stats={stats_mode}:{stats_cache}; draft_picks={draft_mode}:{args.draft_cache}"
+    )
     source_mode = detect_source_mode(stats_rows)
     source_metadata = build_source_metadata(
         stats_rows=stats_rows,
@@ -359,6 +474,8 @@ def main() -> None:
         source_mode=source_mode,
         expected_latest_season=args.expected_latest_season,
         source_notes=notes,
+        stats_source=resolved_stats_source,
+        stats_url=resolved_stats_url,
     )
 
     print("Source freshness diagnostics:")
@@ -366,6 +483,8 @@ def main() -> None:
     print(f"  draft_picks rows loaded:  {source_metadata['draft_picks_row_count']}")
     print(f"  latest_stats_season:      {source_metadata['latest_stats_season']}")
     print(f"  latest_draft_year:        {source_metadata['latest_draft_year']}")
+    print(f"  stats_source:             {source_metadata['stats_source']}")
+    print(f"  stats_url:                {source_metadata['stats_url']}")
     print(f"  source mode detected:     {source_metadata['source_mode']}")
 
     if source_metadata["is_stale_relative_to_expected"]:
