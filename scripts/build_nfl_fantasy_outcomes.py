@@ -41,6 +41,7 @@ NFLVERSE_DRAFT_PICKS_URL = (
 
 POSITIONS = {"WR", "RB", "TE", "QB"}
 WEEKLY_MODE_COLUMNS = {"week", "game_id", "recent_team", "opponent_team"}
+STATS_PLAYER_SEASON_PATTERN = re.compile(r"^stats_player_reg_(\d{4})\.(csv\.gz|csv)$")
 
 FIELDNAMES = [
     "player_id",
@@ -150,48 +151,17 @@ def fetch_release_asset_names(release_api_url: str) -> list[str]:
     return [asset.get("name", "") for asset in payload.get("assets", []) if asset.get("name")]
 
 
-def select_stats_player_asset_name(asset_names: list[str], expected_latest_season: int | None = None) -> str | None:
-    # Naming convention in the `stats_player` release includes summary-level assets
-    # such as `stats_player_reg.csv.gz` and year-sliced files like
-    # `stats_player_reg_<season>.csv.gz`.
-    aggregate_priority = [
-        "stats_player_reg.csv.gz",
-        "stats_player_reg.csv",
-    ]
-    available = set(asset_names)
-    for candidate in aggregate_priority:
-        if candidate in available:
-            return candidate
-
-    season_pattern = re.compile(r"^stats_player_reg_(\d{4})\.(csv\.gz|csv)$")
-    seasonal: list[tuple[int, str]] = []
+def discover_stats_player_seasonal_assets(asset_names: list[str]) -> dict[int, str]:
+    seasonal: dict[int, str] = {}
     for name in asset_names:
-        match = season_pattern.match(name)
+        match = STATS_PLAYER_SEASON_PATTERN.match(name)
         if not match:
             continue
-        seasonal.append((int(match.group(1)), name))
-
-    if not seasonal:
-        return None
-
-    seasonal.sort(key=lambda x: x[0], reverse=True)
-    if expected_latest_season is not None:
-        for season, name in seasonal:
-            if season >= expected_latest_season:
-                return name
-    return seasonal[0][1]
-
-
-def resolve_stats_player_url(expected_latest_season: int | None = None) -> tuple[str | None, str]:
-    try:
-        asset_names = fetch_release_asset_names(NFLVERSE_STATS_PLAYER_RELEASE_API)
-    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError) as exc:
-        return None, f"stats_player_release_lookup_failed:{exc}"
-
-    selected_asset = select_stats_player_asset_name(asset_names, expected_latest_season=expected_latest_season)
-    if not selected_asset:
-        return None, "stats_player_release_lookup_failed:no_supported_reg_csv_asset"
-    return f"{NFLVERSE_STATS_PLAYER_BASE_URL}{selected_asset}", f"stats_player_asset={selected_asset}"
+        season = int(match.group(1))
+        existing = seasonal.get(season)
+        if not existing or (existing.endswith(".csv") and name.endswith(".csv.gz")):
+            seasonal[season] = name
+    return seasonal
 
 
 def detect_source_mode(stats_rows: list[dict[str, str]]) -> str:
@@ -224,24 +194,37 @@ def build_source_metadata(
     expected_latest_season: int | None,
     source_notes: str,
     stats_source: str,
-    stats_url: str,
+    stats_url: str | None = None,
+    stats_urls: list[str] | None = None,
+    stats_seasons_loaded: list[int] | None = None,
+    missing_stats_seasons: list[int] | None = None,
 ) -> dict[str, Any]:
     latest_season = latest_stats_season(stats_rows)
+    earliest_season = min((to_int(row.get("season"), 0) for row in stats_rows if to_int(row.get("season"), 0) > 0), default=0)
     latest_draft = latest_draft_year(draft_rows)
     stale = is_stale_source(latest_season, expected_latest_season)
-    return {
+    metadata = {
         "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
         "player_stats_row_count": len(stats_rows),
         "draft_picks_row_count": len(draft_rows),
         "latest_stats_season": latest_season,
+        "earliest_stats_season": earliest_season,
         "latest_draft_year": latest_draft,
         "source_mode": source_mode,
         "stats_source": stats_source,
-        "stats_url": stats_url,
         "expected_latest_season": expected_latest_season,
         "is_stale_relative_to_expected": stale,
         "source_notes": source_notes,
     }
+    if stats_urls is not None:
+        metadata["stats_urls"] = stats_urls
+    elif stats_url is not None:
+        metadata["stats_url"] = stats_url
+    if stats_seasons_loaded is not None:
+        metadata["stats_seasons_loaded"] = stats_seasons_loaded
+    if missing_stats_seasons is not None:
+        metadata["missing_stats_seasons"] = missing_stats_seasons
+    return metadata
 
 
 def build_draft_index(draft_rows: list[dict[str, str]]) -> dict[str, dict[str, Any]]:
@@ -393,6 +376,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--refresh", action="store_true", help="Force download fresh nflverse source snapshots")
     parser.add_argument("--stats-cache", type=Path, default=None)
     parser.add_argument(
+        "--stats-season-start",
+        type=int,
+        default=2022,
+        help="Inclusive season start when --stats-source=stats_player and season-sliced assets are used.",
+    )
+    parser.add_argument(
+        "--stats-season-end",
+        type=int,
+        default=None,
+        help="Inclusive season end when --stats-source=stats_player. Defaults to --expected-latest-season if set, else latest discovered season.",
+    )
+    parser.add_argument(
         "--stats-source",
         choices=["legacy_player_stats", "stats_player"],
         default="stats_player",
@@ -426,47 +421,92 @@ def main() -> None:
     args = parse_args()
 
     resolved_stats_url = args.stats_source_url
+    resolved_stats_urls: list[str] | None = None
+    stats_seasons_loaded: list[int] | None = None
+    missing_stats_seasons: list[int] | None = None
+    seasonal_cache_paths: list[Path] = []
     stats_resolution_note = "manual_stats_source_url"
     resolved_stats_source = args.stats_source
-    if not resolved_stats_url:
+    if not resolved_stats_url and args.stats_source == "stats_player":
+        try:
+            asset_names = fetch_release_asset_names(NFLVERSE_STATS_PLAYER_RELEASE_API)
+        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError) as exc:
+            print(f"stats_player source discovery failed ({exc}); retrying with legacy_player_stats fallback.")
+            resolved_stats_url = NFLVERSE_LEGACY_PLAYER_STATS_URL
+            resolved_stats_source = "legacy_player_stats"
+            stats_resolution_note = f"stats_player_release_lookup_failed:{exc}; fallback=legacy_player_stats"
+        else:
+            seasonal_assets = discover_stats_player_seasonal_assets(asset_names)
+            if not seasonal_assets:
+                resolved_stats_url = NFLVERSE_LEGACY_PLAYER_STATS_URL
+                resolved_stats_source = "legacy_player_stats"
+                stats_resolution_note = (
+                    "stats_player_release_lookup_failed:no_supported_seasonal_reg_csv_asset; "
+                    "fallback=legacy_player_stats"
+                )
+            else:
+                latest_discovered = max(seasonal_assets)
+                season_end = args.stats_season_end or args.expected_latest_season or latest_discovered
+                season_start = args.stats_season_start
+                requested_seasons = list(range(season_start, season_end + 1))
+                stats_rows = []
+                resolved_stats_urls = []
+                stats_seasons_loaded = []
+                missing_stats_seasons = []
+                for season in requested_seasons:
+                    asset_name = seasonal_assets.get(season)
+                    if not asset_name:
+                        missing_stats_seasons.append(season)
+                        print(f"WARNING: missing stats_player regular-season asset for {season}")
+                        continue
+                    asset_url = f"{NFLVERSE_STATS_PLAYER_BASE_URL}{asset_name}"
+                    cache_path = CACHE_DIR / f"stats_player_reg_{season}.csv"
+                    rows, _ = load_source_rows(asset_url, cache_path, refresh=args.refresh)
+                    stats_rows.extend(rows)
+                    resolved_stats_urls.append(asset_url)
+                    seasonal_cache_paths.append(cache_path)
+                    stats_seasons_loaded.append(season)
+                stats_mode = "download" if args.refresh else "cache_or_download"
+                stats_resolution_note = (
+                    f"stats_player_seasonal_assets_loaded={len(stats_seasons_loaded)};"
+                    f" requested_range={season_start}-{season_end}; latest_discovered={latest_discovered}"
+                )
+    if not resolved_stats_url and resolved_stats_source == "legacy_player_stats":
+        resolved_stats_url = NFLVERSE_LEGACY_PLAYER_STATS_URL
+        stats_resolution_note = "legacy_player_stats_default_url"
+    if not resolved_stats_url and resolved_stats_source == "stats_player":
         if args.stats_source == "legacy_player_stats":
             resolved_stats_url = NFLVERSE_LEGACY_PLAYER_STATS_URL
             stats_resolution_note = "legacy_player_stats_default_url"
         else:
-            stats_player_url, resolution_note = resolve_stats_player_url(
-                expected_latest_season=args.expected_latest_season
-            )
-            if stats_player_url:
-                resolved_stats_url = stats_player_url
-                stats_resolution_note = resolution_note
-            else:
-                resolved_stats_url = NFLVERSE_LEGACY_PLAYER_STATS_URL
-                resolved_stats_source = "legacy_player_stats"
-                stats_resolution_note = f"{resolution_note}; fallback=legacy_player_stats"
-
-    stats_cache = args.stats_cache or (
-        STATS_PLAYER_CACHE if resolved_stats_source == "stats_player" else LEGACY_STATS_CACHE
-    )
-
-    try:
-        stats_rows, stats_mode = load_source_rows(resolved_stats_url, stats_cache, refresh=args.refresh)
-    except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as exc:
-        if args.stats_source == "stats_player" and not args.stats_source_url:
-            print(f"stats_player source load failed ({exc}); retrying with legacy_player_stats fallback.")
             resolved_stats_url = NFLVERSE_LEGACY_PLAYER_STATS_URL
             resolved_stats_source = "legacy_player_stats"
-            stats_cache = args.stats_cache or LEGACY_STATS_CACHE
+            stats_resolution_note = "stats_player_unresolved; fallback=legacy_player_stats"
+
+    stats_cache = args.stats_cache or (STATS_PLAYER_CACHE if resolved_stats_source == "stats_player" else LEGACY_STATS_CACHE)
+
+    if resolved_stats_source != "stats_player" or resolved_stats_url is not None and resolved_stats_urls is None:
+        try:
             stats_rows, stats_mode = load_source_rows(resolved_stats_url, stats_cache, refresh=args.refresh)
-            stats_resolution_note = f"{stats_resolution_note}; download_fallback=legacy_player_stats"
-        else:
-            raise
+        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as exc:
+            if args.stats_source == "stats_player" and not args.stats_source_url:
+                print(f"stats_player source load failed ({exc}); retrying with legacy_player_stats fallback.")
+                resolved_stats_url = NFLVERSE_LEGACY_PLAYER_STATS_URL
+                resolved_stats_source = "legacy_player_stats"
+                stats_cache = args.stats_cache or LEGACY_STATS_CACHE
+                stats_rows, stats_mode = load_source_rows(resolved_stats_url, stats_cache, refresh=args.refresh)
+                stats_resolution_note = f"{stats_resolution_note}; download_fallback=legacy_player_stats"
+            else:
+                raise
 
     draft_rows, draft_mode = load_source_rows(NFLVERSE_DRAFT_PICKS_URL, args.draft_cache, refresh=args.refresh)
 
-    notes = (
-        f"stats_source={resolved_stats_source}; stats_resolution={stats_resolution_note}; "
-        f"player_stats={stats_mode}:{stats_cache}; draft_picks={draft_mode}:{args.draft_cache}"
+    player_stats_source_note = (
+        ",".join(str(path) for path in seasonal_cache_paths)
+        if seasonal_cache_paths
+        else str(stats_cache)
     )
+    notes = f"stats_source={resolved_stats_source}; stats_resolution={stats_resolution_note}; player_stats={stats_mode}:{player_stats_source_note}; draft_picks={draft_mode}:{args.draft_cache}"
     source_mode = detect_source_mode(stats_rows)
     source_metadata = build_source_metadata(
         stats_rows=stats_rows,
@@ -476,6 +516,9 @@ def main() -> None:
         source_notes=notes,
         stats_source=resolved_stats_source,
         stats_url=resolved_stats_url,
+        stats_urls=resolved_stats_urls,
+        stats_seasons_loaded=stats_seasons_loaded,
+        missing_stats_seasons=missing_stats_seasons,
     )
 
     print("Source freshness diagnostics:")
@@ -484,20 +527,32 @@ def main() -> None:
     print(f"  latest_stats_season:      {source_metadata['latest_stats_season']}")
     print(f"  latest_draft_year:        {source_metadata['latest_draft_year']}")
     print(f"  stats_source:             {source_metadata['stats_source']}")
-    print(f"  stats_url:                {source_metadata['stats_url']}")
+    print(f"  earliest_stats_season:    {source_metadata['earliest_stats_season']}")
+    if source_metadata.get("stats_urls"):
+        print(f"  stats_urls:               {len(source_metadata['stats_urls'])} seasonal assets")
+    else:
+        print(f"  stats_url:                {source_metadata.get('stats_url')}")
+    if source_metadata.get("stats_seasons_loaded") is not None:
+        print(f"  stats_seasons_loaded:     {source_metadata.get('stats_seasons_loaded')}")
+    if source_metadata.get("missing_stats_seasons") is not None:
+        print(f"  missing_stats_seasons:    {source_metadata.get('missing_stats_seasons')}")
     print(f"  source mode detected:     {source_metadata['source_mode']}")
 
-    if source_metadata["is_stale_relative_to_expected"]:
+    stale_or_missing = source_metadata["is_stale_relative_to_expected"] or bool(source_metadata.get("missing_stats_seasons"))
+    if stale_or_missing:
         print(
             "!!! SOURCE STALENESS WARNING: "
             f"expected_latest_season={args.expected_latest_season}, "
             f"but latest_stats_season={source_metadata['latest_stats_season']}"
         )
+        if source_metadata.get("missing_stats_seasons"):
+            print(f"!!! MISSING STATS SEASONS: {source_metadata['missing_stats_seasons']}")
         if args.fail_on_stale_source:
             raise SystemExit(
                 "Failing due to stale source: "
                 f"expected_latest_season={args.expected_latest_season}, "
-                f"latest_stats_season={source_metadata['latest_stats_season']}"
+                f"latest_stats_season={source_metadata['latest_stats_season']}, "
+                f"missing_stats_seasons={source_metadata.get('missing_stats_seasons', [])}"
             )
 
     rows = build_player_outcome_rows(stats_rows, draft_rows, source_notes=notes)
