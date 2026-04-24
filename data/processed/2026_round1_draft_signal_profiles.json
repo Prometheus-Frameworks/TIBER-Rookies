@@ -1,0 +1,220 @@
+[
+  {
+    "player_id": "rb-jeremiyah-love_2026",
+    "player_name": "Jeremiyah Love",
+    "position": "RB",
+    "pick": 3,
+    "team": "TBD",
+    "pre_draft_tiber_stance": "High-upside RB profile with model-aligned talent indicators pre-draft; required NFL capital to confirm ceiling confidence.",
+    "round1_signal_summary": "Top-5 RB draft capital is a rare modern signal that materially upgrades both confidence and role insulation.",
+    "talent_confirmation_signal": "elite",
+    "opportunity_insulation_signal": "elite",
+    "short_term_fantasy_runway": "immediate",
+    "primary_risks": [
+      "Operator-provided pick/team facts still need canonical draft_results reconciliation.",
+      "Top-5 RB outcomes remain sensitive to offensive line and coaching continuity."
+    ],
+    "translator_tags": [
+      "top5_skill_capital",
+      "rare_rb_premium_capital",
+      "elite_opportunity_insulation",
+      "immediate_workload_signal"
+    ],
+    "post_draft_handling": "Treat as a rare RB premium-capital case, not a generic Round 1 RB bucket. Preserve strong opportunity insulation in translator logic without rewriting pre-draft model grade.",
+    "notes": "Selected top 5 as an RB. Treat as rare RB capital and offensive infrastructure signal. Do not treat as generic Round 1 RB."
+  },
+  {
+    "player_id": "wr-carnell-tate_2026",
+    "player_name": "Carnell Tate",
+    "position": "WR",
+    "pick": 4,
+    "team": "Titans",
+    "pre_draft_tiber_stance": "Strong pre-draft WR profile with first-round caliber indicators but still subject to class-level valuation context.",
+    "round1_signal_summary": "Top-5 WR capital provides elite insulation, while talent confirmation remains high but not automatically equivalent to historical top-5 certainty in a potentially inflated class.",
+    "talent_confirmation_signal": "strong",
+    "opportunity_insulation_signal": "elite",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Class-level draft capital inflation could overstate pure talent certainty relative to historical baselines.",
+      "Environment assumptions should remain provisional until canonical draft/team artifacts are finalized."
+    ],
+    "translator_tags": [
+      "top5_skill_capital",
+      "premium_wr_investment",
+      "elite_opportunity_insulation",
+      "class_inflation_adjustment_candidate",
+      "market_conviction_not_equal_talent_certainty",
+      "wr1_depth_chart_path"
+    ],
+    "post_draft_handling": "Keep talent confirmation and opportunity insulation split. Apply inflation-aware caution to talent confidence while preserving elite role/runway insulation.",
+    "notes": "Top-5 pick may overstate pure historical talent signal if 2026 class capital is inflated, but opportunity insulation remains elite. If Titans context is present, note presumed early WR1 runway with Cam Ward, but avoid overstating until draft_results/team context are canonical."
+  },
+  {
+    "player_id": "wr-jordyn-tyson_2026",
+    "player_name": "Jordyn Tyson",
+    "position": "WR",
+    "pick": 8,
+    "team": "TBD",
+    "pre_draft_tiber_stance": "Upper-tier WR profile with round-1 probability and quality baseline support.",
+    "round1_signal_summary": "Top-10 WR capital is a strong market confirmation signal with likely early role runway.",
+    "talent_confirmation_signal": "strong",
+    "opportunity_insulation_signal": "strong",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Unknown finalized team context may alter immediate target competition.",
+      "Operator-provided draft facts still need canonical reconciliation."
+    ],
+    "translator_tags": [
+      "top10_skill_capital",
+      "premium_wr_investment",
+      "strong_role_insulation"
+    ],
+    "post_draft_handling": "Translate as strong market confirmation plus strong early-role insulation without treating as a guaranteed immediate fantasy alpha outcome.",
+    "notes": "Top-10 WR investment. Treat as strong NFL market confirmation and likely early role runway."
+  },
+  {
+    "player_id": "qb-ty-simpson_2026",
+    "player_name": "Ty Simpson",
+    "position": "QB",
+    "pick": 13,
+    "team": "Rams",
+    "pre_draft_tiber_stance": "Developmental QB profile with long-term upside contingent on environment quality and timeline.",
+    "round1_signal_summary": "Round 1 QB capital plus Rams/McVay context strengthens long-term confidence even with potential delayed Year 1 starts.",
+    "talent_confirmation_signal": "strong",
+    "opportunity_insulation_signal": "strong",
+    "short_term_fantasy_runway": "delayed",
+    "primary_risks": [
+      "Delayed initial starting path may suppress early fantasy utility.",
+      "Developmental outcomes remain sensitive to eventual deployment timing."
+    ],
+    "translator_tags": [
+      "round1_qb_capital",
+      "elite_developmental_environment",
+      "delayed_start_insulation"
+    ],
+    "post_draft_handling": "Separate delayed short-term runway from strong long-term insulation created by Round 1 QB capital and coaching environment.",
+    "notes": "Rams/McVay landing creates strong developmental context. Separate delayed-start timeline from long-term environment quality."
+  },
+  {
+    "player_id": "te-kenyon-sadiq_2026",
+    "player_name": "Kenyon Sadiq",
+    "position": "TE",
+    "pick": 16,
+    "team": "TBD",
+    "pre_draft_tiber_stance": "Promising TE profile with role-dependent fantasy translation and known positional development lag risk.",
+    "round1_signal_summary": "Round 1 TE capital confirms investment and role patience, but TE production curves often delay fantasy breakout timing.",
+    "talent_confirmation_signal": "strong",
+    "opportunity_insulation_signal": "strong",
+    "short_term_fantasy_runway": "delayed",
+    "primary_risks": [
+      "TE usage translation can lag despite high draft investment.",
+      "Year 1 route share and red-zone role remain uncertain without canonical team deployment data."
+    ],
+    "translator_tags": [
+      "round1_te_capital",
+      "premium_te_insulation",
+      "role_translation_watch"
+    ],
+    "post_draft_handling": "Maintain strong insulation signal while applying cautious short-term fantasy expectations typical for TE development arcs.",
+    "notes": "Round 1 TE capital is meaningful but TE fantasy production often has delayed curves. Treat opportunity insulation as strong, Year 1 fantasy runway cautiously."
+  },
+  {
+    "player_id": "wr-makai-lemon_2026",
+    "player_name": "Makai Lemon",
+    "position": "WR",
+    "pick": 20,
+    "team": "Eagles",
+    "pre_draft_tiber_stance": "Round 1-caliber WR with upside tied to route efficiency and deployment context.",
+    "round1_signal_summary": "Round 1 capital plus trade-up conviction is strong, but near-term target volume may be capped by entrenched veterans.",
+    "talent_confirmation_signal": "strong",
+    "opportunity_insulation_signal": "strong",
+    "short_term_fantasy_runway": "delayed",
+    "primary_risks": [
+      "Short-term target share ceiling behind A.J. Brown and DeVonta Smith.",
+      "Year 1 volume may lag even in a high-efficiency offense."
+    ],
+    "translator_tags": [
+      "round1_wr_capital",
+      "trade_up_conviction",
+      "depth_chart_volume_cap",
+      "high_efficiency_environment",
+      "delayed_volume_path"
+    ],
+    "post_draft_handling": "Credit strong confirmation and insulation from trade-up Round 1 investment, while explicitly capping near-term volume assumptions in translator outputs.",
+    "notes": "Eagles traded up for him. Strong capital and conviction, but short-term target ceiling may be capped behind A.J. Brown and DeVonta Smith."
+  },
+  {
+    "player_id": "wr-kc-concepcion_2026",
+    "player_name": "KC Concepcion",
+    "position": "WR",
+    "pick": 24,
+    "team": "Browns",
+    "pre_draft_tiber_stance": "TIBER pre-draft WR1 with strong separation/YAC translation optimism relative to class peers.",
+    "round1_signal_summary": "Round 1 capital is a major model-validation signal, but Browns environment volatility tempers immediate certainty around fantasy translation.",
+    "talent_confirmation_signal": "elite",
+    "opportunity_insulation_signal": "strong",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Landing-spot offensive volatility can disrupt early consistency.",
+      "Team-level context assumptions should be rechecked once canonical artifacts are locked."
+    ],
+    "translator_tags": [
+      "round1_market_confirmation",
+      "model_wr1_validation",
+      "elite_separator_signal",
+      "yac_return_value_profile",
+      "landing_spot_volatility"
+    ],
+    "post_draft_handling": "Treat Round 1 draft capital as strong validation of pre-draft WR1 stance while isolating Browns environment volatility as a separate translation risk layer.",
+    "notes": "TIBER had Concepcion as WR1. Round 1 capital is a major validation signal. Separate player validation from Browns offensive environment volatility."
+  },
+  {
+    "player_id": "wr-omar-cooper-jr_2026",
+    "player_name": "Omar Cooper Jr.",
+    "position": "WR",
+    "pick": 30,
+    "team": "Jets",
+    "pre_draft_tiber_stance": "Late first to early second tier WR profile with upside dependent on role clarity.",
+    "round1_signal_summary": "Late Round 1 WR capital is meaningful, and trade-back-in behavior increases conviction beyond passive pick-30 value.",
+    "talent_confirmation_signal": "strong",
+    "opportunity_insulation_signal": "strong",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Role pathway still requires depth-chart and deployment confirmation.",
+      "Late Round 1 hits have wider outcome bands than top-half selections."
+    ],
+    "translator_tags": [
+      "late_round1_wr_capital",
+      "fifth_year_option_signal",
+      "trade_up_conviction",
+      "role_path_review"
+    ],
+    "post_draft_handling": "Score as stronger than passive pick-30 capital because team paid to re-enter Round 1 for contract control and commitment.",
+    "notes": "Jets traded back into Round 1. Treat as stronger than passive pick-30 capital because the team paid to secure the fifth-year option."
+  },
+  {
+    "player_id": "rb-jadarian-price_2026",
+    "player_name": "Jadarian Price",
+    "position": "RB",
+    "pick": 32,
+    "team": "Seahawks",
+    "pre_draft_tiber_stance": "Explosive but lighter-sample RB profile with efficiency appeal and workload projection uncertainty.",
+    "round1_signal_summary": "Round 1 RB capital creates strong opportunity insulation, while talent confirmation is positive but discounted for smaller historical touch sample.",
+    "talent_confirmation_signal": "strong",
+    "opportunity_insulation_signal": "strong",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Never exceeded 125 college touches in a season, increasing workload projection uncertainty.",
+      "Shared backfield dynamics could reduce immediate volume capture."
+    ],
+    "translator_tags": [
+      "round1_rb_capital",
+      "low_tread_efficiency_profile",
+      "shared_backfield_context_override",
+      "workload_projection_risk",
+      "opportunity_insulation_strong"
+    ],
+    "post_draft_handling": "Maintain strong opportunity insulation from Round 1 RB capital while keeping talent confirmation separate and modestly sample-discounted.",
+    "notes": "Round 1 RB capital despite not topping 125 touches in a college season. Talent confirmation is strong but sample-size discounted. Opportunity insulation is strong because Seattle spent Round 1 capital."
+  }
+]
