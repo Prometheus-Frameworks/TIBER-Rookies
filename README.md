@@ -4,6 +4,12 @@ TIBER-Rookies is the **authoritative Rookie Alpha producer lab** and now also ha
 
 It is intentionally not a full draft room, not a live backend, and not a runtime dependency for TIBER-Fantasy.
 
+## External source hygiene
+
+TIBER-Rookies uses external analyst commentary only as qualitative context unless explicit written permission/licensing is documented. Do not scrape, copy, store, or model on third-party proprietary/paywalled analyst content.
+
+See [docs/legal/external-source-hygiene-policy.md](docs/legal/external-source-hygiene-policy.md) for full requirements.
+
 ## Draft-week readiness (March 27, 2026)
 
 This repository is **draft-week ready for promoted artifact handoff** when an operator can complete the documented 2026 rehearsal path:
