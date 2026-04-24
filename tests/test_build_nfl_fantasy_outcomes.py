@@ -9,10 +9,10 @@ from scripts.build_nfl_fantasy_outcomes import (
     build_source_metadata,
     career_year_for_season,
     compute_ppr,
+    discover_stats_player_seasonal_assets,
     is_stale_source,
     latest_draft_year,
     latest_stats_season,
-    select_stats_player_asset_name,
 )
 
 
@@ -148,18 +148,41 @@ class SourceFreshnessTests(unittest.TestCase):
 
 
 class StatsSourceSelectionTests(unittest.TestCase):
-    def test_prefers_aggregate_regular_season_stats_player_asset(self) -> None:
-        asset = select_stats_player_asset_name(
-            ["stats_player_week_2025.csv.gz", "stats_player_reg.csv.gz", "stats_player_post_2025.csv.gz"]
+    def test_discovers_only_season_specific_regular_season_assets(self) -> None:
+        assets = discover_stats_player_seasonal_assets(
+            [
+                "stats_player_week_2025.csv.gz",
+                "stats_player_reg_2024.csv.gz",
+                "stats_player_reg_2025.csv.gz",
+                "stats_player_reg.csv.gz",
+                "stats_player_post_2025.csv.gz",
+            ]
         )
-        self.assertEqual(asset, "stats_player_reg.csv.gz")
+        self.assertEqual(assets, {2024: "stats_player_reg_2024.csv.gz", 2025: "stats_player_reg_2025.csv.gz"})
 
-    def test_falls_back_to_season_specific_regular_season_asset(self) -> None:
-        asset = select_stats_player_asset_name(
-            ["stats_player_reg_2024.csv.gz", "stats_player_reg_2025.csv.gz"],
-            expected_latest_season=2025,
+    def test_prefers_gzip_when_both_csv_and_csv_gz_exist(self) -> None:
+        assets = discover_stats_player_seasonal_assets(
+            ["stats_player_reg_2025.csv", "stats_player_reg_2025.csv.gz", "stats_player_reg_2024.csv"]
         )
-        self.assertEqual(asset, "stats_player_reg_2025.csv.gz")
+        self.assertEqual(assets, {2024: "stats_player_reg_2024.csv", 2025: "stats_player_reg_2025.csv.gz"})
+
+    def test_source_metadata_contains_multiseason_fields(self) -> None:
+        metadata = build_source_metadata(
+            stats_rows=[{"season": "2022"}, {"season": "2024"}],
+            draft_rows=[{"season": "2023"}],
+            source_mode="seasonal_source",
+            expected_latest_season=2025,
+            source_notes="fixture",
+            stats_source="stats_player",
+            stats_urls=["https://example.com/stats_player_reg_2022.csv.gz", "https://example.com/stats_player_reg_2024.csv.gz"],
+            stats_seasons_loaded=[2022, 2024],
+            missing_stats_seasons=[2023, 2025],
+        )
+        self.assertEqual(metadata["earliest_stats_season"], 2022)
+        self.assertEqual(metadata["latest_stats_season"], 2024)
+        self.assertEqual(metadata["stats_seasons_loaded"], [2022, 2024])
+        self.assertEqual(metadata["missing_stats_seasons"], [2023, 2025])
+        self.assertIn("stats_urls", metadata)
 
 
 if __name__ == "__main__":
