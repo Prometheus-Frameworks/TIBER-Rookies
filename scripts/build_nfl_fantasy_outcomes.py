@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+from datetime import datetime, timezone
 import gzip
 import io
 import json
@@ -21,6 +22,7 @@ from typing import Any
 OUTPUT_DIR = Path("exports/promoted/nfl-fantasy-outcomes")
 OUTPUT_JSON = OUTPUT_DIR / "player_year_ppr_outcomes_v1.json"
 OUTPUT_CSV = OUTPUT_DIR / "player_year_ppr_outcomes_v1.csv"
+OUTPUT_SOURCE_METADATA = OUTPUT_DIR / "source_metadata_v1.json"
 
 CACHE_DIR = Path("data/external/nflverse")
 STATS_CACHE = CACHE_DIR / "player_stats.csv"
@@ -138,6 +140,43 @@ def detect_source_mode(stats_rows: list[dict[str, str]]) -> str:
     if WEEKLY_MODE_COLUMNS.intersection(sample_columns):
         return "weekly_aggregated"
     return "seasonal_source"
+
+
+def latest_stats_season(stats_rows: list[dict[str, str]]) -> int:
+    return max((to_int(row.get("season"), 0) for row in stats_rows), default=0)
+
+
+def latest_draft_year(draft_rows: list[dict[str, str]]) -> int:
+    return max((to_int(row.get("season") or row.get("draft_year"), 0) for row in draft_rows), default=0)
+
+
+def is_stale_source(latest_season: int, expected_latest_season: int | None) -> bool:
+    if expected_latest_season is None:
+        return False
+    return latest_season < expected_latest_season
+
+
+def build_source_metadata(
+    stats_rows: list[dict[str, str]],
+    draft_rows: list[dict[str, str]],
+    source_mode: str,
+    expected_latest_season: int | None,
+    source_notes: str,
+) -> dict[str, Any]:
+    latest_season = latest_stats_season(stats_rows)
+    latest_draft = latest_draft_year(draft_rows)
+    stale = is_stale_source(latest_season, expected_latest_season)
+    return {
+        "generated_at": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+        "player_stats_row_count": len(stats_rows),
+        "draft_picks_row_count": len(draft_rows),
+        "latest_stats_season": latest_season,
+        "latest_draft_year": latest_draft,
+        "source_mode": source_mode,
+        "expected_latest_season": expected_latest_season,
+        "is_stale_relative_to_expected": stale,
+        "source_notes": source_notes,
+    }
 
 
 def build_draft_index(draft_rows: list[dict[str, str]]) -> dict[str, dict[str, Any]]:
@@ -291,6 +330,18 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--draft-cache", type=Path, default=DRAFT_CACHE)
     parser.add_argument("--output-json", type=Path, default=OUTPUT_JSON)
     parser.add_argument("--output-csv", type=Path, default=OUTPUT_CSV)
+    parser.add_argument("--output-source-metadata", type=Path, default=OUTPUT_SOURCE_METADATA)
+    parser.add_argument(
+        "--expected-latest-season",
+        type=int,
+        default=None,
+        help="Expected latest season in player_stats. Warn/fail if source lags this season.",
+    )
+    parser.add_argument(
+        "--fail-on-stale-source",
+        action="store_true",
+        help="Exit nonzero if --expected-latest-season is set and source latest season is stale.",
+    )
     return parser.parse_args()
 
 
@@ -301,15 +352,46 @@ def main() -> None:
     draft_rows, draft_mode = load_source_rows(NFLVERSE_DRAFT_PICKS_URL, args.draft_cache, refresh=args.refresh)
 
     notes = f"player_stats={stats_mode}:{args.stats_cache}; draft_picks={draft_mode}:{args.draft_cache}"
+    source_mode = detect_source_mode(stats_rows)
+    source_metadata = build_source_metadata(
+        stats_rows=stats_rows,
+        draft_rows=draft_rows,
+        source_mode=source_mode,
+        expected_latest_season=args.expected_latest_season,
+        source_notes=notes,
+    )
+
+    print("Source freshness diagnostics:")
+    print(f"  player_stats rows loaded: {source_metadata['player_stats_row_count']}")
+    print(f"  draft_picks rows loaded:  {source_metadata['draft_picks_row_count']}")
+    print(f"  latest_stats_season:      {source_metadata['latest_stats_season']}")
+    print(f"  latest_draft_year:        {source_metadata['latest_draft_year']}")
+    print(f"  source mode detected:     {source_metadata['source_mode']}")
+
+    if source_metadata["is_stale_relative_to_expected"]:
+        print(
+            "!!! SOURCE STALENESS WARNING: "
+            f"expected_latest_season={args.expected_latest_season}, "
+            f"but latest_stats_season={source_metadata['latest_stats_season']}"
+        )
+        if args.fail_on_stale_source:
+            raise SystemExit(
+                "Failing due to stale source: "
+                f"expected_latest_season={args.expected_latest_season}, "
+                f"latest_stats_season={source_metadata['latest_stats_season']}"
+            )
+
     rows = build_player_outcome_rows(stats_rows, draft_rows, source_notes=notes)
 
     args.output_json.parent.mkdir(parents=True, exist_ok=True)
     args.output_json.write_text(json.dumps(rows, indent=2) + "\n", encoding="utf-8")
     write_csv(args.output_csv, rows, FIELDNAMES)
+    args.output_source_metadata.write_text(json.dumps(source_metadata, indent=2) + "\n", encoding="utf-8")
 
     print(f"Built {len(rows)} rows")
     print(f"JSON -> {args.output_json}")
     print(f"CSV  -> {args.output_csv}")
+    print(f"Metadata -> {args.output_source_metadata}")
 
 
 if __name__ == "__main__":

@@ -6,8 +6,12 @@ import unittest
 
 from scripts.build_nfl_fantasy_outcomes import (
     build_player_outcome_rows,
+    build_source_metadata,
     career_year_for_season,
     compute_ppr,
+    is_stale_source,
+    latest_draft_year,
+    latest_stats_season,
 )
 
 
@@ -109,6 +113,34 @@ class BuilderJoinTests(unittest.TestCase):
         self.assertEqual(rows[0]["ppr_points"], 27.0)
         self.assertEqual(rows[0]["ppr_per_game"], 13.5)
         self.assertIn("source_mode=weekly_aggregated", rows[0]["source_notes"])
+
+
+class SourceFreshnessTests(unittest.TestCase):
+    def test_latest_season_detectors(self) -> None:
+        stats_rows = [{"season": "2023"}, {"season": "2025"}, {"season": "2024"}]
+        draft_rows = [{"season": "2022"}, {"draft_year": "2024"}, {"season": "2023"}]
+        self.assertEqual(latest_stats_season(stats_rows), 2025)
+        self.assertEqual(latest_draft_year(draft_rows), 2024)
+
+    def test_staleness_check(self) -> None:
+        self.assertFalse(is_stale_source(2025, None))
+        self.assertFalse(is_stale_source(2025, 2025))
+        self.assertTrue(is_stale_source(2024, 2025))
+
+    def test_source_metadata_marks_stale(self) -> None:
+        metadata = build_source_metadata(
+            stats_rows=[{"season": "2024"}],
+            draft_rows=[{"season": "2023"}],
+            source_mode="seasonal_source",
+            expected_latest_season=2025,
+            source_notes="fixture",
+        )
+        self.assertEqual(metadata["player_stats_row_count"], 1)
+        self.assertEqual(metadata["draft_picks_row_count"], 1)
+        self.assertEqual(metadata["latest_stats_season"], 2024)
+        self.assertEqual(metadata["latest_draft_year"], 2023)
+        self.assertEqual(metadata["source_mode"], "seasonal_source")
+        self.assertTrue(metadata["is_stale_relative_to_expected"])
 
 
 if __name__ == "__main__":
