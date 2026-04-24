@@ -1,0 +1,7 @@
+cohort,player_count,players,year_1_avg_ppr,year_2_avg_ppr,year_3_avg_ppr,year_1_median_ppr,year_2_median_ppr,year_3_median_ppr,year_1_avg_ppr_per_game,year_2_avg_ppr_per_game,year_3_avg_ppr_per_game,complete_year_1_count,complete_year_2_count,complete_year_3_count,incomplete_notes
+qb_round1_since_2022,0,,,,,,,,,,,0,0,0,Small sample warning: 0 players in cohort
+rb_round1_since_2022,0,,,,,,,,,,,0,0,0,Small sample warning: 0 players in cohort
+rb_top10_since_2022,0,,,,,,,,,,,0,0,0,Small sample warning: 0 players in cohort
+te_round1_since_2022,0,,,,,,,,,,,0,0,0,Small sample warning: 0 players in cohort
+wr_round1_since_2022,0,,,,,,,,,,,0,0,0,Small sample warning: 0 players in cohort
+wr_top10_since_2022,0,,,,,,,,,,,0,0,0,Small sample warning: 0 players in cohort
