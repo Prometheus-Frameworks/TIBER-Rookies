@@ -160,7 +160,35 @@ def extract_cache_paths_from_source_notes(source_notes: str) -> tuple[Path | Non
 
 
 def normalize_name(value: str) -> str:
-    return " ".join((value or "").strip().lower().split())
+    normalized = (value or "").strip().lower().replace(".", " ")
+    return " ".join(normalized.split())
+
+
+def name_tokens(value: str) -> tuple[str, str] | None:
+    normalized = normalize_name(value)
+    if not normalized:
+        return None
+    parts = normalized.split()
+    if len(parts) < 2:
+        return None
+    first = parts[0]
+    last = parts[-1]
+    return first, last
+
+
+def name_matches_expected(candidate_name: str, expected_name: str) -> bool:
+    candidate = name_tokens(candidate_name)
+    expected = name_tokens(expected_name)
+    if not candidate or not expected:
+        return normalize_name(candidate_name) == normalize_name(expected_name)
+
+    candidate_first, candidate_last = candidate
+    expected_first, expected_last = expected
+    if candidate_last != expected_last:
+        return False
+    if candidate_first == expected_first:
+        return True
+    return candidate_first[:1] == expected_first[:1]
 
 
 def detect_missing_player_reason(
@@ -171,7 +199,7 @@ def detect_missing_player_reason(
     latest_stats_season: int,
     latest_draft_year: int,
 ) -> str:
-    expected_name = normalize_name(expected["player_name"])
+    expected_name = expected["player_name"]
     expected_draft_year = expected["draft_year"]
     expected_pick = expected["overall_pick"]
     expected_position = expected["position"]
@@ -182,17 +210,17 @@ def detect_missing_player_reason(
         return "missing 2025 player stats"
 
     draft_name_rows = [
-        row for row in draft_source_rows if normalize_name(row.get("player_name", "")) == expected_name
+        row for row in draft_source_rows if name_matches_expected(row.get("player_name", ""), expected_name)
     ]
     stats_name_rows = [
         row
         for row in stats_source_rows
-        if normalize_name(row.get("player_name", "")) == expected_name and to_int(row.get("season")) == expected_draft_year
+        if name_matches_expected(row.get("player_name", ""), expected_name) and to_int(row.get("season")) == expected_draft_year
     ]
     outcome_name_rows = [
         row
         for row in outcome_rows
-        if normalize_name(row.get("player_name", "")) == expected_name and row["draft_year"] == expected_draft_year
+        if name_matches_expected(row.get("player_name", ""), expected_name) and row["draft_year"] == expected_draft_year
     ]
 
     if not draft_name_rows:
@@ -231,7 +259,7 @@ def validate_known_2025_skill_picks(
         matching_rows = [
             row
             for row in normalized_rows
-            if normalize_name(row["player_name"]) == normalize_name(expected["player_name"])
+            if name_matches_expected(row["player_name"], expected["player_name"])
             and row["draft_year"] == expected["draft_year"]
             and row["overall_pick"] == expected["overall_pick"]
             and row["position"] == expected["position"]

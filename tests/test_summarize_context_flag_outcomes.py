@@ -9,6 +9,7 @@ from pathlib import Path
 from scripts.summarize_context_flag_outcomes import (
     detect_missing_player_reason,
     extract_cache_paths_from_source_notes,
+    name_matches_expected,
     validate_known_2025_skill_picks,
 )
 
@@ -22,11 +23,29 @@ class SourceNoteParsingTests(unittest.TestCase):
 
 
 class KnownPickValidationTests(unittest.TestCase):
+    def test_name_matching_supports_abbreviated_forms(self) -> None:
+        self.assertTrue(name_matches_expected("T.Hunter", "Travis Hunter"))
+        self.assertTrue(name_matches_expected("T Hunter", "Travis Hunter"))
+        self.assertTrue(name_matches_expected("Tetairoa McMillan", "T.McMillan"))
+        self.assertFalse(name_matches_expected("T.Burden", "Travis Hunter"))
+
     def test_validation_succeeds_when_expected_players_exist(self) -> None:
         rows = [
             {"player_name": "Travis Hunter", "position": "WR", "draft_year": 2025, "overall_pick": 2},
             {"player_name": "Tetairoa McMillan", "position": "WR", "draft_year": 2025, "overall_pick": 8},
             {"player_name": "Colston Loveland", "position": "TE", "draft_year": 2025, "overall_pick": 10},
+        ]
+        warnings = validate_known_2025_skill_picks(
+            normalized_rows=rows,
+            source_metadata={"latest_stats_season": 2025, "latest_draft_year": 2025},
+        )
+        self.assertEqual(warnings, [])
+
+    def test_validation_accepts_abbreviated_player_names(self) -> None:
+        rows = [
+            {"player_name": "T.Hunter", "position": "WR", "draft_year": 2025, "overall_pick": 2},
+            {"player_name": "T McMillan", "position": "WR", "draft_year": 2025, "overall_pick": 8},
+            {"player_name": "C.Loveland", "position": "TE", "draft_year": 2025, "overall_pick": 10},
         ]
         warnings = validate_known_2025_skill_picks(
             normalized_rows=rows,
