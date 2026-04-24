@@ -12,6 +12,7 @@ from scripts.build_nfl_fantasy_outcomes import (
     is_stale_source,
     latest_draft_year,
     latest_stats_season,
+    select_stats_player_asset_name,
 )
 
 
@@ -134,13 +135,31 @@ class SourceFreshnessTests(unittest.TestCase):
             source_mode="seasonal_source",
             expected_latest_season=2025,
             source_notes="fixture",
+            stats_source="stats_player",
+            stats_url="https://example.com/stats.csv.gz",
         )
         self.assertEqual(metadata["player_stats_row_count"], 1)
         self.assertEqual(metadata["draft_picks_row_count"], 1)
         self.assertEqual(metadata["latest_stats_season"], 2024)
         self.assertEqual(metadata["latest_draft_year"], 2023)
         self.assertEqual(metadata["source_mode"], "seasonal_source")
+        self.assertEqual(metadata["stats_source"], "stats_player")
         self.assertTrue(metadata["is_stale_relative_to_expected"])
+
+
+class StatsSourceSelectionTests(unittest.TestCase):
+    def test_prefers_aggregate_regular_season_stats_player_asset(self) -> None:
+        asset = select_stats_player_asset_name(
+            ["stats_player_week_2025.csv.gz", "stats_player_reg.csv.gz", "stats_player_post_2025.csv.gz"]
+        )
+        self.assertEqual(asset, "stats_player_reg.csv.gz")
+
+    def test_falls_back_to_season_specific_regular_season_asset(self) -> None:
+        asset = select_stats_player_asset_name(
+            ["stats_player_reg_2024.csv.gz", "stats_player_reg_2025.csv.gz"],
+            expected_latest_season=2025,
+        )
+        self.assertEqual(asset, "stats_player_reg_2025.csv.gz")
 
 
 if __name__ == "__main__":

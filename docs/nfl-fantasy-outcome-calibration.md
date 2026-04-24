@@ -8,7 +8,8 @@ This lane is a **research/calibration artifact** for historical NFL outcomes by 
 
 - Source family: **nflverse public releases**.
 - Script endpoint defaults:
-  - `player_stats.csv.gz` from nflverse release assets.
+  - `stats_player` release assets (preferred), selecting regular-season player summary CSV when available.
+  - `player_stats.csv.gz` (legacy fallback) from nflverse release assets.
   - `draft_picks.csv.gz` from nflverse release assets.
 - Cache location: `data/external/nflverse/`.
 
@@ -64,7 +65,10 @@ The build script now reports source freshness diagnostics every run:
 - `draft_picks` row count
 - `latest_stats_season` (max season present in player stats rows)
 - `latest_draft_year` (max season/draft year present in draft rows)
+- `stats_source` and `stats_url` used for the run
 - detected source mode (`seasonal_source` or `weekly_aggregated`)
+
+`source_metadata_v1.json` records `latest_stats_season`, `latest_draft_year`, and staleness flags so downstream cohort summaries can explicitly report current coverage.
 
 You can optionally set an expected season floor:
 
@@ -81,6 +85,21 @@ python scripts/build_nfl_fantasy_outcomes.py --refresh --expected-latest-season 
 ```
 
 The sidecar metadata file includes staleness fields (`expected_latest_season`, `is_stale_relative_to_expected`) so downstream summarization can log current coverage context. Cohort interpretations are only as current as `latest_stats_season`.
+
+### Stats source options
+
+Use `--stats-source` to select source family:
+
+- `--stats-source stats_player` (default): prefers `stats_player` regular-season summary release assets and is preferred for 2025+ coverage.
+- `--stats-source legacy_player_stats`: uses legacy `player_stats` release (`player_stats.csv.gz`), which may only be current through the 2024 season.
+
+Optional override for custom/testing URLs:
+
+```bash
+python scripts/build_nfl_fantasy_outcomes.py --stats-source-url https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_reg.csv.gz
+```
+
+If `stats_player` lookup/load fails, the script falls back to `legacy_player_stats` unless you explicitly pin `--stats-source-url`.
 
 ## Why separate from Rookie Alpha
 
@@ -124,6 +143,7 @@ If expected players are missing, the summarizer prints warnings with likely reas
 
 If network access is unavailable, pre-populate caches at:
 - `data/external/nflverse/player_stats.csv`
+- `data/external/nflverse/stats_player_reg.csv`
 - `data/external/nflverse/draft_picks.csv`
 
 Then run without `--refresh`.
