@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import unittest
+from argparse import Namespace
+from unittest.mock import patch
 
 from scripts.build_nfl_fantasy_outcomes import (
     build_player_outcome_rows,
@@ -13,6 +15,7 @@ from scripts.build_nfl_fantasy_outcomes import (
     is_stale_source,
     latest_draft_year,
     latest_stats_season,
+    resolve_stats_rows,
 )
 
 
@@ -183,6 +186,81 @@ class StatsSourceSelectionTests(unittest.TestCase):
         self.assertEqual(metadata["stats_seasons_loaded"], [2022, 2024])
         self.assertEqual(metadata["missing_stats_seasons"], [2023, 2025])
         self.assertIn("stats_urls", metadata)
+
+    def test_multiseason_rows_do_not_fallback_when_resolved_stats_url_none(self) -> None:
+        args = Namespace(
+            stats_source_url=None,
+            stats_source="stats_player",
+            stats_season_start=2022,
+            stats_season_end=None,
+            expected_latest_season=2025,
+            refresh=False,
+            stats_cache=None,
+        )
+        with (
+            patch(
+                "scripts.build_nfl_fantasy_outcomes.fetch_release_asset_names",
+                return_value=[
+                    "stats_player_reg_2022.csv.gz",
+                    "stats_player_reg_2023.csv.gz",
+                    "stats_player_reg_2024.csv.gz",
+                    "stats_player_reg_2025.csv.gz",
+                ],
+            ),
+            patch(
+                "scripts.build_nfl_fantasy_outcomes.load_source_rows",
+                side_effect=[
+                    ([{"season": "2022"}], "cache"),
+                    ([{"season": "2023"}], "cache"),
+                    ([{"season": "2024"}], "cache"),
+                    ([{"season": "2025"}], "cache"),
+                ],
+            ) as mock_load,
+        ):
+            (
+                stats_rows,
+                _stats_mode,
+                resolved_stats_source,
+                resolved_stats_url,
+                resolved_stats_urls,
+                stats_seasons_loaded,
+                missing_stats_seasons,
+                _seasonal_cache_paths,
+                _stats_resolution_note,
+            ) = resolve_stats_rows(args)
+
+        self.assertEqual(resolved_stats_source, "stats_player")
+        self.assertIsNone(resolved_stats_url)
+        self.assertEqual(stats_seasons_loaded, [2022, 2023, 2024, 2025])
+        self.assertEqual(missing_stats_seasons, [])
+        self.assertEqual([row["season"] for row in stats_rows], ["2022", "2023", "2024", "2025"])
+        self.assertEqual(len(resolved_stats_urls or []), 4)
+        self.assertEqual(mock_load.call_count, 4)
+
+    def test_multiseason_metadata_consistency_and_not_stale(self) -> None:
+        stats_rows = [{"season": str(season)} for season in [2022, 2023, 2024, 2025]]
+        metadata = build_source_metadata(
+            stats_rows=stats_rows,
+            draft_rows=[{"season": "2025"}],
+            source_mode="seasonal_source",
+            expected_latest_season=2025,
+            source_notes="fixture",
+            stats_source="stats_player",
+            stats_urls=[
+                "https://example.com/stats_player_reg_2022.csv.gz",
+                "https://example.com/stats_player_reg_2023.csv.gz",
+                "https://example.com/stats_player_reg_2024.csv.gz",
+                "https://example.com/stats_player_reg_2025.csv.gz",
+            ],
+            stats_seasons_loaded=[2022, 2023, 2024, 2025],
+            missing_stats_seasons=[],
+        )
+        self.assertEqual(metadata["stats_source"], "stats_player")
+        self.assertEqual(metadata["earliest_stats_season"], 2022)
+        self.assertEqual(metadata["latest_stats_season"], 2025)
+        self.assertEqual(metadata["stats_seasons_loaded"], [2022, 2023, 2024, 2025])
+        self.assertEqual(metadata["missing_stats_seasons"], [])
+        self.assertFalse(metadata["is_stale_relative_to_expected"])
 
 
 if __name__ == "__main__":

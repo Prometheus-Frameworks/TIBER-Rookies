@@ -417,9 +417,17 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-def main() -> None:
-    args = parse_args()
-
+def resolve_stats_rows(args: argparse.Namespace) -> tuple[
+    list[dict[str, str]],
+    str,
+    str | None,
+    list[str] | None,
+    list[int] | None,
+    list[int] | None,
+    list[Path],
+    str,
+    str,
+]:
     resolved_stats_url = args.stats_source_url
     resolved_stats_urls: list[str] | None = None
     stats_seasons_loaded: list[int] | None = None
@@ -427,6 +435,10 @@ def main() -> None:
     seasonal_cache_paths: list[Path] = []
     stats_resolution_note = "manual_stats_source_url"
     resolved_stats_source = args.stats_source
+    stats_mode = "cache_or_download"
+    stats_rows: list[dict[str, str]] = []
+    stats_rows_loaded_from_multiseason = False
+
     if not resolved_stats_url and args.stats_source == "stats_player":
         try:
             asset_names = fetch_release_asset_names(NFLVERSE_STATS_PLAYER_RELEASE_API)
@@ -462,30 +474,42 @@ def main() -> None:
                     asset_url = f"{NFLVERSE_STATS_PLAYER_BASE_URL}{asset_name}"
                     cache_path = CACHE_DIR / f"stats_player_reg_{season}.csv"
                     rows, _ = load_source_rows(asset_url, cache_path, refresh=args.refresh)
-                    stats_rows.extend(rows)
-                    resolved_stats_urls.append(asset_url)
-                    seasonal_cache_paths.append(cache_path)
-                    stats_seasons_loaded.append(season)
+                    if rows:
+                        stats_rows.extend(rows)
+                        resolved_stats_urls.append(asset_url)
+                        seasonal_cache_paths.append(cache_path)
+                        stats_seasons_loaded.append(season)
                 stats_mode = "download" if args.refresh else "cache_or_download"
-                stats_resolution_note = (
-                    f"stats_player_seasonal_assets_loaded={len(stats_seasons_loaded)};"
-                    f" requested_range={season_start}-{season_end}; latest_discovered={latest_discovered}"
-                )
-    if not resolved_stats_url and resolved_stats_source == "legacy_player_stats":
-        resolved_stats_url = NFLVERSE_LEGACY_PLAYER_STATS_URL
-        stats_resolution_note = "legacy_player_stats_default_url"
-    if not resolved_stats_url and resolved_stats_source == "stats_player":
-        if args.stats_source == "legacy_player_stats":
+                if stats_rows:
+                    stats_rows_loaded_from_multiseason = True
+                    resolved_stats_source = "stats_player"
+                    stats_resolution_note = (
+                        f"stats_player_seasonal_assets_loaded={len(stats_seasons_loaded)};"
+                        f" requested_range={season_start}-{season_end}; latest_discovered={latest_discovered}"
+                    )
+                else:
+                    stats_resolution_note = (
+                        f"stats_player_seasonal_assets_loaded=0;requested_range={season_start}-{season_end};"
+                        f" latest_discovered={latest_discovered};fallback=legacy_player_stats"
+                    )
+                    if not args.stats_source_url:
+                        resolved_stats_source = "legacy_player_stats"
+                        resolved_stats_url = NFLVERSE_LEGACY_PLAYER_STATS_URL
+
+    if not stats_rows_loaded_from_multiseason:
+        if not resolved_stats_url and resolved_stats_source == "legacy_player_stats":
             resolved_stats_url = NFLVERSE_LEGACY_PLAYER_STATS_URL
             stats_resolution_note = "legacy_player_stats_default_url"
-        else:
-            resolved_stats_url = NFLVERSE_LEGACY_PLAYER_STATS_URL
-            resolved_stats_source = "legacy_player_stats"
-            stats_resolution_note = "stats_player_unresolved; fallback=legacy_player_stats"
+        if not resolved_stats_url and resolved_stats_source == "stats_player":
+            if args.stats_source == "legacy_player_stats":
+                resolved_stats_url = NFLVERSE_LEGACY_PLAYER_STATS_URL
+                stats_resolution_note = "legacy_player_stats_default_url"
+            else:
+                resolved_stats_url = NFLVERSE_LEGACY_PLAYER_STATS_URL
+                resolved_stats_source = "legacy_player_stats"
+                stats_resolution_note = "stats_player_unresolved; fallback=legacy_player_stats"
 
-    stats_cache = args.stats_cache or (STATS_PLAYER_CACHE if resolved_stats_source == "stats_player" else LEGACY_STATS_CACHE)
-
-    if resolved_stats_source != "stats_player" or resolved_stats_url is not None and resolved_stats_urls is None:
+        stats_cache = args.stats_cache or (STATS_PLAYER_CACHE if resolved_stats_source == "stats_player" else LEGACY_STATS_CACHE)
         try:
             stats_rows, stats_mode = load_source_rows(resolved_stats_url, stats_cache, refresh=args.refresh)
         except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError) as exc:
@@ -499,12 +523,42 @@ def main() -> None:
             else:
                 raise
 
+    return (
+        stats_rows,
+        stats_mode,
+        resolved_stats_source,
+        resolved_stats_url,
+        resolved_stats_urls,
+        stats_seasons_loaded,
+        missing_stats_seasons,
+        seasonal_cache_paths,
+        stats_resolution_note,
+    )
+
+
+def main() -> None:
+    args = parse_args()
+    (
+        stats_rows,
+        stats_mode,
+        resolved_stats_source,
+        resolved_stats_url,
+        resolved_stats_urls,
+        stats_seasons_loaded,
+        missing_stats_seasons,
+        seasonal_cache_paths,
+        stats_resolution_note,
+    ) = resolve_stats_rows(args)
+
     draft_rows, draft_mode = load_source_rows(NFLVERSE_DRAFT_PICKS_URL, args.draft_cache, refresh=args.refresh)
 
+    resolved_stats_cache = args.stats_cache or (
+        STATS_PLAYER_CACHE if resolved_stats_source == "stats_player" else LEGACY_STATS_CACHE
+    )
     player_stats_source_note = (
         ",".join(str(path) for path in seasonal_cache_paths)
         if seasonal_cache_paths
-        else str(stats_cache)
+        else str(resolved_stats_cache)
     )
     notes = f"stats_source={resolved_stats_source}; stats_resolution={stats_resolution_note}; player_stats={stats_mode}:{player_stats_source_note}; draft_picks={draft_mode}:{args.draft_cache}"
     source_mode = detect_source_mode(stats_rows)
