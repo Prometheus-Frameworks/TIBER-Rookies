@@ -22,7 +22,7 @@ EXPECTED_2025_SKILL_PICKS = [
     {"player_name": "Colston Loveland", "position": "TE", "draft_year": 2025, "overall_pick": 10},
 ]
 
-COHORTS = {
+ROUND1_COHORTS = {
     "wr_top10_since_2022": {"position": "WR", "since": 2022, "max_pick": 10},
     "wr_round1_since_2022": {"position": "WR", "since": 2022, "draft_round": 1},
     "rb_round1_since_2022": {"position": "RB", "since": 2022, "draft_round": 1},
@@ -107,16 +107,93 @@ def aggregate_year_stats(players: list[dict[str, Any]], target_career_year: int,
     )
 
 
+def build_day2_cohorts(cohort_since_year: int) -> dict[str, dict[str, Any]]:
+    positions = ["wr", "rb", "te", "qb"]
+    cohorts: dict[str, dict[str, Any]] = {}
+
+    for position in positions:
+        upper = position.upper()
+        cohorts[f"{position}_round2_since_{cohort_since_year}"] = {
+            "position": upper,
+            "since": cohort_since_year,
+            "min_round": 2,
+            "max_round": 2,
+        }
+        cohorts[f"{position}_round3_since_{cohort_since_year}"] = {
+            "position": upper,
+            "since": cohort_since_year,
+            "min_round": 3,
+            "max_round": 3,
+        }
+        cohorts[f"{position}_day2_since_{cohort_since_year}"] = {
+            "position": upper,
+            "since": cohort_since_year,
+            "min_round": 2,
+            "max_round": 3,
+        }
+
+    cohorts[f"early_round2_skill_since_{cohort_since_year}"] = {
+        "positions": ["WR", "RB", "TE"],
+        "since": cohort_since_year,
+        "min_round": 2,
+        "max_round": 2,
+        "min_pick": 33,
+        "max_pick": 45,
+    }
+    cohorts[f"mid_late_round2_skill_since_{cohort_since_year}"] = {
+        "positions": ["WR", "RB", "TE"],
+        "since": cohort_since_year,
+        "min_round": 2,
+        "max_round": 2,
+        "min_pick": 46,
+        "max_pick": 64,
+    }
+    cohorts[f"round3_skill_since_{cohort_since_year}"] = {
+        "positions": ["WR", "RB", "TE"],
+        "since": cohort_since_year,
+        "min_round": 3,
+        "max_round": 3,
+        "min_pick": 65,
+        "max_pick": 102,
+    }
+    cohorts[f"day2_skill_since_{cohort_since_year}"] = {
+        "positions": ["WR", "RB", "TE"],
+        "since": cohort_since_year,
+        "min_round": 2,
+        "max_round": 3,
+        "min_pick": 33,
+        "max_pick": 102,
+    }
+    return cohorts
+
+
+def row_matches_cohort_rule(row: dict[str, Any], rule: dict[str, Any]) -> bool:
+    position = row["position"]
+    allowed_positions = rule.get("positions")
+    exact_position = rule.get("position")
+    if allowed_positions is not None and position not in set(allowed_positions):
+        return False
+    if exact_position is not None and position != exact_position:
+        return False
+    if row["draft_year"] < rule["since"]:
+        return False
+    if "draft_round" in rule and row["draft_round"] != rule["draft_round"]:
+        return False
+    if "min_round" in rule and row["draft_round"] < rule["min_round"]:
+        return False
+    if "max_round" in rule and row["draft_round"] > rule["max_round"]:
+        return False
+    if "min_pick" in rule and row["overall_pick"] < rule["min_pick"]:
+        return False
+    if "max_pick" in rule and row["overall_pick"] > rule["max_pick"]:
+        return False
+    return True
+
+
 def build_cohort_players(rows: list[dict[str, Any]], rule: dict[str, Any]) -> list[dict[str, Any]]:
     bucket: dict[str, dict[str, Any]] = {}
     for row in rows:
-        if row["position"] != rule["position"]:
-            continue
-        if row["draft_year"] < rule["since"]:
-            continue
-        if "draft_round" in rule and row["draft_round"] != rule["draft_round"]:
-            continue
-        if "max_pick" in rule and row["overall_pick"] > rule["max_pick"]:
+        if not row_matches_cohort_rule(row, rule):
             continue
 
         pid = row["player_id"]
@@ -288,6 +365,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-csv", type=Path, default=OUTPUT_CSV)
     parser.add_argument("--source-metadata", type=Path, default=SOURCE_METADATA_JSON)
     parser.add_argument(
+        "--cohort-since-year",
+        type=int,
+        default=2020,
+        help="Baseline draft-year floor for Day 2 and draft-capital cohorts.",
+    )
+    parser.add_argument(
         "--validate-known-2025-skill-picks",
         action="store_true",
         help="Validate expected 2025 top-10 skill picks are represented in cohort-ready outcomes.",
@@ -322,8 +405,9 @@ def main() -> None:
     if metadata_latest_stats_season > 0:
         latest_nfl_season = max(latest_nfl_season, metadata_latest_stats_season)
     summaries: list[dict[str, Any]] = []
+    cohorts = {**ROUND1_COHORTS, **build_day2_cohorts(args.cohort_since_year)}
 
-    for cohort_name, rule in COHORTS.items():
+    for cohort_name, rule in cohorts.items():
         players = build_cohort_players(normalized_rows, rule)
 
         year1, notes1 = aggregate_year_stats(players, 1, latest_nfl_season)
