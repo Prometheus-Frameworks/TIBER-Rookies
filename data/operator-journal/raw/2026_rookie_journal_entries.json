@@ -43,5 +43,50 @@
     "source_type": "operator_journal",
     "operator": "local",
     "review_status": "raw"
+  },
+  {
+    "entry_id": "oj_2026_006_nick_singleton_titans",
+    "entry_date": "2026-04-25",
+    "entry_title": "Nick Singleton Titans landing spot and missing-data audit",
+    "entry_text": "Singleton fell further than expected at the draft and had a -10 vs consensus edge on the model pre-draft grade. He fell to Tennessee in a good landing spot. Tony Pollard is aging, could be cut, and is on the last year of his contract. Tyjae Spears is undersized and has not crossed 100 carries in any of his 3 seasons. Singleton is still more of a longshot to ever lead the backfield with this capital, but he is a hyper-athletic RB who had elite production/efficiency as an 18-year-old at Penn State and was an efficient receiver throughout. Nick Singleton also appears to have had insufficient data inside his rookie profile, so the pre-draft grade may not accurately reflect what could have been graded.",
+    "source_type": "operator_journal",
+    "operator": "local",
+    "review_status": "raw"
+  },
+  {
+    "entry_id": "oj_2026_007_emmett_johnson_chiefs",
+    "entry_date": "2026-04-25",
+    "entry_title": "Emmett Johnson Chiefs passing-down opportunity watch",
+    "entry_text": "The mid-round 5 draft capital is not great and is probably telling, but Emmett Johnson may only need to fend off Emari Demercado for some sort of passing-down role in the Chiefs high-powered offense. In the case of a KW3 injury, he could step into somewhat of a lead role as well. The model graded Emmett Johnson as a 36.4 pre-draft grade, with limited supporting evidence.",
+    "source_type": "operator_journal",
+    "operator": "local",
+    "review_status": "raw"
+  },
+  {
+    "entry_id": "oj_2026_008_skyler_bell_bills_model_edge",
+    "entry_date": "2026-04-25",
+    "entry_title": "Skyler Bell Bills landing spot and model edge",
+    "entry_text": "Skyler Bell has a pretty undeniably great landing spot, with a legitimate opportunity to step in as WR2/3 alongside DJ Moore and Khalil Shakir. The lack of urgency to select him is definitely a concern. The model had Bell with a pre-draft grade of 62.3 and a +18 model edge.",
+    "source_type": "operator_journal",
+    "operator": "local",
+    "review_status": "raw"
+  },
+  {
+    "entry_id": "oj_2026_009_germie_bernard_mccarthy_slot",
+    "entry_date": "2026-04-25",
+    "entry_title": "Germie Bernard Mike McCarthy slot WR context",
+    "entry_text": "Mike McCarthy's primary slot WR has finished top-10 in fantasy points per game in 7 of his last 13 full seasons as an NFL head coach. Germie Bernard was drafted in an early Round 2 trade-up by the Steelers. The model gave Bernard a pre-draft grade of 55.5 and model edge of +6.5.",
+    "source_type": "operator_journal",
+    "operator": "local",
+    "review_status": "raw"
+  },
+  {
+    "entry_id": "oj_2026_010_malachi_fields_giants",
+    "entry_date": "2026-04-25",
+    "entry_title": "Malachi Fields Giants landing spot versus profile concern",
+    "entry_text": "The Giants selected Malachi Fields at pick 74. Fields was not very efficient or a big producer in college and struggles against man coverage despite profiling as an X receiver. But this is a nice landing spot for Fields, who should have a chance to be a full-time route runner in Year 1 in what is likely an improved offense. He just has to beat out Mooney. Fields had a pre-draft grade of 39.5 and was negative against consensus.",
+    "source_type": "operator_journal",
+    "operator": "local",
+    "review_status": "raw"
   }
 ]

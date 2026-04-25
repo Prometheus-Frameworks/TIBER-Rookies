@@ -185,6 +185,191 @@ def build_candidates_for_entry(entry: dict[str, Any]) -> list[dict[str, Any]]:
         )
         return [candidate]
 
+    if "nick_singleton_titans" in entry_id:
+        candidate = _base_candidate(entry, "landing_spot_missing_data_audit", "player")
+        candidate.update(
+            {
+                "player_name": "Nick Singleton",
+                "team": "Titans",
+                "position": "RB",
+                "claim_summary": (
+                    "Negative pre-draft model-edge context with landing-spot opportunity and missing-data "
+                    "audit note for profile completeness review."
+                ),
+                "positive_signal_tags": [
+                    "athletic_rb_profile",
+                    "early_age_production_signal",
+                    "receiving_efficiency_signal",
+                    "titans_backfield_opportunity",
+                    "pollard_contract_year",
+                    "spears_workload_size_question",
+                ],
+                "risk_tags": [
+                    "mid_late_round_capital_risk",
+                    "longshot_backfield_takeover",
+                    "predraft_model_negative_edge",
+                    "incomplete_profile_data_risk",
+                    "role_projection_uncertainty",
+                ],
+                "context_tags": [
+                    "model_edge_minus_10",
+                    "missing_data_audit",
+                    "post_draft_landing_spot_watch",
+                ],
+                "model_impact": "review_profile_data_completeness_before_final_take",
+                "downstream_repos": ["TIBER-Rookies", "Role-and-Opportunity"],
+                "confidence": "medium",
+            }
+        )
+        return [candidate]
+
+    if "emmett_johnson_chiefs" in entry_id:
+        candidate = _base_candidate(entry, "passing_down_role_watch", "player")
+        candidate.update(
+            {
+                "player_name": "Emmett Johnson",
+                "team": "Chiefs",
+                "position": "RB",
+                "claim_summary": (
+                    "Late-round role-path watch focused on passing-down deployment and injury-contingent "
+                    "upside in a high-powered offense."
+                ),
+                "positive_signal_tags": [
+                    "high_powered_offense",
+                    "passing_down_role_path",
+                    "injury_contingent_upside",
+                    "late_round_role_watch",
+                ],
+                "risk_tags": [
+                    "round5_insulation_risk",
+                    "low_predraft_alpha",
+                    "limited_model_evidence",
+                    "role_projection_uncertainty",
+                    "depth_chart_dependency",
+                ],
+                "context_tags": [
+                    "predraft_alpha_36_4",
+                    "chiefs_passing_down_watch",
+                    "post_draft_watchlist",
+                ],
+                "model_impact": "track_as_late_round_role_path_candidate",
+                "downstream_repos": ["TIBER-Rookies", "Role-and-Opportunity"],
+                "confidence": "low_medium",
+            }
+        )
+        return [candidate]
+
+    if "skyler_bell_bills_model_edge" in entry_id:
+        candidate = _base_candidate(entry, "model_edge_landing_spot_validation", "player")
+        candidate.update(
+            {
+                "player_name": "Skyler Bell",
+                "team": "Bills",
+                "position": "WR",
+                "claim_summary": (
+                    "Positive model-edge note with favorable NFL landing spot and role opportunity, tracked "
+                    "as validation-watch only."
+                ),
+                "positive_signal_tags": [
+                    "model_edge_confirmed_by_landing_spot",
+                    "wr2_wr3_path",
+                    "available_target_opportunity",
+                    "strong_landing_spot",
+                    "post_draft_role_opportunity",
+                ],
+                "risk_tags": [
+                    "late_selection_urgency_concern",
+                    "low_draft_capital_insulation",
+                    "role_competition_risk",
+                    "model_edge_validation_needed",
+                ],
+                "context_tags": [
+                    "predraft_alpha_62_3",
+                    "tiber_edge_plus_18",
+                    "bills_wr_room_watch",
+                    "post_draft_watchlist",
+                ],
+                "model_impact": "track_as_model_edge_role_opportunity_candidate",
+                "downstream_repos": ["TIBER-Rookies", "Role-and-Opportunity"],
+                "confidence": "medium",
+            }
+        )
+        return [candidate]
+
+    if "germie_bernard_mccarthy_slot" in entry_id:
+        candidate = _base_candidate(entry, "slot_role_context", "player")
+        candidate.update(
+            {
+                "player_name": "Germie Bernard",
+                "team": "Steelers",
+                "position": "WR",
+                "claim_summary": (
+                    "Early Round 2 trade-up with positive model-edge and slot-role coaching-context note for "
+                    "role-opportunity review."
+                ),
+                "positive_signal_tags": [
+                    "early_round2_trade_up",
+                    "slot_role_coaching_signal",
+                    "mccarthy_slot_wr_history",
+                    "model_edge_positive",
+                    "role_archetype_fit_watch",
+                ],
+                "risk_tags": [
+                    "coach_context_transfer_risk",
+                    "steelers_wr_room_watch",
+                    "qb_room_uncertainty",
+                    "year1_volume_uncertainty",
+                ],
+                "context_tags": [
+                    "predraft_alpha_55_5",
+                    "tiber_edge_plus_6_5",
+                    "mccarthy_slot_fpg_signal",
+                    "post_draft_role_watch",
+                ],
+                "model_impact": "review_slot_role_context_in_role_opportunity_layer",
+                "downstream_repos": ["TIBER-Rookies", "Role-and-Opportunity", "TIBER-Teamstate"],
+                "confidence": "medium",
+            }
+        )
+        return [candidate]
+
+    if "malachi_fields_giants" in entry_id:
+        candidate = _base_candidate(entry, "landing_spot_over_profile", "player")
+        candidate.update(
+            {
+                "player_name": "Malachi Fields",
+                "team": "Giants",
+                "position": "WR",
+                "claim_summary": (
+                    "Landing-spot opportunity note despite weaker profile and negative model-edge; tracked "
+                    "as landing-spot-over-profile watch candidate."
+                ),
+                "positive_signal_tags": [
+                    "year1_route_path",
+                    "full_time_route_runner_opportunity",
+                    "improved_offense_watch",
+                    "landing_spot_opportunity",
+                ],
+                "risk_tags": [
+                    "low_predraft_alpha",
+                    "negative_model_edge",
+                    "college_efficiency_concern",
+                    "man_coverage_struggle",
+                    "role_competition_risk",
+                ],
+                "context_tags": [
+                    "predraft_alpha_39_5",
+                    "pick_74_context",
+                    "giants_wr_room_watch",
+                    "post_draft_landing_spot_watch",
+                ],
+                "model_impact": "track_as_landing_spot_opportunity_over_profile_candidate",
+                "downstream_repos": ["TIBER-Rookies", "Role-and-Opportunity"],
+                "confidence": "medium",
+            }
+        )
+        return [candidate]
+
     return []
 
 

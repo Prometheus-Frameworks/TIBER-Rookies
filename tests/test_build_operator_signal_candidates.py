@@ -46,6 +46,31 @@ class BuildOperatorSignalCandidatesTests(unittest.TestCase):
         self.assertIn("tiber_edge_plus_18", tanner["context_tags"])
         self.assertIn("model_edge_confirmed_by_draft_capital", tanner["positive_signal_tags"])
 
+    def test_nick_singleton_includes_missing_data_audit_tags(self) -> None:
+        nick = next(c for c in self.candidates if c["player_name"] == "Nick Singleton")
+        self.assertIn("missing_data_audit", nick["context_tags"])
+        self.assertIn("incomplete_profile_data_risk", nick["risk_tags"])
+
+    def test_emmett_johnson_includes_predraft_alpha_and_passing_down_role(self) -> None:
+        emmett = next(c for c in self.candidates if c["player_name"] == "Emmett Johnson")
+        self.assertIn("predraft_alpha_36_4", emmett["context_tags"])
+        self.assertIn("passing_down_role_path", emmett["positive_signal_tags"])
+
+    def test_skyler_bell_includes_model_edge_and_urgency_risk(self) -> None:
+        skyler = next(c for c in self.candidates if c["player_name"] == "Skyler Bell")
+        self.assertIn("tiber_edge_plus_18", skyler["context_tags"])
+        self.assertIn("late_selection_urgency_concern", skyler["risk_tags"])
+
+    def test_germie_bernard_includes_slot_context_and_trade_up(self) -> None:
+        germie = next(c for c in self.candidates if c["player_name"] == "Germie Bernard")
+        self.assertIn("mccarthy_slot_fpg_signal", germie["context_tags"])
+        self.assertIn("early_round2_trade_up", germie["positive_signal_tags"])
+
+    def test_malachi_fields_includes_profile_risk_and_year1_route_path(self) -> None:
+        fields = next(c for c in self.candidates if c["player_name"] == "Malachi Fields")
+        self.assertIn("man_coverage_struggle", fields["risk_tags"])
+        self.assertIn("year1_route_path", fields["positive_signal_tags"])
+
     def test_all_candidates_are_operator_journal_source(self) -> None:
         for candidate in self.candidates:
             self.assertEqual(candidate["source_type"], "operator_journal")
