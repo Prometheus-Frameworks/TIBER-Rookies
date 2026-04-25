@@ -1,0 +1,1901 @@
+{
+  "model": "rookie-alpha-postdraft-team-context-v0",
+  "season": 2026,
+  "doctrine": {
+    "post_draft_scores_unchanged": true,
+    "teamstate_context_join_only": true,
+    "inspect_only": true
+  },
+  "rows": [
+    {
+      "player_id": "rb-jeremiyah-love",
+      "player_name": "Jeremiyah Love",
+      "position": "RB",
+      "pre_draft_alpha": 80.1,
+      "post_draft_alpha": 89.6,
+      "post_draft_delta": 9.5,
+      "delta_reason_codes": [
+        "talent_confirmation:top5_skill_capital",
+        "opportunity_insulation:signal_bonus"
+      ],
+      "draft_round": 1,
+      "draft_pick": 3,
+      "team": "TBD",
+      "talent_confirmation_signal": "elite",
+      "opportunity_insulation_signal": "elite",
+      "short_term_fantasy_runway": "immediate",
+      "translator_tags": [
+        "top5_skill_capital",
+        "rare_rb_premium_capital",
+        "elite_opportunity_insulation",
+        "immediate_workload_signal"
+      ],
+      "remaining_risks": [
+        "Operator-provided pick/team facts still need canonical draft_results reconciliation.",
+        "Top-5 RB outcomes remain sensitive to offensive line and coaching continuity."
+      ],
+      "source_profile": "round1",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "top5_skill_capital",
+        "rare_rb_premium_capital",
+        "elite_opportunity_insulation",
+        "immediate_workload_signal"
+      ],
+      "combined_risk_tags": [
+        "Operator-provided pick/team facts still need canonical draft_results reconciliation.",
+        "Top-5 RB outcomes remain sensitive to offensive line and coaching continuity."
+      ]
+    },
+    {
+      "player_id": "wr-kc-concepcion",
+      "player_name": "KC Concepcion",
+      "position": "WR",
+      "pre_draft_alpha": 71.9,
+      "post_draft_alpha": 77.9,
+      "post_draft_delta": 6.0,
+      "delta_reason_codes": [
+        "talent_confirmation:round1_market_confirmation",
+        "talent_confirmation:model_wr1_validation",
+        "opportunity_insulation:signal_bonus",
+        "risk:landing_spot_volatility",
+        "risk:opportunity_insulation_cap"
+      ],
+      "draft_round": 1,
+      "draft_pick": 24,
+      "team": "Browns",
+      "talent_confirmation_signal": "elite",
+      "opportunity_insulation_signal": "strong",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "round1_market_confirmation",
+        "model_wr1_validation",
+        "elite_separator_signal",
+        "yac_return_value_profile",
+        "landing_spot_volatility"
+      ],
+      "remaining_risks": [
+        "Landing-spot offensive volatility can disrupt early consistency.",
+        "Team-level context assumptions should be rechecked once canonical artifacts are locked."
+      ],
+      "source_profile": "round1",
+      "source_status": "operator_seeded",
+      "team_context_found": true,
+      "team_context_tags": [
+        "concentrated_wr_investment",
+        "rookie_wr_priority_signal",
+        "browns_offensive_volatility",
+        "target_competition_between_rookies",
+        "qb_environment_uncertainty"
+      ],
+      "positive_team_context_tags": [
+        "concentrated_wr_investment",
+        "rookie_wr_priority_signal"
+      ],
+      "risk_team_context_tags": [
+        "browns_offensive_volatility",
+        "target_competition_between_rookies",
+        "qb_environment_uncertainty"
+      ],
+      "team_context_notes": "team_context_joined:CLE",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "round1_market_confirmation",
+        "model_wr1_validation",
+        "elite_separator_signal",
+        "yac_return_value_profile",
+        "landing_spot_volatility",
+        "concentrated_wr_investment",
+        "rookie_wr_priority_signal",
+        "browns_offensive_volatility",
+        "target_competition_between_rookies",
+        "qb_environment_uncertainty"
+      ],
+      "combined_risk_tags": [
+        "Landing-spot offensive volatility can disrupt early consistency.",
+        "Team-level context assumptions should be rechecked once canonical artifacts are locked.",
+        "browns_offensive_volatility",
+        "target_competition_between_rookies",
+        "qb_environment_uncertainty"
+      ]
+    },
+    {
+      "player_id": "wr-makai-lemon",
+      "player_name": "Makai Lemon",
+      "position": "WR",
+      "pre_draft_alpha": 68.9,
+      "post_draft_alpha": 76.4,
+      "post_draft_delta": 7.5,
+      "delta_reason_codes": [
+        "talent_confirmation:round1_wr_capital",
+        "talent_confirmation:trade_up_conviction",
+        "opportunity_insulation:signal_bonus"
+      ],
+      "draft_round": 1,
+      "draft_pick": 20,
+      "team": "Eagles",
+      "talent_confirmation_signal": "strong",
+      "opportunity_insulation_signal": "strong",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "round1_wr_capital",
+        "trade_up_conviction",
+        "depth_chart_volume_cap",
+        "high_efficiency_environment",
+        "delayed_volume_path"
+      ],
+      "remaining_risks": [
+        "Short-term target share ceiling behind A.J. Brown and DeVonta Smith.",
+        "Year 1 volume may lag even in a high-efficiency offense."
+      ],
+      "source_profile": "round1",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "round1_wr_capital",
+        "trade_up_conviction",
+        "depth_chart_volume_cap",
+        "high_efficiency_environment",
+        "delayed_volume_path"
+      ],
+      "combined_risk_tags": [
+        "Short-term target share ceiling behind A.J. Brown and DeVonta Smith.",
+        "Year 1 volume may lag even in a high-efficiency offense."
+      ]
+    },
+    {
+      "player_id": "wr-carnell-tate",
+      "player_name": "Carnell Tate",
+      "position": "WR",
+      "pre_draft_alpha": 66.4,
+      "post_draft_alpha": 74.4,
+      "post_draft_delta": 8.0,
+      "delta_reason_codes": [
+        "talent_confirmation:top5_skill_capital",
+        "talent_confirmation:class_inflation_adjustment",
+        "opportunity_insulation:signal_bonus"
+      ],
+      "draft_round": 1,
+      "draft_pick": 4,
+      "team": "Titans",
+      "talent_confirmation_signal": "strong",
+      "opportunity_insulation_signal": "elite",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "top5_skill_capital",
+        "premium_wr_investment",
+        "elite_opportunity_insulation",
+        "class_inflation_adjustment_candidate",
+        "market_conviction_not_equal_talent_certainty",
+        "wr1_depth_chart_path"
+      ],
+      "remaining_risks": [
+        "Class-level draft capital inflation could overstate pure talent certainty relative to historical baselines.",
+        "Environment assumptions should remain provisional until canonical draft/team artifacts are finalized."
+      ],
+      "source_profile": "round1",
+      "source_status": "operator_seeded",
+      "team_context_found": true,
+      "team_context_tags": [
+        "wr1_depth_chart_path",
+        "top5_wr_opportunity_insulation",
+        "young_qb_development_dependency",
+        "offensive_environment_uncertainty"
+      ],
+      "positive_team_context_tags": [
+        "wr1_depth_chart_path",
+        "top5_wr_opportunity_insulation"
+      ],
+      "risk_team_context_tags": [
+        "young_qb_development_dependency",
+        "offensive_environment_uncertainty"
+      ],
+      "team_context_notes": "team_context_joined:TEN",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "top5_skill_capital",
+        "premium_wr_investment",
+        "elite_opportunity_insulation",
+        "class_inflation_adjustment_candidate",
+        "market_conviction_not_equal_talent_certainty",
+        "wr1_depth_chart_path",
+        "top5_wr_opportunity_insulation",
+        "young_qb_development_dependency",
+        "offensive_environment_uncertainty"
+      ],
+      "combined_risk_tags": [
+        "Class-level draft capital inflation could overstate pure talent certainty relative to historical baselines.",
+        "Environment assumptions should remain provisional until canonical draft/team artifacts are finalized.",
+        "young_qb_development_dependency",
+        "offensive_environment_uncertainty"
+      ]
+    },
+    {
+      "player_id": "wr-jordyn-tyson",
+      "player_name": "Jordyn Tyson",
+      "position": "WR",
+      "pre_draft_alpha": 67.7,
+      "post_draft_alpha": 74.4,
+      "post_draft_delta": 6.7,
+      "delta_reason_codes": [
+        "talent_confirmation:top10_skill_capital",
+        "opportunity_insulation:signal_bonus"
+      ],
+      "draft_round": 1,
+      "draft_pick": 8,
+      "team": "TBD",
+      "talent_confirmation_signal": "strong",
+      "opportunity_insulation_signal": "strong",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "top10_skill_capital",
+        "premium_wr_investment",
+        "strong_role_insulation"
+      ],
+      "remaining_risks": [
+        "Unknown finalized team context may alter immediate target competition.",
+        "Operator-provided draft facts still need canonical reconciliation."
+      ],
+      "source_profile": "round1",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "top10_skill_capital",
+        "premium_wr_investment",
+        "strong_role_insulation"
+      ],
+      "combined_risk_tags": [
+        "Unknown finalized team context may alter immediate target competition.",
+        "Operator-provided draft facts still need canonical reconciliation."
+      ]
+    },
+    {
+      "player_id": "wr-denzel-boston",
+      "player_name": "Denzel Boston",
+      "position": "WR",
+      "pre_draft_alpha": 67.6,
+      "post_draft_alpha": 74.2,
+      "post_draft_delta": 6.6,
+      "delta_reason_codes": [
+        "talent_confirmation:early_day2_capital",
+        "talent_confirmation:round2_skill_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:target_room_competition_watch",
+        "risk:year1_volume_uncertainty"
+      ],
+      "draft_round": 2,
+      "draft_pick": 39,
+      "team": "Browns",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "moderate",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round2_capital",
+        "early_day2_capital",
+        "round2_skill_capital",
+        "round2_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_moderate",
+        "browns_double_wr_investment",
+        "kcc_target_competition_signal"
+      ],
+      "remaining_risks": [
+        "Browns target competition and deployment context can materially shift early fantasy runway.",
+        "Role sequencing may vary if multiple pass-catcher investments compress Year 1 volume."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": true,
+      "team_context_tags": [
+        "concentrated_wr_investment",
+        "rookie_wr_priority_signal",
+        "browns_offensive_volatility",
+        "target_competition_between_rookies",
+        "qb_environment_uncertainty"
+      ],
+      "positive_team_context_tags": [
+        "concentrated_wr_investment",
+        "rookie_wr_priority_signal"
+      ],
+      "risk_team_context_tags": [
+        "browns_offensive_volatility",
+        "target_competition_between_rookies",
+        "qb_environment_uncertainty"
+      ],
+      "team_context_notes": "team_context_joined:CLE",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round2_capital",
+        "early_day2_capital",
+        "round2_skill_capital",
+        "round2_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_moderate",
+        "browns_double_wr_investment",
+        "kcc_target_competition_signal",
+        "concentrated_wr_investment",
+        "rookie_wr_priority_signal",
+        "browns_offensive_volatility",
+        "target_competition_between_rookies",
+        "qb_environment_uncertainty"
+      ],
+      "combined_risk_tags": [
+        "Browns target competition and deployment context can materially shift early fantasy runway.",
+        "Role sequencing may vary if multiple pass-catcher investments compress Year 1 volume.",
+        "browns_offensive_volatility",
+        "target_competition_between_rookies",
+        "qb_environment_uncertainty"
+      ]
+    },
+    {
+      "player_id": "te-kenyon-sadiq",
+      "player_name": "Kenyon Sadiq",
+      "position": "TE",
+      "pre_draft_alpha": 65.3,
+      "post_draft_alpha": 71.0,
+      "post_draft_delta": 5.7,
+      "delta_reason_codes": [
+        "talent_confirmation:round1_te_capital",
+        "opportunity_insulation:signal_bonus"
+      ],
+      "draft_round": 1,
+      "draft_pick": 16,
+      "team": "TBD",
+      "talent_confirmation_signal": "strong",
+      "opportunity_insulation_signal": "strong",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "round1_te_capital",
+        "premium_te_insulation",
+        "role_translation_watch"
+      ],
+      "remaining_risks": [
+        "TE usage translation can lag despite high draft investment.",
+        "Year 1 route share and red-zone role remain uncertain without canonical team deployment data."
+      ],
+      "source_profile": "round1",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "round1_te_capital",
+        "premium_te_insulation",
+        "role_translation_watch"
+      ],
+      "combined_risk_tags": [
+        "TE usage translation can lag despite high draft investment.",
+        "Year 1 route share and red-zone role remain uncertain without canonical team deployment data."
+      ]
+    },
+    {
+      "player_id": "qb-drew-allar",
+      "player_name": "Drew Allar",
+      "position": "QB",
+      "pre_draft_alpha": 66.8,
+      "post_draft_alpha": 68.8,
+      "post_draft_delta": 2.0,
+      "delta_reason_codes": [
+        "talent_confirmation:round3_skill_capital",
+        "talent_confirmation:round3_qb_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:developmental_qb_capital",
+        "risk:opportunity_insulation_cap"
+      ],
+      "draft_round": 3,
+      "draft_pick": 76,
+      "team": "Steelers",
+      "talent_confirmation_signal": "mixed",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_qb_capital",
+        "developmental_qb_capital",
+        "delayed_start_path",
+        "qb_room_context_required",
+        "steelers_qb_room_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "Delayed start trajectory may suppress early fantasy utility.",
+        "Steelers QB-room structure could constrain immediate role access."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_qb_capital",
+        "developmental_qb_capital",
+        "delayed_start_path",
+        "qb_room_context_required",
+        "steelers_qb_room_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Delayed start trajectory may suppress early fantasy utility.",
+        "Steelers QB-room structure could constrain immediate role access."
+      ]
+    },
+    {
+      "player_id": "wr-omar-cooper-jr",
+      "player_name": "Omar Cooper Jr.",
+      "position": "WR",
+      "pre_draft_alpha": 61.3,
+      "post_draft_alpha": 68.4,
+      "post_draft_delta": 7.1,
+      "delta_reason_codes": [
+        "talent_confirmation:late_round1_wr_capital",
+        "talent_confirmation:fifth_year_option_signal",
+        "talent_confirmation:trade_up_conviction",
+        "opportunity_insulation:signal_bonus"
+      ],
+      "draft_round": 1,
+      "draft_pick": 30,
+      "team": "Jets",
+      "talent_confirmation_signal": "strong",
+      "opportunity_insulation_signal": "strong",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "late_round1_wr_capital",
+        "fifth_year_option_signal",
+        "trade_up_conviction",
+        "role_path_review"
+      ],
+      "remaining_risks": [
+        "Role pathway still requires depth-chart and deployment confirmation.",
+        "Late Round 1 hits have wider outcome bands than top-half selections."
+      ],
+      "source_profile": "round1",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "late_round1_wr_capital",
+        "fifth_year_option_signal",
+        "trade_up_conviction",
+        "role_path_review"
+      ],
+      "combined_risk_tags": [
+        "Role pathway still requires depth-chart and deployment confirmation.",
+        "Late Round 1 hits have wider outcome bands than top-half selections."
+      ]
+    },
+    {
+      "player_id": "te-eli-stowers",
+      "player_name": "Eli Stowers",
+      "position": "TE",
+      "pre_draft_alpha": 64.7,
+      "post_draft_alpha": 67.7,
+      "post_draft_delta": 3.0,
+      "delta_reason_codes": [
+        "talent_confirmation:round2_skill_capital",
+        "talent_confirmation:day2_te_cluster",
+        "opportunity_insulation:signal_bonus",
+        "risk:delayed_te_translation_watch",
+        "risk:opportunity_insulation_cap"
+      ],
+      "draft_round": 2,
+      "draft_pick": 54,
+      "team": "Eagles",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "moderate",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_te_capital",
+        "day2_te_cluster",
+        "te_market_push",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_moderate"
+      ],
+      "remaining_risks": [
+        "Tight end transition often produces slower Year 1 fantasy translation.",
+        "Role definition inside the Eagles pass game can suppress immediate target share."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_te_capital",
+        "day2_te_cluster",
+        "te_market_push",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_moderate"
+      ],
+      "combined_risk_tags": [
+        "Tight end transition often produces slower Year 1 fantasy translation.",
+        "Role definition inside the Eagles pass game can suppress immediate target share."
+      ]
+    },
+    {
+      "player_id": "wr-zachariah-branch",
+      "player_name": "Zachariah Branch",
+      "position": "WR",
+      "pre_draft_alpha": 65.0,
+      "post_draft_alpha": 64.2,
+      "post_draft_delta": -0.8,
+      "delta_reason_codes": [
+        "talent_confirmation:round3_skill_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:target_room_competition_watch",
+        "risk:year1_volume_uncertainty"
+      ],
+      "draft_round": 3,
+      "draft_pick": 79,
+      "team": "Falcons",
+      "talent_confirmation_signal": "strong",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "Usage may be specialized early, creating volatile week-to-week fantasy reliability.",
+        "Round 3 insulation can erode quickly if role translation stalls."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Usage may be specialized early, creating volatile week-to-week fantasy reliability.",
+        "Round 3 insulation can erode quickly if role translation stalls."
+      ]
+    },
+    {
+      "player_id": "te-sam-roush",
+      "player_name": "Sam Roush",
+      "position": "TE",
+      "pre_draft_alpha": 58.9,
+      "post_draft_alpha": 60.0,
+      "post_draft_delta": 1.1,
+      "delta_reason_codes": [
+        "talent_confirmation:round3_skill_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:delayed_te_translation_watch"
+      ],
+      "draft_round": 3,
+      "draft_pick": 69,
+      "team": "Bears",
+      "talent_confirmation_signal": "mixed",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "Early deployment may be rotational with modest target depth.",
+        "TE translation variance can delay reliable fantasy returns."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Early deployment may be rotational with modest target depth.",
+        "TE translation variance can delay reliable fantasy returns."
+      ]
+    },
+    {
+      "player_id": "wr-germie-bernard",
+      "player_name": "Germie Bernard",
+      "position": "WR",
+      "pre_draft_alpha": 55.5,
+      "post_draft_alpha": 57.1,
+      "post_draft_delta": 1.6,
+      "delta_reason_codes": [
+        "talent_confirmation:round2_skill_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:target_room_competition_watch",
+        "risk:year1_volume_uncertainty"
+      ],
+      "draft_round": 2,
+      "draft_pick": 47,
+      "team": "Steelers",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "moderate",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_moderate",
+        "steelers_wr_room_watch"
+      ],
+      "remaining_risks": [
+        "Steelers WR depth and role assignment can delay stable weekly volume.",
+        "Day 2 capital confirms opportunity but does not eliminate Year 1 usage volatility."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_moderate",
+        "steelers_wr_room_watch"
+      ],
+      "combined_risk_tags": [
+        "Steelers WR depth and role assignment can delay stable weekly volume.",
+        "Day 2 capital confirms opportunity but does not eliminate Year 1 usage volatility."
+      ]
+    },
+    {
+      "player_id": "qb-ty-simpson",
+      "player_name": "Ty Simpson",
+      "position": "QB",
+      "pre_draft_alpha": 50.9,
+      "post_draft_alpha": 56.9,
+      "post_draft_delta": 6.0,
+      "delta_reason_codes": [
+        "talent_confirmation:round1_qb_capital",
+        "opportunity_insulation:elite_developmental_environment",
+        "opportunity_insulation:delayed_start_insulation",
+        "opportunity_insulation:signal_bonus",
+        "risk:delayed_start_timeline",
+        "risk:opportunity_insulation_cap"
+      ],
+      "draft_round": 1,
+      "draft_pick": 13,
+      "team": "Rams",
+      "talent_confirmation_signal": "strong",
+      "opportunity_insulation_signal": "strong",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "round1_qb_capital",
+        "elite_developmental_environment",
+        "delayed_start_insulation"
+      ],
+      "remaining_risks": [
+        "Delayed initial starting path may suppress early fantasy utility.",
+        "Developmental outcomes remain sensitive to eventual deployment timing."
+      ],
+      "source_profile": "round1",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "round1_qb_capital",
+        "elite_developmental_environment",
+        "delayed_start_insulation"
+      ],
+      "combined_risk_tags": [
+        "Delayed initial starting path may suppress early fantasy utility.",
+        "Developmental outcomes remain sensitive to eventual deployment timing."
+      ]
+    },
+    {
+      "player_id": "rb-jadarian-price",
+      "player_name": "Jadarian Price",
+      "position": "RB",
+      "pre_draft_alpha": 48.5,
+      "post_draft_alpha": 56.2,
+      "post_draft_delta": 7.7,
+      "delta_reason_codes": [
+        "talent_confirmation:round1_rb_capital",
+        "opportunity_insulation:signal_bonus"
+      ],
+      "draft_round": 1,
+      "draft_pick": 32,
+      "team": "Seahawks",
+      "talent_confirmation_signal": "strong",
+      "opportunity_insulation_signal": "strong",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "round1_rb_capital",
+        "low_tread_efficiency_profile",
+        "shared_backfield_context_override",
+        "workload_projection_risk",
+        "opportunity_insulation_strong"
+      ],
+      "remaining_risks": [
+        "Never exceeded 125 college touches in a season, increasing workload projection uncertainty.",
+        "Shared backfield dynamics could reduce immediate volume capture."
+      ],
+      "source_profile": "round1",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "round1_rb_capital",
+        "low_tread_efficiency_profile",
+        "shared_backfield_context_override",
+        "workload_projection_risk",
+        "opportunity_insulation_strong"
+      ],
+      "combined_risk_tags": [
+        "Never exceeded 125 college touches in a season, increasing workload projection uncertainty.",
+        "Shared backfield dynamics could reduce immediate volume capture."
+      ]
+    },
+    {
+      "player_id": "wr-chris-bell",
+      "player_name": "Chris Bell",
+      "position": "WR",
+      "pre_draft_alpha": 56.9,
+      "post_draft_alpha": 55.6,
+      "post_draft_delta": -1.3,
+      "delta_reason_codes": [
+        "talent_confirmation:round3_skill_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:target_room_competition_watch",
+        "risk:year1_volume_uncertainty"
+      ],
+      "draft_round": 3,
+      "draft_pick": 94,
+      "team": "Dolphins",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited",
+        "dolphins_multi_pass_catcher_investment"
+      ],
+      "remaining_risks": [
+        "Multiple Day 2 Dolphins pass-catcher additions can constrain Year 1 target share.",
+        "Role clarity may take time to settle across a crowded pass-catching room."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited",
+        "dolphins_multi_pass_catcher_investment"
+      ],
+      "combined_risk_tags": [
+        "Multiple Day 2 Dolphins pass-catcher additions can constrain Year 1 target share.",
+        "Role clarity may take time to settle across a crowded pass-catching room."
+      ]
+    },
+    {
+      "player_id": "wr-antonio-williams",
+      "player_name": "Antonio Williams",
+      "position": "WR",
+      "pre_draft_alpha": 56.8,
+      "post_draft_alpha": 55.5,
+      "post_draft_delta": -1.3,
+      "delta_reason_codes": [
+        "talent_confirmation:round3_skill_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:target_room_competition_watch",
+        "risk:year1_volume_uncertainty"
+      ],
+      "draft_round": 3,
+      "draft_pick": 71,
+      "team": "Commanders",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "Target hierarchy outcomes can compress early route and volume certainty.",
+        "Round 3 capital creates more replacement risk than Round 2/1 outcomes."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Target hierarchy outcomes can compress early route and volume certainty.",
+        "Round 3 capital creates more replacement risk than Round 2/1 outcomes."
+      ]
+    },
+    {
+      "player_id": "wr-dezhaun-stribling",
+      "player_name": "De'Zhaun Stribling",
+      "position": "WR",
+      "pre_draft_alpha": 47.5,
+      "post_draft_alpha": 54.5,
+      "post_draft_delta": 7.0,
+      "delta_reason_codes": [
+        "talent_confirmation:near_round1_skill_capital",
+        "talent_confirmation:early_day2_capital",
+        "talent_confirmation:round2_skill_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:target_room_competition_watch",
+        "risk:year1_volume_uncertainty",
+        "risk:opportunity_insulation_cap"
+      ],
+      "draft_round": 2,
+      "draft_pick": 33,
+      "team": "49ers",
+      "talent_confirmation_signal": "strong",
+      "opportunity_insulation_signal": "moderate",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round2_capital",
+        "early_day2_capital",
+        "near_round1_skill_capital",
+        "round2_skill_capital",
+        "round2_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_moderate",
+        "shanahan_role_translation_watch",
+        "athletic_profile_boost"
+      ],
+      "remaining_risks": [
+        "Target competition and role clarity in the 49ers pass-catching room can cap early volume certainty.",
+        "Day 2 WR capital remains less insulated than Round 1 investment if early usage is volatile."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": true,
+      "team_context_tags": [
+        "shanahan_efficiency_environment",
+        "yac_creation_scheme",
+        "low_pass_volume_risk",
+        "role_specific_usage_dependency",
+        "day2_49ers_skill_pick_hit_rate_caution"
+      ],
+      "positive_team_context_tags": [
+        "shanahan_efficiency_environment",
+        "yac_creation_scheme"
+      ],
+      "risk_team_context_tags": [
+        "low_pass_volume_risk",
+        "role_specific_usage_dependency",
+        "day2_49ers_skill_pick_hit_rate_caution"
+      ],
+      "team_context_notes": "team_context_joined:SF",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round2_capital",
+        "early_day2_capital",
+        "near_round1_skill_capital",
+        "round2_skill_capital",
+        "round2_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_moderate",
+        "shanahan_role_translation_watch",
+        "athletic_profile_boost",
+        "shanahan_efficiency_environment",
+        "yac_creation_scheme",
+        "low_pass_volume_risk",
+        "role_specific_usage_dependency",
+        "day2_49ers_skill_pick_hit_rate_caution"
+      ],
+      "combined_risk_tags": [
+        "Target competition and role clarity in the 49ers pass-catching room can cap early volume certainty.",
+        "Day 2 WR capital remains less insulated than Round 1 investment if early usage is volatile.",
+        "low_pass_volume_risk",
+        "role_specific_usage_dependency",
+        "day2_49ers_skill_pick_hit_rate_caution"
+      ]
+    },
+    {
+      "player_id": "wr-ted-hurst",
+      "player_name": "Ted Hurst",
+      "position": "WR",
+      "pre_draft_alpha": 55.7,
+      "post_draft_alpha": 54.4,
+      "post_draft_delta": -1.3,
+      "delta_reason_codes": [
+        "talent_confirmation:round3_skill_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:target_room_competition_watch",
+        "risk:year1_volume_uncertainty"
+      ],
+      "draft_round": 3,
+      "draft_pick": 84,
+      "team": "Buccaneers",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "Target hierarchy uncertainty can cap early route-share confidence.",
+        "Round 3 runway can narrow if role specialization is slow to materialize."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Target hierarchy uncertainty can cap early route-share confidence.",
+        "Round 3 runway can narrow if role specialization is slow to materialize."
+      ]
+    },
+    {
+      "player_id": "te-max-klare",
+      "player_name": "Max Klare",
+      "position": "TE",
+      "pre_draft_alpha": 50.8,
+      "post_draft_alpha": 53.8,
+      "post_draft_delta": 3.0,
+      "delta_reason_codes": [
+        "talent_confirmation:round2_skill_capital",
+        "talent_confirmation:day2_te_cluster",
+        "opportunity_insulation:signal_bonus",
+        "risk:delayed_te_translation_watch",
+        "risk:opportunity_insulation_cap"
+      ],
+      "draft_round": 2,
+      "draft_pick": 61,
+      "team": "Rams",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "moderate",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_te_capital",
+        "day2_te_cluster",
+        "te_market_push",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_moderate"
+      ],
+      "remaining_risks": [
+        "Year 1 role could skew rotational while route-responsibility grows.",
+        "TE development arc can limit early-week fantasy predictability."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_te_capital",
+        "day2_te_cluster",
+        "te_market_push",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_moderate"
+      ],
+      "combined_risk_tags": [
+        "Year 1 role could skew rotational while route-responsibility grows.",
+        "TE development arc can limit early-week fantasy predictability."
+      ]
+    },
+    {
+      "player_id": "wr-chris-brazzell-ii",
+      "player_name": "Chris Brazzell II",
+      "position": "WR",
+      "pre_draft_alpha": 52.5,
+      "post_draft_alpha": 51.2,
+      "post_draft_delta": -1.3,
+      "delta_reason_codes": [
+        "talent_confirmation:round3_skill_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:target_room_competition_watch",
+        "risk:year1_volume_uncertainty"
+      ],
+      "draft_round": 3,
+      "draft_pick": 83,
+      "team": "Panthers",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "Competition for vertical/secondary targets can compress weekly volume floor.",
+        "Role volatility may persist until route tree and deployment stabilize."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Competition for vertical/secondary targets can compress weekly volume floor.",
+        "Role volatility may persist until route tree and deployment stabilize."
+      ]
+    },
+    {
+      "player_id": "te-eli-raridon",
+      "player_name": "Eli Raridon",
+      "position": "TE",
+      "pre_draft_alpha": 48.0,
+      "post_draft_alpha": 49.1,
+      "post_draft_delta": 1.1,
+      "delta_reason_codes": [
+        "talent_confirmation:round3_skill_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:delayed_te_translation_watch"
+      ],
+      "draft_round": 3,
+      "draft_pick": 95,
+      "team": "Patriots",
+      "talent_confirmation_signal": "mixed",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "TE transition timeline can delay sustained fantasy relevance.",
+        "Role translation risk remains elevated until route and target usage stabilizes."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "TE transition timeline can delay sustained fantasy relevance.",
+        "Role translation risk remains elevated until route and target usage stabilizes."
+      ]
+    },
+    {
+      "player_id": "qb-carson-beck",
+      "player_name": "Carson Beck",
+      "position": "QB",
+      "pre_draft_alpha": 45.0,
+      "post_draft_alpha": 47.0,
+      "post_draft_delta": 2.0,
+      "delta_reason_codes": [
+        "talent_confirmation:round3_skill_capital",
+        "talent_confirmation:round3_qb_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:developmental_qb_capital",
+        "risk:opportunity_insulation_cap"
+      ],
+      "draft_round": 3,
+      "draft_pick": 65,
+      "team": "Cardinals",
+      "talent_confirmation_signal": "mixed",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_qb_capital",
+        "developmental_qb_capital",
+        "delayed_start_path",
+        "qb_room_context_required",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "Day 3-adjacent quarterback capital can produce fragile organizational patience.",
+        "Starting timeline and QB-room hierarchy are still context-dependent."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_qb_capital",
+        "developmental_qb_capital",
+        "delayed_start_path",
+        "qb_room_context_required",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Day 3-adjacent quarterback capital can produce fragile organizational patience.",
+        "Starting timeline and QB-room hierarchy are still context-dependent."
+      ]
+    },
+    {
+      "player_id": "te-nate-boerkircher",
+      "player_name": "Nate Boerkircher",
+      "position": "TE",
+      "pre_draft_alpha": 43.4,
+      "post_draft_alpha": 46.4,
+      "post_draft_delta": 3.0,
+      "delta_reason_codes": [
+        "talent_confirmation:round2_skill_capital",
+        "talent_confirmation:day2_te_cluster",
+        "opportunity_insulation:signal_bonus",
+        "risk:delayed_te_translation_watch",
+        "risk:opportunity_insulation_cap"
+      ],
+      "draft_round": 2,
+      "draft_pick": 56,
+      "team": "Jaguars",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "moderate",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_te_capital",
+        "day2_te_cluster",
+        "te_market_push",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_moderate"
+      ],
+      "remaining_risks": [
+        "Role may open as blocking/rotational usage before high-value targets consolidate.",
+        "TE translation timelines can delay dependable fantasy output."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_te_capital",
+        "day2_te_cluster",
+        "te_market_push",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_moderate"
+      ],
+      "combined_risk_tags": [
+        "Role may open as blocking/rotational usage before high-value targets consolidate.",
+        "TE translation timelines can delay dependable fantasy output."
+      ]
+    },
+    {
+      "player_id": "te-oscar-delp",
+      "player_name": "Oscar Delp",
+      "position": "TE",
+      "pre_draft_alpha": 42.1,
+      "post_draft_alpha": 43.2,
+      "post_draft_delta": 1.1,
+      "delta_reason_codes": [
+        "talent_confirmation:round3_skill_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:delayed_te_translation_watch"
+      ],
+      "draft_round": 3,
+      "draft_pick": 73,
+      "team": "Saints",
+      "talent_confirmation_signal": "mixed",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "Initial role can tilt toward rotational responsibilities.",
+        "Delayed TE earning curve can hold down early fantasy usability."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Initial role can tilt toward rotational responsibilities.",
+        "Delayed TE earning curve can hold down early fantasy usability."
+      ]
+    },
+    {
+      "player_id": "te-marlin-klein",
+      "player_name": "Marlin Klein",
+      "position": "TE",
+      "pre_draft_alpha": 37.0,
+      "post_draft_alpha": 40.0,
+      "post_draft_delta": 3.0,
+      "delta_reason_codes": [
+        "talent_confirmation:round2_skill_capital",
+        "talent_confirmation:day2_te_cluster",
+        "opportunity_insulation:signal_bonus",
+        "risk:delayed_te_translation_watch",
+        "risk:opportunity_insulation_cap"
+      ],
+      "draft_round": 2,
+      "draft_pick": 59,
+      "team": "Texans",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "moderate",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_te_capital",
+        "day2_te_cluster",
+        "te_market_push",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_moderate"
+      ],
+      "remaining_risks": [
+        "Route share and red-zone usage are uncertain in early deployment windows.",
+        "Position-wide translation lag can suppress immediate fantasy utility."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_te_capital",
+        "day2_te_cluster",
+        "te_market_push",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_moderate"
+      ],
+      "combined_risk_tags": [
+        "Route share and red-zone usage are uncertain in early deployment windows.",
+        "Position-wide translation lag can suppress immediate fantasy utility."
+      ]
+    },
+    {
+      "player_id": "wr-jakobi-lane",
+      "player_name": "Ja'Kobi Lane",
+      "position": "WR",
+      "pre_draft_alpha": 40.1,
+      "post_draft_alpha": 38.8,
+      "post_draft_delta": -1.3,
+      "delta_reason_codes": [
+        "talent_confirmation:round3_skill_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:target_room_competition_watch",
+        "risk:year1_volume_uncertainty"
+      ],
+      "draft_round": 3,
+      "draft_pick": 80,
+      "team": "Ravens",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "Target concentration dynamics can limit immediate route-volume certainty.",
+        "Day 2 Round 3 capital is sensitive to early performance variance."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Target concentration dynamics can limit immediate route-volume certainty.",
+        "Day 2 Round 3 capital is sensitive to early performance variance."
+      ]
+    },
+    {
+      "player_id": "wr-malachi-fields",
+      "player_name": "Malachi Fields",
+      "position": "WR",
+      "pre_draft_alpha": 39.5,
+      "post_draft_alpha": 38.2,
+      "post_draft_delta": -1.3,
+      "delta_reason_codes": [
+        "talent_confirmation:round3_skill_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:target_room_competition_watch",
+        "risk:year1_volume_uncertainty"
+      ],
+      "draft_round": 3,
+      "draft_pick": 74,
+      "team": "Giants",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "Route tree deployment and target share competition can create volatile weekly opportunity.",
+        "Round 3 insulation is sensitive to early coaching confidence."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Route tree deployment and target share competition can create volatile weekly opportunity.",
+        "Round 3 insulation is sensitive to early coaching confidence."
+      ]
+    },
+    {
+      "player_id": "wr-caleb-douglas",
+      "player_name": "Caleb Douglas",
+      "position": "WR",
+      "pre_draft_alpha": 34.9,
+      "post_draft_alpha": 33.6,
+      "post_draft_delta": -1.3,
+      "delta_reason_codes": [
+        "talent_confirmation:round3_skill_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:target_room_competition_watch",
+        "risk:year1_volume_uncertainty"
+      ],
+      "draft_round": 3,
+      "draft_pick": 75,
+      "team": "Dolphins",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited",
+        "dolphins_multi_pass_catcher_investment"
+      ],
+      "remaining_risks": [
+        "Team-level clustering of Day 2 pass-catcher picks can flatten individual Year 1 volume.",
+        "Role assignment within the Dolphins WR/TE ecosystem is still unsettled."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited",
+        "dolphins_multi_pass_catcher_investment"
+      ],
+      "combined_risk_tags": [
+        "Team-level clustering of Day 2 pass-catcher picks can flatten individual Year 1 volume.",
+        "Role assignment within the Dolphins WR/TE ecosystem is still unsettled."
+      ]
+    },
+    {
+      "player_id": "wr-zavion-thomas",
+      "player_name": "Zavion Thomas",
+      "position": "WR",
+      "pre_draft_alpha": 33.5,
+      "post_draft_alpha": 32.2,
+      "post_draft_delta": -1.3,
+      "delta_reason_codes": [
+        "talent_confirmation:round3_skill_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:target_room_competition_watch",
+        "risk:year1_volume_uncertainty"
+      ],
+      "draft_round": 3,
+      "draft_pick": 89,
+      "team": "Bears",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "Specialized deployment can produce uneven week-to-week fantasy volume.",
+        "Competition dynamics may slow immediate route-share stabilization."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Specialized deployment can produce uneven week-to-week fantasy volume.",
+        "Competition dynamics may slow immediate route-share stabilization."
+      ]
+    },
+    {
+      "player_id": "te-will-kacmarek",
+      "player_name": "Will Kacmarek",
+      "position": "TE",
+      "pre_draft_alpha": 29.2,
+      "post_draft_alpha": 30.3,
+      "post_draft_delta": 1.1,
+      "delta_reason_codes": [
+        "talent_confirmation:round3_skill_capital",
+        "opportunity_insulation:signal_bonus",
+        "risk:delayed_te_translation_watch"
+      ],
+      "draft_round": 3,
+      "draft_pick": 87,
+      "team": "Dolphins",
+      "talent_confirmation_signal": "mixed",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited",
+        "dolphins_multi_pass_catcher_investment"
+      ],
+      "remaining_risks": [
+        "TE translation pace can delay early fantasy contribution.",
+        "Concurrent Dolphins pass-catcher investments may limit immediate route/target volume."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "team_context_not_found_or_team_tbd",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited",
+        "dolphins_multi_pass_catcher_investment"
+      ],
+      "combined_risk_tags": [
+        "TE translation pace can delay early fantasy contribution.",
+        "Concurrent Dolphins pass-catcher investments may limit immediate route/target volume."
+      ]
+    },
+    {
+      "player_id": "rb-kaelon-black",
+      "player_name": "Kaelon Black",
+      "position": "RB",
+      "pre_draft_alpha": 0.0,
+      "post_draft_alpha": 0.0,
+      "post_draft_delta": 0.0,
+      "delta_reason_codes": [
+        "baseline:predraft_missing_pass_through"
+      ],
+      "draft_round": 3,
+      "draft_pick": 90,
+      "team": "49ers",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_rb_capital",
+        "scarce_day2_rb_capital",
+        "workload_path_review",
+        "role_competition_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "Backfield role competition can quickly reshape touch expectations.",
+        "Round 3 RB capital does not guarantee multi-year workload insulation."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "team_context_found": true,
+      "team_context_tags": [
+        "shanahan_efficiency_environment",
+        "yac_creation_scheme",
+        "low_pass_volume_risk",
+        "role_specific_usage_dependency",
+        "day2_49ers_skill_pick_hit_rate_caution"
+      ],
+      "positive_team_context_tags": [
+        "shanahan_efficiency_environment",
+        "yac_creation_scheme"
+      ],
+      "risk_team_context_tags": [
+        "low_pass_volume_risk",
+        "role_specific_usage_dependency",
+        "day2_49ers_skill_pick_hit_rate_caution"
+      ],
+      "team_context_notes": "team_context_joined:SF",
+      "team_context_source_status": "operator_seeded",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_rb_capital",
+        "scarce_day2_rb_capital",
+        "workload_path_review",
+        "role_competition_watch",
+        "role_path_review",
+        "opportunity_insulation_limited",
+        "shanahan_efficiency_environment",
+        "yac_creation_scheme",
+        "low_pass_volume_risk",
+        "role_specific_usage_dependency",
+        "day2_49ers_skill_pick_hit_rate_caution"
+      ],
+      "combined_risk_tags": [
+        "Backfield role competition can quickly reshape touch expectations.",
+        "Round 3 RB capital does not guarantee multi-year workload insulation.",
+        "low_pass_volume_risk",
+        "role_specific_usage_dependency",
+        "day2_49ers_skill_pick_hit_rate_caution"
+      ]
+    }
+  ]
+}
