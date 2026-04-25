@@ -19,6 +19,9 @@ ROW_FIELDS = [
     "draft_round",
     "draft_pick",
     "team",
+    "talent_confirmation_signal",
+    "opportunity_insulation_signal",
+    "short_term_fantasy_runway",
     "source_profile",
     "source_status",
     "delta_reason_codes",
@@ -213,6 +216,7 @@ def write_outputs(rows: list[dict[str, Any]], output_json: Path, output_csv: Pat
     }
     output_json.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
+    output_csv.parent.mkdir(parents=True, exist_ok=True)
     with output_csv.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=ROW_FIELDS, extrasaction="ignore")
         writer.writeheader()

@@ -1,3 +1,4 @@
+import csv
 import json
 import tempfile
 import unittest
@@ -180,14 +181,22 @@ class EnrichPostDraftAlphaWithTeamContextTests(unittest.TestCase):
         enriched = enrich_rows(self.rows, context)
 
         with tempfile.TemporaryDirectory() as temp_dir:
-            output_json = Path(temp_dir) / "enriched.json"
-            output_csv = Path(temp_dir) / "enriched.csv"
+            output_json = Path(temp_dir) / "json" / "enriched.json"
+            output_csv = Path(temp_dir) / "csv" / "enriched.csv"
             write_outputs(enriched, output_json, output_csv)
 
             payload = json.loads(output_json.read_text(encoding="utf-8"))
             self.assertEqual(payload["model"], "rookie-alpha-postdraft-team-context-v0")
             self.assertEqual(len(payload["rows"]), len(self.rows))
             self.assertTrue(output_csv.exists())
+
+            with output_csv.open(encoding="utf-8", newline="") as handle:
+                reader = csv.reader(handle)
+                header = next(reader)
+
+            self.assertIn("talent_confirmation_signal", header)
+            self.assertIn("opportunity_insulation_signal", header)
+            self.assertIn("short_term_fantasy_runway", header)
 
 
 if __name__ == "__main__":
