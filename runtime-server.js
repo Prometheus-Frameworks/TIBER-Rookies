@@ -31,6 +31,9 @@ const ROUTE_ALIASES = new Map([
   ['/cards/rookies/compare', '/cards/rookies/compare/index.html'],
   ['/cards/rookies/swipe', '/cards/rookies/swipe/index.html'],
   ['/cards/rookies/workbench', '/cards/rookies/workbench/index.html'],
+]);
+
+const CONDITIONAL_FALLBACKS = new Map([
   [
     '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_team_context_v0.json',
     '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_v0.json',
@@ -102,7 +105,31 @@ function resolveFilePath(requestPath, callback) {
       return;
     }
 
-    callback(null, targetPath);
+    if (!error && stats.isFile()) {
+      callback(null, targetPath);
+      return;
+    }
+
+    const fallbackPublicPath = CONDITIONAL_FALLBACKS.get(publicPath);
+    if (!fallbackPublicPath) {
+      callback(null, targetPath);
+      return;
+    }
+
+    const fallbackTargetPath = resolveStaticPath(fallbackPublicPath);
+    if (!fallbackTargetPath) {
+      callback(null, targetPath);
+      return;
+    }
+
+    fs.stat(fallbackTargetPath, (fallbackError, fallbackStats) => {
+      if (!fallbackError && fallbackStats.isFile()) {
+        callback(null, fallbackTargetPath);
+        return;
+      }
+
+      callback(null, targetPath);
+    });
   });
 }
 
