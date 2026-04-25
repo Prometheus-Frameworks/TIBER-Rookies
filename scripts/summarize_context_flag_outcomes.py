@@ -167,6 +167,48 @@ def build_day2_cohorts(cohort_since_year: int) -> dict[str, dict[str, Any]]:
     return cohorts
 
 
+def build_pick_band_cohorts(cohort_since_year: int) -> dict[str, dict[str, Any]]:
+    cohorts: dict[str, dict[str, Any]] = {}
+
+    wr_bands = [(1, 10), (11, 20), (21, 32), (33, 45), (46, 64), (65, 102)]
+    for min_pick, max_pick in wr_bands:
+        cohorts[f"wr_pick_{min_pick}_{max_pick}_since_{cohort_since_year}"] = {
+            "position": "WR",
+            "since": cohort_since_year,
+            "min_pick": min_pick,
+            "max_pick": max_pick,
+        }
+
+    rb_bands = [(1, 32), (33, 64), (65, 102)]
+    for min_pick, max_pick in rb_bands:
+        cohorts[f"rb_pick_{min_pick}_{max_pick}_since_{cohort_since_year}"] = {
+            "position": "RB",
+            "since": cohort_since_year,
+            "min_pick": min_pick,
+            "max_pick": max_pick,
+        }
+
+    te_bands = [(1, 32), (33, 64), (65, 102)]
+    for min_pick, max_pick in te_bands:
+        cohorts[f"te_pick_{min_pick}_{max_pick}_since_{cohort_since_year}"] = {
+            "position": "TE",
+            "since": cohort_since_year,
+            "min_pick": min_pick,
+            "max_pick": max_pick,
+        }
+
+    skill_bands = [(1, 10), (11, 20), (21, 32), (33, 45), (46, 64), (65, 102)]
+    for min_pick, max_pick in skill_bands:
+        cohorts[f"skill_pick_{min_pick}_{max_pick}_since_{cohort_since_year}"] = {
+            "positions": ["WR", "RB", "TE"],
+            "since": cohort_since_year,
+            "min_pick": min_pick,
+            "max_pick": max_pick,
+        }
+
+    return cohorts
+
+
 def row_matches_cohort_rule(row: dict[str, Any], rule: dict[str, Any]) -> bool:
     position = row["position"]
     allowed_positions = rule.get("positions")
@@ -405,7 +447,11 @@ def main() -> None:
     if metadata_latest_stats_season > 0:
         latest_nfl_season = max(latest_nfl_season, metadata_latest_stats_season)
     summaries: list[dict[str, Any]] = []
-    cohorts = {**ROUND1_COHORTS, **build_day2_cohorts(args.cohort_since_year)}
+    cohorts = {
+        **ROUND1_COHORTS,
+        **build_day2_cohorts(args.cohort_since_year),
+        **build_pick_band_cohorts(args.cohort_since_year),
+    }
 
     for cohort_name, rule in cohorts.items():
         players = build_cohort_players(normalized_rows, rule)

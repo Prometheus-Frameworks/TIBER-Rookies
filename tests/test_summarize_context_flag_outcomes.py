@@ -8,6 +8,7 @@ from pathlib import Path
 
 from scripts.summarize_context_flag_outcomes import (
     build_day2_cohorts,
+    build_pick_band_cohorts,
     build_cohort_players,
     detect_missing_player_reason,
     extract_cache_paths_from_source_notes,
@@ -107,6 +108,17 @@ class CohortFilteringTests(unittest.TestCase):
         self.assertIn("wr_day2_since_2020", cohorts)
         self.assertIn("early_round2_skill_since_2020", cohorts)
 
+    def test_pick_band_cohort_definitions_include_expected_names(self) -> None:
+        cohorts = build_pick_band_cohorts(2020)
+        self.assertIn("wr_pick_21_32_since_2020", cohorts)
+        self.assertIn("wr_pick_33_45_since_2020", cohorts)
+        self.assertIn("wr_pick_65_102_since_2020", cohorts)
+        self.assertIn("rb_pick_1_32_since_2020", cohorts)
+        self.assertIn("rb_pick_65_102_since_2020", cohorts)
+        self.assertIn("te_pick_33_64_since_2020", cohorts)
+        self.assertIn("skill_pick_11_20_since_2020", cohorts)
+        self.assertIn("skill_pick_46_64_since_2020", cohorts)
+
     def test_generic_filter_supports_round_and_pick_ranges(self) -> None:
         rule = {
             "positions": ["WR", "RB", "TE"],
@@ -139,6 +151,33 @@ class CohortFilteringTests(unittest.TestCase):
         cohort_players = build_cohort_players([included, too_early_pick, too_late_round, wrong_position], rule)
         self.assertEqual(len(cohort_players), 1)
         self.assertEqual(cohort_players[0]["player_name"], "Included")
+
+    def test_filter_supports_exact_position_and_since_floor(self) -> None:
+        rule = {
+            "position": "WR",
+            "since": 2020,
+            "min_pick": 21,
+            "max_pick": 32,
+        }
+        included = {
+            "player_id": "p1",
+            "player_name": "Late R1 WR",
+            "position": "WR",
+            "draft_year": 2024,
+            "draft_round": 1,
+            "overall_pick": 24,
+            "career_year": 1,
+            "ppr_points": 120.0,
+            "ppr_per_game": 9.2,
+        }
+        wrong_position = {**included, "player_id": "p2", "position": "RB"}
+        wrong_year = {**included, "player_id": "p3", "draft_year": 2019}
+        wrong_pick = {**included, "player_id": "p4", "overall_pick": 33}
+
+        self.assertTrue(row_matches_cohort_rule(included, rule))
+        self.assertFalse(row_matches_cohort_rule(wrong_position, rule))
+        self.assertFalse(row_matches_cohort_rule(wrong_year, rule))
+        self.assertFalse(row_matches_cohort_rule(wrong_pick, rule))
 
 
 if __name__ == "__main__":
