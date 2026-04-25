@@ -1,0 +1,107 @@
+[
+  {
+    "player_id": "wr-dezhaun-stribling",
+    "player_name": "De'Zhaun Stribling",
+    "position": "WR",
+    "round": 2,
+    "pick": 33,
+    "team": "49ers",
+    "pre_draft_tiber_stance": "Vertical WR profile with athletic upside and developmental route-translation variance entering the draft.",
+    "day2_signal_summary": "Early Day 2 capital (pick 33) is near-Round-1 market validation for a WR archetype with role upside, while still carrying weaker insulation than true Round 1 investment.",
+    "talent_confirmation_signal": "strong",
+    "opportunity_insulation_signal": "moderate",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Target competition and role clarity in the 49ers pass-catching room can cap early volume certainty.",
+      "Day 2 WR capital provides meaningful opportunity signal but less long-horizon patience than Round 1 capital."
+    ],
+    "translator_tags": [
+      "early_day2_capital",
+      "near_round1_skill_capital",
+      "shanahan_role_translation_watch",
+      "athletic_profile_boost",
+      "target_room_competition_watch"
+    ],
+    "post_draft_handling": "Translate as a meaningful market-confidence upgrade with actionable Year 1 role potential, but avoid assigning Round 1-level insulation assumptions.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "wr-denzel-boston",
+    "player_name": "Denzel Boston",
+    "position": "WR",
+    "round": 2,
+    "pick": null,
+    "team": "Browns",
+    "pre_draft_tiber_stance": "Contested-catch and production-backed WR with mixed separator/translation opinions pre-draft.",
+    "day2_signal_summary": "Round 2 WR capital confirms meaningful organizational intent and role opportunity, but without the same contract/runway insulation as Round 1.",
+    "talent_confirmation_signal": "moderate",
+    "opportunity_insulation_signal": "moderate",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Exact pick slot is not yet locked in this operator-seeded artifact.",
+      "Browns target competition and deployment context can materially shift early fantasy runway."
+    ],
+    "translator_tags": [
+      "round2_wr_capital",
+      "browns_double_wr_investment",
+      "kcc_target_competition_signal",
+      "role_path_review"
+    ],
+    "post_draft_handling": "Treat as a positive role-opportunity translator signal and monitor role pathway, while keeping insulation assumptions clearly below Round 1 certainty.",
+    "notes": "Operator-seeded Day 2 profile; pick remains null until canonical reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "qb-carson-beck",
+    "player_name": "Carson Beck",
+    "position": "QB",
+    "round": 3,
+    "pick": 65,
+    "team": "Cardinals",
+    "pre_draft_tiber_stance": "Developmental pocket QB profile with outcome sensitivity to timeline and organizational context.",
+    "day2_signal_summary": "Round 3 QB capital provides real development commitment signal and roster-path relevance, but materially less long-term insulation than Round 1 or Round 2 quarterback investment.",
+    "talent_confirmation_signal": "mixed",
+    "opportunity_insulation_signal": "limited",
+    "short_term_fantasy_runway": "delayed",
+    "primary_risks": [
+      "Day 3-adjacent QB capital band can produce fragile organizational patience.",
+      "Starting timeline and QB-room hierarchy are still context-dependent."
+    ],
+    "translator_tags": [
+      "round3_qb_capital",
+      "developmental_qb_capital",
+      "delayed_start_path",
+      "qb_room_context_required"
+    ],
+    "post_draft_handling": "Apply developmental-quarterback translation with delayed near-term runway and limited insulation assumptions pending clearer room dynamics.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "qb-drew-allar",
+    "player_name": "Drew Allar",
+    "position": "QB",
+    "round": 3,
+    "pick": 76,
+    "team": "Steelers",
+    "pre_draft_tiber_stance": "Traits-forward developmental QB profile with uneven short-term readiness projection.",
+    "day2_signal_summary": "Round 3 selection signals actionable organizational interest and a plausible developmental path, while still offering limited insulation relative to earlier capital tiers.",
+    "talent_confirmation_signal": "mixed",
+    "opportunity_insulation_signal": "limited",
+    "short_term_fantasy_runway": "delayed",
+    "primary_risks": [
+      "Delayed start trajectory may suppress early fantasy utility.",
+      "Steelers QB-room structure could constrain immediate role access."
+    ],
+    "translator_tags": [
+      "round3_qb_capital",
+      "developmental_qb_capital",
+      "steelers_qb_room_watch",
+      "delayed_start_path"
+    ],
+    "post_draft_handling": "Treat as a developmental Day 2 QB signal with constrained insulation; preserve upside path notes without upgrading to Round 1-style certainty.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  }
+]
