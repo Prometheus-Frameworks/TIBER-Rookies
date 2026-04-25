@@ -7,9 +7,12 @@ import unittest
 from pathlib import Path
 
 from scripts.summarize_context_flag_outcomes import (
+    build_day2_cohorts,
+    build_cohort_players,
     detect_missing_player_reason,
     extract_cache_paths_from_source_notes,
     name_matches_expected,
+    row_matches_cohort_rule,
     validate_known_2025_skill_picks,
 )
 
@@ -94,6 +97,48 @@ class KnownPickValidationTests(unittest.TestCase):
             }
             warnings = validate_known_2025_skill_picks(normalized_rows=[], source_metadata=metadata)
             self.assertTrue(any("Colston Loveland" in warning for warning in warnings))
+
+
+class CohortFilteringTests(unittest.TestCase):
+    def test_day2_cohort_definitions_include_expected_names(self) -> None:
+        cohorts = build_day2_cohorts(2020)
+        self.assertIn("wr_round2_since_2020", cohorts)
+        self.assertIn("wr_round3_since_2020", cohorts)
+        self.assertIn("wr_day2_since_2020", cohorts)
+        self.assertIn("early_round2_skill_since_2020", cohorts)
+
+    def test_generic_filter_supports_round_and_pick_ranges(self) -> None:
+        rule = {
+            "positions": ["WR", "RB", "TE"],
+            "since": 2020,
+            "min_round": 2,
+            "max_round": 3,
+            "min_pick": 33,
+            "max_pick": 102,
+        }
+        included = {
+            "player_id": "p1",
+            "player_name": "Included",
+            "position": "WR",
+            "draft_year": 2021,
+            "draft_round": 2,
+            "overall_pick": 40,
+            "career_year": 1,
+            "ppr_points": 100.0,
+            "ppr_per_game": 10.0,
+        }
+        too_early_pick = {**included, "player_id": "p2", "overall_pick": 30}
+        too_late_round = {**included, "player_id": "p3", "draft_round": 4, "overall_pick": 110}
+        wrong_position = {**included, "player_id": "p4", "position": "QB", "overall_pick": 60}
+
+        self.assertTrue(row_matches_cohort_rule(included, rule))
+        self.assertFalse(row_matches_cohort_rule(too_early_pick, rule))
+        self.assertFalse(row_matches_cohort_rule(too_late_round, rule))
+        self.assertFalse(row_matches_cohort_rule(wrong_position, rule))
+
+        cohort_players = build_cohort_players([included, too_early_pick, too_late_round, wrong_position], rule)
+        self.assertEqual(len(cohort_players), 1)
+        self.assertEqual(cohort_players[0]["player_name"], "Included")
 
 
 if __name__ == "__main__":

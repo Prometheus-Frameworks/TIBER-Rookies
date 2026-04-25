@@ -58,6 +58,27 @@ The cohort summary script separates:
 
 It reports both in `incomplete_notes`, along with small-sample warnings.
 
+## Cohort design: Round 1 vs Day 2
+
+The calibration lane keeps the existing **Round 1 / top-10 since 2022** cohorts unchanged, and adds Day 2 cohorts with a default baseline of `since 2020` (configurable via `--cohort-since-year`).
+
+Why split Day 2:
+- **Round 2 is materially different from Round 3** in both draft capital and expected early-career opportunity.
+- **Early Round 2 picks (33–45)** can carry near-Round-1 team investment and should be isolated from later Round 2 capital.
+- **Day 2 capital is still a meaningful opportunity signal**, but with weaker insulation and hit-rate stability than Round 1.
+
+Added Day 2 position cohorts (defaulting to since 2020):
+- `wr_round2_since_2020`, `wr_round3_since_2020`, `wr_day2_since_2020`
+- `rb_round2_since_2020`, `rb_round3_since_2020`, `rb_day2_since_2020`
+- `te_round2_since_2020`, `te_round3_since_2020`, `te_day2_since_2020`
+- `qb_round2_since_2020`, `qb_round3_since_2020`, `qb_day2_since_2020`
+
+Added Day 2 skill-capital bands (WR/RB/TE):
+- `early_round2_skill_since_2020` (picks 33–45)
+- `mid_late_round2_skill_since_2020` (picks 46–64)
+- `round3_skill_since_2020` (picks 65–102)
+- `day2_skill_since_2020` (picks 33–102)
+
 ## Source freshness checks
 
 The build script now reports source freshness diagnostics every run:
@@ -121,13 +142,13 @@ From repo root:
 
 ```bash
 python scripts/build_nfl_fantasy_outcomes.py --refresh
-python scripts/summarize_context_flag_outcomes.py
+python scripts/summarize_context_flag_outcomes.py --cohort-since-year 2020
 ```
 
 Optional cohort-inclusion validation for known 2025 top-10 skill picks:
 
 ```bash
-python scripts/summarize_context_flag_outcomes.py --validate-known-2025-skill-picks
+python scripts/summarize_context_flag_outcomes.py --validate-known-2025-skill-picks --cohort-since-year 2020
 ```
 
 Current expected validation set:
