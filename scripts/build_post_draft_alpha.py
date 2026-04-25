@@ -79,9 +79,16 @@ def compute_adjustment_parts(profile: dict[str, Any], source_profile: str) -> li
         add_band("top5_skill_capital", 6.0, 8.0, talent_factor, "talent_confirmation")
         add_band("top10_skill_capital", 4.0, 6.0, talent_factor, "talent_confirmation")
         add_band("round1_wr_capital", 3.0, 5.0, talent_factor, "talent_confirmation")
+        add_band("late_round1_wr_capital", 2.0, 3.0, talent_factor, "talent_confirmation")
+        add_band("round1_market_confirmation", 2.0, 3.0, talent_factor, "talent_confirmation")
+        add_band("model_wr1_validation", 2.0, 3.0, talent_factor, "talent_confirmation")
+        add_band("fifth_year_option_signal", 0.8, 1.5, talent_factor, "talent_confirmation")
         add_band("round1_rb_capital", 5.0, 7.0, talent_factor, "talent_confirmation")
         add_band("round1_te_capital", 3.0, 5.0, talent_factor, "talent_confirmation")
+        add_band("round1_qb_capital", 3.0, 5.0, talent_factor, "talent_confirmation")
         add_band("trade_up_conviction", 1.0, 2.0, talent_factor, "talent_confirmation")
+        add_band("elite_developmental_environment", 1.0, 3.0, opp_factor, "opportunity_insulation")
+        add_band("delayed_start_insulation", 0.8, 1.5, opp_factor, "opportunity_insulation")
 
         if "class_inflation_adjustment_candidate" in tags:
             parts.append(DeltaPart(points=-1.0, reason="talent_confirmation:class_inflation_adjustment"))
@@ -113,11 +120,19 @@ def compute_adjustment_parts(profile: dict[str, Any], source_profile: str) -> li
         parts.append(DeltaPart(points=-1.0, reason="risk:delayed_te_translation_watch"))
     if "developmental_qb_capital" in tags:
         parts.append(DeltaPart(points=-0.8, reason="risk:developmental_qb_capital"))
+    if "landing_spot_volatility" in tags:
+        parts.append(DeltaPart(points=-1.0, reason="risk:landing_spot_volatility"))
+    if "delayed_start_insulation" in tags:
+        parts.append(DeltaPart(points=-0.6, reason="risk:delayed_start_timeline"))
 
     return parts
 
 
 def apply_opportunity_caps(delta: float, tags: set[str]) -> float:
+    if "delayed_start_insulation" in tags:
+        delta = min(delta, 6.0)
+    if "landing_spot_volatility" in tags:
+        delta = min(delta, 6.0)
     if "developmental_qb_capital" in tags:
         delta = min(delta, 2.0)
     if "delayed_te_translation_watch" in tags:
@@ -228,7 +243,38 @@ def build_post_draft_rows(predraft_path: Path, round1_path: Path, day2_path: Pat
     return rows
 
 
-def write_outputs(rows: list[dict[str, Any]], output_json: Path, output_csv: Path) -> None:
+def build_missing_baseline_rows(
+    rows: list[dict[str, Any]],
+    *,
+    reason: str = "predraft_baseline_not_found",
+) -> list[dict[str, Any]]:
+    missing_rows: list[dict[str, Any]] = []
+    for row in rows:
+        if "baseline:predraft_missing_pass_through" not in row["delta_reason_codes"]:
+            continue
+        missing_rows.append(
+            {
+                "player_id": row["player_id"],
+                "player_name": row["player_name"],
+                "position": row["position"],
+                "draft_round": row["draft_round"],
+                "draft_pick": row["draft_pick"],
+                "team": row["team"],
+                "source_profile": row["source_profile"],
+                "source_status": row.get("source_status", "operator_seeded"),
+                "translator_tags": row.get("translator_tags", []),
+                "reason": reason,
+            }
+        )
+    return sorted(missing_rows, key=lambda r: (r["draft_round"] or 99, r["draft_pick"] or 999, r["player_name"]))
+
+
+def write_outputs(
+    rows: list[dict[str, Any]],
+    output_json: Path,
+    output_csv: Path,
+    output_missing_baselines: Path | None = None,
+) -> None:
     output_json.parent.mkdir(parents=True, exist_ok=True)
     payload = {
         "model": "rookie-alpha-postdraft-v0",
@@ -254,6 +300,11 @@ def write_outputs(rows: list[dict[str, Any]], output_json: Path, output_csv: Pat
                 "remaining_risks": "|".join(row["remaining_risks"]),
             }
             writer.writerow(csv_row)
+
+    if output_missing_baselines is not None:
+        output_missing_baselines.parent.mkdir(parents=True, exist_ok=True)
+        missing_rows = build_missing_baseline_rows(rows)
+        output_missing_baselines.write_text(json.dumps(missing_rows, indent=2) + "\n", encoding="utf-8")
 
 
 def parse_args() -> argparse.Namespace:
@@ -283,14 +334,22 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=Path("exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_v0.csv"),
     )
+    parser.add_argument(
+        "--output-missing-baselines",
+        type=Path,
+        default=Path("exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_missing_baselines_v0.json"),
+    )
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
     rows = build_post_draft_rows(args.predraft_path, args.round1_path, args.day2_path)
-    write_outputs(rows, args.output_json, args.output_csv)
-    print(f"Wrote {len(rows)} rows to {args.output_json} and {args.output_csv}")
+    write_outputs(rows, args.output_json, args.output_csv, args.output_missing_baselines)
+    print(
+        f"Wrote {len(rows)} rows to {args.output_json} and {args.output_csv}; "
+        f"missing-baseline report: {args.output_missing_baselines}"
+    )
 
 
 if __name__ == "__main__":

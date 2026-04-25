@@ -39,6 +39,40 @@
       "source_status": "operator_seeded"
     },
     {
+      "player_id": "wr-kc-concepcion",
+      "player_name": "KC Concepcion",
+      "position": "WR",
+      "pre_draft_alpha": 71.9,
+      "post_draft_alpha": 77.9,
+      "post_draft_delta": 6.0,
+      "delta_reason_codes": [
+        "talent_confirmation:round1_market_confirmation",
+        "talent_confirmation:model_wr1_validation",
+        "opportunity_insulation:signal_bonus",
+        "risk:landing_spot_volatility",
+        "risk:opportunity_insulation_cap"
+      ],
+      "draft_round": 1,
+      "draft_pick": 24,
+      "team": "Browns",
+      "talent_confirmation_signal": "elite",
+      "opportunity_insulation_signal": "strong",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "round1_market_confirmation",
+        "model_wr1_validation",
+        "elite_separator_signal",
+        "yac_return_value_profile",
+        "landing_spot_volatility"
+      ],
+      "remaining_risks": [
+        "Landing-spot offensive volatility can disrupt early consistency.",
+        "Team-level context assumptions should be rechecked once canonical artifacts are locked."
+      ],
+      "source_profile": "round1",
+      "source_status": "operator_seeded"
+    },
+    {
       "player_id": "wr-makai-lemon",
       "player_name": "Makai Lemon",
       "position": "WR",
@@ -174,36 +208,6 @@
       "source_status": "operator_seeded"
     },
     {
-      "player_id": "wr-kc-concepcion",
-      "player_name": "KC Concepcion",
-      "position": "WR",
-      "pre_draft_alpha": 71.9,
-      "post_draft_alpha": 73.1,
-      "post_draft_delta": 1.2,
-      "delta_reason_codes": [
-        "opportunity_insulation:signal_bonus"
-      ],
-      "draft_round": 1,
-      "draft_pick": 24,
-      "team": "Browns",
-      "talent_confirmation_signal": "elite",
-      "opportunity_insulation_signal": "strong",
-      "short_term_fantasy_runway": "strong",
-      "translator_tags": [
-        "round1_market_confirmation",
-        "model_wr1_validation",
-        "elite_separator_signal",
-        "yac_return_value_profile",
-        "landing_spot_volatility"
-      ],
-      "remaining_risks": [
-        "Landing-spot offensive volatility can disrupt early consistency.",
-        "Team-level context assumptions should be rechecked once canonical artifacts are locked."
-      ],
-      "source_profile": "round1",
-      "source_status": "operator_seeded"
-    },
-    {
       "player_id": "te-kenyon-sadiq",
       "player_name": "Kenyon Sadiq",
       "position": "TE",
@@ -272,6 +276,38 @@
       "source_status": "operator_seeded"
     },
     {
+      "player_id": "wr-omar-cooper-jr",
+      "player_name": "Omar Cooper Jr.",
+      "position": "WR",
+      "pre_draft_alpha": 61.3,
+      "post_draft_alpha": 68.4,
+      "post_draft_delta": 7.1,
+      "delta_reason_codes": [
+        "talent_confirmation:late_round1_wr_capital",
+        "talent_confirmation:fifth_year_option_signal",
+        "talent_confirmation:trade_up_conviction",
+        "opportunity_insulation:signal_bonus"
+      ],
+      "draft_round": 1,
+      "draft_pick": 30,
+      "team": "Jets",
+      "talent_confirmation_signal": "strong",
+      "opportunity_insulation_signal": "strong",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "late_round1_wr_capital",
+        "fifth_year_option_signal",
+        "trade_up_conviction",
+        "role_path_review"
+      ],
+      "remaining_risks": [
+        "Role pathway still requires depth-chart and deployment confirmation.",
+        "Late Round 1 hits have wider outcome bands than top-half selections."
+      ],
+      "source_profile": "round1",
+      "source_status": "operator_seeded"
+    },
+    {
       "player_id": "te-eli-stowers",
       "player_name": "Eli Stowers",
       "position": "TE",
@@ -308,36 +344,6 @@
         "Role definition inside the Eagles pass game can suppress immediate target share."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
-    },
-    {
-      "player_id": "wr-omar-cooper-jr",
-      "player_name": "Omar Cooper Jr.",
-      "position": "WR",
-      "pre_draft_alpha": 61.3,
-      "post_draft_alpha": 64.3,
-      "post_draft_delta": 3.0,
-      "delta_reason_codes": [
-        "talent_confirmation:trade_up_conviction",
-        "opportunity_insulation:signal_bonus"
-      ],
-      "draft_round": 1,
-      "draft_pick": 30,
-      "team": "Jets",
-      "talent_confirmation_signal": "strong",
-      "opportunity_insulation_signal": "strong",
-      "short_term_fantasy_runway": "strong",
-      "translator_tags": [
-        "late_round1_wr_capital",
-        "fifth_year_option_signal",
-        "trade_up_conviction",
-        "role_path_review"
-      ],
-      "remaining_risks": [
-        "Role pathway still requires depth-chart and deployment confirmation.",
-        "Late Round 1 hits have wider outcome bands than top-half selections."
-      ],
-      "source_profile": "round1",
       "source_status": "operator_seeded"
     },
     {
@@ -448,6 +454,39 @@
         "Day 2 capital confirms opportunity but does not eliminate Year 1 usage volatility."
       ],
       "source_profile": "day2",
+      "source_status": "operator_seeded"
+    },
+    {
+      "player_id": "qb-ty-simpson",
+      "player_name": "Ty Simpson",
+      "position": "QB",
+      "pre_draft_alpha": 50.9,
+      "post_draft_alpha": 56.9,
+      "post_draft_delta": 6.0,
+      "delta_reason_codes": [
+        "talent_confirmation:round1_qb_capital",
+        "opportunity_insulation:elite_developmental_environment",
+        "opportunity_insulation:delayed_start_insulation",
+        "opportunity_insulation:signal_bonus",
+        "risk:delayed_start_timeline",
+        "risk:opportunity_insulation_cap"
+      ],
+      "draft_round": 1,
+      "draft_pick": 13,
+      "team": "Rams",
+      "talent_confirmation_signal": "strong",
+      "opportunity_insulation_signal": "strong",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "round1_qb_capital",
+        "elite_developmental_environment",
+        "delayed_start_insulation"
+      ],
+      "remaining_risks": [
+        "Delayed initial starting path may suppress early fantasy utility.",
+        "Developmental outcomes remain sensitive to eventual deployment timing."
+      ],
+      "source_profile": "round1",
       "source_status": "operator_seeded"
     },
     {
@@ -674,34 +713,6 @@
         "TE development arc can limit early-week fantasy predictability."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
-    },
-    {
-      "player_id": "qb-ty-simpson",
-      "player_name": "Ty Simpson",
-      "position": "QB",
-      "pre_draft_alpha": 50.9,
-      "post_draft_alpha": 52.1,
-      "post_draft_delta": 1.2,
-      "delta_reason_codes": [
-        "opportunity_insulation:signal_bonus"
-      ],
-      "draft_round": 1,
-      "draft_pick": 13,
-      "team": "Rams",
-      "talent_confirmation_signal": "strong",
-      "opportunity_insulation_signal": "strong",
-      "short_term_fantasy_runway": "delayed",
-      "translator_tags": [
-        "round1_qb_capital",
-        "elite_developmental_environment",
-        "delayed_start_insulation"
-      ],
-      "remaining_risks": [
-        "Delayed initial starting path may suppress early fantasy utility.",
-        "Developmental outcomes remain sensitive to eventual deployment timing."
-      ],
-      "source_profile": "round1",
       "source_status": "operator_seeded"
     },
     {

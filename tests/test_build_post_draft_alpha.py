@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.build_post_draft_alpha import build_post_draft_rows, write_outputs
+from scripts.build_post_draft_alpha import build_missing_baseline_rows, build_post_draft_rows, write_outputs
 
 
 class BuildPostDraftAlphaTests(unittest.TestCase):
@@ -58,6 +58,27 @@ class BuildPostDraftAlphaTests(unittest.TestCase):
         for qb in round3_qbs:
             self.assertLessEqual(qb["post_draft_delta"], 2.0)
 
+    def test_kc_concepcion_gets_material_round1_validation_bump(self) -> None:
+        kc = next(row for row in self.rows if row["player_name"] == "KC Concepcion")
+        self.assertGreater(kc["post_draft_delta"], 1.2)
+        self.assertGreaterEqual(kc["post_draft_delta"], 4.0)
+        self.assertLessEqual(kc["post_draft_delta"], 6.0)
+        self.assertTrue(
+            any("round1_market_confirmation" in reason for reason in kc["delta_reason_codes"])
+        )
+        self.assertTrue(any("model_wr1_validation" in reason for reason in kc["delta_reason_codes"]))
+
+    def test_ty_simpson_gets_capped_meaningful_round1_qb_bump(self) -> None:
+        ty = next(row for row in self.rows if row["player_name"] == "Ty Simpson")
+        self.assertGreater(ty["post_draft_delta"], 1.2)
+        self.assertGreaterEqual(ty["post_draft_delta"], 4.0)
+        self.assertLessEqual(ty["post_draft_delta"], 6.0)
+        self.assertTrue(any("round1_qb_capital" in reason for reason in ty["delta_reason_codes"]))
+        self.assertTrue(
+            any("elite_developmental_environment" in reason for reason in ty["delta_reason_codes"])
+        )
+        self.assertTrue(any("delayed_start" in reason for reason in ty["delta_reason_codes"]))
+
     def test_delayed_te_translation_watch_limits_bump(self) -> None:
         delayed_tes = [
             row
@@ -72,12 +93,24 @@ class BuildPostDraftAlphaTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp_dir:
             output_json = Path(temp_dir) / "postdraft.json"
             output_csv = Path(temp_dir) / "postdraft.csv"
-            write_outputs(self.rows, output_json, output_csv)
+            output_missing_baselines = Path(temp_dir) / "missing-baselines.json"
+            write_outputs(self.rows, output_json, output_csv, output_missing_baselines)
 
             payload = json.loads(output_json.read_text(encoding="utf-8"))
             self.assertEqual(payload["model"], "rookie-alpha-postdraft-v0")
             self.assertEqual(len(payload["rows"]), len(self.rows))
             self.assertTrue(output_csv.exists())
+            missing_payload = json.loads(output_missing_baselines.read_text(encoding="utf-8"))
+            self.assertTrue(
+                any(row["player_name"] == "Kaelon Black" for row in missing_payload),
+                "Kaelon Black should be listed in missing-baseline report when unmatched.",
+            )
+
+    def test_missing_baseline_rows_include_operator_seeded_pass_through(self) -> None:
+        missing = build_missing_baseline_rows(self.rows)
+        kaelon = next(row for row in missing if row["player_name"] == "Kaelon Black")
+        self.assertEqual(kaelon["reason"], "predraft_baseline_not_found")
+        self.assertEqual(kaelon["source_status"], "operator_seeded")
 
 
 if __name__ == "__main__":

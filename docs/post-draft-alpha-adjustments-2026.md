@@ -18,6 +18,7 @@ This artifact adds a transparent **post-draft translator layer** on top of froze
 
 - `exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_v0.json`
 - `exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_v0.csv`
+- `exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_missing_baselines_v0.json`
 
 ## Doctrine and guardrails
 
@@ -38,9 +39,16 @@ Bands are encoded in `scripts/build_post_draft_alpha.py` and selected determinis
 - `top5_skill_capital`: +6 to +8
 - `top10_skill_capital`: +4 to +6
 - `round1_wr_capital`: +3 to +5
+- `late_round1_wr_capital`: +2 to +3
+- `round1_market_confirmation`: +2 to +3
+- `model_wr1_validation`: +2 to +3
+- `fifth_year_option_signal`: +0.8 to +1.5
 - `round1_rb_capital`: +5 to +7
 - `round1_te_capital`: +3 to +5
+- `round1_qb_capital`: +3 to +5
 - `trade_up_conviction`: +1 to +2
+- `elite_developmental_environment`: +1 to +3 (opportunity-insulation confirmation)
+- `delayed_start_insulation`: +0.8 to +1.5 (long-term insulation signal)
 - `class_inflation_adjustment_candidate`: talent-confirmation reduction only
 
 ### Day 2 bands
@@ -59,10 +67,17 @@ Bands are encoded in `scripts/build_post_draft_alpha.py` and selected determinis
 - `year1_volume_uncertainty`: -1 to -2 equivalent conservative reduction
 - `delayed_te_translation_watch`: short-term TE bump constraint
 - `developmental_qb_capital`: QB upside cap pressure
+- `landing_spot_volatility`: mild validation discount and cap pressure
+- `delayed_start_insulation`: delayed runway penalty and cap guardrail
 - Opportunity insulation caps:
   - `opportunity_insulation_limited`
   - `opportunity_insulation_moderate`
   - `opportunity_insulation_strong` / `elite`
+
+## Missing baseline reconciliation
+
+- Profiles without a pre-draft baseline still pass through as `pre_draft_alpha = 0.0`, `post_draft_alpha = 0.0`, with `baseline:predraft_missing_pass_through` in `delta_reason_codes`.
+- Those same rows are now surfaced in `2026_rookie_alpha_postdraft_missing_baselines_v0.json` with `reason = predraft_baseline_not_found` for reconciliation workflows.
 
 ## Coverage behavior in v0
 
@@ -74,4 +89,3 @@ Players without those profiles are omitted from the post-draft artifact and rema
 ```bash
 python scripts/build_post_draft_alpha.py
 ```
-
