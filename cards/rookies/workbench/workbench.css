@@ -178,6 +178,37 @@
   padding: 7px 8px;
 }
 
+.journal-table-controls {
+  grid-template-columns: minmax(260px, 2fr) repeat(4, minmax(160px, 1fr));
+  align-items: center;
+}
+
+.checkbox-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(157, 170, 191, 0.4);
+  border-radius: 10px;
+  padding: 10px;
+  color: #f5f8ff;
+  background: rgba(17, 23, 37, 0.95);
+  font-size: 0.84rem;
+}
+
+.journal-summary-grid {
+  margin-top: 0;
+}
+
+.compact-journal-table td {
+  white-space: normal;
+  vertical-align: top;
+  min-width: 140px;
+}
+
+.compact-journal-table td:nth-child(4) {
+  min-width: 260px;
+}
+
 @media (max-width: 980px) {
   .table-controls {
     grid-template-columns: 1fr 1fr;

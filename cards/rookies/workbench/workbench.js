@@ -2,6 +2,7 @@ const PRIMARY_CONTEXT_PATH = '../../../exports/promoted/rookie-alpha/2026_rookie
 const POST_DRAFT_FALLBACK_PATH = '../../../exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_v0.json';
 const MISSING_BASELINE_PATH = '../../../exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_missing_baselines_v0.json';
 const OUTCOME_SUMMARY_PATH = '../../../exports/promoted/nfl-fantasy-outcomes/context_flag_outcome_summary_v1.json';
+const JOURNAL_SIGNAL_PATH = '../../../data/operator-journal/processed/2026_operator_signal_candidates.json';
 
 const CALIBRATION_COHORTS = [
   'skill_pick_1_10_since_2020',
@@ -20,6 +21,7 @@ const CALIBRATION_COHORTS = [
 const state = {
   rows: [],
   selectedId: null,
+  hasExplicitPlayerSelection: false,
   sortKey: 'post_draft_alpha',
   sortDirection: 'desc',
   filters: {
@@ -32,6 +34,14 @@ const state = {
   },
   missingBaselines: null,
   outcomeSummary: null,
+  journalSignals: { available: false, rows: [] },
+  journalFilters: {
+    search: '',
+    modelEdge: false,
+    missingDataAudit: false,
+    roleOpportunity: false,
+    needsHumanReview: false,
+  },
 };
 
 const dom = {
@@ -41,6 +51,14 @@ const dom = {
   detail: document.getElementById('player-detail'),
   missingPanel: document.getElementById('missing-baseline-panel'),
   calibrationPanel: document.getElementById('calibration-panel'),
+  journalPanel: document.getElementById('journal-signals-panel'),
+  journalTableBody: document.getElementById('journal-signals-tbody'),
+  journalSearch: document.getElementById('journal-search-input'),
+  journalModelEdge: document.getElementById('journal-filter-model-edge'),
+  journalMissingData: document.getElementById('journal-filter-missing-data'),
+  journalRoleOpportunity: document.getElementById('journal-filter-role-opportunity'),
+  journalNeedsReview: document.getElementById('journal-filter-needs-review'),
+  journalSelectedHint: document.getElementById('journal-selected-player-hint'),
   search: document.getElementById('search-input'),
   position: document.getElementById('position-filter'),
   round: document.getElementById('round-filter'),
@@ -91,6 +109,25 @@ function normalizeRow(row, index) {
     combined_risk_tags: toArray(row.combined_risk_tags),
     remaining_risks: toArray(row.remaining_risks),
     team_context_notes: row.team_context_notes || '—',
+  };
+}
+
+function normalizeJournalCandidate(candidate, index) {
+  return {
+    id: candidate.candidate_id || `journal-candidate-${index}`,
+    candidate_id: candidate.candidate_id || `journal-candidate-${index}`,
+    player_name: candidate.player_name || null,
+    team: candidate.team || null,
+    position: candidate.position || null,
+    entity_type: candidate.entity_type || 'unknown',
+    claim_summary: candidate.claim_summary || '—',
+    positive_signal_tags: toArray(candidate.positive_signal_tags),
+    risk_tags: toArray(candidate.risk_tags),
+    context_tags: toArray(candidate.context_tags),
+    model_impact: candidate.model_impact || '',
+    confidence: candidate.confidence || '—',
+    review_status: candidate.review_status || 'unknown',
+    needs_verification: Boolean(candidate.needs_verification),
   };
 }
 
@@ -254,7 +291,13 @@ function renderTable(rows) {
 
   dom.tbody.querySelectorAll('tr[data-player-id]').forEach((rowEl) => {
     rowEl.addEventListener('click', () => {
-      state.selectedId = rowEl.dataset.playerId;
+      if (state.selectedId === rowEl.dataset.playerId && state.hasExplicitPlayerSelection) {
+        state.selectedId = null;
+        state.hasExplicitPlayerSelection = false;
+      } else {
+        state.selectedId = rowEl.dataset.playerId;
+        state.hasExplicitPlayerSelection = true;
+      }
       render();
     });
   });
@@ -362,16 +405,154 @@ function renderCalibration() {
   `;
 }
 
+function isModelEdgeCandidate(candidate) {
+  const haystack = [
+    candidate.model_impact || '',
+    candidate.claim_summary || '',
+    ...candidate.positive_signal_tags,
+    ...candidate.risk_tags,
+    ...candidate.context_tags,
+  ]
+    .join(' ')
+    .toLowerCase();
+
+  return (
+    haystack.includes('model_edge') ||
+    haystack.includes('model-edge') ||
+    haystack.includes('tiber_edge_plus') ||
+    haystack.includes('tiber edge plus')
+  );
+}
+
+function isMissingDataAuditCandidate(candidate) {
+  const haystack = `${candidate.model_impact} ${candidate.claim_summary} ${candidate.risk_tags.join(' ')} ${candidate.context_tags.join(' ')}`.toLowerCase();
+  return haystack.includes('missing_data') || haystack.includes('profile_data_completeness');
+}
+
+function isRoleOpportunityCandidate(candidate) {
+  const haystack = `${candidate.model_impact} ${candidate.claim_summary} ${candidate.context_tags.join(' ')}`.toLowerCase();
+  return haystack.includes('role_opportunity') || haystack.includes('role_path');
+}
+
+function isLandingSpotOverProfileCandidate(candidate) {
+  return candidate.model_impact.toLowerCase().includes('landing_spot_opportunity_over_profile');
+}
+
+function getJournalRowsForDisplay(selectedPlayer) {
+  if (!state.journalSignals.available) return [];
+
+  let rows = state.journalSignals.rows;
+  if (state.hasExplicitPlayerSelection && selectedPlayer?.player_name) {
+    const selectedName = selectedPlayer.player_name.toLowerCase();
+    rows = rows.filter((candidate) => candidate.player_name && candidate.player_name.toLowerCase() === selectedName);
+  }
+
+  return rows.filter((candidate) => {
+    const haystack = [
+      candidate.player_name || '',
+      candidate.team || '',
+      candidate.entity_type || '',
+      candidate.claim_summary || '',
+      ...candidate.positive_signal_tags,
+      ...candidate.risk_tags,
+      ...candidate.context_tags,
+      candidate.model_impact || '',
+      candidate.review_status || '',
+    ]
+      .join(' ')
+      .toLowerCase();
+
+    if (state.journalFilters.search && !haystack.includes(state.journalFilters.search.toLowerCase())) {
+      return false;
+    }
+
+    if (state.journalFilters.modelEdge && !isModelEdgeCandidate(candidate)) {
+      return false;
+    }
+
+    if (state.journalFilters.missingDataAudit && !isMissingDataAuditCandidate(candidate)) {
+      return false;
+    }
+
+    if (state.journalFilters.roleOpportunity && !isRoleOpportunityCandidate(candidate)) {
+      return false;
+    }
+
+    if (state.journalFilters.needsHumanReview && candidate.review_status !== 'needs_human_review') {
+      return false;
+    }
+
+    return true;
+  });
+}
+
+function renderJournalSignals(selectedPlayer) {
+  if (!state.journalSignals.available) {
+    dom.journalPanel.innerHTML = '<p class="meta">Operator journal signal artifact unavailable.</p>';
+    dom.journalTableBody.innerHTML = '<tr><td colspan="10" class="meta">Operator journal signal artifact unavailable.</td></tr>';
+    dom.journalSelectedHint.textContent = 'Select a player to scope journal signals.';
+    return;
+  }
+
+  const allRows = state.journalSignals.rows;
+  const displayRows = getJournalRowsForDisplay(selectedPlayer);
+  const needsReviewCount = allRows.filter((candidate) => candidate.review_status === 'needs_human_review').length;
+  const modelEdgeCount = allRows.filter(isModelEdgeCandidate).length;
+  const missingDataCount = allRows.filter(isMissingDataAuditCandidate).length;
+  const landingSpotCount = allRows.filter(isLandingSpotOverProfileCandidate).length;
+
+  dom.journalPanel.innerHTML = `
+    <div class="summary-grid journal-summary-grid">
+      <article class="summary-tile"><div class="summary-label">Total candidates</div><div class="summary-value">${allRows.length}</div></article>
+      <article class="summary-tile"><div class="summary-label">Candidates needing review</div><div class="summary-value">${needsReviewCount}</div></article>
+      <article class="summary-tile"><div class="summary-label">Model-edge validation candidates</div><div class="summary-value">${modelEdgeCount}</div></article>
+      <article class="summary-tile"><div class="summary-label">Missing-data audit candidates</div><div class="summary-value">${missingDataCount}</div></article>
+      <article class="summary-tile"><div class="summary-label">Landing-spot-over-profile candidates</div><div class="summary-value">${landingSpotCount}</div></article>
+    </div>
+  `;
+
+  if (!displayRows.length) {
+    const selectedMessage = selectedPlayer?.player_name
+      ? `No journal candidates found for ${escapeHtml(selectedPlayer.player_name)} with active filters.`
+      : 'No journal candidates matched active filters.';
+    dom.journalTableBody.innerHTML = `<tr><td colspan="10" class="meta">${selectedMessage}</td></tr>`;
+  } else {
+    dom.journalTableBody.innerHTML = displayRows
+      .map((candidate) => {
+        const identity = [candidate.player_name || '—', candidate.team || '—', candidate.position || '—'].join(' / ');
+        return `<tr>
+          <td>${escapeHtml(candidate.candidate_id)}</td>
+          <td>${escapeHtml(identity)}</td>
+          <td>${escapeHtml(candidate.entity_type)}</td>
+          <td>${escapeHtml(candidate.claim_summary)}</td>
+          <td>${escapeHtml(candidate.positive_signal_tags.join(', ') || '—')}</td>
+          <td>${escapeHtml(candidate.risk_tags.join(', ') || '—')}</td>
+          <td>${escapeHtml(candidate.context_tags.join(', ') || '—')}</td>
+          <td>${escapeHtml(candidate.model_impact || '—')}</td>
+          <td>${escapeHtml(candidate.confidence)}</td>
+          <td>${escapeHtml(candidate.review_status)}</td>
+        </tr>`;
+      })
+      .join('');
+  }
+
+  if (selectedPlayer?.player_name) {
+    dom.journalSelectedHint.textContent = `Showing journal candidates matching selected player: ${selectedPlayer.player_name}.`;
+  } else {
+    dom.journalSelectedHint.textContent = 'Showing journal candidates for all players/entities.';
+  }
+}
+
 function render() {
   const filtered = state.rows.filter(matchesFilters);
   const sorted = sortRows(filtered);
   renderSummary(sorted);
   renderTable(sorted);
   const selected = state.rows.find((row) => row.id === state.selectedId) || sorted[0] || null;
-  if (!state.selectedId && selected) state.selectedId = selected.id;
   renderDetail(selected);
   renderMissingBaselines();
   renderCalibration();
+  renderJournalSignals(state.hasExplicitPlayerSelection ? selected : null);
 }
 
 function renderFilterOptions() {
@@ -431,6 +612,31 @@ function wireEvents() {
 
   dom.delta.addEventListener('change', () => {
     state.filters.deltaDirection = dom.delta.value;
+    render();
+  });
+
+  dom.journalSearch.addEventListener('input', () => {
+    state.journalFilters.search = dom.journalSearch.value.trim();
+    render();
+  });
+
+  dom.journalModelEdge.addEventListener('change', () => {
+    state.journalFilters.modelEdge = dom.journalModelEdge.checked;
+    render();
+  });
+
+  dom.journalMissingData.addEventListener('change', () => {
+    state.journalFilters.missingDataAudit = dom.journalMissingData.checked;
+    render();
+  });
+
+  dom.journalRoleOpportunity.addEventListener('change', () => {
+    state.journalFilters.roleOpportunity = dom.journalRoleOpportunity.checked;
+    render();
+  });
+
+  dom.journalNeedsReview.addEventListener('change', () => {
+    state.journalFilters.needsHumanReview = dom.journalNeedsReview.checked;
     render();
   });
 
@@ -512,6 +718,16 @@ async function initialize() {
   } catch (error) {
     state.outcomeSummary = { available: false, rows: [] };
     messages.push('Outcome calibration artifact unavailable.');
+  }
+
+  try {
+    const journalPayload = await loadJson(JOURNAL_SIGNAL_PATH);
+    const rows = (Array.isArray(journalPayload) ? journalPayload : coerceRows(journalPayload)).map(normalizeJournalCandidate);
+    state.journalSignals = { available: true, rows };
+    messages.push(`Loaded operator journal signal artifact (${rows.length} candidates).`);
+  } catch (error) {
+    state.journalSignals = { available: false, rows: [] };
+    messages.push('Operator journal signal artifact unavailable.');
   }
 
   dom.artifactStatus.textContent = messages.join(' ');
