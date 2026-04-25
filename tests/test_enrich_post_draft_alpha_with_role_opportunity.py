@@ -104,6 +104,30 @@ class EnrichPostDraftAlphaWithRoleOpportunityTests(unittest.TestCase):
             role_baselines_path.write_text(json.dumps(self.role_baselines_payload), encoding="utf-8")
             return load_team_role_profiles(team_profiles_path), load_role_baselines(role_baselines_path)
 
+    def test_load_team_role_profiles_supports_pr11_team_profiles_shape(self) -> None:
+        pr11_shape_payload = {
+            "model": "team-role-opportunity-profiles-v0",
+            "season": 2026,
+            "source_status": "operator_seeded",
+            "team_profiles": [
+                {"team": "HOU", "roles": [{"role": "WR2"}]},
+                {"team": "CLE", "roles": [{"role": "WR1"}]},
+                {"team": "TEN", "roles": [{"role": "WR1"}]},
+                {"team": "PHI", "roles": [{"role": "TE2"}]},
+            ],
+        }
+
+        with tempfile.TemporaryDirectory() as temp_dir:
+            path = Path(temp_dir) / "pr11_team_profiles.json"
+            path.write_text(json.dumps(pr11_shape_payload), encoding="utf-8")
+            profiles_by_team = load_team_role_profiles(path)
+
+        self.assertIn("HOU", profiles_by_team)
+        self.assertIn("CLE", profiles_by_team)
+        self.assertIn("TEN", profiles_by_team)
+        self.assertIn("PHI", profiles_by_team)
+        self.assertEqual(profiles_by_team["HOU"][0]["role"], "WR2")
+
     def test_ty_simpson_maps_to_lar_qb_developmental(self) -> None:
         team_profiles, baselines = self._load_profiles()
         enriched = enrich_rows(self.rows, team_profiles, baselines)

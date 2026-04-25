@@ -160,6 +160,11 @@ def load_team_role_profiles(path: Path) -> dict[str, list[dict[str, Any]]]:
         if isinstance(payload.get("teams"), dict):
             teams_obj = payload["teams"]
             iterable: list[tuple[str, Any]] = list(teams_obj.items())
+        elif isinstance(payload.get("team_profiles"), list):
+            iterable = []
+            for row in payload["team_profiles"]:
+                if isinstance(row, dict):
+                    iterable.append((str(row.get("team") or row.get("team_code") or ""), row))
         elif isinstance(payload.get("rows"), list):
             iterable = []
             for row in payload["rows"]:
