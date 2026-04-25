@@ -24,6 +24,7 @@ class BuildOperatorSignalCandidatesTests(unittest.TestCase):
 
     def test_output_includes_antonio_williams(self) -> None:
         antonio = next(c for c in self.candidates if c["player_name"] == "Antonio Williams")
+        self.assertEqual(antonio["team"], "Commanders")
         self.assertIn("available_target_opportunity", antonio["positive_signal_tags"])
 
     def test_output_includes_heavy_te_meta(self) -> None:
@@ -37,6 +38,11 @@ class BuildOperatorSignalCandidatesTests(unittest.TestCase):
         self.assertIn("round1_qb_experience_risk", ty["risk_tags"])
         self.assertIn("developmental_qb_variance", ty["risk_tags"])
 
+    def test_tanner_koziol_includes_model_edge_tags(self) -> None:
+        tanner = next(c for c in self.candidates if c["player_name"] == "Tanner Koziol")
+        self.assertIn("tiber_edge_plus_18", tanner["context_tags"])
+        self.assertIn("model_edge_confirmed_by_draft_capital", tanner["positive_signal_tags"])
+
     def test_all_candidates_are_operator_journal_source(self) -> None:
         for candidate in self.candidates:
             self.assertEqual(candidate["source_type"], "operator_journal")
@@ -44,6 +50,11 @@ class BuildOperatorSignalCandidatesTests(unittest.TestCase):
     def test_all_candidates_default_to_needs_human_review(self) -> None:
         for candidate in self.candidates:
             self.assertEqual(candidate["review_status"], "needs_human_review")
+
+    def test_script_does_not_target_alpha_artifacts(self) -> None:
+        script_text = Path("scripts/build_operator_signal_candidates.py").read_text(encoding="utf-8")
+        self.assertNotIn("rookie_alpha", script_text)
+        self.assertNotIn("post_draft_alpha", script_text)
 
 
 if __name__ == "__main__":

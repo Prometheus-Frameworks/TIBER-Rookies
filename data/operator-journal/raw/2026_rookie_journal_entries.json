@@ -21,7 +21,7 @@
     "entry_id": "oj_2026_003_post_draft_watchlist",
     "entry_date": "2026-04-24",
     "entry_title": "Post-draft stock up/down watchlist",
-    "entry_text": "Post-draft stock up/down watchlist. Stock up: Jayden Higgins, Harold Fannin Jr., RJ Harvey. Stock down: Pat Bryant, Tory Horton, Xavier Restrepo. Backfields: Browns backfield, Cowboys backfield, Vikings backfield. Treat this as market/reaction signal, not scoring truth.",
+    "entry_text": "Post-draft stock up/down watchlist. Stock up: Antonio Williams, Chris Bell, Zachariah Branch, Malachi Fields, Ja'Kobi Lane, Carson Beck, Drew Allar, Oscar Delp, Jadarian Price, Ty Simpson, Titans RBs, Giants RBs, Commanders RBs, Darnell Mooney, Xavier Worthy. Stock down: Makai Lemon, Denzel Boston, Omar Cooper Jr., Kenyon Sadiq, Eli Stowers, Jerry Jeudy, Michael Pittman, Zach Charbonnet, Harold Fannin, Juwan Johnson, Hunter Henry. Treat this as market/reaction signal, not scoring truth.",
     "source_type": "operator_journal",
     "operator": "local",
     "review_status": "raw"
@@ -31,6 +31,15 @@
     "entry_date": "2026-04-24",
     "entry_title": "Ty Simpson historical context",
     "entry_text": "Round 1 QBs since 2000 with fewer than 650 career college pass attempts and fewer than 1,000 rushing yards includes Carson Wentz, Mark Sanchez, Ty Simpson, Mac Jones, Mitch Trubisky, Dwayne Haskins. Treat as low-experience/developmental variance candidate, needs verification.",
+    "source_type": "operator_journal",
+    "operator": "local",
+    "review_status": "raw"
+  },
+  {
+    "entry_id": "oj_2026_005_tanner_koziol",
+    "entry_date": "2026-04-24",
+    "entry_title": "Tanner Koziol model-edge validation watch",
+    "entry_text": "Data-savvy Jaguars drafted Tanner Koziol in Round 5. TIBER had his model edge at +18.",
     "source_type": "operator_journal",
     "operator": "local",
     "review_status": "raw"

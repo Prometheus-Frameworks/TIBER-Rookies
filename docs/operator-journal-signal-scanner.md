@@ -16,7 +16,7 @@ This v0 pipeline:
 - Source type is always `operator_journal`.
 - Candidate outputs are suggestions, not scoring truth.
 - Default candidate `review_status` is `needs_human_review`.
-- Candidates can be promoted only after human validation.
+- Candidate tags require review before promotion into Rookie Alpha, Teamstate, Role-Opportunity, or TIBER-Data.
 
 ## Files
 
@@ -48,5 +48,8 @@ Candidate tags are created for analyst review before any downstream use:
 - `TIBER-Teamstate`
 - `Role-and-Opportunity`
 - `TIBER-Rookies`
+- `TIBER-Data`
 
-Only reviewed/promoted items should be consumed by Teamstate, Role-Opportunity, or post-draft alpha workflows. The scanner's goal is to turn hobby notes into a repeatable information layer without bypassing model governance.
+Model-edge notes (for example, Tanner Koziol `+18`) are treated as validation-watch candidates only, and never as automatic grade or score bumps.
+
+Only reviewed/promoted items should be consumed by Teamstate, Role-Opportunity, post-draft alpha, or any TIBER-Data downstream workflows. The scanner's goal is to turn hobby notes into a repeatable information layer without bypassing model governance.
