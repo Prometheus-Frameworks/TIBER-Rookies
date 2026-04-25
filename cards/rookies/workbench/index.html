@@ -85,6 +85,47 @@
         <h2 class="section-title">Outcome calibration cohorts</h2>
         <div id="calibration-panel" class="panel-card">Loading outcome summary artifact…</div>
       </section>
+
+      <section>
+        <h2 class="section-title">Journal Signals</h2>
+        <div id="journal-signals-panel" class="panel-card">Loading operator journal signal artifact…</div>
+        <div class="table-controls journal-table-controls">
+          <input
+            type="search"
+            id="journal-search-input"
+            class="board-search-input"
+            placeholder="Search player, team, entity, tags, claim..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <label class="checkbox-filter"><input type="checkbox" id="journal-filter-model-edge" /> model_edge</label>
+          <label class="checkbox-filter"><input type="checkbox" id="journal-filter-missing-data" /> missing_data_audit</label>
+          <label class="checkbox-filter"><input type="checkbox" id="journal-filter-role-opportunity" /> role_opportunity</label>
+          <label class="checkbox-filter"><input type="checkbox" id="journal-filter-needs-review" /> needs_human_review</label>
+        </div>
+        <p id="journal-selected-player-hint" class="meta">Select a player to scope journal signals.</p>
+        <div class="table-wrap">
+          <table class="workbench-table compact-journal-table">
+            <thead>
+              <tr>
+                <th>candidate_id</th>
+                <th>player_name / team / position</th>
+                <th>entity_type</th>
+                <th>claim_summary</th>
+                <th>positive_signal_tags</th>
+                <th>risk_tags</th>
+                <th>context_tags</th>
+                <th>model_impact</th>
+                <th>confidence</th>
+                <th>review_status</th>
+              </tr>
+            </thead>
+            <tbody id="journal-signals-tbody">
+              <tr><td colspan="10" class="meta">Loading journal candidates…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer" role="contentinfo">

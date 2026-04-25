@@ -129,6 +129,18 @@ test('standalone runtime smoke routes', async (t) => {
     assert.ok(Array.isArray(outcomePayload) || Array.isArray(outcomePayload.rows));
   }
 
+  const journalSignals = await fetch(
+    buildUrl(port, '/data/operator-journal/processed/2026_operator_signal_candidates.json'),
+  );
+  if (journalSignals.status === 404) {
+    assert.ok(true, 'operator journal signal artifact is optional in some runtime bundles');
+  } else {
+    assert.equal(journalSignals.status, 200);
+    assert.match(journalSignals.headers.get('content-type') || '', /application\/json/);
+    const journalPayload = await journalSignals.json();
+    assert.ok(Array.isArray(journalPayload) || Array.isArray(journalPayload.rows));
+  }
+
   const blocked = await fetch(buildUrl(port, '/..%2Fpackage.json'));
   assert.equal(blocked.status, 400);
 });
