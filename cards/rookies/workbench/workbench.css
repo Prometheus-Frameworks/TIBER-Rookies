@@ -1,0 +1,185 @@
+.workbench-page {
+  max-width: 1300px;
+}
+
+.workbench-header {
+  margin-top: 10px;
+}
+
+.workbench-warning {
+  margin: 10px 0;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(244, 165, 116, 0.45);
+  background: rgba(102, 62, 28, 0.28);
+  color: #ffd1b0;
+  font-size: 0.95rem;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.summary-tile {
+  border: 1px solid rgba(167, 180, 201, 0.25);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(9, 14, 26, 0.78);
+}
+
+.summary-label {
+  color: #9eb3ca;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.summary-value {
+  margin-top: 5px;
+  font-size: 1.15rem;
+  color: #f5f8ff;
+  font-weight: 700;
+}
+
+.table-controls {
+  margin-top: 10px;
+  display: grid;
+  grid-template-columns: minmax(230px, 2fr) repeat(5, minmax(130px, 1fr));
+  gap: 8px;
+}
+
+.table-controls select {
+  border-radius: 10px;
+  border: 1px solid rgba(157, 170, 191, 0.4);
+  background: rgba(17, 23, 37, 0.95);
+  color: #f5f8ff;
+  padding: 10px;
+}
+
+.table-wrap {
+  overflow: auto;
+  margin-top: 10px;
+  border: 1px solid rgba(140, 155, 180, 0.3);
+  border-radius: 12px;
+}
+
+.workbench-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.workbench-table th,
+.workbench-table td {
+  border-bottom: 1px solid rgba(130, 145, 166, 0.22);
+  padding: 9px 10px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.workbench-table th[data-sort] {
+  cursor: pointer;
+}
+
+.workbench-table th.sorted {
+  color: #8cc7ff;
+}
+
+.workbench-table tbody tr {
+  cursor: pointer;
+}
+
+.workbench-table tbody tr:hover {
+  background: rgba(50, 84, 126, 0.28);
+}
+
+.workbench-table tbody tr.selected {
+  background: rgba(72, 130, 196, 0.3);
+}
+
+.delta-positive {
+  color: #8fe6b5;
+  font-weight: 700;
+}
+
+.delta-negative {
+  color: #f4aaaa;
+  font-weight: 700;
+}
+
+.player-detail-card,
+.panel-card {
+  margin-top: 10px;
+  border: 1px solid rgba(140, 155, 180, 0.3);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(9, 14, 26, 0.7);
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 8px 12px;
+}
+
+.detail-row {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.detail-label {
+  color: #9eb3ca;
+  font-size: 0.74rem;
+  text-transform: uppercase;
+}
+
+.detail-value {
+  color: #f5f8ff;
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag-pill {
+  border-radius: 999px;
+  border: 1px solid rgba(140, 165, 196, 0.5);
+  background: rgba(38, 59, 88, 0.4);
+  color: #d2e6ff;
+  padding: 3px 8px;
+  font-size: 0.77rem;
+}
+
+.tag-pill.risk {
+  border-color: rgba(230, 131, 131, 0.58);
+  background: rgba(96, 37, 42, 0.35);
+  color: #ffd8dd;
+}
+
+.compact-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+  font-size: 0.85rem;
+}
+
+.compact-table th,
+.compact-table td {
+  border-bottom: 1px solid rgba(130, 145, 166, 0.22);
+  text-align: left;
+  padding: 7px 8px;
+}
+
+@media (max-width: 980px) {
+  .table-controls {
+    grid-template-columns: 1fr 1fr;
+  }
+}
