@@ -3,13 +3,16 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.build_operator_signal_candidates import build_candidates, write_candidates
+from scripts.build_operator_signal_candidates import (
+    UnmappedJournalEntriesError,
+    build_candidates,
+    write_candidates,
+)
 
 
 class BuildOperatorSignalCandidatesTests(unittest.TestCase):
     def setUp(self) -> None:
         self.input_path = Path("data/operator-journal/raw/2026_rookie_journal_entries.json")
-        self.output_path = Path("data/operator-journal/processed/2026_operator_signal_candidates.json")
 
         entries = json.loads(self.input_path.read_text(encoding="utf-8"))
         self.candidates = build_candidates(entries)
@@ -28,7 +31,7 @@ class BuildOperatorSignalCandidatesTests(unittest.TestCase):
         self.assertIn("available_target_opportunity", antonio["positive_signal_tags"])
 
     def test_output_includes_heavy_te_meta(self) -> None:
-        heavy_te = next(c for c in self.candidates if c["candidate_id"] == "cand_2026_heavy_te_meta")
+        heavy_te = next(c for c in self.candidates if c["entity_type"] == "team_meta")
         self.assertIn("heavy_te_personnel_meta", heavy_te["positive_signal_tags"])
         self.assertIn("two_wr_set_target_focus", heavy_te["context_tags"])
 
@@ -55,6 +58,66 @@ class BuildOperatorSignalCandidatesTests(unittest.TestCase):
         script_text = Path("scripts/build_operator_signal_candidates.py").read_text(encoding="utf-8")
         self.assertNotIn("rookie_alpha", script_text)
         self.assertNotIn("post_draft_alpha", script_text)
+
+    def test_candidate_ids_are_unique_and_derived_from_entry(self) -> None:
+        candidate_ids = [candidate["candidate_id"] for candidate in self.candidates]
+        self.assertEqual(len(candidate_ids), len(set(candidate_ids)))
+        for candidate in self.candidates:
+            self.assertTrue(candidate["candidate_id"].startswith(f"cand_{candidate['source_entry_id']}_"))
+
+    def test_second_ty_simpson_entry_gets_unique_candidate_id(self) -> None:
+        entries = json.loads(self.input_path.read_text(encoding="utf-8"))
+        entries.append(
+            {
+                "entry_id": "oj_2026_006_ty_simpson_followup",
+                "entry_date": "2026-04-25",
+                "entry_title": "Ty Simpson historical context follow-up",
+                "entry_text": "Follow-up Ty Simpson note in same thematic lane.",
+                "source_type": "operator_journal",
+                "operator": "local",
+                "review_status": "raw",
+            }
+        )
+
+        candidates = build_candidates(entries)
+        ty_candidates = [candidate for candidate in candidates if candidate["player_name"] == "Ty Simpson"]
+        self.assertEqual(len(ty_candidates), 2)
+        self.assertEqual(len({candidate["candidate_id"] for candidate in ty_candidates}), 2)
+
+    def test_unmapped_entries_fail_loudly_by_default(self) -> None:
+        entries = json.loads(self.input_path.read_text(encoding="utf-8"))
+        entries.append(
+            {
+                "entry_id": "oj_2026_999_unmapped",
+                "entry_date": "2026-04-25",
+                "entry_title": "Unknown note",
+                "entry_text": "A note with no mapping rule.",
+                "source_type": "operator_journal",
+                "operator": "local",
+                "review_status": "raw",
+            }
+        )
+
+        with self.assertRaises(UnmappedJournalEntriesError):
+            build_candidates(entries)
+
+    def test_allow_unmapped_skips_unknown_entries(self) -> None:
+        entries = json.loads(self.input_path.read_text(encoding="utf-8"))
+        entries.append(
+            {
+                "entry_id": "oj_2026_999_unmapped",
+                "entry_date": "2026-04-25",
+                "entry_title": "Unknown note",
+                "entry_text": "A note with no mapping rule.",
+                "source_type": "operator_journal",
+                "operator": "local",
+                "review_status": "raw",
+            }
+        )
+
+        candidates = build_candidates(entries, allow_unmapped=True)
+        self.assertTrue(candidates)
+        self.assertFalse(any(c["source_entry_id"] == "oj_2026_999_unmapped" for c in candidates))
 
 
 if __name__ == "__main__":

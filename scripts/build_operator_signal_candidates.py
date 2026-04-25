@@ -13,6 +13,10 @@ DEFAULT_INPUT = Path("data/operator-journal/raw/2026_rookie_journal_entries.json
 DEFAULT_OUTPUT = Path("data/operator-journal/processed/2026_operator_signal_candidates.json")
 
 
+class UnmappedJournalEntriesError(ValueError):
+    """Raised when one or more raw operator notes do not map to candidate rules."""
+
+
 def _extract_segment(text: str, start_marker: str, end_marker: str | None = None) -> str:
     if start_marker not in text:
         return ""
@@ -28,9 +32,9 @@ def _split_entities(segment: str) -> list[str]:
     return [value.strip() for value in segment.split(",") if value.strip()]
 
 
-def _base_candidate(entry: dict[str, Any], candidate_id: str, entity_type: str) -> dict[str, Any]:
+def _base_candidate(entry: dict[str, Any], suffix: str, entity_type: str) -> dict[str, Any]:
     return {
-        "candidate_id": candidate_id,
+        "candidate_id": f"cand_{entry['entry_id']}_{suffix}",
         "source_entry_id": entry["entry_id"],
         "entity_type": entity_type,
         "player_name": None,
@@ -54,7 +58,7 @@ def build_candidates_for_entry(entry: dict[str, Any]) -> list[dict[str, Any]]:
     entry_id = entry["entry_id"]
 
     if "antonio_williams" in entry_id:
-        candidate = _base_candidate(entry, "cand_2026_antonio_williams_context", "player")
+        candidate = _base_candidate(entry, "context", "player")
         candidate.update(
             {
                 "player_name": "Antonio Williams",
@@ -86,7 +90,7 @@ def build_candidates_for_entry(entry: dict[str, Any]) -> list[dict[str, Any]]:
         return [candidate]
 
     if "13_personnel" in entry_id:
-        candidate = _base_candidate(entry, "cand_2026_heavy_te_meta", "team_meta")
+        candidate = _base_candidate(entry, "team_meta", "team_meta")
         candidate.update(
             {
                 "team": "Rams",
@@ -111,7 +115,7 @@ def build_candidates_for_entry(entry: dict[str, Any]) -> list[dict[str, Any]]:
         stock_up = _split_entities(_extract_segment(entry["entry_text"], "Stock up:", "Stock down:"))
         stock_down = _split_entities(_extract_segment(entry["entry_text"], "Stock down:", "Treat this"))
 
-        candidate = _base_candidate(entry, "cand_2026_post_draft_market_watchlist", "market_watchlist")
+        candidate = _base_candidate(entry, "market_watchlist", "market_watchlist")
         candidate.update(
             {
                 "claim_summary": "Post-draft market reaction watchlist from operator journal.",
@@ -125,7 +129,7 @@ def build_candidates_for_entry(entry: dict[str, Any]) -> list[dict[str, Any]]:
         return [candidate]
 
     if "ty_simpson" in entry_id:
-        candidate = _base_candidate(entry, "cand_2026_ty_simpson_experience_risk", "player")
+        candidate = _base_candidate(entry, "experience_risk", "player")
         candidate.update(
             {
                 "player_name": "Ty Simpson",
@@ -154,7 +158,7 @@ def build_candidates_for_entry(entry: dict[str, Any]) -> list[dict[str, Any]]:
         return [candidate]
 
     if "tanner_koziol" in entry_id:
-        candidate = _base_candidate(entry, "cand_2026_tanner_koziol_model_edge_validation", "player")
+        candidate = _base_candidate(entry, "model_edge_validation", "player")
         candidate.update(
             {
                 "player_name": "Tanner Koziol",
@@ -184,17 +188,33 @@ def build_candidates_for_entry(entry: dict[str, Any]) -> list[dict[str, Any]]:
     return []
 
 
-def build_candidates(entries: list[dict[str, Any]]) -> list[dict[str, Any]]:
+def build_candidates(entries: list[dict[str, Any]], allow_unmapped: bool = False) -> list[dict[str, Any]]:
     candidates: list[dict[str, Any]] = []
+    unmapped_entry_ids: list[str] = []
     for entry in entries:
-        candidates.extend(build_candidates_for_entry(entry))
+        mapped_candidates = build_candidates_for_entry(entry)
+        if not mapped_candidates:
+            unmapped_entry_ids.append(entry["entry_id"])
+            continue
+        candidates.extend(mapped_candidates)
+
+    if unmapped_entry_ids and not allow_unmapped:
+        message = (
+            "Unmapped operator journal entries detected. Add mapping rules or pass --allow-unmapped. "
+            f"entry_ids={', '.join(unmapped_entry_ids)}"
+        )
+        raise UnmappedJournalEntriesError(message)
+
+    candidate_ids = [candidate["candidate_id"] for candidate in candidates]
+    if len(candidate_ids) != len(set(candidate_ids)):
+        raise ValueError("Duplicate candidate_id values detected; candidate IDs must be unique.")
 
     return sorted(candidates, key=lambda value: value["candidate_id"])
 
 
-def write_candidates(input_path: Path, output_path: Path) -> list[dict[str, Any]]:
+def write_candidates(input_path: Path, output_path: Path, allow_unmapped: bool = False) -> list[dict[str, Any]]:
     entries = json.loads(input_path.read_text(encoding="utf-8"))
-    candidates = build_candidates(entries)
+    candidates = build_candidates(entries, allow_unmapped=allow_unmapped)
     output_path.parent.mkdir(parents=True, exist_ok=True)
     output_path.write_text(json.dumps(candidates, indent=2) + "\n", encoding="utf-8")
     return candidates
@@ -204,12 +224,17 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", type=Path, default=DEFAULT_INPUT, help="Raw operator journal entries JSON")
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT, help="Candidate signal output JSON")
+    parser.add_argument(
+        "--allow-unmapped",
+        action="store_true",
+        help="Allow unmapped entries without failing the build (unmapped entries are skipped).",
+    )
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
-    write_candidates(args.input, args.output)
+    write_candidates(args.input, args.output, allow_unmapped=args.allow_unmapped)
 
 
 if __name__ == "__main__":

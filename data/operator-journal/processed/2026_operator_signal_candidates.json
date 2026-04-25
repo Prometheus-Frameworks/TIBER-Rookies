@@ -1,6 +1,6 @@
 [
   {
-    "candidate_id": "cand_2026_antonio_williams_context",
+    "candidate_id": "cand_oj_2026_001_antonio_williams_context",
     "source_entry_id": "oj_2026_001_antonio_williams",
     "entity_type": "player",
     "player_name": "Antonio Williams",
@@ -35,7 +35,7 @@
     "review_status": "needs_human_review"
   },
   {
-    "candidate_id": "cand_2026_heavy_te_meta",
+    "candidate_id": "cand_oj_2026_002_rams_13_personnel_team_meta",
     "source_entry_id": "oj_2026_002_rams_13_personnel",
     "entity_type": "team_meta",
     "player_name": null,
@@ -68,7 +68,7 @@
     "review_status": "needs_human_review"
   },
   {
-    "candidate_id": "cand_2026_post_draft_market_watchlist",
+    "candidate_id": "cand_oj_2026_003_post_draft_watchlist_market_watchlist",
     "source_entry_id": "oj_2026_003_post_draft_watchlist",
     "entity_type": "market_watchlist",
     "player_name": null,
@@ -122,44 +122,7 @@
     "review_status": "needs_human_review"
   },
   {
-    "candidate_id": "cand_2026_tanner_koziol_model_edge_validation",
-    "source_entry_id": "oj_2026_005_tanner_koziol",
-    "entity_type": "player",
-    "player_name": "Tanner Koziol",
-    "team": "Jaguars",
-    "position": "TE",
-    "related_entities": [],
-    "claim_summary": "Round 5 selection aligning with prior +18 TIBER model-edge note.",
-    "positive_signal_tags": [
-      "model_edge_confirmed_by_draft_capital",
-      "late_round_te_watch",
-      "data_savvy_org_validation",
-      "jaguars_te_depth_watch"
-    ],
-    "risk_tags": [
-      "round5_insulation_risk",
-      "delayed_te_translation_watch",
-      "low_draft_capital_volume_uncertainty",
-      "depth_chart_path_uncertain"
-    ],
-    "context_tags": [
-      "tiber_edge_plus_18",
-      "round5_te_capital",
-      "post_draft_watchlist"
-    ],
-    "model_impact": "track_as_late_round_model_edge_validation_candidate",
-    "downstream_repos": [
-      "TIBER-Rookies",
-      "TIBER-Teamstate",
-      "Role-and-Opportunity"
-    ],
-    "confidence": "medium",
-    "needs_verification": true,
-    "source_type": "operator_journal",
-    "review_status": "needs_human_review"
-  },
-  {
-    "candidate_id": "cand_2026_ty_simpson_experience_risk",
+    "candidate_id": "cand_oj_2026_004_ty_simpson_experience_risk",
     "source_entry_id": "oj_2026_004_ty_simpson",
     "entity_type": "player",
     "player_name": "Ty Simpson",
@@ -190,6 +153,43 @@
     "model_impact": "cap_aggressive_ty_simpson_bump",
     "downstream_repos": [
       "TIBER-Rookies"
+    ],
+    "confidence": "medium",
+    "needs_verification": true,
+    "source_type": "operator_journal",
+    "review_status": "needs_human_review"
+  },
+  {
+    "candidate_id": "cand_oj_2026_005_tanner_koziol_model_edge_validation",
+    "source_entry_id": "oj_2026_005_tanner_koziol",
+    "entity_type": "player",
+    "player_name": "Tanner Koziol",
+    "team": "Jaguars",
+    "position": "TE",
+    "related_entities": [],
+    "claim_summary": "Round 5 selection aligning with prior +18 TIBER model-edge note.",
+    "positive_signal_tags": [
+      "model_edge_confirmed_by_draft_capital",
+      "late_round_te_watch",
+      "data_savvy_org_validation",
+      "jaguars_te_depth_watch"
+    ],
+    "risk_tags": [
+      "round5_insulation_risk",
+      "delayed_te_translation_watch",
+      "low_draft_capital_volume_uncertainty",
+      "depth_chart_path_uncertain"
+    ],
+    "context_tags": [
+      "tiber_edge_plus_18",
+      "round5_te_capital",
+      "post_draft_watchlist"
+    ],
+    "model_impact": "track_as_late_round_model_edge_validation_candidate",
+    "downstream_repos": [
+      "TIBER-Rookies",
+      "TIBER-Teamstate",
+      "Role-and-Opportunity"
     ],
     "confidence": "medium",
     "needs_verification": true,

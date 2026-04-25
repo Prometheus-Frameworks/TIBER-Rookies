@@ -53,3 +53,9 @@ Candidate tags are created for analyst review before any downstream use:
 Model-edge notes (for example, Tanner Koziol `+18`) are treated as validation-watch candidates only, and never as automatic grade or score bumps.
 
 Only reviewed/promoted items should be consumed by Teamstate, Role-Opportunity, post-draft alpha, or any TIBER-Data downstream workflows. The scanner's goal is to turn hobby notes into a repeatable information layer without bypassing model governance.
+
+## Durability guardrails
+
+- Candidate IDs are derived from the source entry (`cand_${source_entry_id}_...`) to keep IDs stable and unique across repeated themes.
+- Unmapped entries fail loudly by default so new operator notes cannot silently disappear.
+- Optional override: `--allow-unmapped` skips unmapped entries when you explicitly want a partial build.
