@@ -1,0 +1,24 @@
+[
+  {
+    "player_id": "rb-kaelon-black",
+    "player_name": "Kaelon Black",
+    "position": "RB",
+    "draft_round": 3,
+    "draft_pick": 90,
+    "team": "49ers",
+    "source_profile": "day2",
+    "source_status": "operator_seeded",
+    "translator_tags": [
+      "day2_capital",
+      "round3_capital",
+      "round3_skill_capital",
+      "round3_rb_capital",
+      "scarce_day2_rb_capital",
+      "workload_path_review",
+      "role_competition_watch",
+      "role_path_review",
+      "opportunity_insulation_limited"
+    ],
+    "reason": "predraft_baseline_not_found"
+  }
+]
