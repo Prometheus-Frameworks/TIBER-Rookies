@@ -21,6 +21,7 @@ const CALIBRATION_COHORTS = [
 const state = {
   rows: [],
   selectedId: null,
+  hasExplicitPlayerSelection: false,
   sortKey: 'post_draft_alpha',
   sortDirection: 'desc',
   filters: {
@@ -290,7 +291,13 @@ function renderTable(rows) {
 
   dom.tbody.querySelectorAll('tr[data-player-id]').forEach((rowEl) => {
     rowEl.addEventListener('click', () => {
-      state.selectedId = rowEl.dataset.playerId;
+      if (state.selectedId === rowEl.dataset.playerId && state.hasExplicitPlayerSelection) {
+        state.selectedId = null;
+        state.hasExplicitPlayerSelection = false;
+      } else {
+        state.selectedId = rowEl.dataset.playerId;
+        state.hasExplicitPlayerSelection = true;
+      }
       render();
     });
   });
@@ -399,7 +406,22 @@ function renderCalibration() {
 }
 
 function isModelEdgeCandidate(candidate) {
-  return candidate.model_impact.toLowerCase().includes('model_edge');
+  const haystack = [
+    candidate.model_impact || '',
+    candidate.claim_summary || '',
+    ...candidate.positive_signal_tags,
+    ...candidate.risk_tags,
+    ...candidate.context_tags,
+  ]
+    .join(' ')
+    .toLowerCase();
+
+  return (
+    haystack.includes('model_edge') ||
+    haystack.includes('model-edge') ||
+    haystack.includes('tiber_edge_plus') ||
+    haystack.includes('tiber edge plus')
+  );
 }
 
 function isMissingDataAuditCandidate(candidate) {
@@ -420,7 +442,7 @@ function getJournalRowsForDisplay(selectedPlayer) {
   if (!state.journalSignals.available) return [];
 
   let rows = state.journalSignals.rows;
-  if (selectedPlayer?.player_name) {
+  if (state.hasExplicitPlayerSelection && selectedPlayer?.player_name) {
     const selectedName = selectedPlayer.player_name.toLowerCase();
     rows = rows.filter((candidate) => candidate.player_name && candidate.player_name.toLowerCase() === selectedName);
   }
@@ -527,11 +549,10 @@ function render() {
   renderSummary(sorted);
   renderTable(sorted);
   const selected = state.rows.find((row) => row.id === state.selectedId) || sorted[0] || null;
-  if (!state.selectedId && selected) state.selectedId = selected.id;
   renderDetail(selected);
   renderMissingBaselines();
   renderCalibration();
-  renderJournalSignals(selected);
+  renderJournalSignals(state.hasExplicitPlayerSelection ? selected : null);
 }
 
 function renderFilterOptions() {
