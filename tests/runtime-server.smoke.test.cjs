@@ -37,6 +37,8 @@ test('standalone runtime smoke routes', async (t) => {
     '/cards/rookies/board',
     '/cards/rookies/player?slug=wr-jordyn-tyson',
     '/cards/rookies/compare?left=wr-jordyn-tyson&right=te-kenyon-sadiq',
+    '/cards/rookies/workbench/index.html',
+    '/cards/rookies/workbench',
   ];
 
   for (const route of htmlRoutes) {
@@ -50,6 +52,15 @@ test('standalone runtime smoke routes', async (t) => {
   const css = await fetch(buildUrl(port, '/components/rookies/rookieCardStyles.css'));
   assert.equal(css.status, 200);
   assert.match(css.headers.get('content-type') || '', /text\/css/);
+
+
+  const workbenchJs = await fetch(buildUrl(port, '/cards/rookies/workbench/workbench.js'));
+  assert.equal(workbenchJs.status, 200);
+  assert.match(workbenchJs.headers.get('content-type') || '', /text\/javascript/);
+
+  const workbenchCss = await fetch(buildUrl(port, '/cards/rookies/workbench/workbench.css'));
+  assert.equal(workbenchCss.status, 200);
+  assert.match(workbenchCss.headers.get('content-type') || '', /text\/css/);
 
   const blocked = await fetch(buildUrl(port, '/..%2Fpackage.json'));
   assert.equal(blocked.status, 400);

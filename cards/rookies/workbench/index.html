@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIBER Rookie ML Workbench</title>
+    <link rel="stylesheet" href="/components/rookies/rookieCardStyles.css" />
+    <link rel="stylesheet" href="./workbench.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-logo" href="/cards/rookies/board/">
+          <span class="site-logo-text">TIBER</span>
+          <span class="site-logo-tagline">Rookie Workbench</span>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+          <a class="site-nav-link" href="/cards/rookies/board/">Board</a>
+          <a class="site-nav-link" href="/cards/rookies/">Gallery</a>
+          <a class="site-nav-link" href="/cards/rookies/compare/">Compare</a>
+          <a class="site-nav-link active" href="/cards/rookies/workbench/">ML Workbench</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page workbench-page">
+      <section class="workbench-header">
+        <p class="section-title">TIBER Rookie ML Workbench</p>
+        <h1>Inspect post-draft alpha, draft signal translation, Teamstate landing context, and risk tags.</h1>
+        <p class="workbench-warning">Internal / research view. Scores are not final projections.</p>
+        <div id="artifact-status" class="meta">Loading promoted artifacts…</div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Summary snapshot</h2>
+        <div id="summary-tiles" class="summary-grid">Loading summary…</div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Player explorer</h2>
+        <div class="table-controls">
+          <input type="search" id="search-input" class="board-search-input" placeholder="Search player, team, tag, risk…" autocomplete="off" spellcheck="false" />
+          <select id="position-filter"></select>
+          <select id="round-filter"></select>
+          <select id="context-filter"></select>
+          <select id="source-filter"></select>
+          <select id="delta-filter"></select>
+        </div>
+        <div class="table-wrap">
+          <table id="players-table" class="workbench-table">
+            <thead>
+              <tr>
+                <th data-sort="player_name">Player</th>
+                <th data-sort="position">Pos</th>
+                <th data-sort="team">Team</th>
+                <th data-sort="draft_pick">Pick</th>
+                <th data-sort="pre_draft_alpha">Pre Alpha</th>
+                <th data-sort="post_draft_alpha" class="sorted">Post Alpha ↓</th>
+                <th data-sort="post_draft_delta">Delta</th>
+                <th>Talent Signal</th>
+                <th>Opportunity Signal</th>
+                <th>Runway</th>
+                <th data-sort="team_context_found">Team Context Found</th>
+                <th data-sort="source_profile">Source Profile</th>
+              </tr>
+            </thead>
+            <tbody id="players-tbody">
+              <tr><td colspan="12" class="meta">Loading players…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Player detail</h2>
+        <article id="player-detail" class="player-detail-card meta">Select a player row to inspect translator tags, context joins, and risk stack.</article>
+      </section>
+
+      <section>
+        <h2 class="section-title">Missing baseline audit</h2>
+        <div id="missing-baseline-panel" class="panel-card">Loading missing baseline artifact…</div>
+      </section>
+
+      <section>
+        <h2 class="section-title">Outcome calibration cohorts</h2>
+        <div id="calibration-panel" class="panel-card">Loading outcome summary artifact…</div>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="site-footer-inner">
+        <span class="site-footer-brand">TIBER</span>
+        <nav class="site-footer-nav" aria-label="Footer navigation">
+          <a class="site-footer-link" href="/cards/rookies/board/">Board</a>
+          <a class="site-footer-link" href="/cards/rookies/">Gallery</a>
+          <a class="site-footer-link" href="/cards/rookies/compare/">Compare</a>
+          <a class="site-footer-link" href="/cards/rookies/workbench/">ML Workbench</a>
+        </nav>
+        <span class="site-footer-copy">Internal model artifact inspection · 2026 post-draft</span>
+      </div>
+    </footer>
+
+    <script type="module" src="./workbench.js"></script>
+  </body>
+</html>

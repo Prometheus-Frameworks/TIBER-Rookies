@@ -1,0 +1,524 @@
+const PRIMARY_CONTEXT_PATH = '../../../exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_team_context_v0.json';
+const POST_DRAFT_FALLBACK_PATH = '../../../exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_v0.json';
+const MISSING_BASELINE_PATH = '../../../exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_missing_baselines_v0.json';
+const OUTCOME_SUMMARY_PATH = '../../../exports/promoted/nfl-fantasy-outcomes/context_flag_outcome_summary_v1.json';
+
+const CALIBRATION_COHORTS = [
+  'skill_pick_1_10_since_2020',
+  'skill_pick_11_20_since_2020',
+  'skill_pick_21_32_since_2020',
+  'skill_pick_33_45_since_2020',
+  'skill_pick_46_64_since_2020',
+  'skill_pick_65_102_since_2020',
+  'rb_pick_1_32_since_2020',
+  'rb_pick_33_64_since_2020',
+  'rb_pick_65_102_since_2020',
+  'te_pick_1_32_since_2020',
+  'te_pick_33_64_since_2020',
+];
+
+const state = {
+  rows: [],
+  selectedId: null,
+  sortKey: 'post_draft_alpha',
+  sortDirection: 'desc',
+  filters: {
+    search: '',
+    position: 'ALL',
+    round: 'ALL',
+    teamContextFound: 'ALL',
+    sourceProfile: 'ALL',
+    deltaDirection: 'ALL',
+  },
+  missingBaselines: null,
+  outcomeSummary: null,
+};
+
+const dom = {
+  artifactStatus: document.getElementById('artifact-status'),
+  summaryTiles: document.getElementById('summary-tiles'),
+  tbody: document.getElementById('players-tbody'),
+  detail: document.getElementById('player-detail'),
+  missingPanel: document.getElementById('missing-baseline-panel'),
+  calibrationPanel: document.getElementById('calibration-panel'),
+  search: document.getElementById('search-input'),
+  position: document.getElementById('position-filter'),
+  round: document.getElementById('round-filter'),
+  teamContext: document.getElementById('context-filter'),
+  sourceProfile: document.getElementById('source-filter'),
+  delta: document.getElementById('delta-filter'),
+  headers: [...document.querySelectorAll('th[data-sort]')],
+};
+
+function toArray(value) {
+  return Array.isArray(value) ? value : [];
+}
+
+function asNumber(value) {
+  return Number.isFinite(Number(value)) ? Number(value) : null;
+}
+
+function coerceRows(payload) {
+  if (Array.isArray(payload)) return payload;
+  if (payload && Array.isArray(payload.rows)) return payload.rows;
+  return [];
+}
+
+function normalizeRow(row, index) {
+  return {
+    id: row.player_id || `${row.player_name || 'unknown'}-${index}`,
+    player_name: row.player_name || 'Unknown',
+    position: row.position || '—',
+    team: row.team || row.nfl_team || '—',
+    draft_round: asNumber(row.draft_round),
+    draft_pick: asNumber(row.draft_pick || row.pick),
+    pre_draft_alpha: asNumber(row.pre_draft_alpha),
+    post_draft_alpha: asNumber(row.post_draft_alpha),
+    post_draft_delta: asNumber(row.post_draft_delta),
+    talent_signal: row.talent_confirmation_signal || row.talent_signal || '—',
+    opportunity_signal: row.opportunity_insulation_signal || row.opportunity_signal || '—',
+    runway: row.short_term_fantasy_runway || row.runway || '—',
+    team_context_found: typeof row.team_context_found === 'boolean' ? row.team_context_found : null,
+    source_profile: row.source_profile || '—',
+    source_status: row.source_status || '—',
+    team_context_source_status: row.team_context_source_status || '—',
+    delta_reason_codes: toArray(row.delta_reason_codes),
+    translator_tags: toArray(row.translator_tags),
+    team_context_tags: toArray(row.team_context_tags),
+    positive_team_context_tags: toArray(row.positive_team_context_tags),
+    risk_team_context_tags: toArray(row.risk_team_context_tags),
+    combined_context_tags: toArray(row.combined_context_tags),
+    combined_risk_tags: toArray(row.combined_risk_tags),
+    remaining_risks: toArray(row.remaining_risks),
+    team_context_notes: row.team_context_notes || '—',
+  };
+}
+
+function formatMetric(value, digits = 1) {
+  return Number.isFinite(value) ? value.toFixed(digits) : '—';
+}
+
+function formatPick(round, pick) {
+  if (!Number.isFinite(round) && !Number.isFinite(pick)) return '—';
+  if (Number.isFinite(round) && Number.isFinite(pick)) return `R${round} / ${pick}`;
+  return Number.isFinite(pick) ? `${pick}` : `R${round}`;
+}
+
+function formatContextFound(value) {
+  if (value === true) return 'Yes';
+  if (value === false) return 'No';
+  return 'Unknown';
+}
+
+function escapeHtml(text) {
+  return String(text)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
+}
+
+function renderSummary(filteredRows) {
+  const rows = state.rows;
+  const averageDelta = rows.length ? rows.reduce((acc, row) => acc + (row.post_draft_delta || 0), 0) / rows.length : null;
+  const contextTrue = rows.filter((row) => row.team_context_found === true).length;
+  const contextFalse = rows.filter((row) => row.team_context_found === false).length;
+
+  const biggestRiser = [...rows]
+    .filter((row) => Number.isFinite(row.post_draft_delta))
+    .sort((a, b) => b.post_draft_delta - a.post_draft_delta)[0];
+  const biggestFaller = [...rows]
+    .filter((row) => Number.isFinite(row.post_draft_delta))
+    .sort((a, b) => a.post_draft_delta - b.post_draft_delta)[0];
+
+  const tiles = [
+    ['Players loaded', `${rows.length}`],
+    ['Context found: true', `${contextTrue}`],
+    ['Context found: false', `${contextFalse}`],
+    ['Avg post_draft_delta', formatMetric(averageDelta, 2)],
+    ['Biggest riser', biggestRiser ? `${biggestRiser.player_name} (${formatMetric(biggestRiser.post_draft_delta, 1)})` : '—'],
+    ['Biggest faller', biggestFaller ? `${biggestFaller.player_name} (${formatMetric(biggestFaller.post_draft_delta, 1)})` : '—'],
+    ['Missing baselines', state.missingBaselines?.available ? `${state.missingBaselines.rows.length}` : 'Unavailable'],
+    ['Rows after filters', `${filteredRows.length}`],
+  ];
+
+  dom.summaryTiles.innerHTML = tiles
+    .map(
+      ([label, value]) =>
+        `<article class="summary-tile"><div class="summary-label">${escapeHtml(label)}</div><div class="summary-value">${escapeHtml(value)}</div></article>`,
+    )
+    .join('');
+}
+
+function sortRows(rows) {
+  const multiplier = state.sortDirection === 'asc' ? 1 : -1;
+  return [...rows].sort((a, b) => {
+    const left = a[state.sortKey];
+    const right = b[state.sortKey];
+
+    if (typeof left === 'string' || typeof right === 'string') {
+      return String(left || '').localeCompare(String(right || '')) * multiplier;
+    }
+
+    const leftValue = Number.isFinite(left) ? left : -99999;
+    const rightValue = Number.isFinite(right) ? right : -99999;
+    return (leftValue - rightValue) * multiplier;
+  });
+}
+
+function matchesFilters(row) {
+  const searchHaystack = [
+    row.player_name,
+    row.team,
+    row.position,
+    ...row.delta_reason_codes,
+    ...row.translator_tags,
+    ...row.team_context_tags,
+    ...row.positive_team_context_tags,
+    ...row.risk_team_context_tags,
+    ...row.combined_context_tags,
+    ...row.combined_risk_tags,
+    ...row.remaining_risks,
+  ]
+    .join(' ')
+    .toLowerCase();
+
+  if (state.filters.search && !searchHaystack.includes(state.filters.search.toLowerCase())) {
+    return false;
+  }
+
+  if (state.filters.position !== 'ALL' && row.position !== state.filters.position) {
+    return false;
+  }
+
+  if (state.filters.round !== 'ALL' && String(row.draft_round || 'UDFA') !== state.filters.round) {
+    return false;
+  }
+
+  if (state.filters.teamContextFound === 'true' && row.team_context_found !== true) {
+    return false;
+  }
+
+  if (state.filters.teamContextFound === 'false' && row.team_context_found !== false) {
+    return false;
+  }
+
+  if (state.filters.teamContextFound === 'unknown' && row.team_context_found !== null) {
+    return false;
+  }
+
+  if (state.filters.sourceProfile !== 'ALL' && row.source_profile !== state.filters.sourceProfile) {
+    return false;
+  }
+
+  if (state.filters.deltaDirection === 'positive' && !(row.post_draft_delta > 0)) {
+    return false;
+  }
+
+  if (state.filters.deltaDirection === 'negative' && !(row.post_draft_delta < 0)) {
+    return false;
+  }
+
+  return true;
+}
+
+function renderTable(rows) {
+  if (!rows.length) {
+    dom.tbody.innerHTML = '<tr><td colspan="12" class="meta">No players matched current filters.</td></tr>';
+    return;
+  }
+
+  dom.tbody.innerHTML = rows
+    .map((row) => {
+      const deltaClass = row.post_draft_delta > 0 ? 'delta-positive' : row.post_draft_delta < 0 ? 'delta-negative' : '';
+      const selectedClass = state.selectedId === row.id ? 'selected' : '';
+      return `
+        <tr data-player-id="${escapeHtml(row.id)}" class="${selectedClass}">
+          <td>${escapeHtml(row.player_name)}</td>
+          <td>${escapeHtml(row.position)}</td>
+          <td>${escapeHtml(row.team)}</td>
+          <td>${escapeHtml(formatPick(row.draft_round, row.draft_pick))}</td>
+          <td>${escapeHtml(formatMetric(row.pre_draft_alpha))}</td>
+          <td>${escapeHtml(formatMetric(row.post_draft_alpha))}</td>
+          <td class="${deltaClass}">${escapeHtml(formatMetric(row.post_draft_delta))}</td>
+          <td>${escapeHtml(row.talent_signal)}</td>
+          <td>${escapeHtml(row.opportunity_signal)}</td>
+          <td>${escapeHtml(row.runway)}</td>
+          <td>${escapeHtml(formatContextFound(row.team_context_found))}</td>
+          <td>${escapeHtml(row.source_profile)}</td>
+        </tr>
+      `;
+    })
+    .join('');
+
+  dom.tbody.querySelectorAll('tr[data-player-id]').forEach((rowEl) => {
+    rowEl.addEventListener('click', () => {
+      state.selectedId = rowEl.dataset.playerId;
+      render();
+    });
+  });
+}
+
+function renderTagList(tags, risk = false) {
+  if (!tags.length) return '<span class="meta">None</span>';
+  return `<div class="tag-list">${tags
+    .map((tag) => `<span class="tag-pill${risk ? ' risk' : ''}">${escapeHtml(tag)}</span>`)
+    .join('')}</div>`;
+}
+
+function renderDetail(row) {
+  if (!row) {
+    dom.detail.className = 'player-detail-card meta';
+    dom.detail.innerHTML = 'Select a player row to inspect translator tags, context joins, and risk stack.';
+    return;
+  }
+
+  const deltaClass = row.post_draft_delta > 0 ? 'delta-positive' : row.post_draft_delta < 0 ? 'delta-negative' : '';
+  dom.detail.className = 'player-detail-card';
+  dom.detail.innerHTML = `
+    <div class="detail-grid">
+      <div class="detail-row"><span class="detail-label">Player</span><span class="detail-value">${escapeHtml(row.player_name)}</span></div>
+      <div class="detail-row"><span class="detail-label">Position</span><span class="detail-value">${escapeHtml(row.position)}</span></div>
+      <div class="detail-row"><span class="detail-label">Team</span><span class="detail-value">${escapeHtml(row.team)}</span></div>
+      <div class="detail-row"><span class="detail-label">Pick</span><span class="detail-value">${escapeHtml(formatPick(row.draft_round, row.draft_pick))}</span></div>
+      <div class="detail-row"><span class="detail-label">Pre Draft Alpha</span><span class="detail-value">${escapeHtml(formatMetric(row.pre_draft_alpha))}</span></div>
+      <div class="detail-row"><span class="detail-label">Post Draft Alpha</span><span class="detail-value">${escapeHtml(formatMetric(row.post_draft_alpha))}</span></div>
+      <div class="detail-row"><span class="detail-label">Post Draft Delta</span><span class="detail-value ${deltaClass}">${escapeHtml(formatMetric(row.post_draft_delta))}</span></div>
+      <div class="detail-row"><span class="detail-label">Source Status</span><span class="detail-value">${escapeHtml(row.source_status)}</span></div>
+      <div class="detail-row"><span class="detail-label">Team Context Source Status</span><span class="detail-value">${escapeHtml(row.team_context_source_status)}</span></div>
+      <div class="detail-row"><span class="detail-label">Team Context Notes</span><span class="detail-value">${escapeHtml(row.team_context_notes)}</span></div>
+      <div class="detail-row"><span class="detail-label">Delta Reason Codes</span><span class="detail-value">${renderTagList(row.delta_reason_codes)}</span></div>
+      <div class="detail-row"><span class="detail-label">Translator Tags</span><span class="detail-value">${renderTagList(row.translator_tags)}</span></div>
+      <div class="detail-row"><span class="detail-label">Team Context Tags</span><span class="detail-value">${renderTagList(row.team_context_tags)}</span></div>
+      <div class="detail-row"><span class="detail-label">Positive Team Context Tags</span><span class="detail-value">${renderTagList(row.positive_team_context_tags)}</span></div>
+      <div class="detail-row"><span class="detail-label">Risk Team Context Tags</span><span class="detail-value">${renderTagList(row.risk_team_context_tags, true)}</span></div>
+      <div class="detail-row"><span class="detail-label">Combined Context Tags</span><span class="detail-value">${renderTagList(row.combined_context_tags)}</span></div>
+      <div class="detail-row"><span class="detail-label">Combined Risk Tags</span><span class="detail-value">${renderTagList(row.combined_risk_tags, true)}</span></div>
+      <div class="detail-row"><span class="detail-label">Remaining Risks</span><span class="detail-value">${renderTagList(row.remaining_risks, true)}</span></div>
+    </div>
+  `;
+}
+
+function renderMissingBaselines() {
+  if (!state.missingBaselines?.available) {
+    dom.missingPanel.innerHTML = '<p class="meta">Missing baseline artifact unavailable.</p>';
+    return;
+  }
+
+  const rows = state.missingBaselines.rows;
+  if (!rows.length) {
+    dom.missingPanel.innerHTML = '<p class="meta">No players are missing pre-draft baselines.</p>';
+    return;
+  }
+
+  dom.missingPanel.innerHTML = `
+    <p class="meta">${rows.length} players missing pre-draft baseline linkage.</p>
+    <table class="compact-table">
+      <thead><tr><th>Player</th><th>Team</th><th>Pos</th><th>Pick</th><th>Reason</th></tr></thead>
+      <tbody>
+        ${rows
+          .map((row) => {
+            const pick = formatPick(asNumber(row.draft_round), asNumber(row.draft_pick));
+            return `<tr><td>${escapeHtml(row.player_name || 'Unknown')}</td><td>${escapeHtml(row.team || '—')}</td><td>${escapeHtml(row.position || '—')}</td><td>${escapeHtml(pick)}</td><td>${escapeHtml(row.reason || '—')}</td></tr>`;
+          })
+          .join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function renderCalibration() {
+  if (!state.outcomeSummary?.available) {
+    dom.calibrationPanel.innerHTML = '<p class="meta">Outcome calibration artifact unavailable.</p>';
+    return;
+  }
+
+  const byCohort = new Map(state.outcomeSummary.rows.map((row) => [row.cohort, row]));
+  dom.calibrationPanel.innerHTML = `
+    <table class="compact-table">
+      <thead>
+        <tr>
+          <th>Cohort</th>
+          <th>Player Count</th>
+          <th>Year 1 Avg PPR</th>
+          <th>Year 1 Median PPR</th>
+          <th>Complete Year 1</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${CALIBRATION_COHORTS.map((cohort) => {
+          const row = byCohort.get(cohort);
+          return `<tr>
+            <td>${escapeHtml(cohort)}</td>
+            <td>${escapeHtml(String(row?.player_count ?? '—'))}</td>
+            <td>${escapeHtml(formatMetric(asNumber(row?.year_1_avg_ppr), 2))}</td>
+            <td>${escapeHtml(formatMetric(asNumber(row?.year_1_median_ppr), 2))}</td>
+            <td>${escapeHtml(String(row?.complete_year_1_count ?? '—'))}</td>
+          </tr>`;
+        }).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+function render() {
+  const filtered = state.rows.filter(matchesFilters);
+  const sorted = sortRows(filtered);
+  renderSummary(sorted);
+  renderTable(sorted);
+  const selected = state.rows.find((row) => row.id === state.selectedId) || sorted[0] || null;
+  if (!state.selectedId && selected) state.selectedId = selected.id;
+  renderDetail(selected);
+  renderMissingBaselines();
+  renderCalibration();
+}
+
+function renderFilterOptions() {
+  const positions = ['ALL', ...new Set(state.rows.map((row) => row.position).filter(Boolean))].sort();
+  const rounds = ['ALL', ...new Set(state.rows.map((row) => (Number.isFinite(row.draft_round) ? String(row.draft_round) : 'UDFA')))].sort((a, b) => {
+    if (a === 'ALL') return -1;
+    if (b === 'ALL') return 1;
+    if (a === 'UDFA') return 1;
+    if (b === 'UDFA') return -1;
+    return Number(a) - Number(b);
+  });
+  const sources = ['ALL', ...new Set(state.rows.map((row) => row.source_profile).filter(Boolean))].sort();
+
+  dom.position.innerHTML = positions.map((value) => `<option value="${escapeHtml(value)}">Pos: ${escapeHtml(value)}</option>`).join('');
+  dom.round.innerHTML = rounds.map((value) => `<option value="${escapeHtml(value)}">Round: ${escapeHtml(value)}</option>`).join('');
+  dom.sourceProfile.innerHTML = sources.map((value) => `<option value="${escapeHtml(value)}">Source: ${escapeHtml(value)}</option>`).join('');
+
+  dom.teamContext.innerHTML = `
+    <option value="ALL">Team context: ALL</option>
+    <option value="true">Team context: true</option>
+    <option value="false">Team context: false</option>
+    <option value="unknown">Team context: unknown</option>
+  `;
+
+  dom.delta.innerHTML = `
+    <option value="ALL">Delta: ALL</option>
+    <option value="positive">Delta: positive</option>
+    <option value="negative">Delta: negative</option>
+  `;
+}
+
+function wireEvents() {
+  dom.search.addEventListener('input', () => {
+    state.filters.search = dom.search.value.trim();
+    render();
+  });
+
+  dom.position.addEventListener('change', () => {
+    state.filters.position = dom.position.value;
+    render();
+  });
+
+  dom.round.addEventListener('change', () => {
+    state.filters.round = dom.round.value;
+    render();
+  });
+
+  dom.teamContext.addEventListener('change', () => {
+    state.filters.teamContextFound = dom.teamContext.value;
+    render();
+  });
+
+  dom.sourceProfile.addEventListener('change', () => {
+    state.filters.sourceProfile = dom.sourceProfile.value;
+    render();
+  });
+
+  dom.delta.addEventListener('change', () => {
+    state.filters.deltaDirection = dom.delta.value;
+    render();
+  });
+
+  dom.headers.forEach((header) => {
+    header.addEventListener('click', () => {
+      const key = header.dataset.sort;
+      if (!key) return;
+
+      if (state.sortKey === key) {
+        state.sortDirection = state.sortDirection === 'asc' ? 'desc' : 'asc';
+      } else {
+        state.sortKey = key;
+        state.sortDirection = key === 'player_name' || key === 'position' || key === 'team' || key === 'source_profile' ? 'asc' : 'desc';
+      }
+
+      dom.headers.forEach((target) => {
+        const same = target.dataset.sort === state.sortKey;
+        target.classList.toggle('sorted', same);
+        if (!same) {
+          target.textContent = target.textContent.replace(/\s[↑↓]$/, '');
+          return;
+        }
+
+        const clean = target.textContent.replace(/\s[↑↓]$/, '');
+        target.textContent = `${clean} ${state.sortDirection === 'asc' ? '↑' : '↓'}`;
+      });
+
+      render();
+    });
+  });
+}
+
+async function loadJson(path) {
+  const response = await fetch(path);
+  if (!response.ok) {
+    throw new Error(`${path} (${response.status})`);
+  }
+
+  return response.json();
+}
+
+async function initialize() {
+  const messages = [];
+
+  try {
+    const primaryPayload = await loadJson(PRIMARY_CONTEXT_PATH);
+    const rows = coerceRows(primaryPayload).map(normalizeRow);
+    state.rows = rows;
+    messages.push(`Loaded primary team-context artifact (${rows.length} rows).`);
+  } catch (error) {
+    messages.push(`Primary team-context artifact unavailable (${error.message}).`);
+
+    try {
+      const fallbackPayload = await loadJson(POST_DRAFT_FALLBACK_PATH);
+      const rows = coerceRows(fallbackPayload).map(normalizeRow);
+      state.rows = rows;
+      messages.push(`Loaded fallback post-draft artifact (${rows.length} rows). Team-context fields may be sparse.`);
+    } catch (fallbackError) {
+      dom.artifactStatus.textContent = `Failed to load player artifact: ${fallbackError.message}`;
+      dom.summaryTiles.innerHTML = '<p class="meta">Unable to load any post-draft artifact.</p>';
+      dom.tbody.innerHTML = '<tr><td colspan="12" class="meta">No player data available.</td></tr>';
+      return;
+    }
+  }
+
+  try {
+    const missingPayload = await loadJson(MISSING_BASELINE_PATH);
+    state.missingBaselines = { available: true, rows: coerceRows(missingPayload) };
+    messages.push(`Loaded missing baseline artifact (${state.missingBaselines.rows.length} rows).`);
+  } catch (error) {
+    state.missingBaselines = { available: false, rows: [] };
+    messages.push('Missing baseline artifact unavailable.');
+  }
+
+  try {
+    const outcomePayload = await loadJson(OUTCOME_SUMMARY_PATH);
+    state.outcomeSummary = { available: true, rows: coerceRows(outcomePayload) };
+    messages.push(`Loaded outcome summary artifact (${state.outcomeSummary.rows.length} cohorts).`);
+  } catch (error) {
+    state.outcomeSummary = { available: false, rows: [] };
+    messages.push('Outcome calibration artifact unavailable.');
+  }
+
+  dom.artifactStatus.textContent = messages.join(' ');
+
+  renderFilterOptions();
+  wireEvents();
+  render();
+}
+
+initialize();
