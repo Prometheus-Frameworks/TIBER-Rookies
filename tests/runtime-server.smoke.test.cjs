@@ -39,6 +39,7 @@ test('standalone runtime smoke routes', async (t) => {
     '/cards/rookies/compare?left=wr-jordyn-tyson&right=te-kenyon-sadiq',
     '/cards/rookies/workbench/index.html',
     '/cards/rookies/workbench',
+    '/cards/rookies/workbench/',
   ];
 
   for (const route of htmlRoutes) {
@@ -61,6 +62,26 @@ test('standalone runtime smoke routes', async (t) => {
   const workbenchCss = await fetch(buildUrl(port, '/cards/rookies/workbench/workbench.css'));
   assert.equal(workbenchCss.status, 200);
   assert.match(workbenchCss.headers.get('content-type') || '', /text\/css/);
+
+  const primaryTeamContext = await fetch(
+    buildUrl(port, '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_team_context_v0.json'),
+  );
+  assert.equal(primaryTeamContext.status, 200);
+  assert.match(primaryTeamContext.headers.get('content-type') || '', /application\/json/);
+  const primaryPayload = await primaryTeamContext.json();
+  assert.ok(Array.isArray(primaryPayload) || Array.isArray(primaryPayload.rows));
+
+  const outcomeSummary = await fetch(
+    buildUrl(port, '/exports/promoted/nfl-fantasy-outcomes/context_flag_outcome_summary_v1.json'),
+  );
+  if (outcomeSummary.status === 404) {
+    assert.ok(true, 'outcome summary artifact is optional in some runtime bundles');
+  } else {
+    assert.equal(outcomeSummary.status, 200);
+    assert.match(outcomeSummary.headers.get('content-type') || '', /application\/json/);
+    const outcomePayload = await outcomeSummary.json();
+    assert.ok(Array.isArray(outcomePayload) || Array.isArray(outcomePayload.rows));
+  }
 
   const blocked = await fetch(buildUrl(port, '/..%2Fpackage.json'));
   assert.equal(blocked.status, 400);
