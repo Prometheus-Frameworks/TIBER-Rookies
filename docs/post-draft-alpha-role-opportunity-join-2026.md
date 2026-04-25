@@ -28,9 +28,13 @@ This document defines an **inspect-only** join layer that enriches rookie post-d
 - `exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_role_context_v0.json`
 - `exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_role_context_v0.csv`
 
+> In-repo generation should be run only when canonical Role-and-Opportunity PR11 artifacts are present locally.
+
 ## Added row fields
 
 - `role_opportunity_found`
+- `role_team_profile_found`
+- `role_baseline_found`
 - `candidate_roles`
 - `matched_role_profiles`
 - `matched_role_baselines`
@@ -46,6 +50,9 @@ This document defines an **inspect-only** join layer that enriches rookie post-d
 - Candidate roles are inferred from position + existing translator/context/risk tags.
 - Team names are normalized to NFL team codes prior to profile lookup.
 - If no team profile exists: `role_opportunity_found=false`, role match arrays are empty, and notes describe missing team profile.
+- `role_team_profile_found` indicates whether a team profile object exists for the normalized NFL team.
+- `role_baseline_found` indicates baseline role translations were found for inferred `candidate_roles`.
+- `role_opportunity_found` is reserved for full joins where both team role profile matches and baseline matches exist.
 - If team exists but no heuristic role match: `role_opportunity_found=false` and notes indicate no role match.
 - If candidates exist and team profile contains those roles: matching profile rows and role baselines are attached.
 

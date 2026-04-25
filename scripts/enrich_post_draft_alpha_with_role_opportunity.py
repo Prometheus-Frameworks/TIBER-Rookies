@@ -35,6 +35,8 @@ TEAM_NORMALIZATION_MAP = {
 }
 
 ROLE_FIELDS = [
+    "role_team_profile_found",
+    "role_baseline_found",
     "role_opportunity_found",
     "candidate_roles",
     "matched_role_profiles",
@@ -189,7 +191,11 @@ def load_team_role_profiles(path: Path) -> dict[str, list[dict[str, Any]]]:
         else:
             roles = []
 
-        normalized_roles = [_normalize_profile(role) for role in roles if _normalize_profile(role)["role"]]
+        normalized_roles: list[dict[str, Any]] = []
+        for role in roles:
+            normalized_role = _normalize_profile(role)
+            if normalized_role["role"]:
+                normalized_roles.append(normalized_role)
         by_team[normalized_team] = normalized_roles
     return by_team
 
@@ -231,22 +237,24 @@ def enrich_rows(
         if team_profiles:
             matched_profiles = [profile for profile in team_profiles if profile.get("role") in candidate_roles]
         matched_baselines = [role_baselines_by_role[role] for role in candidate_roles if role in role_baselines_by_role]
+        role_team_profile_found = team_code not in {"", "TBD"} and team_profiles is not None
+        role_baseline_found = bool(matched_baselines)
+        role_opportunity_found = bool(matched_profiles) and role_baseline_found
 
         if team_code in {"", "TBD"}:
-            found = False
             notes = "team_unknown_or_tbd_for_role_profile_lookup"
-        elif not team_profiles:
-            found = False
+        elif not role_team_profile_found:
             notes = f"team_role_profile_not_found:{team_code}"
         elif not candidate_roles:
-            found = False
             notes = f"no_heuristic_role_match:{team_code}"
-        elif not matched_profiles:
-            found = False
-            notes = f"heuristic_roles_not_in_team_profiles:{team_code}"
-        else:
-            found = True
+        elif role_opportunity_found:
             notes = f"role_opportunity_joined:{team_code}:{'|'.join(candidate_roles)}"
+        elif matched_profiles and not role_baseline_found:
+            notes = f"team_role_match_found_baseline_missing:{team_code}"
+        elif not matched_profiles and role_baseline_found:
+            notes = f"baseline_only_role_context:{team_code}"
+        else:
+            notes = f"heuristic_roles_not_in_team_profiles:{team_code}"
 
         role_context_tags = ordered_union(
             [],
@@ -271,7 +279,9 @@ def enrich_rows(
         enriched_rows.append(
             {
                 **row,
-                "role_opportunity_found": found,
+                "role_team_profile_found": role_team_profile_found,
+                "role_baseline_found": role_baseline_found,
+                "role_opportunity_found": role_opportunity_found,
                 "candidate_roles": candidate_roles,
                 "matched_role_profiles": matched_profiles,
                 "matched_role_baselines": matched_baselines,

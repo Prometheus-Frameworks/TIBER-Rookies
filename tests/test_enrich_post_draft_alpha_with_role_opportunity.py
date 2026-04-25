@@ -110,6 +110,8 @@ class EnrichPostDraftAlphaWithRoleOpportunityTests(unittest.TestCase):
         ty = next(row for row in enriched if row["player_name"] == "Ty Simpson")
 
         self.assertTrue(ty["role_opportunity_found"])
+        self.assertTrue(ty["role_team_profile_found"])
+        self.assertTrue(ty["role_baseline_found"])
         self.assertIn("QB_developmental", ty["candidate_roles"])
         self.assertEqual([profile["role"] for profile in ty["matched_role_profiles"]], ["QB_developmental"])
 
@@ -146,8 +148,11 @@ class EnrichPostDraftAlphaWithRoleOpportunityTests(unittest.TestCase):
         missing = next(row for row in enriched if row["player_name"] == "No Team Role")
 
         self.assertFalse(missing["role_opportunity_found"])
+        self.assertFalse(missing["role_team_profile_found"])
+        self.assertTrue(missing["role_baseline_found"])
         self.assertEqual(missing["candidate_roles"], ["WR2", "WR3"])
         self.assertEqual(missing["matched_role_profiles"], [])
+        self.assertEqual(missing["role_context_notes"], "team_role_profile_not_found:ATL")
 
     def test_csv_output_preserves_original_plus_role_fields(self) -> None:
         team_profiles, baselines = self._load_profiles()
@@ -165,6 +170,8 @@ class EnrichPostDraftAlphaWithRoleOpportunityTests(unittest.TestCase):
         self.assertIn("player_name", header)
         self.assertIn("post_draft_alpha", header)
         self.assertIn("role_opportunity_found", header)
+        self.assertIn("role_team_profile_found", header)
+        self.assertIn("role_baseline_found", header)
         self.assertIn("candidate_roles", header)
         self.assertIn("combined_context_tags_with_role", header)
 
