@@ -7,22 +7,30 @@
     "pick": 33,
     "team": "49ers",
     "pre_draft_tiber_stance": "Vertical WR profile with athletic upside and developmental route-translation variance entering the draft.",
-    "day2_signal_summary": "Early Day 2 capital (pick 33) is near-Round-1 market validation for a WR archetype with role upside, while still carrying weaker insulation than true Round 1 investment.",
+    "day2_signal_summary": "Pick 33 creates near-Round-1 validation for a Day 2 WR profile with immediate role-path relevance but still below true Round 1 insulation.",
     "talent_confirmation_signal": "strong",
     "opportunity_insulation_signal": "moderate",
     "short_term_fantasy_runway": "strong",
     "primary_risks": [
       "Target competition and role clarity in the 49ers pass-catching room can cap early volume certainty.",
-      "Day 2 WR capital provides meaningful opportunity signal but less long-horizon patience than Round 1 capital."
+      "Day 2 WR capital remains less insulated than Round 1 investment if early usage is volatile."
     ],
     "translator_tags": [
+      "day2_capital",
+      "round2_capital",
       "early_day2_capital",
       "near_round1_skill_capital",
+      "round2_skill_capital",
+      "round2_wr_capital",
+      "target_room_competition_watch",
+      "year1_volume_uncertainty",
+      "landing_spot_role_review",
+      "role_path_review",
+      "opportunity_insulation_moderate",
       "shanahan_role_translation_watch",
-      "athletic_profile_boost",
-      "target_room_competition_watch"
+      "athletic_profile_boost"
     ],
-    "post_draft_handling": "Translate as a meaningful market-confidence upgrade with actionable Year 1 role potential, but avoid assigning Round 1-level insulation assumptions.",
+    "post_draft_handling": "Translate as a high-confidence Day 2 opportunity upgrade with near-Round-1 framing, while keeping insulation assumptions below Round 1 certainty.",
     "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
     "source_status": "operator_seeded"
   },
@@ -31,25 +39,193 @@
     "player_name": "Denzel Boston",
     "position": "WR",
     "round": 2,
-    "pick": null,
+    "pick": 39,
     "team": "Browns",
     "pre_draft_tiber_stance": "Contested-catch and production-backed WR with mixed separator/translation opinions pre-draft.",
-    "day2_signal_summary": "Round 2 WR capital confirms meaningful organizational intent and role opportunity, but without the same contract/runway insulation as Round 1.",
+    "day2_signal_summary": "Round 2 WR capital at pick 39 confirms meaningful organizational intent and role opportunity with moderate Day 2 insulation.",
     "talent_confirmation_signal": "moderate",
     "opportunity_insulation_signal": "moderate",
     "short_term_fantasy_runway": "strong",
     "primary_risks": [
-      "Exact pick slot is not yet locked in this operator-seeded artifact.",
-      "Browns target competition and deployment context can materially shift early fantasy runway."
+      "Browns target competition and deployment context can materially shift early fantasy runway.",
+      "Role sequencing may vary if multiple pass-catcher investments compress Year 1 volume."
     ],
     "translator_tags": [
+      "day2_capital",
+      "round2_capital",
+      "early_day2_capital",
+      "round2_skill_capital",
       "round2_wr_capital",
+      "target_room_competition_watch",
+      "year1_volume_uncertainty",
+      "landing_spot_role_review",
+      "role_path_review",
+      "opportunity_insulation_moderate",
       "browns_double_wr_investment",
-      "kcc_target_competition_signal",
-      "role_path_review"
+      "kcc_target_competition_signal"
     ],
     "post_draft_handling": "Treat as a positive role-opportunity translator signal and monitor role pathway, while keeping insulation assumptions clearly below Round 1 certainty.",
-    "notes": "Operator-seeded Day 2 profile; pick remains null until canonical reconciliation.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "wr-germie-bernard",
+    "player_name": "Germie Bernard",
+    "position": "WR",
+    "round": 2,
+    "pick": 47,
+    "team": "Steelers",
+    "pre_draft_tiber_stance": "Movement-based WR profile with rotational-to-starter path contingent on role definition and target earning.",
+    "day2_signal_summary": "Round 2 WR capital signals clear organizational interest with viable Year 1 rotational runway, but not full insulation.",
+    "talent_confirmation_signal": "moderate",
+    "opportunity_insulation_signal": "moderate",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Steelers WR depth and role assignment can delay stable weekly volume.",
+      "Day 2 capital confirms opportunity but does not eliminate Year 1 usage volatility."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round2_capital",
+      "round2_skill_capital",
+      "round2_wr_capital",
+      "target_room_competition_watch",
+      "year1_volume_uncertainty",
+      "landing_spot_role_review",
+      "role_path_review",
+      "opportunity_insulation_moderate",
+      "steelers_wr_room_watch"
+    ],
+    "post_draft_handling": "Treat as a legitimate Day 2 role-path signal with competition-sensitive early deployment expectations.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "te-eli-stowers",
+    "player_name": "Eli Stowers",
+    "position": "TE",
+    "round": 2,
+    "pick": 54,
+    "team": "Eagles",
+    "pre_draft_tiber_stance": "Athletic TE profile with move-alignment utility and translation dependence on route-role deployment.",
+    "day2_signal_summary": "Round 2 TE capital inside the 54-61 cluster reflects strong market push at the position and meaningful development runway.",
+    "talent_confirmation_signal": "moderate",
+    "opportunity_insulation_signal": "moderate",
+    "short_term_fantasy_runway": "delayed",
+    "primary_risks": [
+      "Tight end transition often produces slower Year 1 fantasy translation.",
+      "Role definition inside the Eagles pass game can suppress immediate target share."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round2_capital",
+      "round2_skill_capital",
+      "round2_te_capital",
+      "day2_te_cluster",
+      "te_market_push",
+      "delayed_te_translation_watch",
+      "role_translation_watch",
+      "role_path_review",
+      "opportunity_insulation_moderate"
+    ],
+    "post_draft_handling": "Translate as a positive Day 2 TE commitment signal with expected slower early fantasy conversion.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "te-nate-boerkircher",
+    "player_name": "Nate Boerkircher",
+    "position": "TE",
+    "round": 2,
+    "pick": 56,
+    "team": "Jaguars",
+    "pre_draft_tiber_stance": "In-line capable TE profile with developmental receiving ceiling tied to usage context.",
+    "day2_signal_summary": "Round 2 TE investment during the 54-61 run reinforces market-level demand and a protected developmental track.",
+    "talent_confirmation_signal": "moderate",
+    "opportunity_insulation_signal": "moderate",
+    "short_term_fantasy_runway": "delayed",
+    "primary_risks": [
+      "Role may open as blocking/rotational usage before high-value targets consolidate.",
+      "TE translation timelines can delay dependable fantasy output."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round2_capital",
+      "round2_skill_capital",
+      "round2_te_capital",
+      "day2_te_cluster",
+      "te_market_push",
+      "delayed_te_translation_watch",
+      "role_translation_watch",
+      "role_path_review",
+      "opportunity_insulation_moderate"
+    ],
+    "post_draft_handling": "Treat as a Day 2 TE market-validation signal and maintain conservative Year 1 volume assumptions.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "te-marlin-klein",
+    "player_name": "Marlin Klein",
+    "position": "TE",
+    "round": 2,
+    "pick": 59,
+    "team": "Texans",
+    "pre_draft_tiber_stance": "Receiving-leaning TE profile with role upside if detached usage carries forward.",
+    "day2_signal_summary": "Round 2 TE capital in the concentrated 54-61 run signals strong positional demand and actionable role-path intent.",
+    "talent_confirmation_signal": "moderate",
+    "opportunity_insulation_signal": "moderate",
+    "short_term_fantasy_runway": "delayed",
+    "primary_risks": [
+      "Route share and red-zone usage are uncertain in early deployment windows.",
+      "Position-wide translation lag can suppress immediate fantasy utility."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round2_capital",
+      "round2_skill_capital",
+      "round2_te_capital",
+      "day2_te_cluster",
+      "te_market_push",
+      "delayed_te_translation_watch",
+      "role_translation_watch",
+      "role_path_review",
+      "opportunity_insulation_moderate"
+    ],
+    "post_draft_handling": "Apply TE-market-push framing with patience on immediate fantasy output and emphasis on role development cues.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "te-max-klare",
+    "player_name": "Max Klare",
+    "position": "TE",
+    "round": 2,
+    "pick": 61,
+    "team": "Rams",
+    "pre_draft_tiber_stance": "Hybrid receiving TE profile with alignment flexibility and role translation dependency.",
+    "day2_signal_summary": "Round 2 TE capital closes a dense positional run (54-61), confirming notable TE market push on Day 2.",
+    "talent_confirmation_signal": "moderate",
+    "opportunity_insulation_signal": "moderate",
+    "short_term_fantasy_runway": "delayed",
+    "primary_risks": [
+      "Year 1 role could skew rotational while route-responsibility grows.",
+      "TE development arc can limit early-week fantasy predictability."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round2_capital",
+      "round2_skill_capital",
+      "round2_te_capital",
+      "day2_te_cluster",
+      "te_market_push",
+      "delayed_te_translation_watch",
+      "role_translation_watch",
+      "role_path_review",
+      "opportunity_insulation_moderate"
+    ],
+    "post_draft_handling": "Treat as Day 2 TE demand confirmation with delayed translation expectations and role monitoring emphasis.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
     "source_status": "operator_seeded"
   },
   {
@@ -60,21 +236,180 @@
     "pick": 65,
     "team": "Cardinals",
     "pre_draft_tiber_stance": "Developmental pocket QB profile with outcome sensitivity to timeline and organizational context.",
-    "day2_signal_summary": "Round 3 QB capital provides real development commitment signal and roster-path relevance, but materially less long-term insulation than Round 1 or Round 2 quarterback investment.",
+    "day2_signal_summary": "Round 3 quarterback capital provides meaningful developmental commitment but limited insulation and slower fantasy runway.",
     "talent_confirmation_signal": "mixed",
     "opportunity_insulation_signal": "limited",
     "short_term_fantasy_runway": "delayed",
     "primary_risks": [
-      "Day 3-adjacent QB capital band can produce fragile organizational patience.",
+      "Day 3-adjacent quarterback capital can produce fragile organizational patience.",
       "Starting timeline and QB-room hierarchy are still context-dependent."
     ],
     "translator_tags": [
+      "day2_capital",
+      "round3_capital",
+      "round3_skill_capital",
       "round3_qb_capital",
       "developmental_qb_capital",
       "delayed_start_path",
-      "qb_room_context_required"
+      "qb_room_context_required",
+      "role_path_review",
+      "opportunity_insulation_limited"
     ],
-    "post_draft_handling": "Apply developmental-quarterback translation with delayed near-term runway and limited insulation assumptions pending clearer room dynamics.",
+    "post_draft_handling": "Apply developmental-quarterback translation with delayed runway and constrained insulation pending room clarity.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "te-sam-roush",
+    "player_name": "Sam Roush",
+    "position": "TE",
+    "round": 3,
+    "pick": 69,
+    "team": "Bears",
+    "pre_draft_tiber_stance": "Developmental TE profile with upside tied to usage growth and route role expansion.",
+    "day2_signal_summary": "Round 3 TE capital keeps him in the Day 2 demand wave, but with limited insulation and a likely slower output ramp.",
+    "talent_confirmation_signal": "mixed",
+    "opportunity_insulation_signal": "limited",
+    "short_term_fantasy_runway": "delayed",
+    "primary_risks": [
+      "Early deployment may be rotational with modest target depth.",
+      "TE translation variance can delay reliable fantasy returns."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round3_capital",
+      "round3_skill_capital",
+      "round3_te_capital",
+      "delayed_te_translation_watch",
+      "role_translation_watch",
+      "role_path_review",
+      "opportunity_insulation_limited"
+    ],
+    "post_draft_handling": "Translate as a developmental Day 2 TE signal requiring role progression before strong fantasy confidence.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "wr-antonio-williams",
+    "player_name": "Antonio Williams",
+    "position": "WR",
+    "round": 3,
+    "pick": 71,
+    "team": "Commanders",
+    "pre_draft_tiber_stance": "Production-oriented WR profile with role fit and usage concentration as key projection variables.",
+    "day2_signal_summary": "Round 3 WR capital offers credible organizational commitment and Year 1 pathway, but with narrower insulation.",
+    "talent_confirmation_signal": "moderate",
+    "opportunity_insulation_signal": "limited",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Target hierarchy outcomes can compress early route and volume certainty.",
+      "Round 3 capital creates more replacement risk than Round 2/1 outcomes."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round3_capital",
+      "round3_skill_capital",
+      "round3_wr_capital",
+      "target_room_competition_watch",
+      "year1_volume_uncertainty",
+      "landing_spot_role_review",
+      "role_path_review",
+      "opportunity_insulation_limited"
+    ],
+    "post_draft_handling": "Treat as actionable Day 2 WR opportunity with competition-sensitive short-term confidence.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "te-oscar-delp",
+    "player_name": "Oscar Delp",
+    "position": "TE",
+    "round": 3,
+    "pick": 73,
+    "team": "Saints",
+    "pre_draft_tiber_stance": "Two-way TE profile with receiving upside dependent on route volume and alignment usage.",
+    "day2_signal_summary": "Round 3 TE investment confirms developmental intent with slower expected Year 1 fantasy translation.",
+    "talent_confirmation_signal": "mixed",
+    "opportunity_insulation_signal": "limited",
+    "short_term_fantasy_runway": "delayed",
+    "primary_risks": [
+      "Initial role can tilt toward rotational responsibilities.",
+      "Delayed TE earning curve can hold down early fantasy usability."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round3_capital",
+      "round3_skill_capital",
+      "round3_te_capital",
+      "delayed_te_translation_watch",
+      "role_translation_watch",
+      "role_path_review",
+      "opportunity_insulation_limited"
+    ],
+    "post_draft_handling": "Apply patient TE translation with emphasis on role growth checkpoints over immediate output.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "wr-malachi-fields",
+    "player_name": "Malachi Fields",
+    "position": "WR",
+    "round": 3,
+    "pick": 74,
+    "team": "Giants",
+    "pre_draft_tiber_stance": "Size-speed WR profile with developmental separation and role-definition questions pre-draft.",
+    "day2_signal_summary": "Round 3 WR capital keeps him in meaningful Day 2 territory, though runway certainty is role dependent.",
+    "talent_confirmation_signal": "moderate",
+    "opportunity_insulation_signal": "limited",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Route tree deployment and target share competition can create volatile weekly opportunity.",
+      "Round 3 insulation is sensitive to early coaching confidence."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round3_capital",
+      "round3_skill_capital",
+      "round3_wr_capital",
+      "target_room_competition_watch",
+      "year1_volume_uncertainty",
+      "landing_spot_role_review",
+      "role_path_review",
+      "opportunity_insulation_limited"
+    ],
+    "post_draft_handling": "Treat as a positive but fragile Day 2 WR opportunity signal pending role clarity.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "wr-caleb-douglas",
+    "player_name": "Caleb Douglas",
+    "position": "WR",
+    "round": 3,
+    "pick": 75,
+    "team": "Dolphins",
+    "pre_draft_tiber_stance": "Boundary-capable WR profile with role projection tied to release/route consistency gains.",
+    "day2_signal_summary": "Round 3 WR capital provides an actionable opportunity signal, but Dolphins multi-pass-catcher investment raises competition pressure.",
+    "talent_confirmation_signal": "moderate",
+    "opportunity_insulation_signal": "limited",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Team-level clustering of Day 2 pass-catcher picks can flatten individual Year 1 volume.",
+      "Role assignment within the Dolphins WR/TE ecosystem is still unsettled."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round3_capital",
+      "round3_skill_capital",
+      "round3_wr_capital",
+      "target_room_competition_watch",
+      "year1_volume_uncertainty",
+      "landing_spot_role_review",
+      "role_path_review",
+      "opportunity_insulation_limited",
+      "dolphins_multi_pass_catcher_investment"
+    ],
+    "post_draft_handling": "Translate as meaningful Day 2 WR intent with elevated competition watch due to concentrated Dolphins pass-catcher capital.",
     "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
     "source_status": "operator_seeded"
   },
@@ -86,7 +421,7 @@
     "pick": 76,
     "team": "Steelers",
     "pre_draft_tiber_stance": "Traits-forward developmental QB profile with uneven short-term readiness projection.",
-    "day2_signal_summary": "Round 3 selection signals actionable organizational interest and a plausible developmental path, while still offering limited insulation relative to earlier capital tiers.",
+    "day2_signal_summary": "Round 3 selection signals actionable organizational interest and a plausible developmental path, while still offering limited insulation.",
     "talent_confirmation_signal": "mixed",
     "opportunity_insulation_signal": "limited",
     "short_term_fantasy_runway": "delayed",
@@ -95,12 +430,297 @@
       "Steelers QB-room structure could constrain immediate role access."
     ],
     "translator_tags": [
+      "day2_capital",
+      "round3_capital",
+      "round3_skill_capital",
       "round3_qb_capital",
       "developmental_qb_capital",
+      "delayed_start_path",
+      "qb_room_context_required",
       "steelers_qb_room_watch",
-      "delayed_start_path"
+      "role_path_review",
+      "opportunity_insulation_limited"
     ],
     "post_draft_handling": "Treat as a developmental Day 2 QB signal with constrained insulation; preserve upside path notes without upgrading to Round 1-style certainty.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "wr-zachariah-branch",
+    "player_name": "Zachariah Branch",
+    "position": "WR",
+    "round": 3,
+    "pick": 79,
+    "team": "Falcons",
+    "pre_draft_tiber_stance": "Explosive slot-leaning WR profile with dynamic after-catch upside and role-specific usage dependence.",
+    "day2_signal_summary": "Round 3 WR capital validates meaningful role intent, though deployment type and target competition shape early output.",
+    "talent_confirmation_signal": "strong",
+    "opportunity_insulation_signal": "limited",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Usage may be specialized early, creating volatile week-to-week fantasy reliability.",
+      "Round 3 insulation can erode quickly if role translation stalls."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round3_capital",
+      "round3_skill_capital",
+      "round3_wr_capital",
+      "target_room_competition_watch",
+      "year1_volume_uncertainty",
+      "landing_spot_role_review",
+      "role_path_review",
+      "opportunity_insulation_limited"
+    ],
+    "post_draft_handling": "Treat as an upside Day 2 WR translator signal with role-shape dependence and limited insulation.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "wr-jakobi-lane",
+    "player_name": "Ja'Kobi Lane",
+    "position": "WR",
+    "round": 3,
+    "pick": 80,
+    "team": "Ravens",
+    "pre_draft_tiber_stance": "Length-based WR profile with developmental timing and target-earning questions pre-draft.",
+    "day2_signal_summary": "Round 3 WR capital establishes credible opportunity but requires role wins to sustain insulation.",
+    "talent_confirmation_signal": "moderate",
+    "opportunity_insulation_signal": "limited",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Target concentration dynamics can limit immediate route-volume certainty.",
+      "Day 2 Round 3 capital is sensitive to early performance variance."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round3_capital",
+      "round3_skill_capital",
+      "round3_wr_capital",
+      "target_room_competition_watch",
+      "year1_volume_uncertainty",
+      "landing_spot_role_review",
+      "role_path_review",
+      "opportunity_insulation_limited"
+    ],
+    "post_draft_handling": "Translate as a viable opportunity signal with competition-sensitive ramp expectations.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "wr-chris-brazzell-ii",
+    "player_name": "Chris Brazzell II",
+    "position": "WR",
+    "round": 3,
+    "pick": 83,
+    "team": "Panthers",
+    "pre_draft_tiber_stance": "Field-stretching WR archetype with role volatility tied to route-detail consistency.",
+    "day2_signal_summary": "Round 3 WR capital confirms role-path opportunity while preserving limited insulation assumptions.",
+    "talent_confirmation_signal": "moderate",
+    "opportunity_insulation_signal": "limited",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Competition for vertical/secondary targets can compress weekly volume floor.",
+      "Role volatility may persist until route tree and deployment stabilize."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round3_capital",
+      "round3_skill_capital",
+      "round3_wr_capital",
+      "target_room_competition_watch",
+      "year1_volume_uncertainty",
+      "landing_spot_role_review",
+      "role_path_review",
+      "opportunity_insulation_limited"
+    ],
+    "post_draft_handling": "Treat as a Day 2 opportunity signal with high dependence on role crystallization.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "wr-ted-hurst",
+    "player_name": "Ted Hurst",
+    "position": "WR",
+    "round": 3,
+    "pick": 84,
+    "team": "Buccaneers",
+    "pre_draft_tiber_stance": "Technician-style WR profile with outcome tied to slot/chain-mover role earning at the next level.",
+    "day2_signal_summary": "Round 3 WR capital provides a clear role-entry signal but with constrained insulation.",
+    "talent_confirmation_signal": "moderate",
+    "opportunity_insulation_signal": "limited",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Target hierarchy uncertainty can cap early route-share confidence.",
+      "Round 3 runway can narrow if role specialization is slow to materialize."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round3_capital",
+      "round3_skill_capital",
+      "round3_wr_capital",
+      "target_room_competition_watch",
+      "year1_volume_uncertainty",
+      "landing_spot_role_review",
+      "role_path_review",
+      "opportunity_insulation_limited"
+    ],
+    "post_draft_handling": "Translate as a positive Day 2 WR pathway with explicit competition and volume caveats.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "te-will-kacmarek",
+    "player_name": "Will Kacmarek",
+    "position": "TE",
+    "round": 3,
+    "pick": 87,
+    "team": "Dolphins",
+    "pre_draft_tiber_stance": "Developmental TE profile with role utility and fantasy ceiling tied to route deployment growth.",
+    "day2_signal_summary": "Round 3 TE investment is meaningful, but Dolphins multi-pass-catcher concentration increases competition complexity.",
+    "talent_confirmation_signal": "mixed",
+    "opportunity_insulation_signal": "limited",
+    "short_term_fantasy_runway": "delayed",
+    "primary_risks": [
+      "TE translation pace can delay early fantasy contribution.",
+      "Concurrent Dolphins pass-catcher investments may limit immediate route/target volume."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round3_capital",
+      "round3_skill_capital",
+      "round3_te_capital",
+      "delayed_te_translation_watch",
+      "role_translation_watch",
+      "role_path_review",
+      "opportunity_insulation_limited",
+      "dolphins_multi_pass_catcher_investment"
+    ],
+    "post_draft_handling": "Treat as a developmental Day 2 TE signal with tempered Year 1 expectations and elevated competition watch.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "wr-zavion-thomas",
+    "player_name": "Zavion Thomas",
+    "position": "WR",
+    "round": 3,
+    "pick": 89,
+    "team": "Bears",
+    "pre_draft_tiber_stance": "Speed-driven WR profile with projection tied to role specialization and target-earning consistency.",
+    "day2_signal_summary": "Round 3 WR capital signals role opportunity with limited insulation and usage variance risk.",
+    "talent_confirmation_signal": "moderate",
+    "opportunity_insulation_signal": "limited",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Specialized deployment can produce uneven week-to-week fantasy volume.",
+      "Competition dynamics may slow immediate route-share stabilization."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round3_capital",
+      "round3_skill_capital",
+      "round3_wr_capital",
+      "target_room_competition_watch",
+      "year1_volume_uncertainty",
+      "landing_spot_role_review",
+      "role_path_review",
+      "opportunity_insulation_limited"
+    ],
+    "post_draft_handling": "Translate as an actionable but role-volatile Day 2 WR signal.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "rb-kaelon-black",
+    "player_name": "Kaelon Black",
+    "position": "RB",
+    "round": 3,
+    "pick": 90,
+    "team": "49ers",
+    "pre_draft_tiber_stance": "Scheme-fit RB profile with contingent upside tied to workload pathway and backfield competition outcomes.",
+    "day2_signal_summary": "Round 3 RB capital is scarce in this operator-seeded Day 2 class, creating a notable signal despite limited insulation.",
+    "talent_confirmation_signal": "moderate",
+    "opportunity_insulation_signal": "limited",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Backfield role competition can quickly reshape touch expectations.",
+      "Round 3 RB capital does not guarantee multi-year workload insulation."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round3_capital",
+      "round3_skill_capital",
+      "round3_rb_capital",
+      "scarce_day2_rb_capital",
+      "workload_path_review",
+      "role_competition_watch",
+      "role_path_review",
+      "opportunity_insulation_limited"
+    ],
+    "post_draft_handling": "Treat as a scarce Day 2 RB capital signal with meaningful workload-path upside but limited insulation.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "wr-chris-bell",
+    "player_name": "Chris Bell",
+    "position": "WR",
+    "round": 3,
+    "pick": 94,
+    "team": "Dolphins",
+    "pre_draft_tiber_stance": "Contested and boundary-usage WR profile with projection shaped by separation and deployment consistency.",
+    "day2_signal_summary": "Round 3 WR capital gives a real opportunity signal, but Dolphins multi-pass-catcher concentration raises near-term competition risk.",
+    "talent_confirmation_signal": "moderate",
+    "opportunity_insulation_signal": "limited",
+    "short_term_fantasy_runway": "strong",
+    "primary_risks": [
+      "Multiple Day 2 Dolphins pass-catcher additions can constrain Year 1 target share.",
+      "Role clarity may take time to settle across a crowded pass-catching room."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round3_capital",
+      "round3_skill_capital",
+      "round3_wr_capital",
+      "target_room_competition_watch",
+      "year1_volume_uncertainty",
+      "landing_spot_role_review",
+      "role_path_review",
+      "opportunity_insulation_limited",
+      "dolphins_multi_pass_catcher_investment"
+    ],
+    "post_draft_handling": "Translate as meaningful Day 2 WR investment while explicitly discounting early-volume certainty in a clustered landing spot.",
+    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
+    "source_status": "operator_seeded"
+  },
+  {
+    "player_id": "te-eli-raridon",
+    "player_name": "Eli Raridon",
+    "position": "TE",
+    "round": 3,
+    "pick": 95,
+    "team": "Patriots",
+    "pre_draft_tiber_stance": "Size-adjusted TE profile with developmental receiving arc and role translation variance.",
+    "day2_signal_summary": "Round 3 TE capital confirms developmental opportunity but points to delayed fantasy conversion and limited insulation.",
+    "talent_confirmation_signal": "mixed",
+    "opportunity_insulation_signal": "limited",
+    "short_term_fantasy_runway": "delayed",
+    "primary_risks": [
+      "TE transition timeline can delay sustained fantasy relevance.",
+      "Role translation risk remains elevated until route and target usage stabilizes."
+    ],
+    "translator_tags": [
+      "day2_capital",
+      "round3_capital",
+      "round3_skill_capital",
+      "round3_te_capital",
+      "delayed_te_translation_watch",
+      "role_translation_watch",
+      "role_path_review",
+      "opportunity_insulation_limited"
+    ],
+    "post_draft_handling": "Apply patient TE development framing with conservative short-term production expectations.",
     "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
     "source_status": "operator_seeded"
   }
