@@ -43,6 +43,14 @@ class EnrichPostDraftAlphaWithTeamContextTests(unittest.TestCase):
                     ],
                     "source_status": "operator_seeded",
                 },
+                "LAR": {
+                    "team_context_tags": [
+                        "qb_development_runway_signal",
+                        "mcvay_stability_environment",
+                        "year1_playing_time_uncertainty"
+                    ],
+                    "source_status": "operator_seeded",
+                },
             }
         }
 
@@ -156,6 +164,16 @@ class EnrichPostDraftAlphaWithTeamContextTests(unittest.TestCase):
         enriched = enrich_rows(rows, context)
         self.assertTrue(enriched[0]["team_context_found"])
         self.assertIn("concentrated_wr_investment", enriched[0]["team_context_tags"])
+
+    def test_non_sf_cle_team_joins_via_normalization_map(self) -> None:
+        context = self._build_context()
+        enriched = enrich_rows(self.rows, context)
+        ty = next(row for row in enriched if row["player_name"] == "Ty Simpson")
+
+        self.assertEqual(ty["team"], "Rams")
+        self.assertTrue(ty["team_context_found"])
+        self.assertEqual(ty["team_context_notes"], "team_context_joined:LAR")
+        self.assertIn("mcvay_stability_environment", ty["team_context_tags"])
 
     def test_write_outputs_contract(self) -> None:
         context = self._build_context()
