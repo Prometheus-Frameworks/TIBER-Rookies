@@ -1,0 +1,145 @@
+[
+  {
+    "candidate_id": "cand_2026_antonio_williams_context",
+    "source_entry_id": "oj_2026_001_antonio_williams",
+    "entity_type": "player",
+    "player_name": "Antonio Williams",
+    "team": "Washington",
+    "position": "WR",
+    "related_entities": [],
+    "claim_summary": "Landing spot and role-path note indicating immediate slot-path opportunity in a high-upside offense context.",
+    "positive_signal_tags": [
+      "available_target_opportunity",
+      "high_upside_offense",
+      "jayden_daniels_environment",
+      "slot_role_path",
+      "freshman_contributor_signal",
+      "separator_profile"
+    ],
+    "risk_tags": [
+      "size_concern",
+      "round3_insulation_risk",
+      "role_projection_uncertainty"
+    ],
+    "context_tags": [
+      "operator_note",
+      "post_draft_context"
+    ],
+    "model_impact": "review_for_post_draft_context_bump",
+    "downstream_repos": [
+      "TIBER-Rookies"
+    ],
+    "confidence": "medium_high",
+    "needs_verification": true,
+    "source_type": "operator_journal",
+    "review_status": "needs_human_review"
+  },
+  {
+    "candidate_id": "cand_2026_heavy_te_meta",
+    "source_entry_id": "oj_2026_002_rams_13_personnel",
+    "entity_type": "team_meta",
+    "player_name": null,
+    "team": "Rams",
+    "position": null,
+    "related_entities": [],
+    "claim_summary": "Heavy 13-personnel usage and efficiency note; possible offensive meta with two-WR target concentration dynamics.",
+    "positive_signal_tags": [
+      "heavy_te_personnel_meta",
+      "13_personnel_efficiency_signal"
+    ],
+    "risk_tags": [
+      "te_target_suppression_possible",
+      "scheme_dependency",
+      "role_specific_usage_dependency"
+    ],
+    "context_tags": [
+      "wr_target_consolidation_possible",
+      "two_wr_set_target_focus"
+    ],
+    "model_impact": "",
+    "downstream_repos": [
+      "TIBER-Teamstate",
+      "Role-and-Opportunity",
+      "TIBER-Rookies"
+    ],
+    "confidence": "medium",
+    "needs_verification": true,
+    "source_type": "operator_journal",
+    "review_status": "needs_human_review"
+  },
+  {
+    "candidate_id": "cand_2026_post_draft_market_watchlist",
+    "source_entry_id": "oj_2026_003_post_draft_watchlist",
+    "entity_type": "market_watchlist",
+    "player_name": null,
+    "team": null,
+    "position": null,
+    "related_entities": [
+      "Jayden Higgins",
+      "Harold Fannin Jr.",
+      "RJ Harvey",
+      "Pat Bryant",
+      "Tory Horton",
+      "Xavier Restrepo",
+      "Browns backfield",
+      "Cowboys backfield",
+      "Vikings backfield"
+    ],
+    "claim_summary": "Post-draft market reaction watchlist from operator journal.",
+    "positive_signal_tags": [
+      "stock_up",
+      "stock_down"
+    ],
+    "risk_tags": [
+      "reaction_noise_risk"
+    ],
+    "context_tags": [
+      "post_draft_market_reaction",
+      "opportunity_shift_watch"
+    ],
+    "model_impact": "",
+    "downstream_repos": [],
+    "confidence": "medium",
+    "needs_verification": true,
+    "source_type": "operator_journal",
+    "review_status": "needs_human_review"
+  },
+  {
+    "candidate_id": "cand_2026_ty_simpson_experience_risk",
+    "source_entry_id": "oj_2026_004_ty_simpson",
+    "entity_type": "player",
+    "player_name": "Ty Simpson",
+    "team": null,
+    "position": "QB",
+    "related_entities": [
+      "Carson Wentz",
+      "Mark Sanchez",
+      "Mac Jones",
+      "Mitch Trubisky",
+      "Dwayne Haskins"
+    ],
+    "claim_summary": "Low-experience Round 1 QB historical cohort with developmental variance risk.",
+    "positive_signal_tags": [
+      "round1_qb_capital",
+      "mcvay_developmental_environment"
+    ],
+    "risk_tags": [
+      "low_college_attempt_sample",
+      "limited_dual_threat_floor",
+      "round1_qb_experience_risk",
+      "developmental_qb_variance"
+    ],
+    "context_tags": [
+      "historical_comparison_candidate",
+      "verification_required"
+    ],
+    "model_impact": "cap_aggressive_ty_simpson_bump",
+    "downstream_repos": [
+      "TIBER-Rookies"
+    ],
+    "confidence": "medium",
+    "needs_verification": true,
+    "source_type": "operator_journal",
+    "review_status": "needs_human_review"
+  }
+]
