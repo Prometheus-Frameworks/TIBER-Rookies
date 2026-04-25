@@ -79,6 +79,43 @@ Added Day 2 skill-capital bands (WR/RB/TE):
 - `round3_skill_since_2020` (picks 65–102)
 - `day2_skill_since_2020` (picks 33–102)
 
+## Pick-band calibration cohorts (since 2020 default)
+
+Round-level bins are useful but too coarse for post-draft calibration. These pick-band cohorts add finer context while preserving the existing cohorts.
+
+Why this matters:
+- **Pick 30 should not be treated like pick 8** even though both are Round 1.
+- **Pick 33 should not be flattened with pick 95** under a single Day 2 umbrella.
+- **Late Round 1 picks (with fifth-year-option context)** need their own historical baseline.
+- **Early Day 2 / near-Round-1 picks** deserve separate calibration from mid/late Day 2.
+- **Round 3 profiles** typically have weaker insulation than Round 2 and need different priors.
+
+Added WR pick-band cohorts:
+- `wr_pick_1_10_since_2020`
+- `wr_pick_11_20_since_2020`
+- `wr_pick_21_32_since_2020`
+- `wr_pick_33_45_since_2020`
+- `wr_pick_46_64_since_2020`
+- `wr_pick_65_102_since_2020`
+
+Added RB pick-band cohorts:
+- `rb_pick_1_32_since_2020`
+- `rb_pick_33_64_since_2020`
+- `rb_pick_65_102_since_2020`
+
+Added TE pick-band cohorts:
+- `te_pick_1_32_since_2020`
+- `te_pick_33_64_since_2020`
+- `te_pick_65_102_since_2020`
+
+Added skill-position aggregate pick-band cohorts (WR/RB/TE):
+- `skill_pick_1_10_since_2020`
+- `skill_pick_11_20_since_2020`
+- `skill_pick_21_32_since_2020`
+- `skill_pick_33_45_since_2020`
+- `skill_pick_46_64_since_2020`
+- `skill_pick_65_102_since_2020`
+
 ## Source freshness checks
 
 The build script now reports source freshness diagnostics every run:
