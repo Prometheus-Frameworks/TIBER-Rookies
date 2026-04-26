@@ -212,11 +212,9 @@ function enrichInspectionStatus(row, lookups) {
       lookups.missingByName.has(String(row.player_name || '').toLowerCase()));
   const missingBaselineFlag = hasExplicitMissingBaselineTag ? true : missingBaselineFromArtifact ? true : canUseMissingBaselineArtifact ? false : null;
   const teamContextFound = row.team_context_found;
-  const roleTeamProfileFound =
-    row.role_team_profile_found ?? (tags.includes('role_profile') || tags.includes('team_profile') ? true : null);
+  const roleTeamProfileFound = row.role_team_profile_found;
   const roleBaselineFound = row.role_baseline_found ?? (missingBaselineFlag ? false : null);
-  const fullRoleOpportunityFound =
-    row.full_role_opportunity_found ?? (tags.includes('role_opportunity') || tags.includes('role_path') ? true : null);
+  const fullRoleOpportunityFound = row.full_role_opportunity_found;
   const journalSignalCount = lookups.journalCountByName.get(String(row.player_name || '').toLowerCase()) || 0;
   const dataAuditWarningFlag =
     missingBaselineFlag ||
@@ -233,7 +231,12 @@ function enrichInspectionStatus(row, lookups) {
   if (roleBaselineFound === true && (roleTeamProfileFound !== true || fullRoleOpportunityFound !== true)) badges.push('Baseline only');
   if (journalSignalCount > 0) badges.push('Journal note present');
   if (dataAuditWarningFlag) badges.push('Missing data audit');
-  const isContextComplete = fullRoleOpportunityFound === true && !dataAuditWarningFlag;
+  const isContextComplete =
+    teamContextFound === true &&
+    roleTeamProfileFound === true &&
+    roleBaselineFound === true &&
+    fullRoleOpportunityFound === true &&
+    dataAuditWarningFlag !== true;
   if (isContextComplete) badges.unshift('Context complete');
 
   return {
