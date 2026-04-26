@@ -69,6 +69,8 @@ const dom = {
   delta: document.getElementById('delta-filter'),
   exportPlayersCsv: document.getElementById('export-players-csv'),
   exportJournalCsv: document.getElementById('export-journal-csv'),
+  exportMissingBaselineCsv: document.getElementById('export-missing-baseline-csv'),
+  exportOutcomeCohortsCsv: document.getElementById('export-outcome-cohorts-csv'),
   headers: [...document.querySelectorAll('th[data-sort]')],
 };
 
@@ -111,6 +113,8 @@ function normalizeRow(row, index) {
     risk_team_context_tags: toArray(row.risk_team_context_tags),
     combined_context_tags: toArray(row.combined_context_tags),
     combined_risk_tags: toArray(row.combined_risk_tags),
+    combined_context_tags_with_role: toArray(row.combined_context_tags_with_role),
+    combined_risk_tags_with_role: toArray(row.combined_risk_tags_with_role),
     remaining_risks: toArray(row.remaining_risks),
     team_context_notes: row.team_context_notes || '—',
     role_team_profile_found:
@@ -145,6 +149,8 @@ function normalizeJournalCandidate(candidate, index) {
     confidence: candidate.confidence || '—',
     review_status: candidate.review_status || 'unknown',
     needs_verification: Boolean(candidate.needs_verification),
+    source_entry_id: candidate.source_entry_id || null,
+    source_type: candidate.source_type || null,
   };
 }
 
@@ -666,17 +672,29 @@ function exportPlayersCsv() {
     'role_team_profile_found',
     'role_baseline_found',
     'full_role_opportunity_found',
+    'context_complete',
+    'journal_signal_count',
     'missing_baseline_flag',
     'data_audit_warning_flag',
-    'journal_signal_count',
+    'context_status_badges',
+    'delta_reason_codes',
+    'translator_tags',
+    'team_context_tags',
+    'risk_team_context_tags',
+    'combined_context_tags_with_role',
+    'combined_risk_tags_with_role',
     'source_profile',
     'source_status',
-    'team_context_source_status',
-    'context_status_badges',
   ];
   const normalizedRows = rows.map((row) => ({
     ...row,
-    context_status_badges: row.context_status_badges.join(' | '),
+    context_status_badges: JSON.stringify(row.context_status_badges),
+    delta_reason_codes: JSON.stringify(row.delta_reason_codes),
+    translator_tags: JSON.stringify(row.translator_tags),
+    team_context_tags: JSON.stringify(row.team_context_tags),
+    risk_team_context_tags: JSON.stringify(row.risk_team_context_tags),
+    combined_context_tags_with_role: JSON.stringify(row.combined_context_tags_with_role),
+    combined_risk_tags_with_role: JSON.stringify(row.combined_risk_tags_with_role),
   }));
   const csv = buildCsv(headers, normalizedRows);
   const stamp = new Date().toISOString().replace(/[:.]/g, '-');
@@ -688,6 +706,7 @@ function exportJournalCsv() {
   const rows = getJournalRowsForDisplay(selectedPlayer);
   const headers = [
     'candidate_id',
+    'source_entry_id',
     'player_name',
     'team',
     'position',
@@ -695,21 +714,40 @@ function exportJournalCsv() {
     'claim_summary',
     'model_impact',
     'confidence',
-    'review_status',
     'needs_verification',
+    'review_status',
+    'source_type',
     'positive_signal_tags',
     'risk_tags',
     'context_tags',
   ];
   const normalizedRows = rows.map((row) => ({
     ...row,
-    positive_signal_tags: row.positive_signal_tags.join(' | '),
-    risk_tags: row.risk_tags.join(' | '),
-    context_tags: row.context_tags.join(' | '),
+    positive_signal_tags: JSON.stringify(row.positive_signal_tags),
+    risk_tags: JSON.stringify(row.risk_tags),
+    context_tags: JSON.stringify(row.context_tags),
   }));
   const csv = buildCsv(headers, normalizedRows);
   const stamp = new Date().toISOString().replace(/[:.]/g, '-');
   downloadCsv(csv, `tiber-workbench-journal-${stamp}.csv`);
+}
+
+function exportMissingBaselineCsv() {
+  if (!state.missingBaselines?.available) return;
+  const headers = ['player_name', 'player_id', 'team', 'position', 'draft_round', 'draft_pick', 'reason', 'source_status'];
+  const csv = buildCsv(headers, state.missingBaselines.rows);
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+  downloadCsv(csv, `tiber-workbench-missing-baselines-${stamp}.csv`);
+}
+
+function exportOutcomeCohortsCsv() {
+  if (!state.outcomeSummary?.available) return;
+  const rows = state.outcomeSummary.rows;
+  const extraHeaders = [...new Set(rows.flatMap((row) => Object.keys(row || {})))].filter((key) => !['cohort', 'player_count', 'year_1_avg_ppr', 'year_1_median_ppr', 'complete_year_1_count'].includes(key));
+  const headers = ['cohort', 'player_count', 'year_1_avg_ppr', 'year_1_median_ppr', 'complete_year_1_count', ...extraHeaders];
+  const csv = buildCsv(headers, rows);
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+  downloadCsv(csv, `tiber-workbench-outcome-cohorts-${stamp}.csv`);
 }
 
 function renderJournalSignals(selectedPlayer) {
@@ -846,6 +884,12 @@ function wireEvents() {
 
   dom.exportJournalCsv.addEventListener('click', () => {
     exportJournalCsv();
+  });
+  dom.exportMissingBaselineCsv?.addEventListener('click', () => {
+    exportMissingBaselineCsv();
+  });
+  dom.exportOutcomeCohortsCsv?.addEventListener('click', () => {
+    exportOutcomeCohortsCsv();
   });
 
   dom.journalSearch.addEventListener('input', () => {
