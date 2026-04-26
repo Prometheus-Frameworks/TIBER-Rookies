@@ -223,15 +223,11 @@ function enrichInspectionStatus(row, lookups) {
   const badges = [];
   if (teamContextFound === false) badges.push('Team context missing');
   if (roleTeamProfileFound === false) badges.push('Role profile missing');
-  if (roleBaselineFound === false && fullRoleOpportunityFound !== true) badges.push('Baseline only');
+  if (roleBaselineFound === false) badges.push('Role baseline missing');
+  if (roleBaselineFound === true && (roleTeamProfileFound !== true || fullRoleOpportunityFound !== true)) badges.push('Baseline only');
   if (journalSignalCount > 0) badges.push('Journal note present');
   if (dataAuditWarningFlag) badges.push('Missing data audit');
-  const isContextComplete =
-    teamContextFound === true &&
-    roleTeamProfileFound === true &&
-    roleBaselineFound === true &&
-    fullRoleOpportunityFound === true &&
-    !dataAuditWarningFlag;
+  const isContextComplete = fullRoleOpportunityFound === true && !dataAuditWarningFlag;
   if (isContextComplete) badges.unshift('Context complete');
 
   return {
