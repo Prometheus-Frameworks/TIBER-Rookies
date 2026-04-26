@@ -109,6 +109,19 @@ function normalizeRow(row, index) {
     combined_risk_tags: toArray(row.combined_risk_tags),
     remaining_risks: toArray(row.remaining_risks),
     team_context_notes: row.team_context_notes || '—',
+    role_team_profile_found:
+      typeof row.role_team_profile_found === 'boolean'
+        ? row.role_team_profile_found
+        : typeof row.role_profile_found === 'boolean'
+          ? row.role_profile_found
+          : null,
+    role_baseline_found: typeof row.role_baseline_found === 'boolean' ? row.role_baseline_found : null,
+    full_role_opportunity_found:
+      typeof row.full_role_opportunity_found === 'boolean'
+        ? row.full_role_opportunity_found
+        : typeof row.role_opportunity_found === 'boolean'
+          ? row.role_opportunity_found
+          : null,
   };
 }
 
@@ -147,6 +160,94 @@ function formatContextFound(value) {
   return 'Unknown';
 }
 
+function asBooleanSort(value) {
+  if (value === true) return 1;
+  if (value === false) return 0;
+  return -1;
+}
+
+function buildInspectionLookups() {
+  const missingById = new Set();
+  const missingByName = new Set();
+  const missingRows = state.missingBaselines?.available ? state.missingBaselines.rows : [];
+  missingRows.forEach((row) => {
+    if (row.player_id) missingById.add(String(row.player_id).toLowerCase());
+    if (row.player_name) missingByName.add(String(row.player_name).toLowerCase());
+  });
+
+  const journalCountByName = new Map();
+  state.journalSignals.rows.forEach((candidate) => {
+    const name = String(candidate.player_name || '').toLowerCase().trim();
+    if (!name) return;
+    journalCountByName.set(name, (journalCountByName.get(name) || 0) + 1);
+  });
+
+  return { missingById, missingByName, journalCountByName };
+}
+
+function enrichInspectionStatus(row, lookups) {
+  const tags = [
+    ...row.delta_reason_codes,
+    ...row.translator_tags,
+    ...row.team_context_tags,
+    ...row.positive_team_context_tags,
+    ...row.risk_team_context_tags,
+    ...row.combined_context_tags,
+    ...row.combined_risk_tags,
+    ...row.remaining_risks,
+  ]
+    .join(' ')
+    .toLowerCase();
+  const sourceStatus = `${row.source_status || ''} ${row.team_context_source_status || ''}`.toLowerCase();
+
+  const missingBaselineFlag =
+    lookups.missingById.has(String(row.id || '').toLowerCase()) ||
+    lookups.missingByName.has(String(row.player_name || '').toLowerCase()) ||
+    tags.includes('baseline_not_found') ||
+    tags.includes('predraft_baseline_not_found');
+  const teamContextFound = row.team_context_found;
+  const roleTeamProfileFound =
+    row.role_team_profile_found ?? (tags.includes('role_profile') || tags.includes('team_profile') ? true : null);
+  const roleBaselineFound = row.role_baseline_found ?? (missingBaselineFlag ? false : null);
+  const fullRoleOpportunityFound =
+    row.full_role_opportunity_found ?? (tags.includes('role_opportunity') || tags.includes('role_path') ? true : null);
+  const journalSignalCount = lookups.journalCountByName.get(String(row.player_name || '').toLowerCase()) || 0;
+  const dataAuditWarningFlag =
+    missingBaselineFlag ||
+    sourceStatus.includes('fallback') ||
+    sourceStatus.includes('missing') ||
+    sourceStatus.includes('audit') ||
+    tags.includes('missing_data') ||
+    tags.includes('profile_data_completeness');
+
+  const badges = [];
+  if (teamContextFound === false) badges.push('Team context missing');
+  if (roleTeamProfileFound === false) badges.push('Role profile missing');
+  if (roleBaselineFound === false && fullRoleOpportunityFound !== true) badges.push('Baseline only');
+  if (journalSignalCount > 0) badges.push('Journal note present');
+  if (dataAuditWarningFlag) badges.push('Missing data audit');
+  const isContextComplete =
+    teamContextFound === true &&
+    roleTeamProfileFound === true &&
+    roleBaselineFound === true &&
+    fullRoleOpportunityFound === true &&
+    !dataAuditWarningFlag;
+  if (isContextComplete) badges.unshift('Context complete');
+
+  return {
+    ...row,
+    team_context_found: teamContextFound,
+    role_team_profile_found: roleTeamProfileFound,
+    role_baseline_found: roleBaselineFound,
+    full_role_opportunity_found: fullRoleOpportunityFound,
+    journal_signal_count: journalSignalCount,
+    missing_baseline_flag: missingBaselineFlag,
+    data_audit_warning_flag: dataAuditWarningFlag,
+    context_status_badges: badges,
+    context_complete: isContextComplete,
+  };
+}
+
 function escapeHtml(text) {
   return String(text)
     .replaceAll('&', '&amp;')
@@ -161,6 +262,8 @@ function renderSummary(filteredRows) {
   const averageDelta = rows.length ? rows.reduce((acc, row) => acc + (row.post_draft_delta || 0), 0) / rows.length : null;
   const contextTrue = rows.filter((row) => row.team_context_found === true).length;
   const contextFalse = rows.filter((row) => row.team_context_found === false).length;
+  const contextComplete = rows.filter((row) => row.context_complete).length;
+  const auditWarnings = rows.filter((row) => row.data_audit_warning_flag).length;
 
   const biggestRiser = [...rows]
     .filter((row) => Number.isFinite(row.post_draft_delta))
@@ -173,6 +276,8 @@ function renderSummary(filteredRows) {
     ['Players loaded', `${rows.length}`],
     ['Context found: true', `${contextTrue}`],
     ['Context found: false', `${contextFalse}`],
+    ['Context complete', `${contextComplete}`],
+    ['Data/audit warnings', `${auditWarnings}`],
     ['Avg post_draft_delta', formatMetric(averageDelta, 2)],
     ['Biggest riser', biggestRiser ? `${biggestRiser.player_name} (${formatMetric(biggestRiser.post_draft_delta, 1)})` : '—'],
     ['Biggest faller', biggestFaller ? `${biggestFaller.player_name} (${formatMetric(biggestFaller.post_draft_delta, 1)})` : '—'],
@@ -193,6 +298,17 @@ function sortRows(rows) {
   return [...rows].sort((a, b) => {
     const left = a[state.sortKey];
     const right = b[state.sortKey];
+
+    if (
+      state.sortKey === 'team_context_found' ||
+      state.sortKey === 'role_team_profile_found' ||
+      state.sortKey === 'role_baseline_found' ||
+      state.sortKey === 'full_role_opportunity_found' ||
+      state.sortKey === 'missing_baseline_flag' ||
+      state.sortKey === 'data_audit_warning_flag'
+    ) {
+      return (asBooleanSort(left) - asBooleanSort(right)) * multiplier;
+    }
 
     if (typeof left === 'string' || typeof right === 'string') {
       return String(left || '').localeCompare(String(right || '')) * multiplier;
@@ -262,7 +378,7 @@ function matchesFilters(row) {
 
 function renderTable(rows) {
   if (!rows.length) {
-    dom.tbody.innerHTML = '<tr><td colspan="12" class="meta">No players matched current filters.</td></tr>';
+    dom.tbody.innerHTML = '<tr><td colspan="19" class="meta">No players matched current filters.</td></tr>';
     return;
   }
 
@@ -283,6 +399,13 @@ function renderTable(rows) {
           <td>${escapeHtml(row.opportunity_signal)}</td>
           <td>${escapeHtml(row.runway)}</td>
           <td>${escapeHtml(formatContextFound(row.team_context_found))}</td>
+          <td>${escapeHtml(formatContextFound(row.role_team_profile_found))}</td>
+          <td>${escapeHtml(formatContextFound(row.role_baseline_found))}</td>
+          <td>${escapeHtml(formatContextFound(row.full_role_opportunity_found))}</td>
+          <td>${escapeHtml(String(row.journal_signal_count || 0))}</td>
+          <td>${escapeHtml(formatContextFound(row.missing_baseline_flag))}</td>
+          <td>${escapeHtml(formatContextFound(row.data_audit_warning_flag))}</td>
+          <td>${renderStatusBadges(row.context_status_badges)}</td>
           <td>${escapeHtml(row.source_profile)}</td>
         </tr>
       `;
@@ -301,6 +424,11 @@ function renderTable(rows) {
       render();
     });
   });
+}
+
+function renderStatusBadges(labels) {
+  if (!labels?.length) return '<span class="meta">—</span>';
+  return `<div class="tag-list compact-badge-list">${labels.map((label) => `<span class="status-badge">${escapeHtml(label)}</span>`).join('')}</div>`;
 }
 
 function renderTagList(tags, risk = false) {
@@ -331,6 +459,13 @@ function renderDetail(row) {
       <div class="detail-row"><span class="detail-label">Source Status</span><span class="detail-value">${escapeHtml(row.source_status)}</span></div>
       <div class="detail-row"><span class="detail-label">Team Context Source Status</span><span class="detail-value">${escapeHtml(row.team_context_source_status)}</span></div>
       <div class="detail-row"><span class="detail-label">Team Context Notes</span><span class="detail-value">${escapeHtml(row.team_context_notes)}</span></div>
+      <div class="detail-row"><span class="detail-label">Context Status</span><span class="detail-value">${renderStatusBadges(row.context_status_badges)}</span></div>
+      <div class="detail-row"><span class="detail-label">Role Team Profile Found</span><span class="detail-value">${escapeHtml(formatContextFound(row.role_team_profile_found))}</span></div>
+      <div class="detail-row"><span class="detail-label">Role Baseline Found</span><span class="detail-value">${escapeHtml(formatContextFound(row.role_baseline_found))}</span></div>
+      <div class="detail-row"><span class="detail-label">Full Role Opportunity Found</span><span class="detail-value">${escapeHtml(formatContextFound(row.full_role_opportunity_found))}</span></div>
+      <div class="detail-row"><span class="detail-label">Journal Signal Count</span><span class="detail-value">${escapeHtml(String(row.journal_signal_count || 0))}</span></div>
+      <div class="detail-row"><span class="detail-label">Missing Baseline Flag</span><span class="detail-value">${escapeHtml(formatContextFound(row.missing_baseline_flag))}</span></div>
+      <div class="detail-row"><span class="detail-label">Data/Audit Warning</span><span class="detail-value">${escapeHtml(formatContextFound(row.data_audit_warning_flag))}</span></div>
       <div class="detail-row"><span class="detail-label">Delta Reason Codes</span><span class="detail-value">${renderTagList(row.delta_reason_codes)}</span></div>
       <div class="detail-row"><span class="detail-label">Translator Tags</span><span class="detail-value">${renderTagList(row.translator_tags)}</span></div>
       <div class="detail-row"><span class="detail-label">Team Context Tags</span><span class="detail-value">${renderTagList(row.team_context_tags)}</span></div>
@@ -697,7 +832,7 @@ async function initialize() {
     } catch (fallbackError) {
       dom.artifactStatus.textContent = `Failed to load player artifact: ${fallbackError.message}`;
       dom.summaryTiles.innerHTML = '<p class="meta">Unable to load any post-draft artifact.</p>';
-      dom.tbody.innerHTML = '<tr><td colspan="12" class="meta">No player data available.</td></tr>';
+      dom.tbody.innerHTML = '<tr><td colspan="19" class="meta">No player data available.</td></tr>';
       return;
     }
   }
@@ -731,6 +866,9 @@ async function initialize() {
   }
 
   dom.artifactStatus.textContent = messages.join(' ');
+
+  const lookups = buildInspectionLookups();
+  state.rows = state.rows.map((row) => enrichInspectionStatus(row, lookups));
 
   renderFilterOptions();
   wireEvents();
