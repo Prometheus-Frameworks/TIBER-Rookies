@@ -16,41 +16,56 @@ class EnrichPostDraftAlphaWithTeamContextTests(unittest.TestCase):
         self.teamstate_payload = {
             "teams": {
                 "SF": {
-                    "team_context_tags": [
+                    "rookie_landing_context_tags": [
                         "shanahan_efficiency_environment",
                         "yac_creation_scheme",
                         "low_pass_volume_risk",
                         "role_specific_usage_dependency",
                         "day2_49ers_skill_pick_hit_rate_caution",
                     ],
-                    "source_status": "operator_seeded",
+                    "source_status": "operator_seeded_unknown",
                 },
                 "CLE": {
-                    "team_context_tags": [
+                    "rookie_landing_context_tags": [
                         "concentrated_wr_investment",
                         "rookie_wr_priority_signal",
                         "browns_offensive_volatility",
                         "target_competition_between_rookies",
                         "qb_environment_uncertainty",
                     ],
-                    "source_status": "operator_seeded",
+                    "source_status": "operator_seeded_unknown",
                 },
                 "TEN": {
-                    "team_context_tags": [
+                    "rookie_landing_context_tags": [
                         "wr1_depth_chart_path",
                         "top5_wr_opportunity_insulation",
                         "young_qb_development_dependency",
                         "offensive_environment_uncertainty",
                     ],
-                    "source_status": "operator_seeded",
+                    "source_status": "operator_seeded_unknown",
                 },
                 "LAR": {
-                    "team_context_tags": [
+                    "rookie_landing_context_tags": [
                         "qb_development_runway_signal",
                         "mcvay_stability_environment",
                         "year1_playing_time_uncertainty"
                     ],
-                    "source_status": "operator_seeded",
+                    "source_status": "operator_seeded_unknown",
+                },
+                "PHI": {
+                    "rookie_landing_context_tags": [
+                        "depth_chart_volume_cap",
+                        "contending_team_efficiency_environment",
+                    ],
+                    "positive_team_context_tags": ["contending_team_efficiency_environment"],
+                    "risk_team_context_tags": ["depth_chart_volume_cap"],
+                    "source_status": "operator_seeded_unknown",
+                },
+                "WAS": {
+                    "rookie_landing_context_tags": [
+                        "jayden_daniels_environment",
+                    ],
+                    "source_status": "operator_seeded_unknown",
                 },
             }
         }
@@ -68,6 +83,8 @@ class EnrichPostDraftAlphaWithTeamContextTests(unittest.TestCase):
 
         self.assertTrue(stribling["team_context_found"])
         self.assertEqual(stribling["team_context_notes"], "team_context_joined:SF")
+        self.assertEqual(stribling["team_context_team_code"], "SF")
+        self.assertEqual(stribling["team_context_source_status"], "operator_seeded_unknown")
         self.assertIn("shanahan_efficiency_environment", stribling["team_context_tags"])
         self.assertIn("low_pass_volume_risk", stribling["team_context_tags"])
         self.assertIn("role_specific_usage_dependency", stribling["team_context_tags"])
@@ -79,6 +96,8 @@ class EnrichPostDraftAlphaWithTeamContextTests(unittest.TestCase):
         kc = next(row for row in enriched if row["player_name"] == "KC Concepcion")
 
         self.assertTrue(kc["team_context_found"])
+        self.assertEqual(kc["team_context_team_code"], "CLE")
+        self.assertEqual(kc["team_context_source_status"], "operator_seeded_unknown")
         self.assertIn("concentrated_wr_investment", kc["team_context_tags"])
         self.assertIn("browns_offensive_volatility", kc["team_context_tags"])
         self.assertIn("target_competition_between_rookies", kc["team_context_tags"])
@@ -90,7 +109,9 @@ class EnrichPostDraftAlphaWithTeamContextTests(unittest.TestCase):
 
         self.assertFalse(tbd_row["team_context_found"])
         self.assertEqual(tbd_row["team_context_tags"], [])
-        self.assertEqual(tbd_row["team_context_notes"], "team_context_not_found_or_team_tbd")
+        self.assertEqual(tbd_row["team_context_notes"], "team_unknown_or_tbd_no_teamstate_context")
+        self.assertEqual(tbd_row["team_context_source_status"], "operator_seeded_unknown")
+        self.assertEqual(tbd_row["team_context_team_code"], "TBD")
 
     def test_scores_unchanged_after_enrichment(self) -> None:
         context = self._build_context()
@@ -176,6 +197,29 @@ class EnrichPostDraftAlphaWithTeamContextTests(unittest.TestCase):
         self.assertEqual(ty["team_context_notes"], "team_context_joined:LAR")
         self.assertIn("mcvay_stability_environment", ty["team_context_tags"])
 
+    def test_titans_and_eagles_and_commanders_join_expected_tags(self) -> None:
+        context = self._build_context()
+        enriched = enrich_rows(self.rows, context)
+
+        carnell = next(row for row in enriched if row["player_name"] == "Carnell Tate")
+        self.assertTrue(carnell["team_context_found"])
+        self.assertEqual(carnell["team_context_team_code"], "TEN")
+        self.assertEqual(carnell["team_context_source_status"], "operator_seeded_unknown")
+        self.assertIn("wr1_depth_chart_path", carnell["team_context_tags"])
+        self.assertIn("young_qb_development_dependency", carnell["team_context_tags"])
+
+        makai = next(row for row in enriched if row["player_name"] == "Makai Lemon")
+        self.assertTrue(makai["team_context_found"])
+        self.assertEqual(makai["team_context_team_code"], "PHI")
+        self.assertEqual(makai["team_context_source_status"], "operator_seeded_unknown")
+        self.assertIn("depth_chart_volume_cap", makai["risk_team_context_tags"])
+
+        antonio = next(row for row in enriched if row["player_name"] == "Antonio Williams")
+        self.assertTrue(antonio["team_context_found"])
+        self.assertEqual(antonio["team_context_team_code"], "WAS")
+        self.assertEqual(antonio["team_context_source_status"], "operator_seeded_unknown")
+        self.assertIn("jayden_daniels_environment", antonio["team_context_tags"])
+
     def test_write_outputs_contract(self) -> None:
         context = self._build_context()
         enriched = enrich_rows(self.rows, context)
@@ -197,6 +241,9 @@ class EnrichPostDraftAlphaWithTeamContextTests(unittest.TestCase):
             self.assertIn("talent_confirmation_signal", header)
             self.assertIn("opportunity_insulation_signal", header)
             self.assertIn("short_term_fantasy_runway", header)
+            self.assertIn("team_context_found", header)
+            self.assertIn("positive_team_context_tags", header)
+            self.assertIn("risk_team_context_tags", header)
 
 
 if __name__ == "__main__":
