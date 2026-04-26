@@ -47,7 +47,7 @@
 .table-controls {
   margin-top: 10px;
   display: grid;
-  grid-template-columns: minmax(230px, 2fr) repeat(5, minmax(130px, 1fr));
+  grid-template-columns: minmax(230px, 2fr) repeat(7, minmax(130px, 1fr));
   gap: 8px;
 }
 
@@ -57,6 +57,10 @@
   background: rgba(17, 23, 37, 0.95);
   color: #f5f8ff;
   padding: 10px;
+}
+
+.table-controls .btn {
+  white-space: nowrap;
 }
 
 .table-wrap {

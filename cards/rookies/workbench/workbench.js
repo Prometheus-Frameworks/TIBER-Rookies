@@ -1,3 +1,5 @@
+import { downloadCsv } from '/lib/rookies/exportCsv.js';
+
 const PRIMARY_CONTEXT_PATH = '../../../exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_team_context_v0.json';
 const POST_DRAFT_FALLBACK_PATH = '../../../exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_v0.json';
 const MISSING_BASELINE_PATH = '../../../exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_missing_baselines_v0.json';
@@ -65,6 +67,8 @@ const dom = {
   teamContext: document.getElementById('context-filter'),
   sourceProfile: document.getElementById('source-filter'),
   delta: document.getElementById('delta-filter'),
+  exportPlayersCsv: document.getElementById('export-players-csv'),
+  exportJournalCsv: document.getElementById('export-journal-csv'),
   headers: [...document.querySelectorAll('th[data-sort]')],
 };
 
@@ -258,9 +262,11 @@ function escapeHtml(text) {
 function renderSummary(filteredRows) {
   const rows = state.rows;
   const averageDelta = rows.length ? rows.reduce((acc, row) => acc + (row.post_draft_delta || 0), 0) / rows.length : null;
-  const contextTrue = rows.filter((row) => row.team_context_found === true).length;
-  const contextFalse = rows.filter((row) => row.team_context_found === false).length;
-  const contextComplete = rows.filter((row) => row.context_complete).length;
+  const teamstateContextFound = rows.filter((row) => row.role_team_profile_found === true).length;
+  const teamstateContextMissing = rows.filter((row) => row.role_team_profile_found === false).length;
+  const roleOpportunityComplete = rows.filter((row) => row.full_role_opportunity_found === true).length;
+  const baselineOnly = rows.filter((row) => row.role_baseline_found === true && row.full_role_opportunity_found !== true).length;
+  const journalNotesPresent = rows.filter((row) => (row.journal_signal_count || 0) > 0).length;
   const auditWarnings = rows.filter((row) => row.data_audit_warning_flag).length;
 
   const biggestRiser = [...rows]
@@ -272,9 +278,11 @@ function renderSummary(filteredRows) {
 
   const tiles = [
     ['Players loaded', `${rows.length}`],
-    ['Context found: true', `${contextTrue}`],
-    ['Context found: false', `${contextFalse}`],
-    ['Context complete', `${contextComplete}`],
+    ['Teamstate context found', `${teamstateContextFound}`],
+    ['Teamstate context missing', `${teamstateContextMissing}`],
+    ['Role opportunity complete', `${roleOpportunityComplete}`],
+    ['Baseline only', `${baselineOnly}`],
+    ['Journal notes present', `${journalNotesPresent}`],
     ['Data/audit warnings', `${auditWarnings}`],
     ['Avg post_draft_delta', formatMetric(averageDelta, 2)],
     ['Biggest riser', biggestRiser ? `${biggestRiser.player_name} (${formatMetric(biggestRiser.post_draft_delta, 1)})` : '—'],
@@ -289,6 +297,22 @@ function renderSummary(filteredRows) {
         `<article class="summary-tile"><div class="summary-label">${escapeHtml(label)}</div><div class="summary-value">${escapeHtml(value)}</div></article>`,
     )
     .join('');
+}
+
+function toCsvValue(value) {
+  const text = String(value ?? '');
+  if (text.includes(',') || text.includes('"') || text.includes('\n') || text.includes('\r')) {
+    return `"${text.replace(/"/g, '""')}"`;
+  }
+  return text;
+}
+
+function buildCsv(headers, rows) {
+  return [headers.map(toCsvValue).join(','), ...rows.map((row) => headers.map((key) => toCsvValue(row[key])).join(','))].join('\n');
+}
+
+function getDisplayedPlayerRows() {
+  return sortRows(state.rows.filter(matchesFilters));
 }
 
 function sortRows(rows) {
@@ -619,6 +643,72 @@ function getJournalRowsForDisplay(selectedPlayer) {
   });
 }
 
+function getSelectedPlayerForJournalScope(sortedRows = getDisplayedPlayerRows()) {
+  if (!state.hasExplicitPlayerSelection) return null;
+  return state.rows.find((row) => row.id === state.selectedId) || sortedRows[0] || null;
+}
+
+function exportPlayersCsv() {
+  const rows = getDisplayedPlayerRows();
+  const headers = [
+    'player_name',
+    'position',
+    'team',
+    'draft_round',
+    'draft_pick',
+    'pre_draft_alpha',
+    'post_draft_alpha',
+    'post_draft_delta',
+    'team_context_found',
+    'role_team_profile_found',
+    'role_baseline_found',
+    'full_role_opportunity_found',
+    'missing_baseline_flag',
+    'data_audit_warning_flag',
+    'journal_signal_count',
+    'source_profile',
+    'source_status',
+    'team_context_source_status',
+    'context_status_badges',
+  ];
+  const normalizedRows = rows.map((row) => ({
+    ...row,
+    context_status_badges: row.context_status_badges.join(' | '),
+  }));
+  const csv = buildCsv(headers, normalizedRows);
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+  downloadCsv(csv, `tiber-workbench-players-${stamp}.csv`);
+}
+
+function exportJournalCsv() {
+  const selectedPlayer = getSelectedPlayerForJournalScope();
+  const rows = getJournalRowsForDisplay(selectedPlayer);
+  const headers = [
+    'candidate_id',
+    'player_name',
+    'team',
+    'position',
+    'entity_type',
+    'claim_summary',
+    'model_impact',
+    'confidence',
+    'review_status',
+    'needs_verification',
+    'positive_signal_tags',
+    'risk_tags',
+    'context_tags',
+  ];
+  const normalizedRows = rows.map((row) => ({
+    ...row,
+    positive_signal_tags: row.positive_signal_tags.join(' | '),
+    risk_tags: row.risk_tags.join(' | '),
+    context_tags: row.context_tags.join(' | '),
+  }));
+  const csv = buildCsv(headers, normalizedRows);
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+  downloadCsv(csv, `tiber-workbench-journal-${stamp}.csv`);
+}
+
 function renderJournalSignals(selectedPlayer) {
   if (!state.journalSignals.available) {
     dom.journalPanel.innerHTML = '<p class="meta">Operator journal signal artifact unavailable.</p>';
@@ -677,11 +767,10 @@ function renderJournalSignals(selectedPlayer) {
 }
 
 function render() {
-  const filtered = state.rows.filter(matchesFilters);
-  const sorted = sortRows(filtered);
+  const sorted = getDisplayedPlayerRows();
   renderSummary(sorted);
   renderTable(sorted);
-  const selected = state.rows.find((row) => row.id === state.selectedId) || sorted[0] || null;
+  const selected = getSelectedPlayerForJournalScope(sorted) || sorted[0] || null;
   renderDetail(selected);
   renderMissingBaselines();
   renderCalibration();
@@ -746,6 +835,14 @@ function wireEvents() {
   dom.delta.addEventListener('change', () => {
     state.filters.deltaDirection = dom.delta.value;
     render();
+  });
+
+  dom.exportPlayersCsv.addEventListener('click', () => {
+    exportPlayersCsv();
+  });
+
+  dom.exportJournalCsv.addEventListener('click', () => {
+    exportJournalCsv();
   });
 
   dom.journalSearch.addEventListener('input', () => {
