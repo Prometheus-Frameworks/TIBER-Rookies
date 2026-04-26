@@ -33,7 +33,7 @@ This document defines how TIBER-Rookies enriches post-draft alpha outputs with t
 - If team is `TBD`/unknown or no Teamstate profile exists, `team_context_found=false` and context arrays remain empty.
 - Enrichment also emits:
   - `team_context_team_code`: normalized team code used for lookup (`TBD`/blank when unknown)
-  - `team_context_source_status`: `operator_seeded` when joined, `operator_seeded_unknown` when not joined
+  - `team_context_source_status`: preserves `source_status` from Teamstate for joined rows, and uses `operator_seeded_unknown` for `TBD`/unknown/missing-Teamstate rows
   - `combined_context_tags`: ordered union of `translator_tags` + `team_context_tags`
   - `combined_risk_tags`: ordered union of `remaining_risks` + `risk_team_context_tags`
 
