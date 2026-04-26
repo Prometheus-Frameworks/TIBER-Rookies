@@ -33,6 +33,7 @@ ROW_FIELDS = [
     "risk_team_context_tags",
     "team_context_notes",
     "team_context_source_status",
+    "team_context_team_code",
     "combined_context_tags",
     "combined_risk_tags",
 ]
@@ -110,7 +111,16 @@ def extract_team_entry(entry: Any) -> dict[str, Any]:
         }
 
     if isinstance(entry, dict):
-        tags = [str(tag) for tag in (entry.get("team_context_tags") or entry.get("context_tags") or entry.get("tags") or [])]
+        tags = [
+            str(tag)
+            for tag in (
+                entry.get("team_context_tags")
+                or entry.get("rookie_landing_context_tags")
+                or entry.get("context_tags")
+                or entry.get("tags")
+                or []
+            )
+        ]
         positive_tags = [str(tag) for tag in (entry.get("positive_team_context_tags") or entry.get("positive_tags") or [])]
         risk_tags = [str(tag) for tag in (entry.get("risk_team_context_tags") or entry.get("risk_tags") or [])]
 
@@ -121,7 +131,7 @@ def extract_team_entry(entry: Any) -> dict[str, Any]:
             "team_context_tags": tags,
             "positive_team_context_tags": positive_tags,
             "risk_team_context_tags": risk_tags,
-            "team_context_source_status": entry.get("source_status", "operator_seeded"),
+            "team_context_source_status": entry.get("source_status") or "operator_seeded",
         }
 
     return {
@@ -176,13 +186,22 @@ def enrich_rows(
             positive_context_tags = team_context["positive_team_context_tags"]
             risk_context_tags = team_context["risk_team_context_tags"]
             team_context_notes = f"team_context_joined:{team_code}"
-            team_context_source_status = team_context.get("team_context_source_status", "operator_seeded")
+            team_context_source_status = team_context.get("team_context_source_status") or "operator_seeded"
+            team_context_team_code = team_code
         else:
             context_tags = []
             positive_context_tags = []
             risk_context_tags = []
-            team_context_notes = "team_context_not_found_or_team_tbd"
-            team_context_source_status = "operator_seeded"
+            if team_code == "TBD":
+                team_context_notes = "team_unknown_or_tbd_no_teamstate_context"
+                team_context_team_code = "TBD"
+            elif not team_code:
+                team_context_notes = "team_unknown_or_blank_no_teamstate_context"
+                team_context_team_code = ""
+            else:
+                team_context_notes = f"teamstate_profile_missing_for:{team_code}"
+                team_context_team_code = team_code
+            team_context_source_status = "operator_seeded_unknown"
 
         translator_tags = list(row.get("translator_tags", []))
         remaining_risks = list(row.get("remaining_risks", []))
@@ -195,6 +214,7 @@ def enrich_rows(
             "risk_team_context_tags": risk_context_tags,
             "team_context_notes": team_context_notes,
             "team_context_source_status": team_context_source_status,
+            "team_context_team_code": team_context_team_code,
             "combined_context_tags": ordered_union(translator_tags, context_tags),
             "combined_risk_tags": ordered_union(remaining_risks, risk_context_tags),
         }
@@ -245,7 +265,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--teamstate-context-path",
         type=Path,
-        default=Path("../TIBER-Teamstate/data/processed/2026_team_landing_context_tags.json"),
+        default=Path("../TIBER-Teamstate/data/processed/2026_teamstate_context_v0.json"),
     )
     parser.add_argument(
         "--output-json",
