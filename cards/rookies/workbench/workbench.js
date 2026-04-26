@@ -199,12 +199,14 @@ function enrichInspectionStatus(row, lookups) {
     .join(' ')
     .toLowerCase();
   const sourceStatus = `${row.source_status || ''} ${row.team_context_source_status || ''}`.toLowerCase();
+  const hasExplicitMissingBaselineTag = tags.includes('baseline_not_found') || tags.includes('predraft_baseline_not_found');
+  const canUseMissingBaselineArtifact = Boolean(state.missingBaselines?.available);
 
-  const missingBaselineFlag =
-    lookups.missingById.has(String(row.id || '').toLowerCase()) ||
-    lookups.missingByName.has(String(row.player_name || '').toLowerCase()) ||
-    tags.includes('baseline_not_found') ||
-    tags.includes('predraft_baseline_not_found');
+  const missingBaselineFromArtifact =
+    canUseMissingBaselineArtifact &&
+    (lookups.missingById.has(String(row.id || '').toLowerCase()) ||
+      lookups.missingByName.has(String(row.player_name || '').toLowerCase()));
+  const missingBaselineFlag = hasExplicitMissingBaselineTag ? true : missingBaselineFromArtifact ? true : canUseMissingBaselineArtifact ? false : null;
   const teamContextFound = row.team_context_found;
   const roleTeamProfileFound =
     row.role_team_profile_found ?? (tags.includes('role_profile') || tags.includes('team_profile') ? true : null);
