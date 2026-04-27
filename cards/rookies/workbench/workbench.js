@@ -1,4 +1,5 @@
 import { downloadCsv } from '/lib/rookies/exportCsv.js';
+import { normalizeFullRoleOpportunityFound } from '/lib/rookies/workbench/roleOpportunityNormalization.mjs';
 
 const ROLE_CONTEXT_PATH = '../../../exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_role_context_v0.json';
 const TEAM_CONTEXT_PATH = '../../../exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_team_context_v0.json';
@@ -125,12 +126,7 @@ function normalizeRow(row, index) {
           ? row.role_profile_found
           : null,
     role_baseline_found: typeof row.role_baseline_found === 'boolean' ? row.role_baseline_found : null,
-    full_role_opportunity_found:
-      typeof row.full_role_opportunity_found === 'boolean'
-        ? row.full_role_opportunity_found
-        : typeof row.role_opportunity_found === 'boolean'
-          ? row.role_opportunity_found
-          : null,
+    full_role_opportunity_found: normalizeFullRoleOpportunityFound(row),
   };
 }
 
