@@ -4,7 +4,13 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from scripts.enrich_post_draft_alpha_with_role_opportunity import enrich_rows, load_role_baselines, load_team_role_profiles, write_outputs
+from scripts.enrich_post_draft_alpha_with_role_opportunity import (
+    enrich_rows,
+    ensure_required_role_artifacts,
+    load_role_baselines,
+    load_team_role_profiles,
+    write_outputs,
+)
 
 
 class EnrichPostDraftAlphaWithRoleOpportunityTests(unittest.TestCase):
@@ -198,6 +204,57 @@ class EnrichPostDraftAlphaWithRoleOpportunityTests(unittest.TestCase):
         self.assertIn("role_baseline_found", header)
         self.assertIn("candidate_roles", header)
         self.assertIn("combined_context_tags_with_role", header)
+
+    def test_missing_team_role_profiles_path_fails_by_default(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            existing_role_baselines = Path(temp_dir) / "role_baselines.json"
+            existing_role_baselines.write_text(json.dumps(self.role_baselines_payload), encoding="utf-8")
+            missing_team_profiles = Path(temp_dir) / "missing_team_profiles.json"
+
+            with self.assertRaises(FileNotFoundError) as context:
+                ensure_required_role_artifacts(
+                    missing_team_profiles,
+                    existing_role_baselines,
+                    allow_missing_role_artifacts=False,
+                )
+
+        message = str(context.exception)
+        self.assertIn(str(missing_team_profiles), message)
+        self.assertIn("git clone https://github.com/Prometheus-Frameworks/Role-and-opportunity-model.git", message)
+
+    def test_missing_role_baselines_path_fails_by_default(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            existing_team_profiles = Path(temp_dir) / "team_profiles.json"
+            existing_team_profiles.write_text(json.dumps(self.team_profiles_payload), encoding="utf-8")
+            missing_role_baselines = Path(temp_dir) / "missing_role_baselines.json"
+
+            with self.assertRaises(FileNotFoundError) as context:
+                ensure_required_role_artifacts(
+                    existing_team_profiles,
+                    missing_role_baselines,
+                    allow_missing_role_artifacts=False,
+                )
+
+        message = str(context.exception)
+        self.assertIn(str(missing_role_baselines), message)
+        self.assertIn("git clone https://github.com/Prometheus-Frameworks/Role-and-opportunity-model.git", message)
+
+    def test_allow_missing_role_artifacts_preserves_empty_role_context_behavior(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            missing_team_profiles = Path(temp_dir) / "missing_team_profiles.json"
+            missing_role_baselines = Path(temp_dir) / "missing_role_baselines.json"
+
+            ensure_required_role_artifacts(
+                missing_team_profiles,
+                missing_role_baselines,
+                allow_missing_role_artifacts=True,
+            )
+            enriched = enrich_rows(self.rows, load_team_role_profiles(missing_team_profiles), load_role_baselines(missing_role_baselines))
+
+        self.assertTrue(enriched)
+        self.assertTrue(all(row["role_team_profile_found"] is False for row in enriched))
+        self.assertTrue(all(row["role_baseline_found"] is False for row in enriched))
+        self.assertTrue(all(row["role_opportunity_found"] is False for row in enriched))
 
 
 if __name__ == "__main__":
