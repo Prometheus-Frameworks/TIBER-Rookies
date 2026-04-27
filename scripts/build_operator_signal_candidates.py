@@ -370,6 +370,91 @@ def build_candidates_for_entry(entry: dict[str, Any]) -> list[dict[str, Any]]:
         )
         return [candidate]
 
+    if "brenen_thompson_chargers" in entry_id:
+        vertical_role_watch = _base_candidate(entry, "vertical_role_watch", "player")
+        vertical_role_watch.update(
+            {
+                "player_name": "Brenen Thompson",
+                "team": "Chargers",
+                "position": "WR",
+                "candidate_theme": "vertical_field_stretcher_role_watch",
+                "claim_summary": (
+                    "Brenen Thompson has legitimate elite-speed vertical-stretcher traits and SEC "
+                    "production, but likely opens as a rotational WR4 whose fantasy path depends on a "
+                    "future Chargers depth-chart opening."
+                ),
+                "positive_signal_tags": [
+                    "elite_speed_archetype",
+                    "vertical_field_stretcher",
+                    "sec_receiving_yardage_leader",
+                    "explosive_yards_per_catch",
+                    "power4_yprr_signal",
+                    "cushion_creator",
+                    "ball_tracking_downfield",
+                    "adjusted_contested_target_rate_signal",
+                ],
+                "risk_tags": [
+                    "rotational_wr4_path",
+                    "low_volume_role_risk",
+                    "undersized_frame_risk",
+                    "durability_risk",
+                    "limited_target_earning_profile",
+                    "limited_prior_production",
+                    "contested_catch_risk",
+                    "drop_rate_risk",
+                    "chargers_depth_chart_block",
+                    "deep_protection_dependency",
+                ],
+                "context_tags": [
+                    "predraft_alpha_44_2",
+                    "tiber_edge_plus_4_7",
+                    "chargers_vertical_role_watch",
+                    "qj_future_departure_contingency",
+                ],
+                "model_impact": "track_as_vertical_role_watch_not_immediate_fantasy_bump",
+                "downstream_repos": ["TIBER-Rookies", "Role-and-Opportunity"],
+                "confidence": "medium",
+            }
+        )
+
+        profile_completeness_audit = _base_candidate(entry, "profile_completeness_audit", "player")
+        profile_completeness_audit.update(
+            {
+                "player_name": "Brenen Thompson",
+                "team": "Chargers",
+                "position": "WR",
+                "candidate_theme": "profile_completeness_audit",
+                "claim_summary": (
+                    "TIBER profile may be incomplete or stale because the writeup says production profile "
+                    "pending CFBD fetch and no translation evidence tags available, despite available 2025 "
+                    "production/YPRR/aDOT/separation evidence."
+                ),
+                "positive_signal_tags": [
+                    "production_data_available",
+                    "translation_evidence_available",
+                    "sec_2025_breakout",
+                    "vertical_efficiency_signal",
+                ],
+                "risk_tags": [
+                    "stale_profile_writeup",
+                    "missing_translation_evidence_tags",
+                    "possible_undergraded_production",
+                    "profile_data_completeness_risk",
+                ],
+                "context_tags": [
+                    "missing_data_audit",
+                    "production_profile_pending_conflict",
+                    "no_translation_tags_conflict",
+                    "predraft_alpha_44_2",
+                    "production_grade_43_7",
+                ],
+                "model_impact": "review_player_profile_data_completeness_before_final_role_take",
+                "downstream_repos": ["TIBER-Rookies"],
+                "confidence": "high",
+            }
+        )
+        return [vertical_role_watch, profile_completeness_audit]
+
     return []
 
 

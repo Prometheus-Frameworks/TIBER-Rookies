@@ -54,6 +54,7 @@ Model-edge notes can be positive or negative and are always treated as candidate
 - Positive model edge plus NFL/landing-spot confirmation is a validation-watch candidate.
 - Negative model edge plus better landing spot is tracked as a "landing spot over profile" candidate.
 - Missing-data observations become audit candidates and profile-completeness review tasks, not retroactive score edits.
+- Journal entries may also flag stale model writeups/profile-completeness conflicts as a separate inspect-only audit candidate from landing-spot role takes.
 
 Only reviewed/promoted items should be consumed by Teamstate, Role-Opportunity, post-draft alpha, or any TIBER-Data downstream workflows. The scanner's goal is to turn hobby notes into a repeatable information layer without bypassing model governance.
 

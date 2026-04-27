@@ -88,5 +88,14 @@
     "source_type": "operator_journal",
     "operator": "local",
     "review_status": "raw"
+  },
+  {
+    "entry_id": "oj_2026_011_brenen_thompson_chargers",
+    "entry_date": "2026-04-27",
+    "entry_title": "Brenen Thompson Chargers vertical role and model profile audit",
+    "entry_text": "Brenen Thompson is probably a rotational WR4 in the Chargers offense initially. He could take over as the primary field-stretcher if Quentin Johnston leaves after this year, but there is limited hope for a legitimate fantasy role without a depth-chart opening. The positive signal is his game speed. He has 4.26 speed, ridiculous field speed, and forces major cushion from defenders. He averaged strong yards per route in the SEC, led the SEC in receiving yards in 2025, and produced 57 receptions, 1,054 receiving yards, 18.49 yards per catch, 6 receiving TDs, and 1 rushing TD. He was third-team All-SEC and led the SEC in receiving yards. His profile includes elite aDOT / vertical production, strong Power 4 YPRR signal, ball tracking downfield, and a top adjusted contested target rate/separation signal. Concerns include being 5'9/164, fragile frame/durability risk, limited production before 2025, small catch radius, five drops in 2025, 35.3% career contested catch rate, limited target-earning profile, and likely low-volume field-stretcher role. The current TIBER writeup says production profile pending CFBD fetch and no translation evidence tags available, which appears stale/incomplete given the 2025 data and collected evidence. Pre-draft grade was 44.2 with ATH 50.0, production 43.7, draft capital 35.0, and model edge +4.7.",
+    "source_type": "operator_journal",
+    "operator": "local",
+    "review_status": "raw"
   }
 ]

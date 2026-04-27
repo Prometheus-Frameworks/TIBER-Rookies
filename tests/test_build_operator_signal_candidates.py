@@ -71,6 +71,35 @@ class BuildOperatorSignalCandidatesTests(unittest.TestCase):
         self.assertIn("man_coverage_struggle", fields["risk_tags"])
         self.assertIn("year1_route_path", fields["positive_signal_tags"])
 
+    def test_brenen_thompson_vertical_role_candidate_exists_with_key_tags(self) -> None:
+        brenen_vertical = next(
+            c
+            for c in self.candidates
+            if c["player_name"] == "Brenen Thompson"
+            and c.get("candidate_theme") == "vertical_field_stretcher_role_watch"
+        )
+        self.assertIn("elite_speed_archetype", brenen_vertical["positive_signal_tags"])
+        self.assertIn("vertical_field_stretcher", brenen_vertical["positive_signal_tags"])
+        self.assertIn("rotational_wr4_path", brenen_vertical["risk_tags"])
+        self.assertIn("undersized_frame_risk", brenen_vertical["risk_tags"])
+
+    def test_brenen_thompson_profile_audit_candidate_exists_with_key_tags(self) -> None:
+        brenen_audit = next(
+            c
+            for c in self.candidates
+            if c["player_name"] == "Brenen Thompson" and c.get("candidate_theme") == "profile_completeness_audit"
+        )
+        self.assertIn("missing_data_audit", brenen_audit["context_tags"])
+        self.assertIn("stale_profile_writeup", brenen_audit["risk_tags"])
+        self.assertIn("missing_translation_evidence_tags", brenen_audit["risk_tags"])
+
+    def test_brenen_thompson_candidates_are_operator_journal_needs_review(self) -> None:
+        brenen_candidates = [c for c in self.candidates if c["player_name"] == "Brenen Thompson"]
+        self.assertEqual(len(brenen_candidates), 2)
+        for candidate in brenen_candidates:
+            self.assertEqual(candidate["source_type"], "operator_journal")
+            self.assertEqual(candidate["review_status"], "needs_human_review")
+
     def test_all_candidates_are_operator_journal_source(self) -> None:
         for candidate in self.candidates:
             self.assertEqual(candidate["source_type"], "operator_journal")
