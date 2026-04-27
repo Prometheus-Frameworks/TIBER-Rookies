@@ -97,5 +97,14 @@
     "source_type": "operator_journal",
     "operator": "local",
     "review_status": "raw"
+  },
+  {
+    "entry_id": "oj_2026_012_tanner_koziol_jaguars",
+    "entry_date": "2026-04-27",
+    "entry_title": "Tanner Koziol receiving TE archetype and Jaguars red-zone fit audit",
+    "entry_text": "Tanner Koziol should be treated as a receiving/move TE archetype with blocking risk, not primarily as a blocking rotational TE. His receiving profile is unusually strong. Since 2014 in PFF College history, he ranks third and sixth in non-screen receptions by a TE season, with 74 in 2024 and 70 in 2025. Across 2024-2025 he tied Junior Vandeross III for the FBS lead in receptions with 168, ahead of Jeremiah Smith. Over the last two years he posted 168 receptions, 2.12 YPRR, and 62.7 receiving yards per game. He finished his career with 237 receptions, 2,235 yards, and 24 touchdowns over 49 games. At Houston as a senior he posted 74 receptions, 727 yards, 6 TDs, a 73% contested catch rate, 2 recorded drops, and 2.21 YPRR. He is 6'7, 240 pounds, ran around 4.7, has a 9.72 RAS, and shows elite body control at his size. The red-zone angle may matter: a note flagged that Koziol went 46/67 on contested catch targets over the last two years and could be useful if paired with an accurate QB who will throw to him in the red zone. Jacksonville and Trevor Lawrence may plausibly fit that idea given prior Evan Engram red-zone usage, but this needs verification through red-zone play-by-play / target data before promotion. The risk case is real: since 2015, only 2 of 29 drafted TEs with under 10% of FBS receiving yards on deep passes have produced a 600+ yard NFL season, and Koziol\u2019s deep-yardage share is around 5%. That creates a low-deep-usage / role-ceiling concern. His profile should probably be tagged move_te / receiving_te / red_zone_target_candidate first, with blocking and deep-usage limitations as risk tags.",
+    "source_type": "operator_journal",
+    "operator": "local",
+    "review_status": "raw"
   }
 ]

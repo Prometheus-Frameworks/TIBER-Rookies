@@ -157,7 +157,123 @@ def build_candidates_for_entry(entry: dict[str, Any]) -> list[dict[str, Any]]:
         )
         return [candidate]
 
-    if "tanner_koziol" in entry_id:
+    if entry_id == "oj_2026_012_tanner_koziol_jaguars":
+        receiving_move_te = _base_candidate(entry, "receiving_move_te_archetype_correction", "player")
+        receiving_move_te.update(
+            {
+                "player_name": "Tanner Koziol",
+                "team": "Jaguars",
+                "position": "TE",
+                "candidate_theme": "receiving_move_te_archetype_correction",
+                "claim_summary": (
+                    "Tanner Koziol should be evaluated primarily as a receiving/move TE with blocking risk, "
+                    "not as a blocking-heavy rotational TE."
+                ),
+                "positive_signal_tags": [
+                    "receiving_te_archetype",
+                    "move_te_candidate",
+                    "elite_te_reception_volume",
+                    "non_screen_reception_volume_signal",
+                    "contested_catch_strength",
+                    "red_zone_target_candidate",
+                    "body_control_at_size",
+                    "high_ras_size_adjusted_signal",
+                    "short_intermediate_target_earner",
+                ],
+                "risk_tags": [
+                    "blocking_risk",
+                    "day3_capital_risk",
+                    "low_deep_usage_risk",
+                    "limited_yac_profile",
+                    "role_ceiling_uncertainty",
+                    "year1_route_share_uncertainty",
+                ],
+                "context_tags": [
+                    "jaguars_te_room_watch",
+                    "tiber_role_archetype_correction",
+                    "receiving_role_over_blocking_role",
+                    "late_round_te_watch",
+                ],
+                "model_impact": (
+                    "review_role_mapping_to_prioritize_move_te_receiving_role_over_blocking_rotational_te"
+                ),
+                "downstream_repos": ["TIBER-Rookies", "Role-and-Opportunity"],
+                "confidence": "high",
+            }
+        )
+
+        red_zone_fit_watch = _base_candidate(entry, "jaguars_red_zone_fit_watch", "player")
+        red_zone_fit_watch.update(
+            {
+                "player_name": "Tanner Koziol",
+                "team": "Jaguars",
+                "position": "TE",
+                "candidate_theme": "jaguars_red_zone_fit_watch",
+                "claim_summary": (
+                    "Koziol's contested-catch profile and size may create a Jaguars red-zone role path, but "
+                    "Trevor Lawrence / Jacksonville TE red-zone tendency needs play-by-play verification "
+                    "before promotion."
+                ),
+                "positive_signal_tags": [
+                    "contested_catch_strength",
+                    "red_zone_target_candidate",
+                    "size_mismatch_te",
+                    "trevor_lawrence_te_usage_watch",
+                    "evan_engram_usage_comp_watch",
+                ],
+                "risk_tags": [
+                    "requires_red_zone_target_verification",
+                    "day3_capital_risk",
+                    "depth_chart_path_uncertain",
+                    "usage_projection_uncertainty",
+                ],
+                "context_tags": [
+                    "red_zone_play_by_play_needed",
+                    "jaguars_landing_spot_fit_watch",
+                    "operator_signal_needs_verification",
+                ],
+                "model_impact": "flag_for_red_zone_usage_research_before_adjusting_role_confidence",
+                "downstream_repos": ["TIBER-Rookies", "Role-and-Opportunity", "TIBER-Teamstate"],
+                "confidence": "medium",
+            }
+        )
+
+        low_deep_usage_risk = _base_candidate(entry, "low_deep_usage_te_risk", "player")
+        low_deep_usage_risk.update(
+            {
+                "player_name": "Tanner Koziol",
+                "team": "Jaguars",
+                "position": "TE",
+                "candidate_theme": "low_deep_usage_te_risk",
+                "claim_summary": (
+                    "Koziol's low deep-yardage share may cap his NFL receiving ceiling despite elite "
+                    "short/intermediate volume."
+                ),
+                "positive_signal_tags": [
+                    "elite_short_intermediate_volume",
+                    "power_conference_yptpa_signal",
+                    "high_reception_share_te",
+                ],
+                "risk_tags": [
+                    "low_deep_usage_risk",
+                    "historical_deep_usage_threshold_risk",
+                    "role_ceiling_uncertainty",
+                    "fantasy_ceiling_risk",
+                ],
+                "context_tags": [
+                    "under_10_percent_deep_yard_share",
+                    "drafted_te_low_deep_usage_cohort",
+                    "cade_otton_dalton_schultz_exception_watch",
+                ],
+                "model_impact": "track_as_volume_floor_te_with_deep_usage_ceiling_risk",
+                "downstream_repos": ["TIBER-Rookies"],
+                "confidence": "medium",
+            }
+        )
+
+        return [receiving_move_te, red_zone_fit_watch, low_deep_usage_risk]
+
+    if entry_id == "oj_2026_005_tanner_koziol":
         candidate = _base_candidate(entry, "model_edge_validation", "player")
         candidate.update(
             {
