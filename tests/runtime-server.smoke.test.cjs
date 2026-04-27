@@ -9,6 +9,14 @@ function buildUrl(port, route) {
 }
 
 test('standalone runtime smoke routes', async (t) => {
+  const roleContextPath = path.join(
+    __dirname,
+    '..',
+    'exports',
+    'promoted',
+    'rookie-alpha',
+    '2026_rookie_alpha_postdraft_role_context_v0.json',
+  );
   const teamContextPath = path.join(
     __dirname,
     '..',
@@ -26,8 +34,24 @@ test('standalone runtime smoke routes', async (t) => {
     '2026_rookie_alpha_postdraft_v0.json',
   );
 
-  const fallbackRaw = await fs.readFile(fallbackPath, 'utf8');
+  const [roleContextOriginalRaw, teamContextOriginalRaw, fallbackRaw] = await Promise.all([
+    fs.readFile(roleContextPath, 'utf8'),
+    fs.readFile(teamContextPath, 'utf8'),
+    fs.readFile(fallbackPath, 'utf8'),
+  ]);
   const fallbackPayload = JSON.parse(fallbackRaw);
+  const syntheticRoleContextPayload = {
+    rows: [
+      {
+        player_name: '__SMOKE_ROLE_CONTEXT__',
+        post_draft_alpha: 0,
+        team_context_found: true,
+        role_team_profile_found: true,
+        role_baseline_found: true,
+        role_opportunity_found: true,
+      },
+    ],
+  };
   const syntheticTeamContextPayload = {
     rows: [
       {
@@ -38,9 +62,11 @@ test('standalone runtime smoke routes', async (t) => {
     ],
   };
 
+  await fs.writeFile(roleContextPath, `${JSON.stringify(syntheticRoleContextPayload)}\n`, 'utf8');
   await fs.writeFile(teamContextPath, `${JSON.stringify(syntheticTeamContextPayload)}\n`, 'utf8');
   t.after(async () => {
-    await fs.rm(teamContextPath, { force: true });
+    await fs.writeFile(roleContextPath, roleContextOriginalRaw, 'utf8');
+    await fs.writeFile(teamContextPath, teamContextOriginalRaw, 'utf8');
   });
 
   const server = startServer(0);
@@ -99,6 +125,14 @@ test('standalone runtime smoke routes', async (t) => {
   assert.equal(workbenchCss.status, 200);
   assert.match(workbenchCss.headers.get('content-type') || '', /text\/css/);
 
+  const primaryRoleContext = await fetch(
+    buildUrl(port, '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_role_context_v0.json'),
+  );
+  assert.equal(primaryRoleContext.status, 200);
+  assert.match(primaryRoleContext.headers.get('content-type') || '', /application\/json/);
+  const primaryRolePayload = await primaryRoleContext.json();
+  assert.deepEqual(primaryRolePayload, syntheticRoleContextPayload);
+
   const primaryTeamContext = await fetch(
     buildUrl(port, '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_team_context_v0.json'),
   );
@@ -107,7 +141,25 @@ test('standalone runtime smoke routes', async (t) => {
   const primaryPayload = await primaryTeamContext.json();
   assert.deepEqual(primaryPayload, syntheticTeamContextPayload);
 
+  await fs.rm(roleContextPath, { force: true });
+
+  const roleContextFallbackToTeam = await fetch(
+    buildUrl(port, '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_role_context_v0.json'),
+  );
+  assert.equal(roleContextFallbackToTeam.status, 200);
+  assert.match(roleContextFallbackToTeam.headers.get('content-type') || '', /application\/json/);
+  const roleToTeamPayload = await roleContextFallbackToTeam.json();
+  assert.deepEqual(roleToTeamPayload, syntheticTeamContextPayload);
+
   await fs.rm(teamContextPath, { force: true });
+
+  const roleContextFallbackToPostDraft = await fetch(
+    buildUrl(port, '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_role_context_v0.json'),
+  );
+  assert.equal(roleContextFallbackToPostDraft.status, 200);
+  assert.match(roleContextFallbackToPostDraft.headers.get('content-type') || '', /application\/json/);
+  const roleToPostDraftPayload = await roleContextFallbackToPostDraft.json();
+  assert.deepEqual(roleToPostDraftPayload, fallbackPayload);
 
   const primaryTeamContextFallback = await fetch(
     buildUrl(port, '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_team_context_v0.json'),

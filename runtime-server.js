@@ -35,6 +35,10 @@ const ROUTE_ALIASES = new Map([
 
 const CONDITIONAL_FALLBACKS = new Map([
   [
+    '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_role_context_v0.json',
+    '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_team_context_v0.json',
+  ],
+  [
     '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_team_context_v0.json',
     '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_v0.json',
   ],
@@ -110,26 +114,33 @@ function resolveFilePath(requestPath, callback) {
       return;
     }
 
-    const fallbackPublicPath = CONDITIONAL_FALLBACKS.get(publicPath);
-    if (!fallbackPublicPath) {
-      callback(null, targetPath);
-      return;
-    }
+    const visited = new Set([publicPath]);
 
-    const fallbackTargetPath = resolveStaticPath(fallbackPublicPath);
-    if (!fallbackTargetPath) {
-      callback(null, targetPath);
-      return;
-    }
-
-    fs.stat(fallbackTargetPath, (fallbackError, fallbackStats) => {
-      if (!fallbackError && fallbackStats.isFile()) {
-        callback(null, fallbackTargetPath);
+    const tryFallback = (candidatePublicPath) => {
+      const fallbackPublicPath = CONDITIONAL_FALLBACKS.get(candidatePublicPath);
+      if (!fallbackPublicPath || visited.has(fallbackPublicPath)) {
+        callback(null, targetPath);
         return;
       }
 
-      callback(null, targetPath);
-    });
+      visited.add(fallbackPublicPath);
+      const fallbackTargetPath = resolveStaticPath(fallbackPublicPath);
+      if (!fallbackTargetPath) {
+        callback(null, targetPath);
+        return;
+      }
+
+      fs.stat(fallbackTargetPath, (fallbackError, fallbackStats) => {
+        if (!fallbackError && fallbackStats.isFile()) {
+          callback(null, fallbackTargetPath);
+          return;
+        }
+
+        tryFallback(fallbackPublicPath);
+      });
+    };
+
+    tryFallback(publicPath);
   });
 }
 

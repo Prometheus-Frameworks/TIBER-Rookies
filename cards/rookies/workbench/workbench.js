@@ -1,6 +1,7 @@
 import { downloadCsv } from '/lib/rookies/exportCsv.js';
 
-const PRIMARY_CONTEXT_PATH = '../../../exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_team_context_v0.json';
+const ROLE_CONTEXT_PATH = '../../../exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_role_context_v0.json';
+const TEAM_CONTEXT_PATH = '../../../exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_team_context_v0.json';
 const POST_DRAFT_FALLBACK_PATH = '../../../exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_v0.json';
 const MISSING_BASELINE_PATH = '../../../exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_missing_baselines_v0.json';
 const OUTCOME_SUMMARY_PATH = '../../../exports/promoted/nfl-fantasy-outcomes/context_flag_outcome_summary_v1.json';
@@ -959,23 +960,32 @@ async function initialize() {
   const messages = [];
 
   try {
-    const primaryPayload = await loadJson(PRIMARY_CONTEXT_PATH);
-    const rows = coerceRows(primaryPayload).map(normalizeRow);
+    const rolePayload = await loadJson(ROLE_CONTEXT_PATH);
+    const rows = coerceRows(rolePayload).map(normalizeRow);
     state.rows = rows;
-    messages.push(`Loaded primary team-context artifact (${rows.length} rows).`);
-  } catch (error) {
-    messages.push(`Primary team-context artifact unavailable (${error.message}).`);
+    messages.push(`Loaded primary role-context artifact (${rows.length} rows).`);
+  } catch (roleError) {
+    messages.push(`Primary role-context artifact unavailable (${roleError.message}).`);
 
     try {
-      const fallbackPayload = await loadJson(POST_DRAFT_FALLBACK_PATH);
-      const rows = coerceRows(fallbackPayload).map(normalizeRow);
+      const teamPayload = await loadJson(TEAM_CONTEXT_PATH);
+      const rows = coerceRows(teamPayload).map(normalizeRow);
       state.rows = rows;
-      messages.push(`Loaded fallback post-draft artifact (${rows.length} rows). Team-context fields may be sparse.`);
-    } catch (fallbackError) {
-      dom.artifactStatus.textContent = `Failed to load player artifact: ${fallbackError.message}`;
-      dom.summaryTiles.innerHTML = '<p class="meta">Unable to load any post-draft artifact.</p>';
-      dom.tbody.innerHTML = '<tr><td colspan="19" class="meta">No player data available.</td></tr>';
-      return;
+      messages.push(`Loaded fallback team-context artifact (${rows.length} rows). Role fields may be sparse.`);
+    } catch (teamError) {
+      messages.push(`Fallback team-context artifact unavailable (${teamError.message}).`);
+
+      try {
+        const fallbackPayload = await loadJson(POST_DRAFT_FALLBACK_PATH);
+        const rows = coerceRows(fallbackPayload).map(normalizeRow);
+        state.rows = rows;
+        messages.push(`Loaded fallback post-draft artifact (${rows.length} rows). Team/role fields may be sparse.`);
+      } catch (fallbackError) {
+        dom.artifactStatus.textContent = `Failed to load player artifact: ${fallbackError.message}`;
+        dom.summaryTiles.innerHTML = '<p class="meta">Unable to load any post-draft artifact.</p>';
+        dom.tbody.innerHTML = '<tr><td colspan="19" class="meta">No player data available.</td></tr>';
+        return;
+      }
     }
   }
 
