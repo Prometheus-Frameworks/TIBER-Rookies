@@ -1764,15 +1764,25 @@
         "pace_boost_candidate",
         "pass_environment_upside",
         "qb_context_uncertainty",
-        "scheme_transition_variance"
+        "scheme_transition_variance",
+        "kellen_moore_environment_watch",
+        "shough_stability_needs_verification",
+        "target_hierarchy_needs_verification",
+        "heavy_personnel_consolidation_needs_verification",
+        "personnel_usage_needs_verification",
+        "pass_volume_projection_needs_verification"
       ],
       "positive_team_context_tags": [
         "pace_boost_candidate",
-        "pass_environment_upside"
+        "pass_environment_upside",
+        "kellen_moore_environment_watch"
       ],
       "risk_team_context_tags": [
         "qb_context_uncertainty",
-        "scheme_transition_variance"
+        "scheme_transition_variance",
+        "shough_stability_needs_verification",
+        "target_hierarchy_needs_verification",
+        "heavy_personnel_consolidation_needs_verification"
       ],
       "team_context_notes": "team_context_joined:NO",
       "team_context_source_status": "operator_seeded_unknown",
@@ -1789,13 +1799,22 @@
         "pace_boost_candidate",
         "pass_environment_upside",
         "qb_context_uncertainty",
-        "scheme_transition_variance"
+        "scheme_transition_variance",
+        "kellen_moore_environment_watch",
+        "shough_stability_needs_verification",
+        "target_hierarchy_needs_verification",
+        "heavy_personnel_consolidation_needs_verification",
+        "personnel_usage_needs_verification",
+        "pass_volume_projection_needs_verification"
       ],
       "combined_risk_tags": [
         "Initial role can tilt toward rotational responsibilities.",
         "Delayed TE earning curve can hold down early fantasy usability.",
         "qb_context_uncertainty",
-        "scheme_transition_variance"
+        "scheme_transition_variance",
+        "shough_stability_needs_verification",
+        "target_hierarchy_needs_verification",
+        "heavy_personnel_consolidation_needs_verification"
       ]
     },
     {
