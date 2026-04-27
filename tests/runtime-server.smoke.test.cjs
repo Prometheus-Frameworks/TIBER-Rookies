@@ -8,6 +8,19 @@ function buildUrl(port, route) {
   return `http://127.0.0.1:${port}${route}`;
 }
 
+async function readIfExists(filePath) {
+  try {
+    const raw = await fs.readFile(filePath, 'utf8');
+    return { exists: true, raw };
+  } catch (error) {
+    if (error && error.code === 'ENOENT') {
+      return { exists: false, raw: null };
+    }
+
+    throw error;
+  }
+}
+
 test('standalone runtime smoke routes', async (t) => {
   const roleContextPath = path.join(
     __dirname,
@@ -34,9 +47,9 @@ test('standalone runtime smoke routes', async (t) => {
     '2026_rookie_alpha_postdraft_v0.json',
   );
 
-  const [roleContextOriginalRaw, teamContextOriginalRaw, fallbackRaw] = await Promise.all([
-    fs.readFile(roleContextPath, 'utf8'),
-    fs.readFile(teamContextPath, 'utf8'),
+  const [roleContextOriginal, teamContextOriginal, fallbackRaw] = await Promise.all([
+    readIfExists(roleContextPath),
+    readIfExists(teamContextPath),
     fs.readFile(fallbackPath, 'utf8'),
   ]);
   const fallbackPayload = JSON.parse(fallbackRaw);
@@ -65,8 +78,17 @@ test('standalone runtime smoke routes', async (t) => {
   await fs.writeFile(roleContextPath, `${JSON.stringify(syntheticRoleContextPayload)}\n`, 'utf8');
   await fs.writeFile(teamContextPath, `${JSON.stringify(syntheticTeamContextPayload)}\n`, 'utf8');
   t.after(async () => {
-    await fs.writeFile(roleContextPath, roleContextOriginalRaw, 'utf8');
-    await fs.writeFile(teamContextPath, teamContextOriginalRaw, 'utf8');
+    if (roleContextOriginal.exists) {
+      await fs.writeFile(roleContextPath, roleContextOriginal.raw, 'utf8');
+    } else {
+      await fs.rm(roleContextPath, { force: true });
+    }
+
+    if (teamContextOriginal.exists) {
+      await fs.writeFile(teamContextPath, teamContextOriginal.raw, 'utf8');
+    } else {
+      await fs.rm(teamContextPath, { force: true });
+    }
   });
 
   const server = startServer(0);
