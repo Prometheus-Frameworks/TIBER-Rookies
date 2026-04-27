@@ -41,10 +41,46 @@ class BuildOperatorSignalCandidatesTests(unittest.TestCase):
         self.assertIn("round1_qb_experience_risk", ty["risk_tags"])
         self.assertIn("developmental_qb_variance", ty["risk_tags"])
 
-    def test_tanner_koziol_includes_model_edge_tags(self) -> None:
-        tanner = next(c for c in self.candidates if c["player_name"] == "Tanner Koziol")
-        self.assertIn("tiber_edge_plus_18", tanner["context_tags"])
-        self.assertIn("model_edge_confirmed_by_draft_capital", tanner["positive_signal_tags"])
+    def test_tanner_koziol_receiving_move_te_candidate_exists_with_key_tags(self) -> None:
+        tanner = next(
+            c
+            for c in self.candidates
+            if c["source_entry_id"] == "oj_2026_012_tanner_koziol_jaguars"
+            and c.get("candidate_theme") == "receiving_move_te_archetype_correction"
+        )
+        self.assertIn("receiving_te_archetype", tanner["positive_signal_tags"])
+        self.assertIn("move_te_candidate", tanner["positive_signal_tags"])
+        self.assertIn("contested_catch_strength", tanner["positive_signal_tags"])
+        self.assertIn("blocking_risk", tanner["risk_tags"])
+
+    def test_tanner_koziol_red_zone_fit_candidate_exists_with_key_tags(self) -> None:
+        tanner = next(
+            c
+            for c in self.candidates
+            if c["source_entry_id"] == "oj_2026_012_tanner_koziol_jaguars"
+            and c.get("candidate_theme") == "jaguars_red_zone_fit_watch"
+        )
+        self.assertIn("red_zone_play_by_play_needed", tanner["context_tags"])
+        self.assertIn("requires_red_zone_target_verification", tanner["risk_tags"])
+
+    def test_tanner_koziol_low_deep_usage_candidate_exists_with_key_tags(self) -> None:
+        tanner = next(
+            c
+            for c in self.candidates
+            if c["source_entry_id"] == "oj_2026_012_tanner_koziol_jaguars"
+            and c.get("candidate_theme") == "low_deep_usage_te_risk"
+        )
+        self.assertIn("low_deep_usage_risk", tanner["risk_tags"])
+        self.assertIn("historical_deep_usage_threshold_risk", tanner["risk_tags"])
+
+    def test_tanner_koziol_new_candidates_are_operator_journal_needs_review(self) -> None:
+        koziol_candidates = [
+            c for c in self.candidates if c["source_entry_id"] == "oj_2026_012_tanner_koziol_jaguars"
+        ]
+        self.assertEqual(len(koziol_candidates), 3)
+        for candidate in koziol_candidates:
+            self.assertEqual(candidate["source_type"], "operator_journal")
+            self.assertEqual(candidate["review_status"], "needs_human_review")
 
     def test_nick_singleton_includes_missing_data_audit_tags(self) -> None:
         nick = next(c for c in self.candidates if c["player_name"] == "Nick Singleton")
