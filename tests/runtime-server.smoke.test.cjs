@@ -8,7 +8,28 @@ function buildUrl(port, route) {
   return `http://127.0.0.1:${port}${route}`;
 }
 
+async function readIfExists(filePath) {
+  try {
+    const raw = await fs.readFile(filePath, 'utf8');
+    return { exists: true, raw };
+  } catch (error) {
+    if (error && error.code === 'ENOENT') {
+      return { exists: false, raw: null };
+    }
+
+    throw error;
+  }
+}
+
 test('standalone runtime smoke routes', async (t) => {
+  const roleContextPath = path.join(
+    __dirname,
+    '..',
+    'exports',
+    'promoted',
+    'rookie-alpha',
+    '2026_rookie_alpha_postdraft_role_context_v0.json',
+  );
   const teamContextPath = path.join(
     __dirname,
     '..',
@@ -26,8 +47,24 @@ test('standalone runtime smoke routes', async (t) => {
     '2026_rookie_alpha_postdraft_v0.json',
   );
 
-  const fallbackRaw = await fs.readFile(fallbackPath, 'utf8');
+  const [roleContextOriginal, teamContextOriginal, fallbackRaw] = await Promise.all([
+    readIfExists(roleContextPath),
+    readIfExists(teamContextPath),
+    fs.readFile(fallbackPath, 'utf8'),
+  ]);
   const fallbackPayload = JSON.parse(fallbackRaw);
+  const syntheticRoleContextPayload = {
+    rows: [
+      {
+        player_name: '__SMOKE_ROLE_CONTEXT__',
+        post_draft_alpha: 0,
+        team_context_found: true,
+        role_team_profile_found: true,
+        role_baseline_found: true,
+        role_opportunity_found: true,
+      },
+    ],
+  };
   const syntheticTeamContextPayload = {
     rows: [
       {
@@ -38,9 +75,20 @@ test('standalone runtime smoke routes', async (t) => {
     ],
   };
 
+  await fs.writeFile(roleContextPath, `${JSON.stringify(syntheticRoleContextPayload)}\n`, 'utf8');
   await fs.writeFile(teamContextPath, `${JSON.stringify(syntheticTeamContextPayload)}\n`, 'utf8');
   t.after(async () => {
-    await fs.rm(teamContextPath, { force: true });
+    if (roleContextOriginal.exists) {
+      await fs.writeFile(roleContextPath, roleContextOriginal.raw, 'utf8');
+    } else {
+      await fs.rm(roleContextPath, { force: true });
+    }
+
+    if (teamContextOriginal.exists) {
+      await fs.writeFile(teamContextPath, teamContextOriginal.raw, 'utf8');
+    } else {
+      await fs.rm(teamContextPath, { force: true });
+    }
   });
 
   const server = startServer(0);
@@ -99,6 +147,14 @@ test('standalone runtime smoke routes', async (t) => {
   assert.equal(workbenchCss.status, 200);
   assert.match(workbenchCss.headers.get('content-type') || '', /text\/css/);
 
+  const primaryRoleContext = await fetch(
+    buildUrl(port, '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_role_context_v0.json'),
+  );
+  assert.equal(primaryRoleContext.status, 200);
+  assert.match(primaryRoleContext.headers.get('content-type') || '', /application\/json/);
+  const primaryRolePayload = await primaryRoleContext.json();
+  assert.deepEqual(primaryRolePayload, syntheticRoleContextPayload);
+
   const primaryTeamContext = await fetch(
     buildUrl(port, '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_team_context_v0.json'),
   );
@@ -107,7 +163,25 @@ test('standalone runtime smoke routes', async (t) => {
   const primaryPayload = await primaryTeamContext.json();
   assert.deepEqual(primaryPayload, syntheticTeamContextPayload);
 
+  await fs.rm(roleContextPath, { force: true });
+
+  const roleContextFallbackToTeam = await fetch(
+    buildUrl(port, '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_role_context_v0.json'),
+  );
+  assert.equal(roleContextFallbackToTeam.status, 200);
+  assert.match(roleContextFallbackToTeam.headers.get('content-type') || '', /application\/json/);
+  const roleToTeamPayload = await roleContextFallbackToTeam.json();
+  assert.deepEqual(roleToTeamPayload, syntheticTeamContextPayload);
+
   await fs.rm(teamContextPath, { force: true });
+
+  const roleContextFallbackToPostDraft = await fetch(
+    buildUrl(port, '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_role_context_v0.json'),
+  );
+  assert.equal(roleContextFallbackToPostDraft.status, 200);
+  assert.match(roleContextFallbackToPostDraft.headers.get('content-type') || '', /application\/json/);
+  const roleToPostDraftPayload = await roleContextFallbackToPostDraft.json();
+  assert.deepEqual(roleToPostDraftPayload, fallbackPayload);
 
   const primaryTeamContextFallback = await fetch(
     buildUrl(port, '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_team_context_v0.json'),
