@@ -226,6 +226,28 @@ def load_role_baselines(path: Path) -> dict[str, dict[str, Any]]:
     return baselines
 
 
+def ensure_required_role_artifacts(
+    team_role_profiles_path: Path,
+    role_baselines_path: Path,
+    *,
+    allow_missing_role_artifacts: bool,
+) -> None:
+    if allow_missing_role_artifacts:
+        return
+
+    missing_paths = [path for path in (team_role_profiles_path, role_baselines_path) if not path.exists()]
+    if not missing_paths:
+        return
+
+    missing_paths_formatted = ", ".join(str(path) for path in missing_paths)
+    raise FileNotFoundError(
+        "Missing required role artifact(s): "
+        f"{missing_paths_formatted}. "
+        "Suggested fix: git clone https://github.com/Prometheus-Frameworks/Role-and-opportunity-model.git "
+        "or rerun with --allow-missing-role-artifacts for explicit partial builds."
+    )
+
+
 def enrich_rows(
     postdraft_rows: list[dict[str, Any]],
     team_role_profiles_by_team: dict[str, list[dict[str, Any]]],
@@ -373,6 +395,11 @@ def parse_args() -> argparse.Namespace:
         type=Path,
         default=Path("exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_role_context_v0.csv"),
     )
+    parser.add_argument(
+        "--allow-missing-role-artifacts",
+        action="store_true",
+        help="Allow fallback empty role context when role artifacts are missing.",
+    )
     return parser.parse_args()
 
 
@@ -380,6 +407,11 @@ def main() -> None:
     args = parse_args()
     postdraft_payload = json.loads(args.postdraft_path.read_text(encoding="utf-8"))
     rows = postdraft_payload.get("rows", []) if isinstance(postdraft_payload, dict) else []
+    ensure_required_role_artifacts(
+        args.team_role_profiles_path,
+        args.role_baselines_path,
+        allow_missing_role_artifacts=args.allow_missing_role_artifacts,
+    )
     team_profiles = load_team_role_profiles(args.team_role_profiles_path)
     baselines = load_role_baselines(args.role_baselines_path)
 
