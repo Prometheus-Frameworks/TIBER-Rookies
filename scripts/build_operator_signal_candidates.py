@@ -571,6 +571,117 @@ def build_candidates_for_entry(entry: dict[str, Any]) -> list[dict[str, Any]]:
         )
         return [vertical_role_watch, profile_completeness_audit]
 
+    if entry_id == "oj_2026_013_jordyn_tyson_saints":
+        kellen_moore_environment = _base_candidate(entry, "kellen_moore_premium_wr_environment", "player")
+        kellen_moore_environment.update(
+            {
+                "player_name": "Jordyn Tyson",
+                "team": "Saints",
+                "position": "WR",
+                "candidate_theme": "kellen_moore_premium_wr_environment",
+                "claim_summary": (
+                    "Jordyn Tyson’s Saints landing spot may deserve a premium environment tag because "
+                    "Kellen Moore’s offense projects as pass-aggressive, scheme-flexible, and capable "
+                    "of supporting multiple productive WRs."
+                ),
+                "positive_signal_tags": [
+                    "kellen_moore_environment",
+                    "premium_wr_capital",
+                    "pass_volume_projection_watch",
+                    "scheme_flexibility_signal",
+                    "multiple_wr_production_environment",
+                    "target_consolidation_path",
+                    "high_value_route_environment",
+                ],
+                "risk_tags": [
+                    "offense_projection_uncertainty",
+                    "rookie_wr_ramp_risk",
+                    "scheme_assumption_needs_verification",
+                    "saints_2026_environment_variance",
+                ],
+                "context_tags": [
+                    "pick_8_overall",
+                    "saints_landing_spot",
+                    "kellen_moore_pass_game_watch",
+                    "non_generic_landing_spot_context",
+                ],
+                "model_impact": "upgrade_landing_context_review_priority_without_auto_adjusting_alpha",
+                "downstream_repos": ["TIBER-Rookies", "Role-and-Opportunity", "TIBER-Teamstate"],
+                "confidence": "medium",
+            }
+        )
+
+        olave_hierarchy_challenge = _base_candidate(entry, "olave_hierarchy_challenge_wr1_path", "player")
+        olave_hierarchy_challenge.update(
+            {
+                "player_name": "Jordyn Tyson",
+                "team": "Saints",
+                "position": "WR",
+                "candidate_theme": "olave_hierarchy_challenge_wr1_path",
+                "claim_summary": (
+                    "Tyson has a plausible long-term WR1 outcome path if his premium draft capital and "
+                    "talent allow him to challenge Chris Olave in a thin Saints WR room."
+                ),
+                "positive_signal_tags": [
+                    "wr1_outcome_path",
+                    "olave_hierarchy_challenge",
+                    "thin_wr_room_behind_olave",
+                    "target_share_consolidation_watch",
+                    "premium_rookie_role_path",
+                ],
+                "risk_tags": [
+                    "olave_target_hierarchy",
+                    "rookie_target_share_uncertainty",
+                    "year1_role_uncertainty",
+                    "bold_take_requires_verification",
+                ],
+                "context_tags": [
+                    "olave_tyson_two_wr_consolidation_watch",
+                    "saints_wr_room_watch",
+                    "operator_bullish_thesis",
+                ],
+                "model_impact": "track_as_high_upside_hierarchy_challenge_not_base_projection",
+                "downstream_repos": ["TIBER-Rookies", "Role-and-Opportunity"],
+                "confidence": "medium",
+            }
+        )
+
+        shough_fit_watch = _base_candidate(entry, "shough_tyson_qb_fit_watch", "player")
+        shough_fit_watch.update(
+            {
+                "player_name": "Jordyn Tyson",
+                "team": "Saints",
+                "position": "WR",
+                "candidate_theme": "shough_tyson_qb_fit_watch",
+                "claim_summary": (
+                    "The operator is above consensus on Tyler Shough and views Shough’s "
+                    "accuracy/intermediate profile as a potential positive fit for Tyson, but the QB "
+                    "stability assumption needs verification before promotion."
+                ),
+                "positive_signal_tags": [
+                    "operator_above_consensus_qb_take",
+                    "shough_accuracy_fit_watch",
+                    "intermediate_passing_fit",
+                    "moore_qb_development_environment",
+                ],
+                "risk_tags": [
+                    "qb_stability_needs_verification",
+                    "shough_market_disagreement",
+                    "small_sample_qb_projection_risk",
+                    "td_rate_growth_needed",
+                ],
+                "context_tags": [
+                    "tyler_shough_fit_watch",
+                    "saints_qb_context_watch",
+                    "qb_wr_pairing_hypothesis",
+                ],
+                "model_impact": "flag_qb_environment_as_operator_watch_not_confirmed_context",
+                "downstream_repos": ["TIBER-Rookies", "TIBER-Teamstate"],
+                "confidence": "medium",
+            }
+        )
+        return [kellen_moore_environment, olave_hierarchy_challenge, shough_fit_watch]
+
     return []
 
 

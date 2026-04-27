@@ -136,6 +136,45 @@ class BuildOperatorSignalCandidatesTests(unittest.TestCase):
             self.assertEqual(candidate["source_type"], "operator_journal")
             self.assertEqual(candidate["review_status"], "needs_human_review")
 
+    def test_jordyn_tyson_kellen_moore_environment_candidate_exists(self) -> None:
+        tyson = next(
+            c
+            for c in self.candidates
+            if c["source_entry_id"] == "oj_2026_013_jordyn_tyson_saints"
+            and c.get("candidate_theme") == "kellen_moore_premium_wr_environment"
+        )
+        self.assertIn("kellen_moore_environment", tyson["positive_signal_tags"])
+        self.assertIn("premium_wr_capital", tyson["positive_signal_tags"])
+        self.assertIn("pass_volume_projection_watch", tyson["positive_signal_tags"])
+
+    def test_jordyn_tyson_olave_hierarchy_challenge_candidate_exists(self) -> None:
+        tyson = next(
+            c
+            for c in self.candidates
+            if c["source_entry_id"] == "oj_2026_013_jordyn_tyson_saints"
+            and c.get("candidate_theme") == "olave_hierarchy_challenge_wr1_path"
+        )
+        self.assertIn("wr1_outcome_path", tyson["positive_signal_tags"])
+        self.assertIn("olave_hierarchy_challenge", tyson["positive_signal_tags"])
+        self.assertIn("olave_target_hierarchy", tyson["risk_tags"])
+
+    def test_jordyn_tyson_shough_fit_candidate_exists(self) -> None:
+        tyson = next(
+            c
+            for c in self.candidates
+            if c["source_entry_id"] == "oj_2026_013_jordyn_tyson_saints"
+            and c.get("candidate_theme") == "shough_tyson_qb_fit_watch"
+        )
+        self.assertIn("operator_above_consensus_qb_take", tyson["positive_signal_tags"])
+        self.assertIn("qb_stability_needs_verification", tyson["risk_tags"])
+
+    def test_jordyn_tyson_candidates_are_operator_journal_needs_review(self) -> None:
+        tyson_candidates = [c for c in self.candidates if c["source_entry_id"] == "oj_2026_013_jordyn_tyson_saints"]
+        self.assertEqual(len(tyson_candidates), 3)
+        for candidate in tyson_candidates:
+            self.assertEqual(candidate["source_type"], "operator_journal")
+            self.assertEqual(candidate["review_status"], "needs_human_review")
+
     def test_all_candidates_are_operator_journal_source(self) -> None:
         for candidate in self.candidates:
             self.assertEqual(candidate["source_type"], "operator_journal")
