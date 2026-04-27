@@ -79,6 +79,22 @@ class BuildPostDraftAlphaTests(unittest.TestCase):
         )
         self.assertTrue(any("delayed_start" in reason for reason in ty["delta_reason_codes"]))
 
+    def test_jordyn_tyson_maps_to_saints(self) -> None:
+        tyson = next(row for row in self.rows if row["player_name"] == "Jordyn Tyson")
+        self.assertEqual(tyson["team"], "Saints")
+        self.assertEqual(tyson["draft_round"], 1)
+        self.assertEqual(tyson["draft_pick"], 8)
+        self.assertEqual(tyson["source_status"], "operator_seeded")
+        self.assertTrue(
+            all("Unknown finalized team context" not in risk for risk in tyson["remaining_risks"])
+        )
+
+    def test_jordyn_tyson_alpha_fields_remain_unchanged(self) -> None:
+        tyson = next(row for row in self.rows if row["player_name"] == "Jordyn Tyson")
+        self.assertEqual(tyson["pre_draft_alpha"], 67.7)
+        self.assertEqual(tyson["post_draft_alpha"], 74.4)
+        self.assertEqual(tyson["post_draft_delta"], 6.7)
+
     def test_delayed_te_translation_watch_limits_bump(self) -> None:
         delayed_tes = [
             row
