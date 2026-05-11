@@ -36,7 +36,16 @@
     "context_flags": [],
     "evidence_summary": "Back-to-back 1,500+ yard seasons at UNC. ACC premier back with excellent YPC and pass-catching role.",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 95.8,
+        "context": "95.8th percentile SPORQ (2025 class, RB). Historic outlier \u2014 top-5% athleticism historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "historic",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-quinshon-judkins",
@@ -56,7 +65,16 @@
     "context_flags": [],
     "evidence_summary": "First impact season at Ole Miss age 19 (1,567 rush yds). Transferred to Ohio State; combined CFP title run adds SEC+B1G bona fides.",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 90.6,
+        "context": "90.6th percentile SPORQ (2025 class, RB). Elite athletic profile \u2014 top-15% historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "elite",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-trevon-henderson",
@@ -76,7 +94,16 @@
     ],
     "evidence_summary": "Elite breakout at 19 (1,248 rush yds, B1G freshman). Injuries in 2022-2023 limited ceiling; injury risk a persistent context flag.",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 79.6,
+        "context": "79.6th percentile SPORQ (2025 class, RB). Above-average athleticism \u2014 top-30% historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "above_average",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-kaleb-johnson",
@@ -95,7 +122,16 @@
     "context_flags": [],
     "evidence_summary": "Led B1G in rushing 2024 (1,537 yds, 21 TDs). Scheme-adjusted production strong despite Iowa's conservative offense.",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 59.9,
+        "context": "59.9th percentile SPORQ (2025 class, RB). Average athletic profile historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "average",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-cam-skattebo",
@@ -1130,7 +1166,16 @@
     ],
     "evidence_summary": "2024: 1,577 rush yds, 22 rush TDs, 267 rec yds (25 total TDs) \u2014 led Big 12, set UCF career TD record (48). Elite volume scorer with big-play ability; 4.40 speed at 205 lbs.",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 92.8,
+        "context": "92.8th percentile SPORQ (2025 class, RB). Elite athletic profile \u2014 top-15% historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "elite",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-bhayshul-tuten",
@@ -1155,7 +1200,16 @@
     ],
     "evidence_summary": "2024: 1,159 rush yds, 15 TDs on 183 carries at VT. Elite combine athlete with fastest RB 40 (4.32) and highest vertical (40.5\"); FCS background at NC A&T tempers projection.",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 99.6,
+        "context": "99.6th percentile SPORQ (2025 class, RB). Historic outlier \u2014 top-5% athleticism historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "historic",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-trevor-etienne",
@@ -1179,7 +1233,16 @@
     ],
     "evidence_summary": "2024: 609 rush yds, 9 TDs, 32 rec/194 yds in split backfield at Georgia. SEC Championship hero; young profile (born 2004) with pass-catching upside.",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 76.7,
+        "context": "76.7th percentile SPORQ (2025 class, RB). Above-average athleticism \u2014 top-30% historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "above_average",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-woody-marks",
@@ -1203,7 +1266,16 @@
     ],
     "evidence_summary": "2024: 1,133 rush yds, 9 TDs, 47 rec/321 yds at USC \u2014 first Trojans 1,000-yard rusher since 2017. Elite 3-cone (4.24) and complete dual-threat profile.",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 41.4,
+        "context": "41.4th percentile SPORQ (2025 class, RB). Below-average athleticism historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "below_average",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-dylan-sampson",
@@ -1250,7 +1322,16 @@
     ],
     "evidence_summary": "2024: 1,267 rush yds, 15 TDs, 26 rec/209 yds \u2014 2nd-team All-Big Ten as a sophomore on CFP-bound Oregon team. Young profile (born 2004).",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 24.0,
+        "context": "24.0th percentile SPORQ (2025 class, RB). Below-average athleticism historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "below_average",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-jaydon-blue",
@@ -1276,7 +1357,16 @@
     ],
     "evidence_summary": "2024: 730 rush yds, 8 rush TDs plus 368 rec yds, 6 rec TDs in RBBC at Texas \u2014 elite 4.38 speed with 14 combined TDs.",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 66.0,
+        "context": "66.0th percentile SPORQ (2025 class, RB). Average athletic profile historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "average",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-dj-giddens",
@@ -1300,7 +1390,16 @@
     ],
     "evidence_summary": "2024: 1,343 rush yds, 7 TDs, 21 rec/258 yds \u2014 All-Big 12 2nd team; career 6.0 YPC across 3,087 yds. Rare size-speed combo (6-0, 4.43).",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 94.4,
+        "context": "94.4th percentile SPORQ (2025 class, RB). Elite athletic profile \u2014 top-15% historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "elite",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-ollie-gordon-ii",
@@ -1323,7 +1422,16 @@
     ],
     "evidence_summary": "2024: 880 rush yds, 13 TDs \u2014 down year after Doak Walker 2023 (1,656 yds, 20 TDs). Physical 226-lb north-south runner with 36 career TDs.",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 47.2,
+        "context": "47.2th percentile SPORQ (2025 class, RB). Below-average athleticism historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "below_average",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-devin-neal",
@@ -1346,7 +1454,16 @@
     ],
     "evidence_summary": "2024: 1,266 rush yds, 16 TDs, 24 rec/254 yds \u2014 first Jayhawk with three straight 1,000-yard seasons; KU all-time leader in rush yds (4,343) and TDs (53).",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 47.5,
+        "context": "47.5th percentile SPORQ (2025 class, RB). Below-average athleticism historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "below_average",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-tahj-brooks",
@@ -1370,7 +1487,16 @@
     ],
     "evidence_summary": "2024: 1,505 rush yds, 18 TDs, 28 rec \u2014 Texas Tech all-time leading rusher (4,557 yds); two straight 1,500-yard seasons; elite agility (4.06 3-cone).",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 71.1,
+        "context": "71.1th percentile SPORQ (2025 class, RB). Above-average athleticism \u2014 top-30% historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "above_average",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-damien-martinez",
@@ -1392,7 +1518,16 @@
     ],
     "evidence_summary": "2024: 1,002 rush yds, 10 TDs at Miami \u2014 first Hurricanes 1,000-yard rusher since 2016. Transfer from Oregon State with 3-year track record (2,167 yds at OSU).",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 75.3,
+        "context": "75.3th percentile SPORQ (2025 class, RB). Above-average athleticism \u2014 top-30% historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "above_average",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-kalel-mullings",
@@ -1440,7 +1575,16 @@
     ],
     "evidence_summary": "2024: 1,332 rush yds, 39 rec/327 yds, 18 TDs at SMU \u2014 SMU single-season all-purpose record (1,977 yds); former Miami WR with 108 career receptions and 4.39 speed.",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 38.8,
+        "context": "38.8th percentile SPORQ (2025 class, RB). Below-average athleticism historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "below_average",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-kyle-monangai",
@@ -1462,7 +1606,16 @@
     ],
     "evidence_summary": "2024: 1,279 rush yds, 13 TDs \u2014 1st-team All-Big Ten; back-to-back 1,000-yard seasons (2nd in Rutgers history behind Ray Rice).",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 24.9,
+        "context": "24.9th percentile SPORQ (2025 class, RB). Below-average athleticism historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "below_average",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-lequint-allen",

@@ -19,7 +19,16 @@
     "context_flags": [],
     "evidence_summary": "Pick #8 to Atlanta. Texas RB \u2014 703 rush yds as true freshman (age 18-19 in 2020). 1580 rush/18 TDs + receiving in 2022 at age 21. Elite RAS (9.56 official). Primary 2023 RB calibration anchor \u2014 the model should score him very high.",
     "context_source": "manual_historical_seed_2023",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 84.1,
+        "context": "84.1th percentile SPORQ (2023 class, RB). Above-average athleticism \u2014 top-30% historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "above_average",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-jahmyr-gibbs",
@@ -41,7 +50,16 @@
     "context_flags": [],
     "evidence_summary": "Pick #12 to Detroit. Alabama RB (transferred from Georgia Tech). 926 rush + 444 rec at Alabama 2022; dual-threat elite. 4.36 forty at 199lb \u2014 elite athleticism profile. Young breakout at GT (1000+ yds age 19). Pro Bowl 2024.",
     "context_source": "manual_historical_seed_2023",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 86.7,
+        "context": "86.7th percentile SPORQ (2023 class, RB). Elite athletic profile \u2014 top-15% historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "elite",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "wr-jaxon-smith-njigba",

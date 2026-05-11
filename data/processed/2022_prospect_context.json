@@ -134,6 +134,15 @@
     ],
     "evidence_summary": "Pick #36 to Jets (R2). Iowa State RB \u2014 1472 rush/348 rec/20 TDs in 2021; true freshman impact (980 yds age 18). Dual-threat profile, elite athleticism (4.39/40.5\" vert). Torn ACL October 2022 NFL rookie season. Talent-over-capital calibration anchor: R2 capital, elite talent, injured in-season year 1.",
     "context_source": "manual_historical_seed_2022",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 98.7,
+        "context": "98.7th percentile SPORQ (2022 class, RB). Historic outlier \u2014 top-5% athleticism historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "historic",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   }
 ]

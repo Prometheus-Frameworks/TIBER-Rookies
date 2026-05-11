@@ -98,7 +98,7 @@
       "inside_out_versatility"
     ],
     "context_flags": [],
-    "evidence_summary": "1,640 rec yds and 13 TDs at Washington in 2023. Pac-12 elite with 6'3\" frame and elite hands. BOA 21 is only knock vs Nabers. RAS 43.3 below threshold — craft signal (contested catch, inside-out) justifies market-conviction override.",
+    "evidence_summary": "1,640 rec yds and 13 TDs at Washington in 2023. Pac-12 elite with 6'3\" frame and elite hands. BOA 21 is only knock vs Nabers. RAS 43.3 below threshold \u2014 craft signal (contested catch, inside-out) justifies market-conviction override.",
     "context_source": "manual_historical_seed",
     "exceptional_metrics": []
   },
@@ -145,7 +145,7 @@
       {
         "metric": "forty",
         "value": 4.21,
-        "context": "4.21s 40-yard dash — all-time NFL combine record (2024). Historic speed outlier; unprecedented at any weight class.",
+        "context": "4.21s 40-yard dash \u2014 all-time NFL combine record (2024). Historic speed outlier; unprecedented at any weight class.",
         "percentile_tier": "historic",
         "alpha_bonus_eligible": true,
         "source": "context"
@@ -171,7 +171,7 @@
     "context_flags": [
       "size_concern"
     ],
-    "evidence_summary": "Senior from Georgia; 841 rec yds in 2023. Limited by elite WR room but exceptional YAC ability and route running for his size (5'11\"/186). 2nd round pick to LAC. Pro Bowl rookie year — model's primary McConkey-pattern miss; market saw craft profile the RAS (36.9) couldn't.",
+    "evidence_summary": "Senior from Georgia; 841 rec yds in 2023. Limited by elite WR room but exceptional YAC ability and route running for his size (5'11\"/186). 2nd round pick to LAC. Pro Bowl rookie year \u2014 model's primary McConkey-pattern miss; market saw craft profile the RAS (36.9) couldn't.",
     "context_source": "manual_historical_seed",
     "exceptional_metrics": []
   },
@@ -236,7 +236,16 @@
     ],
     "evidence_summary": "Senior from Michigan; 1,240 rush yds in 2023 CFP run. Compact (5'8\"/210) but elite contact balance and vision. Multiple injury seasons before breakout.",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 57.9,
+        "context": "57.9th percentile SPORQ (2024 class, RB). Average athletic profile historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "average",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-trey-benson",
@@ -255,7 +264,16 @@
     "context_flags": [],
     "evidence_summary": "1,401 rush yds at FSU in 2023 (ACC). Physical 6'0\"/216lb RB with excellent speed for size. 3rd round pick to Arizona.",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 88.1,
+        "context": "88.1th percentile SPORQ (2024 class, RB). Elite athletic profile \u2014 top-15% historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "elite",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-marshawn-lloyd",
@@ -276,7 +294,16 @@
     ],
     "evidence_summary": "Transfer from South Carolina to USC; finally healthy in 2023 (969 rush yds). 4.38 speed at 191lb but BOA 22 is a concern for NFL alpha trajectory.",
     "context_source": "manual_historical_seed",
-    "exceptional_metrics": []
+    "exceptional_metrics": [
+      {
+        "metric": "sporq_percentile",
+        "value": 86.3,
+        "context": "86.3th percentile SPORQ (2024 class, RB). Elite athletic profile \u2014 top-15% historically at RB. Auto-enriched from sporq_historical.json; historically-comparable position-aware composite.",
+        "percentile_tier": "elite",
+        "alpha_bonus_eligible": false,
+        "source": "sporq_historical"
+      }
+    ]
   },
   {
     "player_id": "rb-braelon-allen",
