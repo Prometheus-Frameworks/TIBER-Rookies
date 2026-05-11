@@ -36,23 +36,6 @@
       ],
       "source_profile": "round1",
       "source_status": "operator_seeded",
-      "team_context_found": false,
-      "team_context_tags": [],
-      "positive_team_context_tags": [],
-      "risk_team_context_tags": [],
-      "team_context_notes": "team_unknown_or_tbd_no_teamstate_context",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "TBD",
-      "combined_context_tags": [
-        "top5_skill_capital",
-        "rare_rb_premium_capital",
-        "elite_opportunity_insulation",
-        "immediate_workload_signal"
-      ],
-      "combined_risk_tags": [
-        "Operator-provided pick/team facts still need canonical draft_results reconciliation.",
-        "Top-5 RB outcomes remain sensitive to offensive line and coaching continuity."
-      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -107,46 +90,7 @@
       ],
       "source_profile": "round1",
       "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "concentrated_wr_investment",
-        "rookie_wr_priority_signal",
-        "browns_offensive_volatility",
-        "target_competition_between_rookies",
-        "qb_environment_uncertainty"
-      ],
-      "positive_team_context_tags": [
-        "concentrated_wr_investment",
-        "rookie_wr_priority_signal"
-      ],
-      "risk_team_context_tags": [
-        "browns_offensive_volatility",
-        "target_competition_between_rookies",
-        "qb_environment_uncertainty"
-      ],
-      "team_context_notes": "team_context_joined:CLE",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "CLE",
-      "combined_context_tags": [
-        "round1_market_confirmation",
-        "model_wr1_validation",
-        "elite_separator_signal",
-        "yac_return_value_profile",
-        "landing_spot_volatility",
-        "concentrated_wr_investment",
-        "rookie_wr_priority_signal",
-        "browns_offensive_volatility",
-        "target_competition_between_rookies",
-        "qb_environment_uncertainty"
-      ],
-      "combined_risk_tags": [
-        "Landing-spot offensive volatility can disrupt early consistency.",
-        "Team-level context assumptions should be rechecked once canonical artifacts are locked.",
-        "browns_offensive_volatility",
-        "target_competition_between_rookies",
-        "qb_environment_uncertainty"
-      ],
-      "role_team_profile_found": true,
+      "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
       "candidate_roles": [],
@@ -154,26 +98,18 @@
       "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "no_heuristic_role_match:CLE",
+      "role_context_notes": "team_role_profile_not_found:CLE",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
         "round1_market_confirmation",
         "model_wr1_validation",
         "elite_separator_signal",
         "yac_return_value_profile",
-        "landing_spot_volatility",
-        "concentrated_wr_investment",
-        "rookie_wr_priority_signal",
-        "browns_offensive_volatility",
-        "target_competition_between_rookies",
-        "qb_environment_uncertainty"
+        "landing_spot_volatility"
       ],
       "combined_risk_tags_with_role": [
         "Landing-spot offensive volatility can disrupt early consistency.",
-        "Team-level context assumptions should be rechecked once canonical artifacts are locked.",
-        "browns_offensive_volatility",
-        "target_competition_between_rookies",
-        "qb_environment_uncertainty"
+        "Team-level context assumptions should be rechecked once canonical artifacts are locked."
       ]
     },
     {
@@ -207,37 +143,7 @@
       ],
       "source_profile": "round1",
       "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "high_efficiency_environment",
-        "depth_chart_volume_cap",
-        "target_concentration_ahead"
-      ],
-      "positive_team_context_tags": [
-        "high_efficiency_environment"
-      ],
-      "risk_team_context_tags": [
-        "depth_chart_volume_cap",
-        "target_concentration_ahead"
-      ],
-      "team_context_notes": "team_context_joined:PHI",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "PHI",
-      "combined_context_tags": [
-        "round1_wr_capital",
-        "trade_up_conviction",
-        "depth_chart_volume_cap",
-        "high_efficiency_environment",
-        "delayed_volume_path",
-        "target_concentration_ahead"
-      ],
-      "combined_risk_tags": [
-        "Short-term target share ceiling behind A.J. Brown and DeVonta Smith.",
-        "Year 1 volume may lag even in a high-efficiency offense.",
-        "depth_chart_volume_cap",
-        "target_concentration_ahead"
-      ],
-      "role_team_profile_found": true,
+      "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
       "candidate_roles": [],
@@ -245,21 +151,18 @@
       "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "no_heuristic_role_match:PHI",
+      "role_context_notes": "team_role_profile_not_found:PHI",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
         "round1_wr_capital",
         "trade_up_conviction",
         "depth_chart_volume_cap",
         "high_efficiency_environment",
-        "delayed_volume_path",
-        "target_concentration_ahead"
+        "delayed_volume_path"
       ],
       "combined_risk_tags_with_role": [
         "Short-term target share ceiling behind A.J. Brown and DeVonta Smith.",
-        "Year 1 volume may lag even in a high-efficiency offense.",
-        "depth_chart_volume_cap",
-        "target_concentration_ahead"
+        "Year 1 volume may lag even in a high-efficiency offense."
       ]
     },
     {
@@ -294,121 +197,17 @@
       ],
       "source_profile": "round1",
       "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "wr1_depth_chart_path",
-        "backfield_opportunity_watch",
-        "young_qb_development_dependency",
-        "offense_environment_uncertainty"
-      ],
-      "positive_team_context_tags": [
-        "wr1_depth_chart_path",
-        "backfield_opportunity_watch"
-      ],
-      "risk_team_context_tags": [
-        "young_qb_development_dependency",
-        "offense_environment_uncertainty"
-      ],
-      "team_context_notes": "team_context_joined:TEN",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "TEN",
-      "combined_context_tags": [
-        "top5_skill_capital",
-        "premium_wr_investment",
-        "elite_opportunity_insulation",
-        "class_inflation_adjustment_candidate",
-        "market_conviction_not_equal_talent_certainty",
-        "wr1_depth_chart_path",
-        "backfield_opportunity_watch",
-        "young_qb_development_dependency",
-        "offense_environment_uncertainty"
-      ],
-      "combined_risk_tags": [
-        "Class-level draft capital inflation could overstate pure talent certainty relative to historical baselines.",
-        "Environment assumptions should remain provisional until canonical draft/team artifacts are finalized.",
-        "young_qb_development_dependency",
-        "offense_environment_uncertainty"
-      ],
-      "role_team_profile_found": true,
-      "role_baseline_found": true,
-      "role_opportunity_found": true,
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
       "candidate_roles": [
         "WR1"
       ],
-      "matched_role_profiles": [
-        {
-          "role": "WR1",
-          "role_family": "wide_receiver",
-          "role_description": "Primary perimeter WR role with lead target access.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "alpha_target_share_path",
-            "high_value_route_tree",
-            "wr1_depth_chart_path"
-          ],
-          "risk_role_tags": [
-            "coverage_attention_risk",
-            "qb_efficiency_dependency"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "matched_role_baselines": [
-        {
-          "role": "WR1",
-          "role_family": "wide_receiver",
-          "role_description": "Primary perimeter WR role with top target share and first-read usage.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 2
-          },
-          "expected_target_range": {
-            "low": 7,
-            "high": 12
-          },
-          "expected_route_participation_range": {
-            "low": 75,
-            "high": 95
-          },
-          "expected_red_zone_usage": "high",
-          "expected_ppr_ppg_range": {
-            "low": 14,
-            "high": 23
-          },
-          "volatility": "medium",
-          "positive_role_tags": [
-            "alpha_target_share",
-            "high_weekly_ceiling"
-          ],
-          "risk_role_tags": [
-            "coverage_attention",
-            "qb_dependency"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "role_opportunity_joined:TEN:WR1",
+      "role_context_notes": "team_role_profile_not_found:TEN",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
         "top5_skill_capital",
@@ -416,16 +215,11 @@
         "elite_opportunity_insulation",
         "class_inflation_adjustment_candidate",
         "market_conviction_not_equal_talent_certainty",
-        "wr1_depth_chart_path",
-        "backfield_opportunity_watch",
-        "young_qb_development_dependency",
-        "offense_environment_uncertainty"
+        "wr1_depth_chart_path"
       ],
       "combined_risk_tags_with_role": [
         "Class-level draft capital inflation could overstate pure talent certainty relative to historical baselines.",
-        "Environment assumptions should remain provisional until canonical draft/team artifacts are finalized.",
-        "young_qb_development_dependency",
-        "offense_environment_uncertainty"
+        "Environment assumptions should remain provisional until canonical draft/team artifacts are finalized."
       ]
     },
     {
@@ -441,7 +235,7 @@
       ],
       "draft_round": 1,
       "draft_pick": 8,
-      "team": "TBD",
+      "team": "Saints",
       "talent_confirmation_signal": "strong",
       "opportunity_insulation_signal": "strong",
       "short_term_fantasy_runway": "strong",
@@ -451,27 +245,11 @@
         "strong_role_insulation"
       ],
       "remaining_risks": [
-        "Unknown finalized team context may alter immediate target competition.",
+        "Target hierarchy and Year 1 volume remain sensitive to Saints deployment and QB stability.",
         "Operator-provided draft facts still need canonical reconciliation."
       ],
       "source_profile": "round1",
       "source_status": "operator_seeded",
-      "team_context_found": false,
-      "team_context_tags": [],
-      "positive_team_context_tags": [],
-      "risk_team_context_tags": [],
-      "team_context_notes": "team_unknown_or_tbd_no_teamstate_context",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "TBD",
-      "combined_context_tags": [
-        "top10_skill_capital",
-        "premium_wr_investment",
-        "strong_role_insulation"
-      ],
-      "combined_risk_tags": [
-        "Unknown finalized team context may alter immediate target competition.",
-        "Operator-provided draft facts still need canonical reconciliation."
-      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -480,7 +258,7 @@
       "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "team_unknown_or_tbd_for_role_profile_lookup",
+      "role_context_notes": "team_role_profile_not_found:NO",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
         "top10_skill_capital",
@@ -488,7 +266,7 @@
         "strong_role_insulation"
       ],
       "combined_risk_tags_with_role": [
-        "Unknown finalized team context may alter immediate target competition.",
+        "Target hierarchy and Year 1 volume remain sensitive to Saints deployment and QB stability.",
         "Operator-provided draft facts still need canonical reconciliation."
       ]
     },
@@ -532,167 +310,18 @@
       ],
       "source_profile": "day2",
       "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "concentrated_wr_investment",
-        "rookie_wr_priority_signal",
-        "browns_offensive_volatility",
-        "target_competition_between_rookies",
-        "qb_environment_uncertainty"
-      ],
-      "positive_team_context_tags": [
-        "concentrated_wr_investment",
-        "rookie_wr_priority_signal"
-      ],
-      "risk_team_context_tags": [
-        "browns_offensive_volatility",
-        "target_competition_between_rookies",
-        "qb_environment_uncertainty"
-      ],
-      "team_context_notes": "team_context_joined:CLE",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "CLE",
-      "combined_context_tags": [
-        "day2_capital",
-        "round2_capital",
-        "early_day2_capital",
-        "round2_skill_capital",
-        "round2_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_moderate",
-        "browns_double_wr_investment",
-        "kcc_target_competition_signal",
-        "concentrated_wr_investment",
-        "rookie_wr_priority_signal",
-        "browns_offensive_volatility",
-        "target_competition_between_rookies",
-        "qb_environment_uncertainty"
-      ],
-      "combined_risk_tags": [
-        "Browns target competition and deployment context can materially shift early fantasy runway.",
-        "Role sequencing may vary if multiple pass-catcher investments compress Year 1 volume.",
-        "browns_offensive_volatility",
-        "target_competition_between_rookies",
-        "qb_environment_uncertainty"
-      ],
-      "role_team_profile_found": true,
-      "role_baseline_found": true,
-      "role_opportunity_found": true,
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
       "candidate_roles": [
         "WR2",
         "WR3"
       ],
-      "matched_role_profiles": [
-        {
-          "role": "WR2",
-          "role_family": "wide_receiver",
-          "role_description": "Secondary starting WR role in projected pass environment.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "starter_route_participation",
-            "intermediate_target_path"
-          ],
-          "risk_role_tags": [
-            "target_competition_risk",
-            "week_to_week_usage_variance"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "matched_role_baselines": [
-        {
-          "role": "WR2",
-          "role_family": "wide_receiver",
-          "role_description": "Secondary starting WR role in projected pass environment.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 2
-          },
-          "expected_target_range": {
-            "low": 5,
-            "high": 9
-          },
-          "expected_route_participation_range": {
-            "low": 70,
-            "high": 92
-          },
-          "expected_red_zone_usage": "medium",
-          "expected_ppr_ppg_range": {
-            "low": 9,
-            "high": 16
-          },
-          "volatility": "medium_high",
-          "positive_role_tags": [
-            "starter_route_share",
-            "spike_week_potential"
-          ],
-          "risk_role_tags": [
-            "target_competition",
-            "game_plan_variance"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "WR3",
-          "role_family": "wide_receiver",
-          "role_description": "Tertiary WR role with situational starter value in 11 personnel.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 3,
-            "high": 7
-          },
-          "expected_route_participation_range": {
-            "low": 55,
-            "high": 85
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 6,
-            "high": 12
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "three_wr_set_access",
-            "injury_bump_path"
-          ],
-          "risk_role_tags": [
-            "weekly_floor_instability",
-            "package_dependency"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "role_opportunity_joined:CLE:WR2|WR3",
+      "role_context_notes": "team_role_profile_not_found:CLE",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
         "day2_capital",
@@ -706,19 +335,11 @@
         "role_path_review",
         "opportunity_insulation_moderate",
         "browns_double_wr_investment",
-        "kcc_target_competition_signal",
-        "concentrated_wr_investment",
-        "rookie_wr_priority_signal",
-        "browns_offensive_volatility",
-        "target_competition_between_rookies",
-        "qb_environment_uncertainty"
+        "kcc_target_competition_signal"
       ],
       "combined_risk_tags_with_role": [
         "Browns target competition and deployment context can materially shift early fantasy runway.",
-        "Role sequencing may vary if multiple pass-catcher investments compress Year 1 volume.",
-        "browns_offensive_volatility",
-        "target_competition_between_rookies",
-        "qb_environment_uncertainty"
+        "Role sequencing may vary if multiple pass-catcher investments compress Year 1 volume."
       ]
     },
     {
@@ -749,66 +370,14 @@
       ],
       "source_profile": "round1",
       "source_status": "operator_seeded",
-      "team_context_found": false,
-      "team_context_tags": [],
-      "positive_team_context_tags": [],
-      "risk_team_context_tags": [],
-      "team_context_notes": "team_unknown_or_tbd_no_teamstate_context",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "TBD",
-      "combined_context_tags": [
-        "round1_te_capital",
-        "premium_te_insulation",
-        "role_translation_watch"
-      ],
-      "combined_risk_tags": [
-        "TE usage translation can lag despite high draft investment.",
-        "Year 1 route share and red-zone role remain uncertain without canonical team deployment data."
-      ],
       "role_team_profile_found": false,
-      "role_baseline_found": true,
+      "role_baseline_found": false,
       "role_opportunity_found": false,
       "candidate_roles": [
         "TE1"
       ],
       "matched_role_profiles": [],
-      "matched_role_baselines": [
-        {
-          "role": "TE1",
-          "role_family": "tight_end",
-          "role_description": "Primary all-situations TE role with stable routes and red-zone access.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 4,
-            "high": 8
-          },
-          "expected_route_participation_range": {
-            "low": 60,
-            "high": 85
-          },
-          "expected_red_zone_usage": "medium_high",
-          "expected_ppr_ppg_range": {
-            "low": 8,
-            "high": 15
-          },
-          "volatility": "medium",
-          "positive_role_tags": [
-            "positional_advantage_path",
-            "end_zone_usage"
-          ],
-          "risk_role_tags": [
-            "blocking_assignment_shifts",
-            "target_competition"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
+      "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
       "role_context_notes": "team_unknown_or_tbd_for_role_profile_lookup",
@@ -861,144 +430,6 @@
       ],
       "source_profile": "day2",
       "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "organizational_development_path",
-        "qb_room_uncertainty",
-        "steelers_wr_room_watch",
-        "delayed_start_path"
-      ],
-      "positive_team_context_tags": [
-        "organizational_development_path"
-      ],
-      "risk_team_context_tags": [
-        "qb_room_uncertainty",
-        "steelers_wr_room_watch",
-        "delayed_start_path"
-      ],
-      "team_context_notes": "team_context_joined:PIT",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "PIT",
-      "combined_context_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_qb_capital",
-        "developmental_qb_capital",
-        "delayed_start_path",
-        "qb_room_context_required",
-        "steelers_qb_room_watch",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "organizational_development_path",
-        "qb_room_uncertainty",
-        "steelers_wr_room_watch"
-      ],
-      "combined_risk_tags": [
-        "Delayed start trajectory may suppress early fantasy utility.",
-        "Steelers QB-room structure could constrain immediate role access.",
-        "qb_room_uncertainty",
-        "steelers_wr_room_watch",
-        "delayed_start_path"
-      ],
-      "role_team_profile_found": true,
-      "role_baseline_found": false,
-      "role_opportunity_found": false,
-      "candidate_roles": [],
-      "matched_role_profiles": [],
-      "matched_role_baselines": [],
-      "role_context_tags": [],
-      "role_risk_tags": [],
-      "role_context_notes": "no_heuristic_role_match:PIT",
-      "role_context_source_status": "operator_seeded",
-      "combined_context_tags_with_role": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_qb_capital",
-        "developmental_qb_capital",
-        "delayed_start_path",
-        "qb_room_context_required",
-        "steelers_qb_room_watch",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "organizational_development_path",
-        "qb_room_uncertainty",
-        "steelers_wr_room_watch"
-      ],
-      "combined_risk_tags_with_role": [
-        "Delayed start trajectory may suppress early fantasy utility.",
-        "Steelers QB-room structure could constrain immediate role access.",
-        "qb_room_uncertainty",
-        "steelers_wr_room_watch",
-        "delayed_start_path"
-      ]
-    },
-    {
-      "player_id": "wr-omar-cooper-jr",
-      "player_name": "Omar Cooper Jr.",
-      "position": "WR",
-      "pre_draft_alpha": 61.3,
-      "post_draft_alpha": 68.4,
-      "post_draft_delta": 7.1,
-      "delta_reason_codes": [
-        "talent_confirmation:late_round1_wr_capital",
-        "talent_confirmation:fifth_year_option_signal",
-        "talent_confirmation:trade_up_conviction",
-        "opportunity_insulation:signal_bonus"
-      ],
-      "draft_round": 1,
-      "draft_pick": 30,
-      "team": "Jets",
-      "talent_confirmation_signal": "strong",
-      "opportunity_insulation_signal": "strong",
-      "short_term_fantasy_runway": "strong",
-      "translator_tags": [
-        "late_round1_wr_capital",
-        "fifth_year_option_signal",
-        "trade_up_conviction",
-        "role_path_review"
-      ],
-      "remaining_risks": [
-        "Role pathway still requires depth-chart and deployment confirmation.",
-        "Late Round 1 hits have wider outcome bands than top-half selections."
-      ],
-      "source_profile": "round1",
-      "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "early_round_skill_investment",
-        "volume_rebound_path",
-        "offensive_stability_watch",
-        "target_competition_cluster"
-      ],
-      "positive_team_context_tags": [
-        "early_round_skill_investment",
-        "volume_rebound_path"
-      ],
-      "risk_team_context_tags": [
-        "offensive_stability_watch",
-        "target_competition_cluster"
-      ],
-      "team_context_notes": "team_context_joined:NYJ",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "NYJ",
-      "combined_context_tags": [
-        "late_round1_wr_capital",
-        "fifth_year_option_signal",
-        "trade_up_conviction",
-        "role_path_review",
-        "early_round_skill_investment",
-        "volume_rebound_path",
-        "offensive_stability_watch",
-        "target_competition_cluster"
-      ],
-      "combined_risk_tags": [
-        "Role pathway still requires depth-chart and deployment confirmation.",
-        "Late Round 1 hits have wider outcome bands than top-half selections.",
-        "offensive_stability_watch",
-        "target_competition_cluster"
-      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -1007,23 +438,23 @@
       "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "team_role_profile_not_found:NYJ",
+      "role_context_notes": "team_role_profile_not_found:PIT",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
-        "late_round1_wr_capital",
-        "fifth_year_option_signal",
-        "trade_up_conviction",
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_qb_capital",
+        "developmental_qb_capital",
+        "delayed_start_path",
+        "qb_room_context_required",
+        "steelers_qb_room_watch",
         "role_path_review",
-        "early_round_skill_investment",
-        "volume_rebound_path",
-        "offensive_stability_watch",
-        "target_competition_cluster"
+        "opportunity_insulation_limited"
       ],
       "combined_risk_tags_with_role": [
-        "Role pathway still requires depth-chart and deployment confirmation.",
-        "Late Round 1 hits have wider outcome bands than top-half selections.",
-        "offensive_stability_watch",
-        "target_competition_cluster"
+        "Delayed start trajectory may suppress early fantasy utility.",
+        "Steelers QB-room structure could constrain immediate role access."
       ]
     },
     {
@@ -1064,362 +495,7 @@
       ],
       "source_profile": "day2",
       "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "high_efficiency_environment",
-        "depth_chart_volume_cap",
-        "target_concentration_ahead"
-      ],
-      "positive_team_context_tags": [
-        "high_efficiency_environment"
-      ],
-      "risk_team_context_tags": [
-        "depth_chart_volume_cap",
-        "target_concentration_ahead"
-      ],
-      "team_context_notes": "team_context_joined:PHI",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "PHI",
-      "combined_context_tags": [
-        "day2_capital",
-        "round2_capital",
-        "round2_skill_capital",
-        "round2_te_capital",
-        "day2_te_cluster",
-        "te_market_push",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_moderate",
-        "high_efficiency_environment",
-        "depth_chart_volume_cap",
-        "target_concentration_ahead"
-      ],
-      "combined_risk_tags": [
-        "Tight end transition often produces slower Year 1 fantasy translation.",
-        "Role definition inside the Eagles pass game can suppress immediate target share.",
-        "depth_chart_volume_cap",
-        "target_concentration_ahead"
-      ],
-      "role_team_profile_found": true,
-      "role_baseline_found": false,
-      "role_opportunity_found": false,
-      "candidate_roles": [],
-      "matched_role_profiles": [],
-      "matched_role_baselines": [],
-      "role_context_tags": [],
-      "role_risk_tags": [],
-      "role_context_notes": "no_heuristic_role_match:PHI",
-      "role_context_source_status": "operator_seeded",
-      "combined_context_tags_with_role": [
-        "day2_capital",
-        "round2_capital",
-        "round2_skill_capital",
-        "round2_te_capital",
-        "day2_te_cluster",
-        "te_market_push",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_moderate",
-        "high_efficiency_environment",
-        "depth_chart_volume_cap",
-        "target_concentration_ahead"
-      ],
-      "combined_risk_tags_with_role": [
-        "Tight end transition often produces slower Year 1 fantasy translation.",
-        "Role definition inside the Eagles pass game can suppress immediate target share.",
-        "depth_chart_volume_cap",
-        "target_concentration_ahead"
-      ]
-    },
-    {
-      "player_id": "wr-zachariah-branch",
-      "player_name": "Zachariah Branch",
-      "position": "WR",
-      "pre_draft_alpha": 65.0,
-      "post_draft_alpha": 64.2,
-      "post_draft_delta": -0.8,
-      "delta_reason_codes": [
-        "talent_confirmation:round3_skill_capital",
-        "opportunity_insulation:signal_bonus",
-        "risk:target_room_competition_watch",
-        "risk:year1_volume_uncertainty"
-      ],
-      "draft_round": 3,
-      "draft_pick": 79,
-      "team": "Falcons",
-      "talent_confirmation_signal": "strong",
-      "opportunity_insulation_signal": "limited",
-      "short_term_fantasy_runway": "strong",
-      "translator_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_limited"
-      ],
-      "remaining_risks": [
-        "Usage may be specialized early, creating volatile week-to-week fantasy reliability.",
-        "Round 3 insulation can erode quickly if role translation stalls."
-      ],
-      "source_profile": "day2",
-      "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "play_action_efficiency_environment",
-        "red_zone_opportunity_watch",
-        "volume_balance_risk",
-        "target_concentration_ahead"
-      ],
-      "positive_team_context_tags": [
-        "play_action_efficiency_environment",
-        "red_zone_opportunity_watch"
-      ],
-      "risk_team_context_tags": [
-        "volume_balance_risk",
-        "target_concentration_ahead"
-      ],
-      "team_context_notes": "team_context_joined:ATL",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "ATL",
-      "combined_context_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "play_action_efficiency_environment",
-        "red_zone_opportunity_watch",
-        "volume_balance_risk",
-        "target_concentration_ahead"
-      ],
-      "combined_risk_tags": [
-        "Usage may be specialized early, creating volatile week-to-week fantasy reliability.",
-        "Round 3 insulation can erode quickly if role translation stalls.",
-        "volume_balance_risk",
-        "target_concentration_ahead"
-      ],
       "role_team_profile_found": false,
-      "role_baseline_found": true,
-      "role_opportunity_found": false,
-      "candidate_roles": [
-        "WR2",
-        "WR3",
-        "rotational_wr"
-      ],
-      "matched_role_profiles": [],
-      "matched_role_baselines": [
-        {
-          "role": "WR2",
-          "role_family": "wide_receiver",
-          "role_description": "Secondary starting WR role in projected pass environment.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 2
-          },
-          "expected_target_range": {
-            "low": 5,
-            "high": 9
-          },
-          "expected_route_participation_range": {
-            "low": 70,
-            "high": 92
-          },
-          "expected_red_zone_usage": "medium",
-          "expected_ppr_ppg_range": {
-            "low": 9,
-            "high": 16
-          },
-          "volatility": "medium_high",
-          "positive_role_tags": [
-            "starter_route_share",
-            "spike_week_potential"
-          ],
-          "risk_role_tags": [
-            "target_competition",
-            "game_plan_variance"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "WR3",
-          "role_family": "wide_receiver",
-          "role_description": "Tertiary WR role with situational starter value in 11 personnel.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 3,
-            "high": 7
-          },
-          "expected_route_participation_range": {
-            "low": 55,
-            "high": 85
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 6,
-            "high": 12
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "three_wr_set_access",
-            "injury_bump_path"
-          ],
-          "risk_role_tags": [
-            "weekly_floor_instability",
-            "package_dependency"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "rotational_wr",
-          "role_family": "wide_receiver",
-          "role_description": "Rotational WR role with package-based routes and inconsistent volume.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 1,
-            "high": 5
-          },
-          "expected_route_participation_range": {
-            "low": 25,
-            "high": 60
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 2,
-            "high": 9
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "specialized_usage",
-            "injury_upside_path"
-          ],
-          "risk_role_tags": [
-            "low_weekly_floor",
-            "snap_share_instability"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "role_context_tags": [],
-      "role_risk_tags": [],
-      "role_context_notes": "team_role_profile_not_found:ATL",
-      "role_context_source_status": "operator_seeded",
-      "combined_context_tags_with_role": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "play_action_efficiency_environment",
-        "red_zone_opportunity_watch",
-        "volume_balance_risk",
-        "target_concentration_ahead"
-      ],
-      "combined_risk_tags_with_role": [
-        "Usage may be specialized early, creating volatile week-to-week fantasy reliability.",
-        "Round 3 insulation can erode quickly if role translation stalls.",
-        "volume_balance_risk",
-        "target_concentration_ahead"
-      ]
-    },
-    {
-      "player_id": "te-sam-roush",
-      "player_name": "Sam Roush",
-      "position": "TE",
-      "pre_draft_alpha": 58.9,
-      "post_draft_alpha": 60.0,
-      "post_draft_delta": 1.1,
-      "delta_reason_codes": [
-        "talent_confirmation:round3_skill_capital",
-        "opportunity_insulation:signal_bonus",
-        "risk:delayed_te_translation_watch"
-      ],
-      "draft_round": 3,
-      "draft_pick": 69,
-      "team": "Bears",
-      "talent_confirmation_signal": "mixed",
-      "opportunity_insulation_signal": "limited",
-      "short_term_fantasy_runway": "delayed",
-      "translator_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_te_capital",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_limited"
-      ],
-      "remaining_risks": [
-        "Early deployment may be rotational with modest target depth.",
-        "TE translation variance can delay reliable fantasy returns."
-      ],
-      "source_profile": "day2",
-      "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "young_qb_growth_environment",
-        "target_hierarchy_uncertainty",
-        "role_competition_risk"
-      ],
-      "positive_team_context_tags": [
-        "young_qb_growth_environment"
-      ],
-      "risk_team_context_tags": [
-        "target_hierarchy_uncertainty",
-        "role_competition_risk"
-      ],
-      "team_context_notes": "team_context_joined:CHI",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "CHI",
-      "combined_context_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_te_capital",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "young_qb_growth_environment",
-        "target_hierarchy_uncertainty",
-        "role_competition_risk"
-      ],
-      "combined_risk_tags": [
-        "Early deployment may be rotational with modest target depth.",
-        "TE translation variance can delay reliable fantasy returns.",
-        "target_hierarchy_uncertainty",
-        "role_competition_risk"
-      ],
-      "role_team_profile_found": true,
       "role_baseline_found": false,
       "role_opportunity_found": false,
       "candidate_roles": [],
@@ -1427,242 +503,23 @@
       "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "no_heuristic_role_match:CHI",
+      "role_context_notes": "team_role_profile_not_found:PHI",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
         "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_te_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_te_capital",
+        "day2_te_cluster",
+        "te_market_push",
         "delayed_te_translation_watch",
         "role_translation_watch",
         "role_path_review",
-        "opportunity_insulation_limited",
-        "young_qb_growth_environment",
-        "target_hierarchy_uncertainty",
-        "role_competition_risk"
+        "opportunity_insulation_moderate"
       ],
       "combined_risk_tags_with_role": [
-        "Early deployment may be rotational with modest target depth.",
-        "TE translation variance can delay reliable fantasy returns.",
-        "target_hierarchy_uncertainty",
-        "role_competition_risk"
-      ]
-    },
-    {
-      "player_id": "wr-germie-bernard",
-      "player_name": "Germie Bernard",
-      "position": "WR",
-      "pre_draft_alpha": 55.5,
-      "post_draft_alpha": 57.1,
-      "post_draft_delta": 1.6,
-      "delta_reason_codes": [
-        "talent_confirmation:round2_skill_capital",
-        "opportunity_insulation:signal_bonus",
-        "risk:target_room_competition_watch",
-        "risk:year1_volume_uncertainty"
-      ],
-      "draft_round": 2,
-      "draft_pick": 47,
-      "team": "Steelers",
-      "talent_confirmation_signal": "moderate",
-      "opportunity_insulation_signal": "moderate",
-      "short_term_fantasy_runway": "strong",
-      "translator_tags": [
-        "day2_capital",
-        "round2_capital",
-        "round2_skill_capital",
-        "round2_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_moderate",
-        "steelers_wr_room_watch"
-      ],
-      "remaining_risks": [
-        "Steelers WR depth and role assignment can delay stable weekly volume.",
-        "Day 2 capital confirms opportunity but does not eliminate Year 1 usage volatility."
-      ],
-      "source_profile": "day2",
-      "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "organizational_development_path",
-        "qb_room_uncertainty",
-        "steelers_wr_room_watch",
-        "delayed_start_path"
-      ],
-      "positive_team_context_tags": [
-        "organizational_development_path"
-      ],
-      "risk_team_context_tags": [
-        "qb_room_uncertainty",
-        "steelers_wr_room_watch",
-        "delayed_start_path"
-      ],
-      "team_context_notes": "team_context_joined:PIT",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "PIT",
-      "combined_context_tags": [
-        "day2_capital",
-        "round2_capital",
-        "round2_skill_capital",
-        "round2_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_moderate",
-        "steelers_wr_room_watch",
-        "organizational_development_path",
-        "qb_room_uncertainty",
-        "delayed_start_path"
-      ],
-      "combined_risk_tags": [
-        "Steelers WR depth and role assignment can delay stable weekly volume.",
-        "Day 2 capital confirms opportunity but does not eliminate Year 1 usage volatility.",
-        "qb_room_uncertainty",
-        "steelers_wr_room_watch",
-        "delayed_start_path"
-      ],
-      "role_team_profile_found": true,
-      "role_baseline_found": true,
-      "role_opportunity_found": true,
-      "candidate_roles": [
-        "WR2",
-        "WR3"
-      ],
-      "matched_role_profiles": [
-        {
-          "role": "WR2",
-          "role_family": "wide_receiver",
-          "role_description": "Secondary starting WR role in projected pass environment.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "starter_route_participation",
-            "intermediate_target_path"
-          ],
-          "risk_role_tags": [
-            "target_competition_risk",
-            "week_to_week_usage_variance"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "matched_role_baselines": [
-        {
-          "role": "WR2",
-          "role_family": "wide_receiver",
-          "role_description": "Secondary starting WR role in projected pass environment.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 2
-          },
-          "expected_target_range": {
-            "low": 5,
-            "high": 9
-          },
-          "expected_route_participation_range": {
-            "low": 70,
-            "high": 92
-          },
-          "expected_red_zone_usage": "medium",
-          "expected_ppr_ppg_range": {
-            "low": 9,
-            "high": 16
-          },
-          "volatility": "medium_high",
-          "positive_role_tags": [
-            "starter_route_share",
-            "spike_week_potential"
-          ],
-          "risk_role_tags": [
-            "target_competition",
-            "game_plan_variance"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "WR3",
-          "role_family": "wide_receiver",
-          "role_description": "Tertiary WR role with situational starter value in 11 personnel.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 3,
-            "high": 7
-          },
-          "expected_route_participation_range": {
-            "low": 55,
-            "high": 85
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 6,
-            "high": 12
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "three_wr_set_access",
-            "injury_bump_path"
-          ],
-          "risk_role_tags": [
-            "weekly_floor_instability",
-            "package_dependency"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "role_context_tags": [],
-      "role_risk_tags": [],
-      "role_context_notes": "role_opportunity_joined:PIT:WR2|WR3",
-      "role_context_source_status": "operator_seeded",
-      "combined_context_tags_with_role": [
-        "day2_capital",
-        "round2_capital",
-        "round2_skill_capital",
-        "round2_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_moderate",
-        "steelers_wr_room_watch",
-        "organizational_development_path",
-        "qb_room_uncertainty",
-        "delayed_start_path"
-      ],
-      "combined_risk_tags_with_role": [
-        "Steelers WR depth and role assignment can delay stable weekly volume.",
-        "Day 2 capital confirms opportunity but does not eliminate Year 1 usage volatility.",
-        "qb_room_uncertainty",
-        "steelers_wr_room_watch",
-        "delayed_start_path"
+        "Tight end transition often produces slower Year 1 fantasy translation.",
+        "Role definition inside the Eagles pass game can suppress immediate target share."
       ]
     },
     {
@@ -1697,143 +554,26 @@
       ],
       "source_profile": "round1",
       "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "mcvay_developmental_environment",
-        "efficient_passing_environment",
-        "heavy_personnel_role_watch",
-        "veteran_depth_chart_block",
-        "delayed_start_path",
-        "role_specific_usage_dependency"
-      ],
-      "positive_team_context_tags": [
-        "mcvay_developmental_environment",
-        "efficient_passing_environment",
-        "heavy_personnel_role_watch"
-      ],
-      "risk_team_context_tags": [
-        "veteran_depth_chart_block",
-        "delayed_start_path",
-        "role_specific_usage_dependency"
-      ],
-      "team_context_notes": "team_context_joined:LAR",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "LAR",
-      "combined_context_tags": [
-        "round1_qb_capital",
-        "elite_developmental_environment",
-        "delayed_start_insulation",
-        "mcvay_developmental_environment",
-        "efficient_passing_environment",
-        "heavy_personnel_role_watch",
-        "veteran_depth_chart_block",
-        "delayed_start_path",
-        "role_specific_usage_dependency"
-      ],
-      "combined_risk_tags": [
-        "Delayed initial starting path may suppress early fantasy utility.",
-        "Developmental outcomes remain sensitive to eventual deployment timing.",
-        "veteran_depth_chart_block",
-        "delayed_start_path",
-        "role_specific_usage_dependency"
-      ],
-      "role_team_profile_found": true,
-      "role_baseline_found": true,
-      "role_opportunity_found": true,
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
       "candidate_roles": [
         "QB_developmental"
       ],
-      "matched_role_profiles": [
-        {
-          "role": "QB_developmental",
-          "role_family": "quarterback",
-          "role_description": "Developmental QB role with uncertain near-term starts.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "development_runway_upside",
-            "organizational_investment_signal"
-          ],
-          "risk_role_tags": [
-            "uncertain_start_timing",
-            "early_season_volume_risk"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "matched_role_baselines": [
-        {
-          "role": "QB_developmental",
-          "role_family": "quarterback",
-          "role_description": "Developmental QB path that may start later and mix with package usage.",
-          "expected_touch_range": {
-            "low": null,
-            "high": null
-          },
-          "expected_target_range": {
-            "low": null,
-            "high": null
-          },
-          "expected_route_participation_range": {
-            "low": null,
-            "high": null
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 6,
-            "high": 17
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "organizational_investment",
-            "late_season_upside"
-          ],
-          "risk_role_tags": [
-            "uncertain_start_timing",
-            "limited_early_volume"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "role_opportunity_joined:LAR:QB_developmental",
+      "role_context_notes": "team_role_profile_not_found:LAR",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
         "round1_qb_capital",
         "elite_developmental_environment",
-        "delayed_start_insulation",
-        "mcvay_developmental_environment",
-        "efficient_passing_environment",
-        "heavy_personnel_role_watch",
-        "veteran_depth_chart_block",
-        "delayed_start_path",
-        "role_specific_usage_dependency"
+        "delayed_start_insulation"
       ],
       "combined_risk_tags_with_role": [
         "Delayed initial starting path may suppress early fantasy utility.",
-        "Developmental outcomes remain sensitive to eventual deployment timing.",
-        "veteran_depth_chart_block",
-        "delayed_start_path",
-        "role_specific_usage_dependency"
+        "Developmental outcomes remain sensitive to eventual deployment timing."
       ]
     },
     {
@@ -1866,198 +606,29 @@
       ],
       "source_profile": "round1",
       "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "round1_rb_commitment",
-        "shared_backfield_context",
-        "workload_projection_risk"
-      ],
-      "positive_team_context_tags": [
-        "round1_rb_commitment"
-      ],
-      "risk_team_context_tags": [
-        "shared_backfield_context",
-        "workload_projection_risk"
-      ],
-      "team_context_notes": "team_context_joined:SEA",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "SEA",
-      "combined_context_tags": [
-        "round1_rb_capital",
-        "low_tread_efficiency_profile",
-        "shared_backfield_context_override",
-        "workload_projection_risk",
-        "opportunity_insulation_strong",
-        "round1_rb_commitment",
-        "shared_backfield_context"
-      ],
-      "combined_risk_tags": [
-        "Never exceeded 125 college touches in a season, increasing workload projection uncertainty.",
-        "Shared backfield dynamics could reduce immediate volume capture.",
-        "shared_backfield_context",
-        "workload_projection_risk"
-      ],
-      "role_team_profile_found": true,
-      "role_baseline_found": true,
-      "role_opportunity_found": true,
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
       "candidate_roles": [
         "RB1",
         "RB2_change_of_pace"
       ],
-      "matched_role_profiles": [
-        {
-          "role": "RB1",
-          "role_family": "running_back",
-          "role_description": "Primary early-down and high-value touch RB role.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "lead_back_touch_floor",
-            "red_zone_carry_path"
-          ],
-          "risk_role_tags": [
-            "game_script_sensitivity",
-            "efficiency_dependency"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "RB2_change_of_pace",
-          "role_family": "running_back",
-          "role_description": "Change-of-pace RB role with efficiency-driven production swings.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "change_of_pace_explosive_path",
-            "contingent_volume_upside"
-          ],
-          "risk_role_tags": [
-            "touch_count_volatility",
-            "weekly_floor_instability"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "matched_role_baselines": [
-        {
-          "role": "RB1",
-          "role_family": "running_back",
-          "role_description": "Primary early-down and high-value touch RB role.",
-          "expected_touch_range": {
-            "low": 14,
-            "high": 22
-          },
-          "expected_target_range": {
-            "low": 1,
-            "high": 5
-          },
-          "expected_route_participation_range": {
-            "low": 25,
-            "high": 55
-          },
-          "expected_red_zone_usage": "medium_high",
-          "expected_ppr_ppg_range": {
-            "low": 10,
-            "high": 18
-          },
-          "volatility": "medium",
-          "positive_role_tags": [
-            "high_touch_ceiling",
-            "red_zone_access"
-          ],
-          "risk_role_tags": [
-            "game_script_sensitivity",
-            "offensive_line_dependency"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "RB2_change_of_pace",
-          "role_family": "running_back",
-          "role_description": "Secondary change-of-pace RB role with explosive but inconsistent touch volume.",
-          "expected_touch_range": {
-            "low": 6,
-            "high": 12
-          },
-          "expected_target_range": {
-            "low": 1,
-            "high": 4
-          },
-          "expected_route_participation_range": {
-            "low": 20,
-            "high": 45
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 5,
-            "high": 11
-          },
-          "volatility": "medium_high",
-          "positive_role_tags": [
-            "efficiency_spike_potential",
-            "contingent_upside"
-          ],
-          "risk_role_tags": [
-            "workload_fragility",
-            "td_dependency"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "role_opportunity_joined:SEA:RB1|RB2_change_of_pace",
+      "role_context_notes": "team_role_profile_not_found:SEA",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
         "round1_rb_capital",
         "low_tread_efficiency_profile",
         "shared_backfield_context_override",
         "workload_projection_risk",
-        "opportunity_insulation_strong",
-        "round1_rb_commitment",
-        "shared_backfield_context"
+        "opportunity_insulation_strong"
       ],
       "combined_risk_tags_with_role": [
         "Never exceeded 125 college touches in a season, increasing workload projection uncertainty.",
-        "Shared backfield dynamics could reduce immediate volume capture.",
-        "shared_backfield_context",
-        "workload_projection_risk"
+        "Shared backfield dynamics could reduce immediate volume capture."
       ]
     },
     {
@@ -2097,873 +668,8 @@
       ],
       "source_profile": "day2",
       "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "speed_space_environment",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
-      "positive_team_context_tags": [
-        "speed_space_environment"
-      ],
-      "risk_team_context_tags": [
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
-      "team_context_notes": "team_context_joined:MIA",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "MIA",
-      "combined_context_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "dolphins_multi_pass_catcher_investment",
-        "speed_space_environment",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
-      "combined_risk_tags": [
-        "Multiple Day 2 Dolphins pass-catcher additions can constrain Year 1 target share.",
-        "Role clarity may take time to settle across a crowded pass-catching room.",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
-      "role_team_profile_found": true,
-      "role_baseline_found": true,
-      "role_opportunity_found": true,
-      "candidate_roles": [
-        "WR2",
-        "WR3",
-        "rotational_wr"
-      ],
-      "matched_role_profiles": [
-        {
-          "role": "WR3",
-          "role_family": "wide_receiver",
-          "role_description": "Tertiary WR role tied to 11-personnel and game-script volume.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "three_wr_set_access",
-            "injury_elevation_path"
-          ],
-          "risk_role_tags": [
-            "package_dependency",
-            "low_weekly_floor"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "rotational_wr",
-          "role_family": "wide_receiver",
-          "role_description": "Rotational WR role with package-specific route participation.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "specialized_package_usage",
-            "depth_chart_climb_path"
-          ],
-          "risk_role_tags": [
-            "snap_share_instability",
-            "target_floor_risk"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "matched_role_baselines": [
-        {
-          "role": "WR2",
-          "role_family": "wide_receiver",
-          "role_description": "Secondary starting WR role in projected pass environment.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 2
-          },
-          "expected_target_range": {
-            "low": 5,
-            "high": 9
-          },
-          "expected_route_participation_range": {
-            "low": 70,
-            "high": 92
-          },
-          "expected_red_zone_usage": "medium",
-          "expected_ppr_ppg_range": {
-            "low": 9,
-            "high": 16
-          },
-          "volatility": "medium_high",
-          "positive_role_tags": [
-            "starter_route_share",
-            "spike_week_potential"
-          ],
-          "risk_role_tags": [
-            "target_competition",
-            "game_plan_variance"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "WR3",
-          "role_family": "wide_receiver",
-          "role_description": "Tertiary WR role with situational starter value in 11 personnel.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 3,
-            "high": 7
-          },
-          "expected_route_participation_range": {
-            "low": 55,
-            "high": 85
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 6,
-            "high": 12
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "three_wr_set_access",
-            "injury_bump_path"
-          ],
-          "risk_role_tags": [
-            "weekly_floor_instability",
-            "package_dependency"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "rotational_wr",
-          "role_family": "wide_receiver",
-          "role_description": "Rotational WR role with package-based routes and inconsistent volume.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 1,
-            "high": 5
-          },
-          "expected_route_participation_range": {
-            "low": 25,
-            "high": 60
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 2,
-            "high": 9
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "specialized_usage",
-            "injury_upside_path"
-          ],
-          "risk_role_tags": [
-            "low_weekly_floor",
-            "snap_share_instability"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "role_context_tags": [],
-      "role_risk_tags": [],
-      "role_context_notes": "role_opportunity_joined:MIA:WR2|WR3|rotational_wr",
-      "role_context_source_status": "operator_seeded",
-      "combined_context_tags_with_role": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "dolphins_multi_pass_catcher_investment",
-        "speed_space_environment",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
-      "combined_risk_tags_with_role": [
-        "Multiple Day 2 Dolphins pass-catcher additions can constrain Year 1 target share.",
-        "Role clarity may take time to settle across a crowded pass-catching room.",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ]
-    },
-    {
-      "player_id": "wr-antonio-williams",
-      "player_name": "Antonio Williams",
-      "position": "WR",
-      "pre_draft_alpha": 56.8,
-      "post_draft_alpha": 55.5,
-      "post_draft_delta": -1.3,
-      "delta_reason_codes": [
-        "talent_confirmation:round3_skill_capital",
-        "opportunity_insulation:signal_bonus",
-        "risk:target_room_competition_watch",
-        "risk:year1_volume_uncertainty"
-      ],
-      "draft_round": 3,
-      "draft_pick": 71,
-      "team": "Commanders",
-      "talent_confirmation_signal": "moderate",
-      "opportunity_insulation_signal": "limited",
-      "short_term_fantasy_runway": "strong",
-      "translator_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_limited"
-      ],
-      "remaining_risks": [
-        "Target hierarchy outcomes can compress early route and volume certainty.",
-        "Round 3 capital creates more replacement risk than Round 2/1 outcomes."
-      ],
-      "source_profile": "day2",
-      "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "jayden_daniels_environment",
-        "high_upside_offense",
-        "available_target_opportunity",
-        "role_projection_uncertainty"
-      ],
-      "positive_team_context_tags": [
-        "jayden_daniels_environment",
-        "high_upside_offense",
-        "available_target_opportunity"
-      ],
-      "risk_team_context_tags": [
-        "role_projection_uncertainty"
-      ],
-      "team_context_notes": "team_context_joined:WAS",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "WAS",
-      "combined_context_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "jayden_daniels_environment",
-        "high_upside_offense",
-        "available_target_opportunity",
-        "role_projection_uncertainty"
-      ],
-      "combined_risk_tags": [
-        "Target hierarchy outcomes can compress early route and volume certainty.",
-        "Round 3 capital creates more replacement risk than Round 2/1 outcomes.",
-        "role_projection_uncertainty"
-      ],
-      "role_team_profile_found": true,
-      "role_baseline_found": true,
-      "role_opportunity_found": true,
-      "candidate_roles": [
-        "WR2",
-        "WR3",
-        "rotational_wr"
-      ],
-      "matched_role_profiles": [
-        {
-          "role": "WR2",
-          "role_family": "wide_receiver",
-          "role_description": "Secondary starting WR role in projected pass environment.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "starter_route_participation",
-            "intermediate_target_path"
-          ],
-          "risk_role_tags": [
-            "target_competition_risk",
-            "week_to_week_usage_variance"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "matched_role_baselines": [
-        {
-          "role": "WR2",
-          "role_family": "wide_receiver",
-          "role_description": "Secondary starting WR role in projected pass environment.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 2
-          },
-          "expected_target_range": {
-            "low": 5,
-            "high": 9
-          },
-          "expected_route_participation_range": {
-            "low": 70,
-            "high": 92
-          },
-          "expected_red_zone_usage": "medium",
-          "expected_ppr_ppg_range": {
-            "low": 9,
-            "high": 16
-          },
-          "volatility": "medium_high",
-          "positive_role_tags": [
-            "starter_route_share",
-            "spike_week_potential"
-          ],
-          "risk_role_tags": [
-            "target_competition",
-            "game_plan_variance"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "WR3",
-          "role_family": "wide_receiver",
-          "role_description": "Tertiary WR role with situational starter value in 11 personnel.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 3,
-            "high": 7
-          },
-          "expected_route_participation_range": {
-            "low": 55,
-            "high": 85
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 6,
-            "high": 12
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "three_wr_set_access",
-            "injury_bump_path"
-          ],
-          "risk_role_tags": [
-            "weekly_floor_instability",
-            "package_dependency"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "rotational_wr",
-          "role_family": "wide_receiver",
-          "role_description": "Rotational WR role with package-based routes and inconsistent volume.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 1,
-            "high": 5
-          },
-          "expected_route_participation_range": {
-            "low": 25,
-            "high": 60
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 2,
-            "high": 9
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "specialized_usage",
-            "injury_upside_path"
-          ],
-          "risk_role_tags": [
-            "low_weekly_floor",
-            "snap_share_instability"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "role_context_tags": [],
-      "role_risk_tags": [],
-      "role_context_notes": "role_opportunity_joined:WAS:WR2|WR3|rotational_wr",
-      "role_context_source_status": "operator_seeded",
-      "combined_context_tags_with_role": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "jayden_daniels_environment",
-        "high_upside_offense",
-        "available_target_opportunity",
-        "role_projection_uncertainty"
-      ],
-      "combined_risk_tags_with_role": [
-        "Target hierarchy outcomes can compress early route and volume certainty.",
-        "Round 3 capital creates more replacement risk than Round 2/1 outcomes.",
-        "role_projection_uncertainty"
-      ]
-    },
-    {
-      "player_id": "wr-dezhaun-stribling",
-      "player_name": "De'Zhaun Stribling",
-      "position": "WR",
-      "pre_draft_alpha": 47.5,
-      "post_draft_alpha": 54.5,
-      "post_draft_delta": 7.0,
-      "delta_reason_codes": [
-        "talent_confirmation:near_round1_skill_capital",
-        "talent_confirmation:early_day2_capital",
-        "talent_confirmation:round2_skill_capital",
-        "opportunity_insulation:signal_bonus",
-        "risk:target_room_competition_watch",
-        "risk:year1_volume_uncertainty",
-        "risk:opportunity_insulation_cap"
-      ],
-      "draft_round": 2,
-      "draft_pick": 33,
-      "team": "49ers",
-      "talent_confirmation_signal": "strong",
-      "opportunity_insulation_signal": "moderate",
-      "short_term_fantasy_runway": "strong",
-      "translator_tags": [
-        "day2_capital",
-        "round2_capital",
-        "early_day2_capital",
-        "near_round1_skill_capital",
-        "round2_skill_capital",
-        "round2_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_moderate",
-        "shanahan_role_translation_watch",
-        "athletic_profile_boost"
-      ],
-      "remaining_risks": [
-        "Target competition and role clarity in the 49ers pass-catching room can cap early volume certainty.",
-        "Day 2 WR capital remains less insulated than Round 1 investment if early usage is volatile."
-      ],
-      "source_profile": "day2",
-      "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "shanahan_efficiency_environment",
-        "yac_creation_scheme",
-        "low_pass_volume_risk",
-        "role_specific_usage_dependency",
-        "day2_49ers_skill_pick_hit_rate_caution"
-      ],
-      "positive_team_context_tags": [
-        "shanahan_efficiency_environment",
-        "yac_creation_scheme"
-      ],
-      "risk_team_context_tags": [
-        "low_pass_volume_risk",
-        "role_specific_usage_dependency",
-        "day2_49ers_skill_pick_hit_rate_caution"
-      ],
-      "team_context_notes": "team_context_joined:SF",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "SF",
-      "combined_context_tags": [
-        "day2_capital",
-        "round2_capital",
-        "early_day2_capital",
-        "near_round1_skill_capital",
-        "round2_skill_capital",
-        "round2_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_moderate",
-        "shanahan_role_translation_watch",
-        "athletic_profile_boost",
-        "shanahan_efficiency_environment",
-        "yac_creation_scheme",
-        "low_pass_volume_risk",
-        "role_specific_usage_dependency",
-        "day2_49ers_skill_pick_hit_rate_caution"
-      ],
-      "combined_risk_tags": [
-        "Target competition and role clarity in the 49ers pass-catching room can cap early volume certainty.",
-        "Day 2 WR capital remains less insulated than Round 1 investment if early usage is volatile.",
-        "low_pass_volume_risk",
-        "role_specific_usage_dependency",
-        "day2_49ers_skill_pick_hit_rate_caution"
-      ],
-      "role_team_profile_found": true,
-      "role_baseline_found": true,
-      "role_opportunity_found": true,
-      "candidate_roles": [
-        "WR2",
-        "WR3",
-        "rotational_wr"
-      ],
-      "matched_role_profiles": [
-        {
-          "role": "WR2",
-          "role_family": "wide_receiver",
-          "role_description": "Secondary starting WR role in projected pass environment.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "starter_route_participation",
-            "intermediate_target_path"
-          ],
-          "risk_role_tags": [
-            "target_competition_risk",
-            "week_to_week_usage_variance"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "rotational_wr",
-          "role_family": "wide_receiver",
-          "role_description": "Rotational WR role with package-specific route participation.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "specialized_package_usage",
-            "depth_chart_climb_path"
-          ],
-          "risk_role_tags": [
-            "snap_share_instability",
-            "target_floor_risk"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "matched_role_baselines": [
-        {
-          "role": "WR2",
-          "role_family": "wide_receiver",
-          "role_description": "Secondary starting WR role in projected pass environment.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 2
-          },
-          "expected_target_range": {
-            "low": 5,
-            "high": 9
-          },
-          "expected_route_participation_range": {
-            "low": 70,
-            "high": 92
-          },
-          "expected_red_zone_usage": "medium",
-          "expected_ppr_ppg_range": {
-            "low": 9,
-            "high": 16
-          },
-          "volatility": "medium_high",
-          "positive_role_tags": [
-            "starter_route_share",
-            "spike_week_potential"
-          ],
-          "risk_role_tags": [
-            "target_competition",
-            "game_plan_variance"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "WR3",
-          "role_family": "wide_receiver",
-          "role_description": "Tertiary WR role with situational starter value in 11 personnel.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 3,
-            "high": 7
-          },
-          "expected_route_participation_range": {
-            "low": 55,
-            "high": 85
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 6,
-            "high": 12
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "three_wr_set_access",
-            "injury_bump_path"
-          ],
-          "risk_role_tags": [
-            "weekly_floor_instability",
-            "package_dependency"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "rotational_wr",
-          "role_family": "wide_receiver",
-          "role_description": "Rotational WR role with package-based routes and inconsistent volume.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 1,
-            "high": 5
-          },
-          "expected_route_participation_range": {
-            "low": 25,
-            "high": 60
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 2,
-            "high": 9
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "specialized_usage",
-            "injury_upside_path"
-          ],
-          "risk_role_tags": [
-            "low_weekly_floor",
-            "snap_share_instability"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "role_context_tags": [],
-      "role_risk_tags": [],
-      "role_context_notes": "role_opportunity_joined:SF:WR2|WR3|rotational_wr",
-      "role_context_source_status": "operator_seeded",
-      "combined_context_tags_with_role": [
-        "day2_capital",
-        "round2_capital",
-        "early_day2_capital",
-        "near_round1_skill_capital",
-        "round2_skill_capital",
-        "round2_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_moderate",
-        "shanahan_role_translation_watch",
-        "athletic_profile_boost",
-        "shanahan_efficiency_environment",
-        "yac_creation_scheme",
-        "low_pass_volume_risk",
-        "role_specific_usage_dependency",
-        "day2_49ers_skill_pick_hit_rate_caution"
-      ],
-      "combined_risk_tags_with_role": [
-        "Target competition and role clarity in the 49ers pass-catching room can cap early volume certainty.",
-        "Day 2 WR capital remains less insulated than Round 1 investment if early usage is volatile.",
-        "low_pass_volume_risk",
-        "role_specific_usage_dependency",
-        "day2_49ers_skill_pick_hit_rate_caution"
-      ]
-    },
-    {
-      "player_id": "wr-ted-hurst",
-      "player_name": "Ted Hurst",
-      "position": "WR",
-      "pre_draft_alpha": 55.7,
-      "post_draft_alpha": 54.4,
-      "post_draft_delta": -1.3,
-      "delta_reason_codes": [
-        "talent_confirmation:round3_skill_capital",
-        "opportunity_insulation:signal_bonus",
-        "risk:target_room_competition_watch",
-        "risk:year1_volume_uncertainty"
-      ],
-      "draft_round": 3,
-      "draft_pick": 84,
-      "team": "Buccaneers",
-      "talent_confirmation_signal": "moderate",
-      "opportunity_insulation_signal": "limited",
-      "short_term_fantasy_runway": "strong",
-      "translator_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_limited"
-      ],
-      "remaining_risks": [
-        "Target hierarchy uncertainty can cap early route-share confidence.",
-        "Round 3 runway can narrow if role specialization is slow to materialize."
-      ],
-      "source_profile": "day2",
-      "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "stable_playcaller_continuity",
-        "vertical_passing_upside",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
-      "positive_team_context_tags": [
-        "stable_playcaller_continuity",
-        "vertical_passing_upside"
-      ],
-      "risk_team_context_tags": [
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
-      "team_context_notes": "team_context_joined:TB",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "TB",
-      "combined_context_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "stable_playcaller_continuity",
-        "vertical_passing_upside",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
-      "combined_risk_tags": [
-        "Target hierarchy uncertainty can cap early route-share confidence.",
-        "Round 3 runway can narrow if role specialization is slow to materialize.",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
       "role_team_profile_found": false,
-      "role_baseline_found": true,
+      "role_baseline_found": false,
       "role_opportunity_found": false,
       "candidate_roles": [
         "WR2",
@@ -2971,116 +677,10 @@
         "rotational_wr"
       ],
       "matched_role_profiles": [],
-      "matched_role_baselines": [
-        {
-          "role": "WR2",
-          "role_family": "wide_receiver",
-          "role_description": "Secondary starting WR role in projected pass environment.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 2
-          },
-          "expected_target_range": {
-            "low": 5,
-            "high": 9
-          },
-          "expected_route_participation_range": {
-            "low": 70,
-            "high": 92
-          },
-          "expected_red_zone_usage": "medium",
-          "expected_ppr_ppg_range": {
-            "low": 9,
-            "high": 16
-          },
-          "volatility": "medium_high",
-          "positive_role_tags": [
-            "starter_route_share",
-            "spike_week_potential"
-          ],
-          "risk_role_tags": [
-            "target_competition",
-            "game_plan_variance"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "WR3",
-          "role_family": "wide_receiver",
-          "role_description": "Tertiary WR role with situational starter value in 11 personnel.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 3,
-            "high": 7
-          },
-          "expected_route_participation_range": {
-            "low": 55,
-            "high": 85
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 6,
-            "high": 12
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "three_wr_set_access",
-            "injury_bump_path"
-          ],
-          "risk_role_tags": [
-            "weekly_floor_instability",
-            "package_dependency"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "rotational_wr",
-          "role_family": "wide_receiver",
-          "role_description": "Rotational WR role with package-based routes and inconsistent volume.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 1,
-            "high": 5
-          },
-          "expected_route_participation_range": {
-            "low": 25,
-            "high": 60
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 2,
-            "high": 9
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "specialized_usage",
-            "injury_upside_path"
-          ],
-          "risk_role_tags": [
-            "low_weekly_floor",
-            "snap_share_instability"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
+      "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "team_role_profile_not_found:TB",
+      "role_context_notes": "team_role_profile_not_found:MIA",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
         "day2_capital",
@@ -3092,16 +692,11 @@
         "landing_spot_role_review",
         "role_path_review",
         "opportunity_insulation_limited",
-        "stable_playcaller_continuity",
-        "vertical_passing_upside",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
+        "dolphins_multi_pass_catcher_investment"
       ],
       "combined_risk_tags_with_role": [
-        "Target hierarchy uncertainty can cap early route-share confidence.",
-        "Round 3 runway can narrow if role specialization is slow to materialize.",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
+        "Multiple Day 2 Dolphins pass-catcher additions can constrain Year 1 target share.",
+        "Role clarity may take time to settle across a crowded pass-catching room."
       ]
     },
     {
@@ -3142,54 +737,7 @@
       ],
       "source_profile": "day2",
       "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "mcvay_developmental_environment",
-        "efficient_passing_environment",
-        "heavy_personnel_role_watch",
-        "veteran_depth_chart_block",
-        "delayed_start_path",
-        "role_specific_usage_dependency"
-      ],
-      "positive_team_context_tags": [
-        "mcvay_developmental_environment",
-        "efficient_passing_environment",
-        "heavy_personnel_role_watch"
-      ],
-      "risk_team_context_tags": [
-        "veteran_depth_chart_block",
-        "delayed_start_path",
-        "role_specific_usage_dependency"
-      ],
-      "team_context_notes": "team_context_joined:LAR",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "LAR",
-      "combined_context_tags": [
-        "day2_capital",
-        "round2_capital",
-        "round2_skill_capital",
-        "round2_te_capital",
-        "day2_te_cluster",
-        "te_market_push",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_moderate",
-        "mcvay_developmental_environment",
-        "efficient_passing_environment",
-        "heavy_personnel_role_watch",
-        "veteran_depth_chart_block",
-        "delayed_start_path",
-        "role_specific_usage_dependency"
-      ],
-      "combined_risk_tags": [
-        "Year 1 role could skew rotational while route-responsibility grows.",
-        "TE development arc can limit early-week fantasy predictability.",
-        "veteran_depth_chart_block",
-        "delayed_start_path",
-        "role_specific_usage_dependency"
-      ],
-      "role_team_profile_found": true,
+      "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
       "candidate_roles": [],
@@ -3197,7 +745,7 @@
       "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "no_heuristic_role_match:LAR",
+      "role_context_notes": "team_role_profile_not_found:LAR",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
         "day2_capital",
@@ -3209,20 +757,11 @@
         "delayed_te_translation_watch",
         "role_translation_watch",
         "role_path_review",
-        "opportunity_insulation_moderate",
-        "mcvay_developmental_environment",
-        "efficient_passing_environment",
-        "heavy_personnel_role_watch",
-        "veteran_depth_chart_block",
-        "delayed_start_path",
-        "role_specific_usage_dependency"
+        "opportunity_insulation_moderate"
       ],
       "combined_risk_tags_with_role": [
         "Year 1 role could skew rotational while route-responsibility grows.",
-        "TE development arc can limit early-week fantasy predictability.",
-        "veteran_depth_chart_block",
-        "delayed_start_path",
-        "role_specific_usage_dependency"
+        "TE development arc can limit early-week fantasy predictability."
       ]
     },
     {
@@ -3261,47 +800,8 @@
       ],
       "source_profile": "day2",
       "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "young_offense_growth_path",
-        "playmaker_deployment_upside",
-        "qb_environment_uncertainty",
-        "overall_offense_floor_risk"
-      ],
-      "positive_team_context_tags": [
-        "young_offense_growth_path",
-        "playmaker_deployment_upside"
-      ],
-      "risk_team_context_tags": [
-        "qb_environment_uncertainty",
-        "overall_offense_floor_risk"
-      ],
-      "team_context_notes": "team_context_joined:CAR",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "CAR",
-      "combined_context_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "young_offense_growth_path",
-        "playmaker_deployment_upside",
-        "qb_environment_uncertainty",
-        "overall_offense_floor_risk"
-      ],
-      "combined_risk_tags": [
-        "Competition for vertical/secondary targets can compress weekly volume floor.",
-        "Role volatility may persist until route tree and deployment stabilize.",
-        "qb_environment_uncertainty",
-        "overall_offense_floor_risk"
-      ],
       "role_team_profile_found": false,
-      "role_baseline_found": true,
+      "role_baseline_found": false,
       "role_opportunity_found": false,
       "candidate_roles": [
         "WR2",
@@ -3309,113 +809,7 @@
         "rotational_wr"
       ],
       "matched_role_profiles": [],
-      "matched_role_baselines": [
-        {
-          "role": "WR2",
-          "role_family": "wide_receiver",
-          "role_description": "Secondary starting WR role in projected pass environment.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 2
-          },
-          "expected_target_range": {
-            "low": 5,
-            "high": 9
-          },
-          "expected_route_participation_range": {
-            "low": 70,
-            "high": 92
-          },
-          "expected_red_zone_usage": "medium",
-          "expected_ppr_ppg_range": {
-            "low": 9,
-            "high": 16
-          },
-          "volatility": "medium_high",
-          "positive_role_tags": [
-            "starter_route_share",
-            "spike_week_potential"
-          ],
-          "risk_role_tags": [
-            "target_competition",
-            "game_plan_variance"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "WR3",
-          "role_family": "wide_receiver",
-          "role_description": "Tertiary WR role with situational starter value in 11 personnel.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 3,
-            "high": 7
-          },
-          "expected_route_participation_range": {
-            "low": 55,
-            "high": 85
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 6,
-            "high": 12
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "three_wr_set_access",
-            "injury_bump_path"
-          ],
-          "risk_role_tags": [
-            "weekly_floor_instability",
-            "package_dependency"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "rotational_wr",
-          "role_family": "wide_receiver",
-          "role_description": "Rotational WR role with package-based routes and inconsistent volume.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 1,
-            "high": 5
-          },
-          "expected_route_participation_range": {
-            "low": 25,
-            "high": 60
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 2,
-            "high": 9
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "specialized_usage",
-            "injury_upside_path"
-          ],
-          "risk_role_tags": [
-            "low_weekly_floor",
-            "snap_share_instability"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
+      "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
       "role_context_notes": "team_role_profile_not_found:CAR",
@@ -3429,120 +823,11 @@
         "year1_volume_uncertainty",
         "landing_spot_role_review",
         "role_path_review",
-        "opportunity_insulation_limited",
-        "young_offense_growth_path",
-        "playmaker_deployment_upside",
-        "qb_environment_uncertainty",
-        "overall_offense_floor_risk"
+        "opportunity_insulation_limited"
       ],
       "combined_risk_tags_with_role": [
         "Competition for vertical/secondary targets can compress weekly volume floor.",
-        "Role volatility may persist until route tree and deployment stabilize.",
-        "qb_environment_uncertainty",
-        "overall_offense_floor_risk"
-      ]
-    },
-    {
-      "player_id": "te-eli-raridon",
-      "player_name": "Eli Raridon",
-      "position": "TE",
-      "pre_draft_alpha": 48.0,
-      "post_draft_alpha": 49.1,
-      "post_draft_delta": 1.1,
-      "delta_reason_codes": [
-        "talent_confirmation:round3_skill_capital",
-        "opportunity_insulation:signal_bonus",
-        "risk:delayed_te_translation_watch"
-      ],
-      "draft_round": 3,
-      "draft_pick": 95,
-      "team": "Patriots",
-      "talent_confirmation_signal": "mixed",
-      "opportunity_insulation_signal": "limited",
-      "short_term_fantasy_runway": "delayed",
-      "translator_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_te_capital",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_limited"
-      ],
-      "remaining_risks": [
-        "TE transition timeline can delay sustained fantasy relevance.",
-        "Role translation risk remains elevated until route and target usage stabilizes."
-      ],
-      "source_profile": "day2",
-      "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "rookie_usage_runway",
-        "scheme_rebuild_opportunity",
-        "offense_environment_uncertainty",
-        "target_distribution_volatility"
-      ],
-      "positive_team_context_tags": [
-        "rookie_usage_runway",
-        "scheme_rebuild_opportunity"
-      ],
-      "risk_team_context_tags": [
-        "offense_environment_uncertainty",
-        "target_distribution_volatility"
-      ],
-      "team_context_notes": "team_context_joined:NE",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "NE",
-      "combined_context_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_te_capital",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "rookie_usage_runway",
-        "scheme_rebuild_opportunity",
-        "offense_environment_uncertainty",
-        "target_distribution_volatility"
-      ],
-      "combined_risk_tags": [
-        "TE transition timeline can delay sustained fantasy relevance.",
-        "Role translation risk remains elevated until route and target usage stabilizes.",
-        "offense_environment_uncertainty",
-        "target_distribution_volatility"
-      ],
-      "role_team_profile_found": false,
-      "role_baseline_found": false,
-      "role_opportunity_found": false,
-      "candidate_roles": [],
-      "matched_role_profiles": [],
-      "matched_role_baselines": [],
-      "role_context_tags": [],
-      "role_risk_tags": [],
-      "role_context_notes": "team_role_profile_not_found:NE",
-      "role_context_source_status": "operator_seeded",
-      "combined_context_tags_with_role": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_te_capital",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "rookie_usage_runway",
-        "scheme_rebuild_opportunity",
-        "offense_environment_uncertainty",
-        "target_distribution_volatility"
-      ],
-      "combined_risk_tags_with_role": [
-        "TE transition timeline can delay sustained fantasy relevance.",
-        "Role translation risk remains elevated until route and target usage stabilizes.",
-        "offense_environment_uncertainty",
-        "target_distribution_volatility"
+        "Role volatility may persist until route tree and deployment stabilize."
       ]
     },
     {
@@ -3582,45 +867,6 @@
       ],
       "source_profile": "day2",
       "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "creative_space_usage",
-        "year2_offense_continuity",
-        "target_concentration_ahead",
-        "role_competition_risk"
-      ],
-      "positive_team_context_tags": [
-        "creative_space_usage",
-        "year2_offense_continuity"
-      ],
-      "risk_team_context_tags": [
-        "target_concentration_ahead",
-        "role_competition_risk"
-      ],
-      "team_context_notes": "team_context_joined:ARI",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "ARI",
-      "combined_context_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_qb_capital",
-        "developmental_qb_capital",
-        "delayed_start_path",
-        "qb_room_context_required",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "creative_space_usage",
-        "year2_offense_continuity",
-        "target_concentration_ahead",
-        "role_competition_risk"
-      ],
-      "combined_risk_tags": [
-        "Day 3-adjacent quarterback capital can produce fragile organizational patience.",
-        "Starting timeline and QB-room hierarchy are still context-dependent.",
-        "target_concentration_ahead",
-        "role_competition_risk"
-      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -3640,270 +886,11 @@
         "delayed_start_path",
         "qb_room_context_required",
         "role_path_review",
-        "opportunity_insulation_limited",
-        "creative_space_usage",
-        "year2_offense_continuity",
-        "target_concentration_ahead",
-        "role_competition_risk"
+        "opportunity_insulation_limited"
       ],
       "combined_risk_tags_with_role": [
         "Day 3-adjacent quarterback capital can produce fragile organizational patience.",
-        "Starting timeline and QB-room hierarchy are still context-dependent.",
-        "target_concentration_ahead",
-        "role_competition_risk"
-      ]
-    },
-    {
-      "player_id": "te-nate-boerkircher",
-      "player_name": "Nate Boerkircher",
-      "position": "TE",
-      "pre_draft_alpha": 43.4,
-      "post_draft_alpha": 46.4,
-      "post_draft_delta": 3.0,
-      "delta_reason_codes": [
-        "talent_confirmation:round2_skill_capital",
-        "talent_confirmation:day2_te_cluster",
-        "opportunity_insulation:signal_bonus",
-        "risk:delayed_te_translation_watch",
-        "risk:opportunity_insulation_cap"
-      ],
-      "draft_round": 2,
-      "draft_pick": 56,
-      "team": "Jaguars",
-      "talent_confirmation_signal": "moderate",
-      "opportunity_insulation_signal": "moderate",
-      "short_term_fantasy_runway": "delayed",
-      "translator_tags": [
-        "day2_capital",
-        "round2_capital",
-        "round2_skill_capital",
-        "round2_te_capital",
-        "day2_te_cluster",
-        "te_market_push",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_moderate"
-      ],
-      "remaining_risks": [
-        "Role may open as blocking/rotational usage before high-value targets consolidate.",
-        "TE translation timelines can delay dependable fantasy output."
-      ],
-      "source_profile": "day2",
-      "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "data_savvy_org_validation",
-        "late_round_te_watch",
-        "round5_insulation_risk",
-        "depth_chart_path_uncertain",
-        "delayed_te_translation_watch"
-      ],
-      "positive_team_context_tags": [
-        "data_savvy_org_validation",
-        "late_round_te_watch"
-      ],
-      "risk_team_context_tags": [
-        "round5_insulation_risk",
-        "depth_chart_path_uncertain",
-        "delayed_te_translation_watch"
-      ],
-      "team_context_notes": "team_context_joined:JAX",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "JAX",
-      "combined_context_tags": [
-        "day2_capital",
-        "round2_capital",
-        "round2_skill_capital",
-        "round2_te_capital",
-        "day2_te_cluster",
-        "te_market_push",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_moderate",
-        "data_savvy_org_validation",
-        "late_round_te_watch",
-        "round5_insulation_risk",
-        "depth_chart_path_uncertain"
-      ],
-      "combined_risk_tags": [
-        "Role may open as blocking/rotational usage before high-value targets consolidate.",
-        "TE translation timelines can delay dependable fantasy output.",
-        "round5_insulation_risk",
-        "depth_chart_path_uncertain",
-        "delayed_te_translation_watch"
-      ],
-      "role_team_profile_found": true,
-      "role_baseline_found": true,
-      "role_opportunity_found": true,
-      "candidate_roles": [
-        "blocking_rotational_te",
-        "TE2"
-      ],
-      "matched_role_profiles": [
-        {
-          "role": "TE2",
-          "role_family": "tight_end",
-          "role_description": "Secondary TE role with mixed blocking and receiving duties.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "multi_te_personnel_access",
-            "contingent_route_upside",
-            "late_round_te_watch"
-          ],
-          "risk_role_tags": [
-            "limited_route_share",
-            "touchdown_dependency"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "blocking_rotational_te",
-          "role_family": "tight_end",
-          "role_description": "Blocking-forward rotational TE role with limited routes.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "snap_pathway_via_blocking",
-            "heavy_personnel_access"
-          ],
-          "risk_role_tags": [
-            "limited_target_translation",
-            "route_participation_cap"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "matched_role_baselines": [
-        {
-          "role": "blocking_rotational_te",
-          "role_family": "tight_end",
-          "role_description": "Blocking-first rotational TE role with limited route participation.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 0,
-            "high": 2
-          },
-          "expected_route_participation_range": {
-            "low": 10,
-            "high": 35
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": 0,
-            "high": 5
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "snap_pathway",
-            "formation_value"
-          ],
-          "risk_role_tags": [
-            "limited_fantasy_translation",
-            "route_volume_cap"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "TE2",
-          "role_family": "tight_end",
-          "role_description": "Secondary TE role with occasional routes and package-specific deployment.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 1,
-            "high": 4
-          },
-          "expected_route_participation_range": {
-            "low": 25,
-            "high": 55
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 2,
-            "high": 8
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "multi_te_personnel_access",
-            "injury_contingency"
-          ],
-          "risk_role_tags": [
-            "limited_route_share",
-            "touchdown_dependency"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "role_context_tags": [],
-      "role_risk_tags": [],
-      "role_context_notes": "role_opportunity_joined:JAX:blocking_rotational_te|TE2",
-      "role_context_source_status": "operator_seeded",
-      "combined_context_tags_with_role": [
-        "day2_capital",
-        "round2_capital",
-        "round2_skill_capital",
-        "round2_te_capital",
-        "day2_te_cluster",
-        "te_market_push",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_moderate",
-        "data_savvy_org_validation",
-        "late_round_te_watch",
-        "round5_insulation_risk",
-        "depth_chart_path_uncertain"
-      ],
-      "combined_risk_tags_with_role": [
-        "Role may open as blocking/rotational usage before high-value targets consolidate.",
-        "TE translation timelines can delay dependable fantasy output.",
-        "round5_insulation_risk",
-        "depth_chart_path_uncertain",
-        "delayed_te_translation_watch"
+        "Starting timeline and QB-room hierarchy are still context-dependent."
       ]
     },
     {
@@ -3940,443 +927,44 @@
       ],
       "source_profile": "day2",
       "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "pace_boost_candidate",
-        "pass_environment_upside",
-        "qb_context_uncertainty",
-        "scheme_transition_variance",
-        "kellen_moore_environment_watch",
-        "shough_stability_needs_verification",
-        "target_hierarchy_needs_verification",
-        "heavy_personnel_consolidation_needs_verification",
-        "personnel_usage_needs_verification",
-        "pass_volume_projection_needs_verification"
-      ],
-      "positive_team_context_tags": [
-        "pace_boost_candidate",
-        "pass_environment_upside",
-        "kellen_moore_environment_watch"
-      ],
-      "risk_team_context_tags": [
-        "qb_context_uncertainty",
-        "scheme_transition_variance",
-        "shough_stability_needs_verification",
-        "target_hierarchy_needs_verification",
-        "heavy_personnel_consolidation_needs_verification"
-      ],
-      "team_context_notes": "team_context_joined:NO",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "NO",
-      "combined_context_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_te_capital",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "pace_boost_candidate",
-        "pass_environment_upside",
-        "qb_context_uncertainty",
-        "scheme_transition_variance",
-        "kellen_moore_environment_watch",
-        "shough_stability_needs_verification",
-        "target_hierarchy_needs_verification",
-        "heavy_personnel_consolidation_needs_verification",
-        "personnel_usage_needs_verification",
-        "pass_volume_projection_needs_verification"
-      ],
-      "combined_risk_tags": [
-        "Initial role can tilt toward rotational responsibilities.",
-        "Delayed TE earning curve can hold down early fantasy usability.",
-        "qb_context_uncertainty",
-        "scheme_transition_variance",
-        "shough_stability_needs_verification",
-        "target_hierarchy_needs_verification",
-        "heavy_personnel_consolidation_needs_verification"
-      ],
-      "role_team_profile_found": true,
-      "role_baseline_found": false,
-      "role_opportunity_found": false,
-      "candidate_roles": [],
-      "matched_role_profiles": [],
-      "matched_role_baselines": [],
-      "role_context_tags": [],
-      "role_risk_tags": [],
-      "role_context_notes": "no_heuristic_role_match:NO",
-      "role_context_source_status": "operator_seeded",
-      "combined_context_tags_with_role": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_te_capital",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "pace_boost_candidate",
-        "pass_environment_upside",
-        "qb_context_uncertainty",
-        "scheme_transition_variance",
-        "kellen_moore_environment_watch",
-        "shough_stability_needs_verification",
-        "target_hierarchy_needs_verification",
-        "heavy_personnel_consolidation_needs_verification",
-        "personnel_usage_needs_verification",
-        "pass_volume_projection_needs_verification"
-      ],
-      "combined_risk_tags_with_role": [
-        "Initial role can tilt toward rotational responsibilities.",
-        "Delayed TE earning curve can hold down early fantasy usability.",
-        "qb_context_uncertainty",
-        "scheme_transition_variance",
-        "shough_stability_needs_verification",
-        "target_hierarchy_needs_verification",
-        "heavy_personnel_consolidation_needs_verification"
-      ]
-    },
-    {
-      "player_id": "te-marlin-klein",
-      "player_name": "Marlin Klein",
-      "position": "TE",
-      "pre_draft_alpha": 37.0,
-      "post_draft_alpha": 40.0,
-      "post_draft_delta": 3.0,
-      "delta_reason_codes": [
-        "talent_confirmation:round2_skill_capital",
-        "talent_confirmation:day2_te_cluster",
-        "opportunity_insulation:signal_bonus",
-        "risk:delayed_te_translation_watch",
-        "risk:opportunity_insulation_cap"
-      ],
-      "draft_round": 2,
-      "draft_pick": 59,
-      "team": "Texans",
-      "talent_confirmation_signal": "moderate",
-      "opportunity_insulation_signal": "moderate",
-      "short_term_fantasy_runway": "delayed",
-      "translator_tags": [
-        "day2_capital",
-        "round2_capital",
-        "round2_skill_capital",
-        "round2_te_capital",
-        "day2_te_cluster",
-        "te_market_push",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_moderate"
-      ],
-      "remaining_risks": [
-        "Route share and red-zone usage are uncertain in early deployment windows.",
-        "Position-wide translation lag can suppress immediate fantasy utility."
-      ],
-      "source_profile": "day2",
-      "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "improved_offense_watch",
-        "offensive_line_dependency",
-        "play_caller_transfer_uncertainty"
-      ],
-      "positive_team_context_tags": [
-        "improved_offense_watch"
-      ],
-      "risk_team_context_tags": [
-        "offensive_line_dependency",
-        "play_caller_transfer_uncertainty"
-      ],
-      "team_context_notes": "team_context_joined:HOU",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "HOU",
-      "combined_context_tags": [
-        "day2_capital",
-        "round2_capital",
-        "round2_skill_capital",
-        "round2_te_capital",
-        "day2_te_cluster",
-        "te_market_push",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_moderate",
-        "improved_offense_watch",
-        "offensive_line_dependency",
-        "play_caller_transfer_uncertainty"
-      ],
-      "combined_risk_tags": [
-        "Route share and red-zone usage are uncertain in early deployment windows.",
-        "Position-wide translation lag can suppress immediate fantasy utility.",
-        "offensive_line_dependency",
-        "play_caller_transfer_uncertainty"
-      ],
-      "role_team_profile_found": true,
-      "role_baseline_found": false,
-      "role_opportunity_found": false,
-      "candidate_roles": [],
-      "matched_role_profiles": [],
-      "matched_role_baselines": [],
-      "role_context_tags": [],
-      "role_risk_tags": [],
-      "role_context_notes": "no_heuristic_role_match:HOU",
-      "role_context_source_status": "operator_seeded",
-      "combined_context_tags_with_role": [
-        "day2_capital",
-        "round2_capital",
-        "round2_skill_capital",
-        "round2_te_capital",
-        "day2_te_cluster",
-        "te_market_push",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_moderate",
-        "improved_offense_watch",
-        "offensive_line_dependency",
-        "play_caller_transfer_uncertainty"
-      ],
-      "combined_risk_tags_with_role": [
-        "Route share and red-zone usage are uncertain in early deployment windows.",
-        "Position-wide translation lag can suppress immediate fantasy utility.",
-        "offensive_line_dependency",
-        "play_caller_transfer_uncertainty"
-      ]
-    },
-    {
-      "player_id": "wr-jakobi-lane",
-      "player_name": "Ja'Kobi Lane",
-      "position": "WR",
-      "pre_draft_alpha": 40.1,
-      "post_draft_alpha": 38.8,
-      "post_draft_delta": -1.3,
-      "delta_reason_codes": [
-        "talent_confirmation:round3_skill_capital",
-        "opportunity_insulation:signal_bonus",
-        "risk:target_room_competition_watch",
-        "risk:year1_volume_uncertainty"
-      ],
-      "draft_round": 3,
-      "draft_pick": 80,
-      "team": "Ravens",
-      "talent_confirmation_signal": "moderate",
-      "opportunity_insulation_signal": "limited",
-      "short_term_fantasy_runway": "strong",
-      "translator_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_limited"
-      ],
-      "remaining_risks": [
-        "Target concentration dynamics can limit immediate route-volume certainty.",
-        "Day 2 Round 3 capital is sensitive to early performance variance."
-      ],
-      "source_profile": "day2",
-      "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "high_efficiency_rush_pass_balance",
-        "red_zone_trip_upside",
-        "low_pass_volume_risk",
-        "target_concentration_ahead"
-      ],
-      "positive_team_context_tags": [
-        "high_efficiency_rush_pass_balance",
-        "red_zone_trip_upside"
-      ],
-      "risk_team_context_tags": [
-        "low_pass_volume_risk",
-        "target_concentration_ahead"
-      ],
-      "team_context_notes": "team_context_joined:BAL",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "BAL",
-      "combined_context_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "high_efficiency_rush_pass_balance",
-        "red_zone_trip_upside",
-        "low_pass_volume_risk",
-        "target_concentration_ahead"
-      ],
-      "combined_risk_tags": [
-        "Target concentration dynamics can limit immediate route-volume certainty.",
-        "Day 2 Round 3 capital is sensitive to early performance variance.",
-        "low_pass_volume_risk",
-        "target_concentration_ahead"
-      ],
       "role_team_profile_found": false,
-      "role_baseline_found": true,
+      "role_baseline_found": false,
       "role_opportunity_found": false,
-      "candidate_roles": [
-        "WR2",
-        "WR3",
-        "rotational_wr"
-      ],
+      "candidate_roles": [],
       "matched_role_profiles": [],
-      "matched_role_baselines": [
-        {
-          "role": "WR2",
-          "role_family": "wide_receiver",
-          "role_description": "Secondary starting WR role in projected pass environment.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 2
-          },
-          "expected_target_range": {
-            "low": 5,
-            "high": 9
-          },
-          "expected_route_participation_range": {
-            "low": 70,
-            "high": 92
-          },
-          "expected_red_zone_usage": "medium",
-          "expected_ppr_ppg_range": {
-            "low": 9,
-            "high": 16
-          },
-          "volatility": "medium_high",
-          "positive_role_tags": [
-            "starter_route_share",
-            "spike_week_potential"
-          ],
-          "risk_role_tags": [
-            "target_competition",
-            "game_plan_variance"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "WR3",
-          "role_family": "wide_receiver",
-          "role_description": "Tertiary WR role with situational starter value in 11 personnel.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 3,
-            "high": 7
-          },
-          "expected_route_participation_range": {
-            "low": 55,
-            "high": 85
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 6,
-            "high": 12
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "three_wr_set_access",
-            "injury_bump_path"
-          ],
-          "risk_role_tags": [
-            "weekly_floor_instability",
-            "package_dependency"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "rotational_wr",
-          "role_family": "wide_receiver",
-          "role_description": "Rotational WR role with package-based routes and inconsistent volume.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 1,
-            "high": 5
-          },
-          "expected_route_participation_range": {
-            "low": 25,
-            "high": 60
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 2,
-            "high": 9
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "specialized_usage",
-            "injury_upside_path"
-          ],
-          "risk_role_tags": [
-            "low_weekly_floor",
-            "snap_share_instability"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
+      "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "team_role_profile_not_found:BAL",
+      "role_context_notes": "team_role_profile_not_found:NO",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
         "day2_capital",
         "round3_capital",
         "round3_skill_capital",
-        "round3_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
         "role_path_review",
-        "opportunity_insulation_limited",
-        "high_efficiency_rush_pass_balance",
-        "red_zone_trip_upside",
-        "low_pass_volume_risk",
-        "target_concentration_ahead"
+        "opportunity_insulation_limited"
       ],
       "combined_risk_tags_with_role": [
-        "Target concentration dynamics can limit immediate route-volume certainty.",
-        "Day 2 Round 3 capital is sensitive to early performance variance.",
-        "low_pass_volume_risk",
-        "target_concentration_ahead"
+        "Initial role can tilt toward rotational responsibilities.",
+        "Delayed TE earning curve can hold down early fantasy usability."
       ]
     },
     {
-      "player_id": "wr-malachi-fields",
-      "player_name": "Malachi Fields",
+      "player_id": "wr-antonio-williams",
+      "player_name": "Antonio Williams",
       "position": "WR",
-      "pre_draft_alpha": 39.5,
-      "post_draft_alpha": 38.2,
-      "post_draft_delta": -1.3,
+      "pre_draft_alpha": 0.0,
+      "post_draft_alpha": 0.0,
+      "post_draft_delta": 0.0,
       "delta_reason_codes": [
-        "talent_confirmation:round3_skill_capital",
-        "opportunity_insulation:signal_bonus",
-        "risk:target_room_competition_watch",
-        "risk:year1_volume_uncertainty"
+        "baseline:predraft_missing_pass_through"
       ],
       "draft_round": 3,
-      "draft_pick": 74,
-      "team": "Giants",
+      "draft_pick": 71,
+      "team": "Commanders",
       "talent_confirmation_signal": "moderate",
       "opportunity_insulation_signal": "limited",
       "short_term_fantasy_runway": "strong",
@@ -4392,232 +980,24 @@
         "opportunity_insulation_limited"
       ],
       "remaining_risks": [
-        "Route tree deployment and target share competition can create volatile weekly opportunity.",
-        "Round 3 insulation is sensitive to early coaching confidence."
+        "Target hierarchy outcomes can compress early route and volume certainty.",
+        "Round 3 capital creates more replacement risk than Round 2/1 outcomes."
       ],
       "source_profile": "day2",
       "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "year1_route_path",
-        "improved_offense_watch",
-        "role_competition_risk",
-        "profile_translation_risk"
-      ],
-      "positive_team_context_tags": [
-        "year1_route_path",
-        "improved_offense_watch"
-      ],
-      "risk_team_context_tags": [
-        "role_competition_risk",
-        "profile_translation_risk"
-      ],
-      "team_context_notes": "team_context_joined:NYG",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "NYG",
-      "combined_context_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "year1_route_path",
-        "improved_offense_watch",
-        "role_competition_risk",
-        "profile_translation_risk"
-      ],
-      "combined_risk_tags": [
-        "Route tree deployment and target share competition can create volatile weekly opportunity.",
-        "Round 3 insulation is sensitive to early coaching confidence.",
-        "role_competition_risk",
-        "profile_translation_risk"
-      ],
-      "role_team_profile_found": true,
-      "role_baseline_found": true,
-      "role_opportunity_found": true,
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
       "candidate_roles": [
         "WR2",
         "WR3",
         "rotational_wr"
       ],
-      "matched_role_profiles": [
-        {
-          "role": "WR2",
-          "role_family": "wide_receiver",
-          "role_description": "Secondary starting WR role in projected pass environment.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "starter_route_participation",
-            "intermediate_target_path"
-          ],
-          "risk_role_tags": [
-            "target_competition_risk",
-            "week_to_week_usage_variance"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "rotational_wr",
-          "role_family": "wide_receiver",
-          "role_description": "Rotational WR role with package-specific route participation.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "specialized_package_usage",
-            "depth_chart_climb_path"
-          ],
-          "risk_role_tags": [
-            "snap_share_instability",
-            "target_floor_risk"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "matched_role_baselines": [
-        {
-          "role": "WR2",
-          "role_family": "wide_receiver",
-          "role_description": "Secondary starting WR role in projected pass environment.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 2
-          },
-          "expected_target_range": {
-            "low": 5,
-            "high": 9
-          },
-          "expected_route_participation_range": {
-            "low": 70,
-            "high": 92
-          },
-          "expected_red_zone_usage": "medium",
-          "expected_ppr_ppg_range": {
-            "low": 9,
-            "high": 16
-          },
-          "volatility": "medium_high",
-          "positive_role_tags": [
-            "starter_route_share",
-            "spike_week_potential"
-          ],
-          "risk_role_tags": [
-            "target_competition",
-            "game_plan_variance"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "WR3",
-          "role_family": "wide_receiver",
-          "role_description": "Tertiary WR role with situational starter value in 11 personnel.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 3,
-            "high": 7
-          },
-          "expected_route_participation_range": {
-            "low": 55,
-            "high": 85
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 6,
-            "high": 12
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "three_wr_set_access",
-            "injury_bump_path"
-          ],
-          "risk_role_tags": [
-            "weekly_floor_instability",
-            "package_dependency"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "rotational_wr",
-          "role_family": "wide_receiver",
-          "role_description": "Rotational WR role with package-based routes and inconsistent volume.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 1,
-            "high": 5
-          },
-          "expected_route_participation_range": {
-            "low": 25,
-            "high": 60
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 2,
-            "high": 9
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "specialized_usage",
-            "injury_upside_path"
-          ],
-          "risk_role_tags": [
-            "low_weekly_floor",
-            "snap_share_instability"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "role_opportunity_joined:NYG:WR2|WR3|rotational_wr",
+      "role_context_notes": "team_role_profile_not_found:WAS",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
         "day2_capital",
@@ -4628,31 +1008,22 @@
         "year1_volume_uncertainty",
         "landing_spot_role_review",
         "role_path_review",
-        "opportunity_insulation_limited",
-        "year1_route_path",
-        "improved_offense_watch",
-        "role_competition_risk",
-        "profile_translation_risk"
+        "opportunity_insulation_limited"
       ],
       "combined_risk_tags_with_role": [
-        "Route tree deployment and target share competition can create volatile weekly opportunity.",
-        "Round 3 insulation is sensitive to early coaching confidence.",
-        "role_competition_risk",
-        "profile_translation_risk"
+        "Target hierarchy outcomes can compress early route and volume certainty.",
+        "Round 3 capital creates more replacement risk than Round 2/1 outcomes."
       ]
     },
     {
       "player_id": "wr-caleb-douglas",
       "player_name": "Caleb Douglas",
       "position": "WR",
-      "pre_draft_alpha": 34.9,
-      "post_draft_alpha": 33.6,
-      "post_draft_delta": -1.3,
+      "pre_draft_alpha": 0.0,
+      "post_draft_alpha": 0.0,
+      "post_draft_delta": 0.0,
       "delta_reason_codes": [
-        "talent_confirmation:round3_skill_capital",
-        "opportunity_insulation:signal_bonus",
-        "risk:target_room_competition_watch",
-        "risk:year1_volume_uncertainty"
+        "baseline:predraft_missing_pass_through"
       ],
       "draft_round": 3,
       "draft_pick": 75,
@@ -4678,225 +1049,19 @@
       ],
       "source_profile": "day2",
       "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "speed_space_environment",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
-      "positive_team_context_tags": [
-        "speed_space_environment"
-      ],
-      "risk_team_context_tags": [
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
-      "team_context_notes": "team_context_joined:MIA",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "MIA",
-      "combined_context_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "dolphins_multi_pass_catcher_investment",
-        "speed_space_environment",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
-      "combined_risk_tags": [
-        "Team-level clustering of Day 2 pass-catcher picks can flatten individual Year 1 volume.",
-        "Role assignment within the Dolphins WR/TE ecosystem is still unsettled.",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
-      "role_team_profile_found": true,
-      "role_baseline_found": true,
-      "role_opportunity_found": true,
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
       "candidate_roles": [
         "WR2",
         "WR3",
         "rotational_wr"
       ],
-      "matched_role_profiles": [
-        {
-          "role": "WR3",
-          "role_family": "wide_receiver",
-          "role_description": "Tertiary WR role tied to 11-personnel and game-script volume.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "three_wr_set_access",
-            "injury_elevation_path"
-          ],
-          "risk_role_tags": [
-            "package_dependency",
-            "low_weekly_floor"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "rotational_wr",
-          "role_family": "wide_receiver",
-          "role_description": "Rotational WR role with package-specific route participation.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "specialized_package_usage",
-            "depth_chart_climb_path"
-          ],
-          "risk_role_tags": [
-            "snap_share_instability",
-            "target_floor_risk"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "matched_role_baselines": [
-        {
-          "role": "WR2",
-          "role_family": "wide_receiver",
-          "role_description": "Secondary starting WR role in projected pass environment.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 2
-          },
-          "expected_target_range": {
-            "low": 5,
-            "high": 9
-          },
-          "expected_route_participation_range": {
-            "low": 70,
-            "high": 92
-          },
-          "expected_red_zone_usage": "medium",
-          "expected_ppr_ppg_range": {
-            "low": 9,
-            "high": 16
-          },
-          "volatility": "medium_high",
-          "positive_role_tags": [
-            "starter_route_share",
-            "spike_week_potential"
-          ],
-          "risk_role_tags": [
-            "target_competition",
-            "game_plan_variance"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "WR3",
-          "role_family": "wide_receiver",
-          "role_description": "Tertiary WR role with situational starter value in 11 personnel.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 3,
-            "high": 7
-          },
-          "expected_route_participation_range": {
-            "low": 55,
-            "high": 85
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 6,
-            "high": 12
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "three_wr_set_access",
-            "injury_bump_path"
-          ],
-          "risk_role_tags": [
-            "weekly_floor_instability",
-            "package_dependency"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "rotational_wr",
-          "role_family": "wide_receiver",
-          "role_description": "Rotational WR role with package-based routes and inconsistent volume.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 1,
-            "high": 5
-          },
-          "expected_route_participation_range": {
-            "low": 25,
-            "high": 60
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 2,
-            "high": 9
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "specialized_usage",
-            "injury_upside_path"
-          ],
-          "risk_role_tags": [
-            "low_weekly_floor",
-            "snap_share_instability"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "role_opportunity_joined:MIA:WR2|WR3|rotational_wr",
+      "role_context_notes": "team_role_profile_not_found:MIA",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
         "day2_capital",
@@ -4908,34 +1073,218 @@
         "landing_spot_role_review",
         "role_path_review",
         "opportunity_insulation_limited",
-        "dolphins_multi_pass_catcher_investment",
-        "speed_space_environment",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
+        "dolphins_multi_pass_catcher_investment"
       ],
       "combined_risk_tags_with_role": [
         "Team-level clustering of Day 2 pass-catcher picks can flatten individual Year 1 volume.",
-        "Role assignment within the Dolphins WR/TE ecosystem is still unsettled.",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
+        "Role assignment within the Dolphins WR/TE ecosystem is still unsettled."
       ]
     },
     {
-      "player_id": "wr-zavion-thomas",
-      "player_name": "Zavion Thomas",
+      "player_id": "wr-dezhaun-stribling",
+      "player_name": "De'Zhaun Stribling",
       "position": "WR",
-      "pre_draft_alpha": 33.5,
-      "post_draft_alpha": 32.2,
-      "post_draft_delta": -1.3,
+      "pre_draft_alpha": 0.0,
+      "post_draft_alpha": 0.0,
+      "post_draft_delta": 0.0,
       "delta_reason_codes": [
-        "talent_confirmation:round3_skill_capital",
-        "opportunity_insulation:signal_bonus",
-        "risk:target_room_competition_watch",
-        "risk:year1_volume_uncertainty"
+        "baseline:predraft_missing_pass_through"
+      ],
+      "draft_round": 2,
+      "draft_pick": 33,
+      "team": "49ers",
+      "talent_confirmation_signal": "strong",
+      "opportunity_insulation_signal": "moderate",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round2_capital",
+        "early_day2_capital",
+        "near_round1_skill_capital",
+        "round2_skill_capital",
+        "round2_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_moderate",
+        "shanahan_role_translation_watch",
+        "athletic_profile_boost"
+      ],
+      "remaining_risks": [
+        "Target competition and role clarity in the 49ers pass-catching room can cap early volume certainty.",
+        "Day 2 WR capital remains less insulated than Round 1 investment if early usage is volatile."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
+      "candidate_roles": [
+        "WR2",
+        "WR3",
+        "rotational_wr"
+      ],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
+      "role_context_tags": [],
+      "role_risk_tags": [],
+      "role_context_notes": "team_role_profile_not_found:SF",
+      "role_context_source_status": "operator_seeded",
+      "combined_context_tags_with_role": [
+        "day2_capital",
+        "round2_capital",
+        "early_day2_capital",
+        "near_round1_skill_capital",
+        "round2_skill_capital",
+        "round2_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_moderate",
+        "shanahan_role_translation_watch",
+        "athletic_profile_boost"
+      ],
+      "combined_risk_tags_with_role": [
+        "Target competition and role clarity in the 49ers pass-catching room can cap early volume certainty.",
+        "Day 2 WR capital remains less insulated than Round 1 investment if early usage is volatile."
+      ]
+    },
+    {
+      "player_id": "te-eli-raridon",
+      "player_name": "Eli Raridon",
+      "position": "TE",
+      "pre_draft_alpha": 0.0,
+      "post_draft_alpha": 0.0,
+      "post_draft_delta": 0.0,
+      "delta_reason_codes": [
+        "baseline:predraft_missing_pass_through"
       ],
       "draft_round": 3,
-      "draft_pick": 89,
-      "team": "Bears",
+      "draft_pick": 95,
+      "team": "Patriots",
+      "talent_confirmation_signal": "mixed",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "TE transition timeline can delay sustained fantasy relevance.",
+        "Role translation risk remains elevated until route and target usage stabilizes."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
+      "candidate_roles": [],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
+      "role_context_tags": [],
+      "role_risk_tags": [],
+      "role_context_notes": "team_role_profile_not_found:NE",
+      "role_context_source_status": "operator_seeded",
+      "combined_context_tags_with_role": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags_with_role": [
+        "TE transition timeline can delay sustained fantasy relevance.",
+        "Role translation risk remains elevated until route and target usage stabilizes."
+      ]
+    },
+    {
+      "player_id": "wr-germie-bernard",
+      "player_name": "Germie Bernard",
+      "position": "WR",
+      "pre_draft_alpha": 0.0,
+      "post_draft_alpha": 0.0,
+      "post_draft_delta": 0.0,
+      "delta_reason_codes": [
+        "baseline:predraft_missing_pass_through"
+      ],
+      "draft_round": 2,
+      "draft_pick": 47,
+      "team": "Steelers",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "moderate",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_moderate",
+        "steelers_wr_room_watch"
+      ],
+      "remaining_risks": [
+        "Steelers WR depth and role assignment can delay stable weekly volume.",
+        "Day 2 capital confirms opportunity but does not eliminate Year 1 usage volatility."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
+      "candidate_roles": [
+        "WR2",
+        "WR3"
+      ],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
+      "role_context_tags": [],
+      "role_risk_tags": [],
+      "role_context_notes": "team_role_profile_not_found:PIT",
+      "role_context_source_status": "operator_seeded",
+      "combined_context_tags_with_role": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_moderate",
+        "steelers_wr_room_watch"
+      ],
+      "combined_risk_tags_with_role": [
+        "Steelers WR depth and role assignment can delay stable weekly volume.",
+        "Day 2 capital confirms opportunity but does not eliminate Year 1 usage volatility."
+      ]
+    },
+    {
+      "player_id": "wr-jakobi-lane",
+      "player_name": "Ja'Kobi Lane",
+      "position": "WR",
+      "pre_draft_alpha": 0.0,
+      "post_draft_alpha": 0.0,
+      "post_draft_delta": 0.0,
+      "delta_reason_codes": [
+        "baseline:predraft_missing_pass_through"
+      ],
+      "draft_round": 3,
+      "draft_pick": 80,
+      "team": "Ravens",
       "talent_confirmation_signal": "moderate",
       "opportunity_insulation_signal": "limited",
       "short_term_fantasy_runway": "strong",
@@ -4951,198 +1300,24 @@
         "opportunity_insulation_limited"
       ],
       "remaining_risks": [
-        "Specialized deployment can produce uneven week-to-week fantasy volume.",
-        "Competition dynamics may slow immediate route-share stabilization."
+        "Target concentration dynamics can limit immediate route-volume certainty.",
+        "Day 2 Round 3 capital is sensitive to early performance variance."
       ],
       "source_profile": "day2",
       "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "young_qb_growth_environment",
-        "target_hierarchy_uncertainty",
-        "role_competition_risk"
-      ],
-      "positive_team_context_tags": [
-        "young_qb_growth_environment"
-      ],
-      "risk_team_context_tags": [
-        "target_hierarchy_uncertainty",
-        "role_competition_risk"
-      ],
-      "team_context_notes": "team_context_joined:CHI",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "CHI",
-      "combined_context_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_wr_capital",
-        "target_room_competition_watch",
-        "year1_volume_uncertainty",
-        "landing_spot_role_review",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "young_qb_growth_environment",
-        "target_hierarchy_uncertainty",
-        "role_competition_risk"
-      ],
-      "combined_risk_tags": [
-        "Specialized deployment can produce uneven week-to-week fantasy volume.",
-        "Competition dynamics may slow immediate route-share stabilization.",
-        "target_hierarchy_uncertainty",
-        "role_competition_risk"
-      ],
-      "role_team_profile_found": true,
-      "role_baseline_found": true,
-      "role_opportunity_found": true,
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
       "candidate_roles": [
         "WR2",
         "WR3",
         "rotational_wr"
       ],
-      "matched_role_profiles": [
-        {
-          "role": "WR3",
-          "role_family": "wide_receiver",
-          "role_description": "Tertiary WR role tied to 11-personnel and game-script volume.",
-          "expected_volume_range": {
-            "targets_low": null,
-            "targets_high": null,
-            "touches_low": null,
-            "touches_high": null,
-            "routes_low": null,
-            "routes_high": null
-          },
-          "expected_red_zone_usage": "unknown",
-          "expected_ppr_ppg_range": {
-            "low": null,
-            "high": null
-          },
-          "role_stability": "medium",
-          "positive_role_tags": [
-            "three_wr_set_access",
-            "injury_elevation_path"
-          ],
-          "risk_role_tags": [
-            "package_dependency",
-            "low_weekly_floor"
-          ],
-          "notes": "Operator-seeded inspect-only v0 role profile.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
-      "matched_role_baselines": [
-        {
-          "role": "WR2",
-          "role_family": "wide_receiver",
-          "role_description": "Secondary starting WR role in projected pass environment.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 2
-          },
-          "expected_target_range": {
-            "low": 5,
-            "high": 9
-          },
-          "expected_route_participation_range": {
-            "low": 70,
-            "high": 92
-          },
-          "expected_red_zone_usage": "medium",
-          "expected_ppr_ppg_range": {
-            "low": 9,
-            "high": 16
-          },
-          "volatility": "medium_high",
-          "positive_role_tags": [
-            "starter_route_share",
-            "spike_week_potential"
-          ],
-          "risk_role_tags": [
-            "target_competition",
-            "game_plan_variance"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "WR3",
-          "role_family": "wide_receiver",
-          "role_description": "Tertiary WR role with situational starter value in 11 personnel.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 3,
-            "high": 7
-          },
-          "expected_route_participation_range": {
-            "low": 55,
-            "high": 85
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 6,
-            "high": 12
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "three_wr_set_access",
-            "injury_bump_path"
-          ],
-          "risk_role_tags": [
-            "weekly_floor_instability",
-            "package_dependency"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        },
-        {
-          "role": "rotational_wr",
-          "role_family": "wide_receiver",
-          "role_description": "Rotational WR role with package-based routes and inconsistent volume.",
-          "expected_touch_range": {
-            "low": 0,
-            "high": 1
-          },
-          "expected_target_range": {
-            "low": 1,
-            "high": 5
-          },
-          "expected_route_participation_range": {
-            "low": 25,
-            "high": 60
-          },
-          "expected_red_zone_usage": "low",
-          "expected_ppr_ppg_range": {
-            "low": 2,
-            "high": 9
-          },
-          "volatility": "high",
-          "positive_role_tags": [
-            "specialized_usage",
-            "injury_upside_path"
-          ],
-          "risk_role_tags": [
-            "low_weekly_floor",
-            "snap_share_instability"
-          ],
-          "notes": "Operator-seeded v0 range; calibrate with historical role outcomes later.",
-          "context_tags": [],
-          "risk_tags": [],
-          "source_status": "operator_seeded"
-        }
-      ],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "role_opportunity_joined:CHI:WR2|WR3|rotational_wr",
+      "role_context_notes": "team_role_profile_not_found:BAL",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
         "day2_capital",
@@ -5153,118 +1328,11 @@
         "year1_volume_uncertainty",
         "landing_spot_role_review",
         "role_path_review",
-        "opportunity_insulation_limited",
-        "young_qb_growth_environment",
-        "target_hierarchy_uncertainty",
-        "role_competition_risk"
+        "opportunity_insulation_limited"
       ],
       "combined_risk_tags_with_role": [
-        "Specialized deployment can produce uneven week-to-week fantasy volume.",
-        "Competition dynamics may slow immediate route-share stabilization.",
-        "target_hierarchy_uncertainty",
-        "role_competition_risk"
-      ]
-    },
-    {
-      "player_id": "te-will-kacmarek",
-      "player_name": "Will Kacmarek",
-      "position": "TE",
-      "pre_draft_alpha": 29.2,
-      "post_draft_alpha": 30.3,
-      "post_draft_delta": 1.1,
-      "delta_reason_codes": [
-        "talent_confirmation:round3_skill_capital",
-        "opportunity_insulation:signal_bonus",
-        "risk:delayed_te_translation_watch"
-      ],
-      "draft_round": 3,
-      "draft_pick": 87,
-      "team": "Dolphins",
-      "talent_confirmation_signal": "mixed",
-      "opportunity_insulation_signal": "limited",
-      "short_term_fantasy_runway": "delayed",
-      "translator_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_te_capital",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "dolphins_multi_pass_catcher_investment"
-      ],
-      "remaining_risks": [
-        "TE translation pace can delay early fantasy contribution.",
-        "Concurrent Dolphins pass-catcher investments may limit immediate route/target volume."
-      ],
-      "source_profile": "day2",
-      "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "speed_space_environment",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
-      "positive_team_context_tags": [
-        "speed_space_environment"
-      ],
-      "risk_team_context_tags": [
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
-      "team_context_notes": "team_context_joined:MIA",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "MIA",
-      "combined_context_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_te_capital",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "dolphins_multi_pass_catcher_investment",
-        "speed_space_environment",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
-      "combined_risk_tags": [
-        "TE translation pace can delay early fantasy contribution.",
-        "Concurrent Dolphins pass-catcher investments may limit immediate route/target volume.",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
-      "role_team_profile_found": true,
-      "role_baseline_found": false,
-      "role_opportunity_found": false,
-      "candidate_roles": [],
-      "matched_role_profiles": [],
-      "matched_role_baselines": [],
-      "role_context_tags": [],
-      "role_risk_tags": [],
-      "role_context_notes": "no_heuristic_role_match:MIA",
-      "role_context_source_status": "operator_seeded",
-      "combined_context_tags_with_role": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_te_capital",
-        "delayed_te_translation_watch",
-        "role_translation_watch",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "dolphins_multi_pass_catcher_investment",
-        "speed_space_environment",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
-      ],
-      "combined_risk_tags_with_role": [
-        "TE translation pace can delay early fantasy contribution.",
-        "Concurrent Dolphins pass-catcher investments may limit immediate route/target volume.",
-        "target_competition_cluster",
-        "role_assignment_uncertainty"
+        "Target concentration dynamics can limit immediate route-volume certainty.",
+        "Day 2 Round 3 capital is sensitive to early performance variance."
       ]
     },
     {
@@ -5300,50 +1368,7 @@
       ],
       "source_profile": "day2",
       "source_status": "operator_seeded",
-      "team_context_found": true,
-      "team_context_tags": [
-        "shanahan_efficiency_environment",
-        "yac_creation_scheme",
-        "low_pass_volume_risk",
-        "role_specific_usage_dependency",
-        "day2_49ers_skill_pick_hit_rate_caution"
-      ],
-      "positive_team_context_tags": [
-        "shanahan_efficiency_environment",
-        "yac_creation_scheme"
-      ],
-      "risk_team_context_tags": [
-        "low_pass_volume_risk",
-        "role_specific_usage_dependency",
-        "day2_49ers_skill_pick_hit_rate_caution"
-      ],
-      "team_context_notes": "team_context_joined:SF",
-      "team_context_source_status": "operator_seeded_unknown",
-      "team_context_team_code": "SF",
-      "combined_context_tags": [
-        "day2_capital",
-        "round3_capital",
-        "round3_skill_capital",
-        "round3_rb_capital",
-        "scarce_day2_rb_capital",
-        "workload_path_review",
-        "role_competition_watch",
-        "role_path_review",
-        "opportunity_insulation_limited",
-        "shanahan_efficiency_environment",
-        "yac_creation_scheme",
-        "low_pass_volume_risk",
-        "role_specific_usage_dependency",
-        "day2_49ers_skill_pick_hit_rate_caution"
-      ],
-      "combined_risk_tags": [
-        "Backfield role competition can quickly reshape touch expectations.",
-        "Round 3 RB capital does not guarantee multi-year workload insulation.",
-        "low_pass_volume_risk",
-        "role_specific_usage_dependency",
-        "day2_49ers_skill_pick_hit_rate_caution"
-      ],
-      "role_team_profile_found": true,
+      "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
       "candidate_roles": [],
@@ -5351,7 +1376,7 @@
       "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "no_heuristic_role_match:SF",
+      "role_context_notes": "team_role_profile_not_found:SF",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
         "day2_capital",
@@ -5362,19 +1387,550 @@
         "workload_path_review",
         "role_competition_watch",
         "role_path_review",
-        "opportunity_insulation_limited",
-        "shanahan_efficiency_environment",
-        "yac_creation_scheme",
-        "low_pass_volume_risk",
-        "role_specific_usage_dependency",
-        "day2_49ers_skill_pick_hit_rate_caution"
+        "opportunity_insulation_limited"
       ],
       "combined_risk_tags_with_role": [
         "Backfield role competition can quickly reshape touch expectations.",
-        "Round 3 RB capital does not guarantee multi-year workload insulation.",
-        "low_pass_volume_risk",
-        "role_specific_usage_dependency",
-        "day2_49ers_skill_pick_hit_rate_caution"
+        "Round 3 RB capital does not guarantee multi-year workload insulation."
+      ]
+    },
+    {
+      "player_id": "wr-malachi-fields",
+      "player_name": "Malachi Fields",
+      "position": "WR",
+      "pre_draft_alpha": 0.0,
+      "post_draft_alpha": 0.0,
+      "post_draft_delta": 0.0,
+      "delta_reason_codes": [
+        "baseline:predraft_missing_pass_through"
+      ],
+      "draft_round": 3,
+      "draft_pick": 74,
+      "team": "Giants",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "Route tree deployment and target share competition can create volatile weekly opportunity.",
+        "Round 3 insulation is sensitive to early coaching confidence."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
+      "candidate_roles": [
+        "WR2",
+        "WR3",
+        "rotational_wr"
+      ],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
+      "role_context_tags": [],
+      "role_risk_tags": [],
+      "role_context_notes": "team_role_profile_not_found:NYG",
+      "role_context_source_status": "operator_seeded",
+      "combined_context_tags_with_role": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags_with_role": [
+        "Route tree deployment and target share competition can create volatile weekly opportunity.",
+        "Round 3 insulation is sensitive to early coaching confidence."
+      ]
+    },
+    {
+      "player_id": "te-marlin-klein",
+      "player_name": "Marlin Klein",
+      "position": "TE",
+      "pre_draft_alpha": 0.0,
+      "post_draft_alpha": 0.0,
+      "post_draft_delta": 0.0,
+      "delta_reason_codes": [
+        "baseline:predraft_missing_pass_through"
+      ],
+      "draft_round": 2,
+      "draft_pick": 59,
+      "team": "Texans",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "moderate",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_te_capital",
+        "day2_te_cluster",
+        "te_market_push",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_moderate"
+      ],
+      "remaining_risks": [
+        "Route share and red-zone usage are uncertain in early deployment windows.",
+        "Position-wide translation lag can suppress immediate fantasy utility."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
+      "candidate_roles": [],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
+      "role_context_tags": [],
+      "role_risk_tags": [],
+      "role_context_notes": "team_role_profile_not_found:HOU",
+      "role_context_source_status": "operator_seeded",
+      "combined_context_tags_with_role": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_te_capital",
+        "day2_te_cluster",
+        "te_market_push",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_moderate"
+      ],
+      "combined_risk_tags_with_role": [
+        "Route share and red-zone usage are uncertain in early deployment windows.",
+        "Position-wide translation lag can suppress immediate fantasy utility."
+      ]
+    },
+    {
+      "player_id": "te-nate-boerkircher",
+      "player_name": "Nate Boerkircher",
+      "position": "TE",
+      "pre_draft_alpha": 0.0,
+      "post_draft_alpha": 0.0,
+      "post_draft_delta": 0.0,
+      "delta_reason_codes": [
+        "baseline:predraft_missing_pass_through"
+      ],
+      "draft_round": 2,
+      "draft_pick": 56,
+      "team": "Jaguars",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "moderate",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_te_capital",
+        "day2_te_cluster",
+        "te_market_push",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_moderate"
+      ],
+      "remaining_risks": [
+        "Role may open as blocking/rotational usage before high-value targets consolidate.",
+        "TE translation timelines can delay dependable fantasy output."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
+      "candidate_roles": [],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
+      "role_context_tags": [],
+      "role_risk_tags": [],
+      "role_context_notes": "team_role_profile_not_found:JAX",
+      "role_context_source_status": "operator_seeded",
+      "combined_context_tags_with_role": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_te_capital",
+        "day2_te_cluster",
+        "te_market_push",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_moderate"
+      ],
+      "combined_risk_tags_with_role": [
+        "Role may open as blocking/rotational usage before high-value targets consolidate.",
+        "TE translation timelines can delay dependable fantasy output."
+      ]
+    },
+    {
+      "player_id": "wr-omar-cooper-jr_2026",
+      "player_name": "Omar Cooper Jr.",
+      "position": "WR",
+      "pre_draft_alpha": 0.0,
+      "post_draft_alpha": 0.0,
+      "post_draft_delta": 0.0,
+      "delta_reason_codes": [
+        "baseline:predraft_missing_pass_through"
+      ],
+      "draft_round": 1,
+      "draft_pick": 30,
+      "team": "Jets",
+      "talent_confirmation_signal": "strong",
+      "opportunity_insulation_signal": "strong",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "late_round1_wr_capital",
+        "fifth_year_option_signal",
+        "trade_up_conviction",
+        "role_path_review"
+      ],
+      "remaining_risks": [
+        "Role pathway still requires depth-chart and deployment confirmation.",
+        "Late Round 1 hits have wider outcome bands than top-half selections."
+      ],
+      "source_profile": "round1",
+      "source_status": "operator_seeded",
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
+      "candidate_roles": [],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
+      "role_context_tags": [],
+      "role_risk_tags": [],
+      "role_context_notes": "team_role_profile_not_found:NYJ",
+      "role_context_source_status": "operator_seeded",
+      "combined_context_tags_with_role": [
+        "late_round1_wr_capital",
+        "fifth_year_option_signal",
+        "trade_up_conviction",
+        "role_path_review"
+      ],
+      "combined_risk_tags_with_role": [
+        "Role pathway still requires depth-chart and deployment confirmation.",
+        "Late Round 1 hits have wider outcome bands than top-half selections."
+      ]
+    },
+    {
+      "player_id": "te-sam-roush",
+      "player_name": "Sam Roush",
+      "position": "TE",
+      "pre_draft_alpha": 0.0,
+      "post_draft_alpha": 0.0,
+      "post_draft_delta": 0.0,
+      "delta_reason_codes": [
+        "baseline:predraft_missing_pass_through"
+      ],
+      "draft_round": 3,
+      "draft_pick": 69,
+      "team": "Bears",
+      "talent_confirmation_signal": "mixed",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "Early deployment may be rotational with modest target depth.",
+        "TE translation variance can delay reliable fantasy returns."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
+      "candidate_roles": [],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
+      "role_context_tags": [],
+      "role_risk_tags": [],
+      "role_context_notes": "team_role_profile_not_found:CHI",
+      "role_context_source_status": "operator_seeded",
+      "combined_context_tags_with_role": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags_with_role": [
+        "Early deployment may be rotational with modest target depth.",
+        "TE translation variance can delay reliable fantasy returns."
+      ]
+    },
+    {
+      "player_id": "wr-ted-hurst",
+      "player_name": "Ted Hurst",
+      "position": "WR",
+      "pre_draft_alpha": 0.0,
+      "post_draft_alpha": 0.0,
+      "post_draft_delta": 0.0,
+      "delta_reason_codes": [
+        "baseline:predraft_missing_pass_through"
+      ],
+      "draft_round": 3,
+      "draft_pick": 84,
+      "team": "Buccaneers",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "Target hierarchy uncertainty can cap early route-share confidence.",
+        "Round 3 runway can narrow if role specialization is slow to materialize."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
+      "candidate_roles": [
+        "WR2",
+        "WR3",
+        "rotational_wr"
+      ],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
+      "role_context_tags": [],
+      "role_risk_tags": [],
+      "role_context_notes": "team_role_profile_not_found:TB",
+      "role_context_source_status": "operator_seeded",
+      "combined_context_tags_with_role": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags_with_role": [
+        "Target hierarchy uncertainty can cap early route-share confidence.",
+        "Round 3 runway can narrow if role specialization is slow to materialize."
+      ]
+    },
+    {
+      "player_id": "te-will-kacmarek",
+      "player_name": "Will Kacmarek",
+      "position": "TE",
+      "pre_draft_alpha": 0.0,
+      "post_draft_alpha": 0.0,
+      "post_draft_delta": 0.0,
+      "delta_reason_codes": [
+        "baseline:predraft_missing_pass_through"
+      ],
+      "draft_round": 3,
+      "draft_pick": 87,
+      "team": "Dolphins",
+      "talent_confirmation_signal": "mixed",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "delayed",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited",
+        "dolphins_multi_pass_catcher_investment"
+      ],
+      "remaining_risks": [
+        "TE translation pace can delay early fantasy contribution.",
+        "Concurrent Dolphins pass-catcher investments may limit immediate route/target volume."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
+      "candidate_roles": [],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
+      "role_context_tags": [],
+      "role_risk_tags": [],
+      "role_context_notes": "team_role_profile_not_found:MIA",
+      "role_context_source_status": "operator_seeded",
+      "combined_context_tags_with_role": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited",
+        "dolphins_multi_pass_catcher_investment"
+      ],
+      "combined_risk_tags_with_role": [
+        "TE translation pace can delay early fantasy contribution.",
+        "Concurrent Dolphins pass-catcher investments may limit immediate route/target volume."
+      ]
+    },
+    {
+      "player_id": "wr-zachariah-branch",
+      "player_name": "Zachariah Branch",
+      "position": "WR",
+      "pre_draft_alpha": 0.0,
+      "post_draft_alpha": 0.0,
+      "post_draft_delta": 0.0,
+      "delta_reason_codes": [
+        "baseline:predraft_missing_pass_through"
+      ],
+      "draft_round": 3,
+      "draft_pick": 79,
+      "team": "Falcons",
+      "talent_confirmation_signal": "strong",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "Usage may be specialized early, creating volatile week-to-week fantasy reliability.",
+        "Round 3 insulation can erode quickly if role translation stalls."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
+      "candidate_roles": [
+        "WR2",
+        "WR3",
+        "rotational_wr"
+      ],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
+      "role_context_tags": [],
+      "role_risk_tags": [],
+      "role_context_notes": "team_role_profile_not_found:ATL",
+      "role_context_source_status": "operator_seeded",
+      "combined_context_tags_with_role": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags_with_role": [
+        "Usage may be specialized early, creating volatile week-to-week fantasy reliability.",
+        "Round 3 insulation can erode quickly if role translation stalls."
+      ]
+    },
+    {
+      "player_id": "wr-zavion-thomas",
+      "player_name": "Zavion Thomas",
+      "position": "WR",
+      "pre_draft_alpha": 0.0,
+      "post_draft_alpha": 0.0,
+      "post_draft_delta": 0.0,
+      "delta_reason_codes": [
+        "baseline:predraft_missing_pass_through"
+      ],
+      "draft_round": 3,
+      "draft_pick": 89,
+      "team": "Bears",
+      "talent_confirmation_signal": "moderate",
+      "opportunity_insulation_signal": "limited",
+      "short_term_fantasy_runway": "strong",
+      "translator_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "remaining_risks": [
+        "Specialized deployment can produce uneven week-to-week fantasy volume.",
+        "Competition dynamics may slow immediate route-share stabilization."
+      ],
+      "source_profile": "day2",
+      "source_status": "operator_seeded",
+      "role_team_profile_found": false,
+      "role_baseline_found": false,
+      "role_opportunity_found": false,
+      "candidate_roles": [
+        "WR2",
+        "WR3",
+        "rotational_wr"
+      ],
+      "matched_role_profiles": [],
+      "matched_role_baselines": [],
+      "role_context_tags": [],
+      "role_risk_tags": [],
+      "role_context_notes": "team_role_profile_not_found:CHI",
+      "role_context_source_status": "operator_seeded",
+      "combined_context_tags_with_role": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags_with_role": [
+        "Specialized deployment can produce uneven week-to-week fantasy volume.",
+        "Competition dynamics may slow immediate route-share stabilization."
       ]
     }
   ]

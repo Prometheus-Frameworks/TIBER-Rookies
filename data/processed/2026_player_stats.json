@@ -164,7 +164,8 @@
       "receptions": 51,
       "receiving_yards": 875,
       "receiving_tds": 9,
-      "yards_per_reception": 17.2
+      "yards_per_reception": 17.2,
+      "dominator_rating": 0.2
     }
   },
   {
@@ -177,7 +178,8 @@
       "receptions": 61,
       "receiving_yards": 711,
       "receiving_tds": 8,
-      "yards_per_reception": 11.7
+      "yards_per_reception": 11.7,
+      "dominator_rating": 0.3
     }
   },
   {
@@ -190,7 +192,8 @@
       "receptions": 79,
       "receiving_yards": 1156,
       "receiving_tds": 11,
-      "yards_per_reception": 14.6
+      "yards_per_reception": 14.6,
+      "dominator_rating": 0.3
     }
   },
   {
@@ -203,7 +206,8 @@
       "receptions": 61,
       "receiving_yards": 919,
       "receiving_tds": 9,
-      "yards_per_reception": 15.1
+      "yards_per_reception": 15.1,
+      "dominator_rating": 0.3
     }
   },
   {
@@ -216,7 +220,8 @@
       "receptions": 57,
       "receiving_yards": 1054,
       "receiving_tds": 6,
-      "yards_per_reception": 18.5
+      "yards_per_reception": 18.5,
+      "dominator_rating": 0.3
     }
   },
   {
@@ -229,7 +234,8 @@
       "receptions": 62,
       "receiving_yards": 1017,
       "receiving_tds": 9,
-      "yards_per_reception": 16.4
+      "yards_per_reception": 16.4,
+      "dominator_rating": 0.3
     }
   },
   {
@@ -242,7 +248,8 @@
       "receptions": 62,
       "receiving_yards": 881,
       "receiving_tds": 11,
-      "yards_per_reception": 14.2
+      "yards_per_reception": 14.2,
+      "dominator_rating": 0.3
     }
   },
   {
@@ -255,7 +262,8 @@
       "receptions": 72,
       "receiving_yards": 917,
       "receiving_tds": 6,
-      "yards_per_reception": 12.7
+      "yards_per_reception": 12.7,
+      "dominator_rating": 0.3
     }
   },
   {
@@ -268,7 +276,8 @@
       "receptions": 64,
       "receiving_yards": 806,
       "receiving_tds": 15,
-      "yards_per_reception": 12.6
+      "yards_per_reception": 12.6,
+      "dominator_rating": 0.2
     }
   },
   {
@@ -281,7 +290,8 @@
       "receptions": 51,
       "receiving_yards": 560,
       "receiving_tds": 8,
-      "yards_per_reception": 11.0
+      "yards_per_reception": 11.0,
+      "dominator_rating": 0.2
     }
   },
   {
@@ -294,7 +304,8 @@
       "receptions": 43,
       "receiving_yards": 448,
       "receiving_tds": 2,
-      "yards_per_reception": 10.4
+      "yards_per_reception": 10.4,
+      "dominator_rating": 0.1
     }
   },
   {
@@ -307,7 +318,8 @@
       "receptions": 20,
       "receiving_yards": 261,
       "receiving_tds": 1,
-      "yards_per_reception": 13.1
+      "yards_per_reception": 13.1,
+      "dominator_rating": 0.1
     }
   },
   {
@@ -320,7 +332,21 @@
       "receptions": 61,
       "receiving_yards": 765,
       "receiving_tds": 4,
-      "yards_per_reception": 12.5
+      "yards_per_reception": 12.5,
+      "dominator_rating": 0.2
+    }
+  },
+  {
+    "player_id": "te-daequan-wright",
+    "player_name": "Dae'Quan Wright",
+    "position": "TE",
+    "school": "Mississippi",
+    "season": 2025,
+    "stats": {
+      "receptions": 39,
+      "receiving_yards": 635,
+      "receiving_tds": 5,
+      "yards_per_reception": 16.3
     }
   }
 ]
