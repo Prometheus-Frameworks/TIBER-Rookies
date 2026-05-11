@@ -214,5 +214,149 @@
     "class_year": 2026,
     "production_score_0_100": 66.8,
     "production_score_source": "CFBD 2025 season stats (normalized TE production score)"
+  },
+  {
+    "player_id": "wr-omar-cooper-jr",
+    "player_name": "Omar Cooper Jr.",
+    "position": "WR",
+    "school": "Indiana",
+    "class_year": 2026,
+    "production_score_0_100": 70.0,
+    "production_score_source": "CFBD 2025 season stats (normalized WR production score)"
+  },
+  {
+    "player_id": "wr-dezhaun-stribling",
+    "player_name": "De'Zhaun Stribling",
+    "position": "WR",
+    "school": "Mississippi",
+    "class_year": 2026,
+    "production_score_0_100": 63.6,
+    "production_score_source": "CFBD 2025 season stats (normalized WR production score)"
+  },
+  {
+    "player_id": "wr-germie-bernard",
+    "player_name": "Germie Bernard",
+    "position": "WR",
+    "school": "Alabama",
+    "class_year": 2026,
+    "production_score_0_100": 62.4,
+    "production_score_source": "CFBD 2025 season stats (normalized WR production score)"
+  },
+  {
+    "player_id": "te-nate-boerkircher",
+    "player_name": "Nate Boerkircher",
+    "position": "TE",
+    "school": "Texas A&M",
+    "class_year": 2026,
+    "production_score_0_100": 49.1,
+    "production_score_source": "CFBD 2025 season stats (normalized TE production score)"
+  },
+  {
+    "player_id": "te-marlin-klein",
+    "player_name": "Marlin Klein",
+    "position": "TE",
+    "school": "Michigan",
+    "class_year": 2026,
+    "production_score_0_100": 44.5,
+    "production_score_source": "CFBD 2025 season stats (normalized TE production score)"
+  },
+  {
+    "player_id": "te-sam-roush",
+    "player_name": "Sam Roush",
+    "position": "TE",
+    "school": "Stanford",
+    "class_year": 2026,
+    "production_score_0_100": 52.2,
+    "production_score_source": "CFBD 2025 season stats (normalized TE production score)"
+  },
+  {
+    "player_id": "wr-antonio-williams",
+    "player_name": "Antonio Williams",
+    "position": "WR",
+    "school": "Clemson",
+    "class_year": 2026,
+    "production_score_0_100": 49.9,
+    "production_score_source": "CFBD 2025 season stats (normalized WR production score)"
+  },
+  {
+    "player_id": "wr-malachi-fields",
+    "player_name": "Malachi Fields",
+    "position": "WR",
+    "school": "Notre Dame",
+    "class_year": 2026,
+    "production_score_0_100": 66.4,
+    "production_score_source": "CFBD 2025 season stats (normalized WR production score)"
+  },
+  {
+    "player_id": "wr-caleb-douglas",
+    "player_name": "Caleb Douglas",
+    "position": "WR",
+    "school": "Texas Tech",
+    "class_year": 2026,
+    "production_score_0_100": 67.1,
+    "production_score_source": "CFBD 2025 season stats (normalized WR production score)"
+  },
+  {
+    "player_id": "wr-zachariah-branch",
+    "player_name": "Zachariah Branch",
+    "position": "WR",
+    "school": "Georgia",
+    "class_year": 2026,
+    "production_score_0_100": 52.8,
+    "production_score_source": "CFBD 2025 season stats (normalized WR production score)"
+  },
+  {
+    "player_id": "wr-jakobi-lane",
+    "player_name": "Ja'Kobi Lane",
+    "position": "WR",
+    "school": "USC",
+    "class_year": 2026,
+    "production_score_0_100": 61.2,
+    "production_score_source": "CFBD 2025 season stats (normalized WR production score)"
+  },
+  {
+    "player_id": "wr-ted-hurst",
+    "player_name": "Ted Hurst",
+    "position": "WR",
+    "school": "Georgia State",
+    "class_year": 2026,
+    "production_score_0_100": 65.2,
+    "production_score_source": "CFBD 2025 season stats (normalized WR production score)"
+  },
+  {
+    "player_id": "te-will-kacmarek",
+    "player_name": "Will Kacmarek",
+    "position": "TE",
+    "school": "Ohio State",
+    "class_year": 2026,
+    "production_score_0_100": 49.0,
+    "production_score_source": "CFBD 2025 season stats (normalized TE production score)"
+  },
+  {
+    "player_id": "wr-zavion-thomas",
+    "player_name": "Zavion Thomas",
+    "position": "WR",
+    "school": "LSU",
+    "class_year": 2026,
+    "production_score_0_100": 50.5,
+    "production_score_source": "CFBD 2025 season stats (normalized WR production score)"
+  },
+  {
+    "player_id": "rb-kaelon-black",
+    "player_name": "Kaelon Black",
+    "position": "RB",
+    "school": "Indiana",
+    "class_year": 2026,
+    "production_score_0_100": 55.1,
+    "production_score_source": "CFBD 2025 season stats (normalized RB production score)"
+  },
+  {
+    "player_id": "te-eli-raridon",
+    "player_name": "Eli Raridon",
+    "position": "TE",
+    "school": "Notre Dame",
+    "class_year": 2026,
+    "production_score_0_100": 54.8,
+    "production_score_source": "CFBD 2025 season stats (normalized TE production score)"
   }
 ]

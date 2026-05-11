@@ -348,5 +348,229 @@
       "receiving_tds": 5,
       "yards_per_reception": 16.3
     }
+  },
+  {
+    "player_id": "wr-omar-cooper-jr",
+    "player_name": "Omar Cooper Jr.",
+    "position": "WR",
+    "school": "Indiana",
+    "season": 2025,
+    "stats": {
+      "receptions": 70,
+      "receiving_yards": 961,
+      "receiving_tds": 13,
+      "yards_per_reception": 13.7,
+      "dominator_rating": 0.3
+    }
+  },
+  {
+    "player_id": "wr-dezhaun-stribling",
+    "player_name": "De'Zhaun Stribling",
+    "position": "WR",
+    "school": "Mississippi",
+    "season": 2025,
+    "stats": {
+      "receptions": 55,
+      "receiving_yards": 811,
+      "receiving_tds": 6,
+      "yards_per_reception": 14.7
+    }
+  },
+  {
+    "player_id": "wr-germie-bernard",
+    "player_name": "Germie Bernard",
+    "position": "WR",
+    "school": "Alabama",
+    "season": 2025,
+    "stats": {
+      "receptions": 64,
+      "receiving_yards": 862,
+      "receiving_tds": 7,
+      "yards_per_reception": 13.5,
+      "dominator_rating": 0.2
+    }
+  },
+  {
+    "player_id": "te-nate-boerkircher",
+    "player_name": "Nate Boerkircher",
+    "position": "TE",
+    "school": "Texas A&M",
+    "season": 2025,
+    "stats": {
+      "receptions": 20,
+      "receiving_yards": 204,
+      "receiving_tds": 3,
+      "yards_per_reception": 10.2,
+      "dominator_rating": 0.1
+    }
+  },
+  {
+    "player_id": "te-marlin-klein",
+    "player_name": "Marlin Klein",
+    "position": "TE",
+    "school": "Michigan",
+    "season": 2025,
+    "stats": {
+      "receptions": 24,
+      "receiving_yards": 248,
+      "receiving_tds": 1,
+      "yards_per_reception": 10.3,
+      "dominator_rating": 0.1
+    }
+  },
+  {
+    "player_id": "te-sam-roush",
+    "player_name": "Sam Roush",
+    "position": "TE",
+    "school": "Stanford",
+    "season": 2025,
+    "stats": {
+      "receptions": 49,
+      "receiving_yards": 545,
+      "receiving_tds": 2,
+      "yards_per_reception": 11.1,
+      "dominator_rating": 0.2
+    }
+  },
+  {
+    "player_id": "wr-antonio-williams",
+    "player_name": "Antonio Williams",
+    "position": "WR",
+    "school": "Clemson",
+    "season": 2025,
+    "stats": {
+      "receptions": 55,
+      "receiving_yards": 604,
+      "receiving_tds": 4,
+      "yards_per_reception": 11.0,
+      "dominator_rating": 0.2
+    }
+  },
+  {
+    "player_id": "wr-malachi-fields",
+    "player_name": "Malachi Fields",
+    "position": "WR",
+    "school": "Notre Dame",
+    "season": 2025,
+    "stats": {
+      "receptions": 36,
+      "receiving_yards": 630,
+      "receiving_tds": 5,
+      "yards_per_reception": 17.5,
+      "dominator_rating": 0.2
+    }
+  },
+  {
+    "player_id": "wr-caleb-douglas",
+    "player_name": "Caleb Douglas",
+    "position": "WR",
+    "school": "Texas Tech",
+    "season": 2025,
+    "stats": {
+      "receptions": 53,
+      "receiving_yards": 830,
+      "receiving_tds": 7,
+      "yards_per_reception": 15.7,
+      "dominator_rating": 0.2
+    }
+  },
+  {
+    "player_id": "wr-zachariah-branch",
+    "player_name": "Zachariah Branch",
+    "position": "WR",
+    "school": "Georgia",
+    "season": 2025,
+    "stats": {
+      "receptions": 81,
+      "receiving_yards": 811,
+      "receiving_tds": 6,
+      "yards_per_reception": 10.0,
+      "dominator_rating": 0.3
+    }
+  },
+  {
+    "player_id": "wr-jakobi-lane",
+    "player_name": "Ja'Kobi Lane",
+    "position": "WR",
+    "school": "USC",
+    "season": 2025,
+    "stats": {
+      "receptions": 49,
+      "receiving_yards": 745,
+      "receiving_tds": 4,
+      "yards_per_reception": 15.2,
+      "dominator_rating": 0.2
+    }
+  },
+  {
+    "player_id": "wr-ted-hurst",
+    "player_name": "Ted Hurst",
+    "position": "WR",
+    "school": "Georgia State",
+    "season": 2025,
+    "stats": {
+      "receptions": 71,
+      "receiving_yards": 1004,
+      "receiving_tds": 6,
+      "yards_per_reception": 14.1,
+      "dominator_rating": 0.3
+    }
+  },
+  {
+    "player_id": "te-will-kacmarek",
+    "player_name": "Will Kacmarek",
+    "position": "TE",
+    "school": "Ohio State",
+    "season": 2025,
+    "stats": {
+      "receptions": 15,
+      "receiving_yards": 168,
+      "receiving_tds": 2,
+      "yards_per_reception": 11.2,
+      "dominator_rating": 0.0
+    }
+  },
+  {
+    "player_id": "wr-zavion-thomas",
+    "player_name": "Zavion Thomas",
+    "position": "WR",
+    "school": "LSU",
+    "season": 2025,
+    "stats": {
+      "receptions": 41,
+      "receiving_yards": 488,
+      "receiving_tds": 4,
+      "yards_per_reception": 11.9,
+      "dominator_rating": 0.2
+    }
+  },
+  {
+    "player_id": "rb-kaelon-black",
+    "player_name": "Kaelon Black",
+    "position": "RB",
+    "school": "Indiana",
+    "season": 2025,
+    "stats": {
+      "rush_attempts": 187,
+      "rush_yards": 1039,
+      "rush_tds": 10,
+      "yards_per_carry": 5.6,
+      "receptions": 4,
+      "receiving_yards": 36
+    }
+  },
+  {
+    "player_id": "te-eli-raridon",
+    "player_name": "Eli Raridon",
+    "position": "TE",
+    "school": "Notre Dame",
+    "season": 2025,
+    "stats": {
+      "receptions": 32,
+      "receiving_yards": 482,
+      "receiving_tds": 0,
+      "yards_per_reception": 15.1,
+      "dominator_rating": 0.1
+    }
   }
 ]
