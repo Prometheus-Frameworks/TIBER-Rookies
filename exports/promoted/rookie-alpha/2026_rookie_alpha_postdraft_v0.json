@@ -5,7 +5,8 @@
     "pre_draft_alpha_frozen": true,
     "translator_adjustments_only": true,
     "deterministic_logic": true,
-    "coverage_behavior": "Only Round 1 and Day 2 profile players are emitted in post-draft v0."
+    "coverage_behavior": "Only Round 1 and Day 2 profile players are emitted in post-draft v0.",
+    "draft_results_reconciliation": "data/processed/2026_draft_results.json is the canonical source for pick/team facts; Day 3 and UDFA handling is recorded outside the score translator."
   },
   "rows": [
     {
@@ -21,7 +22,7 @@
       ],
       "draft_round": 1,
       "draft_pick": 3,
-      "team": "TBD",
+      "team": "Cardinals",
       "talent_confirmation_signal": "elite",
       "opportunity_insulation_signal": "elite",
       "short_term_fantasy_runway": "immediate",
@@ -32,11 +33,11 @@
         "immediate_workload_signal"
       ],
       "remaining_risks": [
-        "Operator-provided pick/team facts still need canonical draft_results reconciliation.",
+        "Draft result facts reconciled on 2026-05-11; remaining uncertainty is role/team-context translation, not pick/team identity.",
         "Top-5 RB outcomes remain sensitive to offensive line and coaching continuity."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "wr-kc-concepcion",
@@ -67,10 +68,10 @@
       ],
       "remaining_risks": [
         "Landing-spot offensive volatility can disrupt early consistency.",
-        "Team-level context assumptions should be rechecked once canonical artifacts are locked."
+        "Team-level context assumptions should be rechecked once Teamstate context is available."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "wr-makai-lemon",
@@ -102,7 +103,7 @@
         "Year 1 volume may lag even in a high-efficiency offense."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "wr-carnell-tate",
@@ -132,10 +133,10 @@
       ],
       "remaining_risks": [
         "Class-level draft capital inflation could overstate pure talent certainty relative to historical baselines.",
-        "Environment assumptions should remain provisional until canonical draft/team artifacts are finalized."
+        "Environment assumptions remain provisional until Teamstate context is available."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "wr-jordyn-tyson",
@@ -161,10 +162,10 @@
       ],
       "remaining_risks": [
         "Target hierarchy and Year 1 volume remain sensitive to Saints deployment and QB stability.",
-        "Operator-provided draft facts still need canonical reconciliation."
+        "Draft result facts reconciled on 2026-05-11; remaining uncertainty is role/team-context translation, not pick/team identity."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "wr-denzel-boston",
@@ -205,7 +206,7 @@
         "Role sequencing may vary if multiple pass-catcher investments compress Year 1 volume."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "te-kenyon-sadiq",
@@ -220,7 +221,7 @@
       ],
       "draft_round": 1,
       "draft_pick": 16,
-      "team": "TBD",
+      "team": "Jets",
       "talent_confirmation_signal": "strong",
       "opportunity_insulation_signal": "strong",
       "short_term_fantasy_runway": "delayed",
@@ -234,7 +235,7 @@
         "Year 1 route share and red-zone role remain uncertain without canonical team deployment data."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "qb-drew-allar",
@@ -273,7 +274,7 @@
         "Steelers QB-room structure could constrain immediate role access."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "te-eli-stowers",
@@ -312,7 +313,7 @@
         "Role definition inside the Eagles pass game can suppress immediate target share."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "wr-omar-cooper-jr",
@@ -344,7 +345,7 @@
         "Late Round 1 hits have wider outcome bands than top-half selections."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "wr-dezhaun-stribling",
@@ -388,7 +389,7 @@
         "Day 2 WR capital remains less insulated than Round 1 investment if early usage is volatile."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "te-sam-roush",
@@ -423,7 +424,7 @@
         "TE translation variance can delay reliable fantasy returns."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "wr-zachariah-branch",
@@ -460,7 +461,7 @@
         "Round 3 insulation can erode quickly if role translation stalls."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "qb-ty-simpson",
@@ -493,7 +494,7 @@
         "Developmental outcomes remain sensitive to eventual deployment timing."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "rb-jadarian-price",
@@ -524,7 +525,7 @@
         "Shared backfield dynamics could reduce immediate volume capture."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "wr-chris-bell",
@@ -562,7 +563,7 @@
         "Role clarity may take time to settle across a crowded pass-catching room."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "wr-germie-bernard",
@@ -600,7 +601,7 @@
         "Day 2 capital confirms opportunity but does not eliminate Year 1 usage volatility."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "te-nate-boerkircher",
@@ -639,7 +640,7 @@
         "TE translation timelines can delay dependable fantasy output."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "te-max-klare",
@@ -678,7 +679,7 @@
         "TE development arc can limit early-week fantasy predictability."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "wr-antonio-williams",
@@ -715,7 +716,7 @@
         "Round 3 capital creates more replacement risk than Round 2/1 outcomes."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "wr-ted-hurst",
@@ -752,7 +753,7 @@
         "Round 3 runway can narrow if role specialization is slow to materialize."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "rb-kaelon-black",
@@ -789,7 +790,7 @@
         "Round 3 RB capital does not guarantee multi-year workload insulation."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "wr-chris-brazzell-ii",
@@ -826,7 +827,7 @@
         "Role volatility may persist until route tree and deployment stabilize."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "te-eli-raridon",
@@ -861,7 +862,7 @@
         "Role translation risk remains elevated until route and target usage stabilizes."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "qb-carson-beck",
@@ -899,7 +900,7 @@
         "Starting timeline and QB-room hierarchy are still context-dependent."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "te-marlin-klein",
@@ -938,7 +939,7 @@
         "Position-wide translation lag can suppress immediate fantasy utility."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "wr-malachi-fields",
@@ -975,7 +976,7 @@
         "Round 3 insulation is sensitive to early coaching confidence."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "te-oscar-delp",
@@ -1010,7 +1011,7 @@
         "Delayed TE earning curve can hold down early fantasy usability."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "wr-caleb-douglas",
@@ -1048,7 +1049,7 @@
         "Role assignment within the Dolphins WR/TE ecosystem is still unsettled."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "wr-jakobi-lane",
@@ -1085,7 +1086,7 @@
         "Day 2 Round 3 capital is sensitive to early performance variance."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "te-will-kacmarek",
@@ -1121,7 +1122,7 @@
         "Concurrent Dolphins pass-catcher investments may limit immediate route/target volume."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     },
     {
       "player_id": "wr-zavion-thomas",
@@ -1158,7 +1159,7 @@
         "Competition dynamics may slow immediate route-share stabilization."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded"
+      "source_status": "canonical_draft_results_reconciled"
     }
   ]
 }

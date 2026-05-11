@@ -142,7 +142,15 @@ def extract_team_entry(entry: Any) -> dict[str, Any]:
     }
 
 
-def load_team_context(path: Path) -> dict[str, dict[str, Any]]:
+def load_team_context(path: Path) -> tuple[dict[str, dict[str, Any]], dict[str, Any]]:
+    if not path.exists():
+        return {}, {
+            "teamstate_context_available": False,
+            "teamstate_context_status": "unavailable",
+            "teamstate_context_path": str(path),
+            "teamstate_context_note": "TIBER-Teamstate context artifact unavailable; emitted inspect-only rows with empty team context instead of hard-failing.",
+        }
+
     payload = json.loads(path.read_text(encoding="utf-8"))
     if isinstance(payload, dict) and "teams" in payload:
         teams = payload["teams"]
@@ -168,12 +176,19 @@ def load_team_context(path: Path) -> dict[str, dict[str, Any]]:
         if not normalized or normalized == "TBD":
             continue
         context_by_team[normalized] = extract_team_entry(entry)
-    return context_by_team
+    return context_by_team, {
+        "teamstate_context_available": True,
+        "teamstate_context_status": "joined",
+        "teamstate_context_path": str(path),
+        "teamstate_context_note": "Teamstate context artifact loaded and joined where team profiles matched.",
+    }
 
 
 def enrich_rows(
     postdraft_rows: list[dict[str, Any]],
     team_context_by_team: dict[str, dict[str, Any]],
+    *,
+    teamstate_available: bool = True,
 ) -> list[dict[str, Any]]:
     enriched: list[dict[str, Any]] = []
     for row in postdraft_rows:
@@ -198,10 +213,13 @@ def enrich_rows(
             elif not team_code:
                 team_context_notes = "team_unknown_or_blank_no_teamstate_context"
                 team_context_team_code = ""
+            elif not teamstate_available:
+                team_context_notes = f"teamstate_context_unavailable_for:{team_code}"
+                team_context_team_code = team_code
             else:
                 team_context_notes = f"teamstate_profile_missing_for:{team_code}"
                 team_context_team_code = team_code
-            team_context_source_status = "operator_seeded_unknown"
+            team_context_source_status = "teamstate_unavailable" if not teamstate_available else "operator_seeded_unknown"
 
         translator_tags = list(row.get("translator_tags", []))
         remaining_risks = list(row.get("remaining_risks", []))
@@ -222,7 +240,12 @@ def enrich_rows(
     return enriched
 
 
-def write_outputs(rows: list[dict[str, Any]], output_json: Path, output_csv: Path) -> None:
+def write_outputs(
+    rows: list[dict[str, Any]],
+    output_json: Path,
+    output_csv: Path,
+    teamstate_metadata: dict[str, Any] | None = None,
+) -> None:
     output_json.parent.mkdir(parents=True, exist_ok=True)
     payload = {
         "model": "rookie-alpha-postdraft-team-context-v0",
@@ -231,6 +254,7 @@ def write_outputs(rows: list[dict[str, Any]], output_json: Path, output_csv: Pat
             "post_draft_scores_unchanged": True,
             "teamstate_context_join_only": True,
             "inspect_only": True,
+            **(teamstate_metadata or {}),
         },
         "rows": rows,
     }
@@ -238,7 +262,7 @@ def write_outputs(rows: list[dict[str, Any]], output_json: Path, output_csv: Pat
 
     output_csv.parent.mkdir(parents=True, exist_ok=True)
     with output_csv.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=ROW_FIELDS, extrasaction="ignore")
+        writer = csv.DictWriter(handle, fieldnames=ROW_FIELDS, extrasaction="ignore", lineterminator="\n")
         writer.writeheader()
         for row in rows:
             csv_row = {
@@ -283,9 +307,13 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     postdraft_payload = json.loads(args.postdraft_path.read_text(encoding="utf-8"))
-    team_context_by_team = load_team_context(args.teamstate_context_path)
-    rows = enrich_rows(postdraft_payload.get("rows", []), team_context_by_team)
-    write_outputs(rows, args.output_json, args.output_csv)
+    team_context_by_team, teamstate_metadata = load_team_context(args.teamstate_context_path)
+    rows = enrich_rows(
+        postdraft_payload.get("rows", []),
+        team_context_by_team,
+        teamstate_available=bool(teamstate_metadata.get("teamstate_context_available")),
+    )
+    write_outputs(rows, args.output_json, args.output_csv, teamstate_metadata)
     print(f"Wrote {len(rows)} rows to {args.output_json} and {args.output_csv}")
 
 

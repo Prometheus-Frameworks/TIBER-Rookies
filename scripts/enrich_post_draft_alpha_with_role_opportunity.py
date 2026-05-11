@@ -353,7 +353,7 @@ def write_outputs(rows: list[dict[str, Any]], output_json: Path, output_csv: Pat
             fieldnames.append(role_field)
 
     with output_csv.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="ignore")
+        writer = csv.DictWriter(handle, fieldnames=fieldnames, extrasaction="ignore", lineterminator="\n")
         writer.writeheader()
         for row in rows:
             csv_row = dict(row)

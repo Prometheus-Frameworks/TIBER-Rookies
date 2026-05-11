@@ -20,7 +20,7 @@
       ],
       "draft_round": 1,
       "draft_pick": 3,
-      "team": "TBD",
+      "team": "Cardinals",
       "talent_confirmation_signal": "elite",
       "opportunity_insulation_signal": "elite",
       "short_term_fantasy_runway": "immediate",
@@ -31,11 +31,28 @@
         "immediate_workload_signal"
       ],
       "remaining_risks": [
-        "Operator-provided pick/team facts still need canonical draft_results reconciliation.",
+        "Draft result facts reconciled on 2026-05-11; remaining uncertainty is role/team-context translation, not pick/team identity.",
         "Top-5 RB outcomes remain sensitive to offensive line and coaching continuity."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:ARI",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "ARI",
+      "combined_context_tags": [
+        "top5_skill_capital",
+        "rare_rb_premium_capital",
+        "elite_opportunity_insulation",
+        "immediate_workload_signal"
+      ],
+      "combined_risk_tags": [
+        "Draft result facts reconciled on 2026-05-11; remaining uncertainty is role/team-context translation, not pick/team identity.",
+        "Top-5 RB outcomes remain sensitive to offensive line and coaching continuity."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -44,7 +61,7 @@
       "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "team_unknown_or_tbd_for_role_profile_lookup",
+      "role_context_notes": "team_role_profile_not_found:ARI",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
         "top5_skill_capital",
@@ -53,7 +70,7 @@
         "immediate_workload_signal"
       ],
       "combined_risk_tags_with_role": [
-        "Operator-provided pick/team facts still need canonical draft_results reconciliation.",
+        "Draft result facts reconciled on 2026-05-11; remaining uncertainty is role/team-context translation, not pick/team identity.",
         "Top-5 RB outcomes remain sensitive to offensive line and coaching continuity."
       ]
     },
@@ -86,10 +103,28 @@
       ],
       "remaining_risks": [
         "Landing-spot offensive volatility can disrupt early consistency.",
-        "Team-level context assumptions should be rechecked once canonical artifacts are locked."
+        "Team-level context assumptions should be rechecked once Teamstate context is available."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:CLE",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "CLE",
+      "combined_context_tags": [
+        "round1_market_confirmation",
+        "model_wr1_validation",
+        "elite_separator_signal",
+        "yac_return_value_profile",
+        "landing_spot_volatility"
+      ],
+      "combined_risk_tags": [
+        "Landing-spot offensive volatility can disrupt early consistency.",
+        "Team-level context assumptions should be rechecked once Teamstate context is available."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -109,7 +144,7 @@
       ],
       "combined_risk_tags_with_role": [
         "Landing-spot offensive volatility can disrupt early consistency.",
-        "Team-level context assumptions should be rechecked once canonical artifacts are locked."
+        "Team-level context assumptions should be rechecked once Teamstate context is available."
       ]
     },
     {
@@ -142,7 +177,25 @@
         "Year 1 volume may lag even in a high-efficiency offense."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:PHI",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "PHI",
+      "combined_context_tags": [
+        "round1_wr_capital",
+        "trade_up_conviction",
+        "depth_chart_volume_cap",
+        "high_efficiency_environment",
+        "delayed_volume_path"
+      ],
+      "combined_risk_tags": [
+        "Short-term target share ceiling behind A.J. Brown and DeVonta Smith.",
+        "Year 1 volume may lag even in a high-efficiency offense."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -193,10 +246,29 @@
       ],
       "remaining_risks": [
         "Class-level draft capital inflation could overstate pure talent certainty relative to historical baselines.",
-        "Environment assumptions should remain provisional until canonical draft/team artifacts are finalized."
+        "Environment assumptions remain provisional until Teamstate context is available."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:TEN",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "TEN",
+      "combined_context_tags": [
+        "top5_skill_capital",
+        "premium_wr_investment",
+        "elite_opportunity_insulation",
+        "class_inflation_adjustment_candidate",
+        "market_conviction_not_equal_talent_certainty",
+        "wr1_depth_chart_path"
+      ],
+      "combined_risk_tags": [
+        "Class-level draft capital inflation could overstate pure talent certainty relative to historical baselines.",
+        "Environment assumptions remain provisional until Teamstate context is available."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -219,7 +291,7 @@
       ],
       "combined_risk_tags_with_role": [
         "Class-level draft capital inflation could overstate pure talent certainty relative to historical baselines.",
-        "Environment assumptions should remain provisional until canonical draft/team artifacts are finalized."
+        "Environment assumptions remain provisional until Teamstate context is available."
       ]
     },
     {
@@ -246,10 +318,26 @@
       ],
       "remaining_risks": [
         "Target hierarchy and Year 1 volume remain sensitive to Saints deployment and QB stability.",
-        "Operator-provided draft facts still need canonical reconciliation."
+        "Draft result facts reconciled on 2026-05-11; remaining uncertainty is role/team-context translation, not pick/team identity."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:NO",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "NO",
+      "combined_context_tags": [
+        "top10_skill_capital",
+        "premium_wr_investment",
+        "strong_role_insulation"
+      ],
+      "combined_risk_tags": [
+        "Target hierarchy and Year 1 volume remain sensitive to Saints deployment and QB stability.",
+        "Draft result facts reconciled on 2026-05-11; remaining uncertainty is role/team-context translation, not pick/team identity."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -267,7 +355,7 @@
       ],
       "combined_risk_tags_with_role": [
         "Target hierarchy and Year 1 volume remain sensitive to Saints deployment and QB stability.",
-        "Operator-provided draft facts still need canonical reconciliation."
+        "Draft result facts reconciled on 2026-05-11; remaining uncertainty is role/team-context translation, not pick/team identity."
       ]
     },
     {
@@ -309,7 +397,32 @@
         "Role sequencing may vary if multiple pass-catcher investments compress Year 1 volume."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:CLE",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "CLE",
+      "combined_context_tags": [
+        "day2_capital",
+        "round2_capital",
+        "early_day2_capital",
+        "round2_skill_capital",
+        "round2_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_moderate",
+        "browns_double_wr_investment",
+        "kcc_target_competition_signal"
+      ],
+      "combined_risk_tags": [
+        "Browns target competition and deployment context can materially shift early fantasy runway.",
+        "Role sequencing may vary if multiple pass-catcher investments compress Year 1 volume."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -355,7 +468,7 @@
       ],
       "draft_round": 1,
       "draft_pick": 16,
-      "team": "TBD",
+      "team": "Jets",
       "talent_confirmation_signal": "strong",
       "opportunity_insulation_signal": "strong",
       "short_term_fantasy_runway": "delayed",
@@ -369,7 +482,23 @@
         "Year 1 route share and red-zone role remain uncertain without canonical team deployment data."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:NYJ",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "NYJ",
+      "combined_context_tags": [
+        "round1_te_capital",
+        "premium_te_insulation",
+        "role_translation_watch"
+      ],
+      "combined_risk_tags": [
+        "TE usage translation can lag despite high draft investment.",
+        "Year 1 route share and red-zone role remain uncertain without canonical team deployment data."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -380,7 +509,7 @@
       "matched_role_baselines": [],
       "role_context_tags": [],
       "role_risk_tags": [],
-      "role_context_notes": "team_unknown_or_tbd_for_role_profile_lookup",
+      "role_context_notes": "team_role_profile_not_found:NYJ",
       "role_context_source_status": "operator_seeded",
       "combined_context_tags_with_role": [
         "round1_te_capital",
@@ -429,7 +558,30 @@
         "Steelers QB-room structure could constrain immediate role access."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:PIT",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "PIT",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_qb_capital",
+        "developmental_qb_capital",
+        "delayed_start_path",
+        "qb_room_context_required",
+        "steelers_qb_room_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Delayed start trajectory may suppress early fantasy utility.",
+        "Steelers QB-room structure could constrain immediate role access."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -494,7 +646,30 @@
         "Role definition inside the Eagles pass game can suppress immediate target share."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:PHI",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "PHI",
+      "combined_context_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_te_capital",
+        "day2_te_cluster",
+        "te_market_push",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_moderate"
+      ],
+      "combined_risk_tags": [
+        "Tight end transition often produces slower Year 1 fantasy translation.",
+        "Role definition inside the Eagles pass game can suppress immediate target share."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -552,7 +727,24 @@
         "Late Round 1 hits have wider outcome bands than top-half selections."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:NYJ",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "NYJ",
+      "combined_context_tags": [
+        "late_round1_wr_capital",
+        "fifth_year_option_signal",
+        "trade_up_conviction",
+        "role_path_review"
+      ],
+      "combined_risk_tags": [
+        "Role pathway still requires depth-chart and deployment confirmation.",
+        "Late Round 1 hits have wider outcome bands than top-half selections."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -616,7 +808,33 @@
         "Day 2 WR capital remains less insulated than Round 1 investment if early usage is volatile."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:SF",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "SF",
+      "combined_context_tags": [
+        "day2_capital",
+        "round2_capital",
+        "early_day2_capital",
+        "near_round1_skill_capital",
+        "round2_skill_capital",
+        "round2_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_moderate",
+        "shanahan_role_translation_watch",
+        "athletic_profile_boost"
+      ],
+      "combined_risk_tags": [
+        "Target competition and role clarity in the 49ers pass-catching room can cap early volume certainty.",
+        "Day 2 WR capital remains less insulated than Round 1 investment if early usage is volatile."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -684,7 +902,28 @@
         "TE translation variance can delay reliable fantasy returns."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:CHI",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "CHI",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Early deployment may be rotational with modest target depth.",
+        "TE translation variance can delay reliable fantasy returns."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -745,7 +984,29 @@
         "Round 3 insulation can erode quickly if role translation stalls."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:ATL",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "ATL",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Usage may be specialized early, creating volatile week-to-week fantasy reliability.",
+        "Round 3 insulation can erode quickly if role translation stalls."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -807,7 +1068,23 @@
         "Developmental outcomes remain sensitive to eventual deployment timing."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:LAR",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "LAR",
+      "combined_context_tags": [
+        "round1_qb_capital",
+        "elite_developmental_environment",
+        "delayed_start_insulation"
+      ],
+      "combined_risk_tags": [
+        "Delayed initial starting path may suppress early fantasy utility.",
+        "Developmental outcomes remain sensitive to eventual deployment timing."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -859,7 +1136,25 @@
         "Shared backfield dynamics could reduce immediate volume capture."
       ],
       "source_profile": "round1",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:SEA",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "SEA",
+      "combined_context_tags": [
+        "round1_rb_capital",
+        "low_tread_efficiency_profile",
+        "shared_backfield_context_override",
+        "workload_projection_risk",
+        "opportunity_insulation_strong"
+      ],
+      "combined_risk_tags": [
+        "Never exceeded 125 college touches in a season, increasing workload projection uncertainty.",
+        "Shared backfield dynamics could reduce immediate volume capture."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -921,7 +1216,30 @@
         "Role clarity may take time to settle across a crowded pass-catching room."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:MIA",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "MIA",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited",
+        "dolphins_multi_pass_catcher_investment"
+      ],
+      "combined_risk_tags": [
+        "Multiple Day 2 Dolphins pass-catcher additions can constrain Year 1 target share.",
+        "Role clarity may take time to settle across a crowded pass-catching room."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -989,7 +1307,30 @@
         "Day 2 capital confirms opportunity but does not eliminate Year 1 usage volatility."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:PIT",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "PIT",
+      "combined_context_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_moderate",
+        "steelers_wr_room_watch"
+      ],
+      "combined_risk_tags": [
+        "Steelers WR depth and role assignment can delay stable weekly volume.",
+        "Day 2 capital confirms opportunity but does not eliminate Year 1 usage volatility."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -1057,7 +1398,30 @@
         "TE translation timelines can delay dependable fantasy output."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:JAX",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "JAX",
+      "combined_context_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_te_capital",
+        "day2_te_cluster",
+        "te_market_push",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_moderate"
+      ],
+      "combined_risk_tags": [
+        "Role may open as blocking/rotational usage before high-value targets consolidate.",
+        "TE translation timelines can delay dependable fantasy output."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -1122,7 +1486,30 @@
         "TE development arc can limit early-week fantasy predictability."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:LAR",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "LAR",
+      "combined_context_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_te_capital",
+        "day2_te_cluster",
+        "te_market_push",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_moderate"
+      ],
+      "combined_risk_tags": [
+        "Year 1 role could skew rotational while route-responsibility grows.",
+        "TE development arc can limit early-week fantasy predictability."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -1185,7 +1572,29 @@
         "Round 3 capital creates more replacement risk than Round 2/1 outcomes."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:WAS",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "WAS",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Target hierarchy outcomes can compress early route and volume certainty.",
+        "Round 3 capital creates more replacement risk than Round 2/1 outcomes."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -1251,7 +1660,29 @@
         "Round 3 runway can narrow if role specialization is slow to materialize."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:TB",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "TB",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Target hierarchy uncertainty can cap early route-share confidence.",
+        "Round 3 runway can narrow if role specialization is slow to materialize."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -1317,7 +1748,29 @@
         "Round 3 RB capital does not guarantee multi-year workload insulation."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:SF",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "SF",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_rb_capital",
+        "scarce_day2_rb_capital",
+        "workload_path_review",
+        "role_competition_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Backfield role competition can quickly reshape touch expectations.",
+        "Round 3 RB capital does not guarantee multi-year workload insulation."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -1379,7 +1832,29 @@
         "Role volatility may persist until route tree and deployment stabilize."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:CAR",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "CAR",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Competition for vertical/secondary targets can compress weekly volume floor.",
+        "Role volatility may persist until route tree and deployment stabilize."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -1443,7 +1918,28 @@
         "Role translation risk remains elevated until route and target usage stabilizes."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:NE",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "NE",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "TE transition timeline can delay sustained fantasy relevance.",
+        "Role translation risk remains elevated until route and target usage stabilizes."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -1505,7 +2001,29 @@
         "Starting timeline and QB-room hierarchy are still context-dependent."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:ARI",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "ARI",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_qb_capital",
+        "developmental_qb_capital",
+        "delayed_start_path",
+        "qb_room_context_required",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Day 3-adjacent quarterback capital can produce fragile organizational patience.",
+        "Starting timeline and QB-room hierarchy are still context-dependent."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -1569,7 +2087,30 @@
         "Position-wide translation lag can suppress immediate fantasy utility."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:HOU",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "HOU",
+      "combined_context_tags": [
+        "day2_capital",
+        "round2_capital",
+        "round2_skill_capital",
+        "round2_te_capital",
+        "day2_te_cluster",
+        "te_market_push",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_moderate"
+      ],
+      "combined_risk_tags": [
+        "Route share and red-zone usage are uncertain in early deployment windows.",
+        "Position-wide translation lag can suppress immediate fantasy utility."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -1632,7 +2173,29 @@
         "Round 3 insulation is sensitive to early coaching confidence."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:NYG",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "NYG",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Route tree deployment and target share competition can create volatile weekly opportunity.",
+        "Round 3 insulation is sensitive to early coaching confidence."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -1696,7 +2259,28 @@
         "Delayed TE earning curve can hold down early fantasy usability."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:NO",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "NO",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Initial role can tilt toward rotational responsibilities.",
+        "Delayed TE earning curve can hold down early fantasy usability."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -1758,7 +2342,30 @@
         "Role assignment within the Dolphins WR/TE ecosystem is still unsettled."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:MIA",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "MIA",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited",
+        "dolphins_multi_pass_catcher_investment"
+      ],
+      "combined_risk_tags": [
+        "Team-level clustering of Day 2 pass-catcher picks can flatten individual Year 1 volume.",
+        "Role assignment within the Dolphins WR/TE ecosystem is still unsettled."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -1825,7 +2432,29 @@
         "Day 2 Round 3 capital is sensitive to early performance variance."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:BAL",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "BAL",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Target concentration dynamics can limit immediate route-volume certainty.",
+        "Day 2 Round 3 capital is sensitive to early performance variance."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -1890,7 +2519,29 @@
         "Concurrent Dolphins pass-catcher investments may limit immediate route/target volume."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:MIA",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "MIA",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_te_capital",
+        "delayed_te_translation_watch",
+        "role_translation_watch",
+        "role_path_review",
+        "opportunity_insulation_limited",
+        "dolphins_multi_pass_catcher_investment"
+      ],
+      "combined_risk_tags": [
+        "TE translation pace can delay early fantasy contribution.",
+        "Concurrent Dolphins pass-catcher investments may limit immediate route/target volume."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
@@ -1952,7 +2603,29 @@
         "Competition dynamics may slow immediate route-share stabilization."
       ],
       "source_profile": "day2",
-      "source_status": "operator_seeded",
+      "source_status": "canonical_draft_results_reconciled",
+      "team_context_found": false,
+      "team_context_tags": [],
+      "positive_team_context_tags": [],
+      "risk_team_context_tags": [],
+      "team_context_notes": "teamstate_context_unavailable_for:CHI",
+      "team_context_source_status": "teamstate_unavailable",
+      "team_context_team_code": "CHI",
+      "combined_context_tags": [
+        "day2_capital",
+        "round3_capital",
+        "round3_skill_capital",
+        "round3_wr_capital",
+        "target_room_competition_watch",
+        "year1_volume_uncertainty",
+        "landing_spot_role_review",
+        "role_path_review",
+        "opportunity_insulation_limited"
+      ],
+      "combined_risk_tags": [
+        "Specialized deployment can produce uneven week-to-week fantasy volume.",
+        "Competition dynamics may slow immediate route-share stabilization."
+      ],
       "role_team_profile_found": false,
       "role_baseline_found": false,
       "role_opportunity_found": false,
