@@ -649,9 +649,13 @@ def compute_ras_scores(
 SPORQ_TRUST: dict[str, str] = {
     "TE": "preferred",
     "WR": "supplemental",
-    "RB": "ignore",
-    "QB": "ignore",
+    "RB": "supplemental",   # SPORQ blends when per-class RAS diverges >= SPORQ_RB_DIVERGENCE_THRESHOLD
+    "QB": "ignore",         # No SPORQ coverage for QBs in sporq_historical
 }
+
+# Minimum delta (SPORQ - RAS) required to trigger the cohort-stability blend for RB.
+# Below this threshold the per-class RAS is considered stable and used as-is.
+SPORQ_RB_DIVERGENCE_THRESHOLD = 20.0
 
 
 def _extract_sporq(context: dict[str, Any] | None) -> tuple[float | None, str | None]:
@@ -748,6 +752,85 @@ def resolve_wr_athletic_input(
     return (50.0, "NEUTRAL_DEFAULT", 0.50, "No usable RAS/SPORQ; neutral athletic default", False)
 
 
+def resolve_rb_athletic_input(
+    ras_score: float | None,
+    ras_metric_count: int,
+    sporq_val: float | None,
+) -> tuple[float, str, float, str | None, bool]:
+    """Resolve RB athletic score with SPORQ supplemental cohort-stability correction.
+
+    When the per-class RAS is significantly lower than the historically-stable
+    SPORQ percentile (delta >= SPORQ_RB_DIVERGENCE_THRESHOLD), a 55/45 blend
+    corrects for small-cohort z-score compression without fully discarding the
+    combine composite.
+
+    Cases:
+      1) Full RAS + SPORQ with divergence >= threshold -> 55/45 blend
+      2) Full RAS + SPORQ with small divergence (or SPORQ lower) -> use RAS as-is
+      3) Full RAS only -> use RAS as-is
+      4) Partial RAS (3-4 metrics) + valid SPORQ -> 55/45 blend
+      5) Partial RAS only -> partial RAS, conf 0.70
+      6) No RAS + valid SPORQ -> use SPORQ, conf 0.65
+      7) Neither -> neutral 50.0
+    """
+    has_full_ras = ras_score is not None and ras_metric_count >= 5
+    has_partial_ras = ras_score is not None and ras_metric_count in (3, 4)
+    valid_sporq = _is_valid_percentile(sporq_val)
+
+    if has_full_ras:
+        if valid_sporq and (float(sporq_val) - float(ras_score)) >= SPORQ_RB_DIVERGENCE_THRESHOLD:
+            blended = 0.55 * float(ras_score) + 0.45 * float(sporq_val)
+            delta = float(sporq_val) - float(ras_score)
+            return (
+                round(blended, 4),
+                "RAS_SPORQ_BLEND",
+                0.80,
+                (
+                    f"Full RAS ({ras_score:.1f}) blended with SPORQ ({sporq_val:.1f}) — "
+                    f"cohort-stability correction (SPORQ leads by {delta:.1f} pts)"
+                ),
+                True,
+            )
+        confidence = _ras_confidence(ras_metric_count)
+        return (
+            float(ras_score),
+            "RAS",
+            confidence,
+            f"RAS {ras_score:.1f} from {ras_metric_count} combine metrics",
+            False,
+        )
+
+    if has_partial_ras and valid_sporq:
+        blended = 0.55 * float(ras_score) + 0.45 * float(sporq_val)
+        return (
+            round(blended, 4),
+            "RAS_SPORQ_BLEND",
+            0.75,
+            f"Partial RAS ({ras_metric_count} metrics) blended with SPORQ ({ras_score:.1f} / {sporq_val:.1f})",
+            True,
+        )
+
+    if has_partial_ras:
+        return (
+            float(ras_score),
+            "RAS_PARTIAL",
+            0.70,
+            f"Partial RAS {ras_score:.1f} from {ras_metric_count} combine metrics (no SPORQ supplement)",
+            False,
+        )
+
+    if valid_sporq:
+        return (
+            float(sporq_val),
+            "SPORQ",
+            0.65,
+            f"SPORQ {sporq_val:.0f}th percentile (no usable RAS available)",
+            True,
+        )
+
+    return (50.0, "NEUTRAL_DEFAULT", 0.50, "No usable RAS/SPORQ; neutral athletic default", False)
+
+
 def resolve_athletic_input(
     player_id: str,
     position: str,
@@ -762,7 +845,7 @@ def resolve_athletic_input(
 
     Priority:
       1. RAS (full combine composite) — default for all positions
-      2. SPORQ (for TE only when trust=preferred and RAS missing)
+      2. SPORQ — position-gated (TE: primary fallback; WR/RB: supplemental blend)
       3. COMBINE_FALLBACK (partial combine data, low confidence)
       4. None (no athletic data)
     """
@@ -772,6 +855,10 @@ def resolve_athletic_input(
     # WR-specific honesty logic: partial RAS and SPORQ-aware blending/default.
     if position == "WR":
         return resolve_wr_athletic_input(ras_score, ras_metric_count, sporq_val)
+
+    # RB: cohort-stability correction — blend when SPORQ diverges significantly from RAS.
+    if position == "RB" and trust == "supplemental":
+        return resolve_rb_athletic_input(ras_score, ras_metric_count, sporq_val)
 
     # 1. RAS is the primary source
     if ras_score is not None:
