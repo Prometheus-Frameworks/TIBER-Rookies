@@ -4,14 +4,14 @@
     "player_name": "Jeremiyah Love",
     "position": "RB",
     "pick": 3,
-    "team": "TBD",
+    "team": "Cardinals",
     "pre_draft_tiber_stance": "High-upside RB profile with model-aligned talent indicators pre-draft; required NFL capital to confirm ceiling confidence.",
     "round1_signal_summary": "Top-5 RB draft capital is a rare modern signal that materially upgrades both confidence and role insulation.",
     "talent_confirmation_signal": "elite",
     "opportunity_insulation_signal": "elite",
     "short_term_fantasy_runway": "immediate",
     "primary_risks": [
-      "Operator-provided pick/team facts still need canonical draft_results reconciliation.",
+      "Draft result facts reconciled on 2026-05-11; remaining uncertainty is role/team-context translation, not pick/team identity.",
       "Top-5 RB outcomes remain sensitive to offensive line and coaching continuity."
     ],
     "translator_tags": [
@@ -21,7 +21,10 @@
       "immediate_workload_signal"
     ],
     "post_draft_handling": "Treat as a rare RB premium-capital case, not a generic Round 1 RB bucket. Preserve strong opportunity insulation in translator logic without rewriting pre-draft model grade.",
-    "notes": "Selected top 5 as an RB. Treat as rare RB capital and offensive infrastructure signal. Do not treat as generic Round 1 RB."
+    "notes": "Selected top 5 as an RB. Treat as rare RB capital and offensive infrastructure signal. Do not treat as generic Round 1 RB.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?yr=2026"
   },
   {
     "player_id": "wr-carnell-tate_2026",
@@ -36,7 +39,7 @@
     "short_term_fantasy_runway": "strong",
     "primary_risks": [
       "Class-level draft capital inflation could overstate pure talent certainty relative to historical baselines.",
-      "Environment assumptions should remain provisional until canonical draft/team artifacts are finalized."
+      "Environment assumptions remain provisional until Teamstate context is available."
     ],
     "translator_tags": [
       "top5_skill_capital",
@@ -47,7 +50,10 @@
       "wr1_depth_chart_path"
     ],
     "post_draft_handling": "Keep talent confirmation and opportunity insulation split. Apply inflation-aware caution to talent confidence while preserving elite role/runway insulation.",
-    "notes": "Top-5 pick may overstate pure historical talent signal if 2026 class capital is inflated, but opportunity insulation remains elite. If Titans context is present, note presumed early WR1 runway with Cam Ward, but avoid overstating until draft_results/team context are canonical."
+    "notes": "Top-5 pick may overstate pure historical talent signal if 2026 class capital is inflated, but opportunity insulation remains elite. If Titans context is present, note presumed early WR1 runway with Cam Ward, but avoid overstating after canonical draft_results reconciliation.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?yr=2026"
   },
   {
     "player_id": "wr-jordyn-tyson_2026",
@@ -62,7 +68,7 @@
     "short_term_fantasy_runway": "strong",
     "primary_risks": [
       "Target hierarchy and Year 1 volume remain sensitive to Saints deployment and QB stability.",
-      "Operator-provided draft facts still need canonical reconciliation."
+      "Draft result facts reconciled on 2026-05-11; remaining uncertainty is role/team-context translation, not pick/team identity."
     ],
     "translator_tags": [
       "top10_skill_capital",
@@ -70,7 +76,10 @@
       "strong_role_insulation"
     ],
     "post_draft_handling": "Translate as strong market confirmation plus strong early-role insulation without treating as a guaranteed immediate fantasy alpha outcome.",
-    "notes": "Top-10 WR investment. Treat as strong NFL market confirmation and likely early role runway."
+    "notes": "Top-10 WR investment. Treat as strong NFL market confirmation and likely early role runway.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?yr=2026"
   },
   {
     "player_id": "qb-ty-simpson_2026",
@@ -93,14 +102,17 @@
       "delayed_start_insulation"
     ],
     "post_draft_handling": "Separate delayed short-term runway from strong long-term insulation created by Round 1 QB capital and coaching environment.",
-    "notes": "Rams/McVay landing creates strong developmental context. Separate delayed-start timeline from long-term environment quality."
+    "notes": "Rams/McVay landing creates strong developmental context. Separate delayed-start timeline from long-term environment quality.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?yr=2026"
   },
   {
     "player_id": "te-kenyon-sadiq_2026",
     "player_name": "Kenyon Sadiq",
     "position": "TE",
     "pick": 16,
-    "team": "TBD",
+    "team": "Jets",
     "pre_draft_tiber_stance": "Promising TE profile with role-dependent fantasy translation and known positional development lag risk.",
     "round1_signal_summary": "Round 1 TE capital confirms investment and role patience, but TE production curves often delay fantasy breakout timing.",
     "talent_confirmation_signal": "strong",
@@ -116,7 +128,10 @@
       "role_translation_watch"
     ],
     "post_draft_handling": "Maintain strong insulation signal while applying cautious short-term fantasy expectations typical for TE development arcs.",
-    "notes": "Round 1 TE capital is meaningful but TE fantasy production often has delayed curves. Treat opportunity insulation as strong, Year 1 fantasy runway cautiously."
+    "notes": "Round 1 TE capital is meaningful but TE fantasy production often has delayed curves. Treat opportunity insulation as strong, Year 1 fantasy runway cautiously.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?yr=2026"
   },
   {
     "player_id": "wr-makai-lemon_2026",
@@ -141,7 +156,10 @@
       "delayed_volume_path"
     ],
     "post_draft_handling": "Credit strong confirmation and insulation from trade-up Round 1 investment, while explicitly capping near-term volume assumptions in translator outputs.",
-    "notes": "Eagles traded up for him. Strong capital and conviction, but short-term target ceiling may be capped behind A.J. Brown and DeVonta Smith."
+    "notes": "Eagles traded up for him. Strong capital and conviction, but short-term target ceiling may be capped behind A.J. Brown and DeVonta Smith.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?yr=2026"
   },
   {
     "player_id": "wr-kc-concepcion_2026",
@@ -156,7 +174,7 @@
     "short_term_fantasy_runway": "strong",
     "primary_risks": [
       "Landing-spot offensive volatility can disrupt early consistency.",
-      "Team-level context assumptions should be rechecked once canonical artifacts are locked."
+      "Team-level context assumptions should be rechecked once Teamstate context is available."
     ],
     "translator_tags": [
       "round1_market_confirmation",
@@ -166,7 +184,10 @@
       "landing_spot_volatility"
     ],
     "post_draft_handling": "Treat Round 1 draft capital as strong validation of pre-draft WR1 stance while isolating Browns environment volatility as a separate translation risk layer.",
-    "notes": "TIBER had Concepcion as WR1. Round 1 capital is a major validation signal. Separate player validation from Browns offensive environment volatility."
+    "notes": "TIBER had Concepcion as WR1. Round 1 capital is a major validation signal. Separate player validation from Browns offensive environment volatility.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?yr=2026"
   },
   {
     "player_id": "wr-omar-cooper-jr_2026",
@@ -190,7 +211,10 @@
       "role_path_review"
     ],
     "post_draft_handling": "Score as stronger than passive pick-30 capital because team paid to re-enter Round 1 for contract control and commitment.",
-    "notes": "Jets traded back into Round 1. Treat as stronger than passive pick-30 capital because the team paid to secure the fifth-year option."
+    "notes": "Jets traded back into Round 1. Treat as stronger than passive pick-30 capital because the team paid to secure the fifth-year option.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?yr=2026"
   },
   {
     "player_id": "rb-jadarian-price_2026",
@@ -215,6 +239,9 @@
       "opportunity_insulation_strong"
     ],
     "post_draft_handling": "Maintain strong opportunity insulation from Round 1 RB capital while keeping talent confirmation separate and modestly sample-discounted.",
-    "notes": "Round 1 RB capital despite not topping 125 touches in a college season. Talent confirmation is strong but sample-size discounted. Opportunity insulation is strong because Seattle spent Round 1 capital."
+    "notes": "Round 1 RB capital despite not topping 125 touches in a college season. Talent confirmation is strong but sample-size discounted. Opportunity insulation is strong because Seattle spent Round 1 capital.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?yr=2026"
   }
 ]

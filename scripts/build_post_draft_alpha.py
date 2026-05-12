@@ -203,8 +203,54 @@ def build_row(
     }
 
 
-def build_post_draft_rows(predraft_path: Path, round1_path: Path, day2_path: Path) -> list[dict[str, Any]]:
+def load_draft_results(path: Path) -> dict[str, dict[str, Any]]:
+    if not path.exists():
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, list):
+        return {}
+    results: dict[str, dict[str, Any]] = {}
+    for row in payload:
+        if not isinstance(row, dict):
+            continue
+        player_id = normalize_player_id(str(row.get("player_id", "")))
+        if player_id:
+            results[player_id] = row
+    return results
+
+
+def profile_with_canonical_draft_result(
+    profile: dict[str, Any],
+    source_profile: str,
+    draft_results_by_id: dict[str, dict[str, Any]],
+) -> dict[str, Any]:
+    normalized = normalize_player_id(profile["player_id"])
+    draft_result = draft_results_by_id.get(normalized)
+    if draft_result is None:
+        return profile
+
+    reconciled = dict(profile)
+    draft_round = draft_result.get("draft_round")
+    overall_pick = draft_result.get("overall_pick")
+    team = draft_result.get("nfl_team_display") or draft_result.get("nfl_team")
+
+    if source_profile == "day2":
+        reconciled["round"] = draft_round
+    reconciled["pick"] = overall_pick
+    reconciled["team"] = team
+    reconciled["source_status"] = "canonical_draft_results_reconciled"
+    reconciled["draft_results_source"] = "data/processed/2026_draft_results.json"
+    return reconciled
+
+
+def build_post_draft_rows(
+    predraft_path: Path,
+    round1_path: Path,
+    day2_path: Path,
+    draft_results_path: Path,
+) -> list[dict[str, Any]]:
     predraft_by_id, predraft_by_name = load_predraft_alpha(predraft_path)
+    draft_results_by_id = load_draft_results(draft_results_path)
 
     rows: list[dict[str, Any]] = []
     seen: set[str] = set()
@@ -230,6 +276,7 @@ def build_post_draft_rows(predraft_path: Path, round1_path: Path, day2_path: Pat
     for source_profile, path in (("round1", round1_path), ("day2", day2_path)):
         payload = json.loads(path.read_text(encoding="utf-8"))
         for profile in payload:
+            profile = profile_with_canonical_draft_result(profile, source_profile, draft_results_by_id)
             player, has_predraft_baseline = resolve_predraft_player(profile)
             if player["player_id"] in seen:
                 continue
@@ -284,13 +331,14 @@ def write_outputs(
             "translator_adjustments_only": True,
             "deterministic_logic": True,
             "coverage_behavior": "Only Round 1 and Day 2 profile players are emitted in post-draft v0.",
+            "draft_results_reconciliation": "data/processed/2026_draft_results.json is the canonical source for pick/team facts; Day 3 and UDFA handling is recorded outside the score translator.",
         },
         "rows": rows,
     }
     output_json.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
 
     with output_csv.open("w", encoding="utf-8", newline="") as handle:
-        writer = csv.DictWriter(handle, fieldnames=ROW_FIELDS)
+        writer = csv.DictWriter(handle, fieldnames=ROW_FIELDS, lineterminator="\n")
         writer.writeheader()
         for row in rows:
             csv_row = {
@@ -325,6 +373,11 @@ def parse_args() -> argparse.Namespace:
         default=Path("data/processed/2026_day2_draft_signal_profiles.json"),
     )
     parser.add_argument(
+        "--draft-results-path",
+        type=Path,
+        default=Path("data/processed/2026_draft_results.json"),
+    )
+    parser.add_argument(
         "--output-json",
         type=Path,
         default=Path("exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_v0.json"),
@@ -344,7 +397,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
-    rows = build_post_draft_rows(args.predraft_path, args.round1_path, args.day2_path)
+    rows = build_post_draft_rows(args.predraft_path, args.round1_path, args.day2_path, args.draft_results_path)
     write_outputs(rows, args.output_json, args.output_csv, args.output_missing_baselines)
     print(
         f"Wrote {len(rows)} rows to {args.output_json} and {args.output_csv}; "

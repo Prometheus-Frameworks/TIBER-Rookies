@@ -31,8 +31,10 @@
       "athletic_profile_boost"
     ],
     "post_draft_handling": "Translate as a high-confidence Day 2 opportunity upgrade with near-Round-1 framing, while keeping insulation assumptions below Round 1 certainty.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=2&yr=2026"
   },
   {
     "player_id": "wr-denzel-boston",
@@ -65,8 +67,10 @@
       "kcc_target_competition_signal"
     ],
     "post_draft_handling": "Treat as a positive role-opportunity translator signal and monitor role pathway, while keeping insulation assumptions clearly below Round 1 certainty.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=2&yr=2026"
   },
   {
     "player_id": "wr-germie-bernard",
@@ -97,8 +101,10 @@
       "steelers_wr_room_watch"
     ],
     "post_draft_handling": "Treat as a legitimate Day 2 role-path signal with competition-sensitive early deployment expectations.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=2&yr=2026"
   },
   {
     "player_id": "te-eli-stowers",
@@ -129,8 +135,10 @@
       "opportunity_insulation_moderate"
     ],
     "post_draft_handling": "Translate as a positive Day 2 TE commitment signal with expected slower early fantasy conversion.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=2&yr=2026"
   },
   {
     "player_id": "te-nate-boerkircher",
@@ -161,8 +169,10 @@
       "opportunity_insulation_moderate"
     ],
     "post_draft_handling": "Treat as a Day 2 TE market-validation signal and maintain conservative Year 1 volume assumptions.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=2&yr=2026"
   },
   {
     "player_id": "te-marlin-klein",
@@ -193,8 +203,10 @@
       "opportunity_insulation_moderate"
     ],
     "post_draft_handling": "Apply TE-market-push framing with patience on immediate fantasy output and emphasis on role development cues.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=2&yr=2026"
   },
   {
     "player_id": "te-max-klare",
@@ -225,8 +237,10 @@
       "opportunity_insulation_moderate"
     ],
     "post_draft_handling": "Treat as Day 2 TE demand confirmation with delayed translation expectations and role monitoring emphasis.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=2&yr=2026"
   },
   {
     "player_id": "qb-carson-beck",
@@ -256,8 +270,10 @@
       "opportunity_insulation_limited"
     ],
     "post_draft_handling": "Apply developmental-quarterback translation with delayed runway and constrained insulation pending room clarity.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=3&yr=2026"
   },
   {
     "player_id": "te-sam-roush",
@@ -286,8 +302,10 @@
       "opportunity_insulation_limited"
     ],
     "post_draft_handling": "Translate as a developmental Day 2 TE signal requiring role progression before strong fantasy confidence.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=3&yr=2026"
   },
   {
     "player_id": "wr-antonio-williams",
@@ -317,8 +335,10 @@
       "opportunity_insulation_limited"
     ],
     "post_draft_handling": "Treat as actionable Day 2 WR opportunity with competition-sensitive short-term confidence.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=3&yr=2026"
   },
   {
     "player_id": "te-oscar-delp",
@@ -347,8 +367,10 @@
       "opportunity_insulation_limited"
     ],
     "post_draft_handling": "Apply patient TE translation with emphasis on role growth checkpoints over immediate output.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=3&yr=2026"
   },
   {
     "player_id": "wr-malachi-fields",
@@ -378,8 +400,10 @@
       "opportunity_insulation_limited"
     ],
     "post_draft_handling": "Treat as a positive but fragile Day 2 WR opportunity signal pending role clarity.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=3&yr=2026"
   },
   {
     "player_id": "wr-caleb-douglas",
@@ -410,8 +434,10 @@
       "dolphins_multi_pass_catcher_investment"
     ],
     "post_draft_handling": "Translate as meaningful Day 2 WR intent with elevated competition watch due to concentrated Dolphins pass-catcher capital.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=3&yr=2026"
   },
   {
     "player_id": "qb-drew-allar",
@@ -442,8 +468,10 @@
       "opportunity_insulation_limited"
     ],
     "post_draft_handling": "Treat as a developmental Day 2 QB signal with constrained insulation; preserve upside path notes without upgrading to Round 1-style certainty.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=3&yr=2026"
   },
   {
     "player_id": "wr-zachariah-branch",
@@ -473,8 +501,10 @@
       "opportunity_insulation_limited"
     ],
     "post_draft_handling": "Treat as an upside Day 2 WR translator signal with role-shape dependence and limited insulation.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=3&yr=2026"
   },
   {
     "player_id": "wr-jakobi-lane",
@@ -504,8 +534,10 @@
       "opportunity_insulation_limited"
     ],
     "post_draft_handling": "Translate as a viable opportunity signal with competition-sensitive ramp expectations.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=3&yr=2026"
   },
   {
     "player_id": "wr-chris-brazzell-ii",
@@ -535,8 +567,10 @@
       "opportunity_insulation_limited"
     ],
     "post_draft_handling": "Treat as a Day 2 opportunity signal with high dependence on role crystallization.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=3&yr=2026"
   },
   {
     "player_id": "wr-ted-hurst",
@@ -566,8 +600,10 @@
       "opportunity_insulation_limited"
     ],
     "post_draft_handling": "Translate as a positive Day 2 WR pathway with explicit competition and volume caveats.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=3&yr=2026"
   },
   {
     "player_id": "te-will-kacmarek",
@@ -597,8 +633,10 @@
       "dolphins_multi_pass_catcher_investment"
     ],
     "post_draft_handling": "Treat as a developmental Day 2 TE signal with tempered Year 1 expectations and elevated competition watch.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=3&yr=2026"
   },
   {
     "player_id": "wr-zavion-thomas",
@@ -628,8 +666,10 @@
       "opportunity_insulation_limited"
     ],
     "post_draft_handling": "Translate as an actionable but role-volatile Day 2 WR signal.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=3&yr=2026"
   },
   {
     "player_id": "rb-kaelon-black",
@@ -659,8 +699,10 @@
       "opportunity_insulation_limited"
     ],
     "post_draft_handling": "Treat as a scarce Day 2 RB capital signal with meaningful workload-path upside but limited insulation.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=3&yr=2026"
   },
   {
     "player_id": "wr-chris-bell",
@@ -691,8 +733,10 @@
       "dolphins_multi_pass_catcher_investment"
     ],
     "post_draft_handling": "Translate as meaningful Day 2 WR investment while explicitly discounting early-volume certainty in a clustered landing spot.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=3&yr=2026"
   },
   {
     "player_id": "te-eli-raridon",
@@ -721,7 +765,9 @@
       "opportunity_insulation_limited"
     ],
     "post_draft_handling": "Apply patient TE development framing with conservative short-term production expectations.",
-    "notes": "Operator-seeded Day 2 profile pending canonical draft_results reconciliation.",
-    "source_status": "operator_seeded"
+    "notes": "Reconciled against data/processed/2026_draft_results.json on 2026-05-11; qualitative notes remain operator-authored.",
+    "source_status": "canonical_draft_results_reconciled",
+    "draft_results_source": "data/processed/2026_draft_results.json",
+    "draft_results_source_url": "https://www.footballdb.com/draft/draft.html?lg=NFL&rnd=3&yr=2026"
   }
 ]
