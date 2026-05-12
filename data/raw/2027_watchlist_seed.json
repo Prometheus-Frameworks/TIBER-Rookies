@@ -1,0 +1,32 @@
+[
+  {
+    "player_id": "wr-jeremiah-smith",
+    "player_name": "Jeremiah Smith",
+    "position": "WR",
+    "school": "Ohio State",
+    "class_year": 2027,
+    "watchlist_tier": "elite",
+    "early_flags": ["true_freshman_breakout", "power_conference"],
+    "notes": "Consensus top 2027 WR prospect entering draft-eligible season. No alpha scoring applied (pre-final-college-season)."
+  },
+  {
+    "player_id": "wr-malachi-toney",
+    "player_name": "Malachi Toney",
+    "position": "WR",
+    "school": "Miami (FL)",
+    "class_year": 2027,
+    "watchlist_tier": "primary",
+    "early_flags": ["true_freshman_contributor", "power_conference"],
+    "notes": "Watchlist add. No alpha scoring applied (pre-final-college-season)."
+  },
+  {
+    "player_id": "wr-mario-craver",
+    "player_name": "Mario Craver",
+    "position": "WR",
+    "school": "Texas A&M",
+    "class_year": 2027,
+    "watchlist_tier": "primary",
+    "early_flags": ["true_freshman_contributor", "transfer_portal", "power_conference"],
+    "notes": "Watchlist add. Transferred from Mississippi State. No alpha scoring applied (pre-final-college-season)."
+  }
+]
