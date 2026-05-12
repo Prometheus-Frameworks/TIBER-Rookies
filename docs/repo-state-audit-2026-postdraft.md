@@ -250,3 +250,18 @@ Full module set present and documented:
 - Runtime server is lightweight and correct
 - Architecture docs, source-of-truth audit, and operator journal doctrine are above-average quality for a rushed pre-draft build
 - The separation between pre-draft frozen grades and post-draft translator is a genuinely good design decision
+
+---
+
+## 11. Branch Disposition Log
+
+### `codex/transform-2026-seed-pool-into-canonical-files` — DELETED 2026-05-12
+
+**Status:** Deleted without merging. Do not recreate or open a PR from this branch.
+
+**Reason:**
+- Was 461 commits behind main and only 1 commit ahead at time of deletion
+- Touched canonical 2026 files: `2026_real_seed_pool.json`, `2026_combine_results.json`, `2026_draft_capital_proxy.json`, `2026_rookie_alpha_predraft_v0.*`, `2026_manifest.json`
+- Almost certainly predates the post-draft/canonical-data work merged in PRs #208 and #209 (2026-05-11)
+- Merging would have reintroduced stale pre-draft proxies over source-backed, current files
+- Main is the source of truth. All canonical 2026 seed/draft/combine data is current as of today's session.
