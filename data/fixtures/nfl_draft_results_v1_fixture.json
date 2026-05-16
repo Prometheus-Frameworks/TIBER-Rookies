@@ -1,0 +1,72 @@
+[
+  {
+    "draft_year": 2026,
+    "player_id": "wr-fixture-player-one",
+    "player_name": "Fixture Player One",
+    "position": "WR",
+    "team": "KC",
+    "round": 1,
+    "pick_in_round": 15,
+    "overall_pick": 15,
+    "source": "TIBER-Data fixture (test only)",
+    "source_url": null,
+    "generated_at": "2026-05-16T00:00:00+00:00",
+    "provenance_status": "source_verified"
+  },
+  {
+    "draft_year": 2026,
+    "player_id": "rb-fixture-player-two",
+    "player_name": "Fixture Player Two",
+    "position": "RB",
+    "team": "SF",
+    "round": 2,
+    "pick_in_round": 10,
+    "overall_pick": 42,
+    "source": "TIBER-Data fixture (test only)",
+    "source_url": null,
+    "generated_at": "2026-05-16T00:00:00+00:00",
+    "provenance_status": "source_verified"
+  },
+  {
+    "draft_year": 2026,
+    "player_id": null,
+    "player_name": "Fixture Player Three (unresolved id)",
+    "position": "TE",
+    "team": "DAL",
+    "round": 3,
+    "pick_in_round": 5,
+    "overall_pick": 68,
+    "source": "TIBER-Data fixture (test only)",
+    "source_url": null,
+    "generated_at": "2026-05-16T00:00:00+00:00",
+    "provenance_status": "source_verified_player_id_unresolved"
+  },
+  {
+    "draft_year": 2026,
+    "player_id": "qb-fixture-player-four",
+    "player_name": "Fixture Player Four (needs verification)",
+    "position": "QB",
+    "team": "NE",
+    "round": 4,
+    "pick_in_round": 3,
+    "overall_pick": 105,
+    "source": "TIBER-Data fixture (test only)",
+    "source_url": null,
+    "generated_at": "2026-05-16T00:00:00+00:00",
+    "provenance_status": "needs_verification"
+  },
+  {
+    "draft_year": 2026,
+    "player_id": "wr-fixture-player-five",
+    "player_name": "Fixture Player Five (fixture only — must be rejected)",
+    "position": "WR",
+    "team": "GB",
+    "round": 7,
+    "pick_in_round": 20,
+    "overall_pick": 250,
+    "source": "TIBER-Data fixture (test only)",
+    "source_url": null,
+    "generated_at": "2026-05-16T00:00:00+00:00",
+    "provenance_status": "fixture_only"
+  }
+]
