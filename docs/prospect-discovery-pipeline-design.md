@@ -16,7 +16,7 @@ The 2026 class was seeded entirely by hand from consensus big boards and combine
 - The 2027 watchlist currently has 3 manually entered entries with no discovery logic behind them
 - There is no repeatable process for future classes
 
-The goal of this design is a two-phase, CFBD-driven funnel that surfaces prospects early and broadly, then narrows automatically as the season and draft calendar progress.
+The goal of this design is a two-phase, CFBD-driven funnel that surfaces prospects early and broadly, then narrows through an explicit operator promotion gate as the season and draft calendar progress. The shadow pool is producer-only discovery state; it is not model-active and is not runtime-visible until a later PR intentionally promotes players into the real seed/watchlist path.
 
 ---
 
@@ -42,19 +42,19 @@ This mirrors how actual scouting departments operate: cast wide early, then funn
 
 - Runs once at the start of each college football season (September)
 - Can be re-run mid-season to pick up transfers or newly eligible players
-- Output is additive — existing entries are not overwritten, only new ones added
+- Output is additive — existing player identity fields, manual notes, and current status are preserved; source-observed fields may be refreshed; new candidates may be added
 
 ### Discovery source
 
-CFBD `/roster` endpoint, queried by position and year. Example:
+CFBD roster data, with the API shape verified before implementation. Do **not** assume CFBD supports a class-wide or position-wide query such as `/roster?year={year}&position={position}`.
 
-```
-GET /roster?year=2026&position=WR
-```
+Known repo-compatible default: fetch rosters by team + season, then filter positions locally. This matches the existing `compute_breakout_age.py` roster-fetching pattern. If implementation verifies a better supported endpoint exists, document that verification in the implementation PR before using it.
 
-Returns all rostered WRs that season with `year` (academic year: 1=FR, 2=SO, 3=JR, 4=SR, 5=5th year).
+The roster payload is expected to provide each player’s `year` (academic year: 1=FR, 2=SO, 3=JR, 4=SR, 5=5th year) or an equivalent field that can be mapped without fabricating eligibility.
 
 ### Eligibility filter
+
+For a `class_year`, define `discovery_season = class_year - 1`. A 2027 class shadow pool is initially discovered from the 2026 college season and can be rerun during the 2026 season as roster and production data update.
 
 A player enters the shadow pool if:
 
@@ -69,12 +69,12 @@ The `year >= 3` rule covers the standard case. The sophomore breakout exception 
 
 ### Breakout thresholds (reuse existing logic)
 
-`compute_breakout_age.py` already defines these — the discovery script imports and reuses them:
+`compute_breakout_age.py` already defines module-level breakout threshold constants. The discovery script should reuse those existing module-level constants rather than duplicating or renaming them. It must also reuse the existing production/breakout field semantics (for example `receiving_yard_share`) instead of creating new aliases. Extract threshold evaluation into a reusable helper only if implementation needs logic beyond the raw constants.
 
 | Position | Share criteria (preferred) | Volume fallback |
 |---|---|---|
-| WR | target_share ≥ 0.20 OR rec_yard_share ≥ 0.25 | targets ≥ 50 |
-| TE | target_share ≥ 0.15 OR rec_yard_share ≥ 0.20 | targets ≥ 35 |
+| WR | target_share ≥ 0.20 OR receiving_yard_share ≥ 0.25 | targets ≥ 50 |
+| TE | target_share ≥ 0.15 OR receiving_yard_share ≥ 0.20 | targets ≥ 35 |
 | RB | rush_share ≥ 0.30 OR rush_yard_share ≥ 0.30 | rush_attempts ≥ 80 |
 | QB | — | pass_attempts ≥ 150 |
 
@@ -84,7 +84,7 @@ The `year >= 3` rule covers the standard case. The sophomore breakout exception 
 
 Example: `data/raw/2027_shadow_pool.json`
 
-This is distinct from the watchlist stub (`2027_watchlist_seed.json`) and from the real seed pool. It is the machine-generated discovery layer.
+This is distinct from the watchlist stub (`2027_watchlist_seed.json`) and from the real seed pool. It is the machine-generated discovery layer and remains producer-only until an operator-approved promotion writes candidates into the real seed/watchlist path.
 
 ---
 
@@ -139,6 +139,10 @@ Responsibilities:
 }
 ```
 
+### Additive merge and status lifecycle
+
+Reruns are append/additive, not destructive. Existing player identity fields, `operator_notes`, `manually_added`, and current `status` are preserved. Source-observed fields such as school, academic year, position, discovery provenance, and production/breakout observations may be refreshed when a current source provides updated values. `status_history` is append-only: add a new event when status changes, but never rewrite or truncate prior events. Reruns must not automatically demote, remove, or withdraw players that disappear from a later CFBD response; those decisions remain manual operator actions. Newly discovered candidates may be appended.
+
 ### Status lifecycle
 
 ```
@@ -173,7 +177,7 @@ data/raw/watchlist_overrides.json  ← Manual additions that bypass CFBD discove
                                        operator intuition calls)
 
 scripts/
-  discover_shadow_pool.py          ← new: Phase 1 CFBD query + eligibility filter
+  discover_shadow_pool.py          ← new: Phase 1 CFBD roster fetch + eligibility filter
   promote_shadow_to_seed.py        ← new: Phase 2 combine gate + promotion
   compute_breakout_age.py          ← existing: breakout logic (imported, not forked)
   compute_production_scores.py     ← existing: unchanged, reads real seed pool
@@ -187,12 +191,12 @@ scripts/
 
 | Attribute | Detail |
 |---|---|
-| Input | CFBD `/roster?year={season}&position={pos}` for each position in `DISCOVERY_POSITIONS` |
+| Input | CFBD roster data for `discovery_season = class_year - 1`; implementation must verify supported API shape first. Default to team + season roster fetches and local position filtering unless endpoint verification proves a better supported query. |
 | Eligibility filter | academic year ≥ 3, OR academic year == 2 with breakout flag |
 | Output | `data/raw/{class_year}_shadow_pool.json` |
-| Merge behavior | Additive — existing entries updated in place (status preserved), new entries appended |
-| Rate limiting | Reuse `cfbd_headers()` + exponential backoff from `compute_breakout_age.py` |
-| Config | `DISCOVERY_POSITIONS = ["WR", "RB", "TE", "QB"]`, `DISCOVERY_CLASS_YEAR = 2027` |
+| Merge behavior | Additive — preserve existing identity fields, `operator_notes`, `manually_added`, and current `status`; refresh source-observed fields when CFBD/provenance data changes; append status history only when status changes; never auto-demote, auto-remove, or erase existing candidates on rerun; append newly discovered candidates |
+| Rate limiting | Reuse `cfbd_headers()` from `scripts/cfbd_plays.py`; follow the retry/backoff pattern already used by `compute_breakout_age.py` |
+| Config | `DISCOVERY_POSITIONS = ["WR", "RB", "TE", "QB"]`, `DISCOVERY_CLASS_YEAR = 2027`; derive `discovery_season = DISCOVERY_CLASS_YEAR - 1` |
 
 ### 2. `scripts/promote_shadow_to_seed.py`
 
@@ -211,8 +215,16 @@ scripts/
 | Script | Change needed |
 |---|---|
 | `compute_production_scores.py` | None — already reads from real seed pool, no changes needed |
-| `compute_breakout_age.py` | Export `SHARE_BREAKOUT_CRITERIA` and `BREAKOUT_THRESHOLDS` so `discover_shadow_pool.py` can import them without duplication |
-| `lib/rookies/rookieDataContract.js` | Add `SHADOW_POOL_SEASONS = [2027]` alongside `WATCHLIST_SEASONS` |
+| `compute_breakout_age.py` | Prefer no change if `SHARE_BREAKOUT_CRITERIA` and `BREAKOUT_THRESHOLDS` remain module-level importable; extract threshold evaluation into a reusable helper only if `discover_shadow_pool.py` needs logic beyond the raw constants |
+| `lib/rookies/rookieDataContract.js` | None for the initial implementation — shadow pool is producer-only and not runtime-visible |
+
+---
+
+## Runtime Exposure
+
+Initial decision: shadow pool is producer-only for now. No runtime contract, route, helper, or data-contract change should be made merely to create or rerun the shadow pool. Model-active and runtime-visible surfaces continue to flow through the existing real seed/watchlist/promoted paths after operator approval.
+
+If a future PR intentionally makes shadow pool data runtime-visible, it should add explicit helpers such as `rookieShadowPoolPath(season)` and `getShadowPoolSeasons()` in that PR, with smoke tests and downstream contract notes. Do not add those helpers in the discovery-script implementation PR unless runtime exposure is explicitly requested.
 
 ---
 
@@ -220,7 +232,7 @@ scripts/
 
 | Current approach | Replaced by |
 |---|---|
-| Hand-curated seed pool from big boards | `discover_shadow_pool.py` CFBD query |
+| Hand-curated seed pool from big boards | `discover_shadow_pool.py` CFBD roster discovery |
 | Manual combine cross-reference | `promote_shadow_to_seed.py` gate |
 | `2027_watchlist_seed.json` (3-entry stub) | `2027_shadow_pool.json` (machine-generated, operator-reviewable) |
 | Post-draft backfill of missed players | Shadow pool catches them before the draft |
@@ -231,7 +243,7 @@ The manual watchlist stub (`2027_watchlist_seed.json`) can be retired once the s
 
 ## What This Does NOT Replace
 
-- **Operator judgment** — the shadow pool is a candidate list, not a model input. Promotion to the real seed pool is still an operator-confirmed step
+- **Operator judgment** — the shadow pool is a producer-only candidate list, not a model input. Promotion to the real seed pool is still an operator-confirmed step
 - **SPORQ / cohort-stability blending** — downstream of the seed pool, unchanged
 - **Combine measurement entry** — still populated manually or from a sourced feed into `{year}_combine_results.json`
 - **Post-draft alpha translator** — unchanged; operates on the real seed pool after draft capital is known
@@ -245,7 +257,7 @@ The manual watchlist stub (`2027_watchlist_seed.json`) can be retired once the s
 | Positions in scope | WR, RB, TE, QB — configurable via `DISCOVERY_POSITIONS` |
 | Season threshold | 2+ seasons (academic year ≥ 3) + sophomore breakout exception |
 | Phase 2 gate | Combine invite (primary) + manual operator override |
-| Storage format | Separate shadow pool file per class year; status field tracks lifecycle |
+| Storage format | Separate producer-only shadow pool file per class year; status field tracks lifecycle |
 | Manual override path | `watchlist_overrides.json` — operator can force-include any player |
 
 ---
@@ -254,14 +266,15 @@ The manual watchlist stub (`2027_watchlist_seed.json`) can be retired once the s
 
 Recommended sequence for Codex / Claude agent work:
 
-1. **Export breakout constants** from `compute_breakout_age.py` (small, safe refactor — prerequisite for step 2)
-2. **Build `discover_shadow_pool.py`** — CFBD query, eligibility filter, shadow pool write
-3. **Populate `2027_shadow_pool.json`** — run discovery against 2026 college season roster data
-4. **Build `promote_shadow_to_seed.py`** — combine gate + promotion logic
-5. **Retire `2027_watchlist_seed.json`** — migrate its 3 entries into shadow pool as `manually_added: true`, update `rookieDataContract.js`
-6. **Add runbook** to `docs/runbooks/` covering the annual cadence (when to run each script)
+1. **Verify CFBD roster API shape** — confirm whether team + season roster fetching remains required, or document a better supported endpoint before using it
+2. **Reuse breakout threshold constants** from `compute_breakout_age.py`; extract a helper only if raw constants are not enough for implementation
+3. **Build `discover_shadow_pool.py`** — CFBD roster fetch, local position filter, eligibility filter, additive shadow pool write
+4. **Populate `2027_shadow_pool.json`** — run discovery with `discovery_season = 2026` for `class_year = 2027`
+5. **Build `promote_shadow_to_seed.py`** — combine gate + promotion logic
+6. **Optionally retire `2027_watchlist_seed.json` later** — only after the shadow pool is populated and operator-approved entries have a contract-safe replacement path; do not change runtime data-contract helpers as part of the producer-only discovery script
+7. **Add runbook** to `docs/runbooks/` covering the annual cadence (when to run each script)
 
-Steps 1–2 are unblocked. Steps 3–4 depend on step 2. Step 5 depends on step 3.
+Step 1 is unblocked. Steps 2–4 depend on confirming the reusable breakout path and CFBD roster shape. Step 5 depends on step 4. Step 6 depends on an explicit operator decision.
 
 ---
 
