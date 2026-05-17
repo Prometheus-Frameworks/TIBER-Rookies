@@ -57,6 +57,61 @@ VERIFIED_STATUSES = {"source_verified", "source_verified_player_id_unresolved"}
 WARN_STATUSES = {"needs_verification"}
 REJECT_STATUSES = {"fixture_only"}
 
+# TIBER-Data uses full team names (e.g. "Las Vegas Raiders") and may append trade
+# notation (e.g. "Los Angeles Rams from Atlanta Falcons"). This table maps the base
+# team name to the two- or three-letter abbreviation used in TIBER-Rookies.
+# Generated from the TIBER-Data PR #114 promoted artifact (2026 class).
+_NFL_TEAM_FULL_TO_ABBREV: dict[str, str] = {
+    "Arizona Cardinals": "ARI",
+    "Atlanta Falcons": "ATL",
+    "Baltimore Ravens": "BAL",
+    "Buffalo Bills": "BUF",
+    "Carolina Panthers": "CAR",
+    "Chicago Bears": "CHI",
+    "Cincinnati Bengals": "CIN",
+    "Cleveland Browns": "CLE",
+    "Dallas Cowboys": "DAL",
+    "Denver Broncos": "DEN",
+    "Detroit Lions": "DET",
+    "Green Bay Packers": "GB",
+    "Houston Texans": "HOU",
+    "Indianapolis Colts": "IND",
+    "Jacksonville Jaguars": "JAX",
+    "Kansas City Chiefs": "KC",
+    "Las Vegas Raiders": "LV",
+    "Los Angeles Chargers": "LAC",
+    "Los Angeles Rams": "LAR",
+    "Miami Dolphins": "MIA",
+    "Minnesota Vikings": "MIN",
+    "New England Patriots": "NE",
+    "New Orleans Saints": "NO",
+    "New York Giants": "NYG",
+    "New York Jets": "NYJ",
+    "Philadelphia Eagles": "PHI",
+    "Pittsburgh Steelers": "PIT",
+    "San Francisco 49ers": "SF",
+    "Seattle Seahawks": "SEA",
+    "Tampa Bay Buccaneers": "TB",
+    "Tennessee Titans": "TEN",
+    "Washington Commanders": "WAS",
+}
+
+
+def normalize_team_name(raw_team: str) -> str:
+    """Normalize a TIBER-Data team field to a TIBER-Rookies abbreviation.
+
+    Strips trade notation ("Team A from Team B" → "Team A") before lookup.
+    Raises ValueError for unrecognised team names so callers fail loudly.
+    """
+    base = raw_team.split(" from ")[0].strip()
+    abbrev = _NFL_TEAM_FULL_TO_ABBREV.get(base)
+    if abbrev is None:
+        raise ValueError(
+            f"Unknown team name {base!r} (raw: {raw_team!r}). "
+            "Update _NFL_TEAM_FULL_TO_ABBREV in ingest_draft_results_from_tiber_data.py."
+        )
+    return abbrev
+
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Ingest TIBER-Data draft results artifact")
@@ -145,7 +200,8 @@ def map_row(row: dict[str, Any], year: int) -> dict[str, Any]:
     player_id = str(row["player_id"]).strip().lower()
     draft_round = int(row["round"])
     overall_pick = int(row["overall_pick"])
-    nfl_team = str(row["team"]).strip()
+    raw_team = str(row.get("team", "")).strip()
+    nfl_team = normalize_team_name(raw_team)
 
     # Derive draft_day from round (consistent with lib/rookies/draftResults.js)
     day_by_round = {1: 1, 2: 2, 3: 2}
