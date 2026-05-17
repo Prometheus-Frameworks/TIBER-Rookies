@@ -27,6 +27,7 @@ from scripts.ingest_draft_results_from_tiber_data import (
     ingest,
     load_upstream,
     map_row,
+    normalize_team_name,
     validate_row,
 )
 
@@ -43,7 +44,7 @@ def make_row(**overrides) -> dict:
         "player_id": "wr-test-player",
         "player_name": "Test Player",
         "position": "WR",
-        "team": "KC",
+        "team": "Kansas City Chiefs",
         "round": 1,
         "pick_in_round": 10,
         "overall_pick": 10,
@@ -53,6 +54,40 @@ def make_row(**overrides) -> dict:
         "provenance_status": "source_verified",
     }
     return {**base, **overrides}
+
+
+# ---------------------------------------------------------------------------
+# normalize_team_name
+# ---------------------------------------------------------------------------
+
+class TestNormalizeTeamName:
+    def test_simple_full_name(self):
+        assert normalize_team_name("Kansas City Chiefs") == "KC"
+
+    def test_trade_notation_stripped(self):
+        assert normalize_team_name("Los Angeles Rams from Atlanta Falcons") == "LAR"
+
+    def test_trade_notation_acquiring_team_used(self):
+        assert normalize_team_name("Cleveland Browns from Jacksonville Jaguars") == "CLE"
+
+    def test_new_york_jets_from_colts(self):
+        assert normalize_team_name("New York Jets from Indianapolis Colts") == "NYJ"
+
+    def test_all_32_teams_map_without_error(self):
+        from scripts.ingest_draft_results_from_tiber_data import _NFL_TEAM_FULL_TO_ABBREV
+        for full_name, abbrev in _NFL_TEAM_FULL_TO_ABBREV.items():
+            assert normalize_team_name(full_name) == abbrev
+            assert len(abbrev) in (2, 3)
+
+    def test_unknown_team_raises(self):
+        import pytest
+        with pytest.raises(ValueError, match="Unknown team name"):
+            normalize_team_name("Fictional City Team")
+
+    def test_unknown_team_in_trade_notation_raises(self):
+        import pytest
+        with pytest.raises(ValueError, match="Unknown team name"):
+            normalize_team_name("Fictional City Team from Kansas City Chiefs")
 
 
 # ---------------------------------------------------------------------------
@@ -99,7 +134,7 @@ class TestValidateRow:
 
 class TestMapRow:
     def test_field_mapping(self):
-        row = make_row(round=2, team="SF", overall_pick=42)
+        row = make_row(round=2, team="San Francisco 49ers", overall_pick=42)
         mapped = map_row(row, 2026)
 
         assert mapped["draft_round"] == 2
