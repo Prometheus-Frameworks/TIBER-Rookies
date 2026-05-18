@@ -171,6 +171,28 @@ python3 scripts/validate_promoted_export.py \
 Validation checks field presence, metadata consistency, hashes, and row-count expectations.
 
 
+## Devy signal discovery foundation
+
+TIBER-Devy is an additive signal-discovery layer for prospects whose Rookie Alpha
+inputs are not stable enough for deterministic scoring. It models development
+horizon, lifecycle stage, development tags, and uncertainty/actionability bands;
+it does not produce rankings, predictive ML, future NFL draft capital, or
+precision grades.
+
+Canonical definitions and validation live in `scripts/devy_signal_registry.py`.
+The fixture-only registry at `data/fixtures/devy_prospect_registry_v0_fixture.json`
+uses illustrative placeholder rows to validate schema behavior without creating
+unsourced player facts. Run:
+
+```bash
+python3 scripts/devy_signal_registry.py --registry data/fixtures/devy_prospect_registry_v0_fixture.json
+```
+
+See `docs/devy-signal-discovery.md` for the lifecycle vocabulary, horizon logic,
+and guardrails that keep 2029-type long-horizon assets from being treated as
+next-cycle rookie prospects.
+
+
 ## Parallel ML evaluation lane (phase 1, experimental)
 
 This repo now includes an **experimental parallel ML lane** that evaluates rookie hit probabilities from historical labeled rows. It is strictly additive and does **not** replace deterministic Rookie Alpha scoring.
