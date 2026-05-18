@@ -572,5 +572,120 @@
       "yards_per_reception": 15.1,
       "dominator_rating": 0.1
     }
+  },
+  {
+    "player_id": "rb-kaytron-allen",
+    "player_name": "Kaytron Allen",
+    "position": "RB",
+    "school": "Penn State",
+    "season": 2025,
+    "stats": {
+      "rush_attempts": 210,
+      "rush_yards": 1303,
+      "rush_tds": 15,
+      "yards_per_carry": 6.2,
+      "receptions": 18,
+      "receiving_yards": 68
+    }
+  },
+  {
+    "player_id": "rb-seth-mcgowan",
+    "player_name": "Seth McGowan",
+    "position": "RB",
+    "school": "Kentucky",
+    "season": 2025,
+    "stats": {
+      "rush_attempts": 165,
+      "rush_yards": 725,
+      "rush_tds": 12,
+      "yards_per_carry": 4.4,
+      "receptions": 19,
+      "receiving_yards": 126
+    }
+  },
+  {
+    "player_id": "rb-emmett-johnson",
+    "player_name": "Emmett Johnson",
+    "position": "RB",
+    "school": "Nebraska",
+    "season": 2025,
+    "stats": {
+      "rush_attempts": 251,
+      "rush_yards": 1451,
+      "rush_tds": 12,
+      "yards_per_carry": 5.8,
+      "receptions": 46,
+      "receiving_yards": 370
+    }
+  },
+  {
+    "player_id": "wr-barion-brown",
+    "player_name": "Barion Brown",
+    "position": "WR",
+    "school": "LSU",
+    "season": 2025,
+    "stats": {
+      "receptions": 53,
+      "receiving_yards": 532,
+      "receiving_tds": 1,
+      "yards_per_reception": 10.0,
+      "dominator_rating": 0.2
+    }
+  },
+  {
+    "player_id": "wr-deion-burks",
+    "player_name": "Deion Burks",
+    "position": "WR",
+    "school": "Oklahoma",
+    "season": 2025,
+    "stats": {
+      "receptions": 57,
+      "receiving_yards": 620,
+      "receiving_tds": 4,
+      "yards_per_reception": 10.9,
+      "dominator_rating": 0.2
+    }
+  },
+  {
+    "player_id": "wr-kevin-coleman-jr",
+    "player_name": "Kevin Coleman Jr.",
+    "position": "WR",
+    "school": "Missouri",
+    "season": 2025,
+    "stats": {
+      "receptions": 66,
+      "receiving_yards": 732,
+      "receiving_tds": 1,
+      "yards_per_reception": 11.1,
+      "dominator_rating": 0.3
+    }
+  },
+  {
+    "player_id": "wr-kendrick-law",
+    "player_name": "Kendrick Law",
+    "position": "WR",
+    "school": "Kentucky",
+    "season": 2025,
+    "stats": {
+      "receptions": 53,
+      "receiving_yards": 540,
+      "receiving_tds": 3,
+      "yards_per_reception": 10.2,
+      "dominator_rating": 0.2
+    }
+  },
+  {
+    "player_id": "te-justin-joly",
+    "player_name": "Justin Joly",
+    "position": "TE",
+    "school": "N.C. State",
+    "season": 2025,
+    "stats": {
+      "receptions": 49,
+      "receiving_yards": 489,
+      "receiving_tds": 7,
+      "yards_per_reception": 10.0,
+      "dominator_rating": 0.2
+    }
   }
 ]
