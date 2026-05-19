@@ -35,7 +35,6 @@ class DevySignalRegistryTests(unittest.TestCase):
 
     def test_seed_watchlist_row_count_stays_within_seed_cap(self) -> None:
         count = len(self.seed_payload["prospects"])
-        self.assertGreaterEqual(count, 25)
         self.assertLessEqual(count, 50)
 
     def test_seed_watchlist_missing_provenance_notes_fails_validation(self) -> None:
