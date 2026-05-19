@@ -35,14 +35,27 @@
         "Official Ohio State roster profile used for name, school, and position verification as of 2026.",
         "Timeline fields are manual Devy eligibility context from the 2026 class year; re-verify before any promoted use."
       ],
-      "provenance": {
-        "source_type": "manual_curated_seed",
+      "identity_provenance": {
+        "source_type": "official_roster",
         "source_urls": [
           "https://ohiostatebuckeyes.com/sports/football/roster/chris-henry-jr/13356"
         ],
         "source_notes": [
-          "Official Ohio State roster profile used for name, school, and position verification as of 2026.",
-          "No numeric grade, exact draft capital, or scouting conclusion is asserted."
+          "Used for name, school, and position verification."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Projected draft-class timing is manual eligibility context, not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Used for broad watchlist tags/bands only; not a ranking or scouting grade."
         ],
         "last_verified_year": 2026
       }
@@ -77,13 +90,27 @@
         "Official Michigan roster profile used for name, school, and position verification.",
         "Projected draft-class timing is manual eligibility context, not a draft prediction."
       ],
-      "provenance": {
-        "source_type": "manual_curated_seed",
+      "identity_provenance": {
+        "source_type": "official_roster",
         "source_urls": [
           "https://mgoblue.com/sports/football/roster/bryce-underwood/26792"
         ],
         "source_notes": [
-          "Official Michigan roster profile used for identity fields; timeline requires future re-verification."
+          "Used for name, school, and position verification."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Projected draft-class timing is manual eligibility context, not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Used for broad watchlist tags/bands only; not a ranking or scouting grade."
         ],
         "last_verified_year": 2026
       }
@@ -117,13 +144,27 @@
         "Official Ohio State roster profile used for name, school, and position verification as of 2026.",
         "No draft slot, player comp, or exact grade is asserted."
       ],
-      "provenance": {
-        "source_type": "manual_curated_seed",
+      "identity_provenance": {
+        "source_type": "official_roster",
         "source_urls": [
           "https://ohiostatebuckeyes.com/sports/football/roster/jeremiah-smith/13335"
         ],
         "source_notes": [
-          "Official Ohio State roster profile used for identity fields; Devy bands are manual watchlist labels."
+          "Used for name, school, and position verification."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Projected draft-class timing is manual eligibility context, not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Used for broad watchlist tags/bands only; not a ranking or scouting grade."
         ],
         "last_verified_year": 2026
       }
@@ -157,13 +198,27 @@
         "Official Oregon roster profile used for name, school, and position verification.",
         "Development bands are manual seed-watchlist context only."
       ],
-      "provenance": {
-        "source_type": "manual_curated_seed",
+      "identity_provenance": {
+        "source_type": "official_roster",
         "source_urls": [
           "https://goducks.com/sports/football/roster/dakorien-moore/17440"
         ],
         "source_notes": [
-          "Official Oregon roster profile used for identity fields; no external scouting text copied."
+          "Used for name, school, and position verification."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Projected draft-class timing is manual eligibility context, not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Used for broad watchlist tags/bands only; not a ranking or scouting grade."
         ],
         "last_verified_year": 2026
       }
@@ -197,13 +252,27 @@
         "Official LSU roster used for name, school, and position verification.",
         "No exact future draft outcome or numeric grade is asserted."
       ],
-      "provenance": {
-        "source_type": "manual_curated_seed",
+      "identity_provenance": {
+        "source_type": "official_roster",
         "source_urls": [
           "https://lsusports.net/sports/fb/roster/"
         ],
         "source_notes": [
-          "Official LSU roster used for identity fields; watchlist labels are manual and non-promoted."
+          "Used for name, school, and position verification."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Projected draft-class timing is manual eligibility context, not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Used for broad watchlist tags/bands only; not a ranking or scouting grade."
         ],
         "last_verified_year": 2026
       }
@@ -237,13 +306,27 @@
         "Official Georgia roster profile used for name, school, and position verification as of 2026.",
         "Draft class timing is manual eligibility context, not a guaranteed declaration year."
       ],
-      "provenance": {
-        "source_type": "manual_curated_seed",
+      "identity_provenance": {
+        "source_type": "official_roster",
         "source_urls": [
           "https://georgiadogs.com/sports/football/roster/nate-frazier/10638"
         ],
         "source_notes": [
-          "Official Georgia roster profile used for identity fields; no proprietary analyst content used."
+          "Used for name, school, and position verification."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Projected draft-class timing is manual eligibility context, not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Used for broad watchlist tags/bands only; not a ranking or scouting grade."
         ],
         "last_verified_year": 2026
       }
