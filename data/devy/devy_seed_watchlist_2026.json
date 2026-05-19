@@ -300,19 +300,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "MEDIUM",
-      "summary": "Near-term Georgia running back seed row that is useful for monitoring but not for promoted rookie scoring.",
-      "why_it_matters": "The row demonstrates how near-term Devy names can be retained with provenance while still requiring a future governed Rookie Alpha intake path.",
+      "summary": "Georgia RB discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Nate Frazier as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Official Georgia roster profile used for name, school, and position verification as of 2026.",
-        "Draft class timing is manual eligibility context, not a guaranteed declaration year."
+        "Program context and position were re-checked from public Georgia roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
         "source_type": "official_roster",
         "source_urls": [
-          "https://georgiadogs.com/sports/football/roster/nate-frazier/10638"
+          "https://georgiadogs.com/sports/football/roster"
         ],
         "source_notes": [
-          "Used for name, school, and position verification."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -334,7 +334,7 @@
     {
       "player_id": "arch-manning",
       "player_name": "Arch Manning",
-      "school": "unknown",
+      "school": "Texas",
       "position": "QB",
       "projected_draft_class": 2027,
       "earliest_possible_draft_class": 2027,
@@ -353,19 +353,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "HIGH",
-      "summary": "Near Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Texas QB discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Arch Manning as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Texas roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://texassports.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -387,7 +387,7 @@
     {
       "player_id": "dj-lagway",
       "player_name": "DJ Lagway",
-      "school": "unknown",
+      "school": "Florida",
       "position": "QB",
       "projected_draft_class": 2028,
       "earliest_possible_draft_class": 2028,
@@ -407,19 +407,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "HIGH",
-      "summary": "Medium Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Florida QB discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks DJ Lagway as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Florida roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://floridagators.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -441,7 +441,7 @@
     {
       "player_id": "dylan-raiola",
       "player_name": "Dylan Raiola",
-      "school": "unknown",
+      "school": "Nebraska",
       "position": "QB",
       "projected_draft_class": 2028,
       "earliest_possible_draft_class": 2028,
@@ -461,19 +461,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "HIGH",
-      "summary": "Medium Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Nebraska QB discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Dylan Raiola as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Nebraska roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://huskers.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -495,7 +495,7 @@
     {
       "player_id": "julian-sayin",
       "player_name": "Julian Sayin",
-      "school": "unknown",
+      "school": "Ohio State",
       "position": "QB",
       "projected_draft_class": 2028,
       "earliest_possible_draft_class": 2028,
@@ -515,19 +515,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "HIGH",
-      "summary": "Medium Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Ohio State QB discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Julian Sayin as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Ohio State roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://ohiostatebuckeyes.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -549,7 +549,7 @@
     {
       "player_id": "dante-moore",
       "player_name": "Dante Moore",
-      "school": "unknown",
+      "school": "Oregon",
       "position": "QB",
       "projected_draft_class": 2027,
       "earliest_possible_draft_class": 2027,
@@ -568,19 +568,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "HIGH",
-      "summary": "Near Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Oregon QB discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Dante Moore as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Oregon roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://goducks.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -602,7 +602,7 @@
     {
       "player_id": "sam-leavitt",
       "player_name": "Sam Leavitt",
-      "school": "unknown",
+      "school": "Arizona State",
       "position": "QB",
       "projected_draft_class": 2027,
       "earliest_possible_draft_class": 2027,
@@ -621,178 +621,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "HIGH",
-      "summary": "Near Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Arizona State QB discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Sam Leavitt as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Arizona State roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://thesundevils.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
-        ],
-        "last_verified_year": 2026
-      },
-      "timeline_provenance": {
-        "source_type": "manual_eligibility_context",
-        "source_notes": [
-          "Draft-class timing is manual eligibility context and not a declaration prediction."
-        ],
-        "last_verified_year": 2026
-      },
-      "signal_provenance": {
-        "source_type": "manual_curated_seed_signal",
-        "source_notes": [
-          "Broad seed-watchlist signal only; not ranking/scouting truth."
-        ],
-        "last_verified_year": 2026
-      }
-    },
-    {
-      "player_id": "garrett-nussmeier",
-      "player_name": "Garrett Nussmeier",
-      "school": "unknown",
-      "position": "QB",
-      "projected_draft_class": 2027,
-      "earliest_possible_draft_class": 2027,
-      "class_year": 2024,
-      "years_to_projected_draft": 1,
-      "development_horizon": "NEAR_TERM",
-      "lifecycle_stage": "NFL_TRACK",
-      "development_tags": [
-        "ASCENDING",
-        "ROLE_UNCERTAIN"
-      ],
-      "recruiting_stars": null,
-      "recruiting_rank_national": null,
-      "recruiting_rank_position": null,
-      "signal_strength_band": "STRONG",
-      "confidence_band": "MEDIUM",
-      "actionability_band": "MONITOR",
-      "volatility_band": "HIGH",
-      "summary": "Near Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
-      "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
-      ],
-      "identity_provenance": {
-        "source_type": "recruiting_profile",
-        "source_urls": [
-          "https://247sports.com/"
-        ],
-        "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
-        ],
-        "last_verified_year": 2026
-      },
-      "timeline_provenance": {
-        "source_type": "manual_eligibility_context",
-        "source_notes": [
-          "Draft-class timing is manual eligibility context and not a declaration prediction."
-        ],
-        "last_verified_year": 2026
-      },
-      "signal_provenance": {
-        "source_type": "manual_curated_seed_signal",
-        "source_notes": [
-          "Broad seed-watchlist signal only; not ranking/scouting truth."
-        ],
-        "last_verified_year": 2026
-      }
-    },
-    {
-      "player_id": "drew-allar",
-      "player_name": "Drew Allar",
-      "school": "unknown",
-      "position": "QB",
-      "projected_draft_class": 2027,
-      "earliest_possible_draft_class": 2027,
-      "class_year": 2024,
-      "years_to_projected_draft": 1,
-      "development_horizon": "NEAR_TERM",
-      "lifecycle_stage": "NFL_TRACK",
-      "development_tags": [
-        "ASCENDING",
-        "ROLE_UNCERTAIN"
-      ],
-      "recruiting_stars": null,
-      "recruiting_rank_national": null,
-      "recruiting_rank_position": null,
-      "signal_strength_band": "STRONG",
-      "confidence_band": "MEDIUM",
-      "actionability_band": "MONITOR",
-      "volatility_band": "HIGH",
-      "summary": "Near Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
-      "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
-      ],
-      "identity_provenance": {
-        "source_type": "recruiting_profile",
-        "source_urls": [
-          "https://247sports.com/"
-        ],
-        "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
-        ],
-        "last_verified_year": 2026
-      },
-      "timeline_provenance": {
-        "source_type": "manual_eligibility_context",
-        "source_notes": [
-          "Draft-class timing is manual eligibility context and not a declaration prediction."
-        ],
-        "last_verified_year": 2026
-      },
-      "signal_provenance": {
-        "source_type": "manual_curated_seed_signal",
-        "source_notes": [
-          "Broad seed-watchlist signal only; not ranking/scouting truth."
-        ],
-        "last_verified_year": 2026
-      }
-    },
-    {
-      "player_id": "cade-klubnik",
-      "player_name": "Cade Klubnik",
-      "school": "unknown",
-      "position": "QB",
-      "projected_draft_class": 2027,
-      "earliest_possible_draft_class": 2027,
-      "class_year": 2024,
-      "years_to_projected_draft": 1,
-      "development_horizon": "NEAR_TERM",
-      "lifecycle_stage": "NFL_TRACK",
-      "development_tags": [
-        "ASCENDING",
-        "ROLE_UNCERTAIN"
-      ],
-      "recruiting_stars": null,
-      "recruiting_rank_national": null,
-      "recruiting_rank_position": null,
-      "signal_strength_band": "STRONG",
-      "confidence_band": "MEDIUM",
-      "actionability_band": "MONITOR",
-      "volatility_band": "HIGH",
-      "summary": "Near Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
-      "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
-      ],
-      "identity_provenance": {
-        "source_type": "recruiting_profile",
-        "source_urls": [
-          "https://247sports.com/"
-        ],
-        "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -814,7 +655,7 @@
     {
       "player_id": "keelon-russell",
       "player_name": "Keelon Russell",
-      "school": "unknown",
+      "school": "Alabama",
       "position": "QB",
       "projected_draft_class": 2029,
       "earliest_possible_draft_class": 2029,
@@ -834,19 +675,19 @@
       "confidence_band": "LOW",
       "actionability_band": "WATCHLIST",
       "volatility_band": "EXTREME",
-      "summary": "Long Horizon QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Alabama QB discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Keelon Russell as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Alabama roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://rolltide.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -868,7 +709,7 @@
     {
       "player_id": "jeremiah-love",
       "player_name": "Jeremiah Love",
-      "school": "unknown",
+      "school": "Notre Dame",
       "position": "RB",
       "projected_draft_class": 2027,
       "earliest_possible_draft_class": 2027,
@@ -887,19 +728,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "HIGH",
-      "summary": "Near Term RB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Notre Dame RB discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Jeremiah Love as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Notre Dame roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://und.com/sports/football/roster/"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -921,7 +762,7 @@
     {
       "player_id": "nicholas-singleton",
       "player_name": "Nicholas Singleton",
-      "school": "unknown",
+      "school": "Penn State",
       "position": "RB",
       "projected_draft_class": 2027,
       "earliest_possible_draft_class": 2027,
@@ -940,19 +781,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "HIGH",
-      "summary": "Near Term RB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Penn State RB discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Nicholas Singleton as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Penn State roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://gopsusports.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -974,7 +815,7 @@
     {
       "player_id": "justice-haynes",
       "player_name": "Justice Haynes",
-      "school": "unknown",
+      "school": "Alabama",
       "position": "RB",
       "projected_draft_class": 2027,
       "earliest_possible_draft_class": 2027,
@@ -993,19 +834,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "HIGH",
-      "summary": "Near Term RB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Alabama RB discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Justice Haynes as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Alabama roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://rolltide.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -1027,7 +868,7 @@
     {
       "player_id": "kaytron-allen",
       "player_name": "Kaytron Allen",
-      "school": "unknown",
+      "school": "Penn State",
       "position": "RB",
       "projected_draft_class": 2027,
       "earliest_possible_draft_class": 2027,
@@ -1046,19 +887,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "HIGH",
-      "summary": "Near Term RB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Penn State RB discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Kaytron Allen as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Penn State roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://gopsusports.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -1080,7 +921,7 @@
     {
       "player_id": "jadyn-ott",
       "player_name": "Jadyn Ott",
-      "school": "unknown",
+      "school": "California",
       "position": "RB",
       "projected_draft_class": 2027,
       "earliest_possible_draft_class": 2027,
@@ -1099,19 +940,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "HIGH",
-      "summary": "Near Term RB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "California RB discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Jadyn Ott as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public California roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://calbears.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -1133,7 +974,7 @@
     {
       "player_id": "gideon-davidson",
       "player_name": "Gideon Davidson",
-      "school": "unknown",
+      "school": "Clemson",
       "position": "RB",
       "projected_draft_class": 2029,
       "earliest_possible_draft_class": 2029,
@@ -1153,19 +994,19 @@
       "confidence_band": "LOW",
       "actionability_band": "WATCHLIST",
       "volatility_band": "EXTREME",
-      "summary": "Long Horizon RB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Clemson RB discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Gideon Davidson as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Clemson roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://clemsontigers.com/sports/football/roster/"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -1187,7 +1028,7 @@
     {
       "player_id": "ezavier-crowell",
       "player_name": "Ezavier Crowell",
-      "school": "unknown",
+      "school": "Alabama",
       "position": "RB",
       "projected_draft_class": 2029,
       "earliest_possible_draft_class": 2029,
@@ -1207,19 +1048,19 @@
       "confidence_band": "LOW",
       "actionability_band": "WATCHLIST",
       "volatility_band": "EXTREME",
-      "summary": "Long Horizon RB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Alabama RB discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Ezavier Crowell as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Alabama roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://rolltide.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -1241,7 +1082,7 @@
     {
       "player_id": "ryan-williams",
       "player_name": "Ryan Williams",
-      "school": "unknown",
+      "school": "Alabama",
       "position": "WR",
       "projected_draft_class": 2028,
       "earliest_possible_draft_class": 2028,
@@ -1261,19 +1102,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "HIGH",
-      "summary": "Medium Term WR discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Alabama WR discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Ryan Williams as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Alabama roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://rolltide.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -1295,7 +1136,7 @@
     {
       "player_id": "cam-coleman",
       "player_name": "Cam Coleman",
-      "school": "unknown",
+      "school": "Auburn",
       "position": "WR",
       "projected_draft_class": 2028,
       "earliest_possible_draft_class": 2028,
@@ -1315,19 +1156,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "HIGH",
-      "summary": "Medium Term WR discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Auburn WR discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Cam Coleman as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Auburn roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://auburntigers.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -1349,7 +1190,7 @@
     {
       "player_id": "carnell-tate",
       "player_name": "Carnell Tate",
-      "school": "unknown",
+      "school": "Ohio State",
       "position": "WR",
       "projected_draft_class": 2027,
       "earliest_possible_draft_class": 2027,
@@ -1368,19 +1209,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "HIGH",
-      "summary": "Near Term WR discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Ohio State WR discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Carnell Tate as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Ohio State roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://ohiostatebuckeyes.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -1402,7 +1243,7 @@
     {
       "player_id": "ryan-wingo",
       "player_name": "Ryan Wingo",
-      "school": "unknown",
+      "school": "Texas",
       "position": "WR",
       "projected_draft_class": 2028,
       "earliest_possible_draft_class": 2028,
@@ -1422,19 +1263,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "HIGH",
-      "summary": "Medium Term WR discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Texas WR discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Ryan Wingo as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Texas roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://texassports.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -1456,7 +1297,7 @@
     {
       "player_id": "micah-hudson",
       "player_name": "Micah Hudson",
-      "school": "unknown",
+      "school": "Texas Tech",
       "position": "WR",
       "projected_draft_class": 2028,
       "earliest_possible_draft_class": 2028,
@@ -1476,19 +1317,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "HIGH",
-      "summary": "Medium Term WR discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Texas Tech WR discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Micah Hudson as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Texas Tech roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://texastech.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -1530,19 +1371,19 @@
       "confidence_band": "LOW",
       "actionability_band": "WATCHLIST",
       "volatility_band": "EXTREME",
-      "summary": "Long Horizon WR discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "unknown WR discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Tristen Keys as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context is intentionally unknown pending a stable public roster mapping as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
         "source_type": "recruiting_profile",
         "source_urls": [
-          "https://247sports.com/"
+          "https://247sports.com/player/tristen-keys-46133289/"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Recruiting profile verifies identity; program mapping intentionally unresolved."
         ],
         "last_verified_year": 2026
       },
@@ -1564,7 +1405,7 @@
     {
       "player_id": "eli-stowers",
       "player_name": "Eli Stowers",
-      "school": "unknown",
+      "school": "Vanderbilt",
       "position": "TE",
       "projected_draft_class": 2027,
       "earliest_possible_draft_class": 2027,
@@ -1583,19 +1424,19 @@
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
       "volatility_band": "HIGH",
-      "summary": "Near Term TE discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Vanderbilt TE discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Eli Stowers as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Vanderbilt roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://vucommodores.com/sports/football/roster/"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
@@ -1617,7 +1458,7 @@
     {
       "player_id": "linkon-cure",
       "player_name": "Linkon Cure",
-      "school": "unknown",
+      "school": "Kansas State",
       "position": "TE",
       "projected_draft_class": 2029,
       "earliest_possible_draft_class": 2029,
@@ -1637,19 +1478,19 @@
       "confidence_band": "LOW",
       "actionability_band": "WATCHLIST",
       "volatility_band": "EXTREME",
-      "summary": "Long Horizon TE discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
-      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "summary": "Kansas State TE discovery row for Devy monitoring with explicit program context and timeline uncertainty preserved.",
+      "why_it_matters": "Tracks Linkon Cure as a discovery-only name where role security, program context, and draft-cycle distance drive uncertainty.",
       "source_notes": [
-        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
-        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+        "Program context and position were re-checked from public Kansas State roster resources as of 2026.",
+        "Timeline fields remain manual eligibility context; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "recruiting_profile",
+        "source_type": "official_roster",
         "source_urls": [
-          "https://247sports.com/"
+          "https://www.kstatesports.com/sports/football/roster"
         ],
         "source_notes": [
-          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+          "Used for player identity/program context and position verification."
         ],
         "last_verified_year": 2026
       },
