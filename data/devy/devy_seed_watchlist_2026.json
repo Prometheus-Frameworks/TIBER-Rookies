@@ -330,6 +330,1343 @@
         ],
         "last_verified_year": 2026
       }
+    },
+    {
+      "player_id": "arch-manning",
+      "player_name": "Arch Manning",
+      "school": "unknown",
+      "position": "QB",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "NFL_TRACK",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Near Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "dj-lagway",
+      "player_name": "DJ Lagway",
+      "school": "unknown",
+      "position": "QB",
+      "projected_draft_class": 2028,
+      "earliest_possible_draft_class": 2028,
+      "class_year": 2025,
+      "years_to_projected_draft": 2,
+      "development_horizon": "MEDIUM_TERM",
+      "lifecycle_stage": "EMERGING",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Medium Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "dylan-raiola",
+      "player_name": "Dylan Raiola",
+      "school": "unknown",
+      "position": "QB",
+      "projected_draft_class": 2028,
+      "earliest_possible_draft_class": 2028,
+      "class_year": 2025,
+      "years_to_projected_draft": 2,
+      "development_horizon": "MEDIUM_TERM",
+      "lifecycle_stage": "EMERGING",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Medium Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "julian-sayin",
+      "player_name": "Julian Sayin",
+      "school": "unknown",
+      "position": "QB",
+      "projected_draft_class": 2028,
+      "earliest_possible_draft_class": 2028,
+      "class_year": 2025,
+      "years_to_projected_draft": 2,
+      "development_horizon": "MEDIUM_TERM",
+      "lifecycle_stage": "EMERGING",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Medium Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "dante-moore",
+      "player_name": "Dante Moore",
+      "school": "unknown",
+      "position": "QB",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "BREAKOUT_WINDOW",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Near Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "sam-leavitt",
+      "player_name": "Sam Leavitt",
+      "school": "unknown",
+      "position": "QB",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "BREAKOUT_WINDOW",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Near Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "garrett-nussmeier",
+      "player_name": "Garrett Nussmeier",
+      "school": "unknown",
+      "position": "QB",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "NFL_TRACK",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Near Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "drew-allar",
+      "player_name": "Drew Allar",
+      "school": "unknown",
+      "position": "QB",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "NFL_TRACK",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Near Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "cade-klubnik",
+      "player_name": "Cade Klubnik",
+      "school": "unknown",
+      "position": "QB",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "NFL_TRACK",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Near Term QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "keelon-russell",
+      "player_name": "Keelon Russell",
+      "school": "unknown",
+      "position": "QB",
+      "projected_draft_class": 2029,
+      "earliest_possible_draft_class": 2029,
+      "class_year": 2026,
+      "years_to_projected_draft": 3,
+      "development_horizon": "LONG_HORIZON",
+      "lifecycle_stage": "TRUE_FRESHMAN",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "MODERATE",
+      "confidence_band": "LOW",
+      "actionability_band": "WATCHLIST",
+      "volatility_band": "EXTREME",
+      "summary": "Long Horizon QB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "jeremiah-love",
+      "player_name": "Jeremiah Love",
+      "school": "unknown",
+      "position": "RB",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "BREAKOUT_WINDOW",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Near Term RB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "nicholas-singleton",
+      "player_name": "Nicholas Singleton",
+      "school": "unknown",
+      "position": "RB",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "NFL_TRACK",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Near Term RB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "justice-haynes",
+      "player_name": "Justice Haynes",
+      "school": "unknown",
+      "position": "RB",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "BREAKOUT_WINDOW",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Near Term RB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "kaytron-allen",
+      "player_name": "Kaytron Allen",
+      "school": "unknown",
+      "position": "RB",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "NFL_TRACK",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Near Term RB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "jadyn-ott",
+      "player_name": "Jadyn Ott",
+      "school": "unknown",
+      "position": "RB",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "NFL_TRACK",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Near Term RB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "gideon-davidson",
+      "player_name": "Gideon Davidson",
+      "school": "unknown",
+      "position": "RB",
+      "projected_draft_class": 2029,
+      "earliest_possible_draft_class": 2029,
+      "class_year": 2026,
+      "years_to_projected_draft": 3,
+      "development_horizon": "LONG_HORIZON",
+      "lifecycle_stage": "TRUE_FRESHMAN",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "MODERATE",
+      "confidence_band": "LOW",
+      "actionability_band": "WATCHLIST",
+      "volatility_band": "EXTREME",
+      "summary": "Long Horizon RB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "ezavier-crowell",
+      "player_name": "Ezavier Crowell",
+      "school": "unknown",
+      "position": "RB",
+      "projected_draft_class": 2029,
+      "earliest_possible_draft_class": 2029,
+      "class_year": 2026,
+      "years_to_projected_draft": 3,
+      "development_horizon": "LONG_HORIZON",
+      "lifecycle_stage": "TRUE_FRESHMAN",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "MODERATE",
+      "confidence_band": "LOW",
+      "actionability_band": "WATCHLIST",
+      "volatility_band": "EXTREME",
+      "summary": "Long Horizon RB discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "ryan-williams",
+      "player_name": "Ryan Williams",
+      "school": "unknown",
+      "position": "WR",
+      "projected_draft_class": 2028,
+      "earliest_possible_draft_class": 2028,
+      "class_year": 2025,
+      "years_to_projected_draft": 2,
+      "development_horizon": "MEDIUM_TERM",
+      "lifecycle_stage": "EMERGING",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Medium Term WR discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "cam-coleman",
+      "player_name": "Cam Coleman",
+      "school": "unknown",
+      "position": "WR",
+      "projected_draft_class": 2028,
+      "earliest_possible_draft_class": 2028,
+      "class_year": 2025,
+      "years_to_projected_draft": 2,
+      "development_horizon": "MEDIUM_TERM",
+      "lifecycle_stage": "EMERGING",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Medium Term WR discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "carnell-tate",
+      "player_name": "Carnell Tate",
+      "school": "unknown",
+      "position": "WR",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "BREAKOUT_WINDOW",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Near Term WR discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "ryan-wingo",
+      "player_name": "Ryan Wingo",
+      "school": "unknown",
+      "position": "WR",
+      "projected_draft_class": 2028,
+      "earliest_possible_draft_class": 2028,
+      "class_year": 2025,
+      "years_to_projected_draft": 2,
+      "development_horizon": "MEDIUM_TERM",
+      "lifecycle_stage": "EMERGING",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Medium Term WR discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "micah-hudson",
+      "player_name": "Micah Hudson",
+      "school": "unknown",
+      "position": "WR",
+      "projected_draft_class": 2028,
+      "earliest_possible_draft_class": 2028,
+      "class_year": 2025,
+      "years_to_projected_draft": 2,
+      "development_horizon": "MEDIUM_TERM",
+      "lifecycle_stage": "EMERGING",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Medium Term WR discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "tristen-keys",
+      "player_name": "Tristen Keys",
+      "school": "unknown",
+      "position": "WR",
+      "projected_draft_class": 2029,
+      "earliest_possible_draft_class": 2029,
+      "class_year": 2026,
+      "years_to_projected_draft": 3,
+      "development_horizon": "LONG_HORIZON",
+      "lifecycle_stage": "TRUE_FRESHMAN",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "MODERATE",
+      "confidence_band": "LOW",
+      "actionability_band": "WATCHLIST",
+      "volatility_band": "EXTREME",
+      "summary": "Long Horizon WR discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "eli-stowers",
+      "player_name": "Eli Stowers",
+      "school": "unknown",
+      "position": "TE",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "NFL_TRACK",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Near Term TE discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "linkon-cure",
+      "player_name": "Linkon Cure",
+      "school": "unknown",
+      "position": "TE",
+      "projected_draft_class": 2029,
+      "earliest_possible_draft_class": 2029,
+      "class_year": 2026,
+      "years_to_projected_draft": 3,
+      "development_horizon": "LONG_HORIZON",
+      "lifecycle_stage": "TRUE_FRESHMAN",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "MODERATE",
+      "confidence_band": "LOW",
+      "actionability_band": "WATCHLIST",
+      "volatility_band": "EXTREME",
+      "summary": "Long Horizon TE discovery row for seeded Devy monitoring with unresolved school mapping retained as unknown pending re-verification.",
+      "why_it_matters": "Keeps a multi-year discovery name in the watchlist while preserving uncertainty and avoiding ranking claims.",
+      "source_notes": [
+        "Identity and timeline context are sourced from a recruiting-profile workflow with school/commitment currently recorded as unknown pending re-verification.",
+        "Signals are broad watchlist bands only and are not Rookie Alpha inputs or draft-capital projections."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/"
+        ],
+        "source_notes": [
+          "Player identity exists in recruiting profile sources; school field remains unknown until re-verified."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
     }
   ]
 }

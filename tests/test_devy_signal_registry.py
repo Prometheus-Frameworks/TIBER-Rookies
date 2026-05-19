@@ -33,6 +33,11 @@ class DevySignalRegistryTests(unittest.TestCase):
         self.assertEqual(prospect["actionability_band"], "WATCHLIST")
         self.assertNotIn(prospect["actionability_band"], {"TARGET", "PRIORITY"})
 
+    def test_seed_watchlist_row_count_stays_within_seed_cap(self) -> None:
+        count = len(self.seed_payload["prospects"])
+        self.assertGreaterEqual(count, 25)
+        self.assertLessEqual(count, 50)
+
     def test_seed_watchlist_missing_provenance_notes_fails_validation(self) -> None:
         payload = copy.deepcopy(self.seed_payload)
         payload["prospects"][0]["identity_provenance"]["source_notes"] = []
