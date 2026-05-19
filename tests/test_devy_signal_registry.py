@@ -18,9 +18,40 @@ class DevySignalRegistryTests(unittest.TestCase):
     def setUp(self) -> None:
         self.fixture_path = Path("data/fixtures/devy_prospect_registry_v0_fixture.json")
         self.payload = json.loads(self.fixture_path.read_text(encoding="utf-8"))
+        self.seed_path = Path("data/devy/devy_seed_watchlist_2026.json")
+        self.seed_payload = json.loads(self.seed_path.read_text(encoding="utf-8"))
 
     def test_fixture_registry_validates(self) -> None:
         self.assertEqual(validate_devy_registry(self.payload), [])
+
+    def test_seed_watchlist_validates(self) -> None:
+        self.assertEqual(validate_devy_registry(self.seed_payload), [])
+
+    def test_seed_watchlist_long_horizon_player_is_not_near_term_actionable(self) -> None:
+        prospect = next(p for p in self.seed_payload["prospects"] if p["player_id"] == "chris-henry-jr")
+        self.assertEqual(prospect["development_horizon"], DevyDevelopmentHorizon.LONG_HORIZON.value)
+        self.assertEqual(prospect["actionability_band"], "WATCHLIST")
+        self.assertNotIn(prospect["actionability_band"], {"TARGET", "PRIORITY"})
+
+    def test_seed_watchlist_missing_provenance_notes_fails_validation(self) -> None:
+        payload = copy.deepcopy(self.seed_payload)
+        payload["prospects"][0]["provenance"]["source_notes"] = []
+        errors = validate_devy_registry(payload)
+        self.assertTrue(any("provenance.source_notes must be a non-empty list" in error for error in errors))
+
+    def test_seed_watchlist_duplicate_player_ids_fail_validation(self) -> None:
+        payload = copy.deepcopy(self.seed_payload)
+        payload["prospects"][1]["player_id"] = payload["prospects"][0]["player_id"]
+        errors = validate_devy_registry(payload)
+        self.assertTrue(any("player_id duplicates" in error for error in errors))
+
+    def test_seed_watchlist_invalid_horizon_and_tag_fail_validation(self) -> None:
+        payload = copy.deepcopy(self.seed_payload)
+        payload["prospects"][0]["development_horizon"] = DevyDevelopmentHorizon.NEAR_TERM.value
+        payload["prospects"][0]["development_tags"].append("UNSUPPORTED_TAG")
+        errors = validate_devy_registry(payload)
+        self.assertTrue(any("development_horizon must be" in error for error in errors))
+        self.assertTrue(any("development_tags has invalid value" in error for error in errors))
 
     def test_enums_are_centrally_exported(self) -> None:
         snapshot = enum_snapshot()

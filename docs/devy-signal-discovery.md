@@ -42,6 +42,39 @@ than player facts. The fixture covers:
 These rows validate schema behavior only. They must not be promoted, treated as
 rankings, or used as sourced scouting claims without documented provenance.
 
+## Real seed watchlist
+
+The first real-name seed watchlist lives at
+`data/devy/devy_seed_watchlist_2026.json`. It is still a **non-promoted seed
+artifact**: the rows are for discovery and operator monitoring only, not
+rankings, Rookie Alpha inputs, promoted scouting truth, or future NFL draft-capital
+claims.
+
+The key distinction from the fixture registry is provenance. Fixture rows are
+placeholder schema examples; seed-watchlist rows may contain real player names
+only when each row includes source notes, a manual-curation source type, source
+URLs when available, and a `last_verified_year`. This keeps the Devy lane from
+inventing continuity when rosters, transfers, development stages, or eligibility
+assumptions become stale.
+
+Real players can enter this lane when a human curator can represent the row with
+coarse, honest context:
+
+- identity fields such as name, school, and position come from documented public
+  sources;
+- timeline fields are framed as projected/earliest-possible draft context, not
+  guaranteed declaration years;
+- signal, confidence, actionability, and volatility remain broad bands instead of
+  numeric grades; and
+- `summary` / `why_it_matters` explain why the player is worth monitoring without
+  copying scouting reports or asserting unsupported traits.
+
+Long-horizon rows should be interpreted as early watchlist signals. For example,
+a 2029-type player in an `as_of_year` 2026 artifact must validate as
+`LONG_HORIZON` and cannot be `TARGET` or `PRIORITY` actionable. This lets TIBER
+surface names before the fantasy market stabilizes while preserving that the row
+is not ready for a rookie-ranking or promoted-export workflow.
+
 ## Horizon logic
 
 The validator derives horizon expectations from `years_to_projected_draft`:
@@ -68,6 +101,12 @@ Run the validator against the fixture registry:
 python3 scripts/devy_signal_registry.py --registry data/fixtures/devy_prospect_registry_v0_fixture.json
 ```
 
+Run the validator against the real seed watchlist:
+
+```bash
+python3 scripts/devy_signal_registry.py --registry data/devy/devy_seed_watchlist_2026.json
+```
+
 Run the focused Devy registry tests:
 
 ```bash
@@ -75,7 +114,8 @@ python3 -m pytest tests/test_devy_signal_registry.py
 ```
 
 The validator checks required fields, canonical enum values, duplicate IDs,
-draft-class chronology, `years_to_projected_draft`, horizon consistency, and the
+draft-class chronology, `years_to_projected_draft`, horizon consistency,
+artifact disclaimers, seed-watchlist provenance/source notes, and the
 long-horizon actionability guardrail.
 
 ## Relationship to Rookie Alpha
