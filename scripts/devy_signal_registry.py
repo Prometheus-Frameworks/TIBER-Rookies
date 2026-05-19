@@ -30,6 +30,16 @@ CANONICAL_PROVENANCE_SOURCE_TYPES = frozenset({
     "production_data",
     "team_context_artifact",
 })
+ALLOWED_PROVENANCE_SOURCE_TYPES_BY_CATEGORY: dict[str, frozenset[str]] = {
+    "identity_provenance": frozenset({"official_roster", "recruiting_profile"}),
+    "timeline_provenance": frozenset({"manual_eligibility_context", "recruiting_profile"}),
+    "signal_provenance": frozenset({
+        "manual_curated_seed_signal",
+        "recruiting_profile",
+        "production_data",
+        "team_context_artifact",
+    }),
+}
 
 
 class DevyPosition(StrEnum):
@@ -329,6 +339,13 @@ def validate_devy_registry(payload: dict[str, Any]) -> list[str]:
                         f"{prefix}.{provenance_key}.source_type must be one of "
                         f"{sorted(CANONICAL_PROVENANCE_SOURCE_TYPES)!r}"
                     )
+                else:
+                    allowed_source_types = ALLOWED_PROVENANCE_SOURCE_TYPES_BY_CATEGORY[provenance_key]
+                    if source_type not in allowed_source_types:
+                        errors.append(
+                            f"{prefix}.{provenance_key}.source_type {source_type!r} is not allowed for "
+                            f"{provenance_key}; allowed values are {sorted(allowed_source_types)!r}"
+                        )
 
                 provenance_fields = provenance.get("supports_fields")
                 if provenance_fields is not None:

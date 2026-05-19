@@ -122,6 +122,31 @@ class DevySignalRegistryTests(unittest.TestCase):
         errors = validate_devy_registry(payload)
         self.assertTrue(any("timeline_provenance must be an object" in error for error in errors))
 
+
+    def test_identity_provenance_rejects_signal_only_source_type(self) -> None:
+        payload = copy.deepcopy(self.seed_payload)
+        payload["prospects"][0]["identity_provenance"]["source_type"] = "manual_curated_seed_signal"
+        errors = validate_devy_registry(payload)
+        self.assertTrue(any("identity_provenance.source_type 'manual_curated_seed_signal' is not allowed" in error for error in errors))
+
+    def test_timeline_provenance_rejects_roster_source_type(self) -> None:
+        payload = copy.deepcopy(self.seed_payload)
+        payload["prospects"][0]["timeline_provenance"]["source_type"] = "official_roster"
+        errors = validate_devy_registry(payload)
+        self.assertTrue(any("timeline_provenance.source_type 'official_roster' is not allowed" in error for error in errors))
+
+    def test_signal_provenance_rejects_roster_source_type(self) -> None:
+        payload = copy.deepcopy(self.seed_payload)
+        payload["prospects"][0]["signal_provenance"]["source_type"] = "official_roster"
+        errors = validate_devy_registry(payload)
+        self.assertTrue(any("signal_provenance.source_type 'official_roster' is not allowed" in error for error in errors))
+
+    def test_signal_provenance_accepts_team_context_artifact_source_type(self) -> None:
+        payload = copy.deepcopy(self.seed_payload)
+        payload["prospects"][0]["signal_provenance"]["source_type"] = "team_context_artifact"
+        errors = validate_devy_registry(payload)
+        self.assertEqual(errors, [])
+
     def test_invalid_provenance_source_type_url_and_future_year_fail(self) -> None:
         payload = copy.deepcopy(self.seed_payload)
         payload["prospects"][0]["identity_provenance"]["source_type"] = "made_up_source"
