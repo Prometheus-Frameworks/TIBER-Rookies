@@ -61,8 +61,16 @@ only when each row separates:
 Each provenance object must include canonical `source_type`, non-empty
 `source_notes`, and a `last_verified_year` no later than artifact
 `as_of_year`; `source_urls` are optional but must be valid HTTP(S) links when
-present. This keeps the Devy lane from inventing continuity when rosters,
-transfers, development stages, or eligibility assumptions become stale.
+present. Source types are validated per provenance category, not only against
+a global canonical list:
+
+- `identity_provenance`: `official_roster` or `recruiting_profile`
+- `timeline_provenance`: `manual_eligibility_context` or `recruiting_profile`
+- `signal_provenance`: `manual_curated_seed_signal`, `recruiting_profile`,
+  `production_data`, or `team_context_artifact`
+
+This keeps the Devy lane from inventing continuity when rosters, transfers,
+development stages, or eligibility assumptions become stale.
 
 Real players can enter this lane when a human curator can represent the row with
 coarse, honest context:
