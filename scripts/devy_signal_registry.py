@@ -14,6 +14,12 @@ from pathlib import Path
 from typing import Any
 
 CURRENT_DEVY_SCHEMA_VERSION = "devy-prospect-registry-v0.1.0"
+VALID_ARTIFACT_TYPES = frozenset({
+    "fixture_only_devy_signal_discovery_registry",
+    "devy_seed_watchlist",
+})
+SEED_WATCHLIST_ARTIFACT_TYPE = "devy_seed_watchlist"
+SEED_WATCHLIST_SOURCE_TYPE = "manual_curated_seed"
 
 
 class DevyPosition(StrEnum):
@@ -171,6 +177,19 @@ def validate_devy_registry(payload: dict[str, Any]) -> list[str]:
             f"schema_version must be {CURRENT_DEVY_SCHEMA_VERSION!r}; got {payload.get('schema_version')!r}"
         )
 
+    artifact_type = payload.get("artifact_type")
+    if artifact_type not in VALID_ARTIFACT_TYPES:
+        errors.append(f"artifact_type has invalid value {artifact_type!r}")
+
+    disclaimer = payload.get("disclaimer")
+    if not isinstance(disclaimer, str) or not disclaimer.strip():
+        errors.append("disclaimer must be a non-empty string")
+    elif artifact_type == SEED_WATCHLIST_ARTIFACT_TYPE:
+        disclaimer_lower = disclaimer.lower()
+        for required_phrase in ("seed watchlist", "not rankings", "not rookie alpha inputs"):
+            if required_phrase not in disclaimer_lower:
+                errors.append(f"seed watchlist disclaimer must include {required_phrase!r}")
+
     as_of_year = payload.get("as_of_year")
     if not isinstance(as_of_year, int) or isinstance(as_of_year, bool):
         errors.append("as_of_year must be an integer season/year")
@@ -281,6 +300,47 @@ def validate_devy_registry(payload: dict[str, Any]) -> list[str]:
             for note in source_notes:
                 if not isinstance(note, str) or not note.strip():
                     errors.append(f"{prefix}.source_notes entries must be non-empty strings")
+
+        if artifact_type == SEED_WATCHLIST_ARTIFACT_TYPE:
+            provenance = prospect.get("provenance")
+            if not isinstance(provenance, dict):
+                errors.append(f"{prefix}.provenance must be an object for seed watchlist rows")
+            else:
+                if provenance.get("source_type") != SEED_WATCHLIST_SOURCE_TYPE:
+                    errors.append(
+                        f"{prefix}.provenance.source_type must be {SEED_WATCHLIST_SOURCE_TYPE!r}"
+                    )
+
+                provenance_notes = provenance.get("source_notes")
+                if not isinstance(provenance_notes, list) or not provenance_notes:
+                    errors.append(f"{prefix}.provenance.source_notes must be a non-empty list")
+                else:
+                    for note in provenance_notes:
+                        if not isinstance(note, str) or not note.strip():
+                            errors.append(
+                                f"{prefix}.provenance.source_notes entries must be non-empty strings"
+                            )
+
+                source_urls = provenance.get("source_urls")
+                if source_urls is not None:
+                    if not isinstance(source_urls, list) or not source_urls:
+                        errors.append(f"{prefix}.provenance.source_urls must be a non-empty list when present")
+                    else:
+                        for url in source_urls:
+                            if not isinstance(url, str) or not url.startswith(("https://", "http://")):
+                                errors.append(
+                                    f"{prefix}.provenance.source_urls entries must be HTTP(S) URLs"
+                                )
+
+                last_verified_year = provenance.get("last_verified_year")
+                if (
+                    not isinstance(last_verified_year, int)
+                    or isinstance(last_verified_year, bool)
+                    or (isinstance(as_of_year, int) and last_verified_year > as_of_year)
+                ):
+                    errors.append(
+                        f"{prefix}.provenance.last_verified_year must be an integer no later than as_of_year"
+                    )
 
     return errors
 

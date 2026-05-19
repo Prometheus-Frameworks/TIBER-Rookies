@@ -1,0 +1,252 @@
+{
+  "schema_version": "devy-prospect-registry-v0.1.0",
+  "artifact_type": "devy_seed_watchlist",
+  "as_of_year": 2026,
+  "generated_by": "manual_curated_seed_watchlist",
+  "disclaimer": "Non-promoted Devy seed watchlist for discovery only. Rows are not rankings, not Rookie Alpha inputs, not promoted scouting truth, not NFL draft predictions, and not exact draft-capital projections; stale fields must be re-verified before downstream use.",
+  "prospects": [
+    {
+      "player_id": "chris-henry-jr",
+      "player_name": "Chris Henry Jr.",
+      "school": "Ohio State",
+      "position": "WR",
+      "projected_draft_class": 2029,
+      "earliest_possible_draft_class": 2029,
+      "class_year": 2026,
+      "years_to_projected_draft": 3,
+      "development_horizon": "LONG_HORIZON",
+      "lifecycle_stage": "TRUE_FRESHMAN",
+      "development_tags": [
+        "LONG_HORIZON",
+        "HIGH_RECRUITING_CAPITAL",
+        "PRODUCTION_PENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "LOW",
+      "actionability_band": "WATCHLIST",
+      "volatility_band": "EXTREME",
+      "summary": "Long-horizon Ohio State wide receiver seed row whose current value is timeline context, not near-term rookie scoring.",
+      "why_it_matters": "This row proves the Devy lane can hold an early real-name discovery target while preserving that a 2029-type path is not next-cycle actionable.",
+      "source_notes": [
+        "Official Ohio State roster profile used for name, school, and position verification as of 2026.",
+        "Timeline fields are manual Devy eligibility context from the 2026 class year; re-verify before any promoted use."
+      ],
+      "provenance": {
+        "source_type": "manual_curated_seed",
+        "source_urls": [
+          "https://ohiostatebuckeyes.com/sports/football/roster/chris-henry-jr/13356"
+        ],
+        "source_notes": [
+          "Official Ohio State roster profile used for name, school, and position verification as of 2026.",
+          "No numeric grade, exact draft capital, or scouting conclusion is asserted."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "bryce-underwood",
+      "player_name": "Bryce Underwood",
+      "school": "Michigan",
+      "position": "QB",
+      "projected_draft_class": 2028,
+      "earliest_possible_draft_class": 2028,
+      "class_year": 2025,
+      "years_to_projected_draft": 2,
+      "development_horizon": "MEDIUM_TERM",
+      "lifecycle_stage": "EMERGING",
+      "development_tags": [
+        "HIGH_RECRUITING_CAPITAL",
+        "ASCENDING",
+        "PRODUCTION_PENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Michigan quarterback seed row for medium-term Devy monitoring without converting early collegiate signal into a precise ranking.",
+      "why_it_matters": "Quarterback timelines are especially volatile, so the row captures watchlist context and uncertainty before Rookie Alpha inputs are available.",
+      "source_notes": [
+        "Official Michigan roster profile used for name, school, and position verification.",
+        "Projected draft-class timing is manual eligibility context, not a draft prediction."
+      ],
+      "provenance": {
+        "source_type": "manual_curated_seed",
+        "source_urls": [
+          "https://mgoblue.com/sports/football/roster/bryce-underwood/26792"
+        ],
+        "source_notes": [
+          "Official Michigan roster profile used for identity fields; timeline requires future re-verification."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "jeremiah-smith",
+      "player_name": "Jeremiah Smith",
+      "school": "Ohio State",
+      "position": "WR",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "NFL_TRACK",
+      "development_tags": [
+        "EARLY_DECLARE_CANDIDATE",
+        "ASCENDING",
+        "INSULATED_PROGRAM"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "ELITE",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "MEDIUM",
+      "summary": "Near-term Ohio State wide receiver watchlist row that remains discovery context rather than a Rookie Alpha row.",
+      "why_it_matters": "The row gives future rookie-pipeline operators a sourced name to monitor while keeping Devy outputs separate from promoted scoring artifacts.",
+      "source_notes": [
+        "Official Ohio State roster profile used for name, school, and position verification as of 2026.",
+        "No draft slot, player comp, or exact grade is asserted."
+      ],
+      "provenance": {
+        "source_type": "manual_curated_seed",
+        "source_urls": [
+          "https://ohiostatebuckeyes.com/sports/football/roster/jeremiah-smith/13335"
+        ],
+        "source_notes": [
+          "Official Ohio State roster profile used for identity fields; Devy bands are manual watchlist labels."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "dakorien-moore",
+      "player_name": "Dakorien Moore",
+      "school": "Oregon",
+      "position": "WR",
+      "projected_draft_class": 2028,
+      "earliest_possible_draft_class": 2028,
+      "class_year": 2025,
+      "years_to_projected_draft": 2,
+      "development_horizon": "MEDIUM_TERM",
+      "lifecycle_stage": "EMERGING",
+      "development_tags": [
+        "HIGH_RECRUITING_CAPITAL",
+        "ASCENDING",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Oregon wide receiver seed row for medium-term discovery with sourced identity fields and coarse uncertainty bands.",
+      "why_it_matters": "The row preserves a notable underclass wide receiver in the discovery lane without promoting production, ranking, or draft-capital claims.",
+      "source_notes": [
+        "Official Oregon roster profile used for name, school, and position verification.",
+        "Development bands are manual seed-watchlist context only."
+      ],
+      "provenance": {
+        "source_type": "manual_curated_seed",
+        "source_urls": [
+          "https://goducks.com/sports/football/roster/dakorien-moore/17440"
+        ],
+        "source_notes": [
+          "Official Oregon roster profile used for identity fields; no external scouting text copied."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "caden-durham",
+      "player_name": "Caden Durham",
+      "school": "LSU",
+      "position": "RB",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "BREAKOUT_WINDOW",
+      "development_tags": [
+        "ASCENDING",
+        "EARLY_DECLARE_CANDIDATE",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "MEDIUM",
+      "summary": "Near-term LSU running back seed row for watchlist continuity before any rookie-model handoff exists.",
+      "why_it_matters": "Running back windows can change quickly, so this row captures a sourced monitoring state without declaring draft capital or role certainty.",
+      "source_notes": [
+        "Official LSU roster used for name, school, and position verification.",
+        "No exact future draft outcome or numeric grade is asserted."
+      ],
+      "provenance": {
+        "source_type": "manual_curated_seed",
+        "source_urls": [
+          "https://lsusports.net/sports/fb/roster/"
+        ],
+        "source_notes": [
+          "Official LSU roster used for identity fields; watchlist labels are manual and non-promoted."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "nate-frazier",
+      "player_name": "Nate Frazier",
+      "school": "Georgia",
+      "position": "RB",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "BREAKOUT_WINDOW",
+      "development_tags": [
+        "ASCENDING",
+        "EARLY_DECLARE_CANDIDATE",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "MEDIUM",
+      "summary": "Near-term Georgia running back seed row that is useful for monitoring but not for promoted rookie scoring.",
+      "why_it_matters": "The row demonstrates how near-term Devy names can be retained with provenance while still requiring a future governed Rookie Alpha intake path.",
+      "source_notes": [
+        "Official Georgia roster profile used for name, school, and position verification as of 2026.",
+        "Draft class timing is manual eligibility context, not a guaranteed declaration year."
+      ],
+      "provenance": {
+        "source_type": "manual_curated_seed",
+        "source_urls": [
+          "https://georgiadogs.com/sports/football/roster/nate-frazier/10638"
+        ],
+        "source_notes": [
+          "Official Georgia roster profile used for identity fields; no proprietary analyst content used."
+        ],
+        "last_verified_year": 2026
+      }
+    }
+  ]
+}
