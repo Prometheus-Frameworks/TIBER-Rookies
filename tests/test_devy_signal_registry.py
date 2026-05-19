@@ -35,9 +35,9 @@ class DevySignalRegistryTests(unittest.TestCase):
 
     def test_seed_watchlist_missing_provenance_notes_fails_validation(self) -> None:
         payload = copy.deepcopy(self.seed_payload)
-        payload["prospects"][0]["provenance"]["source_notes"] = []
+        payload["prospects"][0]["identity_provenance"]["source_notes"] = []
         errors = validate_devy_registry(payload)
-        self.assertTrue(any("provenance.source_notes must be a non-empty list" in error for error in errors))
+        self.assertTrue(any("identity_provenance.source_notes must be a non-empty list" in error for error in errors))
 
     def test_seed_watchlist_duplicate_player_ids_fail_validation(self) -> None:
         payload = copy.deepcopy(self.seed_payload)
@@ -102,6 +102,35 @@ class DevySignalRegistryTests(unittest.TestCase):
         payload["prospects"][0]["actionability_band"] = "TARGET"
         errors = validate_devy_registry(payload)
         self.assertTrue(any("long-horizon prospect cannot be TARGET or PRIORITY" in error for error in errors))
+
+
+    def test_missing_identity_provenance_fails_validation(self) -> None:
+        payload = copy.deepcopy(self.seed_payload)
+        payload["prospects"][0].pop("identity_provenance", None)
+        errors = validate_devy_registry(payload)
+        self.assertTrue(any("identity_provenance must be an object" in error for error in errors))
+
+    def test_missing_signal_provenance_fails_when_signal_fields_present(self) -> None:
+        payload = copy.deepcopy(self.seed_payload)
+        payload["prospects"][0].pop("signal_provenance", None)
+        errors = validate_devy_registry(payload)
+        self.assertTrue(any("signal_provenance must be an object" in error for error in errors))
+
+    def test_missing_timeline_provenance_fails_when_timeline_fields_present(self) -> None:
+        payload = copy.deepcopy(self.seed_payload)
+        payload["prospects"][0].pop("timeline_provenance", None)
+        errors = validate_devy_registry(payload)
+        self.assertTrue(any("timeline_provenance must be an object" in error for error in errors))
+
+    def test_invalid_provenance_source_type_url_and_future_year_fail(self) -> None:
+        payload = copy.deepcopy(self.seed_payload)
+        payload["prospects"][0]["identity_provenance"]["source_type"] = "made_up_source"
+        payload["prospects"][0]["identity_provenance"]["source_urls"] = ["ftp://not-allowed"]
+        payload["prospects"][0]["identity_provenance"]["last_verified_year"] = payload["as_of_year"] + 1
+        errors = validate_devy_registry(payload)
+        self.assertTrue(any("source_type must be one of" in error for error in errors))
+        self.assertTrue(any("source_urls entries must be HTTP(S) URLs" in error for error in errors))
+        self.assertTrue(any("last_verified_year must be an integer no later than as_of_year" in error for error in errors))
 
 
 if __name__ == "__main__":

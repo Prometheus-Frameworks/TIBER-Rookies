@@ -52,10 +52,17 @@ claims.
 
 The key distinction from the fixture registry is provenance. Fixture rows are
 placeholder schema examples; seed-watchlist rows may contain real player names
-only when each row includes source notes, a manual-curation source type, source
-URLs when available, and a `last_verified_year`. This keeps the Devy lane from
-inventing continuity when rosters, transfers, development stages, or eligibility
-assumptions become stale.
+only when each row separates:
+
+- `identity_provenance` (for name/school/position),
+- `timeline_provenance` (for projected/earliest draft-class context), and
+- `signal_provenance` (for interpretive tags and bands).
+
+Each provenance object must include canonical `source_type`, non-empty
+`source_notes`, and a `last_verified_year` no later than artifact
+`as_of_year`; `source_urls` are optional but must be valid HTTP(S) links when
+present. This keeps the Devy lane from inventing continuity when rosters,
+transfers, development stages, or eligibility assumptions become stale.
 
 Real players can enter this lane when a human curator can represent the row with
 coarse, honest context:
@@ -115,7 +122,8 @@ python3 -m pytest tests/test_devy_signal_registry.py
 
 The validator checks required fields, canonical enum values, duplicate IDs,
 draft-class chronology, `years_to_projected_draft`, horizon consistency,
-artifact disclaimers, seed-watchlist provenance/source notes, and the
+artifact disclaimers, split seed-watchlist provenance categories, canonical
+source types, source URL format, `last_verified_year` bounds, and the
 long-horizon actionability guardrail.
 
 ## Relationship to Rookie Alpha

@@ -19,7 +19,17 @@ VALID_ARTIFACT_TYPES = frozenset({
     "devy_seed_watchlist",
 })
 SEED_WATCHLIST_ARTIFACT_TYPE = "devy_seed_watchlist"
-SEED_WATCHLIST_SOURCE_TYPE = "manual_curated_seed"
+SEED_WATCHLIST_IDENTITY_FIELDS = frozenset({"player_name", "school", "position"})
+SEED_WATCHLIST_TIMELINE_FIELDS = frozenset({"projected_draft_class", "earliest_possible_draft_class", "class_year", "years_to_projected_draft"})
+SEED_WATCHLIST_SIGNAL_FIELDS = frozenset({"development_tags", "signal_strength_band", "confidence_band", "actionability_band", "volatility_band"})
+CANONICAL_PROVENANCE_SOURCE_TYPES = frozenset({
+    "official_roster",
+    "manual_eligibility_context",
+    "manual_curated_seed_signal",
+    "recruiting_profile",
+    "production_data",
+    "team_context_artifact",
+})
 
 
 class DevyPosition(StrEnum):
@@ -302,35 +312,47 @@ def validate_devy_registry(payload: dict[str, Any]) -> list[str]:
                     errors.append(f"{prefix}.source_notes entries must be non-empty strings")
 
         if artifact_type == SEED_WATCHLIST_ARTIFACT_TYPE:
-            provenance = prospect.get("provenance")
-            if not isinstance(provenance, dict):
-                errors.append(f"{prefix}.provenance must be an object for seed watchlist rows")
-            else:
-                if provenance.get("source_type") != SEED_WATCHLIST_SOURCE_TYPE:
+            required_map = {
+                "identity_provenance": SEED_WATCHLIST_IDENTITY_FIELDS,
+                "timeline_provenance": SEED_WATCHLIST_TIMELINE_FIELDS,
+                "signal_provenance": SEED_WATCHLIST_SIGNAL_FIELDS,
+            }
+            for provenance_key, expected_fields in required_map.items():
+                provenance = prospect.get(provenance_key)
+                if not isinstance(provenance, dict):
+                    errors.append(f"{prefix}.{provenance_key} must be an object for seed watchlist rows")
+                    continue
+
+                source_type = provenance.get("source_type")
+                if source_type not in CANONICAL_PROVENANCE_SOURCE_TYPES:
                     errors.append(
-                        f"{prefix}.provenance.source_type must be {SEED_WATCHLIST_SOURCE_TYPE!r}"
+                        f"{prefix}.{provenance_key}.source_type must be one of "
+                        f"{sorted(CANONICAL_PROVENANCE_SOURCE_TYPES)!r}"
                     )
+
+                provenance_fields = provenance.get("supports_fields")
+                if provenance_fields is not None:
+                    if not isinstance(provenance_fields, list) or not provenance_fields:
+                        errors.append(f"{prefix}.{provenance_key}.supports_fields must be a non-empty list when present")
+                    elif set(provenance_fields) != expected_fields:
+                        errors.append(f"{prefix}.{provenance_key}.supports_fields must match canonical field scope")
 
                 provenance_notes = provenance.get("source_notes")
                 if not isinstance(provenance_notes, list) or not provenance_notes:
-                    errors.append(f"{prefix}.provenance.source_notes must be a non-empty list")
+                    errors.append(f"{prefix}.{provenance_key}.source_notes must be a non-empty list")
                 else:
                     for note in provenance_notes:
                         if not isinstance(note, str) or not note.strip():
-                            errors.append(
-                                f"{prefix}.provenance.source_notes entries must be non-empty strings"
-                            )
+                            errors.append(f"{prefix}.{provenance_key}.source_notes entries must be non-empty strings")
 
                 source_urls = provenance.get("source_urls")
                 if source_urls is not None:
                     if not isinstance(source_urls, list) or not source_urls:
-                        errors.append(f"{prefix}.provenance.source_urls must be a non-empty list when present")
+                        errors.append(f"{prefix}.{provenance_key}.source_urls must be a non-empty list when present")
                     else:
                         for url in source_urls:
                             if not isinstance(url, str) or not url.startswith(("https://", "http://")):
-                                errors.append(
-                                    f"{prefix}.provenance.source_urls entries must be HTTP(S) URLs"
-                                )
+                                errors.append(f"{prefix}.{provenance_key}.source_urls entries must be HTTP(S) URLs")
 
                 last_verified_year = provenance.get("last_verified_year")
                 if (
@@ -338,9 +360,7 @@ def validate_devy_registry(payload: dict[str, Any]) -> list[str]:
                     or isinstance(last_verified_year, bool)
                     or (isinstance(as_of_year, int) and last_verified_year > as_of_year)
                 ):
-                    errors.append(
-                        f"{prefix}.provenance.last_verified_year must be an integer no later than as_of_year"
-                    )
+                    errors.append(f"{prefix}.{provenance_key}.last_verified_year must be an integer no later than as_of_year")
 
     return errors
 
