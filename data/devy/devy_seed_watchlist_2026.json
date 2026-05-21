@@ -1310,5 +1310,17 @@
         "last_verified_year": 2026
       }
     }
-  ]
+  ],
+  "intake_audit": {
+    "intake_method": "codex_curated_task",
+    "introduced_by_issue": 227,
+    "introduced_by_pr": 228,
+    "validation_command": "python3 scripts/devy_signal_registry.py --registry data/devy/devy_seed_watchlist_2026.json",
+    "promotion_status": "non_promoted_discovery_only",
+    "downstream_eligibility": "blocked_until_rookie_transition",
+    "notes": [
+      "Rows were added through curated operator/Codex task specs and are not autonomously ingested.",
+      "scripts/devy_signal_registry.py is used as schema/provenance validation guard, not as ingestion or scraping pipeline."
+    ]
+  }
 }

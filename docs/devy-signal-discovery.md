@@ -52,9 +52,14 @@ claims.
 
 The key distinction from the fixture registry is provenance. Fixture rows are
 placeholder schema examples; seed-watchlist rows may contain real player names
-
-Current seed coverage intentionally spans near-term (2027), medium-term (2028), and long-horizon (2029) windows across QB/RB/WR/TE so operators can discover names without turning this artifact into rankings. The post-#226 discovery-v2 pass broadens 2029 coverage with additional deep-dynasty watchlist candidates sourced from player-level recruiting profiles while preserving unresolved program mappings as `unknown` when roster-level verification is unavailable.
 only when each row separates:
+
+Current seed coverage intentionally spans near-term (2027), medium-term (2028), and
+long-horizon (2029) windows across QB/RB/WR/TE so operators can discover names
+without turning this artifact into rankings. The post-#226 discovery-v2 pass broadens
+2029 coverage with additional deep-dynasty watchlist candidates sourced from
+player-level recruiting profiles while preserving unresolved program mappings as
+`unknown` when roster-level verification is unavailable.
 
 - `identity_provenance` (for name/school/position),
 - `timeline_provenance` (for projected/earliest draft-class context), and
@@ -91,6 +96,22 @@ a 2029-type player in an `as_of_year` 2026 artifact must validate as
 `LONG_HORIZON` and cannot be `TARGET` or `PRIORITY` actionable. This lets TIBER
 surface names before the fantasy market stabilizes while preserving that the row
 is not ready for a rookie-ranking or promoted-export workflow.
+
+
+### Intake audit trail
+
+The seed watchlist now carries an artifact-level `intake_audit` block to document
+how rows entered the registry and preserve honest Devy v1 claims:
+
+- `intake_method`: curated/manual/Codex lineage (not autonomous scraping),
+- `introduced_by_issue` and `introduced_by_pr`: traceability back to issue/PR,
+- `validation_command`: exact validator command used as the schema guardrail,
+- `promotion_status`: non-promoted discovery posture, and
+- `downstream_eligibility`: explicit block from rookie/NFL scoring surfaces
+  until a governed transition path exists.
+
+This captures the Derrek Cooper path (`Issue #227 -> PR #228 -> seed watchlist ->
+validator`) as a documented curated workflow rather than an ingestion pipeline.
 
 ## Horizon logic
 
