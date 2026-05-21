@@ -224,19 +224,18 @@
       }
     },
     {
-      "player_id": "caden-durham",
-      "player_name": "Caden Durham",
-      "school": "LSU",
-      "position": "RB",
+      "player_id": "arch-manning",
+      "player_name": "Arch Manning",
+      "school": "Texas",
+      "position": "QB",
       "projected_draft_class": 2027,
       "earliest_possible_draft_class": 2027,
       "class_year": 2024,
       "years_to_projected_draft": 1,
       "development_horizon": "NEAR_TERM",
-      "lifecycle_stage": "BREAKOUT_WINDOW",
+      "lifecycle_stage": "NFL_TRACK",
       "development_tags": [
         "ASCENDING",
-        "EARLY_DECLARE_CANDIDATE",
         "ROLE_UNCERTAIN"
       ],
       "recruiting_stars": null,
@@ -245,42 +244,204 @@
       "signal_strength_band": "STRONG",
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
-      "volatility_band": "MEDIUM",
-      "summary": "Near-term LSU running back seed row for watchlist continuity before any rookie-model handoff exists.",
-      "why_it_matters": "Running back windows can change quickly, so this row captures a sourced monitoring state without declaring draft capital or role certainty.",
+      "volatility_band": "HIGH",
+      "summary": "Arch Manning is tracked as a QB discovery candidate tied to the 2027 draft cycle, with program context at Texas and non-promoted uncertainty bands for Devy monitoring only.",
+      "why_it_matters": "This row keeps Arch Manning visible for multi-year pipeline monitoring where role stability, production runway, and declaration timing could materially change downstream rookie value.",
       "source_notes": [
-        "Official LSU roster used for name, school, and position verification.",
-        "No exact future draft outcome or numeric grade is asserted."
+        "Identity/program context references a player-specific recruiting profile and must be re-validated before any promoted artifact workflow.",
+        "Timeline and signal fields are manual Devy discovery context only; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "official_roster",
+        "source_type": "recruiting_profile",
         "source_urls": [
-          "https://lsusports.net/sports/fb/roster/"
+          "https://247sports.com/player/arch-manning-46080533/"
         ],
         "source_notes": [
-          "Used for name, school, and position verification."
+          "Player identity and program context anchored to a player-specific public recruiting profile; re-verify against current roster before promoted use."
         ],
         "last_verified_year": 2026
       },
       "timeline_provenance": {
         "source_type": "manual_eligibility_context",
         "source_notes": [
-          "Projected draft-class timing is manual eligibility context, not a declaration prediction."
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
         ],
         "last_verified_year": 2026
       },
       "signal_provenance": {
         "source_type": "manual_curated_seed_signal",
         "source_notes": [
-          "Used for broad watchlist tags/bands only; not a ranking or scouting grade."
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
         ],
         "last_verified_year": 2026
       }
     },
     {
-      "player_id": "nate-frazier",
-      "player_name": "Nate Frazier",
-      "school": "Georgia",
+      "player_id": "dj-lagway",
+      "player_name": "DJ Lagway",
+      "school": "Florida",
+      "position": "QB",
+      "projected_draft_class": 2028,
+      "earliest_possible_draft_class": 2028,
+      "class_year": 2025,
+      "years_to_projected_draft": 2,
+      "development_horizon": "MEDIUM_TERM",
+      "lifecycle_stage": "EMERGING",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "DJ Lagway is tracked as a QB discovery candidate tied to the 2028 draft cycle, with program context at Florida and non-promoted uncertainty bands for Devy monitoring only.",
+      "why_it_matters": "This row keeps DJ Lagway visible for multi-year pipeline monitoring where role stability, production runway, and declaration timing could materially change downstream rookie value.",
+      "source_notes": [
+        "Identity/program context references a player-specific recruiting profile and must be re-validated before any promoted artifact workflow.",
+        "Timeline and signal fields are manual Devy discovery context only; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/dj-lagway-46111820/"
+        ],
+        "source_notes": [
+          "Player identity and program context anchored to a player-specific public recruiting profile; re-verify against current roster before promoted use."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "dylan-raiola",
+      "player_name": "Dylan Raiola",
+      "school": "Nebraska",
+      "position": "QB",
+      "projected_draft_class": 2028,
+      "earliest_possible_draft_class": 2028,
+      "class_year": 2025,
+      "years_to_projected_draft": 2,
+      "development_horizon": "MEDIUM_TERM",
+      "lifecycle_stage": "EMERGING",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Dylan Raiola is tracked as a QB discovery candidate tied to the 2028 draft cycle, with program context at Nebraska and non-promoted uncertainty bands for Devy monitoring only.",
+      "why_it_matters": "This row keeps Dylan Raiola visible for multi-year pipeline monitoring where role stability, production runway, and declaration timing could materially change downstream rookie value.",
+      "source_notes": [
+        "Identity/program context references a player-specific recruiting profile and must be re-validated before any promoted artifact workflow.",
+        "Timeline and signal fields are manual Devy discovery context only; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/dylan-raiola-46116332/"
+        ],
+        "source_notes": [
+          "Player identity and program context anchored to a player-specific public recruiting profile; re-verify against current roster before promoted use."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "julian-sayin",
+      "player_name": "Julian Sayin",
+      "school": "Ohio State",
+      "position": "QB",
+      "projected_draft_class": 2028,
+      "earliest_possible_draft_class": 2028,
+      "class_year": 2025,
+      "years_to_projected_draft": 2,
+      "development_horizon": "MEDIUM_TERM",
+      "lifecycle_stage": "EMERGING",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Julian Sayin is tracked as a QB discovery candidate tied to the 2028 draft cycle, with program context at Ohio State and non-promoted uncertainty bands for Devy monitoring only.",
+      "why_it_matters": "This row keeps Julian Sayin visible for multi-year pipeline monitoring where role stability, production runway, and declaration timing could materially change downstream rookie value.",
+      "source_notes": [
+        "Identity/program context references a player-specific recruiting profile and must be re-validated before any promoted artifact workflow.",
+        "Timeline and signal fields are manual Devy discovery context only; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/julian-sayin-46102589/"
+        ],
+        "source_notes": [
+          "Player identity and program context anchored to a player-specific public recruiting profile; re-verify against current roster before promoted use."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "jeremiah-love",
+      "player_name": "Jeremiah Love",
+      "school": "Notre Dame",
       "position": "RB",
       "projected_draft_class": 2027,
       "earliest_possible_draft_class": 2027,
@@ -290,7 +451,6 @@
       "lifecycle_stage": "BREAKOUT_WINDOW",
       "development_tags": [
         "ASCENDING",
-        "EARLY_DECLARE_CANDIDATE",
         "ROLE_UNCERTAIN"
       ],
       "recruiting_stars": null,
@@ -299,20 +459,289 @@
       "signal_strength_band": "STRONG",
       "confidence_band": "MEDIUM",
       "actionability_band": "MONITOR",
-      "volatility_band": "MEDIUM",
-      "summary": "Near-term Georgia running back seed row that is useful for monitoring but not for promoted rookie scoring.",
-      "why_it_matters": "The row demonstrates how near-term Devy names can be retained with provenance while still requiring a future governed Rookie Alpha intake path.",
+      "volatility_band": "HIGH",
+      "summary": "Jeremiah Love is tracked as a RB discovery candidate tied to the 2027 draft cycle, with program context at Notre Dame and non-promoted uncertainty bands for Devy monitoring only.",
+      "why_it_matters": "This row keeps Jeremiah Love visible for multi-year pipeline monitoring where role stability, production runway, and declaration timing could materially change downstream rookie value.",
       "source_notes": [
-        "Official Georgia roster profile used for name, school, and position verification as of 2026.",
-        "Draft class timing is manual eligibility context, not a guaranteed declaration year."
+        "Identity/program context references a player-specific recruiting profile and must be re-validated before any promoted artifact workflow.",
+        "Timeline and signal fields are manual Devy discovery context only; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
       ],
       "identity_provenance": {
-        "source_type": "official_roster",
+        "source_type": "recruiting_profile",
         "source_urls": [
-          "https://georgiadogs.com/sports/football/roster/nate-frazier/10638"
+          "https://247sports.com/player/jeremiah-love-46098426/"
         ],
         "source_notes": [
-          "Used for name, school, and position verification."
+          "Player identity and program context anchored to a player-specific public recruiting profile; re-verify against current roster before promoted use."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "nicholas-singleton",
+      "player_name": "Nicholas Singleton",
+      "school": "Penn State",
+      "position": "RB",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "NFL_TRACK",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Nicholas Singleton is tracked as a RB discovery candidate tied to the 2027 draft cycle, with program context at Penn State and non-promoted uncertainty bands for Devy monitoring only.",
+      "why_it_matters": "This row keeps Nicholas Singleton visible for multi-year pipeline monitoring where role stability, production runway, and declaration timing could materially change downstream rookie value.",
+      "source_notes": [
+        "Identity/program context references a player-specific recruiting profile and must be re-validated before any promoted artifact workflow.",
+        "Timeline and signal fields are manual Devy discovery context only; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/nicholas-singleton-46084442/"
+        ],
+        "source_notes": [
+          "Player identity and program context anchored to a player-specific public recruiting profile; re-verify against current roster before promoted use."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "ryan-williams",
+      "player_name": "Ryan Williams",
+      "school": "Alabama",
+      "position": "WR",
+      "projected_draft_class": 2028,
+      "earliest_possible_draft_class": 2028,
+      "class_year": 2025,
+      "years_to_projected_draft": 2,
+      "development_horizon": "MEDIUM_TERM",
+      "lifecycle_stage": "EMERGING",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Ryan Williams is tracked as a WR discovery candidate tied to the 2028 draft cycle, with program context at Alabama and non-promoted uncertainty bands for Devy monitoring only.",
+      "why_it_matters": "This row keeps Ryan Williams visible for multi-year pipeline monitoring where role stability, production runway, and declaration timing could materially change downstream rookie value.",
+      "source_notes": [
+        "Identity/program context references a player-specific recruiting profile and must be re-validated before any promoted artifact workflow.",
+        "Timeline and signal fields are manual Devy discovery context only; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/ryan-williams-46127991/"
+        ],
+        "source_notes": [
+          "Player identity and program context anchored to a player-specific public recruiting profile; re-verify against current roster before promoted use."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "cam-coleman",
+      "player_name": "Cam Coleman",
+      "school": "Auburn",
+      "position": "WR",
+      "projected_draft_class": 2028,
+      "earliest_possible_draft_class": 2028,
+      "class_year": 2025,
+      "years_to_projected_draft": 2,
+      "development_horizon": "MEDIUM_TERM",
+      "lifecycle_stage": "EMERGING",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN",
+        "PRODUCTION_PENDING"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Cam Coleman is tracked as a WR discovery candidate tied to the 2028 draft cycle, with program context at Auburn and non-promoted uncertainty bands for Devy monitoring only.",
+      "why_it_matters": "This row keeps Cam Coleman visible for multi-year pipeline monitoring where role stability, production runway, and declaration timing could materially change downstream rookie value.",
+      "source_notes": [
+        "Identity/program context references a player-specific recruiting profile and must be re-validated before any promoted artifact workflow.",
+        "Timeline and signal fields are manual Devy discovery context only; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/cam-coleman-46115733/"
+        ],
+        "source_notes": [
+          "Player identity and program context anchored to a player-specific public recruiting profile; re-verify against current roster before promoted use."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "carnell-tate",
+      "player_name": "Carnell Tate",
+      "school": "Ohio State",
+      "position": "WR",
+      "projected_draft_class": 2027,
+      "earliest_possible_draft_class": 2027,
+      "class_year": 2024,
+      "years_to_projected_draft": 1,
+      "development_horizon": "NEAR_TERM",
+      "lifecycle_stage": "BREAKOUT_WINDOW",
+      "development_tags": [
+        "ASCENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "STRONG",
+      "confidence_band": "MEDIUM",
+      "actionability_band": "MONITOR",
+      "volatility_band": "HIGH",
+      "summary": "Carnell Tate is tracked as a WR discovery candidate tied to the 2027 draft cycle, with program context at Ohio State and non-promoted uncertainty bands for Devy monitoring only.",
+      "why_it_matters": "This row keeps Carnell Tate visible for multi-year pipeline monitoring where role stability, production runway, and declaration timing could materially change downstream rookie value.",
+      "source_notes": [
+        "Identity/program context references a player-specific recruiting profile and must be re-validated before any promoted artifact workflow.",
+        "Timeline and signal fields are manual Devy discovery context only; this row is not a ranking, Rookie Alpha input, or draft-capital claim."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/carnell-tate-46094182/"
+        ],
+        "source_notes": [
+          "Player identity and program context anchored to a player-specific public recruiting profile; re-verify against current roster before promoted use."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Draft-class timing is manual eligibility context and not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Broad seed-watchlist signal only; not ranking/scouting truth."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "tristen-keys",
+      "player_name": "Tristen Keys",
+      "school": "unknown",
+      "position": "WR",
+      "projected_draft_class": 2029,
+      "earliest_possible_draft_class": 2029,
+      "class_year": 2026,
+      "years_to_projected_draft": 3,
+      "development_horizon": "LONG_HORIZON",
+      "lifecycle_stage": "TRUE_FRESHMAN",
+      "development_tags": [
+        "LONG_HORIZON",
+        "HIGH_RECRUITING_CAPITAL",
+        "PRODUCTION_PENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "MODERATE",
+      "confidence_band": "LOW",
+      "actionability_band": "WATCHLIST",
+      "volatility_band": "EXTREME",
+      "summary": "Long-horizon WR discovery row with unresolved program mapping preserved in provenance while identity is verified through a recruiting profile.",
+      "why_it_matters": "Keys provides high-upside long-horizon WR exposure for Devy discovery while explicitly preserving unresolved team mapping risk before any promoted workflow.",
+      "source_notes": [
+        "Identity is verified via a player-specific recruiting profile; current program mapping is intentionally unresolved and must be re-verified before promoted use.",
+        "Timeline and signal fields are manual Devy discovery context only and are not rankings, Rookie Alpha inputs, or draft-capital claims."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/tristen-keys-46133289/"
+        ],
+        "source_notes": [
+          "Used for player identity verification; school field remains unresolved pending stable public roster mapping."
         ],
         "last_verified_year": 2026
       },
