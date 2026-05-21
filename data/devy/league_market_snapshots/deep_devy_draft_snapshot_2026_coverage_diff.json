@@ -1,0 +1,236 @@
+{
+  "schema_version": "devy-league-market-coverage-diff-v0.1.0",
+  "artifact_type": "devy_league_market_snapshot_coverage_diff",
+  "snapshot_year": 2026,
+  "comparison_basis": "operator_supplied_snapshot_vs_devy_seed_watchlist",
+  "drafted_and_known_by_tiber": [
+    {
+      "draft_id": "startup_2025",
+      "pick": "1.01",
+      "player_name_normalized": "Jeremiah Smith",
+      "seed_player_id": "jeremiah-smith",
+      "school": "Ohio State",
+      "position": "WR",
+      "tiber_seed_watchlist_match": true
+    },
+    {
+      "draft_id": "supplemental_2026",
+      "pick": "5.05",
+      "player_name_normalized": "Derrek Cooper",
+      "seed_player_id": "derrek-cooper",
+      "school": "Texas",
+      "position": "RB",
+      "tiber_seed_watchlist_match": true
+    }
+  ],
+  "drafted_missing_from_tiber": [
+    {
+      "draft_id": "supplemental_2026",
+      "pick": "5.06",
+      "player_name_normalized": "Aaron Gregory",
+      "school_normalized": "Texas A&M",
+      "position_normalized": "WR",
+      "tiber_seed_watchlist_match": false,
+      "coverage_gap_candidate": true,
+      "auto_add_to_seed_watchlist": false
+    },
+    {
+      "draft_id": "supplemental_2026",
+      "pick": "3.02",
+      "player_name_normalized": "Brendan Sorsby",
+      "school_normalized": "unknown",
+      "position_normalized": "QB",
+      "tiber_seed_watchlist_match": false,
+      "coverage_gap_candidate": true,
+      "auto_add_to_seed_watchlist": false
+    }
+  ],
+  "snapshot_scope": "fixture_subset",
+  "tiber_seed_not_present_in_snapshot_fixture": [
+    {
+      "player_id": "chris-henry-jr",
+      "player_name": "Chris Henry Jr.",
+      "school": "Ohio State",
+      "position": "WR"
+    },
+    {
+      "player_id": "bryce-underwood",
+      "player_name": "Bryce Underwood",
+      "school": "Michigan",
+      "position": "QB"
+    },
+    {
+      "player_id": "dakorien-moore",
+      "player_name": "Dakorien Moore",
+      "school": "Oregon",
+      "position": "WR"
+    },
+    {
+      "player_id": "arch-manning",
+      "player_name": "Arch Manning",
+      "school": "Texas",
+      "position": "QB"
+    },
+    {
+      "player_id": "dj-lagway",
+      "player_name": "DJ Lagway",
+      "school": "Florida",
+      "position": "QB"
+    },
+    {
+      "player_id": "dylan-raiola",
+      "player_name": "Dylan Raiola",
+      "school": "Nebraska",
+      "position": "QB"
+    },
+    {
+      "player_id": "julian-sayin",
+      "player_name": "Julian Sayin",
+      "school": "Ohio State",
+      "position": "QB"
+    },
+    {
+      "player_id": "jeremiah-love",
+      "player_name": "Jeremiah Love",
+      "school": "Notre Dame",
+      "position": "RB"
+    },
+    {
+      "player_id": "nicholas-singleton",
+      "player_name": "Nicholas Singleton",
+      "school": "Penn State",
+      "position": "RB"
+    },
+    {
+      "player_id": "ryan-williams",
+      "player_name": "Ryan Williams",
+      "school": "Alabama",
+      "position": "WR"
+    },
+    {
+      "player_id": "cam-coleman",
+      "player_name": "Cam Coleman",
+      "school": "Auburn",
+      "position": "WR"
+    },
+    {
+      "player_id": "carnell-tate",
+      "player_name": "Carnell Tate",
+      "school": "Ohio State",
+      "position": "WR"
+    },
+    {
+      "player_id": "tristen-keys",
+      "player_name": "Tristen Keys",
+      "school": "unknown",
+      "position": "WR"
+    },
+    {
+      "player_id": "faizon-brandon",
+      "player_name": "Faizon Brandon",
+      "school": "Tennessee",
+      "position": "QB"
+    },
+    {
+      "player_id": "jared-curtis",
+      "player_name": "Jared Curtis",
+      "school": "Vanderbilt",
+      "position": "QB"
+    },
+    {
+      "player_id": "dia-bell",
+      "player_name": "Dia Bell",
+      "school": "Texas",
+      "position": "QB"
+    },
+    {
+      "player_id": "savion-hiter",
+      "player_name": "Savion Hiter",
+      "school": "Michigan",
+      "position": "RB"
+    },
+    {
+      "player_id": "ezavier-crowell",
+      "player_name": "Ezavier Crowell",
+      "school": "Alabama",
+      "position": "RB"
+    },
+    {
+      "player_id": "cederian-morgan",
+      "player_name": "Cederian Morgan",
+      "school": "Alabama",
+      "position": "WR"
+    },
+    {
+      "player_id": "calvin-russell",
+      "player_name": "Calvin Russell",
+      "school": "Syracuse",
+      "position": "WR"
+    },
+    {
+      "player_id": "kayden-dixon-wyatt",
+      "player_name": "Kayden Dixon-Wyatt",
+      "school": "unknown",
+      "position": "WR"
+    },
+    {
+      "player_id": "mark-bowman",
+      "player_name": "Mark Bowman",
+      "school": "USC",
+      "position": "TE"
+    }
+  ],
+  "identity_conflicts_or_unresolved": [
+    {
+      "draft_id": "supplemental_2026",
+      "pick": "3.02",
+      "player_name_normalized": "Brendan Sorsby",
+      "school_normalized": "unknown",
+      "position_normalized": "QB",
+      "issue": "missing_normalized_identity_fields"
+    }
+  ],
+  "coverage_gap_candidates": [
+    {
+      "draft_id": "supplemental_2026",
+      "pick": "5.06",
+      "player_name_normalized": "Aaron Gregory",
+      "school_normalized": "Texas A&M",
+      "position_normalized": "WR",
+      "tiber_seed_watchlist_match": false,
+      "coverage_gap_candidate": true,
+      "auto_add_to_seed_watchlist": false
+    },
+    {
+      "draft_id": "supplemental_2026",
+      "pick": "3.02",
+      "player_name_normalized": "Brendan Sorsby",
+      "school_normalized": "unknown",
+      "position_normalized": "QB",
+      "tiber_seed_watchlist_match": false,
+      "coverage_gap_candidate": true,
+      "auto_add_to_seed_watchlist": false
+    }
+  ],
+  "recommended_monthly_pulse_candidates": [
+    {
+      "player_name_normalized": "Aaron Gregory",
+      "draft_id": "supplemental_2026",
+      "pick": "5.06",
+      "reason": "drafted_in_operator_snapshot_missing_from_seed_watchlist",
+      "auto_seed_watchlist_mutation": "none"
+    },
+    {
+      "player_name_normalized": "Brendan Sorsby",
+      "draft_id": "supplemental_2026",
+      "pick": "3.02",
+      "reason": "drafted_in_operator_snapshot_missing_from_seed_watchlist",
+      "auto_seed_watchlist_mutation": "none"
+    }
+  ],
+  "warnings": [
+    "Coverage diff is discovery intelligence only and must not be treated as rankings/scouting truth.",
+    "No automatic seed-watchlist mutation is allowed from this artifact.",
+    "Do not route this artifact into Rookie Alpha, promoted rookie exports, or NFL scoring surfaces."
+  ]
+}
