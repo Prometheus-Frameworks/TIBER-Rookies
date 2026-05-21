@@ -78,7 +78,7 @@ def compute_diff(snapshot_payload: dict[str, Any], seed_payload: dict[str, Any])
                     }
                 )
 
-    available_seed = [
+    not_present_in_snapshot_fixture = [
         {
             "player_id": prospect.get("player_id"),
             "player_name": prospect.get("player_name"),
@@ -96,7 +96,8 @@ def compute_diff(snapshot_payload: dict[str, Any], seed_payload: dict[str, Any])
         "comparison_basis": "operator_supplied_snapshot_vs_devy_seed_watchlist",
         "drafted_and_known_by_tiber": drafted_and_known,
         "drafted_missing_from_tiber": drafted_missing,
-        "tiber_seed_available_at_snapshot": available_seed,
+        "snapshot_scope": snapshot_payload.get("snapshot_scope", "unknown"),
+        "tiber_seed_not_present_in_snapshot_fixture": not_present_in_snapshot_fixture,
         "identity_conflicts_or_unresolved": unresolved,
         "coverage_gap_candidates": drafted_missing,
         "recommended_monthly_pulse_candidates": [

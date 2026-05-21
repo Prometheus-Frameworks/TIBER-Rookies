@@ -239,6 +239,12 @@ Artifacts:
 - Coverage diff output:
   - `data/devy/league_market_snapshots/deep_devy_draft_snapshot_2026_coverage_diff.json`
 
+Scope semantics:
+
+- This fixture currently sets `snapshot_scope: "fixture_subset"`.
+- The diff field `tiber_seed_not_present_in_snapshot_fixture` means only that a seed row was not observed in the fixture rows provided.
+- It must **not** be interpreted as true league availability unless the snapshot includes complete anonymized draft history for the league window.
+
 Guardrails:
 
 - Discovery intelligence only (market/coverage snapshot), not scouting truth or player-quality inference.

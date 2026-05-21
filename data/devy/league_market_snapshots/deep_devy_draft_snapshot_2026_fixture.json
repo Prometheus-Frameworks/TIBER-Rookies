@@ -83,5 +83,6 @@
         }
       ]
     }
-  ]
+  ],
+  "snapshot_scope": "fixture_subset"
 }

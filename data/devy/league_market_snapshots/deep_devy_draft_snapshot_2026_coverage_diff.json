@@ -45,7 +45,8 @@
       "auto_add_to_seed_watchlist": false
     }
   ],
-  "tiber_seed_available_at_snapshot": [
+  "snapshot_scope": "fixture_subset",
+  "tiber_seed_not_present_in_snapshot_fixture": [
     {
       "player_id": "chris-henry-jr",
       "player_name": "Chris Henry Jr.",

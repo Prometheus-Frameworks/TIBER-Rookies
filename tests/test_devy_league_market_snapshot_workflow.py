@@ -50,6 +50,11 @@ class DevyLeagueMarketSnapshotWorkflowTests(unittest.TestCase):
         errors = validate_devy_league_market_snapshot(invalid)
         self.assertTrue(any("privacy_notes must be a non-empty list" in error for error in errors))
 
+    def test_not_present_field_is_fixture_subset_not_true_availability(self) -> None:
+        diff = compute_diff(self.snapshot, self.seed)
+        self.assertEqual(diff["snapshot_scope"], "fixture_subset")
+        self.assertIn("tiber_seed_not_present_in_snapshot_fixture", diff)
+        self.assertNotIn("tiber_seed_available_at_snapshot", diff)
 
 if __name__ == "__main__":
     unittest.main()
