@@ -37,6 +37,19 @@ class DevySignalRegistryTests(unittest.TestCase):
         count = len(self.seed_payload["prospects"])
         self.assertLessEqual(count, 50)
 
+
+    def test_seed_watchlist_requires_intake_audit_block(self) -> None:
+        payload = copy.deepcopy(self.seed_payload)
+        payload.pop("intake_audit", None)
+        errors = validate_devy_registry(payload)
+        self.assertTrue(any("intake_audit must be an object" in error for error in errors))
+
+    def test_seed_watchlist_rejects_invalid_intake_method(self) -> None:
+        payload = copy.deepcopy(self.seed_payload)
+        payload["intake_audit"]["intake_method"] = "autonomous_scraper"
+        errors = validate_devy_registry(payload)
+        self.assertTrue(any("intake_audit.intake_method must be one of" in error for error in errors))
+
     def test_seed_watchlist_missing_provenance_notes_fails_validation(self) -> None:
         payload = copy.deepcopy(self.seed_payload)
         payload["prospects"][0]["identity_provenance"]["source_notes"] = []

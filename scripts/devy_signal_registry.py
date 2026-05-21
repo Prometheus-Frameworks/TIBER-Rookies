@@ -42,6 +42,21 @@ ALLOWED_PROVENANCE_SOURCE_TYPES_BY_CATEGORY: dict[str, frozenset[str]] = {
 }
 
 
+SEED_WATCHLIST_ALLOWED_INTAKE_METHODS = frozenset({
+    "manual_curated_seed_watchlist",
+    "codex_curated_task",
+    "future_script_generated_candidate",
+})
+SEED_WATCHLIST_ALLOWED_PROMOTION_STATUSES = frozenset({
+    "non_promoted_discovery_only",
+    "blocked_from_downstream_use",
+})
+SEED_WATCHLIST_ALLOWED_DOWNSTREAM_ELIGIBILITY = frozenset({
+    "blocked_until_rookie_transition",
+    "blocked",
+})
+
+
 class DevyPosition(StrEnum):
     QB = "QB"
     RB = "RB"
@@ -214,6 +229,46 @@ def validate_devy_registry(payload: dict[str, Any]) -> list[str]:
     if not isinstance(as_of_year, int) or isinstance(as_of_year, bool):
         errors.append("as_of_year must be an integer season/year")
         as_of_year = None
+
+    if artifact_type == SEED_WATCHLIST_ARTIFACT_TYPE:
+        intake_audit = payload.get("intake_audit")
+        if not isinstance(intake_audit, dict):
+            errors.append("intake_audit must be an object for seed watchlist artifacts")
+        else:
+            intake_method = intake_audit.get("intake_method")
+            if intake_method not in SEED_WATCHLIST_ALLOWED_INTAKE_METHODS:
+                errors.append(
+                    f"intake_audit.intake_method must be one of {sorted(SEED_WATCHLIST_ALLOWED_INTAKE_METHODS)!r}"
+                )
+            for field in ("introduced_by_issue", "introduced_by_pr"):
+                value = intake_audit.get(field)
+                if not isinstance(value, int) or isinstance(value, bool) or value <= 0:
+                    errors.append(f"intake_audit.{field} must be a positive integer")
+
+            validation_command = intake_audit.get("validation_command")
+            if not isinstance(validation_command, str) or not validation_command.strip():
+                errors.append("intake_audit.validation_command must be a non-empty string")
+
+            promotion_status = intake_audit.get("promotion_status")
+            if promotion_status not in SEED_WATCHLIST_ALLOWED_PROMOTION_STATUSES:
+                errors.append(
+                    f"intake_audit.promotion_status must be one of {sorted(SEED_WATCHLIST_ALLOWED_PROMOTION_STATUSES)!r}"
+                )
+
+            downstream_eligibility = intake_audit.get("downstream_eligibility")
+            if downstream_eligibility not in SEED_WATCHLIST_ALLOWED_DOWNSTREAM_ELIGIBILITY:
+                errors.append(
+                    "intake_audit.downstream_eligibility must be one of "
+                    f"{sorted(SEED_WATCHLIST_ALLOWED_DOWNSTREAM_ELIGIBILITY)!r}"
+                )
+
+            notes = intake_audit.get("notes")
+            if not isinstance(notes, list) or not notes:
+                errors.append("intake_audit.notes must be a non-empty list")
+            else:
+                for note in notes:
+                    if not isinstance(note, str) or not note.strip():
+                        errors.append("intake_audit.notes entries must be non-empty strings")
 
     prospects = payload.get("prospects")
     if not isinstance(prospects, list):

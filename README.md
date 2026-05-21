@@ -192,6 +192,10 @@ See `docs/devy-signal-discovery.md` for the lifecycle vocabulary, horizon logic,
 and guardrails that keep 2029-type long-horizon assets from being treated as
 next-cycle rookie prospects.
 
+The real seed watchlist (`data/devy/devy_seed_watchlist_2026.json`) is a curated
+non-promoted discovery artifact with an artifact-level `intake_audit` trail
+(issue/PR lineage, intake method, validator command, and downstream block status).
+
 
 ## Parallel ML evaluation lane (phase 1, experimental)
 
