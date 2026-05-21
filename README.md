@@ -197,6 +197,20 @@ non-promoted discovery artifact with an artifact-level `intake_audit` trail
 (issue/PR lineage, intake method, validator command, and downstream block status).
 
 
+
+## Monthly Devy roster pulse (candidate delta, discovery-only)
+
+The `monthly_devy_roster_pulse` lane is a quarantined discovery workflow that
+surfaces roster/program/class-context deltas for operator review. It does **not**
+mutate the curated seed watchlist automatically and is blocked from Rookie Alpha,
+NFL scoring, FORGE, Point Prediction, and TIBER-Fantasy active NFL surfaces.
+
+Validate the pulse artifact with:
+
+```bash
+python3 scripts/validate_devy_roster_pulse.py --artifact data/devy/monthly_pulse/devy_roster_pulse_2026_05.json
+```
+
 ## Parallel ML evaluation lane (phase 1, experimental)
 
 This repo now includes an **experimental parallel ML lane** that evaluates rookie hit probabilities from historical labeled rows. It is strictly additive and does **not** replace deterministic Rookie Alpha scoring.
