@@ -759,6 +759,556 @@
         ],
         "last_verified_year": 2026
       }
+    },
+    {
+      "player_id": "faizon-brandon",
+      "player_name": "Faizon Brandon",
+      "school": "Tennessee",
+      "position": "QB",
+      "projected_draft_class": 2029,
+      "earliest_possible_draft_class": 2029,
+      "class_year": 2026,
+      "years_to_projected_draft": 3,
+      "development_horizon": "LONG_HORIZON",
+      "lifecycle_stage": "TRUE_FRESHMAN",
+      "development_tags": [
+        "LONG_HORIZON",
+        "HIGH_RECRUITING_CAPITAL",
+        "PRODUCTION_PENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "MODERATE",
+      "confidence_band": "LOW",
+      "actionability_band": "WATCHLIST",
+      "volatility_band": "EXTREME",
+      "summary": "Long-horizon QB discovery row with verified Tennessee program context and high uncertainty bands appropriate for a 2029-window timeline.",
+      "why_it_matters": "Keeps a high-priority long-cycle quarterback name visible early so operators can track development arc, depth-chart trajectory, and declaration-risk inflection points without forcing premature valuation.",
+      "source_notes": [
+        "Identity and program context are verified via a player-specific recruiting profile reflecting Tennessee as of 2026; re-verify before promoted use.",
+        "No prior college production context is expected for this horizon; timeline is manual eligibility context only and not a declaration prediction."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/faizon-brandon-46111879/"
+        ],
+        "source_notes": [
+          "Used for player identity, position, and current program context verification."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Projected draft-class timing is manual eligibility context, not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Used for broad watchlist tags and uncertainty context only; not a ranking, scouting grade, or model score."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "jared-curtis",
+      "player_name": "Jared Curtis",
+      "school": "Vanderbilt",
+      "position": "QB",
+      "projected_draft_class": 2029,
+      "earliest_possible_draft_class": 2029,
+      "class_year": 2026,
+      "years_to_projected_draft": 3,
+      "development_horizon": "LONG_HORIZON",
+      "lifecycle_stage": "TRUE_FRESHMAN",
+      "development_tags": [
+        "LONG_HORIZON",
+        "HIGH_RECRUITING_CAPITAL",
+        "PRODUCTION_PENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "MODERATE",
+      "confidence_band": "LOW",
+      "actionability_band": "WATCHLIST",
+      "volatility_band": "EXTREME",
+      "summary": "Long-horizon QB watchlist entry with verified Vanderbilt program context and intentionally coarse bands to reflect pre-liquidity uncertainty.",
+      "why_it_matters": "Adds SEC quarterback pipeline coverage for deep-devy operators who need to monitor role consolidation and signal durability over multiple seasons before rookie-market alignment.",
+      "source_notes": [
+        "Identity and program context are verified via a player-specific recruiting profile reflecting Vanderbilt as of 2026; re-verify before promoted use.",
+        "No prior college production context is expected for this horizon; timeline is manual eligibility context only and not a declaration prediction."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/jared-curtis-46116208/"
+        ],
+        "source_notes": [
+          "Used for player identity, position, and current program context verification."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Projected draft-class timing is manual eligibility context, not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Used for broad watchlist tags and uncertainty context only; not a ranking, scouting grade, or model score."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "dia-bell",
+      "player_name": "Dia Bell",
+      "school": "Texas",
+      "position": "QB",
+      "projected_draft_class": 2029,
+      "earliest_possible_draft_class": 2029,
+      "class_year": 2026,
+      "years_to_projected_draft": 3,
+      "development_horizon": "LONG_HORIZON",
+      "lifecycle_stage": "TRUE_FRESHMAN",
+      "development_tags": [
+        "LONG_HORIZON",
+        "HIGH_RECRUITING_CAPITAL",
+        "PRODUCTION_PENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "MODERATE",
+      "confidence_band": "LOW",
+      "actionability_band": "WATCHLIST",
+      "volatility_band": "EXTREME",
+      "summary": "Long-horizon quarterback seed row anchored to verified Texas program context while preserving non-promoted discovery semantics.",
+      "why_it_matters": "Provides early exposure to a multi-year QB timeline where playing-time pathway, production ramp, and transfer/declaration dynamics could materially change downstream rookie relevance.",
+      "source_notes": [
+        "Identity and program context are verified via a player-specific recruiting profile reflecting Texas as of 2026; re-verify before promoted use.",
+        "No prior college production context is expected for this horizon; timeline is manual eligibility context only and not a declaration prediction."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/dia-bell-46132760/"
+        ],
+        "source_notes": [
+          "Used for player identity, position, and current program context verification."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Projected draft-class timing is manual eligibility context, not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Used for broad watchlist tags and uncertainty context only; not a ranking, scouting grade, or model score."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "derrek-cooper",
+      "player_name": "Derrek Cooper",
+      "school": "Texas",
+      "position": "RB",
+      "projected_draft_class": 2029,
+      "earliest_possible_draft_class": 2029,
+      "class_year": 2026,
+      "years_to_projected_draft": 3,
+      "development_horizon": "LONG_HORIZON",
+      "lifecycle_stage": "TRUE_FRESHMAN",
+      "development_tags": [
+        "LONG_HORIZON",
+        "HIGH_RECRUITING_CAPITAL",
+        "PRODUCTION_PENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "MODERATE",
+      "confidence_band": "LOW",
+      "actionability_band": "WATCHLIST",
+      "volatility_band": "EXTREME",
+      "summary": "Long-horizon RB discovery candidate with verified Texas program context and volatility-forward framing for the 2029 cycle.",
+      "why_it_matters": "Expands running-back pipeline coverage so operators can track workload pathway and profile evolution in a crowded talent window without treating the row as a ranking claim.",
+      "source_notes": [
+        "Identity and program context are verified via a player-specific recruiting profile reflecting Texas as of 2026; re-verify before promoted use.",
+        "No prior college production context is expected for this horizon; timeline is manual eligibility context only and not a declaration prediction."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/derrek-cooper-46137037/"
+        ],
+        "source_notes": [
+          "Used for player identity, position, and current program context verification."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Projected draft-class timing is manual eligibility context, not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Used for broad watchlist tags and uncertainty context only; not a ranking, scouting grade, or model score."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "savion-hiter",
+      "player_name": "Savion Hiter",
+      "school": "Michigan",
+      "position": "RB",
+      "projected_draft_class": 2029,
+      "earliest_possible_draft_class": 2029,
+      "class_year": 2026,
+      "years_to_projected_draft": 3,
+      "development_horizon": "LONG_HORIZON",
+      "lifecycle_stage": "TRUE_FRESHMAN",
+      "development_tags": [
+        "LONG_HORIZON",
+        "HIGH_RECRUITING_CAPITAL",
+        "PRODUCTION_PENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "MODERATE",
+      "confidence_band": "LOW",
+      "actionability_band": "WATCHLIST",
+      "volatility_band": "EXTREME",
+      "summary": "Long-horizon RB watchlist row with verified Michigan program context and explicit uncertainty handling for a pre-production stage.",
+      "why_it_matters": "Preserves a notable 2029-window back in the lane so deep-devy workflows can monitor usage signals and development timing before deterministic rookie inputs exist.",
+      "source_notes": [
+        "Identity and program context are verified via a player-specific recruiting profile reflecting Michigan as of 2026; re-verify before promoted use.",
+        "No prior college production context is expected for this horizon; timeline is manual eligibility context only and not a declaration prediction."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/savion-hiter-46138893/"
+        ],
+        "source_notes": [
+          "Used for player identity, position, and current program context verification."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Projected draft-class timing is manual eligibility context, not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Used for broad watchlist tags and uncertainty context only; not a ranking, scouting grade, or model score."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "ezavier-crowell",
+      "player_name": "Ezavier Crowell",
+      "school": "Alabama",
+      "position": "RB",
+      "projected_draft_class": 2029,
+      "earliest_possible_draft_class": 2029,
+      "class_year": 2026,
+      "years_to_projected_draft": 3,
+      "development_horizon": "LONG_HORIZON",
+      "lifecycle_stage": "TRUE_FRESHMAN",
+      "development_tags": [
+        "LONG_HORIZON",
+        "HIGH_RECRUITING_CAPITAL",
+        "PRODUCTION_PENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "MODERATE",
+      "confidence_band": "LOW",
+      "actionability_band": "WATCHLIST",
+      "volatility_band": "EXTREME",
+      "summary": "Long-horizon RB discovery row with verified Alabama program context and guardrailed watchlist-only actionability.",
+      "why_it_matters": "Adds high-upside backfield exposure for operators tracking future liquidity pathways where competition, role emergence, and timeline risk remain unresolved.",
+      "source_notes": [
+        "Identity and program context are verified via a player-specific recruiting profile reflecting Alabama as of 2026; re-verify before promoted use.",
+        "No prior college production context is expected for this horizon; timeline is manual eligibility context only and not a declaration prediction."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/ezavier-crowell-46136799/"
+        ],
+        "source_notes": [
+          "Used for player identity, position, and current program context verification."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Projected draft-class timing is manual eligibility context, not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Used for broad watchlist tags and uncertainty context only; not a ranking, scouting grade, or model score."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "cederian-morgan",
+      "player_name": "Cederian Morgan",
+      "school": "Alabama",
+      "position": "WR",
+      "projected_draft_class": 2029,
+      "earliest_possible_draft_class": 2029,
+      "class_year": 2026,
+      "years_to_projected_draft": 3,
+      "development_horizon": "LONG_HORIZON",
+      "lifecycle_stage": "TRUE_FRESHMAN",
+      "development_tags": [
+        "LONG_HORIZON",
+        "HIGH_RECRUITING_CAPITAL",
+        "PRODUCTION_PENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "MODERATE",
+      "confidence_band": "LOW",
+      "actionability_band": "WATCHLIST",
+      "volatility_band": "EXTREME",
+      "summary": "Long-horizon WR discovery candidate with verified Alabama program context and directional, non-ranking signal bands.",
+      "why_it_matters": "Improves early wide-receiver pipeline coverage for deep-devy monitoring while preserving that current signal is exploratory and not ready for promoted scoring workflows.",
+      "source_notes": [
+        "Identity and program context are verified via a player-specific recruiting profile reflecting Alabama as of 2026; re-verify before promoted use.",
+        "No prior college production context is expected for this horizon; timeline is manual eligibility context only and not a declaration prediction."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/cederian-morgan-46132749/"
+        ],
+        "source_notes": [
+          "Used for player identity, position, and current program context verification."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Projected draft-class timing is manual eligibility context, not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Used for broad watchlist tags and uncertainty context only; not a ranking, scouting grade, or model score."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "calvin-russell",
+      "player_name": "Calvin Russell",
+      "school": "Syracuse",
+      "position": "WR",
+      "projected_draft_class": 2029,
+      "earliest_possible_draft_class": 2029,
+      "class_year": 2026,
+      "years_to_projected_draft": 3,
+      "development_horizon": "LONG_HORIZON",
+      "lifecycle_stage": "TRUE_FRESHMAN",
+      "development_tags": [
+        "LONG_HORIZON",
+        "HIGH_RECRUITING_CAPITAL",
+        "PRODUCTION_PENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "MODERATE",
+      "confidence_band": "LOW",
+      "actionability_band": "WATCHLIST",
+      "volatility_band": "EXTREME",
+      "summary": "Long-horizon WR watchlist entry with verified Syracuse program context and explicit volatility treatment.",
+      "why_it_matters": "Supports multi-year receiver tracking where pathway clarity and production confirmation are still pending, giving operators context without overstating confidence.",
+      "source_notes": [
+        "Identity and program context are verified via a player-specific recruiting profile reflecting Syracuse as of 2026; re-verify before promoted use.",
+        "No prior college production context is expected for this horizon; timeline is manual eligibility context only and not a declaration prediction."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/calvin-russell-46130463/"
+        ],
+        "source_notes": [
+          "Used for player identity, position, and current program context verification."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Projected draft-class timing is manual eligibility context, not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Used for broad watchlist tags and uncertainty context only; not a ranking, scouting grade, or model score."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "kayden-dixon-wyatt",
+      "player_name": "Kayden Dixon-Wyatt",
+      "school": "unknown",
+      "position": "WR",
+      "projected_draft_class": 2029,
+      "earliest_possible_draft_class": 2029,
+      "class_year": 2026,
+      "years_to_projected_draft": 3,
+      "development_horizon": "LONG_HORIZON",
+      "lifecycle_stage": "TRUE_FRESHMAN",
+      "development_tags": [
+        "LONG_HORIZON",
+        "HIGH_RECRUITING_CAPITAL",
+        "PRODUCTION_PENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "MODERATE",
+      "confidence_band": "LOW",
+      "actionability_band": "WATCHLIST",
+      "volatility_band": "EXTREME",
+      "summary": "Long-horizon WR discovery row with unresolved program mapping intentionally preserved as unknown pending stable, player-level verification.",
+      "why_it_matters": "Retains potentially relevant 2029-window signal coverage while honestly surfacing unresolved destination risk that must be re-verified before promoted or operational use.",
+      "source_notes": [
+        "Identity is verified from a player-specific recruiting profile; current program mapping remains unresolved and is intentionally recorded as unknown until stable public roster or commitment verification is available.",
+        "No prior college production context is expected for this horizon; timeline is manual eligibility context only and not a declaration prediction."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/kayden-dixon-wyatt-46128612/"
+        ],
+        "source_notes": [
+          "Used for player identity and position verification; program mapping remains unresolved and must be re-verified before promoted use."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Projected draft-class timing is manual eligibility context, not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Used for broad watchlist tags and uncertainty context only; not a ranking, scouting grade, or model score."
+        ],
+        "last_verified_year": 2026
+      }
+    },
+    {
+      "player_id": "mark-bowman",
+      "player_name": "Mark Bowman",
+      "school": "USC",
+      "position": "TE",
+      "projected_draft_class": 2029,
+      "earliest_possible_draft_class": 2029,
+      "class_year": 2026,
+      "years_to_projected_draft": 3,
+      "development_horizon": "LONG_HORIZON",
+      "lifecycle_stage": "TRUE_FRESHMAN",
+      "development_tags": [
+        "LONG_HORIZON",
+        "HIGH_RECRUITING_CAPITAL",
+        "PRODUCTION_PENDING",
+        "ROLE_UNCERTAIN"
+      ],
+      "recruiting_stars": null,
+      "recruiting_rank_national": null,
+      "recruiting_rank_position": null,
+      "signal_strength_band": "MODERATE",
+      "confidence_band": "LOW",
+      "actionability_band": "WATCHLIST",
+      "volatility_band": "EXTREME",
+      "summary": "Long-horizon TE discovery candidate with verified USC program context and discovery-only uncertainty bands.",
+      "why_it_matters": "Adds tight-end pipeline depth for deep-devy operators monitoring multi-year development windows where role maturation and deployment context drive future rookie visibility.",
+      "source_notes": [
+        "Identity and program context are verified via a player-specific recruiting profile reflecting USC as of 2026; re-verify before promoted use.",
+        "No prior college production context is expected for this horizon; timeline is manual eligibility context only and not a declaration prediction."
+      ],
+      "identity_provenance": {
+        "source_type": "recruiting_profile",
+        "source_urls": [
+          "https://247sports.com/player/mark-bowman-46146399/"
+        ],
+        "source_notes": [
+          "Used for player identity, position, and current program context verification."
+        ],
+        "last_verified_year": 2026
+      },
+      "timeline_provenance": {
+        "source_type": "manual_eligibility_context",
+        "source_notes": [
+          "Projected draft-class timing is manual eligibility context, not a declaration prediction."
+        ],
+        "last_verified_year": 2026
+      },
+      "signal_provenance": {
+        "source_type": "manual_curated_seed_signal",
+        "source_notes": [
+          "Used for broad watchlist tags and uncertainty context only; not a ranking, scouting grade, or model score."
+        ],
+        "last_verified_year": 2026
+      }
     }
   ]
 }

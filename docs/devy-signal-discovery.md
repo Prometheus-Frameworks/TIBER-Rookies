@@ -53,7 +53,7 @@ claims.
 The key distinction from the fixture registry is provenance. Fixture rows are
 placeholder schema examples; seed-watchlist rows may contain real player names
 
-Current seed coverage intentionally spans near-term (2027), medium-term (2028), and long-horizon (2029) windows across QB/RB/WR/TE so operators can discover names without turning this artifact into rankings. Some prominent names may still be omitted or marked with `unknown` fields until identity/timeline provenance can be re-verified safely.
+Current seed coverage intentionally spans near-term (2027), medium-term (2028), and long-horizon (2029) windows across QB/RB/WR/TE so operators can discover names without turning this artifact into rankings. The post-#226 discovery-v2 pass broadens 2029 coverage with additional deep-dynasty watchlist candidates sourced from player-level recruiting profiles while preserving unresolved program mappings as `unknown` when roster-level verification is unavailable.
 only when each row separates:
 
 - `identity_provenance` (for name/school/position),
