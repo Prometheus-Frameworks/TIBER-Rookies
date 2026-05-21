@@ -1,0 +1,87 @@
+{
+  "schema_version": "devy-league-market-snapshot-v0.1.0",
+  "artifact_type": "operator_supplied_devy_draft_snapshot",
+  "snapshot_year": 2026,
+  "source_type": "operator_supplied_league_draft",
+  "league_format": "deep_devy",
+  "league_identifier": "operator_supplied_deep_devy_fixture",
+  "privacy_notes": [
+    "Fixture excludes manager names, team names, platform identifiers, and private communication.",
+    "Rows are limited to pick reference, player name, school, and position for anonymized coverage testing."
+  ],
+  "warnings": [
+    "Market/coverage intelligence only; not scouting truth, not player ranking, and not Rookie Alpha signal.",
+    "Do not route into promoted rookie exports, NFL scoring, FORGE, Point Prediction, or TIBER-Fantasy active NFL search."
+  ],
+  "intake_audit": {
+    "intake_method": "manual_operator_fixture_entry",
+    "promotion_status": "fixture_only_non_promoted",
+    "downstream_block": "discovery_only_no_rookie_alpha_no_seed_auto_mutation",
+    "source_label": "operator_supplied_deep_devy_fixture"
+  },
+  "drafts": [
+    {
+      "draft_id": "startup_2025",
+      "draft_label": "2025 startup draft fixture subset",
+      "picks": [
+        {
+          "draft_id": "startup_2025",
+          "pick": "1.01",
+          "round": 1,
+          "slot": 1,
+          "player_name_raw": "Jeremiah Smith",
+          "player_name_normalized": "Jeremiah Smith",
+          "school_raw": "Ohio State",
+          "school_normalized": "Ohio State",
+          "position_raw": "WR",
+          "position_normalized": "WR"
+        }
+      ]
+    },
+    {
+      "draft_id": "supplemental_2026",
+      "draft_label": "2026 supplemental draft fixture subset",
+      "picks": [
+        {
+          "draft_id": "supplemental_2026",
+          "pick": "5.05",
+          "round": 5,
+          "slot": 5,
+          "player_name_raw": "Derrek Cooper",
+          "player_name_normalized": "Derrek Cooper",
+          "school_raw": "Texas",
+          "school_normalized": "Texas",
+          "position_raw": "RB",
+          "position_normalized": "RB",
+          "operator_notes": "Known TIBER seed candidate surfaced as available at selection time."
+        },
+        {
+          "draft_id": "supplemental_2026",
+          "pick": "5.06",
+          "round": 5,
+          "slot": 6,
+          "player_name_raw": "Aaron Gregory",
+          "player_name_normalized": "Aaron Gregory",
+          "school_raw": "Texas A&M",
+          "school_normalized": "Texas A&M",
+          "position_raw": "WR",
+          "position_normalized": "WR",
+          "operator_notes": "Coverage-gap signal only; candidate for monthly pulse review, not auto-add."
+        },
+        {
+          "draft_id": "supplemental_2026",
+          "pick": "3.02",
+          "round": 3,
+          "slot": 2,
+          "player_name_raw": "Brendan Sorsby",
+          "player_name_normalized": "Brendan Sorsby",
+          "school_raw": "unknown",
+          "school_normalized": "unknown",
+          "position_raw": "QB",
+          "position_normalized": "QB",
+          "operator_notes": "Intentional unresolved-school fixture row for identity-normalization testing."
+        }
+      ]
+    }
+  ]
+}

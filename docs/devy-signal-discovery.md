@@ -226,3 +226,48 @@ Focused validator tests:
 ```bash
 python3 -m pytest tests/test_devy_roster_pulse_validator.py
 ```
+
+## Operator-supplied deep Devy draft market snapshots (fixture workflow)
+
+To capture real-world Devy draft coverage signals without polluting scoring or promotion layers,
+TIBER-Rookies now supports an anonymized fixture workflow for operator-supplied draft snapshots.
+
+Artifacts:
+
+- Snapshot fixture input:
+  - `data/devy/league_market_snapshots/deep_devy_draft_snapshot_2026_fixture.json`
+- Coverage diff output:
+  - `data/devy/league_market_snapshots/deep_devy_draft_snapshot_2026_coverage_diff.json`
+
+Guardrails:
+
+- Discovery intelligence only (market/coverage snapshot), not scouting truth or player-quality inference.
+- No Rookie Alpha wiring.
+- No automatic seed-watchlist mutation.
+- No promoted-artifact export behavior.
+- No NFL scoring, FORGE, Point Prediction, or TIBER-Fantasy active NFL search integration.
+
+The fixture includes explicit known test rows:
+
+- Derrek Cooper (supplemental `5.05`) should resolve as known by TIBER when present in
+  `data/devy/devy_seed_watchlist_2026.json`.
+- Aaron Gregory (supplemental `5.06`) should resolve as drafted-missing, coverage-gap candidate,
+  and monthly-pulse candidate (`auto_seed_watchlist_mutation = none`).
+
+Validation command:
+
+```bash
+python3 scripts/validate_devy_league_market_snapshot.py --artifact data/devy/league_market_snapshots/deep_devy_draft_snapshot_2026_fixture.json
+```
+
+Coverage diff command:
+
+```bash
+python3 scripts/compute_devy_league_market_snapshot_diff.py \
+  --snapshot data/devy/league_market_snapshots/deep_devy_draft_snapshot_2026_fixture.json \
+  --seed-watchlist data/devy/devy_seed_watchlist_2026.json \
+  --output data/devy/league_market_snapshots/deep_devy_draft_snapshot_2026_coverage_diff.json
+```
+
+Use this as a manual review helper only. Drafted-missing names are candidate deltas for
+monthly pulse/operator review and must not be auto-added to the seed watchlist.
