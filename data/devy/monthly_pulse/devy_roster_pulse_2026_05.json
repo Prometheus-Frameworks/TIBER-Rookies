@@ -1,0 +1,50 @@
+{
+  "schema_version": "devy-roster-pulse-v0.1.0",
+  "artifact_type": "devy_roster_pulse_candidate_delta",
+  "pulse_month": "2026-05",
+  "generated_at": "2026-05-20T00:00:00Z",
+  "input_sources": [
+    "https://example.edu/football/roster",
+    "data/devy/devy_seed_watchlist_2026.json"
+  ],
+  "comparison_basis": "Compared current roster evidence vs May 2026 seed watchlist and prior pulse snapshot unavailable.",
+  "candidates": [
+    {
+      "player_name": "Fixture Candidate One",
+      "school": "Example University",
+      "position": "WR",
+      "roster_status": "new_on_roster",
+      "existing_seed_watchlist_match": false,
+      "matched_player_id": null,
+      "projected_draft_class_candidate": 2029,
+      "class_year_source": "roster",
+      "prior_college_production_found": false,
+      "candidate_tags": [
+        "potential_2029_candidate",
+        "no_prior_college_production_found",
+        "needs_class_year_verification"
+      ],
+      "confidence_band": "MEDIUM",
+      "freshman_status": "unconfirmed",
+      "needs_manual_review": true,
+      "auto_seed_watchlist_mutation": "none",
+      "source_urls": [
+        "https://example.edu/football/roster"
+      ],
+      "source_notes": [
+        "Roster confirms position-group membership and active listing.",
+        "No prior production found in current optional stat sources; this is not treated as confirmed freshman status."
+      ]
+    }
+  ],
+  "warnings": [
+    "Discovery-only artifact: candidate deltas require manual operator review before any seed-watchlist change.",
+    "Output is blocked from Rookie Alpha, NFL scoring, FORGE, Point Prediction, and TIBER-Fantasy active NFL surfaces."
+  ],
+  "intake_audit": {
+    "intake_method": "future_script_generated_candidate",
+    "promotion_status": "non_promoted_discovery_only",
+    "validation_command": "python3 scripts/validate_devy_roster_pulse.py --artifact data/devy/monthly_pulse/devy_roster_pulse_2026_05.json",
+    "downstream_block": "blocked_until_rookie_transition"
+  }
+}

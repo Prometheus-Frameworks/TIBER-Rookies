@@ -167,3 +167,62 @@ available.
 Do not route Devy rows into Rookie Alpha scoring unless a future issue explicitly
 adds a governed ingestion path with provenance, validation, and downstream
 contract review.
+
+## Monthly Devy roster pulse (v1 design)
+
+`monthly_devy_roster_pulse` is the next conservative discovery lane after Devy v1
+seed curation. It runs approximately monthly (manual or scheduled later), and
+its only output is a candidate-delta snapshot for human review.
+
+### Safety boundary
+
+- Discovery-only output. No scoring/ranking/promotion.
+- No direct mutation of `data/devy/devy_seed_watchlist_2026.json`.
+- No routing into Rookie Alpha, promoted rookie exports, NFL scoring identity
+  tables, FORGE, Point Prediction, or TIBER-Fantasy active NFL surfaces.
+- Missing truth remains explicit as `unknown`/`unresolved` and `needs_manual_review=true`.
+
+### Artifact shape
+
+Pulse artifacts live under:
+
+- `data/devy/monthly_pulse/devy_roster_pulse_YYYY_MM.json`
+
+Canonical v1 shape is validated by `scripts/validate_devy_roster_pulse.py` and
+uses `artifact_type = devy_roster_pulse_candidate_delta`.
+
+Each candidate row captures roster-status deltas, watchlist match context,
+class-year evidence source, optional production evidence, candidate tags,
+confidence, provenance URLs/notes, and a hard block against automatic seed
+watchlist mutation (`auto_seed_watchlist_mutation = "none"`).
+
+### Freshman inference guardrail
+
+Missing prior college production is **not** enough to confirm freshman status.
+
+Allowed examples:
+
+- `prior_college_production_found = false`
+- `candidate_tags` include `potential_2029_candidate`,
+  `no_prior_college_production_found`, `needs_class_year_verification`
+
+Disallowed examples:
+
+- `candidate_tags` includes `confirmed_freshman` when production is missing
+  without explicit class-year/recruiting evidence.
+- `freshman_status = confirmed` when `prior_college_production_found=false`
+  and `class_year_source=unknown`.
+
+### Validation + tests
+
+Validate sample artifact:
+
+```bash
+python3 scripts/validate_devy_roster_pulse.py --artifact data/devy/monthly_pulse/devy_roster_pulse_2026_05.json
+```
+
+Focused validator tests:
+
+```bash
+python3 -m pytest tests/test_devy_roster_pulse_validator.py
+```
