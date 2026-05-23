@@ -26,6 +26,7 @@ const CONTENT_TYPES = {
 // redirect in the request handler. Adding it here would serve a 200
 // instead and silently break redirect semantics.
 const ROUTE_ALIASES = new Map([
+  ['/cards/devy', '/cards/devy/index.html'],
   ['/cards/rookies', '/cards/rookies/index.html'],
   ['/cards/rookies/board', '/cards/rookies/board/index.html'],
   ['/cards/rookies/player', '/cards/rookies/player.html'],
