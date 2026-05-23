@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIBER Devy Discovery | 2026</title>
+    <link rel="stylesheet" href="/components/rookies/rookieCardStyles.css" />
+    <style>
+      .devy-table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+      .devy-table th, .devy-table td { border-bottom: 1px solid #ddd; padding: 8px; text-align: left; font-size: 0.9rem; vertical-align: top; }
+      .devy-controls { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+      .devy-controls input, .devy-controls select, .devy-controls button { padding: 8px; }
+      .tag-list { color: #666; font-size: 0.8rem; }
+      .badge { display:inline-block; padding:2px 6px; border-radius: 12px; background:#eef2ff; font-size:0.75rem; }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <div class="section-title" style="margin-top: 12px">TIBER Devy Discovery</div>
+      <h1>Devy seed watchlist</h1>
+      <p class="meta">Operator CSV export utility for search/filter inspection. Not a ranking or scoring surface.</p>
+      <div class="devy-controls">
+        <input id="search" type="search" placeholder="Search name, school, position..." autocomplete="off" />
+        <select id="actionabilityFilter"><option value="ALL">All actionability bands</option></select>
+        <select id="lifecycleFilter"><option value="ALL">All lifecycle stages</option></select>
+        <button id="exportVisibleButton" type="button">Export visible Devy CSV</button>
+      </div>
+      <div id="status" class="meta" style="margin-top:8px;">Loading Devy seed watchlist…</div>
+      <div style="overflow-x:auto;">
+        <table class="devy-table" aria-label="Devy seed watchlist table">
+          <thead>
+            <tr>
+              <th>Player</th><th>School</th><th>Pos</th><th>Projected Class</th><th>Lifecycle</th><th>Actionability</th><th>Signal/Confidence</th><th>Transition</th>
+            </tr>
+          </thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+    </main>
+    <script type="module">
+      import { buildDevyCsv, downloadCsv } from '/lib/devy/exportDevyCsv.js';
+
+      const rowsEl = document.getElementById('rows');
+      const statusEl = document.getElementById('status');
+      const searchEl = document.getElementById('search');
+      const actionabilityFilterEl = document.getElementById('actionabilityFilter');
+      const lifecycleFilterEl = document.getElementById('lifecycleFilter');
+      const exportVisibleButton = document.getElementById('exportVisibleButton');
+
+      const state = { search: '', actionability: 'ALL', lifecycle: 'ALL' };
+      let allRows = [];
+
+      function normalizeTransitionMap(payload) {
+        if (!payload) return new Map();
+        const sourceRows = Array.isArray(payload.transitions)
+          ? payload.transitions
+          : Array.isArray(payload.rows)
+            ? payload.rows
+            : Array.isArray(payload.prospects)
+              ? payload.prospects
+              : [];
+        return new Map(sourceRows.map((row) => [row.player_id, row]));
+      }
+
+      function enrichRows(seedRows, transitionMap) {
+        return seedRows.map((row) => {
+          const transition = transitionMap.get(row.player_id) ?? {};
+          return {
+            ...row,
+            identity_source_type: row.identity_provenance?.source_type ?? 'unknown',
+            identity_source_urls: row.identity_provenance?.source_urls ?? [],
+            transition_status: transition.transition_status ?? '',
+            rookie_card_slug: transition.rookie_card_slug ?? '',
+            devy_active_status: transition.transition_status === 'graduated_to_rookie'
+              ? (transition.rookie_card_slug ? 'graduated_to_rookie' : 'rookie_card_pending')
+              : 'active_devy',
+          };
+        });
+      }
+
+      function currentVisibleRows() {
+        return allRows.filter((row) => {
+          const searchBlob = `${row.player_name} ${row.school} ${row.position}`.toLowerCase();
+          const matchesSearch = searchBlob.includes(state.search.toLowerCase());
+          const matchesActionability = state.actionability === 'ALL' || row.actionability_band === state.actionability;
+          const matchesLifecycle = state.lifecycle === 'ALL' || row.lifecycle_stage === state.lifecycle;
+          return matchesSearch && matchesActionability && matchesLifecycle;
+        });
+      }
+
+      function render() {
+        const visibleRows = currentVisibleRows();
+        statusEl.textContent = `${visibleRows.length} of ${allRows.length} Devy rows shown.`;
+        if (!visibleRows.length) {
+          rowsEl.innerHTML = '<tr><td colspan="8" class="meta">No Devy rows match the current search/filter state.</td></tr>';
+          return;
+        }
+
+        rowsEl.innerHTML = visibleRows.map((row) => `
+          <tr>
+            <td><strong>${row.player_name ?? ''}</strong><div class="tag-list">${row.player_id ?? ''}</div></td>
+            <td>${row.school ?? ''}</td>
+            <td>${row.position ?? ''}</td>
+            <td>${row.projected_draft_class ?? ''}</td>
+            <td><span class="badge">${row.lifecycle_stage ?? 'unknown'}</span></td>
+            <td>${row.actionability_band ?? ''}</td>
+            <td>${row.signal_strength_band ?? ''} / ${row.confidence_band ?? ''}</td>
+            <td>${row.transition_status || 'active_devy'}</td>
+          </tr>
+        `).join('');
+      }
+
+      function wireFilters() {
+        searchEl.addEventListener('input', () => { state.search = searchEl.value; render(); });
+        actionabilityFilterEl.addEventListener('change', () => { state.actionability = actionabilityFilterEl.value; render(); });
+        lifecycleFilterEl.addEventListener('change', () => { state.lifecycle = lifecycleFilterEl.value; render(); });
+        exportVisibleButton.addEventListener('click', () => {
+          const visibleRows = currentVisibleRows();
+          const csv = buildDevyCsv(visibleRows);
+          downloadCsv(csv, 'devy_seed_watchlist_visible_2026.csv');
+        });
+      }
+
+      function populateFilterOptions(rows) {
+        const actionability = [...new Set(rows.map((r) => r.actionability_band).filter(Boolean))].sort();
+        const lifecycle = [...new Set(rows.map((r) => r.lifecycle_stage).filter(Boolean))].sort();
+        actionability.forEach((value) => actionabilityFilterEl.insertAdjacentHTML('beforeend', `<option value="${value}">${value}</option>`));
+        lifecycle.forEach((value) => lifecycleFilterEl.insertAdjacentHTML('beforeend', `<option value="${value}">${value}</option>`));
+      }
+
+      try {
+        const seedPayload = await fetch('/data/devy/devy_seed_watchlist_2026.json').then((r) => r.json());
+        let transitionMap = new Map();
+        try {
+          const transitionPayload = await fetch('/data/devy/devy_rookie_transition_map_2026.json');
+          if (transitionPayload.ok) {
+            transitionMap = normalizeTransitionMap(await transitionPayload.json());
+          }
+        } catch {
+          // Transition overlay is optional.
+        }
+
+        const seedRows = Array.isArray(seedPayload.prospects) ? seedPayload.prospects : [];
+        allRows = enrichRows(seedRows, transitionMap);
+        populateFilterOptions(allRows);
+        wireFilters();
+        render();
+      } catch (error) {
+        statusEl.textContent = `Failed to load Devy data: ${error.message}`;
+        rowsEl.innerHTML = '';
+      }
+    </script>
+  </body>
+</html>

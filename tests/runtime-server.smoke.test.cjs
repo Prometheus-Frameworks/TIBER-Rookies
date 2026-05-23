@@ -113,6 +113,8 @@ test('standalone runtime smoke routes', async (t) => {
   assert.equal(root.headers.get('location'), '/cards/rookies/board/index.html');
 
   const htmlRoutes = [
+    '/cards/devy/index.html',
+    '/cards/devy',
     '/cards/rookies/index.html',
     '/cards/rookies/board/index.html',
     '/cards/rookies/player.html?slug=wr-jordyn-tyson',
