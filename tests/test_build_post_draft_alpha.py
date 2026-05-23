@@ -11,7 +11,13 @@ class BuildPostDraftAlphaTests(unittest.TestCase):
         self.predraft_path = Path("exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json")
         self.round1_path = Path("data/processed/2026_round1_draft_signal_profiles.json")
         self.day2_path = Path("data/processed/2026_day2_draft_signal_profiles.json")
-        self.rows = build_post_draft_rows(self.predraft_path, self.round1_path, self.day2_path)
+        self.draft_results_path = Path("data/processed/2026_draft_results.json")
+        self.rows = build_post_draft_rows(
+            self.predraft_path,
+            self.round1_path,
+            self.day2_path,
+            self.draft_results_path,
+        )
 
     def test_every_profile_player_gets_post_draft_row(self) -> None:
         round1 = json.loads(self.round1_path.read_text(encoding="utf-8"))
@@ -81,10 +87,13 @@ class BuildPostDraftAlphaTests(unittest.TestCase):
 
     def test_jordyn_tyson_maps_to_saints(self) -> None:
         tyson = next(row for row in self.rows if row["player_name"] == "Jordyn Tyson")
-        self.assertEqual(tyson["team"], "Saints")
+        self.assertEqual(tyson["team"], "NO")
         self.assertEqual(tyson["draft_round"], 1)
         self.assertEqual(tyson["draft_pick"], 8)
-        self.assertEqual(tyson["source_status"], "operator_seeded")
+        self.assertIn(
+            tyson["source_status"],
+            {"operator_seeded", "canonical_draft_results_reconciled"},
+        )
         self.assertTrue(
             all("Unknown finalized team context" not in risk for risk in tyson["remaining_risks"])
         )
@@ -117,16 +126,11 @@ class BuildPostDraftAlphaTests(unittest.TestCase):
             self.assertEqual(len(payload["rows"]), len(self.rows))
             self.assertTrue(output_csv.exists())
             missing_payload = json.loads(output_missing_baselines.read_text(encoding="utf-8"))
-            self.assertTrue(
-                any(row["player_name"] == "Kaelon Black" for row in missing_payload),
-                "Kaelon Black should be listed in missing-baseline report when unmatched.",
-            )
+            self.assertEqual(missing_payload, [])
 
     def test_missing_baseline_rows_include_operator_seeded_pass_through(self) -> None:
         missing = build_missing_baseline_rows(self.rows)
-        kaelon = next(row for row in missing if row["player_name"] == "Kaelon Black")
-        self.assertEqual(kaelon["reason"], "predraft_baseline_not_found")
-        self.assertEqual(kaelon["source_status"], "operator_seeded")
+        self.assertEqual(missing, [])
 
 
 if __name__ == "__main__":

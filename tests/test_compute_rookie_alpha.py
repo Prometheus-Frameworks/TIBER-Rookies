@@ -445,14 +445,15 @@ class ResolveAthleticInputTests(unittest.TestCase):
         self.assertAlmostEqual(conf, 0.70)
         self.assertFalse(sporq_used)
 
-    def test_sporq_ignored_for_rb(self) -> None:
+    def test_sporq_used_for_rb(self) -> None:
         context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": 95.0}]}
         score, source, conf, _, sporq_used = resolve_athletic_input(
             "p1", "RB", ras_score=None, ras_metric_count=0,
             combine_fallback_entry=None, context=context,
         )
-        self.assertIsNone(score)
-        self.assertFalse(sporq_used)
+        self.assertAlmostEqual(score, 95.0)
+        self.assertEqual(source, "SPORQ")
+        self.assertTrue(sporq_used)
 
     def test_wr_sporq_only_is_used_with_moderate_confidence(self) -> None:
         context = {"exceptional_metrics": [{"metric": "sporq_percentile", "value": 92.0}]}
@@ -570,8 +571,8 @@ class SporqTrustConfigTests(unittest.TestCase):
     def test_wr_is_supplemental(self) -> None:
         self.assertEqual(SPORQ_TRUST["WR"], "supplemental")
 
-    def test_rb_qb_are_ignore(self) -> None:
-        self.assertEqual(SPORQ_TRUST["RB"], "ignore")
+    def test_rb_is_supplemental_and_qb_is_ignore(self) -> None:
+        self.assertEqual(SPORQ_TRUST["RB"], "supplemental")
         self.assertEqual(SPORQ_TRUST["QB"], "ignore")
 
 
