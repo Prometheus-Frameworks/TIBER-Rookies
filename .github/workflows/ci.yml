@@ -16,8 +16,11 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Install test dependencies
+        run: python3 -m pip install --upgrade pip pytest
+
       - name: Compile pipeline script
         run: python3 -m py_compile scripts/compute_rookie_alpha.py
 
       - name: Run tests
-        run: python3 -m unittest discover -s tests -p 'test_*.py' -v
+        run: python3 -m pytest tests -q

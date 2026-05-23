@@ -74,7 +74,8 @@ class EnrichPostDraftAlphaWithTeamContextTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp_dir:
             teamstate_path = Path(temp_dir) / "teamstate.json"
             teamstate_path.write_text(json.dumps(self.teamstate_payload), encoding="utf-8")
-            return load_team_context(teamstate_path)
+            context_by_team, _metadata = load_team_context(teamstate_path)
+            return context_by_team
 
     def test_stribling_joins_to_sf_and_expected_tags(self) -> None:
         context = self._build_context()
@@ -104,8 +105,9 @@ class EnrichPostDraftAlphaWithTeamContextTests(unittest.TestCase):
 
     def test_team_tbd_row_has_no_team_context(self) -> None:
         context = self._build_context()
-        enriched = enrich_rows(self.rows, context)
-        tbd_row = next(row for row in enriched if row["team"] == "TBD")
+        synthetic_rows = [dict(self.rows[0], team="TBD", player_id="synthetic_tbd", player_name="Synthetic TBD")]
+        enriched = enrich_rows(synthetic_rows, context)
+        tbd_row = enriched[0]
 
         self.assertFalse(tbd_row["team_context_found"])
         self.assertEqual(tbd_row["team_context_tags"], [])
@@ -192,7 +194,7 @@ class EnrichPostDraftAlphaWithTeamContextTests(unittest.TestCase):
         enriched = enrich_rows(self.rows, context)
         ty = next(row for row in enriched if row["player_name"] == "Ty Simpson")
 
-        self.assertEqual(ty["team"], "Rams")
+        self.assertEqual(ty["team"], "LAR")
         self.assertTrue(ty["team_context_found"])
         self.assertEqual(ty["team_context_notes"], "team_context_joined:LAR")
         self.assertIn("mcvay_stability_environment", ty["team_context_tags"])

@@ -24,6 +24,7 @@ TALENT_SIGNALS = {"strong", "moderate", "mixed", "uncertain"}
 OPPORTUNITY_SIGNALS = {"strong", "moderate", "limited", "uncertain"}
 RUNWAY_SIGNALS = {"immediate", "strong", "delayed", "blocked", "uncertain"}
 VALID_ROUNDS = {2, 3}
+ALLOWED_SOURCE_STATUS = {"operator_seeded", "canonical_draft_results_reconciled"}
 
 
 def validate_profiles(path: Path) -> list[str]:
@@ -71,8 +72,11 @@ def validate_profiles(path: Path) -> list[str]:
             if not isinstance(value, list):
                 errors.append(f"{context}: {list_field} must be a list")
 
-        if profile.get("source_status") != "operator_seeded":
-            errors.append(f"{context}: source_status must be 'operator_seeded'")
+        source_status = profile.get("source_status")
+        if source_status not in ALLOWED_SOURCE_STATUS:
+            errors.append(
+                f"{context}: source_status must be one of {sorted(ALLOWED_SOURCE_STATUS)}"
+            )
 
     return errors
 
