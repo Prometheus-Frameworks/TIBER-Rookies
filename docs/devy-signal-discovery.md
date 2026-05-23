@@ -22,7 +22,7 @@ Centralized vocabularies include:
 
 - `DevyDevelopmentHorizon`: `NEAR_TERM`, `MEDIUM_TERM`, `LONG_HORIZON`, `PREP_OR_FUTURE`
 - `DevyLifecycleStage`: `PREP`, `TRUE_FRESHMAN`, `ROTATIONAL`, `EMERGING`, `BREAKOUT_WINDOW`, `NFL_TRACK`, `DECLARE_RISK`, `SENIOR_HOLD`, `STALLED`
-- `DevyDevelopmentTag`: `LONG_HORIZON`, `HIGH_RECRUITING_CAPITAL`, `INSULATED_PROGRAM`, `SIZE_PROFILE`, `EARLY_DECLARE_CANDIDATE`, `PATHWAY_BLOCKED`, `PATHWAY_CLEARING`, `TRANSFER_RISK`, `ASCENDING`, `STALLED_SIGNAL`, `RAW_TRAITS`, `PRODUCTION_PENDING`, `ROLE_UNCERTAIN`
+- `DevyDevelopmentTag`: `LONG_HORIZON`, `LONG_HORIZON_WATCHLIST`, `HIGH_RECRUITING_CAPITAL`, `MULTI_SPORT_PROFILE`, `INJURY_REHAB_WATCH`, `INSULATED_PROGRAM`, `SIZE_PROFILE`, `EARLY_DECLARE_CANDIDATE`, `PATHWAY_BLOCKED`, `PATHWAY_CLEARING`, `TRANSFER_RISK`, `ASCENDING`, `STALLED_SIGNAL`, `RAW_TRAITS`, `PRODUCTION_PENDING`, `ROLE_UNCERTAIN`
 - Signal bands: `LOW`, `MODERATE`, `STRONG`, `ELITE`
 - Confidence bands: `LOW`, `MEDIUM`, `HIGH`
 - Actionability bands: `WATCHLIST`, `MONITOR`, `TARGET`, `PRIORITY`
@@ -78,6 +78,23 @@ a global canonical list:
 
 This keeps the Devy lane from inventing continuity when rosters, transfers,
 development stages, or eligibility assumptions become stale.
+
+### Contextual (non-scoring) discovery tags
+
+The Devy seed watchlist supports contextual inspection tags that are explicitly
+non-scoring and non-promoted:
+
+- `MULTI_SPORT_PROFILE`: sourced evidence of meaningful participation in
+  another sport (for operator context only).
+- `INJURY_REHAB_WATCH`: sourced injury/rehab context that should be monitored
+  before near-term decisions.
+- `HIGH_RECRUITING_CAPITAL`: broad recruiting-context discovery signal only.
+- `LONG_HORIZON_WATCHLIST`: optional explicit long-horizon tracking tag when a
+  row exists primarily for future-cycle monitoring.
+
+These tags do **not** imply player quality, safety, model uplift, medical
+evaluation, Rookie Alpha score impact, ranking movement, or downstream
+promotion eligibility.
 
 Real players can enter this lane when a human curator can represent the row with
 coarse, honest context:

@@ -17,8 +17,10 @@
       "development_horizon": "LONG_HORIZON",
       "lifecycle_stage": "TRUE_FRESHMAN",
       "development_tags": [
-        "LONG_HORIZON",
+        "LONG_HORIZON_WATCHLIST",
         "HIGH_RECRUITING_CAPITAL",
+        "MULTI_SPORT_PROFILE",
+        "INJURY_REHAB_WATCH",
         "PRODUCTION_PENDING",
         "ROLE_UNCERTAIN"
       ],
@@ -1157,8 +1159,10 @@
       "development_horizon": "LONG_HORIZON",
       "lifecycle_stage": "TRUE_FRESHMAN",
       "development_tags": [
-        "LONG_HORIZON",
+        "LONG_HORIZON_WATCHLIST",
         "HIGH_RECRUITING_CAPITAL",
+        "MULTI_SPORT_PROFILE",
+        "INJURY_REHAB_WATCH",
         "PRODUCTION_PENDING",
         "ROLE_UNCERTAIN"
       ],
@@ -1169,8 +1173,8 @@
       "confidence_band": "LOW",
       "actionability_band": "WATCHLIST",
       "volatility_band": "EXTREME",
-      "summary": "Long-horizon WR watchlist entry with verified Syracuse program context and explicit volatility treatment.",
-      "why_it_matters": "Supports multi-year receiver tracking where pathway clarity and production confirmation are still pending, giving operators context without overstating confidence.",
+      "summary": "Long-horizon WR watchlist entry with sourced Syracuse program context plus non-scoring multi-sport and injury-rehab inspection tags.",
+      "why_it_matters": "Supports multi-year receiver tracking where cross-sport background and Achilles recovery context should be monitored by operators without implying score, ranking, or medical certainty.",
       "source_notes": [
         "Identity and program context are verified via a player-specific recruiting profile reflecting Syracuse as of 2026; re-verify before promoted use.",
         "No prior college production context is expected for this horizon; timeline is manual eligibility context only and not a declaration prediction."
@@ -1195,7 +1199,7 @@
       "signal_provenance": {
         "source_type": "manual_curated_seed_signal",
         "source_notes": [
-          "Used for broad watchlist tags and uncertainty context only; not a ranking, scouting grade, or model score."
+          "Used for broad watchlist tags and uncertainty context only; not a ranking, scouting grade, medical evaluation, or model score."
         ],
         "last_verified_year": 2026
       }
