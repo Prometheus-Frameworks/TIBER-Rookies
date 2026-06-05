@@ -64,36 +64,50 @@ npm test
 **Resume here:** Complete. Nothing further. The CI `node` job will appear on
 the next push/PR.
 
-### 2. Make `lib/*.js` unit-testable, then cover pure-logic modules
+### 2. Make `lib/*.js` unit-testable, then cover pure-logic modules — MOSTLY DONE (2026-06-05)
 *Priority: HIGH — unblocks ~20 currently untestable modules.*
 
-**Blocker:** 7 `lib`/`components` files import via browser-absolute paths
-(`from '/lib/rookies/compareRookies.js'`) which Node's resolver cannot
-follow. The one JS unit test that exists covers the only module that uses a
-relative import (`roleOpportunityNormalization.mjs`). Resolve this first
-(subpath import map in `package.json`, a small test-time resolver/loader, or
-converting to relative imports) — do not change runtime behavior in the browser.
+**Blocker (RESOLVED):** within `lib/`, only `compareRookies.js` and
+`exportCsv.js` used browser-absolute imports (`from '/lib/...'`) that Node
+can't resolve. Fixed with a **test-only ESM resolve hook**
+(`tests/helpers/absolute-import-hooks.mjs`, registered via
+`tests/helpers/register-hooks.mjs` and wired into `npm test` with
+`--import`). It rewrites `/lib`, `/components`, `/cards` specifiers to
+repo-root file URLs. Source files keep their deliberate browser-absolute
+style — no runtime/browser behavior changed. Also added `lib/package.json`
+(`{"type":"module"}`) to silence the `MODULE_TYPELESS_PACKAGE_JSON` reparse
+warning (lib `.js` files genuinely are ES modules; nothing `require()`s them).
 
-- [ ] Resolve the import-path blocker so `lib/*.js` can be imported in Node tests.
-- [ ] `convictionStore.js` — Elo math (INITIAL_RATING 1000, K_FACTOR 32),
-      win/loss updates, vote counting, reset, seedMatchup.
-- [ ] `exportCsv.js` + `lib/devy/exportDevyCsv.js` — CSV escaping (commas,
-      quotes, newlines, null/undefined cells); header/row shape.
-- [ ] `compareRookies.js` — grade-delta thresholds (close 1.5 / lean 4),
-      evidence-row selection + dedup, max 6 rows.
-- [ ] `buildRookieBoardRows.js` — buildRookieBoardRows / sortRookieBoard /
-      filterRookieBoard (position, draftClass, nameFilter) + tier derivation.
-- [ ] `mapRookieToCard.js` — central data-shaping fn; cover identity, scores,
-      metrics, evidence readiness, post-draft adjustments.
-- [ ] `normalizeRookieIdentity.js`, `deriveRookieTier.js`,
-      `deriveRookieProfileSummary.js`, `groupRookiesByTier.js`,
-      `sortAndFilterRookies.js`, `selectRookieEvidenceMetrics.js` — smaller
-      pure helpers, batch as time allows.
+- [x] Resolve the import-path blocker (resolve hook above). Verified by
+      importing `compareRookies.js` via its `/lib/...` path in a real test.
+- [x] `convictionStore.js` — `tests/convictionStore.test.mjs` (Elo K=32 math,
+      symmetric +/-16 even match, upset swing, reset, seedMatchup, no-storage
+      degradation). Uses an in-memory `window.localStorage` mock.
+- [x] `exportCsv.js` + `lib/devy/exportDevyCsv.js` —
+      `tests/exportCsv.test.mjs`, `tests/exportDevyCsv.test.mjs` (comma/quote/
+      newline escaping, null vs 0 formatting, board_rank, devy status
+      derivation, pipe-joined arrays).
+- [x] `compareRookies.js` — `tests/compareRookies.test.mjs` (overallDelta,
+      lean/close/insufficient verdicts, cross-position, direction-aware
+      40-yd evidence winner). Doubles as the resolve-hook integration test.
+- [x] `buildRookieBoardRows.js` — `tests/buildRookieBoardRows.test.mjs`
+      (mapping, post-draft tier override, profile fallbacks, all 4 sorts,
+      no-mutation, position/class/name filters).
+- [ ] `mapRookieToCard.js` — NOT YET. Central 256-line data-shaping fn; the
+      biggest remaining unit. Needs realistic `alphaPlayer/statsRow/pprRow/...`
+      fixtures. Highest-value next target.
+- [x] `normalizeRookieIdentity.js` — `tests/normalizeRookieIdentity.test.mjs`.
+- [x] `deriveRookieTier.js` — `tests/deriveRookieTier.test.mjs`.
+- [ ] Remaining small helpers: `deriveRookieProfileSummary.js`,
+      `groupRookiesByTier.js`, `sortAndFilterRookies.js`,
+      `selectRookieEvidenceMetrics.js` (the last is indirectly exercised via
+      compareRookies but has no direct test).
 
-**Resume here:** Not started. First action is the import-path blocker —
-prototype importing `lib/rookies/convictionStore.js` from a Node test and
-pick the least invasive fix. convictionStore is the best first target
-(self-contained numeric logic, guards on `window.localStorage`).
+**Resume here:** Blocker resolved; 6 modules covered (Node suite 4 → 47
+tests, all green). Next: `mapRookieToCard.js` — read it, build fixtures for
+each input row, assert the produced card's identity/scores/metrics/evidence
+readiness and post-draft adjustment fields. Then mop up the 4 remaining
+small helpers (each is a quick pure-function test like deriveRookieTier).
 
 ### 3. Expand `runtime-server.js` coverage beyond the smoke test
 *Priority: MEDIUM.*
@@ -140,3 +154,9 @@ scripts (logic) over `fetch_*` (network I/O).
   started yet.
 - 2026-06-05 — Item 1 complete: added `npm test` (glob runner) and a Node CI
   job; all 4 Node tests green.
+- 2026-06-05 — Item 2 mostly complete: added a test-only resolve hook to
+  unblock browser-absolute imports, plus 6 new module test files
+  (convictionStore, exportCsv, exportDevyCsv, compareRookies,
+  buildRookieBoardRows, normalizeRookieIdentity, deriveRookieTier). Node
+  suite 4 → 47 tests, all green. Remaining: `mapRookieToCard.js` + 4 small
+  helpers.
