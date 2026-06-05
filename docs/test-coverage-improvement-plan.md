@@ -38,30 +38,31 @@ cutoffs or container reclaim.
 # Python suite (should be 376+ passing)
 python -m pytest -q
 
-# Node tests — currently must be run individually; `node --test tests/`
-# is broken (mixes .py files in tests/). See item 1.
-node --test tests/runtime-server.smoke.test.cjs
-node --test tests/role-opportunity-normalization.test.mjs
+# All Node tests (item 1 complete). Requires Node >= 21 for the glob.
+npm test
 ```
 
 ---
 
 ## Work items (the checkpoints)
 
-### 1. Wire Node tests into CI + a working `npm test`
+### 1. Wire Node tests into CI + a working `npm test` — DONE (2026-06-05)
 *Priority: HIGH — lowest effort, highest ROI. Tests exist but never run in CI.*
 
-- [ ] Add an `npm test` script that runs all Node tests reliably (the
-      default `node --test tests/` fails with `MODULE_NOT_FOUND` because
-      `tests/` mixes `.py` and Node test files — use an explicit glob like
-      `tests/**/*.test.{mjs,cjs}` or move Node tests to a subdir).
-- [ ] Add a Node job to `.github/workflows/ci.yml` (currently Python-only)
-      so `runtime-server.smoke.test.cjs` and the `.mjs` unit tests gate PRs.
-- [ ] Confirm both existing Node tests run green in the new CI job.
+- [x] Added `npm test` → `node --test "tests/**/*.test.{cjs,mjs}"`. The bare
+      `node --test tests/` failed because Node 22 treats the directory as a
+      module entry point; the quoted glob is Node-expanded (shell-portable)
+      and discovers all Node tests recursively (so item 2's new `lib` tests
+      are picked up automatically). Requires Node >= 21 for glob support.
+- [x] Added a separate `node` job to `.github/workflows/ci.yml` (Node 22 via
+      `actions/setup-node@v4`, runs `npm test`). The existing `test`
+      (Python) job is untouched so its status-check name is unchanged. No
+      `npm ci` step needed — the Node tests import only builtins + local
+      files, not `@replit/connectors-sdk`.
+- [x] Confirmed all 4 Node tests pass (`# pass 4`) with no `node_modules`.
 
-**Resume here:** Not started. Inspect `package.json` scripts and
-`.github/workflows/ci.yml`. Decide between a glob in the test script vs.
-relocating Node tests into `tests/node/`. Keep the change surgical.
+**Resume here:** Complete. Nothing further. The CI `node` job will appear on
+the next push/PR.
 
 ### 2. Make `lib/*.js` unit-testable, then cover pure-logic modules
 *Priority: HIGH — unblocks ~20 currently untestable modules.*
@@ -137,3 +138,5 @@ scripts (logic) over `fetch_*` (network I/O).
 
 - 2026-06-05 — Plan created from initial coverage analysis. No work items
   started yet.
+- 2026-06-05 — Item 1 complete: added `npm test` (glob runner) and a Node CI
+  job; all 4 Node tests green.
