@@ -381,6 +381,12 @@ body {
   color: var(--muted);
   font-style: italic;
 }
+.evidence-caveat {
+  margin: 6px 0;
+  font-size: 12px;
+  line-height: 1.4;
+  font-style: italic;
+}
 
 /* ─── PPR projection (board) ─────────────────────────────────────────────── */
 .board-ppr { line-height: 1.3; }

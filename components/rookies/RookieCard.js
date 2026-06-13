@@ -220,6 +220,7 @@ export function renderRookieCard(container, card) {
   const translationFlags = Array.isArray(card.translationFlags) ? card.translationFlags : [];
   const contextFlags = Array.isArray(card.contextSignals?.contextFlags) ? card.contextSignals.contextFlags : [];
   const evidenceSummary = card.contextSignals?.evidenceSummary ?? null;
+  const athleticNotIncorporated = card.athleticSource === 'NEUTRAL_DEFAULT';
   const quickPprMedian = card.pprProjection?.median ?? null;
   const hasPostDraft = card.postDraftAdjustedGrade != null;
   let selectedMetricFamily = 'all';
@@ -331,8 +332,12 @@ export function renderRookieCard(container, card) {
           </section>
 
           <section class="metrics card-panel">
-            <div class="section-title">Translation & Evidence Signals</div>
+            <div class="section-title">Research Notes & Translation Signals</div>
+            <div class="meta evidence-caveat">Research notes may include non-canonical context. Treat as scouting context, not model input truth.</div>
             <div class="meta">${esc(evidenceSummary ?? 'Translation summary unavailable in current artifacts.')}</div>
+            ${athleticNotIncorporated
+              ? '<div class="meta evidence-caveat">Athletic testing data was not incorporated into the model score.</div>'
+              : ''}
             ${translationFlags.length
               ? `<div class="tags tags-translation">${translationFlags.map((flag) => `<span class="tag">${esc(String(flag).replace(/_/g, ' '))}</span>`).join('')}</div>`
               : '<div class="meta">No translation evidence tags available.</div>'}
