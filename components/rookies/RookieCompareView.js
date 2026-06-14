@@ -288,7 +288,9 @@ function renderPlayerHeader(card, sideLabel) {
       <details class="compare-expandable">
         <summary class="compare-expand-trigger">Full context ↓</summary>
         <div class="compare-expand-content">
+          ${evidenceSummary ? '<p class="meta evidence-caveat">Research notes may include non-canonical context. Treat as scouting context, not model input truth.</p>' : ''}
           ${evidenceSummary ? `<p class="meta">${esc(evidenceSummary)}</p>` : ''}
+          ${card.athleticSource === 'NEUTRAL_DEFAULT' ? '<p class="meta evidence-caveat">Athletic testing data was not incorporated into the model score.</p>' : ''}
           ${translation.length ? `<div class="tags" style="margin-top:8px">${translation.map((f) => `<span class="tag">${esc(String(f).replace(/_/g, ' '))}</span>`).join('')}</div>` : ''}
           ${contextFlags.length ? `<div class="tags" style="margin-top:6px">${contextFlags.map((f) => `<span class="tag tag-context">${esc(String(f).replace(/_/g, ' '))}</span>`).join('')}</div>` : ''}
           <div style="margin-top:12px">${seasonSnapshot(card)}</div>
