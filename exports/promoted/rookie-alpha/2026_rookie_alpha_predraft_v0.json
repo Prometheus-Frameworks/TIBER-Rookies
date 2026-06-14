@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-06-14T12:47:15+00:00",
-  "run_id": "rookie-alpha-2026-2026-06-14T12:47:15+00:00",
+  "generated_at": "2026-06-14T12:53:00+00:00",
+  "run_id": "rookie-alpha-2026-2026-06-14T12:53:00+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 48,
@@ -2599,7 +2599,7 @@
         "translation_flags": [
           "elite_efficiency_tier"
         ],
-        "evidence_summary": "Two seasons at Ole Miss: Year 1 YPTPA 0.60 (90th pctile among 145 TE prospects since 2017), Year 2 YPTPA 1.03 (81st pctile) \u2014 year 2 figure is strong for the position (named comparisons unverified). Year 2: 39 catches for 635 yards and 5 TDs (16.3 YPC); carries an injury context flag. MTF/Rec 0.26 (92nd pctile), YAC/Rec 8.4 (94th pctile), career YPRR 1.80 (74th pctile). Aligned all over the formation with big-play ability. Skipped combine drills (no athleticism profile). Blocking is a notable weakness.",
+        "evidence_summary": "Two seasons at Ole Miss: Year 1 YPTPA 0.60 (90th pctile among 145 TE prospects since 2017), Year 2 YPTPA 1.03 (81st pctile) \u2014 year 2 figure is strong for the position (named comparisons unverified). Year 2: 39 catches for 635 yards and 5 TDs (16.3 YPC); 2025 was an injury-affected season. MTF/Rec 0.26 (92nd pctile), YAC/Rec 8.4 (94th pctile), career YPRR 1.80 (74th pctile). Aligned all over the formation with big-play ability. Skipped combine drills (no athleticism profile). Blocking is a notable weakness.",
         "context_source": "manual_seed_2026; notes_2026-04-22 (TIBER review batch)"
       },
       "rookie_alpha_rank": 27,
@@ -2685,7 +2685,7 @@
         "evidence_tags": [],
         "context_flags": [],
         "translation_flags": [],
-        "evidence_summary": "6'7\" frame with 32 catches for 482 yards in 2025 at Notre Dame; missed nearly two full seasons early in his career (carries an injury context flag); size-speed combination and length at the catch point project as a moldable Y-TE.",
+        "evidence_summary": "6'7\" frame with 32 catches for 482 yards in 2025 at Notre Dame; missed nearly two full seasons early in his career (injury-affected); size-speed combination and length at the catch point project as a moldable Y-TE.",
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 28,
@@ -2868,7 +2868,7 @@
         ],
         "context_flags": [],
         "translation_flags": [],
-        "evidence_summary": "First-team All-ACC in 2025 with 47 catches for 468 yards and 7 TDs, leading NC State with his red-zone presence; did not run the 40 at the combine (injury context flag). Natural pass catcher with strong hands and zone feel but undersized frame raises NFL ceiling questions.",
+        "evidence_summary": "First-team All-ACC in 2025 with 47 catches for 468 yards and 7 TDs, leading NC State with his red-zone presence; did not run the 40 at the combine (injury-affected). Natural pass catcher with strong hands and zone feel but undersized frame raises NFL ceiling questions.",
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 30,
@@ -3623,7 +3623,7 @@
         "evidence_tags": [],
         "context_flags": [],
         "translation_flags": [],
-        "evidence_summary": "Electrifying combine performance (4.30 forty, 42.5\" vertical, 10'11\" broad \u2014 top scores among WRs) but 2025 production at Oklahoma was modest at 57 catches/620 yards/4 TDs after a shortened 2024 (injury context flag). Bleacher Report ranks him #11 WR post-combine.",
+        "evidence_summary": "Electrifying combine performance (4.30 forty, 42.5\" vertical, 10'11\" broad \u2014 top scores among WRs) but 2025 production at Oklahoma was modest at 57 catches/620 yards/4 TDs after an injury-affected 2024. Bleacher Report ranks him #11 WR post-combine.",
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 39,
