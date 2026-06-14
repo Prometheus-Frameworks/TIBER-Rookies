@@ -25,6 +25,12 @@ jobs:
       - name: Run tests
         run: python3 -m pytest tests -q
 
+      - name: Validate promoted 2026 export against manifest
+        run: |
+          python3 scripts/validate_promoted_export.py \
+            --export-json exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json \
+            --manifest exports/promoted/rookie-alpha/2026_manifest.json
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
