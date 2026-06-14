@@ -158,7 +158,7 @@
       "one_hit_wonder_risk",
       "shared_backfield_love_2024"
     ],
-    "evidence_summary": "Transfer: Notre Dame (2024, shared backfield with Jeremiyah Love) \u2192 Texas A&M (2025). Breakout at age 20 at Notre Dame despite competing for carries with Love \u2014 a top-tier RB1 prospect. Production suppression from shared backfield is mitigating context for volume metrics. Dynasty community ranks him RB2 of class (overall top-5 rookie pick). Red flag: YAC+catch 2nd-best season 39.9 yd/game \u2014 among the weaker marks in the top-100 DC RB dataset since 2017 (named comparisons unverified). One-hit-wonder risk remains; YAC consistency gap is the primary model concern.",
+    "evidence_summary": "Transfer: Notre Dame (2024, shared backfield with Jeremiyah Love) \u2192 Texas A&M (2025). Breakout at age 20 at Notre Dame despite competing for carries with Love \u2014 a top-tier RB1 prospect. Production suppression from shared backfield is mitigating context for volume metrics. Some dynasty rankers place him among the top RBs in the class (specific source not cited). Red flag: YAC+catch 2nd-best season 39.9 yd/game \u2014 among the weaker marks in the top-100 DC RB dataset since 2017 (named comparisons unverified). One-hit-wonder risk remains; YAC consistency gap is the primary model concern.",
     "context_source": "@ffdataroma research note 2026-04-08 + research agent 2026-04-09",
     "dob": "2003-10-09",
     "breakout_strength": 0.219,
@@ -909,7 +909,7 @@
       "broken_offense_context",
       "late_declare"
     ],
-    "evidence_summary": "FR: 2 rec/15 yds (2022). SO: 5 rec/51 yds (2023) \u2014 suppressed by depth chart behind Rome Odunze, Ja'Lynn Polk, Jalen McMillan, Germie Bernard (all drafted R1-R3). JR 2024 (age 20): 63 rec / 834 yds / 9 TD \u2014 led Washington in receiving yards and TDs, honorable mention All-Big Ten. SR 2025 (age 21): 62 rec / 881 yds / 11 TD. Two consecutive elite seasons; consistent production profile. 73.4 YPG best season is in range of recent R1 producers (named comparisons unverified). Zone specialist: 6.25% contested target rate vs zone. Man coverage challenge: 25.71% CTT vs man \u2014 saved by 76.9% contested catch rate (10/13 in 2025). 1D/RR 0.136 (elite; class rank unverified). Career YPRR 2.02 \u2014 at the 2.00 threshold; historically a low-hit-rate profile (sample rate unverified). Pro day: 6.80 3-cone, 4.30 shuttle, 37.5\" vert at 210 lbs. Best RZ receiver in class per multiple evaluators. 3.1% drop rate. ADOT 14.4, man_YPRR 2.58 vs zone_YPRR 2.20. YAC/rec 5.3. Closest comp: Michael Wilson (Stanford). Non-early declare; 4 full seasons.",
+    "evidence_summary": "FR: 2 rec/15 yds (2022). SO: 5 rec/51 yds (2023) \u2014 suppressed by depth chart behind Rome Odunze, Ja'Lynn Polk, Jalen McMillan, Germie Bernard (all drafted R1-R3). JR 2024 (age 20): 63 rec / 834 yds / 9 TD \u2014 led Washington in receiving yards and TDs, honorable mention All-Big Ten. SR 2025 (age 21): 62 rec / 881 yds / 11 TD. Two consecutive elite seasons; consistent production profile. 73.4 YPG best season is in range of recent R1 producers (named comparisons unverified). Zone specialist: 6.25% contested target rate vs zone. Man coverage challenge: 25.71% CTT vs man \u2014 saved by 76.9% contested catch rate (10/13 in 2025). 1D/RR 0.136 (elite; class rank unverified). Career YPRR 2.02 \u2014 at the 2.00 threshold; historically a low-hit-rate profile (sample rate unverified). Pro day: 6.80 3-cone, 4.30 shuttle, 37.5\" vert at 210 lbs. Regarded by multiple evaluators as one of the best red-zone receivers in the class. 3.1% drop rate. ADOT 14.4, man_YPRR 2.58 vs zone_YPRR 2.20. YAC/rec 5.3. Closest comp: Michael Wilson (Stanford). Non-early declare; 4 full seasons.",
     "context_source": "Wikipedia + X research (2026 R1 FR/SO chart, zone/man splits, pro day data, contested catch analysis, production comps), retrieved 2026-04-18.",
     "mtf_source": "Scott Barrett / PFF chart (@ScottBarrettDFB) \u2014 College Career MTF per Reception, 2026 WR prospects",
     "first_down_per_route_run": 0.136,
@@ -2470,7 +2470,7 @@
       "pending_cfbd_verification",
       "low_1d_rr_below_avg"
     ],
-    "evidence_summary": "36 catches for 630 yards and 5 TDs at Notre Dame in 2025 with an elite 17.5 YPR; 9.98 RAS (top 2% ever) but 4.61 forty will be a concern for NFL evaluators. At 6'5\"/218 lbs he's a massive red-zone target; pure raw upside prospect limited by below-average speed.",
+    "evidence_summary": "36 catches for 630 yards and 5 TDs at Notre Dame in 2025 with an elite 17.5 YPR; 9.98 RAS (elite RAS composite; 'top 2% ever' not independently verified) but 4.61 forty will be a concern for NFL evaluators. At 6'5\"/218 lbs he's a massive red-zone target; pure raw upside prospect limited by below-average speed.",
     "context_source": "manual_seed_2026",
     "exceptional_metrics": [],
     "first_down_per_route_run": 0.0898,
