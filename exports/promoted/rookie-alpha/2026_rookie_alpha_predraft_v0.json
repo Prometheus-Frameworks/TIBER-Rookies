@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-06-14T00:02:32+00:00",
-  "run_id": "rookie-alpha-2026-2026-06-14T00:02:32+00:00",
+  "generated_at": "2026-06-14T12:53:00+00:00",
+  "run_id": "rookie-alpha-2026-2026-06-14T12:53:00+00:00",
   "season": 2026,
   "coverage_summary": {
     "players_total": 48,
@@ -124,7 +124,7 @@
           "young_breakout",
           "injury_adjusted"
         ],
-        "evidence_summary": "BOA 19, youngest RB in 2026 class (early declare). Career 0.335 MTF/touch (P4, min 425 carries since 2014): 4th all-time behind Bijan Robinson, David Montgomery, Bucky Irving \u2014 round 1-3 comp group. Career 4.35 YAC/carry (94th pctile, 3rd all-time since 2014 behind Etienne 4.513 and Bijan 4.397). 4.36 40-time, 98th pctile speed score. SPORQ 95.6. Combine bench: 21 reps of 225lb. Best season YPRR 1.83 (94th pctile RB), career YPRR 1.60 (84th pctile). QBR when targeted: 126.9 (class leader). PBE 98.3% (elite pass protector, 3.17% pressure rate). Career fumble rate 0.23%. TD rate 10.43% + MTF > 33.3%: comp group (P4 since 2015) = Javonte Williams, Dameon Pierce, Miyan Williams, Blake Corum. PFF Offense Grade 89.9 (class leader). Notre Dame SOS +5.35 (above avg SEC). 2024 playoff stretch carries an injury-adjusted context flag (see context flags); specific medical causality is not a verified model input.",
+        "evidence_summary": "BOA 19, youngest RB in 2026 class (early declare). Career 0.335 MTF/touch (P4, min 425 carries since 2014): among the most elusive P4 backs by MTF/touch in the available sample (all-time rank unverified) \u2014 round 1-3 comp group. Career 4.35 YAC/carry (94th pctile, elite YAC/carry in the available sample (all-time rank unverified)). Third-party athletic testing (forty time, speed score, SPORQ, bench) was not incorporated into the model score. Best season YPRR 1.83 (94th pctile RB), career YPRR 1.60 (84th pctile). QBR when targeted: 126.9. PBE 98.3% (elite pass protector, 3.17% pressure rate). Career fumble rate 0.23%. TD rate 10.43% + MTF > 33.3%: comp group (P4 since 2015) = Javonte Williams, Dameon Pierce, Miyan Williams, Blake Corum. PFF Offense Grade 89.9 (PFF metric). Notre Dame SOS +5.35 (above avg SEC). 2024 playoff stretch carries an injury-adjusted context flag (see context flags); specific medical causality is not a verified model input.",
         "context_source": "X research batch (April 2026): @ffdataroma, Scott Barrett, various FFX accounts; PFF/Sports-Reference cross-verification"
       },
       "rookie_alpha_rank": 1,
@@ -222,7 +222,7 @@
           "rushing_signal",
           "inside_out_versatility"
         ],
-        "evidence_summary": "Dominator Rating 0.43 at age <19 in Power conference \u2014 #1 all-time since 2004 (ahead of Calvin Johnson 0.40, Xavier Worthy 0.39). 1,159 receiving + rushing yards as an 18-year-old freshman (NC State, ACC). YPRR: 2.3+ as FR (age 18) and JR \u2014 sophomore dip to 1.29 contextualized as broken NC State\u2192A&M transition offense. Career YPRR 2.03 dragged by that one outlier year; 2 of 3 seasons above the 2.3 threshold. 1D/RR 0.128 in 2025 (6th among all Power 5 WRs with 250+ routes). 88th pctile separation in 2025 CFB season. 65.5% of routes run against press coverage in 2025 (2nd in class) \u2014 efficiency metrics carry higher context weight. 66.7% contested catch rate in 2025. Man/zone versatility and inside-out versatility confirmed (different roles at NC State 2023 vs A&M 2025). Multi-threat: 0.21 MTF/Rec, 400+ career rushing yards, 25 receiving TDs (most among FBS WRs with 400+ rush yards, 70+ rush attempts). Early declare at 21; 3-season Power-4 career against top competition throughout.",
+        "evidence_summary": "Dominator Rating 0.43 at age <19 in Power conference \u2014 among the highest age-<19 P4 dominator marks in the available sample (all-time rank and named comparisons unverified). 1,159 receiving + rushing yards as an 18-year-old freshman (NC State, ACC). YPRR: 2.3+ as FR (age 18) and JR \u2014 sophomore dip to 1.29 contextualized as broken NC State\u2192A&M transition offense. Career YPRR 2.03 dragged by that one outlier year; 2 of 3 seasons above the 2.3 threshold. 1D/RR 0.128 in 2025 (among the better P5 WR marks in the sample; precise rank unverified). 88th pctile separation in 2025 CFB season. 65.5% of routes run against press coverage in 2025 (among the most press-tested in the class; rank unverified) \u2014 efficiency metrics carry higher context weight. 66.7% contested catch rate in 2025. Man/zone versatility and inside-out versatility confirmed (different roles at NC State 2023 vs A&M 2025). Multi-threat: 0.21 MTF/Rec, 400+ career rushing yards, 25 receiving TDs (rare dual rush/receiving TD volume; leaderboard claim unverified). Early declare at 21; 3-season Power-4 career against top competition throughout.",
         "context_source": "X research batch (April 2026): @ffdataroma, Hudl IQ 1D/RR leaderboard, dominator rating historical data"
       },
       "rookie_alpha_rank": 2,
@@ -317,7 +317,7 @@
           "young_breakout",
           "elite_efficiency_tier"
         ],
-        "evidence_summary": "Zone YPRR 3.60 \u2014 elite (comp: AJ Brown 3.28, Ja'Marr Chase 3.75, Malik Nabers 4.42). Man YPRR 3.26 \u2014 one of only 2 WRs in 2026 class with 3+ YPRR vs both man AND zone (Cooper is the other). Historical precedent (PFF, WRs since 2021 with 3.0+ YPRR vs both man AND zone): JSN (R1 2023), Waddle (R1 2021), Chase (R1 2021), DeVonta Smith (R1 2021), Eskridge (R2 2021) \u2014 4 of 5 were Round 1. Data gap: YPRR excluding screens and slot fades is not publicly available; applied -5 pt screen penalty (51% screen yard share) does not fully account for slot fade route inflation. 1D/RR 0.135 career / 0.136 in 2025 \u2014 #5 all-time among Day 1+2 WRs since 2016 with >85th pctile SOS (Olave 0.135, Marquise Brown 0.134, MHJ 0.137, JSN 0.144 above him). One of only 3 CFB WRs with 3+ zone YPRR AND 85+ PFF grade (Jeremiah Smith, Cooper, Lemon). 66.7% contested catch rate. 2.5% drop rate. 130.0 passer rating when targeted. Zone CTT% 12.12% (elite \u2014 rarely contested vs zone). 76th percentile separation. Next Gen Stats prospect model: 84.74 (#2 in class). MTF over expected: #6 in class. MTF/rec 25.32%, YAC/rec 6.40. FR+SO: 88+764=852 yards (solid early production for class). JR 2025: 79 rec / 1,156 yds / 11 TD \u2014 Biletnikoff finalist. YPRR 3.13 (#5 in CFB). Historical zone comp group: Elijah Moore (3.87), Jerry Jeudy (3.78), Freddie Swain (3.52). Concerns: 27.9% wide rate (slot-primary); catch radius at 5'11\"; screen_yard_share 51% in 2025 (penalty applied); man YPRR 3.26 below elite 4.25 threshold. Bearish case: unique combo of zone-specialist metrics without the man dominance or boundary usage. Bullish case: zone YPRR comp group and 1D/RR suggest legit R1 NFL starter floor.",
+        "evidence_summary": "Zone YPRR 3.60 \u2014 elite (comp: AJ Brown 3.28, Ja'Marr Chase 3.75, Malik Nabers 4.42). Man YPRR 3.26 \u2014 one of very few WRs in the 2026 class with 3+ YPRR vs both man and zone (per PFF; exact membership unverified). Historical precedent (PFF, WRs since 2021 with 3.0+ YPRR vs both man AND zone): JSN (R1 2023), Waddle (R1 2021), Chase (R1 2021), DeVonta Smith (R1 2021), Eskridge (R2 2021) \u2014 4 of 5 were Round 1. Data gap: YPRR excluding screens and slot fades is not publicly available; applied -5 pt screen penalty (51% screen yard share) does not fully account for slot fade route inflation. 1D/RR 0.135 career / 0.136 in 2025 \u2014 elite among Day 1-2 WRs in the available sample (all-time rank and named comparisons unverified). Among a small group of CFB WRs with 3+ zone YPRR and an 85+ PFF grade (per PFF; exact membership unverified). 66.7% contested catch rate. 2.5% drop rate. 130.0 passer rating when targeted. Zone CTT% 12.12% (elite \u2014 rarely contested vs zone). 76th percentile separation. Next Gen Stats prospect model: 84.74 (NGS metric; class rank unverified). MTF over expected: among class leaders (rank unverified). MTF/rec 25.32%, YAC/rec 6.40. FR+SO: 88+764=852 yards (solid early production for class). JR 2025: 79 rec / 1,156 yds / 11 TD \u2014 Biletnikoff finalist. YPRR 3.13 (elite; national rank unverified). Historical zone comp group: Elijah Moore (3.87), Jerry Jeudy (3.78), Freddie Swain (3.52). Concerns: 27.9% wide rate (slot-primary); catch radius at 5'11\"; screen_yard_share 51% in 2025 (penalty applied); man YPRR 3.26 below elite 4.25 threshold. Bearish case: unique combo of zone-specialist metrics without the man dominance or boundary usage. Bullish case: zone YPRR comp group and 1D/RR suggest legit R1 NFL starter floor.",
         "context_source": "Wikipedia + X research (FPD production profile images, zone/man splits, 1D/RR leaderboards, NGS model, historical comp tables), retrieved 2026-04-18."
       },
       "rookie_alpha_rank": 3,
@@ -418,7 +418,7 @@
           "injury_adjusted",
           "inside_out_versatility"
         ],
-        "evidence_summary": "BOA 18.1 \u2014 true freshman impact at Colorado (470 yds, age 18); two seasons carry an injury-adjusted context flag. Man YPRR 4.63 best season / 3.44 career: DeVonta Smith / Tee Higgins / Ja'Marr Chase / Xavier Worthy tier (only P4 WRs since 2018 with man YPRR >4.25 + contested >50% + drop rate <3% in one season: Smith, Tyson, Higgins). 31.2% career target rate \u2014 #1 since 2021 among non-slot WRs (ahead of Puka Nacua 30.6%). Zone success rate 85.6% (Reception Perception) \u2014 5th best P5 WR since 2021. Zone YPRR 2.39. Adjusted contested target rate: 3rd in class (entry 8). Press coverage tested: 58.7% of routes. 1D/RR 0.125 \u2014 tied Ja'Marr Chase, 12th among Day-1 WRs last decade. NGS model: #1 in 2026 FBS class (86.19). 2025 dominator rating: 55.9% (class leader). Combine: 26 bench reps (one rep shy of WR all-time record). Skipped combine speed/jump drills. Pro day testing reported. CONCERNS: MTF 8% (6th pctile), YAC 5.1/rec (27th pctile) \u2014 separator/route-runner profile, not YAC threat. Career drop rate 7.6% (below average) vs best season 1.6%. Career catch rate 60.7%, QBR when targeted 105.7 (mediocre despite elite target rate). Film (2026-04-11): press wins, leverage wins, vertical tracking, contested catch ability confirmed. Screen-heavy deployment appears to be offensive choice, not ceiling reflection. No translation penalty applied. Comp (high): Tetairoa McMillan / Allen Robinson. Comp (low): Josh Doctson.",
+        "evidence_summary": "BOA 18.1 \u2014 true freshman impact at Colorado (470 yds, age 18); two seasons carry an injury-adjusted context flag. Man YPRR 4.63 best season / 3.44 career: DeVonta Smith / Tee Higgins / Ja'Marr Chase / Xavier Worthy tier (only P4 WRs since 2018 with man YPRR >4.25 + contested >50% + drop rate <3% in one season: Smith, Tyson, Higgins). 31.2% career target rate \u2014 among the highest non-slot WR target rates since 2021 (rank and named comparison unverified). Zone success rate 85.6% (Reception Perception) \u2014 among the better P5 WR marks since 2021 (rank unverified). Zone YPRR 2.39. Adjusted contested target rate: among the best in the class (rank unverified). Press coverage tested: 58.7% of routes. 1D/RR 0.125 \u2014 in the range of recent Day-1 WRs (precise rank and named comparison unverified). NGS model: 86.19 (NGS metric; class rank unverified). 2025 dominator rating: 55.9%. Combine: 26 bench reps; skipped combine speed/jump drills.Athletic testing data was not incorporated into the model score. CONCERNS: MTF 8% (6th pctile), YAC 5.1/rec (27th pctile) \u2014 separator/route-runner profile, not YAC threat. Career drop rate 7.6% (below average) vs best season 1.6%. Career catch rate 60.7%, QBR when targeted 105.7 (mediocre despite elite target rate). Film (2026-04-11): press wins, leverage wins, vertical tracking, contested catch ability confirmed. Screen-heavy deployment appears to be offensive choice, not ceiling reflection. No translation penalty applied. Comp (high): Tetairoa McMillan / Allen Robinson. Comp (low): Josh Doctson.",
         "context_source": "X research batch (April 2026): @ffdataroma, Reception Perception, Scott Barrett, NGS model; film review notes 2026-04-11"
       },
       "rookie_alpha_rank": 4,
@@ -508,7 +508,7 @@
         "translation_flags": [
           "young_breakout"
         ],
-        "evidence_summary": "FR: 2 rec/15 yds (2022). SO: 5 rec/51 yds (2023) \u2014 suppressed by depth chart behind Rome Odunze, Ja'Lynn Polk, Jalen McMillan, Germie Bernard (all drafted R1-R3). JR 2024 (age 20): 63 rec / 834 yds / 9 TD \u2014 led Washington in receiving yards and TDs, honorable mention All-Big Ten. SR 2025 (age 21): 62 rec / 881 yds / 11 TD. Two consecutive elite seasons; consistent production profile. Historical YPG comp: 73.4 YPG best season places Boston in R1 success group (Kelvin Benjamin 72.2, Xavier Worthy 72.4, Quentin Johnston 76.2). Zone specialist: 6.25% contested target rate vs zone. Man coverage challenge: 25.71% CTT vs man \u2014 saved by 76.9% contested catch rate (10/13 in 2025). 1D/RR 0.136 (#3 in class, elite). Career YPRR 2.02 \u2014 at the 2.00 threshold; historically risky comp group (<2.10 YPRR before age 21: 1/15 hit rate on 1,000-yard seasons). Pro day: 6.80 3-cone, 4.30 shuttle, 37.5\" vert at 210 lbs. Best RZ receiver in class per multiple evaluators. 3.1% drop rate. ADOT 14.4, man_YPRR 2.58 vs zone_YPRR 2.20. YAC/rec 5.3. Closest comp: Michael Wilson (Stanford). Non-early declare; 4 full seasons.",
+        "evidence_summary": "FR: 2 rec/15 yds (2022). SO: 5 rec/51 yds (2023) \u2014 suppressed by depth chart behind Rome Odunze, Ja'Lynn Polk, Jalen McMillan, Germie Bernard (all drafted R1-R3). JR 2024 (age 20): 63 rec / 834 yds / 9 TD \u2014 led Washington in receiving yards and TDs, honorable mention All-Big Ten. SR 2025 (age 21): 62 rec / 881 yds / 11 TD. Two consecutive elite seasons; consistent production profile. 73.4 YPG best season is in range of recent R1 producers (named comparisons unverified). Zone specialist: 6.25% contested target rate vs zone. Man coverage challenge: 25.71% CTT vs man \u2014 saved by 76.9% contested catch rate (10/13 in 2025). 1D/RR 0.136 (elite; class rank unverified). Career YPRR 2.02 \u2014 at the 2.00 threshold; historically a low-hit-rate profile (sample rate unverified). Pro day: 6.80 3-cone, 4.30 shuttle, 37.5\" vert at 210 lbs. Best RZ receiver in class per multiple evaluators. 3.1% drop rate. ADOT 14.4, man_YPRR 2.58 vs zone_YPRR 2.20. YAC/rec 5.3. Closest comp: Michael Wilson (Stanford). Non-early declare; 4 full seasons.",
         "context_source": "Wikipedia + X research (2026 R1 FR/SO chart, zone/man splits, pro day data, contested catch analysis, production comps), retrieved 2026-04-18."
       },
       "rookie_alpha_rank": 5,
@@ -777,7 +777,7 @@
         "translation_flags": [
           "young_breakout"
         ],
-        "evidence_summary": "Verified Ohio State progression from 264 freshman total yards to 739 sophomore total yards (733 receiving + 6 rushing), then 854 total yards in 2025. 40 time (4.53): market narrative labels this 'too slow' but 2026 WR leaders by career receiving YPG ran: Puka Nacua 4.57, JSN 4.52, Amon-Ra St. Brown 4.59, CeeDee Lamb 4.50, George Pickens 4.47, Nico Collins 4.45. Tate at 4.53 is squarely in the middle of this group. Speed narrative is not supported by outcome data at the WR position.",
+        "evidence_summary": "Verified Ohio State progression from 264 freshman total yards to 739 sophomore total yards (733 receiving + 6 rushing), then 854 total yards in 2025. 40 time (4.53): market narrative labels this 'too slow' but 2026 WR leaders by career receiving YPG ran: Puka Nacua 4.57, JSN 4.52, Amon-Ra St. Brown 4.59, CeeDee Lamb 4.50, George Pickens 4.47, Nico Collins 4.45. Tate at 4.53 is squarely in the middle of this group. Speed narrative is not supported by outcome data at the WR position. Athletic testing data was not incorporated into the model score.",
         "context_source": "Wikipedia Carnell Tate college statistics table (2023-2025 rows), retrieved 2026-03-29; speed comp via notes 2026-04-10"
       },
       "rookie_alpha_rank": 8,
@@ -903,7 +903,7 @@
         ],
         "context_flags": [],
         "translation_flags": [],
-        "evidence_summary": "Early declare (3 seasons), projected R1 (~19th overall). SPORQ 100.0 \u2014 perfect composite; speed score 129.8 (3rd best TE combine history behind Vernon Davis 138.0, Kyle Pitts 130.7). Career MTF/reception 0.246; best season 40.00% MTF/REC (above LaPorta, Stowers). Best season YAC/rec 10.10 (above Brock Bowers 9.30 and Mark Andrews 9.80 in filtered peer group). Career YPRR 1.72 (3 seasons); best season 2.17. Peer comp at same career stage: McBride 1.65, LaPorta 1.75, Warren 1.25. 53.3% career contested catch rate (Kyle Pitts / McBride tier vs speed+contested comp group). COVERAGE NUANCE: zone YPRR 1.85 > man YPRR 1.61 \u2014 zone specialist pattern, not man specialist. 14.29% overall CTT (0.00% vs man one season, but zone CTT higher). Run blocking 78.0 (Kittle/McBride tier). 3.8% drop rate. Early-declare + R1 DC historical hit rate: Davis/Ebron/Njoku/Hockenson/Pitts/Bowers/Loveland \u2014 all but Fant had elite NFL production. MTF/G 0.63 (4th R1 TEs since 2015). Historical model rank: #9 all-time TEs since 2017. KNN comps: Noah Fant / Vernon Davis. Run blocking comp group: George Kittle / Trey McBride.",
+        "evidence_summary": "Early declare (3 seasons), projected R1 (~19th overall). SPORQ 100.0 \u2014 perfect composite; speed score 129.8 (elite TE combine athleticism; all-time rank and named comparisons unverified). Career MTF/reception 0.246; best season 40.00% MTF/REC (strong for the position; named comparisons unverified). Best season YAC/rec 10.10 (strong; named peer comparisons unverified). Career YPRR 1.72 (3 seasons); best season 2.17. Peer comp at same career stage: McBride 1.65, LaPorta 1.75, Warren 1.25. 53.3% career contested catch rate (Kyle Pitts / McBride tier vs speed+contested comp group). COVERAGE NUANCE: zone YPRR 1.85 > man YPRR 1.61 \u2014 zone specialist pattern, not man specialist. 14.29% overall CTT (0.00% vs man one season, but zone CTT higher). Run blocking 78.0 (Kittle/McBride tier). 3.8% drop rate. Early-declare + R1 DC historical hit rate: Davis/Ebron/Njoku/Hockenson/Pitts/Bowers/Loveland \u2014 all but Fant had elite NFL production. MTF/G 0.63 (strong among recent R1 TEs; rank unverified). Internal historical model places him among the stronger TEs since 2017 (precise rank unverified). KNN comps: Noah Fant / Vernon Davis. Run blocking comp group: George Kittle / Trey McBride.",
         "context_source": "X research batch (April 2026): @ffdataroma, Scott Barrett, PFF, various FFX accounts; Sports-Reference cross-verification"
       },
       "rookie_alpha_rank": 9,
@@ -1020,7 +1020,7 @@
         ],
         "context_flags": [],
         "translation_flags": [],
-        "evidence_summary": "Vanderbilt TE. 99.0 SPORQ \u2014 2nd best in 2026 TE class behind Sadiq (100.0). Elite composite athleticism at TE where SPORQ is a meaningful upside signal. Early declare with 2026 draft capital. Production profile limited at Vanderbilt; athletic ceiling warrants a modest bonus relative to production-only score.",
+        "evidence_summary": "Vanderbilt TE. 99.0 SPORQ \u2014 elite SPORQ for the 2026 TE class (behind Sadiq; precise class rank unverified). Elite composite athleticism at TE where SPORQ is a meaningful upside signal. Early declare with 2026 draft capital. Production profile limited at Vanderbilt; athletic ceiling warrants a modest bonus relative to production-only score.",
         "context_source": "compute_breakout_age.py; SPORQ 2026 TE class notes 2026-04-10"
       },
       "rookie_alpha_rank": 10,
@@ -1198,7 +1198,7 @@
         "translation_flags": [
           "young_breakout"
         ],
-        "evidence_summary": "43% of career targets on screens (#1 all-time among drafted P4 WRs since 2015). 50% of career rec yards on screens + slot fades; 52% in 2025. 58% of career catches thrown behind the line of scrimmage. Career aDOT 5.25 (#1 lowest for R1-2 WRs). Career YPRR 2.03 (same as KC Concepcion); best season 2.57. YPRR minus screens: 1.7 \u2014 below the 2.0 threshold; historically risky. Zone YPRR 1.94 vs man YPRR 2.79 \u2014 zone is a concern given NFL is ~75% zone. Contested catch rate 38% (below average). MTF per screen reception 0.34 (above FBS avg 0.26) \u2014 legitimate YAC threat on manufactured touches. ~80% of career rec yards came after the catch; YAC/rec 8.0. Next Gen Stats prospect model: 79.46 (#4 in class). 5-star recruit (99 prospect grade). 4.35 40-time. Jet Award winner as freshman at USC. 2nd team All-SEC 2025 at Georgia. Analytical consensus: \"worst analytics profile of any projected Day 1-2 WR ever.\" High-end comp: Marvin Mims. Low-end: Anthony Schwartz. Non-early declare; 4 full college seasons at 22 years old at draft.",
+        "evidence_summary": "43% of career targets on screens (among the highest for drafted P4 WRs in the sample; all-time rank unverified). 50% of career rec yards on screens + slot fades; 52% in 2025. 58% of career catches thrown behind the line of scrimmage. Career aDOT 5.25 (among the lowest for R1-2 WRs; rank unverified). Career YPRR 2.03 (same as KC Concepcion); best season 2.57. YPRR minus screens: 1.7 \u2014 below the 2.0 threshold; historically risky. Zone YPRR 1.94 vs man YPRR 2.79 \u2014 zone is a concern given NFL is ~75% zone. Contested catch rate 38% (below average). MTF per screen reception 0.34 (above FBS avg 0.26) \u2014 legitimate YAC threat on manufactured touches. ~80% of career rec yards came after the catch; YAC/rec 8.0. Next Gen Stats prospect model: 79.46 (NGS metric; class rank unverified). 5-star recruit (99 prospect grade). 4.35 40-time. Jet Award winner as freshman at USC. 2nd team All-SEC 2025 at Georgia. Analysts have flagged it as one of the weaker analytics profiles among projected Day 1-2 WRs (superlative unverified). High-end comp: Marvin Mims. Low-end: Anthony Schwartz. Non-early declare; 4 full college seasons at 22 years old at draft.",
         "context_source": "X research (screen %, zone/man splits, aDOT, historical comps, NGS model), retrieved 2026-04-18."
       },
       "rookie_alpha_rank": 12,
@@ -1309,7 +1309,7 @@
           "limited_multi_season_data"
         ],
         "translation_flags": [],
-        "evidence_summary": "Only 2026 RB to average 90+ total yards/game in 2+ seasons AND 70+ YAC+contact yards/game in 2+ seasons. Named comp screen (Day 2 P4 RBs since 2015, 60th+ pctile in TPRR + YAC/attempt + MTF/attempt): De'Von Achane, Joe Mixon, Javonte Williams, Jonah Coleman. Advanced efficiency context (2026-04-10 notes): YAC/reception 99.6th pctile, MTF/attempt 97th pctile, YPRR 93rd pctile \u2014 by all three advanced metrics, stacks closest to Jeremiyah Love among 2026 RBs. Qualifies for dual-threat RB flag (100+ rush YPG + 1.0+ receiving YPTPA/G; same list: Saquon, CMC, Bijan). Model bullish (+13.7 NFL edge) \u2014 comp class and advanced efficiency data reinforce that view.",
+        "evidence_summary": "Among very few 2026 RBs to average 90+ total yards/game in 2+ seasons and 70+ YAC+contact yards/game in 2+ seasons (informal research, unverified). Named comp screen (Day 2 P4 RBs since 2015, 60th+ pctile in TPRR + YAC/attempt + MTF/attempt): De'Von Achane, Joe Mixon, Javonte Williams, Jonah Coleman. Advanced efficiency context (2026-04-10 notes): YAC/reception 99.6th pctile, MTF/attempt 97th pctile, YPRR 93rd pctile \u2014 by all three advanced metrics, stacks closest to Jeremiyah Love among 2026 RBs. Qualifies for dual-threat RB flag (100+ rush YPG + 1.0+ receiving YPTPA/G; same list: Saquon, CMC, Bijan). Model bullish (+13.7 NFL edge) \u2014 comp class and advanced efficiency data reinforce that view.",
         "context_source": "@ffdataroma research note 2026-04-08; Day 2 RB 3-screen comp + advanced metrics notes 2026-04-10"
       },
       "rookie_alpha_rank": 13,
@@ -1495,7 +1495,7 @@
           "young_breakout",
           "acl_injury_predraft"
         ],
-        "evidence_summary": "Pre-draft ACL tear (November 2025). 2025 YPRR: 2.55. Career YPRR 2.01. Best season man YPRR > 4.25 + passer rating > 130.0 when targeted \u2014 one of only 8 P4 WRs to hit both thresholds since 2019 (comp group: DeVonta Smith, Ja'Marr Chase, Tee Higgins, JSN, Jaylen Waddle, Justyn Ross, Kyle Williams, Marquise Brown). 75th pctile success rate vs man, 64th vs zone (Reception Perception). 69.6% success rate vs man, 68.8% vs press. Career 56.1% contested catch rate. 5.3% drop rate in 2025. QBR when targeted: 113.2. Open target rate: 73.5%. Separation: 58th percentile. Adjusted contested target rate: bottom-5 in class (limited separation ability). 6'2\", 227 lbs \u2014 size/physicality profile. Limited route tree at Louisville. <2.10 YPRR before age 21 (historical 1/15 hit rate comp group). Year-1 NFL contribution unlikely due to ACL recovery. Long-term ceiling intact if recovery is clean.",
+        "evidence_summary": "Carries a pre-draft injury context flag (November 2025). 2025 YPRR: 2.55. Career YPRR 2.01. Best season man YPRR > 4.25 + passer rating > 130.0 when targeted \u2014 among a small group of P4 WRs to hit both thresholds since 2019 (membership unverified). 75th pctile success rate vs man, 64th vs zone (Reception Perception). 69.6% success rate vs man, 68.8% vs press. Career 56.1% contested catch rate. 5.3% drop rate in 2025. QBR when targeted: 113.2. Open target rate: 73.5%. Separation: 58th percentile. Adjusted contested target rate: among the lowest in the class (limited separation ability; rank unverified). 6'2\", 227 lbs \u2014 size/physicality profile. Limited route tree at Louisville. <2.10 YPRR before age 21 (historical 1/15 hit rate comp group). Year-1 availability carries an injury context flag (see context flags).",
         "context_source": "Research agent 2026-04-09 (KeepTradeCut / Dynasty Nerds / PlayerProfiler post-injury consensus)"
       },
       "rookie_alpha_rank": 15,
@@ -2483,7 +2483,7 @@
         "translation_flags": [
           "broken_offense_context"
         ],
-        "evidence_summary": "Transfer: New Mexico State 2024 (lower competition, weak OL) \u2192 Arkansas 2025. Arkansas 2025 OL ranked 110th/133 FBS in sacks allowed; mid-season emergency line adjustments. Production season (62.8 score) was behind one of the worst OLs in FBS. Elite combine profile (4.33 / 39.0 vert / 128 broad, RAS 66) \u2014 athleticism is genuine. Red flags: MTF/touch 0.165 (9th-worst Day 2 RB since 2014); YAC+catch 2nd-best season 47.6 yd/game. Scouting consensus: thrives in gap/power with defined lanes; struggles in space; 'often taken down by first tackler' (PFF). OL context is mitigating but doesn't fully explain away the contact quality gap. Gap/power scheme + functional OL is prerequisite for upside.",
+        "evidence_summary": "Transfer: New Mexico State 2024 (lower competition, weak OL) \u2192 Arkansas 2025. Arkansas 2025 OL ranked 110th/133 FBS in sacks allowed; mid-season emergency line adjustments. Production season (62.8 score) was behind one of the worst OLs in FBS. Elite combine profile (4.33 / 39.0 vert / 128 broad, RAS 66) \u2014 athleticism is genuine. Red flags: MTF/touch 0.165 (among the weaker Day 2 RB marks since 2014; rank unverified); YAC+catch 2nd-best season 47.6 yd/game. Scouting consensus: thrives in gap/power with defined lanes; struggles in space; 'often taken down by first tackler' (PFF). OL context is mitigating but doesn't fully explain away the contact quality gap. Gap/power scheme + functional OL is prerequisite for upside.",
         "context_source": "@ffdataroma research note 2026-04-08 + NFLDraftBuzz/PFF scouting 2026-04-08"
       },
       "rookie_alpha_rank": 26,
@@ -2599,7 +2599,7 @@
         "translation_flags": [
           "elite_efficiency_tier"
         ],
-        "evidence_summary": "Two seasons at Ole Miss: Year 1 YPTPA 0.60 (90th pctile among 145 TE prospects since 2017), Year 2 YPTPA 1.03 (81st pctile) \u2014 year 2 figure exceeds Sadiq career YPTPA and is in line with Kyle Pitts / Tyler Warren. Year 2: 39 catches for 635 yards and 5 TDs (16.3 YPC), played through an undisclosed injury. MTF/Rec 0.26 (92nd pctile), YAC/Rec 8.4 (94th pctile), career YPRR 1.80 (74th pctile). Aligned all over the formation with big-play ability. Skipped combine drills (no athleticism profile). Blocking is a notable weakness.",
+        "evidence_summary": "Two seasons at Ole Miss: Year 1 YPTPA 0.60 (90th pctile among 145 TE prospects since 2017), Year 2 YPTPA 1.03 (81st pctile) \u2014 year 2 figure is strong for the position (named comparisons unverified). Year 2: 39 catches for 635 yards and 5 TDs (16.3 YPC); 2025 was an injury-affected season. MTF/Rec 0.26 (92nd pctile), YAC/Rec 8.4 (94th pctile), career YPRR 1.80 (74th pctile). Aligned all over the formation with big-play ability. Skipped combine drills (no athleticism profile). Blocking is a notable weakness.",
         "context_source": "manual_seed_2026; notes_2026-04-22 (TIBER review batch)"
       },
       "rookie_alpha_rank": 27,
@@ -2685,7 +2685,7 @@
         "evidence_tags": [],
         "context_flags": [],
         "translation_flags": [],
-        "evidence_summary": "6'7\" frame with 32 catches for 482 yards in 2025 at Notre Dame; missed nearly two full seasons recovering from double ACL tears early in his career. Legitimate injury history clouds his floor but his size-speed combination and length at the catch point project as a moldable Y-TE.",
+        "evidence_summary": "6'7\" frame with 32 catches for 482 yards in 2025 at Notre Dame; missed nearly two full seasons early in his career (injury-affected); size-speed combination and length at the catch point project as a moldable Y-TE.",
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 28,
@@ -2780,7 +2780,7 @@
         "translation_flags": [
           "young_breakout"
         ],
-        "evidence_summary": "Transfer: Notre Dame (2024, shared backfield with Jeremiyah Love) \u2192 Texas A&M (2025). Breakout at age 20 at Notre Dame despite competing for carries with Love \u2014 a top-tier RB1 prospect. Production suppression from shared backfield is mitigating context for volume metrics. Dynasty community ranks him RB2 of class (overall top-5 rookie pick). Red flag: YAC+catch 2nd-best season 39.9 yd/game \u2014 among the worst in the top-100 DC RB dataset since 2017 (D.Harris, Sony Michel, Penny, CEH comps). One-hit-wonder risk remains; YAC consistency gap is the primary model concern.",
+        "evidence_summary": "Transfer: Notre Dame (2024, shared backfield with Jeremiyah Love) \u2192 Texas A&M (2025). Breakout at age 20 at Notre Dame despite competing for carries with Love \u2014 a top-tier RB1 prospect. Production suppression from shared backfield is mitigating context for volume metrics. Dynasty community ranks him RB2 of class (overall top-5 rookie pick). Red flag: YAC+catch 2nd-best season 39.9 yd/game \u2014 among the weaker marks in the top-100 DC RB dataset since 2017 (named comparisons unverified). One-hit-wonder risk remains; YAC consistency gap is the primary model concern.",
         "context_source": "@ffdataroma research note 2026-04-08 + research agent 2026-04-09"
       },
       "rookie_alpha_rank": 29,
@@ -2868,7 +2868,7 @@
         ],
         "context_flags": [],
         "translation_flags": [],
-        "evidence_summary": "First-team All-ACC in 2025 with 47 catches for 468 yards and 7 TDs, leading NC State with his red-zone presence; did not run the 40 at the combine due to a hamstring injury. Natural pass catcher with strong hands and zone feel but undersized frame raises NFL ceiling questions.",
+        "evidence_summary": "First-team All-ACC in 2025 with 47 catches for 468 yards and 7 TDs, leading NC State with his red-zone presence; did not run the 40 at the combine (injury-affected). Natural pass catcher with strong hands and zone feel but undersized frame raises NFL ceiling questions.",
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 30,
@@ -3172,7 +3172,7 @@
           "size_risk"
         ],
         "translation_flags": [],
-        "evidence_summary": "Elite speed archetype \u2014 4.26 40-yard dash (fastest at 2026 combine, fastest WR since John Ross 4.22 in 2017). Frame concern: 5'9\", 164lb \u2014 durability and contested-catch limitations at NFL level. Mississippi State (SEC, Power 4). No jump testing data. Production profile pending CFBD fetch. Model may undervalue if route efficiency/YAC data not available; speed-only profile warrants dynasty discount until target share confirmed.",
+        "evidence_summary": "Elite speed archetype \u2014 4.26 40-yard dash (fastest at 2026 combine, fastest WR since John Ross 4.22 in 2017). Frame concern: 5'9\", 164lb \u2014 durability and contested-catch limitations at NFL level. Mississippi State (SEC, Power 4). No jump testing data. Production profile pending CFBD fetch. Model may undervalue if route efficiency/YAC data not available; speed-only profile warrants dynasty discount until target share confirmed. Athletic testing data was not incorporated into the model score.",
         "context_source": "2026 NFL Combine results (ESPN/NFL.com), retrieved 2026-04-08"
       },
       "rookie_alpha_rank": 34,
@@ -3623,7 +3623,7 @@
         "evidence_tags": [],
         "context_flags": [],
         "translation_flags": [],
-        "evidence_summary": "Electrifying combine performance (4.30 forty, 42.5\" vertical, 10'11\" broad \u2014 top scores among WRs) but 2025 production at Oklahoma was modest at 57 catches/620 yards/4 TDs after injury-shortened 2024. Has injury history (soft tissue, concussion); Bleacher Report ranks him #11 WR post-combine.",
+        "evidence_summary": "Electrifying combine performance (4.30 forty, 42.5\" vertical, 10'11\" broad \u2014 top scores among WRs) but 2025 production at Oklahoma was modest at 57 catches/620 yards/4 TDs after an injury-affected 2024. Bleacher Report ranks him #11 WR post-combine.",
         "context_source": "manual_seed_2026"
       },
       "rookie_alpha_rank": 39,
@@ -4179,7 +4179,7 @@
           "multi_season_efficiency",
           "rushing_signal"
         ],
-        "evidence_summary": "42-game career, 2458 rush yards (5.4 YPC), 15 TDs. 1.15 YPRR, 27.5% avoided tackle rate. Efficient runner, limited receiving role. Qualifies for dual-threat RB flag (100+ rush YPG + 1.0+ receiving YPTPA/G; same list as Saquon, CMC, Bijan \u2014 2026 members: Skattebo, Hampton, Emmett Johnson). MTF/attempt 88th percentile \u2014 notable but sub-elite (elite threshold: 90th+). Final-season YACO/A: 2.95 \u2014 tied 3rd-worst among R3-4 P4/5 RBs since 2017 (comp group: Gallman 2.98, Conner 2.95*, Johnson 2.95, Shipley 2.92, Davis-Price 2.80, Kelley 2.80, Hill 2.68, Ballage 2.46, Corum 2.42; *Conner underwent chemotherapy). Dual-threat qualification is a positive signal; YACO/A comp trend toward poor NFL outcomes remains the key concern. Model skepticism (rank 26-27) still warranted.",
+        "evidence_summary": "42-game career, 2458 rush yards (5.4 YPC), 15 TDs. 1.15 YPRR, 27.5% avoided tackle rate. Efficient runner, limited receiving role. Qualifies for dual-threat RB flag (100+ rush YPG + 1.0+ receiving YPTPA/G; same list as Saquon, CMC, Bijan \u2014 2026 members: Skattebo, Hampton, Emmett Johnson). MTF/attempt 88th percentile \u2014 notable but sub-elite (elite threshold: 90th+). Final-season YACO/A: 2.95 \u2014 tied 3rd-worst among R3-4 P4/5 RBs since 2017 (comp group: Gallman 2.98, Conner 2.95, Johnson 2.95, Shipley 2.92, Davis-Price 2.80, Kelley 2.80, Hill 2.68, Ballage 2.46, Corum 2.42). Dual-threat qualification is a positive signal; YACO/A comp trend toward poor NFL outcomes remains the key concern. Model skepticism (rank 26-27) still warranted.",
         "context_source": "@ScottBarrettDFB 2026 RB Draft Class Production + Advanced Metrics chart 2026-04-07; dual-threat + MTF notes 2026-04-10"
       },
       "rookie_alpha_rank": 45,
