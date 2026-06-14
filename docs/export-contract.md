@@ -72,7 +72,7 @@ Player fields:
   - `evidence_tags` (fixed vocabulary)
   - `context_flags` (fixed vocabulary)
   - `translation_flags` (fixed surfaced subset for board/detail/compare)
-  - `evidence_summary` (template-style deterministic summary)
+  - `evidence_summary` (template-style deterministic summary) — research/scouting context, **not** a canonical model-input truth surface. Content rules: [`evidence-summary-provenance-policy.md`](evidence-summary-provenance-policy.md).
   - `context_source` (provenance label)
 
 ### Semantic distinction: market investment vs. positional consensus
