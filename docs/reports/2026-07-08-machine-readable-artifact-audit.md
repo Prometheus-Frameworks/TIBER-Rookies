@@ -81,16 +81,19 @@ Only a small subset has a written schema *and* code that enforces it:
 
 | Artifact family | Contract doc | Enforcing code | Test coverage |
 |---|---|---|---|
-| `exports/promoted/rookie-alpha/{year}_rookie_alpha_predraft_v0.{json,csv}` + `{year}_manifest.json` | `docs/export-contract.md`, `docs/tiber-fantasy-consumer-contract.md` | `scripts/validate_promoted_export.py` (re-hashes every input/output file against the manifest, checks required top-level fields) | `tests/test_validate_promoted_export.py` (4 tests) |
+| `exports/promoted/rookie-alpha/{year}_rookie_alpha_predraft_v0.{json,csv}` + `{year}_manifest.json` | `docs/export-contract.md`, `docs/tiber-fantasy-consumer-contract.md` | `scripts/validate_promoted_export.py` (re-hashes every input/output file against the manifest, checks required top-level fields) — confirmed each manifest's `output_files` covers only the predraft JSON/CSV pair, not postdraft | `tests/test_validate_promoted_export.py` (4 tests) |
 | `data/devy/*` (seed watchlist, market snapshots, roster pulse) | `docs/devy-signal-discovery.md` | `scripts/devy_signal_registry.py` (`CURRENT_DEVY_SCHEMA_VERSION`, enum/field/provenance validation), plus separate validators for roster pulse and market snapshots | `tests/test_devy_signal_registry.py` (24 tests) |
+| `data/processed/2026_day2_draft_signal_profiles.json`, `2026_round1_draft_signal_profiles.json` | No standalone doc, but a real field/enum contract lives in the validator code itself | `scripts/validate_day2_draft_signal_profiles.py`, `scripts/validate_round1_draft_signal_profiles.py` (both enforce required-field sets and enum membership — e.g. `TALENT_SIGNALS`, `OPPORTUNITY_SIGNALS`, `ALLOWED_SOURCE_STATUS` — against the committed files) | `tests/test_day2_draft_signal_profiles.py`, `tests/test_round1_draft_signal_profiles.py` |
 | `exports/promoted/historical-comps/2026_historical_comps_v0.json` | `docs/historical-comps-contract.md` (detailed field/gating spec) | Partial — `tests/test_compute_historical_comps.py` checks UI-safe contract-flag alignment, but the underlying data is explicitly "scaffold fixtures," not a full historical warehouse | Partial |
 | `data/processed/wr_route_profiles/` | `data/processed/wr_route_profiles/README.md` (explicit field list + limitations) | `scripts/fetch_wr_route_profiles.py` regenerates it | No dedicated schema test found |
 | `data/historical/` (identity/outcome features) | `data/historical/historical_prospect_features.schema.md` (explicit null policy) | None found — no validator enforces this doc against the actual sample files | None |
 
 Everything else (draft-capital proxies, positional consensus, YoY trends, age-adjusted
-production, dynasty ADP, player stats, day2/round1 signal profiles, operator-journal candidates,
-`te_production_profiles/`) has consistent field *naming* but no written schema doc, no
-`schema_version` field in the JSON itself, and no validator.
+production, dynasty ADP, player stats, operator-journal candidates, `te_production_profiles/`)
+has consistent field *naming* but no written schema doc, no `schema_version` field in the JSON
+itself, and no validator. (Day2/Round1 signal profiles are excluded from this "no validator"
+group — see the table above; they do have validator + test coverage, even though their
+*content* is still self-labeled `operator_seeded`/unreconciled per question 6.)
 
 **Important negative finding:** `lib/rookies/rookieDataContract.js` — despite its name — is not
 a schema or validator. It is a 34-line path/URL builder (`rookieAlphaExportPath()`,
@@ -105,12 +108,17 @@ Provenance quality varies sharply by family and is **not standardized** — ther
 repo-wide convention:
 
 - **Strongest:** `exports/promoted/rookie-alpha/{year}_manifest.json` (SHA-256 hashes of every
-  input/output file, `run_id`, `generated_at`, `coverage_summary` — verified the hashes actually
-  match the files on disk); `data/processed/2026_draft_results.json` (`source_name`,
-  `source_url`, `provenance_status` enum, `ingested_from`, `ingested_at`); `qb_play_profiles/`,
-  `rb_play_profiles/`, `wr_route_profiles/` (literal CFBD API query URLs + methodology notes);
-  `data/devy/*` (three-way provenance object with `source_type`, `source_notes`,
-  `last_verified_year`, plus an `intake_audit` block tying rows back to specific issues/PRs).
+  predraft input/output file, `run_id`, `generated_at`, `coverage_summary` — verified the hashes
+  actually match the files on disk); `data/processed/2026_draft_results.json` (`source_name`,
+  `source_url`, `source_status`, `upstream_provenance_status` enum, `ingested_from`,
+  `ingested_at`); `qb_play_profiles/`, `rb_play_profiles/` (literal CFBD API query URLs +
+  methodology notes); `data/devy/*` (three-way provenance object with `source_type`,
+  `source_notes`, `last_verified_year`, plus an `intake_audit` block tying rows back to specific
+  issues/PRs). `wr_route_profiles/` is **mixed, not uniformly strong**: of the 66 files, 54 have
+  `source_url: null` with `source_name` values indicating estimated/manual research (e.g.
+  "Grok/Sports-Reference cross-verification... targets estimated") rather than a CFBD API URL —
+  only a minority are genuinely CFBD-sourced with a live query URL. A consumer needs to check
+  `source_url` per file rather than assume the family-wide claim in the family's own README.
 - **Weak or absent:** `data/processed/2026_player_stats.json`, `2026_yoy_trends.json`,
   `2026_age_adjusted_production.json`, `2026_dynasty_adp.json`, and the top-level
   `exports/promoted/nfl-fantasy-outcomes/*.{json,csv}` files (no file-level metadata block);
@@ -167,9 +175,12 @@ Ranked by current governance maturity, not by data quality alone:
    `status: "directional_only"` for QB), but is self-described as scaffold/sample output with
    "no UI integration in this phase," and several position lanes are explicitly not yet
    methodology-compatible with historical vintages.
-3. **`data/processed/wr_route_profiles/`, `qb_play_profiles/`, `rb_play_profiles/`** — real,
-   CFBD-sourced, with URLs and documented limitations, but no schema_version, partial player
-   coverage, and no validator.
+3. **`data/processed/qb_play_profiles/`, `rb_play_profiles/`** — real, CFBD-sourced, with URLs
+   and documented limitations, but no schema_version, partial player coverage, and no validator.
+   **`wr_route_profiles/`** is a weaker version of this candidate than it first appears: 54 of
+   66 files are `source_url: null` estimated/manual-research rows, not CFBD-sourced observations
+   — any Forecast use would need to filter to the CFBD-backed subset specifically rather than
+   treat the family as uniformly observed data.
 4. **`exports/promoted/nfl-fantasy-outcomes/*`** — a genuine public-data (nflverse) outcome
    calibration lane with a real freshness gate (`--fail-on-stale-source`), but needs the SIM-row
    and blank-`player_name` issues resolved before an external consumer should treat it as clean.
@@ -243,15 +254,17 @@ paths are given where the file count is small enough to be meaningful.
 
 | Path | Format | Owner/source | Provenance | Schema/contract | Obs-vs-inferred | Next action |
 |---|---|---|---|---|---|---|
-| `exports/promoted/rookie-alpha/{2022-2026}_rookie_alpha_{predraft,postdraft}_v0.{json,csv}` + `{year}_manifest.json` | JSON+CSV+manifest | `scripts/compute_rookie_alpha.py`, `scripts/build_post_draft_alpha.py` | SHA-256 hashes verified against disk, `run_id`, `generated_at` | `docs/export-contract.md`, validated by `scripts/validate_promoted_export.py` | `athletic_confidence`, `athletic_explainer`, `athletic_source` enum | Fix the athletic-score naming/semantic-drift issue before any external consumer trusts the field name (see `docs/athletic-score-normalization-audit.md`) |
+| `exports/promoted/rookie-alpha/{2022-2026}_rookie_alpha_predraft_v0.{json,csv}` + `{year}_manifest.json` | JSON+CSV+manifest | `scripts/compute_rookie_alpha.py` | SHA-256 hashes verified against disk, `run_id`, `generated_at` — confirmed each `{year}_manifest.json`'s `output_files` lists only the predraft JSON/CSV pair | `docs/export-contract.md`, validated by `scripts/validate_promoted_export.py` | `athletic_confidence`, `athletic_explainer`, `athletic_source` enum | Fix the athletic-score naming/semantic-drift issue before any external consumer trusts the field name (see `docs/athletic-score-normalization-audit.md`) |
+| `exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_v0.{json,csv}` | JSON+CSV | `scripts/build_post_draft_alpha.py` | `source_profile`/`source_status` per row; **not** covered by `2026_manifest.json` (its `output_files` list only the predraft pair) and has no manifest of its own | `tests/test_build_post_draft_alpha.py::test_write_outputs_contract` checks output row shape (fixed `ROW_FIELDS`), but there is no hash/provenance manifest | Row-level shape only | Postdraft exists only for 2026 (no 2022-2025 equivalents) — treat as ungoverned relative to the manifest-verified predraft family; a Forecast adapter must not assume postdraft is hash-verified or that 2022-2025 postdraft files exist |
 | `data/devy/devy_seed_watchlist_2026.json`, `data/devy/monthly_pulse/*`, real (non-fixture) `data/devy/league_market_snapshots/*` | JSON | `scripts/devy_signal_registry.py` and sibling validators | Three-way structured provenance + `intake_audit` issue/PR lineage | `schema_version` field + validator + 24 tests | `confidence_band`/`signal_strength_band`/`actionability_band` | Governance is strong; the data itself is explicitly non-authoritative by design — no action needed for audit purposes |
-| `data/processed/2026_draft_results.json` | JSON | `docs/cross-repo-draft-results-ingestion.md` adapter | `source_name`, `source_url`, `provenance_status` enum, `ingested_from`/`ingested_at` | Upstream contract `tiber-data.nfl-draft-results.v1.0.0` cited explicitly | `provenance_status: source_verified` vs `needs_verification` vs `fixture_only` | Confirm this file is still current; prior years (2022-2025) are empty `[]` |
+| `data/processed/2026_draft_results.json` | JSON | `docs/cross-repo-draft-results-ingestion.md` adapter | `source_name`, `source_url`, `source_status`, `upstream_provenance_status`, `ingested_from`/`ingested_at` (confirmed against actual rows — the upstream ingest input uses `provenance_status`, but the processed artifact itself carries `source_status`/`upstream_provenance_status`) | Upstream contract `tiber-data.nfl-draft-results.v1.0.0` cited explicitly | `upstream_provenance_status: source_verified` vs `needs_verification` vs `fixture_only` | Confirm this file is still current; prior years (2022-2025) are empty `[]` |
 
 ### `machine_readable_ungoverned_artifact`
 
 | Path/family | Format | Provenance | Gap |
 |---|---|---|---|
-| `data/processed/wr_route_profiles/`, `qb_play_profiles/`, `rb_play_profiles/` | JSON | Real CFBD URLs + methodology notes | Has a README describing fields but no `schema_version` field, no validator, no test |
+| `data/processed/qb_play_profiles/`, `rb_play_profiles/` | JSON | Real CFBD URLs + methodology notes | Has a README describing fields but no `schema_version` field, no validator, no test |
+| `data/processed/wr_route_profiles/` | JSON | Mixed: 12 of 66 files have a real CFBD API `source_url`; the other 54 have `source_url: null` with `source_name` describing estimated/manual research (e.g. Grok/Sports-Reference cross-verification) | Has a README describing fields and a regeneration script, but no `schema_version`, no validator, no per-file flag distinguishing CFBD-observed rows from estimated ones |
 | `data/processed/2026_player_stats.json`, `2026_yoy_trends.json`, `2026_age_adjusted_production.json`, `2026_dynasty_adp.json` | JSON | None or filename-implied only | No schema doc, no provenance fields, no validator |
 | `exports/promoted/nfl-fantasy-outcomes/*.{json,csv}` | JSON+CSV | Row-level `source: "nflverse_public_release"` but no file-level metadata block | Contains unflagged `SIM`-prefixed synthetic rows; `player_name` blank on every sampled row |
 | `data/processed/te_production_profiles/*.json` | JSON | Narrative `source_name` (no URL) | Manually curated, not a repeatable pipeline; confidence conveyed only in prose |
@@ -304,7 +317,7 @@ paths are given where the file count is small enough to be meaningful.
 |---|---|
 | Rookie transition profile | No dedicated artifact; would draw from rookie-alpha scores + play profiles, neither purpose-built for this |
 | Draft capital context | Partial — `draft_capital_proxy_0_100` exists but is explicitly labeled a *temporary proxy*, not real draft capital, until `2026_draft_results.json` fully reconciles |
-| College production translation | Partial — `*_college_production.json` and `wr_route_profiles/` are real and sourced, but ungoverned (no schema_version/validator) |
+| College production translation | Partial — `*_college_production.json` is real and sourced but ungoverned (no schema_version/validator); `wr_route_profiles/` is only partly sourced (12 of 66 files are CFBD-observed, the rest are estimated) and equally ungoverned |
 | First-year adaptation curve | No artifact exists; `nfl-fantasy-outcomes` could seed this but needs the SIM-row/blank-name cleanup first |
 | Archetype / role projection | Explicitly out of scope today — the role-opportunity join is inspect-only and non-scoring by design |
 | Landing spot context | Explicitly out of scope today — the team-context join is inspect-only, non-scoring, and was marked broken as of the last internal audit |
