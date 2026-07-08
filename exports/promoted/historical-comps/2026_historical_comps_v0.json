@@ -11,55 +11,68 @@
     },
     "notes": "v0 emits talent_comp by default; market_comp support is scaffolded and optional."
   },
-  "generated_at": "2026-04-03T20:39:43+00:00",
+  "generated_at": "2026-07-08T21:35:14+00:00",
   "season": 2026,
   "source_files_used": [
     "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
     "data/historical/historical_prospect_features.sample.json",
     "data/historical/historical_player_outcomes.sample.json"
   ],
-  "comp_data_warnings": {},
+  "comp_data_warnings": {
+    "WR": "WR lane coverage is insufficient for differentiation breadth/feature depth checks; failed_checks=rookie_wr_with_comps, max_top1_count, unique_top1_count, pct_all_comps_with_3plus_features, pct_top1_comps_with_3plus_features. Similarities remain directional only.",
+    "TE": "TE lane coverage is insufficient for differentiation breadth/feature depth checks; failed_checks=rookie_te_with_comps, pct_all_comps_with_3plus_features, pct_top1_comps_with_3plus_features. Similarities remain directional only."
+  },
   "lane_coverage_by_position": {
     "WR": {
-      "total_promoted_wrs": 8,
-      "rookie_wr_with_comps": 8,
-      "max_top1_count": 2,
-      "unique_top1_count": 5,
-      "unique_comp_pool_count": 11,
-      "all_comps_count": 40,
-      "all_comps_with_3plus_features_count": 34,
-      "top1_comps_count": 8,
-      "top1_comps_with_3plus_features_count": 6,
-      "pct_all_comps_with_3plus_features": 0.85,
-      "pct_top1_comps_with_3plus_features": 0.75,
-      "coverage_sufficient": true,
-      "failed_checks": []
+      "total_promoted_wrs": 23,
+      "rookie_wr_with_comps": 14,
+      "max_top1_count": 6,
+      "unique_top1_count": 4,
+      "unique_comp_pool_count": 9,
+      "all_comps_count": 70,
+      "all_comps_with_3plus_features_count": 0,
+      "top1_comps_count": 14,
+      "top1_comps_with_3plus_features_count": 0,
+      "pct_all_comps_with_3plus_features": 0.0,
+      "pct_top1_comps_with_3plus_features": 0.0,
+      "coverage_sufficient": false,
+      "failed_checks": [
+        "rookie_wr_with_comps",
+        "max_top1_count",
+        "unique_top1_count",
+        "pct_all_comps_with_3plus_features",
+        "pct_top1_comps_with_3plus_features"
+      ]
     },
     "TE": {
-      "total_promoted_tes": 3,
-      "rookie_te_with_comps": 3,
-      "max_top1_count": 2,
-      "unique_top1_count": 2,
-      "unique_comp_pool_count": 6,
-      "all_comps_count": 15,
-      "all_comps_with_3plus_features_count": 15,
-      "top1_comps_count": 3,
-      "top1_comps_with_3plus_features_count": 3,
-      "pct_all_comps_with_3plus_features": 1.0,
-      "pct_top1_comps_with_3plus_features": 1.0,
-      "coverage_sufficient": true,
-      "failed_checks": []
+      "total_promoted_tes": 11,
+      "rookie_te_with_comps": 6,
+      "max_top1_count": 3,
+      "unique_top1_count": 4,
+      "unique_comp_pool_count": 8,
+      "all_comps_count": 30,
+      "all_comps_with_3plus_features_count": 0,
+      "top1_comps_count": 6,
+      "top1_comps_with_3plus_features_count": 0,
+      "pct_all_comps_with_3plus_features": 0.0,
+      "pct_top1_comps_with_3plus_features": 0.0,
+      "coverage_sufficient": false,
+      "failed_checks": [
+        "rookie_te_with_comps",
+        "pct_all_comps_with_3plus_features",
+        "pct_top1_comps_with_3plus_features"
+      ]
     }
   },
   "similarity_quality_by_position": {
     "QB": {
       "status": "directional_only",
-      "reason": "outcomes_present: false; methodology_compatible: false",
+      "reason": "min_effective_feature_count_met: false; outcomes_present: false; non_market_dimension_present: false; methodology_compatible: false",
       "requirements_checked": {
         "no_lane_warning": true,
-        "min_effective_feature_count_met": true,
+        "min_effective_feature_count_met": false,
         "outcomes_present": false,
-        "non_market_dimension_present": true,
+        "non_market_dimension_present": false,
         "methodology_compatible": false
       }
     },
@@ -75,21 +88,21 @@
       }
     },
     "TE": {
-      "status": "ui_safe",
-      "reason": "all_checks_passed",
+      "status": "directional_only",
+      "reason": "no_lane_warning: false; methodology_compatible: false",
       "requirements_checked": {
-        "no_lane_warning": true,
+        "no_lane_warning": false,
         "min_effective_feature_count_met": true,
         "outcomes_present": true,
         "non_market_dimension_present": true,
-        "methodology_compatible": true
+        "methodology_compatible": false
       }
     },
     "WR": {
-      "status": "ui_safe",
-      "reason": "all_checks_passed",
+      "status": "directional_only",
+      "reason": "no_lane_warning: false",
       "requirements_checked": {
-        "no_lane_warning": true,
+        "no_lane_warning": false,
         "min_effective_feature_count_met": true,
         "outcomes_present": true,
         "non_market_dimension_present": true,
@@ -100,14 +113,14 @@
   "methodology_compatibility_by_position": {
     "QB": false,
     "RB": false,
-    "TE": true,
+    "TE": false,
     "WR": true
   },
   "ui_display_allowed": {
     "QB": false,
     "RB": false,
-    "TE": true,
-    "WR": true
+    "TE": false,
+    "WR": false
   },
   "players": [
     {
@@ -121,8 +134,8 @@
           "player_name": "Sample QB Profile B",
           "draft_year": 2019,
           "position": "QB",
-          "similarity_score": 95.2736,
-          "distance": 0.047264,
+          "similarity_score": 54.28,
+          "distance": 0.4572,
           "feature_snapshot": {
             "ras_0_100": 61.0,
             "production_0_100": 72.0,
@@ -132,7 +145,6 @@
             "opt_out_season_flag": false
           },
           "effective_features_used": [
-            "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
@@ -147,8 +159,8 @@
           "player_name": "Sample QB Profile A",
           "draft_year": 2018,
           "position": "QB",
-          "similarity_score": 87.3427,
-          "distance": 0.126573,
+          "similarity_score": 46.28,
+          "distance": 0.5372,
           "feature_snapshot": {
             "ras_0_100": 74.0,
             "production_0_100": 80.0,
@@ -158,7 +170,6 @@
             "opt_out_season_flag": false
           },
           "effective_features_used": [
-            "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
@@ -177,22 +188,21 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "sample-qb-2019-b",
-          "player_name": "Sample QB Profile B",
-          "draft_year": 2019,
+          "historical_player_id": "sample-qb-2018-a",
+          "player_name": "Sample QB Profile A",
+          "draft_year": 2018,
           "position": "QB",
-          "similarity_score": 85.6443,
-          "distance": 0.143557,
+          "similarity_score": 99.32,
+          "distance": 0.0068,
           "feature_snapshot": {
-            "ras_0_100": 61.0,
-            "production_0_100": 72.0,
-            "draft_capital_proxy_0_100": 70.0,
-            "size_context_0_100": 66.0,
+            "ras_0_100": 74.0,
+            "production_0_100": 80.0,
+            "draft_capital_proxy_0_100": 88.0,
+            "size_context_0_100": 71.0,
             "normalization_scope": "cohort-local",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
-            "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
@@ -203,22 +213,21 @@
           }
         },
         {
-          "historical_player_id": "sample-qb-2018-a",
-          "player_name": "Sample QB Profile A",
-          "draft_year": 2018,
+          "historical_player_id": "sample-qb-2019-b",
+          "player_name": "Sample QB Profile B",
+          "draft_year": 2019,
           "position": "QB",
-          "similarity_score": 78.0627,
-          "distance": 0.219373,
+          "similarity_score": 91.32,
+          "distance": 0.0868,
           "feature_snapshot": {
-            "ras_0_100": 74.0,
-            "production_0_100": 80.0,
-            "draft_capital_proxy_0_100": 88.0,
-            "size_context_0_100": 71.0,
+            "ras_0_100": 61.0,
+            "production_0_100": 72.0,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 66.0,
             "normalization_scope": "cohort-local",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
-            "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
@@ -237,22 +246,21 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "sample-qb-2018-a",
-          "player_name": "Sample QB Profile A",
-          "draft_year": 2018,
+          "historical_player_id": "sample-qb-2019-b",
+          "player_name": "Sample QB Profile B",
+          "draft_year": 2019,
           "position": "QB",
-          "similarity_score": 93.6975,
-          "distance": 0.063025,
+          "similarity_score": 83.94,
+          "distance": 0.1606,
           "feature_snapshot": {
-            "ras_0_100": 74.0,
-            "production_0_100": 80.0,
-            "draft_capital_proxy_0_100": 88.0,
-            "size_context_0_100": 71.0,
+            "ras_0_100": 61.0,
+            "production_0_100": 72.0,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 66.0,
             "normalization_scope": "cohort-local",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
-            "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
@@ -263,22 +271,21 @@
           }
         },
         {
-          "historical_player_id": "sample-qb-2019-b",
-          "player_name": "Sample QB Profile B",
-          "draft_year": 2019,
+          "historical_player_id": "sample-qb-2018-a",
+          "player_name": "Sample QB Profile A",
+          "draft_year": 2018,
           "position": "QB",
-          "similarity_score": 92.8581,
-          "distance": 0.071419,
+          "similarity_score": 75.94,
+          "distance": 0.2406,
           "feature_snapshot": {
-            "ras_0_100": 61.0,
-            "production_0_100": 72.0,
-            "draft_capital_proxy_0_100": 70.0,
-            "size_context_0_100": 66.0,
+            "ras_0_100": 74.0,
+            "production_0_100": 80.0,
+            "draft_capital_proxy_0_100": 88.0,
+            "size_context_0_100": 71.0,
             "normalization_scope": "cohort-local",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
-            "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
@@ -301,8 +308,8 @@
           "player_name": "Sample QB Profile B",
           "draft_year": 2019,
           "position": "QB",
-          "similarity_score": 73.5327,
-          "distance": 0.264673,
+          "similarity_score": 95.98,
+          "distance": 0.0402,
           "feature_snapshot": {
             "ras_0_100": 61.0,
             "production_0_100": 72.0,
@@ -312,7 +319,6 @@
             "opt_out_season_flag": false
           },
           "effective_features_used": [
-            "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
@@ -327,8 +333,8 @@
           "player_name": "Sample QB Profile A",
           "draft_year": 2018,
           "position": "QB",
-          "similarity_score": 62.7437,
-          "distance": 0.372563,
+          "similarity_score": 87.98,
+          "distance": 0.1202,
           "feature_snapshot": {
             "ras_0_100": 74.0,
             "production_0_100": 80.0,
@@ -338,7 +344,6 @@
             "opt_out_season_flag": false
           },
           "effective_features_used": [
-            "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
@@ -361,8 +366,8 @@
           "player_name": "Sample QB Profile B",
           "draft_year": 2019,
           "position": "QB",
-          "similarity_score": 76.0261,
-          "distance": 0.239739,
+          "similarity_score": 79.68,
+          "distance": 0.2032,
           "feature_snapshot": {
             "ras_0_100": 61.0,
             "production_0_100": 72.0,
@@ -372,7 +377,6 @@
             "opt_out_season_flag": false
           },
           "effective_features_used": [
-            "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
@@ -387,8 +391,8 @@
           "player_name": "Sample QB Profile A",
           "draft_year": 2018,
           "position": "QB",
-          "similarity_score": 65.2697,
-          "distance": 0.347303,
+          "similarity_score": 71.68,
+          "distance": 0.2832,
           "feature_snapshot": {
             "ras_0_100": 74.0,
             "production_0_100": 80.0,
@@ -398,7 +402,6 @@
             "opt_out_season_flag": false
           },
           "effective_features_used": [
-            "ras_0_100",
             "production_0_100"
           ],
           "outcome_snapshot": {
@@ -409,6 +412,13 @@
           }
         }
       ]
+    },
+    {
+      "player_id": "rb-emmett-johnson",
+      "player_name": "Emmett Johnson",
+      "position": "RB",
+      "comp_mode": "talent_comp",
+      "comps": []
     },
     {
       "player_id": "rb-jadarian-price",
@@ -432,11 +442,184 @@
       "comps": []
     },
     {
+      "player_id": "rb-kaelon-black",
+      "player_name": "Kaelon Black",
+      "position": "RB",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "rb-kaytron-allen",
+      "player_name": "Kaytron Allen",
+      "position": "RB",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "rb-mike-washington-jr",
+      "player_name": "Mike Washington Jr.",
+      "position": "RB",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
       "player_id": "rb-nick-singleton",
       "player_name": "Nick Singleton",
       "position": "RB",
       "comp_mode": "talent_comp",
       "comps": []
+    },
+    {
+      "player_id": "rb-seth-mcgowan",
+      "player_name": "Seth McGowan",
+      "position": "RB",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "te-daequan-wright",
+      "player_name": "Dae'Quan Wright",
+      "position": "TE",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "te-eli-raridon",
+      "player_name": "Eli Raridon",
+      "position": "TE",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "te-cole-kmet-2020",
+          "player_name": "Cole Kmet",
+          "draft_year": 2020,
+          "position": "TE",
+          "similarity_score": 91.8469,
+          "distance": 0.081531,
+          "feature_snapshot": {
+            "ras_0_100": 58.4,
+            "production_0_100": 37.9,
+            "draft_capital_proxy_0_100": 74.0,
+            "size_context_0_100": 56.7,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te3_peak",
+            "best_season_fantasy_ppg": 7.2,
+            "top_finish_band": "TE3",
+            "years_1_to_3_summary": "Y1: 3.2, Y2: 6.8, Y3: 7.2"
+          }
+        },
+        {
+          "historical_player_id": "te-trey-mcbride-2022",
+          "player_name": "Trey McBride",
+          "draft_year": 2022,
+          "position": "TE",
+          "similarity_score": 90.9797,
+          "distance": 0.090203,
+          "feature_snapshot": {
+            "ras_0_100": 65.5,
+            "production_0_100": 47.2,
+            "draft_capital_proxy_0_100": 68.0,
+            "size_context_0_100": 43.4,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 10.9,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 1.6, Y2: 7.9, Y3: 10.9"
+          }
+        },
+        {
+          "historical_player_id": "te-dallas-goedert-2018",
+          "player_name": "Dallas Goedert",
+          "draft_year": 2018,
+          "position": "TE",
+          "similarity_score": 89.6383,
+          "distance": 0.103617,
+          "feature_snapshot": {
+            "ras_0_100": 61.4,
+            "production_0_100": 59.8,
+            "draft_capital_proxy_0_100": 72.0,
+            "size_context_0_100": 51.4,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 10.7,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 6.6, Y2: 9.0, Y3: 10.7"
+          }
+        },
+        {
+          "historical_player_id": "te-isaiah-likely-2022",
+          "player_name": "Isaiah Likely",
+          "draft_year": 2022,
+          "position": "TE",
+          "similarity_score": 89.3725,
+          "distance": 0.106275,
+          "feature_snapshot": {
+            "ras_0_100": 61.2,
+            "production_0_100": 60.4,
+            "draft_capital_proxy_0_100": 63.0,
+            "size_context_0_100": 46.0,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te3_peak",
+            "best_season_fantasy_ppg": 5.4,
+            "top_finish_band": "TE3",
+            "years_1_to_3_summary": "Y1: 1.6, Y2: 4.1, Y3: 5.4"
+          }
+        },
+        {
+          "historical_player_id": "te-pat-freiermuth-2021",
+          "player_name": "Pat Freiermuth",
+          "draft_year": 2021,
+          "position": "TE",
+          "similarity_score": 86.2495,
+          "distance": 0.137505,
+          "feature_snapshot": {
+            "ras_0_100": 69.7,
+            "production_0_100": 38.4,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 51.2,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 11.1,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 8.7, Y2: 8.7, Y3: 11.1"
+          }
+        }
+      ]
     },
     {
       "player_id": "te-eli-stowers",
@@ -445,24 +628,49 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "te-dallas-goedert-2018",
-          "player_name": "Dallas Goedert",
+          "historical_player_id": "te-mark-andrews-2018",
+          "player_name": "Mark Andrews",
           "draft_year": 2018,
           "position": "TE",
-          "similarity_score": 92.4728,
-          "distance": 0.075272,
+          "similarity_score": 93.7481,
+          "distance": 0.062519,
           "feature_snapshot": {
-            "ras_0_100": 61.4,
-            "production_0_100": 61.7,
-            "draft_capital_proxy_0_100": 72.0,
-            "size_context_0_100": 51.4,
-            "normalization_scope": "historical-te-cfbd-season-pop-v1",
+            "ras_0_100": 82.8,
+            "production_0_100": 57.9,
+            "draft_capital_proxy_0_100": 78.0,
+            "size_context_0_100": 53.0,
+            "normalization_scope": "historical-te-cfbd-method-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te1_peak",
+            "best_season_fantasy_ppg": 15.2,
+            "top_finish_band": "TE1",
+            "years_1_to_3_summary": "Y1: 7.8, Y2: 14.2, Y3: 15.2"
+          }
+        },
+        {
+          "historical_player_id": "te-dallas-goedert-2018",
+          "player_name": "Dallas Goedert",
+          "draft_year": 2018,
+          "position": "TE",
+          "similarity_score": 91.0549,
+          "distance": 0.089451,
+          "feature_snapshot": {
+            "ras_0_100": 61.4,
+            "production_0_100": 59.8,
+            "draft_capital_proxy_0_100": 72.0,
+            "size_context_0_100": 51.4,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te2_peak",
@@ -472,78 +680,23 @@
           }
         },
         {
-          "historical_player_id": "te-cole-kmet-2020",
-          "player_name": "Cole Kmet",
-          "draft_year": 2020,
-          "position": "TE",
-          "similarity_score": 90.9988,
-          "distance": 0.090012,
-          "feature_snapshot": {
-            "ras_0_100": 58.4,
-            "production_0_100": 51.2,
-            "draft_capital_proxy_0_100": 74.0,
-            "size_context_0_100": 56.7,
-            "normalization_scope": "historical-te-cfbd-season-pop-v1",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "te3_peak",
-            "best_season_fantasy_ppg": 7.2,
-            "top_finish_band": "TE3",
-            "years_1_to_3_summary": "Y1: 3.2, Y2: 6.8, Y3: 7.2"
-          }
-        },
-        {
-          "historical_player_id": "te-trey-mcbride-2022",
-          "player_name": "Trey McBride",
-          "draft_year": 2022,
-          "position": "TE",
-          "similarity_score": 90.0944,
-          "distance": 0.099056,
-          "feature_snapshot": {
-            "ras_0_100": 65.5,
-            "production_0_100": 61.9,
-            "draft_capital_proxy_0_100": 68.0,
-            "size_context_0_100": 43.4,
-            "normalization_scope": "historical-te-cfbd-season-pop-v1",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "te2_peak",
-            "best_season_fantasy_ppg": 10.9,
-            "top_finish_band": "TE2",
-            "years_1_to_3_summary": "Y1: 1.6, Y2: 7.9, Y3: 10.9"
-          }
-        },
-        {
           "historical_player_id": "te-isaiah-likely-2022",
           "player_name": "Isaiah Likely",
           "draft_year": 2022,
           "position": "TE",
-          "similarity_score": 89.2795,
-          "distance": 0.107205,
+          "similarity_score": 90.8584,
+          "distance": 0.091416,
           "feature_snapshot": {
             "ras_0_100": 61.2,
-            "production_0_100": 72.6,
+            "production_0_100": 60.4,
             "draft_capital_proxy_0_100": 63.0,
             "size_context_0_100": 46.0,
-            "normalization_scope": "historical-te-cfbd-season-pop-v1",
+            "normalization_scope": "historical-te-cfbd-method-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te3_peak",
@@ -553,33 +706,65 @@
           }
         },
         {
-          "historical_player_id": "te-pat-freiermuth-2021",
-          "player_name": "Pat Freiermuth",
-          "draft_year": 2021,
+          "historical_player_id": "te-trey-mcbride-2022",
+          "player_name": "Trey McBride",
+          "draft_year": 2022,
           "position": "TE",
-          "similarity_score": 85.8876,
-          "distance": 0.141124,
+          "similarity_score": 90.0696,
+          "distance": 0.099304,
           "feature_snapshot": {
-            "ras_0_100": 69.7,
-            "production_0_100": 51.9,
-            "draft_capital_proxy_0_100": 70.0,
-            "size_context_0_100": 51.2,
-            "normalization_scope": "historical-te-cfbd-season-pop-v1",
+            "ras_0_100": 65.5,
+            "production_0_100": 47.2,
+            "draft_capital_proxy_0_100": 68.0,
+            "size_context_0_100": 43.4,
+            "normalization_scope": "historical-te-cfbd-method-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te2_peak",
-            "best_season_fantasy_ppg": 11.1,
+            "best_season_fantasy_ppg": 10.9,
             "top_finish_band": "TE2",
-            "years_1_to_3_summary": "Y1: 8.7, Y2: 8.7, Y3: 11.1"
+            "years_1_to_3_summary": "Y1: 1.6, Y2: 7.9, Y3: 10.9"
+          }
+        },
+        {
+          "historical_player_id": "te-tj-hockenson-2018",
+          "player_name": "T.J. Hockenson",
+          "draft_year": 2019,
+          "position": "TE",
+          "similarity_score": 88.1975,
+          "distance": 0.118025,
+          "feature_snapshot": {
+            "ras_0_100": 89.8,
+            "production_0_100": 53.1,
+            "draft_capital_proxy_0_100": 92.0,
+            "size_context_0_100": 49.2,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 11.5,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 5.2, Y2: 11.5, Y3: 8.0"
           }
         }
       ]
+    },
+    {
+      "player_id": "te-justin-joly",
+      "player_name": "Justin Joly",
+      "position": "TE",
+      "comp_mode": "talent_comp",
+      "comps": []
     },
     {
       "player_id": "te-kenyon-sadiq",
@@ -588,254 +773,29 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "te-cole-kmet-2020",
-          "player_name": "Cole Kmet",
-          "draft_year": 2020,
-          "position": "TE",
-          "similarity_score": 88.7756,
-          "distance": 0.112244,
-          "feature_snapshot": {
-            "ras_0_100": 58.4,
-            "production_0_100": 51.2,
-            "draft_capital_proxy_0_100": 74.0,
-            "size_context_0_100": 56.7,
-            "normalization_scope": "historical-te-cfbd-season-pop-v1",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "te3_peak",
-            "best_season_fantasy_ppg": 7.2,
-            "top_finish_band": "TE3",
-            "years_1_to_3_summary": "Y1: 3.2, Y2: 6.8, Y3: 7.2"
-          }
-        },
-        {
-          "historical_player_id": "te-dallas-goedert-2018",
-          "player_name": "Dallas Goedert",
-          "draft_year": 2018,
-          "position": "TE",
-          "similarity_score": 88.3928,
-          "distance": 0.116072,
-          "feature_snapshot": {
-            "ras_0_100": 61.4,
-            "production_0_100": 61.7,
-            "draft_capital_proxy_0_100": 72.0,
-            "size_context_0_100": 51.4,
-            "normalization_scope": "historical-te-cfbd-season-pop-v1",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "te2_peak",
-            "best_season_fantasy_ppg": 10.7,
-            "top_finish_band": "TE2",
-            "years_1_to_3_summary": "Y1: 6.6, Y2: 9.0, Y3: 10.7"
-          }
-        },
-        {
-          "historical_player_id": "te-trey-mcbride-2022",
-          "player_name": "Trey McBride",
-          "draft_year": 2022,
-          "position": "TE",
-          "similarity_score": 86.0589,
-          "distance": 0.139411,
-          "feature_snapshot": {
-            "ras_0_100": 65.5,
-            "production_0_100": 61.9,
-            "draft_capital_proxy_0_100": 68.0,
-            "size_context_0_100": 43.4,
-            "normalization_scope": "historical-te-cfbd-season-pop-v1",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "te2_peak",
-            "best_season_fantasy_ppg": 10.9,
-            "top_finish_band": "TE2",
-            "years_1_to_3_summary": "Y1: 1.6, Y2: 7.9, Y3: 10.9"
-          }
-        },
-        {
-          "historical_player_id": "te-isaiah-likely-2022",
-          "player_name": "Isaiah Likely",
-          "draft_year": 2022,
-          "position": "TE",
-          "similarity_score": 85.5023,
-          "distance": 0.144977,
-          "feature_snapshot": {
-            "ras_0_100": 61.2,
-            "production_0_100": 72.6,
-            "draft_capital_proxy_0_100": 63.0,
-            "size_context_0_100": 46.0,
-            "normalization_scope": "historical-te-cfbd-season-pop-v1",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "te3_peak",
-            "best_season_fantasy_ppg": 5.4,
-            "top_finish_band": "TE3",
-            "years_1_to_3_summary": "Y1: 1.6, Y2: 4.1, Y3: 5.4"
-          }
-        },
-        {
           "historical_player_id": "te-pat-freiermuth-2021",
           "player_name": "Pat Freiermuth",
           "draft_year": 2021,
           "position": "TE",
-          "similarity_score": 82.6289,
-          "distance": 0.173711,
+          "similarity_score": 95.1475,
+          "distance": 0.048525,
           "feature_snapshot": {
             "ras_0_100": 69.7,
-            "production_0_100": 51.9,
+            "production_0_100": 38.4,
             "draft_capital_proxy_0_100": 70.0,
             "size_context_0_100": 51.2,
-            "normalization_scope": "historical-te-cfbd-season-pop-v1",
+            "normalization_scope": "historical-te-cfbd-method-v1",
             "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te2_peak",
             "best_season_fantasy_ppg": 11.1,
             "top_finish_band": "TE2",
             "years_1_to_3_summary": "Y1: 8.7, Y2: 8.7, Y3: 11.1"
-          }
-        }
-      ]
-    },
-    {
-      "player_id": "te-max-klare",
-      "player_name": "Max Klare",
-      "position": "TE",
-      "comp_mode": "talent_comp",
-      "comps": [
-        {
-          "historical_player_id": "te-cole-kmet-2020",
-          "player_name": "Cole Kmet",
-          "draft_year": 2020,
-          "position": "TE",
-          "similarity_score": 96.4195,
-          "distance": 0.035805,
-          "feature_snapshot": {
-            "ras_0_100": 58.4,
-            "production_0_100": 51.2,
-            "draft_capital_proxy_0_100": 74.0,
-            "size_context_0_100": 56.7,
-            "normalization_scope": "historical-te-cfbd-season-pop-v1",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "te3_peak",
-            "best_season_fantasy_ppg": 7.2,
-            "top_finish_band": "TE3",
-            "years_1_to_3_summary": "Y1: 3.2, Y2: 6.8, Y3: 7.2"
-          }
-        },
-        {
-          "historical_player_id": "te-pat-freiermuth-2021",
-          "player_name": "Pat Freiermuth",
-          "draft_year": 2021,
-          "position": "TE",
-          "similarity_score": 92.4831,
-          "distance": 0.075169,
-          "feature_snapshot": {
-            "ras_0_100": 69.7,
-            "production_0_100": 51.9,
-            "draft_capital_proxy_0_100": 70.0,
-            "size_context_0_100": 51.2,
-            "normalization_scope": "historical-te-cfbd-season-pop-v1",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "te2_peak",
-            "best_season_fantasy_ppg": 11.1,
-            "top_finish_band": "TE2",
-            "years_1_to_3_summary": "Y1: 8.7, Y2: 8.7, Y3: 11.1"
-          }
-        },
-        {
-          "historical_player_id": "te-dallas-goedert-2018",
-          "player_name": "Dallas Goedert",
-          "draft_year": 2018,
-          "position": "TE",
-          "similarity_score": 91.3195,
-          "distance": 0.086805,
-          "feature_snapshot": {
-            "ras_0_100": 61.4,
-            "production_0_100": 61.7,
-            "draft_capital_proxy_0_100": 72.0,
-            "size_context_0_100": 51.4,
-            "normalization_scope": "historical-te-cfbd-season-pop-v1",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "te2_peak",
-            "best_season_fantasy_ppg": 10.7,
-            "top_finish_band": "TE2",
-            "years_1_to_3_summary": "Y1: 6.6, Y2: 9.0, Y3: 10.7"
-          }
-        },
-        {
-          "historical_player_id": "te-trey-mcbride-2022",
-          "player_name": "Trey McBride",
-          "draft_year": 2022,
-          "position": "TE",
-          "similarity_score": 90.4078,
-          "distance": 0.095922,
-          "feature_snapshot": {
-            "ras_0_100": 65.5,
-            "production_0_100": 61.9,
-            "draft_capital_proxy_0_100": 68.0,
-            "size_context_0_100": 43.4,
-            "normalization_scope": "historical-te-cfbd-season-pop-v1",
-            "opt_out_season_flag": false
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "te2_peak",
-            "best_season_fantasy_ppg": 10.9,
-            "top_finish_band": "TE2",
-            "years_1_to_3_summary": "Y1: 1.6, Y2: 7.9, Y3: 10.9"
           }
         },
         {
@@ -843,8 +803,8 @@
           "player_name": "Sam LaPorta",
           "draft_year": 2023,
           "position": "TE",
-          "similarity_score": 86.2158,
-          "distance": 0.137842,
+          "similarity_score": 93.4992,
+          "distance": 0.065008,
           "feature_snapshot": {
             "ras_0_100": 72.1,
             "production_0_100": 33.4,
@@ -855,8 +815,7 @@
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "te1_peak",
@@ -864,214 +823,556 @@
             "top_finish_band": "TE1",
             "years_1_to_3_summary": "Y1: 14.3, Y2: 11.8, Y3: n/a"
           }
-        }
-      ]
-    },
-    {
-      "player_id": "wr-carnell-tate",
-      "player_name": "Carnell Tate",
-      "position": "WR",
-      "comp_mode": "talent_comp",
-      "comps": [
+        },
         {
-          "historical_player_id": "wr-tee-higgins-2020",
-          "player_name": "Tee Higgins",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 92.6171,
-          "distance": 0.073829,
+          "historical_player_id": "te-trey-mcbride-2022",
+          "player_name": "Trey McBride",
+          "draft_year": 2022,
+          "position": "TE",
+          "similarity_score": 91.9329,
+          "distance": 0.080671,
           "feature_snapshot": {
-            "ras_0_100": 41.6,
-            "production_0_100": 82.0,
-            "draft_capital_proxy_0_100": 65.0,
-            "size_context_0_100": 50.0,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": 62.88,
-            "receptions": 59,
-            "receiving_yards": 1167,
-            "receiving_tds": 13
+            "ras_0_100": 65.5,
+            "production_0_100": 47.2,
+            "draft_capital_proxy_0_100": 68.0,
+            "size_context_0_100": 43.4,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": "wr1_peak",
-            "best_season_fantasy_ppg": 18.5,
-            "top_finish_band": "WR1 (18.0+ PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 12.2, 15.7, 13.8; receiving line: 67/908/6, 74/1091/6, 74/1029/7."
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 10.9,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 1.6, Y2: 7.9, Y3: 10.9"
           }
         },
         {
-          "historical_player_id": "wr-calvin-ridley-2018",
-          "player_name": "Calvin Ridley",
+          "historical_player_id": "te-mark-andrews-2018",
+          "player_name": "Mark Andrews",
           "draft_year": 2018,
-          "position": "WR",
-          "similarity_score": 86.5728,
-          "distance": 0.134272,
+          "position": "TE",
+          "similarity_score": 87.5944,
+          "distance": 0.124056,
           "feature_snapshot": {
-            "ras_0_100": 51.4,
-            "production_0_100": 63.0,
-            "draft_capital_proxy_0_100": 75.0,
-            "size_context_0_100": 49.1,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": null,
-            "receptions": 63,
-            "receiving_yards": 967,
-            "receiving_tds": 5
+            "ras_0_100": 82.8,
+            "production_0_100": 57.9,
+            "draft_capital_proxy_0_100": 78.0,
+            "size_context_0_100": 53.0,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 16.5,
-            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
-            "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
+            "career_outcome_label": "te1_peak",
+            "best_season_fantasy_ppg": 15.2,
+            "top_finish_band": "TE1",
+            "years_1_to_3_summary": "Y1: 7.8, Y2: 14.2, Y3: 15.2"
           }
         },
         {
-          "historical_player_id": "wr-drake-london-2022",
-          "player_name": "Drake London",
-          "draft_year": 2022,
-          "position": "WR",
-          "similarity_score": 85.4354,
-          "distance": 0.145646,
+          "historical_player_id": "te-cole-kmet-2020",
+          "player_name": "Cole Kmet",
+          "draft_year": 2020,
+          "position": "TE",
+          "similarity_score": 87.5113,
+          "distance": 0.124887,
           "feature_snapshot": {
-            "ras_0_100": null,
-            "production_0_100": 59.4,
-            "draft_capital_proxy_0_100": 95.0,
-            "size_context_0_100": 70.0,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": 58.41,
-            "receptions": 88,
-            "receiving_yards": 1084,
-            "receiving_tds": 7
-          },
-          "effective_features_used": [
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 16.8,
-            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
-            "years_1_to_3_summary": "2022-2024 PPR/G: 10.5, 10.9, 16.5; receiving line: 72/866/4, 69/905/2, 100/1271/9."
-          }
-        },
-        {
-          "historical_player_id": "wr-marquise-brown-2019",
-          "player_name": "Marquise Brown",
-          "draft_year": 2019,
-          "position": "WR",
-          "similarity_score": 84.9992,
-          "distance": 0.150008,
-          "feature_snapshot": {
-            "ras_0_100": 52.9,
-            "production_0_100": 76.5,
-            "draft_capital_proxy_0_100": 80.0,
-            "size_context_0_100": 27.5,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": null,
-            "receptions": 75,
-            "receiving_yards": 1318,
-            "receiving_tds": 10
+            "ras_0_100": 58.4,
+            "production_0_100": 37.9,
+            "draft_capital_proxy_0_100": 74.0,
+            "size_context_0_100": 56.7,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": "wr3_peak",
-            "best_season_fantasy_ppg": 14.2,
-            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2019-2021 PPR/G: 10.5, 11.4, 14.2; receiving line: 46/584/7, 58/769/8, 91/1008/6."
-          }
-        },
-        {
-          "historical_player_id": "wr-treylon-burks-2022",
-          "player_name": "Treylon Burks",
-          "draft_year": 2022,
-          "position": "WR",
-          "similarity_score": 84.4089,
-          "distance": 0.155911,
-          "feature_snapshot": {
-            "ras_0_100": 57.8,
-            "production_0_100": 73.3,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 58.89,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": 59.48,
-            "receptions": 66,
-            "receiving_yards": 1104,
-            "receiving_tds": 11
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "flex_peak",
-            "best_season_fantasy_ppg": 8.6,
-            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
-            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
+            "career_outcome_label": "te3_peak",
+            "best_season_fantasy_ppg": 7.2,
+            "top_finish_band": "TE3",
+            "years_1_to_3_summary": "Y1: 3.2, Y2: 6.8, Y3: 7.2"
           }
         }
       ]
     },
     {
-      "player_id": "wr-chris-bell",
-      "player_name": "Chris Bell",
-      "position": "WR",
+      "player_id": "te-marlin-klein",
+      "player_name": "Marlin Klein",
+      "position": "TE",
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "wr-drake-london-2022",
-          "player_name": "Drake London",
-          "draft_year": 2022,
-          "position": "WR",
-          "similarity_score": 97.6076,
-          "distance": 0.023924,
+          "historical_player_id": "te-cole-kmet-2020",
+          "player_name": "Cole Kmet",
+          "draft_year": 2020,
+          "position": "TE",
+          "similarity_score": 91.2737,
+          "distance": 0.087263,
           "feature_snapshot": {
-            "ras_0_100": null,
-            "production_0_100": 59.4,
-            "draft_capital_proxy_0_100": 95.0,
-            "size_context_0_100": 70.0,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": 58.41,
-            "receptions": 88,
-            "receiving_yards": 1084,
-            "receiving_tds": 7
+            "ras_0_100": 58.4,
+            "production_0_100": 37.9,
+            "draft_capital_proxy_0_100": 74.0,
+            "size_context_0_100": 56.7,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
           },
           "effective_features_used": [
-            "production_0_100",
-            "size_context_0_100"
+            "ras_0_100",
+            "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 16.8,
-            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
-            "years_1_to_3_summary": "2022-2024 PPR/G: 10.5, 10.9, 16.5; receiving line: 72/866/4, 69/905/2, 100/1271/9."
+            "career_outcome_label": "te3_peak",
+            "best_season_fantasy_ppg": 7.2,
+            "top_finish_band": "TE3",
+            "years_1_to_3_summary": "Y1: 3.2, Y2: 6.8, Y3: 7.2"
           }
         },
+        {
+          "historical_player_id": "te-trey-mcbride-2022",
+          "player_name": "Trey McBride",
+          "draft_year": 2022,
+          "position": "TE",
+          "similarity_score": 84.5137,
+          "distance": 0.154863,
+          "feature_snapshot": {
+            "ras_0_100": 65.5,
+            "production_0_100": 47.2,
+            "draft_capital_proxy_0_100": 68.0,
+            "size_context_0_100": 43.4,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 10.9,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 1.6, Y2: 7.9, Y3: 10.9"
+          }
+        },
+        {
+          "historical_player_id": "te-pat-freiermuth-2021",
+          "player_name": "Pat Freiermuth",
+          "draft_year": 2021,
+          "position": "TE",
+          "similarity_score": 83.2768,
+          "distance": 0.167232,
+          "feature_snapshot": {
+            "ras_0_100": 69.7,
+            "production_0_100": 38.4,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 51.2,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 11.1,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 8.7, Y2: 8.7, Y3: 11.1"
+          }
+        },
+        {
+          "historical_player_id": "te-sam-laporta-2023",
+          "player_name": "Sam LaPorta",
+          "draft_year": 2023,
+          "position": "TE",
+          "similarity_score": 81.4254,
+          "distance": 0.185746,
+          "feature_snapshot": {
+            "ras_0_100": 72.1,
+            "production_0_100": 33.4,
+            "draft_capital_proxy_0_100": 76.0,
+            "size_context_0_100": 42.7,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te1_peak",
+            "best_season_fantasy_ppg": 14.3,
+            "top_finish_band": "TE1",
+            "years_1_to_3_summary": "Y1: 14.3, Y2: 11.8, Y3: n/a"
+          }
+        },
+        {
+          "historical_player_id": "te-dallas-goedert-2018",
+          "player_name": "Dallas Goedert",
+          "draft_year": 2018,
+          "position": "TE",
+          "similarity_score": 80.6148,
+          "distance": 0.193852,
+          "feature_snapshot": {
+            "ras_0_100": 61.4,
+            "production_0_100": 59.8,
+            "draft_capital_proxy_0_100": 72.0,
+            "size_context_0_100": 51.4,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 10.7,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 6.6, Y2: 9.0, Y3: 10.7"
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "te-max-klare",
+      "player_name": "Max Klare",
+      "position": "TE",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "te-nate-boerkircher",
+      "player_name": "Nate Boerkircher",
+      "position": "TE",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "te-oscar-delp",
+      "player_name": "Oscar Delp",
+      "position": "TE",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "te-sam-roush",
+      "player_name": "Sam Roush",
+      "position": "TE",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "te-isaiah-likely-2022",
+          "player_name": "Isaiah Likely",
+          "draft_year": 2022,
+          "position": "TE",
+          "similarity_score": 99.4076,
+          "distance": 0.005924,
+          "feature_snapshot": {
+            "ras_0_100": 61.2,
+            "production_0_100": 60.4,
+            "draft_capital_proxy_0_100": 63.0,
+            "size_context_0_100": 46.0,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te3_peak",
+            "best_season_fantasy_ppg": 5.4,
+            "top_finish_band": "TE3",
+            "years_1_to_3_summary": "Y1: 1.6, Y2: 4.1, Y3: 5.4"
+          }
+        },
+        {
+          "historical_player_id": "te-dallas-goedert-2018",
+          "player_name": "Dallas Goedert",
+          "draft_year": 2018,
+          "position": "TE",
+          "similarity_score": 99.1249,
+          "distance": 0.008751,
+          "feature_snapshot": {
+            "ras_0_100": 61.4,
+            "production_0_100": 59.8,
+            "draft_capital_proxy_0_100": 72.0,
+            "size_context_0_100": 51.4,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 10.7,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 6.6, Y2: 9.0, Y3: 10.7"
+          }
+        },
+        {
+          "historical_player_id": "te-trey-mcbride-2022",
+          "player_name": "Trey McBride",
+          "draft_year": 2022,
+          "position": "TE",
+          "similarity_score": 89.9323,
+          "distance": 0.100677,
+          "feature_snapshot": {
+            "ras_0_100": 65.5,
+            "production_0_100": 47.2,
+            "draft_capital_proxy_0_100": 68.0,
+            "size_context_0_100": 43.4,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 10.9,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 1.6, Y2: 7.9, Y3: 10.9"
+          }
+        },
+        {
+          "historical_player_id": "te-mark-andrews-2018",
+          "player_name": "Mark Andrews",
+          "draft_year": 2018,
+          "position": "TE",
+          "similarity_score": 84.0322,
+          "distance": 0.159678,
+          "feature_snapshot": {
+            "ras_0_100": 82.8,
+            "production_0_100": 57.9,
+            "draft_capital_proxy_0_100": 78.0,
+            "size_context_0_100": 53.0,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te1_peak",
+            "best_season_fantasy_ppg": 15.2,
+            "top_finish_band": "TE1",
+            "years_1_to_3_summary": "Y1: 7.8, Y2: 14.2, Y3: 15.2"
+          }
+        },
+        {
+          "historical_player_id": "te-cole-kmet-2020",
+          "player_name": "Cole Kmet",
+          "draft_year": 2020,
+          "position": "TE",
+          "similarity_score": 83.9731,
+          "distance": 0.160269,
+          "feature_snapshot": {
+            "ras_0_100": 58.4,
+            "production_0_100": 37.9,
+            "draft_capital_proxy_0_100": 74.0,
+            "size_context_0_100": 56.7,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te3_peak",
+            "best_season_fantasy_ppg": 7.2,
+            "top_finish_band": "TE3",
+            "years_1_to_3_summary": "Y1: 3.2, Y2: 6.8, Y3: 7.2"
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "te-will-kacmarek",
+      "player_name": "Will Kacmarek",
+      "position": "TE",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "te-cole-kmet-2020",
+          "player_name": "Cole Kmet",
+          "draft_year": 2020,
+          "position": "TE",
+          "similarity_score": 85.8536,
+          "distance": 0.141464,
+          "feature_snapshot": {
+            "ras_0_100": 58.4,
+            "production_0_100": 37.9,
+            "draft_capital_proxy_0_100": 74.0,
+            "size_context_0_100": 56.7,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te3_peak",
+            "best_season_fantasy_ppg": 7.2,
+            "top_finish_band": "TE3",
+            "years_1_to_3_summary": "Y1: 3.2, Y2: 6.8, Y3: 7.2"
+          }
+        },
+        {
+          "historical_player_id": "te-trey-mcbride-2022",
+          "player_name": "Trey McBride",
+          "draft_year": 2022,
+          "position": "TE",
+          "similarity_score": 78.487,
+          "distance": 0.21513,
+          "feature_snapshot": {
+            "ras_0_100": 65.5,
+            "production_0_100": 47.2,
+            "draft_capital_proxy_0_100": 68.0,
+            "size_context_0_100": 43.4,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 10.9,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 1.6, Y2: 7.9, Y3: 10.9"
+          }
+        },
+        {
+          "historical_player_id": "te-pat-freiermuth-2021",
+          "player_name": "Pat Freiermuth",
+          "draft_year": 2021,
+          "position": "TE",
+          "similarity_score": 78.0589,
+          "distance": 0.219411,
+          "feature_snapshot": {
+            "ras_0_100": 69.7,
+            "production_0_100": 38.4,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 51.2,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 11.1,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 8.7, Y2: 8.7, Y3: 11.1"
+          }
+        },
+        {
+          "historical_player_id": "te-sam-laporta-2023",
+          "player_name": "Sam LaPorta",
+          "draft_year": 2023,
+          "position": "TE",
+          "similarity_score": 76.8745,
+          "distance": 0.231255,
+          "feature_snapshot": {
+            "ras_0_100": 72.1,
+            "production_0_100": 33.4,
+            "draft_capital_proxy_0_100": 76.0,
+            "size_context_0_100": 42.7,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te1_peak",
+            "best_season_fantasy_ppg": 14.3,
+            "top_finish_band": "TE1",
+            "years_1_to_3_summary": "Y1: 14.3, Y2: 11.8, Y3: n/a"
+          }
+        },
+        {
+          "historical_player_id": "te-dallas-goedert-2018",
+          "player_name": "Dallas Goedert",
+          "draft_year": 2018,
+          "position": "TE",
+          "similarity_score": 74.6649,
+          "distance": 0.253351,
+          "feature_snapshot": {
+            "ras_0_100": 61.4,
+            "production_0_100": 59.8,
+            "draft_capital_proxy_0_100": 72.0,
+            "size_context_0_100": 51.4,
+            "normalization_scope": "historical-te-cfbd-method-v1",
+            "opt_out_season_flag": false
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "te2_peak",
+            "best_season_fantasy_ppg": 10.7,
+            "top_finish_band": "TE2",
+            "years_1_to_3_summary": "Y1: 6.6, Y2: 9.0, Y3: 10.7"
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-antonio-williams",
+      "player_name": "Antonio Williams",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "wr-barion-brown",
+      "player_name": "Barion Brown",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "wr-brenen-thompson",
+      "player_name": "Brenen Thompson",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "wr-caleb-douglas",
+      "player_name": "Caleb Douglas",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
         {
           "historical_player_id": "wr-laviska-shenault-2020",
           "player_name": "Laviska Shenault Jr.",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 96.0582,
-          "distance": 0.039418,
+          "similarity_score": 77.9289,
+          "distance": 0.220711,
           "feature_snapshot": {
             "ras_0_100": 63.2,
             "production_0_100": 54.9,
@@ -1086,8 +1387,7 @@
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "flex_peak",
@@ -1097,175 +1397,12 @@
           }
         },
         {
-          "historical_player_id": "wr-michael-pittman-2020",
-          "player_name": "Michael Pittman Jr.",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 94.8404,
-          "distance": 0.051596,
-          "feature_snapshot": {
-            "ras_0_100": 59.8,
-            "production_0_100": 65.0,
-            "draft_capital_proxy_0_100": 80.0,
-            "size_context_0_100": 74.2,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": null,
-            "receptions": 101,
-            "receiving_yards": 1275,
-            "receiving_tds": 11
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr3_peak",
-            "best_season_fantasy_ppg": 13.7,
-            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 7.4, 13.7, 12.7; stat lines: 40/503/1, 88/1082/6, 99/925/4."
-          }
-        },
-        {
-          "historical_player_id": "wr-deebo-samuel-2019",
-          "player_name": "Deebo Samuel",
-          "draft_year": 2019,
-          "position": "WR",
-          "similarity_score": 94.3003,
-          "distance": 0.056997,
-          "feature_snapshot": {
-            "ras_0_100": 67.1,
-            "production_0_100": 65.0,
-            "draft_capital_proxy_0_100": 70.0,
-            "size_context_0_100": 50.7,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": null,
-            "receptions": 62,
-            "receiving_yards": 882,
-            "receiving_tds": 11
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 15.8,
-            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
-            "years_1_to_3_summary": "2019-2021 PPR/G: 10.3, 11.2, 15.8; receiving line: 57/802/3, 33/391/1, 77/1405/6."
-          }
-        },
-        {
-          "historical_player_id": "wr-jerry-jeudy-2020",
-          "player_name": "Jerry Jeudy",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 94.2872,
-          "distance": 0.057128,
-          "feature_snapshot": {
-            "ras_0_100": 67.8,
-            "production_0_100": 68.4,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 65.0,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": 62.66,
-            "receptions": 77,
-            "receiving_yards": 1163,
-            "receiving_tds": 10
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr3_peak",
-            "best_season_fantasy_ppg": 14.2,
-            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
-          }
-        }
-      ]
-    },
-    {
-      "player_id": "wr-chris-brazzell-ii",
-      "player_name": "Chris Brazzell II",
-      "position": "WR",
-      "comp_mode": "talent_comp",
-      "comps": [
-        {
-          "historical_player_id": "wr-treylon-burks-2022",
-          "player_name": "Treylon Burks",
-          "draft_year": 2022,
-          "position": "WR",
-          "similarity_score": 97.0222,
-          "distance": 0.029778,
-          "feature_snapshot": {
-            "ras_0_100": 57.8,
-            "production_0_100": 73.3,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 58.89,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": 59.48,
-            "receptions": 66,
-            "receiving_yards": 1104,
-            "receiving_tds": 11
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "flex_peak",
-            "best_season_fantasy_ppg": 8.6,
-            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
-            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
-          }
-        },
-        {
-          "historical_player_id": "wr-michael-pittman-2020",
-          "player_name": "Michael Pittman Jr.",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 92.6532,
-          "distance": 0.073468,
-          "feature_snapshot": {
-            "ras_0_100": 59.8,
-            "production_0_100": 65.0,
-            "draft_capital_proxy_0_100": 80.0,
-            "size_context_0_100": 74.2,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": null,
-            "receptions": 101,
-            "receiving_yards": 1275,
-            "receiving_tds": 11
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr3_peak",
-            "best_season_fantasy_ppg": 13.7,
-            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 7.4, 13.7, 12.7; stat lines: 40/503/1, 88/1082/6, 99/925/4."
-          }
-        },
-        {
           "historical_player_id": "wr-calvin-ridley-2018",
           "player_name": "Calvin Ridley",
           "draft_year": 2018,
           "position": "WR",
-          "similarity_score": 91.2122,
-          "distance": 0.087878,
+          "similarity_score": 74.3968,
+          "distance": 0.256032,
           "feature_snapshot": {
             "ras_0_100": 51.4,
             "production_0_100": 63.0,
@@ -1280,8 +1417,7 @@
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "wr2_peak",
@@ -1291,34 +1427,212 @@
           }
         },
         {
-          "historical_player_id": "wr-jerry-jeudy-2020",
-          "player_name": "Jerry Jeudy",
-          "draft_year": 2020,
+          "historical_player_id": "wr-christian-kirk-2018",
+          "player_name": "Christian Kirk",
+          "draft_year": 2018,
           "position": "WR",
-          "similarity_score": 90.3712,
-          "distance": 0.096288,
+          "similarity_score": 73.7481,
+          "distance": 0.262519,
           "feature_snapshot": {
-            "ras_0_100": 67.8,
-            "production_0_100": 68.4,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 65.0,
+            "ras_0_100": 62.3,
+            "production_0_100": 61.7,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": 45.3,
             "normalization_scope": "historical-wr-cfbd-season-pop-v1",
             "opt_out_season_flag": false,
-            "production_0_100_legacy": 62.66,
-            "receptions": 77,
-            "receiving_yards": 1163,
+            "production_0_100_legacy": null,
+            "receptions": 71,
+            "receiving_yards": 919,
             "receiving_tds": 10
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "wr3_peak",
             "best_season_fantasy_ppg": 14.2,
             "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
+            "years_1_to_3_summary": "2018-2020 PPR/G: 9.6, 10.5, 12.1; receiving line: 43/590/3, 68/709/3, 48/621/6."
+          }
+        },
+        {
+          "historical_player_id": "wr-rashod-bateman-2021",
+          "player_name": "Rashod Bateman",
+          "draft_year": 2021,
+          "position": "WR",
+          "similarity_score": 72.9632,
+          "distance": 0.270368,
+          "feature_snapshot": {
+            "ras_0_100": 80.4,
+            "production_0_100": 49.4,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 55.0,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 25.43,
+            "receptions": 36,
+            "receiving_yards": 472,
+            "receiving_tds": 2
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "flex_peak",
+            "best_season_fantasy_ppg": 10.3,
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.6, 8.9, 4.8; receiving line: 46/515/1, 15/285/2, 32/367/1."
+          }
+        },
+        {
+          "historical_player_id": "wr-michael-pittman-2020",
+          "player_name": "Michael Pittman Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 72.0565,
+          "distance": 0.279435,
+          "feature_snapshot": {
+            "ras_0_100": 59.8,
+            "production_0_100": 65.0,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 74.2,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 101,
+            "receiving_yards": 1275,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 13.7,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 7.4, 13.7, 12.7; stat lines: 40/503/1, 88/1082/6, 99/925/4."
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-carnell-tate",
+      "player_name": "Carnell Tate",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "wr-chris-bell",
+      "player_name": "Chris Bell",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "wr-chris-brazzell-ii",
+      "player_name": "Chris Brazzell II",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "wr-deion-burks",
+      "player_name": "Deion Burks",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "wr-rashod-bateman-2021",
+          "player_name": "Rashod Bateman",
+          "draft_year": 2021,
+          "position": "WR",
+          "similarity_score": 76.7003,
+          "distance": 0.232997,
+          "feature_snapshot": {
+            "ras_0_100": 80.4,
+            "production_0_100": 49.4,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 55.0,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 25.43,
+            "receptions": 36,
+            "receiving_yards": 472,
+            "receiving_tds": 2
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "flex_peak",
+            "best_season_fantasy_ppg": 10.3,
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.6, 8.9, 4.8; receiving line: 46/515/1, 15/285/2, 32/367/1."
+          }
+        },
+        {
+          "historical_player_id": "wr-laviska-shenault-2020",
+          "player_name": "Laviska Shenault Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 75.2355,
+          "distance": 0.247645,
+          "feature_snapshot": {
+            "ras_0_100": 63.2,
+            "production_0_100": 54.9,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 63.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 56,
+            "receiving_yards": 764,
+            "receiving_tds": 4
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "flex_peak",
+            "best_season_fantasy_ppg": 11.2,
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 11.2, 7.3, 4.6; stat lines: 58/600/5 + 18/91/0 rush, 63/619/0 + 18/41/0 rush, 27/272/1 + 7/42/0 rush."
+          }
+        },
+        {
+          "historical_player_id": "wr-christian-kirk-2018",
+          "player_name": "Christian Kirk",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 70.3933,
+          "distance": 0.296067,
+          "feature_snapshot": {
+            "ras_0_100": 62.3,
+            "production_0_100": 61.7,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": 45.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 71,
+            "receiving_yards": 919,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 9.6, 10.5, 12.1; receiving line: 43/590/3, 68/709/3, 48/621/6."
           }
         },
         {
@@ -1326,8 +1640,8 @@
           "player_name": "Deebo Samuel",
           "draft_year": 2019,
           "position": "WR",
-          "similarity_score": 88.827,
-          "distance": 0.11173,
+          "similarity_score": 68.1343,
+          "distance": 0.318657,
           "feature_snapshot": {
             "ras_0_100": 67.1,
             "production_0_100": 65.0,
@@ -1342,14 +1656,43 @@
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "wr2_peak",
             "best_season_fantasy_ppg": 15.8,
             "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
             "years_1_to_3_summary": "2019-2021 PPR/G: 10.3, 11.2, 15.8; receiving line: 57/802/3, 33/391/1, 77/1405/6."
+          }
+        },
+        {
+          "historical_player_id": "wr-calvin-ridley-2018",
+          "player_name": "Calvin Ridley",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 67.9525,
+          "distance": 0.320475,
+          "feature_snapshot": {
+            "ras_0_100": 51.4,
+            "production_0_100": 63.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": 49.1,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 63,
+            "receiving_yards": 967,
+            "receiving_tds": 5
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr2_peak",
+            "best_season_fantasy_ppg": 16.5,
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
           }
         }
       ]
@@ -1361,43 +1704,12 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "wr-michael-pittman-2020",
-          "player_name": "Michael Pittman Jr.",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 96.4907,
-          "distance": 0.035093,
-          "feature_snapshot": {
-            "ras_0_100": 59.8,
-            "production_0_100": 65.0,
-            "draft_capital_proxy_0_100": 80.0,
-            "size_context_0_100": 74.2,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": null,
-            "receptions": 101,
-            "receiving_yards": 1275,
-            "receiving_tds": 11
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr3_peak",
-            "best_season_fantasy_ppg": 13.7,
-            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 7.4, 13.7, 12.7; stat lines: 40/503/1, 88/1082/6, 99/925/4."
-          }
-        },
-        {
           "historical_player_id": "wr-treylon-burks-2022",
           "player_name": "Treylon Burks",
           "draft_year": 2022,
           "position": "WR",
-          "similarity_score": 95.1232,
-          "distance": 0.048768,
+          "similarity_score": 96.5498,
+          "distance": 0.034502,
           "feature_snapshot": {
             "ras_0_100": 57.8,
             "production_0_100": 73.3,
@@ -1412,8 +1724,7 @@
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "flex_peak",
@@ -1423,64 +1734,33 @@
           }
         },
         {
-          "historical_player_id": "wr-jerry-jeudy-2020",
-          "player_name": "Jerry Jeudy",
+          "historical_player_id": "wr-michael-pittman-2020",
+          "player_name": "Michael Pittman Jr.",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 92.2015,
-          "distance": 0.077985,
+          "similarity_score": 96.4978,
+          "distance": 0.035022,
           "feature_snapshot": {
-            "ras_0_100": 67.8,
-            "production_0_100": 68.4,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 65.0,
+            "ras_0_100": 59.8,
+            "production_0_100": 65.0,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 74.2,
             "normalization_scope": "historical-wr-cfbd-season-pop-v1",
             "opt_out_season_flag": false,
-            "production_0_100_legacy": 62.66,
-            "receptions": 77,
-            "receiving_yards": 1163,
-            "receiving_tds": 10
+            "production_0_100_legacy": null,
+            "receptions": 101,
+            "receiving_yards": 1275,
+            "receiving_tds": 11
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "wr3_peak",
-            "best_season_fantasy_ppg": 14.2,
+            "best_season_fantasy_ppg": 13.7,
             "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
-          }
-        },
-        {
-          "historical_player_id": "wr-drake-london-2022",
-          "player_name": "Drake London",
-          "draft_year": 2022,
-          "position": "WR",
-          "similarity_score": 91.7686,
-          "distance": 0.082314,
-          "feature_snapshot": {
-            "ras_0_100": null,
-            "production_0_100": 59.4,
-            "draft_capital_proxy_0_100": 95.0,
-            "size_context_0_100": 70.0,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": 58.41,
-            "receptions": 88,
-            "receiving_yards": 1084,
-            "receiving_tds": 7
-          },
-          "effective_features_used": [
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 16.8,
-            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
-            "years_1_to_3_summary": "2022-2024 PPR/G: 10.5, 10.9, 16.5; receiving line: 72/866/4, 69/905/2, 100/1271/9."
+            "years_1_to_3_summary": "2020-2022 PPR/G: 7.4, 13.7, 12.7; stat lines: 40/503/1, 88/1082/6, 99/925/4."
           }
         },
         {
@@ -1488,8 +1768,8 @@
           "player_name": "Calvin Ridley",
           "draft_year": 2018,
           "position": "WR",
-          "similarity_score": 91.6885,
-          "distance": 0.083115,
+          "similarity_score": 94.6717,
+          "distance": 0.053283,
           "feature_snapshot": {
             "ras_0_100": 51.4,
             "production_0_100": 63.0,
@@ -1504,8 +1784,7 @@
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "wr2_peak",
@@ -1513,137 +1792,35 @@
             "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
             "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
           }
-        }
-      ]
-    },
-    {
-      "player_id": "wr-elijah-sarratt",
-      "player_name": "Elijah Sarratt",
-      "position": "WR",
-      "comp_mode": "talent_comp",
-      "comps": [
+        },
         {
-          "historical_player_id": "wr-michael-pittman-2020",
-          "player_name": "Michael Pittman Jr.",
-          "draft_year": 2020,
+          "historical_player_id": "wr-marquise-brown-2019",
+          "player_name": "Marquise Brown",
+          "draft_year": 2019,
           "position": "WR",
-          "similarity_score": 96.0645,
-          "distance": 0.039355,
+          "similarity_score": 93.8975,
+          "distance": 0.061025,
           "feature_snapshot": {
-            "ras_0_100": 59.8,
-            "production_0_100": 65.0,
+            "ras_0_100": 52.9,
+            "production_0_100": 76.5,
             "draft_capital_proxy_0_100": 80.0,
-            "size_context_0_100": 74.2,
+            "size_context_0_100": 27.5,
             "normalization_scope": "historical-wr-cfbd-season-pop-v1",
             "opt_out_season_flag": false,
             "production_0_100_legacy": null,
-            "receptions": 101,
-            "receiving_yards": 1275,
-            "receiving_tds": 11
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr3_peak",
-            "best_season_fantasy_ppg": 13.7,
-            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 7.4, 13.7, 12.7; stat lines: 40/503/1, 88/1082/6, 99/925/4."
-          }
-        },
-        {
-          "historical_player_id": "wr-treylon-burks-2022",
-          "player_name": "Treylon Burks",
-          "draft_year": 2022,
-          "position": "WR",
-          "similarity_score": 95.6105,
-          "distance": 0.043895,
-          "feature_snapshot": {
-            "ras_0_100": 57.8,
-            "production_0_100": 73.3,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 58.89,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": 59.48,
-            "receptions": 66,
-            "receiving_yards": 1104,
-            "receiving_tds": 11
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "flex_peak",
-            "best_season_fantasy_ppg": 8.6,
-            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
-            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
-          }
-        },
-        {
-          "historical_player_id": "wr-jerry-jeudy-2020",
-          "player_name": "Jerry Jeudy",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 94.923,
-          "distance": 0.05077,
-          "feature_snapshot": {
-            "ras_0_100": 67.8,
-            "production_0_100": 68.4,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 65.0,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": 62.66,
-            "receptions": 77,
-            "receiving_yards": 1163,
+            "receptions": 75,
+            "receiving_yards": 1318,
             "receiving_tds": 10
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "wr3_peak",
             "best_season_fantasy_ppg": 14.2,
             "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
-          }
-        },
-        {
-          "historical_player_id": "wr-deebo-samuel-2019",
-          "player_name": "Deebo Samuel",
-          "draft_year": 2019,
-          "position": "WR",
-          "similarity_score": 93.7504,
-          "distance": 0.062496,
-          "feature_snapshot": {
-            "ras_0_100": 67.1,
-            "production_0_100": 65.0,
-            "draft_capital_proxy_0_100": 70.0,
-            "size_context_0_100": 50.7,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": null,
-            "receptions": 62,
-            "receiving_yards": 882,
-            "receiving_tds": 11
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 15.8,
-            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
-            "years_1_to_3_summary": "2019-2021 PPR/G: 10.3, 11.2, 15.8; receiving line: 57/802/3, 33/391/1, 77/1405/6."
+            "years_1_to_3_summary": "2019-2021 PPR/G: 10.5, 11.4, 14.2; receiving line: 46/584/7, 58/769/8, 91/1008/6."
           }
         },
         {
@@ -1651,8 +1828,8 @@
           "player_name": "Christian Kirk",
           "draft_year": 2018,
           "position": "WR",
-          "similarity_score": 92.9929,
-          "distance": 0.070071,
+          "similarity_score": 93.5787,
+          "distance": 0.064213,
           "feature_snapshot": {
             "ras_0_100": 62.3,
             "production_0_100": 61.7,
@@ -1667,8 +1844,7 @@
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "wr3_peak",
@@ -1680,79 +1856,18 @@
       ]
     },
     {
-      "player_id": "wr-jordyn-tyson",
-      "player_name": "Jordyn Tyson",
+      "player_id": "wr-dezhaun-stribling",
+      "player_name": "De'Zhaun Stribling",
       "position": "WR",
       "comp_mode": "talent_comp",
       "comps": [
-        {
-          "historical_player_id": "wr-drake-london-2022",
-          "player_name": "Drake London",
-          "draft_year": 2022,
-          "position": "WR",
-          "similarity_score": 94.6684,
-          "distance": 0.053316,
-          "feature_snapshot": {
-            "ras_0_100": null,
-            "production_0_100": 59.4,
-            "draft_capital_proxy_0_100": 95.0,
-            "size_context_0_100": 70.0,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": 58.41,
-            "receptions": 88,
-            "receiving_yards": 1084,
-            "receiving_tds": 7
-          },
-          "effective_features_used": [
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 16.8,
-            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
-            "years_1_to_3_summary": "2022-2024 PPR/G: 10.5, 10.9, 16.5; receiving line: 72/866/4, 69/905/2, 100/1271/9."
-          }
-        },
-        {
-          "historical_player_id": "wr-calvin-ridley-2018",
-          "player_name": "Calvin Ridley",
-          "draft_year": 2018,
-          "position": "WR",
-          "similarity_score": 94.6558,
-          "distance": 0.053442,
-          "feature_snapshot": {
-            "ras_0_100": 51.4,
-            "production_0_100": 63.0,
-            "draft_capital_proxy_0_100": 75.0,
-            "size_context_0_100": 49.1,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": null,
-            "receptions": 63,
-            "receiving_yards": 967,
-            "receiving_tds": 5
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 16.5,
-            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
-            "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
-          }
-        },
         {
           "historical_player_id": "wr-laviska-shenault-2020",
           "player_name": "Laviska Shenault Jr.",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 93.8662,
-          "distance": 0.061338,
+          "similarity_score": 93.893,
+          "distance": 0.06107,
           "feature_snapshot": {
             "ras_0_100": 63.2,
             "production_0_100": 54.9,
@@ -1767,8 +1882,7 @@
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "flex_peak",
@@ -1782,8 +1896,8 @@
           "player_name": "Christian Kirk",
           "draft_year": 2018,
           "position": "WR",
-          "similarity_score": 92.7501,
-          "distance": 0.072499,
+          "similarity_score": 90.5066,
+          "distance": 0.094934,
           "feature_snapshot": {
             "ras_0_100": 62.3,
             "production_0_100": 61.7,
@@ -1798,8 +1912,7 @@
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "wr3_peak",
@@ -1809,12 +1922,42 @@
           }
         },
         {
+          "historical_player_id": "wr-calvin-ridley-2018",
+          "player_name": "Calvin Ridley",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 89.9595,
+          "distance": 0.100405,
+          "feature_snapshot": {
+            "ras_0_100": 51.4,
+            "production_0_100": 63.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": 49.1,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 63,
+            "receiving_yards": 967,
+            "receiving_tds": 5
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr2_peak",
+            "best_season_fantasy_ppg": 16.5,
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
+          }
+        },
+        {
           "historical_player_id": "wr-michael-pittman-2020",
           "player_name": "Michael Pittman Jr.",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 91.9847,
-          "distance": 0.080153,
+          "similarity_score": 88.8911,
+          "distance": 0.111089,
           "feature_snapshot": {
             "ras_0_100": 59.8,
             "production_0_100": 65.0,
@@ -1829,8 +1972,360 @@
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 13.7,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 7.4, 13.7, 12.7; stat lines: 40/503/1, 88/1082/6, 99/925/4."
+          }
+        },
+        {
+          "historical_player_id": "wr-deebo-samuel-2019",
+          "player_name": "Deebo Samuel",
+          "draft_year": 2019,
+          "position": "WR",
+          "similarity_score": 86.7538,
+          "distance": 0.132462,
+          "feature_snapshot": {
+            "ras_0_100": 67.1,
+            "production_0_100": 65.0,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 50.7,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 62,
+            "receiving_yards": 882,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr2_peak",
+            "best_season_fantasy_ppg": 15.8,
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+            "years_1_to_3_summary": "2019-2021 PPR/G: 10.3, 11.2, 15.8; receiving line: 57/802/3, 33/391/1, 77/1405/6."
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-elijah-sarratt",
+      "player_name": "Elijah Sarratt",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "wr-germie-bernard",
+      "player_name": "Germie Bernard",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "wr-calvin-ridley-2018",
+          "player_name": "Calvin Ridley",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 92.3117,
+          "distance": 0.076883,
+          "feature_snapshot": {
+            "ras_0_100": 51.4,
+            "production_0_100": 63.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": 49.1,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 63,
+            "receiving_yards": 967,
+            "receiving_tds": 5
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr2_peak",
+            "best_season_fantasy_ppg": 16.5,
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
+          }
+        },
+        {
+          "historical_player_id": "wr-laviska-shenault-2020",
+          "player_name": "Laviska Shenault Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 88.7881,
+          "distance": 0.112119,
+          "feature_snapshot": {
+            "ras_0_100": 63.2,
+            "production_0_100": 54.9,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 63.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 56,
+            "receiving_yards": 764,
+            "receiving_tds": 4
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "flex_peak",
+            "best_season_fantasy_ppg": 11.2,
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 11.2, 7.3, 4.6; stat lines: 58/600/5 + 18/91/0 rush, 63/619/0 + 18/41/0 rush, 27/272/1 + 7/42/0 rush."
+          }
+        },
+        {
+          "historical_player_id": "wr-christian-kirk-2018",
+          "player_name": "Christian Kirk",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 87.7954,
+          "distance": 0.122046,
+          "feature_snapshot": {
+            "ras_0_100": 62.3,
+            "production_0_100": 61.7,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": 45.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 71,
+            "receiving_yards": 919,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 9.6, 10.5, 12.1; receiving line: 43/590/3, 68/709/3, 48/621/6."
+          }
+        },
+        {
+          "historical_player_id": "wr-michael-pittman-2020",
+          "player_name": "Michael Pittman Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 87.7675,
+          "distance": 0.122325,
+          "feature_snapshot": {
+            "ras_0_100": 59.8,
+            "production_0_100": 65.0,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 74.2,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 101,
+            "receiving_yards": 1275,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 13.7,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 7.4, 13.7, 12.7; stat lines: 40/503/1, 88/1082/6, 99/925/4."
+          }
+        },
+        {
+          "historical_player_id": "wr-treylon-burks-2022",
+          "player_name": "Treylon Burks",
+          "draft_year": 2022,
+          "position": "WR",
+          "similarity_score": 83.8076,
+          "distance": 0.161924,
+          "feature_snapshot": {
+            "ras_0_100": 57.8,
+            "production_0_100": 73.3,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 58.89,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
+            "receptions": 66,
+            "receiving_yards": 1104,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "flex_peak",
+            "best_season_fantasy_ppg": 8.6,
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
+            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-jakobi-lane",
+      "player_name": "Ja'Kobi Lane",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "wr-laviska-shenault-2020",
+          "player_name": "Laviska Shenault Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 77.9846,
+          "distance": 0.220154,
+          "feature_snapshot": {
+            "ras_0_100": 63.2,
+            "production_0_100": 54.9,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 63.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 56,
+            "receiving_yards": 764,
+            "receiving_tds": 4
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "flex_peak",
+            "best_season_fantasy_ppg": 11.2,
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 11.2, 7.3, 4.6; stat lines: 58/600/5 + 18/91/0 rush, 63/619/0 + 18/41/0 rush, 27/272/1 + 7/42/0 rush."
+          }
+        },
+        {
+          "historical_player_id": "wr-rashod-bateman-2021",
+          "player_name": "Rashod Bateman",
+          "draft_year": 2021,
+          "position": "WR",
+          "similarity_score": 75.618,
+          "distance": 0.24382,
+          "feature_snapshot": {
+            "ras_0_100": 80.4,
+            "production_0_100": 49.4,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 55.0,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 25.43,
+            "receptions": 36,
+            "receiving_yards": 472,
+            "receiving_tds": 2
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "flex_peak",
+            "best_season_fantasy_ppg": 10.3,
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.6, 8.9, 4.8; receiving line: 46/515/1, 15/285/2, 32/367/1."
+          }
+        },
+        {
+          "historical_player_id": "wr-christian-kirk-2018",
+          "player_name": "Christian Kirk",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 73.3712,
+          "distance": 0.266288,
+          "feature_snapshot": {
+            "ras_0_100": 62.3,
+            "production_0_100": 61.7,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": 45.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 71,
+            "receiving_yards": 919,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 9.6, 10.5, 12.1; receiving line: 43/590/3, 68/709/3, 48/621/6."
+          }
+        },
+        {
+          "historical_player_id": "wr-calvin-ridley-2018",
+          "player_name": "Calvin Ridley",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 72.5182,
+          "distance": 0.274818,
+          "feature_snapshot": {
+            "ras_0_100": 51.4,
+            "production_0_100": 63.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": 49.1,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 63,
+            "receiving_yards": 967,
+            "receiving_tds": 5
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr2_peak",
+            "best_season_fantasy_ppg": 16.5,
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
+          }
+        },
+        {
+          "historical_player_id": "wr-michael-pittman-2020",
+          "player_name": "Michael Pittman Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 71.257,
+          "distance": 0.28743,
+          "feature_snapshot": {
+            "ras_0_100": 59.8,
+            "production_0_100": 65.0,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 74.2,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 101,
+            "receiving_yards": 1275,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "wr3_peak",
@@ -1842,18 +2337,122 @@
       ]
     },
     {
+      "player_id": "wr-jordyn-tyson",
+      "player_name": "Jordyn Tyson",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
       "player_id": "wr-kc-concepcion",
       "player_name": "KC Concepcion",
       "position": "WR",
       "comp_mode": "talent_comp",
+      "comps": []
+    },
+    {
+      "player_id": "wr-kendrick-law",
+      "player_name": "Kendrick Law",
+      "position": "WR",
+      "comp_mode": "talent_comp",
       "comps": [
+        {
+          "historical_player_id": "wr-laviska-shenault-2020",
+          "player_name": "Laviska Shenault Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 73.8093,
+          "distance": 0.261907,
+          "feature_snapshot": {
+            "ras_0_100": 63.2,
+            "production_0_100": 54.9,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 63.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 56,
+            "receiving_yards": 764,
+            "receiving_tds": 4
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "flex_peak",
+            "best_season_fantasy_ppg": 11.2,
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 11.2, 7.3, 4.6; stat lines: 58/600/5 + 18/91/0 rush, 63/619/0 + 18/41/0 rush, 27/272/1 + 7/42/0 rush."
+          }
+        },
+        {
+          "historical_player_id": "wr-rashod-bateman-2021",
+          "player_name": "Rashod Bateman",
+          "draft_year": 2021,
+          "position": "WR",
+          "similarity_score": 72.4945,
+          "distance": 0.275055,
+          "feature_snapshot": {
+            "ras_0_100": 80.4,
+            "production_0_100": 49.4,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 55.0,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 25.43,
+            "receptions": 36,
+            "receiving_yards": 472,
+            "receiving_tds": 2
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "flex_peak",
+            "best_season_fantasy_ppg": 10.3,
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.6, 8.9, 4.8; receiving line: 46/515/1, 15/285/2, 32/367/1."
+          }
+        },
+        {
+          "historical_player_id": "wr-christian-kirk-2018",
+          "player_name": "Christian Kirk",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 69.1454,
+          "distance": 0.308546,
+          "feature_snapshot": {
+            "ras_0_100": 62.3,
+            "production_0_100": 61.7,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": 45.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 71,
+            "receiving_yards": 919,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 9.6, 10.5, 12.1; receiving line: 43/590/3, 68/709/3, 48/621/6."
+          }
+        },
         {
           "historical_player_id": "wr-calvin-ridley-2018",
           "player_name": "Calvin Ridley",
           "draft_year": 2018,
           "position": "WR",
-          "similarity_score": 93.195,
-          "distance": 0.06805,
+          "similarity_score": 68.2239,
+          "distance": 0.317761,
           "feature_snapshot": {
             "ras_0_100": 51.4,
             "production_0_100": 63.0,
@@ -1868,8 +2467,7 @@
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "wr2_peak",
@@ -1879,126 +2477,191 @@
           }
         },
         {
-          "historical_player_id": "wr-tee-higgins-2020",
-          "player_name": "Tee Higgins",
+          "historical_player_id": "wr-michael-pittman-2020",
+          "player_name": "Michael Pittman Jr.",
           "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 91.1766,
-          "distance": 0.088234,
+          "similarity_score": 66.9852,
+          "distance": 0.330148,
           "feature_snapshot": {
-            "ras_0_100": 41.6,
-            "production_0_100": 82.0,
-            "draft_capital_proxy_0_100": 65.0,
-            "size_context_0_100": 50.0,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": 62.88,
-            "receptions": 59,
-            "receiving_yards": 1167,
-            "receiving_tds": 13
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr1_peak",
-            "best_season_fantasy_ppg": 18.5,
-            "top_finish_band": "WR1 (18.0+ PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 12.2, 15.7, 13.8; receiving line: 67/908/6, 74/1091/6, 74/1029/7."
-          }
-        },
-        {
-          "historical_player_id": "wr-marquise-brown-2019",
-          "player_name": "Marquise Brown",
-          "draft_year": 2019,
-          "position": "WR",
-          "similarity_score": 89.6264,
-          "distance": 0.103736,
-          "feature_snapshot": {
-            "ras_0_100": 52.9,
-            "production_0_100": 76.5,
+            "ras_0_100": 59.8,
+            "production_0_100": 65.0,
             "draft_capital_proxy_0_100": 80.0,
-            "size_context_0_100": 27.5,
+            "size_context_0_100": 74.2,
             "normalization_scope": "historical-wr-cfbd-season-pop-v1",
             "opt_out_season_flag": false,
             "production_0_100_legacy": null,
-            "receptions": 75,
-            "receiving_yards": 1318,
+            "receptions": 101,
+            "receiving_yards": 1275,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 13.7,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 7.4, 13.7, 12.7; stat lines: 40/503/1, 88/1082/6, 99/925/4."
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-kevin-coleman-jr",
+      "player_name": "Kevin Coleman Jr.",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "wr-calvin-ridley-2018",
+          "player_name": "Calvin Ridley",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 88.8739,
+          "distance": 0.111261,
+          "feature_snapshot": {
+            "ras_0_100": 51.4,
+            "production_0_100": 63.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": 49.1,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 63,
+            "receiving_yards": 967,
+            "receiving_tds": 5
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr2_peak",
+            "best_season_fantasy_ppg": 16.5,
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
+          }
+        },
+        {
+          "historical_player_id": "wr-laviska-shenault-2020",
+          "player_name": "Laviska Shenault Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 86.5785,
+          "distance": 0.134215,
+          "feature_snapshot": {
+            "ras_0_100": 63.2,
+            "production_0_100": 54.9,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 63.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 56,
+            "receiving_yards": 764,
+            "receiving_tds": 4
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "flex_peak",
+            "best_season_fantasy_ppg": 11.2,
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 11.2, 7.3, 4.6; stat lines: 58/600/5 + 18/91/0 rush, 63/619/0 + 18/41/0 rush, 27/272/1 + 7/42/0 rush."
+          }
+        },
+        {
+          "historical_player_id": "wr-christian-kirk-2018",
+          "player_name": "Christian Kirk",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 84.7933,
+          "distance": 0.152067,
+          "feature_snapshot": {
+            "ras_0_100": 62.3,
+            "production_0_100": 61.7,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": 45.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 71,
+            "receiving_yards": 919,
             "receiving_tds": 10
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "wr3_peak",
             "best_season_fantasy_ppg": 14.2,
             "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2019-2021 PPR/G: 10.5, 11.4, 14.2; receiving line: 46/584/7, 58/769/8, 91/1008/6."
+            "years_1_to_3_summary": "2018-2020 PPR/G: 9.6, 10.5, 12.1; receiving line: 43/590/3, 68/709/3, 48/621/6."
           }
         },
         {
-          "historical_player_id": "wr-treylon-burks-2022",
-          "player_name": "Treylon Burks",
-          "draft_year": 2022,
+          "historical_player_id": "wr-michael-pittman-2020",
+          "player_name": "Michael Pittman Jr.",
+          "draft_year": 2020,
           "position": "WR",
-          "similarity_score": 89.2148,
-          "distance": 0.107852,
+          "similarity_score": 84.4748,
+          "distance": 0.155252,
           "feature_snapshot": {
-            "ras_0_100": 57.8,
-            "production_0_100": 73.3,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 58.89,
+            "ras_0_100": 59.8,
+            "production_0_100": 65.0,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 74.2,
             "normalization_scope": "historical-wr-cfbd-season-pop-v1",
             "opt_out_season_flag": false,
-            "production_0_100_legacy": 59.48,
-            "receptions": 66,
-            "receiving_yards": 1104,
+            "production_0_100_legacy": null,
+            "receptions": 101,
+            "receiving_yards": 1275,
             "receiving_tds": 11
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
-            "career_outcome_label": "flex_peak",
-            "best_season_fantasy_ppg": 8.6,
-            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
-            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 13.7,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 7.4, 13.7, 12.7; stat lines: 40/503/1, 88/1082/6, 99/925/4."
           }
         },
         {
-          "historical_player_id": "wr-drake-london-2022",
-          "player_name": "Drake London",
-          "draft_year": 2022,
+          "historical_player_id": "wr-deebo-samuel-2019",
+          "player_name": "Deebo Samuel",
+          "draft_year": 2019,
           "position": "WR",
-          "similarity_score": 87.0914,
-          "distance": 0.129086,
+          "similarity_score": 80.6803,
+          "distance": 0.193197,
           "feature_snapshot": {
-            "ras_0_100": null,
-            "production_0_100": 59.4,
-            "draft_capital_proxy_0_100": 95.0,
-            "size_context_0_100": 70.0,
+            "ras_0_100": 67.1,
+            "production_0_100": 65.0,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 50.7,
             "normalization_scope": "historical-wr-cfbd-season-pop-v1",
             "opt_out_season_flag": false,
-            "production_0_100_legacy": 58.41,
-            "receptions": 88,
-            "receiving_yards": 1084,
-            "receiving_tds": 7
+            "production_0_100_legacy": null,
+            "receptions": 62,
+            "receiving_yards": 882,
+            "receiving_tds": 11
           },
           "effective_features_used": [
-            "production_0_100",
-            "size_context_0_100"
+            "ras_0_100",
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 16.8,
+            "best_season_fantasy_ppg": 15.8,
             "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
-            "years_1_to_3_summary": "2022-2024 PPR/G: 10.5, 10.9, 16.5; receiving line: 72/866/4, 69/905/2, 100/1271/9."
+            "years_1_to_3_summary": "2019-2021 PPR/G: 10.3, 11.2, 15.8; receiving line: 57/802/3, 33/391/1, 77/1405/6."
           }
         }
       ]
@@ -2010,135 +2673,12 @@
       "comp_mode": "talent_comp",
       "comps": [
         {
-          "historical_player_id": "wr-tee-higgins-2020",
-          "player_name": "Tee Higgins",
-          "draft_year": 2020,
-          "position": "WR",
-          "similarity_score": 92.8298,
-          "distance": 0.071702,
-          "feature_snapshot": {
-            "ras_0_100": 41.6,
-            "production_0_100": 82.0,
-            "draft_capital_proxy_0_100": 65.0,
-            "size_context_0_100": 50.0,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": 62.88,
-            "receptions": 59,
-            "receiving_yards": 1167,
-            "receiving_tds": 13
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr1_peak",
-            "best_season_fantasy_ppg": 18.5,
-            "top_finish_band": "WR1 (18.0+ PPR/G peak)",
-            "years_1_to_3_summary": "2020-2022 PPR/G: 12.2, 15.7, 13.8; receiving line: 67/908/6, 74/1091/6, 74/1029/7."
-          }
-        },
-        {
-          "historical_player_id": "wr-marquise-brown-2019",
-          "player_name": "Marquise Brown",
-          "draft_year": 2019,
-          "position": "WR",
-          "similarity_score": 88.336,
-          "distance": 0.11664,
-          "feature_snapshot": {
-            "ras_0_100": 52.9,
-            "production_0_100": 76.5,
-            "draft_capital_proxy_0_100": 80.0,
-            "size_context_0_100": 27.5,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": null,
-            "receptions": 75,
-            "receiving_yards": 1318,
-            "receiving_tds": 10
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr3_peak",
-            "best_season_fantasy_ppg": 14.2,
-            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2019-2021 PPR/G: 10.5, 11.4, 14.2; receiving line: 46/584/7, 58/769/8, 91/1008/6."
-          }
-        },
-        {
-          "historical_player_id": "wr-calvin-ridley-2018",
-          "player_name": "Calvin Ridley",
-          "draft_year": 2018,
-          "position": "WR",
-          "similarity_score": 88.1716,
-          "distance": 0.118284,
-          "feature_snapshot": {
-            "ras_0_100": 51.4,
-            "production_0_100": 63.0,
-            "draft_capital_proxy_0_100": 75.0,
-            "size_context_0_100": 49.1,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": null,
-            "receptions": 63,
-            "receiving_yards": 967,
-            "receiving_tds": 5
-          },
-          "effective_features_used": [
-            "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr2_peak",
-            "best_season_fantasy_ppg": 16.5,
-            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
-            "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
-          }
-        },
-        {
-          "historical_player_id": "wr-jameson-williams-2022",
-          "player_name": "Jameson Williams",
-          "draft_year": 2022,
-          "position": "WR",
-          "similarity_score": 85.2672,
-          "distance": 0.147328,
-          "feature_snapshot": {
-            "ras_0_100": null,
-            "production_0_100": 89.1,
-            "draft_capital_proxy_0_100": 85.0,
-            "size_context_0_100": 36.67,
-            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
-            "opt_out_season_flag": false,
-            "production_0_100_legacy": 84.7,
-            "receptions": 79,
-            "receiving_yards": 1572,
-            "receiving_tds": 15
-          },
-          "effective_features_used": [
-            "production_0_100",
-            "size_context_0_100"
-          ],
-          "outcome_snapshot": {
-            "career_outcome_label": "wr3_peak",
-            "best_season_fantasy_ppg": 14.1,
-            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
-            "years_1_to_3_summary": "2022-2024 PPR/G: 2.5, 6.7, 14.1; receiving line: 1/41/1, 24/354/2, 58/1001/7."
-          }
-        },
-        {
           "historical_player_id": "wr-treylon-burks-2022",
           "player_name": "Treylon Burks",
           "draft_year": 2022,
           "position": "WR",
-          "similarity_score": 85.2217,
-          "distance": 0.147783,
+          "similarity_score": 97.6802,
+          "distance": 0.023198,
           "feature_snapshot": {
             "ras_0_100": 57.8,
             "production_0_100": 73.3,
@@ -2153,14 +2693,923 @@
           },
           "effective_features_used": [
             "ras_0_100",
-            "production_0_100",
-            "size_context_0_100"
+            "production_0_100"
           ],
           "outcome_snapshot": {
             "career_outcome_label": "flex_peak",
             "best_season_fantasy_ppg": 8.6,
             "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
             "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
+          }
+        },
+        {
+          "historical_player_id": "wr-marquise-brown-2019",
+          "player_name": "Marquise Brown",
+          "draft_year": 2019,
+          "position": "WR",
+          "similarity_score": 97.6594,
+          "distance": 0.023406,
+          "feature_snapshot": {
+            "ras_0_100": 52.9,
+            "production_0_100": 76.5,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 27.5,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 75,
+            "receiving_yards": 1318,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2019-2021 PPR/G: 10.5, 11.4, 14.2; receiving line: 46/584/7, 58/769/8, 91/1008/6."
+          }
+        },
+        {
+          "historical_player_id": "wr-michael-pittman-2020",
+          "player_name": "Michael Pittman Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 91.7067,
+          "distance": 0.082933,
+          "feature_snapshot": {
+            "ras_0_100": 59.8,
+            "production_0_100": 65.0,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 74.2,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 101,
+            "receiving_yards": 1275,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 13.7,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 7.4, 13.7, 12.7; stat lines: 40/503/1, 88/1082/6, 99/925/4."
+          }
+        },
+        {
+          "historical_player_id": "wr-jerry-jeudy-2020",
+          "player_name": "Jerry Jeudy",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 90.1271,
+          "distance": 0.098729,
+          "feature_snapshot": {
+            "ras_0_100": 67.8,
+            "production_0_100": 68.4,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 65.0,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 62.66,
+            "receptions": 77,
+            "receiving_yards": 1163,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 9.8, 8.5, 13.6; receiving line: 52/856/3, 38/467/0, 67/972/6."
+          }
+        },
+        {
+          "historical_player_id": "wr-calvin-ridley-2018",
+          "player_name": "Calvin Ridley",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 90.0966,
+          "distance": 0.099034,
+          "feature_snapshot": {
+            "ras_0_100": 51.4,
+            "production_0_100": 63.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": 49.1,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 63,
+            "receiving_yards": 967,
+            "receiving_tds": 5
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr2_peak",
+            "best_season_fantasy_ppg": 16.5,
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-malachi-fields",
+      "player_name": "Malachi Fields",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "wr-calvin-ridley-2018",
+          "player_name": "Calvin Ridley",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 86.3982,
+          "distance": 0.136018,
+          "feature_snapshot": {
+            "ras_0_100": 51.4,
+            "production_0_100": 63.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": 49.1,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 63,
+            "receiving_yards": 967,
+            "receiving_tds": 5
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr2_peak",
+            "best_season_fantasy_ppg": 16.5,
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
+          }
+        },
+        {
+          "historical_player_id": "wr-laviska-shenault-2020",
+          "player_name": "Laviska Shenault Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 85.1377,
+          "distance": 0.148623,
+          "feature_snapshot": {
+            "ras_0_100": 63.2,
+            "production_0_100": 54.9,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 63.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 56,
+            "receiving_yards": 764,
+            "receiving_tds": 4
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "flex_peak",
+            "best_season_fantasy_ppg": 11.2,
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 11.2, 7.3, 4.6; stat lines: 58/600/5 + 18/91/0 rush, 63/619/0 + 18/41/0 rush, 27/272/1 + 7/42/0 rush."
+          }
+        },
+        {
+          "historical_player_id": "wr-christian-kirk-2018",
+          "player_name": "Christian Kirk",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 82.8189,
+          "distance": 0.171811,
+          "feature_snapshot": {
+            "ras_0_100": 62.3,
+            "production_0_100": 61.7,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": 45.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 71,
+            "receiving_yards": 919,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 9.6, 10.5, 12.1; receiving line: 43/590/3, 68/709/3, 48/621/6."
+          }
+        },
+        {
+          "historical_player_id": "wr-michael-pittman-2020",
+          "player_name": "Michael Pittman Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 82.2557,
+          "distance": 0.177443,
+          "feature_snapshot": {
+            "ras_0_100": 59.8,
+            "production_0_100": 65.0,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 74.2,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 101,
+            "receiving_yards": 1275,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 13.7,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 7.4, 13.7, 12.7; stat lines: 40/503/1, 88/1082/6, 99/925/4."
+          }
+        },
+        {
+          "historical_player_id": "wr-deebo-samuel-2019",
+          "player_name": "Deebo Samuel",
+          "draft_year": 2019,
+          "position": "WR",
+          "similarity_score": 78.7407,
+          "distance": 0.212593,
+          "feature_snapshot": {
+            "ras_0_100": 67.1,
+            "production_0_100": 65.0,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 50.7,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 62,
+            "receiving_yards": 882,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr2_peak",
+            "best_season_fantasy_ppg": 15.8,
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+            "years_1_to_3_summary": "2019-2021 PPR/G: 10.3, 11.2, 15.8; receiving line: 57/802/3, 33/391/1, 77/1405/6."
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-omar-cooper-jr",
+      "player_name": "Omar Cooper Jr.",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "wr-calvin-ridley-2018",
+          "player_name": "Calvin Ridley",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 94.5869,
+          "distance": 0.054131,
+          "feature_snapshot": {
+            "ras_0_100": 51.4,
+            "production_0_100": 63.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": 49.1,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 63,
+            "receiving_yards": 967,
+            "receiving_tds": 5
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr2_peak",
+            "best_season_fantasy_ppg": 16.5,
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
+          }
+        },
+        {
+          "historical_player_id": "wr-laviska-shenault-2020",
+          "player_name": "Laviska Shenault Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 91.9914,
+          "distance": 0.080086,
+          "feature_snapshot": {
+            "ras_0_100": 63.2,
+            "production_0_100": 54.9,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 63.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 56,
+            "receiving_yards": 764,
+            "receiving_tds": 4
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "flex_peak",
+            "best_season_fantasy_ppg": 11.2,
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 11.2, 7.3, 4.6; stat lines: 58/600/5 + 18/91/0 rush, 63/619/0 + 18/41/0 rush, 27/272/1 + 7/42/0 rush."
+          }
+        },
+        {
+          "historical_player_id": "wr-christian-kirk-2018",
+          "player_name": "Christian Kirk",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 91.3774,
+          "distance": 0.086226,
+          "feature_snapshot": {
+            "ras_0_100": 62.3,
+            "production_0_100": 61.7,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": 45.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 71,
+            "receiving_yards": 919,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 9.6, 10.5, 12.1; receiving line: 43/590/3, 68/709/3, 48/621/6."
+          }
+        },
+        {
+          "historical_player_id": "wr-michael-pittman-2020",
+          "player_name": "Michael Pittman Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 91.1796,
+          "distance": 0.088204,
+          "feature_snapshot": {
+            "ras_0_100": 59.8,
+            "production_0_100": 65.0,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 74.2,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 101,
+            "receiving_yards": 1275,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 13.7,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 7.4, 13.7, 12.7; stat lines: 40/503/1, 88/1082/6, 99/925/4."
+          }
+        },
+        {
+          "historical_player_id": "wr-deebo-samuel-2019",
+          "player_name": "Deebo Samuel",
+          "draft_year": 2019,
+          "position": "WR",
+          "similarity_score": 87.2628,
+          "distance": 0.127372,
+          "feature_snapshot": {
+            "ras_0_100": 67.1,
+            "production_0_100": 65.0,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 50.7,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 62,
+            "receiving_yards": 882,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr2_peak",
+            "best_season_fantasy_ppg": 15.8,
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+            "years_1_to_3_summary": "2019-2021 PPR/G: 10.3, 11.2, 15.8; receiving line: 57/802/3, 33/391/1, 77/1405/6."
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-ted-hurst",
+      "player_name": "Ted Hurst",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "wr-laviska-shenault-2020",
+          "player_name": "Laviska Shenault Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 97.3643,
+          "distance": 0.026357,
+          "feature_snapshot": {
+            "ras_0_100": 63.2,
+            "production_0_100": 54.9,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 63.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 56,
+            "receiving_yards": 764,
+            "receiving_tds": 4
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "flex_peak",
+            "best_season_fantasy_ppg": 11.2,
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 11.2, 7.3, 4.6; stat lines: 58/600/5 + 18/91/0 rush, 63/619/0 + 18/41/0 rush, 27/272/1 + 7/42/0 rush."
+          }
+        },
+        {
+          "historical_player_id": "wr-christian-kirk-2018",
+          "player_name": "Christian Kirk",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 93.3044,
+          "distance": 0.066956,
+          "feature_snapshot": {
+            "ras_0_100": 62.3,
+            "production_0_100": 61.7,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": 45.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 71,
+            "receiving_yards": 919,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 9.6, 10.5, 12.1; receiving line: 43/590/3, 68/709/3, 48/621/6."
+          }
+        },
+        {
+          "historical_player_id": "wr-michael-pittman-2020",
+          "player_name": "Michael Pittman Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 91.0939,
+          "distance": 0.089061,
+          "feature_snapshot": {
+            "ras_0_100": 59.8,
+            "production_0_100": 65.0,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 74.2,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 101,
+            "receiving_yards": 1275,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 13.7,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 7.4, 13.7, 12.7; stat lines: 40/503/1, 88/1082/6, 99/925/4."
+          }
+        },
+        {
+          "historical_player_id": "wr-calvin-ridley-2018",
+          "player_name": "Calvin Ridley",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 90.1702,
+          "distance": 0.098298,
+          "feature_snapshot": {
+            "ras_0_100": 51.4,
+            "production_0_100": 63.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": 49.1,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 63,
+            "receiving_yards": 967,
+            "receiving_tds": 5
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr2_peak",
+            "best_season_fantasy_ppg": 16.5,
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
+          }
+        },
+        {
+          "historical_player_id": "wr-deebo-samuel-2019",
+          "player_name": "Deebo Samuel",
+          "draft_year": 2019,
+          "position": "WR",
+          "similarity_score": 89.9274,
+          "distance": 0.100726,
+          "feature_snapshot": {
+            "ras_0_100": 67.1,
+            "production_0_100": 65.0,
+            "draft_capital_proxy_0_100": 70.0,
+            "size_context_0_100": 50.7,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 62,
+            "receiving_yards": 882,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr2_peak",
+            "best_season_fantasy_ppg": 15.8,
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+            "years_1_to_3_summary": "2019-2021 PPR/G: 10.3, 11.2, 15.8; receiving line: 57/802/3, 33/391/1, 77/1405/6."
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-zachariah-branch",
+      "player_name": "Zachariah Branch",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "wr-calvin-ridley-2018",
+          "player_name": "Calvin Ridley",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 95.4307,
+          "distance": 0.045693,
+          "feature_snapshot": {
+            "ras_0_100": 51.4,
+            "production_0_100": 63.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": 49.1,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 63,
+            "receiving_yards": 967,
+            "receiving_tds": 5
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr2_peak",
+            "best_season_fantasy_ppg": 16.5,
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
+          }
+        },
+        {
+          "historical_player_id": "wr-marquise-brown-2019",
+          "player_name": "Marquise Brown",
+          "draft_year": 2019,
+          "position": "WR",
+          "similarity_score": 94.9328,
+          "distance": 0.050672,
+          "feature_snapshot": {
+            "ras_0_100": 52.9,
+            "production_0_100": 76.5,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 27.5,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 75,
+            "receiving_yards": 1318,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2019-2021 PPR/G: 10.5, 11.4, 14.2; receiving line: 46/584/7, 58/769/8, 91/1008/6."
+          }
+        },
+        {
+          "historical_player_id": "wr-treylon-burks-2022",
+          "player_name": "Treylon Burks",
+          "draft_year": 2022,
+          "position": "WR",
+          "similarity_score": 94.8201,
+          "distance": 0.051799,
+          "feature_snapshot": {
+            "ras_0_100": 57.8,
+            "production_0_100": 73.3,
+            "draft_capital_proxy_0_100": 85.0,
+            "size_context_0_100": 58.89,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 59.48,
+            "receptions": 66,
+            "receiving_yards": 1104,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "flex_peak",
+            "best_season_fantasy_ppg": 8.6,
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
+            "years_1_to_3_summary": "2022-2024 PPR/G: 8.6, 3.6, 1.5; receiving line: 33/444/1, 16/221/0, 4/34/0."
+          }
+        },
+        {
+          "historical_player_id": "wr-michael-pittman-2020",
+          "player_name": "Michael Pittman Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 93.3757,
+          "distance": 0.066243,
+          "feature_snapshot": {
+            "ras_0_100": 59.8,
+            "production_0_100": 65.0,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 74.2,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 101,
+            "receiving_yards": 1275,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 13.7,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 7.4, 13.7, 12.7; stat lines: 40/503/1, 88/1082/6, 99/925/4."
+          }
+        },
+        {
+          "historical_player_id": "wr-christian-kirk-2018",
+          "player_name": "Christian Kirk",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 90.6317,
+          "distance": 0.093683,
+          "feature_snapshot": {
+            "ras_0_100": 62.3,
+            "production_0_100": 61.7,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": 45.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 71,
+            "receiving_yards": 919,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 9.6, 10.5, 12.1; receiving line: 43/590/3, 68/709/3, 48/621/6."
+          }
+        }
+      ]
+    },
+    {
+      "player_id": "wr-zavion-thomas",
+      "player_name": "Zavion Thomas",
+      "position": "WR",
+      "comp_mode": "talent_comp",
+      "comps": [
+        {
+          "historical_player_id": "wr-laviska-shenault-2020",
+          "player_name": "Laviska Shenault Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 75.2285,
+          "distance": 0.247715,
+          "feature_snapshot": {
+            "ras_0_100": 63.2,
+            "production_0_100": 54.9,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 63.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 56,
+            "receiving_yards": 764,
+            "receiving_tds": 4
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "flex_peak",
+            "best_season_fantasy_ppg": 11.2,
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 11.2, 7.3, 4.6; stat lines: 58/600/5 + 18/91/0 rush, 63/619/0 + 18/41/0 rush, 27/272/1 + 7/42/0 rush."
+          }
+        },
+        {
+          "historical_player_id": "wr-rashod-bateman-2021",
+          "player_name": "Rashod Bateman",
+          "draft_year": 2021,
+          "position": "WR",
+          "similarity_score": 74.1428,
+          "distance": 0.258572,
+          "feature_snapshot": {
+            "ras_0_100": 80.4,
+            "production_0_100": 49.4,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 55.0,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": 25.43,
+            "receptions": 36,
+            "receiving_yards": 472,
+            "receiving_tds": 2
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "flex_peak",
+            "best_season_fantasy_ppg": 10.3,
+            "top_finish_band": "Flex/Depth (8.0-11.9 PPR/G peak)",
+            "years_1_to_3_summary": "2021-2023 PPR/G: 8.6, 8.9, 4.8; receiving line: 46/515/1, 15/285/2, 32/367/1."
+          }
+        },
+        {
+          "historical_player_id": "wr-christian-kirk-2018",
+          "player_name": "Christian Kirk",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 70.5249,
+          "distance": 0.294751,
+          "feature_snapshot": {
+            "ras_0_100": 62.3,
+            "production_0_100": 61.7,
+            "draft_capital_proxy_0_100": 65.0,
+            "size_context_0_100": 45.3,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 71,
+            "receiving_yards": 919,
+            "receiving_tds": 10
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 14.2,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 9.6, 10.5, 12.1; receiving line: 43/590/3, 68/709/3, 48/621/6."
+          }
+        },
+        {
+          "historical_player_id": "wr-calvin-ridley-2018",
+          "player_name": "Calvin Ridley",
+          "draft_year": 2018,
+          "position": "WR",
+          "similarity_score": 69.3352,
+          "distance": 0.306648,
+          "feature_snapshot": {
+            "ras_0_100": 51.4,
+            "production_0_100": 63.0,
+            "draft_capital_proxy_0_100": 75.0,
+            "size_context_0_100": 49.1,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 63,
+            "receiving_yards": 967,
+            "receiving_tds": 5
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr2_peak",
+            "best_season_fantasy_ppg": 16.5,
+            "top_finish_band": "WR2 (15.0-17.9 PPR/G peak)",
+            "years_1_to_3_summary": "2018-2020 PPR/G: 12.9, 16.5, 15.0; receiving line: 64/821/10, 63/866/7, 90/1374/9."
+          }
+        },
+        {
+          "historical_player_id": "wr-michael-pittman-2020",
+          "player_name": "Michael Pittman Jr.",
+          "draft_year": 2020,
+          "position": "WR",
+          "similarity_score": 68.3059,
+          "distance": 0.316941,
+          "feature_snapshot": {
+            "ras_0_100": 59.8,
+            "production_0_100": 65.0,
+            "draft_capital_proxy_0_100": 80.0,
+            "size_context_0_100": 74.2,
+            "normalization_scope": "historical-wr-cfbd-season-pop-v1",
+            "opt_out_season_flag": false,
+            "production_0_100_legacy": null,
+            "receptions": 101,
+            "receiving_yards": 1275,
+            "receiving_tds": 11
+          },
+          "effective_features_used": [
+            "ras_0_100",
+            "production_0_100"
+          ],
+          "outcome_snapshot": {
+            "career_outcome_label": "wr3_peak",
+            "best_season_fantasy_ppg": 13.7,
+            "top_finish_band": "WR3 (12.0-14.9 PPR/G peak)",
+            "years_1_to_3_summary": "2020-2022 PPR/G: 7.4, 13.7, 12.7; stat lines: 40/503/1, 88/1082/6, 99/925/4."
           }
         }
       ]

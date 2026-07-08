@@ -417,8 +417,67 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
             self.assertEqual(set(quality["requirements_checked"].keys()), required_keys, msg=position)
 
     def test_similarity_quality_wr_ui_safe_when_coverage_is_sufficient(self) -> None:
-        artifact = json.loads(
-            Path("exports/promoted/historical-comps/2026_historical_comps_v0.json").read_text(encoding="utf-8")
+        # Uses a synthetic fixture rather than the real committed export:
+        # the real 2026 WR rookie pool has grown (see issue #259) to the
+        # point where its comp/feature-depth coverage against the historical
+        # cohort is genuinely insufficient, so "ui_safe" is no longer a
+        # property of the live artifact. This test exercises the gating
+        # logic itself, matching the pattern already used by
+        # test_compute_historical_comps_wr_warning_absent_when_coverage_sufficient.
+        rookies = [
+            {
+                "player_id": f"wr-r{i}",
+                "player_name": f"Rookie WR{i}",
+                "position": "WR",
+                "ras_0_100": 50.0 + (i * 5.0),
+                "production_0_100": 45.0 + (i * 5.0),
+                "draft_capital_proxy_0_100": 40.0 + (i * 5.0),
+                "size_context_0_100": 35.0 + (i * 5.0),
+            }
+            for i in range(8)
+        ]
+        historical_rows = [
+            {
+                "player_id": f"wr-h{i}",
+                "player_name": f"Hist WR{i}",
+                "position": "WR",
+                "school": "A",
+                "draft_year": 2010 + i,
+                "source_season": 2009 + i,
+                "ras_0_100": 50.0 + (i * 5.0),
+                "production_0_100": 45.0 + (i * 5.0),
+                "draft_capital_proxy_0_100": 40.0 + (i * 5.0),
+                "size_context_0_100": 35.0 + (i * 5.0),
+                "normalization_scope": "class-local",
+            }
+            for i in range(8)
+        ]
+        historical_features = normalize_historical_feature_rows(historical_rows)
+        outcomes = normalize_outcome_rows(
+            [
+                {
+                    "player_id": row["player_id"],
+                    "player_name": row["player_name"],
+                    "position": "WR",
+                    "draft_year": row["draft_year"],
+                    "career_outcome_label": "Starter",
+                    "best_season_fantasy_ppg": 12.0,
+                    "top_finish_band": "WR2",
+                    "years_1_to_3_summary": "ok",
+                }
+                for row in historical_rows
+            ]
+        )
+        artifact = compute_historical_comps(
+            season=2026,
+            rookies=rookies,
+            historical_features=historical_features,
+            outcomes_by_player_id=outcomes,
+            comp_mode="talent_comp",
+            top_n=1,
+            source_files_used=["a"],
+            generated_at="2026-03-30T00:00:00+00:00",
+            production_scope_compatible=frozenset({"class-local"}),
         )
         self.assertNotIn("WR", artifact["comp_data_warnings"])
         self.assertEqual(artifact["similarity_quality_by_position"]["WR"]["status"], "ui_safe")
@@ -882,8 +941,65 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
         self.assertTrue(summary["coverage_sufficient"])
 
     def test_artifact_wr_contract_flags_align_with_ui_safe_status(self) -> None:
-        artifact = json.loads(
-            Path("exports/promoted/historical-comps/2026_historical_comps_v0.json").read_text(encoding="utf-8")
+        # Uses a synthetic fixture rather than the real committed export, for
+        # the same reason as test_similarity_quality_wr_ui_safe_when_coverage_is_sufficient
+        # above: the live 2026 WR rookie pool no longer has sufficient comp
+        # coverage (see issue #259), so this checks the contract-flag
+        # alignment invariant in isolation instead of against ambient data.
+        rookies = [
+            {
+                "player_id": f"wr-r{i}",
+                "player_name": f"Rookie WR{i}",
+                "position": "WR",
+                "ras_0_100": 50.0 + (i * 5.0),
+                "production_0_100": 45.0 + (i * 5.0),
+                "draft_capital_proxy_0_100": 40.0 + (i * 5.0),
+                "size_context_0_100": 35.0 + (i * 5.0),
+            }
+            for i in range(8)
+        ]
+        historical_rows = [
+            {
+                "player_id": f"wr-h{i}",
+                "player_name": f"Hist WR{i}",
+                "position": "WR",
+                "school": "A",
+                "draft_year": 2010 + i,
+                "source_season": 2009 + i,
+                "ras_0_100": 50.0 + (i * 5.0),
+                "production_0_100": 45.0 + (i * 5.0),
+                "draft_capital_proxy_0_100": 40.0 + (i * 5.0),
+                "size_context_0_100": 35.0 + (i * 5.0),
+                "normalization_scope": "class-local",
+            }
+            for i in range(8)
+        ]
+        historical_features = normalize_historical_feature_rows(historical_rows)
+        outcomes = normalize_outcome_rows(
+            [
+                {
+                    "player_id": row["player_id"],
+                    "player_name": row["player_name"],
+                    "position": "WR",
+                    "draft_year": row["draft_year"],
+                    "career_outcome_label": "Starter",
+                    "best_season_fantasy_ppg": 12.0,
+                    "top_finish_band": "WR2",
+                    "years_1_to_3_summary": "ok",
+                }
+                for row in historical_rows
+            ]
+        )
+        artifact = compute_historical_comps(
+            season=2026,
+            rookies=rookies,
+            historical_features=historical_features,
+            outcomes_by_player_id=outcomes,
+            comp_mode="talent_comp",
+            top_n=1,
+            source_files_used=["a"],
+            generated_at="2026-03-30T00:00:00+00:00",
+            production_scope_compatible=frozenset({"class-local"}),
         )
         self.assertEqual(
             artifact["methodology_compatibility_by_position"]["WR"],
