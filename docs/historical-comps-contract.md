@@ -234,6 +234,14 @@ It must not be independently computed from different logic.
 - When valid population files are present for a row's `source_season`, WR rows are normalized using scope `historical-wr-cfbd-season-pop-v1`.
 - When absent, scoring falls back to `historical-wr-cfbd-method-v1` / `historical-wr-cfbd-method-v1-null` and compatibility remains conservative.
 
+## Historical TE reference population infrastructure
+
+- Optional static reference files are read from `data/historical/te_reference_populations/{season}_te_receiving_population.json`.
+- Required fields per row: `player_name`, `position`, `source_season`, `receptions`, `receiving_yards`, `receiving_tds`, `source_name`, `source_url`.
+- A file is considered valid for compatibility only when at least 30 rows qualify (`position` in `{"TE", "H-BACK", "FB"}`, `receptions >= 20`, and sourced provenance present).
+- **Quarantine status (issue [#257](https://github.com/Prometheus-Frameworks/TIBER-Rookies/issues/257)):** all five committed season files are currently empty (`[]`). The previously committed content was found to be WR reference-population rows with only `position` relabeled to `"TE"` — see `data/historical/te_reference_populations/README.md` for the full investigation. No valid TE season population currently exists anywhere in this repository's history, so `methodology_compatibility_by_position.TE` and `similarity_quality_by_position.TE.status` should not be treated as `true`/`ui_safe` until real CFBD TE data is fetched and populated.
+- When absent (as is currently the case), TE scoring falls back to `historical-te-cfbd-method-v1` / `historical-te-cfbd-method-v1-null` and compatibility remains conservative, the same treatment already applied to WR when no population file is present.
+
 ## WR production harmonization scope (historical-wr-cfbd-method-v1)
 
 - Historical WR rows now compute `production_0_100` using the same **metric methodology** as `scripts/compute_production_scores.py` for 2026 WR:
@@ -280,3 +288,5 @@ Interpret current WR comp similarities accordingly: upgraded beyond one-vintage/
 Because sandbox environments may not populate live historical APIs, this contract supports local operator population of historical files with real data while preserving the exact same row shape and artifact interface.
 
 The committed `exports/promoted/historical-comps/2026_historical_comps_v0.json` file is now partially populated with real WR historical cohort rows while other positions may still be scaffold/sample-backed. It is not yet a fully populated historical warehouse artifact.
+
+**Known staleness (as of issue #257):** the committed artifact predates both several rounds of unrelated rookie-alpha predraft updates and the TE reference-population quarantine above, so it still reflects the pre-quarantine `methodology_compatibility_by_position.TE: true` / `similarity_quality_by_position.TE.status: "ui_safe"` values. Regenerating this artifact is out of scope for issue #257 (it would also pull in unrelated rookie-count drift); the next regeneration of this file will automatically pick up the corrected, conservative TE treatment because the underlying reference-population data is now quarantined.
