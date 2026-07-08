@@ -218,7 +218,11 @@ of the producer/export contracts").
 5. **A known data-quality defect**: every file in `data/historical/te_reference_populations/`
    contains WR player data mislabeled `"position": "TE"` — real TE reference-population data does
    not appear to exist in the repo. Consuming this today would silently corrupt any
-   TE-specific normalization.
+   TE-specific normalization. **Update:** investigated and quarantined in issue
+   [#257](https://github.com/Prometheus-Frameworks/TIBER-Rookies/issues/257) — see
+   `docs/reports/2026-07-08-te-reference-population-repair.md` and
+   `data/historical/te_reference_populations/README.md`. No real TE population was found
+   anywhere in the repo's history; the files are now emptied rather than left mislabeled.
 6. **At least one operationally broken join.** `docs/repo-state-audit-2026-postdraft.md` (an
    internal audit dated May 2026) marks the team-context post-draft join as **BROKEN** due to a
    missing cross-repo path, with stale output left committed. This audit did not re-verify
@@ -302,8 +306,10 @@ paths are given where the file count is small enough to be meaningful.
 
 ### `unknown_requires_followup`
 
-- `data/historical/te_reference_populations/*.json` — all five files contain WR data mislabeled
-  as TE; whether any real TE reference population exists anywhere is unresolved
+- ~~`data/historical/te_reference_populations/*.json` — all five files contain WR data mislabeled
+  as TE; whether any real TE reference population exists anywhere is unresolved~~ **Resolved by
+  issue #257**: no real TE population exists anywhere in the repo's history (checked branches
+  beyond `main` too); the files are now quarantined (empty) rather than mislabeled.
 - Whether `docs/repo-state-audit-2026-postdraft.md`'s "BROKEN" status for the team-context join
   still holds today (this audit did not re-run the pipeline to check)
 - Whether the `SIM`-prefixed rows in `nfl-fantasy-outcomes` were an intentional test fixture that
@@ -332,9 +338,9 @@ candidates only, consistent with the issue's framing.
 
 Each is scoped narrowly and does not itself authorize Forecast consumption:
 
-1. **Fix TE reference population mislabeling** — `data/historical/te_reference_populations/*`
-   contains WR data mislabeled as TE across all five files; needs investigation into whether
-   real TE data exists anywhere or must be sourced fresh.
+1. ~~**Fix TE reference population mislabeling**~~ — **Done in issue #257**: investigated,
+   root-caused, and quarantined (see `docs/reports/2026-07-08-te-reference-population-repair.md`).
+   Sourcing real TE data still requires a `CFBD_API_KEY`, which remains a genuine follow-up.
 2. **Flag or strip synthetic rows in promoted exports** — add an explicit `is_synthetic`/
    `is_fixture` boolean to `exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.*`
    (currently only detectable via `SIM`-prefixed IDs) and to

@@ -798,34 +798,72 @@ class ComputeHistoricalCompsTests(unittest.TestCase):
         self.assertTrue(Path("scripts/fetch_te_reference_populations.py").is_file())
 
     def test_te_reference_population_file_enables_population_scope(self) -> None:
+        # Uses a synthetic fixture directory rather than the real
+        # data/historical/te_reference_populations/ files: those are
+        # intentionally quarantined (empty) as of issue #257 pending real
+        # CFBD TE data, so they must not be relied on to exercise this
+        # positive path. See data/historical/te_reference_populations/README.md.
+        temp_dir = Path(".tmp_te_reference_population_test")
+        temp_dir.mkdir(exist_ok=True)
+        try:
+            rows = []
+            for i in range(30):
+                rows.append(
+                    {
+                        "player_name": f"TE {i}",
+                        "position": "TE",
+                        "source_season": 2021,
+                        "receptions": 20 + (i % 30),
+                        "receiving_yards": 300 + (i * 3),
+                        "receiving_tds": 1 + (i % 6),
+                        "source_name": "CFBD",
+                        "source_url": "https://api.collegefootballdata.com/stats/player/season",
+                    }
+                )
+            population_file = temp_dir / "2021_te_receiving_population.json"
+            population_file.write_text(json.dumps(rows), encoding="utf-8")
+
+            populations = _load_te_reference_populations(temp_dir)
+            self.assertIn(2021, populations)
+            self.assertGreaterEqual(len(populations[2021]), 30)
+
+            features = normalize_historical_feature_rows(
+                [
+                    {
+                        "player_id": "te-scoreable",
+                        "player_name": "TE Scoreable",
+                        "position": "TE",
+                        "school": "Sample",
+                        "draft_year": 2022,
+                        "source_season": 2021,
+                        "ras_0_100": 70.0,
+                        "production_0_100": None,
+                        "draft_capital_proxy_0_100": 70.0,
+                        "size_context_0_100": 70.0,
+                        "receptions": 60,
+                        "receiving_yards": 900,
+                        "receiving_tds": 8,
+                    }
+                ]
+            )
+            scored, compatible_scopes = apply_te_historical_production_methodology(
+                features,
+                te_reference_populations=populations,
+            )
+            self.assertEqual(scored[0]["normalization_scope"], TE_POPULATION_SCOPE)
+            self.assertIn(TE_POPULATION_SCOPE, compatible_scopes)
+        finally:
+            if temp_dir.exists():
+                for path in temp_dir.glob("*"):
+                    path.unlink()
+                temp_dir.rmdir()
+
+    def test_te_reference_population_currently_quarantined_yields_no_valid_population(self) -> None:
+        # Documents the issue #257 quarantine state: the real directory has
+        # files present but each is empty, so no season meets the minimum
+        # row threshold and the loader must return no valid populations.
         populations = _load_te_reference_populations(Path("data/historical/te_reference_populations"))
-        self.assertIn(2021, populations)
-        self.assertGreaterEqual(len(populations[2021]), 30)
-        features = normalize_historical_feature_rows(
-            [
-                {
-                    "player_id": "te-scoreable",
-                    "player_name": "TE Scoreable",
-                    "position": "TE",
-                    "school": "Sample",
-                    "draft_year": 2022,
-                    "source_season": 2021,
-                    "ras_0_100": 70.0,
-                    "production_0_100": None,
-                    "draft_capital_proxy_0_100": 70.0,
-                    "size_context_0_100": 70.0,
-                    "receptions": 60,
-                    "receiving_yards": 900,
-                    "receiving_tds": 8,
-                }
-            ]
-        )
-        scored, compatible_scopes = apply_te_historical_production_methodology(
-            features,
-            te_reference_populations=populations,
-        )
-        self.assertEqual(scored[0]["normalization_scope"], TE_POPULATION_SCOPE)
-        self.assertIn(TE_POPULATION_SCOPE, compatible_scopes)
+        self.assertEqual(populations, {})
 
     def test_te_lane_coverage_sufficient(self) -> None:
         players = []
