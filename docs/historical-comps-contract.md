@@ -289,4 +289,19 @@ Because sandbox environments may not populate live historical APIs, this contrac
 
 The committed `exports/promoted/historical-comps/2026_historical_comps_v0.json` file is now partially populated with real WR historical cohort rows while other positions may still be scaffold/sample-backed. It is not yet a fully populated historical warehouse artifact.
 
-**Known staleness (as of issue #257):** the committed artifact predates both several rounds of unrelated rookie-alpha predraft updates and the TE reference-population quarantine above, so it still reflects the pre-quarantine `methodology_compatibility_by_position.TE: true` / `similarity_quality_by_position.TE.status: "ui_safe"` values. Regenerating this artifact is out of scope for issue #257 (it would also pull in unrelated rookie-count drift); the next regeneration of this file will automatically pick up the corrected, conservative TE treatment because the underlying reference-population data is now quarantined.
+**Resolved (issue #259):** the artifact was regenerated from current inputs. TE now correctly
+shows `methodology_compatibility_by_position.TE: false` /
+`similarity_quality_by_position.TE.status: "directional_only"` /
+`ui_display_allowed.TE: false`, confirming the issue #257 reference-population quarantine reached
+the actual promoted export, not just the docs. Per-comp `feature_snapshot.normalization_scope`
+for TE historical comps changed from `historical-te-cfbd-season-pop-v1` (the corrupted
+population) to the conservative in-cohort fallback `historical-te-cfbd-method-v1`.
+
+Regenerating also pulled in unrelated, pre-existing rookie-alpha drift (the rookie-alpha
+predraft export had grown by ~28 players since this artifact was last generated): WR rookie
+count went from 8 to 23 and TE from 3 to 11. As a side effect, **WR also lost its `ui_safe`
+status** (`similarity_quality_by_position.WR.status` is now `directional_only`,
+`ui_display_allowed.WR: false`) — this is unrelated to the TE quarantine and reflects that the
+larger current WR rookie pool has genuinely insufficient comp/feature-depth coverage against the
+historical cohort (`lane_coverage_by_position.WR.coverage_sufficient: false`). See
+`docs/reports/2026-07-08-historical-comps-regeneration.md` for the full before/after diff.
