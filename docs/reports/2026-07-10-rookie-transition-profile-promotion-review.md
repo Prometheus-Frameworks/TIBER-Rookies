@@ -42,9 +42,16 @@ These hashes are unchanged by this review — no file under `exports/candidate/`
 Cross-referencing all 48 candidate rows against `data/processed/2026_draft_results.json` (the
 real, source-verified 2026 draft-results artifact established in issues #257/#259):
 
-- **47 of 48 candidate players (98%)** already have a verified draft record
-  (`source_status: "external_verified"`, not a UDFA). Only `te-daequan-wright` has no draft
-  record at all.
+- **47 of 48 candidate players (98%)** already have a verified drafted-outcome record
+  (`source_status: "external_verified"`, not a UDFA) in `data/processed/2026_draft_results.json`.
+  **Correction:** the remaining player, `te-daequan-wright`, is not unresolved — he has a separate,
+  externally verified UDFA-signing record in
+  `data/processed/2026_day3_udfa_draft_result_profiles.json`
+  (`draft_result_status: "udfa_signed"`, `nfl_team: "PHI"`, `source_status: "external_verified"`,
+  with an Eagles source URL). So the true split is **48 of 48 players with a known, verified
+  post-draft status somewhere in the repository** — 47 drafted, 1 UDFA-signed — not "47 verified +
+  1 unresolved." Absence from `2026_draft_results.json` alone does not mean a player's outcome is
+  unknown; a separate governed file covers UDFA signings.
 - Despite this, **every one of the 48 rows** classifies `draft_capital.provenance.source_type` as
   `market_derived_proxy` and carries the note *"Temporary pre-draft market-investment proxy. Not
   equivalent to realized NFL draft capital."*
@@ -81,9 +88,9 @@ producer never closed it.
 **Why this fails the gate, not just a cosmetic nit:** this is precisely the class of defect the
 #255/#257/#259 chain exists to catch — data whose provenance classification actively
 misrepresents its own certainty. A downstream reader trusting `provenance.source_type` (the
-artifact's entire reason for existing) would treat 47 of 48 rows' draft capital as an unreliable
-pre-draft guess when 47 of them are actually real, sourced, verified outcomes sitting one file
-away in the same repository.
+artifact's entire reason for existing) would treat all 48 rows' draft capital as an unreliable
+pre-draft guess when all 48 already have a real, sourced, verified post-draft outcome (47 drafted,
+1 UDFA-signed) sitting in files one hop away in the same repository.
 
 ## Hard-boundary compliance during this review
 
@@ -111,15 +118,44 @@ Forecast consumption, predictive use, cross-repo mirroring, or production bindin
 
 ## Recommended follow-up (for a separate implementation-fix issue)
 
-1. Teach `scripts/compute_rookie_transition_profile.py` to check
-   `data/processed/{season}_draft_results.json` for each player. Where a verified record exists
-   (`source_status: "external_verified"`, not UDFA), emit `draft_capital` with
-   `source_type: "official_draft_result"` and a `value` built from the real `draft_round`/
-   `overall_pick`/`nfl_team`, not the big-board proxy.
-2. Retain `market_derived_proxy` only for players with no verified draft record (as it already
-   correctly does for `te-daequan-wright`).
-3. Fix or drop the stale/inconsistent `draft_capital_proxy_source` post-draft edits in
-   `data/processed/2026_draft_capital_proxy.json` regardless of (1), since a proxy-methodology
-   field should not contain ad hoc draft-outcome text at all.
-4. Regenerate the candidate, then open a new promotion-review issue against the corrected
-   candidate.
+**Correction from initial review:** the recommendation below originally proposed emitting
+`draft_capital` with `source_type: "official_draft_result"` when a verified record exists and
+retaining `market_derived_proxy` otherwise, treating `te-daequan-wright` as the sole exception. On
+review, that was wrong on two counts, both corrected here:
+
+1. **Coverage is 48 of 48, not 47 of 48.** `te-daequan-wright` has a verified UDFA-signing record
+   in `data/processed/2026_day3_udfa_draft_result_profiles.json`, not "no draft record." Any fix
+   must check both the drafted-outcomes file and the UDFA-outcomes file (or, better, a single
+   governed canonical post-draft outcome artifact if/when one exists) — absence from
+   `2026_draft_results.json` alone must never be read as "outcome unknown, fall back to proxy."
+2. **`draft_capital` must not become a polymorphic field.** Making one field's meaning conditionally
+   switch between "pre-draft market proxy" and "observed post-draft outcome" depending on which
+   players happen to have results yet would itself be a schema-semantics defect of the same kind
+   this review exists to catch — a single field name silently representing two different concepts
+   across rows, and discarding the historically useful pre-draft expectation for players who have
+   since been drafted.
+
+The corrected follow-up should **design and implement a separation of two distinct concepts**,
+not overwrite one with the other under the existing `draft_capital` field:
+
+- a pre-draft market expectation/proxy field (what `draft_capital` already is today), and
+- an observed post-draft outcome field — status (`drafted` / `udfa_signed`), team, round/pick
+  where applicable, and full source lineage — populated from both
+  `data/processed/{season}_draft_results.json` and
+  `data/processed/{season}_day3_udfa_draft_result_profiles.json` (or a single canonical successor
+  artifact, if one is introduced instead).
+
+Concretely, that follow-up issue should:
+
+1. Design the separation — e.g. distinct field families such as `pre_draft_market_proxy` and
+   `official_postdraft_outcome`, or an explicitly versioned postdraft companion artifact (mirroring
+   Rookie Alpha's own predraft/postdraft split) — before writing any code, since this changes the
+   artifact's shape and needs its own review, not a silent edit to `draft_capital`'s semantics.
+2. Source the post-draft outcome field from **both** the drafted-outcomes and UDFA-outcomes files
+   (checking every available verified-outcome source, not just one), with source-verified
+   provenance for each case.
+3. Fix or drop the stale/inconsistent `draft_capital_proxy_source` post-draft text edits in
+   `data/processed/2026_draft_capital_proxy.json` regardless of the above, since a proxy-methodology
+   field should not contain ad hoc draft-outcome narrative text at all.
+4. Regenerate the candidate against the corrected/expanded schema, then open a new promotion-review
+   issue against that candidate.
