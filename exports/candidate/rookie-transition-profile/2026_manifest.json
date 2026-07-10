@@ -34,11 +34,11 @@
   },
   "output_files": [
     {
-      "path": "exports/promoted/rookie-transition-profile/2026_rookie_transition_profile_v0.json",
+      "path": "exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.json",
       "sha256": "1ead2f82e9ef2d408d197863ed83e744bae89f8619f35b150753607bff019591"
     },
     {
-      "path": "exports/promoted/rookie-transition-profile/2026_rookie_transition_profile_v0.csv",
+      "path": "exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.csv",
       "sha256": "7474e859d90d934a68f21797b9c8409f790e53bc509c69e789216a2f8ecea9fa"
     }
   ],

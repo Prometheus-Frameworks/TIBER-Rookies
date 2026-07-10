@@ -17,15 +17,30 @@
   `{season}_prospect_context.json`) and repackages them under the new contract. Computes no new
   score — `age_at_entry` is the one derived value, and it's an exact copy of the
   `age_from_dob` formula already in `scripts/compute_breakout_age.py`.
-- `exports/promoted/rookie-transition-profile/2026_rookie_transition_profile_v0.{json,csv}` +
-  `2026_manifest.json` — the real, promoted 2026 artifact (48 players).
+- `exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.{json,csv}` +
+  `2026_manifest.json` — the real, implemented-and-validated 2026 **candidate** artifact
+  (48 players). This lives under `exports/candidate/`, not `exports/promoted/` — per issue #263's
+  decision enum, this issue authorizes only a future promotion-review issue, not promotion
+  itself. See "Candidate vs. promoted" below.
 - `docs/rookie-transition-profile-contract.md` — the implemented contract, including three
   implementation decisions not pinned by the design doc (see below).
-- `tests/test_validate_rookie_transition_profile.py` (23 tests) and
+- `tests/test_validate_rookie_transition_profile.py` (25 tests) and
   `tests/test_compute_rookie_transition_profile.py` (16 tests) — regression coverage, including
-  two tests that validate the actual committed 2026 artifact end-to-end.
+  two tests that validate the actual committed 2026 candidate artifact end-to-end, and two tests
+  guarding manifest-top-level-vs-`export_metadata` consistency (added after PR #264 review).
 
-Full `pytest` suite: **419 passed** (380 pre-existing + 39 new).
+Full `pytest` suite: **421 passed** (380 pre-existing + 41 new).
+
+## Candidate vs. promoted
+
+An earlier revision of this PR wrote the 2026 artifact directly to
+`exports/promoted/rookie-transition-profile/` and described it as "promoted." Repo owner review
+on PR #264 correctly identified that this collapsed implementation and promotion into one step,
+making the future promotion-review issue ceremonial rather than a real gate. Fixed by moving the
+artifact (and every path reference in the script, tests, and contract doc) to
+`exports/candidate/rookie-transition-profile/`. The design doc's own "Promotion path" section
+already described promotion to `exports/promoted/...` as a step that happens "only after the
+validator passes" — this PR now matches that sequencing instead of pre-empting it.
 
 ## Coverage of the real 2026 artifact
 
@@ -79,8 +94,8 @@ misrepresentation issue #257 was about.
 
 ```bash
 python3 scripts/validate_rookie_transition_profile.py \
-  --export-json exports/promoted/rookie-transition-profile/2026_rookie_transition_profile_v0.json \
-  --manifest exports/promoted/rookie-transition-profile/2026_manifest.json
+  --export-json exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.json \
+  --manifest exports/candidate/rookie-transition-profile/2026_manifest.json
 # ROOKIE TRANSITION PROFILE VALIDATION PASSED
 ```
 

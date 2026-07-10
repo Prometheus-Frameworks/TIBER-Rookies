@@ -178,18 +178,20 @@ class ValidateArtifactShapeTests(unittest.TestCase):
 
 
 class RealCommittedArtifactTests(unittest.TestCase):
-    """Guards the actual promoted 2026 artifact, mirroring how other promoted
-    families in this repo are checked against the real committed files."""
+    """Guards the actual committed 2026 candidate artifact. This lives under
+    exports/candidate/, not exports/promoted/ — per issue #263, implementation
+    and validation happen here, but promotion itself requires a separate,
+    future promotion-review issue."""
 
     def test_2026_artifact_passes_shape_validation(self) -> None:
-        path = Path("exports/promoted/rookie-transition-profile/2026_rookie_transition_profile_v0.json")
+        path = Path("exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.json")
         payload = json.loads(path.read_text(encoding="utf-8"))
         self.assertEqual(validate_artifact_shape(payload), [])
 
     def test_2026_artifact_and_manifest_pass_full_validation(self) -> None:
         errors = validate_export_manifest(
-            export_path=Path("exports/promoted/rookie-transition-profile/2026_rookie_transition_profile_v0.json"),
-            manifest_path=Path("exports/promoted/rookie-transition-profile/2026_manifest.json"),
+            export_path=Path("exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.json"),
+            manifest_path=Path("exports/candidate/rookie-transition-profile/2026_manifest.json"),
         )
         self.assertEqual(errors, [])
 

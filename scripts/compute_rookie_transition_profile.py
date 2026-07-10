@@ -41,7 +41,7 @@ DEFAULT_ROOKIE_ALPHA_INPUT = Path("exports/promoted/rookie-alpha/{season}_rookie
 DEFAULT_DRAFT_CAPITAL_INPUT = Path("data/processed/{season}_draft_capital_proxy.json")
 DEFAULT_PRODUCTION_INPUT = Path("data/processed/{season}_college_production.json")
 DEFAULT_CONTEXT_INPUT = Path("data/processed/{season}_prospect_context.json")
-DEFAULT_OUTPUT_DIR = Path("exports/promoted/rookie-transition-profile")
+DEFAULT_OUTPUT_DIR = Path("exports/candidate/rookie-transition-profile")
 
 
 def load_json(path: Path) -> Any:

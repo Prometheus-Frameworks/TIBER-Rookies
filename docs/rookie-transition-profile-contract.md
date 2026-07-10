@@ -1,6 +1,6 @@
-# Promoted Export Contract: Rookie Transition Profile (v0)
+# Candidate Export Contract: Rookie Transition Profile (v0)
 
-**Status:** implemented (issue [#263](https://github.com/Prometheus-Frameworks/TIBER-Rookies/issues/263)).
+**Status:** implemented as a **candidate artifact** (issue [#263](https://github.com/Prometheus-Frameworks/TIBER-Rookies/issues/263)).
 **Architecture:** [`docs/rookie-transition-profile-v0-design.md`](rookie-transition-profile-v0-design.md) (issue #261).
 
 This artifact is an **evidence consolidation layer**, not a score or ranking. It repackages
@@ -8,14 +8,25 @@ already-computed values from other promoted/processed artifacts under one schema
 per-field provenance. It does not replace Rookie Alpha (`docs/export-contract.md`), which remains
 the scored artifact.
 
-## Canonical promoted path + filename contract
+**This is not a promoted artifact.** Per issue #263's decision enum, a positive decision here
+(`may_open_rookie_transition_profile_promotion_review_issue`) authorizes only a *future*
+promotion-review issue — it does not itself promote anything. The producer, validator, and the
+2026 candidate bytes below are implemented and validated, but they live under
+`exports/candidate/`, not `exports/promoted/`, until a separate promotion-review issue explicitly
+authorizes copying reviewed bytes into the promoted path.
+
+## Canonical candidate path + filename contract
 
 ```text
-exports/promoted/rookie-transition-profile/
+exports/candidate/rookie-transition-profile/
   {season}_rookie_transition_profile_v0.json
   {season}_rookie_transition_profile_v0.csv
   {season}_manifest.json
 ```
+
+A future promotion-review issue decides whether, and how, reviewed bytes from this path are
+copied into `exports/promoted/rookie-transition-profile/`. Nothing in this document authorizes
+that copy in advance.
 
 ## JSON contract
 
@@ -117,7 +128,7 @@ python3 -c "
 from pathlib import Path
 import json
 from scripts.validate_rookie_transition_profile import validate_artifact_shape
-payload = json.loads(Path('exports/promoted/rookie-transition-profile/2026_rookie_transition_profile_v0.json').read_text())
+payload = json.loads(Path('exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.json').read_text())
 errors = validate_artifact_shape(payload)
 print('PASSED' if not errors else errors)
 "
@@ -127,8 +138,8 @@ Manifest + hash validation (mirrors `scripts/validate_promoted_export.py`):
 
 ```bash
 python3 scripts/validate_rookie_transition_profile.py \
-  --export-json exports/promoted/rookie-transition-profile/2026_rookie_transition_profile_v0.json \
-  --manifest exports/promoted/rookie-transition-profile/2026_manifest.json
+  --export-json exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.json \
+  --manifest exports/candidate/rookie-transition-profile/2026_manifest.json
 ```
 
 Expected output: `ROOKIE TRANSITION PROFILE VALIDATION PASSED`.
@@ -138,7 +149,10 @@ appear without a provenance object, and every provenance object must declare a v
 `source_type`**. This directly targets the class of defect found in issue #257 (data whose real
 nature was undiscoverable without reading source code).
 
-## Regenerating the artifact
+Passing this validator is a **precondition** for a future promotion-review issue to consider
+promoting this candidate — it is not itself a promotion event.
+
+## Regenerating the candidate artifact
 
 ```bash
 python3 scripts/compute_rookie_transition_profile.py --season 2026
@@ -147,32 +161,37 @@ python3 scripts/compute_rookie_transition_profile.py --season 2026
 Reads (all defaulted by season, overridable via flags):
 
 - `exports/promoted/rookie-alpha/{season}_rookie_alpha_predraft_v0.json` (base player population,
-  athletic testing, production score, draft capital proxy score)
+  athletic testing, production score, draft capital proxy score — already a promoted artifact)
 - `data/processed/{season}_draft_capital_proxy.json` (big-board rank + proxy-rule source text)
 - `data/processed/{season}_college_production.json` (production-score source text)
 - `data/processed/{season}_prospect_context.json` (`dob`)
 
-Writes the JSON/CSV/manifest triplet above. No new score, rank, or derived value is computed —
-every governed field is either copied verbatim from an already-promoted/processed source or a
-deterministic lookup (age from date of birth).
+Writes the JSON/CSV/manifest triplet under `exports/candidate/rookie-transition-profile/`. No new
+score, rank, or derived value is computed — every governed field is either copied verbatim from an
+already-promoted/processed source or a deterministic lookup (age from date of birth).
 
-## Promotion path
+## Path to promotion (not yet authorized)
 
-Follows `docs/source-of-truth-audit.md`'s existing promotion gate: reproducible from checked-in
-scripts (`scripts/compute_rookie_transition_profile.py`), versioned with an explicit schema label
-(`schema_version`), validated (`scripts/validate_rookie_transition_profile.py`, hash/shape checks),
-and semantically classified (`derived`/`display` — this artifact computes nothing new, so it is
-best classified as a **repackaged/derived-passthrough** artifact, not `raw`).
+This document describes the artifact and its validation, and confirms it already satisfies the
+mechanical shape of `docs/source-of-truth-audit.md`'s promotion gate (reproducible from
+checked-in scripts, versioned with an explicit schema label, validated, semantically
+classifiable as a **repackaged/derived-passthrough** artifact). Satisfying that shape is
+necessary but not sufficient for promotion.
 
-This document authorizes promotion of `rookie_transition_profile_v0` within TIBER-Rookies only.
-Cross-repo promotion (e.g. into TIBER-Data) and any Forecast consumption remain unauthorized and
-out of scope — see the "Forecast-consumability requirements" section of the design doc, which this
-implementation satisfies structurally but which requires separate authorization to act on.
+**Promotion itself — copying or pointing reviewed bytes into
+`exports/promoted/rookie-transition-profile/` — requires a separate, future promotion-review
+issue**, per issue #263's decision enum: a positive decision from this implementation issue
+(`may_open_rookie_transition_profile_promotion_review_issue`) authorizes opening that review
+issue, nothing more. This document does not authorize promotion, cross-repo promotion (e.g. into
+TIBER-Data), or any Forecast consumption. See the design doc's "Forecast-consumability
+requirements" section, which this implementation satisfies structurally but which still requires
+separate authorization to act on.
 
 ## Regression tests
 
 - `tests/test_validate_rookie_transition_profile.py` — schema/enum/provenance-shape validation,
-  plus two tests that run full validation against the real committed 2026 artifact.
+  manifest-consistency checks, plus two tests that run full validation against the real committed
+  2026 candidate artifact.
 - `tests/test_compute_rookie_transition_profile.py` — per-field builder tests (including the
   `NEUTRAL_DEFAULT`-is-unavailable rule and the `age_from_dob` formula match), coverage-summary
   counting, and JSON/CSV output writing.
