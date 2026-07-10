@@ -290,6 +290,26 @@ class RealCommittedArtifactTests(unittest.TestCase):
             notes = (draft_capital["provenance"]["notes"] or "").lower()
             self.assertIn("not equivalent to realized", notes, msg=row["player_id"])
 
+    def test_2026_artifact_draft_capital_never_claims_a_rank_mapping_without_a_rank(self) -> None:
+        """Regression guard for a PR #268 review finding: the 6 rows this PR
+        repaired (all null big_board_rank) must not claim their proxy score
+        was 'mapped from seeded big_board_rank bands' — that overstates the
+        provenance for a rank that isn't actually on file. Scoped to the
+        rows this PR touched; a pre-existing, unrelated instance of the same
+        inconsistency (te-daequan-wright, present on main before this PR) is
+        out of scope for this fix and tracked separately, not asserted here."""
+        repaired_null_rank_ids = {
+            "wr-dezhaun-stribling", "rb-kaelon-black", "wr-malachi-fields",
+            "wr-caleb-douglas", "wr-zavion-thomas", "te-will-kacmarek",
+        }
+        path = Path("exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.json")
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        rows_by_id = {row["player_id"]: row for row in payload["rows"]}
+        for player_id in repaired_null_rank_ids:
+            source_name = (rows_by_id[player_id]["draft_capital"]["provenance"]["source_name"] or "").lower()
+            self.assertNotIn("mapped from seeded big_board_rank bands", source_name, msg=player_id)
+            self.assertIn("unknown", source_name, msg=player_id)
+
 
 class ValidateExportManifestConsistencyTests(unittest.TestCase):
     """Regression coverage for a gap flagged in PR #264 review: export_metadata

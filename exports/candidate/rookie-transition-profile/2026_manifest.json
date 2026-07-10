@@ -6,11 +6,11 @@
   "input_files": [
     {
       "path": "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
-      "sha256": "df239f10f3f3b82fbf15d7d903ca94f450d9e2c17993feb2b7ce87161944b962"
+      "sha256": "f9049bf59b3a926ff28a9e8eda2c9af2405066e514ae45852b10285a883d09c1"
     },
     {
       "path": "data/processed/2026_draft_capital_proxy.json",
-      "sha256": "cdf0e04f1b052e2625ae184d97c49974c604b206cf7ab7a5e394a4e24f01245b",
+      "sha256": "2a07b4f75b05b142ee861a66d03819e9ae0ed1b32ae3a538208a513474bfe6e0",
       "row_count": 101
     },
     {
@@ -46,11 +46,11 @@
   "output_files": [
     {
       "path": "exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.json",
-      "sha256": "3f74b8e4949aff7f6addf5bc854523ab2a0c29d1b690c9b14fadbad6e1ab5318"
+      "sha256": "b1c47fc40dd276718d02f24d9d4c734b1529eefd485db9e54c67478fcdbdcf6a"
     },
     {
       "path": "exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.csv",
-      "sha256": "0c8f7abaf7591b33462cbce989bbfce3abff86e072a8c8d0a6f50eae68b42b54"
+      "sha256": "a0407fd1c8c3b6d53f842d30f8e6e9689adea7c356a2ee2052e16753ffcbe024"
     }
   ],
   "export_metadata": {

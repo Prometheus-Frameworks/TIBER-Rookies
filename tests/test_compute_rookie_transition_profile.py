@@ -177,6 +177,29 @@ class BuildOfficialPostdraftOutcomeFieldTests(unittest.TestCase):
         self.assertEqual(field["value"]["status"], "drafted")
         self.assertEqual(field["value"]["nfl_team"], "SEA")
 
+    def test_udfa_signed_row_recorded_directly_in_draft_results_is_not_mislabeled_drafted(self) -> None:
+        """Regression guard for a PR #268 review finding: a verified row in
+        draft_results.json that is itself a UDFA signing (is_udfa=True) must
+        not be hard-coded to status='drafted' — its own fields must decide."""
+        draft_result_row = {
+            "draft_result_status": "udfa_signed",
+            "nfl_team": "PHI",
+            "draft_round": None,
+            "overall_pick": None,
+            "is_udfa": True,
+            "source_status": "external_verified",
+            "upstream_provenance_status": "source_verified",
+            "source_name": "Test tracker",
+            "source_url": "https://example.com",
+            "ingested_at": "2026-05-17",
+        }
+        field = build_official_postdraft_outcome_field(draft_result_row, None, as_of_date="2026-07-10")
+        self.assertEqual(field["value"]["status"], "udfa_signed")
+        self.assertEqual(field["value"]["is_udfa"], True)
+        self.assertIsNone(field["value"]["draft_round"])
+        self.assertIsNone(field["value"]["overall_pick"])
+        self.assertEqual(validate_field(field, prefix="official_postdraft_outcome"), [])
+
     def test_unavailable_when_no_verified_record_in_either_source(self) -> None:
         field = build_official_postdraft_outcome_field(None, None, as_of_date="2026-07-10")
         self.assertIsNone(field["value"])

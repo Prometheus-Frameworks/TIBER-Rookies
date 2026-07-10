@@ -85,6 +85,38 @@ directory issue #267's hard boundary actually names. It was necessary to keep an
 already-promoted artifact's integrity chain honest after a data repair this issue explicitly
 required, and was verified to carry zero scoring or population drift before being applied.
 
+## Review-driven fixes (PR #268 review round)
+
+Two P2 findings from automated review, both verified before fixing:
+
+1. **`build_official_postdraft_outcome_field` hard-coded `status: "drafted"` for any verified
+   `data/processed/{season}_draft_results.json` row**, without checking the row's own
+   `is_udfa`/`draft_result_status` fields. No current 2026 row triggers this (all 81 rows in that
+   file are genuinely drafted), but a future season's file could include a verified non-drafted
+   row and this function would have silently mislabeled it. Fixed by extracting a shared
+   `_postdraft_outcome_from_row()` helper that derives `status`/`is_udfa`/`draft_round`/
+   `overall_pick` from the row's own fields for **both** sources uniformly, instead of assuming
+   "drafted" for one source and only deriving properly for the other. Added a regression test
+   (`test_udfa_signed_row_recorded_directly_in_draft_results_is_not_mislabeled_drafted`)
+   constructing exactly this scenario.
+2. **The 6 null-`big_board_rank` rows repaired in the first commit used the ranked
+   "mapped from seeded big_board_rank bands" template text**, even though their `big_board_rank`
+   is genuinely absent — overstating the provenance for a rank that isn't on file (a real
+   analytical mistake, distinct from the "unranked band" template's `draft_capital_proxy_0_100:
+   25` convention, since these 6 rows have varying real scores). Fixed by replacing their text
+   with an honest "no recorded big_board_rank on file (rank unknown)" description instead. Added
+   a regression test scoped to exactly these 6 rows.
+   - Investigating this surfaced a **pre-existing, unrelated inconsistency**:
+     `te-daequan-wright` also has `big_board_rank: null` with the same ranked-template text, but
+     unlike the 6 repaired rows, this was already present on `main` before this PR (confirmed via
+     `git show origin/main:...`) and was never part of the #266 review's flagged rows — it's
+     outside this issue's scope (repairing the specific leaked/inconsistent text from #266), so
+     it was left untouched and is noted here rather than silently fixed or silently ignored.
+
+Both fixes required regenerating the same two artifacts again (Rookie Alpha's promoted export
+and the rookie-transition-profile candidate), following the identical zero-drift verification
+process described above.
+
 ## Hard-boundary compliance
 
 - No files created or modified under `exports/promoted/rookie-transition-profile/` —

@@ -214,6 +214,39 @@ def build_college_production_field(
     }
 
 
+def _postdraft_outcome_from_row(
+    row: dict[str, Any], *, default_source_name: str, last_verified_at: str
+) -> dict[str, Any]:
+    """Build the {value, provenance} pair from a verified source row.
+
+    Derives status/is_udfa/round/pick from the row's own fields rather than
+    assuming "drafted" — a source row may itself record a udfa_signed (or
+    other non-drafted) outcome, and that must be preserved, not overwritten.
+    """
+    status = row.get("draft_result_status") or ("udfa_signed" if row.get("is_udfa") else "drafted")
+    is_udfa = bool(row.get("is_udfa"))
+    return {
+        "value": {
+            "status": status,
+            "nfl_team": row.get("nfl_team"),
+            "draft_round": row.get("draft_round") if status == "drafted" else None,
+            "overall_pick": row.get("overall_pick") if status == "drafted" else None,
+            "is_udfa": is_udfa,
+            "source_status": row.get("source_status"),
+            "upstream_provenance_status": row.get("upstream_provenance_status"),
+        },
+        "provenance": {
+            "source_type": SourceType.OFFICIAL_DRAFT_RESULT.value,
+            "source_name": row.get("source_name") or row.get("source_note") or default_source_name,
+            "source_url": row.get("source_url"),
+            "confidence": POSTDRAFT_OUTCOME_CONFIDENCE,
+            "confidence_band": confidence_to_band(POSTDRAFT_OUTCOME_CONFIDENCE),
+            "last_verified_at": last_verified_at,
+            "notes": None,
+        },
+    }
+
+
 def build_official_postdraft_outcome_field(
     draft_result_row: dict[str, Any] | None,
     udfa_row: dict[str, Any] | None,
@@ -228,50 +261,18 @@ def build_official_postdraft_outcome_field(
     touched by this function or overwritten with these values.
     """
     if draft_result_row is not None and draft_result_row.get("source_status") == "external_verified":
-        return {
-            "value": {
-                "status": "drafted",
-                "nfl_team": draft_result_row.get("nfl_team"),
-                "draft_round": draft_result_row.get("draft_round"),
-                "overall_pick": draft_result_row.get("overall_pick"),
-                "is_udfa": False,
-                "source_status": draft_result_row.get("source_status"),
-                "upstream_provenance_status": draft_result_row.get("upstream_provenance_status"),
-            },
-            "provenance": {
-                "source_type": SourceType.OFFICIAL_DRAFT_RESULT.value,
-                "source_name": draft_result_row.get("source_name") or "data/processed draft_results.json",
-                "source_url": draft_result_row.get("source_url"),
-                "confidence": POSTDRAFT_OUTCOME_CONFIDENCE,
-                "confidence_band": confidence_to_band(POSTDRAFT_OUTCOME_CONFIDENCE),
-                "last_verified_at": draft_result_row.get("ingested_at") or as_of_date,
-                "notes": None,
-            },
-        }
+        return _postdraft_outcome_from_row(
+            draft_result_row,
+            default_source_name="data/processed draft_results.json",
+            last_verified_at=draft_result_row.get("ingested_at") or as_of_date,
+        )
 
     if udfa_row is not None and udfa_row.get("source_status") == "external_verified":
-        status = udfa_row.get("draft_result_status") or ("udfa_signed" if udfa_row.get("is_udfa") else "drafted")
-        return {
-            "value": {
-                "status": status,
-                "nfl_team": udfa_row.get("nfl_team"),
-                "draft_round": udfa_row.get("draft_round"),
-                "overall_pick": udfa_row.get("overall_pick"),
-                "is_udfa": bool(udfa_row.get("is_udfa")),
-                "source_status": udfa_row.get("source_status"),
-                "upstream_provenance_status": udfa_row.get("upstream_provenance_status"),
-            },
-            "provenance": {
-                "source_type": SourceType.OFFICIAL_DRAFT_RESULT.value,
-                "source_name": udfa_row.get("source_note")
-                or "data/processed day3_udfa_draft_result_profiles.json",
-                "source_url": udfa_row.get("source_url"),
-                "confidence": POSTDRAFT_OUTCOME_CONFIDENCE,
-                "confidence_band": confidence_to_band(POSTDRAFT_OUTCOME_CONFIDENCE),
-                "last_verified_at": as_of_date,
-                "notes": None,
-            },
-        }
+        return _postdraft_outcome_from_row(
+            udfa_row,
+            default_source_name="data/processed day3_udfa_draft_result_profiles.json",
+            last_verified_at=as_of_date,
+        )
 
     return _unavailable_field(
         "No verified post-draft outcome found in either data/processed/{season}_draft_results.json "

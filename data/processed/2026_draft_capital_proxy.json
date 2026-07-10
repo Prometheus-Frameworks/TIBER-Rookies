@@ -656,7 +656,7 @@
     "big_board_rank": null,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 55,
-    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -668,7 +668,7 @@
     "big_board_rank": null,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 55,
-    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -824,7 +824,7 @@
     "big_board_rank": null,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 65,
-    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -848,7 +848,7 @@
     "big_board_rank": null,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 45,
-    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -1016,7 +1016,7 @@
     "big_board_rank": null,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 45,
-    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -1208,7 +1208,7 @@
     "big_board_rank": null,
     "big_board_source": null,
     "draft_capital_proxy_0_100": 45,
-    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
     "draft_capital_proxy_pending_conversion": false
   }
 ]

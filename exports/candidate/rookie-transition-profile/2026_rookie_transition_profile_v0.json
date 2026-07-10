@@ -1263,7 +1263,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_name": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -2499,7 +2499,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_name": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -2579,7 +2579,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_name": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -3237,7 +3237,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_name": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -3483,7 +3483,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_name": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -3726,7 +3726,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_name": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
