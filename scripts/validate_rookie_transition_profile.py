@@ -15,7 +15,7 @@ from enum import StrEnum
 from pathlib import Path
 from typing import Any
 
-CURRENT_SCHEMA_VERSION = "rookie-transition-profile-v0.1.0"
+CURRENT_SCHEMA_VERSION = "rookie-transition-profile-v0.2.0"
 ARTIFACT_TYPE = "rookie_transition_profile"
 
 REQUIRED_ARTIFACT_TOP_LEVEL = {
@@ -43,10 +43,40 @@ REQUIRED_MANIFEST_TOP_LEVEL = {
 
 REQUIRED_ROW_IDENTITY_FIELDS = ("player_id", "player_name", "position", "school", "class_year")
 
-# Field families defined by the #261 design. A row need not carry every family
-# (e.g. a player with no dob on file), but any family that IS present must be
-# a {value, provenance} pair.
-GOVERNED_FIELD_FAMILIES = ("draft_capital", "age_at_entry", "athletic_testing", "college_production")
+# Field families defined by the #261 design, plus official_postdraft_outcome
+# added in #267. A row need not carry every family (e.g. a player with no dob
+# on file), but any family that IS present must be a {value, provenance} pair.
+GOVERNED_FIELD_FAMILIES = (
+    "draft_capital",
+    "age_at_entry",
+    "athletic_testing",
+    "college_production",
+    "official_postdraft_outcome",
+)
+
+VALID_POSTDRAFT_STATUSES = frozenset({"drafted", "udfa_signed"})
+
+# The full provenance_status vocabulary from docs/cross-repo-draft-results-ingestion.md
+# (TIBER-Data's nfl_draft_results contract) — kept for reference/documentation.
+VALID_UPSTREAM_PROVENANCE_STATUSES = frozenset({
+    "source_verified",
+    "source_verified_player_id_unresolved",
+    "needs_verification",
+    "fixture_only",
+})
+
+# Of that vocabulary, only "source_verified" actually corresponds to a fully
+# matched, externally verified record per the ingestion contract's own
+# behavior table — "source_verified_player_id_unresolved" rows are skipped
+# (never model-facing), "needs_verification" rows are accepted only with a
+# warning (not externally verified), and "fixture_only" rows are rejected
+# unconditionally. A present official_postdraft_outcome (which always
+# requires value.source_status == "external_verified") must therefore never
+# carry one of those other three values, even though they're valid members
+# of the upstream enum in general. None is separately allowed because the
+# legacy UDFA file (day3_udfa_draft_result_profiles.json) predates the
+# ingestion contract and never carried this field at all.
+PROMOTABLE_UPSTREAM_PROVENANCE_STATUSES = frozenset({"source_verified"})
 
 
 class SourceType(StrEnum):
@@ -142,8 +172,18 @@ def validate_provenance_object(provenance: Any, *, prefix: str) -> list[str]:
             )
 
     last_verified_at = provenance.get("last_verified_at")
-    if not isinstance(last_verified_at, str) or not last_verified_at.strip():
-        errors.append(f"{prefix}.last_verified_at must be a non-empty date string")
+    if last_verified_at is None:
+        # A date must never be invented when no verification actually happened
+        # on that date. null is permitted only when notes gives the reason —
+        # the same "no value without an explanation" rule the unavailable
+        # source_type case already enforces above.
+        if not provenance.get("notes"):
+            errors.append(
+                f"{prefix}.notes is required to explain why last_verified_at is null "
+                f"(never substitute the artifact's generation date for a real verification date)"
+            )
+    elif not isinstance(last_verified_at, str) or not last_verified_at.strip():
+        errors.append(f"{prefix}.last_verified_at must be a non-empty date string, or null with notes explaining why")
 
     return errors
 
@@ -170,6 +210,63 @@ def validate_field(field: Any, *, prefix: str) -> list[str]:
     return errors
 
 
+def validate_official_postdraft_outcome_value(value: Any, *, prefix: str) -> list[str]:
+    """Family-specific semantics for official_postdraft_outcome.value (issue #267).
+
+    status must be drafted or udfa_signed; is_udfa must agree with status;
+    drafted rows must carry a real round/pick, udfa_signed rows must not.
+    """
+    if not isinstance(value, dict):
+        return [f"{prefix} must be an object"]
+
+    errors: list[str] = []
+    status = value.get("status")
+    if status not in VALID_POSTDRAFT_STATUSES:
+        errors.append(f"{prefix}.status has invalid value {status!r}")
+
+    is_udfa = value.get("is_udfa")
+    if not isinstance(is_udfa, bool):
+        errors.append(f"{prefix}.is_udfa must be a boolean")
+    elif status in VALID_POSTDRAFT_STATUSES:
+        expected_is_udfa = status == "udfa_signed"
+        if is_udfa != expected_is_udfa:
+            errors.append(f"{prefix}.is_udfa {is_udfa!r} does not match status {status!r}")
+
+    draft_round = value.get("draft_round")
+    overall_pick = value.get("overall_pick")
+    if status == "drafted":
+        if not isinstance(draft_round, int) or isinstance(draft_round, bool):
+            errors.append(f"{prefix}.draft_round must be an integer when status is 'drafted'")
+        if not isinstance(overall_pick, int) or isinstance(overall_pick, bool):
+            errors.append(f"{prefix}.overall_pick must be an integer when status is 'drafted'")
+    elif status == "udfa_signed":
+        if draft_round is not None:
+            errors.append(f"{prefix}.draft_round must be null when status is 'udfa_signed'")
+        if overall_pick is not None:
+            errors.append(f"{prefix}.overall_pick must be null when status is 'udfa_signed'")
+
+    if not isinstance(value.get("nfl_team"), str) or not value["nfl_team"].strip():
+        errors.append(f"{prefix}.nfl_team must be a non-empty string")
+
+    if value.get("source_status") != "external_verified":
+        errors.append(
+            f"{prefix}.source_status must be 'external_verified'; got {value.get('source_status')!r}"
+        )
+
+    upstream_provenance_status = value.get("upstream_provenance_status")
+    if upstream_provenance_status is not None and upstream_provenance_status not in PROMOTABLE_UPSTREAM_PROVENANCE_STATUSES:
+        errors.append(
+            f"{prefix}.upstream_provenance_status has invalid value {upstream_provenance_status!r}; "
+            f"a present official_postdraft_outcome must be null (legacy UDFA source) or "
+            f"{sorted(PROMOTABLE_UPSTREAM_PROVENANCE_STATUSES)} — "
+            f"'source_verified_player_id_unresolved', 'needs_verification', and 'fixture_only' "
+            f"are valid members of the upstream ingestion enum in general but never correspond to "
+            f"a fully externally-verified record"
+        )
+
+    return errors
+
+
 def validate_row(row: Any, *, index: int, season: int) -> list[str]:
     prefix = f"rows[{index}]"
     if not isinstance(row, dict):
@@ -188,6 +285,19 @@ def validate_row(row: Any, *, index: int, season: int) -> list[str]:
         if family in row:
             field_errors = validate_field(row[family], prefix=f"{prefix}.{family}")
             errors.extend(field_errors)
+            if not field_errors and family == "official_postdraft_outcome" and row[family]["value"] is not None:
+                errors.extend(
+                    validate_official_postdraft_outcome_value(
+                        row[family]["value"], prefix=f"{prefix}.{family}.value"
+                    )
+                )
+                actual_source_type = row[family]["provenance"].get("source_type")
+                if actual_source_type != SourceType.OFFICIAL_DRAFT_RESULT.value:
+                    errors.append(
+                        f"{prefix}.{family}.provenance.source_type must be "
+                        f"{SourceType.OFFICIAL_DRAFT_RESULT.value!r} when value is not null; "
+                        f"got {actual_source_type!r}"
+                    )
             if not field_errors:
                 last_verified_at = row[family]["provenance"].get("last_verified_at")
                 if isinstance(last_verified_at, str) and len(last_verified_at) >= 4:

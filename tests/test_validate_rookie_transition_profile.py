@@ -3,12 +3,14 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from scripts.compute_rookie_transition_profile import expected_band_score
 from scripts.validate_rookie_transition_profile import (
     CURRENT_SCHEMA_VERSION,
     confidence_to_band,
     validate_artifact_shape,
     validate_export_manifest,
     validate_field,
+    validate_official_postdraft_outcome_value,
     validate_provenance_object,
     validate_row,
 )
@@ -92,6 +94,24 @@ class ValidateProvenanceObjectTests(unittest.TestCase):
         )
         self.assertTrue(any("notes" in e for e in errors))
 
+    def test_null_last_verified_at_with_notes_allowed(self) -> None:
+        """A present (non-unavailable) field may have a null last_verified_at
+        only when notes explains why — e.g. the UDFA-sourced
+        official_postdraft_outcome path, which has no real per-row
+        verification timestamp to report."""
+        errors = validate_provenance_object(
+            _valid_provenance(last_verified_at=None, notes="no per-row timestamp exists upstream"),
+            prefix="p",
+        )
+        self.assertEqual(errors, [])
+
+    def test_null_last_verified_at_without_notes_rejected(self) -> None:
+        errors = validate_provenance_object(
+            _valid_provenance(last_verified_at=None, notes=None),
+            prefix="p",
+        )
+        self.assertTrue(any("last_verified_at" in e for e in errors))
+
 
 class ValidateFieldTests(unittest.TestCase):
     def test_value_and_provenance_required(self) -> None:
@@ -125,6 +145,109 @@ class ValidateFieldTests(unittest.TestCase):
         self.assertEqual(errors, [])
 
 
+def _valid_postdraft_outcome_value(**overrides):
+    base = {
+        "status": "drafted",
+        "nfl_team": "LV",
+        "draft_round": 1,
+        "overall_pick": 1,
+        "is_udfa": False,
+        "source_status": "external_verified",
+        "upstream_provenance_status": "source_verified",
+    }
+    base.update(overrides)
+    return base
+
+
+class ValidateOfficialPostdraftOutcomeValueTests(unittest.TestCase):
+    """Regression coverage for issue #267's drafted/udfa_signed semantics."""
+
+    def test_valid_drafted_value_passes(self) -> None:
+        self.assertEqual(
+            validate_official_postdraft_outcome_value(_valid_postdraft_outcome_value(), prefix="p"), []
+        )
+
+    def test_valid_udfa_signed_value_passes(self) -> None:
+        value = _valid_postdraft_outcome_value(
+            status="udfa_signed", is_udfa=True, draft_round=None, overall_pick=None,
+            upstream_provenance_status=None,
+        )
+        self.assertEqual(validate_official_postdraft_outcome_value(value, prefix="p"), [])
+
+    def test_invalid_status_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(status="mock_drafted"), prefix="p"
+        )
+        self.assertTrue(any("status" in e for e in errors))
+
+    def test_is_udfa_status_mismatch_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(is_udfa=True), prefix="p"
+        )
+        self.assertTrue(any("is_udfa" in e for e in errors))
+
+    def test_drafted_without_round_or_pick_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(draft_round=None, overall_pick=None), prefix="p"
+        )
+        self.assertTrue(any("draft_round" in e for e in errors))
+        self.assertTrue(any("overall_pick" in e for e in errors))
+
+    def test_udfa_signed_with_nonnull_round_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(status="udfa_signed", is_udfa=True, overall_pick=None), prefix="p"
+        )
+        self.assertTrue(any("draft_round" in e for e in errors))
+
+    def test_missing_nfl_team_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(nfl_team=""), prefix="p"
+        )
+        self.assertTrue(any("nfl_team" in e for e in errors))
+
+    def test_null_upstream_provenance_status_allowed(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(upstream_provenance_status=None), prefix="p"
+        )
+        self.assertEqual(errors, [])
+
+    def test_source_status_other_than_external_verified_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(source_status="needs_verification"), prefix="p"
+        )
+        self.assertTrue(any("source_status" in e for e in errors))
+
+    def test_upstream_provenance_status_outside_enum_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(upstream_provenance_status="made_up_status"), prefix="p"
+        )
+        self.assertTrue(any("upstream_provenance_status" in e for e in errors))
+
+    def test_upstream_provenance_status_needs_verification_rejected(self) -> None:
+        """A present official outcome always requires source_status ==
+        'external_verified'; 'needs_verification' is a real member of the
+        upstream ingestion enum but never corresponds to a fully verified
+        record, so it must be rejected here even though it's a known enum
+        value in general."""
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(upstream_provenance_status="needs_verification"), prefix="p"
+        )
+        self.assertTrue(any("upstream_provenance_status" in e for e in errors))
+
+    def test_upstream_provenance_status_fixture_only_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(upstream_provenance_status="fixture_only"), prefix="p"
+        )
+        self.assertTrue(any("upstream_provenance_status" in e for e in errors))
+
+    def test_upstream_provenance_status_player_id_unresolved_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(upstream_provenance_status="source_verified_player_id_unresolved"),
+            prefix="p",
+        )
+        self.assertTrue(any("upstream_provenance_status" in e for e in errors))
+
+
 class ValidateRowTests(unittest.TestCase):
     def test_missing_identity_fields_rejected(self) -> None:
         errors = validate_row({}, index=0, season=2026)
@@ -142,6 +265,25 @@ class ValidateRowTests(unittest.TestCase):
 
     def test_valid_row_passes(self) -> None:
         self.assertEqual(validate_row(_valid_row(), index=0, season=2026), [])
+
+    def test_official_postdraft_outcome_wrong_source_type_rejected(self) -> None:
+        row = _valid_row(
+            official_postdraft_outcome={
+                "value": _valid_postdraft_outcome_value(),
+                "provenance": _valid_provenance(source_type="market_derived_proxy"),
+            }
+        )
+        errors = validate_row(row, index=0, season=2026)
+        self.assertTrue(any("official_postdraft_outcome.provenance.source_type" in e for e in errors))
+
+    def test_official_postdraft_outcome_correct_source_type_passes(self) -> None:
+        row = _valid_row(
+            official_postdraft_outcome={
+                "value": _valid_postdraft_outcome_value(),
+                "provenance": _valid_provenance(source_type="official_draft_result"),
+            }
+        )
+        self.assertEqual(validate_row(row, index=0, season=2026), [])
 
 
 class ValidateArtifactShapeTests(unittest.TestCase):
@@ -194,6 +336,58 @@ class RealCommittedArtifactTests(unittest.TestCase):
             manifest_path=Path("exports/candidate/rookie-transition-profile/2026_manifest.json"),
         )
         self.assertEqual(errors, [])
+
+    def test_2026_artifact_has_48_of_48_official_postdraft_outcome_coverage(self) -> None:
+        """Regression guard for the #265/#266 finding: every player must have
+        a known post-draft outcome (drafted or udfa_signed), not silently
+        fall back to being 'unresolved'."""
+        path = Path("exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.json")
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        rows = payload["rows"]
+        self.assertEqual(len(rows), 48)
+        statuses = [r["official_postdraft_outcome"]["value"]["status"] for r in rows]
+        self.assertEqual(statuses.count("drafted"), 47)
+        self.assertEqual(statuses.count("udfa_signed"), 1)
+        self.assertEqual(len([s for s in statuses if s is None]), 0)
+
+    def test_2026_artifact_draft_capital_never_leaks_official_outcome_text(self) -> None:
+        """Regression guard for the exact #266 defect: draft_capital must
+        always remain the pre-draft proxy and never reference a real,
+        realized draft outcome in its provenance text."""
+        path = Path("exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.json")
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        for row in payload["rows"]:
+            draft_capital = row["draft_capital"]
+            self.assertEqual(draft_capital["provenance"]["source_type"], "market_derived_proxy")
+            source_name = (draft_capital["provenance"]["source_name"] or "").lower()
+            self.assertNotIn("actual pick", source_name, msg=row["player_id"])
+            notes = (draft_capital["provenance"]["notes"] or "").lower()
+            self.assertIn("not equivalent to realized", notes, msg=row["player_id"])
+
+    def test_2026_artifact_draft_capital_never_claims_a_rank_mapping_without_a_rank(self) -> None:
+        """Artifact-wide invariant (PR #268 review): draft_capital.provenance
+        may only claim the ranked big_board_rank band mapping when the row
+        actually has a big_board_rank AND draft_capital_proxy_0_100 equals
+        the documented formula's score for that rank. Checked across every
+        row in the candidate population, not a hand-selected subset — a
+        provenance claim that was true for some rows and false for others
+        (e.g. a pre-existing, previously-unfixed row) is exactly the defect
+        this test exists to catch."""
+        path = Path("exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.json")
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        for row in payload["rows"]:
+            draft_capital = row["draft_capital"]
+            source_name = (draft_capital["provenance"]["source_name"] or "").lower()
+            big_board_rank = draft_capital["value"]["big_board_rank"]
+            proxy_score = draft_capital["value"]["draft_capital_proxy_0_100"]
+            claims_rank_mapping = "mapped from seeded big_board_rank bands" in source_name
+            if claims_rank_mapping:
+                self.assertIsNotNone(big_board_rank, msg=row["player_id"])
+                self.assertEqual(expected_band_score(big_board_rank), proxy_score, msg=row["player_id"])
+            elif big_board_rank is None:
+                self.assertIn("unknown", source_name, msg=row["player_id"])
+            else:
+                self.assertNotEqual(expected_band_score(big_board_rank), proxy_score, msg=row["player_id"])
 
 
 class ValidateExportManifestConsistencyTests(unittest.TestCase):
