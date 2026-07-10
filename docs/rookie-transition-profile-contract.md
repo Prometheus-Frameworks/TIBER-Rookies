@@ -1,6 +1,11 @@
 # Candidate Export Contract: Rookie Transition Profile (v0)
 
-**Status:** implemented as a **candidate artifact** (issue [#263](https://github.com/Prometheus-Frameworks/TIBER-Rookies/issues/263)).
+**Status:** implemented as a **candidate artifact** (issue [#263](https://github.com/Prometheus-Frameworks/TIBER-Rookies/issues/263)),
+**schema_version `v0.2.0`** — extended in issue [#267](https://github.com/Prometheus-Frameworks/TIBER-Rookies/issues/267)
+to add `official_postdraft_outcome` (see [`2026-07-10-rookie-transition-profile-postdraft-split-design.md`](reports/2026-07-10-rookie-transition-profile-postdraft-split-design.md)
+for that design decision) after a promotion review ([#265](https://github.com/Prometheus-Frameworks/TIBER-Rookies/issues/265)/
+PR [#266](https://github.com/Prometheus-Frameworks/TIBER-Rookies/pull/266)) found `draft_capital`
+was being presented as unresolved for players who already had verified post-draft outcomes.
 **Architecture:** [`docs/rookie-transition-profile-v0-design.md`](rookie-transition-profile-v0-design.md) (issue #261).
 
 This artifact is an **evidence consolidation layer**, not a score or ranking. It repackages
@@ -32,14 +37,15 @@ that copy in advance.
 
 Top-level fields:
 
-- `schema_version`: `rookie-transition-profile-v0.1.0`
+- `schema_version`: `rookie-transition-profile-v0.2.0`
 - `artifact_type`: `rookie_transition_profile`
 - `season`
 - `generated_at`: ISO-8601 UTC timestamp
 - `run_id`
 - `disclaimer`: fixed string stating this artifact carries no scores/rankings/predictive claims
-- `source_files_used`: the rookie-alpha predraft export plus the three upstream processed files
-  read for provenance labels (draft capital proxy, college production, prospect context)
+- `source_files_used`: the rookie-alpha predraft export plus the five upstream processed files
+  read for provenance labels (draft capital proxy, college production, prospect context, drafted
+  outcomes, UDFA-signed outcomes)
 - `coverage_summary`: `players_total` and, per field family, `players_with_<family>` /
   `players_with_all_families`
 - `rows`: one entry per `(player_id, season)`
@@ -47,8 +53,8 @@ Top-level fields:
 Row fields:
 
 - `player_id`, `player_name`, `position`, `school`, `class_year` — identity, required
-- `draft_capital`, `age_at_entry`, `athletic_testing`, `college_production` — each either absent
-  or a `{value, provenance}` pair (see below)
+- `draft_capital`, `age_at_entry`, `athletic_testing`, `college_production`,
+  `official_postdraft_outcome` — each either absent or a `{value, provenance}` pair (see below)
 
 ### The `{value, provenance}` pair
 
@@ -75,7 +81,7 @@ a bare value.
 measured_combine            # observed
 measured_production_stats   # observed
 measured_identity_fact       # observed
-official_draft_result        # observed (reserved; not used by v0 — see Known limitations)
+official_draft_result        # observed (used by official_postdraft_outcome since v0.2.0)
 market_derived_proxy          # inferred
 operator_seeded                # inferred (reserved; not used by v0)
 estimated_manual_research     # inferred (reserved; not used by v0)
@@ -90,11 +96,34 @@ unavailable                    # neither — value is null and notes explains wh
 | `age_at_entry` | `measured_identity_fact` | 0.9 (`HIGH`), fixed | Computed via `age_from_dob(dob, season)`, an exact copy of the formula in `scripts/compute_breakout_age.py` (age as of September 1 of the season). `dob` is read from `data/processed/{season}_prospect_context.json`. |
 | `athletic_testing` | `measured_combine` | verbatim `athletic_confidence` from Rookie Alpha | `value` is `{athletic_score_0_100, athletic_source}`, copied verbatim from Rookie Alpha's `scores` block. **`NEUTRAL_DEFAULT` rows are treated as `unavailable`, not copied** — see "Known limitations." |
 | `college_production` | `measured_production_stats` | 0.85 (`HIGH`), fixed | `value` is `{production_score_0_100}`, copied verbatim from Rookie Alpha's `scores.production_0_100`; the source description is looked up from `data/processed/{season}_college_production.json`. |
+| `official_postdraft_outcome` | `official_draft_result` | 0.95 (`HIGH`), fixed | Added in v0.2.0 (#267). `value` is `{status, nfl_team, draft_round, overall_pick, is_udfa, source_status, upstream_provenance_status}`. See below. |
+
+**`official_postdraft_outcome` is deliberately independent of `draft_capital`.** It represents the
+*observed* post-draft result; `draft_capital` continues to represent the *pre-draft market proxy*
+and is never overwritten or reclassified once an official outcome exists — see the
+[design doc](reports/2026-07-10-rookie-transition-profile-postdraft-split-design.md) for why a
+single polymorphic field was rejected.
+
+- `value.status`: `"drafted"` or `"udfa_signed"`.
+- `value.draft_round` / `value.overall_pick`: integers when `status == "drafted"`; `null` when
+  `status == "udfa_signed"` (there is no round/pick for an undrafted signing).
+- `value.is_udfa`: boolean, always consistent with `status` (`false` for `drafted`, `true` for
+  `udfa_signed`) — validated explicitly.
+- `value.source_status` / `value.upstream_provenance_status`: carried through from the source row
+  as descriptive value content (the same pattern `draft_capital.value` already uses for
+  `big_board_rank`), distinct from this artifact's own `provenance` object.
+  `upstream_provenance_status` is `null` when the source has no equivalent field (the UDFA file
+  doesn't carry one).
+- Sourced from `data/processed/{season}_draft_results.json` first; falls back to
+  `data/processed/{season}_day3_udfa_draft_result_profiles.json` only when the player is absent
+  from the first (this is how `te-daequan-wright`'s UDFA signing is captured). `unavailable` only
+  when neither source has a verified record.
 
 Per the approved design, the following are **not implemented in v0** and must not be added without
-a new design review: role/archetype descriptors, landing-spot context, granular
-`wr_route_profiles` production detail, any row-level composite "evidence quality" score, and any
-`evidence_summary`-style free text.
+a new design review: role/archetype descriptors, landing-spot context (an NFL team is present only
+as part of the observed `official_postdraft_outcome`, never as modeled landing-spot analysis),
+granular `wr_route_profiles` production detail, any row-level composite "evidence quality" score,
+and any `evidence_summary`-style free text.
 
 ## Known limitations (implementation notes beyond the design doc)
 
@@ -113,11 +142,24 @@ a new design review: role/archetype descriptors, landing-spot context, granular
   are an in-house composite, not the Kent Lee Platte RAS percentile the name may suggest. Every
   `athletic_testing` field's `provenance.notes` repeats this caveat so a consumer reading only this
   artifact still sees it.
-- **Confidence constants for `draft_capital` and `college_production` are fixed, not per-row.**
-  Unlike athletic testing (which reuses Rookie Alpha's already-variable `athletic_confidence`),
-  these two families don't have an existing per-player confidence signal upstream, so a single
-  reasoned constant is used for the whole family (0.65/MEDIUM for the proxy, 0.85/HIGH for
-  production). This is a deliberate simplification for v0, not a discovered fact.
+- **Confidence constants for `draft_capital`, `college_production`, and
+  `official_postdraft_outcome` are fixed, not per-row.** Unlike athletic testing (which reuses
+  Rookie Alpha's already-variable `athletic_confidence`), these families don't have an existing
+  per-player confidence signal upstream, so a single reasoned constant is used for the whole
+  family (0.65/MEDIUM for the proxy, 0.85/HIGH for production, 0.95/HIGH for the observed
+  post-draft outcome — the highest fixed constant in the artifact, since `external_verified`
+  sourced outcomes are about as certain as this repo's provenance model gets). This is a
+  deliberate simplification for v0, not a discovered fact.
+- **`official_postdraft_outcome.provenance.last_verified_at` uses the source row's own
+  `ingested_at` field when present** (`data/processed/{season}_draft_results.json` rows carry
+  one), falling back to the artifact's `generated_at` date only when the source has no per-row
+  timestamp (the UDFA file has none). This is the one field family in the artifact that prefers a
+  real upstream timestamp over the "as of this run" fallback used everywhere else.
+- **`data/processed/{season}_draft_capital_proxy.json`'s `draft_capital_proxy_source` text was
+  repaired (#267)** for the 17 rows the #266 review flagged as leaking real draft-outcome text
+  (e.g. "2026 NFL Draft actual pick: Round 3, Pick 69") into what should be proxy-methodology-only
+  text. Only the free-text field was edited; `draft_capital_proxy_0_100`, `big_board_rank`, and
+  `draft_capital_proxy_pending_conversion` were left untouched for all 101 rows in that file.
 
 ## Validation
 
@@ -165,6 +207,9 @@ Reads (all defaulted by season, overridable via flags):
 - `data/processed/{season}_draft_capital_proxy.json` (big-board rank + proxy-rule source text)
 - `data/processed/{season}_college_production.json` (production-score source text)
 - `data/processed/{season}_prospect_context.json` (`dob`)
+- `data/processed/{season}_draft_results.json` (verified drafted outcomes, checked first)
+- `data/processed/{season}_day3_udfa_draft_result_profiles.json` (verified UDFA-signing outcomes,
+  checked only when a player is absent from the drafted-outcomes file)
 
 Writes the JSON/CSV/manifest triplet under `exports/candidate/rookie-transition-profile/`. No new
 score, rank, or derived value is computed — every governed field is either copied verbatim from an
@@ -190,8 +235,11 @@ separate authorization to act on.
 ## Regression tests
 
 - `tests/test_validate_rookie_transition_profile.py` — schema/enum/provenance-shape validation,
-  manifest-consistency checks, plus two tests that run full validation against the real committed
-  2026 candidate artifact.
+  manifest-consistency checks, `official_postdraft_outcome`-specific semantics (status enum,
+  `is_udfa`/status agreement, drafted-requires-round/pick, udfa-forbids-round/pick), plus tests
+  that run full validation against the real committed 2026 candidate artifact and assert its
+  48/48 post-draft-outcome coverage and that `draft_capital` never leaks outcome text.
 - `tests/test_compute_rookie_transition_profile.py` — per-field builder tests (including the
-  `NEUTRAL_DEFAULT`-is-unavailable rule and the `age_from_dob` formula match), coverage-summary
-  counting, and JSON/CSV output writing.
+  `NEUTRAL_DEFAULT`-is-unavailable rule, the `age_from_dob` formula match, drafted/UDFA-signed/
+  unavailable outcome building, and drafted-results-take-priority-over-UDFA-file ordering),
+  coverage-summary counting, and JSON/CSV output writing.

@@ -10,6 +10,7 @@ from scripts.compute_rookie_transition_profile import (
     build_college_production_field,
     build_coverage_summary,
     build_draft_capital_field,
+    build_official_postdraft_outcome_field,
     build_rows,
     write_csv,
     write_json,
@@ -115,6 +116,83 @@ class BuildCollegeProductionFieldTests(unittest.TestCase):
         self.assertEqual(validate_field(field, prefix="college_production"), [])
 
 
+class BuildOfficialPostdraftOutcomeFieldTests(unittest.TestCase):
+    """Regression coverage for issue #267: drafted, UDFA-signed, and
+    unavailable outcomes, plus the requirement that this field never
+    overwrites or is derived from draft_capital."""
+
+    def test_drafted_outcome_from_draft_results(self) -> None:
+        draft_result_row = {
+            "nfl_team": "LV",
+            "draft_round": 1,
+            "overall_pick": 1,
+            "source_status": "external_verified",
+            "upstream_provenance_status": "source_verified",
+            "source_name": "Test tracker",
+            "source_url": "https://example.com",
+            "ingested_at": "2026-05-17",
+        }
+        field = build_official_postdraft_outcome_field(draft_result_row, None, as_of_date="2026-07-10")
+        self.assertEqual(field["value"]["status"], "drafted")
+        self.assertEqual(field["value"]["is_udfa"], False)
+        self.assertEqual(field["value"]["draft_round"], 1)
+        self.assertEqual(field["value"]["overall_pick"], 1)
+        self.assertEqual(field["provenance"]["source_type"], "official_draft_result")
+        self.assertEqual(field["provenance"]["last_verified_at"], "2026-05-17")
+        self.assertEqual(validate_field(field, prefix="official_postdraft_outcome"), [])
+
+    def test_udfa_signed_outcome_from_udfa_file_when_absent_from_draft_results(self) -> None:
+        udfa_row = {
+            "draft_result_status": "udfa_signed",
+            "nfl_team": "PHI",
+            "draft_round": None,
+            "overall_pick": None,
+            "is_udfa": True,
+            "source_status": "external_verified",
+            "source_url": "https://example.com/eagles",
+            "source_note": "Eagles announced signing.",
+        }
+        field = build_official_postdraft_outcome_field(None, udfa_row, as_of_date="2026-07-10")
+        self.assertEqual(field["value"]["status"], "udfa_signed")
+        self.assertEqual(field["value"]["is_udfa"], True)
+        self.assertIsNone(field["value"]["draft_round"])
+        self.assertIsNone(field["value"]["overall_pick"])
+        self.assertEqual(field["provenance"]["source_type"], "official_draft_result")
+        # No per-row timestamp in the UDFA file, so falls back to as_of_date.
+        self.assertEqual(field["provenance"]["last_verified_at"], "2026-07-10")
+        self.assertEqual(validate_field(field, prefix="official_postdraft_outcome"), [])
+
+    def test_draft_results_take_priority_over_udfa_file_when_both_present(self) -> None:
+        draft_result_row = {
+            "nfl_team": "SEA", "draft_round": 3, "overall_pick": 90,
+            "source_status": "external_verified", "upstream_provenance_status": "source_verified",
+            "source_name": "Test tracker", "source_url": "https://example.com", "ingested_at": "2026-05-17",
+        }
+        udfa_row = {
+            "draft_result_status": "udfa_signed", "nfl_team": "XXX", "draft_round": None,
+            "overall_pick": None, "is_udfa": True, "source_status": "external_verified",
+            "source_url": "https://example.com/other", "source_note": "should not be used",
+        }
+        field = build_official_postdraft_outcome_field(draft_result_row, udfa_row, as_of_date="2026-07-10")
+        self.assertEqual(field["value"]["status"], "drafted")
+        self.assertEqual(field["value"]["nfl_team"], "SEA")
+
+    def test_unavailable_when_no_verified_record_in_either_source(self) -> None:
+        field = build_official_postdraft_outcome_field(None, None, as_of_date="2026-07-10")
+        self.assertIsNone(field["value"])
+        self.assertEqual(field["provenance"]["source_type"], "unavailable")
+        self.assertEqual(validate_field(field, prefix="official_postdraft_outcome"), [])
+
+    def test_unverified_draft_result_row_is_treated_as_unavailable(self) -> None:
+        draft_result_row = {
+            "nfl_team": "LV", "draft_round": 1, "overall_pick": 1,
+            "source_status": "needs_verification",
+        }
+        field = build_official_postdraft_outcome_field(draft_result_row, None, as_of_date="2026-07-10")
+        self.assertIsNone(field["value"])
+        self.assertEqual(field["provenance"]["source_type"], "unavailable")
+
+
 class BuildRowsAndArtifactTests(unittest.TestCase):
     def setUp(self) -> None:
         self.alpha_players = [
@@ -155,16 +233,34 @@ class BuildRowsAndArtifactTests(unittest.TestCase):
         self.context_by_id = {
             "wr-full-data": {"dob": "2004-06-01"},
         }
+        self.draft_results_by_id = {
+            "wr-full-data": {
+                "nfl_team": "SEA",
+                "draft_round": 2,
+                "overall_pick": 50,
+                "source_status": "external_verified",
+                "upstream_provenance_status": "source_verified",
+                "source_name": "Test draft tracker",
+                "source_url": "https://example.com/draft",
+                "ingested_at": "2026-05-01",
+            },
+        }
+        self.udfa_results_by_id: dict = {}
 
-    def test_build_rows_matches_full_and_sparse_players(self) -> None:
-        rows = build_rows(
+    def _build_rows(self):
+        return build_rows(
             season=2026,
             alpha_players=self.alpha_players,
             draft_capital_by_id=self.draft_capital_by_id,
             production_by_id=self.production_by_id,
             context_by_id=self.context_by_id,
+            draft_results_by_id=self.draft_results_by_id,
+            udfa_results_by_id=self.udfa_results_by_id,
             as_of_date="2026-07-10",
         )
+
+    def test_build_rows_matches_full_and_sparse_players(self) -> None:
+        rows = self._build_rows()
         self.assertEqual(len(rows), 2)
         full_row = next(r for r in rows if r["player_id"] == "wr-full-data")
         sparse_row = next(r for r in rows if r["player_id"] == "wr-sparse-data")
@@ -174,59 +270,46 @@ class BuildRowsAndArtifactTests(unittest.TestCase):
         self.assertIsNotNone(full_row["age_at_entry"]["value"])
         self.assertIsNotNone(full_row["athletic_testing"]["value"])
         self.assertIsNotNone(full_row["college_production"]["value"])
+        self.assertIsNotNone(full_row["official_postdraft_outcome"]["value"])
+        self.assertEqual(full_row["official_postdraft_outcome"]["value"]["status"], "drafted")
+        # draft_capital must remain the pre-draft proxy, unaffected by the
+        # official outcome being available (issue #267's core requirement).
+        self.assertEqual(full_row["draft_capital"]["provenance"]["source_type"], "market_derived_proxy")
 
         self.assertIsNone(sparse_row["age_at_entry"]["value"])
         self.assertIsNone(sparse_row["athletic_testing"]["value"])
         self.assertIsNone(sparse_row["college_production"]["value"])
+        self.assertIsNone(sparse_row["official_postdraft_outcome"]["value"])
+        self.assertEqual(sparse_row["official_postdraft_outcome"]["provenance"]["source_type"], "unavailable")
 
     def test_build_coverage_summary_counts_available_values(self) -> None:
-        rows = build_rows(
-            season=2026,
-            alpha_players=self.alpha_players,
-            draft_capital_by_id=self.draft_capital_by_id,
-            production_by_id=self.production_by_id,
-            context_by_id=self.context_by_id,
-            as_of_date="2026-07-10",
-        )
+        rows = self._build_rows()
         summary = build_coverage_summary(rows)
         self.assertEqual(summary["players_total"], 2)
         self.assertEqual(summary["players_with_draft_capital"], 2)
         self.assertEqual(summary["players_with_age_at_entry"], 1)
         self.assertEqual(summary["players_with_athletic_testing"], 1)
         self.assertEqual(summary["players_with_college_production"], 1)
+        self.assertEqual(summary["players_with_official_postdraft_outcome"], 1)
         self.assertEqual(summary["players_with_all_families"], 1)
 
     def test_built_rows_pass_full_shape_validation(self) -> None:
-        rows = build_rows(
-            season=2026,
-            alpha_players=self.alpha_players,
-            draft_capital_by_id=self.draft_capital_by_id,
-            production_by_id=self.production_by_id,
-            context_by_id=self.context_by_id,
-            as_of_date="2026-07-10",
-        )
+        rows = self._build_rows()
         artifact = {
-            "schema_version": "rookie-transition-profile-v0.1.0",
+            "schema_version": "rookie-transition-profile-v0.2.0",
             "artifact_type": "rookie_transition_profile",
             "season": 2026,
             "generated_at": "2026-07-10T00:00:00+00:00",
             "run_id": "rookie-transition-profile-2026-test",
             "disclaimer": "This artifact is an evidence consolidation layer.",
-            "source_files_used": ["a", "b", "c", "d"],
+            "source_files_used": ["a", "b", "c", "d", "e", "f"],
             "coverage_summary": build_coverage_summary(rows),
             "rows": rows,
         }
         self.assertEqual(validate_artifact_shape(artifact), [])
 
     def test_write_json_and_csv_outputs(self) -> None:
-        rows = build_rows(
-            season=2026,
-            alpha_players=self.alpha_players,
-            draft_capital_by_id=self.draft_capital_by_id,
-            production_by_id=self.production_by_id,
-            context_by_id=self.context_by_id,
-            as_of_date="2026-07-10",
-        )
+        rows = self._build_rows()
         with tempfile.TemporaryDirectory() as temp_dir:
             output_json = Path(temp_dir) / "profile.json"
             output_csv = Path(temp_dir) / "profile.csv"

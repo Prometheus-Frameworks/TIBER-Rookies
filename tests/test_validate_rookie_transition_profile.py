@@ -9,6 +9,7 @@ from scripts.validate_rookie_transition_profile import (
     validate_artifact_shape,
     validate_export_manifest,
     validate_field,
+    validate_official_postdraft_outcome_value,
     validate_provenance_object,
     validate_row,
 )
@@ -125,6 +126,73 @@ class ValidateFieldTests(unittest.TestCase):
         self.assertEqual(errors, [])
 
 
+def _valid_postdraft_outcome_value(**overrides):
+    base = {
+        "status": "drafted",
+        "nfl_team": "LV",
+        "draft_round": 1,
+        "overall_pick": 1,
+        "is_udfa": False,
+        "source_status": "external_verified",
+        "upstream_provenance_status": "source_verified",
+    }
+    base.update(overrides)
+    return base
+
+
+class ValidateOfficialPostdraftOutcomeValueTests(unittest.TestCase):
+    """Regression coverage for issue #267's drafted/udfa_signed semantics."""
+
+    def test_valid_drafted_value_passes(self) -> None:
+        self.assertEqual(
+            validate_official_postdraft_outcome_value(_valid_postdraft_outcome_value(), prefix="p"), []
+        )
+
+    def test_valid_udfa_signed_value_passes(self) -> None:
+        value = _valid_postdraft_outcome_value(
+            status="udfa_signed", is_udfa=True, draft_round=None, overall_pick=None,
+            upstream_provenance_status=None,
+        )
+        self.assertEqual(validate_official_postdraft_outcome_value(value, prefix="p"), [])
+
+    def test_invalid_status_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(status="mock_drafted"), prefix="p"
+        )
+        self.assertTrue(any("status" in e for e in errors))
+
+    def test_is_udfa_status_mismatch_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(is_udfa=True), prefix="p"
+        )
+        self.assertTrue(any("is_udfa" in e for e in errors))
+
+    def test_drafted_without_round_or_pick_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(draft_round=None, overall_pick=None), prefix="p"
+        )
+        self.assertTrue(any("draft_round" in e for e in errors))
+        self.assertTrue(any("overall_pick" in e for e in errors))
+
+    def test_udfa_signed_with_nonnull_round_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(status="udfa_signed", is_udfa=True, overall_pick=None), prefix="p"
+        )
+        self.assertTrue(any("draft_round" in e for e in errors))
+
+    def test_missing_nfl_team_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(nfl_team=""), prefix="p"
+        )
+        self.assertTrue(any("nfl_team" in e for e in errors))
+
+    def test_null_upstream_provenance_status_allowed(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(upstream_provenance_status=None), prefix="p"
+        )
+        self.assertEqual(errors, [])
+
+
 class ValidateRowTests(unittest.TestCase):
     def test_missing_identity_fields_rejected(self) -> None:
         errors = validate_row({}, index=0, season=2026)
@@ -194,6 +262,33 @@ class RealCommittedArtifactTests(unittest.TestCase):
             manifest_path=Path("exports/candidate/rookie-transition-profile/2026_manifest.json"),
         )
         self.assertEqual(errors, [])
+
+    def test_2026_artifact_has_48_of_48_official_postdraft_outcome_coverage(self) -> None:
+        """Regression guard for the #265/#266 finding: every player must have
+        a known post-draft outcome (drafted or udfa_signed), not silently
+        fall back to being 'unresolved'."""
+        path = Path("exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.json")
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        rows = payload["rows"]
+        self.assertEqual(len(rows), 48)
+        statuses = [r["official_postdraft_outcome"]["value"]["status"] for r in rows]
+        self.assertEqual(statuses.count("drafted"), 47)
+        self.assertEqual(statuses.count("udfa_signed"), 1)
+        self.assertEqual(len([s for s in statuses if s is None]), 0)
+
+    def test_2026_artifact_draft_capital_never_leaks_official_outcome_text(self) -> None:
+        """Regression guard for the exact #266 defect: draft_capital must
+        always remain the pre-draft proxy and never reference a real,
+        realized draft outcome in its provenance text."""
+        path = Path("exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.json")
+        payload = json.loads(path.read_text(encoding="utf-8"))
+        for row in payload["rows"]:
+            draft_capital = row["draft_capital"]
+            self.assertEqual(draft_capital["provenance"]["source_type"], "market_derived_proxy")
+            source_name = (draft_capital["provenance"]["source_name"] or "").lower()
+            self.assertNotIn("actual pick", source_name, msg=row["player_id"])
+            notes = (draft_capital["provenance"]["notes"] or "").lower()
+            self.assertIn("not equivalent to realized", notes, msg=row["player_id"])
 
 
 class ValidateExportManifestConsistencyTests(unittest.TestCase):

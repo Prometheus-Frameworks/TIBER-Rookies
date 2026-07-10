@@ -41,7 +41,11 @@ DEFAULT_ROOKIE_ALPHA_INPUT = Path("exports/promoted/rookie-alpha/{season}_rookie
 DEFAULT_DRAFT_CAPITAL_INPUT = Path("data/processed/{season}_draft_capital_proxy.json")
 DEFAULT_PRODUCTION_INPUT = Path("data/processed/{season}_college_production.json")
 DEFAULT_CONTEXT_INPUT = Path("data/processed/{season}_prospect_context.json")
+DEFAULT_DRAFT_RESULTS_INPUT = Path("data/processed/{season}_draft_results.json")
+DEFAULT_UDFA_RESULTS_INPUT = Path("data/processed/{season}_day3_udfa_draft_result_profiles.json")
 DEFAULT_OUTPUT_DIR = Path("exports/candidate/rookie-transition-profile")
+
+POSTDRAFT_OUTCOME_CONFIDENCE = 0.95
 
 
 def load_json(path: Path) -> Any:
@@ -210,6 +214,71 @@ def build_college_production_field(
     }
 
 
+def build_official_postdraft_outcome_field(
+    draft_result_row: dict[str, Any] | None,
+    udfa_row: dict[str, Any] | None,
+    *,
+    as_of_date: str,
+) -> dict[str, Any]:
+    """Observed post-draft outcome, kept entirely separate from draft_capital.
+
+    Checks data/processed/{season}_draft_results.json first, then
+    data/processed/{season}_day3_udfa_draft_result_profiles.json, per the
+    #267 design decision. draft_capital (the pre-draft proxy) is never
+    touched by this function or overwritten with these values.
+    """
+    if draft_result_row is not None and draft_result_row.get("source_status") == "external_verified":
+        return {
+            "value": {
+                "status": "drafted",
+                "nfl_team": draft_result_row.get("nfl_team"),
+                "draft_round": draft_result_row.get("draft_round"),
+                "overall_pick": draft_result_row.get("overall_pick"),
+                "is_udfa": False,
+                "source_status": draft_result_row.get("source_status"),
+                "upstream_provenance_status": draft_result_row.get("upstream_provenance_status"),
+            },
+            "provenance": {
+                "source_type": SourceType.OFFICIAL_DRAFT_RESULT.value,
+                "source_name": draft_result_row.get("source_name") or "data/processed draft_results.json",
+                "source_url": draft_result_row.get("source_url"),
+                "confidence": POSTDRAFT_OUTCOME_CONFIDENCE,
+                "confidence_band": confidence_to_band(POSTDRAFT_OUTCOME_CONFIDENCE),
+                "last_verified_at": draft_result_row.get("ingested_at") or as_of_date,
+                "notes": None,
+            },
+        }
+
+    if udfa_row is not None and udfa_row.get("source_status") == "external_verified":
+        status = udfa_row.get("draft_result_status") or ("udfa_signed" if udfa_row.get("is_udfa") else "drafted")
+        return {
+            "value": {
+                "status": status,
+                "nfl_team": udfa_row.get("nfl_team"),
+                "draft_round": udfa_row.get("draft_round"),
+                "overall_pick": udfa_row.get("overall_pick"),
+                "is_udfa": bool(udfa_row.get("is_udfa")),
+                "source_status": udfa_row.get("source_status"),
+                "upstream_provenance_status": udfa_row.get("upstream_provenance_status"),
+            },
+            "provenance": {
+                "source_type": SourceType.OFFICIAL_DRAFT_RESULT.value,
+                "source_name": udfa_row.get("source_note")
+                or "data/processed day3_udfa_draft_result_profiles.json",
+                "source_url": udfa_row.get("source_url"),
+                "confidence": POSTDRAFT_OUTCOME_CONFIDENCE,
+                "confidence_band": confidence_to_band(POSTDRAFT_OUTCOME_CONFIDENCE),
+                "last_verified_at": as_of_date,
+                "notes": None,
+            },
+        }
+
+    return _unavailable_field(
+        "No verified post-draft outcome found in either data/processed/{season}_draft_results.json "
+        "or data/processed/{season}_day3_udfa_draft_result_profiles.json for this player."
+    )
+
+
 def build_rows(
     *,
     season: int,
@@ -217,6 +286,8 @@ def build_rows(
     draft_capital_by_id: dict[str, dict[str, Any]],
     production_by_id: dict[str, dict[str, Any]],
     context_by_id: dict[str, dict[str, Any]],
+    draft_results_by_id: dict[str, dict[str, Any]],
+    udfa_results_by_id: dict[str, dict[str, Any]],
     as_of_date: str,
 ) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
@@ -227,6 +298,8 @@ def build_rows(
         proxy_row = draft_capital_by_id.get(player_id)
         production_row = production_by_id.get(player_id)
         context_row = context_by_id.get(player_id)
+        draft_result_row = draft_results_by_id.get(player_id)
+        udfa_row = udfa_results_by_id.get(player_id)
 
         school = (
             alpha_context.get("school")
@@ -255,6 +328,9 @@ def build_rows(
                 "college_production": build_college_production_field(
                     alpha_scores, production_row, as_of_date=as_of_date
                 ),
+                "official_postdraft_outcome": build_official_postdraft_outcome_field(
+                    draft_result_row, udfa_row, as_of_date=as_of_date
+                ),
             }
         )
     return rows
@@ -270,10 +346,22 @@ def build_coverage_summary(rows: list[dict[str, Any]]) -> dict[str, int]:
         "players_with_age_at_entry": sum(1 for row in rows if has_value(row, "age_at_entry")),
         "players_with_athletic_testing": sum(1 for row in rows if has_value(row, "athletic_testing")),
         "players_with_college_production": sum(1 for row in rows if has_value(row, "college_production")),
+        "players_with_official_postdraft_outcome": sum(
+            1 for row in rows if has_value(row, "official_postdraft_outcome")
+        ),
         "players_with_all_families": sum(
             1
             for row in rows
-            if all(has_value(row, family) for family in ("draft_capital", "age_at_entry", "athletic_testing", "college_production"))
+            if all(
+                has_value(row, family)
+                for family in (
+                    "draft_capital",
+                    "age_at_entry",
+                    "athletic_testing",
+                    "college_production",
+                    "official_postdraft_outcome",
+                )
+            )
         ),
     }
 
@@ -286,7 +374,13 @@ def flatten_row_for_csv(row: dict[str, Any]) -> dict[str, Any]:
         "school": row["school"],
         "class_year": row["class_year"],
     }
-    for family in ("draft_capital", "age_at_entry", "athletic_testing", "college_production"):
+    for family in (
+        "draft_capital",
+        "age_at_entry",
+        "athletic_testing",
+        "college_production",
+        "official_postdraft_outcome",
+    ):
         field = row[family]
         value = field["value"]
         if isinstance(value, dict):
@@ -342,6 +436,21 @@ CSV_FIELD_ORDER = [
     "college_production.provenance.confidence_band",
     "college_production.provenance.last_verified_at",
     "college_production.provenance.notes",
+    "official_postdraft_outcome.value",
+    "official_postdraft_outcome.value.status",
+    "official_postdraft_outcome.value.nfl_team",
+    "official_postdraft_outcome.value.draft_round",
+    "official_postdraft_outcome.value.overall_pick",
+    "official_postdraft_outcome.value.is_udfa",
+    "official_postdraft_outcome.value.source_status",
+    "official_postdraft_outcome.value.upstream_provenance_status",
+    "official_postdraft_outcome.provenance.source_type",
+    "official_postdraft_outcome.provenance.source_name",
+    "official_postdraft_outcome.provenance.source_url",
+    "official_postdraft_outcome.provenance.confidence",
+    "official_postdraft_outcome.provenance.confidence_band",
+    "official_postdraft_outcome.provenance.last_verified_at",
+    "official_postdraft_outcome.provenance.notes",
 ]
 
 
@@ -366,6 +475,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--draft-capital-input", type=Path, default=None)
     parser.add_argument("--production-input", type=Path, default=None)
     parser.add_argument("--context-input", type=Path, default=None)
+    parser.add_argument("--draft-results-input", type=Path, default=None)
+    parser.add_argument("--udfa-results-input", type=Path, default=None)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT_DIR)
     parser.add_argument(
         "--generated-at",
@@ -385,12 +496,16 @@ def main() -> None:
     draft_capital_input = args.draft_capital_input or Path(str(DEFAULT_DRAFT_CAPITAL_INPUT).format(season=season))
     production_input = args.production_input or Path(str(DEFAULT_PRODUCTION_INPUT).format(season=season))
     context_input = args.context_input or Path(str(DEFAULT_CONTEXT_INPUT).format(season=season))
+    draft_results_input = args.draft_results_input or Path(str(DEFAULT_DRAFT_RESULTS_INPUT).format(season=season))
+    udfa_results_input = args.udfa_results_input or Path(str(DEFAULT_UDFA_RESULTS_INPUT).format(season=season))
 
     alpha_export = load_json(rookie_alpha_input)
     alpha_players = alpha_export["players"]
     draft_capital_by_id = index_by_player_id(load_json(draft_capital_input))
     production_by_id = index_by_player_id(load_json(production_input))
     context_by_id = index_by_player_id(load_json(context_input))
+    draft_results_by_id = index_by_player_id(load_json(draft_results_input))
+    udfa_results_by_id = index_by_player_id(load_json(udfa_results_input))
 
     as_of_date = args.generated_at[:10]
     rows = build_rows(
@@ -399,11 +514,20 @@ def main() -> None:
         draft_capital_by_id=draft_capital_by_id,
         production_by_id=production_by_id,
         context_by_id=context_by_id,
+        draft_results_by_id=draft_results_by_id,
+        udfa_results_by_id=udfa_results_by_id,
         as_of_date=as_of_date,
     )
 
     run_id = f"rookie-transition-profile-{season}-{args.generated_at}"
-    source_files_used = [str(rookie_alpha_input), str(draft_capital_input), str(production_input), str(context_input)]
+    source_files_used = [
+        str(rookie_alpha_input),
+        str(draft_capital_input),
+        str(production_input),
+        str(context_input),
+        str(draft_results_input),
+        str(udfa_results_input),
+    ]
 
     artifact = {
         "schema_version": CURRENT_SCHEMA_VERSION,
@@ -430,6 +554,8 @@ def main() -> None:
         (draft_capital_input, load_json(draft_capital_input)),
         (production_input, load_json(production_input)),
         (context_input, load_json(context_input)),
+        (draft_results_input, load_json(draft_results_input)),
+        (udfa_results_input, load_json(udfa_results_input)),
     ):
         entry: dict[str, Any] = {"path": str(path), "sha256": sha256_file(path)}
         if isinstance(rows_payload, list):

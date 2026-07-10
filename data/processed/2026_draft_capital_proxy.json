@@ -176,7 +176,7 @@
     "big_board_rank": 137,
     "big_board_source": "NFL Mock Draft Database consensus 2026 big board (outside FantasyPros top 100; ESPN ~145, Tankathon 112)",
     "draft_capital_proxy_0_100": 35,
-    "draft_capital_proxy_source": "Estimated from big_board_rank=137 (R4-5 projection; speed-first profile, size concerns 5'9\" 164lb)",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -284,7 +284,7 @@
     "big_board_rank": 60,
     "big_board_source": "@ffdataroma scouting note (projected early 2nd dynasty; NFL round estimate 4th-5th)",
     "draft_capital_proxy_0_100": 55,
-    "draft_capital_proxy_source": "2026 NFL Draft actual pick: Round 3, Pick 71",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -548,7 +548,7 @@
     "big_board_rank": 50,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 65,
-    "draft_capital_proxy_source": "2026 NFL Draft actual pick: Round 2, Pick 47",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -560,7 +560,7 @@
     "big_board_rank": 49,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 45,
-    "draft_capital_proxy_source": "2026 NFL Draft actual pick: Round 3, Pick 79",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -632,7 +632,7 @@
     "big_board_rank": 22,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 75,
-    "draft_capital_proxy_source": "2026 NFL Draft actual pick: Round 1, Pick 30",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -656,7 +656,7 @@
     "big_board_rank": null,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 55,
-    "draft_capital_proxy_source": "2026 NFL Draft actual pick: Round 3, Pick 75",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -668,7 +668,7 @@
     "big_board_rank": null,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 55,
-    "draft_capital_proxy_source": "2026 NFL Draft actual pick: Round 3, Pick 74",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -716,7 +716,7 @@
     "big_board_rank": 77,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 45,
-    "draft_capital_proxy_source": "2026 NFL Draft actual pick: Round 3, Pick 84",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -752,7 +752,7 @@
     "big_board_rank": 91,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 45,
-    "draft_capital_proxy_source": "2026 NFL Draft actual pick: Round 3, Pick 80",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -824,7 +824,7 @@
     "big_board_rank": null,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 65,
-    "draft_capital_proxy_source": "2026 NFL Draft actual pick: Round 2, Pick 33",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -848,7 +848,7 @@
     "big_board_rank": null,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 45,
-    "draft_capital_proxy_source": "2026 NFL Draft actual pick: Round 3, Pick 89",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -932,7 +932,7 @@
     "big_board_rank": 165,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 55,
-    "draft_capital_proxy_source": "2026 NFL Draft actual pick: Round 2, Pick 56",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -1016,7 +1016,7 @@
     "big_board_rank": null,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 45,
-    "draft_capital_proxy_source": "2026 NFL Draft actual pick: Round 3, Pick 87",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -1052,7 +1052,7 @@
     "big_board_rank": 185,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 55,
-    "draft_capital_proxy_source": "2026 NFL Draft actual pick: Round 2, Pick 59",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -1112,7 +1112,7 @@
     "big_board_rank": 123,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 45,
-    "draft_capital_proxy_source": "2026 NFL Draft actual pick: Round 3, Pick 95",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -1136,7 +1136,7 @@
     "big_board_rank": 113,
     "big_board_source": "FantasyPros/consensus 2026 big board (manual seed)",
     "draft_capital_proxy_0_100": 55,
-    "draft_capital_proxy_source": "2026 NFL Draft actual pick: Round 3, Pick 69",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
   },
   {
@@ -1208,7 +1208,7 @@
     "big_board_rank": null,
     "big_board_source": null,
     "draft_capital_proxy_0_100": 45,
-    "draft_capital_proxy_source": "2026 NFL Draft actual pick: Round 3, Pick 90",
+    "draft_capital_proxy_source": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
     "draft_capital_proxy_pending_conversion": false
   }
 ]

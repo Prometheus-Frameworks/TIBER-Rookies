@@ -1,15 +1,17 @@
 {
-  "schema_version": "rookie-transition-profile-v0.1.0",
+  "schema_version": "rookie-transition-profile-v0.2.0",
   "artifact_type": "rookie_transition_profile",
   "season": 2026,
-  "generated_at": "2026-07-10T00:00:00+00:00",
-  "run_id": "rookie-transition-profile-2026-2026-07-10T00:00:00+00:00",
+  "generated_at": "2026-07-10T12:00:00+00:00",
+  "run_id": "rookie-transition-profile-2026-2026-07-10T12:00:00+00:00",
   "disclaimer": "This artifact is an evidence consolidation layer. It contains no scores, no rankings, and no predictive claims. It is not Rookie Alpha and does not replace it. See docs/rookie-transition-profile-v0-design.md and docs/rookie-transition-profile-contract.md.",
   "source_files_used": [
     "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
     "data/processed/2026_draft_capital_proxy.json",
     "data/processed/2026_college_production.json",
-    "data/processed/2026_prospect_context.json"
+    "data/processed/2026_prospect_context.json",
+    "data/processed/2026_draft_results.json",
+    "data/processed/2026_day3_udfa_draft_result_profiles.json"
   ],
   "coverage_summary": {
     "players_total": 48,
@@ -17,6 +19,7 @@
     "players_with_age_at_entry": 47,
     "players_with_athletic_testing": 32,
     "players_with_college_production": 48,
+    "players_with_official_postdraft_outcome": 48,
     "players_with_all_families": 32
   },
   "rows": [
@@ -78,6 +81,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "ARI",
+          "draft_round": 1,
+          "overall_pick": 3,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -136,6 +159,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "CLE",
+          "draft_round": 1,
+          "overall_pick": 24,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
@@ -201,6 +244,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "PHI",
+          "draft_round": 1,
+          "overall_pick": 20,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -259,6 +322,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "NO",
+          "draft_round": 1,
+          "overall_pick": 8,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
@@ -324,6 +407,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "CLE",
+          "draft_round": 2,
+          "overall_pick": 39,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -385,6 +488,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "LV",
+          "draft_round": 1,
+          "overall_pick": 1,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
@@ -450,6 +573,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "PIT",
+          "draft_round": 3,
+          "overall_pick": 76,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -508,6 +651,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "TEN",
+          "draft_round": 1,
+          "overall_pick": 4,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
@@ -573,6 +736,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "NYJ",
+          "draft_round": 1,
+          "overall_pick": 16,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -636,6 +819,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "PHI",
+          "draft_round": 2,
+          "overall_pick": 54,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -651,7 +854,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "2026 NFL Draft actual pick: Round 3, Pick 69",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -699,6 +902,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "CHI",
+          "draft_round": 3,
+          "overall_pick": 69,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -714,7 +937,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "2026 NFL Draft actual pick: Round 3, Pick 79",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -760,6 +983,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "ATL",
+          "draft_round": 3,
+          "overall_pick": 79,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
@@ -822,6 +1065,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "DEN",
+          "draft_round": 4,
+          "overall_pick": 108,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -837,7 +1100,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "2026 NFL Draft actual pick: Round 1, Pick 30",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -883,6 +1146,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "NYJ",
+          "draft_round": 1,
+          "overall_pick": 30,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
@@ -945,6 +1228,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "MIA",
+          "draft_round": 3,
+          "overall_pick": 94,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -960,7 +1263,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "2026 NFL Draft actual pick: Round 2, Pick 33",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -1008,6 +1311,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "SF",
+          "draft_round": 2,
+          "overall_pick": 33,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -1023,7 +1346,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "2026 NFL Draft actual pick: Round 3, Pick 71",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -1068,6 +1391,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "WAS",
+          "draft_round": 3,
+          "overall_pick": 71,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -1083,7 +1426,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "2026 NFL Draft actual pick: Round 3, Pick 84",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -1131,6 +1474,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "TB",
+          "draft_round": 3,
+          "overall_pick": 84,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -1146,7 +1509,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "2026 NFL Draft actual pick: Round 2, Pick 47",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -1192,6 +1555,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "PIT",
+          "draft_round": 2,
+          "overall_pick": 47,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
@@ -1254,6 +1637,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "BAL",
+          "draft_round": 4,
+          "overall_pick": 115,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -1312,6 +1715,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "CAR",
+          "draft_round": 3,
+          "overall_pick": 83,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
@@ -1377,6 +1800,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "KC",
+          "draft_round": 7,
+          "overall_pick": 249,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -1392,7 +1835,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "2026 NFL Draft actual pick: Round 2, Pick 56",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -1438,6 +1881,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "JAX",
+          "draft_round": 2,
+          "overall_pick": 56,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
@@ -1503,6 +1966,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "LAR",
+          "draft_round": 1,
+          "overall_pick": 13,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -1564,6 +2047,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "LAR",
+          "draft_round": 2,
+          "overall_pick": 61,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
@@ -1629,6 +2132,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "LV",
+          "draft_round": 4,
+          "overall_pick": 122,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -1692,6 +2215,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "udfa_signed",
+          "nfl_team": "PHI",
+          "draft_round": null,
+          "overall_pick": null,
+          "is_udfa": true,
+          "source_status": "external_verified",
+          "upstream_provenance_status": null
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "Eagles announced Wright among their signed undrafted free agents.",
+          "source_url": "https://www.philadelphiaeagles.com/news/eagles-sign-eight-undrafted-free-agents",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
       }
     },
     {
@@ -1707,7 +2250,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "2026 NFL Draft actual pick: Round 3, Pick 95",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -1753,6 +2296,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "NE",
+          "draft_round": 3,
+          "overall_pick": 95,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
@@ -1818,6 +2381,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "SEA",
+          "draft_round": 1,
+          "overall_pick": 32,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -1881,6 +2464,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "DEN",
+          "draft_round": 5,
+          "overall_pick": 152,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -1896,7 +2499,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "2026 NFL Draft actual pick: Round 3, Pick 90",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -1941,6 +2544,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "SF",
+          "draft_round": 3,
+          "overall_pick": 90,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -1956,7 +2579,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "2026 NFL Draft actual pick: Round 3, Pick 74",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -2002,6 +2625,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "NYG",
+          "draft_round": 3,
+          "overall_pick": 74,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
@@ -2067,6 +2710,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "ARI",
+          "draft_round": 3,
+          "overall_pick": 65,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -2082,7 +2745,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "Estimated from big_board_rank=137 (R4-5 projection; speed-first profile, size concerns 5'9\" 164lb)",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -2127,6 +2790,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "LAC",
+          "draft_round": 4,
+          "overall_pick": 105,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -2142,7 +2825,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "2026 NFL Draft actual pick: Round 2, Pick 59",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -2188,6 +2871,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "HOU",
+          "draft_round": 2,
+          "overall_pick": 59,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
@@ -2253,6 +2956,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "MIA",
+          "draft_round": 5,
+          "overall_pick": 177,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -2316,6 +3039,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "NO",
+          "draft_round": 3,
+          "overall_pick": 73,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -2374,6 +3117,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "WAS",
+          "draft_round": 6,
+          "overall_pick": 187,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
@@ -2439,6 +3202,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "IND",
+          "draft_round": 7,
+          "overall_pick": 254,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -2454,7 +3237,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "2026 NFL Draft actual pick: Round 3, Pick 75",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -2502,6 +3285,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "MIA",
+          "draft_round": 3,
+          "overall_pick": 75,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -2517,7 +3320,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "2026 NFL Draft actual pick: Round 3, Pick 80",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -2563,6 +3366,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "BAL",
+          "draft_round": 3,
+          "overall_pick": 80,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
@@ -2625,6 +3448,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "IND",
+          "draft_round": 7,
+          "overall_pick": 237,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -2640,7 +3483,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "2026 NFL Draft actual pick: Round 3, Pick 89",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -2686,6 +3529,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "CHI",
+          "draft_round": 3,
+          "overall_pick": 89,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
@@ -2748,6 +3611,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "TEN",
+          "draft_round": 5,
+          "overall_pick": 165,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -2808,6 +3691,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "KC",
+          "draft_round": 5,
+          "overall_pick": 161,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -2823,7 +3726,7 @@
         },
         "provenance": {
           "source_type": "market_derived_proxy",
-          "source_name": "2026 NFL Draft actual pick: Round 3, Pick 87",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
           "source_url": null,
           "confidence": 0.65,
           "confidence_band": "MEDIUM",
@@ -2869,6 +3772,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "MIA",
+          "draft_round": 3,
+          "overall_pick": 87,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
@@ -2934,6 +3857,26 @@
           "last_verified_at": "2026-07-10",
           "notes": null
         }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "DET",
+          "draft_round": 5,
+          "overall_pick": 168,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
       }
     },
     {
@@ -2992,6 +3935,26 @@
           "confidence": 0.85,
           "confidence_band": "HIGH",
           "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "NO",
+          "draft_round": 6,
+          "overall_pick": 190,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
           "notes": null
         }
       }
