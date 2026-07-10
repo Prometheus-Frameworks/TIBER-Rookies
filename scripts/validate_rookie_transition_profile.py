@@ -317,6 +317,21 @@ def validate_export_manifest(
     if manifest_payload.get("export_metadata") != export_metadata_expected:
         errors.append("manifest.export_metadata does not exactly match export JSON metadata.")
 
+    manifest_metadata_expected = {
+        "season": manifest_payload.get("season"),
+        "schema_version": manifest_payload.get("schema_version"),
+        "generated_at": manifest_payload.get("generated_at"),
+        "run_id": manifest_payload.get("run_id"),
+        "coverage_summary": manifest_payload.get("coverage_summary"),
+        "source_files_used": [
+            entry.get("path")
+            for entry in manifest_payload.get("input_files", [])
+            if isinstance(entry, dict)
+        ],
+    }
+    if manifest_payload.get("export_metadata") != manifest_metadata_expected:
+        errors.append("manifest.export_metadata does not match top-level manifest metadata fields.")
+
     if check_output_hashes:
         output_entries = manifest_payload.get("output_files", [])
         if not isinstance(output_entries, list):

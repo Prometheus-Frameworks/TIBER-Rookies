@@ -1,4 +1,5 @@
 import json
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -191,6 +192,86 @@ class RealCommittedArtifactTests(unittest.TestCase):
             manifest_path=Path("exports/promoted/rookie-transition-profile/2026_manifest.json"),
         )
         self.assertEqual(errors, [])
+
+
+class ValidateExportManifestConsistencyTests(unittest.TestCase):
+    """Regression coverage for a gap flagged in PR #264 review: export_metadata
+    matching the export JSON is not sufficient — the manifest's own top-level
+    fields must also agree with its export_metadata block, or a manifest could
+    advertise a different season/hash list internally while still passing."""
+
+    def _write_valid_pair(self, temp_dir: Path) -> tuple[Path, Path]:
+        export_payload = {
+            "schema_version": CURRENT_SCHEMA_VERSION,
+            "artifact_type": "rookie_transition_profile",
+            "season": 2026,
+            "generated_at": "2026-07-10T00:00:00+00:00",
+            "run_id": "rookie-transition-profile-2026-test",
+            "disclaimer": "This artifact is an evidence consolidation layer.",
+            "source_files_used": ["a.json"],
+            "coverage_summary": {"players_total": 0},
+            "rows": [],
+        }
+        export_path = temp_dir / "profile.json"
+        csv_path = temp_dir / "profile.csv"
+        manifest_path = temp_dir / "manifest.json"
+        export_path.write_text(json.dumps(export_payload), encoding="utf-8")
+        csv_path.write_text("player_id\n", encoding="utf-8")
+
+        export_metadata = {
+            "season": export_payload["season"],
+            "schema_version": export_payload["schema_version"],
+            "generated_at": export_payload["generated_at"],
+            "run_id": export_payload["run_id"],
+            "coverage_summary": export_payload["coverage_summary"],
+            "source_files_used": export_payload["source_files_used"],
+        }
+        manifest_payload = {
+            "season": 2026,
+            "schema_version": CURRENT_SCHEMA_VERSION,
+            "generated_at": export_payload["generated_at"],
+            "run_id": export_payload["run_id"],
+            "input_files": [{"path": "a.json", "sha256": "x"}],
+            "coverage_summary": export_payload["coverage_summary"],
+            "output_files": [],
+            "export_metadata": export_metadata,
+        }
+        manifest_path.write_text(json.dumps(manifest_payload), encoding="utf-8")
+        return export_path, manifest_path
+
+    def test_manifest_top_level_season_mismatch_is_caught(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir_str:
+            temp_dir = Path(temp_dir_str)
+            export_path, manifest_path = self._write_valid_pair(temp_dir)
+
+            manifest_payload = json.loads(manifest_path.read_text(encoding="utf-8"))
+            # export_metadata still matches the export JSON exactly, but the
+            # manifest's own top-level season now silently disagrees with it.
+            manifest_payload["season"] = 2027
+            manifest_path.write_text(json.dumps(manifest_payload), encoding="utf-8")
+
+            errors = validate_export_manifest(
+                export_path=export_path,
+                manifest_path=manifest_path,
+                check_input_hashes=False,
+                check_output_hashes=False,
+            )
+            self.assertTrue(
+                any("does not match top-level manifest metadata fields" in e for e in errors),
+                msg=errors,
+            )
+
+    def test_consistent_manifest_passes(self) -> None:
+        with tempfile.TemporaryDirectory() as temp_dir_str:
+            temp_dir = Path(temp_dir_str)
+            export_path, manifest_path = self._write_valid_pair(temp_dir)
+            errors = validate_export_manifest(
+                export_path=export_path,
+                manifest_path=manifest_path,
+                check_input_hashes=False,
+                check_output_hashes=False,
+            )
+            self.assertEqual(errors, [])
 
 
 if __name__ == "__main__":
