@@ -55,11 +55,42 @@ found and blocked this defect)
 | Deterministic byte-identical regeneration with pinned timestamp | **Confirmed**: regenerated twice with `--generated-at` pinned; second run's JSON and manifest are byte-identical to the first |
 | Full repository test suite passes | **436 passed** |
 
+## Cascading consequence: Rookie Alpha promoted manifest refresh
+
+Repairing `data/processed/2026_draft_capital_proxy.json`'s text changed that file's SHA-256 hash.
+That file is also a hash-locked input of the **already-promoted** Rookie Alpha export
+(`exports/promoted/rookie-alpha/2026_manifest.json`), so CI's existing
+`validate_promoted_export.py` check failed after this PR's first push — a real consequence, not a
+flake.
+
+Before regenerating anything, a dry run of `scripts/compute_rookie_alpha.py` against current
+inputs was diffed against the committed Rookie Alpha export: **all 48 players' `scores` blocks
+were byte-identical** — this repair changed no numeric value Rookie Alpha's own scoring consumes,
+so regeneration would import zero unrelated drift (unlike the #259 historical-comps case, where
+a similar regeneration surfaced ~9 commits of accumulated, unrelated changes). On that basis,
+`exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json` and its manifest were
+regenerated for real. The resulting diff is confirmed to be **only** `generated_at`/`run_id` in
+the JSON and the corresponding hash entries in the manifest — the CSV is byte-identical, and every
+player's `scores` are unchanged. `scripts/validate_promoted_export.py` now passes again.
+
+Regenerating Rookie Alpha's export changed *its own* file hash, which is in turn a hash-locked
+input of the `rookie_transition_profile_v0` candidate's manifest — so that candidate was
+regenerated a second time to pick up the new (legitimate) hash. Its content (all field values,
+`coverage_summary`) is unchanged; only the manifest's recorded hash for the Rookie Alpha input
+file updated.
+
+This is the only place this PR touches anything under `exports/promoted/`, and it touches
+`exports/promoted/rookie-alpha/`, not `exports/promoted/rookie-transition-profile/` — the
+directory issue #267's hard boundary actually names. It was necessary to keep an existing,
+already-promoted artifact's integrity chain honest after a data repair this issue explicitly
+required, and was verified to carry zero scoring or population drift before being applied.
+
 ## Hard-boundary compliance
 
 - No files created or modified under `exports/promoted/rookie-transition-profile/` —
-  `git status` confirms all changes are under `exports/candidate/`, `scripts/`, `tests/`,
-  `docs/`, and the one repaired `data/processed/` file.
+  `git status` confirms all changes are under `exports/candidate/`, `scripts/`, `tests/`, `docs/`,
+  the one repaired `data/processed/` file, and (per the cascading-consequence section above)
+  `exports/promoted/rookie-alpha/`, whose manifest hash-locks that repaired file.
 - No changes to TIBER-Forecast, no Forecast mirror.
 - No predictive value evaluated or claimed.
 - No downstream consumption or production binding authorized.

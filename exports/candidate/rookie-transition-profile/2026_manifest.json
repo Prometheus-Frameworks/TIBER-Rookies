@@ -6,7 +6,7 @@
   "input_files": [
     {
       "path": "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
-      "sha256": "5a7c6c945ad477c1a54e61e7337e9f5bd6b5e69455669ca4700d7668fe9816e3"
+      "sha256": "df239f10f3f3b82fbf15d7d903ca94f450d9e2c17993feb2b7ce87161944b962"
     },
     {
       "path": "data/processed/2026_draft_capital_proxy.json",
