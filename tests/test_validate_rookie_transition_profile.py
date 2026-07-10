@@ -320,10 +320,12 @@ class ValidateArtifactShapeTests(unittest.TestCase):
 
 
 class RealCommittedArtifactTests(unittest.TestCase):
-    """Guards the actual committed 2026 candidate artifact. This lives under
-    exports/candidate/, not exports/promoted/ — per issue #263, implementation
-    and validation happen here, but promotion itself requires a separate,
-    future promotion-review issue."""
+    """Guards the actual committed 2026 candidate artifact under
+    exports/candidate/rookie-transition-profile/. Implementation and
+    validation happen against this candidate; promotion into
+    exports/promoted/rookie-transition-profile/ (see
+    PromotedArtifactMatchesCandidateTests below) is a separate, later step
+    gated on a dedicated promotion-review issue (#269)."""
 
     def test_2026_artifact_passes_shape_validation(self) -> None:
         path = Path("exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.json")
@@ -388,6 +390,57 @@ class RealCommittedArtifactTests(unittest.TestCase):
                 self.assertIn("unknown", source_name, msg=row["player_id"])
             else:
                 self.assertNotEqual(expected_band_score(big_board_rank), proxy_score, msg=row["player_id"])
+
+
+class PromotedArtifactMatchesCandidateTests(unittest.TestCase):
+    """Regression guard for issue #269's promotion procedure: promoting must
+    never regenerate, recompute, normalize, reorder, or otherwise alter the
+    payload. The promoted JSON/CSV must be byte-identical to the candidate
+    that was reviewed, and the promoted manifest must differ from the
+    candidate manifest only in the output_files paths."""
+
+    CANDIDATE_DIR = Path("exports/candidate/rookie-transition-profile")
+    PROMOTED_DIR = Path("exports/promoted/rookie-transition-profile")
+
+    def test_promoted_json_is_byte_identical_to_candidate(self) -> None:
+        candidate = (self.CANDIDATE_DIR / "2026_rookie_transition_profile_v0.json").read_bytes()
+        promoted = (self.PROMOTED_DIR / "2026_rookie_transition_profile_v0.json").read_bytes()
+        self.assertEqual(candidate, promoted)
+
+    def test_promoted_csv_is_byte_identical_to_candidate(self) -> None:
+        candidate = (self.CANDIDATE_DIR / "2026_rookie_transition_profile_v0.csv").read_bytes()
+        promoted = (self.PROMOTED_DIR / "2026_rookie_transition_profile_v0.csv").read_bytes()
+        self.assertEqual(candidate, promoted)
+
+    def test_promoted_manifest_differs_from_candidate_only_in_output_paths(self) -> None:
+        candidate_manifest = json.loads((self.CANDIDATE_DIR / "2026_manifest.json").read_text(encoding="utf-8"))
+        promoted_manifest = json.loads((self.PROMOTED_DIR / "2026_manifest.json").read_text(encoding="utf-8"))
+
+        candidate_outputs = candidate_manifest.pop("output_files")
+        promoted_outputs = promoted_manifest.pop("output_files")
+
+        # Every other top-level field (schema_version, season, generated_at,
+        # run_id, input_files, coverage_summary, export_metadata) must be
+        # identical — promotion changes only where the output files live.
+        self.assertEqual(candidate_manifest, promoted_manifest)
+
+        self.assertEqual(len(candidate_outputs), len(promoted_outputs))
+        for candidate_entry, promoted_entry in zip(candidate_outputs, promoted_outputs):
+            self.assertEqual(candidate_entry["sha256"], promoted_entry["sha256"])
+            self.assertEqual(
+                promoted_entry["path"],
+                candidate_entry["path"].replace(
+                    "exports/candidate/rookie-transition-profile/",
+                    "exports/promoted/rookie-transition-profile/",
+                ),
+            )
+
+    def test_promoted_artifact_and_manifest_pass_full_validation(self) -> None:
+        errors = validate_export_manifest(
+            export_path=self.PROMOTED_DIR / "2026_rookie_transition_profile_v0.json",
+            manifest_path=self.PROMOTED_DIR / "2026_manifest.json",
+        )
+        self.assertEqual(errors, [])
 
 
 class ValidateExportManifestConsistencyTests(unittest.TestCase):

@@ -247,22 +247,25 @@ Writes the JSON/CSV/manifest triplet under `exports/candidate/rookie-transition-
 score, rank, or derived value is computed — every governed field is either copied verbatim from an
 already-promoted/processed source or a deterministic lookup (age from date of birth).
 
-## Path to promotion (not yet authorized)
+## Promotion status
 
-This document describes the artifact and its validation, and confirms it already satisfies the
-mechanical shape of `docs/source-of-truth-audit.md`'s promotion gate (reproducible from
-checked-in scripts, versioned with an explicit schema label, validated, semantically
-classifiable as a **repackaged/derived-passthrough** artifact). Satisfying that shape is
-necessary but not sufficient for promotion.
+The schema v0.2.0 candidate (implemented in #267/PR #268) was reviewed and promoted to
+`exports/promoted/rookie-transition-profile/` in issue #269's promotion review — see
+[`2026-07-10-rookie-transition-profile-v0-2-promotion-review.md`](reports/2026-07-10-rookie-transition-profile-v0-2-promotion-review.md)
+for the full gate-by-gate record, hashes, and reproduction evidence. The promoted JSON/CSV are
+byte-identical to the reviewed candidate; the promoted manifest differs from the candidate
+manifest only in the `output_files` paths.
 
-**Promotion itself — copying or pointing reviewed bytes into
-`exports/promoted/rookie-transition-profile/` — requires a separate, future promotion-review
-issue**, per issue #263's decision enum: a positive decision from this implementation issue
-(`may_open_rookie_transition_profile_promotion_review_issue`) authorizes opening that review
-issue, nothing more. This document does not authorize promotion, cross-repo promotion (e.g. into
-TIBER-Data), or any Forecast consumption. See the design doc's "Forecast-consumability
-requirements" section, which this implementation satisfies structurally but which still requires
-separate authorization to act on.
+**This promotion authorizes only that TIBER-Rookies now has a governed, promoted source
+artifact.** It does not authorize Forecast consumption, cross-repo mirroring (e.g. into
+TIBER-Data), predictive evaluation, or production binding — any of those requires a separate,
+future issue and review. See the design doc's "Forecast-consumability requirements" section,
+which this artifact satisfies structurally but which still requires separate authorization to
+act on.
+
+The candidate path (`exports/candidate/rookie-transition-profile/`) remains in place and is still
+how future revisions to this artifact are implemented and validated before any subsequent
+promotion review.
 
 ## Regression tests
 
