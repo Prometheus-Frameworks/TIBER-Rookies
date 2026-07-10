@@ -72,8 +72,8 @@ a bare value.
 | `source_url` | string \| null | Present when the source is a fetchable URL. |
 | `confidence` | float 0.0–1.0 \| null | Null only when `source_type` is `unavailable`. |
 | `confidence_band` | `LOW`\|`MEDIUM`\|`HIGH` \| null | Must equal `confidence_to_band(confidence)`. |
-| `last_verified_at` | date string \| null | Year must not exceed the artifact's `season`. |
-| `notes` | string \| null | Required non-empty when `source_type` is `unavailable`. |
+| `last_verified_at` | date string \| null | Year must not exceed the artifact's `season`. Null is allowed only when `notes` explains why (see "Known limitations") — never substitute the artifact's own `generated_at` for a real verification date. |
+| `notes` | string \| null | Required non-empty when `source_type` is `unavailable`, or when `last_verified_at` is null. |
 
 `source_type` enum:
 
@@ -111,9 +111,13 @@ single polymorphic field was rejected.
   `udfa_signed`) — validated explicitly.
 - `value.source_status` / `value.upstream_provenance_status`: carried through from the source row
   as descriptive value content (the same pattern `draft_capital.value` already uses for
-  `big_board_rank`), distinct from this artifact's own `provenance` object.
-  `upstream_provenance_status` is `null` when the source has no equivalent field (the UDFA file
-  doesn't carry one).
+  `big_board_rank`), distinct from this artifact's own `provenance` object. `source_status` must
+  be exactly `"external_verified"`. `upstream_provenance_status` must be `null` (the UDFA file has
+  no equivalent field) or `"source_verified"` — the only value in TIBER-Data's documented
+  `provenance_status` enum that corresponds to a fully matched, externally verified record; the
+  enum's other three values (`source_verified_player_id_unresolved`, `needs_verification`,
+  `fixture_only`) describe real ingestion states but are never valid here, since none of them means
+  "externally verified" (see `docs/cross-repo-draft-results-ingestion.md`).
 - Sourced from `data/processed/{season}_draft_results.json` first; falls back to
   `data/processed/{season}_day3_udfa_draft_result_profiles.json` only when the player is absent
   from the first (this is how `te-daequan-wright`'s UDFA signing is captured). `unavailable` only
@@ -152,12 +156,15 @@ and any `evidence_summary`-style free text.
   deliberate simplification for v0, not a discovered fact.
 - **`official_postdraft_outcome.provenance.last_verified_at` uses the source row's own
   `ingested_at` field when present** (`data/processed/{season}_draft_results.json` rows carry
-  one), falling back to the artifact's `generated_at` date only when the source has no per-row
-  timestamp (the UDFA file has none). This is the one field family in the artifact that prefers a
-  real upstream timestamp over the "as of this run" fallback used everywhere else. For the
-  UDFA-sourced fallback specifically, reading that file on this run date is not the same as having
-  re-verified its external source on that date — `provenance.notes` says so explicitly for any row
-  sourced this way, rather than letting the date imply a verification that didn't happen.
+  one). This is the one field family in the artifact that prefers a real upstream timestamp over
+  the "as of this run" fallback used everywhere else. For the UDFA-sourced path specifically
+  (`data/processed/{season}_day3_udfa_draft_result_profiles.json`, which has no per-row
+  timestamp), `last_verified_at` is **`null`** rather than substituted with the artifact's own
+  `generated_at` date — reading that file on this run's date is not the same as having re-verified
+  its external source on that date, so the field says so directly instead of holding a
+  real-looking date that isn't one. `provenance.notes` carries the explanation, and
+  `validate_provenance_object()` requires exactly that: a null `last_verified_at` is only valid
+  when `notes` is non-empty (the same rule already used for `source_type: "unavailable"`).
 - **`data/processed/{season}_draft_capital_proxy.json`'s `draft_capital_proxy_source` free-text
   field is never read or edited (#267).** An earlier version of this fix edited that field's text
   in place for 17 rows, but that both touched a hash-locked input of the already-promoted Rookie
@@ -171,10 +178,16 @@ and any `evidence_summary`-style free text.
   derivation unavailable" description. This is correct for every row in the 101-row proxy file
   without maintaining a per-player-ID list, and the shared data file itself is never modified.
 - **`official_postdraft_outcome.value.source_status` must be exactly `"external_verified"`,
-  and `value.upstream_provenance_status` must be `null` or one of the four `provenance_status`
-  enum values documented in `docs/cross-repo-draft-results-ingestion.md`** (`source_verified`,
-  `source_verified_player_id_unresolved`, `needs_verification`, `fixture_only`) — tightened from an
-  earlier, looser "any non-empty string" check. `validate_row()` also requires
+  and `value.upstream_provenance_status` must be `null` or exactly `"source_verified"`** —
+  tightened from an earlier, looser check that accepted any non-empty string, and then further
+  tightened from accepting all four of `docs/cross-repo-draft-results-ingestion.md`'s documented
+  `provenance_status` enum values down to only the one (`source_verified`) that actually means
+  "externally verified" per that same contract's own ingestion-behavior table.
+  `source_verified_player_id_unresolved` rows are skipped upstream (never model-facing),
+  `needs_verification` rows are accepted only with a warning (not externally verified), and
+  `fixture_only` rows are rejected unconditionally — none of them may appear on a present
+  `official_postdraft_outcome`, even though all four are real members of the upstream enum in
+  general. `validate_row()` also requires
   `official_postdraft_outcome.provenance.source_type == "official_draft_result"` whenever the
   field's value is not null.
 
@@ -253,10 +266,12 @@ separate authorization to act on.
 
 ## Regression tests
 
-- `tests/test_validate_rookie_transition_profile.py` — schema/enum/provenance-shape validation,
-  manifest-consistency checks, `official_postdraft_outcome`-specific semantics (status enum,
-  `is_udfa`/status agreement, drafted-requires-round/pick, udfa-forbids-round/pick, `source_status`
-  exactly `"external_verified"`, `upstream_provenance_status` enum, required `source_type`), plus
+- `tests/test_validate_rookie_transition_profile.py` — schema/enum/provenance-shape validation
+  (including the null-`last_verified_at`-requires-`notes` rule), manifest-consistency checks,
+  `official_postdraft_outcome`-specific semantics (status enum, `is_udfa`/status agreement,
+  drafted-requires-round/pick, udfa-forbids-round/pick, `source_status` exactly
+  `"external_verified"`, `upstream_provenance_status` restricted to `null`/`"source_verified"` with
+  explicit rejection tests for the three other ingestion-enum values, required `source_type`), plus
   tests that run full validation against the real committed 2026 candidate artifact and assert its
   48/48 post-draft-outcome coverage, that `draft_capital` never leaks outcome text, and that
   `draft_capital`'s ranked-bands claim is checked for internal consistency across **every** row in

@@ -185,8 +185,10 @@ class BuildOfficialPostdraftOutcomeFieldTests(unittest.TestCase):
         self.assertIsNone(field["value"]["draft_round"])
         self.assertIsNone(field["value"]["overall_pick"])
         self.assertEqual(field["provenance"]["source_type"], "official_draft_result")
-        # No per-row timestamp in the UDFA file, so falls back to as_of_date.
-        self.assertEqual(field["provenance"]["last_verified_at"], "2026-07-10")
+        # No per-row timestamp in the UDFA file, so last_verified_at is null
+        # rather than substituting the artifact's own generation date.
+        self.assertIsNone(field["provenance"]["last_verified_at"])
+        self.assertTrue(field["provenance"]["notes"])
         self.assertEqual(validate_field(field, prefix="official_postdraft_outcome"), [])
 
     def test_draft_results_take_priority_over_udfa_file_when_both_present(self) -> None:

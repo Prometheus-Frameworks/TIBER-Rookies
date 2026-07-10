@@ -56,17 +56,27 @@ GOVERNED_FIELD_FAMILIES = (
 
 VALID_POSTDRAFT_STATUSES = frozenset({"drafted", "udfa_signed"})
 
-# Per docs/cross-repo-draft-results-ingestion.md's provenance_status enum
-# (TIBER-Data's nfl_draft_results contract), preserved verbatim in
-# upstream_provenance_status. None is allowed because the UDFA file
-# (day3_udfa_draft_result_profiles.json) predates that ingestion contract
-# and does not carry this field.
+# The full provenance_status vocabulary from docs/cross-repo-draft-results-ingestion.md
+# (TIBER-Data's nfl_draft_results contract) — kept for reference/documentation.
 VALID_UPSTREAM_PROVENANCE_STATUSES = frozenset({
     "source_verified",
     "source_verified_player_id_unresolved",
     "needs_verification",
     "fixture_only",
 })
+
+# Of that vocabulary, only "source_verified" actually corresponds to a fully
+# matched, externally verified record per the ingestion contract's own
+# behavior table — "source_verified_player_id_unresolved" rows are skipped
+# (never model-facing), "needs_verification" rows are accepted only with a
+# warning (not externally verified), and "fixture_only" rows are rejected
+# unconditionally. A present official_postdraft_outcome (which always
+# requires value.source_status == "external_verified") must therefore never
+# carry one of those other three values, even though they're valid members
+# of the upstream enum in general. None is separately allowed because the
+# legacy UDFA file (day3_udfa_draft_result_profiles.json) predates the
+# ingestion contract and never carried this field at all.
+PROMOTABLE_UPSTREAM_PROVENANCE_STATUSES = frozenset({"source_verified"})
 
 
 class SourceType(StrEnum):
@@ -162,8 +172,18 @@ def validate_provenance_object(provenance: Any, *, prefix: str) -> list[str]:
             )
 
     last_verified_at = provenance.get("last_verified_at")
-    if not isinstance(last_verified_at, str) or not last_verified_at.strip():
-        errors.append(f"{prefix}.last_verified_at must be a non-empty date string")
+    if last_verified_at is None:
+        # A date must never be invented when no verification actually happened
+        # on that date. null is permitted only when notes gives the reason —
+        # the same "no value without an explanation" rule the unavailable
+        # source_type case already enforces above.
+        if not provenance.get("notes"):
+            errors.append(
+                f"{prefix}.notes is required to explain why last_verified_at is null "
+                f"(never substitute the artifact's generation date for a real verification date)"
+            )
+    elif not isinstance(last_verified_at, str) or not last_verified_at.strip():
+        errors.append(f"{prefix}.last_verified_at must be a non-empty date string, or null with notes explaining why")
 
     return errors
 
@@ -234,10 +254,14 @@ def validate_official_postdraft_outcome_value(value: Any, *, prefix: str) -> lis
         )
 
     upstream_provenance_status = value.get("upstream_provenance_status")
-    if upstream_provenance_status is not None and upstream_provenance_status not in VALID_UPSTREAM_PROVENANCE_STATUSES:
+    if upstream_provenance_status is not None and upstream_provenance_status not in PROMOTABLE_UPSTREAM_PROVENANCE_STATUSES:
         errors.append(
             f"{prefix}.upstream_provenance_status has invalid value {upstream_provenance_status!r}; "
-            f"must be null or one of {sorted(VALID_UPSTREAM_PROVENANCE_STATUSES)}"
+            f"a present official_postdraft_outcome must be null (legacy UDFA source) or "
+            f"{sorted(PROMOTABLE_UPSTREAM_PROVENANCE_STATUSES)} — "
+            f"'source_verified_player_id_unresolved', 'needs_verification', and 'fixture_only' "
+            f"are valid members of the upstream ingestion enum in general but never correspond to "
+            f"a fully externally-verified record"
         )
 
     return errors

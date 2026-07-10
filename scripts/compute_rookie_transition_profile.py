@@ -259,7 +259,7 @@ def build_college_production_field(
 
 
 def _postdraft_outcome_from_row(
-    row: dict[str, Any], *, default_source_name: str, last_verified_at: str, notes: str | None = None
+    row: dict[str, Any], *, default_source_name: str, last_verified_at: str | None, notes: str | None = None
 ) -> dict[str, Any]:
     """Build the {value, provenance} pair from a verified source row.
 
@@ -315,11 +315,11 @@ def build_official_postdraft_outcome_field(
         return _postdraft_outcome_from_row(
             udfa_row,
             default_source_name="data/processed day3_udfa_draft_result_profiles.json",
-            last_verified_at=as_of_date,
+            last_verified_at=None,
             notes=(
-                "last_verified_at reflects this artifact's generation date, not a per-row source "
-                "verification timestamp — data/processed/{season}_day3_udfa_draft_result_profiles.json "
-                "does not record one."
+                "last_verified_at is null: no per-row source verification timestamp exists in "
+                "data/processed/{season}_day3_udfa_draft_result_profiles.json, and the artifact's "
+                "own generation date is not a substitute for one."
             ),
         )
 

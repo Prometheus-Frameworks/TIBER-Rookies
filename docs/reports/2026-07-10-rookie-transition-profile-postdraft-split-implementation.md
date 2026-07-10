@@ -18,10 +18,15 @@ found and blocked this defect)
    `validate_official_postdraft_outcome_value()` enforcing status enum membership,
    `is_udfa`/`status` agreement, drafted-requires-round/pick vs. udfa-signed-forbids-round/pick,
    `source_status` must be exactly `"external_verified"`, and `upstream_provenance_status` must be
-   `null` or one of TIBER-Data's documented `provenance_status` enum values (see
-   `docs/cross-repo-draft-results-ingestion.md`). `validate_row()` additionally requires
+   `null` or `"source_verified"` — the only member of TIBER-Data's documented `provenance_status`
+   enum (see `docs/cross-repo-draft-results-ingestion.md`) that corresponds to a fully matched,
+   externally verified record; the other three enum values (`source_verified_player_id_unresolved`,
+   `needs_verification`, `fixture_only`) are real ingestion states but never a valid value here (see
+   the review round below). `validate_row()` additionally requires
    `official_postdraft_outcome.provenance.source_type == "official_draft_result"` whenever the
-   field's value is not null.
+   field's value is not null. `validate_provenance_object()` now also allows `last_verified_at` to
+   be `null` when `notes` explains why (mirroring the existing `unavailable`-requires-`notes` rule),
+   rather than only ever accepting a date string.
 3. **`scripts/compute_rookie_transition_profile.py`**: added
    `build_official_postdraft_outcome_field()`, which checks
    `data/processed/{season}_draft_results.json` first, then
@@ -38,9 +43,11 @@ found and blocked this defect)
    version bumped, known-limitations section extended.
 5. **Regenerated the 2026 candidate** under `exports/candidate/rookie-transition-profile/` only —
    no file under `exports/promoted/` is touched anywhere in this issue's final form.
-6. **23 new regression tests** (444 total, up from 421 before this issue's first commit) covering:
+6. **28 new regression tests** (449 total, up from 421 before this issue's first commit) covering:
    `official_postdraft_outcome` status/is_udfa/round-pick semantics, the tightened
-   `source_status`/`upstream_provenance_status` enums, the `source_type` enforcement, the computed
+   `source_status`/`upstream_provenance_status` checks (including explicit rejection of
+   `needs_verification`, `fixture_only`, and `source_verified_player_id_unresolved`), the
+   `source_type` enforcement, the null-`last_verified_at`-requires-`notes` rule, the computed
    `draft_capital` provenance-text behavior (band match, band mismatch, null rank), and an
    artifact-wide invariant checked against the real committed artifact's full 48-row population.
 
@@ -56,7 +63,7 @@ found and blocked this defect)
 | JSON/CSV population and semantic parity | **Confirmed**: 48 rows in both, identical `player_id` sets and order |
 | Manifest/input/output hash consistency | **Confirmed**: `ROOKIE TRANSITION PROFILE VALIDATION PASSED` with hash checking enabled, and `validate_promoted_export.py` on Rookie Alpha's untouched, still-promoted export also passes |
 | Deterministic byte-identical regeneration with pinned timestamp | **Confirmed**: regenerated with `--generated-at` pinned |
-| Full repository test suite passes | **444 passed** |
+| Full repository test suite passes | **449 passed** |
 
 ## Review round: computing provenance text instead of editing shared data
 
@@ -103,6 +110,37 @@ An earlier, smaller review round (before this one) also found and fixed a P2: th
 outcome builder hard-coded `status: "drafted"` for any verified `draft_results.json` row without
 checking the row's own `is_udfa`/`draft_result_status` fields. Fixed by extracting the shared
 `_postdraft_outcome_from_row()` helper used uniformly for both source files.
+
+## Review round: promotable-status enforcement and honest `last_verified_at`
+
+A further re-review at the commit that fixed all three points above found the architecture sound
+but two provenance semantics still incorrect:
+
+1. **`upstream_provenance_status` accepted enum membership, not the promotable subset.** The
+   validator allowed any of TIBER-Data's four documented `provenance_status` values
+   (`source_verified`, `source_verified_player_id_unresolved`, `needs_verification`,
+   `fixture_only`), but per that same ingestion contract's own behavior table, only
+   `source_verified` actually corresponds to a fully matched, externally verified record — the
+   other three mean "skipped," "accepted with a warning, not verified," and "rejected
+   unconditionally," respectively. A row combining `source_status: "external_verified"` with
+   `upstream_provenance_status: "fixture_only"` would have passed validation. Fixed by adding
+   `PROMOTABLE_UPSTREAM_PROVENANCE_STATUSES = frozenset({"source_verified"})` and validating
+   against that narrower set (plus `null`, for the legacy UDFA source that predates the ingestion
+   contract) instead of the full enum. Added regression tests explicitly rejecting each of the
+   three non-promotable values.
+2. **UDFA-path `last_verified_at` held a date that `notes` explicitly said wasn't a verification
+   date.** A human reading `notes` would understand the caveat, but a consumer reading only the
+   machine-readable `last_verified_at` field would see a real-looking date and reasonably treat it
+   as a verification timestamp. Fixed by setting `last_verified_at: null` for this path instead of
+   falling back to the artifact's `generated_at` date, and extending
+   `validate_provenance_object()` to allow a null `last_verified_at` only when `notes` explains
+   why — the same "no value without an explanation" pattern the artifact already uses for
+   `source_type: "unavailable"`.
+
+Also, per non-blocking feedback in the same round, the design doc's description of the original
+problem was rephrased: the `draft_capital` field's own "not equivalent to realized" note was never
+false about the proxy itself — the defect was the missing separate outcome field and (in 17 rows)
+provenance text that had drifted to reference that missing outcome.
 
 ## Hard-boundary compliance
 

@@ -94,6 +94,24 @@ class ValidateProvenanceObjectTests(unittest.TestCase):
         )
         self.assertTrue(any("notes" in e for e in errors))
 
+    def test_null_last_verified_at_with_notes_allowed(self) -> None:
+        """A present (non-unavailable) field may have a null last_verified_at
+        only when notes explains why — e.g. the UDFA-sourced
+        official_postdraft_outcome path, which has no real per-row
+        verification timestamp to report."""
+        errors = validate_provenance_object(
+            _valid_provenance(last_verified_at=None, notes="no per-row timestamp exists upstream"),
+            prefix="p",
+        )
+        self.assertEqual(errors, [])
+
+    def test_null_last_verified_at_without_notes_rejected(self) -> None:
+        errors = validate_provenance_object(
+            _valid_provenance(last_verified_at=None, notes=None),
+            prefix="p",
+        )
+        self.assertTrue(any("last_verified_at" in e for e in errors))
+
 
 class ValidateFieldTests(unittest.TestCase):
     def test_value_and_provenance_required(self) -> None:
@@ -202,6 +220,30 @@ class ValidateOfficialPostdraftOutcomeValueTests(unittest.TestCase):
     def test_upstream_provenance_status_outside_enum_rejected(self) -> None:
         errors = validate_official_postdraft_outcome_value(
             _valid_postdraft_outcome_value(upstream_provenance_status="made_up_status"), prefix="p"
+        )
+        self.assertTrue(any("upstream_provenance_status" in e for e in errors))
+
+    def test_upstream_provenance_status_needs_verification_rejected(self) -> None:
+        """A present official outcome always requires source_status ==
+        'external_verified'; 'needs_verification' is a real member of the
+        upstream ingestion enum but never corresponds to a fully verified
+        record, so it must be rejected here even though it's a known enum
+        value in general."""
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(upstream_provenance_status="needs_verification"), prefix="p"
+        )
+        self.assertTrue(any("upstream_provenance_status" in e for e in errors))
+
+    def test_upstream_provenance_status_fixture_only_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(upstream_provenance_status="fixture_only"), prefix="p"
+        )
+        self.assertTrue(any("upstream_provenance_status" in e for e in errors))
+
+    def test_upstream_provenance_status_player_id_unresolved_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(upstream_provenance_status="source_verified_player_id_unresolved"),
+            prefix="p",
         )
         self.assertTrue(any("upstream_provenance_status" in e for e in errors))
 

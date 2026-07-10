@@ -2232,8 +2232,8 @@
           "source_url": "https://www.philadelphiaeagles.com/news/eagles-sign-eight-undrafted-free-agents",
           "confidence": 0.95,
           "confidence_band": "HIGH",
-          "last_verified_at": "2026-07-10",
-          "notes": "last_verified_at reflects this artifact's generation date, not a per-row source verification timestamp \u2014 data/processed/{season}_day3_udfa_draft_result_profiles.json does not record one."
+          "last_verified_at": null,
+          "notes": "last_verified_at is null: no per-row source verification timestamp exists in data/processed/{season}_day3_udfa_draft_result_profiles.json, and the artifact's own generation date is not a substitute for one."
         }
       }
     },

@@ -13,8 +13,11 @@ Recorded before the code changes it governs, per issue #267's explicit requireme
 The promotion review found that every one of the 48 candidate rows' `draft_capital` field is
 classified `market_derived_proxy` — even though 47 players have a verified drafted outcome
 (`data/processed/2026_draft_results.json`) and 1 (`te-daequan-wright`) has a verified UDFA-signing
-outcome (`data/processed/2026_day3_udfa_draft_result_profiles.json`). This makes the `notes` field
-("Not equivalent to realized NFL draft capital") false for all 48 rows.
+outcome (`data/processed/2026_day3_udfa_draft_result_profiles.json`). The `draft_capital` field's
+own `notes` ("Not equivalent to realized NFL draft capital") remains true of the proxy itself —
+the actual defect is that the artifact had no separate place to record the official outcome at
+all, and (in 17 rows) the proxy's own provenance text had drifted to reference that missing
+outcome directly, contradicting its own `notes` in the same field.
 
 ## Options considered
 

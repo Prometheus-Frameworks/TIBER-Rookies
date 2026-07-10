@@ -46,11 +46,11 @@
   "output_files": [
     {
       "path": "exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.json",
-      "sha256": "a7d87194861fbdc241a2b724f762d9b718e2c9a38c3276f6206660bf3bcdefdf"
+      "sha256": "c95b941c7855612daccfc2226fc51e0e34dbb2ebe8a2487596675d2522a22f37"
     },
     {
       "path": "exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.csv",
-      "sha256": "a9ca5c40a224abe820b148f2e6f181c9b884183e090a79005eea338119a841cf"
+      "sha256": "3005bcd6ad4ffc87a312c6926e20c5e3658747012855aa9d8ccfa33d898545e6"
     }
   ],
   "export_metadata": {
