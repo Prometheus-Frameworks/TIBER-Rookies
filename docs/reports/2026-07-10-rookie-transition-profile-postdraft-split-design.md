@@ -106,9 +106,11 @@ outcome (`data/processed/2026_day3_udfa_draft_result_profiles.json`). This makes
 Checked in order, per player:
 
 1. `data/processed/{season}_draft_results.json` — if a row exists with
-   `source_status == "external_verified"` and `is_udfa` false, use it (`status: "drafted"`).
+   `source_status == "external_verified"`, use it. `status`/`is_udfa`/`draft_round`/`overall_pick`
+   are derived from the row's own fields (not assumed to be `"drafted"`), so a verified row that is
+   itself a UDFA signing is preserved correctly, not mislabeled.
 2. Else, `data/processed/{season}_day3_udfa_draft_result_profiles.json` — if a row exists with
-   `source_status == "external_verified"`, use it (`status` taken from the row's own
+   `source_status == "external_verified"`, use it the same way (`status` taken from the row's own
    `draft_result_status`, which is `"udfa_signed"` for the one 2026 case).
 3. Else, `unavailable`.
 
@@ -123,27 +125,43 @@ files would not add governance value and is explicitly out of scope for this iss
 ("Do not create a new canonical layer merely to rename or flatten the two files without adding
 governance value").
 
-## Pre-draft proxy repair (text only, not the value)
+## Pre-draft proxy provenance: computed, not copied (revised)
 
-Separately, `data/processed/2026_draft_capital_proxy.json`'s `draft_capital_proxy_source` field
-for the 17 players flagged in the #266 review is repaired to contain proxy-methodology text only,
-matching the file's own existing canonical templates:
+The first attempt at this fix edited `data/processed/2026_draft_capital_proxy.json`'s
+`draft_capital_proxy_source` text in place for the 17 rows flagged in the #266 review. A later
+review round found two problems with that approach:
 
-- 11 rows with a real `big_board_rank` → the standard ranked template already used by 45 other
-  rows: `"Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)"`.
-- 6 rows whose `big_board_rank` is currently `null` (`wr-dezhaun-stribling`, `rb-kaelon-black`,
-  `wr-malachi-fields`, `wr-caleb-douglas`, `wr-zavion-thomas`, `te-will-kacmarek`): their
-  `draft_capital_proxy_0_100` values (45–65) are consistent with the *ranked* banding methodology,
-  not the file's separate "unranked band" convention (which always pairs with
-  `draft_capital_proxy_0_100 == 25`, confirmed against other rows using that template). Using the
-  "unranked" text for these would misrepresent their actual stored score, so they also receive the
-  ranked template text above — their `big_board_rank` field itself is left as `null` (not
-  reconstructed; that would be guessing a value, which is out of scope) but the source text no
-  longer claims something false.
+1. **It touched a hash-locked shared input.** That file is also an input of the already-promoted
+   Rookie Alpha export, so editing it broke `validate_promoted_export.py`'s hash lock and forced
+   regenerating an already-promoted artifact — scope issue #267 never authorized.
+2. **It was incomplete and, in five cases, itself wrong.** The repair only touched 6 of the 10 rows
+   with `big_board_rank: null` (missing `wr-kendrick-law`, `wr-barion-brown`,
+   `wr-kevin-coleman-jr`, and `te-daequan-wright`, the last of which was explicitly but wrongly left
+   as an "acknowledged exception"), and gave the ranked-bands template text to 5 rows whose
+   `big_board_rank` is present but whose `draft_capital_proxy_0_100` doesn't actually match that
+   rank under the documented formula (`te-sam-roush`, `wr-zachariah-branch`,
+   `te-nate-boerkircher`, `te-eli-raridon`, `te-marlin-klein`) — a hand-edited allowlist of text
+   values, checked by nothing, will drift from the data it describes.
 
-**Only the `draft_capital_proxy_source` text field is edited.** `draft_capital_proxy_0_100`,
-`big_board_rank`, and `draft_capital_proxy_pending_conversion` are untouched for all 101 rows in
-the file, satisfying "Do not rewrite the proxy value using the actual pick."
+**Revised decision:** `data/processed/2026_draft_capital_proxy.json` is never edited at all — it
+is reverted to its `origin/main` state. Instead, `build_draft_capital_field()` in
+`scripts/compute_rookie_transition_profile.py` computes the `draft_capital.provenance.source_name`
+text at generation time from the row's own `(big_board_rank, draft_capital_proxy_0_100)` pair via
+a small `expected_band_score(rank)` helper that mirrors the documented 8-band formula:
+
+- If `big_board_rank` is present and `draft_capital_proxy_0_100 == expected_band_score(big_board_rank)`,
+  describe it as the ranked-bands mapping (the claim is true).
+- If `big_board_rank` is `null`, describe it as "no recorded big_board_rank on file (rank unknown)"
+  — never claim a band mapping without a rank to map from.
+- If `big_board_rank` is present but the score doesn't match the formula, describe it as
+  "inconsistent with the documented big_board_rank band mapping ... exact derivation unavailable"
+  — an honest admission rather than a false claim either way.
+
+This is correct-by-construction for the full 48-row candidate population (and for the other 53
+rows in the 101-row proxy file, for any future population), never guesses or reconstructs a
+missing rank, and — because it never edits the shared file — never invalidates Rookie Alpha's
+promoted manifest, eliminating the need to regenerate anything under `exports/promoted/` for this
+issue at all.
 
 ## Summary of what changes and what doesn't
 
@@ -153,4 +171,5 @@ the file, satisfying "Do not rewrite the proxy value using the actual pick."
 | `draft_capital` field shape | `{value, provenance}` | **Unchanged** |
 | New field | — | `official_postdraft_outcome`, `{value, provenance}`, `source_type: official_draft_result` |
 | `schema_version` | `rookie-transition-profile-v0.1.0` | `rookie-transition-profile-v0.2.0` |
-| `data/processed/2026_draft_capital_proxy.json` values | 17 rows have leaked outcome/narrative text in `draft_capital_proxy_source` | Same numeric values; text repaired to proxy-methodology-only |
+| `data/processed/2026_draft_capital_proxy.json` | — | **Untouched** — no longer edited; `draft_capital.provenance.source_name` is computed at generation time instead |
+| `exports/promoted/rookie-alpha/*` | — | **Untouched** |

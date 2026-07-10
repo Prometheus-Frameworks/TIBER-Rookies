@@ -95,6 +95,31 @@ def _unavailable_field(notes: str) -> dict[str, Any]:
     }
 
 
+
+# Mirrors the documented big_board_rank -> draft_capital_proxy_0_100 banding
+# formula (docs/export-contract.md 2026 proxy rule): (low, high, score).
+DRAFT_CAPITAL_RANK_BANDS: tuple[tuple[int, int, int], ...] = (
+    (1, 10, 95),
+    (11, 20, 85),
+    (21, 32, 75),
+    (33, 50, 65),
+    (51, 75, 55),
+    (76, 100, 45),
+    (101, 150, 35),
+    (151, None, 25),
+)
+
+
+def expected_band_score(big_board_rank: int | None) -> int | None:
+    """The documented banding formula's score for a given rank, or None if no rank."""
+    if big_board_rank is None:
+        return None
+    for low, high, score in DRAFT_CAPITAL_RANK_BANDS:
+        if big_board_rank >= low and (high is None or big_board_rank <= high):
+            return score
+    return None
+
+
 def build_draft_capital_field(
     alpha_scores: dict[str, Any],
     proxy_row: dict[str, Any] | None,
@@ -106,11 +131,30 @@ def build_draft_capital_field(
         return _unavailable_field("No draft_capital_proxy_0_100 in the promoted Rookie Alpha export for this player.")
 
     big_board_rank = proxy_row.get("big_board_rank") if proxy_row else None
-    source_name = (
-        proxy_row.get("draft_capital_proxy_source")
-        if proxy_row and proxy_row.get("draft_capital_proxy_source")
-        else "compute_rookie_alpha.py draft_capital_proxy_0_100 (upstream big_board_rank row not found)"
-    )
+    if proxy_row is None:
+        source_name = "compute_rookie_alpha.py draft_capital_proxy_0_100 (upstream big_board_rank row not found)"
+    elif big_board_rank is not None and expected_band_score(big_board_rank) == draft_capital_proxy_0_100:
+        # The row's own (big_board_rank, draft_capital_proxy_0_100) pair is
+        # internally consistent with the documented banding formula, so it's
+        # safe to describe the mapping — computed here rather than trusting
+        # the upstream draft_capital_proxy_source free-text field verbatim,
+        # since that field has been found to drift from the actual data
+        # (leaked post-draft text, stale narrative estimates).
+        source_name = (
+            "Temporary pre-draft proxy mapped from seeded big_board_rank bands "
+            "(1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)"
+        )
+    elif big_board_rank is None:
+        source_name = (
+            "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); "
+            "score reflects a manual pre-draft classification, not a specific big-board band mapping."
+        )
+    else:
+        source_name = (
+            f"Temporary pre-draft proxy score inconsistent with the documented big_board_rank band "
+            f"mapping for rank {big_board_rank} (expected {expected_band_score(big_board_rank)}, got "
+            f"{draft_capital_proxy_0_100}); exact derivation for this score is unavailable."
+        )
     return {
         "value": {"big_board_rank": big_board_rank, "draft_capital_proxy_0_100": draft_capital_proxy_0_100},
         "provenance": {
@@ -215,7 +259,7 @@ def build_college_production_field(
 
 
 def _postdraft_outcome_from_row(
-    row: dict[str, Any], *, default_source_name: str, last_verified_at: str
+    row: dict[str, Any], *, default_source_name: str, last_verified_at: str, notes: str | None = None
 ) -> dict[str, Any]:
     """Build the {value, provenance} pair from a verified source row.
 
@@ -242,7 +286,7 @@ def _postdraft_outcome_from_row(
             "confidence": POSTDRAFT_OUTCOME_CONFIDENCE,
             "confidence_band": confidence_to_band(POSTDRAFT_OUTCOME_CONFIDENCE),
             "last_verified_at": last_verified_at,
-            "notes": None,
+            "notes": notes,
         },
     }
 
@@ -272,6 +316,11 @@ def build_official_postdraft_outcome_field(
             udfa_row,
             default_source_name="data/processed day3_udfa_draft_result_profiles.json",
             last_verified_at=as_of_date,
+            notes=(
+                "last_verified_at reflects this artifact's generation date, not a per-row source "
+                "verification timestamp — data/processed/{season}_day3_udfa_draft_result_profiles.json "
+                "does not record one."
+            ),
         )
 
     return _unavailable_field(

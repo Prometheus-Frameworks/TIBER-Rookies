@@ -35,15 +35,42 @@ class BuildDraftCapitalFieldTests(unittest.TestCase):
         self.assertIsNone(field["value"])
         self.assertEqual(field["provenance"]["source_type"], "unavailable")
 
-    def test_present_score_is_market_derived_proxy(self) -> None:
+    def test_present_score_matching_band_formula_describes_the_mapping(self) -> None:
+        """Rank 1 -> expected band score 95; the row's own score agrees, so it's
+        safe to describe the ranked-bands mapping. Note the upstream row's own
+        draft_capital_proxy_source free-text is NOT trusted verbatim (see the
+        PR #268 review finding: that field can drift from the actual data) —
+        the description is computed from (big_board_rank, proxy score) instead."""
         field = build_draft_capital_field(
             {"draft_capital_proxy_0_100": 95.0},
-            {"big_board_rank": 1, "draft_capital_proxy_source": "Test proxy rule"},
+            {"big_board_rank": 1, "draft_capital_proxy_source": "Untrusted upstream free text"},
             as_of_date="2026-07-01",
         )
         self.assertEqual(field["value"], {"big_board_rank": 1, "draft_capital_proxy_0_100": 95.0})
         self.assertEqual(field["provenance"]["source_type"], "market_derived_proxy")
-        self.assertEqual(field["provenance"]["source_name"], "Test proxy rule")
+        self.assertIn("mapped from seeded big_board_rank bands", field["provenance"]["source_name"])
+        self.assertEqual(validate_field(field, prefix="draft_capital"), [])
+
+    def test_present_score_inconsistent_with_band_formula_is_described_honestly(self) -> None:
+        field = build_draft_capital_field(
+            {"draft_capital_proxy_0_100": 55.0},
+            {"big_board_rank": 113, "draft_capital_proxy_source": "Untrusted upstream free text"},
+            as_of_date="2026-07-01",
+        )
+        source_name = field["provenance"]["source_name"]
+        self.assertNotIn("mapped from seeded big_board_rank bands", source_name)
+        self.assertIn("inconsistent", source_name)
+        self.assertEqual(validate_field(field, prefix="draft_capital"), [])
+
+    def test_null_rank_is_described_as_unknown_not_a_band_mapping(self) -> None:
+        field = build_draft_capital_field(
+            {"draft_capital_proxy_0_100": 40.0},
+            {"big_board_rank": None, "draft_capital_proxy_source": "Untrusted upstream free text"},
+            as_of_date="2026-07-01",
+        )
+        source_name = field["provenance"]["source_name"]
+        self.assertNotIn("mapped from seeded big_board_rank bands", source_name)
+        self.assertIn("unknown", source_name)
         self.assertEqual(validate_field(field, prefix="draft_capital"), [])
 
     def test_missing_upstream_row_still_produces_valid_field(self) -> None:

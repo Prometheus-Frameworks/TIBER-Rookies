@@ -92,7 +92,7 @@ unavailable                    # neither — value is null and notes explains wh
 
 | Family | `source_type` when present | Confidence | Notes |
 |---|---|---|---|
-| `draft_capital` | `market_derived_proxy` | 0.65 (`MEDIUM`), fixed | `value` is `{big_board_rank, draft_capital_proxy_0_100}`, copied verbatim from the promoted Rookie Alpha export's `scores.draft_capital_proxy_0_100`; `big_board_rank` and the human-readable proxy-rule description are looked up from `data/processed/{season}_draft_capital_proxy.json` by `player_id`. Explicitly labeled a temporary market-investment proxy, not realized draft capital. |
+| `draft_capital` | `market_derived_proxy` | 0.65 (`MEDIUM`), fixed | `value` is `{big_board_rank, draft_capital_proxy_0_100}`, copied verbatim from the promoted Rookie Alpha export's `scores.draft_capital_proxy_0_100`; `big_board_rank` is looked up from `data/processed/{season}_draft_capital_proxy.json` by `player_id`. The human-readable `provenance.source_name` description is **computed**, not copied from that file's own `draft_capital_proxy_source` text — see "Known limitations." Explicitly labeled a temporary market-investment proxy, not realized draft capital. |
 | `age_at_entry` | `measured_identity_fact` | 0.9 (`HIGH`), fixed | Computed via `age_from_dob(dob, season)`, an exact copy of the formula in `scripts/compute_breakout_age.py` (age as of September 1 of the season). `dob` is read from `data/processed/{season}_prospect_context.json`. |
 | `athletic_testing` | `measured_combine` | verbatim `athletic_confidence` from Rookie Alpha | `value` is `{athletic_score_0_100, athletic_source}`, copied verbatim from Rookie Alpha's `scores` block. **`NEUTRAL_DEFAULT` rows are treated as `unavailable`, not copied** — see "Known limitations." |
 | `college_production` | `measured_production_stats` | 0.85 (`HIGH`), fixed | `value` is `{production_score_0_100}`, copied verbatim from Rookie Alpha's `scores.production_0_100`; the source description is looked up from `data/processed/{season}_college_production.json`. |
@@ -154,12 +154,29 @@ and any `evidence_summary`-style free text.
   `ingested_at` field when present** (`data/processed/{season}_draft_results.json` rows carry
   one), falling back to the artifact's `generated_at` date only when the source has no per-row
   timestamp (the UDFA file has none). This is the one field family in the artifact that prefers a
-  real upstream timestamp over the "as of this run" fallback used everywhere else.
-- **`data/processed/{season}_draft_capital_proxy.json`'s `draft_capital_proxy_source` text was
-  repaired (#267)** for the 17 rows the #266 review flagged as leaking real draft-outcome text
-  (e.g. "2026 NFL Draft actual pick: Round 3, Pick 69") into what should be proxy-methodology-only
-  text. Only the free-text field was edited; `draft_capital_proxy_0_100`, `big_board_rank`, and
-  `draft_capital_proxy_pending_conversion` were left untouched for all 101 rows in that file.
+  real upstream timestamp over the "as of this run" fallback used everywhere else. For the
+  UDFA-sourced fallback specifically, reading that file on this run date is not the same as having
+  re-verified its external source on that date — `provenance.notes` says so explicitly for any row
+  sourced this way, rather than letting the date imply a verification that didn't happen.
+- **`data/processed/{season}_draft_capital_proxy.json`'s `draft_capital_proxy_source` free-text
+  field is never read or edited (#267).** An earlier version of this fix edited that field's text
+  in place for 17 rows, but that both touched a hash-locked input of the already-promoted Rookie
+  Alpha export and missed/mis-described several rows (see the
+  [implementation report](reports/2026-07-10-rookie-transition-profile-postdraft-split-implementation.md)).
+  `draft_capital.provenance.source_name` is now **computed** at generation time from the row's own
+  `(big_board_rank, draft_capital_proxy_0_100)` pair, checked against the documented banding
+  formula via `expected_band_score()` in `scripts/compute_rookie_transition_profile.py`: a matching
+  pair gets the ranked-bands description, a null rank gets an honest "rank unknown" description,
+  and a rank/score pair that doesn't match the formula gets an honest "inconsistent, exact
+  derivation unavailable" description. This is correct for every row in the 101-row proxy file
+  without maintaining a per-player-ID list, and the shared data file itself is never modified.
+- **`official_postdraft_outcome.value.source_status` must be exactly `"external_verified"`,
+  and `value.upstream_provenance_status` must be `null` or one of the four `provenance_status`
+  enum values documented in `docs/cross-repo-draft-results-ingestion.md`** (`source_verified`,
+  `source_verified_player_id_unresolved`, `needs_verification`, `fixture_only`) — tightened from an
+  earlier, looser "any non-empty string" check. `validate_row()` also requires
+  `official_postdraft_outcome.provenance.source_type == "official_draft_result"` whenever the
+  field's value is not null.
 
 ## Validation
 
@@ -204,7 +221,9 @@ Reads (all defaulted by season, overridable via flags):
 
 - `exports/promoted/rookie-alpha/{season}_rookie_alpha_predraft_v0.json` (base player population,
   athletic testing, production score, draft capital proxy score — already a promoted artifact)
-- `data/processed/{season}_draft_capital_proxy.json` (big-board rank + proxy-rule source text)
+- `data/processed/{season}_draft_capital_proxy.json` (big-board rank; the `draft_capital_proxy_source`
+  free-text field in this file is not read — `provenance.source_name` is computed instead, see
+  "Known limitations")
 - `data/processed/{season}_college_production.json` (production-score source text)
 - `data/processed/{season}_prospect_context.json` (`dob`)
 - `data/processed/{season}_draft_results.json` (verified drafted outcomes, checked first)
@@ -236,10 +255,14 @@ separate authorization to act on.
 
 - `tests/test_validate_rookie_transition_profile.py` — schema/enum/provenance-shape validation,
   manifest-consistency checks, `official_postdraft_outcome`-specific semantics (status enum,
-  `is_udfa`/status agreement, drafted-requires-round/pick, udfa-forbids-round/pick), plus tests
-  that run full validation against the real committed 2026 candidate artifact and assert its
-  48/48 post-draft-outcome coverage and that `draft_capital` never leaks outcome text.
+  `is_udfa`/status agreement, drafted-requires-round/pick, udfa-forbids-round/pick, `source_status`
+  exactly `"external_verified"`, `upstream_provenance_status` enum, required `source_type`), plus
+  tests that run full validation against the real committed 2026 candidate artifact and assert its
+  48/48 post-draft-outcome coverage, that `draft_capital` never leaks outcome text, and that
+  `draft_capital`'s ranked-bands claim is checked for internal consistency across **every** row in
+  the artifact (not a hand-picked subset).
 - `tests/test_compute_rookie_transition_profile.py` — per-field builder tests (including the
   `NEUTRAL_DEFAULT`-is-unavailable rule, the `age_from_dob` formula match, drafted/UDFA-signed/
-  unavailable outcome building, and drafted-results-take-priority-over-UDFA-file ordering),
+  unavailable outcome building, drafted-results-take-priority-over-UDFA-file ordering, and the
+  computed `draft_capital` provenance-text behavior for matching/mismatched/null-rank rows),
   coverage-summary counting, and JSON/CSV output writing.

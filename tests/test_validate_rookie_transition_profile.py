@@ -3,6 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from scripts.compute_rookie_transition_profile import expected_band_score
 from scripts.validate_rookie_transition_profile import (
     CURRENT_SCHEMA_VERSION,
     confidence_to_band,
@@ -192,6 +193,18 @@ class ValidateOfficialPostdraftOutcomeValueTests(unittest.TestCase):
         )
         self.assertEqual(errors, [])
 
+    def test_source_status_other_than_external_verified_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(source_status="needs_verification"), prefix="p"
+        )
+        self.assertTrue(any("source_status" in e for e in errors))
+
+    def test_upstream_provenance_status_outside_enum_rejected(self) -> None:
+        errors = validate_official_postdraft_outcome_value(
+            _valid_postdraft_outcome_value(upstream_provenance_status="made_up_status"), prefix="p"
+        )
+        self.assertTrue(any("upstream_provenance_status" in e for e in errors))
+
 
 class ValidateRowTests(unittest.TestCase):
     def test_missing_identity_fields_rejected(self) -> None:
@@ -210,6 +223,25 @@ class ValidateRowTests(unittest.TestCase):
 
     def test_valid_row_passes(self) -> None:
         self.assertEqual(validate_row(_valid_row(), index=0, season=2026), [])
+
+    def test_official_postdraft_outcome_wrong_source_type_rejected(self) -> None:
+        row = _valid_row(
+            official_postdraft_outcome={
+                "value": _valid_postdraft_outcome_value(),
+                "provenance": _valid_provenance(source_type="market_derived_proxy"),
+            }
+        )
+        errors = validate_row(row, index=0, season=2026)
+        self.assertTrue(any("official_postdraft_outcome.provenance.source_type" in e for e in errors))
+
+    def test_official_postdraft_outcome_correct_source_type_passes(self) -> None:
+        row = _valid_row(
+            official_postdraft_outcome={
+                "value": _valid_postdraft_outcome_value(),
+                "provenance": _valid_provenance(source_type="official_draft_result"),
+            }
+        )
+        self.assertEqual(validate_row(row, index=0, season=2026), [])
 
 
 class ValidateArtifactShapeTests(unittest.TestCase):
@@ -291,24 +323,29 @@ class RealCommittedArtifactTests(unittest.TestCase):
             self.assertIn("not equivalent to realized", notes, msg=row["player_id"])
 
     def test_2026_artifact_draft_capital_never_claims_a_rank_mapping_without_a_rank(self) -> None:
-        """Regression guard for a PR #268 review finding: the 6 rows this PR
-        repaired (all null big_board_rank) must not claim their proxy score
-        was 'mapped from seeded big_board_rank bands' — that overstates the
-        provenance for a rank that isn't actually on file. Scoped to the
-        rows this PR touched; a pre-existing, unrelated instance of the same
-        inconsistency (te-daequan-wright, present on main before this PR) is
-        out of scope for this fix and tracked separately, not asserted here."""
-        repaired_null_rank_ids = {
-            "wr-dezhaun-stribling", "rb-kaelon-black", "wr-malachi-fields",
-            "wr-caleb-douglas", "wr-zavion-thomas", "te-will-kacmarek",
-        }
+        """Artifact-wide invariant (PR #268 review): draft_capital.provenance
+        may only claim the ranked big_board_rank band mapping when the row
+        actually has a big_board_rank AND draft_capital_proxy_0_100 equals
+        the documented formula's score for that rank. Checked across every
+        row in the candidate population, not a hand-selected subset — a
+        provenance claim that was true for some rows and false for others
+        (e.g. a pre-existing, previously-unfixed row) is exactly the defect
+        this test exists to catch."""
         path = Path("exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.json")
         payload = json.loads(path.read_text(encoding="utf-8"))
-        rows_by_id = {row["player_id"]: row for row in payload["rows"]}
-        for player_id in repaired_null_rank_ids:
-            source_name = (rows_by_id[player_id]["draft_capital"]["provenance"]["source_name"] or "").lower()
-            self.assertNotIn("mapped from seeded big_board_rank bands", source_name, msg=player_id)
-            self.assertIn("unknown", source_name, msg=player_id)
+        for row in payload["rows"]:
+            draft_capital = row["draft_capital"]
+            source_name = (draft_capital["provenance"]["source_name"] or "").lower()
+            big_board_rank = draft_capital["value"]["big_board_rank"]
+            proxy_score = draft_capital["value"]["draft_capital_proxy_0_100"]
+            claims_rank_mapping = "mapped from seeded big_board_rank bands" in source_name
+            if claims_rank_mapping:
+                self.assertIsNotNone(big_board_rank, msg=row["player_id"])
+                self.assertEqual(expected_band_score(big_board_rank), proxy_score, msg=row["player_id"])
+            elif big_board_rank is None:
+                self.assertIn("unknown", source_name, msg=row["player_id"])
+            else:
+                self.assertNotEqual(expected_band_score(big_board_rank), proxy_score, msg=row["player_id"])
 
 
 class ValidateExportManifestConsistencyTests(unittest.TestCase):

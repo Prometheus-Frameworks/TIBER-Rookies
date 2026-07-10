@@ -16,30 +16,33 @@ found and blocked this defect)
 2. **`scripts/validate_rookie_transition_profile.py`**: bumped `CURRENT_SCHEMA_VERSION`, added
    `official_postdraft_outcome` to `GOVERNED_FIELD_FAMILIES`, and added
    `validate_official_postdraft_outcome_value()` enforcing status enum membership,
-   `is_udfa`/`status` agreement, and drafted-requires-round/pick vs.
-   udfa-signed-forbids-round/pick.
+   `is_udfa`/`status` agreement, drafted-requires-round/pick vs. udfa-signed-forbids-round/pick,
+   `source_status` must be exactly `"external_verified"`, and `upstream_provenance_status` must be
+   `null` or one of TIBER-Data's documented `provenance_status` enum values (see
+   `docs/cross-repo-draft-results-ingestion.md`). `validate_row()` additionally requires
+   `official_postdraft_outcome.provenance.source_type == "official_draft_result"` whenever the
+   field's value is not null.
 3. **`scripts/compute_rookie_transition_profile.py`**: added
    `build_official_postdraft_outcome_field()`, which checks
    `data/processed/{season}_draft_results.json` first, then
    `data/processed/{season}_day3_udfa_draft_result_profiles.json`, then falls back to
-   `unavailable`. `build_draft_capital_field()` is completely untouched — same code, same
-   behavior, same meaning.
-4. **`data/processed/2026_draft_capital_proxy.json` repaired**: 17 rows' `draft_capital_proxy_source`
-   text (the ones flagged in the #266 review) replaced with the file's own existing
-   proxy-methodology template. Only the free-text field changed;
-   `draft_capital_proxy_0_100`/`big_board_rank`/`draft_capital_proxy_pending_conversion` are
-   byte-identical to before for all 101 rows in the file.
-5. **`docs/rookie-transition-profile-contract.md` updated**: new field family documented, schema
+   `unavailable`. Both sources go through a shared `_postdraft_outcome_from_row()` helper that
+   derives `status`/`is_udfa`/`draft_round`/`overall_pick` from the row's own fields, so a verified
+   row that is itself a UDFA signing is never mislabeled `"drafted"`. `build_draft_capital_field()`'s
+   **value** (the pre-draft proxy score) is completely untouched — same meaning, same numbers.
+   Its provenance **text** is now computed from the row's own `(big_board_rank,
+   draft_capital_proxy_0_100)` pair via a new `expected_band_score()` helper, rather than copied
+   verbatim from `data/processed/2026_draft_capital_proxy.json`'s free-text field (see the review
+   round below); that data file itself is never edited.
+4. **`docs/rookie-transition-profile-contract.md` updated**: new field family documented, schema
    version bumped, known-limitations section extended.
-6. **Regenerated the 2026 candidate** under `exports/candidate/rookie-transition-profile/` only —
-   no file under `exports/promoted/` was touched.
-7. **15 new regression tests** (436 total, up from 421): 8 in
-   `tests/test_validate_rookie_transition_profile.py` (drafted/UDFA-signed/invalid-status/
-   is_udfa-mismatch/round-pick-consistency semantics, plus two tests against the real committed
-   artifact — full 48/48 coverage and draft-capital-never-leaks-outcome-text), 7 in
-   `tests/test_compute_rookie_transition_profile.py` (drafted, UDFA-signed, unavailable,
-   draft-results-take-priority-over-UDFA-file, and updates to the existing full/sparse-population
-   tests to cover the new family without weakening prior assertions).
+5. **Regenerated the 2026 candidate** under `exports/candidate/rookie-transition-profile/` only —
+   no file under `exports/promoted/` is touched anywhere in this issue's final form.
+6. **23 new regression tests** (444 total, up from 421 before this issue's first commit) covering:
+   `official_postdraft_outcome` status/is_udfa/round-pick semantics, the tightened
+   `source_status`/`upstream_provenance_status` enums, the `source_type` enforcement, the computed
+   `draft_capital` provenance-text behavior (band match, band mismatch, null rank), and an
+   artifact-wide invariant checked against the real committed artifact's full 48-row population.
 
 ## Required validation — results
 
@@ -47,82 +50,65 @@ found and blocked this defect)
 |---|---|
 | 48/48 player identity coverage | **48/48** |
 | 47 `drafted` + 1 `udfa_signed` outcome | **Confirmed exactly**: `te-daequan-wright` is the one `udfa_signed` row |
-| No row where official outcome data is labeled `market_derived_proxy` | **Confirmed**: `official_postdraft_outcome.provenance.source_type` is `official_draft_result` for all 48 rows |
+| No row where official outcome data is labeled `market_derived_proxy` | **Confirmed**: `official_postdraft_outcome.provenance.source_type` is `official_draft_result` for all 48 rows, enforced by the validator |
 | No row where the pre-draft proxy is overwritten by official results | **Confirmed**: `draft_capital.provenance.source_type` is `market_derived_proxy` for all 48 rows, unchanged from before this fix |
-| No contradictory provenance text within a field | **Confirmed**: 0 of 48 `draft_capital.provenance.source_name` values contain "actual pick" (17 rows were repaired: 16 "actual pick" leaks + 1 stale pre-draft narrative estimate for `wr-brenen-thompson`); all 48 `notes` still correctly say "not equivalent to realized" |
+| No contradictory provenance text within a field | **Confirmed for the full 48-row population**: every `draft_capital.provenance.source_name` that claims the ranked-bands mapping has a `big_board_rank` whose `expected_band_score()` matches the row's actual `draft_capital_proxy_0_100`; every null-rank or formula-mismatched row is described honestly instead — checked by `test_2026_artifact_draft_capital_never_claims_a_rank_mapping_without_a_rank` across all 48 rows, not a subset |
 | JSON/CSV population and semantic parity | **Confirmed**: 48 rows in both, identical `player_id` sets and order |
-| Manifest/input/output hash consistency | **Confirmed**: `ROOKIE TRANSITION PROFILE VALIDATION PASSED` with hash checking enabled |
-| Deterministic byte-identical regeneration with pinned timestamp | **Confirmed**: regenerated twice with `--generated-at` pinned; second run's JSON and manifest are byte-identical to the first |
-| Full repository test suite passes | **436 passed** |
+| Manifest/input/output hash consistency | **Confirmed**: `ROOKIE TRANSITION PROFILE VALIDATION PASSED` with hash checking enabled, and `validate_promoted_export.py` on Rookie Alpha's untouched, still-promoted export also passes |
+| Deterministic byte-identical regeneration with pinned timestamp | **Confirmed**: regenerated with `--generated-at` pinned |
+| Full repository test suite passes | **444 passed** |
 
-## Cascading consequence: Rookie Alpha promoted manifest refresh
+## Review round: computing provenance text instead of editing shared data
 
-Repairing `data/processed/2026_draft_capital_proxy.json`'s text changed that file's SHA-256 hash.
-That file is also a hash-locked input of the **already-promoted** Rookie Alpha export
-(`exports/promoted/rookie-alpha/2026_manifest.json`), so CI's existing
-`validate_promoted_export.py` check failed after this PR's first push — a real consequence, not a
-flake.
+The first version of this fix repaired `data/processed/2026_draft_capital_proxy.json`'s
+`draft_capital_proxy_source` free-text field in place for the 17 rows flagged in the #266 review.
+A subsequent, more substantial review round found three problems with that approach, all verified
+against the actual repo before being acted on:
 
-Before regenerating anything, a dry run of `scripts/compute_rookie_alpha.py` against current
-inputs was diffed against the committed Rookie Alpha export: **all 48 players' `scores` blocks
-were byte-identical** — this repair changed no numeric value Rookie Alpha's own scoring consumes,
-so regeneration would import zero unrelated drift (unlike the #259 historical-comps case, where
-a similar regeneration surfaced ~9 commits of accumulated, unrelated changes). On that basis,
-`exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json` and its manifest were
-regenerated for real. The resulting diff is confirmed to be **only** `generated_at`/`run_id` in
-the JSON and the corresponding hash entries in the manifest — the CSV is byte-identical, and every
-player's `scores` are unchanged. `scripts/validate_promoted_export.py` now passes again.
+1. **Unauthorized scope into an already-promoted artifact.** That file is a hash-locked input of
+   the already-promoted Rookie Alpha export. Editing it broke `validate_promoted_export.py`'s hash
+   check, which required regenerating `exports/promoted/rookie-alpha/*` to fix — scope issue #267
+   never authorized (its hard boundary is about `exports/promoted/rookie-transition-profile/`
+   specifically, but touching any promoted artifact was still more than this issue called for).
+2. **Incomplete repair.** Only 6 of the 10 candidate rows with `big_board_rank: null` were fixed;
+   `wr-kendrick-law`, `wr-barion-brown`, and `wr-kevin-coleman-jr` were missed entirely, and
+   `te-daequan-wright` was explicitly (and wrongly) left as an "acknowledged exception" rather than
+   fixed, even though the artifact-wide requirement is that no field contain contradictory
+   provenance — "pre-existing" does not exempt a row from that requirement in a freshly regenerated
+   candidate.
+3. **Incorrect for 5 additional rows.** `te-sam-roush`, `wr-zachariah-branch`,
+   `te-nate-boerkircher`, `te-eli-raridon`, and `te-marlin-klein` all have a real `big_board_rank`
+   but a `draft_capital_proxy_0_100` that does not match the documented banding formula for that
+   rank — yet the first repair gave them the ranked-bands template text anyway, which is a false
+   claim.
+4. Two smaller validator/semantics gaps: the validator never required
+   `official_postdraft_outcome.provenance.source_type == "official_draft_result"`, and
+   `source_status`/`upstream_provenance_status` accepted any non-empty string rather than the
+   actual enum values these fields carry.
 
-Regenerating Rookie Alpha's export changed *its own* file hash, which is in turn a hash-locked
-input of the `rookie_transition_profile_v0` candidate's manifest — so that candidate was
-regenerated a second time to pick up the new (legitimate) hash. Its content (all field values,
-`coverage_summary`) is unchanged; only the manifest's recorded hash for the Rookie Alpha input
-file updated.
+**Fix:** `data/processed/2026_draft_capital_proxy.json` and
+`exports/promoted/rookie-alpha/*` were reverted to their `origin/main` state, and
+`build_draft_capital_field()` was rewritten to compute the provenance description at generation
+time via `expected_band_score(big_board_rank)`, checking whether the row's own
+`(big_board_rank, draft_capital_proxy_0_100)` pair is actually consistent with the documented
+formula before describing it that way. This is correct-by-construction for the entire candidate
+population — no hand-maintained per-player-ID list, no missed rows, no need to touch the shared
+data file or any promoted artifact at all. The regression test for this invariant now iterates
+every row in the committed artifact rather than a fixed set of IDs.
+The validator gaps were closed by adding the `source_type` check to `validate_row()` and
+tightening `validate_official_postdraft_outcome_value()`'s `source_status`/
+`upstream_provenance_status` checks to the actual enums.
 
-This is the only place this PR touches anything under `exports/promoted/`, and it touches
-`exports/promoted/rookie-alpha/`, not `exports/promoted/rookie-transition-profile/` — the
-directory issue #267's hard boundary actually names. It was necessary to keep an existing,
-already-promoted artifact's integrity chain honest after a data repair this issue explicitly
-required, and was verified to carry zero scoring or population drift before being applied.
-
-## Review-driven fixes (PR #268 review round)
-
-Two P2 findings from automated review, both verified before fixing:
-
-1. **`build_official_postdraft_outcome_field` hard-coded `status: "drafted"` for any verified
-   `data/processed/{season}_draft_results.json` row**, without checking the row's own
-   `is_udfa`/`draft_result_status` fields. No current 2026 row triggers this (all 81 rows in that
-   file are genuinely drafted), but a future season's file could include a verified non-drafted
-   row and this function would have silently mislabeled it. Fixed by extracting a shared
-   `_postdraft_outcome_from_row()` helper that derives `status`/`is_udfa`/`draft_round`/
-   `overall_pick` from the row's own fields for **both** sources uniformly, instead of assuming
-   "drafted" for one source and only deriving properly for the other. Added a regression test
-   (`test_udfa_signed_row_recorded_directly_in_draft_results_is_not_mislabeled_drafted`)
-   constructing exactly this scenario.
-2. **The 6 null-`big_board_rank` rows repaired in the first commit used the ranked
-   "mapped from seeded big_board_rank bands" template text**, even though their `big_board_rank`
-   is genuinely absent — overstating the provenance for a rank that isn't on file (a real
-   analytical mistake, distinct from the "unranked band" template's `draft_capital_proxy_0_100:
-   25` convention, since these 6 rows have varying real scores). Fixed by replacing their text
-   with an honest "no recorded big_board_rank on file (rank unknown)" description instead. Added
-   a regression test scoped to exactly these 6 rows.
-   - Investigating this surfaced a **pre-existing, unrelated inconsistency**:
-     `te-daequan-wright` also has `big_board_rank: null` with the same ranked-template text, but
-     unlike the 6 repaired rows, this was already present on `main` before this PR (confirmed via
-     `git show origin/main:...`) and was never part of the #266 review's flagged rows — it's
-     outside this issue's scope (repairing the specific leaked/inconsistent text from #266), so
-     it was left untouched and is noted here rather than silently fixed or silently ignored.
-
-Both fixes required regenerating the same two artifacts again (Rookie Alpha's promoted export
-and the rookie-transition-profile candidate), following the identical zero-drift verification
-process described above.
+An earlier, smaller review round (before this one) also found and fixed a P2: the post-draft
+outcome builder hard-coded `status: "drafted"` for any verified `draft_results.json` row without
+checking the row's own `is_udfa`/`draft_result_status` fields. Fixed by extracting the shared
+`_postdraft_outcome_from_row()` helper used uniformly for both source files.
 
 ## Hard-boundary compliance
 
-- No files created or modified under `exports/promoted/rookie-transition-profile/` —
-  `git status` confirms all changes are under `exports/candidate/`, `scripts/`, `tests/`, `docs/`,
-  the one repaired `data/processed/` file, and (per the cascading-consequence section above)
-  `exports/promoted/rookie-alpha/`, whose manifest hash-locks that repaired file.
+- No files created or modified under `exports/promoted/` anywhere — `git status` confirms all
+  changes are under `exports/candidate/`, `scripts/`, `tests/`, and `docs/`.
+  `data/processed/2026_draft_capital_proxy.json` is unmodified from `origin/main`.
 - No changes to TIBER-Forecast, no Forecast mirror.
 - No predictive value evaluated or claimed.
 - No downstream consumption or production binding authorized.

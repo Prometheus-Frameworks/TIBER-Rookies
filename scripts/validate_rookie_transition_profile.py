@@ -56,6 +56,18 @@ GOVERNED_FIELD_FAMILIES = (
 
 VALID_POSTDRAFT_STATUSES = frozenset({"drafted", "udfa_signed"})
 
+# Per docs/cross-repo-draft-results-ingestion.md's provenance_status enum
+# (TIBER-Data's nfl_draft_results contract), preserved verbatim in
+# upstream_provenance_status. None is allowed because the UDFA file
+# (day3_udfa_draft_result_profiles.json) predates that ingestion contract
+# and does not carry this field.
+VALID_UPSTREAM_PROVENANCE_STATUSES = frozenset({
+    "source_verified",
+    "source_verified_player_id_unresolved",
+    "needs_verification",
+    "fixture_only",
+})
+
 
 class SourceType(StrEnum):
     MEASURED_COMBINE = "measured_combine"
@@ -216,12 +228,17 @@ def validate_official_postdraft_outcome_value(value: Any, *, prefix: str) -> lis
     if not isinstance(value.get("nfl_team"), str) or not value["nfl_team"].strip():
         errors.append(f"{prefix}.nfl_team must be a non-empty string")
 
-    if not isinstance(value.get("source_status"), str) or not value["source_status"].strip():
-        errors.append(f"{prefix}.source_status must be a non-empty string")
+    if value.get("source_status") != "external_verified":
+        errors.append(
+            f"{prefix}.source_status must be 'external_verified'; got {value.get('source_status')!r}"
+        )
 
     upstream_provenance_status = value.get("upstream_provenance_status")
-    if upstream_provenance_status is not None and not isinstance(upstream_provenance_status, str):
-        errors.append(f"{prefix}.upstream_provenance_status must be a string or null")
+    if upstream_provenance_status is not None and upstream_provenance_status not in VALID_UPSTREAM_PROVENANCE_STATUSES:
+        errors.append(
+            f"{prefix}.upstream_provenance_status has invalid value {upstream_provenance_status!r}; "
+            f"must be null or one of {sorted(VALID_UPSTREAM_PROVENANCE_STATUSES)}"
+        )
 
     return errors
 
@@ -250,6 +267,13 @@ def validate_row(row: Any, *, index: int, season: int) -> list[str]:
                         row[family]["value"], prefix=f"{prefix}.{family}.value"
                     )
                 )
+                actual_source_type = row[family]["provenance"].get("source_type")
+                if actual_source_type != SourceType.OFFICIAL_DRAFT_RESULT.value:
+                    errors.append(
+                        f"{prefix}.{family}.provenance.source_type must be "
+                        f"{SourceType.OFFICIAL_DRAFT_RESULT.value!r} when value is not null; "
+                        f"got {actual_source_type!r}"
+                    )
             if not field_errors:
                 last_verified_at = row[family]["provenance"].get("last_verified_at")
                 if isinstance(last_verified_at, str) and len(last_verified_at) >= 4:
