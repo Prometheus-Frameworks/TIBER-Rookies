@@ -145,27 +145,45 @@ was read, edited, or otherwise touched during this review.
 
 ### 7. Deterministic reproduction — PASS
 
-Regenerated in a clean temporary directory using the committed producer and the candidate's own
+Regenerated in a clean temporary directory **inside the repository worktree**
+(`.tmp/rookie-transition-profile-promotion-repro/`, so `resolve_path()` can find the `.git` root
+and resolve all six manifest input paths), using the committed producer and the candidate's own
 pinned timestamp:
 
 ```bash
-python3 -m scripts.compute_rookie_transition_profile \
-  --season 2026 --generated-at "2026-07-10T12:00:00+00:00" \
-  --output-dir <temp-dir>
+$ mkdir -p .tmp/rookie-transition-profile-promotion-repro
+$ python3 -m scripts.compute_rookie_transition_profile \
+    --season 2026 --generated-at "2026-07-10T12:00:00+00:00" \
+    --output-dir .tmp/rookie-transition-profile-promotion-repro
+Wrote rookie transition profile artifact: .tmp/rookie-transition-profile-promotion-repro/2026_rookie_transition_profile_v0.json
+Wrote rookie transition profile manifest: .tmp/rookie-transition-profile-promotion-repro/2026_manifest.json
 ```
 
-- Regenerated JSON is byte-identical to the committed candidate JSON (`diff` returns no output).
-- Regenerated CSV is byte-identical to the committed candidate CSV (`diff` returns no output).
-- Regenerated manifest is identical to the committed candidate manifest in every field except
-  `output_files[].path` (which necessarily differs because of the different output directory) —
-  confirmed by comparing both manifests with `output_files[].path` normalized out; the two are
-  then equal, including all recorded hashes.
-- Running the dedicated validator against the regenerated files from within the temp directory
-  reports "Input file listed in manifest is missing" for the six input paths — this is a
-  path-resolution artifact of the temp directory not being inside the repository's git worktree
-  (the validator's `resolve_path()` anchors relative input paths on the nearest `.git` ancestor),
-  not a defect in the candidate: the same regenerated JSON/CSV, validated at their real committed
-  location, pass with hash checking enabled (see Gate 1).
+- `diff .tmp/.../2026_rookie_transition_profile_v0.json exports/candidate/.../2026_rookie_transition_profile_v0.json`
+  → no output (byte-identical).
+- `diff .tmp/.../2026_rookie_transition_profile_v0.csv exports/candidate/.../2026_rookie_transition_profile_v0.csv`
+  → no output (byte-identical).
+- `diff .tmp/.../2026_manifest.json exports/candidate/.../2026_manifest.json` → differs only in
+  `output_files[].path` (expected: the temp directory vs. the candidate directory); every other
+  field, including all recorded hashes, is identical.
+- Ran the dedicated validator against the regenerated files, from inside the repo worktree, with
+  both input and output hash checks enabled:
+  ```bash
+  $ python3 -m scripts.validate_rookie_transition_profile \
+      --export-json .tmp/rookie-transition-profile-promotion-repro/2026_rookie_transition_profile_v0.json \
+      --manifest .tmp/rookie-transition-profile-promotion-repro/2026_manifest.json
+  ROOKIE TRANSITION PROFILE VALIDATION PASSED
+  ```
+- The temporary directory (`.tmp/rookie-transition-profile-promotion-repro/`) was removed after
+  this gate and does not appear in this PR's diff.
+
+(An earlier version of this report ran the reproduction in a temp directory *outside* the repo
+worktree, which produced six "Input file listed in manifest is missing" errors — a
+path-resolution artifact of `resolve_path()` not finding a `.git` ancestor from that location, not
+a defect in the candidate. That run substituted validation of the already-committed candidate at
+its normal path, which proved the committed candidate valid but did not complete the requested
+clean-reproduction validation gate itself. Re-running inside the worktree, as recorded above,
+completes it directly.)
 
 ### 8. Full validation — PASS
 
