@@ -1,0 +1,3963 @@
+{
+  "schema_version": "rookie-transition-profile-v0.2.0",
+  "artifact_type": "rookie_transition_profile",
+  "season": 2026,
+  "generated_at": "2026-07-10T12:00:00+00:00",
+  "run_id": "rookie-transition-profile-2026-2026-07-10T12:00:00+00:00",
+  "disclaimer": "This artifact is an evidence consolidation layer. It contains no scores, no rankings, and no predictive claims. It is not Rookie Alpha and does not replace it. See docs/rookie-transition-profile-v0-design.md and docs/rookie-transition-profile-contract.md.",
+  "source_files_used": [
+    "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
+    "data/processed/2026_draft_capital_proxy.json",
+    "data/processed/2026_college_production.json",
+    "data/processed/2026_prospect_context.json",
+    "data/processed/2026_draft_results.json",
+    "data/processed/2026_day3_udfa_draft_result_profiles.json"
+  ],
+  "coverage_summary": {
+    "players_total": 48,
+    "players_with_draft_capital": 48,
+    "players_with_age_at_entry": 47,
+    "players_with_athletic_testing": 32,
+    "players_with_college_production": 48,
+    "players_with_official_postdraft_outcome": 48,
+    "players_with_all_families": 32
+  },
+  "rows": [
+    {
+      "player_id": "rb-jeremiyah-love",
+      "player_name": "Jeremiyah Love",
+      "position": "RB",
+      "school": "Notre Dame",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 2,
+          "draft_capital_proxy_0_100": 95.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 21,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": null,
+        "provenance": {
+          "source_type": "unavailable",
+          "source_name": null,
+          "source_url": null,
+          "confidence": null,
+          "confidence_band": null,
+          "last_verified_at": null,
+          "notes": "No usable RAS/SPORQ combine data. Rookie Alpha uses a neutral default score (NEUTRAL_DEFAULT) internally for scoring purposes only; that placeholder is not evidence and is intentionally omitted from this artifact."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 90.0
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized RB production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "ARI",
+          "draft_round": 1,
+          "overall_pick": 3,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-kc-concepcion",
+      "player_name": "KC Concepcion",
+      "position": "WR",
+      "school": "Texas A&M",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 22,
+          "draft_capital_proxy_0_100": 75.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 21,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": null,
+        "provenance": {
+          "source_type": "unavailable",
+          "source_name": null,
+          "source_url": null,
+          "confidence": null,
+          "confidence_band": null,
+          "last_verified_at": null,
+          "notes": "No usable RAS/SPORQ combine data. Rookie Alpha uses a neutral default score (NEUTRAL_DEFAULT) internally for scoring purposes only; that placeholder is not evidence and is intentionally omitted from this artifact."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 87.6
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "CLE",
+          "draft_round": 1,
+          "overall_pick": 24,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-makai-lemon",
+      "player_name": "Makai Lemon",
+      "position": "WR",
+      "school": "USC",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 24,
+          "draft_capital_proxy_0_100": 75.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 56.1926,
+          "athletic_source": "RAS_PARTIAL"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.7,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial RAS 56.2 from 3 combine metrics (no SPORQ supplement) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 76.16
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "PHI",
+          "draft_round": 1,
+          "overall_pick": 20,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-jordyn-tyson",
+      "player_name": "Jordyn Tyson",
+      "position": "WR",
+      "school": "Arizona State",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 6,
+          "draft_capital_proxy_0_100": 95.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": null,
+        "provenance": {
+          "source_type": "unavailable",
+          "source_name": null,
+          "source_url": null,
+          "confidence": null,
+          "confidence_band": null,
+          "last_verified_at": null,
+          "notes": "No usable RAS/SPORQ combine data. Rookie Alpha uses a neutral default score (NEUTRAL_DEFAULT) internally for scoring purposes only; that placeholder is not evidence and is intentionally omitted from this artifact."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 69.44
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "NO",
+          "draft_round": 1,
+          "overall_pick": 8,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-denzel-boston",
+      "player_name": "Denzel Boston",
+      "position": "WR",
+      "school": "Washington",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 17,
+          "draft_capital_proxy_0_100": 85.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 56.4196,
+          "athletic_source": "RAS_PARTIAL"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.7,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial RAS 56.4 from 3 combine metrics (no SPORQ supplement) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 68.62
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "CLE",
+          "draft_round": 2,
+          "overall_pick": 39,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "qb-fernando-mendoza",
+      "player_name": "Fernando Mendoza",
+      "position": "QB",
+      "school": "Indiana",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 1,
+          "draft_capital_proxy_0_100": 95.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 65.168,
+          "athletic_source": "COMBINE_FALLBACK"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.4,
+          "confidence_band": "LOW",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial combine (1 metrics, no explosive drills) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 55.94
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized QB production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "LV",
+          "draft_round": 1,
+          "overall_pick": 1,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "qb-drew-allar",
+      "player_name": "Drew Allar",
+      "position": "QB",
+      "school": "Penn State",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 79,
+          "draft_capital_proxy_0_100": 45.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 61.2878,
+          "athletic_source": "COMBINE_FALLBACK"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.4,
+          "confidence_band": "LOW",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial combine (1 metrics, no explosive drills) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 80.68
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized QB production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "PIT",
+          "draft_round": 3,
+          "overall_pick": 76,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-carnell-tate",
+      "player_name": "Carnell Tate",
+      "position": "WR",
+      "school": "Ohio State",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 6,
+          "draft_capital_proxy_0_100": 95.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 21,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": null,
+        "provenance": {
+          "source_type": "unavailable",
+          "source_name": null,
+          "source_url": null,
+          "confidence": null,
+          "confidence_band": null,
+          "last_verified_at": null,
+          "notes": "No usable RAS/SPORQ combine data. Rookie Alpha uses a neutral default score (NEUTRAL_DEFAULT) internally for scoring purposes only; that placeholder is not evidence and is intentionally omitted from this artifact."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 66.38
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "TEN",
+          "draft_round": 1,
+          "overall_pick": 4,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "te-kenyon-sadiq",
+      "player_name": "Kenyon Sadiq",
+      "position": "TE",
+      "school": "Oregon",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 14,
+          "draft_capital_proxy_0_100": 85.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 21,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 75.6028,
+          "athletic_source": "RAS"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "RAS 75.6 from 4 combine metrics Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 41.9
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized TE production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "NYJ",
+          "draft_round": 1,
+          "overall_pick": 16,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "te-eli-stowers",
+      "player_name": "Eli Stowers",
+      "position": "TE",
+      "school": "Vanderbilt",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 61,
+          "draft_capital_proxy_0_100": 55.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 23,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 73.9726,
+          "athletic_source": "RAS"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "RAS 74.0 from 4 combine metrics Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 58.4
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized TE production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "PHI",
+          "draft_round": 2,
+          "overall_pick": 54,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "te-sam-roush",
+      "player_name": "Sam Roush",
+      "position": "TE",
+      "school": "Stanford",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 113,
+          "draft_capital_proxy_0_100": 55.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy score inconsistent with the documented big_board_rank band mapping for rank 113 (expected 35, got 55.0); exact derivation for this score is unavailable.",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 60.366,
+          "athletic_source": "RAS"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 1.0,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "RAS 60.4 from 5 combine metrics Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 60.48
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized TE production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "CHI",
+          "draft_round": 3,
+          "overall_pick": 69,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-zachariah-branch",
+      "player_name": "Zachariah Branch",
+      "position": "WR",
+      "school": "Georgia",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 49,
+          "draft_capital_proxy_0_100": 45.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy score inconsistent with the documented big_board_rank band mapping for rank 49 (expected 65, got 45.0); exact derivation for this score is unavailable.",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 51.5616,
+          "athletic_source": "RAS_PARTIAL"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.7,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial RAS 51.6 from 4 combine metrics (no SPORQ supplement) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 69.46
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "ATL",
+          "draft_round": 3,
+          "overall_pick": 79,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "rb-jonah-coleman",
+      "player_name": "Jonah Coleman",
+      "position": "RB",
+      "school": "Washington",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 76,
+          "draft_capital_proxy_0_100": 45.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 23,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": null,
+        "provenance": {
+          "source_type": "unavailable",
+          "source_name": null,
+          "source_url": null,
+          "confidence": null,
+          "confidence_band": null,
+          "last_verified_at": null,
+          "notes": "No usable RAS/SPORQ combine data. Rookie Alpha uses a neutral default score (NEUTRAL_DEFAULT) internally for scoring purposes only; that placeholder is not evidence and is intentionally omitted from this artifact."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 60.64
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized RB production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "DEN",
+          "draft_round": 4,
+          "overall_pick": 108,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-omar-cooper-jr",
+      "player_name": "Omar Cooper Jr.",
+      "position": "WR",
+      "school": "Indiana",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 22,
+          "draft_capital_proxy_0_100": 75.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 51.8835,
+          "athletic_source": "RAS_PARTIAL"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.7,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial RAS 51.9 from 3 combine metrics (no SPORQ supplement) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 55.36
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "NYJ",
+          "draft_round": 1,
+          "overall_pick": 30,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-chris-bell",
+      "player_name": "Chris Bell",
+      "position": "WR",
+      "school": "Louisville",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 28,
+          "draft_capital_proxy_0_100": 75.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": null,
+        "provenance": {
+          "source_type": "unavailable",
+          "source_name": null,
+          "source_url": null,
+          "confidence": null,
+          "confidence_band": null,
+          "last_verified_at": null,
+          "notes": "No usable RAS/SPORQ combine data. Rookie Alpha uses a neutral default score (NEUTRAL_DEFAULT) internally for scoring purposes only; that placeholder is not evidence and is intentionally omitted from this artifact."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 54.12
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "MIA",
+          "draft_round": 3,
+          "overall_pick": 94,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-dezhaun-stribling",
+      "player_name": "De'Zhaun Stribling",
+      "position": "WR",
+      "school": "Mississippi",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": null,
+          "draft_capital_proxy_0_100": 65.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 23,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 56.3194,
+          "athletic_source": "RAS_PARTIAL"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.7,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial RAS 56.3 from 4 combine metrics (no SPORQ supplement) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 49.68
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "SF",
+          "draft_round": 2,
+          "overall_pick": 33,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-antonio-williams",
+      "player_name": "Antonio Williams",
+      "position": "WR",
+      "school": "Clemson",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 60,
+          "draft_capital_proxy_0_100": 55.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": null,
+        "provenance": {
+          "source_type": "unavailable",
+          "source_name": null,
+          "source_url": null,
+          "confidence": null,
+          "confidence_band": null,
+          "last_verified_at": null,
+          "notes": "No usable RAS/SPORQ combine data. Rookie Alpha uses a neutral default score (NEUTRAL_DEFAULT) internally for scoring purposes only; that placeholder is not evidence and is intentionally omitted from this artifact."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 58.12
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "WAS",
+          "draft_round": 3,
+          "overall_pick": 71,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-ted-hurst",
+      "player_name": "Ted Hurst",
+      "position": "WR",
+      "school": "Georgia State",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 77,
+          "draft_capital_proxy_0_100": 45.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 60.4173,
+          "athletic_source": "RAS_PARTIAL"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.7,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial RAS 60.4 from 4 combine metrics (no SPORQ supplement) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 52.42
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "TB",
+          "draft_round": 3,
+          "overall_pick": 84,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-germie-bernard",
+      "player_name": "Germie Bernard",
+      "position": "WR",
+      "school": "Alabama",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 50,
+          "draft_capital_proxy_0_100": 65.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 47.4757,
+          "athletic_source": "RAS"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 1.0,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "RAS 47.5 from 5 combine metrics Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 52.86
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "PIT",
+          "draft_round": 2,
+          "overall_pick": 47,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-elijah-sarratt",
+      "player_name": "Elijah Sarratt",
+      "position": "WR",
+      "school": "Indiana",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 59,
+          "draft_capital_proxy_0_100": 55.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 23,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": null,
+        "provenance": {
+          "source_type": "unavailable",
+          "source_name": null,
+          "source_url": null,
+          "confidence": null,
+          "confidence_band": null,
+          "last_verified_at": null,
+          "notes": "No usable RAS/SPORQ combine data. Rookie Alpha uses a neutral default score (NEUTRAL_DEFAULT) internally for scoring purposes only; that placeholder is not evidence and is intentionally omitted from this artifact."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 55.12
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "BAL",
+          "draft_round": 4,
+          "overall_pick": 115,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-chris-brazzell-ii",
+      "player_name": "Chris Brazzell II",
+      "position": "WR",
+      "school": "Tennessee",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 65,
+          "draft_capital_proxy_0_100": 55.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": null,
+        "provenance": {
+          "source_type": "unavailable",
+          "source_name": null,
+          "source_url": null,
+          "confidence": null,
+          "confidence_band": null,
+          "last_verified_at": null,
+          "notes": "No usable RAS/SPORQ combine data. Rookie Alpha uses a neutral default score (NEUTRAL_DEFAULT) internally for scoring purposes only; that placeholder is not evidence and is intentionally omitted from this artifact."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 53.24
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "CAR",
+          "draft_round": 3,
+          "overall_pick": 83,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "qb-garrett-nussmeier",
+      "player_name": "Garrett Nussmeier",
+      "position": "QB",
+      "school": "LSU",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 74,
+          "draft_capital_proxy_0_100": 55.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 24,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 29.8143,
+          "athletic_source": "COMBINE_FALLBACK"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.4,
+          "confidence_band": "LOW",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial combine (1 metrics, no explosive drills) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 67.98
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized QB production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "KC",
+          "draft_round": 7,
+          "overall_pick": 249,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "te-nate-boerkircher",
+      "player_name": "Nate Boerkircher",
+      "position": "TE",
+      "school": "Texas A&M",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 165,
+          "draft_capital_proxy_0_100": 55.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy score inconsistent with the documented big_board_rank band mapping for rank 165 (expected 25, got 55.0); exact derivation for this score is unavailable.",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 24,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 71.9294,
+          "athletic_source": "COMBINE_FALLBACK"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.5,
+          "confidence_band": "LOW",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial combine (2 metrics, no explosive drills) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 34.94
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized TE production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "JAX",
+          "draft_round": 2,
+          "overall_pick": 56,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "qb-ty-simpson",
+      "player_name": "Ty Simpson",
+      "position": "QB",
+      "school": "Alabama",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 19,
+          "draft_capital_proxy_0_100": 85.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 23,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 30.4966,
+          "athletic_source": "COMBINE_FALLBACK"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.4,
+          "confidence_band": "LOW",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial combine (1 metrics, no explosive drills) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 51.68
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized QB production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "LAR",
+          "draft_round": 1,
+          "overall_pick": 13,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "te-max-klare",
+      "player_name": "Max Klare",
+      "position": "TE",
+      "school": "Ohio State",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 57,
+          "draft_capital_proxy_0_100": 55.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 23,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 45.8929,
+          "athletic_source": "COMBINE_FALLBACK"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.4,
+          "confidence_band": "LOW",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial combine (1 metrics, no explosive drills) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 52.86
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized TE production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "LAR",
+          "draft_round": 2,
+          "overall_pick": 61,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "rb-mike-washington-jr",
+      "player_name": "Mike Washington Jr.",
+      "position": "RB",
+      "school": "New Mexico State (2024) / Arkansas (2025)",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 63,
+          "draft_capital_proxy_0_100": 55.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 23,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 69.5937,
+          "athletic_source": "RAS_PARTIAL"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.7,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial RAS 69.6 from 4 combine metrics (no SPORQ supplement) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 34.26
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized RB production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "LV",
+          "draft_round": 4,
+          "overall_pick": 122,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "te-daequan-wright",
+      "player_name": "Dae'Quan Wright",
+      "position": "TE",
+      "school": "Mississippi",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": null,
+          "draft_capital_proxy_0_100": 25.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 45.8929,
+          "athletic_source": "COMBINE_FALLBACK"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.4,
+          "confidence_band": "LOW",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial combine (1 metrics, no explosive drills) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 58.4
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized TE production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "udfa_signed",
+          "nfl_team": "PHI",
+          "draft_round": null,
+          "overall_pick": null,
+          "is_udfa": true,
+          "source_status": "external_verified",
+          "upstream_provenance_status": null
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "Eagles announced Wright among their signed undrafted free agents.",
+          "source_url": "https://www.philadelphiaeagles.com/news/eagles-sign-eight-undrafted-free-agents",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": null,
+          "notes": "last_verified_at is null: no per-row source verification timestamp exists in data/processed/{season}_day3_udfa_draft_result_profiles.json, and the artifact's own generation date is not a substitute for one."
+        }
+      }
+    },
+    {
+      "player_id": "te-eli-raridon",
+      "player_name": "Eli Raridon",
+      "position": "TE",
+      "school": "Notre Dame",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 123,
+          "draft_capital_proxy_0_100": 45.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy score inconsistent with the documented big_board_rank band mapping for rank 123 (expected 35, got 45.0); exact derivation for this score is unavailable.",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 52.766,
+          "athletic_source": "RAS"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "RAS 52.8 from 4 combine metrics Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 47.96
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized TE production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "NE",
+          "draft_round": 3,
+          "overall_pick": 95,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "rb-jadarian-price",
+      "player_name": "Jadarian Price",
+      "position": "RB",
+      "school": "Notre Dame (2024) / Texas A&M (2025)",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 37,
+          "draft_capital_proxy_0_100": 65.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 33.069,
+          "athletic_source": "RAS_PARTIAL"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.7,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial RAS 33.1 from 4 combine metrics (no SPORQ supplement) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 53.2
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized RB production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "SEA",
+          "draft_round": 1,
+          "overall_pick": 32,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "te-justin-joly",
+      "player_name": "Justin Joly",
+      "position": "TE",
+      "school": "N.C. State",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 111,
+          "draft_capital_proxy_0_100": 35.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 45.5319,
+          "athletic_source": "COMBINE_FALLBACK"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.4,
+          "confidence_band": "LOW",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial combine (1 metrics, no explosive drills) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 55.5
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized TE production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "DEN",
+          "draft_round": 5,
+          "overall_pick": 152,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "rb-kaelon-black",
+      "player_name": "Kaelon Black",
+      "position": "RB",
+      "school": "Indiana",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": null,
+          "draft_capital_proxy_0_100": 45.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": null,
+        "provenance": {
+          "source_type": "unavailable",
+          "source_name": null,
+          "source_url": null,
+          "confidence": null,
+          "confidence_band": null,
+          "last_verified_at": null,
+          "notes": "No recorded date of birth in prospect context data for this player."
+        }
+      },
+      "athletic_testing": {
+        "value": null,
+        "provenance": {
+          "source_type": "unavailable",
+          "source_name": null,
+          "source_url": null,
+          "confidence": null,
+          "confidence_band": null,
+          "last_verified_at": null,
+          "notes": "No usable RAS/SPORQ combine data. Rookie Alpha uses a neutral default score (NEUTRAL_DEFAULT) internally for scoring purposes only; that placeholder is not evidence and is intentionally omitted from this artifact."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 55.1
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized RB production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "SF",
+          "draft_round": 3,
+          "overall_pick": 90,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-malachi-fields",
+      "player_name": "Malachi Fields",
+      "position": "WR",
+      "school": "Notre Dame",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": null,
+          "draft_capital_proxy_0_100": 55.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 24,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 44.6698,
+          "athletic_source": "RAS"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 1.0,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "RAS 44.7 from 5 combine metrics Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 44.98
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "NYG",
+          "draft_round": 3,
+          "overall_pick": 74,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "qb-carson-beck",
+      "player_name": "Carson Beck",
+      "position": "QB",
+      "school": "Miami (FL)",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 71,
+          "draft_capital_proxy_0_100": 55.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 23,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 63.2332,
+          "athletic_source": "COMBINE_FALLBACK"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.4,
+          "confidence_band": "LOW",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial combine (1 metrics, no explosive drills) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 26.28
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized QB production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "ARI",
+          "draft_round": 3,
+          "overall_pick": 65,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-brenen-thompson",
+      "player_name": "Brenen Thompson",
+      "position": "WR",
+      "school": "Mississippi State",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 137,
+          "draft_capital_proxy_0_100": 35.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 23,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": null,
+        "provenance": {
+          "source_type": "unavailable",
+          "source_name": null,
+          "source_url": null,
+          "confidence": null,
+          "confidence_band": null,
+          "last_verified_at": null,
+          "notes": "No usable RAS/SPORQ combine data. Rookie Alpha uses a neutral default score (NEUTRAL_DEFAULT) internally for scoring purposes only; that placeholder is not evidence and is intentionally omitted from this artifact."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 43.7
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "LAC",
+          "draft_round": 4,
+          "overall_pick": 105,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "te-marlin-klein",
+      "player_name": "Marlin Klein",
+      "position": "TE",
+      "school": "Michigan",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 185,
+          "draft_capital_proxy_0_100": 55.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy score inconsistent with the documented big_board_rank band mapping for rank 185 (expected 25, got 55.0); exact derivation for this score is unavailable.",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 23,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 46.0878,
+          "athletic_source": "RAS"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 1.0,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "RAS 46.1 from 5 combine metrics Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 37.06
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized TE production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "HOU",
+          "draft_round": 2,
+          "overall_pick": 59,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-kevin-coleman-jr",
+      "player_name": "Kevin Coleman Jr.",
+      "position": "WR",
+      "school": "Missouri",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": null,
+          "draft_capital_proxy_0_100": 25.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 45.3378,
+          "athletic_source": "RAS_PARTIAL"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.7,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial RAS 45.3 from 4 combine metrics (no SPORQ supplement) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 48.48
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "MIA",
+          "draft_round": 5,
+          "overall_pick": 177,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "te-oscar-delp",
+      "player_name": "Oscar Delp",
+      "position": "TE",
+      "school": "Georgia",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 77,
+          "draft_capital_proxy_0_100": 45.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 23,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 51.0827,
+          "athletic_source": "COMBINE_FALLBACK"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.4,
+          "confidence_band": "LOW",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial combine (1 metrics, no explosive drills) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 33.84
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized TE production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "NO",
+          "draft_round": 3,
+          "overall_pick": 73,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "rb-kaytron-allen",
+      "player_name": "Kaytron Allen",
+      "position": "RB",
+      "school": "Penn State",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 42,
+          "draft_capital_proxy_0_100": 65.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 23,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": null,
+        "provenance": {
+          "source_type": "unavailable",
+          "source_name": null,
+          "source_url": null,
+          "confidence": null,
+          "confidence_band": null,
+          "last_verified_at": null,
+          "notes": "No usable RAS/SPORQ combine data. Rookie Alpha uses a neutral default score (NEUTRAL_DEFAULT) internally for scoring purposes only; that placeholder is not evidence and is intentionally omitted from this artifact."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 24.92
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized RB production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "WAS",
+          "draft_round": 6,
+          "overall_pick": 187,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-deion-burks",
+      "player_name": "Deion Burks",
+      "position": "WR",
+      "school": "Oklahoma",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 83,
+          "draft_capital_proxy_0_100": 45.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 23,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 65.6002,
+          "athletic_source": "RAS_PARTIAL"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.7,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial RAS 65.6 from 4 combine metrics (no SPORQ supplement) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 19.96
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "IND",
+          "draft_round": 7,
+          "overall_pick": 254,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-caleb-douglas",
+      "player_name": "Caleb Douglas",
+      "position": "WR",
+      "school": "Texas Tech",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": null,
+          "draft_capital_proxy_0_100": 55.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 49.5289,
+          "athletic_source": "RAS_PARTIAL"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.7,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial RAS 49.5 from 4 combine metrics (no SPORQ supplement) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 26.84
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "MIA",
+          "draft_round": 3,
+          "overall_pick": 75,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-jakobi-lane",
+      "player_name": "Ja'Kobi Lane",
+      "position": "WR",
+      "school": "USC",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 91,
+          "draft_capital_proxy_0_100": 45.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 56.5682,
+          "athletic_source": "RAS_PARTIAL"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.7,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial RAS 56.6 from 4 combine metrics (no SPORQ supplement) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 24.48
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "BAL",
+          "draft_round": 3,
+          "overall_pick": 80,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "rb-seth-mcgowan",
+      "player_name": "Seth McGowan",
+      "position": "RB",
+      "school": "Kentucky",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 62,
+          "draft_capital_proxy_0_100": 55.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 25,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": null,
+        "provenance": {
+          "source_type": "unavailable",
+          "source_name": null,
+          "source_url": null,
+          "confidence": null,
+          "confidence_band": null,
+          "last_verified_at": null,
+          "notes": "No usable RAS/SPORQ combine data. Rookie Alpha uses a neutral default score (NEUTRAL_DEFAULT) internally for scoring purposes only; that placeholder is not evidence and is intentionally omitted from this artifact."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 22.52
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized RB production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "IND",
+          "draft_round": 7,
+          "overall_pick": 237,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-zavion-thomas",
+      "player_name": "Zavion Thomas",
+      "position": "WR",
+      "school": "LSU",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": null,
+          "draft_capital_proxy_0_100": 45.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 21,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 58.3875,
+          "athletic_source": "RAS_PARTIAL"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.7,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial RAS 58.4 from 3 combine metrics (no SPORQ supplement) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 20.2
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "CHI",
+          "draft_round": 3,
+          "overall_pick": 89,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "rb-nick-singleton",
+      "player_name": "Nick Singleton",
+      "position": "RB",
+      "school": "Penn State",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 88,
+          "draft_capital_proxy_0_100": 45.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": null,
+        "provenance": {
+          "source_type": "unavailable",
+          "source_name": null,
+          "source_url": null,
+          "confidence": null,
+          "confidence_band": null,
+          "last_verified_at": null,
+          "notes": "No usable RAS/SPORQ combine data. Rookie Alpha uses a neutral default score (NEUTRAL_DEFAULT) internally for scoring purposes only; that placeholder is not evidence and is intentionally omitted from this artifact."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 26.28
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized RB production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "TEN",
+          "draft_round": 5,
+          "overall_pick": 165,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "rb-emmett-johnson",
+      "player_name": "Emmett Johnson",
+      "position": "RB",
+      "school": "Nebraska",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": 80,
+          "draft_capital_proxy_0_100": 45.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy mapped from seeded big_board_rank bands (1-10=95,11-20=85,21-32=75,33-50=65,51-75=55,76-100=45,101-150=35,151+=25)",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": null,
+        "provenance": {
+          "source_type": "unavailable",
+          "source_name": null,
+          "source_url": null,
+          "confidence": null,
+          "confidence_band": null,
+          "last_verified_at": null,
+          "notes": "No usable RAS/SPORQ combine data. Rookie Alpha uses a neutral default score (NEUTRAL_DEFAULT) internally for scoring purposes only; that placeholder is not evidence and is intentionally omitted from this artifact."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 25.76
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized RB production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "KC",
+          "draft_round": 5,
+          "overall_pick": 161,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "te-will-kacmarek",
+      "player_name": "Will Kacmarek",
+      "position": "TE",
+      "school": "Ohio State",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": null,
+          "draft_capital_proxy_0_100": 45.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 23,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 39.452,
+          "athletic_source": "RAS"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "RAS 39.5 from 3 combine metrics Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 31.48
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized TE production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "MIA",
+          "draft_round": 3,
+          "overall_pick": 87,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-kendrick-law",
+      "player_name": "Kendrick Law",
+      "position": "WR",
+      "school": "Kentucky",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": null,
+          "draft_capital_proxy_0_100": 25.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 23,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": {
+          "athletic_score_0_100": 56.903,
+          "athletic_source": "RAS_PARTIAL"
+        },
+        "provenance": {
+          "source_type": "measured_combine",
+          "source_name": "RAS/SPORQ blend per scripts/compute_rookie_alpha.py",
+          "source_url": null,
+          "confidence": 0.7,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Partial RAS 56.9 from 4 combine metrics (no SPORQ supplement) Caveat: this is an in-house composite, not the Kent Lee Platte RAS percentile the field name may suggest \u2014 see docs/athletic-score-normalization-audit.md."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 18.4
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "DET",
+          "draft_round": 5,
+          "overall_pick": 168,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    },
+    {
+      "player_id": "wr-barion-brown",
+      "player_name": "Barion Brown",
+      "position": "WR",
+      "school": "LSU",
+      "class_year": 2026,
+      "draft_capital": {
+        "value": {
+          "big_board_rank": null,
+          "draft_capital_proxy_0_100": 25.0
+        },
+        "provenance": {
+          "source_type": "market_derived_proxy",
+          "source_name": "Temporary pre-draft proxy score with no recorded big_board_rank on file (rank unknown); score reflects a manual pre-draft classification, not a specific big-board band mapping.",
+          "source_url": null,
+          "confidence": 0.65,
+          "confidence_band": "MEDIUM",
+          "last_verified_at": "2026-07-10",
+          "notes": "Temporary pre-draft market-investment proxy. Not equivalent to realized NFL draft capital \u2014 see docs/export-contract.md 2026 proxy rule."
+        }
+      },
+      "age_at_entry": {
+        "value": 22,
+        "provenance": {
+          "source_type": "measured_identity_fact",
+          "source_name": "dob from data/processed/2026_prospect_context.json",
+          "source_url": null,
+          "confidence": 0.9,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": "Computed via age_from_dob(dob, season): exact age as of September 1 of the season."
+        }
+      },
+      "athletic_testing": {
+        "value": null,
+        "provenance": {
+          "source_type": "unavailable",
+          "source_name": null,
+          "source_url": null,
+          "confidence": null,
+          "confidence_band": null,
+          "last_verified_at": null,
+          "notes": "No usable RAS/SPORQ combine data. Rookie Alpha uses a neutral default score (NEUTRAL_DEFAULT) internally for scoring purposes only; that placeholder is not evidence and is intentionally omitted from this artifact."
+        }
+      },
+      "college_production": {
+        "value": {
+          "production_score_0_100": 17.24
+        },
+        "provenance": {
+          "source_type": "measured_production_stats",
+          "source_name": "CFBD 2025 season stats (normalized WR production score)",
+          "source_url": null,
+          "confidence": 0.85,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-07-10",
+          "notes": null
+        }
+      },
+      "official_postdraft_outcome": {
+        "value": {
+          "status": "drafted",
+          "nfl_team": "NO",
+          "draft_round": 6,
+          "overall_pick": 190,
+          "is_udfa": false,
+          "source_status": "external_verified",
+          "upstream_provenance_status": "source_verified"
+        },
+        "provenance": {
+          "source_type": "official_draft_result",
+          "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+          "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+          "confidence": 0.95,
+          "confidence_band": "HIGH",
+          "last_verified_at": "2026-05-17",
+          "notes": null
+        }
+      }
+    }
+  ]
+}

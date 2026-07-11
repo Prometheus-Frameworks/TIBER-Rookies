@@ -7,6 +7,7 @@ from scripts.compute_rookie_transition_profile import expected_band_score
 from scripts.validate_rookie_transition_profile import (
     CURRENT_SCHEMA_VERSION,
     confidence_to_band,
+    sha256_file,
     validate_artifact_shape,
     validate_export_manifest,
     validate_field,
@@ -320,10 +321,12 @@ class ValidateArtifactShapeTests(unittest.TestCase):
 
 
 class RealCommittedArtifactTests(unittest.TestCase):
-    """Guards the actual committed 2026 candidate artifact. This lives under
-    exports/candidate/, not exports/promoted/ — per issue #263, implementation
-    and validation happen here, but promotion itself requires a separate,
-    future promotion-review issue."""
+    """Guards the actual committed 2026 candidate artifact under
+    exports/candidate/rookie-transition-profile/. Implementation and
+    validation happen against this candidate; promotion into
+    exports/promoted/rookie-transition-profile/ (see
+    PromotedArtifactMatchesCandidateTests below) is a separate, later step
+    gated on a dedicated promotion-review issue (#269)."""
 
     def test_2026_artifact_passes_shape_validation(self) -> None:
         path = Path("exports/candidate/rookie-transition-profile/2026_rookie_transition_profile_v0.json")
@@ -388,6 +391,50 @@ class RealCommittedArtifactTests(unittest.TestCase):
                 self.assertIn("unknown", source_name, msg=row["player_id"])
             else:
                 self.assertNotEqual(expected_band_score(big_board_rank), proxy_score, msg=row["player_id"])
+
+
+class PromotedArtifactMatchesReviewedSnapshotTests(unittest.TestCase):
+    """Regression guard for issue #269's promotion procedure. Pinned against
+    the hardcoded hashes recorded in the promotion review report (commit
+    0bf363a) rather than the live candidate path: the candidate is expected
+    to diverge from this promoted snapshot once it's regenerated for a
+    *future* revision's own promotion review (see the contract doc's
+    "Canonical candidate + promoted paths" section) — that is the intended
+    pre-promotion state, not a regression, so this guard must not compare
+    against the mutable candidate directory."""
+
+    PROMOTED_DIR = Path("exports/promoted/rookie-transition-profile")
+
+    # From docs/reports/2026-07-10-rookie-transition-profile-v0-2-promotion-review.md
+    REVIEWED_JSON_SHA256 = "c95b941c7855612daccfc2226fc51e0e34dbb2ebe8a2487596675d2522a22f37"
+    REVIEWED_CSV_SHA256 = "3005bcd6ad4ffc87a312c6926e20c5e3658747012855aa9d8ccfa33d898545e6"
+
+    def test_promoted_json_matches_reviewed_snapshot_hash(self) -> None:
+        actual = sha256_file(self.PROMOTED_DIR / "2026_rookie_transition_profile_v0.json")
+        self.assertEqual(actual, self.REVIEWED_JSON_SHA256)
+
+    def test_promoted_csv_matches_reviewed_snapshot_hash(self) -> None:
+        actual = sha256_file(self.PROMOTED_DIR / "2026_rookie_transition_profile_v0.csv")
+        self.assertEqual(actual, self.REVIEWED_CSV_SHA256)
+
+    def test_promoted_manifest_output_hashes_match_reviewed_snapshot(self) -> None:
+        manifest = json.loads((self.PROMOTED_DIR / "2026_manifest.json").read_text(encoding="utf-8"))
+        output_hashes = {entry["path"]: entry["sha256"] for entry in manifest["output_files"]}
+        self.assertEqual(
+            output_hashes["exports/promoted/rookie-transition-profile/2026_rookie_transition_profile_v0.json"],
+            self.REVIEWED_JSON_SHA256,
+        )
+        self.assertEqual(
+            output_hashes["exports/promoted/rookie-transition-profile/2026_rookie_transition_profile_v0.csv"],
+            self.REVIEWED_CSV_SHA256,
+        )
+
+    def test_promoted_artifact_and_manifest_pass_full_validation(self) -> None:
+        errors = validate_export_manifest(
+            export_path=self.PROMOTED_DIR / "2026_rookie_transition_profile_v0.json",
+            manifest_path=self.PROMOTED_DIR / "2026_manifest.json",
+        )
+        self.assertEqual(errors, [])
 
 
 class ValidateExportManifestConsistencyTests(unittest.TestCase):

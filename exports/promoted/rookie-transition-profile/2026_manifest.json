@@ -1,0 +1,79 @@
+{
+  "season": 2026,
+  "schema_version": "rookie-transition-profile-v0.2.0",
+  "generated_at": "2026-07-10T12:00:00+00:00",
+  "run_id": "rookie-transition-profile-2026-2026-07-10T12:00:00+00:00",
+  "input_files": [
+    {
+      "path": "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
+      "sha256": "5a7c6c945ad477c1a54e61e7337e9f5bd6b5e69455669ca4700d7668fe9816e3"
+    },
+    {
+      "path": "data/processed/2026_draft_capital_proxy.json",
+      "sha256": "5622f5ab86d8db812a3c98fd67b74960943d687fa323f7e9592533f8d058738f",
+      "row_count": 101
+    },
+    {
+      "path": "data/processed/2026_college_production.json",
+      "sha256": "c4c15efd609fef982e417817148b1b7bc090f53896791eb2cb85cf1bf665fb0d",
+      "row_count": 48
+    },
+    {
+      "path": "data/processed/2026_prospect_context.json",
+      "sha256": "bdf16633076bb5fb28e9451028fc476fadf6ff727dc06bdb106eb026e741de0e",
+      "row_count": 100
+    },
+    {
+      "path": "data/processed/2026_draft_results.json",
+      "sha256": "ae6b037845f5b6bcd87e17185d1086a3de1cf6a915571f3da1d5d716965f01bd",
+      "row_count": 81
+    },
+    {
+      "path": "data/processed/2026_day3_udfa_draft_result_profiles.json",
+      "sha256": "1f9b3a3c592bbc94f42c3d361461372b104f3f320fa9d11ebc5bcdb6511822ec",
+      "row_count": 8
+    }
+  ],
+  "coverage_summary": {
+    "players_total": 48,
+    "players_with_draft_capital": 48,
+    "players_with_age_at_entry": 47,
+    "players_with_athletic_testing": 32,
+    "players_with_college_production": 48,
+    "players_with_official_postdraft_outcome": 48,
+    "players_with_all_families": 32
+  },
+  "output_files": [
+    {
+      "path": "exports/promoted/rookie-transition-profile/2026_rookie_transition_profile_v0.json",
+      "sha256": "c95b941c7855612daccfc2226fc51e0e34dbb2ebe8a2487596675d2522a22f37"
+    },
+    {
+      "path": "exports/promoted/rookie-transition-profile/2026_rookie_transition_profile_v0.csv",
+      "sha256": "3005bcd6ad4ffc87a312c6926e20c5e3658747012855aa9d8ccfa33d898545e6"
+    }
+  ],
+  "export_metadata": {
+    "season": 2026,
+    "schema_version": "rookie-transition-profile-v0.2.0",
+    "generated_at": "2026-07-10T12:00:00+00:00",
+    "run_id": "rookie-transition-profile-2026-2026-07-10T12:00:00+00:00",
+    "coverage_summary": {
+      "players_total": 48,
+      "players_with_draft_capital": 48,
+      "players_with_age_at_entry": 47,
+      "players_with_athletic_testing": 32,
+      "players_with_college_production": 48,
+      "players_with_official_postdraft_outcome": 48,
+      "players_with_all_families": 32
+    },
+    "source_files_used": [
+      "exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json",
+      "data/processed/2026_draft_capital_proxy.json",
+      "data/processed/2026_college_production.json",
+      "data/processed/2026_prospect_context.json",
+      "data/processed/2026_draft_results.json",
+      "data/processed/2026_day3_udfa_draft_result_profiles.json"
+    ]
+  }
+}
