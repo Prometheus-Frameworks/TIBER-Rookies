@@ -7,6 +7,7 @@ from scripts.compute_rookie_transition_profile import expected_band_score
 from scripts.validate_rookie_transition_profile import (
     CURRENT_SCHEMA_VERSION,
     confidence_to_band,
+    sha256_file,
     validate_artifact_shape,
     validate_export_manifest,
     validate_field,
@@ -392,48 +393,41 @@ class RealCommittedArtifactTests(unittest.TestCase):
                 self.assertNotEqual(expected_band_score(big_board_rank), proxy_score, msg=row["player_id"])
 
 
-class PromotedArtifactMatchesCandidateTests(unittest.TestCase):
-    """Regression guard for issue #269's promotion procedure: promoting must
-    never regenerate, recompute, normalize, reorder, or otherwise alter the
-    payload. The promoted JSON/CSV must be byte-identical to the candidate
-    that was reviewed, and the promoted manifest must differ from the
-    candidate manifest only in the output_files paths."""
+class PromotedArtifactMatchesReviewedSnapshotTests(unittest.TestCase):
+    """Regression guard for issue #269's promotion procedure. Pinned against
+    the hardcoded hashes recorded in the promotion review report (commit
+    0bf363a) rather than the live candidate path: the candidate is expected
+    to diverge from this promoted snapshot once it's regenerated for a
+    *future* revision's own promotion review (see the contract doc's
+    "Canonical candidate + promoted paths" section) — that is the intended
+    pre-promotion state, not a regression, so this guard must not compare
+    against the mutable candidate directory."""
 
-    CANDIDATE_DIR = Path("exports/candidate/rookie-transition-profile")
     PROMOTED_DIR = Path("exports/promoted/rookie-transition-profile")
 
-    def test_promoted_json_is_byte_identical_to_candidate(self) -> None:
-        candidate = (self.CANDIDATE_DIR / "2026_rookie_transition_profile_v0.json").read_bytes()
-        promoted = (self.PROMOTED_DIR / "2026_rookie_transition_profile_v0.json").read_bytes()
-        self.assertEqual(candidate, promoted)
+    # From docs/reports/2026-07-10-rookie-transition-profile-v0-2-promotion-review.md
+    REVIEWED_JSON_SHA256 = "c95b941c7855612daccfc2226fc51e0e34dbb2ebe8a2487596675d2522a22f37"
+    REVIEWED_CSV_SHA256 = "3005bcd6ad4ffc87a312c6926e20c5e3658747012855aa9d8ccfa33d898545e6"
 
-    def test_promoted_csv_is_byte_identical_to_candidate(self) -> None:
-        candidate = (self.CANDIDATE_DIR / "2026_rookie_transition_profile_v0.csv").read_bytes()
-        promoted = (self.PROMOTED_DIR / "2026_rookie_transition_profile_v0.csv").read_bytes()
-        self.assertEqual(candidate, promoted)
+    def test_promoted_json_matches_reviewed_snapshot_hash(self) -> None:
+        actual = sha256_file(self.PROMOTED_DIR / "2026_rookie_transition_profile_v0.json")
+        self.assertEqual(actual, self.REVIEWED_JSON_SHA256)
 
-    def test_promoted_manifest_differs_from_candidate_only_in_output_paths(self) -> None:
-        candidate_manifest = json.loads((self.CANDIDATE_DIR / "2026_manifest.json").read_text(encoding="utf-8"))
-        promoted_manifest = json.loads((self.PROMOTED_DIR / "2026_manifest.json").read_text(encoding="utf-8"))
+    def test_promoted_csv_matches_reviewed_snapshot_hash(self) -> None:
+        actual = sha256_file(self.PROMOTED_DIR / "2026_rookie_transition_profile_v0.csv")
+        self.assertEqual(actual, self.REVIEWED_CSV_SHA256)
 
-        candidate_outputs = candidate_manifest.pop("output_files")
-        promoted_outputs = promoted_manifest.pop("output_files")
-
-        # Every other top-level field (schema_version, season, generated_at,
-        # run_id, input_files, coverage_summary, export_metadata) must be
-        # identical — promotion changes only where the output files live.
-        self.assertEqual(candidate_manifest, promoted_manifest)
-
-        self.assertEqual(len(candidate_outputs), len(promoted_outputs))
-        for candidate_entry, promoted_entry in zip(candidate_outputs, promoted_outputs):
-            self.assertEqual(candidate_entry["sha256"], promoted_entry["sha256"])
-            self.assertEqual(
-                promoted_entry["path"],
-                candidate_entry["path"].replace(
-                    "exports/candidate/rookie-transition-profile/",
-                    "exports/promoted/rookie-transition-profile/",
-                ),
-            )
+    def test_promoted_manifest_output_hashes_match_reviewed_snapshot(self) -> None:
+        manifest = json.loads((self.PROMOTED_DIR / "2026_manifest.json").read_text(encoding="utf-8"))
+        output_hashes = {entry["path"]: entry["sha256"] for entry in manifest["output_files"]}
+        self.assertEqual(
+            output_hashes["exports/promoted/rookie-transition-profile/2026_rookie_transition_profile_v0.json"],
+            self.REVIEWED_JSON_SHA256,
+        )
+        self.assertEqual(
+            output_hashes["exports/promoted/rookie-transition-profile/2026_rookie_transition_profile_v0.csv"],
+            self.REVIEWED_CSV_SHA256,
+        )
 
     def test_promoted_artifact_and_manifest_pass_full_validation(self) -> None:
         errors = validate_export_manifest(

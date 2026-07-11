@@ -1,8 +1,11 @@
 # Candidate Export Contract: Rookie Transition Profile (v0)
 
-**Status:** implemented as a **candidate artifact** (issue [#263](https://github.com/Prometheus-Frameworks/TIBER-Rookies/issues/263)),
-**schema_version `v0.2.0`** — extended in issue [#267](https://github.com/Prometheus-Frameworks/TIBER-Rookies/issues/267)
-to add `official_postdraft_outcome` (see [`2026-07-10-rookie-transition-profile-postdraft-split-design.md`](reports/2026-07-10-rookie-transition-profile-postdraft-split-design.md)
+**Status:** **schema_version `v0.2.0` is promoted** (issue [#269](https://github.com/Prometheus-Frameworks/TIBER-Rookies/issues/269),
+governed at `exports/promoted/rookie-transition-profile/`) — see "Promotion status" below for the
+review report and hashes. `v0.2.0` was implemented as a candidate artifact (issue
+[#263](https://github.com/Prometheus-Frameworks/TIBER-Rookies/issues/263)), then extended in issue
+[#267](https://github.com/Prometheus-Frameworks/TIBER-Rookies/issues/267) to add
+`official_postdraft_outcome` (see [`2026-07-10-rookie-transition-profile-postdraft-split-design.md`](reports/2026-07-10-rookie-transition-profile-postdraft-split-design.md)
 for that design decision) after a promotion review ([#265](https://github.com/Prometheus-Frameworks/TIBER-Rookies/issues/265)/
 PR [#266](https://github.com/Prometheus-Frameworks/TIBER-Rookies/pull/266)) found `draft_capital`
 was being presented as unresolved for players who already had verified post-draft outcomes.
@@ -13,25 +16,30 @@ already-computed values from other promoted/processed artifacts under one schema
 per-field provenance. It does not replace Rookie Alpha (`docs/export-contract.md`), which remains
 the scored artifact.
 
-**This is not a promoted artifact.** Per issue #263's decision enum, a positive decision here
-(`may_open_rookie_transition_profile_promotion_review_issue`) authorizes only a *future*
-promotion-review issue — it does not itself promote anything. The producer, validator, and the
-2026 candidate bytes below are implemented and validated, but they live under
-`exports/candidate/`, not `exports/promoted/`, until a separate promotion-review issue explicitly
-authorizes copying reviewed bytes into the promoted path.
+**Promotion authorizes only a governed TIBER-Rookies source artifact** — see "Promotion status"
+below. It does not authorize Forecast mirroring, predictive evaluation, downstream consumption, or
+production/UI activation; any of those requires a separate, future issue and review.
 
-## Canonical candidate path + filename contract
+## Canonical candidate + promoted paths
 
 ```text
 exports/candidate/rookie-transition-profile/
   {season}_rookie_transition_profile_v0.json
   {season}_rookie_transition_profile_v0.csv
   {season}_manifest.json
+
+exports/promoted/rookie-transition-profile/
+  {season}_rookie_transition_profile_v0.json
+  {season}_rookie_transition_profile_v0.csv
+  {season}_manifest.json
 ```
 
-A future promotion-review issue decides whether, and how, reviewed bytes from this path are
-copied into `exports/promoted/rookie-transition-profile/`. Nothing in this document authorizes
-that copy in advance.
+The candidate path remains how this artifact is implemented and revised: a future change to this
+artifact (a new season, a further field family, a repair) is built and validated under
+`exports/candidate/` first, and only reaches `exports/promoted/` through its own dedicated
+promotion-review issue — the same gate `v0.2.0` went through in #269. The candidate and promoted
+paths are expected to diverge whenever the candidate is mid-revision for the *next* promotion
+cycle; that is the intended pre-promotion state, not a defect.
 
 ## JSON contract
 

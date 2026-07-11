@@ -217,12 +217,14 @@ All nine gates above passed, so the artifact was promoted:
        --manifest exports/promoted/rookie-transition-profile/2026_manifest.json
    ROOKIE TRANSITION PROFILE VALIDATION PASSED
    ```
-4. Regression coverage was added (`PromotedArtifactMatchesCandidateTests` in
-   `tests/test_validate_rookie_transition_profile.py`) asserting: promoted JSON is byte-identical
-   to candidate JSON, promoted CSV is byte-identical to candidate CSV, the promoted manifest
-   differs from the candidate manifest only in `output_files[].path` (all other fields, including
-   every recorded hash, must match), and the promoted triplet independently passes full
-   validation.
+4. Regression coverage was added (`PromotedArtifactMatchesReviewedSnapshotTests` in
+   `tests/test_validate_rookie_transition_profile.py`) asserting the promoted JSON/CSV hashes and
+   the manifest's recorded output hashes match the exact SHA-256 values reviewed above, and that
+   the promoted triplet independently passes full validation. This is pinned against those
+   hardcoded reviewed hashes rather than the live `exports/candidate/` directory, since a future
+   revision's candidate is expected to diverge from this promoted snapshot while it's mid-revision
+   for its own later promotion review — comparing against the live candidate path would produce a
+   false failure in that ordinary case, not a real regression.
 5. This report is that promotion-review report.
 
 **Promoted file hashes** (confirming byte-for-byte identity with the candidate):
