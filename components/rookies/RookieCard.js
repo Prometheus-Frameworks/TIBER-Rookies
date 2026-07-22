@@ -161,6 +161,13 @@ function classRankLine(card) {
 function renderOfficialOutcome(card) {
   const outcome = card.officialOutcome ?? null;
   if (!outcome) return '';
+  if (outcome.status === 'unavailable') {
+    return `
+    <section class="metrics card-panel official-outcome-panel">
+      <div class="section-title">Official NFL Outcome</div>
+      <div class="ppr-stale-warning" role="alert">⚠️ Official NFL outcome unavailable (governed source did not load).</div>
+    </section>`;
+  }
   const factBits = [
     outcome.nflTeam ? `Team: ${esc(outcome.nflTeam)}` : '',
     outcome.draftRound != null ? `Round ${esc(outcome.draftRound)}` : '',

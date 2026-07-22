@@ -196,6 +196,22 @@ test('historical fallback: draft-results supplement supplies facts when no trans
   assert.equal(card.draft.provenanceSource, 'draft_results_supplement');
 });
 
+test('governed load failure fails closed: no ungoverned substitution of official facts', () => {
+  const card = mapRookieToCard({
+    alphaPlayer: { player_id: 'wr-2026-loadfail', position: 'WR', scores: { rookie_alpha_0_100: 58.0 } },
+    // Draft-results supplement is present, but the governed profile failed to load.
+    draftResultRow: { player_id: 'wr-2026-loadfail', nfl_team: 'NYJ', draft_round: 1, overall_pick: 30, is_udfa: false },
+    transitionProfileRow: null,
+    transitionProfileStatus: 'load_failed',
+    rank: 14,
+  });
+  assert.equal(card.officialOutcome.status, 'unavailable');
+  assert.equal(card.officialOutcome.reason, 'governed_source_load_failed');
+  assert.equal(card.identity.nflTeam, null); // ungoverned team not shown as official
+  assert.equal(card.draft.hasDraftOutcome, false);
+  assert.equal(card.draft.provenanceSource, null);
+});
+
 test('COMBINE_FALLBACK athletic source is also labeled as a partial composite', () => {
   const card = mapRookieToCard({
     alphaPlayer: { player_id: 'wr-combine', position: 'WR', scores: { athletic_score_0_100: 55, athletic_source: 'COMBINE_FALLBACK' } },
