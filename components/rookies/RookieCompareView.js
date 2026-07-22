@@ -306,6 +306,7 @@ function renderPprSideBySide(leftCard, rightCard) {
   if (!leftPpr && !rightPpr) return '';
 
   function pprPanel(card, ppr) {
+    if (ppr?.stale === true) return `<div class="compare-ppr-panel"><div class="meta">${esc(card.identity.name)}: Projection withheld (stale Alpha snapshot)</div></div>`;
     if (!ppr) return `<div class="compare-ppr-panel"><div class="meta">${esc(card.identity.name)}: No projection</div></div>`;
     const bandClass = { Elite: 'ppr-band-elite', Starter: 'ppr-band-starter', Contributor: 'ppr-band-contributor', Lottery: 'ppr-band-lottery' }[ppr.band] ?? 'ppr-band-lottery';
     const floor = Number(ppr.floor), median = Number(ppr.median), ceiling = Number(ppr.ceiling);
