@@ -293,7 +293,7 @@ test('governed outcome: a well-formed drafted outcome is authoritative', () => {
 });
 
 test('governed outcome: a well-formed udfa_signed outcome is authoritative', () => {
-  const card = cardForOutcome({ status: 'udfa_signed', nfl_team: 'PHI', draft_round: null, overall_pick: null, is_udfa: true, source_status: 'external_verified' });
+  const card = cardForOutcome({ status: 'udfa_signed', nfl_team: 'PHI', draft_round: null, overall_pick: null, is_udfa: true, source_status: 'external_verified', upstream_provenance_status: null });
   assert.equal(card.officialOutcome.status, 'udfa_signed');
   assert.equal(card.officialOutcome.isUdfa, true);
   assert.equal(card.draft.overallPick, null);
@@ -324,6 +324,8 @@ test('governed outcome: each invalid condition fails closed as unavailable', () 
   // unverified / non-official provenance must not cross the boundary
   assert.equal(outcomeStatus({ ...VALID_OUTCOME, upstream_provenance_status: 'needs_verification' }), 'unavailable');
   assert.equal(outcomeStatus(VALID_OUTCOME, { ...VALID_PROVENANCE, source_type: 'market_derived_proxy' }), 'unavailable');
+  // upstream status omitted entirely (undefined) fails closed — not treated as explicit null
+  assert.equal(outcomeStatus({ ...VALID_OUTCOME, upstream_provenance_status: undefined }), 'unavailable');
   // unrecognized status / empty value
   assert.equal(outcomeStatus({ ...VALID_OUTCOME, status: 'mystery' }), 'unavailable');
   assert.equal(outcomeStatus({}), 'unavailable');
