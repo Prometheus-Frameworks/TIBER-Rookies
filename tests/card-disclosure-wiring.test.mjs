@@ -270,42 +270,73 @@ test('transition envelope validation: accepts a well-formed envelope, rejects dr
 });
 
 // Governed-outcome invariant validation (mapper fails closed on malformed data).
-function loadedCardWithOutcome(outcomeValue, provenance = { source_name: 'NBC Sports', source_url: 'https://example.test' }) {
+const VALID_OUTCOME = Object.freeze({ status: 'drafted', nfl_team: 'NYJ', draft_round: 1, overall_pick: 30, is_udfa: false, source_status: 'external_verified' });
+const VALID_PROVENANCE = Object.freeze({ source_name: 'NBC Sports', source_url: 'https://example.test/tracker', confidence_band: 'HIGH' });
+function cardForOutcome(value, provenance = VALID_PROVENANCE) {
   return mapRookieToCard({
     alphaPlayer: { player_id: 'wr-inv', position: 'WR', scores: { rookie_alpha_0_100: 55.0 } },
-    transitionProfileRow: { player_id: 'wr-inv', official_postdraft_outcome: { value: outcomeValue, provenance } },
+    transitionProfileRow: { player_id: 'wr-inv', official_postdraft_outcome: { value, provenance } },
     transitionProfileStatus: 'loaded',
     rank: 14,
   });
 }
+const outcomeStatus = (value, provenance) => cardForOutcome(value, provenance).officialOutcome.status;
 
 test('governed outcome: a well-formed drafted outcome is authoritative', () => {
-  const card = loadedCardWithOutcome({ status: 'drafted', nfl_team: 'NYJ', draft_round: 1, overall_pick: 30, is_udfa: false });
+  const card = cardForOutcome(VALID_OUTCOME);
   assert.equal(card.officialOutcome.status, 'drafted');
   assert.equal(card.identity.nflTeam, 'NYJ');
   assert.equal(card.draft.provenanceSource, 'transition_profile');
 });
 
 test('governed outcome: a well-formed udfa_signed outcome is authoritative', () => {
-  const card = loadedCardWithOutcome({ status: 'udfa_signed', nfl_team: 'PHI', draft_round: null, overall_pick: null, is_udfa: true });
+  const card = cardForOutcome({ status: 'udfa_signed', nfl_team: 'PHI', draft_round: null, overall_pick: null, is_udfa: true, source_status: 'external_verified' });
   assert.equal(card.officialOutcome.status, 'udfa_signed');
   assert.equal(card.officialOutcome.isUdfa, true);
   assert.equal(card.draft.overallPick, null);
 });
 
-test('governed outcome: invalid contents fail closed as unavailable', () => {
-  // drafted without round/pick
-  assert.equal(loadedCardWithOutcome({ status: 'drafted', nfl_team: 'NYJ', is_udfa: false }).officialOutcome.status, 'unavailable');
-  // drafted but flagged UDFA (inconsistent)
-  assert.equal(loadedCardWithOutcome({ status: 'drafted', nfl_team: 'NYJ', draft_round: 1, overall_pick: 30, is_udfa: true }).officialOutcome.status, 'unavailable');
-  // udfa_signed carrying a pick (inconsistent)
-  assert.equal(loadedCardWithOutcome({ status: 'udfa_signed', nfl_team: 'PHI', draft_round: 1, overall_pick: 30, is_udfa: true }).officialOutcome.status, 'unavailable');
-  // unrecognized status
-  assert.equal(loadedCardWithOutcome({ status: 'mystery', nfl_team: 'NYJ', draft_round: 1, overall_pick: 30, is_udfa: false }).officialOutcome.status, 'unavailable');
-  // empty value object
-  assert.equal(loadedCardWithOutcome({}).officialOutcome.status, 'unavailable');
-  // missing provenance source
-  assert.equal(loadedCardWithOutcome({ status: 'drafted', nfl_team: 'NYJ', draft_round: 1, overall_pick: 30, is_udfa: false }, {}).officialOutcome.status, 'unavailable');
+test('governed outcome: each invalid condition fails closed as unavailable', () => {
+  // source_status not externally verified
+  assert.equal(outcomeStatus({ ...VALID_OUTCOME, source_status: 'seeded' }), 'unavailable');
+  assert.equal(outcomeStatus({ ...VALID_OUTCOME, source_status: undefined }), 'unavailable');
+  // drafted flagged UDFA (inconsistent)
+  assert.equal(outcomeStatus({ ...VALID_OUTCOME, is_udfa: true }), 'unavailable');
+  // drafted missing round / pick
+  assert.equal(outcomeStatus({ ...VALID_OUTCOME, draft_round: null }), 'unavailable');
+  assert.equal(outcomeStatus({ ...VALID_OUTCOME, overall_pick: null }), 'unavailable');
+  // non-integer round / pick
+  assert.equal(outcomeStatus({ ...VALID_OUTCOME, draft_round: 1.5 }), 'unavailable');
+  assert.equal(outcomeStatus({ ...VALID_OUTCOME, overall_pick: '30' }), 'unavailable');
+  // missing team identity
+  assert.equal(outcomeStatus({ ...VALID_OUTCOME, nfl_team: '' }), 'unavailable');
+  // udfa_signed carrying round/pick (inconsistent)
+  assert.equal(outcomeStatus({ status: 'udfa_signed', nfl_team: 'PHI', draft_round: 1, overall_pick: 30, is_udfa: true, source_status: 'external_verified' }), 'unavailable');
+  // udfa_signed not flagged UDFA
+  assert.equal(outcomeStatus({ status: 'udfa_signed', nfl_team: 'PHI', draft_round: null, overall_pick: null, is_udfa: false, source_status: 'external_verified' }), 'unavailable');
+  // unrecognized status / empty value
+  assert.equal(outcomeStatus({ ...VALID_OUTCOME, status: 'mystery' }), 'unavailable');
+  assert.equal(outcomeStatus({}), 'unavailable');
+  // provenance: missing url, missing name, missing confidence band
+  assert.equal(outcomeStatus(VALID_OUTCOME, { source_name: 'NBC', confidence_band: 'HIGH' }), 'unavailable');
+  assert.equal(outcomeStatus(VALID_OUTCOME, { source_url: 'https://x.test', confidence_band: 'HIGH' }), 'unavailable');
+  assert.equal(outcomeStatus(VALID_OUTCOME, { source_name: 'NBC', source_url: 'https://x.test' }), 'unavailable');
+  assert.equal(outcomeStatus(VALID_OUTCOME, null), 'unavailable');
+});
+
+test('unknown transition status fails closed with no supplement fallback', () => {
+  const card = mapRookieToCard({
+    alphaPlayer: { player_id: 'wr-unknown-status', position: 'WR', scores: { rookie_alpha_0_100: 55.0 } },
+    // Draft-results supplement present, but the status is not 'not_expected'.
+    draftResultRow: { player_id: 'wr-unknown-status', nfl_team: 'NYJ', draft_round: 1, overall_pick: 30, is_udfa: false },
+    transitionProfileStatus: 'some_unexpected_value',
+    rank: 14,
+  });
+  assert.equal(card.officialOutcome.status, 'unavailable');
+  assert.equal(card.officialOutcome.reason, 'governed_status_unknown');
+  assert.equal(card.identity.nflTeam, null);
+  assert.equal(card.draft.hasDraftOutcome, false);
+  assert.equal(card.draft.provenanceSource, null);
 });
 
 test('athletic label helper: RAS_PARTIAL is a partial composite on every surface', () => {
