@@ -9,8 +9,17 @@ function esc(str) {
 const DATA_GAP_FALLBACK_NOTE = 'Projection has limited supporting data; treat floor/median/ceiling as low-confidence.';
 const INSUFFICIENT_EVIDENCE_CAVEAT = 'Projection is grade-band based; limited evidence context applies.';
 
+const STALE_PROJECTION_NOTE = 'Year 1 PPR projection withheld: it was generated from a superseded Rookie Alpha snapshot and has not been regenerated against the current promoted Alpha.';
+
 export function renderPprProjection(ppr, card) {
   if (!ppr) return '';
+  if (ppr.stale === true) {
+    return `
+    <div class="ppr-card-section">
+      <div class="section-title">Year 1 PPR Projection</div>
+      <div class="ppr-stale-warning" role="alert">⚠️ ${esc(STALE_PROJECTION_NOTE)}</div>
+    </div>`;
+  }
   const bandClass = { Elite: 'ppr-band-elite', Starter: 'ppr-band-starter', Contributor: 'ppr-band-contributor', Lottery: 'ppr-band-lottery' }[ppr.band] ?? 'ppr-band-lottery';
   const floor = Number(ppr.floor);
   const median = Number(ppr.median);

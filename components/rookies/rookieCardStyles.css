@@ -387,6 +387,29 @@ body {
   line-height: 1.4;
   font-style: italic;
 }
+.ppr-stale-warning {
+  margin-top: 8px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #f1c27d;
+  background: rgba(217, 119, 87, 0.12);
+  border: 1px solid rgba(217, 119, 87, 0.5);
+}
+
+/* ─── Official NFL outcome (governed transition profile) ─────────────────── */
+.official-outcome-facts {
+  margin-top: 6px;
+  font-size: 15px;
+  font-weight: 700;
+}
+.official-outcome-provenance {
+  margin-top: 6px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+.official-outcome-provenance a { color: var(--accent, #6aa9ff); }
 
 /* ─── PPR projection (board) ─────────────────────────────────────────────── */
 .board-ppr { line-height: 1.3; }

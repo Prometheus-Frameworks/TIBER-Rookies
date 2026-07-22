@@ -247,11 +247,10 @@ function renderPlayerHeader(card, sideLabel) {
     `Class ${card.identity.classYear}`,
   ].filter(Boolean).join(' · ');
 
-  const hasPostDraft  = card.postDraftAdjustedGrade != null;
   const translation   = Array.isArray(card?.translationFlags) ? card.translationFlags : [];
   const contextFlags  = Array.isArray(card?.contextSignals?.contextFlags) ? card.contextSignals.contextFlags : [];
   const evidenceSummary = card?.contextSignals?.evidenceSummary ?? null;
-  const ppr = card.pprProjection;
+  const ppr = card.pprProjection && card.pprProjection.stale !== true ? card.pprProjection : null;
   const pprNote = ppr ? `Yr1 PPR ${esc(ppr.floor)}–${esc(ppr.ceiling)} med ${esc(ppr.median)}` : '';
 
   return `
@@ -268,7 +267,7 @@ function renderPlayerHeader(card, sideLabel) {
         <div class="compare-player-panel-grade">
           <div class="compare-grade">${esc(grade)}</div>
           <div class="meta">Class ${esc(rank)}${posRank}</div>
-          ${hasPostDraft ? `<div class="meta">Post ${esc(card.postDraftAdjustedGrade.toFixed(1))} Δ ${esc((card.postDraftDelta >= 0 ? '+' : '') + card.postDraftDelta.toFixed(1))}</div>` : ''}
+          <div class="meta">Post-draft grade not yet published</div>
           ${renderEvidenceTierBadge(card)}
         </div>
       </div>
