@@ -183,7 +183,7 @@ function renderOfficialOutcome(card) {
   return `
     <section class="metrics card-panel official-outcome-panel">
       <div class="section-title">Official NFL Outcome</div>
-      <div class="meta">Governed transition profile · rookie_transition_profile_v0.2.0.</div>
+      <div class="meta">Governed transition profile${outcome.schemaVersion ? ` · ${esc(outcome.schemaVersion)}` : ''}.</div>
       <div class="official-outcome-facts">${factBits || 'Outcome not yet recorded'}</div>
       ${provLine}
     </section>`;

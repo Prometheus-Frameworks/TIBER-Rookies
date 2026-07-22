@@ -95,7 +95,8 @@ function buildOmarCard() {
   const predraft = readJson('../exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json');
   const ppr = keyById(readJson('../data/processed/2026_ppr_projections.json'));
   const draft = keyById(readJson('../data/processed/2026_draft_results.json'));
-  const transition = keyById(readJson('../exports/promoted/rookie-transition-profile/2026_rookie_transition_profile_v0.json').rows);
+  const transitionEnv = readJson('../exports/promoted/rookie-transition-profile/2026_rookie_transition_profile_v0.json');
+  const transition = keyById(transitionEnv.rows);
   const omar = predraft.players.find((p) => p.player_id === 'wr-omar-cooper-jr');
   assert.ok(omar, 'Omar must exist in the promoted pre-draft export');
   return mapRookieToCard({
@@ -104,6 +105,7 @@ function buildOmarCard() {
     draftResultRow: draft.get('wr-omar-cooper-jr') ?? null,
     transitionProfileRow: transition.get('wr-omar-cooper-jr') ?? null,
     transitionProfileStatus: 'loaded',
+    transitionProfileVersion: transitionEnv.schema_version,
     alphaModel: predraft.model,
     alphaGeneratedAt: predraft.generated_at,
     rank: omar.rookie_alpha_rank,
@@ -119,6 +121,7 @@ test('golden Omar: NFL identity + draft facts come from the governed transition 
   assert.equal(card.officialOutcome.overallPick, 30);
   assert.equal(card.draft.provenanceSource, 'transition_profile');
   assert.ok(card.officialOutcome.provenance.sourceUrl, 'official outcome must carry a source URL');
+  assert.equal(card.officialOutcome.schemaVersion, 'rookie-transition-profile-v0.2.0');
 });
 
 test('golden Omar: pre-draft Alpha is a frozen, dated baseline with model version', () => {
@@ -270,8 +273,8 @@ test('transition envelope validation: accepts a well-formed envelope, rejects dr
 });
 
 // Governed-outcome invariant validation (mapper fails closed on malformed data).
-const VALID_OUTCOME = Object.freeze({ status: 'drafted', nfl_team: 'NYJ', draft_round: 1, overall_pick: 30, is_udfa: false, source_status: 'external_verified' });
-const VALID_PROVENANCE = Object.freeze({ source_name: 'NBC Sports', source_url: 'https://example.test/tracker', confidence_band: 'HIGH' });
+const VALID_OUTCOME = Object.freeze({ status: 'drafted', nfl_team: 'NYJ', draft_round: 1, overall_pick: 30, is_udfa: false, source_status: 'external_verified', upstream_provenance_status: 'source_verified' });
+const VALID_PROVENANCE = Object.freeze({ source_type: 'official_draft_result', source_name: 'NBC Sports', source_url: 'https://example.test/tracker', confidence_band: 'HIGH' });
 function cardForOutcome(value, provenance = VALID_PROVENANCE) {
   return mapRookieToCard({
     alphaPlayer: { player_id: 'wr-inv', position: 'WR', scores: { rookie_alpha_0_100: 55.0 } },
@@ -314,14 +317,38 @@ test('governed outcome: each invalid condition fails closed as unavailable', () 
   assert.equal(outcomeStatus({ status: 'udfa_signed', nfl_team: 'PHI', draft_round: 1, overall_pick: 30, is_udfa: true, source_status: 'external_verified' }), 'unavailable');
   // udfa_signed not flagged UDFA
   assert.equal(outcomeStatus({ status: 'udfa_signed', nfl_team: 'PHI', draft_round: null, overall_pick: null, is_udfa: false, source_status: 'external_verified' }), 'unavailable');
+  // is_udfa must be an explicit boolean for drafted (not omitted / null / string)
+  assert.equal(outcomeStatus({ ...VALID_OUTCOME, is_udfa: undefined }), 'unavailable');
+  assert.equal(outcomeStatus({ ...VALID_OUTCOME, is_udfa: null }), 'unavailable');
+  assert.equal(outcomeStatus({ ...VALID_OUTCOME, is_udfa: 'false' }), 'unavailable');
+  // unverified / non-official provenance must not cross the boundary
+  assert.equal(outcomeStatus({ ...VALID_OUTCOME, upstream_provenance_status: 'needs_verification' }), 'unavailable');
+  assert.equal(outcomeStatus(VALID_OUTCOME, { ...VALID_PROVENANCE, source_type: 'market_derived_proxy' }), 'unavailable');
   // unrecognized status / empty value
   assert.equal(outcomeStatus({ ...VALID_OUTCOME, status: 'mystery' }), 'unavailable');
   assert.equal(outcomeStatus({}), 'unavailable');
-  // provenance: missing url, missing name, missing confidence band
-  assert.equal(outcomeStatus(VALID_OUTCOME, { source_name: 'NBC', confidence_band: 'HIGH' }), 'unavailable');
-  assert.equal(outcomeStatus(VALID_OUTCOME, { source_url: 'https://x.test', confidence_band: 'HIGH' }), 'unavailable');
-  assert.equal(outcomeStatus(VALID_OUTCOME, { source_name: 'NBC', source_url: 'https://x.test' }), 'unavailable');
+  // provenance: missing url, missing name, missing confidence band, missing source_type
+  assert.equal(outcomeStatus(VALID_OUTCOME, { ...VALID_PROVENANCE, source_url: undefined }), 'unavailable');
+  assert.equal(outcomeStatus(VALID_OUTCOME, { ...VALID_PROVENANCE, source_name: undefined }), 'unavailable');
+  assert.equal(outcomeStatus(VALID_OUTCOME, { ...VALID_PROVENANCE, confidence_band: undefined }), 'unavailable');
+  assert.equal(outcomeStatus(VALID_OUTCOME, { source_name: 'NBC', source_url: 'https://x.test', confidence_band: 'HIGH' }), 'unavailable'); // no source_type
   assert.equal(outcomeStatus(VALID_OUTCOME, null), 'unavailable');
+});
+
+test('governed outcome: a null upstream_provenance_status is accepted (udfa-signed row)', () => {
+  const card = cardForOutcome({ status: 'udfa_signed', nfl_team: 'PHI', draft_round: null, overall_pick: null, is_udfa: true, source_status: 'external_verified', upstream_provenance_status: null });
+  assert.equal(card.officialOutcome.status, 'udfa_signed');
+});
+
+test('governed outcome: the loaded schema_version is threaded onto the outcome (not hard-coded)', () => {
+  const card = mapRookieToCard({
+    alphaPlayer: { player_id: 'wr-ver', position: 'WR', scores: { rookie_alpha_0_100: 55.0 } },
+    transitionProfileRow: { player_id: 'wr-ver', official_postdraft_outcome: { value: VALID_OUTCOME, provenance: VALID_PROVENANCE } },
+    transitionProfileStatus: 'loaded',
+    transitionProfileVersion: 'rookie-transition-profile-v0.2.7',
+    rank: 14,
+  });
+  assert.equal(card.officialOutcome.schemaVersion, 'rookie-transition-profile-v0.2.7');
 });
 
 test('unknown transition status fails closed with no supplement fallback', () => {
