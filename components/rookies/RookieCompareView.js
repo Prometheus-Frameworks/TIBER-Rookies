@@ -1,5 +1,6 @@
 import { compareRookies } from '/lib/rookies/compareRookies.js';
 import { getCollegeLogoUrl, getNflTeamLogoUrl } from '/lib/rookies/teamLogos.js';
+import { athleticMetricLabel } from '/lib/rookies/athleticLabel.js';
 
 function esc(str) {
   return String(str ?? '')
@@ -73,7 +74,8 @@ function renderSharedRadar(leftCard, rightCard) {
 
   const leftName  = leftCard.identity.name;
   const rightName = rightCard.identity.name;
-  const athLabel  = leftCard.athleticSource === 'SPORQ' ? 'ATH (SPORQ)' : leftCard.athleticSource === 'COMBINE_FALLBACK' ? 'ATH (partial)' : 'RAS';
+  const leftAthLabel  = athleticMetricLabel(leftCard.athleticSource);
+  const rightAthLabel = athleticMetricLabel(rightCard.athleticSource);
 
   function val(v) { return v == null ? '—' : Number(v).toFixed(1); }
 
@@ -82,7 +84,7 @@ function renderSharedRadar(leftCard, rightCard) {
       <div class="compare-radar-side compare-radar-side-left">
         <div class="compare-radar-metric">
           <span class="compare-radar-val compare-radar-val-left">${val(leftCard.athleticScore)}</span>
-          <span class="compare-radar-label">${esc(athLabel)}</span>
+          <span class="compare-radar-label">${esc(leftAthLabel)}</span>
         </div>
         <div class="compare-radar-metric">
           <span class="compare-radar-val compare-radar-val-left">${val(leftCard.productionScore)}</span>
@@ -107,7 +109,7 @@ function renderSharedRadar(leftCard, rightCard) {
       </div>
       <div class="compare-radar-side compare-radar-side-right">
         <div class="compare-radar-metric">
-          <span class="compare-radar-label">${esc(athLabel)}</span>
+          <span class="compare-radar-label">${esc(rightAthLabel)}</span>
           <span class="compare-radar-val compare-radar-val-right">${val(rightCard.athleticScore)}</span>
         </div>
         <div class="compare-radar-metric">

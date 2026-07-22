@@ -5,6 +5,8 @@ import fs from 'node:fs';
 import { mapRookieToCard } from '../lib/rookies/mapRookieToCard.js';
 import { renderPprProjection } from '../components/rookies/renderPprProjection.js';
 import { normalizeRookieIdentity } from '../lib/rookies/normalizeRookieIdentity.js';
+import { isValidTransitionProfileEnvelope } from '../lib/rookies/rookieDataContract.js';
+import { athleticMetricLabel, athleticChipLabel } from '../lib/rookies/athleticLabel.js';
 
 const baseAlphaPlayer = { player_id: 'wr-data-gap-test', position: 'WR' };
 
@@ -101,6 +103,7 @@ function buildOmarCard() {
     pprRow: ppr.get('wr-omar-cooper-jr'),
     draftResultRow: draft.get('wr-omar-cooper-jr') ?? null,
     transitionProfileRow: transition.get('wr-omar-cooper-jr') ?? null,
+    transitionProfileStatus: 'loaded',
     alphaModel: predraft.model,
     alphaGeneratedAt: predraft.generated_at,
     rank: omar.rookie_alpha_rank,
@@ -173,6 +176,7 @@ test('PPR fails closed when the projection row carries no embedded Alpha to veri
 test('missing data: no transition profile and no draft result → no official outcome, no invented grade', () => {
   const card = mapRookieToCard({
     alphaPlayer: { player_id: 'wr-undrafted-unknown', position: 'WR', scores: { rookie_alpha_0_100: 42.0 } },
+    transitionProfileStatus: 'not_expected',
     rank: 40,
   });
   assert.equal(card.officialOutcome, null);
@@ -183,10 +187,11 @@ test('missing data: no transition profile and no draft result → no official ou
   assert.equal(card.postDraftStatus, 'not_yet_published');
 });
 
-test('historical fallback: draft-results supplement supplies facts when no transition profile exists', () => {
+test('historical fallback: draft-results supplement supplies facts only for not_expected classes', () => {
   const card = mapRookieToCard({
     alphaPlayer: { player_id: 'wr-2024-vet', position: 'WR', scores: { rookie_alpha_0_100: 60.0 } },
     draftResultRow: { player_id: 'wr-2024-vet', nfl_team: 'KC', draft_round: 2, overall_pick: 50, is_udfa: false },
+    transitionProfileStatus: 'not_expected',
     rank: 10,
   });
   assert.equal(card.officialOutcome, null); // no governed provenance for pre-2026 classes
@@ -194,6 +199,37 @@ test('historical fallback: draft-results supplement supplies facts when no trans
   assert.equal(card.draft.draftRound, 2);
   assert.equal(card.draft.overallPick, 50);
   assert.equal(card.draft.provenanceSource, 'draft_results_supplement');
+});
+
+test('loaded profile, player row missing → fail closed as unavailable, no supplement fallback', () => {
+  const card = mapRookieToCard({
+    alphaPlayer: { player_id: 'wr-2026-norow', position: 'WR', scores: { rookie_alpha_0_100: 55.0 } },
+    // Draft-results supplement present, but the player is absent from a loaded governed profile.
+    draftResultRow: { player_id: 'wr-2026-norow', nfl_team: 'NYJ', draft_round: 1, overall_pick: 30, is_udfa: false },
+    transitionProfileRow: null,
+    transitionProfileStatus: 'loaded',
+    rank: 14,
+  });
+  assert.equal(card.officialOutcome.status, 'unavailable');
+  assert.equal(card.officialOutcome.reason, 'governed_outcome_missing');
+  assert.equal(card.identity.nflTeam, null);
+  assert.equal(card.draft.hasDraftOutcome, false);
+  assert.equal(card.draft.provenanceSource, null);
+});
+
+test('loaded profile, malformed player outcome → fail closed as unavailable', () => {
+  const card = mapRookieToCard({
+    alphaPlayer: { player_id: 'wr-2026-malformed', position: 'WR', scores: { rookie_alpha_0_100: 55.0 } },
+    draftResultRow: { player_id: 'wr-2026-malformed', nfl_team: 'NYJ', draft_round: 1, overall_pick: 30, is_udfa: false },
+    // Row exists but official_postdraft_outcome is malformed (no value object).
+    transitionProfileRow: { player_id: 'wr-2026-malformed', official_postdraft_outcome: { provenance: {} } },
+    transitionProfileStatus: 'loaded',
+    rank: 14,
+  });
+  assert.equal(card.officialOutcome.status, 'unavailable');
+  assert.equal(card.officialOutcome.reason, 'governed_outcome_missing');
+  assert.equal(card.identity.nflTeam, null);
+  assert.equal(card.draft.provenanceSource, null);
 });
 
 test('governed load failure fails closed: no ungoverned substitution of official facts', () => {
@@ -217,4 +253,24 @@ test('COMBINE_FALLBACK athletic source is also labeled as a partial composite', 
     alphaPlayer: { player_id: 'wr-combine', position: 'WR', scores: { athletic_score_0_100: 55, athletic_source: 'COMBINE_FALLBACK' } },
   });
   assert.equal(card.metrics[0].label, 'ATH (partial)');
+});
+
+test('transition envelope validation: accepts a well-formed envelope, rejects drift', () => {
+  const good = { schema_version: 'rookie-transition-profile-v0.2.0', season: 2026, rows: [] };
+  assert.equal(isValidTransitionProfileEnvelope(good, 2026), true);
+  assert.equal(isValidTransitionProfileEnvelope({ ...good, schema_version: 'rookie-transition-profile-v0.1.0' }, 2026), false);
+  assert.equal(isValidTransitionProfileEnvelope({ ...good, season: 2025 }, 2026), false);
+  assert.equal(isValidTransitionProfileEnvelope({ schema_version: 'rookie-transition-profile-v0.2.0', season: 2026 }, 2026), false);
+  assert.equal(isValidTransitionProfileEnvelope(null, 2026), false);
+});
+
+test('athletic label helper: RAS_PARTIAL is a partial composite on every surface', () => {
+  // Shared source of truth used by card, board, and compare.
+  assert.equal(athleticMetricLabel('RAS_PARTIAL'), 'ATH (partial)');
+  assert.equal(athleticMetricLabel('COMBINE_FALLBACK'), 'ATH (partial)');
+  assert.equal(athleticMetricLabel('SPORQ'), 'ATH (SPORQ)');
+  assert.equal(athleticMetricLabel('RAS'), 'RAS');
+  assert.equal(athleticChipLabel('RAS_PARTIAL'), 'ATH*'); // board chip, previously mislabeled 'RAS'
+  assert.equal(athleticChipLabel('SPORQ'), 'SPORQ');
+  assert.equal(athleticChipLabel('RAS'), 'RAS');
 });

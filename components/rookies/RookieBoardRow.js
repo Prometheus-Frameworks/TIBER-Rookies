@@ -1,4 +1,5 @@
 import { getCollegeLogoUrl, getNflTeamLogoUrl } from '/lib/rookies/teamLogos.js';
+import { athleticChipLabel, athleticChipTitle } from '/lib/rookies/athleticLabel.js';
 
 function esc(str) {
   return String(str ?? '')
@@ -31,18 +32,6 @@ const PPR_BAND_CLASS = {
  * Renders a compact 3-bar SVG showing Athletic / Production / Draft Capital (0–100).
  * Bars are colour-coded: Athletic (RAS/SPORQ/partial) = steel blue, Production = teal, Draft = coral.
  */
-function athChipLabel(source) {
-  if (source === 'SPORQ') return 'SPORQ';
-  if (source === 'COMBINE_FALLBACK') return 'ATH*';
-  return 'RAS';
-}
-
-function athChipTitle(source) {
-  if (source === 'SPORQ') return 'Athletic score (SPORQ composite)';
-  if (source === 'COMBINE_FALLBACK') return 'Athletic score (partial combine)';
-  return 'Relative Athletic Score';
-}
-
 function renderMiniScoreChart(row) {
   const bars = [
     { value: row.athleticScore,     color: '#6B9FD4', label: 'A' },
@@ -213,7 +202,7 @@ function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}
       </div>
       <div class="bmc-signals">
         ${row.draftCapitalScore != null ? `<span class="bmc-signal-chip bmc-signal-capital" title="Draft Capital">CAP ${Math.round(row.draftCapitalScore)}</span>` : ''}
-        ${row.athleticScore    != null ? `<span class="bmc-signal-chip bmc-signal-ath${row.athleticSource === 'SPORQ' ? ' bmc-signal-ath-sporq' : ''}" title="${athChipTitle(row.athleticSource)}">${athChipLabel(row.athleticSource)} ${Math.round(row.athleticScore)}</span>` : ''}
+        ${row.athleticScore    != null ? `<span class="bmc-signal-chip bmc-signal-ath${row.athleticSource === 'SPORQ' ? ' bmc-signal-ath-sporq' : ''}" title="${athleticChipTitle(row.athleticSource)}">${athleticChipLabel(row.athleticSource)} ${Math.round(row.athleticScore)}</span>` : ''}
         ${row.productionScore  != null ? `<span class="bmc-signal-chip bmc-signal-prod"    title="Production Score">PRD ${Math.round(row.productionScore)}</span>` : ''}
         ${renderBoarChip(row)}
       </div>

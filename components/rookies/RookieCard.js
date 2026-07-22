@@ -1,5 +1,6 @@
 import { selectRookieEvidenceMetrics } from '/lib/rookies/selectRookieEvidenceMetrics.js';
 import { getCollegeLogoUrl, getNflTeamLogoUrl } from '/lib/rookies/teamLogos.js';
+import { athleticMetricLabel } from '/lib/rookies/athleticLabel.js';
 import { renderPprProjection } from './renderPprProjection.js';
 
 function esc(str) {
@@ -70,11 +71,7 @@ function renderRadarChart(athleticScore, production, draftCapital, athleticSourc
   const centerX = 100;
   const centerY = 100;
   const radius = 80;
-  const athLabel = athleticSource === 'SPORQ'
-    ? 'ATH (SPORQ)'
-    : (athleticSource === 'COMBINE_FALLBACK' || athleticSource === 'RAS_PARTIAL')
-      ? 'ATH (partial)'
-      : 'RAS';
+  const athLabel = athleticMetricLabel(athleticSource);
   const axes = [
     { label: athLabel, angle: -Math.PI / 2, value: athleticScore },
     { label: 'Production', angle: Math.PI / 6, value: production },
