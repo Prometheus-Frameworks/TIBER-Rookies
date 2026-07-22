@@ -159,10 +159,13 @@ function renderOfficialOutcome(card) {
   const outcome = card.officialOutcome ?? null;
   if (!outcome) return '';
   if (outcome.status === 'unavailable') {
+    const reasonCopy = outcome.reason === 'governed_source_load_failed'
+      ? 'governed source did not load'
+      : 'governed outcome not available';
     return `
     <section class="metrics card-panel official-outcome-panel">
       <div class="section-title">Official NFL Outcome</div>
-      <div class="ppr-stale-warning" role="alert">⚠️ Official NFL outcome unavailable (governed source did not load).</div>
+      <div class="ppr-stale-warning" role="alert">⚠️ Official NFL outcome unavailable (${esc(reasonCopy)}).</div>
     </section>`;
   }
   const factBits = [

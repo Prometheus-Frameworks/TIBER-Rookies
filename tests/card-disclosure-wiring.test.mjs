@@ -258,10 +258,54 @@ test('COMBINE_FALLBACK athletic source is also labeled as a partial composite', 
 test('transition envelope validation: accepts a well-formed envelope, rejects drift', () => {
   const good = { schema_version: 'rookie-transition-profile-v0.2.0', season: 2026, rows: [] };
   assert.equal(isValidTransitionProfileEnvelope(good, 2026), true);
+  assert.equal(isValidTransitionProfileEnvelope({ ...good, schema_version: 'rookie-transition-profile-v0.2.7' }, 2026), true);
   assert.equal(isValidTransitionProfileEnvelope({ ...good, schema_version: 'rookie-transition-profile-v0.1.0' }, 2026), false);
   assert.equal(isValidTransitionProfileEnvelope({ ...good, season: 2025 }, 2026), false);
   assert.equal(isValidTransitionProfileEnvelope({ schema_version: 'rookie-transition-profile-v0.2.0', season: 2026 }, 2026), false);
   assert.equal(isValidTransitionProfileEnvelope(null, 2026), false);
+  // Bounded at the version delimiter — look-alike families must not match.
+  assert.equal(isValidTransitionProfileEnvelope({ ...good, schema_version: 'rookie-transition-profile-v0.20.0' }, 2026), false);
+  assert.equal(isValidTransitionProfileEnvelope({ ...good, schema_version: 'rookie-transition-profile-v0.2-invalid' }, 2026), false);
+  assert.equal(isValidTransitionProfileEnvelope({ ...good, schema_version: 'rookie-transition-profile-v0.2' }, 2026), false);
+});
+
+// Governed-outcome invariant validation (mapper fails closed on malformed data).
+function loadedCardWithOutcome(outcomeValue, provenance = { source_name: 'NBC Sports', source_url: 'https://example.test' }) {
+  return mapRookieToCard({
+    alphaPlayer: { player_id: 'wr-inv', position: 'WR', scores: { rookie_alpha_0_100: 55.0 } },
+    transitionProfileRow: { player_id: 'wr-inv', official_postdraft_outcome: { value: outcomeValue, provenance } },
+    transitionProfileStatus: 'loaded',
+    rank: 14,
+  });
+}
+
+test('governed outcome: a well-formed drafted outcome is authoritative', () => {
+  const card = loadedCardWithOutcome({ status: 'drafted', nfl_team: 'NYJ', draft_round: 1, overall_pick: 30, is_udfa: false });
+  assert.equal(card.officialOutcome.status, 'drafted');
+  assert.equal(card.identity.nflTeam, 'NYJ');
+  assert.equal(card.draft.provenanceSource, 'transition_profile');
+});
+
+test('governed outcome: a well-formed udfa_signed outcome is authoritative', () => {
+  const card = loadedCardWithOutcome({ status: 'udfa_signed', nfl_team: 'PHI', draft_round: null, overall_pick: null, is_udfa: true });
+  assert.equal(card.officialOutcome.status, 'udfa_signed');
+  assert.equal(card.officialOutcome.isUdfa, true);
+  assert.equal(card.draft.overallPick, null);
+});
+
+test('governed outcome: invalid contents fail closed as unavailable', () => {
+  // drafted without round/pick
+  assert.equal(loadedCardWithOutcome({ status: 'drafted', nfl_team: 'NYJ', is_udfa: false }).officialOutcome.status, 'unavailable');
+  // drafted but flagged UDFA (inconsistent)
+  assert.equal(loadedCardWithOutcome({ status: 'drafted', nfl_team: 'NYJ', draft_round: 1, overall_pick: 30, is_udfa: true }).officialOutcome.status, 'unavailable');
+  // udfa_signed carrying a pick (inconsistent)
+  assert.equal(loadedCardWithOutcome({ status: 'udfa_signed', nfl_team: 'PHI', draft_round: 1, overall_pick: 30, is_udfa: true }).officialOutcome.status, 'unavailable');
+  // unrecognized status
+  assert.equal(loadedCardWithOutcome({ status: 'mystery', nfl_team: 'NYJ', draft_round: 1, overall_pick: 30, is_udfa: false }).officialOutcome.status, 'unavailable');
+  // empty value object
+  assert.equal(loadedCardWithOutcome({}).officialOutcome.status, 'unavailable');
+  // missing provenance source
+  assert.equal(loadedCardWithOutcome({ status: 'drafted', nfl_team: 'NYJ', draft_round: 1, overall_pick: 30, is_udfa: false }, {}).officialOutcome.status, 'unavailable');
 });
 
 test('athletic label helper: RAS_PARTIAL is a partial composite on every surface', () => {
