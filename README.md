@@ -10,6 +10,8 @@ TIBER-Rookies uses external analyst commentary only as qualitative context unles
 
 See [docs/legal/external-source-hygiene-policy.md](docs/legal/external-source-hygiene-policy.md) for full requirements.
 
+Processed draft-result sourcing and exception handling follow the [draft-results provenance protocol](docs/draft-results-provenance.md).
+
 ## Draft-week readiness (March 27, 2026)
 
 This repository is **draft-week ready for promoted artifact handoff** when an operator can complete the documented 2026 rehearsal path:
