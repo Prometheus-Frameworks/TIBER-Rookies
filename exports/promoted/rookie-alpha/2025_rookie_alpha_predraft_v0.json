@@ -11,8 +11,8 @@
       "age_at_entry_supported": false
     }
   },
-  "generated_at": "2026-05-11T16:44:35+00:00",
-  "run_id": "rookie-alpha-2025-2026-05-11T16:44:35+00:00",
+  "generated_at": "2026-07-25T13:14:24+00:00",
+  "run_id": "rookie-alpha-2025-2026-07-25T13:14:24+00:00",
   "season": 2025,
   "coverage_summary": {
     "players_total": 67,
@@ -760,7 +760,7 @@
         "translation_flags": [
           "young_breakout"
         ],
-        "evidence_summary": "2024 Heisman winner (2-way; WR+CB). First true impact at 19 as Colorado freshman; recovered from gunshot injury in 2023. Dual-role usage at NFL level unlikely \u2014 evaluated purely as WR.",
+        "evidence_summary": "2024 Heisman winner (2-way; WR+CB). First true impact at 19 as Colorado freshman. Dual-role usage at NFL level unlikely \u2014 evaluated purely as WR.",
         "context_source": "manual_historical_seed"
       },
       "rookie_alpha_rank": 8,
