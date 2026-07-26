@@ -91,9 +91,16 @@ body,
   min-width: 540px;
 }
 
-.compare-ppr-shared-scale {
+.compare-ppr-shared-scale,
+.compare-radar-prior-note {
   margin-top: 5px;
   font-size: 12px;
+}
+
+.compare-radar-prior-note {
+  max-width: 220px;
+  text-align: center;
+  line-height: 1.4;
 }
 
 @media (max-width: 760px) {
