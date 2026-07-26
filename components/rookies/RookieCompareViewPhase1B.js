@@ -52,8 +52,9 @@ function applySharedProjectionScale(container, leftCard, rightCard) {
 }
 
 function applyNeutralPriorDisclosures(container, leftCard, rightCard) {
+  const cards = [leftCard, rightCard];
   const panels = [...container.querySelectorAll('.compare-player-panel')];
-  [leftCard, rightCard].forEach((card, index) => {
+  cards.forEach((card, index) => {
     const disclosure = neutralAthleticPriorDisclosure(card);
     if (!disclosure) return;
     const existing = [...(panels[index]?.querySelectorAll('.evidence-caveat') ?? [])].find(
@@ -61,6 +62,26 @@ function applyNeutralPriorDisclosures(container, leftCard, rightCard) {
     );
     if (existing) existing.textContent = disclosure;
   });
+
+  if (!cards.some((card) => card?.athleticSource === 'NEUTRAL_DEFAULT')) return;
+  const radarCenter = container.querySelector('.compare-radar-center');
+  const radarSvg = radarCenter?.querySelector('.compare-radar-svg');
+  if (!radarCenter || !radarSvg) return;
+
+  const firstAxisLabel = radarSvg.querySelector('text');
+  if (firstAxisLabel) firstAxisLabel.textContent = 'ATH / prior';
+  radarSvg.dataset.neutralPriorAxis = 'true';
+  radarSvg.setAttribute(
+    'aria-label',
+    'Overlaid model-input radar; ATH prior denotes a neutral model input, not observed athletic testing',
+  );
+
+  if (!radarCenter.querySelector('.compare-radar-prior-note')) {
+    const note = document.createElement('div');
+    note.className = 'meta compare-radar-prior-note';
+    note.textContent = 'ATH prior is a neutral model input, not observed athletic testing.';
+    radarCenter.append(note);
+  }
 }
 
 export function applyRookieComparePhase1B(container, leftCard, rightCard) {
