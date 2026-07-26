@@ -36,5 +36,8 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Run runtime smoke tests
+        run: npm run test:runtime-smoke
+
       - name: Run card disclosure tests
         run: npm run test:card-disclosure
