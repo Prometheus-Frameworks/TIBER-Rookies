@@ -1,5 +1,6 @@
 import { compareRookies } from '/lib/rookies/compareRookies.js';
 import { getCollegeLogoUrl, getNflTeamLogoUrl } from '/lib/rookies/teamLogos.js';
+import { athleticMetricLabel } from '/lib/rookies/athleticLabel.js';
 
 function esc(str) {
   return String(str ?? '')
@@ -73,7 +74,8 @@ function renderSharedRadar(leftCard, rightCard) {
 
   const leftName  = leftCard.identity.name;
   const rightName = rightCard.identity.name;
-  const athLabel  = leftCard.athleticSource === 'SPORQ' ? 'ATH (SPORQ)' : leftCard.athleticSource === 'COMBINE_FALLBACK' ? 'ATH (partial)' : 'RAS';
+  const leftAthLabel  = athleticMetricLabel(leftCard.athleticSource);
+  const rightAthLabel = athleticMetricLabel(rightCard.athleticSource);
 
   function val(v) { return v == null ? '—' : Number(v).toFixed(1); }
 
@@ -82,7 +84,7 @@ function renderSharedRadar(leftCard, rightCard) {
       <div class="compare-radar-side compare-radar-side-left">
         <div class="compare-radar-metric">
           <span class="compare-radar-val compare-radar-val-left">${val(leftCard.athleticScore)}</span>
-          <span class="compare-radar-label">${esc(athLabel)}</span>
+          <span class="compare-radar-label">${esc(leftAthLabel)}</span>
         </div>
         <div class="compare-radar-metric">
           <span class="compare-radar-val compare-radar-val-left">${val(leftCard.productionScore)}</span>
@@ -107,7 +109,7 @@ function renderSharedRadar(leftCard, rightCard) {
       </div>
       <div class="compare-radar-side compare-radar-side-right">
         <div class="compare-radar-metric">
-          <span class="compare-radar-label">${esc(athLabel)}</span>
+          <span class="compare-radar-label">${esc(rightAthLabel)}</span>
           <span class="compare-radar-val compare-radar-val-right">${val(rightCard.athleticScore)}</span>
         </div>
         <div class="compare-radar-metric">
@@ -247,11 +249,10 @@ function renderPlayerHeader(card, sideLabel) {
     `Class ${card.identity.classYear}`,
   ].filter(Boolean).join(' · ');
 
-  const hasPostDraft  = card.postDraftAdjustedGrade != null;
   const translation   = Array.isArray(card?.translationFlags) ? card.translationFlags : [];
   const contextFlags  = Array.isArray(card?.contextSignals?.contextFlags) ? card.contextSignals.contextFlags : [];
   const evidenceSummary = card?.contextSignals?.evidenceSummary ?? null;
-  const ppr = card.pprProjection;
+  const ppr = card.pprProjection && card.pprProjection.stale !== true ? card.pprProjection : null;
   const pprNote = ppr ? `Yr1 PPR ${esc(ppr.floor)}–${esc(ppr.ceiling)} med ${esc(ppr.median)}` : '';
 
   return `
@@ -268,7 +269,7 @@ function renderPlayerHeader(card, sideLabel) {
         <div class="compare-player-panel-grade">
           <div class="compare-grade">${esc(grade)}</div>
           <div class="meta">Class ${esc(rank)}${posRank}</div>
-          ${hasPostDraft ? `<div class="meta">Post ${esc(card.postDraftAdjustedGrade.toFixed(1))} Δ ${esc((card.postDraftDelta >= 0 ? '+' : '') + card.postDraftDelta.toFixed(1))}</div>` : ''}
+          <div class="meta">Post-draft grade not yet published</div>
           ${renderEvidenceTierBadge(card)}
         </div>
       </div>
@@ -307,6 +308,7 @@ function renderPprSideBySide(leftCard, rightCard) {
   if (!leftPpr && !rightPpr) return '';
 
   function pprPanel(card, ppr) {
+    if (ppr?.stale === true) return `<div class="compare-ppr-panel"><div class="meta">${esc(card.identity.name)}: Projection withheld (stale Alpha snapshot)</div></div>`;
     if (!ppr) return `<div class="compare-ppr-panel"><div class="meta">${esc(card.identity.name)}: No projection</div></div>`;
     const bandClass = { Elite: 'ppr-band-elite', Starter: 'ppr-band-starter', Contributor: 'ppr-band-contributor', Lottery: 'ppr-band-lottery' }[ppr.band] ?? 'ppr-band-lottery';
     const floor = Number(ppr.floor), median = Number(ppr.median), ceiling = Number(ppr.ceiling);

@@ -1,5 +1,6 @@
 import { selectRookieEvidenceMetrics } from '/lib/rookies/selectRookieEvidenceMetrics.js';
 import { getCollegeLogoUrl, getNflTeamLogoUrl } from '/lib/rookies/teamLogos.js';
+import { athleticMetricLabel } from '/lib/rookies/athleticLabel.js';
 import { renderPprProjection } from './renderPprProjection.js';
 
 function esc(str) {
@@ -70,7 +71,7 @@ function renderRadarChart(athleticScore, production, draftCapital, athleticSourc
   const centerX = 100;
   const centerY = 100;
   const radius = 80;
-  const athLabel = athleticSource === 'SPORQ' ? 'ATH (SPORQ)' : athleticSource === 'COMBINE_FALLBACK' ? 'ATH (partial)' : 'RAS';
+  const athLabel = athleticMetricLabel(athleticSource);
   const axes = [
     { label: athLabel, angle: -Math.PI / 2, value: athleticScore },
     { label: 'Production', angle: Math.PI / 6, value: production },
@@ -131,6 +132,61 @@ function renderEvidenceTierBadge(card) {
   const label = EVIDENCE_TIER_LABELS[tier] ?? String(tier).replace(/_/g, ' ');
   const reason = card.evidenceTierReason ?? 'Evidence tier classification';
   return `<span class="evidence-tier-badge" title="${esc(reason)}">${esc(label)}</span>`;
+}
+
+function isoDate(value) {
+  return value ? String(value).slice(0, 10) : null;
+}
+
+function renderBaselineProvenance(card) {
+  const baseline = card.preDraftBaseline ?? null;
+  const bits = [
+    'Frozen snapshot',
+    baseline?.modelVersion ? esc(baseline.modelVersion) : null,
+    baseline?.generatedAt ? `generated ${esc(isoDate(baseline.generatedAt))}` : null,
+  ].filter(Boolean);
+  return bits.join(' · ');
+}
+
+function classRankLine(card) {
+  const classRank = card.summary.classRank == null ? 'N/A' : card.summary.classRank;
+  const posRank = card.summary.posRank;
+  const posBit = posRank != null ? ` · ${esc(card.identity.position)} #${esc(posRank)}` : '';
+  return `Class #${esc(classRank)}${posBit}`;
+}
+
+function renderOfficialOutcome(card) {
+  const outcome = card.officialOutcome ?? null;
+  if (!outcome) return '';
+  if (outcome.status === 'unavailable') {
+    const reasonCopy = outcome.reason === 'governed_source_load_failed'
+      ? 'governed source did not load'
+      : 'governed outcome not available';
+    return `
+    <section class="metrics card-panel official-outcome-panel">
+      <div class="section-title">Official NFL Outcome</div>
+      <div class="ppr-stale-warning" role="alert">⚠️ Official NFL outcome unavailable (${esc(reasonCopy)}).</div>
+    </section>`;
+  }
+  const factBits = [
+    outcome.nflTeam ? `Team: ${esc(outcome.nflTeam)}` : '',
+    outcome.draftRound != null ? `Round ${esc(outcome.draftRound)}` : '',
+    outcome.overallPick != null ? `Pick ${esc(outcome.overallPick)}` : '',
+    outcome.isUdfa ? 'UDFA' : '',
+  ].filter(Boolean).join(' · ');
+  const prov = outcome.provenance;
+  const provLine = prov
+    ? `<div class="meta official-outcome-provenance">Source: ${prov.sourceUrl
+        ? `<a href="${esc(prov.sourceUrl)}" target="_blank" rel="noopener noreferrer">${esc(prov.sourceName ?? 'source')}</a>`
+        : esc(prov.sourceName ?? 'source unavailable')}${prov.lastVerifiedAt ? ` · verified ${esc(isoDate(prov.lastVerifiedAt))}` : ''}${prov.confidenceBand ? ` · confidence ${esc(prov.confidenceBand)}` : ''}</div>`
+    : '';
+  return `
+    <section class="metrics card-panel official-outcome-panel">
+      <div class="section-title">Official NFL Outcome</div>
+      <div class="meta">Governed transition profile${outcome.schemaVersion ? ` · ${esc(outcome.schemaVersion)}` : ''}.</div>
+      <div class="official-outcome-facts">${factBits || 'Outcome not yet recorded'}</div>
+      ${provLine}
+    </section>`;
 }
 
 function boarTierClass(boar) {
@@ -221,8 +277,8 @@ export function renderRookieCard(container, card) {
   const contextFlags = Array.isArray(card.contextSignals?.contextFlags) ? card.contextSignals.contextFlags : [];
   const evidenceSummary = card.contextSignals?.evidenceSummary ?? null;
   const athleticNotIncorporated = card.athleticSource === 'NEUTRAL_DEFAULT';
+  const athleticPartial = card.athleticSource === 'RAS_PARTIAL' || card.athleticSource === 'COMBINE_FALLBACK';
   const quickPprMedian = card.pprProjection?.median ?? null;
-  const hasPostDraft = card.postDraftAdjustedGrade != null;
   let selectedMetricFamily = 'all';
 
   const seasonsTable = card.seasons.length
@@ -259,12 +315,11 @@ export function renderRookieCard(container, card) {
             <p class="profile-summary">${esc(card.summary.profileSummary ?? card.summary.identityNote ?? 'Identity summary unavailable')}</p>
           </div>
           <div class="hero-score">
-            <div class="section-title">Pre-Draft Grade</div>
+            <div class="section-title">Rookie Alpha · Frozen Pre-Draft Baseline</div>
             <div class="score">${esc(heroScore)}</div>
-            <div class="meta">${hasPostDraft
-    ? `Post-Draft Adjusted Grade: ${esc(card.postDraftAdjustedGrade.toFixed(1))} · Delta ${esc((card.postDraftDelta >= 0 ? '+' : '') + card.postDraftDelta.toFixed(1))}`
-    : 'Post-draft adjustments pending official draft outcomes.'}</div>
-            <div class="meta">Class #${esc(card.summary.classRank ?? 'N/A')} · ${esc(card.identity.position)} #${esc(card.summary.posRank ?? 'N/A')}</div>
+            <div class="meta">${renderBaselineProvenance(card)}</div>
+            <div class="meta">Post-draft grade not yet published.</div>
+            <div class="meta">${classRankLine(card)}</div>
             ${renderEvidenceTierBadge(card)}
           </div>
         </div>
@@ -289,6 +344,8 @@ export function renderRookieCard(container, card) {
 
       <div class="card-columns">
         <div class="card-col">
+          ${renderOfficialOutcome(card)}
+
           <section class="metrics card-panel">
             <div class="section-title">Model Scores</div>
             <div class="meta">Deterministic model components from canonical artifacts.</div>
@@ -323,13 +380,15 @@ export function renderRookieCard(container, card) {
 
           ${renderPprProjection(card.pprProjection, card)}
 
-          <section class="metrics card-panel">
+          ${(card.comps?.high != null || card.comps?.low != null)
+            ? `<section class="metrics card-panel">
             <div class="section-title">Projection Comps</div>
             <div class="comp-grid">
               <div class="comp-card"><div class="pill-label">High-end</div><div class="comp-name">${esc(card.comps.high ?? 'N/A')}</div></div>
               <div class="comp-card"><div class="pill-label">Low-end</div><div class="comp-name">${esc(card.comps.low ?? 'N/A')}</div></div>
             </div>
-          </section>
+          </section>`
+            : ''}
 
           <section class="metrics card-panel">
             <div class="section-title">Research Notes & Translation Signals</div>
@@ -337,6 +396,9 @@ export function renderRookieCard(container, card) {
             <div class="meta">${esc(evidenceSummary ?? 'Translation summary unavailable in current artifacts.')}</div>
             ${athleticNotIncorporated
               ? '<div class="meta evidence-caveat">Athletic testing data was not incorporated into the model score.</div>'
+              : ''}
+            ${athleticPartial
+              ? `<div class="meta evidence-caveat">Partial athletic-testing composite (subset of combine events; not a full RAS).${card.athleticExplainer ? ` ${esc(card.athleticExplainer)}` : ''}</div>`
               : ''}
             ${translationFlags.length
               ? `<div class="tags tags-translation">${translationFlags.map((flag) => `<span class="tag">${esc(String(flag).replace(/_/g, ' '))}</span>`).join('')}</div>`

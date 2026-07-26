@@ -1,4 +1,5 @@
 import { getCollegeLogoUrl, getNflTeamLogoUrl } from '/lib/rookies/teamLogos.js';
+import { athleticChipLabel, athleticChipTitle } from '/lib/rookies/athleticLabel.js';
 
 function esc(str) {
   return String(str ?? '')
@@ -31,18 +32,6 @@ const PPR_BAND_CLASS = {
  * Renders a compact 3-bar SVG showing Athletic / Production / Draft Capital (0–100).
  * Bars are colour-coded: Athletic (RAS/SPORQ/partial) = steel blue, Production = teal, Draft = coral.
  */
-function athChipLabel(source) {
-  if (source === 'SPORQ') return 'SPORQ';
-  if (source === 'COMBINE_FALLBACK') return 'ATH*';
-  return 'RAS';
-}
-
-function athChipTitle(source) {
-  if (source === 'SPORQ') return 'Athletic score (SPORQ composite)';
-  if (source === 'COMBINE_FALLBACK') return 'Athletic score (partial combine)';
-  return 'Relative Athletic Score';
-}
-
 function renderMiniScoreChart(row) {
   const bars = [
     { value: row.athleticScore,     color: '#6B9FD4', label: 'A' },
@@ -65,7 +54,7 @@ function renderMiniScoreChart(row) {
 
 function renderPprCell(row) {
   const proj = row.pprProjection;
-  if (!proj) return '<div class="board-cell" data-label="PPR Range"><span class="ppr-na">—</span></div>';
+  if (!proj || proj.stale === true) return '<div class="board-cell" data-label="PPR Range"><span class="ppr-na">—</span></div>';
   const bandClass = PPR_BAND_CLASS[proj.band] ?? 'ppr-band-lottery';
   return `
     <div class="board-cell board-ppr" data-label="PPR Range">
@@ -175,8 +164,6 @@ function renderEvidenceTierBadge(tier, reason) {
 function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}) {
   const rank = row.classRank == null ? 'N/A' : `#${row.classRank}`;
   const preDraftGrade = row.preDraftGrade == null ? 'N/A' : row.preDraftGrade.toFixed(1);
-  const adjustedGrade = row.postDraftAdjustedGrade == null ? 'N/A' : row.postDraftAdjustedGrade.toFixed(1);
-  const hasPostDraft = row.postDraftAdjustedGrade != null;
   const slug = encodeURIComponent(String(row.slug ?? ''));
   const compareLeftHref = `/cards/rookies/compare/index.html?left=${slug}`;
   const compareRightHref = `/cards/rookies/compare/index.html?right=${slug}`;
@@ -188,18 +175,17 @@ function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}
     row.draftClass ? String(row.draftClass) : null,
   ].filter(Boolean);
 
-  const pprBand = row.pprProjection?.band ?? null;
-  const pprRange = row.pprProjection
-    ? `${esc(row.pprProjection.floor)}–${esc(row.pprProjection.ceiling)}`
+  const pprLive = row.pprProjection && row.pprProjection.stale !== true ? row.pprProjection : null;
+  const pprBand = pprLive?.band ?? null;
+  const pprRange = pprLive
+    ? `${esc(pprLive.floor)}–${esc(pprLive.ceiling)}`
     : null;
 
   return `
     <div class="board-mobile-card">
       <div class="bmc-header">
         <span class="bmc-rank board-num">${esc(rank)}</span>
-        <span class="bmc-grade">${hasPostDraft
-    ? `Pre <strong class="bmc-grade-value">${esc(preDraftGrade)}</strong> · Post <strong class="bmc-grade-value">${esc(adjustedGrade)}</strong>`
-    : `Pre <strong class="bmc-grade-value">${esc(preDraftGrade)}</strong> · Post-Draft pending`}</span>
+        <span class="bmc-grade">Pre <strong class="bmc-grade-value">${esc(preDraftGrade)}</strong> · Post-draft grade not yet published</span>
       </div>
       <div class="bmc-name">
         ${renderTeamLogos(row.school, row.nflTeam)}
@@ -216,12 +202,11 @@ function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}
       </div>
       <div class="bmc-signals">
         ${row.draftCapitalScore != null ? `<span class="bmc-signal-chip bmc-signal-capital" title="Draft Capital">CAP ${Math.round(row.draftCapitalScore)}</span>` : ''}
-        ${row.athleticScore    != null ? `<span class="bmc-signal-chip bmc-signal-ath${row.athleticSource === 'SPORQ' ? ' bmc-signal-ath-sporq' : ''}" title="${athChipTitle(row.athleticSource)}">${athChipLabel(row.athleticSource)} ${Math.round(row.athleticScore)}</span>` : ''}
+        ${row.athleticScore    != null ? `<span class="bmc-signal-chip bmc-signal-ath${row.athleticSource === 'SPORQ' ? ' bmc-signal-ath-sporq' : ''}" title="${athleticChipTitle(row.athleticSource)}">${athleticChipLabel(row.athleticSource)} ${Math.round(row.athleticScore)}</span>` : ''}
         ${row.productionScore  != null ? `<span class="bmc-signal-chip bmc-signal-prod"    title="Production Score">PRD ${Math.round(row.productionScore)}</span>` : ''}
         ${renderBoarChip(row)}
       </div>
       <div class="bmc-stats">
-        ${hasPostDraft ? `<div class="bmc-stat-row"><span class="bmc-stat-label">Post-Draft Delta</span><span>${deltaSpanInline(row.postDraftDelta)}</span></div>` : ''}
         <div class="bmc-stat-row"><span class="bmc-stat-label">vs. Consensus</span><span>${deltaSpanInline(row.consensusDelta)}</span></div>
         ${pprRange ? `<div class="bmc-stat-row"><span class="bmc-stat-label">Range</span><span class="bmc-ppr-range">${pprRange} PPR</span></div>` : ''}
       </div>
@@ -239,8 +224,6 @@ function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}
 export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = null } = {}) {
   const rank = row.classRank == null ? 'N/A' : `#${row.classRank}`;
   const preDraftGrade = row.preDraftGrade == null ? 'N/A' : row.preDraftGrade.toFixed(1);
-  const adjustedGrade = row.postDraftAdjustedGrade == null ? 'N/A' : row.postDraftAdjustedGrade.toFixed(1);
-  const hasPostDraft = row.postDraftAdjustedGrade != null;
   const slug = encodeURIComponent(String(row.slug ?? ''));
   const compareLeftHref = `/cards/rookies/compare/index.html?left=${slug}`;
   const compareRightHref = `/cards/rookies/compare/index.html?right=${slug}`;
@@ -268,7 +251,7 @@ export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = 
       <div class="board-cell" data-label="School">${esc(row.school)}</div>
       <div class="board-cell board-grade board-num" data-label="Pre/Post Grade">
         <div>Pre ${esc(preDraftGrade)}</div>
-        <div class="meta">${hasPostDraft ? `Post ${esc(adjustedGrade)} · Δ ${deltaSpanInline(row.postDraftDelta)}` : 'Post-Draft pending'}</div>
+        <div class="meta">Post-draft grade not yet published</div>
         ${renderVolumeTrend(row)}
       </div>
       <div class="board-cell" data-label="Tier"><span class="board-tier-pill">${esc(row.tier.label)}</span></div>
