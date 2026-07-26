@@ -1,9 +1,17 @@
-import { renderRookieCompareView as renderBaseRookieCompareView } from './RookieCompareView.js';
 import {
   neutralAthleticPriorDisclosure,
   projectionTrackPercentages,
   sharedPprScaleMax,
 } from '../../lib/rookies/phase1bPresentation.js';
+
+function ensurePhase1BStyles() {
+  if (document.querySelector('link[data-phase1b-mobile-integrity]')) return;
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = '/components/rookies/phase1bMobileIntegrity.css';
+  link.dataset.phase1bMobileIntegrity = 'true';
+  document.head.append(link);
+}
 
 function findProjectionSection(container) {
   return [...container.querySelectorAll('.metrics')].find(
@@ -56,11 +64,7 @@ function applyNeutralPriorDisclosures(container, leftCard, rightCard) {
 }
 
 export function applyRookieComparePhase1B(container, leftCard, rightCard) {
+  ensurePhase1BStyles();
   applySharedProjectionScale(container, leftCard, rightCard);
   applyNeutralPriorDisclosures(container, leftCard, rightCard);
-}
-
-export function renderRookieCompareView(container, leftCard, rightCard) {
-  renderBaseRookieCompareView(container, leftCard, rightCard);
-  applyRookieComparePhase1B(container, leftCard, rightCard);
 }
