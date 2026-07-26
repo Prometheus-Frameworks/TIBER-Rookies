@@ -1,0 +1,219 @@
+/* Phase 1B bounded presentation repairs for player and compare routes. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+.page,
+.card-root-shell,
+.rookie-card-layout,
+.hero-panel,
+.hero-top,
+.hero-left,
+.hero-score,
+.card-columns,
+.card-col,
+.card-panel,
+.compare-page,
+.compare-selector-shell,
+.compare-results-shell,
+.compare-layout,
+.compare-grid,
+.compare-player,
+.compare-player-panel,
+.compare-3col-table,
+.compare-ppr-grid,
+.compare-ppr-panel {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.page {
+  width: 100%;
+}
+
+.hero-score {
+  max-width: 100%;
+}
+
+.meta,
+.profile-summary,
+.compare-profile-summary,
+.compare-notes,
+.compare-expand-content,
+.official-outcome-provenance,
+.sporq-comps-note,
+.site-footer-link,
+.site-footer-copy,
+.card-actions-copy,
+.metric-header,
+.compare-top-edge-label,
+.compare-3col-label {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.radar-chart {
+  width: min(100%, 310px);
+  height: auto;
+  overflow: visible;
+}
+
+.stats-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.stats-table th,
+.stats-table td {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.sporq-comps-section {
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.compare-3col-table {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+
+.compare-3col-name-row,
+.compare-3col-row {
+  min-width: 540px;
+}
+
+.compare-ppr-shared-scale {
+  margin-top: 5px;
+  font-size: 12px;
+}
+
+@media (max-width: 760px) {
+  .site-header-inner {
+    height: auto;
+    min-height: 56px;
+    padding: 8px 12px;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .site-logo {
+    padding-top: 5px;
+  }
+
+  .site-nav {
+    min-width: 0;
+    max-width: calc(100vw - 88px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    padding-bottom: 3px;
+  }
+
+  .site-nav-link {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .hero-score {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .card-actions-copy {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .card-actions-links,
+  .compare-grid,
+  .compare-ppr-grid,
+  .compare-snapshot-grid {
+    grid-template-columns: minmax(0, 1fr);
+    width: 100%;
+  }
+
+  .verdict-strip,
+  .compare-player-panel-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .compare-player-panel-grade {
+    text-align: left;
+  }
+
+  .delta-chip {
+    align-self: flex-start;
+  }
+
+  .compare-radar-row {
+    min-width: 0;
+  }
+
+  .compare-radar-side {
+    min-width: 0;
+  }
+
+  .site-footer-inner {
+    align-items: flex-start;
+  }
+
+  .site-footer-nav {
+    width: 100%;
+    gap: 10px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .site-logo-tagline {
+    display: none;
+  }
+
+  .site-nav {
+    max-width: calc(100vw - 76px);
+  }
+
+  .hero-panel,
+  .card-panel,
+  .compare-player,
+  .verdict-strip,
+  .compare-ppr-panel {
+    padding: 12px;
+  }
+
+  .player-name,
+  .compare-name {
+    overflow-wrap: anywhere;
+  }
+
+  .compare-3col-name-row,
+  .compare-3col-row {
+    min-width: 500px;
+  }
+
+  .compare-ppr-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .site-footer-inner {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
