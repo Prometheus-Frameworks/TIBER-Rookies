@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>TIBER Rookie Card</title>
     <link rel="stylesheet" href="/components/rookies/rookieCardStyles.css" />
+    <link rel="stylesheet" href="/components/rookies/phase1bMobileIntegrity.css" />
   </head>
   <body>
     <!-- ── Site navigation ──────────────────────────────────────────────────── -->
@@ -47,7 +48,7 @@
 
     <script type="module">
       import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
-      import { renderRookieCard } from '/components/rookies/RookieCard.js';
+      import { renderRookieCard } from '/components/rookies/RookieCardPhase1B.js';
       import { addRookieToQueue, getQueuedRookieAnnotation, isRookieQueued, removeRookieFromQueue } from '/lib/rookies/rookieQueueStore.js';
       import { deriveRookieTier } from '/lib/rookies/deriveRookieTier.js';
       import { findSimilarAthletes, getSporqDistribution } from '/lib/rookies/sporqHistorical.js';
