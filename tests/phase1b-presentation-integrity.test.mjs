@@ -152,6 +152,8 @@ test('player and compare routes wire the bounded Phase 1B presentation layer', (
   assert.match(playerHtml, /RookieCardPhase1B\.js/);
   assert.match(compareView, /applyRookieComparePhase1B/);
   assert.match(compareRepairs, /Shared track scale: 0–\$\{scaleMaximum\} PPR points/);
+  assert.match(compareRepairs, /ATH prior is a neutral model input, not observed athletic testing/);
+  assert.match(compareRepairs, /neutralPriorAxis/);
   assert.match(mobileCss, /box-sizing:\s*border-box/);
   assert.match(mobileCss, /\.compare-3col-table\s*\{[\s\S]*overflow-x:\s*auto/);
   assert.match(mobileCss, /\.site-nav\s*\{[\s\S]*overflow-x:\s*auto/);
