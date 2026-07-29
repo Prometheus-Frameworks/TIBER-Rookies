@@ -53,6 +53,5 @@ export function applyRookieCardPhase1B(container, card) {
 }
 
 export function renderRookieCard(container, card) {
-  renderBaseRookieCard(container, card);
-  applyRookieCardPhase1B(container, card);
+  renderBaseRookieCard(container, card, { afterRender: applyRookieCardPhase1B });
 }
