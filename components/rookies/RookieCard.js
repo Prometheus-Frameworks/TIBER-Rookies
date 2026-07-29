@@ -262,7 +262,7 @@ function formatStatEntry(key, value) {
   return `${displayLabel}: ${displayValue}`;
 }
 
-export function renderRookieCard(container, card) {
+export function renderRookieCard(container, card, { afterRender } = {}) {
   const heroScore = card.summary.rookieGrade == null ? 'N/A' : card.summary.rookieGrade.toFixed(1);
   const identityBits = [
     card.identity.positionLabel ?? card.identity.position,
@@ -424,6 +424,8 @@ export function renderRookieCard(container, card) {
         render();
       });
     });
+
+    afterRender?.(container, card);
   }
 
   render();
