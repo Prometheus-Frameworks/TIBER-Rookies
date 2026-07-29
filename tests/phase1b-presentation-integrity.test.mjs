@@ -144,12 +144,17 @@ test('card radar geometry reserves label padding outside the original viewBox', 
 
 test('player and compare routes wire the bounded Phase 1B presentation layer', () => {
   const playerHtml = fs.readFileSync(new URL('../cards/rookies/player.html', import.meta.url), 'utf8');
+  const baseCard = fs.readFileSync(new URL('../components/rookies/RookieCard.js', import.meta.url), 'utf8');
+  const phase1bCard = fs.readFileSync(new URL('../components/rookies/RookieCardPhase1B.js', import.meta.url), 'utf8');
   const compareView = fs.readFileSync(new URL('../components/rookies/RookieCompareView.js', import.meta.url), 'utf8');
   const compareRepairs = fs.readFileSync(new URL('../components/rookies/RookieCompareViewPhase1B.js', import.meta.url), 'utf8');
   const mobileCss = fs.readFileSync(new URL('../components/rookies/phase1bMobileIntegrity.css', import.meta.url), 'utf8');
 
   assert.match(playerHtml, /phase1bMobileIntegrity\.css/);
   assert.match(playerHtml, /RookieCardPhase1B\.js/);
+  assert.match(baseCard, /afterRender\?\.\(container, card\)/);
+  assert.match(phase1bCard, /afterRender:\s*applyRookieCardPhase1B/);
+  assert.doesNotMatch(phase1bCard, /renderBaseRookieCard\(container, card\);/);
   assert.match(compareView, /applyRookieComparePhase1B/);
   assert.match(compareRepairs, /Shared track scale: 0–\$\{scaleMaximum\} PPR points/);
   assert.match(compareRepairs, /ATH prior is a neutral model input, not observed athletic testing/);
