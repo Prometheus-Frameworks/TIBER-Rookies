@@ -160,10 +160,10 @@ test('player and compare routes wire the bounded Phase 1B presentation layer', (
   assert.match(compareRepairs, /Shared track scale: 0–\$\{scaleMaximum\} PPR points/);
   assert.match(compareRepairs, /ATH prior is a neutral model input, not observed athletic testing/);
   assert.match(compareRepairs, /neutralPriorAxis/);
-  assert.match(compareRepairs, /viewBox.*-12 -28 244 260/);
+  assert.match(compareRepairs, /setAttribute\('viewBox', '-18 -24 256 262'\)/);
+  assert.match(compareRepairs, /paddingTop = '18px'/);
   assert.match(mobileCss, /box-sizing:\s*border-box/);
   assert.match(mobileCss, /\.compare-3col-table\s*\{[\s\S]*overflow-x:\s*auto/);
   assert.match(mobileCss, /\.site-nav\s*\{[\s\S]*overflow-x:\s*auto/);
   assert.match(mobileCss, /\.hero-score\s*\{[\s\S]*width:\s*100%/);
-  assert.match(mobileCss, /\.compare-radar-center\s*\{[\s\S]*margin-top:\s*18px/);
 });
