@@ -51,6 +51,19 @@ function applySharedProjectionScale(container, leftCard, rightCard) {
   });
 }
 
+function applyCompareRadarGeometry(container) {
+  const radarCenter = container.querySelector('.compare-radar-center');
+  const radarSvg = radarCenter?.querySelector('.compare-radar-svg');
+  if (!radarCenter || !radarSvg) return;
+
+  radarSvg.setAttribute('viewBox', '-18 -24 256 262');
+  radarSvg.dataset.phase1bLabelPadding = 'true';
+
+  if (window.matchMedia?.('(max-width: 480px)').matches) {
+    radarCenter.style.paddingTop = '18px';
+  }
+}
+
 function applyNeutralPriorDisclosures(container, leftCard, rightCard) {
   const cards = [leftCard, rightCard];
   const panels = [...container.querySelectorAll('.compare-player-panel')];
@@ -87,5 +100,6 @@ function applyNeutralPriorDisclosures(container, leftCard, rightCard) {
 export function applyRookieComparePhase1B(container, leftCard, rightCard) {
   ensurePhase1BStyles();
   applySharedProjectionScale(container, leftCard, rightCard);
+  applyCompareRadarGeometry(container);
   applyNeutralPriorDisclosures(container, leftCard, rightCard);
 }
