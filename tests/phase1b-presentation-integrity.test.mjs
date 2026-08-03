@@ -135,11 +135,12 @@ test('readiness wording counts represented observed rows and excludes ATH prior'
   );
 });
 
-test('card radar geometry reserves label padding outside the original viewBox', () => {
-  assert.equal(CARD_RADAR_VIEWBOX, '-55 -24 310 248');
+test('card radar geometry reserves additional top clearance for narrow mobile labels', () => {
+  assert.equal(CARD_RADAR_VIEWBOX, '-55 -44 310 268');
   const [x, y, width, height] = CARD_RADAR_VIEWBOX.split(/\s+/).map(Number);
-  assert.ok(x < 0 && y < 0);
-  assert.ok(width > 200 && height > 200);
+  assert.ok(x < 0);
+  assert.ok(y <= -40, 'top of viewBox must reserve at least 40 units above the original chart');
+  assert.ok(width > 200 && height >= 268);
 });
 
 test('player and compare routes wire the bounded Phase 1B presentation layer', () => {
@@ -159,8 +160,10 @@ test('player and compare routes wire the bounded Phase 1B presentation layer', (
   assert.match(compareRepairs, /Shared track scale: 0–\$\{scaleMaximum\} PPR points/);
   assert.match(compareRepairs, /ATH prior is a neutral model input, not observed athletic testing/);
   assert.match(compareRepairs, /neutralPriorAxis/);
+  assert.match(compareRepairs, /viewBox.*-12 -28 244 260/);
   assert.match(mobileCss, /box-sizing:\s*border-box/);
   assert.match(mobileCss, /\.compare-3col-table\s*\{[\s\S]*overflow-x:\s*auto/);
   assert.match(mobileCss, /\.site-nav\s*\{[\s\S]*overflow-x:\s*auto/);
   assert.match(mobileCss, /\.hero-score\s*\{[\s\S]*width:\s*100%/);
+  assert.match(mobileCss, /\.compare-radar-center\s*\{[\s\S]*margin-top:\s*18px/);
 });
