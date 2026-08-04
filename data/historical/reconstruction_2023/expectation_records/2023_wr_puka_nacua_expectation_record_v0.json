@@ -1,0 +1,17 @@
+{
+  "artifact": "historical_expectation_record_v0",
+  "issue": "Prometheus-Frameworks/TIBER-Rookies#283",
+  "canonical_player_id": "wr-puka-nacua",
+  "class_year": 2023,
+  "frozen_at": "2026-08-04T22:40:55.111026+00:00",
+  "predraft_card": {
+    "path": "data/historical/reconstruction_2023/predraft_cards/2023_wr_puka_nacua_predraft_v0.json",
+    "sha256": "bad6202d315c1586aba3d9e0d1e2bb61d1e23a30cddab364a5d8b11d8bf7b733"
+  },
+  "landing_context": {
+    "path": "data/historical/reconstruction_2023/landing_context/2023_wr_puka_nacua_landing_context_v0.json",
+    "sha256": "3b0509bb29995eeedeffb7391777ccced7a7aa75cfd6703b4e77d4bdf596853d"
+  },
+  "nfl_outcomes_included": false,
+  "freeze_note": "Frozen before any outcome layer was written. Any edit to the referenced files invalidates this record and requires an explicit logged re-freeze (see docs/historical-reconstruction-contract.md)."
+}

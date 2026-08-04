@@ -1,0 +1,120 @@
+{
+  "artifact": "landing_context_v0",
+  "issue": "Prometheus-Frameworks/TIBER-Rookies#283",
+  "class_year": 2023,
+  "canonical_player_id": "wr-puka-nacua",
+  "player_name": "Puka Nacua",
+  "landing_context": {
+    "draft_team": "LAR",
+    "draft_team_code_note": "nflverse/TIBER-Data coverage rows use 'LA' for the Rams; normalized to LAR per TIBER-Rookies convention. Known cross-repo join hazard.",
+    "draft_round": 5,
+    "overall_pick": 177,
+    "draft_capital_tier": "day3_late (R5)",
+    "context_cutoff": "2023-04-29T23:59:59Z",
+    "context_cutoff_note": "Evening of Day 3 of the 2023 NFL Draft (pick occurred 2023-04-29). Only facts observable by then are admitted.",
+    "returning_receiver_depth_chart": [
+      {"player": "Cooper Kupp", "row_type": "observation", "targets_2022": 98, "receptions_2022": 75, "receiving_yards_2022": 812, "games_2022": 9, "status_at_cutoff": "Returning from Nov 2022 high-ankle surgery (IR); publicly 'feeling really good' in April 2023, expected full recovery; presumptive target-dominant WR1.", "needs_verification": false},
+      {"player": "Van Jefferson", "row_type": "observation", "targets_2022": 44, "receptions_2022": 24, "receiving_yards_2022": 369, "games_2022": 10, "status_at_cutoff": "Returning; injury-limited 2022 (knee).", "needs_verification": false},
+      {"player": "Ben Skowronek", "row_type": "observation", "targets_2022": 61, "receptions_2022": 39, "receiving_yards_2022": 376, "games_2022": 14, "status_at_cutoff": "Returning; hybrid WR/FB usage.", "needs_verification": false},
+      {"player": "Tutu Atwell", "row_type": "observation", "targets_2022": 35, "receptions_2022": 18, "receiving_yards_2022": 298, "games_2022": 12, "status_at_cutoff": "Returning; former R2 pick, undersized speed profile.", "needs_verification": false},
+      {"player": "Brandon Powell", "row_type": "observation", "targets_2022": 32, "receptions_2022": 24, "receiving_yards_2022": 156, "games_2022": 17, "status_at_cutoff": "Unrestricted free agent at cutoff (2022 Ram); not confirmed re-signed by cutoff.", "needs_verification": true}
+    ],
+    "returning_tight_end_depth_chart": [
+      {"player": "Tyler Higbee", "row_type": "observation", "targets_2022": 108, "receptions_2022": 72, "receiving_yards_2022": 620, "games_2022": 16, "status_at_cutoff": "Returning; 2022 team target leader.", "needs_verification": false}
+    ],
+    "returning_running_back_depth_chart": [
+      {"player": "Cam Akers", "row_type": "observation", "targets_2022": 18, "rushing_note": "Lead back late 2022 after midseason trade request reconciliation.", "status_at_cutoff": "Returning.", "needs_verification": false},
+      {"player": "Kyren Williams", "row_type": "observation", "targets_2022": 12, "status_at_cutoff": "Returning; 2022 R5 rookie, special-teams heavy.", "needs_verification": false}
+    ],
+    "vacated_targets": {
+      "value": 52,
+      "season_basis": "2022 REG targets of receivers verifiably departed by cutoff (Allen Robinson II, traded to PIT 2023-04-18: 52 targets). Darrell Henderson (22 RB targets, waived Nov 2022) excluded from WR vacancy math.",
+      "source_ref": {
+        "kind": "computed_from_public_release",
+        "source_name": "nflverse stats_player_reg_2022 + verified trade reporting",
+        "source_url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_reg_2022.csv.gz",
+        "trade_ref": "https://www.therams.com/news/rams-trade-allen-robinson-ii-to-steelers (2023-04-18)"
+      },
+      "soft_vacancy_note": "Formal vacancy understates opportunity: 2022 LAR WR production behind Kupp was replacement-level, and Kupp himself missed 8 games, so 2022 usage misstates a healthy-roster baseline in both directions."
+    },
+    "vacated_routes_or_snaps": {
+      "value": null,
+      "source_ref": null,
+      "note": "Route/snap data unavailable: 100% null in TIBER-Data player_season_coverage_v0 by upstream design; no governed 2022 route source exists (classified unavailable in the source-availability report)."
+    },
+    "incumbent_target_leaders": [
+      {"player": "Tyler Higbee", "targets_2022": 108, "position": "TE"},
+      {"player": "Cooper Kupp", "targets_2022": 98, "position": "WR", "note": "in 9 games"},
+      {"player": "Ben Skowronek", "targets_2022": 61, "position": "WR"}
+    ],
+    "quarterback_state": {
+      "row_type": "observation",
+      "starter": "Matthew Stafford",
+      "age_entering_2023": 35,
+      "status_at_cutoff": "Ended 2022 on IR with a spinal cord contusion (plus concussion); missed 8 games. Publicly cleared retirement speculation and was expected to return as the 2023 starter.",
+      "backup_context": "No established veteran backup at cutoff; Stafford availability was the single largest offense variable.",
+      "source_ref": {
+        "kind": "verified_public_source",
+        "source_url": "https://www.footballoutsiders.com/extra-points/2022/matt-stafford-placed-ir-spinal-contusion"
+      }
+    },
+    "coaching_and_scheme_state": {
+      "row_type": "observation",
+      "head_coach": "Sean McVay (returning; had publicly weighed stepping away in Jan 2023 before recommitting)",
+      "offensive_scheme": "11-personnel-dominant, condensed-formation play-action offense with a history of manufacturing volume for big slots and YAC receivers.",
+      "scheme_fit_inference": {
+        "row_type": "inference",
+        "read": "Nacua's inside/outside physical YAC profile matches the Kupp/Robert Woods usage archetype McVay has historically featured.",
+        "confidence": "medium"
+      },
+      "needs_verification": true
+    },
+    "prior_season_offense_quality": {
+      "row_type": "observation",
+      "record_2022": "5-12",
+      "team_targets_2022": 517,
+      "qualitative": "Bottom-quartile scoring offense in 2022 amid Stafford/Kupp injuries and severe OL attrition; 2021-2022 gap driven substantially by health, not scheme decay.",
+      "source_ref": {
+        "kind": "computed_from_public_release_plus_public_record",
+        "source_url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_reg_2022.csv.gz",
+        "needs_verification_fields": ["record_2022", "scoring rank qualitative"]
+      }
+    },
+    "projected_role_openings": [
+      {"row_type": "inference", "role": "WR3/WR4 with sub-package snaps immediately available given post-Robinson depth", "confidence": "medium"},
+      {"row_type": "inference", "role": "Path to WR2-adjacent volume contingent on any injury to Kupp or Jefferson", "confidence": "medium"}
+    ],
+    "role_competition": [
+      {"competitor": "Van Jefferson", "basis": "incumbent outside starter when healthy"},
+      {"competitor": "Tutu Atwell", "basis": "draft-capital incumbent (2021 R2)"},
+      {"competitor": "Ben Skowronek", "basis": "trusted role player, alignment overlap in condensed sets"}
+    ],
+    "opportunity_interpretation": {
+      "row_type": "inference",
+      "read": "Moderately favorable for a Day 3 pick: the depth chart behind Kupp was the thinnest in the league relative to scheme target volume, and the WR2 job was functionally open. Offense quality risk (Stafford's spine, OL, 2022 collapse) capped the projection. An honest April 2023 assessment is 'excellent role-path, uncertain environment' — not a hidden-elite landing spot.",
+      "confidence": "medium",
+      "contingencies": [
+        "Stafford healthy and starting",
+        "Kupp recovery holding (his target dominance suppresses ceiling if fully healthy)",
+        "No veteran WR addition after the draft"
+      ]
+    },
+    "limitations": [
+      "No routes/snap/route-participation data for 2022 (unavailable upstream).",
+      "No governed depth-chart snapshot artifact exists for April 2023; depth ordering derived from 2022 usage plus verified transactions.",
+      "Free-agency status of fringe WRs (Powell) at cutoff not re-verified.",
+      "Demarcus Robinson's 2023 Rams signing date could not be verified as pre- or post-draft; he is omitted from the cutoff depth chart and flagged here.",
+      "Team scoring-rank claim is qualitative; governed 2022 team-week environment data does not exist in any TIBER repo (external_research_required)."
+    ]
+  },
+  "source_lineage": [
+    {"source": "https://github.com/nflverse/nflverse-data/releases/download/draft_picks/draft_picks.csv.gz", "kind": "verified_public_source", "provides": "draft slot facts (round 5, pick 177, LAR)"},
+    {"source": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_reg_2022.csv.gz", "kind": "verified_public_source", "provides": "all 2022 usage rows (targets/receptions/yards/games)"},
+    {"source": "https://www.therams.com/news/rams-trade-allen-robinson-ii-to-steelers", "kind": "verified_public_source", "provides": "Allen Robinson trade (2023-04-18)"},
+    {"source": "https://www.footballoutsiders.com/extra-points/2022/matt-stafford-placed-ir-spinal-contusion", "kind": "verified_public_source", "provides": "Stafford IR/spinal contusion"},
+    {"source": "https://www.therams.com/news/cooper-kupp-injury-update-high-ankle-sprain-injured-reserve", "kind": "verified_public_source", "provides": "Kupp Nov 2022 surgery/IR"},
+    {"source": "https://www.nbcsports.com/nfl/profootballtalk/rumor-mill/news/cooper-kupp-ankle-feeling-really-good-after-surgery", "kind": "verified_public_source", "provides": "Kupp April 2023 recovery status"},
+    {"source": "public_record_agent_recall", "kind": "agent_recall_needs_verification", "provides": "McVay retention narrative, OL attrition, scoring-rank qualitative, Jefferson knee"}
+  ],
+  "hindsight_exclusion_note": "Nothing after 2023-04-29 is admitted: no 2023 preseason usage, no Kupp 2023 hamstring injury, no in-season Rams roster moves, and no NFL production of any player drafted in 2023."
+}

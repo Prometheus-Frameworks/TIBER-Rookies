@@ -1,0 +1,116 @@
+{
+  "artifact": "landing_context_v0",
+  "issue": "Prometheus-Frameworks/TIBER-Rookies#283",
+  "class_year": 2023,
+  "canonical_player_id": "wr-josh-downs",
+  "player_name": "Josh Downs",
+  "landing_context": {
+    "draft_team": "IND",
+    "draft_round": 3,
+    "overall_pick": 79,
+    "draft_capital_tier": "day2_r3",
+    "context_cutoff": "2023-04-28T23:59:59Z",
+    "context_cutoff_note": "Evening of Day 2 (2023-04-28). Picks 1-100 of the 2023 draft are observable, including the Colts taking Anthony Richardson at pick 4. Nothing later is admitted.",
+    "returning_receiver_depth_chart": [
+      {"player": "Michael Pittman Jr.", "row_type": "observation", "targets_2022": 141, "receptions_2022": 99, "receiving_yards_2022": 925, "games_2022": 16, "status_at_cutoff": "Returning; established possession X/flanker and target leader.", "needs_verification": false},
+      {"player": "Alec Pierce", "row_type": "observation", "targets_2022": 78, "receptions_2022": 41, "receiving_yards_2022": 593, "games_2022": 16, "status_at_cutoff": "Returning 2022 R2 pick; vertical outside profile, minimal slot overlap.", "needs_verification": false},
+      {"player": "Ashton Dulin", "row_type": "observation", "targets_2022": 22, "status_at_cutoff": "Returning depth/special teams.", "needs_verification": false},
+      {"player": "Isaiah McKenzie", "row_type": "observation", "targets_2022": 0, "targets_note": "2022 with BUF, not IND", "status_at_cutoff": "Veteran slot signed in offseason 2023; modest one-year commitment.", "needs_verification": true}
+    ],
+    "returning_tight_end_depth_chart": [
+      {"player": "Jelani Woods", "row_type": "observation", "targets_2022": 40, "receptions_2022": 25, "receiving_yards_2022": 312, "games_2022": 12, "status_at_cutoff": "Returning; ascending 2022 R3 athletic profile.", "needs_verification": false},
+      {"player": "Kylen Granson", "row_type": "observation", "targets_2022": 40, "status_at_cutoff": "Returning; move-TE usage.", "needs_verification": false},
+      {"player": "Mo Alie-Cox", "row_type": "observation", "targets_2022": 28, "status_at_cutoff": "Returning; blocking-lean role.", "needs_verification": false}
+    ],
+    "returning_running_back_depth_chart": [
+      {"player": "Jonathan Taylor", "row_type": "observation", "targets_2022": 40, "status_at_cutoff": "Returning bell-cow; 2022 injury-marred (ankle).", "needs_verification": false},
+      {"player": "Zack Moss", "row_type": "observation", "targets_2022": 13, "status_at_cutoff": "Returning.", "needs_verification": false},
+      {"player": "Deon Jackson", "row_type": "observation", "targets_2022": 34, "status_at_cutoff": "Returning depth.", "needs_verification": false}
+    ],
+    "vacated_targets": {
+      "value": 91,
+      "season_basis": "2022 REG targets of Parris Campbell (91), who signed with the NY Giants 2023-03-16. Campbell played 87%+ of his snaps from the slot in 2022 (qualitative), so the vacancy maps directly onto Downs' archetype.",
+      "source_ref": {
+        "kind": "computed_from_public_release",
+        "source_name": "nflverse stats_player_reg_2022 + verified signing reporting",
+        "source_url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_reg_2022.csv.gz",
+        "signing_ref": "https://www.giants.com/news/parris-campbell-contract-nfl-free-agency-indianapolis-colts-daniel-jones-okereke (2023-03-16)"
+      },
+      "slot_share_note": "Campbell slot-share percentage is qualitative recall, needs_verification; his 91 targets and slot-primary role are directionally solid."
+    },
+    "vacated_routes_or_snaps": {
+      "value": null,
+      "source_ref": null,
+      "note": "Route/snap data unavailable for 2022 (no governed source; upstream nulls by design)."
+    },
+    "incumbent_target_leaders": [
+      {"player": "Michael Pittman Jr.", "targets_2022": 141, "position": "WR"},
+      {"player": "Parris Campbell", "targets_2022": 91, "position": "WR", "note": "departed 2023-03-16"},
+      {"player": "Alec Pierce", "targets_2022": 78, "position": "WR"}
+    ],
+    "quarterback_state": {
+      "row_type": "observation",
+      "starter": "Unsettled: Anthony Richardson (drafted pick 4 overall on 2023-04-27, one day before Downs) and veteran bridge Gardner Minshew (signed 2023-03-16, 1yr/$3.5M).",
+      "status_at_cutoff": "Fourth different Week-1 QB in four years was guaranteed. Richardson entered as a high-ceiling, low-college-volume passer (single full college starting season); near-term passing quality and volume highly uncertain.",
+      "source_ref": {
+        "kind": "verified_public_source",
+        "source_url": "https://www.nfl.com/news/qb-gardner-minshew-signing-with-colts-reuniting-with-shane-steichen"
+      }
+    },
+    "coaching_and_scheme_state": {
+      "row_type": "observation",
+      "head_coach": "Shane Steichen, hired February 2023 from Eagles OC role",
+      "expected_change_inference": {
+        "row_type": "inference",
+        "read": "Steichen's Eagles/Chargers background implied a spread-friendly, 11-personnel, RPO-and-quick-game offense that historically feeds slot receivers and layups underneath — a strong stylistic match for Downs, and structurally friendly to a rookie QB.",
+        "confidence": "medium"
+      },
+      "needs_verification": false
+    },
+    "prior_season_offense_quality": {
+      "row_type": "observation",
+      "record_2022": "4-12-1",
+      "team_targets_2022": 559,
+      "qualitative": "Dysfunctional 2022 offense (revolving QBs: Ryan, Ehlinger, Foles; midseason coaching change) with bottom-tier scoring despite decent raw target volume. Floor was low; direction under a new staff unknowable.",
+      "source_ref": {
+        "kind": "computed_from_public_release_plus_public_record",
+        "source_url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_reg_2022.csv.gz",
+        "needs_verification_fields": ["record_2022", "scoring-rank qualitative"]
+      }
+    },
+    "projected_role_openings": [
+      {"row_type": "inference", "role": "Starting slot from Day 1: Campbell's 91 slot targets vacated, McKenzie the only veteran competition, and no other slot archetype on roster", "confidence": "high"},
+      {"row_type": "inference", "role": "Rookie-QB checkdown/hot-route beneficiary in a Steichen quick-game structure", "confidence": "medium"}
+    ],
+    "role_competition": [
+      {"competitor": "Isaiah McKenzie", "basis": "veteran slot on a cheap one-year deal — capital says Downs wins"},
+      {"competitor": "Michael Pittman Jr.", "basis": "target-share ceiling: Pittman commands the first read"},
+      {"competitor": "TE room (Woods/Granson)", "basis": "short-area target overlap"}
+    ],
+    "opportunity_interpretation": {
+      "row_type": "inference",
+      "read": "Role-favorable, environment-risky. The cleanest slot vacancy of the 2023 draft mapped exactly onto Downs' archetype, with only nominal veteran competition — a high-probability path to immediate snaps and 70+ targets. The cap was the quarterback: a bridge veteran and the rawest first-round QB of the class meant target quality and scoring environment carried unusually wide error bars.",
+      "confidence": "medium",
+      "contingencies": [
+        "Richardson's readiness/accuracy as a rookie passer",
+        "Steichen actually installing an 11-personnel slot-heavy structure",
+        "Offense functional enough to sustain 550+ team targets"
+      ]
+    },
+    "limitations": [
+      "No routes/snap data for 2022 (unavailable upstream).",
+      "No governed April 2023 depth-chart snapshot; ordering derived from 2022 usage plus verified transactions.",
+      "McKenzie signing date/terms recalled from public record, needs verification.",
+      "Campbell slot-share figure is qualitative recall.",
+      "Governed 2022 team-environment data (pace, PROE, EPA) does not exist in any TIBER repo."
+    ]
+  },
+  "source_lineage": [
+    {"source": "https://github.com/nflverse/nflverse-data/releases/download/draft_picks/draft_picks.csv.gz", "kind": "verified_public_source", "provides": "draft slot facts (round 3, pick 79, IND) and Richardson at pick 4"},
+    {"source": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_reg_2022.csv.gz", "kind": "verified_public_source", "provides": "all 2022 usage rows"},
+    {"source": "https://www.giants.com/news/parris-campbell-contract-nfl-free-agency-indianapolis-colts-daniel-jones-okereke", "kind": "verified_public_source", "provides": "Campbell departure (2023-03-16)"},
+    {"source": "https://www.nfl.com/news/qb-gardner-minshew-signing-with-colts-reuniting-with-shane-steichen", "kind": "verified_public_source", "provides": "Minshew signing + Steichen linkage"},
+    {"source": "public_record_agent_recall", "kind": "agent_recall_needs_verification", "provides": "McKenzie signing, Campbell slot share, 2022 QB carousel detail"}
+  ],
+  "hindsight_exclusion_note": "Nothing after the evening of 2023-04-28 is admitted: no Richardson injury history, no 2023 Colts season events, and no NFL production of any 2023 draftee."
+}
