@@ -58,6 +58,10 @@ function applyCompareRadarGeometry(container) {
 
   radarSvg.setAttribute('viewBox', '-18 -24 256 262');
   radarSvg.dataset.phase1bLabelPadding = 'true';
+  radarSvg.style.overflow = 'visible';
+  radarSvg.querySelectorAll('text').forEach((label) => {
+    label.setAttribute('dominant-baseline', 'middle');
+  });
 
   if (window.matchMedia?.('(max-width: 480px)').matches) {
     radarCenter.style.paddingTop = '18px';
