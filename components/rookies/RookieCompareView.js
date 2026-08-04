@@ -1,6 +1,7 @@
 import { compareRookies } from '/lib/rookies/compareRookies.js';
 import { getCollegeLogoUrl, getNflTeamLogoUrl } from '/lib/rookies/teamLogos.js';
 import { athleticMetricLabel } from '/lib/rookies/athleticLabel.js';
+import { applyRookieComparePhase1B } from './RookieCompareViewPhase1B.js';
 
 function esc(str) {
   return String(str ?? '')
@@ -411,4 +412,6 @@ export function renderRookieCompareView(container, leftCard, rightCard) {
 
     </section>
   `;
+
+  applyRookieComparePhase1B(container, leftCard, rightCard);
 }
