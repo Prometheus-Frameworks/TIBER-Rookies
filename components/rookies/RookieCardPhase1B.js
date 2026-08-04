@@ -44,6 +44,10 @@ function applyRadarGeometry(container) {
   if (!radar) return;
   radar.setAttribute('viewBox', CARD_RADAR_VIEWBOX);
   radar.setAttribute('data-phase1b-label-padding', 'true');
+  radar.style.overflow = 'visible';
+  radar.querySelectorAll('text').forEach((label) => {
+    label.setAttribute('dominant-baseline', 'middle');
+  });
 }
 
 export function applyRookieCardPhase1B(container, card) {
