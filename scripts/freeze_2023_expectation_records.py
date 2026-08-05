@@ -31,11 +31,37 @@ def sha256_of(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def freeze() -> None:
+def freeze(refreeze_reason: str | None = None) -> None:
     RECORDS.mkdir(parents=True, exist_ok=True)
     for player_id, stem in PILOTS:
         card = CARDS / f"{stem}_predraft_v0.json"
         landing = LANDING / f"{stem}_landing_context_v0.json"
+        out = RECORDS / f"{stem}_expectation_record_v0.json"
+
+        refreeze_log: list[dict] = []
+        if out.exists():
+            existing = json.loads(out.read_text())
+            unchanged = (
+                existing.get("predraft_card", {}).get("sha256") == sha256_of(card)
+                and existing.get("landing_context", {}).get("sha256") == sha256_of(landing)
+            )
+            if unchanged:
+                print(f"unchanged {out} (hashes already match; record kept)")
+                continue
+            if not refreeze_reason:
+                raise SystemExit(
+                    f"Refusing to overwrite {out}: frozen layers changed. "
+                    "Re-freezing requires an explicit logged reason "
+                    "(--refreeze-reason), per docs/historical-reconstruction-contract.md."
+                )
+            refreeze_log = list(existing.get("refreeze_log", []))
+            refreeze_log.append({
+                "refrozen_at": datetime.now(tz=timezone.utc).isoformat(),
+                "reason": refreeze_reason,
+                "previous_predraft_card_sha256": existing.get("predraft_card", {}).get("sha256"),
+                "previous_landing_context_sha256": existing.get("landing_context", {}).get("sha256"),
+            })
+
         record = {
             "artifact": "historical_expectation_record_v0",
             "issue": "Prometheus-Frameworks/TIBER-Rookies#283",
@@ -51,7 +77,8 @@ def freeze() -> None:
                 "explicit logged re-freeze (see docs/historical-reconstruction-contract.md)."
             ),
         }
-        out = RECORDS / f"{stem}_expectation_record_v0.json"
+        if refreeze_log:
+            record["refreeze_log"] = refreeze_log
         out.write_text(json.dumps(record, indent=2) + "\n")
         print(f"froze {out}")
 
@@ -75,9 +102,14 @@ def verify() -> int:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("mode", choices=["freeze", "verify"])
+    parser.add_argument(
+        "--refreeze-reason",
+        default=None,
+        help="Required to overwrite an existing record whose layers changed; logged into the record.",
+    )
     args = parser.parse_args()
     if args.mode == "freeze":
-        freeze()
+        freeze(refreeze_reason=args.refreeze_reason)
     else:
         sys.exit(1 if verify() else 0)
 

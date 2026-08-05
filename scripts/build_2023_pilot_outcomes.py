@@ -66,6 +66,12 @@ def main() -> None:
                 "rushing_tds": row["rushing_tds"],
                 "ppr_points": row["ppr_points"],
                 "ppr_per_game": row["ppr_per_game"],
+                "season_type_basis": "REG_POST_mixing_suspected",
+                "season_type_note": (
+                    "Copied from the promoted outcomes export, whose legacy nflverse "
+                    "path mixes REG+POST in 31/132 draft-class-2023 player-seasons "
+                    "(TIBER-Rookies#285 / PR#287 audit). Applies to 2023 AND 2024 rows."
+                ),
                 "source": "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json (read-only)",
             })
 
@@ -95,6 +101,7 @@ def main() -> None:
                     "rushing_tds": rush_tds,
                     "ppr_points": ppr,
                     "ppr_per_game": round(ppr / games, 3) if games else 0.0,
+                    "season_type_basis": "REG_only",
                     "source": "nflverse stats_player_reg_2025 (public release; same formula as promoted builder)",
                 })
 
@@ -107,6 +114,12 @@ def main() -> None:
         "boundary_note": (
             "Outcome layer only. Must never be read by, merged into, or used to "
             "edit the frozen pre-draft cards, landing contexts, or expectation records."
+        ),
+        "season_type_caveat": (
+            "Rows are NOT on a uniform season-type basis: 2023-2024 rows come from "
+            "the promoted export with suspected REG+POST mixing (per the #285/#287 "
+            "audit), 2025 rows are REG-only. Cross-season comparisons must account "
+            "for this until the promoted family is regenerated with the REG-only fix."
         ),
         "forecast_run1_reference": {
             "puka_nacua_row_exists": True,

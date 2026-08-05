@@ -1,9 +1,10 @@
 {
   "artifact": "pilot_outcomes_2023_2025_v0",
   "issue": "Prometheus-Frameworks/TIBER-Rookies#283",
-  "generated_at": "2026-08-04T22:41:28.179536+00:00",
+  "generated_at": "2026-08-05T21:26:47.337908+00:00",
   "built_after_freeze": true,
   "boundary_note": "Outcome layer only. Must never be read by, merged into, or used to edit the frozen pre-draft cards, landing contexts, or expectation records.",
+  "season_type_caveat": "Rows are NOT on a uniform season-type basis: 2023-2024 rows come from the promoted export with suspected REG+POST mixing (per the #285/#287 audit), 2025 rows are REG-only. Cross-season comparisons must account for this until the promoted family is regenerated with the REG-only fix.",
   "forecast_run1_reference": {
     "puka_nacua_row_exists": true,
     "detail": "TIBER-Forecast Run 1 (2024 inputs -> 2025 seasonal PPR) contains a Nacua row: predicted_ppr 261.28 vs actual 314.7 under player_id 00-0038543, which CONFLICTS with the governed GSIS id 00-0039075. Flowers and Downs are not in the 39-row Run 1 cohort. Recorded as a cross-repo identity defect; see the pilot report."
@@ -22,6 +23,8 @@
       "rushing_tds": 0.0,
       "ppr_points": 157.1,
       "ppr_per_game": 9.241,
+      "season_type_basis": "REG_POST_mixing_suspected",
+      "season_type_note": "Copied from the promoted outcomes export, whose legacy nflverse path mixes REG+POST in 31/132 draft-class-2023 player-seasons (TIBER-Rookies#285 / PR#287 audit). Applies to 2023 AND 2024 rows.",
       "source": "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json (read-only)"
     },
     {
@@ -37,6 +40,8 @@
       "rushing_tds": 0.0,
       "ppr_points": 182.2,
       "ppr_per_game": 13.014,
+      "season_type_basis": "REG_POST_mixing_suspected",
+      "season_type_note": "Copied from the promoted outcomes export, whose legacy nflverse path mixes REG+POST in 31/132 draft-class-2023 player-seasons (TIBER-Rookies#285 / PR#287 audit). Applies to 2023 AND 2024 rows.",
       "source": "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json (read-only)"
     },
     {
@@ -52,6 +57,7 @@
       "rushing_tds": 0.0,
       "ppr_points": 138.4,
       "ppr_per_game": 8.65,
+      "season_type_basis": "REG_only",
       "source": "nflverse stats_player_reg_2025 (public release; same formula as promoted builder)"
     },
     {
@@ -67,6 +73,8 @@
       "rushing_tds": 0.0,
       "ppr_points": 331.4,
       "ppr_per_game": 18.411,
+      "season_type_basis": "REG_POST_mixing_suspected",
+      "season_type_note": "Copied from the promoted outcomes export, whose legacy nflverse path mixes REG+POST in 31/132 draft-class-2023 player-seasons (TIBER-Rookies#285 / PR#287 audit). Applies to 2023 AND 2024 rows.",
       "source": "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json (read-only)"
     },
     {
@@ -82,6 +90,8 @@
       "rushing_tds": 1.0,
       "ppr_points": 232.4,
       "ppr_per_game": 17.877,
+      "season_type_basis": "REG_POST_mixing_suspected",
+      "season_type_note": "Copied from the promoted outcomes export, whose legacy nflverse path mixes REG+POST in 31/132 draft-class-2023 player-seasons (TIBER-Rookies#285 / PR#287 audit). Applies to 2023 AND 2024 rows.",
       "source": "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json (read-only)"
     },
     {
@@ -97,6 +107,7 @@
       "rushing_tds": 1.0,
       "ppr_points": 377.0,
       "ppr_per_game": 23.562,
+      "season_type_basis": "REG_only",
       "source": "nflverse stats_player_reg_2025 (public release; same formula as promoted builder)"
     },
     {
@@ -112,6 +123,8 @@
       "rushing_tds": 1.0,
       "ppr_points": 235.4,
       "ppr_per_game": 13.078,
+      "season_type_basis": "REG_POST_mixing_suspected",
+      "season_type_note": "Copied from the promoted outcomes export, whose legacy nflverse path mixes REG+POST in 31/132 draft-class-2023 player-seasons (TIBER-Rookies#285 / PR#287 audit). Applies to 2023 AND 2024 rows.",
       "source": "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json (read-only)"
     },
     {
@@ -127,6 +140,8 @@
       "rushing_tds": 0.0,
       "ppr_points": 209.5,
       "ppr_per_game": 12.324,
+      "season_type_basis": "REG_POST_mixing_suspected",
+      "season_type_note": "Copied from the promoted outcomes export, whose legacy nflverse path mixes REG+POST in 31/132 draft-class-2023 player-seasons (TIBER-Rookies#285 / PR#287 audit). Applies to 2023 AND 2024 rows.",
       "source": "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json (read-only)"
     },
     {
@@ -142,6 +157,7 @@
       "rushing_tds": 1.0,
       "ppr_points": 249.3,
       "ppr_per_game": 14.665,
+      "season_type_basis": "REG_only",
       "source": "nflverse stats_player_reg_2025 (public release; same formula as promoted builder)"
     }
   ]

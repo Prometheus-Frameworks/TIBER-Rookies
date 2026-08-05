@@ -218,8 +218,13 @@ Answers to the nine questions in issue #283:
 ## 5. Phase 5 — post-freeze outcome comparison (2023–2025)
 
 Outcome layer built only after `freeze` verification. PPR = same formula as
-the promoted outcomes builder. 2025 rows computed from the nflverse public
-release; 2023 rows carry an 18-game caveat (§2 finding 5).
+the promoted outcomes builder. **Season-type bases are not uniform**: the
+2023 AND 2024 rows are copied from the promoted export whose legacy path
+mixes REG+POST in 31/132 draft-class-2023 player-seasons (per the #285/#287
+audit — e.g. Nacua 2023 shows 18G/114/1667 vs true REG 17/105/1486), while
+2025 rows are REG-only. Each row now carries a `season_type_basis` field;
+cross-season comparisons below must be read with that caveat until the
+promoted family is regenerated with the REG-only builder fix.
 
 | Player | 2023 | 2024 | 2025 | Read against frozen expectation |
 |---|---|---|---|---|
@@ -255,6 +260,30 @@ Evaluation takeaways for the model-relevance decision:
 - [x] ML/model path executed reproducibly (deterministic: exact reproduction) and classified (ML lane: experimental, fixture-fed, non-validated)
 - [x] Clear retain/retire/refactor recommendation (§4.9 — operator decision)
 - [x] No current card, Forecast output, ranking, or promoted artifact mutated
+
+## Review acknowledgments (PR #284 review, 2026-08-05)
+
+- **Expected-draft-capital lineage (M1).** The reviewer is right that every
+  `expected_draft_capital` range rests on `agent_recall_needs_verification`
+  written by an author who knows the outcomes — the soft-leak channel #283
+  warns about. The cards label this honestly, but the "exact source lineage"
+  acceptance criterion should be read as **partially met** for that field
+  family. Closing it requires a licensed or archived April-2023 consensus
+  board source; until then the ranges are context, not evidence.
+- **Freeze governance (M3).** `freeze` now fails closed when layers changed
+  (silent re-pin removed; `--refreeze-reason` is required and logged into the
+  record), and `tests/test_freeze_2023_expectation_records.py` runs `verify`
+  against the committed records in CI. The single-commit history limitation
+  is real and cannot be repaired retroactively; the freeze remains protection
+  against accidental drift, with intent-level integrity resting on review.
+- **Erratum (L4).** The frozen Downs card describes 2022 Drake Maye as a
+  "true freshman"; he was a redshirt freshman. The field is already flagged
+  agent-recall; recorded here rather than editing the frozen card.
+- **Operator note (pairing with #287).** The frozen Nacua card states pro-day
+  data was unavailable *as of this pilot's construction*; PR #287 has since
+  sourced a pro-day candidate line. Both statements are correct in their
+  time-scopes. If the operator wants the card updated, that is a logged
+  re-freeze (`freeze --refreeze-reason ...`), not a silent edit.
 
 ## Follow-up issues recommended (not filed here)
 
