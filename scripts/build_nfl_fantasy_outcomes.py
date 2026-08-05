@@ -40,8 +40,11 @@ NFLVERSE_DRAFT_PICKS_URL = (
 )
 
 POSITIONS = {"WR", "RB", "TE", "QB"}
-WEEKLY_MODE_COLUMNS = {"week", "game_id", "recent_team", "opponent_team"}
+WEEKLY_MODE_COLUMNS = {"week", "game_id"}
 STATS_PLAYER_SEASON_PATTERN = re.compile(r"^stats_player_reg_(\d{4})\.(csv\.gz|csv)$")
+SEASON_TYPE_FIELDS = ("season_type", "seasonType")
+REGULAR_SEASON_TYPES = frozenset({"REG", "REGULAR", "REGULAR_SEASON"})
+POSTSEASON_TYPES = frozenset({"POST", "POSTSEASON", "POST_SEASON"})
 
 FIELDNAMES = [
     "player_id",
@@ -173,6 +176,48 @@ def detect_source_mode(stats_rows: list[dict[str, str]]) -> str:
     return "seasonal_source"
 
 
+def regular_season_stats_rows(stats_rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    """Return regular-season rows and fail closed on ambiguous weekly input.
+
+    The legacy nflverse ``player_stats`` asset can contain both REG and POST
+    game rows.  Aggregating it without an explicit season-type gate silently
+    mixes playoffs into player-season totals.  Season-sliced
+    ``stats_player_reg_*`` inputs are already regular-season summaries and do
+    not need a row-level season type.
+    """
+    if not stats_rows:
+        return []
+
+    source_mode = detect_source_mode(stats_rows)
+    has_season_type_column = any(
+        any(field in row for field in SEASON_TYPE_FIELDS) for row in stats_rows
+    )
+    if not has_season_type_column:
+        if source_mode == "weekly_aggregated":
+            raise ValueError(
+                "weekly stats input must declare season_type so REG and POST cannot be mixed"
+            )
+        return stats_rows
+
+    regular_rows: list[dict[str, str]] = []
+    for index, row in enumerate(stats_rows):
+        raw_value = next(
+            (row.get(field) for field in SEASON_TYPE_FIELDS if field in row),
+            None,
+        )
+        normalized = str(raw_value or "").strip().upper().replace("-", "_").replace(" ", "_")
+        if normalized in REGULAR_SEASON_TYPES:
+            regular_rows.append(row)
+            continue
+        if normalized in POSTSEASON_TYPES:
+            continue
+        raise ValueError(
+            f"stats row {index} has unknown or missing season_type {raw_value!r}; "
+            "refusing ambiguous REG/POST aggregation"
+        )
+    return regular_rows
+
+
 def latest_stats_season(stats_rows: list[dict[str, str]]) -> int:
     return max((to_int(row.get("season"), 0) for row in stats_rows), default=0)
 
@@ -288,6 +333,7 @@ def build_player_outcome_rows(
     draft_rows: list[dict[str, str]],
     source_notes: str,
 ) -> list[dict[str, Any]]:
+    stats_rows = regular_season_stats_rows(stats_rows)
     draft_index = build_draft_index(draft_rows)
     source_mode = detect_source_mode(stats_rows)
     grouped: dict[tuple[str, int], dict[str, Any]] = {}

@@ -1,0 +1,70 @@
+{
+  "artifact": "2023_combine_results_corrections_candidate_v0",
+  "schema_version": "tiber-rookies.2023-input-integrity.combine-candidate.v0.1.0",
+  "status": "candidate_only",
+  "issue": "Prometheus-Frameworks/TIBER-Rookies#285",
+  "model_facing": false,
+  "promotion_authorized": false,
+  "historical_cutoff": "2023-04-26T23:59:59Z",
+  "source_seed": {
+    "path": "data/raw/2023_combine_results.json",
+    "git_commit": "524bc549940926792aff24e4fb109d5e30122697",
+    "sha256": "35cbc98df75767ef9592b64b2e4f8351b2c02af8be4e69c9646b1ee039c2aa9f"
+  },
+  "records": [
+    {
+      "player_id": "wr-puka-nacua",
+      "player_name": "Puka Nacua",
+      "position": "WR",
+      "event_type": "nfl_combine",
+      "event_year": 2023,
+      "height_in": 74,
+      "weight_lb": 201,
+      "testing_status": "attended_no_scored_testing",
+      "forty": null,
+      "vertical": null,
+      "broad": null,
+      "three_cone": null,
+      "shuttle": null,
+      "bench": null,
+      "correction_note": "The source seed mixed non-combine values into an official-combine row. Nacua attended, but a contemporaneous report says he completed no scored drills; the nflverse release contains measurements but no standard athletic-test values. This candidate keeps every scored combine test null.",
+      "source_ref": {
+        "source_name": "nflverse combine public release",
+        "source_url": "https://github.com/nflverse/nflverse-data/releases/download/combine/combine.csv",
+        "source_asset_sha256": "5648886b1bb9de8a0c42b05ee7b1d9cbe58897676caaa2f6a4a3d3c9228235bb",
+        "source_row_identity": "season=2023;player_name=Puka Nacua;pfr_id=NacuPu00",
+        "corroborating_source_url": "https://gephardtdaily.com/sports/10-players-with-utah-ties-among-pro-prospects-invited-to-2023-nfl-scouting-combine/",
+        "corroborating_source_note": "Published 2023-03-06; reports that Nacua attended but did not compete in any scored drills.",
+        "source_status": "verified_public_source",
+        "retrieved_on": "2026-08-04"
+      }
+    },
+    {
+      "player_id": "wr-zay-flowers",
+      "player_name": "Zay Flowers",
+      "position": "WR",
+      "event_type": "nfl_combine",
+      "event_year": 2023,
+      "height_in": 69,
+      "weight_lb": 182,
+      "testing_status": "tested_partial",
+      "forty": 4.42,
+      "vertical": 35.5,
+      "broad": 127,
+      "three_cone": null,
+      "shuttle": null,
+      "bench": null,
+      "correction_note": "The source seed's 41.0-inch vertical and 129-inch broad jump conflict with both the nflverse combine row and the repo SPORQ row. The candidate uses the mutually agreeing 35.5/127 values.",
+      "source_ref": {
+        "source_name": "nflverse combine public release",
+        "source_url": "https://github.com/nflverse/nflverse-data/releases/download/combine/combine.csv",
+        "source_asset_sha256": "5648886b1bb9de8a0c42b05ee7b1d9cbe58897676caaa2f6a4a3d3c9228235bb",
+        "source_row_identity": "season=2023;player_name=Zay Flowers;pfr_id=FlowZa00",
+        "corroborating_repo_path": "data/historical/sporq_historical.json",
+        "corroborating_source_url": "https://www.baltimoreravens.com/news/jaxon-smith-njigba-zay-flowers-jalin-hyatt-wide-receiver-prospects-combine",
+        "source_status": "verified_public_source",
+        "retrieved_on": "2026-08-04"
+      }
+    }
+  ]
+}

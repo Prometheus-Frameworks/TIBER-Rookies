@@ -15,6 +15,7 @@ from scripts.build_nfl_fantasy_outcomes import (
     is_stale_source,
     latest_draft_year,
     latest_stats_season,
+    regular_season_stats_rows,
     resolve_stats_rows,
 )
 
@@ -84,6 +85,7 @@ class BuilderJoinTests(unittest.TestCase):
                 "player_name": "Test Receiver",
                 "position": "WR",
                 "season": "2022",
+                "season_type": "REG",
                 "week": "1",
                 "game_id": "2022_01_ATL_NO",
                 "receptions": "3",
@@ -97,6 +99,7 @@ class BuilderJoinTests(unittest.TestCase):
                 "player_name": "Test Receiver",
                 "position": "WR",
                 "season": "2022",
+                "season_type": "REG",
                 "week": "2",
                 "game_id": "2022_02_LAR_ATL",
                 "receptions": "5",
@@ -117,6 +120,113 @@ class BuilderJoinTests(unittest.TestCase):
         self.assertEqual(rows[0]["ppr_points"], 27.0)
         self.assertEqual(rows[0]["ppr_per_game"], 13.5)
         self.assertIn("source_mode=weekly_aggregated", rows[0]["source_notes"])
+
+    def test_weekly_postseason_rows_are_excluded_before_aggregation(self) -> None:
+        draft_rows = [
+            {
+                "gsis_id": "00-001",
+                "player_name": "Test Receiver",
+                "position": "WR",
+                "season": "2023",
+                "round": "1",
+                "pick": "8",
+                "team": "ATL",
+            }
+        ]
+        stats_rows = [
+            {
+                "gsis_id": "00-001",
+                "position": "WR",
+                "season": "2023",
+                "season_type": "REG",
+                "week": "18",
+                "game_id": "2023_18_ATL_NO",
+                "receptions": "5",
+                "receiving_yards": "70",
+                "receiving_tds": "1",
+            },
+            {
+                "gsis_id": "00-001",
+                "position": "WR",
+                "season": "2023",
+                "season_type": "POST",
+                "week": "19",
+                "game_id": "2023_19_ATL_DAL",
+                "receptions": "9",
+                "receiving_yards": "180",
+                "receiving_tds": "2",
+            },
+        ]
+
+        rows = build_player_outcome_rows(stats_rows, draft_rows, source_notes="fixture")
+
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["games"], 1)
+        self.assertEqual(rows[0]["receptions"], 5.0)
+        self.assertEqual(rows[0]["receiving_yards"], 70.0)
+        self.assertEqual(rows[0]["receiving_tds"], 1.0)
+
+    def test_weekly_rows_without_season_type_fail_closed(self) -> None:
+        stats_rows = [
+            {
+                "gsis_id": "00-001",
+                "position": "WR",
+                "season": "2023",
+                "week": "1",
+                "game_id": "2023_01_ATL_NO",
+            }
+        ]
+
+        with self.assertRaisesRegex(ValueError, "must declare season_type"):
+            regular_season_stats_rows(stats_rows)
+
+    def test_weekly_rows_with_unknown_season_type_fail_closed(self) -> None:
+        stats_rows = [
+            {
+                "gsis_id": "00-001",
+                "position": "WR",
+                "season": "2023",
+                "season_type": "UNKNOWN",
+                "week": "1",
+                "game_id": "2023_01_ATL_NO",
+            }
+        ]
+
+        with self.assertRaisesRegex(ValueError, "unknown or missing season_type"):
+            regular_season_stats_rows(stats_rows)
+
+    def test_season_summary_recent_team_preserves_games(self) -> None:
+        draft_rows = [
+            {
+                "gsis_id": "00-001",
+                "player_name": "Test Receiver",
+                "position": "WR",
+                "season": "2023",
+                "round": "1",
+                "pick": "8",
+                "team": "ATL",
+            }
+        ]
+        stats_rows = [
+            {
+                "player_id": "00-001",
+                "player_name": "Test Receiver",
+                "position": "WR",
+                "season": "2023",
+                "season_type": "REG",
+                "recent_team": "ATL",
+                "games": "17",
+                "receptions": "90",
+                "receiving_yards": "1200",
+                "receiving_tds": "8",
+            }
+        ]
+
+        rows = build_player_outcome_rows(stats_rows, draft_rows, source_notes="fixture")
+
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["games"], 17)
+        self.assertIn("source_mode=seasonal_source", rows[0]["source_notes"])
 
 
 class SourceFreshnessTests(unittest.TestCase):

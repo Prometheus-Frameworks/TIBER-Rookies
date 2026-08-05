@@ -1,0 +1,101 @@
+{
+  "artifact": "2023_nfl_outcome_regular_season_inputs_candidate_v0",
+  "schema_version": "tiber-rookies.2023-input-integrity.nfl-outcome-input-candidate.v0.1.0",
+  "status": "candidate_only",
+  "issue": "Prometheus-Frameworks/TIBER-Rookies#285",
+  "model_facing": false,
+  "promotion_authorized": false,
+  "scope_note": "Source-input rows for the six 2023-drafted skill players whose promoted rookie-season rows exceed 17 games. This is not a regenerated outcome export and is not full-class coverage.",
+  "source_promoted_artifact_read_only": {
+    "path": "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json",
+    "git_commit": "524bc549940926792aff24e4fb109d5e30122697",
+    "sha256": "eaf5044e89738eb0ea7300c1e313f4978d22fa956627bf19c460febec01a6d54"
+  },
+  "source_ref": {
+    "source_name": "nflverse stats_player regular-season public release",
+    "source_url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_reg_2023.csv.gz",
+    "source_asset_sha256": "3bd9d361c060612a36f13a282e13effe633689b1fabac35c6c5b28dfc7283c60",
+    "source_status": "verified_public_source",
+    "retrieved_on": "2026-08-04"
+  },
+  "records": [
+    {
+      "player_id": "00-0039052",
+      "player_name": "T.Palmer",
+      "position": "WR",
+      "season": 2023,
+      "season_type": "REG",
+      "games": 17,
+      "receptions": 39,
+      "receiving_yards": 385,
+      "receiving_tds": 3,
+      "rushing_yards": 22,
+      "rushing_tds": 0
+    },
+    {
+      "player_id": "00-0039064",
+      "player_name": "Z.Flowers",
+      "position": "WR",
+      "season": 2023,
+      "season_type": "REG",
+      "games": 16,
+      "receptions": 77,
+      "receiving_yards": 858,
+      "receiving_tds": 5,
+      "rushing_yards": 56,
+      "rushing_tds": 1
+    },
+    {
+      "player_id": "00-0039065",
+      "player_name": "S.LaPorta",
+      "position": "TE",
+      "season": 2023,
+      "season_type": "REG",
+      "games": 17,
+      "receptions": 86,
+      "receiving_yards": 889,
+      "receiving_tds": 10,
+      "rushing_yards": 4,
+      "rushing_tds": 0
+    },
+    {
+      "player_id": "00-0039067",
+      "player_name": "R.Rice",
+      "position": "WR",
+      "season": 2023,
+      "season_type": "REG",
+      "games": 16,
+      "receptions": 79,
+      "receiving_yards": 938,
+      "receiving_tds": 7,
+      "rushing_yards": -3,
+      "rushing_tds": 0
+    },
+    {
+      "player_id": "00-0039075",
+      "player_name": "P.Nacua",
+      "position": "WR",
+      "season": 2023,
+      "season_type": "REG",
+      "games": 17,
+      "receptions": 105,
+      "receiving_yards": 1486,
+      "receiving_tds": 6,
+      "rushing_yards": 89,
+      "rushing_tds": 0
+    },
+    {
+      "player_id": "00-0039139",
+      "player_name": "J.Gibbs",
+      "position": "RB",
+      "season": 2023,
+      "season_type": "REG",
+      "games": 15,
+      "receptions": 52,
+      "receiving_yards": 316,
+      "receiving_tds": 1,
+      "rushing_yards": 945,
+      "rushing_tds": 10
+    }
+  ]
+}
