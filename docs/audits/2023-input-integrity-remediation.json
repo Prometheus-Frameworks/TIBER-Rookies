@@ -1,0 +1,221 @@
+{
+  "artifact": "2023_input_integrity_source_audit_v0",
+  "issue": "Prometheus-Frameworks/TIBER-Rookies#285",
+  "audit_date": "2026-08-04",
+  "base_git_commit": "524bc549940926792aff24e4fb109d5e30122697",
+  "status": "candidate_remediation_prepared_operator_review_required",
+  "findings": [
+    {
+      "finding_id": "2023-INPUT-001",
+      "subject": "Puka Nacua combine/pro-day conflation",
+      "status": "confirmed",
+      "legacy_path": "data/raw/2023_combine_results.json",
+      "legacy_claim": {
+        "event_type": "NFL combine 2023 (official)",
+        "height_in": 72,
+        "weight_lb": 205,
+        "forty": 4.57,
+        "vertical": 36.5,
+        "broad": 122
+      },
+      "verified_result": {
+        "combine_height_in": 74,
+        "combine_weight_lb": 201,
+        "combine_testing_status": "attended_no_scored_testing",
+        "combine_forty": null,
+        "combine_vertical": null,
+        "combine_broad": null,
+        "separate_pro_day_public_report": {
+          "forty": 4.55,
+          "vertical": 33.0,
+          "broad": 121,
+          "measurement_status": "public_report_unofficial_timing"
+        }
+      },
+      "conclusion": "The legacy tuple is neither an official combine line nor one coherent verified 2023 pro-day line. The 4.57 forty and 36.5 vertical also match an ESPN Class-of-2019 recruiting-combine profile, which is a strong cross-year-conflation clue but not proven lineage because the seed cites no URL and its 122 broad is absent there. Combine tests are null in the candidate; sourced pro-day values remain in a separate candidate artifact.",
+      "sources": [
+        "https://github.com/nflverse/nflverse-data/releases/download/combine/combine.csv",
+        "data/historical/sporq_historical.json",
+        "https://gephardtdaily.com/sports/10-players-with-utah-ties-among-pro-prospects-invited-to-2023-nfl-scouting-combine/",
+        "https://sports.ksl.com/ncaa/byu/byu-pro-day-2023-jaren-hall-puka-nacua-results-nfl-draft/499843",
+        "https://byucougars.com/news/2023/03/24/hayes-brooks-highlight-byus-2023-nfl-pro-day",
+        "https://www.espn.com/college-sports/football/recruiting/player/combine/_/id/227660/puka-nacua/1000"
+      ],
+      "candidate_paths": [
+        "data/candidate/2023_input_integrity/v0.1.0/combine_results_corrections.json",
+        "data/candidate/2023_input_integrity/v0.1.0/pro_day_results_candidate.json"
+      ]
+    },
+    {
+      "finding_id": "2023-INPUT-002",
+      "subject": "Zay Flowers combine vertical/broad conflict",
+      "status": "confirmed",
+      "legacy_path": "data/raw/2023_combine_results.json",
+      "legacy_claim": {
+        "height_in": 68,
+        "vertical": 41.0,
+        "broad": 129
+      },
+      "verified_result": {
+        "height_in": 69,
+        "weight_lb": 182,
+        "forty": 4.42,
+        "vertical": 35.5,
+        "broad": 127
+      },
+      "conclusion": "nflverse and the repo SPORQ row agree on 35.5/127 and a 69-inch height. The candidate adopts the agreeing values.",
+      "sources": [
+        "https://github.com/nflverse/nflverse-data/releases/download/combine/combine.csv",
+        "https://www.baltimoreravens.com/news/jaxon-smith-njigba-zay-flowers-jalin-hyatt-wide-receiver-prospects-combine",
+        "data/historical/sporq_historical.json"
+      ],
+      "candidate_paths": [
+        "data/candidate/2023_input_integrity/v0.1.0/combine_results_corrections.json"
+      ]
+    },
+    {
+      "finding_id": "2023-INPUT-003",
+      "subject": "Puka Nacua 2022 production scope ambiguity",
+      "status": "confirmed_unreconciled_aggregate",
+      "legacy_path": "data/processed/2023_college_production.json",
+      "additional_legacy_path": "data/processed/2023_prospect_context.json",
+      "legacy_claim": "2022: 1594 yds/10 TDs BYU",
+      "verified_result": {
+        "stat_scope": "single_season_receiving",
+        "season": 2022,
+        "games": 9,
+        "receptions": 48,
+        "receiving_yards": 625,
+        "receiving_tds": 5,
+        "rushing_attempts": 25,
+        "rushing_yards": 209,
+        "rushing_tds": 5,
+        "all_purpose_yards": 834,
+        "total_touchdowns": 10
+      },
+      "conclusion": "Ten can be explained only as receiving plus rushing touchdowns. The 1,594-yard value matches no named official 2022 or career aggregate checked, so it remains unsupported rather than being relabeled. The same claim appears in Puka's prospect-context summary together with post-cutoff draft capital and rookie production. The contaminated production score is null pending separately authorized re-scoring, and the candidate context replaces the entire hindsight-bearing summary.",
+      "sources": [
+        "https://byucougars.com/news/2023/01/12/byu-football-2022-season-review",
+        "https://cfbstats.com/2022/player/77/1106480/index.html",
+        "https://byucougars.com/sports/football/roster/player/puka-nacua"
+      ],
+      "candidate_paths": [
+        "data/candidate/2023_input_integrity/v0.1.0/college_production_corrections.json",
+        "data/candidate/2023_input_integrity/v0.1.0/prospect_context_corrections.json"
+      ]
+    },
+    {
+      "finding_id": "2023-INPUT-004",
+      "subject": "Zay Flowers early-declare classification",
+      "status": "confirmed_under_candidate_semantics",
+      "legacy_path": "data/processed/2023_prospect_context.json",
+      "legacy_claim": {
+        "early_declare_flag": true,
+        "evidence_tag": "early_declare"
+      },
+      "verified_result": {
+        "class_standing": "senior",
+        "college_seasons_played": [
+          2019,
+          2020,
+          2021,
+          2022
+        ],
+        "early_declare_flag": false
+      },
+      "semantics_note": "Candidate semantics define early declare as entering before the player's senior/fourth played season. COVID-era remaining eligibility does not turn a completed senior season into an early declare.",
+      "sources": [
+        "https://bceagles.com/news/2022/12/12/football-flowers-picks-up-ap-all-america-honor",
+        "https://bceagles.com/news/2022/11/28/football-flowers-tabbed-season-golden-helmet-winner"
+      ],
+      "candidate_paths": [
+        "data/candidate/2023_input_integrity/v0.1.0/prospect_context_corrections.json"
+      ]
+    },
+    {
+      "finding_id": "2023-INPUT-005",
+      "subject": "NFL regular/postseason outcome mixing",
+      "status": "confirmed",
+      "legacy_path": "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json",
+      "root_cause": "The legacy weekly nflverse input carries season_type, but build_player_outcome_rows previously aggregated every weekly row before distinguishing REG from POST.",
+      "minimum_confirmed_impact": {
+        "nfl_season_2023_rows_with_games_over_17": 35,
+        "draft_class_2023_rookie_rows_with_games_over_17": 6,
+        "draft_class_2023_rookie_players": [
+          "J.Gibbs",
+          "P.Nacua",
+          "R.Rice",
+          "S.LaPorta",
+          "T.Palmer",
+          "Z.Flowers"
+        ],
+        "current_release_draft_class_2023_reg_post_mixed_player_seasons_2023_2024": 31,
+        "current_release_draft_class_2023_player_seasons_2023_2024": 132,
+        "current_release_mixed_share_percent": 23.5,
+        "current_release_input_sha256": "01a8db3ce4f576c51fc46ee329d789b3141d83e81a02323ef49f9744c1e1012e",
+        "current_release_method_note": "Reproduced from the current nflverse legacy player_stats release by filtering to draft_year=2023 identities and seasons 2023-2024. All 31 emitted games and five builder-consumed receiving/rushing fields exactly match current-release REG+POST aggregation; none match REG-only.",
+        "historical_source_version_lineage": "needs_verification because the emitted artifact cites a mutable local download path without source asset hash or release timestamp"
+      },
+      "verified_examples": {
+        "P.Nacua": {
+          "legacy_mixed": "18 games; 114 receptions; 1667 receiving yards; 7 receiving TD",
+          "regular_season_source": "17 games; 105 receptions; 1486 receiving yards; 6 receiving TD"
+        },
+        "Z.Flowers": {
+          "legacy_mixed": "18 games; 86 receptions; 1014 receiving yards; 6 receiving TD",
+          "regular_season_source": "16 games; 77 receptions; 858 receiving yards; 5 receiving TD"
+        }
+      },
+      "conclusion": "Builder input filtering now retains REG, excludes POST, and rejects weekly rows whose season type is absent or unknown. Weekly-mode games remain stat-participation weeks rather than authoritative appearance counts; that separate semantic gap is explicit and unresolved. The promoted outcome artifact remains untouched.",
+      "sources": [
+        "https://github.com/nflverse/nflverse-data/releases/download/player_stats/player_stats.csv.gz",
+        "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_reg_2023.csv.gz",
+        "scripts/build_nfl_fantasy_outcomes.py"
+      ],
+      "candidate_paths": [
+        "data/candidate/2023_input_integrity/v0.1.0/nfl_outcome_regular_season_inputs.json"
+      ]
+    }
+  ],
+  "affected_artifacts": [
+    {
+      "paths": [
+        "exports/promoted/rookie-alpha/2023_manifest.json",
+        "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.json",
+        "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.csv"
+      ],
+      "relationship": "directly built from the contaminated 2023 seed inputs",
+      "action_in_this_change": "preserved_unchanged"
+    },
+    {
+      "paths": [
+        "exports/promoted/rookie-alpha/historical_class_comparison.json",
+        "exports/promoted/rookie-alpha/historical_class_comparison.csv"
+      ],
+      "relationship": "downstream rollup includes the promoted 2023 Rookie Alpha rows",
+      "action_in_this_change": "preserved_unchanged"
+    },
+    {
+      "paths": [
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.csv",
+        "exports/promoted/nfl-fantasy-outcomes/context_flag_outcome_summary_v1.json",
+        "exports/promoted/nfl-fantasy-outcomes/context_flag_outcome_summary_v1.csv"
+      ],
+      "relationship": "direct REG/POST contamination and downstream cohort summary",
+      "action_in_this_change": "preserved_unchanged"
+    },
+    {
+      "paths": [
+        "exports/promoted/rookie-ml-lane/*"
+      ],
+      "relationship": "potential consumer of historical deterministic scores/outcomes; model disposition is parked in issue #286",
+      "action_in_this_change": "not_evaluated_or_modified"
+    }
+  ],
+  "recommendation": {
+    "decision": "historical_2023_promoted_artifact_deprecation_requires_operator_decision",
+    "reason": "The existing promoted files are immutable evidence of prior runs but no longer support an unqualified clean-historical-input claim. An operator should choose limitation record, deprecation, or separately authorized supersession after candidate review.",
+    "promotion_or_deprecation_performed": false
+  }
+}

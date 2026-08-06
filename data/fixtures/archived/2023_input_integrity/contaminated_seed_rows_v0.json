@@ -1,0 +1,117 @@
+{
+  "artifact": "archived_contaminated_2023_seed_rows_v0",
+  "status": "archived_fixture_non_authoritative",
+  "issue": "Prometheus-Frameworks/TIBER-Rookies#285",
+  "archived_on": "2026-08-04",
+  "source_git_commit": "524bc549940926792aff24e4fb109d5e30122697",
+  "lineage_note": "Exact copies of the defect-bearing rows as they existed when prior promoted artifacts were produced. The complete source files remain untouched at their original paths; this fixture makes the correction lineage reviewable without treating contaminated values as current truth.",
+  "must_not_be_used_for": [
+    "model_input",
+    "artifact_regeneration",
+    "fact_source",
+    "promotion"
+  ],
+  "source_files": [
+    {
+      "path": "data/raw/2023_combine_results.json",
+      "sha256": "35cbc98df75767ef9592b64b2e4f8351b2c02af8be4e69c9646b1ee039c2aa9f"
+    },
+    {
+      "path": "data/processed/2023_college_production.json",
+      "sha256": "0960bb72b28a32d1a616b1f73c52e362744910400318b337cb06e9a221b7f9cc"
+    },
+    {
+      "path": "data/processed/2023_prospect_context.json",
+      "sha256": "8e2406b690c79c04a7d5d30078d877edf8f6f35fb79d7636a089d66805e8acad"
+    }
+  ],
+  "archived_rows": {
+    "combine_results": [
+      {
+        "player_id": "wr-zay-flowers",
+        "player_name": "Zay Flowers",
+        "position": "WR",
+        "height_in": 68,
+        "weight_lb": 182,
+        "forty": 4.42,
+        "forty_source": "NFL combine 2023 (official)",
+        "vertical": 41.0,
+        "broad": 129,
+        "three_cone": null,
+        "three_cone_source": null,
+        "ras_source": "nfl_combine_2023"
+      },
+      {
+        "player_id": "wr-puka-nacua",
+        "player_name": "Puka Nacua",
+        "position": "WR",
+        "height_in": 72,
+        "weight_lb": 205,
+        "forty": 4.57,
+        "forty_source": "NFL combine 2023 (official)",
+        "vertical": 36.5,
+        "broad": 122,
+        "three_cone": null,
+        "three_cone_source": null,
+        "ras_source": "nfl_combine_2023"
+      }
+    ],
+    "college_production": [
+      {
+        "player_id": "wr-puka-nacua",
+        "player_name": "Puka Nacua",
+        "position": "WR",
+        "school": "BYU",
+        "class_year": 2023,
+        "production_score_0_100": 62.0,
+        "production_score_source": "manual_historical_seed (2022: 1594 yds/10 TDs BYU; senior BOA 22; non-P4; high volume but conference discount; elite efficiency archetype — 105 catches NFL rookie year as R5 pick)"
+      }
+    ],
+    "prospect_context": [
+      {
+        "player_id": "wr-puka-nacua",
+        "player_name": "Puka Nacua",
+        "position": "WR",
+        "school": "BYU",
+        "class_year": 2023,
+        "historical_anchor_flag": false,
+        "early_declare_flag": false,
+        "breakout_age": 22,
+        "age_at_first_impact_season": 22,
+        "young_breakout_flag": false,
+        "career_yards_per_route_run": 2.65,
+        "best_season_yprr": 2.65,
+        "evidence_tags": [
+          "elite_efficiency_tier",
+          "multi_season_efficiency",
+          "inside_out_versatility"
+        ],
+        "context_flags": [],
+        "evidence_summary": "Pick #177 to Rams (R5). BYU WR — 1594 yds/10 TDs in 2022. Senior; non-P4; BOA 22 all work against him in this model. But: elite YPRR (2.65), 105 catches as NFL rookie — the extreme late-round efficiency calibration anchor. Model will score him low due to capital + age; that tension is the point.",
+        "context_source": "manual_historical_seed_2023",
+        "exceptional_metrics": []
+      },
+      {
+        "player_id": "wr-zay-flowers",
+        "player_name": "Zay Flowers",
+        "position": "WR",
+        "school": "Boston College",
+        "class_year": 2023,
+        "historical_anchor_flag": false,
+        "early_declare_flag": true,
+        "breakout_age": 21,
+        "age_at_first_impact_season": 21,
+        "young_breakout_flag": false,
+        "evidence_tags": [
+          "early_declare",
+          "elite_efficiency_tier",
+          "yac_signal"
+        ],
+        "context_flags": [],
+        "evidence_summary": "Pick #22 to Baltimore. BC WR — 78 rec/1077 yds/12 TDs in 2022 (ACC non-P4 elite). Elite YPRR efficiency. Non-P4 conference discount on production score. Pro Bowl 2023 (first year). Validates that production quality > conference prestige.",
+        "context_source": "manual_historical_seed_2023",
+        "exceptional_metrics": []
+      }
+    ]
+  }
+}

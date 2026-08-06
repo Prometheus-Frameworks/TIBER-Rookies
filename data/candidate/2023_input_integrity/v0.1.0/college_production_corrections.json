@@ -1,0 +1,44 @@
+{
+  "artifact": "2023_college_production_corrections_candidate_v0",
+  "schema_version": "tiber-rookies.2023-input-integrity.production-candidate.v0.1.0",
+  "status": "candidate_only",
+  "issue": "Prometheus-Frameworks/TIBER-Rookies#285",
+  "model_facing": false,
+  "promotion_authorized": false,
+  "historical_cutoff": "2023-04-26T23:59:59Z",
+  "source_seed": {
+    "path": "data/processed/2023_college_production.json",
+    "git_commit": "524bc549940926792aff24e4fb109d5e30122697",
+    "sha256": "0960bb72b28a32d1a616b1f73c52e362744910400318b337cb06e9a221b7f9cc"
+  },
+  "records": [
+    {
+      "player_id": "wr-puka-nacua",
+      "player_name": "Puka Nacua",
+      "position": "WR",
+      "school": "BYU",
+      "class_year": 2023,
+      "source_season": 2022,
+      "stat_scope": "single_season_receiving",
+      "games": 9,
+      "receptions": 48,
+      "receiving_yards": 625,
+      "receiving_tds": 5,
+      "rushing_attempts": 25,
+      "rushing_yards": 209,
+      "rushing_tds": 5,
+      "production_score_0_100": null,
+      "production_score_status": "needs_verification",
+      "correction_note": "The archived 1594 yards / 10 TD claim is not a valid 2022 receiving line. Ten matches Nacua's five receiving plus five rushing touchdowns, but 1594 does not reconcile to his 2022 receiving, scrimmage, BYU-career receiving, or full college-career receiving totals. The unlabeled value is therefore unsupported, not relabeled as an aggregate. Re-scoring is outside issue #285.",
+      "source_ref": {
+        "source_name": "BYU Athletics — BYU Football 2022 Season Review",
+        "source_url": "https://byucougars.com/news/2023/01/12/byu-football-2022-season-review",
+        "published_on": "2023-01-11",
+        "source_status": "verified_public_source",
+        "retrieved_on": "2026-08-04",
+        "corroborating_source_name": "cfbstats.com — Puka Nacua 2022 player statistics",
+        "corroborating_source_url": "https://cfbstats.com/2022/player/77/1106480/index.html"
+      }
+    }
+  ]
+}

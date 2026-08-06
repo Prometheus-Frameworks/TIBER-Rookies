@@ -1,0 +1,74 @@
+{
+  "artifact": "2023_input_integrity_candidate_manifest_v0",
+  "schema_version": "tiber-rookies.2023-input-integrity-manifest.v0.1.0",
+  "status": "candidate_only",
+  "issue": "Prometheus-Frameworks/TIBER-Rookies#285",
+  "prepared_on": "2026-08-04",
+  "base_git_commit": "524bc549940926792aff24e4fb109d5e30122697",
+  "promotion_authorized": false,
+  "promoted_artifacts_regenerated": false,
+  "scope": "Five confirmed 2023 input-integrity findings only; no full-class rebuild.",
+  "candidate_files": [
+    {
+      "path": "data/candidate/2023_input_integrity/v0.1.0/college_production_corrections.json",
+      "sha256": "abb08f023bbfaccf6fe7d7b7dd5993b37ae7e2c510c479ac0ebdb48e29b332fb"
+    },
+    {
+      "path": "data/candidate/2023_input_integrity/v0.1.0/combine_results_corrections.json",
+      "sha256": "7c656660c8ab6a65b2b301400613139ee43df88bbd16d82171aaa8efecccd063"
+    },
+    {
+      "path": "data/candidate/2023_input_integrity/v0.1.0/nfl_outcome_regular_season_inputs.json",
+      "sha256": "1e704570863cc5e67741d1e791af99a2f392ff9034703388a0576a9f00f426b3"
+    },
+    {
+      "path": "data/candidate/2023_input_integrity/v0.1.0/pro_day_results_candidate.json",
+      "sha256": "11bca71bfb55c04feba4aadd92b825aa1ab0061215644949fcb06ba7bf5974e7"
+    },
+    {
+      "path": "data/candidate/2023_input_integrity/v0.1.0/prospect_context_corrections.json",
+      "sha256": "e06ba66c2637150b96286a1339ea6a0b0620b154900adafc89367e51d7e05b1c"
+    }
+  ],
+  "preserved_source_files": [
+    {
+      "path": "data/raw/2023_combine_results.json",
+      "sha256": "35cbc98df75767ef9592b64b2e4f8351b2c02af8be4e69c9646b1ee039c2aa9f"
+    },
+    {
+      "path": "data/processed/2023_college_production.json",
+      "sha256": "0960bb72b28a32d1a616b1f73c52e362744910400318b337cb06e9a221b7f9cc"
+    },
+    {
+      "path": "data/processed/2023_prospect_context.json",
+      "sha256": "8e2406b690c79c04a7d5d30078d877edf8f6f35fb79d7636a089d66805e8acad"
+    },
+    {
+      "path": "exports/promoted/rookie-alpha/2023_manifest.json",
+      "sha256": "761ae24780aab0a165d7c0027893d75c731f97788e738f44747c4228e8beec8c"
+    },
+    {
+      "path": "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.csv",
+      "sha256": "51c4cf4a388819a233778cc749f0578e426bdd6bd74ed1ea58748065c8d157fc"
+    },
+    {
+      "path": "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.json",
+      "sha256": "a37d5ca72409b0c18b1fd28d315d5192068df6702be28b392409e848a06590b6"
+    },
+    {
+      "path": "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.csv",
+      "sha256": "0e60c176c421022da8e85c66822b1b86e7e1555a07200d7f108ca4fb1654b279"
+    },
+    {
+      "path": "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json",
+      "sha256": "eaf5044e89738eb0ea7300c1e313f4978d22fa956627bf19c460febec01a6d54"
+    }
+  ],
+  "migration_boundary": {
+    "candidate_overlay_only": true,
+    "original_seed_overwrite_allowed": false,
+    "promoted_export_write_allowed": false,
+    "production_score_recalculation_in_scope": false,
+    "full_2023_class_rebuild_in_scope": false
+  }
+}
