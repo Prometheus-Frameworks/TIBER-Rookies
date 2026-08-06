@@ -1,0 +1,212 @@
+{
+  "artifact": "predraft_reconstruction_card_v0",
+  "issue": "Prometheus-Frameworks/TIBER-Rookies#283",
+  "reconstruction_mode": "historical_as_known_then",
+  "class_year": 2023,
+  "pre_draft_cutoff": "2023-04-26T23:59:59Z",
+  "nfl_outcome_fields_available_to_card_builder": false,
+  "canonical_player_id": "wr-zay-flowers",
+  "gsis_id": "00-0039064",
+  "gsis_id_note": "Identity join key only; assigned post-draft, carries no evidence.",
+  "player_name": "Zay Flowers",
+  "position": "WR",
+  "identity": {
+    "school": "Boston College",
+    "birth_date": "2000-09-01",
+    "age_at_draft_years": 22.6,
+    "class_standing": "fourth-year senior (played four seasons 2019-2022)",
+    "early_declare": false,
+    "early_declare_discrepancy_note": "Existing repo context file marks early_declare_flag=true; Flowers played four college seasons and entered the draft after his senior year. Flagged as an input-integrity question, not adopted.",
+    "source_ref": {
+      "kind": "public_record",
+      "status": "agent_recall_needs_verification"
+    }
+  },
+  "college_production": [
+    {
+      "season": 2019,
+      "school": "Boston College",
+      "receptions": 22,
+      "receiving_yards": 341,
+      "receiving_tds": 3,
+      "source_ref": {
+        "kind": "governed_in_repo",
+        "path": "data/historical/wr_reference_populations/2019_wr_receiving_population.json",
+        "source_name": "CFBD receiving stats (year=2019)",
+        "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2019&category=receiving",
+        "status": "governed_in_repo"
+      }
+    },
+    {
+      "season": 2020,
+      "school": "Boston College",
+      "receptions": 56,
+      "receiving_yards": 892,
+      "receiving_tds": 9,
+      "source_ref": {
+        "kind": "governed_in_repo",
+        "path": "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "source_name": "CFBD receiving stats (year=2020)",
+        "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2020&category=receiving",
+        "status": "governed_in_repo"
+      }
+    },
+    {
+      "season": 2021,
+      "school": "Boston College",
+      "receptions": 44,
+      "receiving_yards": 746,
+      "receiving_tds": 5,
+      "context_note": "QB injury year at BC (starting QB lost early); passing environment collapsed.",
+      "source_ref": {
+        "kind": "governed_in_repo",
+        "path": "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "source_name": "CFBD receiving stats (year=2021)",
+        "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving",
+        "status": "governed_in_repo"
+      }
+    },
+    {
+      "season": 2022,
+      "school": "Boston College",
+      "receptions": 78,
+      "receiving_yards": 1077,
+      "receiving_tds": 12,
+      "context_note": "School single-season TD record; team offense otherwise weak.",
+      "source_ref": {
+        "kind": "verified_public_source",
+        "source_name": "Boston College Athletics / NCAA season records (web-verified 2026-08-04; matches existing repo seed)",
+        "source_url": "https://bceagles.com/sports/football/roster/zay-flowers/14798",
+        "status": "verified_public_source"
+      }
+    }
+  ],
+  "breakout_and_age": {
+    "breakout_age": 20,
+    "age_adjusted_note": "First high-share season (56/892/9 in a 10-game COVID season) came in year two at age 20; existing repo context records breakout_age 21. Four-year producer with target dominance in a low-volume offense.",
+    "breakout_age_discrepancy_note": "Repo context file says breakout_age 21/age_at_first_impact 21; the governed 2020 line at age 20 supports an earlier functional breakout. Recorded, not silently overwritten.",
+    "source_ref": {
+      "kind": "derived_from_governed_production",
+      "status": "governed_in_repo"
+    }
+  },
+  "market_share_context": {
+    "status": "qualitative_context_only",
+    "note": "BC team receiving totals not held in repo; public pre-draft coverage consistently described Flowers as carrying a dominant share of a weak BC passing offense. No governed dominator value computable."
+  },
+  "efficiency_indicators": {
+    "yprr": {
+      "status": "qualitative_context_only",
+      "note": "Repo evidence tags record 'elite_efficiency_tier' and elite YPRR reputation; no licensed charting value stored with lineage."
+    },
+    "target_earning": {
+      "status": "qualitative_context_only",
+      "note": "Four-year target earner against ACC competition despite unstable QB play; route-winning reputation in public scouting consensus."
+    }
+  },
+  "role_and_alignment": {
+    "alignment_profile": "Predominantly slot-capable smaller receiver who also played outside at BC; projected NFL slot/Z with motion usage.",
+    "route_role": "Separation-based route winner; quick-game and intermediate; YAC ability tagged in repo evidence (yac_signal).",
+    "source_ref": {
+      "kind": "public_scouting_consensus_plus_repo_tags",
+      "path": "data/processed/2023_prospect_context.json (evidence_tags only)",
+      "status": "qualitative_context_only"
+    }
+  },
+  "separation_evidence": {
+    "status": "unavailable",
+    "note": "No governed man/zone or press charting source available to this reconstruction."
+  },
+  "after_catch_and_contested": {
+    "status": "qualitative_context_only",
+    "note": "yac_signal tag present in repo context; size-related contested-catch limitations noted in public pre-draft coverage."
+  },
+  "athletic_testing": {
+    "combine_2023": {
+      "height_in": 69,
+      "weight_lb": 182,
+      "forty": 4.42,
+      "vertical": 35.5,
+      "broad": 127,
+      "three_cone": null,
+      "shuttle": null,
+      "bench": null,
+      "source_ref": {
+        "kind": "verified_public_source",
+        "source_name": "nflverse combine release (season=2023)",
+        "source_url": "https://github.com/nflverse/nflverse-data/releases/download/combine/combine.csv",
+        "status": "verified_public_source"
+      }
+    },
+    "sporq": {
+      "value": 47.3,
+      "percentile": 47.4,
+      "source_ref": {
+        "kind": "governed_in_repo",
+        "path": "data/historical/sporq_historical.json",
+        "status": "governed_in_repo"
+      }
+    },
+    "athletic_testing_discrepancy_flag": {
+      "flag": true,
+      "note": "Existing repo input data/raw/2023_combine_results.json records vertical 41.0 / broad 129 for Flowers sourced as 'NFL combine 2023 (official)'. The nflverse combine release and the repo's own SPORQ table both record vertical 35.5 / broad 127. The raw combine input values are unverifiable; nflverse/SPORQ values adopted here. Recorded as an input-integrity finding."
+    }
+  },
+  "context_flags": [
+    {
+      "flag": "size_concern",
+      "detail": "5-9, 182 lb frame; smallest-tier NFL WR body type.",
+      "status": "verified_public_source"
+    },
+    {
+      "flag": "qb_context",
+      "detail": "Produced through unstable, below-average BC quarterback play, especially 2021-2022.",
+      "status": "agent_recall_needs_verification"
+    },
+    {
+      "flag": "competition_level",
+      "detail": "ACC competition; existing repo seed applied a non-P4-elite conference discount.",
+      "status": "governed_in_repo"
+    }
+  ],
+  "expected_draft_capital": {
+    "qualitative_range": "Consensus late first-round projection; commonly ranked among the top four WRs of the class in April 2023 public coverage.",
+    "basis": "Public mock-draft and scouting consensus as of April 2023; no licensed board data stored.",
+    "source_status": "agent_recall_needs_verification",
+    "actual_draft_capital_present": false
+  },
+  "missingness": [
+    "market_share_dominator (team totals not held)",
+    "yards_per_route_run (no licensed charting source)",
+    "man_zone_press_separation (no charting source)",
+    "agility_testing (no three-cone/shuttle at combine)",
+    "verified_birth_date"
+  ],
+  "source_lineage": [
+    {
+      "source": "data/historical/wr_reference_populations/{2019,2020,2021}_wr_receiving_population.json",
+      "kind": "governed_in_repo",
+      "provides": "2019-2021 receiving lines (CFBD)"
+    },
+    {
+      "source": "https://bceagles.com/sports/football/roster/zay-flowers/14798",
+      "kind": "verified_public_source",
+      "provides": "2022 receiving line (web-verified 2026-08-04)"
+    },
+    {
+      "source": "https://github.com/nflverse/nflverse-data/releases/download/combine/combine.csv",
+      "kind": "verified_public_source",
+      "provides": "2023 combine measurements"
+    },
+    {
+      "source": "data/historical/sporq_historical.json",
+      "kind": "governed_in_repo",
+      "provides": "SPORQ composite and percentile"
+    },
+    {
+      "source": "public_record_agent_recall",
+      "kind": "agent_recall_needs_verification",
+      "provides": "birth date, QB-context narrative, expected draft capital range"
+    }
+  ]
+}

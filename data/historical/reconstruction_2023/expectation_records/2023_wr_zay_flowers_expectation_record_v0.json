@@ -1,0 +1,17 @@
+{
+  "artifact": "historical_expectation_record_v0",
+  "issue": "Prometheus-Frameworks/TIBER-Rookies#283",
+  "canonical_player_id": "wr-zay-flowers",
+  "class_year": 2023,
+  "frozen_at": "2026-08-04T22:40:55.111867+00:00",
+  "predraft_card": {
+    "path": "data/historical/reconstruction_2023/predraft_cards/2023_wr_zay_flowers_predraft_v0.json",
+    "sha256": "b12dd6743d034c51a434455ce12ee12b26cf227bd54052cc402a971832d9258d"
+  },
+  "landing_context": {
+    "path": "data/historical/reconstruction_2023/landing_context/2023_wr_zay_flowers_landing_context_v0.json",
+    "sha256": "b0e086f5dbfecf1ae5e9b8f97a1ac0f98d5abc6ffbd1fe621f95666a73bd01fd"
+  },
+  "nfl_outcomes_included": false,
+  "freeze_note": "Frozen before any outcome layer was written. Any edit to the referenced files invalidates this record and requires an explicit logged re-freeze (see docs/historical-reconstruction-contract.md)."
+}

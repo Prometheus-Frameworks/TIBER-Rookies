@@ -1,0 +1,17 @@
+{
+  "artifact": "historical_expectation_record_v0",
+  "issue": "Prometheus-Frameworks/TIBER-Rookies#283",
+  "canonical_player_id": "wr-josh-downs",
+  "class_year": 2023,
+  "frozen_at": "2026-08-04T22:40:55.112668+00:00",
+  "predraft_card": {
+    "path": "data/historical/reconstruction_2023/predraft_cards/2023_wr_josh_downs_predraft_v0.json",
+    "sha256": "1eb318c50b6a7f0ca82d2fcef85e4394a2ae63bfb3f96c78e38e9807cbbd4056"
+  },
+  "landing_context": {
+    "path": "data/historical/reconstruction_2023/landing_context/2023_wr_josh_downs_landing_context_v0.json",
+    "sha256": "6f64d6d9a2de4d399efa7d3b2645bdbc1780791076226d6fd40a62488c65edfc"
+  },
+  "nfl_outcomes_included": false,
+  "freeze_note": "Frozen before any outcome layer was written. Any edit to the referenced files invalidates this record and requires an explicit logged re-freeze (see docs/historical-reconstruction-contract.md)."
+}

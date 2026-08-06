@@ -1,0 +1,193 @@
+{
+  "artifact": "predraft_reconstruction_card_v0",
+  "issue": "Prometheus-Frameworks/TIBER-Rookies#283",
+  "reconstruction_mode": "historical_as_known_then",
+  "class_year": 2023,
+  "pre_draft_cutoff": "2023-04-26T23:59:59Z",
+  "nfl_outcome_fields_available_to_card_builder": false,
+  "canonical_player_id": "wr-josh-downs",
+  "canonical_id_status": "proposed_slug (no prior TIBER-Rookies profile existed for this player)",
+  "gsis_id": "00-0038997",
+  "gsis_id_note": "Identity join key only; assigned post-draft, carries no evidence.",
+  "player_name": "Josh Downs",
+  "position": "WR",
+  "identity": {
+    "school": "North Carolina",
+    "birth_date": "2001-08-10",
+    "age_at_draft_years": 21.7,
+    "class_standing": "fourth-year junior (redshirt-adjacent freshman year 2020 was shortened); declared after third productive season",
+    "early_declare": true,
+    "source_ref": {
+      "kind": "public_record",
+      "status": "agent_recall_needs_verification"
+    }
+  },
+  "college_production": [
+    {
+      "season": 2020,
+      "school": "North Carolina",
+      "receptions": null,
+      "receiving_yards": null,
+      "receiving_tds": null,
+      "note": "Limited freshman usage behind Dyami Brown/Dazz Newsome; exact line not held in any governed repo source (2020 WR reference population does not include him at qualifying volume).",
+      "source_ref": {
+        "kind": "missing",
+        "status": "unavailable"
+      }
+    },
+    {
+      "season": 2021,
+      "school": "North Carolina",
+      "receptions": 101,
+      "receiving_yards": 1335,
+      "receiving_tds": 8,
+      "context_note": "Sam Howell at QB; led team decisively in targets and receptions as a second-year player.",
+      "source_ref": {
+        "kind": "governed_in_repo",
+        "path": "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "source_name": "CFBD receiving stats (year=2021)",
+        "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving",
+        "status": "governed_in_repo"
+      }
+    },
+    {
+      "season": 2022,
+      "school": "North Carolina",
+      "receptions": 94,
+      "receiving_yards": 1029,
+      "receiving_tds": 11,
+      "games": 11,
+      "context_note": "Led the ACC in receptions and receiving yards per game with true-freshman QB Drake Maye; First Team All-ACC.",
+      "source_ref": {
+        "kind": "verified_public_source",
+        "source_name": "UNC Athletics (goheels.com) season records (web-verified 2026-08-04)",
+        "source_url": "https://goheels.com/sports/football/roster/josh-downs/23320",
+        "status": "verified_public_source"
+      }
+    }
+  ],
+  "breakout_and_age": {
+    "breakout_age": 20,
+    "age_adjusted_note": "Crossed 1300 receiving yards at age 20 in year two — a young, high-volume breakout by any convention. Two consecutive seasons of 94+ receptions before turning 22.",
+    "source_ref": {
+      "kind": "derived_from_governed_production",
+      "status": "governed_in_repo"
+    }
+  },
+  "market_share_context": {
+    "status": "qualitative_context_only",
+    "note": "UNC team receiving totals not held in repo; public pre-draft coverage described Downs as the clear No. 1 target both seasons. No governed dominator value computable."
+  },
+  "efficiency_indicators": {
+    "yprr": {
+      "status": "unavailable",
+      "note": "No licensed route-level charting source; no YPRR value stored anywhere in repo for Downs."
+    },
+    "target_earning": {
+      "status": "qualitative_context_only",
+      "note": "Back-to-back ~100-catch seasons with two different quarterbacks (veteran Howell, then true-freshman Maye) is strong target-earning evidence at the box-score level."
+    }
+  },
+  "role_and_alignment": {
+    "alignment_profile": "Overwhelmingly slot-aligned at UNC; undersized frame purpose-built for interior alignment.",
+    "route_role": "Quick-separation slot route runner; option/choice routes, short and intermediate volume; vertical usage limited by frame, not speed.",
+    "source_ref": {
+      "kind": "public_scouting_consensus",
+      "status": "qualitative_context_only"
+    }
+  },
+  "separation_evidence": {
+    "status": "qualitative_context_only",
+    "note": "Public pre-draft consensus rated separation quickness as his primary trait; no governed charting metric held."
+  },
+  "after_catch_and_contested": {
+    "status": "qualitative_context_only",
+    "note": "Sudden after the catch in space; contested-catch volume limited by size — consensus pre-draft read, no licensed metrics."
+  },
+  "athletic_testing": {
+    "combine_2023": {
+      "height_in": 69,
+      "weight_lb": 171,
+      "forty": 4.48,
+      "vertical": 38.5,
+      "broad": 131,
+      "three_cone": null,
+      "shuttle": null,
+      "bench": null,
+      "source_ref": {
+        "kind": "verified_public_source",
+        "source_name": "nflverse combine release (season=2023)",
+        "source_url": "https://github.com/nflverse/nflverse-data/releases/download/combine/combine.csv",
+        "status": "verified_public_source"
+      }
+    },
+    "sporq": {
+      "value": 34.5,
+      "percentile": 34.7,
+      "note": "Composite dragged by 171 lb weight; explosion numbers (38.5 vertical, 131 broad) are strong for the frame.",
+      "source_ref": {
+        "kind": "governed_in_repo",
+        "path": "data/historical/sporq_historical.json",
+        "status": "governed_in_repo"
+      }
+    }
+  },
+  "context_flags": [
+    {
+      "flag": "size_concern",
+      "detail": "5-9, 171 lb; bottom-of-distribution NFL WR weight; slot-only projection for most evaluators.",
+      "status": "verified_public_source"
+    },
+    {
+      "flag": "qb_context",
+      "detail": "2022 production came with a true-freshman QB; 2021 with an NFL-drafted QB (Howell). Production robust to QB change.",
+      "status": "agent_recall_needs_verification"
+    },
+    {
+      "flag": "young_breakout",
+      "detail": "Age-20 1335-yard season; early declare.",
+      "status": "governed_in_repo"
+    }
+  ],
+  "expected_draft_capital": {
+    "qualitative_range": "Consensus Day 2 projection (rounds 2-3) in April 2023 public coverage; typically ranked in the WR6-WR10 band of the class.",
+    "basis": "Public mock-draft and scouting consensus as of April 2023; no licensed board data stored.",
+    "source_status": "agent_recall_needs_verification",
+    "actual_draft_capital_present": false
+  },
+  "missingness": [
+    "2020_freshman_stat_line",
+    "market_share_dominator (team totals not held)",
+    "yards_per_route_run (no charting source)",
+    "man_zone_press_separation (no charting source)",
+    "agility_testing (no three-cone/shuttle at combine)",
+    "verified_birth_date"
+  ],
+  "source_lineage": [
+    {
+      "source": "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+      "kind": "governed_in_repo",
+      "provides": "2021 receiving line (CFBD)"
+    },
+    {
+      "source": "https://goheels.com/sports/football/roster/josh-downs/23320",
+      "kind": "verified_public_source",
+      "provides": "2022 receiving line and accolades (web-verified 2026-08-04)"
+    },
+    {
+      "source": "https://github.com/nflverse/nflverse-data/releases/download/combine/combine.csv",
+      "kind": "verified_public_source",
+      "provides": "2023 combine measurements"
+    },
+    {
+      "source": "data/historical/sporq_historical.json",
+      "kind": "governed_in_repo",
+      "provides": "SPORQ composite and percentile"
+    },
+    {
+      "source": "public_record_agent_recall",
+      "kind": "agent_recall_needs_verification",
+      "provides": "birth date, class standing, QB-context narrative, expected draft capital range"
+    }
+  ]
+}

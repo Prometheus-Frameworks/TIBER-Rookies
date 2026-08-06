@@ -1,0 +1,124 @@
+{
+  "artifact": "landing_context_v0",
+  "issue": "Prometheus-Frameworks/TIBER-Rookies#283",
+  "class_year": 2023,
+  "canonical_player_id": "wr-zay-flowers",
+  "player_name": "Zay Flowers",
+  "landing_context": {
+    "draft_team": "BAL",
+    "draft_round": 1,
+    "overall_pick": 22,
+    "draft_capital_tier": "r1_late (pick 22)",
+    "context_cutoff": "2023-04-27T23:59:59Z",
+    "context_cutoff_note": "Evening of Round 1 (2023-04-27). The Lamar Jackson extension was announced hours before Round 1 and is therefore inside the cutoff. No Day 2/3 picks or later moves are admitted.",
+    "returning_receiver_depth_chart": [
+      {"player": "Odell Beckham Jr.", "row_type": "observation", "targets_2022": 0, "status_at_cutoff": "Signed 1-year, ~$15M guaranteed deal 2023-04-13; did not play in 2022 (ACL recovery); age 30; expected starter if healthy.", "needs_verification": false},
+      {"player": "Rashod Bateman", "row_type": "observation", "targets_2022": 28, "receptions_2022": 15, "receiving_yards_2022": 285, "games_2022": 6, "status_at_cutoff": "Returning 2021 R1 pick; season-ending Lisfranc surgery in 2022; recovery status uncertain at cutoff.", "needs_verification": false},
+      {"player": "Nelson Agholor", "row_type": "observation", "targets_2022": 0, "targets_note": "2022 with NE, not BAL", "status_at_cutoff": "Signed 1-year deal 2023-03-29 (reported 03-24); veteran rotation piece.", "needs_verification": false},
+      {"player": "Devin Duvernay", "row_type": "observation", "targets_2022": 49, "receptions_2022": 37, "receiving_yards_2022": 407, "games_2022": 14, "status_at_cutoff": "Returning; gadget/return profile.", "needs_verification": false},
+      {"player": "James Proche", "row_type": "observation", "targets_2022": 17, "status_at_cutoff": "Returning depth.", "needs_verification": false}
+    ],
+    "returning_tight_end_depth_chart": [
+      {"player": "Mark Andrews", "row_type": "observation", "targets_2022": 113, "receptions_2022": 73, "receiving_yards_2022": 847, "games_2022": 15, "status_at_cutoff": "Returning; unquestioned target-share leader and Jackson's primary read.", "needs_verification": false},
+      {"player": "Isaiah Likely", "row_type": "observation", "targets_2022": 60, "receptions_2022": 36, "receiving_yards_2022": 373, "games_2022": 14, "status_at_cutoff": "Returning; ascending 2022 R4 rookie.", "needs_verification": false},
+      {"player": "Josh Oliver", "row_type": "observation", "targets_2022": 25, "status_at_cutoff": "Departed in free agency (signed elsewhere March 2023).", "needs_verification": true}
+    ],
+    "returning_running_back_depth_chart": [
+      {"player": "J.K. Dobbins", "row_type": "observation", "targets_2022": 15, "status_at_cutoff": "Returning; knee-rehab seasons 2021-2022.", "needs_verification": false},
+      {"player": "Gus Edwards", "row_type": "observation", "targets_2022": 5, "status_at_cutoff": "Returning; low receiving usage.", "needs_verification": false},
+      {"player": "Justice Hill", "row_type": "observation", "targets_2022": 13, "status_at_cutoff": "Returning.", "needs_verification": false}
+    ],
+    "vacated_targets": {
+      "value": 145,
+      "season_basis": "2022 REG targets of pass catchers verifiably gone by cutoff: Demarcus Robinson 75 (unsigned UFA at cutoff), Sammy Watkins 27, DeSean Jackson 17, Kenyan Drake 26. Josh Oliver's 25 TE targets additionally departed (flagged needs_verification on exact timing).",
+      "source_ref": {
+        "kind": "computed_from_public_release",
+        "source_name": "nflverse stats_player_reg_2022",
+        "source_url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_reg_2022.csv.gz"
+      },
+      "needs_verification_note": "Demarcus Robinson was not verifiably signed elsewhere before the draft; treated as vacated with medium confidence. Watkins/Jackson/Drake departures were standard expiring-veteran non-retentions.",
+      "volume_caveat": "Vacancy is measured against the NFL's lowest-volume 2022 pass offense (492 team targets); raw vacated targets overstate opportunity unless pass volume rose."
+    },
+    "vacated_routes_or_snaps": {
+      "value": null,
+      "source_ref": null,
+      "note": "Route/snap data unavailable for 2022 (no governed source; upstream nulls by design)."
+    },
+    "incumbent_target_leaders": [
+      {"player": "Mark Andrews", "targets_2022": 113, "position": "TE"},
+      {"player": "Demarcus Robinson", "targets_2022": 75, "position": "WR", "note": "departed/unsigned at cutoff"},
+      {"player": "Isaiah Likely", "targets_2022": 60, "position": "TE"}
+    ],
+    "quarterback_state": {
+      "row_type": "observation",
+      "starter": "Lamar Jackson",
+      "status_at_cutoff": "Signed a 5-year, $260M extension announced 2023-04-27, hours before Round 1, ending a trade-request standoff (request made 2023-03-02, non-exclusive franchise tag applied). QB stability restored inside the cutoff window.",
+      "style_note": "Elite dual-threat; historically supports concentrated TE volume and a sub-median team target total.",
+      "source_ref": {
+        "kind": "verified_public_source",
+        "source_url": "https://www.washingtonpost.com/sports/2023/04/27/lamar-jackson-contract-ravens/"
+      }
+    },
+    "coaching_and_scheme_state": {
+      "row_type": "observation",
+      "head_coach": "John Harbaugh",
+      "offensive_coordinator": "Todd Monken, hired 2023-02-14 replacing Greg Roman (resigned Jan 2023)",
+      "expected_change_inference": {
+        "row_type": "inference",
+        "read": "Monken's Georgia/NFL background signaled a modernization away from Roman's run-first structure: more 11 personnel, more dropback pass volume, more WR-friendly target distribution.",
+        "confidence": "medium"
+      },
+      "source_ref": {
+        "kind": "verified_public_source",
+        "source_url": "https://www.nfl.com/news/ravens-hire-todd-monken-as-new-offensive-coordinator"
+      }
+    },
+    "prior_season_offense_quality": {
+      "row_type": "observation",
+      "team_targets_2022": 492,
+      "qualitative": "Run-heavy, bottom-of-league pass volume; competent scoring when Jackson healthy but he missed the final five-plus games of 2022 (knee). Pass-catcher room outside Andrews was among the league's least productive.",
+      "source_ref": {
+        "kind": "computed_from_public_release_plus_public_record",
+        "source_url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_reg_2022.csv.gz",
+        "needs_verification_fields": ["Jackson 2022 games missed detail"]
+      }
+    },
+    "projected_role_openings": [
+      {"row_type": "inference", "role": "Immediate starting slot/Z with first-round capital commitment; clear WR1-of-the-future positioning given no incumbent young WR had secured a role", "confidence": "high"},
+      {"row_type": "inference", "role": "Target ceiling gated by Andrews' established share and OBJ's guaranteed money", "confidence": "medium"}
+    ],
+    "role_competition": [
+      {"competitor": "Mark Andrews", "basis": "target-share leader; QB's trusted first read"},
+      {"competitor": "Odell Beckham Jr.", "basis": "$15M guaranteed veteran; snap and target claim if healthy"},
+      {"competitor": "Rashod Bateman", "basis": "prior R1 capital, health-dependent"},
+      {"competitor": "Nelson Agholor", "basis": "veteran rotation depth"}
+    ],
+    "opportunity_interpretation": {
+      "row_type": "inference",
+      "read": "Medium-favorable. First-round capital plus a genuinely vacated WR room and an announced scheme modernization created a credible immediate-role case; but the room was crowded with veteran capital (OBJ, Agholor), Andrews dominated the target hierarchy, and the franchise's structural pass-volume history was the lowest in the league. Round-1 capital was sufficient for the role, not sufficient for early elite volume.",
+      "confidence": "medium",
+      "contingencies": [
+        "Monken actually raising pass volume from Roman-era floor",
+        "OBJ/Bateman health outcomes redistributing perimeter snaps",
+        "Jackson playing a full season under the new deal"
+      ]
+    },
+    "limitations": [
+      "No routes/snap data for 2022 (unavailable upstream).",
+      "No governed April 2023 depth-chart snapshot; ordering derived from 2022 usage plus verified signings.",
+      "Josh Oliver and Demarcus Robinson departure timing not independently re-verified.",
+      "Jackson 2022 availability details recalled from public record, not re-verified.",
+      "Governed 2022 team-environment data (pace, PROE, EPA) does not exist in any TIBER repo."
+    ]
+  },
+  "source_lineage": [
+    {"source": "https://github.com/nflverse/nflverse-data/releases/download/draft_picks/draft_picks.csv.gz", "kind": "verified_public_source", "provides": "draft slot facts (round 1, pick 22, BAL)"},
+    {"source": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_reg_2022.csv.gz", "kind": "verified_public_source", "provides": "all 2022 usage rows"},
+    {"source": "https://www.washingtonpost.com/sports/2023/04/27/lamar-jackson-contract-ravens/", "kind": "verified_public_source", "provides": "Jackson extension timing (2023-04-27, pre-Round 1)"},
+    {"source": "https://www.baltimoreravens.com/news/odell-beckham-ravens-deal-terms-agrees", "kind": "verified_public_source", "provides": "OBJ signing (agreed 04-09, signed 04-13)"},
+    {"source": "https://www.baltimoreravens.com/news/nelson-agholor-ravens-wide-receiver-signing-free-agent", "kind": "verified_public_source", "provides": "Agholor signing (2023-03-29)"},
+    {"source": "https://www.nfl.com/news/ravens-hire-todd-monken-as-new-offensive-coordinator", "kind": "verified_public_source", "provides": "Monken hire (2023-02-14), Roman resignation"},
+    {"source": "public_record_agent_recall", "kind": "agent_recall_needs_verification", "provides": "Bateman Lisfranc detail, Oliver departure, Jackson 2022 injury detail"}
+  ],
+  "hindsight_exclusion_note": "Nothing after the evening of 2023-04-27 is admitted: no Day 2/3 draft picks, no OBJ/Bateman 2023 season outcomes, no Monken-era actual pass-rate data, and no NFL production of any 2023 draftee."
+}

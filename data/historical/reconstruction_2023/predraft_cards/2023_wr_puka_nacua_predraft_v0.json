@@ -1,0 +1,211 @@
+{
+  "artifact": "predraft_reconstruction_card_v0",
+  "issue": "Prometheus-Frameworks/TIBER-Rookies#283",
+  "reconstruction_mode": "historical_as_known_then",
+  "class_year": 2023,
+  "pre_draft_cutoff": "2023-04-26T23:59:59Z",
+  "nfl_outcome_fields_available_to_card_builder": false,
+  "canonical_player_id": "wr-puka-nacua",
+  "gsis_id": "00-0039075",
+  "gsis_id_note": "Identity join key only; assigned post-draft, carries no evidence.",
+  "player_name": "Puka Nacua",
+  "position": "WR",
+  "identity": {
+    "school": "BYU",
+    "prior_school": "Washington (2019-2020), transferred to BYU in 2021",
+    "birth_date": "2001-05-29",
+    "age_at_draft_years": 21.9,
+    "class_standing": "fourth-year senior",
+    "early_declare": false,
+    "source_ref": {
+      "kind": "public_record",
+      "status": "agent_recall_needs_verification",
+      "note": "Birth date and transfer history from public record; not re-verified against a fetched source during this pilot."
+    }
+  },
+  "college_production": [
+    {
+      "season": 2021,
+      "school": "BYU",
+      "receptions": 43,
+      "receiving_yards": 805,
+      "receiving_tds": 6,
+      "source_ref": {
+        "kind": "governed_in_repo",
+        "path": "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "source_name": "CFBD receiving stats (year=2021)",
+        "source_url": "https://api.collegefootballdata.com/stats/player/season?year=2021&category=receiving",
+        "status": "governed_in_repo"
+      }
+    },
+    {
+      "season": 2022,
+      "school": "BYU",
+      "receptions": 48,
+      "receiving_yards": 625,
+      "receiving_tds": 5,
+      "games_note": "Played through lower-body injuries; missed time.",
+      "rushing_note": "Meaningful designed-rush usage including rushing touchdowns (jet/sweep packages).",
+      "source_ref": {
+        "kind": "verified_public_source",
+        "source_name": "BYU Athletics / cfbstats.com 2022 season page (web-verified 2026-08-04)",
+        "source_url": "https://www.cfbstats.com/2022/player/77/1106480/receiving/split.html",
+        "status": "verified_public_source"
+      }
+    },
+    {
+      "season": "2019-2020",
+      "school": "Washington",
+      "receptions": null,
+      "receiving_yards": null,
+      "receiving_tds": null,
+      "note": "Limited early-career usage at Washington (injury-shortened); exact lines not held in any governed repo source.",
+      "source_ref": {
+        "kind": "missing",
+        "status": "unavailable"
+      }
+    }
+  ],
+  "production_discrepancy_flag": {
+    "flag": true,
+    "note": "Existing repo input data/processed/2023_college_production.json claims '2022: 1594 yds/10 TDs BYU'. Governed 2021 CFBD (805 yds) and web-verified 2022 (625 yds) contradict that line; 1594 appears to be an unlabeled multi-season or scrimmage aggregate. Recorded here as an input-integrity finding, not adopted as evidence."
+  },
+  "breakout_and_age": {
+    "breakout_age": 22,
+    "age_adjusted_note": "First 800-yard season came as a 20-21 year old fourth-year player in 2021 (BOA by dominator convention ~22 per existing repo context). Old-for-class relative to elite WR priors; not a young-breakout profile.",
+    "source_ref": {
+      "kind": "derived_from_governed_production",
+      "status": "governed_in_repo"
+    }
+  },
+  "market_share_context": {
+    "status": "unavailable",
+    "note": "Team receiving totals for BYU 2021-2022 not held in repo; dominator/market-share not computable from governed sources at reconstruction time."
+  },
+  "efficiency_indicators": {
+    "yprr": {
+      "status": "qualitative_context_only",
+      "note": "Existing repo context file records career YPRR 2.65 with no source lineage; route-level charting data is proprietary analyst content. Retained only as unverified qualitative context per external-source hygiene policy.",
+      "value_recorded_in_repo": 2.65
+    },
+    "target_earning": {
+      "status": "qualitative_context_only",
+      "note": "High per-game target volume at BYU when healthy; strong contested/physical catch reputation in pre-draft public scouting commentary."
+    }
+  },
+  "role_and_alignment": {
+    "alignment_profile": "Inside/outside versatile; heavy usage on screens, jets, and designed touches; physical run-after-catch style.",
+    "route_role": "Short/intermediate volume role with YAC emphasis rather than vertical separation role.",
+    "source_ref": {
+      "kind": "public_scouting_consensus",
+      "status": "qualitative_context_only"
+    }
+  },
+  "separation_evidence": {
+    "status": "unavailable",
+    "note": "No governed man/zone or press-release charting source available to this reconstruction."
+  },
+  "after_catch_and_contested": {
+    "status": "qualitative_context_only",
+    "note": "Pre-draft public scouting consensus emphasized YAC creation, physicality, and contested-catch ability; no licensed charting metrics held."
+  },
+  "athletic_testing": {
+    "combine_2023": {
+      "height_in": 74,
+      "weight_lb": 201,
+      "forty": null,
+      "vertical": null,
+      "broad": null,
+      "three_cone": null,
+      "shuttle": null,
+      "bench": null,
+      "participation_note": "Did not complete athletic testing at the 2023 NFL Combine (no forty/jumps/agility recorded in the nflverse combine release).",
+      "source_ref": {
+        "kind": "verified_public_source",
+        "source_name": "nflverse combine release (season=2023)",
+        "source_url": "https://github.com/nflverse/nflverse-data/releases/download/combine/combine.csv",
+        "status": "verified_public_source"
+      }
+    },
+    "sporq": {
+      "value": null,
+      "dnq": true,
+      "source_ref": {
+        "kind": "governed_in_repo",
+        "path": "data/historical/sporq_historical.json",
+        "status": "governed_in_repo"
+      }
+    },
+    "athletic_testing_discrepancy_flag": {
+      "flag": true,
+      "note": "Existing repo input data/raw/2023_combine_results.json records forty 4.57 / vertical 36.5 / broad 122 sourced as 'NFL combine 2023 (official)' at 72in/205lb. The nflverse combine release shows no combine testing for Nacua (74in/201lb). The repo values are unverifiable as official combine results (possibly pro-day numbers with mislabeled provenance). Not adopted as evidence; recorded as an input-integrity finding."
+    },
+    "pro_day": {
+      "status": "unavailable",
+      "note": "No governed or fetch-verified pro-day source held; pro-day numbers circulating in public scouting coverage are not adopted without lineage."
+    }
+  },
+  "context_flags": [
+    {
+      "flag": "injury_history",
+      "detail": "Recurring lower-body injuries across college career, including an injury-limited 2022; durability was a stated pre-draft concern.",
+      "status": "agent_recall_needs_verification"
+    },
+    {
+      "flag": "transfer",
+      "detail": "Washington to BYU transfer after 2020 season.",
+      "status": "agent_recall_needs_verification"
+    },
+    {
+      "flag": "competition_level",
+      "detail": "BYU independent-schedule competition; non-P4 discount applied by the existing repo production seed.",
+      "status": "governed_in_repo"
+    },
+    {
+      "flag": "athletic_testing_missing",
+      "detail": "No verified combine testing; athletic profile unquantified at cutoff.",
+      "status": "verified_public_source"
+    }
+  ],
+  "expected_draft_capital": {
+    "qualitative_range": "Consensus Day 3 projection (approximately rounds 4-6) in public pre-draft coverage.",
+    "basis": "Public mock-draft and scouting consensus as of April 2023; no licensed board data stored.",
+    "source_status": "agent_recall_needs_verification",
+    "actual_draft_capital_present": false
+  },
+  "missingness": [
+    "market_share_dominator (team totals not held)",
+    "yards_per_route_run (no licensed charting source)",
+    "man_zone_press_separation (no charting source)",
+    "washington_season_stat_lines_2019_2020",
+    "verified_athletic_testing (combine DNP; pro day unverified)",
+    "verified_birth_date"
+  ],
+  "source_lineage": [
+    {
+      "source": "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+      "kind": "governed_in_repo",
+      "provides": "2021 receiving line (CFBD)"
+    },
+    {
+      "source": "https://www.cfbstats.com/2022/player/77/1106480/receiving/split.html",
+      "kind": "verified_public_source",
+      "provides": "2022 receiving line (web-verified 2026-08-04)"
+    },
+    {
+      "source": "https://github.com/nflverse/nflverse-data/releases/download/combine/combine.csv",
+      "kind": "verified_public_source",
+      "provides": "2023 combine participation and measurements"
+    },
+    {
+      "source": "data/historical/sporq_historical.json",
+      "kind": "governed_in_repo",
+      "provides": "SPORQ DNQ status, height/weight"
+    },
+    {
+      "source": "public_record_agent_recall",
+      "kind": "agent_recall_needs_verification",
+      "provides": "birth date, transfer history, injury history, expected draft capital range"
+    }
+  ]
+}

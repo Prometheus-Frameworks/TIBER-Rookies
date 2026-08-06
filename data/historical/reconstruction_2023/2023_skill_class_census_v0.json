@@ -1,0 +1,2215 @@
+{
+  "artifact": "2023_skill_class_census_v0",
+  "issue": "Prometheus-Frameworks/TIBER-Rookies#283",
+  "generated_at": "2026-08-04T22:32:28.293850+00:00",
+  "draft_class": 2023,
+  "positions": [
+    "QB",
+    "RB",
+    "TE",
+    "WR"
+  ],
+  "census_source": {
+    "source_name": "nflverse draft_picks public release",
+    "source_url": "https://github.com/nflverse/nflverse-data/releases/download/draft_picks/draft_picks.csv.gz",
+    "note": "Draft facts here are audit census data, not the governed TIBER-Data nfl_draft_results artifact (issue #242 still open). This census is not a model input and must not be promoted."
+  },
+  "classification_rules": {
+    "governed_profile_available": "standalone row in promoted 2023 rookie-alpha export",
+    "partial_reconstructable": "in-repo athletic testing + >=1 governed college production season",
+    "reference_only": "appears only in reference/comparison/outcome rows",
+    "missing": "no in-repo artifact contains the player"
+  },
+  "summary": {
+    "players_total": 80,
+    "by_position": {
+      "QB": 14,
+      "RB": 18,
+      "WR": 33,
+      "TE": 15
+    },
+    "by_classification": {
+      "reference_only": 31,
+      "governed_profile_available": 13,
+      "partial_reconstructable": 34,
+      "missing": 2
+    }
+  },
+  "players": [
+    {
+      "canonical_player_id": "qb-bryce-young",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039150",
+      "player_name": "Bryce Young",
+      "position": "QB",
+      "college": "Alabama",
+      "draft_round": 1,
+      "overall_pick": 1,
+      "draft_team": "CAR",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage.",
+        "SPORQ table has no QB coverage; no in-repo QB athletic layer."
+      ]
+    },
+    {
+      "canonical_player_id": "qb-c-j-stroud",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039163",
+      "player_name": "C.J. Stroud",
+      "position": "QB",
+      "college": "Ohio St.",
+      "draft_round": 1,
+      "overall_pick": 2,
+      "draft_team": "HOU",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage.",
+        "SPORQ table has no QB coverage; no in-repo QB athletic layer."
+      ]
+    },
+    {
+      "canonical_player_id": "qb-anthony-richardson",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039164",
+      "player_name": "Anthony Richardson",
+      "position": "QB",
+      "college": "Florida",
+      "draft_round": 1,
+      "overall_pick": 4,
+      "draft_team": "IND",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage.",
+        "SPORQ table has no QB coverage; no in-repo QB athletic layer."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-bijan-robinson",
+      "canonical_id_status": "existing_repo_id",
+      "gsis_id": "00-0038542",
+      "player_name": "Bijan Robinson",
+      "position": "RB",
+      "college": "Texas",
+      "draft_round": 1,
+      "overall_pick": 8,
+      "draft_team": "ATL",
+      "coverage_classification": "governed_profile_available",
+      "artifacts_containing_player": [
+        "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.json",
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": true,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "yes_with_hindsight_contamination",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "2023 alpha inputs are manual_historical_seed rows: draft-capital proxy holds actual draft outcome and several evidence strings contain post-draft NFL information (hindsight contamination).",
+        "No verifiable per-stat source lineage on production/context seeds."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-jahmyr-gibbs",
+      "canonical_id_status": "existing_repo_id",
+      "gsis_id": "00-0039139",
+      "player_name": "Jahmyr Gibbs",
+      "position": "RB",
+      "college": "Alabama",
+      "draft_round": 1,
+      "overall_pick": 12,
+      "draft_team": "DET",
+      "coverage_classification": "governed_profile_available",
+      "artifacts_containing_player": [
+        "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.json",
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": true,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "yes_with_hindsight_contamination",
+      "governed_production_seasons": [
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "2023 alpha inputs are manual_historical_seed rows: draft-capital proxy holds actual draft outcome and several evidence strings contain post-draft NFL information (hindsight contamination).",
+        "No verifiable per-stat source lineage on production/context seeds."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-jaxon-smith-njigba",
+      "canonical_id_status": "existing_repo_id",
+      "gsis_id": "00-0038543",
+      "player_name": "Jaxon Smith-Njigba",
+      "position": "WR",
+      "college": "Ohio St.",
+      "draft_round": 1,
+      "overall_pick": 20,
+      "draft_team": "SEA",
+      "coverage_classification": "governed_profile_available",
+      "artifacts_containing_player": [
+        "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.json",
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": true,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "yes_with_hindsight_contamination",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "2023 alpha inputs are manual_historical_seed rows: draft-capital proxy holds actual draft outcome and several evidence strings contain post-draft NFL information (hindsight contamination).",
+        "No verifiable per-stat source lineage on production/context seeds."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-quentin-johnston",
+      "canonical_id_status": "existing_repo_id",
+      "gsis_id": "00-0038544",
+      "player_name": "Quentin Johnston",
+      "position": "WR",
+      "college": "TCU",
+      "draft_round": 1,
+      "overall_pick": 21,
+      "draft_team": "LAC",
+      "coverage_classification": "governed_profile_available",
+      "artifacts_containing_player": [
+        "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.json",
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": true,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "yes_with_hindsight_contamination",
+      "governed_production_seasons": [
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "2023 alpha inputs are manual_historical_seed rows: draft-capital proxy holds actual draft outcome and several evidence strings contain post-draft NFL information (hindsight contamination).",
+        "No verifiable per-stat source lineage on production/context seeds."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-zay-flowers",
+      "canonical_id_status": "existing_repo_id",
+      "gsis_id": "00-0039064",
+      "player_name": "Zay Flowers",
+      "position": "WR",
+      "college": "Boston Col.",
+      "draft_round": 1,
+      "overall_pick": 22,
+      "draft_team": "BAL",
+      "coverage_classification": "governed_profile_available",
+      "artifacts_containing_player": [
+        "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.json",
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2019_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": true,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "yes_with_hindsight_contamination",
+      "governed_production_seasons": [
+        2019,
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "2023 alpha inputs are manual_historical_seed rows: draft-capital proxy holds actual draft outcome and several evidence strings contain post-draft NFL information (hindsight contamination).",
+        "No verifiable per-stat source lineage on production/context seeds."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-jordan-addison",
+      "canonical_id_status": "existing_repo_id",
+      "gsis_id": "00-0038994",
+      "player_name": "Jordan Addison",
+      "position": "WR",
+      "college": "USC",
+      "draft_round": 1,
+      "overall_pick": 23,
+      "draft_team": "MIN",
+      "coverage_classification": "governed_profile_available",
+      "artifacts_containing_player": [
+        "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.json",
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": true,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "yes_with_hindsight_contamination",
+      "governed_production_seasons": [
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "2023 alpha inputs are manual_historical_seed rows: draft-capital proxy holds actual draft outcome and several evidence strings contain post-draft NFL information (hindsight contamination).",
+        "No verifiable per-stat source lineage on production/context seeds."
+      ]
+    },
+    {
+      "canonical_player_id": "te-dalton-kincaid",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038933",
+      "player_name": "Dalton Kincaid",
+      "position": "TE",
+      "college": "Utah",
+      "draft_round": 1,
+      "overall_pick": 25,
+      "draft_team": "BUF",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage."
+      ]
+    },
+    {
+      "canonical_player_id": "qb-will-levis",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039152",
+      "player_name": "Will Levis",
+      "position": "QB",
+      "college": "Kentucky",
+      "draft_round": 2,
+      "overall_pick": 33,
+      "draft_team": "TEN",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage.",
+        "SPORQ table has no QB coverage; no in-repo QB athletic layer."
+      ]
+    },
+    {
+      "canonical_player_id": "te-sam-laporta",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039065",
+      "player_name": "Sam LaPorta",
+      "position": "TE",
+      "college": "Iowa",
+      "draft_round": 2,
+      "overall_pick": 34,
+      "draft_team": "DET",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "te-michael-mayer",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039066",
+      "player_name": "Michael Mayer",
+      "position": "TE",
+      "college": "Notre Dame",
+      "draft_round": 2,
+      "overall_pick": 35,
+      "draft_team": "LVR",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-jonathan-mingo",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039062",
+      "player_name": "Jonathan Mingo",
+      "position": "WR",
+      "college": "Mississippi",
+      "draft_round": 2,
+      "overall_pick": 39,
+      "draft_team": "CAR",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "te-luke-musgrave",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039144",
+      "player_name": "Luke Musgrave",
+      "position": "TE",
+      "college": "Oregon St.",
+      "draft_round": 2,
+      "overall_pick": 42,
+      "draft_team": "GNB",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-jayden-reed",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039146",
+      "player_name": "Jayden Reed",
+      "position": "WR",
+      "college": "Michigan St.",
+      "draft_round": 2,
+      "overall_pick": 50,
+      "draft_team": "GNB",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2018_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2018,
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-zach-charbonnet",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039165",
+      "player_name": "Zach Charbonnet",
+      "position": "RB",
+      "college": "UCLA",
+      "draft_round": 2,
+      "overall_pick": 52,
+      "draft_team": "SEA",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-rashee-rice",
+      "canonical_id_status": "existing_repo_id",
+      "gsis_id": "00-0039067",
+      "player_name": "Rashee Rice",
+      "position": "WR",
+      "college": "SMU",
+      "draft_round": 2,
+      "overall_pick": 55,
+      "draft_team": "KAN",
+      "coverage_classification": "governed_profile_available",
+      "artifacts_containing_player": [
+        "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.json",
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2019_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": true,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "yes_with_hindsight_contamination",
+      "governed_production_seasons": [
+        2019,
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "2023 alpha inputs are manual_historical_seed rows: draft-capital proxy holds actual draft outcome and several evidence strings contain post-draft NFL information (hindsight contamination).",
+        "No verifiable per-stat source lineage on production/context seeds."
+      ]
+    },
+    {
+      "canonical_player_id": "te-luke-schoonmaker",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038547",
+      "player_name": "Luke Schoonmaker",
+      "position": "TE",
+      "college": "Michigan",
+      "draft_round": 2,
+      "overall_pick": 58,
+      "draft_team": "DAL",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage.",
+        "TE reference population files exist but are empty."
+      ]
+    },
+    {
+      "canonical_player_id": "te-brenton-strange",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038935",
+      "player_name": "Brenton Strange",
+      "position": "TE",
+      "college": "Penn St.",
+      "draft_round": 2,
+      "overall_pick": 61,
+      "draft_team": "JAX",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-marvin-mims",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038976",
+      "player_name": "Marvin Mims",
+      "position": "WR",
+      "college": "Oklahoma",
+      "draft_round": 2,
+      "overall_pick": 63,
+      "draft_team": "DEN",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "qb-hendon-hooker",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038550",
+      "player_name": "Hendon Hooker",
+      "position": "QB",
+      "college": "Tennessee",
+      "draft_round": 3,
+      "overall_pick": 68,
+      "draft_team": "DET",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 1,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage.",
+        "SPORQ table has no QB coverage; no in-repo QB athletic layer."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-tank-dell",
+      "canonical_id_status": "existing_repo_id",
+      "gsis_id": "00-0038977",
+      "player_name": "Tank Dell",
+      "position": "WR",
+      "college": "Houston",
+      "draft_round": 3,
+      "overall_pick": 69,
+      "draft_team": "HOU",
+      "coverage_classification": "governed_profile_available",
+      "artifacts_containing_player": [
+        "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": true,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "yes_with_hindsight_contamination",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "2023 alpha inputs are manual_historical_seed rows: draft-capital proxy holds actual draft outcome and several evidence strings contain post-draft NFL information (hindsight contamination).",
+        "No verifiable per-stat source lineage on production/context seeds."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-kendre-miller",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038551",
+      "player_name": "Kendre Miller",
+      "position": "RB",
+      "college": "TCU",
+      "draft_round": 3,
+      "overall_pick": 71,
+      "draft_team": "NOR",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-jalin-hyatt",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038938",
+      "player_name": "Jalin Hyatt",
+      "position": "WR",
+      "college": "Tennessee",
+      "draft_round": 3,
+      "overall_pick": 73,
+      "draft_team": "NYG",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-cedric-tillman",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038979",
+      "player_name": "Cedric Tillman",
+      "position": "WR",
+      "college": "Tennessee",
+      "draft_round": 3,
+      "overall_pick": 74,
+      "draft_team": "CLE",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "te-tucker-kraft",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038996",
+      "player_name": "Tucker Kraft",
+      "position": "TE",
+      "college": "South Dakota St.",
+      "draft_round": 3,
+      "overall_pick": 78,
+      "draft_team": "GNB",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage.",
+        "TE reference population files exist but are empty."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-josh-downs",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038997",
+      "player_name": "Josh Downs",
+      "position": "WR",
+      "college": "North Carolina",
+      "draft_round": 3,
+      "overall_pick": 79,
+      "draft_team": "IND",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-tyjae-spears",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039032",
+      "player_name": "Tyjae Spears",
+      "position": "RB",
+      "college": "Tulane",
+      "draft_round": 3,
+      "overall_pick": 81,
+      "draft_team": "TEN",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-devon-achane",
+      "canonical_id_status": "existing_repo_id",
+      "gsis_id": "00-0039040",
+      "player_name": "De'Von Achane",
+      "position": "RB",
+      "college": "Texas A&M",
+      "draft_round": 3,
+      "overall_pick": 84,
+      "draft_team": "MIA",
+      "coverage_classification": "governed_profile_available",
+      "artifacts_containing_player": [
+        "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.json",
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": true,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "yes_with_hindsight_contamination",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "2023 alpha inputs are manual_historical_seed rows: draft-capital proxy holds actual draft outcome and several evidence strings contain post-draft NFL information (hindsight contamination).",
+        "No verifiable per-stat source lineage on production/context seeds."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-tank-bigsby",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038555",
+      "player_name": "Tank Bigsby",
+      "position": "RB",
+      "college": "Auburn",
+      "draft_round": 3,
+      "overall_pick": 88,
+      "draft_team": "JAX",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "te-darnell-washington",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038558",
+      "player_name": "Darnell Washington",
+      "position": "TE",
+      "college": "Georgia",
+      "draft_round": 3,
+      "overall_pick": 93,
+      "draft_team": "PIT",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage.",
+        "TE reference population files exist but are empty."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-michael-wilson",
+      "canonical_id_status": "existing_repo_id",
+      "gsis_id": "00-0038559",
+      "player_name": "Michael Wilson",
+      "position": "WR",
+      "college": "Stanford",
+      "draft_round": 3,
+      "overall_pick": 94,
+      "draft_team": "ARI",
+      "coverage_classification": "governed_profile_available",
+      "artifacts_containing_player": [
+        "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.json",
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2019_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": true,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "yes_with_hindsight_contamination",
+      "governed_production_seasons": [
+        2019
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "2023 alpha inputs are manual_historical_seed rows: draft-capital proxy holds actual draft outcome and several evidence strings contain post-draft NFL information (hindsight contamination).",
+        "No verifiable per-stat source lineage on production/context seeds."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-tre-tucker",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038563",
+      "player_name": "Tre Tucker",
+      "position": "WR",
+      "college": "Cincinnati",
+      "draft_round": 3,
+      "overall_pick": 100,
+      "draft_team": "LVR",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "te-cameron-latu",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038564",
+      "player_name": "Cameron Latu",
+      "position": "TE",
+      "college": "Alabama",
+      "draft_round": 3,
+      "overall_pick": 101,
+      "draft_team": "SFO",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 0,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-roschon-johnson",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039021",
+      "player_name": "Roschon Johnson",
+      "position": "RB",
+      "college": "Texas",
+      "draft_round": 4,
+      "overall_pick": 115,
+      "draft_team": "CHI",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2019_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2019
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-derius-davis",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038573",
+      "player_name": "Derius Davis",
+      "position": "WR",
+      "college": "TCU",
+      "draft_round": 4,
+      "overall_pick": 125,
+      "draft_team": "LAC",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "qb-jake-haener",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038998",
+      "player_name": "Jake Haener",
+      "position": "QB",
+      "college": "Fresno St.",
+      "draft_round": 4,
+      "overall_pick": 127,
+      "draft_team": "NOR",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 1,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage.",
+        "SPORQ table has no QB coverage; no in-repo QB athletic layer."
+      ]
+    },
+    {
+      "canonical_player_id": "qb-stetson-bennett",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039107",
+      "player_name": "Stetson Bennett",
+      "position": "QB",
+      "college": "Georgia",
+      "draft_round": 4,
+      "overall_pick": 128,
+      "draft_team": "LAR",
+      "coverage_classification": "missing",
+      "artifacts_containing_player": [],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 0,
+      "gaps_blocking_reconstruction": [
+        "No in-repo artifact contains this player.",
+        "SPORQ table has no QB coverage; no in-repo QB athletic layer."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-charlie-jones",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038576",
+      "player_name": "Charlie Jones",
+      "position": "WR",
+      "college": "Purdue",
+      "draft_round": 4,
+      "overall_pick": 131,
+      "draft_team": "CIN",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-tyler-scott",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038941",
+      "player_name": "Tyler Scott",
+      "position": "WR",
+      "college": "Cincinnati",
+      "draft_round": 4,
+      "overall_pick": 133,
+      "draft_team": "CHI",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "qb-aidan-oconnell",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038579",
+      "player_name": "Aidan O'Connell",
+      "position": "QB",
+      "college": "Purdue",
+      "draft_round": 4,
+      "overall_pick": 135,
+      "draft_team": "LVR",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage.",
+        "SPORQ table has no QB coverage; no in-repo QB athletic layer."
+      ]
+    },
+    {
+      "canonical_player_id": "qb-clayton-tune",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038582",
+      "player_name": "Clayton Tune",
+      "position": "QB",
+      "college": "Houston",
+      "draft_round": 5,
+      "overall_pick": 139,
+      "draft_team": "ARI",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage.",
+        "SPORQ table has no QB coverage; no in-repo QB athletic layer."
+      ]
+    },
+    {
+      "canonical_player_id": "qb-dorian-thompson-robinson",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038583",
+      "player_name": "Dorian Thompson-Robinson",
+      "position": "QB",
+      "college": "UCLA",
+      "draft_round": 5,
+      "overall_pick": 140,
+      "draft_team": "CLE",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage.",
+        "SPORQ table has no QB coverage; no in-repo QB athletic layer."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-israel-abanikanda",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038389",
+      "player_name": "Israel Abanikanda",
+      "position": "RB",
+      "college": "Pittsburgh",
+      "draft_round": 5,
+      "overall_pick": 143,
+      "draft_team": "NYJ",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 1,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage."
+      ]
+    },
+    {
+      "canonical_player_id": "te-josh-whyle",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038589",
+      "player_name": "Josh Whyle",
+      "position": "TE",
+      "college": "Cincinnati",
+      "draft_round": 5,
+      "overall_pick": 147,
+      "draft_team": "TEN",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "qb-sean-clifford",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038391",
+      "player_name": "Sean Clifford",
+      "position": "QB",
+      "college": "Penn St.",
+      "draft_round": 5,
+      "overall_pick": 149,
+      "draft_team": "GNB",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 1,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage.",
+        "SPORQ table has no QB coverage; no in-repo QB athletic layer."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-justin-shorter",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038590",
+      "player_name": "Justin Shorter",
+      "position": "WR",
+      "college": "Florida",
+      "draft_round": 5,
+      "overall_pick": 150,
+      "draft_team": "BUF",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 0,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-dontayvion-wicks",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038393",
+      "player_name": "Dontayvion Wicks",
+      "position": "WR",
+      "college": "Virginia",
+      "draft_round": 5,
+      "overall_pick": 159,
+      "draft_team": "GNB",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "te-will-mallory",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038394",
+      "player_name": "Will Mallory",
+      "position": "TE",
+      "college": "Miami (FL)",
+      "draft_round": 5,
+      "overall_pick": 162,
+      "draft_team": "IND",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-chase-brown",
+      "canonical_id_status": "existing_repo_id",
+      "gsis_id": "00-0038597",
+      "player_name": "Chase Brown",
+      "position": "RB",
+      "college": "Illinois",
+      "draft_round": 5,
+      "overall_pick": 163,
+      "draft_team": "CIN",
+      "coverage_classification": "governed_profile_available",
+      "artifacts_containing_player": [
+        "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.json",
+        "data/historical/sporq_historical.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": true,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "yes_with_hindsight_contamination",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "2023 alpha inputs are manual_historical_seed rows: draft-capital proxy holds actual draft outcome and several evidence strings contain post-draft NFL information (hindsight contamination).",
+        "No verifiable per-stat source lineage on production/context seeds."
+      ]
+    },
+    {
+      "canonical_player_id": "qb-jaren-hall",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038598",
+      "player_name": "Jaren Hall",
+      "position": "QB",
+      "college": "BYU",
+      "draft_round": 5,
+      "overall_pick": 164,
+      "draft_team": "MIN",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 1,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage.",
+        "SPORQ table has no QB coverage; no in-repo QB athletic layer."
+      ]
+    },
+    {
+      "canonical_player_id": "te-payne-durham",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039050",
+      "player_name": "Payne Durham",
+      "position": "TE",
+      "college": "Purdue",
+      "draft_round": 5,
+      "overall_pick": 171,
+      "draft_team": "TAM",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-eric-gray",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038396",
+      "player_name": "Eric Gray",
+      "position": "RB",
+      "college": "Oklahoma",
+      "draft_round": 5,
+      "overall_pick": 172,
+      "draft_team": "NYG",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage."
+      ]
+    },
+    {
+      "canonical_player_id": "te-davis-allen",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039074",
+      "player_name": "Davis Allen",
+      "position": "TE",
+      "college": "Clemson",
+      "draft_round": 5,
+      "overall_pick": 175,
+      "draft_team": "LAR",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-evan-hull",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038397",
+      "player_name": "Evan Hull",
+      "position": "RB",
+      "college": "Northwestern",
+      "draft_round": 5,
+      "overall_pick": 176,
+      "draft_team": "IND",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 1,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-puka-nacua",
+      "canonical_id_status": "existing_repo_id",
+      "gsis_id": "00-0039075",
+      "player_name": "Puka Nacua",
+      "position": "WR",
+      "college": "BYU",
+      "draft_round": 5,
+      "overall_pick": 177,
+      "draft_team": "LAR",
+      "coverage_classification": "governed_profile_available",
+      "artifacts_containing_player": [
+        "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.json",
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": true,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "yes_with_hindsight_contamination",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "2023 alpha inputs are manual_historical_seed rows: draft-capital proxy holds actual draft outcome and several evidence strings contain post-draft NFL information (hindsight contamination).",
+        "No verifiable per-stat source lineage on production/context seeds."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-parker-washington",
+      "canonical_id_status": "existing_repo_id",
+      "gsis_id": "00-0038606",
+      "player_name": "Parker Washington",
+      "position": "WR",
+      "college": "Penn St.",
+      "draft_round": 6,
+      "overall_pick": 185,
+      "draft_team": "JAX",
+      "coverage_classification": "governed_profile_available",
+      "artifacts_containing_player": [
+        "exports/promoted/rookie-alpha/2023_rookie_alpha_predraft_v0.json",
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": true,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "yes_with_hindsight_contamination",
+      "governed_production_seasons": [
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "2023 alpha inputs are manual_historical_seed rows: draft-capital proxy holds actual draft outcome and several evidence strings contain post-draft NFL information (hindsight contamination).",
+        "No verifiable per-stat source lineage on production/context seeds."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-kayshon-boutte",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038608",
+      "player_name": "Kayshon Boutte",
+      "position": "WR",
+      "college": "LSU",
+      "draft_round": 6,
+      "overall_pick": 187,
+      "draft_team": "NWE",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "qb-tanner-mckee",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038400",
+      "player_name": "Tanner McKee",
+      "position": "QB",
+      "college": "Stanford",
+      "draft_round": 6,
+      "overall_pick": 188,
+      "draft_team": "PHI",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 1,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage.",
+        "SPORQ table has no QB coverage; no in-repo QB athletic layer."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-trey-palmer",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039052",
+      "player_name": "Trey Palmer",
+      "position": "WR",
+      "college": "Nebraska",
+      "draft_round": 6,
+      "overall_pick": 191,
+      "draft_team": "TAM",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-chris-rodriguez",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038611",
+      "player_name": "Chris Rodriguez",
+      "position": "RB",
+      "college": "Kentucky",
+      "draft_round": 6,
+      "overall_pick": 193,
+      "draft_team": "WAS",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-a-t-perry",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038612",
+      "player_name": "A.T. Perry",
+      "position": "WR",
+      "college": "Wake Forest",
+      "draft_round": 6,
+      "overall_pick": 195,
+      "draft_team": "NOR",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 1,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-elijah-higgins",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039041",
+      "player_name": "Elijah Higgins",
+      "position": "WR",
+      "college": "Stanford",
+      "draft_round": 6,
+      "overall_pick": 197,
+      "draft_team": "MIA",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-xavier-hutchinson",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038618",
+      "player_name": "Xavier Hutchinson",
+      "position": "WR",
+      "college": "Iowa St.",
+      "draft_round": 6,
+      "overall_pick": 205,
+      "draft_team": "HOU",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-andrei-iosivas",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038619",
+      "player_name": "Andrei Iosivas",
+      "position": "WR",
+      "college": "Princeton",
+      "draft_round": 6,
+      "overall_pick": 206,
+      "draft_team": "CIN",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-demario-douglas",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038621",
+      "player_name": "DeMario Douglas",
+      "position": "WR",
+      "college": "Liberty",
+      "draft_round": 6,
+      "overall_pick": 210,
+      "draft_team": "NWE",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-deuce-vaughn",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038622",
+      "player_name": "Deuce Vaughn",
+      "position": "RB",
+      "college": "Kansas St.",
+      "draft_round": 6,
+      "overall_pick": 212,
+      "draft_team": "DAL",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2020,
+        2021
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-zach-evans",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039136",
+      "player_name": "Zach Evans",
+      "position": "RB",
+      "college": "Mississippi",
+      "draft_round": 6,
+      "overall_pick": 215,
+      "draft_team": "LAR",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 1,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-antoine-green",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038627",
+      "player_name": "Antoine Green",
+      "position": "WR",
+      "college": "North Carolina",
+      "draft_round": 7,
+      "overall_pick": 219,
+      "draft_team": "DET",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 1,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "te-zack-kuntz",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038406",
+      "player_name": "Zack Kuntz",
+      "position": "TE",
+      "college": "Old Dominion",
+      "draft_round": 7,
+      "overall_pick": 220,
+      "draft_team": "NYJ",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 0,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-dewayne-mcbride",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0039046",
+      "player_name": "DeWayne McBride",
+      "position": "RB",
+      "college": "Ala-Birmingham",
+      "draft_round": 7,
+      "overall_pick": 222,
+      "draft_team": "MIN",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 0,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-colton-dowell",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038632",
+      "player_name": "Colton Dowell",
+      "position": "WR",
+      "college": "UT Martin",
+      "draft_round": 7,
+      "overall_pick": 228,
+      "draft_team": "TEN",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 1,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-lew-nichols",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038409",
+      "player_name": "Lew Nichols",
+      "position": "RB",
+      "college": "Central Michigan",
+      "draft_round": 7,
+      "overall_pick": 235,
+      "draft_team": "GNB",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 0,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage."
+      ]
+    },
+    {
+      "canonical_player_id": "rb-kenny-mcintosh",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038636",
+      "player_name": "Kenny McIntosh",
+      "position": "RB",
+      "college": "Georgia",
+      "draft_round": 7,
+      "overall_pick": 237,
+      "draft_team": "SEA",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 1,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "qb-max-duggan",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038637",
+      "player_name": "Max Duggan",
+      "position": "QB",
+      "college": "TCU",
+      "draft_round": 7,
+      "overall_pick": 239,
+      "draft_team": "LAC",
+      "coverage_classification": "missing",
+      "artifacts_containing_player": [],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 0,
+      "gaps_blocking_reconstruction": [
+        "No in-repo artifact contains this player.",
+        "SPORQ table has no QB coverage; no in-repo QB athletic layer."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-jalen-brooks",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038640",
+      "player_name": "Jalen Brooks",
+      "position": "WR",
+      "college": "South Carolina",
+      "draft_round": 7,
+      "overall_pick": 244,
+      "draft_team": "DAL",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage."
+      ]
+    },
+    {
+      "canonical_player_id": "te-brayden-willis",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038643",
+      "player_name": "Brayden Willis",
+      "position": "TE",
+      "college": "Oklahoma",
+      "draft_round": 7,
+      "overall_pick": 247,
+      "draft_team": "SFO",
+      "coverage_classification": "reference_only",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": false,
+      "historical_model_inputs_reproducible": "no",
+      "governed_production_seasons": [],
+      "nfl_outcome_rows_available": 1,
+      "gaps_blocking_reconstruction": [
+        "Appears only in reference/outcome rows; no model-input coverage.",
+        "TE reference population files exist but are empty."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-ronnie-bell",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038647",
+      "player_name": "Ronnie Bell",
+      "position": "WR",
+      "college": "Michigan",
+      "draft_round": 7,
+      "overall_pick": 253,
+      "draft_team": "SFO",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2019_wr_receiving_population.json",
+        "data/historical/wr_reference_populations/2020_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2019,
+        2020
+      ],
+      "nfl_outcome_rows_available": 2,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    },
+    {
+      "canonical_player_id": "wr-grant-dubose",
+      "canonical_id_status": "proposed_slug",
+      "gsis_id": "00-0038507",
+      "player_name": "Grant Dubose",
+      "position": "WR",
+      "college": "Charlotte",
+      "draft_round": 7,
+      "overall_pick": 256,
+      "draft_team": "GNB",
+      "coverage_classification": "partial_reconstructable",
+      "artifacts_containing_player": [
+        "data/historical/sporq_historical.json",
+        "data/historical/wr_reference_populations/2021_wr_receiving_population.json",
+        "exports/promoted/nfl-fantasy-outcomes/player_year_ppr_outcomes_v1.json"
+      ],
+      "standalone_card_renderable": false,
+      "source_lineage_complete": true,
+      "historical_model_inputs_reproducible": "partial",
+      "governed_production_seasons": [
+        2021
+      ],
+      "nfl_outcome_rows_available": 1,
+      "gaps_blocking_reconstruction": [
+        "No standalone card or alpha-export row.",
+        "Final college season (2022) absent from governed reference populations (populations end at 2021)."
+      ]
+    }
+  ]
+}
