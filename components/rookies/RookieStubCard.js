@@ -1,4 +1,7 @@
-import { ROOKIE_STUB_STATUS_COPY } from '../../lib/rookies/rookieStubs.js';
+import {
+  getRookieStubReasonCopy,
+  ROOKIE_STUB_STATUS_COPY,
+} from '../../lib/rookies/rookieStubs.js';
 
 function esc(value) {
   return String(value ?? '')
@@ -50,7 +53,7 @@ export function buildRookieStubCardHtml(stub) {
       <section class="card-actions-row">
         <div class="card-actions-copy">
           <div class="section-title">Coverage state</div>
-          <div class="meta">Reason: below Day-2 scoring floor.</div>
+          <div class="meta">Reason: ${esc(getRookieStubReasonCopy(stub.reason))}</div>
         </div>
         <div class="card-actions-links">
           <a class="nav-link nav-link-action" href="/cards/rookies/board/">← Back to board</a>

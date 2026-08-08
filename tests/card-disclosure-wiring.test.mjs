@@ -9,6 +9,7 @@ import { isValidTransitionProfileEnvelope } from '../lib/rookies/rookieDataContr
 import { athleticMetricLabel, athleticChipLabel } from '../lib/rookies/athleticLabel.js';
 import {
   buildRookieStubBoardRow,
+  expectedRookieStubReason,
   mergeRookieBoardRowsWithStubs,
   normalizeRookieStub,
   normalizeRookieStubs,
@@ -131,20 +132,36 @@ test('2026 stub artifact is the exact drafted-minus-role-context set with copied
     assert.equal(stub.round, source.draft_round);
     assert.equal(stub.overall_pick, source.overall_pick);
     assert.equal(stub.alpha_status, 'not_scored');
-    assert.equal(stub.reason, 'below_day2_scoring_floor');
+    assert.equal(
+      stub.reason,
+      source.draft_round <= 3
+        ? 'not_in_postdraft_alpha_coverage'
+        : 'below_day2_scoring_floor',
+    );
     expectedProvenanceKeys.forEach((key) => assert.equal(stub.provenance[key], source[key]));
   });
 
   assert.equal(stubs.some((stub) => stub.player_id === 'rb-jeremiyah-love'), false);
-  assert.equal(stubs.some((stub) => stub.player_id === 'qb-fernando-mendoza'), true);
+  const mendoza = stubs.find((stub) => stub.player_id === 'qb-fernando-mendoza');
+  assert.equal(mendoza.reason, 'not_in_postdraft_alpha_coverage');
+  assert.equal(
+    stubs.filter((stub) => stub.round >= 4)
+      .every((stub) => stub.reason === 'below_day2_scoring_floor'),
+    true,
+  );
 });
 
 test('stub normalization fails closed and board merge gives stub state precedence for 2026', () => {
   const rawStubs = readJson('../data/processed/2026_rookie_stubs_v0.json');
   const stubs = normalizeRookieStubs(rawStubs);
   const mendoza = stubs.find((stub) => stub.playerId === 'qb-fernando-mendoza');
+  const rawCyrus = rawStubs.find((stub) => stub.player_id === 'wr-cyrus-allen');
   assert.ok(mendoza);
+  assert.equal(expectedRookieStubReason(3), 'not_in_postdraft_alpha_coverage');
+  assert.equal(expectedRookieStubReason(4), 'below_day2_scoring_floor');
   assert.equal(normalizeRookieStub({ ...rawStubs[0], alpha_status: 'scored' }), null);
+  assert.equal(normalizeRookieStub({ ...rawStubs[0], reason: 'below_day2_scoring_floor' }), null);
+  assert.equal(normalizeRookieStub({ ...rawCyrus, reason: 'not_in_postdraft_alpha_coverage' }), null);
   assert.equal(normalizeRookieStub({ ...rawStubs[0], provenance: {} }), null);
 
   const existingRows = [
@@ -177,8 +194,18 @@ test('stub board and player renderers disclose draft facts without score or comp
   assert.match(playerHtml, /Cyrus Allen/);
   assert.match(playerHtml, /Overall pick/);
   assert.match(playerHtml, /176/);
+  assert.match(playerHtml, /Below Day-2 scoring floor\./);
   assert.match(playerHtml, /NBC Sports ProFootballTalk/);
   assert.doesNotMatch(playerHtml, /Model Scores|Model Input Radar|PPR|Compare/);
+});
+
+test('round-one stub detail states a coverage gap instead of a scoring-floor claim', () => {
+  const raw = readJson('../data/processed/2026_rookie_stubs_v0.json')
+    .find((stub) => stub.player_id === 'qb-fernando-mendoza');
+  const html = buildRookieStubCardHtml(normalizeRookieStub(raw));
+
+  assert.match(html, /Not included in post-draft Rookie Alpha coverage\./);
+  assert.doesNotMatch(html, /Below Day-2 scoring floor\./);
 });
 
 test('board CSV leaves stub ranks and grades blank without creating scored-rank gaps', () => {

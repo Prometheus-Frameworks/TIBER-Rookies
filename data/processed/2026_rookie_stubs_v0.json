@@ -7,7 +7,7 @@
     "round": 1,
     "overall_pick": 1,
     "alpha_status": "not_scored",
-    "reason": "below_day2_scoring_floor",
+    "reason": "not_in_postdraft_alpha_coverage",
     "provenance": {
       "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
       "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",

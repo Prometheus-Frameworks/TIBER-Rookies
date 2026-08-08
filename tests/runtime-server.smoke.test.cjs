@@ -154,7 +154,12 @@ test('standalone runtime smoke routes', async (t) => {
   const stubPayload = await rookieStubs.json();
   assert.equal(stubPayload.length, 49);
   assert.equal(stubPayload[0].alpha_status, 'not_scored');
-  assert.equal(stubPayload[0].reason, 'below_day2_scoring_floor');
+  assert.equal(stubPayload[0].reason, 'not_in_postdraft_alpha_coverage');
+  assert.equal(
+    stubPayload.filter((stub) => stub.round >= 4)
+      .every((stub) => stub.reason === 'below_day2_scoring_floor'),
+    true,
+  );
 
   const css = await fetch(buildUrl(port, '/components/rookies/rookieCardStyles.css'));
   assert.equal(css.status, 200);

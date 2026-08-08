@@ -26,6 +26,16 @@ PROVENANCE_FIELDS = (
     "ingested_at",
 )
 
+BELOW_DAY2_SCORING_FLOOR = "below_day2_scoring_floor"
+NOT_IN_POSTDRAFT_ALPHA_COVERAGE = "not_in_postdraft_alpha_coverage"
+
+
+def reason_for_round(draft_round: int) -> str:
+    """Return a truthful reason for the player's missing post-draft Alpha score."""
+    if draft_round <= 3:
+        return NOT_IN_POSTDRAFT_ALPHA_COVERAGE
+    return BELOW_DAY2_SCORING_FLOOR
+
 
 def load_json(path: Path) -> Any:
     try:
@@ -93,7 +103,7 @@ def build_stub(row: dict[str, Any], index: int) -> dict[str, Any]:
         "round": required_values["draft_round"],
         "overall_pick": required_values["overall_pick"],
         "alpha_status": "not_scored",
-        "reason": "below_day2_scoring_floor",
+        "reason": reason_for_round(required_values["draft_round"]),
         "provenance": provenance,
     }
 
