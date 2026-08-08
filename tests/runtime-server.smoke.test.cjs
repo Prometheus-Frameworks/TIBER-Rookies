@@ -136,6 +136,26 @@ test('standalone runtime smoke routes', async (t) => {
     assert.match(body, /<!doctype html>/i);
   }
 
+  const boardPage = await fetch(buildUrl(port, '/cards/rookies/board/index.html'));
+  const boardHtml = await boardPage.text();
+  assert.match(boardHtml, /get2026RookieStubs/);
+  assert.match(boardHtml, /mergeRookieBoardRowsWithStubs/);
+
+  const playerPage = await fetch(buildUrl(port, '/cards/rookies/player.html?slug=wr-cyrus-allen'));
+  const playerHtml = await playerPage.text();
+  assert.match(playerHtml, /findRookieStubBySlug/);
+  assert.match(playerHtml, /renderRookieStubCard/);
+
+  const rookieStubs = await fetch(
+    buildUrl(port, '/data/processed/2026_rookie_stubs_v0.json'),
+  );
+  assert.equal(rookieStubs.status, 200);
+  assert.match(rookieStubs.headers.get('content-type') || '', /application\/json/);
+  const stubPayload = await rookieStubs.json();
+  assert.equal(stubPayload.length, 49);
+  assert.equal(stubPayload[0].alpha_status, 'not_scored');
+  assert.equal(stubPayload[0].reason, 'below_day2_scoring_floor');
+
   const css = await fetch(buildUrl(port, '/components/rookies/rookieCardStyles.css'));
   assert.equal(css.status, 200);
   assert.match(css.headers.get('content-type') || '', /text\/css/);

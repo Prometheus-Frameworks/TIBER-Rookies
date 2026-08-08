@@ -1,5 +1,6 @@
 import { getCollegeLogoUrl, getNflTeamLogoUrl } from '/lib/rookies/teamLogos.js';
 import { athleticChipLabel, athleticChipTitle } from '/lib/rookies/athleticLabel.js';
+import { renderRookieStubBoardRow } from './RookieStubBoardRow.js';
 
 function esc(str) {
   return String(str ?? '')
@@ -222,6 +223,10 @@ function renderMobileCard(row, { isQueued = false, queueAnnotation = null } = {}
 }
 
 export function renderRookieBoardRow(row, { isQueued = false, queueAnnotation = null } = {}) {
+  if (row.alphaStatus === 'not_scored') {
+    return renderRookieStubBoardRow(row);
+  }
+
   const rank = row.classRank == null ? 'N/A' : `#${row.classRank}`;
   const preDraftGrade = row.preDraftGrade == null ? 'N/A' : row.preDraftGrade.toFixed(1);
   const slug = encodeURIComponent(String(row.slug ?? ''));
