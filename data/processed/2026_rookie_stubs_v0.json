@@ -1,0 +1,884 @@
+[
+  {
+    "player_id": "qb-fernando-mendoza",
+    "name": "Fernando Mendoza",
+    "position": "QB",
+    "team": "LV",
+    "round": 1,
+    "overall_pick": 1,
+    "alpha_status": "not_scored",
+    "reason": "not_in_postdraft_alpha_coverage",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-brenen-thompson",
+    "name": "Brenen Thompson",
+    "position": "WR",
+    "team": "LAC",
+    "round": 4,
+    "overall_pick": 105,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "rb-jonah-coleman",
+    "name": "Jonah Coleman",
+    "position": "RB",
+    "team": "DEN",
+    "round": 4,
+    "overall_pick": 108,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "qb-cade-klubnik",
+    "name": "Cade Klubnik",
+    "position": "QB",
+    "team": "NYJ",
+    "round": 4,
+    "overall_pick": 110,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-elijah-sarratt",
+    "name": "Elijah Sarratt",
+    "position": "WR",
+    "team": "BAL",
+    "round": 4,
+    "overall_pick": 115,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-kaden-wetjen",
+    "name": "Kaden Wetjen",
+    "position": "WR",
+    "team": "PIT",
+    "round": 4,
+    "overall_pick": 121,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "rb-mike-washington-jr",
+    "name": "Mike Washington Jr.",
+    "position": "RB",
+    "team": "LV",
+    "round": 4,
+    "overall_pick": 122,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-skyler-bell",
+    "name": "Skyler Bell",
+    "position": "WR",
+    "team": "BUF",
+    "round": 4,
+    "overall_pick": 125,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "te-matthew-hibner",
+    "name": "Matthew Hibner",
+    "position": "TE",
+    "team": "BAL",
+    "round": 4,
+    "overall_pick": 133,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-bryce-lance",
+    "name": "Bryce Lance",
+    "position": "WR",
+    "team": "NO",
+    "round": 4,
+    "overall_pick": 136,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-colbie-young",
+    "name": "Colbie Young",
+    "position": "WR",
+    "team": "CIN",
+    "round": 4,
+    "overall_pick": 140,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-reggie-virgil",
+    "name": "Reggie Virgil",
+    "position": "WR",
+    "team": "ARI",
+    "round": 5,
+    "overall_pick": 143,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "te-justin-joly",
+    "name": "Justin Joly",
+    "position": "TE",
+    "team": "DEN",
+    "round": 5,
+    "overall_pick": 152,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "te-max-bredeson",
+    "name": "Max Bredeson",
+    "position": "TE",
+    "team": "MIN",
+    "round": 5,
+    "overall_pick": 159,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "rb-emmett-johnson",
+    "name": "Emmett Johnson",
+    "position": "RB",
+    "team": "KC",
+    "round": 5,
+    "overall_pick": 161,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "te-tanner-koziol",
+    "name": "Tanner Koziol",
+    "position": "TE",
+    "team": "JAX",
+    "round": 5,
+    "overall_pick": 164,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "rb-nick-singleton",
+    "name": "Nicholas Singleton",
+    "position": "RB",
+    "team": "TEN",
+    "round": 5,
+    "overall_pick": 165,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-kendrick-law",
+    "name": "Kendrick Law",
+    "position": "WR",
+    "team": "DET",
+    "round": 5,
+    "overall_pick": 168,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "te-riley-nowakowski",
+    "name": "Riley Nowakowski",
+    "position": "TE",
+    "team": "PIT",
+    "round": 5,
+    "overall_pick": 169,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "te-joe-royer",
+    "name": "Joe Royer",
+    "position": "TE",
+    "team": "DEN",
+    "round": 5,
+    "overall_pick": 170,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "te-josh-cuevas",
+    "name": "Josh Cuevas",
+    "position": "TE",
+    "team": "BAL",
+    "round": 5,
+    "overall_pick": 173,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "rb-adam-randall",
+    "name": "Adam Randall",
+    "position": "RB",
+    "team": "BAL",
+    "round": 5,
+    "overall_pick": 174,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-cyrus-allen",
+    "name": "Cyrus Allen",
+    "position": "WR",
+    "team": "KC",
+    "round": 5,
+    "overall_pick": 176,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-kevin-coleman-jr",
+    "name": "Kevin Coleman Jr.",
+    "position": "WR",
+    "team": "MIA",
+    "round": 5,
+    "overall_pick": 177,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "qb-cole-payton",
+    "name": "Cole Payton",
+    "position": "QB",
+    "team": "PHI",
+    "round": 5,
+    "overall_pick": 178,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "te-seydou-traore",
+    "name": "Seydou Traore",
+    "position": "TE",
+    "team": "MIA",
+    "round": 5,
+    "overall_pick": 180,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "qb-taylen-green",
+    "name": "Taylen Green",
+    "position": "QB",
+    "team": "CLE",
+    "round": 6,
+    "overall_pick": 182,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "te-bauer-sharp",
+    "name": "Bauer Sharp",
+    "position": "TE",
+    "team": "TB",
+    "round": 6,
+    "overall_pick": 185,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "rb-kaytron-allen",
+    "name": "Kaytron Allen",
+    "position": "RB",
+    "team": "WAS",
+    "round": 6,
+    "overall_pick": 187,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-barion-brown",
+    "name": "Barion Brown",
+    "position": "WR",
+    "team": "NO",
+    "round": 6,
+    "overall_pick": 190,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-josh-cameron",
+    "name": "Josh Cameron",
+    "position": "WR",
+    "team": "JAX",
+    "round": 6,
+    "overall_pick": 191,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-malik-benson",
+    "name": "Malik Benson",
+    "position": "WR",
+    "team": "LV",
+    "round": 6,
+    "overall_pick": 195,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-cj-daniels",
+    "name": "CJ Daniels",
+    "position": "WR",
+    "team": "LAR",
+    "round": 6,
+    "overall_pick": 197,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "rb-demond-claiborne",
+    "name": "Demond Claiborne",
+    "position": "RB",
+    "team": "MIN",
+    "round": 6,
+    "overall_pick": 198,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-emmanuel-henderson-jr",
+    "name": "Emmanuel Henderson Jr.",
+    "position": "WR",
+    "team": "SEA",
+    "round": 6,
+    "overall_pick": 199,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-cj-williams",
+    "name": "CJ Williams",
+    "position": "WR",
+    "team": "JAX",
+    "round": 6,
+    "overall_pick": 203,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-lewis-bond",
+    "name": "Lewis Bond",
+    "position": "WR",
+    "team": "HOU",
+    "round": 6,
+    "overall_pick": 204,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-anthony-smith",
+    "name": "Anthony Smith",
+    "position": "WR",
+    "team": "DAL",
+    "round": 7,
+    "overall_pick": 218,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "te-jack-endries",
+    "name": "Jack Endries",
+    "position": "TE",
+    "team": "CIN",
+    "round": 7,
+    "overall_pick": 221,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "qb-athan-kaliakmanis",
+    "name": "Athan Kaliakmanis",
+    "position": "QB",
+    "team": "WAS",
+    "round": 7,
+    "overall_pick": 223,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "te-jaren-kanak",
+    "name": "Jaren Kanak",
+    "position": "TE",
+    "team": "TEN",
+    "round": 7,
+    "overall_pick": 225,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "rb-eli-heidenreich",
+    "name": "Eli Heidenreich",
+    "position": "RB",
+    "team": "PIT",
+    "round": 7,
+    "overall_pick": 230,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "qb-behren-morton",
+    "name": "Behren Morton",
+    "position": "QB",
+    "team": "NE",
+    "round": 7,
+    "overall_pick": 234,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "rb-seth-mcgowan",
+    "name": "Seth McGowan",
+    "position": "RB",
+    "team": "IND",
+    "round": 7,
+    "overall_pick": 237,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "rb-jam-miller",
+    "name": "Jam Miller",
+    "position": "RB",
+    "team": "NE",
+    "round": 7,
+    "overall_pick": 245,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "te-carsen-ryan",
+    "name": "Carsen Ryan",
+    "position": "TE",
+    "team": "CLE",
+    "round": 7,
+    "overall_pick": 248,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "qb-garrett-nussmeier",
+    "name": "Garrett Nussmeier",
+    "position": "QB",
+    "team": "KC",
+    "round": 7,
+    "overall_pick": 249,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "wr-deion-burks",
+    "name": "Deion Burks",
+    "position": "WR",
+    "team": "IND",
+    "round": 7,
+    "overall_pick": 254,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  },
+  {
+    "player_id": "te-dallen-bentley",
+    "name": "Dallen Bentley",
+    "position": "TE",
+    "team": "DEN",
+    "round": 7,
+    "overall_pick": 256,
+    "alpha_status": "not_scored",
+    "reason": "below_day2_scoring_floor",
+    "provenance": {
+      "source_name": "NBC Sports ProFootballTalk 2026 NFL Draft picks full tracker, published 2026-04-25",
+      "source_url": "https://www.nbcsports.com/nfl/profootballtalk/news/2026-nfl-draft-picks-full-tracker-of-every-selection-rounds-1-7",
+      "source_status": "external_verified",
+      "upstream_provenance_status": "source_verified",
+      "ingested_from": "tiber_data_nfl_draft_results_v1",
+      "ingested_at": "2026-05-17"
+    }
+  }
+]

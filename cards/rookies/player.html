@@ -48,7 +48,9 @@
 
     <script type="module">
       import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
+      import { findRookieStubBySlug, get2026RookieStubs } from '/lib/rookies/rookieStubs.js';
       import { renderRookieCard } from '/components/rookies/RookieCardPhase1B.js';
+      import { renderRookieStubCard } from '/components/rookies/RookieStubCard.js';
       import { addRookieToQueue, getQueuedRookieAnnotation, isRookieQueued, removeRookieFromQueue } from '/lib/rookies/rookieQueueStore.js';
       import { deriveRookieTier } from '/lib/rookies/deriveRookieTier.js';
       import { findSimilarAthletes, getSporqDistribution } from '/lib/rookies/sporqHistorical.js';
@@ -199,10 +201,16 @@
       }
 
       try {
-        const cards = await getAllRookieCards();
+        const [cards, stubs] = await Promise.all([getAllRookieCards(), get2026RookieStubs()]);
+        const stub = slug ? findRookieStubBySlug(stubs, slug) : null;
         const card = slug ? cards.find((candidate) => candidate.slug === slug) ?? null : cards[0] ?? null;
 
-        if (!card) {
+        if (stub) {
+          document.title = `TIBER Rookie Draft Facts | ${stub.name}`;
+          actionsRoot.innerHTML = '';
+          sporqCompsRoot.innerHTML = '';
+          renderRookieStubCard(root, stub);
+        } else if (!card) {
           actionsRoot.innerHTML = '';
           root.innerHTML = '<div class="meta">No rookie card data available for 2026.</div>';
         } else {

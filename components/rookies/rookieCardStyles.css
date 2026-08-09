@@ -26,6 +26,7 @@
   --tier-strong: #84CC16;
   --tier-mid: #6B7280;
   --tier-dart: #78716C;
+  --tier-unscored: #8B7D6B;
 }
 
 body {
@@ -601,6 +602,10 @@ body {
 .board-row.tier-strong { border-left-color: var(--tier-strong); }
 .board-row.tier-mid    { border-left-color: var(--tier-mid); }
 .board-row.tier-dart   { border-left-color: var(--tier-dart); }
+.board-row-unscored {
+  border-left-color: var(--tier-unscored);
+  background: rgba(139, 125, 107, 0.045);
+}
 
 .board-header {
   border-top: none;
@@ -668,6 +673,48 @@ body {
   font-size: 11px;
   padding: 3px 7px;
 }
+.board-tier-unscored {
+  border-color: rgba(158, 139, 122, 0.4);
+  background: rgba(158, 139, 122, 0.1);
+  color: #C8B9A8;
+}
+.unscored-state {
+  display: inline-block;
+  color: #D7C8B6;
+  border: 1px solid rgba(158, 139, 122, 0.45);
+  background: rgba(158, 139, 122, 0.1);
+  border-radius: 999px;
+  padding: 3px 8px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  text-transform: lowercase;
+}
+.unscored-state-large {
+  margin-top: 8px;
+  padding: 5px 10px;
+  font-size: 13px;
+}
+.board-mobile-card-unscored .bmc-header { justify-content: flex-start; }
+
+/* ─── Draft-fact-only stub detail ───────────────────────────────────────── */
+.stub-hero-panel {
+  border-color: rgba(158, 139, 122, 0.45);
+  background: radial-gradient(ellipse 90% 120% at 100% 0%, rgba(158, 139, 122, 0.12), transparent 55%), rgba(22, 18, 14, 0.95);
+}
+.stub-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+.stub-fact-strip { margin-top: 10px; }
+.stub-provenance-source {
+  margin: 10px 0 8px;
+  line-height: 1.5;
+}
+.stub-provenance-source a { color: var(--accent-soft); }
 
 /* ─── Mini score chart ────────────────────────────────────────────────────── */
 .mini-score-chart {
@@ -1167,6 +1214,7 @@ body {
   .hero-top { flex-direction: column; }
   .hero-score { width: 100%; min-width: 0; }
   .card-columns { grid-template-columns: 1fr; }
+  .stub-detail-grid { grid-template-columns: 1fr; }
   .comp-grid { grid-template-columns: 1fr; }
   .card-actions-links { width: 100%; }
   .nav-link-action { flex: 1 1 220px; text-align: center; }

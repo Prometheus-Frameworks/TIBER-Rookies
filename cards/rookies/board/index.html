@@ -29,7 +29,7 @@
       <section class="hero-section" aria-label="Page introduction">
         <div class="hero-label">NFL Draft Intelligence · 2022–2026 Classes</div>
         <h1 class="hero-headline">Find and Compare<br>Top <em>NFL Draft Prospects</em></h1>
-        <p class="hero-sub">TIBER grades every rookie using athletic profile, production score, and draft capital — giving you a clear, ranked view of the best bets in each class.</p>
+        <p class="hero-sub">TIBER grades eligible rookies using athletic profile, production score, and draft capital. Source-backed draft-fact stubs keep other drafted players visible without inventing model output.</p>
         <div class="hero-ctas">
           <a class="hero-cta-primary" href="#board-section">Explore the Board</a>
           <a class="hero-cta-secondary" href="/cards/rookies/compare/">Compare Players</a>
@@ -44,7 +44,7 @@
           <div class="step-card">
             <div class="step-number">01</div>
             <div class="step-title">Multi-Signal Grading</div>
-            <p class="step-desc">Each rookie receives a composite Rookie Grade combining athletic testing (SPORQ/combine), college production, and draft capital into a single 0–100 score.</p>
+            <p class="step-desc">Each scored rookie receives a composite Rookie Grade combining athletic testing (SPORQ/combine), college production, and draft capital into a single 0–100 score.</p>
           </div>
           <div class="step-card">
             <div class="step-number">02</div>
@@ -89,7 +89,7 @@
       <!-- ── Board ─────────────────────────────────────────────────────────── -->
       <div id="board-section" style="scroll-margin-top: 72px"></div>
       <div class="section-title" style="margin-top: 4px">TIBER Rookie Board</div>
-      <p class="meta" style="margin-top: 4px">Ranking-first board powered by promoted Rookie Grade artifacts. Use tiers to spot cliffs, then jump to detail or compare.</p>
+      <p class="meta" style="margin-top: 4px">Ranking-first board powered by promoted Rookie Grade artifacts plus source-backed draft-fact stubs. Unscored rows are visible but never ranked or compared.</p>
 
       <section id="board-summary" class="board-summary" style="margin-top: 14px">Loading board summary…</section>
       <div class="board-search-row" style="margin-top: 10px">
@@ -119,6 +119,7 @@
     <script type="module">
       import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
       import { buildRookieBoardRows, filterRookieBoard, sortRookieBoard } from '/lib/rookies/buildRookieBoardRows.js';
+      import { get2026RookieStubs, mergeRookieBoardRowsWithStubs } from '/lib/rookies/rookieStubs.js';
       import { groupRookiesByTier } from '/lib/rookies/groupRookiesByTier.js';
       import { getRookieTierRules } from '/lib/rookies/deriveRookieTier.js';
       import { renderRookieBoardControls } from '/components/rookies/RookieBoardControls.js';
@@ -203,11 +204,16 @@
       function renderHeroMetrics(allRows) {
         const heroMetrics = document.getElementById('hero-metrics');
         if (!heroMetrics) return;
+        const scoredCount = allRows.filter((row) => row.alphaStatus !== 'not_scored').length;
         const positions = new Set(allRows.map((r) => r.position).filter(Boolean));
         const classes = new Set(allRows.map((r) => r.draftClass).filter(Boolean));
         heroMetrics.innerHTML = `
           <div class="hero-metric-card">
             <div class="hero-metric-value">${allRows.length}</div>
+            <div class="hero-metric-label">Players Tracked</div>
+          </div>
+          <div class="hero-metric-card">
+            <div class="hero-metric-value">${scoredCount}</div>
             <div class="hero-metric-label">Prospects Graded</div>
           </div>
           <div class="hero-metric-card">
@@ -217,10 +223,6 @@
           <div class="hero-metric-card">
             <div class="hero-metric-value">${positions.size}</div>
             <div class="hero-metric-label">Positions Tracked</div>
-          </div>
-          <div class="hero-metric-card">
-            <div class="hero-metric-value">4</div>
-            <div class="hero-metric-label">Tier Bands</div>
           </div>
         `;
       }
@@ -236,12 +238,15 @@
           .map(([position, count]) => `${position}: ${count}`)
           .join(' • ');
         const tierCount = groupRookiesByTier(activeRows).length;
-        const tierRules = getRookieTierRules().map((rule) => Number.isFinite(rule.minGrade) ? `${rule.label} (${rule.minGrade}+)` : rule.label).join(' | ');
+        const tierRules = [
+          ...getRookieTierRules().map((rule) => Number.isFinite(rule.minGrade) ? `${rule.label} (${rule.minGrade}+)` : rule.label),
+          'Unscored (draft-fact only)',
+        ].join(' | ');
 
         summaryRoot.innerHTML = `
           <div><span class="section-title">Board snapshot</span><div class="board-summary-value">${activeRows.length} shown / ${allRows.length} total</div></div>
           <div><span class="section-title">Position mix</span><div class="meta">${topPositionBits || 'No position data available'}</div></div>
-          <div><span class="section-title">Tier bands</span><div class="meta">${tierCount} shown • ${tierRules}</div></div>
+          <div><span class="section-title">Tier / status bands</span><div class="meta">${tierCount} shown • ${tierRules}</div></div>
         `;
       }
 
@@ -467,8 +472,8 @@
 
       try {
         hydrateStateFromUrl();
-        const cards = await getAllRookieCards();
-        const rows = buildRookieBoardRows(cards);
+        const [cards, stubs] = await Promise.all([getAllRookieCards(), get2026RookieStubs()]);
+        const rows = mergeRookieBoardRowsWithStubs(buildRookieBoardRows(cards), stubs);
         renderHeroMetrics(rows);
         render(rows);
 
