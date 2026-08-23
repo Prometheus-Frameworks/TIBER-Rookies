@@ -6,6 +6,7 @@ from pathlib import Path
 
 from scripts.compute_rookie_ml_lane import (
     BASELINE_MODEL_FEATURES,
+    DEFAULT_OUTPUT_DIR,
     SplitBundle,
     _extract_hit_label,
     build_canonical_historical_outcomes,
@@ -20,6 +21,7 @@ from scripts.compute_rookie_ml_lane import (
     build_missingness_summary,
     build_labeled_rows,
     pr_auc,
+    reject_promoted_output_dir,
     roc_auc,
     time_split,
 )
@@ -288,6 +290,93 @@ class RookieMlLaneTests(unittest.TestCase):
             self.assertTrue((output_dir / "historical_feature_consistency_report.json").exists())
             self.assertTrue((output_dir / "historical_class_coverage_report.json").exists())
             self.assertTrue((output_dir / "historical_position_slices_report.json").exists())
+
+
+class ExperimentalOutputSemanticsTests(unittest.TestCase):
+    """A generated future result must not read as promoted or calibrated (#286 WP-2)."""
+
+    def test_default_output_dir_is_the_experimental_namespace(self) -> None:
+        self.assertEqual(DEFAULT_OUTPUT_DIR, "exports/experimental/rookie-ml-lane")
+        self.assertNotIn("exports/promoted", DEFAULT_OUTPUT_DIR)
+
+    def test_promoted_output_dir_is_refused(self) -> None:
+        """Negative control: redirecting the producer must fail explicitly."""
+        for candidate in (
+            "exports/promoted/rookie-ml-lane",
+            "exports/promoted",
+            "exports/promoted/rookie-alpha",
+            "exports/promoted/nested/deeper",
+        ):
+            with self.subTest(output_dir=candidate):
+                with self.assertRaises(SystemExit) as raised:
+                    reject_promoted_output_dir(Path(candidate))
+                self.assertIn("Refusing to write", str(raised.exception))
+
+    def test_experimental_output_dir_is_allowed(self) -> None:
+        for candidate in ("exports/experimental/rookie-ml-lane", "exports/candidate/x"):
+            with self.subTest(output_dir=candidate):
+                reject_promoted_output_dir(Path(candidate))
+
+    def test_promoted_redirect_fails_before_writing_anything(self) -> None:
+        """The guard must refuse at the CLI boundary, not after producing files."""
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            promoted_target = root / "exports/promoted/rookie-ml-lane"
+            result = subprocess.run(
+                [
+                    "python3",
+                    "scripts/compute_rookie_ml_lane.py",
+                    "--output-dir",
+                    str(promoted_target),
+                ],
+                cwd=Path(__file__).resolve().parents[1],
+                capture_output=True,
+                text=True,
+            )
+            self.assertNotEqual(result.returncode, 0, "producer should exit non-zero")
+            self.assertIn("Refusing to write", result.stdout + result.stderr)
+            self.assertFalse(promoted_target.exists(), "no artifact may be written")
+
+    def test_generated_report_and_sidecar_carry_experimental_semantics(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            output_dir = Path(tmp) / "out"
+            result = subprocess.run(
+                [
+                    "python3",
+                    "scripts/compute_rookie_ml_lane.py",
+                    "--output-dir",
+                    str(output_dir),
+                ],
+                cwd=Path(__file__).resolve().parents[1],
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+
+            report = json.loads((output_dir / "evaluation_report.json").read_text(encoding="utf-8"))
+            sidecar_path = output_dir / "experimental_status_v0.json"
+            self.assertTrue(sidecar_path.is_file(), "status sidecar must accompany every run")
+            sidecar = json.loads(sidecar_path.read_text(encoding="utf-8"))
+
+            for payload, label in ((report, "evaluation_report"), (sidecar, "status sidecar")):
+                with self.subTest(payload=label):
+                    self.assertEqual(
+                        payload["artifact_class"], "experimental_fixture_evaluation"
+                    )
+                    self.assertIs(payload["is_calibrated_probability"], False)
+                    self.assertIs(payload["eligible_for_promotion"], False)
+                    self.assertIn(
+                        "not calibrated",
+                        payload["uncalibrated_probability_warning"].lower(),
+                    )
+
+            self.assertEqual(sidecar["schema_version"], "experimental-status-v0.1.0")
+            self.assertIs(sidecar["replaces_deterministic_rookie_alpha"], False)
+            # The sidecar must inventory the run it accompanies.
+            produced = sorted(
+                p.name for p in output_dir.iterdir() if p.name != "experimental_status_v0.json"
+            )
+            self.assertEqual(sidecar["generated_artifacts"], produced)
 
 
 if __name__ == "__main__":

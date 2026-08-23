@@ -217,13 +217,24 @@ python3 scripts/validate_devy_roster_pulse.py --artifact data/devy/monthly_pulse
 
 This repo now includes an **experimental parallel ML lane** that evaluates rookie hit probabilities from historical labeled rows. It is strictly additive and does **not** replace deterministic Rookie Alpha scoring.
 
+**This lane is not a promoted model.** Its outputs are fixture-fed experimental
+evaluation artifacts: the probability-shaped fields (`hit_probability`,
+`miss_probability`, `model_confidence`, and the `heldout_probabilities.*` exports)
+are **not calibrated probabilities**, not forecasts, and confer **no promotion
+eligibility**. Do not surface them to users as probabilities or consume them in any
+promoted, Forecast, or Fantasy contract. Issue #286 (WP-2) moved the lane out of
+`exports/promoted/`; see
+[the migration record](docs/migrations/2026-08-23-rookie-ml-lane-demotion.md).
+
 Run from repo root:
 
 ```bash
 python3 scripts/compute_rookie_ml_lane.py
 ```
 
-Default outputs are written to `exports/promoted/rookie-ml-lane/`:
+Default outputs are written to `exports/experimental/rookie-ml-lane/`, alongside a
+generated `experimental_status_v0.json` status sidecar that carries those semantics.
+Writing this lane into `exports/promoted/` is refused outright:
 
 - `historical_outcomes_canonical.json`
 - `historical_label_provenance_report.json`
@@ -237,8 +248,18 @@ Default outputs are written to `exports/promoted/rookie-ml-lane/`:
 - `feature_importance_report.json`
 - `evaluation_report.json`
 - `heldout_probabilities.json` / `.csv`
+- `experimental_status_v0.json` (governed status sidecar)
 
 The evaluator uses time-aware draft-class splits, logistic baselines, required feature-subset baselines, and non-ML baseline comparisons.
+
+Demotion did not remove these artifacts from integrity coverage. They are validated
+by `scripts/validate_experimental_integrity.py`, which enforces a registry/disk
+digest bijection, a code-pinned inventory of the frozen historical bytes, and the
+status contract above:
+
+```bash
+python3 scripts/validate_experimental_integrity.py
+```
 
 ### Historical truth layer checklist (inspect before trusting ML metrics)
 

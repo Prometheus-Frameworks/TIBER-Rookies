@@ -60,8 +60,11 @@ When operating in this repo, agents should:
 
 ## 9) ML lane rules
 - ML lane is experimental and additive; it does not replace deterministic Rookie Alpha scoring.
+- ML lane is **not a promoted family**. It lives under `exports/experimental/rookie-ml-lane/`, never under `exports/promoted/` (#286 WP-2).
+- Its probability-shaped fields are not calibrated probabilities and confer no promotion eligibility. Never surface them as probabilities or wire them into a promoted, Forecast, or Fantasy contract.
 - If touching ML lane work, preserve warnings that outputs are directional when data is sparse or provenance is weak.
-- Keep provenance and warning artifacts intact.
+- Keep provenance and warning artifacts intact, including the `experimental_status_v0.json` sidecar every run emits.
+- Promoting this lane is a separate governed decision, not an implementation detail of any other change.
 
 ## 10) Known commands
 Only use/document known canonical commands from repo docs and scripts.
@@ -79,6 +82,7 @@ Only use/document known canonical commands from repo docs and scripts.
 
 ### Experimental ML lane
 - `python3 scripts/compute_rookie_ml_lane.py`
+- `python3 scripts/validate_experimental_integrity.py`
 
 If a requested command is not listed in `package.json`, `README.md`, or repo scripts, do not guess. Mark it non-canonical and ask for confirmation.
 
@@ -89,7 +93,7 @@ Before opening a PR:
 - Confirm legal/data-source hygiene constraints are preserved.
 - If export logic changed: run `python3 scripts/validate_promoted_export.py ...` or explain exactly why not.
 - If runtime route behavior changed: run `npm run test:runtime-smoke` or explain exactly why not.
-- If ML lane changed: keep explicit experimental/additive warnings.
+- If ML lane changed: keep explicit experimental/additive warnings and run `python3 scripts/validate_experimental_integrity.py`.
 - If handoff flow changed: preserve manual operator decision points unless explicitly asked to change them.
 - Summarize downstream impact and residual risk explicitly.
 

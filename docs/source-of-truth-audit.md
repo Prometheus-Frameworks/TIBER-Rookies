@@ -128,7 +128,14 @@ Target doctrine:
 **Other derived output families**
 
 - `exports/promoted/historical-comps/{season}_historical_comps_v0.json`
-- `exports/promoted/rookie-ml-lane/*`
+
+**Experimental, non-promoted output families**
+
+- `exports/experimental/rookie-ml-lane/*` — experimental fixture-fed evaluation
+  artifacts. Not a promoted model, not calibrated probabilities, not eligible for
+  promotion, and not a source of truth for any consumer. Demoted out of
+  `exports/promoted/` by #286 WP-2; see
+  [the migration record](migrations/2026-08-23-rookie-ml-lane-demotion.md).
 
 ## 6) UI display payloads
 

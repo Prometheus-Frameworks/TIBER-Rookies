@@ -36,7 +36,6 @@ FAMILY_MUTATION_TARGETS = {
     # Deliberately a postdraft variant: predraft was the only file CI covered
     # before this change.
     "rookie-alpha": "2026_rookie_alpha_postdraft_v0.json",
-    "rookie-ml-lane": "feature_table.json",
     "rookie-transition-profile": "2026_rookie_transition_profile_v0.csv",
 }
 
@@ -104,6 +103,24 @@ class PromotedIntegrityCanonicalTests(unittest.TestCase):
                 with self.subTest(family=family, export=export_rel):
                     self.assertIn(f"{family}/{export_rel}", registered)
                     self.assertIn(f"{family}/{manifest_rel}", registered)
+
+
+class RookieMlLaneDemotionTests(unittest.TestCase):
+    """The ML lane must no longer be reachable as a promoted family (#286 WP-2)."""
+
+    def test_rookie_ml_lane_is_not_a_declared_promoted_family(self) -> None:
+        self.assertNotIn("rookie-ml-lane", DECLARED_FAMILIES)
+        self.assertEqual(len(DECLARED_FAMILIES), 4)
+
+    def test_rookie_ml_lane_has_no_promoted_manifest_contract(self) -> None:
+        self.assertNotIn("rookie-ml-lane", EXPECTED_MANIFEST_CHECKS)
+
+    def test_promoted_tree_contains_no_ml_lane_directory(self) -> None:
+        self.assertFalse((CANONICAL_PROMOTED / "rookie-ml-lane").exists())
+
+    def test_promoted_registry_declares_no_ml_lane_family(self) -> None:
+        registry = json.loads(CANONICAL_REGISTRY.read_text(encoding="utf-8"))
+        self.assertNotIn("rookie-ml-lane", {f["family"] for f in registry["families"]})
 
 
 class PromotedIntegrityMutationTests(unittest.TestCase):
@@ -431,6 +448,43 @@ class PromotedIntegrityMutationTests(unittest.TestCase):
                 )
                 smuggled.unlink()
 
+    def test_readding_an_ml_artifact_under_the_promoted_namespace_is_rejected(self) -> None:
+        """Negative control: the demoted family must not be smuggled back in.
+
+        Restoring the ML lane under `exports/promoted/` leaves its files
+        unregistered, so the bijection rejects them without the promoted
+        validator needing to know anything about the ML lane specifically.
+        """
+        self.assert_baseline_clean()
+        restored = self.promoted / "rookie-ml-lane"
+        restored.mkdir()
+        smuggled = restored / "heldout_probabilities.json"
+        shutil.copyfile(
+            REPO_ROOT / "exports/experimental/rookie-ml-lane/heldout_probabilities.json",
+            smuggled,
+        )
+        errors = self.run_validator()
+        self.assertTrue(
+            any(
+                "not registered in the integrity registry" in err
+                and "rookie-ml-lane/heldout_probabilities.json" in err
+                for err in errors
+            ),
+            f"re-promoted ML artifact not rejected; errors={errors}",
+        )
+
+    def test_declaring_ml_lane_in_the_promoted_registry_is_rejected(self) -> None:
+        """Negative control: the registry cannot re-declare the demoted family."""
+        self.assert_baseline_clean()
+        registry = self.read_registry()
+        registry["families"].append({"family": "rookie-ml-lane", "artifacts": []})
+        self.write_registry(registry)
+        errors = self.run_validator()
+        self.assertTrue(
+            any("declares unknown families" in err and "rookie-ml-lane" in err for err in errors),
+            f"re-declared ML lane family not rejected; errors={errors}",
+        )
+
     def test_dropping_a_family_from_the_registry_is_rejected(self) -> None:
         self.assert_baseline_clean()
         for family in DECLARED_FAMILIES:
@@ -449,7 +503,7 @@ class PromotedIntegrityMutationTests(unittest.TestCase):
         self.assert_baseline_clean()
         registry = self.read_registry()
         for entry in registry["families"]:
-            if entry["family"] == "rookie-ml-lane":
+            if entry["family"] == "nfl-fantasy-outcomes":
                 entry["artifacts"] = []
         self.write_registry(registry)
         errors = self.run_validator()
@@ -487,7 +541,7 @@ class PromotedIntegrityMutationTests(unittest.TestCase):
         self.assert_baseline_clean()
         registry = self.read_registry()
         for entry in registry["families"]:
-            if entry["family"] == "rookie-ml-lane":
+            if entry["family"] == "nfl-fantasy-outcomes":
                 entry["artifacts"][0]["path"] = "../rookie-alpha/2026_manifest.json"
         self.write_registry(registry)
         errors = self.run_validator()

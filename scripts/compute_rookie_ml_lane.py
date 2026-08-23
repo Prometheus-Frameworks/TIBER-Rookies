@@ -5,6 +5,15 @@ This script intentionally does NOT replace deterministic rookie-alpha scoring.
 It builds a labeled historical table, runs interpretable baseline models with
 class-year-aware splits, compares against simple non-ML baselines, and exports
 held-out scored probabilities.
+
+This lane is experimental and is **not** a promoted model. Its outputs are
+fixture-fed evaluation artifacts: the probability-shaped fields it emits are not
+calibrated probabilities and confer no promotion eligibility. Issue #286 (WP-2)
+demoted the lane out of `exports/promoted/`, so output defaults to
+`exports/experimental/rookie-ml-lane` and writing into the promoted namespace is
+refused outright rather than merely discouraged. Every run also emits a status
+sidecar (`experimental_status_v0.json`) and stamps the same semantics into the
+generated reports, so a future result cannot be separated from its disclaimer.
 """
 
 from __future__ import annotations
@@ -56,6 +65,36 @@ WEAK_LABEL_SOURCES = {
     "career_outcome_label",
 }
 STRONG_FEATURE_COMPLETENESS_THRESHOLD = 0.70
+
+DEFAULT_OUTPUT_DIR = "exports/experimental/rookie-ml-lane"
+
+# The namespace this lane was demoted out of (#286 WP-2). Writing here would
+# re-assert a promotion claim the lane is not entitled to make, so the producer
+# fails closed instead of silently producing promoted-looking artifacts.
+PROMOTED_NAMESPACE = "exports/promoted"
+
+STATUS_SIDECAR_NAME = "experimental_status_v0.json"
+STATUS_SCHEMA_VERSION = "experimental-status-v0.1.0"
+
+UNCALIBRATED_PROBABILITY_WARNING = (
+    "The probability-shaped fields in this family (hit_probability, "
+    "miss_probability, model_confidence, and the heldout_probabilities.* "
+    "exports) are experimental fixture-fed evaluation outputs. They are NOT "
+    "calibrated probabilities, NOT forecasts, and NOT a promoted model signal. "
+    "They were produced by an interpretable baseline harness over sample "
+    "fixtures for lane-comparison diagnostics only. Do not read them as the "
+    "likelihood that any player will hit, do not surface them to users as "
+    "probabilities, and do not consume them in any promoted, Forecast, or "
+    "Fantasy contract."
+)
+
+# Stamped into every generated report so the semantics travel with the bytes.
+EXPERIMENTAL_SEMANTICS: dict[str, Any] = {
+    "artifact_class": "experimental_fixture_evaluation",
+    "is_calibrated_probability": False,
+    "eligible_for_promotion": False,
+    "uncalibrated_probability_warning": UNCALIBRATED_PROBABILITY_WARNING,
+}
 
 
 @dataclass
@@ -915,13 +954,57 @@ def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
         writer.writerows(rows)
 
 
+def reject_promoted_output_dir(output_dir: Path) -> None:
+    """Refuse to write this experimental lane into the promoted namespace.
+
+    Raises SystemExit rather than warning: a silent redirect would reintroduce
+    exactly the promoted-looking ML artifacts #286 removed.
+    """
+    promoted_root = Path(PROMOTED_NAMESPACE).resolve()
+    resolved = output_dir.expanduser().resolve()
+    under_repo_promoted = resolved == promoted_root or resolved.is_relative_to(promoted_root)
+
+    # Also refuse a promoted-shaped path outside this checkout: an operator
+    # pointing at another clone's `exports/promoted` is making the same claim,
+    # and resolving against the CWD alone would let it through.
+    marker = Path(PROMOTED_NAMESPACE).parts
+    parts = resolved.parts
+    promoted_shaped = any(
+        parts[i : i + len(marker)] == marker for i in range(len(parts) - len(marker) + 1)
+    )
+
+    if under_repo_promoted or promoted_shaped:
+        raise SystemExit(
+            f"Refusing to write experimental ML lane output into the promoted namespace: "
+            f"{output_dir}. This lane is not a promoted model (issue #286, WP-2); its "
+            f"outputs are experimental fixture-fed evaluation artifacts and are not "
+            f"eligible for promotion. Write to {DEFAULT_OUTPUT_DIR} instead."
+        )
+
+
+def build_status_sidecar(output_dir: Path, generated_at: str) -> dict[str, Any]:
+    """The governed status record that must accompany every generated result."""
+    artifacts = sorted(
+        p.name for p in output_dir.iterdir() if p.is_file() and p.name != STATUS_SIDECAR_NAME
+    )
+    return {
+        "schema_version": STATUS_SCHEMA_VERSION,
+        "family": "rookie-ml-lane",
+        **EXPERIMENTAL_SEMANTICS,
+        "lane": "parallel_ml_evaluation_only",
+        "replaces_deterministic_rookie_alpha": False,
+        "generated_at": generated_at,
+        "generated_artifacts": artifacts,
+    }
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build and evaluate parallel ML rookie lane.")
     parser.add_argument("--historical-features", default="data/historical/historical_prospect_features.sample.json")
     parser.add_argument("--historical-outcomes", default="data/historical/historical_player_outcomes.ml_sample.json")
     parser.add_argument("--rookie-alpha-dir", default="exports/promoted/rookie-alpha")
     parser.add_argument("--holdout-year", type=int, default=None)
-    parser.add_argument("--output-dir", default="exports/promoted/rookie-ml-lane")
+    parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR)
     parser.add_argument("--seed", type=int, default=42)
     return parser.parse_args()
 
@@ -929,6 +1012,8 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     random.seed(args.seed)
+
+    reject_promoted_output_dir(Path(args.output_dir))
 
     features = load_json(Path(args.historical_features))
     outcomes = load_json(Path(args.historical_outcomes))
@@ -1012,8 +1097,10 @@ def main() -> None:
     write_json(output_dir / "dataset_diagnostics.json", diagnostics)
     write_json(output_dir / "feature_coverage_report.json", coverage)
     write_json(output_dir / "feature_importance_report.json", feature_importance_report)
+    generated_at = datetime.now(timezone.utc).isoformat()
     report = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "generated_at": generated_at,
+        **EXPERIMENTAL_SEMANTICS,
         "lane": "parallel_ml_evaluation_only",
         "split_strategy": "time_aware_by_draft_class",
         "split_years": split.years,
@@ -1045,7 +1132,16 @@ def main() -> None:
     write_json(output_dir / "heldout_probabilities.json", final_scores)
     write_csv(output_dir / "heldout_probabilities.csv", final_scores)
 
-    print(f"Wrote ML lane outputs to {output_dir}")
+    # Written last so it inventories everything this run produced. The status
+    # sidecar is what makes the experimental semantics inseparable from the
+    # bytes: validate_experimental_integrity.py rejects the family without it.
+    write_json(output_dir / STATUS_SIDECAR_NAME, build_status_sidecar(output_dir, generated_at))
+
+    print(f"Wrote experimental ML lane outputs to {output_dir}")
+    print(
+        "These are experimental fixture-fed evaluation artifacts: not calibrated "
+        "probabilities, not a promoted model, not eligible for promotion."
+    )
 
 
 if __name__ == "__main__":
