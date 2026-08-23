@@ -13,8 +13,11 @@ import tempfile
 import unittest
 from pathlib import Path
 
+from unittest import mock
+
 from scripts.validate_promoted_integrity import (
     DECLARED_FAMILIES,
+    EXPECTED_MANIFEST_CHECKS,
     REGISTRY_SCHEMA_VERSION,
     iter_promoted_files,
     sha256_file,
@@ -68,6 +71,40 @@ class PromotedIntegrityCanonicalTests(unittest.TestCase):
         self.assertEqual(coverage["rookie-alpha"]["manifest_checks"], 5)
         self.assertEqual(coverage["rookie-transition-profile"]["manifest_checks"], 1)
 
+    def test_pinned_manifest_contract_is_exact_and_duplicate_free(self) -> None:
+        """A count assertion alone would let duplicates stand in for real checks."""
+        expected = {
+            "rookie-alpha": {
+                ("rookie-alpha-manifest-v0", f"{year}_rookie_alpha_predraft_v0.json", f"{year}_manifest.json")
+                for year in (2022, 2023, 2024, 2025, 2026)
+            },
+            "rookie-transition-profile": {
+                (
+                    "rookie-transition-profile-v0",
+                    "2026_rookie_transition_profile_v0.json",
+                    "2026_manifest.json",
+                )
+            },
+        }
+        self.assertEqual(set(EXPECTED_MANIFEST_CHECKS), set(expected))
+        for family, tuples in EXPECTED_MANIFEST_CHECKS.items():
+            with self.subTest(family=family):
+                self.assertEqual(len(set(tuples)), len(tuples), "duplicate checks in pinned contract")
+                self.assertEqual(set(tuples), expected[family])
+
+    def test_every_manifest_check_member_is_digest_registered(self) -> None:
+        registry = json.loads(CANONICAL_REGISTRY.read_text(encoding="utf-8"))
+        registered = {
+            f"{family['family']}/{artifact['path']}"
+            for family in registry["families"]
+            for artifact in family["artifacts"]
+        }
+        for family, tuples in EXPECTED_MANIFEST_CHECKS.items():
+            for _, export_rel, manifest_rel in tuples:
+                with self.subTest(family=family, export=export_rel):
+                    self.assertIn(f"{family}/{export_rel}", registered)
+                    self.assertIn(f"{family}/{manifest_rel}", registered)
+
 
 class PromotedIntegrityMutationTests(unittest.TestCase):
     """Deterministic mutation corpus applied to a mirror of the promoted tree."""
@@ -113,6 +150,14 @@ class PromotedIntegrityMutationTests(unittest.TestCase):
                     artifact["sha256"] = sha256_file(target)
                     artifact["bytes"] = target.stat().st_size
         self.write_registry(registry)
+
+    def patched_contract(self, family: str, tuples: tuple) -> mock._patch:
+        """Temporarily replace the pinned contract for one family."""
+        patched = dict(EXPECTED_MANIFEST_CHECKS)
+        patched[family] = tuples
+        return mock.patch(
+            "scripts.validate_promoted_integrity.EXPECTED_MANIFEST_CHECKS", patched
+        )
 
     def assert_baseline_clean(self) -> None:
         self.assertEqual(self.run_validator(), [], "mirror should validate before mutation")
@@ -176,6 +221,7 @@ class PromotedIntegrityMutationTests(unittest.TestCase):
                 target.write_bytes(original)
 
     def test_missing_manifest_is_rejected(self) -> None:
+        """Deleting a manifest must fail even though its digest entry remains."""
         self.assert_baseline_clean()
         for family, manifest_name in (
             ("rookie-alpha", "2026_manifest.json"),
@@ -185,7 +231,24 @@ class PromotedIntegrityMutationTests(unittest.TestCase):
                 manifest = self.promoted / family / manifest_name
                 original = manifest.read_bytes()
                 manifest.unlink()
-                # Drop the digest entry too, so only the manifest tier can fail.
+                errors = self.run_validator()
+                self.assertTrue(
+                    any("Required companion file not found" in err and family in err for err in errors),
+                    f"{family}: missing manifest not rejected by the manifest tier; errors={errors}",
+                )
+                manifest.write_bytes(original)
+
+    def test_deregistering_a_manifest_check_member_is_rejected(self) -> None:
+        """A check member must stay digest-pinned; dropping its entry fails closed."""
+        self.assert_baseline_clean()
+        for family, manifest_name in (
+            ("rookie-alpha", "2026_manifest.json"),
+            ("rookie-transition-profile", "2026_manifest.json"),
+        ):
+            with self.subTest(family=family):
+                manifest = self.promoted / family / manifest_name
+                original = manifest.read_bytes()
+                manifest.unlink()
                 registry = self.read_registry()
                 for entry in registry["families"]:
                     if entry["family"] == family:
@@ -195,10 +258,11 @@ class PromotedIntegrityMutationTests(unittest.TestCase):
                 self.write_registry(registry)
                 errors = self.run_validator()
                 self.assertTrue(
-                    any("Required companion file not found" in err and family in err for err in errors),
-                    f"{family}: missing manifest not rejected; errors={errors}",
+                    any("is not digest-registered in this family" in err and family in err for err in errors),
+                    f"{family}: deregistered manifest not rejected; errors={errors}",
                 )
                 manifest.write_bytes(original)
+                shutil.copyfile(CANONICAL_REGISTRY, self.registry)
 
     # --- Mutation class 3: incompatible manifest / schema identity ---------
 
@@ -241,6 +305,111 @@ class PromotedIntegrityMutationTests(unittest.TestCase):
         self.assertTrue(
             any("schema_version must be" in err for err in errors),
             f"transition-profile schema identity mismatch not rejected; errors={errors}",
+        )
+
+    def test_every_rookie_alpha_year_contract_is_individually_enforced(self) -> None:
+        """The exact regression from review: four years could go unenforced.
+
+        Tampering with each year's manifest in turn must surface that year's
+        contract failure, so no year can be silently substituted by another.
+        """
+        self.assert_baseline_clean()
+        for year in (2022, 2023, 2024, 2025, 2026):
+            with self.subTest(year=year):
+                manifest = self.promoted / f"rookie-alpha/{year}_manifest.json"
+                original = manifest.read_bytes()
+                payload = json.loads(manifest.read_text(encoding="utf-8"))
+                payload["export_metadata"]["run_id"] = f"tampered-{year}"
+                manifest.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+                self.reregister("rookie-alpha", f"{year}_manifest.json")
+
+                errors = self.run_validator()
+                self.assertTrue(
+                    any(
+                        "export_metadata does not exactly match export JSON metadata" in err
+                        and f"{year}_rookie_alpha_predraft_v0.json" in err
+                        for err in errors
+                    ),
+                    f"{year}: manifest contract not enforced; errors={errors}",
+                )
+                manifest.write_bytes(original)
+                shutil.copyfile(CANONICAL_REGISTRY, self.registry)
+
+    def test_registry_redeclaring_manifest_checks_is_rejected(self) -> None:
+        """The registry must not be able to supply or weaken the manifest contract."""
+        self.assert_baseline_clean()
+        good = {
+            "validator": "rookie-alpha-manifest-v0",
+            "export_json": "2026_rookie_alpha_predraft_v0.json",
+            "manifest": "2026_manifest.json",
+        }
+        registry = self.read_registry()
+        for entry in registry["families"]:
+            if entry["family"] == "rookie-alpha":
+                # Five copies of one valid tuple: the exact substitution that
+                # previously kept the count at five while disabling 2022-2025.
+                entry["manifest_checks"] = [dict(good) for _ in range(5)]
+        self.write_registry(registry)
+        errors = self.run_validator()
+        self.assertTrue(
+            any("unexpected registry keys" in err and "manifest_checks" in err for err in errors),
+            f"registry-supplied manifest_checks not rejected; errors={errors}",
+        )
+
+    def test_duplicate_checks_in_the_pinned_contract_are_rejected(self) -> None:
+        self.assert_baseline_clean()
+        duplicated = tuple(
+            [("rookie-alpha-manifest-v0", "2026_rookie_alpha_predraft_v0.json", "2026_manifest.json")] * 5
+        )
+        with self.patched_contract("rookie-alpha", duplicated):
+            errors = self.run_validator()
+        self.assertTrue(
+            any("duplicate checks" in err for err in errors),
+            f"duplicate pinned checks not rejected; errors={errors}",
+        )
+
+    def test_escaping_manifest_check_path_is_rejected(self) -> None:
+        self.assert_baseline_clean()
+        with self.patched_contract(
+            "rookie-alpha",
+            (("rookie-alpha-manifest-v0", "../../../etc/passwd", "2026_manifest.json"),),
+        ):
+            errors = self.run_validator()
+        self.assertTrue(
+            any("must be a relative in-family path" in err or "escapes the family directory" in err
+                for err in errors),
+            f"escaping check path not rejected; errors={errors}",
+        )
+
+    def test_cross_family_manifest_check_path_is_rejected(self) -> None:
+        self.assert_baseline_clean()
+        with self.patched_contract(
+            "rookie-transition-profile",
+            (
+                (
+                    "rookie-transition-profile-v0",
+                    "../rookie-alpha/2026_rookie_alpha_predraft_v0.json",
+                    "2026_manifest.json",
+                ),
+            ),
+        ):
+            errors = self.run_validator()
+        self.assertTrue(
+            any("must be a relative in-family path" in err or "escapes the family directory" in err
+                for err in errors),
+            f"cross-family check path not rejected; errors={errors}",
+        )
+
+    def test_unregistered_manifest_check_member_is_rejected(self) -> None:
+        self.assert_baseline_clean()
+        with self.patched_contract(
+            "rookie-alpha",
+            (("rookie-alpha-manifest-v0", "not_registered_v0.json", "2026_manifest.json"),),
+        ):
+            errors = self.run_validator()
+        self.assertTrue(
+            any("is not digest-registered in this family" in err for err in errors),
+            f"unregistered check member not rejected; errors={errors}",
         )
 
     # --- Mutation class 4: undeclared / shrunken artifact universe ---------
@@ -304,12 +473,11 @@ class PromotedIntegrityMutationTests(unittest.TestCase):
 
     def test_unknown_manifest_validator_is_rejected(self) -> None:
         self.assert_baseline_clean()
-        registry = self.read_registry()
-        for entry in registry["families"]:
-            if entry["family"] == "rookie-alpha":
-                entry["manifest_checks"][0]["validator"] = "not-a-real-validator"
-        self.write_registry(registry)
-        errors = self.run_validator()
+        with self.patched_contract(
+            "rookie-alpha",
+            (("not-a-real-validator", "2026_rookie_alpha_predraft_v0.json", "2026_manifest.json"),),
+        ):
+            errors = self.run_validator()
         self.assertTrue(
             any("unknown manifest validator" in err for err in errors),
             f"unknown validator not rejected; errors={errors}",
@@ -336,7 +504,7 @@ class PromotedIntegrityMutationTests(unittest.TestCase):
             any("Integrity registry not found" in err for err in errors),
             f"missing registry not rejected; errors={errors}",
         )
-        self.assertEqual(REGISTRY_SCHEMA_VERSION, "promoted-integrity-registry-v0.1.0")
+        self.assertEqual(REGISTRY_SCHEMA_VERSION, "promoted-integrity-registry-v0.2.0")
 
 
 if __name__ == "__main__":

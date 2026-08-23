@@ -47,7 +47,7 @@ from scripts.validate_rookie_transition_profile import (  # noqa: E402
     validate_export_manifest as validate_rookie_transition_profile_manifest,
 )
 
-REGISTRY_SCHEMA_VERSION = "promoted-integrity-registry-v0.1.0"
+REGISTRY_SCHEMA_VERSION = "promoted-integrity-registry-v0.2.0"
 
 DEFAULT_PROMOTED_ROOT = REPO_ROOT / "exports/promoted"
 DEFAULT_REGISTRY = REPO_ROOT / "exports/promoted_integrity_registry_v0.json"
@@ -65,6 +65,30 @@ DECLARED_FAMILIES = (
 MANIFEST_VALIDATORS: dict[str, Callable[..., list[str]]] = {
     "rookie-alpha-manifest-v0": validate_rookie_alpha_manifest,
     "rookie-transition-profile-v0": validate_rookie_transition_profile_manifest,
+}
+
+# The authoritative manifest-delegation contract, pinned here rather than in the
+# registry. The registry is a digest record and is expected to change whenever a
+# promoted artifact is legitimately regenerated; which export/manifest pairs must
+# be enforced is a contract fact that must not be editable alongside it.
+#
+# Driving delegation from registry data allowed a tampered registry to swap the
+# 2022-2025 rookie-alpha entries for duplicates of the valid 2026 tuple: the
+# count stayed at five and CI stayed green while four manifest contracts went
+# unenforced. Each tuple below is (validator, export_json, manifest), relative to
+# the family directory, and the set is required to be exact and duplicate-free.
+EXPECTED_MANIFEST_CHECKS: dict[str, tuple[tuple[str, str, str], ...]] = {
+    "rookie-alpha": tuple(
+        ("rookie-alpha-manifest-v0", f"{year}_rookie_alpha_predraft_v0.json", f"{year}_manifest.json")
+        for year in (2022, 2023, 2024, 2025, 2026)
+    ),
+    "rookie-transition-profile": (
+        (
+            "rookie-transition-profile-v0",
+            "2026_rookie_transition_profile_v0.json",
+            "2026_manifest.json",
+        ),
+    ),
 }
 
 
@@ -90,18 +114,12 @@ def iter_promoted_files(promoted_root: Path) -> list[str]:
     )
 
 
-def build_registry(promoted_root: Path, registry_path: Path) -> dict[str, Any]:
+def build_registry(promoted_root: Path) -> dict[str, Any]:
     """Derive a registry from the canonical bytes currently on disk.
 
-    Manifest pairings are carried over from the existing registry when present,
-    because which export/manifest pairs a family declares is a contract fact,
-    not something derivable from bytes.
+    Digests only. Which export/manifest pairs must be enforced is pinned in
+    EXPECTED_MANIFEST_CHECKS and is deliberately not regenerable from bytes.
     """
-    existing_checks: dict[str, list[dict[str, str]]] = {}
-    if registry_path.exists():
-        for family in load_json(registry_path).get("families", []):
-            existing_checks[family["family"]] = family.get("manifest_checks", [])
-
     families = []
     for family_name in DECLARED_FAMILIES:
         family_dir = promoted_root / family_name
@@ -113,13 +131,7 @@ def build_registry(promoted_root: Path, registry_path: Path) -> dict[str, Any]:
             }
             for rel in iter_promoted_files(family_dir)
         ]
-        families.append(
-            {
-                "family": family_name,
-                "manifest_checks": existing_checks.get(family_name, []),
-                "artifacts": artifacts,
-            }
-        )
+        families.append({"family": family_name, "artifacts": artifacts})
     return {"schema_version": REGISTRY_SCHEMA_VERSION, "families": families}
 
 
@@ -173,23 +185,40 @@ def _validate_family_artifacts(
     return errors, registered
 
 
-def _validate_family_manifests(
-    family_name: str, checks: list[Any], promoted_root: Path
+def _check_member_path(
+    family_name: str, member: str, role: str, promoted_root: Path, registered: set[str]
 ) -> list[str]:
-    """Manifest-tier checks, delegated to the family's declared validator."""
+    """A declared check member must stay inside its own family and be digest-pinned."""
     errors: list[str] = []
-    for check in checks:
-        if not isinstance(check, dict):
-            errors.append(f"[{family_name}] manifest_checks entries must be objects, got: {check!r}")
-            continue
-        validator_name = check.get("validator")
-        export_rel = check.get("export_json")
-        manifest_rel = check.get("manifest")
-        if not validator_name or not export_rel or not manifest_rel:
-            errors.append(
-                f"[{family_name}] manifest check missing validator/export_json/manifest: {check!r}"
-            )
-            continue
+    if Path(member).is_absolute() or Path(member).parts[:1] == ("..",):
+        errors.append(f"[{family_name}] manifest check {role} must be a relative in-family path: {member}")
+        return errors
+    family_root = (promoted_root / family_name).resolve()
+    resolved = (promoted_root / family_name / member).resolve()
+    if not resolved.is_relative_to(family_root):
+        errors.append(f"[{family_name}] manifest check {role} escapes the family directory: {member}")
+        return errors
+    if f"{family_name}/{member}" not in registered:
+        errors.append(
+            f"[{family_name}] manifest check {role} is not digest-registered in this family: {member}"
+        )
+    return errors
+
+
+def _validate_family_manifests(
+    family_name: str, promoted_root: Path, registered: set[str]
+) -> tuple[list[str], int]:
+    """Manifest-tier checks, driven by the pinned contract rather than the registry.
+
+    Returns (errors, number of checks executed).
+    """
+    expected = EXPECTED_MANIFEST_CHECKS.get(family_name, ())
+    if len(set(expected)) != len(expected):
+        return ([f"[{family_name}] pinned manifest contract contains duplicate checks."], 0)
+
+    errors: list[str] = []
+    executed = 0
+    for validator_name, export_rel, manifest_rel in expected:
         validator = MANIFEST_VALIDATORS.get(validator_name)
         if validator is None:
             errors.append(
@@ -197,11 +226,24 @@ def _validate_family_manifests(
                 f"declared validators: {sorted(MANIFEST_VALIDATORS)}"
             )
             continue
+
+        member_errors = _check_member_path(
+            family_name, export_rel, "export_json", promoted_root, registered
+        )
+        member_errors += _check_member_path(
+            family_name, manifest_rel, "manifest", promoted_root, registered
+        )
+        if member_errors:
+            errors.extend(member_errors)
+            continue
+
         export_path = promoted_root / family_name / export_rel
         manifest_path = promoted_root / family_name / manifest_rel
+        executed += 1
         for err in validator(export_path=export_path, manifest_path=manifest_path):
             errors.append(f"[{family_name}] {export_rel}: {err}")
-    return errors
+
+    return errors, executed
 
 
 def validate_promoted_integrity(
@@ -271,15 +313,24 @@ def validate_promoted_integrity(
         errors.extend(family_errors)
         registered_paths |= family_registered
 
-        checks = family.get("manifest_checks", [])
-        if not isinstance(checks, list):
-            errors.append(f"[{family_name}] 'manifest_checks' must be a list.")
-            checks = []
-        errors.extend(_validate_family_manifests(family_name, checks, promoted_root))
+        # The registry is a digest record only. A leftover manifest_checks key
+        # would read as if it still drove delegation; reject it rather than
+        # ignoring it silently.
+        unexpected_keys = set(family) - {"family", "artifacts"}
+        if unexpected_keys:
+            errors.append(
+                f"[{family_name}] unexpected registry keys {sorted(unexpected_keys)}; "
+                f"the manifest-delegation contract is pinned in the validator, not the registry."
+            )
+
+        manifest_errors, executed = _validate_family_manifests(
+            family_name, promoted_root, family_registered
+        )
+        errors.extend(manifest_errors)
 
         coverage[family_name] = {
             "artifacts": len(family_registered),
-            "manifest_checks": len(checks),
+            "manifest_checks": executed,
         }
 
     # Bijection: an artifact added to the tree without a registered digest is
@@ -310,7 +361,7 @@ def main() -> None:
     args = parse_args()
 
     if args.update:
-        registry = build_registry(args.promoted_root, args.registry)
+        registry = build_registry(args.promoted_root)
         args.registry.write_text(json.dumps(registry, indent=2) + "\n", encoding="utf-8")
         total = sum(len(f["artifacts"]) for f in registry["families"])
         print(f"Wrote {args.registry} covering {total} artifacts across {len(registry['families'])} families.")

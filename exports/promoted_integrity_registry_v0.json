@@ -1,9 +1,8 @@
 {
-  "schema_version": "promoted-integrity-registry-v0.1.0",
+  "schema_version": "promoted-integrity-registry-v0.2.0",
   "families": [
     {
       "family": "historical-comps",
-      "manifest_checks": [],
       "artifacts": [
         {
           "path": "2026_historical_comps_v0.json",
@@ -14,7 +13,6 @@
     },
     {
       "family": "nfl-fantasy-outcomes",
-      "manifest_checks": [],
       "artifacts": [
         {
           "path": "context_flag_outcome_summary_v1.csv",
@@ -40,33 +38,6 @@
     },
     {
       "family": "rookie-alpha",
-      "manifest_checks": [
-        {
-          "validator": "rookie-alpha-manifest-v0",
-          "export_json": "2022_rookie_alpha_predraft_v0.json",
-          "manifest": "2022_manifest.json"
-        },
-        {
-          "validator": "rookie-alpha-manifest-v0",
-          "export_json": "2023_rookie_alpha_predraft_v0.json",
-          "manifest": "2023_manifest.json"
-        },
-        {
-          "validator": "rookie-alpha-manifest-v0",
-          "export_json": "2024_rookie_alpha_predraft_v0.json",
-          "manifest": "2024_manifest.json"
-        },
-        {
-          "validator": "rookie-alpha-manifest-v0",
-          "export_json": "2025_rookie_alpha_predraft_v0.json",
-          "manifest": "2025_manifest.json"
-        },
-        {
-          "validator": "rookie-alpha-manifest-v0",
-          "export_json": "2026_rookie_alpha_predraft_v0.json",
-          "manifest": "2026_manifest.json"
-        }
-      ],
       "artifacts": [
         {
           "path": "2022_manifest.json",
@@ -192,7 +163,6 @@
     },
     {
       "family": "rookie-ml-lane",
-      "manifest_checks": [],
       "artifacts": [
         {
           "path": "dataset_diagnostics.json",
@@ -243,13 +213,6 @@
     },
     {
       "family": "rookie-transition-profile",
-      "manifest_checks": [
-        {
-          "validator": "rookie-transition-profile-v0",
-          "export_json": "2026_rookie_transition_profile_v0.json",
-          "manifest": "2026_manifest.json"
-        }
-      ],
       "artifacts": [
         {
           "path": "2026_manifest.json",
