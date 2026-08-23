@@ -8,23 +8,33 @@ holds a byte-level digest for *every* file under `exports/promoted/`, so a
 directly-edited promoted artifact is rejected in CI regardless of which family
 it belongs to.
 
-Two enforcement tiers are declared per family in the registry:
+Enforcement has two tiers, and they deliberately have **separate sources of
+truth**:
 
-* ``digest``   - registry <-> disk bijection plus sha256/size of canonical bytes.
-                 Applies to every promoted artifact without exception.
-* ``manifest`` - the family additionally declares an export/manifest pair, which
-                 is delegated to that family's existing validator on top of the
-                 digest tier.
+* ``digest``   - driven by the integrity registry, which is digest-only: it
+                 records nothing but path, sha256, and size. Enforced as a
+                 registry <-> disk bijection, so a modified, deleted, or
+                 undeclared artifact all fail. Applies to every promoted
+                 artifact without exception.
+* ``manifest`` - driven by EXPECTED_MANIFEST_CHECKS below, pinned in this
+                 module rather than in the registry. Each entry names an
+                 export/manifest pair delegated to that family's existing
+                 validator, on top of the digest tier.
 
-The digest tier is never a fallback for a *skipped* family. Every file is
-digest-checked; the manifest tier is strictly additive where a manifest
-contract already exists in the repository. Families without a manifest are
-declared as such in the registry rather than silently passed over.
+The split is the point. The registry legitimately changes whenever an artifact
+is regenerated; *which* export/manifest pairs must be enforced is a contract
+fact that must not be editable alongside it. When delegation was driven by
+registry data, a tampered registry could swap four of the five rookie-alpha
+entries for duplicates of the fifth and stay green. The registry therefore
+carries no manifest contract at all, and a family entry bearing any key beyond
+`family` and `artifacts` is rejected rather than ignored.
 
-The registry records only values mechanically derived from the canonical bytes
-already committed to the repository (path, sha256, size) plus the family's
-already-declared manifest contract. It invents no schema identity, run id, or
-provenance for artifacts that do not carry one.
+A family absent from EXPECTED_MANIFEST_CHECKS receives digest enforcement only.
+That is a property of the repository, not a skipped check: those families
+declare no manifest or schema contract anywhere in the repo, and this validator
+does not invent one. It fabricates no schema identity, run id, or provenance
+for artifacts that do not carry one, and every value in the registry is
+mechanically derived from bytes already committed.
 """
 
 from __future__ import annotations
