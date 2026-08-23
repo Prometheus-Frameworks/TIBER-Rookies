@@ -30,8 +30,10 @@ import argparse
 import csv
 import json
 import math
+import os
 import random
 import re
+import shutil
 import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone
@@ -1021,13 +1023,19 @@ def reject_protected_output_dir(output_dir: Path) -> None:
             )
 
 
-def require_fresh_output_dir(output_dir: Path, replace: bool) -> None:
+def classify_output_dir(output_dir: Path, replace: bool) -> list[str]:
     """Refuse to generate into a directory that already holds files.
 
     The run destination is reusable and gitignored, so anything left there from a
     previous run - or dropped in by hand - would be inventoried by the sidecar as
     freshly generated output and would validate. Requiring a clean destination is
     what keeps the run inventory a statement about *this* run.
+
+    Returns the relative paths of an existing valid prior run, or an empty list
+    when the destination is absent or empty. **This function never writes,
+    deletes, or moves anything** - deciding that a prior run *may* be replaced is
+    separate from replacing it, and replacement happens only after a complete new
+    run has been generated and validated (see `commit_staged_run`).
 
     `--replace-run` clears a previous run, but classification is **entirely
     read-only until the decision is made**. An earlier revision deleted every
@@ -1043,7 +1051,7 @@ def require_fresh_output_dir(output_dir: Path, replace: bool) -> None:
     unexpected refuses with the directory byte-for-byte unchanged.
     """
     if not output_dir.exists():
-        return
+        return []
 
     present = sorted(
         p.relative_to(output_dir).as_posix() for p in output_dir.rglob("*") if p.is_file()
@@ -1052,7 +1060,7 @@ def require_fresh_output_dir(output_dir: Path, replace: bool) -> None:
         p.relative_to(output_dir).as_posix() for p in output_dir.rglob("*") if p.is_dir()
     )
     if not present and not subdirs:
-        return
+        return []
 
     def refuse(reason: str) -> None:
         raise SystemExit(
@@ -1093,9 +1101,63 @@ def require_fresh_output_dir(output_dir: Path, replace: bool) -> None:
             f"does not: {errors[0]}"
         )
 
-    # Classification passed: this is an exact, valid prior run. Only now delete.
-    for rel in present:
-        (output_dir / rel).unlink()
+    # Classification passed: this is an exact, valid prior run. It is NOT deleted
+    # here - the caller stages a complete replacement first and only swaps at the
+    # end. Returning the inventory keeps this function free of side effects.
+    return present
+
+
+STAGING_SUFFIX = ".staging"
+PREVIOUS_SUFFIX = ".previous"
+
+
+def prepare_staging_dir(final_dir: Path) -> Path:
+    """A fresh, empty sibling directory to generate into.
+
+    Generation writes here, never into the destination. Input loading, holdout
+    validation, modelling, output writing, and staged validation can all fail
+    without an existing valid run having been touched.
+    """
+    staging = final_dir.parent / (final_dir.name + STAGING_SUFFIX)
+    if staging.exists():
+        raise SystemExit(
+            f"Refusing to run: staging path already exists: {staging}\n"
+            f"Nothing has been deleted. A previous run may have been interrupted; "
+            f"inspect and remove it yourself."
+        )
+    staging.mkdir(parents=True)
+    return staging
+
+
+def commit_staged_run(staging: Path, final_dir: Path, prior_run: list[str]) -> None:
+    """Swap a validated staged run into place, with rollback.
+
+    The prior run is moved aside rather than deleted, so a failure during the
+    swap restores it. Both operations are renames within the same parent
+    directory, which keeps the window where neither is in place as small as the
+    filesystem allows.
+    """
+    previous = final_dir.parent / (final_dir.name + PREVIOUS_SUFFIX)
+    if previous.exists():
+        raise SystemExit(
+            f"Refusing to commit: rollback path already exists: {previous}\n"
+            f"The staged run is at {staging} and the existing run is untouched."
+        )
+
+    moved_aside = False
+    if final_dir.exists():
+        os.rename(final_dir, previous)
+        moved_aside = True
+    try:
+        os.rename(staging, final_dir)
+    except OSError:
+        if moved_aside:
+            os.rename(previous, final_dir)
+        raise
+    if moved_aside:
+        shutil.rmtree(previous)
+        if prior_run:
+            print(f"Replaced a prior run of {len(prior_run)} artifact(s) at {final_dir}.")
 
 
 def build_status_sidecar(output_dir: Path, generated_at: str) -> dict[str, Any]:
@@ -1157,8 +1219,10 @@ def main() -> None:
     args = parse_args()
     random.seed(args.seed)
 
-    reject_protected_output_dir(Path(args.output_dir))
-    require_fresh_output_dir(Path(args.output_dir), replace=args.replace_run)
+    final_output_dir = Path(args.output_dir)
+    reject_protected_output_dir(final_output_dir)
+    # Read-only: decides whether a prior run *may* be replaced. Deletes nothing.
+    prior_run = classify_output_dir(final_output_dir, replace=args.replace_run)
 
     features = load_json(Path(args.historical_features))
     outcomes = load_json(Path(args.historical_outcomes))
@@ -1229,64 +1293,84 @@ def main() -> None:
         else {"model_name": None, "features_ranked": []}
     )
 
-    output_dir = Path(args.output_dir)
-    write_json(output_dir / "historical_outcomes_canonical.json", canonical_outcomes)
-    write_json(output_dir / "historical_label_provenance_report.json", provenance_report)
-    write_json(output_dir / "historical_feature_consistency_report.json", feature_consistency_report)
-    write_json(output_dir / "historical_class_coverage_report.json", class_coverage_report)
-    write_json(output_dir / "historical_position_slices_report.json", position_slices_report)
-    write_json(output_dir / "historical_labeled_dataset.json", labeled)
-    write_csv(output_dir / "historical_labeled_dataset.csv", labeled)
-    write_json(output_dir / "feature_table.json", [{k: row.get(k) for k in ["player_id", "draft_year", "position", *FEATURE_COLUMNS, "hit_label"]} for row in labeled])
+    # Generate into a fresh staging sibling, never into the destination. Input
+    # loading, holdout validation, modelling, writing, and staged validation can
+    # all fail here without an existing valid run having been touched.
+    staging_dir = prepare_staging_dir(final_output_dir)
+    output_dir = staging_dir
+    try:
+        write_json(output_dir / "historical_outcomes_canonical.json", canonical_outcomes)
+        write_json(output_dir / "historical_label_provenance_report.json", provenance_report)
+        write_json(output_dir / "historical_feature_consistency_report.json", feature_consistency_report)
+        write_json(output_dir / "historical_class_coverage_report.json", class_coverage_report)
+        write_json(output_dir / "historical_position_slices_report.json", position_slices_report)
+        write_json(output_dir / "historical_labeled_dataset.json", labeled)
+        write_csv(output_dir / "historical_labeled_dataset.csv", labeled)
+        write_json(output_dir / "feature_table.json", [{k: row.get(k) for k in ["player_id", "draft_year", "position", *FEATURE_COLUMNS, "hit_label"]} for row in labeled])
 
-    write_json(output_dir / "dataset_diagnostics.json", diagnostics)
-    write_json(output_dir / "feature_coverage_report.json", coverage)
-    write_json(output_dir / "feature_importance_report.json", feature_importance_report)
-    generated_at = datetime.now(timezone.utc).isoformat()
-    report = {
-        "generated_at": generated_at,
-        **EXPERIMENTAL_SEMANTICS,
-        "lane": "parallel_ml_evaluation_only",
-        "split_strategy": "time_aware_by_draft_class",
-        "split_years": split.years,
-        "n_labeled_rows": len(labeled),
-        "n_test_rows": len(split.test),
-        "dataset_warnings": warnings,
-        "historical_truth_summary": {
-            "weak_label_fallback_rows": provenance_report["weak_fallback_label_rows"],
-            "rows_without_canonical_label": provenance_report["rows_without_canonical_label"],
-            "positions_not_ready_for_standalone_modeling": [
-                position
-                for position, detail in position_slices_report["positions"].items()
-                if not detail.get("ready_for_standalone_modeling")
-            ],
-        },
-        "missingness_summary": missingness_summary,
-        "ml_models": models_report,
-        "non_ml_baselines": non_ml_report,
-        "draft_capital_dominance_check": baseline_delta,
-        "winning_model_by_test_pr_auc": max(
-            models_report.keys(),
-            key=lambda name: (models_report[name]["test"]["pr_auc"] if models_report[name]["test"]["pr_auc"] is not None else -1),
+        write_json(output_dir / "dataset_diagnostics.json", diagnostics)
+        write_json(output_dir / "feature_coverage_report.json", coverage)
+        write_json(output_dir / "feature_importance_report.json", feature_importance_report)
+        generated_at = datetime.now(timezone.utc).isoformat()
+        report = {
+            "generated_at": generated_at,
+            **EXPERIMENTAL_SEMANTICS,
+            "lane": "parallel_ml_evaluation_only",
+            "split_strategy": "time_aware_by_draft_class",
+            "split_years": split.years,
+            "n_labeled_rows": len(labeled),
+            "n_test_rows": len(split.test),
+            "dataset_warnings": warnings,
+            "historical_truth_summary": {
+                "weak_label_fallback_rows": provenance_report["weak_fallback_label_rows"],
+                "rows_without_canonical_label": provenance_report["rows_without_canonical_label"],
+                "positions_not_ready_for_standalone_modeling": [
+                    position
+                    for position, detail in position_slices_report["positions"].items()
+                    if not detail.get("ready_for_standalone_modeling")
+                ],
+            },
+            "missingness_summary": missingness_summary,
+            "ml_models": models_report,
+            "non_ml_baselines": non_ml_report,
+            "draft_capital_dominance_check": baseline_delta,
+            "winning_model_by_test_pr_auc": max(
+                models_report.keys(),
+                key=lambda name: (models_report[name]["test"]["pr_auc"] if models_report[name]["test"]["pr_auc"] is not None else -1),
+            )
+            if models_report
+            else None,
+        }
+
+        write_json(output_dir / "evaluation_report.json", report)
+        write_json(output_dir / "heldout_probabilities.json", final_scores)
+        write_csv(output_dir / "heldout_probabilities.csv", final_scores)
+
+        # Written last so it inventories everything this run produced. The status
+        # sidecar is what makes the experimental semantics inseparable from the
+        # bytes: validate_experimental_integrity.py rejects the family without it.
+        write_json(output_dir / STATUS_SIDECAR_NAME, build_status_sidecar(output_dir, generated_at))
+
+        print(f"Wrote experimental ML lane outputs to {output_dir}")
+        print(
+            "These are experimental fixture-fed evaluation artifacts: not calibrated "
+            "probabilities, not a promoted model, not eligible for promotion."
         )
-        if models_report
-        else None,
-    }
 
-    write_json(output_dir / "evaluation_report.json", report)
-    write_json(output_dir / "heldout_probabilities.json", final_scores)
-    write_csv(output_dir / "heldout_probabilities.csv", final_scores)
+        # The staged run must validate before it is allowed to replace anything.
+        staged_errors = validate_generated_run(staging_dir)
+        if staged_errors:
+            raise SystemExit(
+                "Staged run failed validation and will not be committed:\n- "
+                + "\n- ".join(staged_errors)
+            )
 
-    # Written last so it inventories everything this run produced. The status
-    # sidecar is what makes the experimental semantics inseparable from the
-    # bytes: validate_experimental_integrity.py rejects the family without it.
-    write_json(output_dir / STATUS_SIDECAR_NAME, build_status_sidecar(output_dir, generated_at))
-
-    print(f"Wrote experimental ML lane outputs to {output_dir}")
-    print(
-        "These are experimental fixture-fed evaluation artifacts: not calibrated "
-        "probabilities, not a promoted model, not eligible for promotion."
-    )
+        commit_staged_run(staging_dir, final_output_dir, prior_run)
+    except BaseException:
+        # Never leave a half-written staging directory behind, and never let a
+        # failure here reach the destination.
+        shutil.rmtree(staging_dir, ignore_errors=True)
+        raise
 
 
 if __name__ == "__main__":

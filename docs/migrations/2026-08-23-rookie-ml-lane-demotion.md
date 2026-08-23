@@ -103,6 +103,16 @@ same-named file destroyed that file and *then* refused the run — the command f
 the data was already gone. Refusal now leaves the directory byte-for-byte unchanged,
 proven by tests that snapshot every file and digest before invocation.
 
+Replacement is also a transaction rather than a delete-then-generate. A later revision
+still unlinked the validated prior run during classification and only afterwards loaded
+inputs, validated the holdout, and ran the models — so an invalid `--holdout-year`, a
+missing input file, or any modelling error destroyed the existing run and produced
+nothing in its place. Generation now writes into a fresh `<output-dir>.staging` sibling,
+the staged run must pass `validate_generated_run()` before it may replace anything, and
+the swap is a pair of renames with rollback. Nothing at the destination is deleted or
+mutated while input loading, modelling, output generation, or staged validation can
+still fail.
+
 ## Old-path references
 
 `exports/promoted/rookie-ml-lane/` no longer exists. Repository-wide search finds the old path

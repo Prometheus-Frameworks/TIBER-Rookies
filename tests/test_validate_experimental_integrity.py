@@ -1121,6 +1121,117 @@ class ProducerRequiresAFreshRunDirectoryTests(unittest.TestCase):
             (nested / "hidden.json").write_text("{}\n", encoding="utf-8")
             self.assert_refused_without_mutation(out)
 
+    # --- Replacement must be a transaction, not a delete-then-hope ----------
+
+    def test_invalid_holdout_year_leaves_the_prior_run_untouched(self) -> None:
+        """Generation failures must not cost the operator their existing run.
+
+        An earlier revision deleted the validated prior run during classification
+        and only then loaded inputs and ran the models, so any downstream failure
+        destroyed 15 files and produced nothing.
+        """
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            before = self._snapshot(out)
+            self.assertEqual(len(before), len(EXPECTED_RUN_ARTIFACTS) + 1)
+
+            result = self._run(out, "--replace-run", "--holdout-year", "1900")
+            self.assertNotEqual(result.returncode, 0)
+            self.assertEqual(before, self._snapshot(out), "prior run was destroyed")
+            self.assertFalse(
+                (out.parent / (out.name + ".staging")).exists(), "staging residue left behind"
+            )
+
+    def test_missing_input_leaves_the_prior_run_untouched(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            before = self._snapshot(out)
+
+            result = self._run(
+                out, "--replace-run", "--historical-features", str(Path(tmp) / "nope.json")
+            )
+            self.assertNotEqual(result.returncode, 0)
+            self.assertEqual(before, self._snapshot(out), "prior run was destroyed")
+            self.assertFalse((out.parent / (out.name + ".staging")).exists())
+
+    def test_malformed_input_leaves_the_prior_run_untouched(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            before = self._snapshot(out)
+
+            bad = Path(tmp) / "bad.json"
+            bad.write_text("not json{\n", encoding="utf-8")
+            result = self._run(out, "--replace-run", "--historical-features", str(bad))
+            self.assertNotEqual(result.returncode, 0)
+            self.assertEqual(before, self._snapshot(out), "prior run was destroyed")
+            self.assertFalse((out.parent / (out.name + ".staging")).exists())
+
+    def test_staged_validation_failure_leaves_the_prior_run_untouched(self) -> None:
+        """The last gate before commit must also be non-destructive.
+
+        Injects a staged-validation failure into a copy of the producer, so the
+        failure happens after a complete run has been generated into staging -
+        the narrowest window in which the destination could be harmed.
+        """
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            before = self._snapshot(out)
+
+            producer = REPO_ROOT / "scripts/compute_rookie_ml_lane.py"
+            original = producer.read_text(encoding="utf-8")
+            patched = original.replace(
+                "        staged_errors = validate_generated_run(staging_dir)",
+                '        staged_errors = ["injected staged-validation failure"]',
+                1,
+            )
+            self.assertNotEqual(patched, original, "staged-validation hook not found")
+            try:
+                producer.write_text(patched, encoding="utf-8")
+                result = self._run(out, "--replace-run")
+            finally:
+                producer.write_text(original, encoding="utf-8")
+
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("failed validation", result.stdout + result.stderr)
+            self.assertEqual(before, self._snapshot(out), "prior run was destroyed")
+            self.assertFalse((out.parent / (out.name + ".staging")).exists())
+
+    def test_successful_replacement_swaps_a_complete_validated_run(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            before = self._snapshot(out)
+
+            result = self._run(out, "--replace-run")
+            self.assertEqual(result.returncode, 0, result.stderr)
+            after = self._snapshot(out)
+            self.assertEqual(set(before), set(after), "replacement changed the file set")
+            self.assertEqual(validate_generated_run(out), [])
+            for suffix in (".staging", ".previous"):
+                self.assertFalse(
+                    (out.parent / (out.name + suffix)).exists(), f"{suffix} residue left behind"
+                )
+
+    def test_producer_refuses_when_a_staging_path_already_exists(self) -> None:
+        """An interrupted previous attempt must not be silently reused."""
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            before = self._snapshot(out)
+            staging = out.parent / (out.name + ".staging")
+            staging.mkdir()
+            (staging / "leftover.json").write_text("{}\n", encoding="utf-8")
+
+            result = self._run(out, "--replace-run")
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("staging path already exists", result.stdout + result.stderr)
+            self.assertEqual(before, self._snapshot(out))
+            self.assertTrue((staging / "leftover.json").is_file(), "leftover was destroyed")
+
     def test_a_clean_run_matches_the_pinned_universe(self) -> None:
         """The pinned expectation must track what the producer actually emits."""
         with tempfile.TemporaryDirectory() as tmp:

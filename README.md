@@ -284,9 +284,17 @@ python3 scripts/compute_rookie_ml_lane.py --replace-run
 `--replace-run` clears a previous run, but only when the directory is
 demonstrably an **exact, valid prior run** of this producer: the file set matches
 the expected universe exactly, there are no subdirectories, and the run still
-passes `validate_generated_run()`. Classification is entirely read-only until
-that decision is made, so anything missing, tampered, nested, or unexpected
-refuses with the directory **byte-for-byte unchanged**.
+passes `validate_generated_run()`. Classification is entirely read-only, so
+anything missing, tampered, nested, or unexpected refuses with the directory
+**byte-for-byte unchanged**.
+
+Replacement is a transaction. Every run generates into a fresh
+`<output-dir>.staging` sibling and the staged run must validate before it may
+replace anything; only then are the old and new directories swapped by rename,
+with rollback if the swap fails. An invalid holdout year, a missing or malformed
+input, a modelling error, or a staged-validation failure therefore leaves an
+existing run exactly as it was — the operator never trades a working run for a
+failed command.
 
 The evaluator uses time-aware draft-class splits, logistic baselines, required feature-subset baselines, and non-ML baseline comparisons.
 
