@@ -18,6 +18,7 @@ only.
 
 import json
 import shutil
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -25,14 +26,19 @@ from pathlib import Path
 from unittest import mock
 
 from scripts.validate_experimental_integrity import (
+    ARCHIVE_STATUS_KIND,
     DECLARED_FAMILIES,
     FROZEN_HISTORICAL_ARTIFACTS,
+    GOVERNED_UNCALIBRATED_WARNING,
+    PINNED_MIGRATION_CLAIMS,
+    PINNED_STATUS_CLAIMS,
     REGISTRY_SCHEMA_VERSION,
-    REQUIRED_STATUS_CLAIMS,
+    RUN_STATUS_KIND,
     STATUS_SIDECAR_NAME,
     iter_experimental_files,
     sha256_file,
     validate_experimental_integrity,
+    validate_generated_run,
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -522,7 +528,7 @@ class ExperimentalIntegrityMutationTests(ExperimentalMirrorTestCase):
 
     def test_status_dropping_a_required_claim_is_rejected(self) -> None:
         self.assert_baseline_clean()
-        for key in REQUIRED_STATUS_CLAIMS:
+        for key in PINNED_STATUS_CLAIMS:
             with self.subTest(claim=key):
                 payload = self.read_sidecar()
                 del payload[key]
@@ -533,17 +539,103 @@ class ExperimentalIntegrityMutationTests(ExperimentalMirrorTestCase):
                     f"dropped claim {key} not rejected; errors={errors}",
                 )
 
-    def test_status_dropping_the_uncalibrated_warning_is_rejected(self) -> None:
+    def test_status_substituting_the_governed_warning_is_rejected(self) -> None:
+        """The warning is pinned verbatim; length is not evidence of honesty.
+
+        The last case is the one that matters: comfortably longer than any
+        plausible length threshold, and an affirmative claim that the outputs
+        ARE calibrated. A length check would pass it.
+        """
         self.assert_baseline_clean()
-        for warning in ("", "   ", "see docs"):
-            with self.subTest(warning=warning):
+        cases = {
+            "empty": "",
+            "whitespace": "   ",
+            "terse": "see docs",
+            "non_string": None,
+            "long_but_inverted": (
+                "These outputs ARE fully calibrated probabilities suitable for "
+                "production forecasting and downstream promotion. The model has "
+                "been validated against held-out data and its probabilities may "
+                "be surfaced directly to users as likelihoods of a player hitting."
+            ),
+        }
+        for label, warning in cases.items():
+            with self.subTest(case=label):
                 payload = self.read_sidecar()
                 payload["uncalibrated_probability_warning"] = warning
                 self.write_sidecar(payload)
                 errors = self.run_validator()
                 self.assertTrue(
                     any("uncalibrated_probability_warning" in err for err in errors),
-                    f"weak warning {warning!r} not rejected; errors={errors}",
+                    f"warning case {label!r} not rejected; errors={errors}",
+                )
+
+    def test_status_identity_fields_are_pinned_against_consistent_tamper(self) -> None:
+        """P2: every governance-relevant identity field is pinned in code.
+
+        Each mutation rewrites the sidecar AND re-derives its registry digest,
+        so the digest tier is fully satisfied. Only the code-pinned status tier
+        can reject these.
+        """
+        self.assert_baseline_clean()
+        cases = {
+            "family": "rookie-alpha",
+            "lane": "promoted_primary_model",
+            "replaces_deterministic_rookie_alpha": True,
+            "artifact_class": "promoted_model_output",
+            "is_calibrated_probability": True,
+            "eligible_for_promotion": True,
+            "status_kind": RUN_STATUS_KIND,
+        }
+        for key, value in cases.items():
+            with self.subTest(field=key):
+                payload = self.read_sidecar()
+                payload[key] = value
+                self.write_sidecar(payload)
+                errors = self.run_validator()
+                self.assertNotEqual(
+                    errors, [], f"consistent tamper of {key!r} was accepted"
+                )
+                self.assertTrue(
+                    any(key in err for err in errors),
+                    f"{key!r} tamper not attributed to that field; errors={errors}",
+                )
+
+    def test_status_migration_fields_are_pinned_against_consistent_tamper(self) -> None:
+        """P2: provenance claims cannot be rewritten with a matching digest."""
+        self.assert_baseline_clean()
+        cases = {
+            "authorized_base_sha": "0" * 40,
+            "work_packet": "WP-6",
+            "byte_preserving": False,
+            "previous_path": "exports/experimental/rookie-ml-lane",
+            "current_path": "exports/promoted/rookie-ml-lane",
+        }
+        for key, value in cases.items():
+            with self.subTest(field=key):
+                payload = self.read_sidecar()
+                payload["migration"][key] = value
+                self.write_sidecar(payload)
+                errors = self.run_validator()
+                self.assertNotEqual(
+                    errors, [], f"consistent tamper of migration.{key} was accepted"
+                )
+                self.assertTrue(
+                    any(key in err for err in errors),
+                    f"migration.{key} tamper not attributed; errors={errors}",
+                )
+
+    def test_status_dropping_a_migration_field_is_rejected(self) -> None:
+        self.assert_baseline_clean()
+        for key in sorted(PINNED_MIGRATION_CLAIMS["rookie-ml-lane"]):
+            with self.subTest(field=key):
+                payload = self.read_sidecar()
+                del payload["migration"][key]
+                self.write_sidecar(payload)
+                errors = self.run_validator()
+                self.assertTrue(
+                    any(f"missing required claim: {key}" in err for err in errors),
+                    f"dropped migration.{key} not rejected; errors={errors}",
                 )
 
     def test_status_omitting_frozen_artifacts_is_rejected(self) -> None:
@@ -572,17 +664,6 @@ class ExperimentalIntegrityMutationTests(ExperimentalMirrorTestCase):
         self.assertTrue(
             any("disagrees with the pinned frozen record" in err for err in errors),
             f"misreported digest not rejected; errors={errors}",
-        )
-
-    def test_status_rewriting_the_migration_binding_is_rejected(self) -> None:
-        self.assert_baseline_clean()
-        payload = self.read_sidecar()
-        payload["migration"]["previous_path"] = "exports/experimental/rookie-ml-lane"
-        self.write_sidecar(payload)
-        errors = self.run_validator()
-        self.assertTrue(
-            any("migration.previous_path must be" in err for err in errors),
-            f"rewritten migration binding not rejected; errors={errors}",
         )
 
     def test_unregistered_status_sidecar_is_rejected(self) -> None:
@@ -724,6 +805,181 @@ class EnforcementLayerNecessityTests(ExperimentalMirrorTestCase):
                 {f"{family}/{e['path']}" for e in entries},
             ),
         )
+
+
+class GeneratedRunValidationTests(unittest.TestCase):
+    """A generated run must have its own coherent, fail-closed validation path.
+
+    Runs are mutable and uncommitted, so they get no registry. What they must do
+    is publish the same governed semantics as the archive, inventory themselves
+    completely, and never borrow the archive's migration provenance.
+    """
+
+    def setUp(self) -> None:
+        self._tmp = tempfile.TemporaryDirectory()
+        self.run_dir = Path(self._tmp.name) / "run"
+        self.run_dir.mkdir()
+        (self.run_dir / "evaluation_report.json").write_text("{}\n", encoding="utf-8")
+        self.write_sidecar(self.valid_payload())
+        self.addCleanup(self._tmp.cleanup)
+
+    def valid_payload(self) -> dict:
+        return {
+            "schema_version": "experimental-status-v0.1.0",
+            "status_kind": RUN_STATUS_KIND,
+            "family": "rookie-ml-lane",
+            **PINNED_STATUS_CLAIMS,
+            "uncalibrated_probability_warning": GOVERNED_UNCALIBRATED_WARNING,
+            "generated_at": "2026-08-23T00:00:00+00:00",
+            "generated_artifacts": ["evaluation_report.json"],
+        }
+
+    def write_sidecar(self, payload: dict) -> None:
+        (self.run_dir / STATUS_SIDECAR_NAME).write_text(
+            json.dumps(payload, indent=2) + "\n", encoding="utf-8"
+        )
+
+    def test_valid_run_passes(self) -> None:
+        self.assertEqual(validate_generated_run(self.run_dir), [])
+
+    def test_missing_sidecar_is_rejected(self) -> None:
+        (self.run_dir / STATUS_SIDECAR_NAME).unlink()
+        errors = validate_generated_run(self.run_dir)
+        self.assertTrue(any("missing its status sidecar" in e for e in errors), errors)
+
+    def test_run_claiming_archive_provenance_is_rejected(self) -> None:
+        """A run has migrated nothing and must not present itself as the archive."""
+        for field, value in (
+            ("migration", {"previous_path": "exports/promoted/rookie-ml-lane"}),
+            ("frozen_historical_artifacts", []),
+        ):
+            with self.subTest(field=field):
+                payload = self.valid_payload()
+                payload[field] = value
+                self.write_sidecar(payload)
+                errors = validate_generated_run(self.run_dir)
+                self.assertTrue(
+                    any(field in e and "must not carry" in e for e in errors), errors
+                )
+
+    def test_run_claiming_archive_status_kind_is_rejected(self) -> None:
+        payload = self.valid_payload()
+        payload["status_kind"] = ARCHIVE_STATUS_KIND
+        self.write_sidecar(payload)
+        errors = validate_generated_run(self.run_dir)
+        self.assertTrue(any("status_kind" in e for e in errors), errors)
+
+    def test_run_claiming_calibration_or_promotion_is_rejected(self) -> None:
+        for key in ("is_calibrated_probability", "eligible_for_promotion"):
+            with self.subTest(claim=key):
+                payload = self.valid_payload()
+                payload[key] = True
+                self.write_sidecar(payload)
+                errors = validate_generated_run(self.run_dir)
+                self.assertTrue(any(key in e for e in errors), errors)
+
+    def test_run_substituting_the_governed_warning_is_rejected(self) -> None:
+        payload = self.valid_payload()
+        payload["uncalibrated_probability_warning"] = (
+            "These outputs ARE calibrated probabilities and may be promoted, "
+            "surfaced to users, and consumed by downstream forecast contracts."
+        )
+        self.write_sidecar(payload)
+        errors = validate_generated_run(self.run_dir)
+        self.assertTrue(
+            any("uncalibrated_probability_warning" in e for e in errors), errors
+        )
+
+    def test_undeclared_file_in_the_run_is_rejected(self) -> None:
+        (self.run_dir / "smuggled.json").write_text("{}\n", encoding="utf-8")
+        errors = validate_generated_run(self.run_dir)
+        self.assertTrue(any("inventory disagrees" in e for e in errors), errors)
+
+    def test_declared_but_absent_file_is_rejected(self) -> None:
+        payload = self.valid_payload()
+        payload["generated_artifacts"].append("ghost.json")
+        self.write_sidecar(payload)
+        errors = validate_generated_run(self.run_dir)
+        self.assertTrue(any("inventory disagrees" in e for e in errors), errors)
+
+
+class ProducerCannotMutateTheFrozenArchiveTests(unittest.TestCase):
+    """P1 end-to-end: the documented producer workflow is internally consistent.
+
+    Codex review of PR #291 found that the documented default command wrote
+    straight into the frozen archive: it overwrote historical artifacts, added
+    unregistered outputs, replaced the migration sidecar with a run-shaped one,
+    and left the validator permanently failing. These tests run the real
+    producer and prove that path is closed.
+
+    They deliberately never pass the *canonical* archive path to the producer.
+    An earlier draft of this class did, and when the guard was disabled to check
+    that these tests actually fire, the subprocess overwrote the real archive on
+    disk - reproducing the very bug under test against the working tree. The
+    refusal is therefore exercised against an archive-shaped path inside a
+    temporary directory, which the guard matches structurally. `tearDown`
+    asserts the canonical bytes are untouched either way.
+    """
+
+    def setUp(self) -> None:
+        self._before = self._archive_digests()
+
+    def tearDown(self) -> None:
+        self.assertEqual(
+            self._before,
+            self._archive_digests(),
+            "a test in this class mutated the canonical frozen archive",
+        )
+
+    def _archive_digests(self) -> dict[str, str]:
+        family = CANONICAL_EXPERIMENTAL / "rookie-ml-lane"
+        return {p.name: sha256_file(p) for p in sorted(family.iterdir()) if p.is_file()}
+
+    def _run_producer(self, output_dir) -> subprocess.CompletedProcess:
+        return subprocess.run(
+            ["python3", "scripts/compute_rookie_ml_lane.py", "--output-dir", str(output_dir)],
+            cwd=REPO_ROOT,
+            capture_output=True,
+            text=True,
+        )
+
+    def test_generated_run_validates_and_leaves_the_archive_alone(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            result = self._run_producer(Path(tmp) / "run")
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(
+                validate_generated_run(Path(tmp) / "run"),
+                [],
+                "a freshly generated run must validate",
+            )
+
+    def test_producer_refuses_an_archive_shaped_path_and_writes_nothing(self) -> None:
+        """The guard matches the archive's shape, not just this checkout's copy."""
+        with tempfile.TemporaryDirectory() as tmp:
+            target = Path(tmp) / "exports/experimental/rookie-ml-lane"
+            result = self._run_producer(target)
+            self.assertNotEqual(result.returncode, 0, "producer should refuse the archive")
+            self.assertIn("frozen migration archive", result.stdout + result.stderr)
+            self.assertFalse(target.exists(), "a refused run must write nothing")
+
+    def test_archive_still_validates_after_a_refused_run(self) -> None:
+        errors, _ = validate_experimental_integrity(
+            CANONICAL_EXPERIMENTAL, CANONICAL_REGISTRY, CANONICAL_PROMOTED
+        )
+        self.assertEqual(errors, [])
+
+    def test_documented_default_is_not_the_archive(self) -> None:
+        """Guards the exact regression: default output resolving into the archive."""
+        from scripts.compute_rookie_ml_lane import DEFAULT_OUTPUT_DIR
+
+        self.assertNotEqual(
+            (REPO_ROOT / DEFAULT_OUTPUT_DIR).resolve(),
+            (CANONICAL_EXPERIMENTAL / "rookie-ml-lane").resolve(),
+        )
+        # And the default must itself be an accepted destination.
+        from scripts.compute_rookie_ml_lane import reject_protected_output_dir
+
+        reject_protected_output_dir(Path(DEFAULT_OUTPUT_DIR))
 
 
 if __name__ == "__main__":

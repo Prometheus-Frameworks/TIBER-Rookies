@@ -1,5 +1,6 @@
 {
   "schema_version": "experimental-status-v0.1.0",
+  "status_kind": "migration_archive",
   "family": "rookie-ml-lane",
   "artifact_class": "experimental_fixture_evaluation",
   "is_calibrated_probability": false,

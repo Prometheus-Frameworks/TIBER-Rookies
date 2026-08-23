@@ -7,3 +7,7 @@ __pycache__/
 .env
 .env.local
 data/external/
+
+# Generated ML lane runs. Never a committed export: the frozen migration
+# archive lives under exports/experimental/ and must not be written by a run.
+runs/

@@ -114,11 +114,36 @@ class OldPromotedPathReferenceTests(unittest.TestCase):
                     f"{relative} still classifies the ML lane as promoted",
                 )
 
-    def test_producer_default_output_is_the_experimental_path(self) -> None:
+    def test_producer_default_output_is_not_a_promoted_path(self) -> None:
         """Acceptance condition 3, read off the producer itself."""
         from scripts.compute_rookie_ml_lane import DEFAULT_OUTPUT_DIR
 
-        self.assertEqual(DEFAULT_OUTPUT_DIR, NEW_EXPERIMENTAL_PATH)
+        self.assertNotIn("exports/promoted", DEFAULT_OUTPUT_DIR)
+
+    def test_producer_default_output_is_not_the_frozen_archive(self) -> None:
+        """The documented default must not target the immutable archive.
+
+        Pointing the producer at NEW_EXPERIMENTAL_PATH would make the documented
+        command overwrite the frozen historical bytes on every run.
+        """
+        from scripts.compute_rookie_ml_lane import DEFAULT_OUTPUT_DIR
+
+        self.assertNotEqual(DEFAULT_OUTPUT_DIR, NEW_EXPERIMENTAL_PATH)
+        self.assertFalse(DEFAULT_OUTPUT_DIR.startswith("exports/"))
+
+    def test_generated_run_destination_is_not_committed(self) -> None:
+        """Run output must be gitignored, so a run can never become an export by accident."""
+        from scripts.compute_rookie_ml_lane import DEFAULT_OUTPUT_DIR
+
+        result = subprocess.run(
+            ["git", "check-ignore", DEFAULT_OUTPUT_DIR],
+            cwd=REPO_ROOT,
+            capture_output=True,
+            text=True,
+        )
+        self.assertEqual(
+            result.returncode, 0, f"{DEFAULT_OUTPUT_DIR} is not gitignored: {result.stderr}"
+        )
 
 
 if __name__ == "__main__":

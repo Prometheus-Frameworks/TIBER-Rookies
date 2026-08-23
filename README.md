@@ -232,9 +232,21 @@ Run from repo root:
 python3 scripts/compute_rookie_ml_lane.py
 ```
 
-Default outputs are written to `exports/experimental/rookie-ml-lane/`, alongside a
-generated `experimental_status_v0.json` status sidecar that carries those semantics.
-Writing this lane into `exports/promoted/` is refused outright:
+Output defaults to `runs/rookie-ml-lane/` (gitignored), alongside a generated
+`experimental_status_v0.json` status sidecar carrying those semantics.
+
+There are two distinct things here, and they are deliberately kept apart:
+
+- **The frozen migration archive**, `exports/experimental/rookie-ml-lane/` — the nine
+  artifacts pinned byte-for-byte to the authorized base commit, plus the sidecar that
+  binds them to their old promoted path. Immutable and committed. The producer
+  **refuses** to write here; a run would overwrite the historical bytes and strip the
+  migration record.
+- **Generated runs**, `runs/rookie-ml-lane/` — whatever the producer writes today.
+  Mutable, never committed, validated on their own terms.
+
+Writing this lane into `exports/promoted/` or into the frozen archive is refused
+outright, before anything is written:
 
 - `historical_outcomes_canonical.json`
 - `historical_label_provenance_report.json`
@@ -250,12 +262,20 @@ Writing this lane into `exports/promoted/` is refused outright:
 - `heldout_probabilities.json` / `.csv`
 - `experimental_status_v0.json` (governed status sidecar)
 
+Validate a generated run:
+
+```bash
+python3 scripts/validate_experimental_integrity.py --run-dir runs/rookie-ml-lane
+```
+
 The evaluator uses time-aware draft-class splits, logistic baselines, required feature-subset baselines, and non-ML baseline comparisons.
 
-Demotion did not remove these artifacts from integrity coverage. They are validated
-by `scripts/validate_experimental_integrity.py`, which enforces a registry/disk
-digest bijection, a code-pinned inventory of the frozen historical bytes, and the
-status contract above:
+Demotion did not remove these artifacts from integrity coverage. The frozen archive
+is validated by `scripts/validate_experimental_integrity.py`, which enforces a
+registry/disk digest bijection, a code-pinned inventory of the frozen historical
+bytes, and a status contract whose governance fields — family, lane, calibration and
+promotion claims, migration provenance, and the exact warning text — are all pinned
+in validator code rather than in the editable registry:
 
 ```bash
 python3 scripts/validate_experimental_integrity.py

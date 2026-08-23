@@ -7,7 +7,22 @@ claiming to be a promoted model. This validator is the enforcement half of that
 claim, and it is deliberately *stricter* than the promoted validator in one
 respect: it also enforces what the artifacts are allowed to say about themselves.
 
-Enforcement has four tiers, with deliberately separate sources of truth:
+There are two distinct things to validate, with different lifecycles:
+
+* the **migration archive** at `exports/experimental/rookie-ml-lane/` - nine
+  artifacts whose bytes are frozen at the authorized base commit, plus a status
+  sidecar that binds them to their old promoted path. Immutable. Validated by
+  `validate_experimental_integrity()`.
+* a **generated run** - whatever the producer writes today, into its own
+  destination outside `exports/`. Mutable, uncommitted, and never allowed to
+  land on top of the archive. Validated by `validate_generated_run()`.
+
+Collapsing those two into one directory is what made the documented producer
+command destructive: running it overwrote frozen artifacts, added unregistered
+outputs, and replaced the migration sidecar with a run-shaped one. They are kept
+apart here, and the producer refuses to write into the archive at all.
+
+Archive enforcement has four tiers, with deliberately separate sources of truth:
 
 * ``frozen``   - FROZEN_HISTORICAL_ARTIFACTS below, pinned in this module. These
                  are the exact bytes the ML lane carried at the authorized base
@@ -17,23 +32,25 @@ Enforcement has four tiers, with deliberately separate sources of truth:
 * ``digest``   - driven by the integrity registry, which is digest-only: path,
                  sha256, and size. Enforced as a registry <-> disk bijection, so
                  a modified, deleted, or undeclared artifact all fail.
-* ``status``   - REQUIRED_STATUS_CLAIMS below. The family must carry a status
-                 sidecar, and that sidecar must declare the artifacts to be
-                 uncalibrated and ineligible for promotion. A sidecar claiming
-                 otherwise is rejected, not ignored.
+* ``status``   - PINNED_STATUS_CLAIMS, PINNED_MIGRATION_CLAIMS and
+                 GOVERNED_UNCALIBRATED_WARNING below. The family must carry a
+                 status sidecar, and every governance-relevant field in it is
+                 pinned to an exact value here. A sidecar is not permitted to
+                 rename its own family, re-describe its lane, claim it replaces
+                 deterministic Rookie Alpha, restate the authorized base commit,
+                 withdraw the byte-preservation claim, or substitute its own
+                 wording for the governed warning - even if the registry digest
+                 is updated to agree with it.
 * ``demotion`` - the promoted namespace must not contain the demoted family.
-                 Putting an ML artifact back under `exports/promoted/` fails
-                 here as well as in the promoted validator's bijection.
 
-The `frozen` tier is the point. `validate_promoted_integrity.py` learned in
-PR #290 that a contract driven by editable registry data can be neutered while
-its count assertion stays green: five rookie-alpha entries were swappable for
-five duplicates of one valid tuple. A registry is a digest record and changes
-whenever an artifact is legitimately regenerated; *which* artifacts must exist
-and what they must hash to is a contract fact that must not be editable
-alongside it. Removing an entry from the registry therefore does not remove the
-check - the frozen tier fails independently, and no count assertion can satisfy
-it.
+The `frozen` and `status` tiers are the point. `validate_promoted_integrity.py`
+learned in PR #290 that a contract driven by editable registry data can be
+neutered while its count assertion stays green. A registry is a digest record
+and changes whenever an artifact is legitimately regenerated; *which* artifacts
+must exist, what they must hash to, and what the family is permitted to say
+about itself are contract facts that must not be editable alongside it.
+Consistently updating a sidecar and its registry digest together therefore does
+not buy anything: the pinned values are compared against code.
 
 Every value in FROZEN_HISTORICAL_ARTIFACTS is mechanically derived from bytes
 already committed at the authorized base. This module fabricates no schema
@@ -69,23 +86,60 @@ DECLARED_FAMILIES = ("rookie-ml-lane",)
 # migration note.
 DEMOTED_FROM_PROMOTED = ("rookie-ml-lane",)
 
+# The committed, immutable migration archives. The producer must refuse to write
+# here; see `scripts/compute_rookie_ml_lane.py`.
+FROZEN_ARCHIVE_DIRS = ("exports/experimental/rookie-ml-lane",)
+
 STATUS_SIDECAR_NAME = "experimental_status_v0.json"
 STATUS_SCHEMA_VERSION = "experimental-status-v0.1.0"
 
-# The semantics every experimental family must publish about itself. Pinned
-# here so that a family cannot self-declare its way back toward promotion:
-# these are exact-value checks, and a sidecar asserting calibration or
-# promotion eligibility is a validation failure.
-REQUIRED_STATUS_CLAIMS: dict[str, Any] = {
+# A status record describes either the frozen migration archive or a freshly
+# generated run. The two shapes are not interchangeable, and a run may not
+# borrow the archive's provenance.
+ARCHIVE_STATUS_KIND = "migration_archive"
+RUN_STATUS_KIND = "generated_run"
+
+# The exact governed warning. Pinned verbatim rather than by length: a long
+# string is not evidence of an honest one, and "these outputs are calibrated
+# probabilities" clears any length threshold.
+GOVERNED_UNCALIBRATED_WARNING = (
+    "The probability-shaped fields in this family (hit_probability, "
+    "miss_probability, model_confidence, and the heldout_probabilities.* "
+    "exports) are experimental fixture-fed evaluation outputs. They are NOT "
+    "calibrated probabilities, NOT forecasts, and NOT a promoted model signal. "
+    "They were produced by an interpretable baseline harness over sample "
+    "fixtures for lane-comparison diagnostics only. Do not read them as the "
+    "likelihood that any player will hit, do not surface them to users as "
+    "probabilities, and do not consume them in any promoted, Forecast, or "
+    "Fantasy contract."
+)
+
+# Identity and semantics every experimental status record must publish, archive
+# or run alike. Exact-value checks: a sidecar cannot self-declare its way toward
+# promotion, nor quietly redefine what lane it belongs to.
+PINNED_STATUS_CLAIMS: dict[str, Any] = {
     "artifact_class": "experimental_fixture_evaluation",
     "is_calibrated_probability": False,
     "eligible_for_promotion": False,
+    "lane": "parallel_ml_evaluation_only",
+    "replaces_deterministic_rookie_alpha": False,
 }
 
-# Substantive warning text must be present; an empty or whitespace string does
-# not discharge the obligation to say the probability-shaped fields are not
-# calibrated claims.
-MIN_WARNING_LENGTH = 40
+# Per-family identity, so a sidecar cannot rename the family it speaks for.
+PINNED_FAMILY_IDENTITY: dict[str, str] = {"rookie-ml-lane": "rookie-ml-lane"}
+
+# The migration provenance a frozen archive must reproduce exactly. Restating
+# the authorized base commit or withdrawing `byte_preserving` are governance
+# claims, not editorial ones.
+PINNED_MIGRATION_CLAIMS: dict[str, dict[str, Any]] = {
+    "rookie-ml-lane": {
+        "authorized_base_sha": "54215af61e581000b7370e941dbc90a8a1a70195",
+        "work_packet": "WP-2",
+        "byte_preserving": True,
+        "previous_path": "exports/promoted/rookie-ml-lane",
+        "current_path": "exports/experimental/rookie-ml-lane",
+    },
+}
 
 # The immutable historical inventory, as it stood at the authorized base commit
 # 54215af61e581000b7370e941dbc90a8a1a70195 under the old promoted path. These
@@ -104,10 +158,6 @@ FROZEN_HISTORICAL_ARTIFACTS: dict[str, dict[str, tuple[str, int]]] = {
         "historical_labeled_dataset.json": ("279cef5ee2fa40b99c2e283feff3c894ea650ea193833a5cedb0bc1d54499356", 18524),
     },
 }
-
-# Where each demoted family came from, for the provenance binding the migration
-# record must reproduce.
-MIGRATION_ORIGIN = {"rookie-ml-lane": "exports/promoted/rookie-ml-lane"}
 
 
 def sha256_file(path: Path) -> str:
@@ -150,6 +200,43 @@ def build_registry(experimental_root: Path) -> dict[str, Any]:
         ]
         families.append({"family": family_name, "artifacts": artifacts})
     return {"schema_version": REGISTRY_SCHEMA_VERSION, "families": families}
+
+
+def _check_pinned_claims(label: str, payload: dict, pinned: dict[str, Any]) -> list[str]:
+    """Exact-value comparison of governance fields against the code-pinned set."""
+    errors: list[str] = []
+    for key, required_value in sorted(pinned.items()):
+        if key not in payload:
+            errors.append(f"{label} is missing required claim: {key}")
+            continue
+        actual = payload[key]
+        # `1`/`0` equal `True`/`False` in Python; a governance record must not
+        # smuggle a claim through a non-boolean type.
+        if isinstance(required_value, bool) and not isinstance(actual, bool):
+            errors.append(
+                f"{label} claim {key} must be a JSON boolean, got {type(actual).__name__}"
+            )
+            continue
+        if actual != required_value:
+            errors.append(f"{label} claim {key} must be {required_value!r}, got {actual!r}")
+    return errors
+
+
+def _check_governed_warning(label: str, payload: dict) -> list[str]:
+    """The warning must be the governed text, verbatim."""
+    warning = payload.get("uncalibrated_probability_warning")
+    if warning == GOVERNED_UNCALIBRATED_WARNING:
+        return []
+    if not isinstance(warning, str):
+        return [
+            f"{label} must carry 'uncalibrated_probability_warning' as the governed "
+            f"text; got {type(warning).__name__}"
+        ]
+    return [
+        f"{label} 'uncalibrated_probability_warning' does not match the governed "
+        f"warning pinned in validate_experimental_integrity.py. Substituting other "
+        f"wording is a governance change, not an editorial one."
+    ]
 
 
 def _validate_family_artifacts(
@@ -248,8 +335,9 @@ def _validate_frozen_history(
 def _validate_status_sidecar(
     family_name: str, experimental_root: Path, registered: set[str]
 ) -> list[str]:
-    """Status-tier checks: the family must publish non-promotable semantics."""
+    """Status-tier checks: the archive must publish pinned, non-promotable identity."""
     errors: list[str] = []
+    label = f"[{family_name}] status sidecar"
     sidecar = experimental_root / family_name / STATUS_SIDECAR_NAME
 
     if not sidecar.is_file():
@@ -265,45 +353,34 @@ def _validate_status_sidecar(
     try:
         payload = load_json(sidecar)
     except Exception as exc:
-        errors.append(f"[{family_name}] status sidecar is not valid JSON: {exc}")
+        errors.append(f"{label} is not valid JSON: {exc}")
         return errors
 
     if not isinstance(payload, dict):
-        errors.append(f"[{family_name}] status sidecar must be a JSON object.")
+        errors.append(f"{label} must be a JSON object.")
         return errors
 
     if payload.get("schema_version") != STATUS_SCHEMA_VERSION:
         errors.append(
-            f"[{family_name}] status sidecar schema_version mismatch: expected "
+            f"{label} schema_version mismatch: expected "
             f"{STATUS_SCHEMA_VERSION!r}, got {payload.get('schema_version')!r}"
         )
 
-    # Exact-value semantics. A truthy calibration or eligibility claim is the
-    # failure this tier exists to catch.
-    for key, required_value in REQUIRED_STATUS_CLAIMS.items():
-        if key not in payload:
-            errors.append(f"[{family_name}] status sidecar is missing required claim: {key}")
-            continue
-        actual = payload[key]
-        if actual is not required_value and actual != required_value:
-            errors.append(
-                f"[{family_name}] status sidecar claim {key} must be {required_value!r}, "
-                f"got {actual!r}"
-            )
-        # `1`/`0` equal `True`/`False` in Python; an experimental status record
-        # must not smuggle a claim through a non-boolean type.
-        if isinstance(required_value, bool) and not isinstance(actual, bool):
-            errors.append(
-                f"[{family_name}] status sidecar claim {key} must be a JSON boolean, "
-                f"got {type(actual).__name__}"
-            )
-
-    warning = payload.get("uncalibrated_probability_warning")
-    if not isinstance(warning, str) or len(warning.strip()) < MIN_WARNING_LENGTH:
+    # The committed archive must identify itself as the archive. A run-shaped
+    # record landing here means a generated run overwrote the migration record.
+    if payload.get("status_kind") != ARCHIVE_STATUS_KIND:
         errors.append(
-            f"[{family_name}] status sidecar must carry a substantive "
-            f"'uncalibrated_probability_warning' (>= {MIN_WARNING_LENGTH} chars)."
+            f"{label} status_kind must be {ARCHIVE_STATUS_KIND!r}, got "
+            f"{payload.get('status_kind')!r}. A generated run must not replace the "
+            f"frozen migration archive."
         )
+
+    errors.extend(_check_pinned_claims(label, payload, PINNED_STATUS_CLAIMS))
+    errors.extend(_check_governed_warning(label, payload))
+
+    expected_family = PINNED_FAMILY_IDENTITY.get(family_name)
+    if expected_family is not None:
+        errors.extend(_check_pinned_claims(label, payload, {"family": expected_family}))
 
     # The sidecar must account for the frozen inventory, so status cannot be
     # published for a family while quietly excluding its artifacts.
@@ -311,49 +388,34 @@ def _validate_status_sidecar(
     if frozen:
         covered = payload.get("frozen_historical_artifacts")
         if not isinstance(covered, list):
-            errors.append(
-                f"[{family_name}] status sidecar must list 'frozen_historical_artifacts'."
-            )
+            errors.append(f"{label} must list 'frozen_historical_artifacts'.")
         else:
             declared = {c.get("path") for c in covered if isinstance(c, dict)}
             missing = set(frozen) - declared
             if missing:
-                errors.append(
-                    f"[{family_name}] status sidecar omits frozen artifacts: {sorted(missing)}"
-                )
+                errors.append(f"{label} omits frozen artifacts: {sorted(missing)}")
             for item in covered:
                 if not isinstance(item, dict):
                     continue
                 path = item.get("path")
                 if path not in frozen:
-                    errors.append(
-                        f"[{family_name}] status sidecar declares unknown frozen artifact: {path!r}"
-                    )
+                    errors.append(f"{label} declares unknown frozen artifact: {path!r}")
                     continue
                 expected_hash, expected_bytes = frozen[path]
                 if item.get("sha256") != expected_hash or item.get("bytes") != expected_bytes:
                     errors.append(
-                        f"[{family_name}] status sidecar digest disagrees with the pinned "
-                        f"frozen record for {path}"
+                        f"{label} digest disagrees with the pinned frozen record for {path}"
                     )
 
-    origin = MIGRATION_ORIGIN.get(family_name)
-    if origin is not None:
+    pinned_migration = PINNED_MIGRATION_CLAIMS.get(family_name)
+    if pinned_migration is not None:
         migration = payload.get("migration")
         if not isinstance(migration, dict):
-            errors.append(f"[{family_name}] status sidecar must carry a 'migration' object.")
+            errors.append(f"{label} must carry a 'migration' object.")
         else:
-            if migration.get("previous_path") != origin:
-                errors.append(
-                    f"[{family_name}] status sidecar migration.previous_path must be "
-                    f"{origin!r}, got {migration.get('previous_path')!r}"
-                )
-            expected_new = f"exports/experimental/{family_name}"
-            if migration.get("current_path") != expected_new:
-                errors.append(
-                    f"[{family_name}] status sidecar migration.current_path must be "
-                    f"{expected_new!r}, got {migration.get('current_path')!r}"
-                )
+            errors.extend(
+                _check_pinned_claims(f"{label} migration", migration, pinned_migration)
+            )
 
     return errors
 
@@ -380,6 +442,86 @@ def _validate_demotion(promoted_root: Path) -> list[str]:
                 f"[{family_name}] demoted family directory still exists under the promoted "
                 f"namespace: {demoted_dir}"
             )
+    return errors
+
+
+def validate_generated_run(run_dir: Path) -> list[str]:
+    """Validate a freshly generated producer run.
+
+    A run is not the archive: it carries no migration provenance and is not
+    committed. What it *must* do is publish the same non-promotable semantics as
+    everything else in this lane, inventory itself completely, and not pass
+    itself off as the frozen migration record.
+    """
+    errors: list[str] = []
+    label = "[generated run] status sidecar"
+
+    if not run_dir.is_dir():
+        return [f"Generated run directory not found: {run_dir}"]
+
+    sidecar = run_dir / STATUS_SIDECAR_NAME
+    if not sidecar.is_file():
+        return [
+            f"Generated run is missing its status sidecar ({STATUS_SIDECAR_NAME}); "
+            f"experimental output must never be separable from its semantics."
+        ]
+
+    try:
+        payload = load_json(sidecar)
+    except Exception as exc:
+        return [f"{label} is not valid JSON: {exc}"]
+    if not isinstance(payload, dict):
+        return [f"{label} must be a JSON object."]
+
+    if payload.get("schema_version") != STATUS_SCHEMA_VERSION:
+        errors.append(
+            f"{label} schema_version mismatch: expected {STATUS_SCHEMA_VERSION!r}, "
+            f"got {payload.get('schema_version')!r}"
+        )
+    if payload.get("status_kind") != RUN_STATUS_KIND:
+        errors.append(
+            f"{label} status_kind must be {RUN_STATUS_KIND!r}, got "
+            f"{payload.get('status_kind')!r}"
+        )
+
+    errors.extend(_check_pinned_claims(label, payload, PINNED_STATUS_CLAIMS))
+    errors.extend(_check_governed_warning(label, payload))
+
+    expected_family = PINNED_FAMILY_IDENTITY.get(payload.get("family"))
+    if expected_family is None:
+        errors.append(
+            f"{label} declares unknown family {payload.get('family')!r}; "
+            f"expected one of {sorted(PINNED_FAMILY_IDENTITY)}"
+        )
+
+    # A run must not borrow the archive's provenance. These fields assert a
+    # byte-preserving migration from the promoted namespace, which a freshly
+    # generated result has not performed.
+    for forbidden in ("migration", "frozen_historical_artifacts"):
+        if forbidden in payload:
+            errors.append(
+                f"{label} must not carry {forbidden!r}: a generated run has no "
+                f"migration provenance and must not present itself as the frozen archive."
+            )
+
+    # Self-inventory bijection, so a run cannot quietly drop or gain a file.
+    declared = payload.get("generated_artifacts")
+    if not isinstance(declared, list):
+        errors.append(f"{label} must list 'generated_artifacts'.")
+    else:
+        on_disk = sorted(
+            p.name for p in run_dir.iterdir() if p.is_file() and p.name != STATUS_SIDECAR_NAME
+        )
+        if sorted(declared) != on_disk:
+            missing = sorted(set(on_disk) - set(declared))
+            extra = sorted(set(declared) - set(on_disk))
+            detail = []
+            if missing:
+                detail.append(f"undeclared on disk: {missing}")
+            if extra:
+                detail.append(f"declared but absent: {extra}")
+            errors.append(f"{label} inventory disagrees with the run directory ({'; '.join(detail)}).")
+
     return errors
 
 
@@ -497,6 +639,15 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--promoted-root", type=Path, default=DEFAULT_PROMOTED_ROOT)
     parser.add_argument("--registry", type=Path, default=DEFAULT_REGISTRY)
     parser.add_argument(
+        "--run-dir",
+        type=Path,
+        default=None,
+        help=(
+            "Validate a generated producer run at this path instead of the committed "
+            "migration archive."
+        ),
+    )
+    parser.add_argument(
         "--update",
         action="store_true",
         help="Rewrite the registry from the canonical bytes on disk instead of validating.",
@@ -506,6 +657,16 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     args = parse_args()
+
+    if args.run_dir is not None:
+        errors = validate_generated_run(args.run_dir)
+        if errors:
+            print("EXPERIMENTAL RUN VALIDATION FAILED")
+            for err in errors:
+                print(f"- {err}")
+            raise SystemExit(1)
+        print(f"EXPERIMENTAL RUN VALIDATION PASSED ({args.run_dir})")
+        return
 
     if args.update:
         registry = build_registry(args.experimental_root)

@@ -21,7 +21,7 @@ from scripts.compute_rookie_ml_lane import (
     build_missingness_summary,
     build_labeled_rows,
     pr_auc,
-    reject_promoted_output_dir,
+    reject_protected_output_dir,
     roc_auc,
     time_split,
 )
@@ -295,9 +295,12 @@ class RookieMlLaneTests(unittest.TestCase):
 class ExperimentalOutputSemanticsTests(unittest.TestCase):
     """A generated future result must not read as promoted or calibrated (#286 WP-2)."""
 
-    def test_default_output_dir_is_the_experimental_namespace(self) -> None:
-        self.assertEqual(DEFAULT_OUTPUT_DIR, "exports/experimental/rookie-ml-lane")
+    def test_default_output_dir_is_a_run_destination(self) -> None:
+        self.assertEqual(DEFAULT_OUTPUT_DIR, "runs/rookie-ml-lane")
         self.assertNotIn("exports/promoted", DEFAULT_OUTPUT_DIR)
+        # Critically, not the frozen archive: the documented default command
+        # must not overwrite immutable historical bytes.
+        self.assertNotEqual(DEFAULT_OUTPUT_DIR, "exports/experimental/rookie-ml-lane")
 
     def test_promoted_output_dir_is_refused(self) -> None:
         """Negative control: redirecting the producer must fail explicitly."""
@@ -309,13 +312,25 @@ class ExperimentalOutputSemanticsTests(unittest.TestCase):
         ):
             with self.subTest(output_dir=candidate):
                 with self.assertRaises(SystemExit) as raised:
-                    reject_promoted_output_dir(Path(candidate))
+                    reject_protected_output_dir(Path(candidate))
                 self.assertIn("Refusing to write", str(raised.exception))
 
-    def test_experimental_output_dir_is_allowed(self) -> None:
-        for candidate in ("exports/experimental/rookie-ml-lane", "exports/candidate/x"):
+    def test_frozen_archive_output_dir_is_refused(self) -> None:
+        """Negative control: a run must never target the immutable archive."""
+        for candidate in (
+            "exports/experimental/rookie-ml-lane",
+            "exports/experimental/rookie-ml-lane/nested",
+            "/somewhere/else/exports/experimental/rookie-ml-lane",
+        ):
             with self.subTest(output_dir=candidate):
-                reject_promoted_output_dir(Path(candidate))
+                with self.assertRaises(SystemExit) as raised:
+                    reject_protected_output_dir(Path(candidate))
+                self.assertIn("frozen migration archive", str(raised.exception))
+
+    def test_run_output_dirs_are_allowed(self) -> None:
+        for candidate in ("runs/rookie-ml-lane", "exports/candidate/x"):
+            with self.subTest(output_dir=candidate):
+                reject_protected_output_dir(Path(candidate))
 
     def test_promoted_redirect_fails_before_writing_anything(self) -> None:
         """The guard must refuse at the CLI boundary, not after producing files."""
@@ -371,7 +386,11 @@ class ExperimentalOutputSemanticsTests(unittest.TestCase):
                     )
 
             self.assertEqual(sidecar["schema_version"], "experimental-status-v0.1.0")
+            self.assertEqual(sidecar["status_kind"], "generated_run")
             self.assertIs(sidecar["replaces_deterministic_rookie_alpha"], False)
+            # A run has performed no migration and must not claim archive provenance.
+            self.assertNotIn("migration", sidecar)
+            self.assertNotIn("frozen_historical_artifacts", sidecar)
             # The sidecar must inventory the run it accompanies.
             produced = sorted(
                 p.name for p in output_dir.iterdir() if p.name != "experimental_status_v0.json"

@@ -9,11 +9,19 @@ held-out scored probabilities.
 This lane is experimental and is **not** a promoted model. Its outputs are
 fixture-fed evaluation artifacts: the probability-shaped fields it emits are not
 calibrated probabilities and confer no promotion eligibility. Issue #286 (WP-2)
-demoted the lane out of `exports/promoted/`, so output defaults to
-`exports/experimental/rookie-ml-lane` and writing into the promoted namespace is
-refused outright rather than merely discouraged. Every run also emits a status
-sidecar (`experimental_status_v0.json`) and stamps the same semantics into the
-generated reports, so a future result cannot be separated from its disclaimer.
+demoted the lane out of `exports/promoted/`.
+
+Output defaults to `runs/rookie-ml-lane`, deliberately outside `exports/`. The
+committed archive at `exports/experimental/rookie-ml-lane` is frozen at the
+authorized base commit, and a generated run must never land on top of it: doing
+so would overwrite immutable historical bytes and replace the migration record
+with a run-shaped sidecar. Writing into either the promoted namespace or a
+frozen archive is refused outright rather than merely discouraged.
+
+Every run emits a status sidecar (`experimental_status_v0.json`) and stamps the
+same semantics into the generated reports, so a result cannot be separated from
+its disclaimer. Validate a run with
+`validate_experimental_integrity.py --run-dir <path>`.
 """
 
 from __future__ import annotations
@@ -24,10 +32,27 @@ import json
 import math
 import random
 import re
+import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+# The governed experimental contract is owned by the validator; importing it
+# here keeps the producer from drifting out of agreement with what CI enforces.
+from scripts.validate_experimental_integrity import (  # noqa: E402
+    FROZEN_ARCHIVE_DIRS,
+    GOVERNED_UNCALIBRATED_WARNING,
+    PINNED_FAMILY_IDENTITY,
+    PINNED_STATUS_CLAIMS,
+    RUN_STATUS_KIND,
+    STATUS_SCHEMA_VERSION,
+    STATUS_SIDECAR_NAME,
+)
 
 FEATURE_COLUMNS = [
     "draft_capital_proxy_0_100",
@@ -66,34 +91,28 @@ WEAK_LABEL_SOURCES = {
 }
 STRONG_FEATURE_COMPLETENESS_THRESHOLD = 0.70
 
-DEFAULT_OUTPUT_DIR = "exports/experimental/rookie-ml-lane"
+# Generated runs go to their own destination, deliberately outside `exports/`.
+# The committed archive under exports/experimental/rookie-ml-lane is frozen at
+# the authorized base commit; writing a fresh run on top of it would overwrite
+# those immutable bytes and strip the migration record. Run output is not a
+# committed export until someone deliberately makes it one.
+DEFAULT_OUTPUT_DIR = "runs/rookie-ml-lane"
 
 # The namespace this lane was demoted out of (#286 WP-2). Writing here would
 # re-assert a promotion claim the lane is not entitled to make, so the producer
 # fails closed instead of silently producing promoted-looking artifacts.
 PROMOTED_NAMESPACE = "exports/promoted"
 
-STATUS_SIDECAR_NAME = "experimental_status_v0.json"
-STATUS_SCHEMA_VERSION = "experimental-status-v0.1.0"
-
-UNCALIBRATED_PROBABILITY_WARNING = (
-    "The probability-shaped fields in this family (hit_probability, "
-    "miss_probability, model_confidence, and the heldout_probabilities.* "
-    "exports) are experimental fixture-fed evaluation outputs. They are NOT "
-    "calibrated probabilities, NOT forecasts, and NOT a promoted model signal. "
-    "They were produced by an interpretable baseline harness over sample "
-    "fixtures for lane-comparison diagnostics only. Do not read them as the "
-    "likelihood that any player will hit, do not surface them to users as "
-    "probabilities, and do not consume them in any promoted, Forecast, or "
-    "Fantasy contract."
-)
+# The governed contract is owned by the validator, not restated here, so the
+# producer cannot drift out of agreement with what CI enforces.
+UNCALIBRATED_PROBABILITY_WARNING = GOVERNED_UNCALIBRATED_WARNING
 
 # Stamped into every generated report so the semantics travel with the bytes.
 EXPERIMENTAL_SEMANTICS: dict[str, Any] = {
-    "artifact_class": "experimental_fixture_evaluation",
-    "is_calibrated_probability": False,
-    "eligible_for_promotion": False,
-    "uncalibrated_probability_warning": UNCALIBRATED_PROBABILITY_WARNING,
+    "artifact_class": PINNED_STATUS_CLAIMS["artifact_class"],
+    "is_calibrated_probability": PINNED_STATUS_CLAIMS["is_calibrated_probability"],
+    "eligible_for_promotion": PINNED_STATUS_CLAIMS["eligible_for_promotion"],
+    "uncalibrated_probability_warning": GOVERNED_UNCALIBRATED_WARNING,
 }
 
 
@@ -954,26 +973,34 @@ def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
         writer.writerows(rows)
 
 
-def reject_promoted_output_dir(output_dir: Path) -> None:
-    """Refuse to write this experimental lane into the promoted namespace.
+def reject_protected_output_dir(output_dir: Path) -> None:
+    """Refuse to write this experimental lane into a protected location.
 
-    Raises SystemExit rather than warning: a silent redirect would reintroduce
-    exactly the promoted-looking ML artifacts #286 removed.
+    Two destinations are refused, both before any file is written:
+
+    * the promoted namespace, because this lane is not a promoted model; and
+    * a frozen migration archive, because those bytes are immutable and a run
+      would overwrite them and strip the committed migration record.
+
+    Raises SystemExit rather than warning: a silent write to either location
+    destroys exactly what #286 WP-2 established.
     """
-    promoted_root = Path(PROMOTED_NAMESPACE).resolve()
     resolved = output_dir.expanduser().resolve()
-    under_repo_promoted = resolved == promoted_root or resolved.is_relative_to(promoted_root)
 
-    # Also refuse a promoted-shaped path outside this checkout: an operator
-    # pointing at another clone's `exports/promoted` is making the same claim,
-    # and resolving against the CWD alone would let it through.
-    marker = Path(PROMOTED_NAMESPACE).parts
-    parts = resolved.parts
-    promoted_shaped = any(
-        parts[i : i + len(marker)] == marker for i in range(len(parts) - len(marker) + 1)
-    )
+    def _matches(namespace: str) -> bool:
+        root = Path(namespace).resolve()
+        if resolved == root or resolved.is_relative_to(root):
+            return True
+        # Also catch a protected-shaped path outside this checkout: an operator
+        # pointing at another clone is making the same claim, and resolving
+        # against the CWD alone would let it through.
+        marker = Path(namespace).parts
+        parts = resolved.parts
+        return any(
+            parts[i : i + len(marker)] == marker for i in range(len(parts) - len(marker) + 1)
+        )
 
-    if under_repo_promoted or promoted_shaped:
+    if _matches(PROMOTED_NAMESPACE):
         raise SystemExit(
             f"Refusing to write experimental ML lane output into the promoted namespace: "
             f"{output_dir}. This lane is not a promoted model (issue #286, WP-2); its "
@@ -981,18 +1008,33 @@ def reject_promoted_output_dir(output_dir: Path) -> None:
             f"eligible for promotion. Write to {DEFAULT_OUTPUT_DIR} instead."
         )
 
+    for archive in FROZEN_ARCHIVE_DIRS:
+        if _matches(archive):
+            raise SystemExit(
+                f"Refusing to write generated output into the frozen migration archive: "
+                f"{output_dir}. The artifacts under {archive} are pinned byte-for-byte to "
+                f"the authorized base commit (issue #286, WP-2) and must not be "
+                f"overwritten by a new run. Write to {DEFAULT_OUTPUT_DIR} instead."
+            )
+
 
 def build_status_sidecar(output_dir: Path, generated_at: str) -> dict[str, Any]:
-    """The governed status record that must accompany every generated result."""
+    """The governed status record that must accompany every generated result.
+
+    Declares `status_kind: generated_run`, and deliberately carries no
+    `migration` or `frozen_historical_artifacts` block: a fresh run has
+    performed no byte-preserving migration and must not present itself as the
+    frozen archive.
+    """
     artifacts = sorted(
         p.name for p in output_dir.iterdir() if p.is_file() and p.name != STATUS_SIDECAR_NAME
     )
     return {
         "schema_version": STATUS_SCHEMA_VERSION,
-        "family": "rookie-ml-lane",
-        **EXPERIMENTAL_SEMANTICS,
-        "lane": "parallel_ml_evaluation_only",
-        "replaces_deterministic_rookie_alpha": False,
+        "status_kind": RUN_STATUS_KIND,
+        "family": PINNED_FAMILY_IDENTITY["rookie-ml-lane"],
+        **PINNED_STATUS_CLAIMS,
+        "uncalibrated_probability_warning": GOVERNED_UNCALIBRATED_WARNING,
         "generated_at": generated_at,
         "generated_artifacts": artifacts,
     }
@@ -1013,7 +1055,7 @@ def main() -> None:
     args = parse_args()
     random.seed(args.seed)
 
-    reject_promoted_output_dir(Path(args.output_dir))
+    reject_protected_output_dir(Path(args.output_dir))
 
     features = load_json(Path(args.historical_features))
     outcomes = load_json(Path(args.historical_outcomes))

@@ -16,7 +16,7 @@ the artifacts themselves changed.
 | Artifact path | `exports/promoted/rookie-ml-lane/` | `exports/experimental/rookie-ml-lane/` |
 | Integrity validator | `scripts/validate_promoted_integrity.py` | `scripts/validate_experimental_integrity.py` |
 | Integrity registry | `exports/promoted_integrity_registry_v0.json` | `exports/experimental_integrity_registry_v0.json` |
-| Producer default output | `exports/promoted/rookie-ml-lane` | `exports/experimental/rookie-ml-lane` |
+| Producer default output | `exports/promoted/rookie-ml-lane` | `runs/rookie-ml-lane` (gitignored) |
 | Declared promoted families | 5 | 4 |
 
 ## Why
@@ -67,6 +67,25 @@ legacy fields are not calibrated claims. It exists so those semantics could be s
 
 The producer writes this sidecar on every run, and the validator rejects the family if it
 is missing, unregistered, or claims calibration or promotion eligibility.
+
+## Archive and runs are separate
+
+The frozen archive is not a working directory. Generated producer output goes to
+`runs/rookie-ml-lane/`, outside `exports/` and gitignored, and the producer refuses to
+write into the archive at all.
+
+An earlier revision of this work defaulted the producer to the archive path. Running the
+documented command would have overwritten three of the nine frozen artifacts, added five
+unregistered outputs, and replaced the migration sidecar with a run-shaped record — a
+state the registry could not be regenerated out of, because the frozen tier pins the
+historical bytes in code. The two lifecycles are now separated, and
+`tests/test_validate_experimental_integrity.py` proves the documented workflow cannot
+mutate the archive.
+
+Generated runs get their own fail-closed validation
+(`validate_experimental_integrity.py --run-dir <path>`): same governed semantics, a
+self-inventory bijection, and an explicit refusal to carry the archive's migration
+provenance.
 
 ## Old-path references
 
