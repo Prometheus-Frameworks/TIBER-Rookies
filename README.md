@@ -290,11 +290,28 @@ anything missing, tampered, nested, or unexpected refuses with the directory
 
 Replacement is a transaction. Every run generates into a fresh
 `<output-dir>.staging` sibling and the staged run must validate before it may
-replace anything; only then are the old and new directories swapped by rename,
-with rollback if the swap fails. An invalid holdout year, a missing or malformed
-input, a modelling error, or a staged-validation failure therefore leaves an
-existing run exactly as it was — the operator never trades a working run for a
-failed command.
+replace anything; only then are the old and new directories swapped by rename.
+An invalid holdout year, a missing or malformed input, a modelling error, or a
+staged-validation failure therefore leaves an existing run exactly as it was —
+the operator never trades a working run for a failed command.
+
+The swap is a **compare-and-swap**, not an overwrite. Classification runs before
+generation, so commit re-proves its authorization first: an absent destination
+must still be unoccupied, an empty one must still be empty, and an authorized
+prior run is moved aside and then compared against the recorded snapshot —
+paths, SHA-256, sizes, subdirectories — and re-validated before it is discarded.
+A file that arrived during generation, a byte edit, or a wholesale directory swap
+all refuse with **both** directories intact. Nothing is deleted merely because it
+occupies the destination.
+
+Failure modes are explicit rather than silent:
+
+| Failure | Outcome |
+| --- | --- |
+| Move-aside rename fails | Nothing has been touched; the error propagates |
+| Staged-install rename fails | Prior run is renamed back, staged run preserved |
+| Rollback itself fails | Exits with both paths named; nothing deleted, manual `mv` required |
+| `.previous` cleanup fails | Swap already succeeded; warns on stderr and exits 0, leaving the superseded copy to delete by hand |
 
 The evaluator uses time-aware draft-class splits, logistic baselines, required feature-subset baselines, and non-ML baseline comparisons.
 

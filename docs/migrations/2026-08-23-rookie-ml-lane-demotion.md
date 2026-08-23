@@ -113,6 +113,19 @@ the swap is a pair of renames with rollback. Nothing at the destination is delet
 mutated while input loading, modelling, output generation, or staged validation can
 still fail.
 
+The swap itself is a compare-and-swap. Classification returns an immutable
+authorization snapshot — state (absent, empty, or exact valid prior run) plus per-file
+digests, sizes and subdirectories — and commit re-proves it before replacing anything.
+An earlier revision checked only whether the destination *existed* and replaced whatever
+it found, so a file arriving during generation was deleted despite never having been
+authorized, and an unrelated directory appearing where classification saw nothing was
+deleted too. Both now refuse with the destination and the staged run intact.
+
+Rollback and cleanup failures are characterized rather than silent: a failed move-aside
+leaves everything untouched; a failed staged-install renames the prior run back; a failed
+rollback exits naming both surviving paths for manual recovery; and a failed `.previous`
+cleanup warns on stderr without failing an already-successful replacement.
+
 ## Old-path references
 
 `exports/promoted/rookie-ml-lane/` no longer exists. Repository-wide search finds the old path

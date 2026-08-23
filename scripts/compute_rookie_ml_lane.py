@@ -1023,7 +1023,7 @@ def reject_protected_output_dir(output_dir: Path) -> None:
             )
 
 
-def classify_output_dir(output_dir: Path, replace: bool) -> list[str]:
+def classify_output_dir(output_dir: Path, replace: bool) -> DestinationAuthorization:
     """Refuse to generate into a directory that already holds files.
 
     The run destination is reusable and gitignored, so anything left there from a
@@ -1031,8 +1031,9 @@ def classify_output_dir(output_dir: Path, replace: bool) -> list[str]:
     freshly generated output and would validate. Requiring a clean destination is
     what keeps the run inventory a statement about *this* run.
 
-    Returns the relative paths of an existing valid prior run, or an empty list
-    when the destination is absent or empty. **This function never writes,
+    Returns an immutable `DestinationAuthorization` describing what commit is
+    later permitted to replace: absent, empty, or an exact valid prior run
+    captured with per-file digests and sizes. **This function never writes,
     deletes, or moves anything** - deciding that a prior run *may* be replaced is
     separate from replacing it, and replacement happens only after a complete new
     run has been generated and validated (see `commit_staged_run`).
@@ -1051,7 +1052,7 @@ def classify_output_dir(output_dir: Path, replace: bool) -> list[str]:
     unexpected refuses with the directory byte-for-byte unchanged.
     """
     if not output_dir.exists():
-        return []
+        return DestinationAuthorization(DEST_ABSENT)
 
     present = sorted(
         p.relative_to(output_dir).as_posix() for p in output_dir.rglob("*") if p.is_file()
@@ -1060,7 +1061,7 @@ def classify_output_dir(output_dir: Path, replace: bool) -> list[str]:
         p.relative_to(output_dir).as_posix() for p in output_dir.rglob("*") if p.is_dir()
     )
     if not present and not subdirs:
-        return []
+        return DestinationAuthorization(DEST_EMPTY)
 
     def refuse(reason: str) -> None:
         raise SystemExit(
@@ -1103,12 +1104,50 @@ def classify_output_dir(output_dir: Path, replace: bool) -> list[str]:
 
     # Classification passed: this is an exact, valid prior run. It is NOT deleted
     # here - the caller stages a complete replacement first and only swaps at the
-    # end. Returning the inventory keeps this function free of side effects.
-    return present
+    # end. The snapshot is what commit re-proves before replacing anything.
+    files, dirs = directory_snapshot(output_dir)
+    return DestinationAuthorization(DEST_VALID_PRIOR_RUN, files=files, dirs=dirs)
 
 
 STAGING_SUFFIX = ".staging"
 PREVIOUS_SUFFIX = ".previous"
+
+# What classification found at the destination. Commit must re-prove this at swap
+# time: classification happens before generation, and the filesystem is not frozen
+# in between.
+DEST_ABSENT = "absent"
+DEST_EMPTY = "empty"
+DEST_VALID_PRIOR_RUN = "valid_prior_run"
+
+
+@dataclass(frozen=True)
+class DestinationAuthorization:
+    """An immutable record of exactly what commit is permitted to replace.
+
+    Carrying only a list of filenames was not enough: commit checked whether the
+    destination existed and replaced whatever it found, so a file that arrived
+    during generation was deleted despite never having been authorized. The
+    snapshot below is the compare half of a compare-and-swap.
+    """
+
+    state: str
+    files: tuple[tuple[str, str, int], ...] = ()
+    dirs: tuple[str, ...] = ()
+
+
+def directory_snapshot(directory: Path) -> tuple[tuple[tuple[str, str, int], ...], tuple[str, ...]]:
+    """(files with digest and size, subdirectories) for `directory`, recursively."""
+    files = tuple(
+        sorted(
+            (p.relative_to(directory).as_posix(), sha256_file(p), p.stat().st_size)
+            for p in directory.rglob("*")
+            if p.is_file()
+        )
+    )
+    dirs = tuple(
+        sorted(p.relative_to(directory).as_posix() for p in directory.rglob("*") if p.is_dir())
+    )
+    return files, dirs
 
 
 def prepare_staging_dir(final_dir: Path) -> Path:
@@ -1129,35 +1168,136 @@ def prepare_staging_dir(final_dir: Path) -> Path:
     return staging
 
 
-def commit_staged_run(staging: Path, final_dir: Path, prior_run: list[str]) -> None:
-    """Swap a validated staged run into place, with rollback.
+def commit_staged_run(
+    staging: Path, final_dir: Path, authorization: DestinationAuthorization
+) -> None:
+    """Install a validated staged run, replacing only what was authorized.
 
-    The prior run is moved aside rather than deleted, so a failure during the
-    swap restores it. Both operations are renames within the same parent
-    directory, which keeps the window where neither is in place as small as the
-    filesystem allows.
+    This is a compare-and-swap, not an overwrite. Classification runs before
+    generation, so the destination may have changed in between: a colleague's
+    file may have landed in the run directory, or an unrelated directory may have
+    appeared where there was nothing. An earlier revision checked only whether
+    the destination *existed* and deleted whatever it found, so both cases lost
+    data that had never been authorized for deletion.
+
+    Commit therefore re-proves the authorization before replacing anything:
+
+    * `absent`   - the path must still be empty of any occupant.
+    * `empty`    - the directory must still contain nothing.
+    * prior run  - the directory is moved aside atomically and then compared
+                   against the authorized snapshot (paths, sha256, sizes,
+                   subdirectories) and re-validated. Any difference restores it.
+
+    On refusal both the destination and the staged run are left intact, so no
+    work is lost and the operator can inspect and decide.
     """
     previous = final_dir.parent / (final_dir.name + PREVIOUS_SUFFIX)
-    if previous.exists():
+
+    def refuse(reason: str) -> None:
         raise SystemExit(
-            f"Refusing to commit: rollback path already exists: {previous}\n"
-            f"The staged run is at {staging} and the existing run is untouched."
+            f"Refusing to commit the staged run: {reason}\n"
+            f"Nothing at {final_dir} has been deleted or modified, and the staged run "
+            f"is preserved at {staging} for inspection."
         )
 
-    moved_aside = False
-    if final_dir.exists():
-        os.rename(final_dir, previous)
-        moved_aside = True
+    if previous.exists():
+        refuse(f"rollback path already exists: {previous}")
+
+    if authorization.state == DEST_ABSENT:
+        if final_dir.exists():
+            refuse(
+                f"the destination did not exist at classification but something now "
+                f"occupies {final_dir}. It was never authorized for replacement."
+            )
+        os.rename(staging, final_dir)
+        return
+
+    if authorization.state == DEST_EMPTY:
+        if not final_dir.is_dir():
+            refuse(f"the destination was an empty directory at classification but {final_dir} is no longer one")
+        files, dirs = directory_snapshot(final_dir)
+        if files or dirs:
+            refuse(
+                f"the destination was empty at classification but now contains "
+                f"{len(files)} file(s) and {len(dirs)} subdirectory(ies). Their arrival "
+                f"was never authorized."
+            )
+        os.rmdir(final_dir)
+        try:
+            os.rename(staging, final_dir)
+        except OSError:
+            final_dir.mkdir(parents=True, exist_ok=True)
+            raise
+        return
+
+    # DEST_VALID_PRIOR_RUN: move aside first, then prove identity before deleting.
+    if not final_dir.is_dir():
+        refuse(f"the authorized prior run at {final_dir} has disappeared")
+
+    os.rename(final_dir, previous)
+
+    files, dirs = directory_snapshot(previous)
+    drift: str | None = None
+    if files != authorization.files or dirs != authorization.dirs:
+        added = {f[0] for f in files} - {f[0] for f in authorization.files}
+        removed = {f[0] for f in authorization.files} - {f[0] for f in files}
+        edited = {f[0] for f in files} & {f[0] for f in authorization.files} - {
+            f[0] for f in set(files) & set(authorization.files)
+        }
+        detail = []
+        if added:
+            detail.append(f"added: {sorted(added)}")
+        if removed:
+            detail.append(f"removed: {sorted(removed)}")
+        if edited:
+            detail.append(f"modified: {sorted(edited)}")
+        if set(dirs) != set(authorization.dirs):
+            detail.append(f"subdirectories changed: {sorted(set(dirs) ^ set(authorization.dirs))}")
+        drift = (
+            f"the prior run changed after it was authorized ({'; '.join(detail) or 'content differs'})"
+        )
+    elif validate_generated_run(previous):
+        drift = "the prior run no longer validates as a complete generated run"
+
+    if drift is not None:
+        try:
+            os.rename(previous, final_dir)
+        except OSError as exc:  # pragma: no cover - filesystem-level failure
+            raise SystemExit(
+                f"Commit refused because {drift}, but restoring it failed: {exc}\n"
+                f"NOTHING HAS BEEN DELETED. The prior run is intact at {previous} and the "
+                f"staged run at {staging}. Move {previous} back to {final_dir} by hand."
+            ) from exc
+        refuse(drift)
+
     try:
         os.rename(staging, final_dir)
-    except OSError:
-        if moved_aside:
+    except OSError as exc:
+        try:
             os.rename(previous, final_dir)
+        except OSError as restore_exc:  # pragma: no cover - filesystem-level failure
+            raise SystemExit(
+                f"Installing the staged run failed ({exc}) and restoring the prior run "
+                f"also failed ({restore_exc}).\n"
+                f"NOTHING HAS BEEN DELETED. The prior run is intact at {previous} and the "
+                f"staged run at {staging}. Move {previous} back to {final_dir} by hand."
+            ) from exc
         raise
-    if moved_aside:
+
+    try:
         shutil.rmtree(previous)
-        if prior_run:
-            print(f"Replaced a prior run of {len(prior_run)} artifact(s) at {final_dir}.")
+    except OSError as exc:  # pragma: no cover - filesystem-level failure
+        # The swap succeeded and the new run is in place; only cleanup failed.
+        # Report it rather than failing a completed replacement.
+        print(
+            f"WARNING: the new run is installed at {final_dir}, but removing the "
+            f"superseded copy at {previous} failed ({exc}). Delete it by hand.",
+            file=sys.stderr,
+        )
+        return
+
+    if authorization.files:
+        print(f"Replaced a prior run of {len(authorization.files)} artifact(s) at {final_dir}.")
 
 
 def build_status_sidecar(output_dir: Path, generated_at: str) -> dict[str, Any]:
@@ -1207,8 +1347,11 @@ def parse_args() -> argparse.Namespace:
         "--replace-run",
         action="store_true",
         help=(
-            "Clear a previous run of this producer from the output directory first. "
-            "Only removes files this producer emits; refuses if anything else remains."
+            "Permit replacing an exact, valid prior run of this producer at the output "
+            "directory. Nothing is deleted up front: the new run is generated into a "
+            "staging directory and validated, and the prior run is replaced only if it "
+            "is still byte-for-byte what was authorized. Anything else refuses without "
+            "deleting or modifying either directory."
         ),
     )
     parser.add_argument("--seed", type=int, default=42)
@@ -1222,7 +1365,7 @@ def main() -> None:
     final_output_dir = Path(args.output_dir)
     reject_protected_output_dir(final_output_dir)
     # Read-only: decides whether a prior run *may* be replaced. Deletes nothing.
-    prior_run = classify_output_dir(final_output_dir, replace=args.replace_run)
+    authorization = classify_output_dir(final_output_dir, replace=args.replace_run)
 
     features = load_json(Path(args.historical_features))
     outcomes = load_json(Path(args.historical_outcomes))
@@ -1365,7 +1508,7 @@ def main() -> None:
                 + "\n- ".join(staged_errors)
             )
 
-        commit_staged_run(staging_dir, final_output_dir, prior_run)
+        commit_staged_run(staging_dir, final_output_dir, authorization)
     except BaseException:
         # Never leave a half-written staging directory behind, and never let a
         # failure here reach the destination.
