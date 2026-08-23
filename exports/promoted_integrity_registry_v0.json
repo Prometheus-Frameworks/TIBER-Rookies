@@ -1,0 +1,272 @@
+{
+  "schema_version": "promoted-integrity-registry-v0.1.0",
+  "families": [
+    {
+      "family": "historical-comps",
+      "manifest_checks": [],
+      "artifacts": [
+        {
+          "path": "2026_historical_comps_v0.json",
+          "sha256": "5d2f43eca5db11ac787ec7343a52a1990e3f037f15e218b89c51cfc4eb26756a",
+          "bytes": 128098
+        }
+      ]
+    },
+    {
+      "family": "nfl-fantasy-outcomes",
+      "manifest_checks": [],
+      "artifacts": [
+        {
+          "path": "context_flag_outcome_summary_v1.csv",
+          "sha256": "fa3453810020ae3c9f888dfa823cc9040c8a78b7b1c9136912a81a60eb97edd2",
+          "bytes": 45431
+        },
+        {
+          "path": "context_flag_outcome_summary_v1.json",
+          "sha256": "c4dc6f541195e0cbf7ed4039f9fdb17b57af71f0be77042499b32aa0782eb1a2",
+          "bytes": 62027
+        },
+        {
+          "path": "player_year_ppr_outcomes_v1.csv",
+          "sha256": "0e60c176c421022da8e85c66822b1b86e7e1555a07200d7f108ca4fb1654b279",
+          "bytes": 2496437
+        },
+        {
+          "path": "player_year_ppr_outcomes_v1.json",
+          "sha256": "eaf5044e89738eb0ea7300c1e313f4978d22fa956627bf19c460febec01a6d54",
+          "bytes": 6412381
+        }
+      ]
+    },
+    {
+      "family": "rookie-alpha",
+      "manifest_checks": [
+        {
+          "validator": "rookie-alpha-manifest-v0",
+          "export_json": "2022_rookie_alpha_predraft_v0.json",
+          "manifest": "2022_manifest.json"
+        },
+        {
+          "validator": "rookie-alpha-manifest-v0",
+          "export_json": "2023_rookie_alpha_predraft_v0.json",
+          "manifest": "2023_manifest.json"
+        },
+        {
+          "validator": "rookie-alpha-manifest-v0",
+          "export_json": "2024_rookie_alpha_predraft_v0.json",
+          "manifest": "2024_manifest.json"
+        },
+        {
+          "validator": "rookie-alpha-manifest-v0",
+          "export_json": "2025_rookie_alpha_predraft_v0.json",
+          "manifest": "2025_manifest.json"
+        },
+        {
+          "validator": "rookie-alpha-manifest-v0",
+          "export_json": "2026_rookie_alpha_predraft_v0.json",
+          "manifest": "2026_manifest.json"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "2022_manifest.json",
+          "sha256": "cbacccbf1397199fb398f29f9936f34d07bb6ba82c0ce839a191ed428bf8b911",
+          "bytes": 2546
+        },
+        {
+          "path": "2022_rookie_alpha_predraft_v0.csv",
+          "sha256": "5538a64abaac84ee1afbcc11c296b263f524e8f7c7925f37339936972470cac5",
+          "bytes": 3501
+        },
+        {
+          "path": "2022_rookie_alpha_predraft_v0.json",
+          "sha256": "42558cb14dfde603025a04fe55f69d5637229453901516fcec9eff36d422dc76",
+          "bytes": 38076
+        },
+        {
+          "path": "2023_manifest.json",
+          "sha256": "761ae24780aab0a165d7c0027893d75c731f97788e738f44747c4228e8beec8c",
+          "bytes": 2544
+        },
+        {
+          "path": "2023_rookie_alpha_predraft_v0.csv",
+          "sha256": "51c4cf4a388819a233778cc749f0578e426bdd6bd74ed1ea58748065c8d157fc",
+          "bytes": 3147
+        },
+        {
+          "path": "2023_rookie_alpha_predraft_v0.json",
+          "sha256": "a37d5ca72409b0c18b1fd28d315d5192068df6702be28b392409e848a06590b6",
+          "bytes": 40406
+        },
+        {
+          "path": "2024_manifest.json",
+          "sha256": "393fa878cd8a9a54abac5778eb66da7c2c1f23eef6724a33a360f074bd704f6f",
+          "bytes": 2784
+        },
+        {
+          "path": "2024_rookie_alpha_predraft_v0.csv",
+          "sha256": "aec0923fcc56715d13a4ed67f7d919d9d24ba08761872eb400889268aad69c86",
+          "bytes": 3820
+        },
+        {
+          "path": "2024_rookie_alpha_predraft_v0.json",
+          "sha256": "2dffd50acbf9d6a63ec83a529b6102d2d01ef4324f97c77ad4c255a55a3d162c",
+          "bytes": 57138
+        },
+        {
+          "path": "2025_manifest.json",
+          "sha256": "b21644fea3051807b88e0f1a711a51fb96a643708511716d12ad6a87a7e175d4",
+          "bytes": 2786
+        },
+        {
+          "path": "2025_rookie_alpha_predraft_v0.csv",
+          "sha256": "38a2f849249dea023c6efba9b3426f9370c2b73090749086e19d59631cd1f331",
+          "bytes": 14773
+        },
+        {
+          "path": "2025_rookie_alpha_predraft_v0.json",
+          "sha256": "eac4ce0e76c8a1f85a8ba9bf97c461f6be61ac78399d33307c2c4fe1086af4f6",
+          "bytes": 252390
+        },
+        {
+          "path": "2026_manifest.json",
+          "sha256": "c2f6c2d2c8c4a7f8f49a7b4a6de44fb941d40e22deae93991a2d2abe178066a8",
+          "bytes": 2793
+        },
+        {
+          "path": "2026_rookie_alpha_postdraft_missing_baselines_v0.json",
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+          "bytes": 3
+        },
+        {
+          "path": "2026_rookie_alpha_postdraft_role_context_v0.csv",
+          "sha256": "b337703ff8de7f0de891e6f1a42689d7255a1d3b50a718d6e14c0853934d11ef",
+          "bytes": 45594
+        },
+        {
+          "path": "2026_rookie_alpha_postdraft_role_context_v0.json",
+          "sha256": "205c8d64232f072308f55bd9b163783d86ffa4bcb22131233708877c6e9a907d",
+          "bytes": 97133
+        },
+        {
+          "path": "2026_rookie_alpha_postdraft_team_context_v0.csv",
+          "sha256": "30a18e39a9b7f4791a73e8fa99ae3b5700649f9241c7bef0163c27cec4b13190",
+          "bytes": 32325
+        },
+        {
+          "path": "2026_rookie_alpha_postdraft_team_context_v0.json",
+          "sha256": "b5dfc4df994d7d8a3e48e2fcf06af44ce3ac3b1308fbd4111501eec5266f1963",
+          "bytes": 66970
+        },
+        {
+          "path": "2026_rookie_alpha_postdraft_v0.csv",
+          "sha256": "4af6505fb49027d8604bee66d09b7ac3cdbfffed81f5fd7e5bc5542c7eb785ce",
+          "bytes": 19215
+        },
+        {
+          "path": "2026_rookie_alpha_postdraft_v0.json",
+          "sha256": "cfa6689e7c8ea2031acc8b156fa2c3fd1703ae4d00e8ed881bc351ecf6173271",
+          "bytes": 40324
+        },
+        {
+          "path": "2026_rookie_alpha_predraft_v0.csv",
+          "sha256": "aef3105e6c2a56aa44dc79c519d61ab0150a47ec66399d84ba86547934050e99",
+          "bytes": 10898
+        },
+        {
+          "path": "2026_rookie_alpha_predraft_v0.json",
+          "sha256": "5a7c6c945ad477c1a54e61e7337e9f5bd6b5e69455669ca4700d7668fe9816e3",
+          "bytes": 191496
+        },
+        {
+          "path": "historical_class_comparison.csv",
+          "sha256": "58660a392b4e51dbf1b3e6ce116f5ada05330307b7efb3b6d81124a70767ae0c",
+          "bytes": 6488
+        },
+        {
+          "path": "historical_class_comparison.json",
+          "sha256": "ba4acf55c796a1a345fa4a59cc41331f756e7f7f418f1b4f6d678f2fa668e283",
+          "bytes": 30686
+        }
+      ]
+    },
+    {
+      "family": "rookie-ml-lane",
+      "manifest_checks": [],
+      "artifacts": [
+        {
+          "path": "dataset_diagnostics.json",
+          "sha256": "89947ec0c97e0a00defe10bbf7c5341fd1b654b4c8668fb193280f1b5d045291",
+          "bytes": 1100
+        },
+        {
+          "path": "evaluation_report.json",
+          "sha256": "b9c448e95ef0ce1d097eefbfffc9bd1e00612874f945f4fad7202687a6a98585",
+          "bytes": 12873
+        },
+        {
+          "path": "feature_coverage_report.json",
+          "sha256": "dabb3bd6039bea9ac61c5dd5873f0559a68644b9d0ccc459348ad5b6bdc1b1a4",
+          "bytes": 3673
+        },
+        {
+          "path": "feature_importance_report.json",
+          "sha256": "839e416cc019e3b6f0913f647bf429eb3703e3f975f6e9bb80f1717abab3a104",
+          "bytes": 1122
+        },
+        {
+          "path": "feature_table.json",
+          "sha256": "99dca17ae65043312a57e7ca4f8dbf39442a2d8cd41ea0c1ac51e001a67d3a8e",
+          "bytes": 14851
+        },
+        {
+          "path": "heldout_probabilities.csv",
+          "sha256": "3a57453506050dd20e1c497b83705e4279757c7dbfe67f7aa4ac973b11f8b4f6",
+          "bytes": 253
+        },
+        {
+          "path": "heldout_probabilities.json",
+          "sha256": "9fecb43979174820e8f704983025c36004d6d0e02abc74772d323057844244f6",
+          "bytes": 366
+        },
+        {
+          "path": "historical_labeled_dataset.csv",
+          "sha256": "0561559e00022a3a2d53a3c1fc7573f8486e196f682301f55934fcae00bf6fa8",
+          "bytes": 4321
+        },
+        {
+          "path": "historical_labeled_dataset.json",
+          "sha256": "279cef5ee2fa40b99c2e283feff3c894ea650ea193833a5cedb0bc1d54499356",
+          "bytes": 18524
+        }
+      ]
+    },
+    {
+      "family": "rookie-transition-profile",
+      "manifest_checks": [
+        {
+          "validator": "rookie-transition-profile-v0",
+          "export_json": "2026_rookie_transition_profile_v0.json",
+          "manifest": "2026_manifest.json"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "2026_manifest.json",
+          "sha256": "0acf361c6d2d8cc6f684026481a5aa279e9f7fa718256fad78da0366d5804413",
+          "bytes": 2943
+        },
+        {
+          "path": "2026_rookie_transition_profile_v0.csv",
+          "sha256": "3005bcd6ad4ffc87a312c6926e20c5e3658747012855aa9d8ccfa33d898545e6",
+          "bytes": 63915
+        },
+        {
+          "path": "2026_rookie_transition_profile_v0.json",
+          "sha256": "c95b941c7855612daccfc2226fc51e0e34dbb2ebe8a2487596675d2522a22f37",
+          "bytes": 155916
+        }
+      ]
+    }
+  ]
+}

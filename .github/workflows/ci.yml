@@ -31,6 +31,9 @@ jobs:
             --export-json exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json \
             --manifest exports/promoted/rookie-alpha/2026_manifest.json
 
+      - name: Validate promoted export integrity (all artifact families)
+        run: python3 scripts/validate_promoted_integrity.py
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:

@@ -1,0 +1,343 @@
+"""Mutation corpus for promoted-export integrity enforcement (issue #274, Finding 1).
+
+Every declared promoted artifact family must fail closed on a tampered,
+missing, or undeclared artifact. Mutations are applied to a throwaway mirror of
+the promoted tree; the canonical artifacts in the repository are never written
+to by these tests.
+"""
+
+import json
+import os
+import shutil
+import tempfile
+import unittest
+from pathlib import Path
+
+from scripts.validate_promoted_integrity import (
+    DECLARED_FAMILIES,
+    REGISTRY_SCHEMA_VERSION,
+    iter_promoted_files,
+    sha256_file,
+    validate_promoted_integrity,
+)
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+CANONICAL_PROMOTED = REPO_ROOT / "exports/promoted"
+CANONICAL_REGISTRY = REPO_ROOT / "exports/promoted_integrity_registry_v0.json"
+
+# One representative artifact per family, so the corpus proves rejection for
+# every declared family rather than only the manifest-bearing ones.
+FAMILY_MUTATION_TARGETS = {
+    "historical-comps": "2026_historical_comps_v0.json",
+    "nfl-fantasy-outcomes": "player_year_ppr_outcomes_v1.csv",
+    # Deliberately a postdraft variant: predraft was the only file CI covered
+    # before this change.
+    "rookie-alpha": "2026_rookie_alpha_postdraft_v0.json",
+    "rookie-ml-lane": "feature_table.json",
+    "rookie-transition-profile": "2026_rookie_transition_profile_v0.csv",
+}
+
+
+class PromotedIntegrityCanonicalTests(unittest.TestCase):
+    """Checks against the real repository artifacts."""
+
+    def test_canonical_promoted_tree_passes(self) -> None:
+        errors, coverage = validate_promoted_integrity(CANONICAL_PROMOTED, CANONICAL_REGISTRY)
+        self.assertEqual(errors, [])
+        self.assertEqual(set(coverage), set(DECLARED_FAMILIES))
+
+    def test_registry_covers_every_promoted_artifact(self) -> None:
+        registry = json.loads(CANONICAL_REGISTRY.read_text(encoding="utf-8"))
+        registered = {
+            f"{family['family']}/{artifact['path']}"
+            for family in registry["families"]
+            for artifact in family["artifacts"]
+        }
+        self.assertEqual(registered, set(iter_promoted_files(CANONICAL_PROMOTED)))
+
+    def test_every_declared_family_is_registered_and_non_empty(self) -> None:
+        registry = json.loads(CANONICAL_REGISTRY.read_text(encoding="utf-8"))
+        by_name = {family["family"]: family for family in registry["families"]}
+        self.assertEqual(set(by_name), set(DECLARED_FAMILIES))
+        for name, family in by_name.items():
+            with self.subTest(family=name):
+                self.assertGreater(len(family["artifacts"]), 0)
+
+    def test_manifest_contracts_are_enforced_where_declared(self) -> None:
+        _, coverage = validate_promoted_integrity(CANONICAL_PROMOTED, CANONICAL_REGISTRY)
+        self.assertEqual(coverage["rookie-alpha"]["manifest_checks"], 5)
+        self.assertEqual(coverage["rookie-transition-profile"]["manifest_checks"], 1)
+
+
+class PromotedIntegrityMutationTests(unittest.TestCase):
+    """Deterministic mutation corpus applied to a mirror of the promoted tree."""
+
+    def setUp(self) -> None:
+        self._tmp = tempfile.TemporaryDirectory()
+        self.mirror = Path(self._tmp.name)
+        # Mirror the repository layout so the delegated manifest validators
+        # resolve their declared input paths exactly as they do in CI.
+        (self.mirror / ".git").mkdir()
+        os.symlink(REPO_ROOT / "data", self.mirror / "data")
+        (self.mirror / "exports").mkdir()
+        self.promoted = self.mirror / "exports/promoted"
+        shutil.copytree(CANONICAL_PROMOTED, self.promoted)
+        self.registry = self.mirror / "exports/promoted_integrity_registry_v0.json"
+        shutil.copyfile(CANONICAL_REGISTRY, self.registry)
+        self.addCleanup(self._tmp.cleanup)
+
+    def run_validator(self) -> list[str]:
+        errors, _ = validate_promoted_integrity(self.promoted, self.registry)
+        return errors
+
+    def read_registry(self) -> dict:
+        return json.loads(self.registry.read_text(encoding="utf-8"))
+
+    def write_registry(self, registry: dict) -> None:
+        self.registry.write_text(json.dumps(registry, indent=2) + "\n", encoding="utf-8")
+
+    def reregister(self, family: str, rel_path: str) -> None:
+        """Re-derive the digest for a mutated file.
+
+        Used to isolate manifest-tier failures: without this the digest tier
+        would fire first and the test would not prove the manifest contract is
+        actually wired up.
+        """
+        target = self.promoted / family / rel_path
+        registry = self.read_registry()
+        for entry in registry["families"]:
+            if entry["family"] != family:
+                continue
+            for artifact in entry["artifacts"]:
+                if artifact["path"] == rel_path:
+                    artifact["sha256"] = sha256_file(target)
+                    artifact["bytes"] = target.stat().st_size
+        self.write_registry(registry)
+
+    def assert_baseline_clean(self) -> None:
+        self.assertEqual(self.run_validator(), [], "mirror should validate before mutation")
+
+    # --- Mutation class 1: modified artifact bytes / digest mismatch --------
+
+    def test_appended_byte_is_rejected_for_every_family(self) -> None:
+        self.assert_baseline_clean()
+        for family, rel_path in FAMILY_MUTATION_TARGETS.items():
+            with self.subTest(family=family):
+                target = self.promoted / family / rel_path
+                original = target.read_bytes()
+                target.write_bytes(original + b" ")
+                errors = self.run_validator()
+                self.assertTrue(
+                    any(f"sha256 mismatch for {rel_path}" in err and family in err for err in errors),
+                    f"{family}: appended byte not rejected; errors={errors}",
+                )
+                target.write_bytes(original)
+
+    def test_same_length_byte_flip_is_rejected_for_every_family(self) -> None:
+        """Proves the digest, not just the recorded size, is doing the work."""
+        self.assert_baseline_clean()
+        for family, rel_path in FAMILY_MUTATION_TARGETS.items():
+            with self.subTest(family=family):
+                target = self.promoted / family / rel_path
+                original = target.read_bytes()
+                flipped = bytes([original[0] ^ 0x20]) + original[1:]
+                self.assertNotEqual(flipped, original)
+                self.assertEqual(len(flipped), len(original))
+                target.write_bytes(flipped)
+                errors = self.run_validator()
+                self.assertTrue(
+                    any(f"sha256 mismatch for {rel_path}" in err and family in err for err in errors),
+                    f"{family}: same-length mutation not rejected; errors={errors}",
+                )
+                self.assertFalse(
+                    any(f"size mismatch for {rel_path}" in err for err in errors),
+                    f"{family}: size check should not fire on a same-length mutation",
+                )
+                target.write_bytes(original)
+
+    # --- Mutation class 2: missing required companion ----------------------
+
+    def test_deleted_artifact_is_rejected_for_every_family(self) -> None:
+        self.assert_baseline_clean()
+        for family, rel_path in FAMILY_MUTATION_TARGETS.items():
+            with self.subTest(family=family):
+                target = self.promoted / family / rel_path
+                original = target.read_bytes()
+                target.unlink()
+                errors = self.run_validator()
+                self.assertTrue(
+                    any(
+                        f"registered artifact is missing from disk: {rel_path}" in err
+                        and family in err
+                        for err in errors
+                    ),
+                    f"{family}: deleted artifact not rejected; errors={errors}",
+                )
+                target.write_bytes(original)
+
+    def test_missing_manifest_is_rejected(self) -> None:
+        self.assert_baseline_clean()
+        for family, manifest_name in (
+            ("rookie-alpha", "2026_manifest.json"),
+            ("rookie-transition-profile", "2026_manifest.json"),
+        ):
+            with self.subTest(family=family):
+                manifest = self.promoted / family / manifest_name
+                original = manifest.read_bytes()
+                manifest.unlink()
+                # Drop the digest entry too, so only the manifest tier can fail.
+                registry = self.read_registry()
+                for entry in registry["families"]:
+                    if entry["family"] == family:
+                        entry["artifacts"] = [
+                            a for a in entry["artifacts"] if a["path"] != manifest_name
+                        ]
+                self.write_registry(registry)
+                errors = self.run_validator()
+                self.assertTrue(
+                    any("Required companion file not found" in err and family in err for err in errors),
+                    f"{family}: missing manifest not rejected; errors={errors}",
+                )
+                manifest.write_bytes(original)
+
+    # --- Mutation class 3: incompatible manifest / schema identity ---------
+
+    def test_manifest_metadata_mismatch_is_rejected_for_rookie_alpha(self) -> None:
+        self.assert_baseline_clean()
+        manifest = self.promoted / "rookie-alpha/2026_manifest.json"
+        payload = json.loads(manifest.read_text(encoding="utf-8"))
+        payload["export_metadata"]["run_id"] = "tampered-run-id"
+        manifest.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+        self.reregister("rookie-alpha", "2026_manifest.json")
+
+        errors = self.run_validator()
+        self.assertTrue(
+            any("export_metadata does not exactly match export JSON metadata" in err for err in errors),
+            f"rookie-alpha manifest identity mismatch not rejected; errors={errors}",
+        )
+
+    def test_manifest_output_hash_mismatch_is_rejected_for_rookie_alpha(self) -> None:
+        """A tampered export plus a matching registry digest must still fail."""
+        self.assert_baseline_clean()
+        export = self.promoted / "rookie-alpha/2026_rookie_alpha_predraft_v0.json"
+        export.write_text("{}\n", encoding="utf-8")
+        self.reregister("rookie-alpha", "2026_rookie_alpha_predraft_v0.json")
+
+        errors = self.run_validator()
+        self.assertTrue(
+            any("Output hash mismatch" in err for err in errors),
+            f"rookie-alpha manifest output hash mismatch not rejected; errors={errors}",
+        )
+
+    def test_schema_identity_mismatch_is_rejected_for_transition_profile(self) -> None:
+        self.assert_baseline_clean()
+        artifact = self.promoted / "rookie-transition-profile/2026_rookie_transition_profile_v0.json"
+        payload = json.loads(artifact.read_text(encoding="utf-8"))
+        payload["schema_version"] = "rookie-transition-profile-v99.0.0"
+        artifact.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")
+        self.reregister("rookie-transition-profile", "2026_rookie_transition_profile_v0.json")
+
+        errors = self.run_validator()
+        self.assertTrue(
+            any("schema_version must be" in err for err in errors),
+            f"transition-profile schema identity mismatch not rejected; errors={errors}",
+        )
+
+    # --- Mutation class 4: undeclared / shrunken artifact universe ---------
+
+    def test_unregistered_artifact_is_rejected_for_every_family(self) -> None:
+        self.assert_baseline_clean()
+        for family in DECLARED_FAMILIES:
+            with self.subTest(family=family):
+                smuggled = self.promoted / family / "smuggled_artifact_v0.json"
+                smuggled.write_text('{"smuggled": true}\n', encoding="utf-8")
+                errors = self.run_validator()
+                self.assertTrue(
+                    any(
+                        "not registered in the integrity registry" in err
+                        and f"{family}/smuggled_artifact_v0.json" in err
+                        for err in errors
+                    ),
+                    f"{family}: unregistered artifact not rejected; errors={errors}",
+                )
+                smuggled.unlink()
+
+    def test_dropping_a_family_from_the_registry_is_rejected(self) -> None:
+        self.assert_baseline_clean()
+        for family in DECLARED_FAMILIES:
+            with self.subTest(family=family):
+                registry = self.read_registry()
+                registry["families"] = [f for f in registry["families"] if f["family"] != family]
+                self.write_registry(registry)
+                errors = self.run_validator()
+                self.assertTrue(
+                    any("does not declare required families" in err and family in err for err in errors),
+                    f"{family}: family removal not rejected; errors={errors}",
+                )
+                shutil.copyfile(CANONICAL_REGISTRY, self.registry)
+
+    def test_emptying_a_family_is_rejected(self) -> None:
+        self.assert_baseline_clean()
+        registry = self.read_registry()
+        for entry in registry["families"]:
+            if entry["family"] == "rookie-ml-lane":
+                entry["artifacts"] = []
+        self.write_registry(registry)
+        errors = self.run_validator()
+        self.assertTrue(
+            any("declares no artifacts" in err for err in errors),
+            f"emptied family not rejected; errors={errors}",
+        )
+
+    # --- Mutation class 5: registry integrity itself -----------------------
+
+    def test_registry_schema_version_mismatch_is_rejected(self) -> None:
+        self.assert_baseline_clean()
+        registry = self.read_registry()
+        registry["schema_version"] = "promoted-integrity-registry-v99.0.0"
+        self.write_registry(registry)
+        errors = self.run_validator()
+        self.assertTrue(
+            any("schema_version mismatch" in err for err in errors),
+            f"registry schema mismatch not rejected; errors={errors}",
+        )
+
+    def test_unknown_manifest_validator_is_rejected(self) -> None:
+        self.assert_baseline_clean()
+        registry = self.read_registry()
+        for entry in registry["families"]:
+            if entry["family"] == "rookie-alpha":
+                entry["manifest_checks"][0]["validator"] = "not-a-real-validator"
+        self.write_registry(registry)
+        errors = self.run_validator()
+        self.assertTrue(
+            any("unknown manifest validator" in err for err in errors),
+            f"unknown validator not rejected; errors={errors}",
+        )
+
+    def test_registry_path_escaping_its_family_is_rejected(self) -> None:
+        self.assert_baseline_clean()
+        registry = self.read_registry()
+        for entry in registry["families"]:
+            if entry["family"] == "rookie-ml-lane":
+                entry["artifacts"][0]["path"] = "../rookie-alpha/2026_manifest.json"
+        self.write_registry(registry)
+        errors = self.run_validator()
+        self.assertTrue(
+            any("escapes the family directory" in err for err in errors),
+            f"registry path traversal not rejected; errors={errors}",
+        )
+
+    def test_missing_registry_is_rejected(self) -> None:
+        self.assert_baseline_clean()
+        self.registry.unlink()
+        errors = self.run_validator()
+        self.assertTrue(
+            any("Integrity registry not found" in err for err in errors),
+            f"missing registry not rejected; errors={errors}",
+        )
+        self.assertEqual(REGISTRY_SCHEMA_VERSION, "promoted-integrity-registry-v0.1.0")
+
+
+if __name__ == "__main__":
+    unittest.main()
