@@ -28,6 +28,7 @@ from unittest import mock
 from scripts.validate_experimental_integrity import (
     ARCHIVE_STATUS_KIND,
     DECLARED_FAMILIES,
+    EXPECTED_RUN_ARTIFACTS,
     FROZEN_HISTORICAL_ARTIFACTS,
     GOVERNED_UNCALIBRATED_WARNING,
     PINNED_MIGRATION_CLAIMS,
@@ -811,17 +812,33 @@ class GeneratedRunValidationTests(unittest.TestCase):
     """A generated run must have its own coherent, fail-closed validation path.
 
     Runs are mutable and uncommitted, so they get no registry. What they must do
-    is publish the same governed semantics as the archive, inventory themselves
-    completely, and never borrow the archive's migration provenance.
+    is publish the same governed semantics as the archive, account for every file
+    actually present, and never borrow the archive's migration provenance.
+
+    The run sidecar is written by the producer and inventories its own output, so
+    on its own it is a self-declaring record. EXPECTED_RUN_ARTIFACTS is the
+    non-self-declaring anchor, and several tests below exist specifically to
+    prove the sidecar cannot legitimize a file just by listing it.
     """
 
     def setUp(self) -> None:
         self._tmp = tempfile.TemporaryDirectory()
         self.run_dir = Path(self._tmp.name) / "run"
         self.run_dir.mkdir()
-        (self.run_dir / "evaluation_report.json").write_text("{}\n", encoding="utf-8")
+        for rel in sorted(EXPECTED_RUN_ARTIFACTS):
+            (self.run_dir / rel).write_text(f'{{"artifact": "{rel}"}}\n', encoding="utf-8")
         self.write_sidecar(self.valid_payload())
         self.addCleanup(self._tmp.cleanup)
+
+    def inventory(self) -> list[dict]:
+        return [
+            {
+                "path": rel,
+                "sha256": sha256_file(self.run_dir / rel),
+                "bytes": (self.run_dir / rel).stat().st_size,
+            }
+            for rel in sorted(EXPECTED_RUN_ARTIFACTS)
+        ]
 
     def valid_payload(self) -> dict:
         return {
@@ -831,7 +848,7 @@ class GeneratedRunValidationTests(unittest.TestCase):
             **PINNED_STATUS_CLAIMS,
             "uncalibrated_probability_warning": GOVERNED_UNCALIBRATED_WARNING,
             "generated_at": "2026-08-23T00:00:00+00:00",
-            "generated_artifacts": ["evaluation_report.json"],
+            "generated_artifacts": self.inventory(),
         }
 
     def write_sidecar(self, payload: dict) -> None:
@@ -890,17 +907,166 @@ class GeneratedRunValidationTests(unittest.TestCase):
             any("uncalibrated_probability_warning" in e for e in errors), errors
         )
 
-    def test_undeclared_file_in_the_run_is_rejected(self) -> None:
+    def test_undeclared_top_level_file_is_rejected(self) -> None:
         (self.run_dir / "smuggled.json").write_text("{}\n", encoding="utf-8")
         errors = validate_generated_run(self.run_dir)
-        self.assertTrue(any("inventory disagrees" in e for e in errors), errors)
+        self.assertTrue(any("does not declare a file present" in e for e in errors), errors)
+
+    def test_nested_undeclared_file_is_rejected(self) -> None:
+        """Inventory is recursive: a nested file cannot hide from validation."""
+        nested = self.run_dir / "nested" / "deeper"
+        nested.mkdir(parents=True)
+        (nested / "hidden.json").write_text("{}\n", encoding="utf-8")
+        errors = validate_generated_run(self.run_dir)
+        self.assertTrue(
+            any("nested/deeper/hidden.json" in e for e in errors),
+            f"nested file was invisible to validation; errors={errors}",
+        )
+
+    def test_stale_file_declared_in_the_sidecar_is_still_rejected(self) -> None:
+        """The sidecar cannot legitimize a file by listing it.
+
+        This is the exact producer path: a stale file already present in a
+        reusable run directory gets inventoried as freshly generated output. The
+        declaration is internally consistent - correct digest, correct size - so
+        only the code-pinned universe can reject it.
+        """
+        stale = self.run_dir / "stale_injected.json"
+        stale.write_text('{"stale": true}\n', encoding="utf-8")
+        payload = self.valid_payload()
+        payload["generated_artifacts"].append(
+            {
+                "path": "stale_injected.json",
+                "sha256": sha256_file(stale),
+                "bytes": stale.stat().st_size,
+            }
+        )
+        self.write_sidecar(payload)
+        errors = validate_generated_run(self.run_dir)
+        self.assertTrue(
+            any("outside the expected generated universe" in e for e in errors),
+            f"a consistently-declared stale artifact was accepted; errors={errors}",
+        )
+
+    def test_byte_edit_to_a_declared_artifact_is_rejected(self) -> None:
+        """Filename equality is not enough; digests are compared."""
+        target = self.run_dir / "evaluation_report.json"
+        original = target.read_bytes()
+        target.write_bytes(original + b" ")
+        errors = validate_generated_run(self.run_dir)
+        self.assertTrue(any("sha256 mismatch" in e for e in errors), errors)
+
+    def test_same_length_edit_to_a_declared_artifact_is_rejected(self) -> None:
+        target = self.run_dir / "evaluation_report.json"
+        original = target.read_bytes()
+        target.write_bytes(bytes([original[0] ^ 0x20]) + original[1:])
+        errors = validate_generated_run(self.run_dir)
+        self.assertTrue(any("sha256 mismatch" in e for e in errors), errors)
+
+    def test_missing_expected_artifact_is_rejected(self) -> None:
+        """A run cannot omit an output by dropping it from both disk and sidecar."""
+        payload = self.valid_payload()
+        payload["generated_artifacts"] = [
+            a for a in payload["generated_artifacts"] if a["path"] != "feature_table.json"
+        ]
+        (self.run_dir / "feature_table.json").unlink()
+        self.write_sidecar(payload)
+        errors = validate_generated_run(self.run_dir)
+        self.assertTrue(
+            any("missing an expected generated artifact" in e for e in errors), errors
+        )
 
     def test_declared_but_absent_file_is_rejected(self) -> None:
         payload = self.valid_payload()
-        payload["generated_artifacts"].append("ghost.json")
+        payload["generated_artifacts"].append(
+            {"path": "ghost.json", "sha256": "0" * 64, "bytes": 1}
+        )
         self.write_sidecar(payload)
         errors = validate_generated_run(self.run_dir)
-        self.assertTrue(any("inventory disagrees" in e for e in errors), errors)
+        self.assertTrue(any("absent from the run" in e for e in errors), errors)
+
+    def test_digest_free_inventory_entry_is_rejected(self) -> None:
+        """Filename-only entries are the old, weaker contract and must not pass."""
+        payload = self.valid_payload()
+        payload["generated_artifacts"] = [a["path"] for a in payload["generated_artifacts"]]
+        self.write_sidecar(payload)
+        errors = validate_generated_run(self.run_dir)
+        self.assertTrue(
+            any("must be objects carrying" in e for e in errors), errors
+        )
+
+
+class ProducerRequiresAFreshRunDirectoryTests(unittest.TestCase):
+    """End-to-end: a reusable run directory cannot silently adopt stale files."""
+
+    def _run(self, output_dir, *extra) -> subprocess.CompletedProcess:
+        return subprocess.run(
+            ["python3", "scripts/compute_rookie_ml_lane.py", "--output-dir", str(output_dir), *extra],
+            cwd=REPO_ROOT,
+            capture_output=True,
+            text=True,
+        )
+
+    def test_stale_file_present_before_the_run_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            out.mkdir()
+            (out / "stale_injected.json").write_text('{"stale": true}\n', encoding="utf-8")
+            result = self._run(out)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("non-empty run directory", result.stdout + result.stderr)
+            self.assertIn("stale_injected.json", result.stdout + result.stderr)
+            # And nothing was generated alongside it.
+            self.assertEqual([p.name for p in out.iterdir()], ["stale_injected.json"])
+
+    def test_nested_stale_file_present_before_the_run_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            (out / "nested").mkdir(parents=True)
+            (out / "nested" / "hidden.json").write_text("{}\n", encoding="utf-8")
+            result = self._run(out)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("nested/hidden.json", result.stdout + result.stderr)
+
+    def test_second_run_into_the_same_directory_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            second = self._run(out)
+            self.assertNotEqual(second.returncode, 0, "a re-run must not silently overwrite")
+            self.assertIn("non-empty run directory", second.stdout + second.stderr)
+
+    def test_replace_run_clears_a_previous_run_and_revalidates(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            replaced = self._run(out, "--replace-run")
+            self.assertEqual(replaced.returncode, 0, replaced.stderr)
+            self.assertEqual(validate_generated_run(out), [])
+
+    def test_replace_run_does_not_delete_unexpected_files(self) -> None:
+        """`--replace-run` clears this producer's output, never anything else."""
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            precious = out / "precious_unrelated.txt"
+            precious.write_text("do not delete me\n", encoding="utf-8")
+            result = self._run(out, "--replace-run")
+            self.assertNotEqual(result.returncode, 0)
+            self.assertTrue(precious.is_file(), "--replace-run deleted an unexpected file")
+            self.assertEqual(precious.read_text(encoding="utf-8"), "do not delete me\n")
+
+    def test_a_clean_run_matches_the_pinned_universe(self) -> None:
+        """The pinned expectation must track what the producer actually emits."""
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            produced = {
+                p.relative_to(out).as_posix()
+                for p in out.rglob("*")
+                if p.is_file() and p.name != STATUS_SIDECAR_NAME
+            }
+            self.assertEqual(produced, set(EXPECTED_RUN_ARTIFACTS))
 
 
 class ProducerCannotMutateTheFrozenArchiveTests(unittest.TestCase):

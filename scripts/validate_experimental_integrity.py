@@ -141,6 +141,31 @@ PINNED_MIGRATION_CLAIMS: dict[str, dict[str, Any]] = {
     },
 }
 
+# The exact artifact universe a clean producer run emits, pinned here rather than
+# derived from whatever happens to be in the output directory. The run sidecar is
+# written by the producer and inventories its own output, which makes it a
+# self-declaring record: without this anchor, a stale or injected file sitting in
+# a reusable run directory is silently adopted as "generated" and validates. The
+# frozen tier exists for the same reason on the archive side.
+EXPECTED_RUN_ARTIFACTS: frozenset[str] = frozenset(
+    {
+        "dataset_diagnostics.json",
+        "evaluation_report.json",
+        "feature_coverage_report.json",
+        "feature_importance_report.json",
+        "feature_table.json",
+        "heldout_probabilities.csv",
+        "heldout_probabilities.json",
+        "historical_class_coverage_report.json",
+        "historical_feature_consistency_report.json",
+        "historical_label_provenance_report.json",
+        "historical_labeled_dataset.csv",
+        "historical_labeled_dataset.json",
+        "historical_outcomes_canonical.json",
+        "historical_position_slices_report.json",
+    }
+)
+
 # The immutable historical inventory, as it stood at the authorized base commit
 # 54215af61e581000b7370e941dbc90a8a1a70195 under the old promoted path. These
 # bytes moved namespace; they did not change. Any drift is a failure, including
@@ -504,23 +529,74 @@ def validate_generated_run(run_dir: Path) -> list[str]:
                 f"migration provenance and must not present itself as the frozen archive."
             )
 
-    # Self-inventory bijection, so a run cannot quietly drop or gain a file.
+    # Inventory checks. The declared list is not trusted on its own: it is
+    # cross-checked against a recursive walk of the run directory AND against the
+    # code-pinned expected universe, and every entry carries a digest.
     declared = payload.get("generated_artifacts")
     if not isinstance(declared, list):
         errors.append(f"{label} must list 'generated_artifacts'.")
-    else:
-        on_disk = sorted(
-            p.name for p in run_dir.iterdir() if p.is_file() and p.name != STATUS_SIDECAR_NAME
+        return errors
+
+    declared_by_path: dict[str, dict] = {}
+    for item in declared:
+        if not isinstance(item, dict):
+            errors.append(
+                f"{label} generated_artifacts entries must be objects carrying "
+                f"path/sha256/bytes, got: {item!r}"
+            )
+            continue
+        rel = item.get("path")
+        if not rel or item.get("sha256") is None or item.get("bytes") is None:
+            errors.append(f"{label} generated_artifacts entry missing path/sha256/bytes: {item!r}")
+            continue
+        if rel in declared_by_path:
+            errors.append(f"{label} declares {rel} more than once.")
+            continue
+        declared_by_path[rel] = item
+
+    # Recursive, so a nested file cannot hide from validation.
+    on_disk = {
+        p.relative_to(run_dir).as_posix()
+        for p in run_dir.rglob("*")
+        if p.is_file() and p.relative_to(run_dir).as_posix() != STATUS_SIDECAR_NAME
+    }
+
+    for rel in sorted(on_disk - set(declared_by_path)):
+        errors.append(f"{label} does not declare a file present in the run: {rel}")
+    for rel in sorted(set(declared_by_path) - on_disk):
+        errors.append(f"{label} declares an artifact that is absent from the run: {rel}")
+
+    # The pinned universe is the non-self-declaring anchor: a stale or injected
+    # file cannot be legitimized just by appearing in the sidecar, and a missing
+    # output cannot be hidden by omitting it from both sidecar and expectations.
+    for rel in sorted(on_disk - EXPECTED_RUN_ARTIFACTS):
+        errors.append(
+            f"{label} run contains an artifact outside the expected generated universe: "
+            f"{rel}. A run directory must contain only freshly generated output."
         )
-        if sorted(declared) != on_disk:
-            missing = sorted(set(on_disk) - set(declared))
-            extra = sorted(set(declared) - set(on_disk))
-            detail = []
-            if missing:
-                detail.append(f"undeclared on disk: {missing}")
-            if extra:
-                detail.append(f"declared but absent: {extra}")
-            errors.append(f"{label} inventory disagrees with the run directory ({'; '.join(detail)}).")
+    for rel in sorted(EXPECTED_RUN_ARTIFACTS - on_disk):
+        errors.append(f"{label} run is missing an expected generated artifact: {rel}")
+
+    # Digests, so editing a declared artifact's bytes cannot pass on filename alone.
+    for rel, item in sorted(declared_by_path.items()):
+        target = run_dir / rel
+        if not target.is_file():
+            continue
+        if not target.resolve().is_relative_to(run_dir.resolve()):
+            errors.append(f"{label} declared path escapes the run directory: {rel}")
+            continue
+        actual_bytes = target.stat().st_size
+        actual_hash = sha256_file(target)
+        if item.get("bytes") != actual_bytes:
+            errors.append(
+                f"{label} size mismatch for {rel}: declared {item.get('bytes')}, "
+                f"got {actual_bytes}"
+            )
+        if item.get("sha256") != actual_hash:
+            errors.append(
+                f"{label} sha256 mismatch for {rel}: declared {item.get('sha256')}, "
+                f"got {actual_hash}"
+            )
 
     return errors
 

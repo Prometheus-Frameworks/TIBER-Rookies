@@ -45,6 +45,7 @@ if str(REPO_ROOT) not in sys.path:
 # The governed experimental contract is owned by the validator; importing it
 # here keeps the producer from drifting out of agreement with what CI enforces.
 from scripts.validate_experimental_integrity import (  # noqa: E402
+    EXPECTED_RUN_ARTIFACTS,
     FROZEN_ARCHIVE_DIRS,
     GOVERNED_UNCALIBRATED_WARNING,
     PINNED_FAMILY_IDENTITY,
@@ -52,6 +53,7 @@ from scripts.validate_experimental_integrity import (  # noqa: E402
     RUN_STATUS_KIND,
     STATUS_SCHEMA_VERSION,
     STATUS_SIDECAR_NAME,
+    sha256_file,
 )
 
 FEATURE_COLUMNS = [
@@ -1018,6 +1020,41 @@ def reject_protected_output_dir(output_dir: Path) -> None:
             )
 
 
+def require_fresh_output_dir(output_dir: Path, replace: bool) -> None:
+    """Refuse to generate into a directory that already holds files.
+
+    The run destination is reusable and gitignored, so anything left there from a
+    previous run - or dropped in by hand - would be inventoried by the sidecar as
+    freshly generated output and would validate. Requiring a clean destination is
+    what keeps the run inventory a statement about *this* run.
+
+    `--replace-run` clears a previous run first, but only files this producer is
+    known to emit: it never deletes anything outside EXPECTED_RUN_ARTIFACTS and
+    the sidecar, so pointing it at an unexpected directory removes nothing.
+    """
+    if not output_dir.exists():
+        return
+
+    if replace:
+        for rel in sorted(EXPECTED_RUN_ARTIFACTS | {STATUS_SIDECAR_NAME}):
+            target = output_dir / rel
+            if target.is_file():
+                target.unlink()
+
+    leftover = sorted(
+        p.relative_to(output_dir).as_posix() for p in output_dir.rglob("*") if p.is_file()
+    )
+    if leftover:
+        raise SystemExit(
+            f"Refusing to generate into a non-empty run directory: {output_dir}\n"
+            f"Unexpected files present: {leftover}\n"
+            f"A run sidecar inventories whatever it finds, so a stale or injected file "
+            f"would be recorded as freshly generated output. Remove the directory and "
+            f"re-run, or pass --replace-run to clear a previous run of this producer "
+            f"(which only deletes files this producer emits)."
+        )
+
+
 def build_status_sidecar(output_dir: Path, generated_at: str) -> dict[str, Any]:
     """The governed status record that must accompany every generated result.
 
@@ -1025,10 +1062,24 @@ def build_status_sidecar(output_dir: Path, generated_at: str) -> dict[str, Any]:
     `migration` or `frozen_historical_artifacts` block: a fresh run has
     performed no byte-preserving migration and must not present itself as the
     frozen archive.
+
+    The inventory is recursive and digest-bearing so that a nested file cannot
+    hide from validation and an edit to a declared artifact cannot pass on its
+    filename alone. It is still a self-declaration; the validator cross-checks it
+    against EXPECTED_RUN_ARTIFACTS, which is pinned in code.
     """
-    artifacts = sorted(
-        p.name for p in output_dir.iterdir() if p.is_file() and p.name != STATUS_SIDECAR_NAME
-    )
+    artifacts = [
+        {
+            "path": rel,
+            "sha256": sha256_file(output_dir / rel),
+            "bytes": (output_dir / rel).stat().st_size,
+        }
+        for rel in sorted(
+            p.relative_to(output_dir).as_posix()
+            for p in output_dir.rglob("*")
+            if p.is_file() and p.relative_to(output_dir).as_posix() != STATUS_SIDECAR_NAME
+        )
+    ]
     return {
         "schema_version": STATUS_SCHEMA_VERSION,
         "status_kind": RUN_STATUS_KIND,
@@ -1047,6 +1098,14 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--rookie-alpha-dir", default="exports/promoted/rookie-alpha")
     parser.add_argument("--holdout-year", type=int, default=None)
     parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR)
+    parser.add_argument(
+        "--replace-run",
+        action="store_true",
+        help=(
+            "Clear a previous run of this producer from the output directory first. "
+            "Only removes files this producer emits; refuses if anything else remains."
+        ),
+    )
     parser.add_argument("--seed", type=int, default=42)
     return parser.parse_args()
 
@@ -1056,6 +1115,7 @@ def main() -> None:
     random.seed(args.seed)
 
     reject_protected_output_dir(Path(args.output_dir))
+    require_fresh_output_dir(Path(args.output_dir), replace=args.replace_run)
 
     features = load_json(Path(args.historical_features))
     outcomes = load_json(Path(args.historical_outcomes))

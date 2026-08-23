@@ -62,6 +62,7 @@ When operating in this repo, agents should:
 - ML lane is experimental and additive; it does not replace deterministic Rookie Alpha scoring.
 - ML lane is **not a promoted family**. Its frozen archive lives under `exports/experimental/rookie-ml-lane/`, never under `exports/promoted/` (#286 WP-2).
 - The frozen archive is immutable. Generated runs go to `runs/rookie-ml-lane/` (gitignored); never point the producer at the archive, and never regenerate the nine pinned historical artifacts.
+- A run destination must be fresh. Never hand-place files into a run directory: the sidecar inventories what it finds, and the expected run universe is pinned in the validator.
 - Its probability-shaped fields are not calibrated probabilities and confer no promotion eligibility. Never surface them as probabilities or wire them into a promoted, Forecast, or Fantasy contract.
 - If touching ML lane work, preserve warnings that outputs are directional when data is sparse or provenance is weak.
 - Keep provenance and warning artifacts intact, including the `experimental_status_v0.json` sidecar every run emits.
@@ -85,6 +86,7 @@ Only use/document known canonical commands from repo docs and scripts.
 - `python3 scripts/compute_rookie_ml_lane.py`
 - `python3 scripts/validate_experimental_integrity.py`
 - `python3 scripts/validate_experimental_integrity.py --run-dir runs/rookie-ml-lane`
+- `python3 scripts/compute_rookie_ml_lane.py --replace-run` (re-run into a used run directory)
 
 If a requested command is not listed in `package.json`, `README.md`, or repo scripts, do not guess. Mark it non-canonical and ask for confirmation.
 

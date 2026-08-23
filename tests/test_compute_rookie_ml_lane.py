@@ -1,4 +1,5 @@
 import unittest
+import hashlib
 import json
 import subprocess
 import tempfile
@@ -391,11 +392,24 @@ class ExperimentalOutputSemanticsTests(unittest.TestCase):
             # A run has performed no migration and must not claim archive provenance.
             self.assertNotIn("migration", sidecar)
             self.assertNotIn("frozen_historical_artifacts", sidecar)
-            # The sidecar must inventory the run it accompanies.
+            # The sidecar must inventory the run it accompanies, recursively and
+            # with digests, so a nested file cannot hide and a byte edit cannot
+            # pass on filename alone.
             produced = sorted(
-                p.name for p in output_dir.iterdir() if p.name != "experimental_status_v0.json"
+                p.relative_to(output_dir).as_posix()
+                for p in output_dir.rglob("*")
+                if p.is_file() and p.name != "experimental_status_v0.json"
             )
-            self.assertEqual(sidecar["generated_artifacts"], produced)
+            declared = sidecar["generated_artifacts"]
+            self.assertEqual([a["path"] for a in declared], produced)
+            for entry in declared:
+                with self.subTest(artifact=entry["path"]):
+                    target = output_dir / entry["path"]
+                    self.assertEqual(entry["bytes"], target.stat().st_size)
+                    self.assertEqual(
+                        entry["sha256"],
+                        hashlib.sha256(target.read_bytes()).hexdigest(),
+                    )
 
 
 if __name__ == "__main__":

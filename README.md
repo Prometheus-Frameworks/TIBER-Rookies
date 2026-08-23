@@ -268,6 +268,22 @@ Validate a generated run:
 python3 scripts/validate_experimental_integrity.py --run-dir runs/rookie-ml-lane
 ```
 
+Run validation checks the recorded SHA-256 and byte size of every generated file,
+walks the run directory recursively, and cross-checks the result against the
+expected artifact universe pinned in the validator. The run sidecar inventories
+its own output, so on its own it is a self-declaring record; the pinned universe
+is what stops a stale or injected file being legitimized just by appearing in it.
+
+For the same reason the producer requires a **fresh destination** and refuses a
+non-empty one. To re-run into the same directory:
+
+```bash
+python3 scripts/compute_rookie_ml_lane.py --replace-run
+```
+
+`--replace-run` clears only files this producer emits; anything else present
+still blocks the run rather than being deleted.
+
 The evaluator uses time-aware draft-class splits, logistic baselines, required feature-subset baselines, and non-ML baseline comparisons.
 
 Demotion did not remove these artifacts from integrity coverage. The frozen archive

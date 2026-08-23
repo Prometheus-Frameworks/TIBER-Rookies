@@ -83,9 +83,18 @@ historical bytes in code. The two lifecycles are now separated, and
 mutate the archive.
 
 Generated runs get their own fail-closed validation
-(`validate_experimental_integrity.py --run-dir <path>`): same governed semantics, a
-self-inventory bijection, and an explicit refusal to carry the archive's migration
-provenance.
+(`validate_experimental_integrity.py --run-dir <path>`): same governed semantics, an
+explicit refusal to carry the archive's migration provenance, a recursive
+digest-bearing inventory, and a cross-check against the expected run artifact
+universe pinned in `EXPECTED_RUN_ARTIFACTS`.
+
+That pinned universe matters for the same reason the frozen tier does. A run sidecar
+inventories its own output, so it is self-declaring: in an earlier revision a stale or
+hand-placed file sitting in the reusable run directory was silently adopted as
+"generated" and validated, nested files were invisible to the walk, and an edit to a
+declared artifact passed because only filenames were compared. The producer now also
+requires a fresh destination and refuses a non-empty one, with `--replace-run` clearing
+only files it emits.
 
 ## Old-path references
 
