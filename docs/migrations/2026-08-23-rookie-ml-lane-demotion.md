@@ -126,6 +126,16 @@ leaves everything untouched; a failed staged-install renames the prior run back;
 rollback exits naming both surviving paths for manual recovery; and a failed `.previous`
 cleanup warns on stderr without failing an already-successful replacement.
 
+Staging cleanup is scoped to the phase where it is correct. An earlier revision wrapped
+the commit call in the same blanket handler used for generation, so every commit refusal
+was followed by deleting the very staged run the refusal message promised had been
+preserved — the destination was restored correctly and the operator's valid candidate run
+was thrown away anyway. Generation and staged-validation failures still clear incomplete
+staging; once staging has passed validation, commit refusals and failed swaps leave it
+intact. That distinction is enforced end to end through the real CLI, not only through
+direct helper calls: the earlier compare-and-swap tests exercised the helper and never
+saw the outer handler, which is how the bug survived a review round.
+
 ## Old-path references
 
 `exports/promoted/rookie-ml-lane/` no longer exists. Repository-wide search finds the old path

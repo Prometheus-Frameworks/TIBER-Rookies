@@ -1409,6 +1409,174 @@ class ProducerRequiresAFreshRunDirectoryTests(unittest.TestCase):
             self.assertEqual(before, self._snapshot(run))
             self.assertTrue((previous / "leftover.json").is_file())
 
+    # --- Full CLI lifecycle: staging survives commit refusal ---------------
+    #
+    # The compare-and-swap controls above call commit_staged_run() directly, so
+    # they never exercise main()'s cleanup handler. That gap is exactly how a
+    # blanket `except BaseException: rmtree(staging)` around the commit call
+    # survived review: commit correctly refused and correctly restored the
+    # destination, and then main() deleted the staged run the refusal message
+    # promised was preserved. These tests drive the real CLI end to end.
+
+    COMMIT_CALL = "    commit_staged_run(staging_dir, final_output_dir, authorization)"
+
+    def _run_patched(self, patch_pairs, output_dir, *extra):
+        """Run the real producer with its source temporarily patched.
+
+        Injects deterministic faults (a file arriving before commit, a failing
+        rename) into the actual `main()` path, then restores the file.
+        """
+        producer = REPO_ROOT / "scripts/compute_rookie_ml_lane.py"
+        original = producer.read_text(encoding="utf-8")
+        patched = original
+        for old, replacement in patch_pairs:
+            self.assertIn(old, patched, f"patch anchor not found: {old!r}")
+            patched = patched.replace(old, replacement, 1)
+        try:
+            producer.write_text(patched, encoding="utf-8")
+            return self._run(output_dir, *extra)
+        finally:
+            producer.write_text(original, encoding="utf-8")
+
+    def _rename_fault(self, fail_on):
+        """Patch pair making os.rename fail on the given 1-based call numbers."""
+        injected = "\n".join(
+            [
+                "    _calls = {'n': 0}",
+                "    _real_rename = os.rename",
+                "    def _flaky(src, dst):",
+                "        _calls['n'] += 1",
+                f"        if _calls['n'] in {fail_on!r}:",
+                "            raise OSError('injected rename failure')",
+                "        return _real_rename(src, dst)",
+                "    os.rename = _flaky",
+                self.COMMIT_CALL,
+            ]
+        )
+        return (self.COMMIT_CALL, injected)
+
+    def _arrival_fault(self):
+        """Patch pair dropping a file into the destination just before commit."""
+        injected = "\n".join(
+            [
+                "    if final_output_dir.is_dir():",
+                "        (final_output_dir / 'valuable-arrived.txt').write_text("
+                "'irreplaceable', encoding='utf-8')",
+                self.COMMIT_CALL,
+            ]
+        )
+        return (self.COMMIT_CALL, injected)
+
+    def test_cli_commit_refusal_preserves_the_validated_staged_run(self) -> None:
+        """Destination drift at commit: destination restored, staging preserved."""
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            before = self._snapshot(out)
+
+            result = self._run_patched([self._arrival_fault()], out, "--replace-run")
+
+            self.assertNotEqual(result.returncode, 0)
+            staging = out.parent / (out.name + ".staging")
+            self.assertTrue(
+                staging.is_dir(),
+                "the refusal promised the staged run was preserved, but it was deleted",
+            )
+            self.assertEqual(validate_generated_run(staging), [], "preserved staging is invalid")
+            self.assertEqual(
+                set(before), set(self._snapshot(out)) - {"valuable-arrived.txt"}
+            )
+            self.assertTrue((out / "valuable-arrived.txt").is_file())
+            self.assertFalse((out.parent / (out.name + ".previous")).exists())
+
+    def test_cli_first_rename_failure_preserves_destination_and_staging(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            before = self._snapshot(out)
+
+            result = self._run_patched([self._rename_fault((1,))], out, "--replace-run")
+
+            self.assertNotEqual(result.returncode, 0)
+            self.assertEqual(before, self._snapshot(out), "destination was mutated")
+            staging = out.parent / (out.name + ".staging")
+            self.assertTrue(staging.is_dir(), "staged run was deleted after a commit failure")
+            self.assertEqual(validate_generated_run(staging), [])
+
+    def test_cli_staged_install_failure_restores_destination_and_keeps_staging(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            before = self._snapshot(out)
+
+            # 1: move aside (ok). 2: install staging (fails). 3: restore (ok).
+            result = self._run_patched([self._rename_fault((2,))], out, "--replace-run")
+
+            self.assertNotEqual(result.returncode, 0)
+            self.assertEqual(before, self._snapshot(out), "prior run was not restored")
+            staging = out.parent / (out.name + ".staging")
+            self.assertTrue(staging.is_dir(), "staged run was deleted after a failed swap")
+            self.assertEqual(validate_generated_run(staging), [])
+            self.assertFalse((out.parent / (out.name + ".previous")).exists())
+
+    def test_cli_rollback_failure_preserves_both_previous_and_staging(self) -> None:
+        """Worst case: the swap fails and so does the restore. Nothing may be lost."""
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            before = self._snapshot(out)
+
+            # 1: move aside (ok). 2: install (fails). 3: restore (fails too).
+            result = self._run_patched([self._rename_fault((2, 3))], out, "--replace-run")
+
+            self.assertNotEqual(result.returncode, 0)
+            combined = result.stdout + result.stderr
+            self.assertIn("NOTHING HAS BEEN DELETED", combined)
+
+            previous = out.parent / (out.name + ".previous")
+            staging = out.parent / (out.name + ".staging")
+            self.assertTrue(previous.is_dir(), "the prior run was lost")
+            self.assertEqual(before, self._snapshot(previous), "prior run bytes changed")
+            self.assertTrue(staging.is_dir(), "the staged run was lost")
+            self.assertEqual(validate_generated_run(staging), [])
+            # Both surviving paths must be named so the operator can recover.
+            self.assertIn(str(previous), combined)
+            self.assertIn(str(staging), combined)
+
+    def test_cli_staged_validation_failure_removes_incomplete_staging(self) -> None:
+        """The other half of the lifecycle rule: pre-commit failures do clean up."""
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            before = self._snapshot(out)
+
+            injected = (
+                "        staged_errors = validate_generated_run(staging_dir)",
+                '        staged_errors = ["injected staged-validation failure"]',
+            )
+            result = self._run_patched([injected], out, "--replace-run")
+
+            self.assertNotEqual(result.returncode, 0)
+            self.assertEqual(before, self._snapshot(out))
+            self.assertFalse(
+                (out.parent / (out.name + ".staging")).exists(),
+                "an invalid staged run must not be left behind",
+            )
+
+    def test_cli_successful_replacement_leaves_no_residue(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            before = self._snapshot(out)
+
+            result = self._run(out, "--replace-run")
+            self.assertEqual(result.returncode, 0, result.stderr)
+
+            self.assertEqual(set(before), set(self._snapshot(out)))
+            self.assertEqual(validate_generated_run(out), [])
+            for suffix in (".staging", ".previous"):
+                self.assertFalse((out.parent / (out.name + suffix)).exists(), suffix)
+
     def test_a_clean_run_matches_the_pinned_universe(self) -> None:
         """The pinned expectation must track what the producer actually emits."""
         with tempfile.TemporaryDirectory() as tmp:

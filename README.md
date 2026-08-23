@@ -313,6 +313,14 @@ Failure modes are explicit rather than silent:
 | Rollback itself fails | Exits with both paths named; nothing deleted, manual `mv` required |
 | `.previous` cleanup fails | Swap already succeeded; warns on stderr and exits 0, leaving the superseded copy to delete by hand |
 
+Staging has two distinct lifecycles, and the boundary is the point at which it
+becomes valuable. A failure during generation, writing, or staged validation
+removes the staging directory — it holds an incomplete or invalid run and is
+worth nothing. Once the staged run has *passed* validation it is a complete
+candidate, so every commit refusal or failed swap leaves it in place, and the
+paths named in those messages are paths that still exist after the command
+exits.
+
 The evaluator uses time-aware draft-class splits, logistic baselines, required feature-subset baselines, and non-ML baseline comparisons.
 
 Demotion did not remove these artifacts from integrity coverage. The frozen archive

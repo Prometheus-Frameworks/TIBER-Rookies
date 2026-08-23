@@ -1508,12 +1508,20 @@ def main() -> None:
                 + "\n- ".join(staged_errors)
             )
 
-        commit_staged_run(staging_dir, final_output_dir, authorization)
     except BaseException:
-        # Never leave a half-written staging directory behind, and never let a
-        # failure here reach the destination.
+        # Generation or staged validation failed, so the staging directory holds
+        # an incomplete or invalid run and is worth nothing. Remove it rather
+        # than leaving something that could be mistaken for a candidate.
         shutil.rmtree(staging_dir, ignore_errors=True)
         raise
+
+    # The staged run has passed validation. From here it is a complete, valid
+    # candidate, and the commit's own refusal messages promise it survives for
+    # inspection - so it is deliberately NOT wrapped in the cleanup above. An
+    # earlier revision left commit inside that `try`, and every commit refusal
+    # was followed by main() deleting the very staged run the refusal said it
+    # had preserved.
+    commit_staged_run(staging_dir, final_output_dir, authorization)
 
 
 if __name__ == "__main__":
