@@ -281,8 +281,12 @@ non-empty one. To re-run into the same directory:
 python3 scripts/compute_rookie_ml_lane.py --replace-run
 ```
 
-`--replace-run` clears only files this producer emits; anything else present
-still blocks the run rather than being deleted.
+`--replace-run` clears a previous run, but only when the directory is
+demonstrably an **exact, valid prior run** of this producer: the file set matches
+the expected universe exactly, there are no subdirectories, and the run still
+passes `validate_generated_run()`. Classification is entirely read-only until
+that decision is made, so anything missing, tampered, nested, or unexpected
+refuses with the directory **byte-for-byte unchanged**.
 
 The evaluator uses time-aware draft-class splits, logistic baselines, required feature-subset baselines, and non-ML baseline comparisons.
 

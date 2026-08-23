@@ -1044,17 +1044,82 @@ class ProducerRequiresAFreshRunDirectoryTests(unittest.TestCase):
             self.assertEqual(replaced.returncode, 0, replaced.stderr)
             self.assertEqual(validate_generated_run(out), [])
 
-    def test_replace_run_does_not_delete_unexpected_files(self) -> None:
-        """`--replace-run` clears this producer's output, never anything else."""
+    def _snapshot(self, directory: Path) -> dict:
+        """Every file under `directory` with its digest and size."""
+        return {
+            p.relative_to(directory).as_posix(): (sha256_file(p), p.stat().st_size)
+            for p in directory.rglob("*")
+            if p.is_file()
+        }
+
+    def assert_refused_without_mutation(self, directory: Path) -> None:
+        """--replace-run must classify read-only: refuse with nothing touched.
+
+        An earlier revision deleted every recognized filename first and only then
+        looked for unexpected leftovers, so a refusal could still destroy data.
+        These assertions compare full digests, not mere presence.
+        """
+        before = self._snapshot(directory)
+        result = self._run(directory, "--replace-run")
+        self.assertNotEqual(result.returncode, 0, "--replace-run should have refused")
+        self.assertIn("Nothing has been deleted", result.stdout + result.stderr)
+        self.assertEqual(
+            before,
+            self._snapshot(directory),
+            "--replace-run mutated the directory before refusing it",
+        )
+
+    def test_replace_run_refuses_an_unrelated_directory_without_mutation(self) -> None:
+        """A colliding filename in someone else's directory must survive intact."""
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "unrelated"
+            out.mkdir()
+            # Shares a name with a producer output but is not producer output.
+            (out / "evaluation_report.json").write_text(
+                '{"valuable": "unrelated data"}\n', encoding="utf-8"
+            )
+            (out / "precious_unrelated.txt").write_text("do not delete me\n", encoding="utf-8")
+            self.assert_refused_without_mutation(out)
+            self.assertEqual(
+                (out / "evaluation_report.json").read_text(encoding="utf-8"),
+                '{"valuable": "unrelated data"}\n',
+            )
+
+    def test_replace_run_refuses_a_valid_run_plus_an_unexpected_file_without_mutation(
+        self,
+    ) -> None:
+        """The whole prior run must survive, not just the unexpected file."""
         with tempfile.TemporaryDirectory() as tmp:
             out = Path(tmp) / "run"
             self.assertEqual(self._run(out).returncode, 0)
-            precious = out / "precious_unrelated.txt"
-            precious.write_text("do not delete me\n", encoding="utf-8")
-            result = self._run(out, "--replace-run")
-            self.assertNotEqual(result.returncode, 0)
-            self.assertTrue(precious.is_file(), "--replace-run deleted an unexpected file")
-            self.assertEqual(precious.read_text(encoding="utf-8"), "do not delete me\n")
+            (out / "precious_unrelated.txt").write_text("do not delete me\n", encoding="utf-8")
+            before = self._snapshot(out)
+            self.assertGreater(len(before), len(EXPECTED_RUN_ARTIFACTS))
+            self.assert_refused_without_mutation(out)
+
+    def test_replace_run_refuses_a_tampered_prior_run_without_mutation(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            target = out / "evaluation_report.json"
+            target.write_bytes(target.read_bytes() + b" ")
+            self.assert_refused_without_mutation(out)
+
+    def test_replace_run_refuses_an_incomplete_prior_run_without_mutation(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            (out / "feature_table.json").unlink()
+            self.assert_refused_without_mutation(out)
+
+    def test_replace_run_refuses_a_nested_subdirectory_without_mutation(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            nested = out / "nested"
+            nested.mkdir()
+            (nested / "hidden.json").write_text("{}\n", encoding="utf-8")
+            self.assert_refused_without_mutation(out)
 
     def test_a_clean_run_matches_the_pinned_universe(self) -> None:
         """The pinned expectation must track what the producer actually emits."""

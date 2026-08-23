@@ -93,8 +93,15 @@ inventories its own output, so it is self-declaring: in an earlier revision a st
 hand-placed file sitting in the reusable run directory was silently adopted as
 "generated" and validated, nested files were invisible to the walk, and an edit to a
 declared artifact passed because only filenames were compared. The producer now also
-requires a fresh destination and refuses a non-empty one, with `--replace-run` clearing
-only files it emits.
+requires a fresh destination and refuses a non-empty one.
+
+`--replace-run` clears a previous run only when the directory is demonstrably an exact,
+valid prior run of this producer, and all classification happens before the first
+unlink. An earlier revision deleted every recognized filename first and only then looked
+for unexpected leftovers, so pointing it at an unrelated directory containing a
+same-named file destroyed that file and *then* refused the run — the command failed and
+the data was already gone. Refusal now leaves the directory byte-for-byte unchanged,
+proven by tests that snapshot every file and digest before invocation.
 
 ## Old-path references
 

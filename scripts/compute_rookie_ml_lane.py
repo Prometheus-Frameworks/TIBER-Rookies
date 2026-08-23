@@ -54,6 +54,7 @@ from scripts.validate_experimental_integrity import (  # noqa: E402
     STATUS_SCHEMA_VERSION,
     STATUS_SIDECAR_NAME,
     sha256_file,
+    validate_generated_run,
 )
 
 FEATURE_COLUMNS = [
@@ -1028,31 +1029,73 @@ def require_fresh_output_dir(output_dir: Path, replace: bool) -> None:
     freshly generated output and would validate. Requiring a clean destination is
     what keeps the run inventory a statement about *this* run.
 
-    `--replace-run` clears a previous run first, but only files this producer is
-    known to emit: it never deletes anything outside EXPECTED_RUN_ARTIFACTS and
-    the sidecar, so pointing it at an unexpected directory removes nothing.
+    `--replace-run` clears a previous run, but classification is **entirely
+    read-only until the decision is made**. An earlier revision deleted every
+    recognized filename first and only then looked for unexpected leftovers, so
+    pointing it at an unrelated directory containing, say, someone's own
+    `evaluation_report.json` destroyed that file and *then* refused the run. The
+    command failed and the data was already gone.
+
+    Automatic replacement is now permitted only when the directory is
+    demonstrably an exact, valid prior run of this producer: the file set matches
+    the expected universe exactly, there are no subdirectories, and
+    `validate_generated_run()` passes. Anything missing, tampered, nested, or
+    unexpected refuses with the directory byte-for-byte unchanged.
     """
     if not output_dir.exists():
         return
 
-    if replace:
-        for rel in sorted(EXPECTED_RUN_ARTIFACTS | {STATUS_SIDECAR_NAME}):
-            target = output_dir / rel
-            if target.is_file():
-                target.unlink()
-
-    leftover = sorted(
+    present = sorted(
         p.relative_to(output_dir).as_posix() for p in output_dir.rglob("*") if p.is_file()
     )
-    if leftover:
+    subdirs = sorted(
+        p.relative_to(output_dir).as_posix() for p in output_dir.rglob("*") if p.is_dir()
+    )
+    if not present and not subdirs:
+        return
+
+    def refuse(reason: str) -> None:
         raise SystemExit(
             f"Refusing to generate into a non-empty run directory: {output_dir}\n"
-            f"Unexpected files present: {leftover}\n"
-            f"A run sidecar inventories whatever it finds, so a stale or injected file "
-            f"would be recorded as freshly generated output. Remove the directory and "
-            f"re-run, or pass --replace-run to clear a previous run of this producer "
-            f"(which only deletes files this producer emits)."
+            f"{reason}\n"
+            f"Nothing has been deleted. A run sidecar inventories whatever it finds, so a "
+            f"stale or injected file would be recorded as freshly generated output. Remove "
+            f"the directory yourself and re-run."
         )
+
+    if not replace:
+        refuse(
+            f"Files present: {present or '(none, but subdirectories exist: %s)' % subdirs}\n"
+            f"Pass --replace-run to clear an exact, valid prior run of this producer."
+        )
+
+    # --replace-run from here down. Every check below is read-only.
+    expected = set(EXPECTED_RUN_ARTIFACTS) | {STATUS_SIDECAR_NAME}
+    unexpected = sorted(set(present) - expected)
+    missing = sorted(expected - set(present))
+    if unexpected or missing or subdirs:
+        detail = []
+        if unexpected:
+            detail.append(f"unexpected files: {unexpected}")
+        if missing:
+            detail.append(f"missing expected files: {missing}")
+        if subdirs:
+            detail.append(f"unexpected subdirectories: {subdirs}")
+        refuse(
+            f"--replace-run only clears an exact, valid prior run of this producer, and "
+            f"this directory is not one ({'; '.join(detail)})."
+        )
+
+    errors = validate_generated_run(output_dir)
+    if errors:
+        refuse(
+            f"--replace-run only clears a prior run that still validates, and this one "
+            f"does not: {errors[0]}"
+        )
+
+    # Classification passed: this is an exact, valid prior run. Only now delete.
+    for rel in present:
+        (output_dir / rel).unlink()
 
 
 def build_status_sidecar(output_dir: Path, generated_at: str) -> dict[str, Any]:

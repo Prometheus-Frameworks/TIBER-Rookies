@@ -86,7 +86,7 @@ Only use/document known canonical commands from repo docs and scripts.
 - `python3 scripts/compute_rookie_ml_lane.py`
 - `python3 scripts/validate_experimental_integrity.py`
 - `python3 scripts/validate_experimental_integrity.py --run-dir runs/rookie-ml-lane`
-- `python3 scripts/compute_rookie_ml_lane.py --replace-run` (re-run into a used run directory)
+- `python3 scripts/compute_rookie_ml_lane.py --replace-run` (re-run into a directory holding an exact, valid prior run; refuses without deleting anything otherwise)
 
 If a requested command is not listed in `package.json`, `README.md`, or repo scripts, do not guess. Mark it non-canonical and ask for confirmation.
 
