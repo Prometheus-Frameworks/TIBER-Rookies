@@ -34,6 +34,9 @@ jobs:
       - name: Validate promoted export integrity (all artifact families)
         run: python3 scripts/validate_promoted_integrity.py
 
+      - name: Validate experimental export integrity (demoted ML lane)
+        run: python3 scripts/validate_experimental_integrity.py
+
       - name: Set up Node
         uses: actions/setup-node@v4
         with:

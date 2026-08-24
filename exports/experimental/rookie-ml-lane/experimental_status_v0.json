@@ -1,0 +1,67 @@
+{
+  "schema_version": "experimental-status-v0.1.0",
+  "status_kind": "migration_archive",
+  "family": "rookie-ml-lane",
+  "artifact_class": "experimental_fixture_evaluation",
+  "is_calibrated_probability": false,
+  "eligible_for_promotion": false,
+  "uncalibrated_probability_warning": "The probability-shaped fields in this family (hit_probability, miss_probability, model_confidence, and the heldout_probabilities.* exports) are experimental fixture-fed evaluation outputs. They are NOT calibrated probabilities, NOT forecasts, and NOT a promoted model signal. They were produced by an interpretable baseline harness over sample fixtures for lane-comparison diagnostics only. Do not read them as the likelihood that any player will hit, do not surface them to users as probabilities, and do not consume them in any promoted, Forecast, or Fantasy contract.",
+  "lane": "parallel_ml_evaluation_only",
+  "replaces_deterministic_rookie_alpha": false,
+  "migration": {
+    "issue": "https://github.com/Prometheus-Frameworks/TIBER-Rookies/issues/286",
+    "work_packet": "WP-2",
+    "authorized_base_sha": "54215af61e581000b7370e941dbc90a8a1a70195",
+    "previous_path": "exports/promoted/rookie-ml-lane",
+    "current_path": "exports/experimental/rookie-ml-lane",
+    "byte_preserving": true,
+    "note": "Namespace relocation only. Every artifact below carries the same sha256 and byte size it had under the previous promoted path at the authorized base commit. No artifact was regenerated, reformatted, retrained, or rewritten as part of the demotion."
+  },
+  "frozen_historical_artifacts": [
+    {
+      "path": "dataset_diagnostics.json",
+      "sha256": "89947ec0c97e0a00defe10bbf7c5341fd1b654b4c8668fb193280f1b5d045291",
+      "bytes": 1100
+    },
+    {
+      "path": "evaluation_report.json",
+      "sha256": "b9c448e95ef0ce1d097eefbfffc9bd1e00612874f945f4fad7202687a6a98585",
+      "bytes": 12873
+    },
+    {
+      "path": "feature_coverage_report.json",
+      "sha256": "dabb3bd6039bea9ac61c5dd5873f0559a68644b9d0ccc459348ad5b6bdc1b1a4",
+      "bytes": 3673
+    },
+    {
+      "path": "feature_importance_report.json",
+      "sha256": "839e416cc019e3b6f0913f647bf429eb3703e3f975f6e9bb80f1717abab3a104",
+      "bytes": 1122
+    },
+    {
+      "path": "feature_table.json",
+      "sha256": "99dca17ae65043312a57e7ca4f8dbf39442a2d8cd41ea0c1ac51e001a67d3a8e",
+      "bytes": 14851
+    },
+    {
+      "path": "heldout_probabilities.csv",
+      "sha256": "3a57453506050dd20e1c497b83705e4279757c7dbfe67f7aa4ac973b11f8b4f6",
+      "bytes": 253
+    },
+    {
+      "path": "heldout_probabilities.json",
+      "sha256": "9fecb43979174820e8f704983025c36004d6d0e02abc74772d323057844244f6",
+      "bytes": 366
+    },
+    {
+      "path": "historical_labeled_dataset.csv",
+      "sha256": "0561559e00022a3a2d53a3c1fc7573f8486e196f682301f55934fcae00bf6fa8",
+      "bytes": 4321
+    },
+    {
+      "path": "historical_labeled_dataset.json",
+      "sha256": "279cef5ee2fa40b99c2e283feff3c894ea650ea193833a5cedb0bc1d54499356",
+      "bytes": 18524
+    }
+  ]
+}

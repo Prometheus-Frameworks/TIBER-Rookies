@@ -217,13 +217,36 @@ python3 scripts/validate_devy_roster_pulse.py --artifact data/devy/monthly_pulse
 
 This repo now includes an **experimental parallel ML lane** that evaluates rookie hit probabilities from historical labeled rows. It is strictly additive and does **not** replace deterministic Rookie Alpha scoring.
 
+**This lane is not a promoted model.** Its outputs are fixture-fed experimental
+evaluation artifacts: the probability-shaped fields (`hit_probability`,
+`miss_probability`, `model_confidence`, and the `heldout_probabilities.*` exports)
+are **not calibrated probabilities**, not forecasts, and confer **no promotion
+eligibility**. Do not surface them to users as probabilities or consume them in any
+promoted, Forecast, or Fantasy contract. Issue #286 (WP-2) moved the lane out of
+`exports/promoted/`; see
+[the migration record](docs/migrations/2026-08-23-rookie-ml-lane-demotion.md).
+
 Run from repo root:
 
 ```bash
 python3 scripts/compute_rookie_ml_lane.py
 ```
 
-Default outputs are written to `exports/promoted/rookie-ml-lane/`:
+Output defaults to `runs/rookie-ml-lane/` (gitignored), alongside a generated
+`experimental_status_v0.json` status sidecar carrying those semantics.
+
+There are two distinct things here, and they are deliberately kept apart:
+
+- **The frozen migration archive**, `exports/experimental/rookie-ml-lane/` — the nine
+  artifacts pinned byte-for-byte to the authorized base commit, plus the sidecar that
+  binds them to their old promoted path. Immutable and committed. The producer
+  **refuses** to write here; a run would overwrite the historical bytes and strip the
+  migration record.
+- **Generated runs**, `runs/rookie-ml-lane/` — whatever the producer writes today.
+  Mutable, never committed, validated on their own terms.
+
+Writing this lane into `exports/promoted/` or into the frozen archive is refused
+outright, before anything is written:
 
 - `historical_outcomes_canonical.json`
 - `historical_label_provenance_report.json`
@@ -237,8 +260,96 @@ Default outputs are written to `exports/promoted/rookie-ml-lane/`:
 - `feature_importance_report.json`
 - `evaluation_report.json`
 - `heldout_probabilities.json` / `.csv`
+- `experimental_status_v0.json` (governed status sidecar)
+
+Validate a generated run:
+
+```bash
+python3 scripts/validate_experimental_integrity.py --run-dir runs/rookie-ml-lane
+```
+
+Run validation checks the recorded SHA-256 and byte size of every generated file,
+walks the run directory recursively, and cross-checks the result against the
+expected artifact universe pinned in the validator. The run sidecar inventories
+its own output, so on its own it is a self-declaring record; the pinned universe
+is what stops a stale or injected file being legitimized just by appearing in it.
+
+For the same reason the producer requires a **fresh destination** and refuses a
+non-empty one. To re-run into the same directory:
+
+```bash
+python3 scripts/compute_rookie_ml_lane.py --replace-run
+```
+
+`--replace-run` clears a previous run, but only when the directory is
+demonstrably an **exact, valid prior run** of this producer: the file set matches
+the expected universe exactly, there are no subdirectories, and the run still
+passes `validate_generated_run()`. Classification is entirely read-only, so
+anything missing, tampered, nested, or unexpected refuses with the directory
+**byte-for-byte unchanged**.
+
+Replacement is a transaction. Every run generates into a fresh
+`<output-dir>.staging` sibling and the staged run must validate before it may
+replace anything; only then are the old and new directories swapped by rename.
+An invalid holdout year, a missing or malformed input, a modelling error, or a
+staged-validation failure therefore leaves an existing run exactly as it was —
+the operator never trades a working run for a failed command.
+
+The swap is a **compare-and-swap**, not an overwrite. Classification runs before
+generation, so commit re-proves its authorization first: an absent destination
+must still be unoccupied, an empty one must still be empty, and an authorized
+prior run is moved aside and then compared against the recorded snapshot —
+paths, SHA-256, sizes, subdirectories — and re-validated before it is discarded.
+A file that arrived during generation, a byte edit, or a wholesale directory swap
+all refuse with **both** directories intact. Nothing is deleted merely because it
+occupies the destination.
+
+Failure modes are explicit rather than silent:
+
+| Failure | Outcome |
+| --- | --- |
+| Move-aside rename fails | Nothing has been touched; the error propagates |
+| Staged-install rename fails | Prior run is renamed back, staged run preserved |
+| Rollback itself fails | Exits with both paths named; nothing deleted, manual `mv` required |
+| `.previous` cleanup fails | Swap already succeeded; warns on stderr and exits 0, leaving the superseded copy to delete by hand |
+
+The candidate's identity is fixed **before** staged validation reads it, and
+re-proven after: one snapshot brackets the validation interval, and a mismatch
+refuses with the candidate preserved — so the validation verdict provably
+describes the bytes that commit installs. (A mutate-and-revert race entirely
+inside the interval is beneath the bracket's resolution; the post-install
+re-validation bounds it, so the installed bytes always pass validation at the
+installed boundary and always equal the bracketing snapshot.)
+
+Two authorizations meet at the swap, and both are re-proven rather than assumed:
+the destination must still be what classification saw, **and** the installed run
+must be the exact bytes that passed staged validation. Staging is re-checked
+immediately before the destination is touched — so a known-bad candidate never
+puts the destination through a rename cycle — and the *installed* directory is
+compared against the validated snapshot and re-validated before the superseded
+copy is discarded. Drift at either point restores the destination to its
+authorized state and preserves the rejected candidate at `<output-dir>.staging`.
+
+Staging has two distinct lifecycles, and the boundary is the point at which it
+becomes valuable. A failure during generation, writing, or staged validation
+removes the staging directory — it holds an incomplete or invalid run and is
+worth nothing. Once the staged run has *passed* validation it is a complete
+candidate, so every commit refusal or failed swap leaves it in place, and the
+paths named in those messages are paths that still exist after the command
+exits.
 
 The evaluator uses time-aware draft-class splits, logistic baselines, required feature-subset baselines, and non-ML baseline comparisons.
+
+Demotion did not remove these artifacts from integrity coverage. The frozen archive
+is validated by `scripts/validate_experimental_integrity.py`, which enforces a
+registry/disk digest bijection, a code-pinned inventory of the frozen historical
+bytes, and a status contract whose governance fields — family, lane, calibration and
+promotion claims, migration provenance, and the exact warning text — are all pinned
+in validator code rather than in the editable registry:
+
+```bash
+python3 scripts/validate_experimental_integrity.py
+```
 
 ### Historical truth layer checklist (inspect before trusting ML metrics)
 

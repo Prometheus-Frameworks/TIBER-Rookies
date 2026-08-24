@@ -1,4 +1,5 @@
 import unittest
+import hashlib
 import json
 import subprocess
 import tempfile
@@ -6,6 +7,7 @@ from pathlib import Path
 
 from scripts.compute_rookie_ml_lane import (
     BASELINE_MODEL_FEATURES,
+    DEFAULT_OUTPUT_DIR,
     SplitBundle,
     _extract_hit_label,
     build_canonical_historical_outcomes,
@@ -20,6 +22,7 @@ from scripts.compute_rookie_ml_lane import (
     build_missingness_summary,
     build_labeled_rows,
     pr_auc,
+    reject_protected_output_dir,
     roc_auc,
     time_split,
 )
@@ -288,6 +291,125 @@ class RookieMlLaneTests(unittest.TestCase):
             self.assertTrue((output_dir / "historical_feature_consistency_report.json").exists())
             self.assertTrue((output_dir / "historical_class_coverage_report.json").exists())
             self.assertTrue((output_dir / "historical_position_slices_report.json").exists())
+
+
+class ExperimentalOutputSemanticsTests(unittest.TestCase):
+    """A generated future result must not read as promoted or calibrated (#286 WP-2)."""
+
+    def test_default_output_dir_is_a_run_destination(self) -> None:
+        self.assertEqual(DEFAULT_OUTPUT_DIR, "runs/rookie-ml-lane")
+        self.assertNotIn("exports/promoted", DEFAULT_OUTPUT_DIR)
+        # Critically, not the frozen archive: the documented default command
+        # must not overwrite immutable historical bytes.
+        self.assertNotEqual(DEFAULT_OUTPUT_DIR, "exports/experimental/rookie-ml-lane")
+
+    def test_promoted_output_dir_is_refused(self) -> None:
+        """Negative control: redirecting the producer must fail explicitly."""
+        for candidate in (
+            "exports/promoted/rookie-ml-lane",
+            "exports/promoted",
+            "exports/promoted/rookie-alpha",
+            "exports/promoted/nested/deeper",
+        ):
+            with self.subTest(output_dir=candidate):
+                with self.assertRaises(SystemExit) as raised:
+                    reject_protected_output_dir(Path(candidate))
+                self.assertIn("Refusing to write", str(raised.exception))
+
+    def test_frozen_archive_output_dir_is_refused(self) -> None:
+        """Negative control: a run must never target the immutable archive."""
+        for candidate in (
+            "exports/experimental/rookie-ml-lane",
+            "exports/experimental/rookie-ml-lane/nested",
+            "/somewhere/else/exports/experimental/rookie-ml-lane",
+        ):
+            with self.subTest(output_dir=candidate):
+                with self.assertRaises(SystemExit) as raised:
+                    reject_protected_output_dir(Path(candidate))
+                self.assertIn("frozen migration archive", str(raised.exception))
+
+    def test_run_output_dirs_are_allowed(self) -> None:
+        for candidate in ("runs/rookie-ml-lane", "exports/candidate/x"):
+            with self.subTest(output_dir=candidate):
+                reject_protected_output_dir(Path(candidate))
+
+    def test_promoted_redirect_fails_before_writing_anything(self) -> None:
+        """The guard must refuse at the CLI boundary, not after producing files."""
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            promoted_target = root / "exports/promoted/rookie-ml-lane"
+            result = subprocess.run(
+                [
+                    "python3",
+                    "scripts/compute_rookie_ml_lane.py",
+                    "--output-dir",
+                    str(promoted_target),
+                ],
+                cwd=Path(__file__).resolve().parents[1],
+                capture_output=True,
+                text=True,
+            )
+            self.assertNotEqual(result.returncode, 0, "producer should exit non-zero")
+            self.assertIn("Refusing to write", result.stdout + result.stderr)
+            self.assertFalse(promoted_target.exists(), "no artifact may be written")
+
+    def test_generated_report_and_sidecar_carry_experimental_semantics(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            output_dir = Path(tmp) / "out"
+            result = subprocess.run(
+                [
+                    "python3",
+                    "scripts/compute_rookie_ml_lane.py",
+                    "--output-dir",
+                    str(output_dir),
+                ],
+                cwd=Path(__file__).resolve().parents[1],
+                capture_output=True,
+                text=True,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+
+            report = json.loads((output_dir / "evaluation_report.json").read_text(encoding="utf-8"))
+            sidecar_path = output_dir / "experimental_status_v0.json"
+            self.assertTrue(sidecar_path.is_file(), "status sidecar must accompany every run")
+            sidecar = json.loads(sidecar_path.read_text(encoding="utf-8"))
+
+            for payload, label in ((report, "evaluation_report"), (sidecar, "status sidecar")):
+                with self.subTest(payload=label):
+                    self.assertEqual(
+                        payload["artifact_class"], "experimental_fixture_evaluation"
+                    )
+                    self.assertIs(payload["is_calibrated_probability"], False)
+                    self.assertIs(payload["eligible_for_promotion"], False)
+                    self.assertIn(
+                        "not calibrated",
+                        payload["uncalibrated_probability_warning"].lower(),
+                    )
+
+            self.assertEqual(sidecar["schema_version"], "experimental-status-v0.1.0")
+            self.assertEqual(sidecar["status_kind"], "generated_run")
+            self.assertIs(sidecar["replaces_deterministic_rookie_alpha"], False)
+            # A run has performed no migration and must not claim archive provenance.
+            self.assertNotIn("migration", sidecar)
+            self.assertNotIn("frozen_historical_artifacts", sidecar)
+            # The sidecar must inventory the run it accompanies, recursively and
+            # with digests, so a nested file cannot hide and a byte edit cannot
+            # pass on filename alone.
+            produced = sorted(
+                p.relative_to(output_dir).as_posix()
+                for p in output_dir.rglob("*")
+                if p.is_file() and p.name != "experimental_status_v0.json"
+            )
+            declared = sidecar["generated_artifacts"]
+            self.assertEqual([a["path"] for a in declared], produced)
+            for entry in declared:
+                with self.subTest(artifact=entry["path"]):
+                    target = output_dir / entry["path"]
+                    self.assertEqual(entry["bytes"], target.stat().st_size)
+                    self.assertEqual(
+                        entry["sha256"],
+                        hashlib.sha256(target.read_bytes()).hexdigest(),
+                    )
 
 
 if __name__ == "__main__":

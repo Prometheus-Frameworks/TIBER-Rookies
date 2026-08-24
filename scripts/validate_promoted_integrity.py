@@ -29,6 +29,14 @@ entries for duplicates of the fifth and stay green. The registry therefore
 carries no manifest contract at all, and a family entry bearing any key beyond
 `family` and `artifacts` is rejected rather than ignored.
 
+The experimental Rookie ML lane is deliberately absent from DECLARED_FAMILIES.
+It was demoted out of the promoted namespace in issue #286 (WP-2) and is now
+covered by `validate_experimental_integrity.py`, which enforces the same
+fail-closed digest bijection plus a pinned frozen inventory and a non-promotable
+status contract. Demotion moved it to a different validator, not out of
+validation: an ML artifact reappearing under `exports/promoted/` fails the
+bijection below *and* the demotion tier there.
+
 A family absent from EXPECTED_MANIFEST_CHECKS receives digest enforcement only.
 That is a property of the repository, not a skipped check: those families
 declare no manifest or schema contract anywhere in the repo, and this validator
@@ -68,7 +76,6 @@ DECLARED_FAMILIES = (
     "historical-comps",
     "nfl-fantasy-outcomes",
     "rookie-alpha",
-    "rookie-ml-lane",
     "rookie-transition-profile",
 )
 

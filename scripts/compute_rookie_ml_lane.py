@@ -5,6 +5,23 @@ This script intentionally does NOT replace deterministic rookie-alpha scoring.
 It builds a labeled historical table, runs interpretable baseline models with
 class-year-aware splits, compares against simple non-ML baselines, and exports
 held-out scored probabilities.
+
+This lane is experimental and is **not** a promoted model. Its outputs are
+fixture-fed evaluation artifacts: the probability-shaped fields it emits are not
+calibrated probabilities and confer no promotion eligibility. Issue #286 (WP-2)
+demoted the lane out of `exports/promoted/`.
+
+Output defaults to `runs/rookie-ml-lane`, deliberately outside `exports/`. The
+committed archive at `exports/experimental/rookie-ml-lane` is frozen at the
+authorized base commit, and a generated run must never land on top of it: doing
+so would overwrite immutable historical bytes and replace the migration record
+with a run-shaped sidecar. Writing into either the promoted namespace or a
+frozen archive is refused outright rather than merely discouraged.
+
+Every run emits a status sidecar (`experimental_status_v0.json`) and stamps the
+same semantics into the generated reports, so a result cannot be separated from
+its disclaimer. Validate a run with
+`validate_experimental_integrity.py --run-dir <path>`.
 """
 
 from __future__ import annotations
@@ -13,12 +30,34 @@ import argparse
 import csv
 import json
 import math
+import os
 import random
 import re
+import shutil
+import sys
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+# The governed experimental contract is owned by the validator; importing it
+# here keeps the producer from drifting out of agreement with what CI enforces.
+from scripts.validate_experimental_integrity import (  # noqa: E402
+    EXPECTED_RUN_ARTIFACTS,
+    FROZEN_ARCHIVE_DIRS,
+    GOVERNED_UNCALIBRATED_WARNING,
+    PINNED_FAMILY_IDENTITY,
+    PINNED_STATUS_CLAIMS,
+    RUN_STATUS_KIND,
+    STATUS_SCHEMA_VERSION,
+    STATUS_SIDECAR_NAME,
+    sha256_file,
+    validate_generated_run,
+)
 
 FEATURE_COLUMNS = [
     "draft_capital_proxy_0_100",
@@ -56,6 +95,30 @@ WEAK_LABEL_SOURCES = {
     "career_outcome_label",
 }
 STRONG_FEATURE_COMPLETENESS_THRESHOLD = 0.70
+
+# Generated runs go to their own destination, deliberately outside `exports/`.
+# The committed archive under exports/experimental/rookie-ml-lane is frozen at
+# the authorized base commit; writing a fresh run on top of it would overwrite
+# those immutable bytes and strip the migration record. Run output is not a
+# committed export until someone deliberately makes it one.
+DEFAULT_OUTPUT_DIR = "runs/rookie-ml-lane"
+
+# The namespace this lane was demoted out of (#286 WP-2). Writing here would
+# re-assert a promotion claim the lane is not entitled to make, so the producer
+# fails closed instead of silently producing promoted-looking artifacts.
+PROMOTED_NAMESPACE = "exports/promoted"
+
+# The governed contract is owned by the validator, not restated here, so the
+# producer cannot drift out of agreement with what CI enforces.
+UNCALIBRATED_PROBABILITY_WARNING = GOVERNED_UNCALIBRATED_WARNING
+
+# Stamped into every generated report so the semantics travel with the bytes.
+EXPERIMENTAL_SEMANTICS: dict[str, Any] = {
+    "artifact_class": PINNED_STATUS_CLAIMS["artifact_class"],
+    "is_calibrated_probability": PINNED_STATUS_CLAIMS["is_calibrated_probability"],
+    "eligible_for_promotion": PINNED_STATUS_CLAIMS["eligible_for_promotion"],
+    "uncalibrated_probability_warning": GOVERNED_UNCALIBRATED_WARNING,
+}
 
 
 @dataclass
@@ -915,13 +978,439 @@ def write_csv(path: Path, rows: list[dict[str, Any]]) -> None:
         writer.writerows(rows)
 
 
+def reject_protected_output_dir(output_dir: Path) -> None:
+    """Refuse to write this experimental lane into a protected location.
+
+    Two destinations are refused, both before any file is written:
+
+    * the promoted namespace, because this lane is not a promoted model; and
+    * a frozen migration archive, because those bytes are immutable and a run
+      would overwrite them and strip the committed migration record.
+
+    Raises SystemExit rather than warning: a silent write to either location
+    destroys exactly what #286 WP-2 established.
+    """
+    resolved = output_dir.expanduser().resolve()
+
+    def _matches(namespace: str) -> bool:
+        root = Path(namespace).resolve()
+        if resolved == root or resolved.is_relative_to(root):
+            return True
+        # Also catch a protected-shaped path outside this checkout: an operator
+        # pointing at another clone is making the same claim, and resolving
+        # against the CWD alone would let it through.
+        marker = Path(namespace).parts
+        parts = resolved.parts
+        return any(
+            parts[i : i + len(marker)] == marker for i in range(len(parts) - len(marker) + 1)
+        )
+
+    if _matches(PROMOTED_NAMESPACE):
+        raise SystemExit(
+            f"Refusing to write experimental ML lane output into the promoted namespace: "
+            f"{output_dir}. This lane is not a promoted model (issue #286, WP-2); its "
+            f"outputs are experimental fixture-fed evaluation artifacts and are not "
+            f"eligible for promotion. Write to {DEFAULT_OUTPUT_DIR} instead."
+        )
+
+    for archive in FROZEN_ARCHIVE_DIRS:
+        if _matches(archive):
+            raise SystemExit(
+                f"Refusing to write generated output into the frozen migration archive: "
+                f"{output_dir}. The artifacts under {archive} are pinned byte-for-byte to "
+                f"the authorized base commit (issue #286, WP-2) and must not be "
+                f"overwritten by a new run. Write to {DEFAULT_OUTPUT_DIR} instead."
+            )
+
+
+def classify_output_dir(output_dir: Path, replace: bool) -> DestinationAuthorization:
+    """Refuse to generate into a directory that already holds files.
+
+    The run destination is reusable and gitignored, so anything left there from a
+    previous run - or dropped in by hand - would be inventoried by the sidecar as
+    freshly generated output and would validate. Requiring a clean destination is
+    what keeps the run inventory a statement about *this* run.
+
+    Returns an immutable `DestinationAuthorization` describing what commit is
+    later permitted to replace: absent, empty, or an exact valid prior run
+    captured with per-file digests and sizes. **This function never writes,
+    deletes, or moves anything** - deciding that a prior run *may* be replaced is
+    separate from replacing it, and replacement happens only after a complete new
+    run has been generated and validated (see `commit_staged_run`).
+
+    `--replace-run` clears a previous run, but classification is **entirely
+    read-only until the decision is made**. An earlier revision deleted every
+    recognized filename first and only then looked for unexpected leftovers, so
+    pointing it at an unrelated directory containing, say, someone's own
+    `evaluation_report.json` destroyed that file and *then* refused the run. The
+    command failed and the data was already gone.
+
+    Automatic replacement is now permitted only when the directory is
+    demonstrably an exact, valid prior run of this producer: the file set matches
+    the expected universe exactly, there are no subdirectories, and
+    `validate_generated_run()` passes. Anything missing, tampered, nested, or
+    unexpected refuses with the directory byte-for-byte unchanged.
+    """
+    if not output_dir.exists():
+        return DestinationAuthorization(DEST_ABSENT)
+
+    present = sorted(
+        p.relative_to(output_dir).as_posix() for p in output_dir.rglob("*") if p.is_file()
+    )
+    subdirs = sorted(
+        p.relative_to(output_dir).as_posix() for p in output_dir.rglob("*") if p.is_dir()
+    )
+    if not present and not subdirs:
+        return DestinationAuthorization(DEST_EMPTY)
+
+    def refuse(reason: str) -> None:
+        raise SystemExit(
+            f"Refusing to generate into a non-empty run directory: {output_dir}\n"
+            f"{reason}\n"
+            f"Nothing has been deleted. A run sidecar inventories whatever it finds, so a "
+            f"stale or injected file would be recorded as freshly generated output. Remove "
+            f"the directory yourself and re-run."
+        )
+
+    if not replace:
+        refuse(
+            f"Files present: {present or '(none, but subdirectories exist: %s)' % subdirs}\n"
+            f"Pass --replace-run to clear an exact, valid prior run of this producer."
+        )
+
+    # --replace-run from here down. Every check below is read-only.
+    expected = set(EXPECTED_RUN_ARTIFACTS) | {STATUS_SIDECAR_NAME}
+    unexpected = sorted(set(present) - expected)
+    missing = sorted(expected - set(present))
+    if unexpected or missing or subdirs:
+        detail = []
+        if unexpected:
+            detail.append(f"unexpected files: {unexpected}")
+        if missing:
+            detail.append(f"missing expected files: {missing}")
+        if subdirs:
+            detail.append(f"unexpected subdirectories: {subdirs}")
+        refuse(
+            f"--replace-run only clears an exact, valid prior run of this producer, and "
+            f"this directory is not one ({'; '.join(detail)})."
+        )
+
+    errors = validate_generated_run(output_dir)
+    if errors:
+        refuse(
+            f"--replace-run only clears a prior run that still validates, and this one "
+            f"does not: {errors[0]}"
+        )
+
+    # Classification passed: this is an exact, valid prior run. It is NOT deleted
+    # here - the caller stages a complete replacement first and only swaps at the
+    # end. The snapshot is what commit re-proves before replacing anything.
+    files, dirs = directory_snapshot(output_dir)
+    return DestinationAuthorization(DEST_VALID_PRIOR_RUN, files=files, dirs=dirs)
+
+
+STAGING_SUFFIX = ".staging"
+PREVIOUS_SUFFIX = ".previous"
+
+# What classification found at the destination. Commit must re-prove this at swap
+# time: classification happens before generation, and the filesystem is not frozen
+# in between.
+DEST_ABSENT = "absent"
+DEST_EMPTY = "empty"
+DEST_VALID_PRIOR_RUN = "valid_prior_run"
+
+
+@dataclass(frozen=True)
+class DestinationAuthorization:
+    """An immutable record of exactly what commit is permitted to replace.
+
+    Carrying only a list of filenames was not enough: commit checked whether the
+    destination existed and replaced whatever it found, so a file that arrived
+    during generation was deleted despite never having been authorized. The
+    snapshot below is the compare half of a compare-and-swap.
+    """
+
+    state: str
+    files: tuple[tuple[str, str, int], ...] = ()
+    dirs: tuple[str, ...] = ()
+
+
+def directory_snapshot(directory: Path) -> tuple[tuple[tuple[str, str, int], ...], tuple[str, ...]]:
+    """(files with digest and size, subdirectories) for `directory`, recursively."""
+    files = tuple(
+        sorted(
+            (p.relative_to(directory).as_posix(), sha256_file(p), p.stat().st_size)
+            for p in directory.rglob("*")
+            if p.is_file()
+        )
+    )
+    dirs = tuple(
+        sorted(p.relative_to(directory).as_posix() for p in directory.rglob("*") if p.is_dir())
+    )
+    return files, dirs
+
+
+def prepare_staging_dir(final_dir: Path) -> Path:
+    """A fresh, empty sibling directory to generate into.
+
+    Generation writes here, never into the destination. Input loading, holdout
+    validation, modelling, output writing, and staged validation can all fail
+    without an existing valid run having been touched.
+    """
+    staging = final_dir.parent / (final_dir.name + STAGING_SUFFIX)
+    if staging.exists():
+        raise SystemExit(
+            f"Refusing to run: staging path already exists: {staging}\n"
+            f"Nothing has been deleted. A previous run may have been interrupted; "
+            f"inspect and remove it yourself."
+        )
+    staging.mkdir(parents=True)
+    return staging
+
+
+def commit_staged_run(
+    staging: Path,
+    final_dir: Path,
+    authorization: DestinationAuthorization,
+    staged_snapshot: tuple[tuple[tuple[str, str, int], ...], tuple[str, ...]],
+) -> None:
+    """Install a validated staged run, replacing only what was authorized.
+
+    Two independent authorizations meet here, and both are re-proven rather than
+    assumed:
+
+    * `authorization` - what the destination looked like when classification ran,
+      before generation. Commit must not replace anything else.
+    * `staged_snapshot` - the exact bytes that passed `validate_generated_run()`.
+      Commit must not install anything else.
+
+    Each was learned before an interval in which the filesystem could change, so
+    each is checked again at the moment it is relied upon: staging immediately
+    before the destination is touched, and the *installed* directory after the
+    swap but before the superseded copy is discarded. An earlier revision proved
+    only the destination half, so a file added to staging between validation and
+    commit was installed, the resulting invalid run replaced a valid one, and the
+    command exited 0.
+
+    On any refusal the destination returns to its authorized state and the
+    rejected candidate is preserved at `staging` for inspection.
+    """
+    previous = final_dir.parent / (final_dir.name + PREVIOUS_SUFFIX)
+
+    def refuse(reason: str) -> None:
+        raise SystemExit(
+            f"Refusing to commit the staged run: {reason}\n"
+            f"Nothing at {final_dir} has been deleted or modified, and the staged run "
+            f"is preserved at {staging} for inspection."
+        )
+
+    def describe_drift(actual, expected) -> str:
+        actual_files, actual_dirs = actual
+        expected_files, expected_dirs = expected
+        added = {f[0] for f in actual_files} - {f[0] for f in expected_files}
+        removed = {f[0] for f in expected_files} - {f[0] for f in actual_files}
+        modified = {f[0] for f in set(actual_files) ^ set(expected_files)} - added - removed
+        detail = []
+        if added:
+            detail.append(f"added: {sorted(added)}")
+        if removed:
+            detail.append(f"removed: {sorted(removed)}")
+        if modified:
+            detail.append(f"modified: {sorted(modified)}")
+        if set(actual_dirs) != set(expected_dirs):
+            detail.append(
+                f"subdirectories changed: {sorted(set(actual_dirs) ^ set(expected_dirs))}"
+            )
+        return "; ".join(detail) or "content differs"
+
+    if previous.exists():
+        refuse(f"rollback path already exists: {previous}")
+
+    # --- The candidate must still be the one validation authorized -----------
+    current_staged = directory_snapshot(staging)
+    if current_staged != staged_snapshot:
+        refuse(
+            f"the staged candidate changed after it passed validation "
+            f"({describe_drift(current_staged, staged_snapshot)}). Only the exact bytes "
+            f"that were validated may be installed."
+        )
+
+    # --- The destination must still be what classification authorized --------
+    moved_aside = False
+    if authorization.state == DEST_ABSENT:
+        if final_dir.exists():
+            refuse(
+                f"the destination did not exist at classification but something now "
+                f"occupies {final_dir}. It was never authorized for replacement."
+            )
+    elif authorization.state == DEST_EMPTY:
+        if not final_dir.is_dir():
+            refuse(
+                f"the destination was an empty directory at classification but "
+                f"{final_dir} is no longer one"
+            )
+        files, dirs = directory_snapshot(final_dir)
+        if files or dirs:
+            refuse(
+                f"the destination was empty at classification but now contains "
+                f"{len(files)} file(s) and {len(dirs)} subdirectory(ies). Their arrival "
+                f"was never authorized."
+            )
+        os.rmdir(final_dir)
+    else:
+        if not final_dir.is_dir():
+            refuse(f"the authorized prior run at {final_dir} has disappeared")
+        os.rename(final_dir, previous)
+        moved_aside = True
+        actual = directory_snapshot(previous)
+        drift: str | None = None
+        if actual != (authorization.files, authorization.dirs):
+            drift = (
+                f"the prior run changed after it was authorized "
+                f"({describe_drift(actual, (authorization.files, authorization.dirs))})"
+            )
+        elif validate_generated_run(previous):
+            drift = "the prior run no longer validates as a complete generated run"
+        if drift is not None:
+            try:
+                os.rename(previous, final_dir)
+            except OSError as exc:  # pragma: no cover - filesystem-level failure
+                raise SystemExit(
+                    f"Commit refused because {drift}, but restoring it failed: {exc}\n"
+                    f"NOTHING HAS BEEN DELETED. The prior run is intact at {previous} and "
+                    f"the staged run at {staging}. Move {previous} back to {final_dir} by hand."
+                ) from exc
+            refuse(drift)
+
+    def restore_destination() -> None:
+        """Put the destination back into its authorized state."""
+        if authorization.state == DEST_EMPTY:
+            final_dir.mkdir(parents=True, exist_ok=True)
+        elif moved_aside:
+            os.rename(previous, final_dir)
+        # DEST_ABSENT needs nothing: absence is restored by the candidate leaving.
+
+    try:
+        os.rename(staging, final_dir)
+    except OSError as exc:
+        try:
+            restore_destination()
+        except OSError as restore_exc:  # pragma: no cover - filesystem-level failure
+            raise SystemExit(
+                f"Installing the staged run failed ({exc}) and restoring the destination "
+                f"also failed ({restore_exc}).\n"
+                f"NOTHING HAS BEEN DELETED. The prior run is intact at {previous} and the "
+                f"staged run at {staging}. Move {previous} back to {final_dir} by hand."
+            ) from exc
+        raise
+
+    # --- The installed run must BE the validated candidate -------------------
+    installed = directory_snapshot(final_dir)
+    problem: str | None = None
+    if installed != staged_snapshot:
+        problem = (
+            f"the installed run does not match the validated candidate "
+            f"({describe_drift(installed, staged_snapshot)})"
+        )
+    else:
+        installed_errors = validate_generated_run(final_dir)
+        if installed_errors:
+            problem = (
+                f"the installed run failed validation at its destination: "
+                f"{installed_errors[0]}"
+            )
+
+    if problem is not None:
+        try:
+            os.rename(final_dir, staging)
+        except OSError as exc:  # pragma: no cover - filesystem-level failure
+            raise SystemExit(
+                f"Commit refused because {problem}, but moving the rejected candidate "
+                f"back to {staging} failed: {exc}\n"
+                f"NOTHING HAS BEEN DELETED. The rejected candidate is at {final_dir} and "
+                f"the prior run, if any, at {previous}. Recover by hand."
+            ) from exc
+        try:
+            restore_destination()
+        except OSError as exc:  # pragma: no cover - filesystem-level failure
+            raise SystemExit(
+                f"Commit refused because {problem}, and restoring the destination failed: "
+                f"{exc}\n"
+                f"NOTHING HAS BEEN DELETED. The rejected candidate is preserved at "
+                f"{staging} and the prior run at {previous}. Move {previous} back to "
+                f"{final_dir} by hand."
+            ) from exc
+        refuse(problem)
+
+    if moved_aside:
+        try:
+            shutil.rmtree(previous)
+        except OSError as exc:  # pragma: no cover - filesystem-level failure
+            # The swap succeeded and the new run is in place; only cleanup failed.
+            print(
+                f"WARNING: the new run is installed at {final_dir}, but removing the "
+                f"superseded copy at {previous} failed ({exc}). Delete it by hand.",
+                file=sys.stderr,
+            )
+            return
+        if authorization.files:
+            print(f"Replaced a prior run of {len(authorization.files)} artifact(s) at {final_dir}.")
+
+
+def build_status_sidecar(output_dir: Path, generated_at: str) -> dict[str, Any]:
+    """The governed status record that must accompany every generated result.
+
+    Declares `status_kind: generated_run`, and deliberately carries no
+    `migration` or `frozen_historical_artifacts` block: a fresh run has
+    performed no byte-preserving migration and must not present itself as the
+    frozen archive.
+
+    The inventory is recursive and digest-bearing so that a nested file cannot
+    hide from validation and an edit to a declared artifact cannot pass on its
+    filename alone. It is still a self-declaration; the validator cross-checks it
+    against EXPECTED_RUN_ARTIFACTS, which is pinned in code.
+    """
+    artifacts = [
+        {
+            "path": rel,
+            "sha256": sha256_file(output_dir / rel),
+            "bytes": (output_dir / rel).stat().st_size,
+        }
+        for rel in sorted(
+            p.relative_to(output_dir).as_posix()
+            for p in output_dir.rglob("*")
+            if p.is_file() and p.relative_to(output_dir).as_posix() != STATUS_SIDECAR_NAME
+        )
+    ]
+    return {
+        "schema_version": STATUS_SCHEMA_VERSION,
+        "status_kind": RUN_STATUS_KIND,
+        "family": PINNED_FAMILY_IDENTITY["rookie-ml-lane"],
+        **PINNED_STATUS_CLAIMS,
+        "uncalibrated_probability_warning": GOVERNED_UNCALIBRATED_WARNING,
+        "generated_at": generated_at,
+        "generated_artifacts": artifacts,
+    }
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Build and evaluate parallel ML rookie lane.")
     parser.add_argument("--historical-features", default="data/historical/historical_prospect_features.sample.json")
     parser.add_argument("--historical-outcomes", default="data/historical/historical_player_outcomes.ml_sample.json")
     parser.add_argument("--rookie-alpha-dir", default="exports/promoted/rookie-alpha")
     parser.add_argument("--holdout-year", type=int, default=None)
-    parser.add_argument("--output-dir", default="exports/promoted/rookie-ml-lane")
+    parser.add_argument("--output-dir", default=DEFAULT_OUTPUT_DIR)
+    parser.add_argument(
+        "--replace-run",
+        action="store_true",
+        help=(
+            "Permit replacing an exact, valid prior run of this producer at the output "
+            "directory. Nothing is deleted up front: the new run is generated into a "
+            "staging directory and validated, and the prior run is replaced only if it "
+            "is still byte-for-byte what was authorized. Anything else refuses without "
+            "deleting or modifying either directory."
+        ),
+    )
     parser.add_argument("--seed", type=int, default=42)
     return parser.parse_args()
 
@@ -929,6 +1418,11 @@ def parse_args() -> argparse.Namespace:
 def main() -> None:
     args = parse_args()
     random.seed(args.seed)
+
+    final_output_dir = Path(args.output_dir)
+    reject_protected_output_dir(final_output_dir)
+    # Read-only: decides whether a prior run *may* be replaced. Deletes nothing.
+    authorization = classify_output_dir(final_output_dir, replace=args.replace_run)
 
     features = load_json(Path(args.historical_features))
     outcomes = load_json(Path(args.historical_outcomes))
@@ -999,53 +1493,118 @@ def main() -> None:
         else {"model_name": None, "features_ranked": []}
     )
 
-    output_dir = Path(args.output_dir)
-    write_json(output_dir / "historical_outcomes_canonical.json", canonical_outcomes)
-    write_json(output_dir / "historical_label_provenance_report.json", provenance_report)
-    write_json(output_dir / "historical_feature_consistency_report.json", feature_consistency_report)
-    write_json(output_dir / "historical_class_coverage_report.json", class_coverage_report)
-    write_json(output_dir / "historical_position_slices_report.json", position_slices_report)
-    write_json(output_dir / "historical_labeled_dataset.json", labeled)
-    write_csv(output_dir / "historical_labeled_dataset.csv", labeled)
-    write_json(output_dir / "feature_table.json", [{k: row.get(k) for k in ["player_id", "draft_year", "position", *FEATURE_COLUMNS, "hit_label"]} for row in labeled])
+    # Generate into a fresh staging sibling, never into the destination. Input
+    # loading, holdout validation, modelling, writing, and staged validation can
+    # all fail here without an existing valid run having been touched.
+    staging_dir = prepare_staging_dir(final_output_dir)
+    output_dir = staging_dir
+    try:
+        write_json(output_dir / "historical_outcomes_canonical.json", canonical_outcomes)
+        write_json(output_dir / "historical_label_provenance_report.json", provenance_report)
+        write_json(output_dir / "historical_feature_consistency_report.json", feature_consistency_report)
+        write_json(output_dir / "historical_class_coverage_report.json", class_coverage_report)
+        write_json(output_dir / "historical_position_slices_report.json", position_slices_report)
+        write_json(output_dir / "historical_labeled_dataset.json", labeled)
+        write_csv(output_dir / "historical_labeled_dataset.csv", labeled)
+        write_json(output_dir / "feature_table.json", [{k: row.get(k) for k in ["player_id", "draft_year", "position", *FEATURE_COLUMNS, "hit_label"]} for row in labeled])
 
-    write_json(output_dir / "dataset_diagnostics.json", diagnostics)
-    write_json(output_dir / "feature_coverage_report.json", coverage)
-    write_json(output_dir / "feature_importance_report.json", feature_importance_report)
-    report = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "lane": "parallel_ml_evaluation_only",
-        "split_strategy": "time_aware_by_draft_class",
-        "split_years": split.years,
-        "n_labeled_rows": len(labeled),
-        "n_test_rows": len(split.test),
-        "dataset_warnings": warnings,
-        "historical_truth_summary": {
-            "weak_label_fallback_rows": provenance_report["weak_fallback_label_rows"],
-            "rows_without_canonical_label": provenance_report["rows_without_canonical_label"],
-            "positions_not_ready_for_standalone_modeling": [
-                position
-                for position, detail in position_slices_report["positions"].items()
-                if not detail.get("ready_for_standalone_modeling")
-            ],
-        },
-        "missingness_summary": missingness_summary,
-        "ml_models": models_report,
-        "non_ml_baselines": non_ml_report,
-        "draft_capital_dominance_check": baseline_delta,
-        "winning_model_by_test_pr_auc": max(
-            models_report.keys(),
-            key=lambda name: (models_report[name]["test"]["pr_auc"] if models_report[name]["test"]["pr_auc"] is not None else -1),
+        write_json(output_dir / "dataset_diagnostics.json", diagnostics)
+        write_json(output_dir / "feature_coverage_report.json", coverage)
+        write_json(output_dir / "feature_importance_report.json", feature_importance_report)
+        generated_at = datetime.now(timezone.utc).isoformat()
+        report = {
+            "generated_at": generated_at,
+            **EXPERIMENTAL_SEMANTICS,
+            "lane": "parallel_ml_evaluation_only",
+            "split_strategy": "time_aware_by_draft_class",
+            "split_years": split.years,
+            "n_labeled_rows": len(labeled),
+            "n_test_rows": len(split.test),
+            "dataset_warnings": warnings,
+            "historical_truth_summary": {
+                "weak_label_fallback_rows": provenance_report["weak_fallback_label_rows"],
+                "rows_without_canonical_label": provenance_report["rows_without_canonical_label"],
+                "positions_not_ready_for_standalone_modeling": [
+                    position
+                    for position, detail in position_slices_report["positions"].items()
+                    if not detail.get("ready_for_standalone_modeling")
+                ],
+            },
+            "missingness_summary": missingness_summary,
+            "ml_models": models_report,
+            "non_ml_baselines": non_ml_report,
+            "draft_capital_dominance_check": baseline_delta,
+            "winning_model_by_test_pr_auc": max(
+                models_report.keys(),
+                key=lambda name: (models_report[name]["test"]["pr_auc"] if models_report[name]["test"]["pr_auc"] is not None else -1),
+            )
+            if models_report
+            else None,
+        }
+
+        write_json(output_dir / "evaluation_report.json", report)
+        write_json(output_dir / "heldout_probabilities.json", final_scores)
+        write_csv(output_dir / "heldout_probabilities.csv", final_scores)
+
+        # Written last so it inventories everything this run produced. The status
+        # sidecar is what makes the experimental semantics inseparable from the
+        # bytes: validate_experimental_integrity.py rejects the family without it.
+        write_json(output_dir / STATUS_SIDECAR_NAME, build_status_sidecar(output_dir, generated_at))
+
+
+        # Candidate authorization, side A: fix the candidate's identity BEFORE
+        # validation reads it. An earlier revision snapshotted after validation
+        # returned, so the interval between the two carried no identity proof: a
+        # self-consistent mutation there (artifact plus sidecar digest) was
+        # snapshotted, authorized, and installed with exit 0, while the bytes
+        # validation had actually read were discarded.
+        pre_validation_snapshot = directory_snapshot(staging_dir)
+
+        # The staged run must validate before it is allowed to replace anything.
+        staged_errors = validate_generated_run(staging_dir)
+        if staged_errors:
+            raise SystemExit(
+                "Staged run failed validation and will not be committed:\n- "
+                + "\n- ".join(staged_errors)
+            )
+
+    except BaseException:
+        # Generation or staged validation failed, so the staging directory holds
+        # an incomplete or invalid run and is worth nothing. Remove it rather
+        # than leaving something that could be mistaken for a candidate.
+        shutil.rmtree(staging_dir, ignore_errors=True)
+        raise
+
+    # Candidate authorization, side B: re-prove the identity AFTER validation,
+    # outside the cleanup handler so a refusal preserves the evidence. Only when
+    # the same snapshot brackets the validation interval is it known which bytes
+    # the verdict applies to. What this cannot see is a mutate-and-revert race
+    # entirely inside the interval; the post-install re-validation bounds that
+    # residual, and it is documented rather than claimed away.
+    post_validation_snapshot = directory_snapshot(staging_dir)
+    if post_validation_snapshot != pre_validation_snapshot:
+        raise SystemExit(
+            f"Refusing to commit: the staged candidate changed while it was being "
+            f"validated, so the validation verdict does not provably describe the "
+            f"bytes now in staging.\n"
+            f"Nothing at {final_output_dir} has been touched. The drifted candidate "
+            f"is preserved at {staging_dir} for inspection."
         )
-        if models_report
-        else None,
-    }
 
-    write_json(output_dir / "evaluation_report.json", report)
-    write_json(output_dir / "heldout_probabilities.json", final_scores)
-    write_csv(output_dir / "heldout_probabilities.csv", final_scores)
+    # These exact bytes are what validation passed; commit installs them or
+    # nothing. From here staging is a complete, proven candidate, and the
+    # commit's own refusal messages promise it survives for inspection - so it
+    # is deliberately NOT wrapped in the cleanup above. An earlier revision left
+    # commit inside that `try`, and every commit refusal was followed by main()
+    # deleting the very staged run the refusal said it had preserved.
+    staged_snapshot = pre_validation_snapshot
+    commit_staged_run(staging_dir, final_output_dir, authorization, staged_snapshot)
 
-    print(f"Wrote ML lane outputs to {output_dir}")
+    print(f"Wrote experimental ML lane outputs to {final_output_dir}")
+    print(
+        "These are experimental fixture-fed evaluation artifacts: not calibrated "
+        "probabilities, not a promoted model, not eligible for promotion."
+    )
 
 
 if __name__ == "__main__":
