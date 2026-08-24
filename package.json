@@ -8,6 +8,7 @@
     "test:runtime-smoke": "node --test tests/runtime-server.smoke.test.cjs",
     "test:card-disclosure": "node --test tests/card-disclosure-wiring.test.mjs tests/phase1b-presentation-integrity.test.mjs",
     "test:phase1b": "node --test tests/phase1b-presentation-integrity.test.mjs",
+    "test:csv-export": "node --test tests/csv-formula-injection.test.mjs",
     "ops:rehearse-2026": "bash scripts/rehearse_draft_week_handoff_2026.sh"
   },
   "engines": {
