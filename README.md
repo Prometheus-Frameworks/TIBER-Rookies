@@ -313,6 +313,14 @@ Failure modes are explicit rather than silent:
 | Rollback itself fails | Exits with both paths named; nothing deleted, manual `mv` required |
 | `.previous` cleanup fails | Swap already succeeded; warns on stderr and exits 0, leaving the superseded copy to delete by hand |
 
+The candidate's identity is fixed **before** staged validation reads it, and
+re-proven after: one snapshot brackets the validation interval, and a mismatch
+refuses with the candidate preserved — so the validation verdict provably
+describes the bytes that commit installs. (A mutate-and-revert race entirely
+inside the interval is beneath the bracket's resolution; the post-install
+re-validation bounds it, so the installed bytes always pass validation at the
+installed boundary and always equal the bracketing snapshot.)
+
 Two authorizations meet at the swap, and both are re-proven rather than assumed:
 the destination must still be what classification saw, **and** the installed run
 must be the exact bytes that passed staged validation. Staging is re-checked

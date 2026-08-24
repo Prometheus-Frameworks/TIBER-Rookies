@@ -1552,6 +1552,14 @@ def main() -> None:
         write_json(output_dir / STATUS_SIDECAR_NAME, build_status_sidecar(output_dir, generated_at))
 
 
+        # Candidate authorization, side A: fix the candidate's identity BEFORE
+        # validation reads it. An earlier revision snapshotted after validation
+        # returned, so the interval between the two carried no identity proof: a
+        # self-consistent mutation there (artifact plus sidecar digest) was
+        # snapshotted, authorized, and installed with exit 0, while the bytes
+        # validation had actually read were discarded.
+        pre_validation_snapshot = directory_snapshot(staging_dir)
+
         # The staged run must validate before it is allowed to replace anything.
         staged_errors = validate_generated_run(staging_dir)
         if staged_errors:
@@ -1560,10 +1568,6 @@ def main() -> None:
                 + "\n- ".join(staged_errors)
             )
 
-        # Snapshot the exact bytes that just passed validation. Commit installs
-        # these or nothing.
-        staged_snapshot = directory_snapshot(staging_dir)
-
     except BaseException:
         # Generation or staged validation failed, so the staging directory holds
         # an incomplete or invalid run and is worth nothing. Remove it rather
@@ -1571,12 +1575,29 @@ def main() -> None:
         shutil.rmtree(staging_dir, ignore_errors=True)
         raise
 
-    # The staged run has passed validation. From here it is a complete, valid
-    # candidate, and the commit's own refusal messages promise it survives for
-    # inspection - so it is deliberately NOT wrapped in the cleanup above. An
-    # earlier revision left commit inside that `try`, and every commit refusal
-    # was followed by main() deleting the very staged run the refusal said it
-    # had preserved.
+    # Candidate authorization, side B: re-prove the identity AFTER validation,
+    # outside the cleanup handler so a refusal preserves the evidence. Only when
+    # the same snapshot brackets the validation interval is it known which bytes
+    # the verdict applies to. What this cannot see is a mutate-and-revert race
+    # entirely inside the interval; the post-install re-validation bounds that
+    # residual, and it is documented rather than claimed away.
+    post_validation_snapshot = directory_snapshot(staging_dir)
+    if post_validation_snapshot != pre_validation_snapshot:
+        raise SystemExit(
+            f"Refusing to commit: the staged candidate changed while it was being "
+            f"validated, so the validation verdict does not provably describe the "
+            f"bytes now in staging.\n"
+            f"Nothing at {final_output_dir} has been touched. The drifted candidate "
+            f"is preserved at {staging_dir} for inspection."
+        )
+
+    # These exact bytes are what validation passed; commit installs them or
+    # nothing. From here staging is a complete, proven candidate, and the
+    # commit's own refusal messages promise it survives for inspection - so it
+    # is deliberately NOT wrapped in the cleanup above. An earlier revision left
+    # commit inside that `try`, and every commit refusal was followed by main()
+    # deleting the very staged run the refusal said it had preserved.
+    staged_snapshot = pre_validation_snapshot
     commit_staged_run(staging_dir, final_output_dir, authorization, staged_snapshot)
 
     print(f"Wrote experimental ML lane outputs to {final_output_dir}")

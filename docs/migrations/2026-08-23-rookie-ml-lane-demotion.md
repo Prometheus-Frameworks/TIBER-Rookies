@@ -126,6 +126,17 @@ leaves everything untouched; a failed staged-install renames the prior run back;
 rollback exits naming both surviving paths for manual recovery; and a failed `.previous`
 cleanup warns on stderr without failing an already-successful replacement.
 
+The validation verdict is bound to the authorized bytes. An earlier revision captured
+the candidate snapshot only after `validate_generated_run()` returned, so the interval
+between them carried no identity proof: a self-consistent mutation there (artifact plus
+sidecar digest updated together) was snapshotted, authorized, and installed with exit 0,
+while the bytes validation had actually read were discarded. One snapshot now brackets
+staged validation — captured before, re-proven after, refusing on mismatch with the
+drifted candidate preserved. The bracket cannot see a mutate-and-revert race confined
+entirely to the validation interval; the post-install re-validation bounds that residual,
+and the guarantee is stated at its true strength: installed bytes equal the bracketing
+snapshot and pass validation at the installed boundary.
+
 Commit proves both halves of the swap. Staged validation authorizes a specific set of
 bytes, and an earlier revision never re-proved that the bytes it installed were those
 bytes: a file added to staging between validation and commit was installed, the resulting
@@ -161,6 +172,21 @@ to reference the new path would falsify the historical record they exist to pres
 they are left byte-unchanged. This classification is enforced, not merely asserted:
 `tests/test_experimental_demotion_references.py` fails if the old promoted path appears
 anywhere outside that allowlist, so any *new* operational reference is rejected in CI.
+
+## Input-read boundary (inspected, deliberately not expanded)
+
+The producer reads three inputs with no identity proof at read time: the two committed
+sample fixtures under `data/historical/`, and `--rookie-alpha-dir`, which defaults to
+`exports/promoted/rookie-alpha` — a read-only consumption of the promoted family. The
+promoted input is digest-pinned *at rest* by `validate_promoted_integrity.py`, but
+nothing proves the bytes read at producer runtime are the ones that validator approved;
+the fixtures carry no pin at all. No WP-2 acceptance condition binds input bytes, so no
+enforced promise is violated. The one textual overlap is the governed warning's phrase
+"over sample fixtures": with substituted inputs that description would be inaccurate,
+though the warning's enforced governance content (uncalibrated, non-promotable) remains
+true regardless of input. Extending identity proofs to inputs is input provenance /
+dataset governance — outside WP-2's authorization — and is recorded here as a scope
+boundary awaiting operator direction, not silently absorbed.
 
 ## Scope boundaries
 

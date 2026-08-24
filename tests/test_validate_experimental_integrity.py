@@ -1778,6 +1778,115 @@ class ProducerRequiresAFreshRunDirectoryTests(unittest.TestCase):
             for suffix in (".staging", ".previous"):
                 self.assertFalse((out.parent / (out.name + suffix)).exists(), suffix)
 
+    # --- The validation verdict must describe the authorized bytes ----------
+    #
+    # Staged validation reads staging; the candidate snapshot is the identity
+    # commit later re-proves. If the snapshot is captured only after validation
+    # returns, the interval between the two carries no identity proof: a
+    # self-consistent mutation there (artifact plus sidecar digest) is
+    # snapshotted, authorized, and installed with exit 0, while the bytes
+    # validation actually read are discarded. The fix brackets validation with
+    # one snapshot taken before and re-proven after; these controls attack that
+    # interval through the real CLI.
+
+    BRACKET_ANCHOR = "    post_validation_snapshot = directory_snapshot(staging_dir)"
+    BRACKET_MESSAGE = "changed while it was being validated"
+
+    def _validation_interval_fault(self, statement_lines):
+        """Patch pair injecting statements between validation and side B."""
+        injected = "\n".join(statement_lines + [self.BRACKET_ANCHOR])
+        return (self.BRACKET_ANCHOR, injected)
+
+    SELF_CONSISTENT_MUTATION = [
+        "    _t = staging_dir / 'feature_importance_report.json'",
+        "    _t.write_text('{\"tampered\": true}', encoding='utf-8')",
+        "    _sc = staging_dir / STATUS_SIDECAR_NAME",
+        "    _payload = json.loads(_sc.read_text(encoding='utf-8'))",
+        "    for _e in _payload['generated_artifacts']:",
+        "        if _e['path'] == 'feature_importance_report.json':",
+        "            _e['sha256'] = sha256_file(_t); _e['bytes'] = _t.stat().st_size",
+        "    _sc.write_text(json.dumps(_payload, indent=2), encoding='utf-8')",
+    ]
+
+    def assert_bracket_refusal(self, out: Path, statement_lines, extra_patches=()):
+        """The interval mutation must refuse at the bracket, touching nothing."""
+        before = self._snapshot(out)
+        patches = [self._validation_interval_fault(statement_lines), *extra_patches]
+        result = self._run_patched(patches, out, "--replace-run")
+
+        self.assertNotEqual(result.returncode, 0, "an unproven candidate must not install")
+        self.assertIn(
+            self.BRACKET_MESSAGE,
+            result.stdout + result.stderr,
+            "refusal did not come from the validation-identity bracket",
+        )
+        self.assertEqual(before, self._snapshot(out), "destination was touched")
+        self.assertEqual(validate_generated_run(out), [], "prior run no longer validates")
+        staging = out.parent / (out.name + ".staging")
+        self.assertTrue(staging.is_dir(), "drifted candidate was not preserved")
+        self.assertFalse((out.parent / (out.name + ".previous")).exists())
+        return result
+
+    def test_cli_self_consistent_mutation_during_validation_is_refused(self) -> None:
+        """The exact reproduced attack: artifact and sidecar digest updated
+        together in the interval, so every downstream digest comparison and
+        re-validation passes. Only the bracket can see it. Destination renames
+        are counted and must be zero: nothing may touch the destination."""
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+
+            counter = Path(tmp) / "renames.log"
+            instrument = (
+                self.BRACKET_ANCHOR,
+                "\n".join(
+                    [
+                        "    _real_rename = os.rename",
+                        "    def _counted(src, dst):",
+                        f"        open({str(counter)!r}, 'a').write(f'{{src}} -> {{dst}}\\n')",
+                        "        return _real_rename(src, dst)",
+                        "    os.rename = _counted",
+                        self.BRACKET_ANCHOR,
+                    ]
+                ),
+            )
+            self.assert_bracket_refusal(
+                out, self.SELF_CONSISTENT_MUTATION, extra_patches=[instrument]
+            )
+            renames = counter.read_text(encoding="utf-8") if counter.exists() else ""
+            self.assertEqual(renames, "", f"destination was renamed: {renames!r}")
+
+    def test_cli_plain_byte_edit_during_validation_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            self.assert_bracket_refusal(
+                out,
+                [
+                    "    _t = staging_dir / 'evaluation_report.json'",
+                    "    _b = _t.read_bytes()",
+                    "    _t.write_bytes(bytes([_b[0] ^ 0x20]) + _b[1:])",
+                ],
+            )
+
+    def test_cli_file_added_during_validation_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            self.assert_bracket_refusal(
+                out,
+                ["    (staging_dir / 'injected.txt').write_text('x', encoding='utf-8')"],
+            )
+
+    def test_cli_file_deleted_during_validation_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            self.assert_bracket_refusal(
+                out,
+                ["    (staging_dir / 'feature_table.json').unlink()"],
+            )
+
     def test_a_clean_run_matches_the_pinned_universe(self) -> None:
         """The pinned expectation must track what the producer actually emits."""
         with tempfile.TemporaryDirectory() as tmp:
