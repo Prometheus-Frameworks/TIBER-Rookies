@@ -47,3 +47,6 @@ jobs:
 
       - name: Run card disclosure tests
         run: npm run test:card-disclosure
+
+      - name: Run CSV export formula-injection tests
+        run: npm run test:csv-export
