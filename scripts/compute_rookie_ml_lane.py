@@ -1169,27 +1169,31 @@ def prepare_staging_dir(final_dir: Path) -> Path:
 
 
 def commit_staged_run(
-    staging: Path, final_dir: Path, authorization: DestinationAuthorization
+    staging: Path,
+    final_dir: Path,
+    authorization: DestinationAuthorization,
+    staged_snapshot: tuple[tuple[tuple[str, str, int], ...], tuple[str, ...]],
 ) -> None:
     """Install a validated staged run, replacing only what was authorized.
 
-    This is a compare-and-swap, not an overwrite. Classification runs before
-    generation, so the destination may have changed in between: a colleague's
-    file may have landed in the run directory, or an unrelated directory may have
-    appeared where there was nothing. An earlier revision checked only whether
-    the destination *existed* and deleted whatever it found, so both cases lost
-    data that had never been authorized for deletion.
+    Two independent authorizations meet here, and both are re-proven rather than
+    assumed:
 
-    Commit therefore re-proves the authorization before replacing anything:
+    * `authorization` - what the destination looked like when classification ran,
+      before generation. Commit must not replace anything else.
+    * `staged_snapshot` - the exact bytes that passed `validate_generated_run()`.
+      Commit must not install anything else.
 
-    * `absent`   - the path must still be empty of any occupant.
-    * `empty`    - the directory must still contain nothing.
-    * prior run  - the directory is moved aside atomically and then compared
-                   against the authorized snapshot (paths, sha256, sizes,
-                   subdirectories) and re-validated. Any difference restores it.
+    Each was learned before an interval in which the filesystem could change, so
+    each is checked again at the moment it is relied upon: staging immediately
+    before the destination is touched, and the *installed* directory after the
+    swap but before the superseded copy is discarded. An earlier revision proved
+    only the destination half, so a file added to staging between validation and
+    commit was installed, the resulting invalid run replaced a valid one, and the
+    command exited 0.
 
-    On refusal both the destination and the staged run are left intact, so no
-    work is lost and the operator can inspect and decide.
+    On any refusal the destination returns to its authorized state and the
+    rejected candidate is preserved at `staging` for inspection.
     """
     previous = final_dir.parent / (final_dir.name + PREVIOUS_SUFFIX)
 
@@ -1200,21 +1204,51 @@ def commit_staged_run(
             f"is preserved at {staging} for inspection."
         )
 
+    def describe_drift(actual, expected) -> str:
+        actual_files, actual_dirs = actual
+        expected_files, expected_dirs = expected
+        added = {f[0] for f in actual_files} - {f[0] for f in expected_files}
+        removed = {f[0] for f in expected_files} - {f[0] for f in actual_files}
+        modified = {f[0] for f in set(actual_files) ^ set(expected_files)} - added - removed
+        detail = []
+        if added:
+            detail.append(f"added: {sorted(added)}")
+        if removed:
+            detail.append(f"removed: {sorted(removed)}")
+        if modified:
+            detail.append(f"modified: {sorted(modified)}")
+        if set(actual_dirs) != set(expected_dirs):
+            detail.append(
+                f"subdirectories changed: {sorted(set(actual_dirs) ^ set(expected_dirs))}"
+            )
+        return "; ".join(detail) or "content differs"
+
     if previous.exists():
         refuse(f"rollback path already exists: {previous}")
 
+    # --- The candidate must still be the one validation authorized -----------
+    current_staged = directory_snapshot(staging)
+    if current_staged != staged_snapshot:
+        refuse(
+            f"the staged candidate changed after it passed validation "
+            f"({describe_drift(current_staged, staged_snapshot)}). Only the exact bytes "
+            f"that were validated may be installed."
+        )
+
+    # --- The destination must still be what classification authorized --------
+    moved_aside = False
     if authorization.state == DEST_ABSENT:
         if final_dir.exists():
             refuse(
                 f"the destination did not exist at classification but something now "
                 f"occupies {final_dir}. It was never authorized for replacement."
             )
-        os.rename(staging, final_dir)
-        return
-
-    if authorization.state == DEST_EMPTY:
+    elif authorization.state == DEST_EMPTY:
         if not final_dir.is_dir():
-            refuse(f"the destination was an empty directory at classification but {final_dir} is no longer one")
+            refuse(
+                f"the destination was an empty directory at classification but "
+                f"{final_dir} is no longer one"
+            )
         files, dirs = directory_snapshot(final_dir)
         if files or dirs:
             refuse(
@@ -1223,81 +1257,104 @@ def commit_staged_run(
                 f"was never authorized."
             )
         os.rmdir(final_dir)
-        try:
-            os.rename(staging, final_dir)
-        except OSError:
+    else:
+        if not final_dir.is_dir():
+            refuse(f"the authorized prior run at {final_dir} has disappeared")
+        os.rename(final_dir, previous)
+        moved_aside = True
+        actual = directory_snapshot(previous)
+        drift: str | None = None
+        if actual != (authorization.files, authorization.dirs):
+            drift = (
+                f"the prior run changed after it was authorized "
+                f"({describe_drift(actual, (authorization.files, authorization.dirs))})"
+            )
+        elif validate_generated_run(previous):
+            drift = "the prior run no longer validates as a complete generated run"
+        if drift is not None:
+            try:
+                os.rename(previous, final_dir)
+            except OSError as exc:  # pragma: no cover - filesystem-level failure
+                raise SystemExit(
+                    f"Commit refused because {drift}, but restoring it failed: {exc}\n"
+                    f"NOTHING HAS BEEN DELETED. The prior run is intact at {previous} and "
+                    f"the staged run at {staging}. Move {previous} back to {final_dir} by hand."
+                ) from exc
+            refuse(drift)
+
+    def restore_destination() -> None:
+        """Put the destination back into its authorized state."""
+        if authorization.state == DEST_EMPTY:
             final_dir.mkdir(parents=True, exist_ok=True)
-            raise
-        return
-
-    # DEST_VALID_PRIOR_RUN: move aside first, then prove identity before deleting.
-    if not final_dir.is_dir():
-        refuse(f"the authorized prior run at {final_dir} has disappeared")
-
-    os.rename(final_dir, previous)
-
-    files, dirs = directory_snapshot(previous)
-    drift: str | None = None
-    if files != authorization.files or dirs != authorization.dirs:
-        added = {f[0] for f in files} - {f[0] for f in authorization.files}
-        removed = {f[0] for f in authorization.files} - {f[0] for f in files}
-        edited = {f[0] for f in files} & {f[0] for f in authorization.files} - {
-            f[0] for f in set(files) & set(authorization.files)
-        }
-        detail = []
-        if added:
-            detail.append(f"added: {sorted(added)}")
-        if removed:
-            detail.append(f"removed: {sorted(removed)}")
-        if edited:
-            detail.append(f"modified: {sorted(edited)}")
-        if set(dirs) != set(authorization.dirs):
-            detail.append(f"subdirectories changed: {sorted(set(dirs) ^ set(authorization.dirs))}")
-        drift = (
-            f"the prior run changed after it was authorized ({'; '.join(detail) or 'content differs'})"
-        )
-    elif validate_generated_run(previous):
-        drift = "the prior run no longer validates as a complete generated run"
-
-    if drift is not None:
-        try:
+        elif moved_aside:
             os.rename(previous, final_dir)
-        except OSError as exc:  # pragma: no cover - filesystem-level failure
-            raise SystemExit(
-                f"Commit refused because {drift}, but restoring it failed: {exc}\n"
-                f"NOTHING HAS BEEN DELETED. The prior run is intact at {previous} and the "
-                f"staged run at {staging}. Move {previous} back to {final_dir} by hand."
-            ) from exc
-        refuse(drift)
+        # DEST_ABSENT needs nothing: absence is restored by the candidate leaving.
 
     try:
         os.rename(staging, final_dir)
     except OSError as exc:
         try:
-            os.rename(previous, final_dir)
+            restore_destination()
         except OSError as restore_exc:  # pragma: no cover - filesystem-level failure
             raise SystemExit(
-                f"Installing the staged run failed ({exc}) and restoring the prior run "
+                f"Installing the staged run failed ({exc}) and restoring the destination "
                 f"also failed ({restore_exc}).\n"
                 f"NOTHING HAS BEEN DELETED. The prior run is intact at {previous} and the "
                 f"staged run at {staging}. Move {previous} back to {final_dir} by hand."
             ) from exc
         raise
 
-    try:
-        shutil.rmtree(previous)
-    except OSError as exc:  # pragma: no cover - filesystem-level failure
-        # The swap succeeded and the new run is in place; only cleanup failed.
-        # Report it rather than failing a completed replacement.
-        print(
-            f"WARNING: the new run is installed at {final_dir}, but removing the "
-            f"superseded copy at {previous} failed ({exc}). Delete it by hand.",
-            file=sys.stderr,
+    # --- The installed run must BE the validated candidate -------------------
+    installed = directory_snapshot(final_dir)
+    problem: str | None = None
+    if installed != staged_snapshot:
+        problem = (
+            f"the installed run does not match the validated candidate "
+            f"({describe_drift(installed, staged_snapshot)})"
         )
-        return
+    else:
+        installed_errors = validate_generated_run(final_dir)
+        if installed_errors:
+            problem = (
+                f"the installed run failed validation at its destination: "
+                f"{installed_errors[0]}"
+            )
 
-    if authorization.files:
-        print(f"Replaced a prior run of {len(authorization.files)} artifact(s) at {final_dir}.")
+    if problem is not None:
+        try:
+            os.rename(final_dir, staging)
+        except OSError as exc:  # pragma: no cover - filesystem-level failure
+            raise SystemExit(
+                f"Commit refused because {problem}, but moving the rejected candidate "
+                f"back to {staging} failed: {exc}\n"
+                f"NOTHING HAS BEEN DELETED. The rejected candidate is at {final_dir} and "
+                f"the prior run, if any, at {previous}. Recover by hand."
+            ) from exc
+        try:
+            restore_destination()
+        except OSError as exc:  # pragma: no cover - filesystem-level failure
+            raise SystemExit(
+                f"Commit refused because {problem}, and restoring the destination failed: "
+                f"{exc}\n"
+                f"NOTHING HAS BEEN DELETED. The rejected candidate is preserved at "
+                f"{staging} and the prior run at {previous}. Move {previous} back to "
+                f"{final_dir} by hand."
+            ) from exc
+        refuse(problem)
+
+    if moved_aside:
+        try:
+            shutil.rmtree(previous)
+        except OSError as exc:  # pragma: no cover - filesystem-level failure
+            # The swap succeeded and the new run is in place; only cleanup failed.
+            print(
+                f"WARNING: the new run is installed at {final_dir}, but removing the "
+                f"superseded copy at {previous} failed ({exc}). Delete it by hand.",
+                file=sys.stderr,
+            )
+            return
+        if authorization.files:
+            print(f"Replaced a prior run of {len(authorization.files)} artifact(s) at {final_dir}.")
 
 
 def build_status_sidecar(output_dir: Path, generated_at: str) -> dict[str, Any]:
@@ -1494,11 +1551,6 @@ def main() -> None:
         # bytes: validate_experimental_integrity.py rejects the family without it.
         write_json(output_dir / STATUS_SIDECAR_NAME, build_status_sidecar(output_dir, generated_at))
 
-        print(f"Wrote experimental ML lane outputs to {output_dir}")
-        print(
-            "These are experimental fixture-fed evaluation artifacts: not calibrated "
-            "probabilities, not a promoted model, not eligible for promotion."
-        )
 
         # The staged run must validate before it is allowed to replace anything.
         staged_errors = validate_generated_run(staging_dir)
@@ -1507,6 +1559,10 @@ def main() -> None:
                 "Staged run failed validation and will not be committed:\n- "
                 + "\n- ".join(staged_errors)
             )
+
+        # Snapshot the exact bytes that just passed validation. Commit installs
+        # these or nothing.
+        staged_snapshot = directory_snapshot(staging_dir)
 
     except BaseException:
         # Generation or staged validation failed, so the staging directory holds
@@ -1521,7 +1577,13 @@ def main() -> None:
     # earlier revision left commit inside that `try`, and every commit refusal
     # was followed by main() deleting the very staged run the refusal said it
     # had preserved.
-    commit_staged_run(staging_dir, final_output_dir, authorization)
+    commit_staged_run(staging_dir, final_output_dir, authorization, staged_snapshot)
+
+    print(f"Wrote experimental ML lane outputs to {final_output_dir}")
+    print(
+        "These are experimental fixture-fed evaluation artifacts: not calibrated "
+        "probabilities, not a promoted model, not eligible for promotion."
+    )
 
 
 if __name__ == "__main__":

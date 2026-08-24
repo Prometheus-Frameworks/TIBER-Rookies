@@ -1242,20 +1242,22 @@ class ProducerRequiresAFreshRunDirectoryTests(unittest.TestCase):
         second. Tests then perturb the destination in between, which is exactly
         the window the commit-time check exists to close.
         """
-        from scripts.compute_rookie_ml_lane import classify_output_dir
+        from scripts.compute_rookie_ml_lane import classify_output_dir, directory_snapshot
 
         authorization = classify_output_dir(run, replace=replace)
         staging = run.parent / (run.name + ".staging")
         self.assertEqual(self._run(staging).returncode, 0)
-        return authorization, staging
+        return authorization, staging, directory_snapshot(staging)
 
-    def assert_commit_refuses_without_mutation(self, run: Path, authorization, staging: Path):
+    def assert_commit_refuses_without_mutation(
+        self, run: Path, authorization, staging: Path, staged_snapshot
+    ):
         from scripts.compute_rookie_ml_lane import commit_staged_run
 
         before = self._snapshot(run) if run.exists() else None
         staged_before = self._snapshot(staging)
         with self.assertRaises(SystemExit) as raised:
-            commit_staged_run(staging, run, authorization)
+            commit_staged_run(staging, run, authorization, staged_snapshot)
         self.assertIn("Refusing to commit", str(raised.exception))
         after = self._snapshot(run) if run.exists() else None
         self.assertEqual(before, after, "commit mutated the destination before refusing")
@@ -1271,11 +1273,11 @@ class ProducerRequiresAFreshRunDirectoryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             run = Path(tmp) / "run"
             self.assertEqual(self._run(run).returncode, 0)
-            authorization, staging = self._authorize_and_stage(run, replace=True)
+            authorization, staging, staged_snapshot = self._authorize_and_stage(run, replace=True)
             valuable = run / "valuable-arrived-during-generation.txt"
             valuable.write_text("irreplaceable\n", encoding="utf-8")
 
-            self.assert_commit_refuses_without_mutation(run, authorization, staging)
+            self.assert_commit_refuses_without_mutation(run, authorization, staging, staged_snapshot)
             self.assertTrue(valuable.is_file(), "an unauthorized file was deleted")
 
     def test_commit_refuses_on_a_same_length_byte_edit_after_classification(self) -> None:
@@ -1283,48 +1285,48 @@ class ProducerRequiresAFreshRunDirectoryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             run = Path(tmp) / "run"
             self.assertEqual(self._run(run).returncode, 0)
-            authorization, staging = self._authorize_and_stage(run, replace=True)
+            authorization, staging, staged_snapshot = self._authorize_and_stage(run, replace=True)
             target = run / "evaluation_report.json"
             original = target.read_bytes()
             target.write_bytes(bytes([original[0] ^ 0x20]) + original[1:])
             self.assertEqual(len(target.read_bytes()), len(original))
 
-            self.assert_commit_refuses_without_mutation(run, authorization, staging)
+            self.assert_commit_refuses_without_mutation(run, authorization, staging, staged_snapshot)
 
     def test_commit_refuses_when_an_absent_destination_became_occupied(self) -> None:
         """Nothing was authorized, so nothing may be replaced."""
         with tempfile.TemporaryDirectory() as tmp:
             run = Path(tmp) / "run"
-            authorization, staging = self._authorize_and_stage(run, replace=False)
+            authorization, staging, staged_snapshot = self._authorize_and_stage(run, replace=False)
             run.mkdir()
             valuable = run / "unrelated-valuable.txt"
             valuable.write_text("also irreplaceable\n", encoding="utf-8")
 
-            self.assert_commit_refuses_without_mutation(run, authorization, staging)
+            self.assert_commit_refuses_without_mutation(run, authorization, staging, staged_snapshot)
             self.assertTrue(valuable.is_file(), "an unrelated directory was deleted")
 
     def test_commit_refuses_when_the_destination_was_swapped_for_another_directory(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             run = Path(tmp) / "run"
             self.assertEqual(self._run(run).returncode, 0)
-            authorization, staging = self._authorize_and_stage(run, replace=True)
+            authorization, staging, staged_snapshot = self._authorize_and_stage(run, replace=True)
             shutil.rmtree(run)
             run.mkdir()
             valuable = run / "someone-elses-work.txt"
             valuable.write_text("mine\n", encoding="utf-8")
 
-            self.assert_commit_refuses_without_mutation(run, authorization, staging)
+            self.assert_commit_refuses_without_mutation(run, authorization, staging, staged_snapshot)
             self.assertTrue(valuable.is_file())
 
     def test_commit_refuses_when_an_empty_destination_became_occupied(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             run = Path(tmp) / "run"
             run.mkdir()
-            authorization, staging = self._authorize_and_stage(run, replace=False)
+            authorization, staging, staged_snapshot = self._authorize_and_stage(run, replace=False)
             valuable = run / "arrived.txt"
             valuable.write_text("unauthorized\n", encoding="utf-8")
 
-            self.assert_commit_refuses_without_mutation(run, authorization, staging)
+            self.assert_commit_refuses_without_mutation(run, authorization, staging, staged_snapshot)
             self.assertTrue(valuable.is_file())
 
     def test_first_rename_failure_leaves_everything_intact(self) -> None:
@@ -1334,7 +1336,7 @@ class ProducerRequiresAFreshRunDirectoryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             run = Path(tmp) / "run"
             self.assertEqual(self._run(run).returncode, 0)
-            authorization, staging = self._authorize_and_stage(run, replace=True)
+            authorization, staging, staged_snapshot = self._authorize_and_stage(run, replace=True)
             before, staged_before = self._snapshot(run), self._snapshot(staging)
 
             with mock.patch(
@@ -1342,7 +1344,7 @@ class ProducerRequiresAFreshRunDirectoryTests(unittest.TestCase):
                 side_effect=OSError("injected first-rename failure"),
             ):
                 with self.assertRaises(OSError):
-                    commit_staged_run(staging, run, authorization)
+                    commit_staged_run(staging, run, authorization, staged_snapshot)
 
             self.assertEqual(before, self._snapshot(run))
             self.assertEqual(staged_before, self._snapshot(staging))
@@ -1354,7 +1356,7 @@ class ProducerRequiresAFreshRunDirectoryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             run = Path(tmp) / "run"
             self.assertEqual(self._run(run).returncode, 0)
-            authorization, staging = self._authorize_and_stage(run, replace=True)
+            authorization, staging, staged_snapshot = self._authorize_and_stage(run, replace=True)
             before, staged_before = self._snapshot(run), self._snapshot(staging)
 
             real_rename = os.rename
@@ -1369,7 +1371,7 @@ class ProducerRequiresAFreshRunDirectoryTests(unittest.TestCase):
 
             with mock.patch("scripts.compute_rookie_ml_lane.os.rename", side_effect=flaky):
                 with self.assertRaises(OSError):
-                    commit_staged_run(staging, run, authorization)
+                    commit_staged_run(staging, run, authorization, staged_snapshot)
 
             self.assertEqual(calls["n"], 3, "restore rename was not attempted")
             self.assertEqual(before, self._snapshot(run), "prior run was not restored")
@@ -1383,9 +1385,9 @@ class ProducerRequiresAFreshRunDirectoryTests(unittest.TestCase):
             run = Path(tmp) / "run"
             self.assertEqual(self._run(run).returncode, 0)
             before = self._snapshot(run)
-            authorization, staging = self._authorize_and_stage(run, replace=True)
+            authorization, staging, staged_snapshot = self._authorize_and_stage(run, replace=True)
 
-            commit_staged_run(staging, run, authorization)
+            commit_staged_run(staging, run, authorization, staged_snapshot)
 
             self.assertEqual(set(before), set(self._snapshot(run)), "file set changed")
             self.assertEqual(validate_generated_run(run), [])
@@ -1398,14 +1400,14 @@ class ProducerRequiresAFreshRunDirectoryTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             run = Path(tmp) / "run"
             self.assertEqual(self._run(run).returncode, 0)
-            authorization, staging = self._authorize_and_stage(run, replace=True)
+            authorization, staging, staged_snapshot = self._authorize_and_stage(run, replace=True)
             previous = run.parent / (run.name + ".previous")
             previous.mkdir()
             (previous / "leftover.json").write_text("{}\n", encoding="utf-8")
 
             before = self._snapshot(run)
             with self.assertRaises(SystemExit):
-                commit_staged_run(staging, run, authorization)
+                commit_staged_run(staging, run, authorization, staged_snapshot)
             self.assertEqual(before, self._snapshot(run))
             self.assertTrue((previous / "leftover.json").is_file())
 
@@ -1418,7 +1420,9 @@ class ProducerRequiresAFreshRunDirectoryTests(unittest.TestCase):
     # destination, and then main() deleted the staged run the refusal message
     # promised was preserved. These tests drive the real CLI end to end.
 
-    COMMIT_CALL = "    commit_staged_run(staging_dir, final_output_dir, authorization)"
+    COMMIT_CALL = (
+        "    commit_staged_run(staging_dir, final_output_dir, authorization, staged_snapshot)"
+    )
 
     def _run_patched(self, patch_pairs, output_dir, *extra):
         """Run the real producer with its source temporarily patched.
@@ -1572,6 +1576,203 @@ class ProducerRequiresAFreshRunDirectoryTests(unittest.TestCase):
             result = self._run(out, "--replace-run")
             self.assertEqual(result.returncode, 0, result.stderr)
 
+            self.assertEqual(set(before), set(self._snapshot(out)))
+            self.assertEqual(validate_generated_run(out), [])
+            for suffix in (".staging", ".previous"):
+                self.assertFalse((out.parent / (out.name + suffix)).exists(), suffix)
+
+    # --- The installed run must BE the validated candidate ------------------
+    #
+    # Staged validation authorizes a specific set of bytes. Commit must install
+    # those and nothing else. An earlier revision proved only the destination
+    # half of the swap, so a file added to staging between validation and commit
+    # was installed, the resulting invalid run replaced a valid one, and the CLI
+    # exited 0.
+
+    # Injected after the pre-install staging check has already passed, so only
+    # the post-install proof can catch it.
+    POST_CHECK_ANCHOR = (
+        "    # --- The destination must still be what classification authorized --------"
+    )
+
+    def _staging_drift(self, statement: str):
+        """Patch pair mutating the staged candidate just before commit runs."""
+        return (self.COMMIT_CALL, "    " + statement + "\n" + self.COMMIT_CALL)
+
+    def assert_cli_refuses_and_preserves_candidate(self, out: Path, patch_pair, expect_dest):
+        """Refusal must restore the destination and keep the rejected candidate."""
+        result = self._run_patched([patch_pair], out, "--replace-run")
+        self.assertNotEqual(result.returncode, 0, "an invalid candidate must not install")
+
+        staging = out.parent / (out.name + ".staging")
+        self.assertTrue(staging.is_dir(), "the rejected candidate was not preserved")
+        self.assertFalse(
+            (out.parent / (out.name + ".previous")).exists(), "rollback residue left behind"
+        )
+        expect_dest(out)
+        return result
+
+    def test_cli_file_added_to_staging_after_validation_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            before = self._snapshot(out)
+
+            def expect(dest):
+                self.assertEqual(before, self._snapshot(dest), "prior run was not restored")
+                self.assertEqual(validate_generated_run(dest), [], "installed run is invalid")
+
+            self.assert_cli_refuses_and_preserves_candidate(
+                out,
+                self._staging_drift(
+                    "(staging_dir / 'injected.txt').write_text('x', encoding='utf-8')"
+                ),
+                expect,
+            )
+
+    def test_cli_byte_edit_in_staging_after_validation_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            before = self._snapshot(out)
+
+            self.assert_cli_refuses_and_preserves_candidate(
+                out,
+                self._staging_drift(
+                    "_t = staging_dir / 'evaluation_report.json'; _b = _t.read_bytes(); "
+                    "_t.write_bytes(bytes([_b[0] ^ 0x20]) + _b[1:])"
+                ),
+                lambda dest: self.assertEqual(before, self._snapshot(dest)),
+            )
+
+    def test_cli_deleted_file_in_staging_after_validation_is_refused(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            before = self._snapshot(out)
+
+            self.assert_cli_refuses_and_preserves_candidate(
+                out,
+                self._staging_drift("(staging_dir / 'feature_table.json').unlink()"),
+                lambda dest: self.assertEqual(before, self._snapshot(dest)),
+            )
+
+    def test_cli_absent_destination_stays_absent_when_the_candidate_drifts(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"  # never created
+
+            self.assert_cli_refuses_and_preserves_candidate(
+                out,
+                self._staging_drift(
+                    "(staging_dir / 'injected.txt').write_text('x', encoding='utf-8')"
+                ),
+                lambda dest: self.assertFalse(
+                    dest.exists(), "an absent destination must stay absent"
+                ),
+            )
+
+    def test_cli_empty_destination_is_restored_when_the_candidate_drifts(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            out.mkdir()
+
+            def expect(dest):
+                self.assertTrue(dest.is_dir(), "the empty destination was not restored")
+                self.assertEqual(list(dest.iterdir()), [], "the destination is no longer empty")
+
+            self.assert_cli_refuses_and_preserves_candidate(
+                out,
+                self._staging_drift(
+                    "(staging_dir / 'injected.txt').write_text('x', encoding='utf-8')"
+                ),
+                expect,
+            )
+
+    def test_cli_staged_drift_refuses_before_the_destination_is_touched(self) -> None:
+        """The pre-install check must refuse without any destination rename.
+
+        Both proofs reach the same final state, so a final-state assertion cannot
+        tell them apart. What the pre-install check buys is that a known-bad
+        candidate never puts the destination through a move-aside/restore cycle:
+        there is no rollback to be interrupted. This test asserts that directly by
+        counting renames.
+        """
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            before = self._snapshot(out)
+
+            counter = Path(tmp) / "renames.log"
+            instrument = (
+                self.COMMIT_CALL,
+                "\n".join(
+                    [
+                        "    _real_rename = os.rename",
+                        "    def _counted(src, dst):",
+                        f"        open({str(counter)!r}, 'a').write(f'{{src}} -> {{dst}}\\n')",
+                        "        return _real_rename(src, dst)",
+                        "    os.rename = _counted",
+                        self.COMMIT_CALL,
+                    ]
+                ),
+            )
+            drift = self._staging_drift(
+                "(staging_dir / 'injected.txt').write_text('x', encoding='utf-8')"
+            )
+            result = self._run_patched([drift, instrument], out, "--replace-run")
+
+            self.assertNotEqual(result.returncode, 0)
+            renames = counter.read_text(encoding="utf-8") if counter.exists() else ""
+            self.assertEqual(
+                renames,
+                "",
+                f"the destination was renamed despite a known-bad candidate: {renames!r}",
+            )
+            self.assertEqual(before, self._snapshot(out))
+            self.assertTrue((out.parent / (out.name + ".staging")).is_dir())
+
+    def test_cli_post_install_proof_catches_drift_during_commit(self) -> None:
+        """Drift injected after the pre-install check: only the post-install proof sees it.
+
+        This is the second layer. The candidate is mutated inside
+        commit_staged_run() after staging has already been re-proven, so the
+        drifted bytes are installed and must then be detected at the destination,
+        moved back to staging, and the prior run restored.
+        """
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            self.assertEqual(self._run(out).returncode, 0)
+            before = self._snapshot(out)
+
+            injected = (
+                self.POST_CHECK_ANCHOR,
+                "    (staging / 'injected-mid-commit.txt').write_text('x', encoding='utf-8')\n"
+                + self.POST_CHECK_ANCHOR,
+            )
+            result = self._run_patched([injected], out, "--replace-run")
+
+            self.assertNotEqual(result.returncode, 0)
+            self.assertIn("installed run", result.stdout + result.stderr)
+            self.assertEqual(before, self._snapshot(out), "prior run was not restored")
+            self.assertEqual(validate_generated_run(out), [], "restored run is invalid")
+            staging = out.parent / (out.name + ".staging")
+            self.assertTrue(staging.is_dir(), "rejected candidate was not moved back to staging")
+            self.assertTrue((staging / "injected-mid-commit.txt").is_file())
+            self.assertFalse((out.parent / (out.name + ".previous")).exists())
+
+    def test_cli_unchanged_candidate_installs_and_reports_the_final_path(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            out = Path(tmp) / "run"
+            first = self._run(out)
+            self.assertEqual(first.returncode, 0, first.stderr)
+            # A fresh run must name the path that exists, not the staging path.
+            self.assertIn(str(out), first.stdout)
+            self.assertNotIn(str(out) + ".staging", first.stdout)
+
+            before = self._snapshot(out)
+            second = self._run(out, "--replace-run")
+            self.assertEqual(second.returncode, 0, second.stderr)
+            self.assertIn(str(out), second.stdout)
             self.assertEqual(set(before), set(self._snapshot(out)))
             self.assertEqual(validate_generated_run(out), [])
             for suffix in (".staging", ".previous"):

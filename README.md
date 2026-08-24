@@ -313,6 +313,15 @@ Failure modes are explicit rather than silent:
 | Rollback itself fails | Exits with both paths named; nothing deleted, manual `mv` required |
 | `.previous` cleanup fails | Swap already succeeded; warns on stderr and exits 0, leaving the superseded copy to delete by hand |
 
+Two authorizations meet at the swap, and both are re-proven rather than assumed:
+the destination must still be what classification saw, **and** the installed run
+must be the exact bytes that passed staged validation. Staging is re-checked
+immediately before the destination is touched — so a known-bad candidate never
+puts the destination through a rename cycle — and the *installed* directory is
+compared against the validated snapshot and re-validated before the superseded
+copy is discarded. Drift at either point restores the destination to its
+authorized state and preserves the rejected candidate at `<output-dir>.staging`.
+
 Staging has two distinct lifecycles, and the boundary is the point at which it
 becomes valuable. A failure during generation, writing, or staged validation
 removes the staging directory — it holds an incomplete or invalid run and is

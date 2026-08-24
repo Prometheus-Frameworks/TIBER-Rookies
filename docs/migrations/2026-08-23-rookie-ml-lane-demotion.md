@@ -126,6 +126,14 @@ leaves everything untouched; a failed staged-install renames the prior run back;
 rollback exits naming both surviving paths for manual recovery; and a failed `.previous`
 cleanup warns on stderr without failing an already-successful replacement.
 
+Commit proves both halves of the swap. Staged validation authorizes a specific set of
+bytes, and an earlier revision never re-proved that the bytes it installed were those
+bytes: a file added to staging between validation and commit was installed, the resulting
+invalid run replaced a valid one, and the command exited 0. The candidate is now
+re-checked against a snapshot of exactly what was validated — before the destination is
+touched, and again at the installed directory before the superseded copy is discarded.
+Drift at either point restores the destination and preserves the rejected candidate.
+
 Staging cleanup is scoped to the phase where it is correct. An earlier revision wrapped
 the commit call in the same blanket handler used for generation, so every commit refusal
 was followed by deleting the very staged run the refusal message promised had been
