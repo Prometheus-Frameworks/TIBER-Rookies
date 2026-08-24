@@ -307,8 +307,10 @@ function renderSummary(filteredRows) {
 
 function toCsvValue(value) {
   let text = String(value ?? '');
-  // Neutralize spreadsheet formula injection before CSV quoting.
-  if (/^[=+\-@]/.test(text)) text = `'${text}`;
+  // Neutralize spreadsheet formula injection before CSV quoting. Genuine finite
+  // numbers are exempt: a number cannot carry a formula, so negative values
+  // stay numeric cells. Numeric-looking strings are still guarded.
+  if (!Number.isFinite(value) && /^[=+\-@]/.test(text)) text = `'${text}`;
   if (text.includes(',') || text.includes('"') || text.includes('\n') || text.includes('\r')) {
     return `"${text.replace(/"/g, '""')}"`;
   }

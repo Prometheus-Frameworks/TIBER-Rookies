@@ -200,6 +200,17 @@ for (const surface of SURFACES) {
     const cell = surface.cellFor("'=1+1");
     assert.equal(unquote(cell), "'=1+1", 'a value already starting with an apostrophe is safe as-is');
   });
+
+  // The guard is type-aware, so every surface must let a real number through.
+  test(`${surface.name} preserves a genuine negative number`, () => {
+    const cell = surface.cellFor(-3.5);
+    assert.equal(cell, '-3.5', 'a real negative number must stay a numeric cell');
+    assert.ok(!cell.startsWith("'"), 'no apostrophe on a genuine number');
+  });
+
+  test(`${surface.name} guards the string form of that same value`, () => {
+    assert.equal(unquote(surface.cellFor('-3.5')), "'-3.5", 'a string is guarded even when it looks numeric');
+  });
 }
 
 // --- 4. nullish + numeric behavior preserved --------------------------------
@@ -238,15 +249,69 @@ test('buildBoardCsv preserves numeric formatting and unscored blanks', () => {
   assert.equal(rows[2][header.indexOf('rookie_grade')], '', 'missing score stays empty');
 });
 
-// Deliberate, documented consequence of the literal four-character rule:
-// a negative number is text-guarded, because "-1+1" is a live formula.
-test('negative numeric values are neutralized by the leading "-" rule', () => {
+// --- 4b. genuine numbers stay numeric -------------------------------------
+// The guard is type-aware: a JS number cannot carry a formula expression, so
+// finite numbers are exempt and negative values remain numeric cells. A
+// numeric-looking *string* is still guarded, because a string can.
+test('buildBoardCsv preserves a numeric negative consensusDelta', () => {
   const rows = parseCsvRaw(buildBoardCsv([
     { name: 'Delta Player', alphaStatus: 'scored', consensusDelta: -3.5 },
   ]));
   const cell = rows[1][rows[0].indexOf('consensus_delta_positional')];
-  assert.equal(cell, "'-3.5");
-  assert.ok(!DANGEROUS_PREFIXES.includes(leadingChar(cell)));
+  assert.equal(cell, '-3.5', 'a real negative number must stay a numeric cell');
+  assert.ok(!cell.startsWith("'"), 'no apostrophe on a genuine number');
+});
+
+test('workbench buildCsv preserves a numeric negative post_draft_delta', () => {
+  const rows = parseCsvRaw(workbenchBuildCsv(
+    ['player_name', 'post_draft_delta'],
+    [{ player_name: 'Zachariah Branch', post_draft_delta: -0.8 }],
+  ));
+  assert.equal(rows[1][1], '-0.8');
+  assert.ok(!rows[1][1].startsWith("'"));
+});
+
+test('positive, zero and fractional numbers are unchanged', () => {
+  const rows = parseCsvRaw(workbenchBuildCsv(
+    ['a', 'b', 'c', 'd', 'e'],
+    [{ a: 0, b: -0, c: 12, d: 42.5, e: -1.3 }],
+  ));
+  assert.deepEqual(rows[1], ['0', '0', '12', '42.5', '-1.3']);
+  for (const raw of [0, -0, 12, 42.5, -1.3, -0.8, Number.MIN_SAFE_INTEGER]) {
+    assert.equal(workbenchCsvValue(raw), String(raw), `numeric ${raw} must pass through`);
+  }
+});
+
+test('a numeric-looking string is still guarded (type-aware, not value-aware)', () => {
+  assert.equal(workbenchCsvValue('-3.5'), "'-3.5", 'string "-3.5" is not a number');
+  assert.equal(workbenchCsvValue(-3.5), '-3.5', 'number -3.5 is');
+  // Non-finite numbers fall back to the guard rather than emitting bare "-Infinity".
+  assert.equal(workbenchCsvValue(-Infinity), "'-Infinity");
+  assert.equal(workbenchCsvValue(NaN), 'NaN', 'NaN has no dangerous prefix');
+});
+
+test('the string payload "-1+1" remains neutralized in every helper', () => {
+  for (const surface of SURFACES) {
+    const cell = surface.cellFor('-1+1');
+    assert.equal(unquote(cell), "'-1+1", `${surface.name} must still guard the string -1+1`);
+  }
+});
+
+// Real-data regression for the exact case flagged in review: the promoted
+// postdraft artifact carries genuine negative post_draft_delta values.
+test('promoted postdraft artifact negatives survive as numeric cells', () => {
+  const artifact = JSON.parse(fs.readFileSync(
+    new URL('../exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_v0.json', import.meta.url),
+    'utf8',
+  ));
+  const deltas = artifact.rows
+    .map((row) => row.post_draft_delta)
+    .filter((delta) => typeof delta === 'number');
+  assert.ok(deltas.length > 0, 'artifact should carry numeric deltas');
+  for (const delta of deltas) {
+    assert.equal(workbenchCsvValue(delta), String(delta));
+    assert.ok(!String(workbenchCsvValue(delta)).startsWith("'"));
+  }
 });
 
 // --- 5. data-derived headers are guarded too --------------------------------
