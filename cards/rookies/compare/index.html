@@ -32,6 +32,7 @@
       </section>
 
       <section id="compare-selector-root" class="compare-selector-shell">Loading compare controls…</section>
+      <p id="load-status" class="meta" role="status">Loading rookie sources…</p>
       <section id="compare-root" class="compare-results-shell">Loading comparison…</section>
     </main>
 
@@ -51,6 +52,7 @@
 
     <script type="module">
       import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
+      import { getRookieShellState, rookieLoadMessage } from '/lib/rookies/rookieShellState.js';
       import { renderRookieCompareSelector } from '/components/rookies/RookieCompareSelector.js';
       import { renderRookieCompareView } from '/components/rookies/RookieCompareView.js';
       import { buildCompareCsv, downloadCsv } from '/lib/rookies/exportCsv.js';
@@ -131,6 +133,7 @@
 
       try {
         const cards = await getAllRookieCards();
+        document.getElementById('load-status').textContent = rookieLoadMessage(await getRookieShellState()) || 'Rookie sources loaded.';
         render(cards);
       } catch (error) {
         selectorRoot.innerHTML = '';

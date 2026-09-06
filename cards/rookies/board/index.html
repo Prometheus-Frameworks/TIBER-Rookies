@@ -307,6 +307,9 @@
           button.addEventListener('click', (event) => {
             const slug = event.currentTarget.dataset.slug;
             const side = event.currentTarget.dataset.queueMark;
+            const row = allRows.find((candidate) => candidate.slug === slug);
+            if (!row || row.alphaStatus === 'not_scored' || !Number.isFinite(row.rookieGrade)) return;
+            if (side !== 'left' && side !== 'right') return;
             compareState[side] = compareState[side] === slug ? null : slug;
             render(allRows);
           });
@@ -435,6 +438,11 @@
         const filtered = filterRookieBoard(allRows, { position: state.position, draftClass: state.draftClass, nameFilter: state.nameFilter });
         const sorted = sortRookieBoard(filtered, state.sort);
         const queue = loadRookieQueue();
+        const supportedSlugs = new Set(allRows.filter((row) => row.alphaStatus !== 'not_scored'
+          && Number.isFinite(row.rookieGrade)).map((row) => row.slug));
+        for (const side of ['left', 'right']) {
+          if (!supportedSlugs.has(compareState[side]) || !queue.some((entry) => entry.slug === compareState[side])) compareState[side] = null;
+        }
 
         const loadMessage = rookieLoadMessage(shell, state.draftClass);
         document.getElementById('load-status').textContent = loadMessage || 'Rookie sources loaded.';
@@ -460,6 +468,7 @@
               : 'The successfully loaded sources for this view contain no players.';
         }
         queueRoot.innerHTML = renderRookieQueuePanel(queue, compareState, portabilityState, {
+          supportedRows: allRows,
           tagOptions: queueTagOptions,
           noteMaxLength: queueNoteMaxLength,
         });

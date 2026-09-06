@@ -7,12 +7,15 @@ import { buildRookieShellState, selectRookiePlayer, rookieLoadMessage } from '..
 import { normalizeRookieStubs, mergeRookieBoardRowsWithStubs } from '../lib/rookies/rookieStubs.js';
 import { filterRookieBoard, sortRookieBoard, buildRookieBoardRows } from '../lib/rookies/buildRookieBoardRows.js';
 import { renderRookieStubCard } from '../components/rookies/RookieStubCard.js';
+import { renderRookieQueuePanel, reconcileRookieQueue } from '../components/rookies/RookieQueuePanel.js';
+import { loadRookieQueue, importRookieQueue } from '../lib/rookies/rookieQueueStore.js';
+import { collectGalleryFilters, sortAndFilterRookies } from '../lib/rookies/sortAndFilterRookies.js';
 
 const repo = new URL('../', import.meta.url);
 const json = (path) => JSON.parse(fs.readFileSync(new URL(path.replace(/^\//, ''), repo), 'utf8'));
 const seed = [{ player_id: 'test-player', player_name: 'Test Player' }];
 let loadId = 0;
-async function loadWith(overrides = {}) {
+async function loadWith(overrides = {}, inspect = (module) => module.getRookieCardLoadState()) {
   const oldFetch = globalThis.fetch;
   globalThis.fetch = async (path) => {
     if (Object.hasOwn(overrides, path)) {
@@ -26,10 +29,11 @@ async function loadWith(overrides = {}) {
     catch { return { ok: false, status: 404 }; }
   };
   try {
-    const module = await import(`../lib/rookies/getRookieCardData.js?load=${++loadId}`);
-    const result = await module.getRookieCardLoadState();
-    assert.deepEqual(await module.getAllRookieCards(), result.cards, 'shared array API stays compatible');
-    return result;
+    // Isolate both loader caches for each request fixture without modifying files.
+    let source = fs.readFileSync(new URL('lib/rookies/getRookieCardData.js', repo), 'utf8');
+    source = source.replace(/from '(\.\/[^']+)'/g, (_, path) => `from '${new URL(`lib/rookies/${path}?case=${++loadId}`, repo).href}'`);
+    const module = await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
+    return await inspect(module);
   } finally { globalThis.fetch = oldFetch; }
 }
 const alphaPath = '/exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json';
@@ -227,15 +231,17 @@ test('Player entry renders healthy stub with failed Alpha and distinguishes unkn
   const missing = await runPlayer(shell, 'synthetic-non-player-294');
   assert.match(missing.nodes.get('card-root').textContent, /Missing sources may contain this player/);
 });
-async function runBoard(shell, query = '') {
+async function runBoard(shell, query = '', overrides = {}, setup = () => {}) {
   const { document, nodes } = domAdapter();
+  setup(document, nodes);
   const renderedRows = [];
   const deps = { document, window: { location: { search: query, href: `http://localhost/cards/rookies/board/${query}` }, history: { replaceState() {} } },
     getRookieShellState: async () => shell, rookieLoadMessage, buildRookieBoardRows, mergeRookieBoardRowsWithStubs,
     filterRookieBoard, sortRookieBoard, groupRookiesByTier: () => [], getRookieTierRules: () => [],
     getRookieQueueTagOptions: () => [], getRookieQueueNoteMaxLength: () => 100,
-    loadRookieQueue: () => [], renderRookieBoardControls: () => '', renderRookieQueuePanel: () => '',
+    loadRookieQueue: () => [], renderRookieBoardControls: () => '', renderRookieQueuePanel,
     renderRookieBoard: (rows) => { renderedRows.push(rows); return 'Board rows'; },
+    ...overrides,
   };
   await new AsyncFunction(...Object.keys(deps), entryScript('cards/rookies/board/index.html'))(...Object.values(deps));
   return { nodes, renderedRows };
@@ -289,5 +295,195 @@ for (const failure of ['404', '503', 'reject', 'invalid-json', {}, [null]]) {
       assert(shell.cards.every((card) => card.identity.classYear !== 2026));
       assert.match(module.rookieLoadMessage(shell), /stub coverage unavailable/);
     } finally { globalThis.fetch = oldFetch; }
+  });
+}
+
+const stubPath = '/data/processed/2026_rookie_stubs_v0.json';
+const stubFailures = ['404', '503', 'reject', 'invalid-json', {}, [null],
+  [json(stubPath)[0], json(stubPath)[0]]];
+
+async function sharedLoad(overrides = {}) {
+  return loadWith(overrides, async (module) => {
+    const alpha = await module.getRookieCardLoadState();
+    const cards = await module.getAllRookieCards();
+    const overlap = alpha.cards.find((card) => card.identity.classYear === 2026
+      && stubRows.some((stub) => stub.playerId === card.playerId));
+    if (overlap) assert.equal(await module.getRookieCardBySlug(overlap.slug), null,
+      'slug API cannot bypass coverage or healthy stub precedence');
+    return { alpha, cards, overlap };
+  });
+}
+
+for (const failure of stubFailures) {
+  test(`shared score APIs fail closed on stub failure ${Array.isArray(failure) && failure.length > 1 ? "duplicate identity" : JSON.stringify(failure)}`, async () => {
+    const { alpha, cards, overlap } = await sharedLoad({ [stubPath]: failure });
+    assert(overlap, 'exercise an actual overlapping 2026 card');
+    assert(Array.isArray(cards), 'retain the consumer array contract');
+    assert(cards.every((card) => card.identity.classYear !== 2026));
+    assert.deepEqual(cards, alpha.cards.filter((card) => card.identity.classYear !== 2026),
+      'independent historical card objects remain unchanged');
+  });
+}
+test('shared score APIs preserve supported healthy cards and healthy stub precedence', async () => {
+  const { alpha, cards, overlap } = await sharedLoad();
+  assert(overlap);
+  const expected = buildRookieShellState(alpha, goodStubs).cards;
+  assert.deepEqual(cards, expected);
+  assert(cards.some((card) => card.identity.classYear === 2026));
+  assert(!cards.some((card) => stubRows.some((stub) => stub.playerId === card.playerId)
+    && card.identity.classYear === 2026));
+});
+test('shared API retains history while healthy stubs survive failed Alpha', async () => {
+  const { alpha, cards } = await sharedLoad({ [alphaPath]: 'reject' });
+  assert(cards.length > 0);
+  assert(cards.every((card) => card.identity.classYear !== 2026));
+  assert.equal(selectRookiePlayer(buildRookieShellState(alpha, goodStubs), stubRows[0].slug).status, 'unscored');
+});
+
+function eventNode() {
+  return { events: {}, value: '', style: {}, dataset: {}, classList: { toggle() {} },
+    addEventListener(event, fn) { this.events[event] = fn; } };
+}
+
+async function runSharedConsumer(surface, cards, shell, overlap) {
+  const { document, nodes } = domAdapter();
+  const rendered = [];
+  const viewButton = Object.assign(eventNode(), { dataset: { view: 'board' } });
+  document.querySelectorAll = (selector) => selector === '[data-view]' ? [viewButton] : [];
+  for (const id of ['matchup-section', 'board-section']) document.getElementById(id).style = {};
+  const left = eventNode();
+  const right = eventNode();
+  document.getElementById('compare-selector').querySelector = (selector) => selector.includes('left') ? left : right;
+  const skip = eventNode();
+  document.getElementById('matchup-root').querySelector = () => skip;
+  const deps = { document,
+    window: { location: { search: `?left=${overlap.slug}&right=${overlap.slug}`, href: 'http://localhost/' }, history: { replaceState() {} } },
+    getAllRookieCards: async () => cards, getRookieShellState: async () => shell, rookieLoadMessage,
+    collectGalleryFilters, sortAndFilterRookies, loadRookieQueue: () => [], isRookieQueued: () => false,
+    renderRookieGalleryControls: () => '',
+    renderRookieCardCompact: (card) => { rendered.push(card); return `<span>${card.slug}</span>`; },
+    renderRookieCompareSelector: ({ cards: candidates, leftSlug, rightSlug }) => {
+      rendered.push(...candidates); left.value = leftSlug; right.value = rightSlug;
+      return candidates.map((card) => card.slug).join(' ');
+    },
+    renderRookieCompareView: (root, l, r) => { rendered.push(l, r); root.innerHTML = `${l.slug} ${r.slug}`; },
+    seedMatchup: (pool, pos) => { rendered.push(...pool); return pool.filter((card) => card.identity.position === pos).slice(0, 2); },
+    getVoteCount: () => 0, getConvictionRating: () => 1000,
+  };
+  const path = surface === 'gallery' ? 'cards/rookies/index.html' : `cards/rookies/${surface}/index.html`;
+  await new AsyncFunction(...Object.keys(deps), entryScript(path))(...Object.values(deps));
+  if (surface === 'gallery') {
+    const search = nodes.get('gallery-name-search');
+    search.value = overlap.identity.name;
+    search.events.input();
+    assert.doesNotMatch(nodes.get('gallery').innerHTML, new RegExp(overlap.slug));
+    search.value = ''; search.events.input();
+  } else if (surface === 'compare') {
+    const before = rendered.length;
+    left.value = overlap.slug;
+    left.events.change();
+    assert.equal(rendered.length, before, 'stale selector value cannot compare withheld player');
+    left.value = cards[0].slug; right.value = cards[1].slug;
+    nodes.get('swap-compare-sides').events.click();
+  } else {
+    skip.events.click();
+    viewButton.events.click();
+    assert(!nodes.get('board-root').innerHTML.includes(overlap.identity.name));
+  }
+  assert(rendered.length > 0, `${surface} must actually execute its supported rendering path`);
+  assert(rendered.every((card) => card.identity.classYear !== 2026));
+  assert.match(nodes.get('load-status').textContent, /stub coverage unavailable/);
+}
+
+for (const failure of ['reject', [null]]) {
+  for (const surface of ['gallery', 'compare', 'swipe']) {
+    test(`${surface} entry and rerenders withhold affected cards on ${JSON.stringify(failure)}`, async () => {
+      const { alpha, cards, overlap } = await sharedLoad({ [stubPath]: failure });
+      await runSharedConsumer(surface, cards, buildRookieShellState(alpha, failedStubs), overlap);
+    });
+  }
+}
+
+function savedEntry(card) {
+  return { slug: card.slug, name: card.identity.name, position: card.identity.position, school: card.identity.school,
+    rookieGrade: 9876.5, classRank: 9876, tierLabel: 'STALE_TIER', identityNote: 'STALE_PROFILE',
+    queueNote: 'Keep my observation', queueTag: 'Compare later' };
+}
+
+test('queue presentation revalidates scores and comparison without changing saved entries', async () => {
+  const alpha = await loadWith();
+  const overlap = alpha.cards.find((card) => card.identity.classYear === 2026
+    && stubRows.some((stub) => stub.playerId === card.playerId));
+  const history = alpha.cards.find((card) => card.identity.classYear === 2025);
+  const saved = [savedEntry(overlap), savedEntry(history)];
+  const before = structuredClone(saved);
+  for (const stubs of [failedStubs, goodStubs]) {
+    const shell = buildRookieShellState(alpha, stubs);
+    const rows = mergeRookieBoardRowsWithStubs(buildRookieBoardRows(shell.cards), shell.stubs);
+    const display = reconcileRookieQueue(saved, rows);
+    assert.equal(display[0].rookieGrade, null);
+    assert.equal(display[0].classRank, null);
+    assert.equal(display[0].scoreAvailable, false);
+    assert.equal(display[1].rookieGrade, history.summary.rookieGrade);
+    assert.equal(display[1].scoreAvailable, true);
+    const html = renderRookieQueuePanel(saved, { left: overlap.slug, right: history.slug }, {}, { supportedRows: rows });
+    assert.doesNotMatch(html, /9876|STALE_TIER|STALE_PROFILE|href="\/cards\/rookies\/compare/);
+    assert(!html.includes(`data-queue-mark="left" data-slug="${overlap.slug}"`));
+    assert(html.includes(`data-queue-mark="left" data-slug="${history.slug}"`));
+    assert.match(html, /Keep my observation/);
+    assert.match(html, stubs === failedStubs ? /Coverage unavailable/ : /Unscored — draft-fact only/);
+  }
+  assert.deepEqual(saved, before, 'rendering must not mutate or delete saved entries');
+  assert.doesNotMatch(renderRookieQueuePanel(saved), /9876|data-queue-mark/, 'no supplied authority fails closed');
+});
+
+for (const failure of ['reject', [null]]) {
+  test(`Board saved queue and actual import stay gated through rerenders on ${JSON.stringify(failure)}`, async () => {
+    const { alpha, overlap } = await sharedLoad({ [stubPath]: failure });
+    const shell = buildRookieShellState(alpha, failedStubs);
+    const history = shell.cards.find((card) => card.identity.classYear === 2025);
+    const stored = [savedEntry(overlap), savedEntry(history)];
+    const key = 'tiber-rookie-queue-v1';
+    const storage = new Map([[key, JSON.stringify(stored)]]);
+    const windowBefore = globalThis.window;
+    const win = { location: { search: '', href: 'http://localhost/cards/rookies/board/' },
+      history: { replaceState() {} }, confirm: () => true,
+      localStorage: { getItem: (k) => storage.get(k), setItem: (k, v) => storage.set(k, v) } };
+    globalThis.window = win;
+    try {
+      const importInput = eventNode();
+      const importTrigger = eventNode();
+      class FixtureReader {
+        readAsText(file) { this.result = file.content; this.onload(); }
+      }
+      const setup = (document) => {
+        document.getElementById('queue-root').querySelector = (selector) =>
+          selector === '[data-queue-import-input]' ? importInput : selector === '[data-queue-import-trigger]' ? importTrigger : null;
+      };
+      const board = await runBoard(shell, '', { window: win, loadRookieQueue, importRookieQueue, FileReader: FixtureReader }, setup);
+      const assertWithheld = () => {
+        const html = board.nodes.get('queue-root').innerHTML;
+        assert.match(html, /Coverage unavailable/);
+        assert.doesNotMatch(html, /9876|STALE_TIER|STALE_PROFILE/);
+        assert(!html.includes(`data-queue-mark="left" data-slug="${overlap.slug}"`));
+        assert(html.includes(`data-queue-mark="left" data-slug="${history.slug}"`));
+        assert.match(html, /Keep my observation/);
+      };
+      assertWithheld();
+      assert.equal(storage.get(key), JSON.stringify(stored), 'initial render must leave storage byte-identical');
+      board.nodes.get('board-name-search').value = overlap.identity.name;
+      board.nodes.get('board-name-search').events.input();
+      assertWithheld();
+      await importInput.events.change({ target: { files: [{ name: 'synthetic-queue.json', content: JSON.stringify({ version: 2, queue: stored }) }] } });
+      assert.match(board.nodes.get('queue-root').innerHTML, /Imported 2 queue items/);
+      assertWithheld();
+      const afterImport = storage.get(key);
+      assert.equal(loadRookieQueue()[0].rookieGrade, 9876.5, 'imported snapshot stays stored; it is not eligibility');
+      assert.equal(loadRookieQueue().length, 2);
+      board.nodes.get('board-name-search').value = '';
+      board.nodes.get('board-name-search').events.input();
+      assertWithheld();
+      assert.equal(storage.get(key), afterImport, 'rerenders must not migrate or sanitize storage');
+    } finally { globalThis.window = windowBefore; }
   });
 }
