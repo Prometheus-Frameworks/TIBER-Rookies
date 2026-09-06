@@ -18,7 +18,10 @@ const responseFromText = (text) => ({ ok: true,
   json: async () => JSON.parse(text),
   arrayBuffer: async () => new TextEncoder().encode(text).buffer,
 });
-const seed = [{ player_id: 'test-player', player_name: 'Test Player' }];
+const seedPayload = json('data/devy/devy_seed_watchlist_2026.json');
+// In-memory request fixture; canonical seed bytes remain untouched.
+seedPayload.prospects = [{ ...seedPayload.prospects[0], player_id: 'test-player', player_name: 'Test Player' }];
+const seed = seedPayload.prospects;
 let loadId = 0;
 async function loadWith(overrides = {}, inspect = (module) => module.getRookieCardLoadState()) {
   const oldFetch = globalThis.fetch;
@@ -50,6 +53,22 @@ const alphaPath = '/exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.
 const stubRows = normalizeRookieStubs(json('data/processed/2026_rookie_stubs_v0.json'));
 const goodStubs = { status: 'loaded', rows: stubRows };
 const failedStubs = { status: 'load_failed', rows: [] };
+const canonicalAlpha = json(alphaPath);
+const overlappingAlpha = canonicalAlpha.players.find((row) => stubRows.some((stub) => stub.playerId === row.player_id));
+assert(overlappingAlpha, 'identity fixtures must exercise existing unscored overlap');
+const noncanonicalAlphaCases = [
+  ['uppercase Alpha ID', (id) => id.toUpperCase()],
+  ['leading whitespace Alpha ID', (id) => ` ${id}`],
+  ['trailing whitespace Alpha ID', (id) => `${id}\t`],
+  ['mixed case and whitespace Alpha ID', (id) => ` ${id.toUpperCase()} `],
+  ['canonical plus alias Alpha ID', (id) => id.toUpperCase(), true],
+].map(([name, alias, retainCanonical]) => {
+  const payload = structuredClone(canonicalAlpha);
+  const row = payload.players.find((candidate) => candidate.player_id === overlappingAlpha.player_id);
+  if (retainCanonical) payload.players.push({ ...row, player_id: alias(row.player_id) });
+  else row.player_id = alias(row.player_id);
+  return [name, payload];
+});
 
 for (const raw of [undefined, '', null, 'unsupported', ['active_devy'], {}, 'ACTIVE_DEVY']) {
   test(`Devy ${JSON.stringify(raw)} stays unknown in UI-derived state and CSV`, () => {
@@ -80,9 +99,128 @@ test('malformed and ambiguous transition envelopes reject; empty envelope is val
   assert.equal(normalizeTransitionMap({ transitions: [] }).size, 0);
 });
 test('empty seed is distinct from malformed seed', () => {
-  assert.deepEqual(readDevySeedRows({ prospects: [] }), []);
+  assert.deepEqual(readDevySeedRows({ ...seedPayload, prospects: [] }), []);
   for (const value of [null, {}, { prospects: {} }, { prospects: [null] }]) assert.throws(() => readDevySeedRows(value));
 });
+
+// Mutations start from a valid contract, so rejection cannot pass merely because
+// a different envelope field was already missing.
+const invalidSeedCases = [];
+function invalidSeed(name, mutate) {
+  const payload = structuredClone(seedPayload);
+  mutate(payload, payload.prospects[0]);
+  invalidSeedCases.push([name, payload]);
+}
+for (const field of ['schema_version', 'artifact_type', 'as_of_year', 'disclaimer', 'intake_audit', 'prospects']) {
+  invalidSeed(`missing ${field}`, (p) => { delete p[field]; });
+}
+invalidSeed('wrong schema', (p) => { p.schema_version = 'unsupported'; });
+invalidSeed('fixture-only envelope cannot bypass seed provenance', (p) => {
+  p.artifact_type = 'fixture_only_devy_signal_discovery_registry'; delete p.intake_audit;
+  for (const key of ['identity_provenance', 'timeline_provenance', 'signal_provenance']) delete p.prospects[0][key];
+});
+invalidSeed('boolean season', (p) => { p.as_of_year = true; });
+for (const phrase of ['seed watchlist', 'not rankings', 'not Rookie Alpha inputs']) {
+  invalidSeed(`missing disclaimer ${phrase}`, (p) => { p.disclaimer = p.disclaimer.replace(phrase, ''); });
+}
+for (const field of Object.keys(seedPayload.intake_audit)) {
+  invalidSeed(`missing intake ${field}`, (p) => { delete p.intake_audit[field]; });
+}
+for (const [field, value] of [['intake_method', 'automatic'], ['introduced_by_issue', true],
+  ['introduced_by_pr', 0], ['validation_command', ' '], ['promotion_status', 'promoted'],
+  ['downstream_eligibility', 'allowed'], ['notes', []], ['notes', [' ']]]) {
+  invalidSeed(`invalid intake ${field} ${JSON.stringify(value)}`, (p) => { p.intake_audit[field] = value; });
+}
+for (const field of ['player_id', 'player_name', 'school', 'position', 'projected_draft_class',
+  'earliest_possible_draft_class', 'class_year', 'years_to_projected_draft', 'development_horizon',
+  'lifecycle_stage', 'development_tags', 'signal_strength_band', 'confidence_band',
+  'actionability_band', 'volatility_band', 'summary', 'why_it_matters', 'source_notes']) {
+  invalidSeed(`missing prospect ${field}`, (_, row) => { delete row[field]; });
+}
+for (const [field, value] of [['player_id', ' '], ['player_name', ''], ['school', 42],
+  ['position', 'K'], ['development_horizon', 'UNKNOWN'], ['lifecycle_stage', 'UNKNOWN'],
+  ['development_tags', []], ['development_tags', ['UNKNOWN']], ['signal_strength_band', 'UNKNOWN'],
+  ['confidence_band', 'UNKNOWN'], ['actionability_band', 'UNKNOWN'], ['volatility_band', 'UNKNOWN'],
+  ['summary', ' '], ['why_it_matters', false], ['source_notes', []], ['source_notes', [' ']]]) {
+  invalidSeed(`invalid prospect ${field} ${JSON.stringify(value)}`, (_, row) => { row[field] = value; });
+}
+for (const field of ['projected_draft_class', 'earliest_possible_draft_class', 'class_year',
+  'years_to_projected_draft', 'recruiting_stars', 'recruiting_rank_national', 'recruiting_rank_position']) {
+  for (const value of [true, '2029', 1.5]) {
+    invalidSeed(`invalid numeric ${field} ${JSON.stringify(value)}`, (_, row) => { row[field] = value; });
+  }
+}
+invalidSeed('duplicate identity', (p) => { p.prospects.push(structuredClone(p.prospects[0])); });
+invalidSeed('earliest after projected', (_, row) => { row.earliest_possible_draft_class = row.projected_draft_class + 1; });
+invalidSeed('inconsistent draft distance', (_, row) => { row.years_to_projected_draft = 2; });
+invalidSeed('wrong horizon', (_, row) => { row.development_horizon = 'NEAR_TERM'; });
+for (const band of ['TARGET', 'PRIORITY']) {
+  invalidSeed(`unsupported long-horizon ${band}`, (_, row) => { row.actionability_band = band; });
+}
+for (const key of ['identity_provenance', 'timeline_provenance', 'signal_provenance']) {
+  invalidSeed(`missing ${key}`, (_, row) => { delete row[key]; });
+  invalidSeed(`wrong-category ${key}`, (_, row) => {
+    row[key].source_type = key === 'identity_provenance' ? 'manual_curated_seed_signal' : 'official_roster';
+  });
+  for (const [field, value] of [['source_type', 'invented'], ['source_notes', []], ['source_notes', [' ']],
+    ['supports_fields', []], ['supports_fields', ['player_id']], ['source_urls', []],
+    ['source_urls', ['file:///unavailable']], ['last_verified_year', true], ['last_verified_year', 2027]]) {
+    invalidSeed(`invalid ${key}.${field} ${JSON.stringify(value)}`, (_, row) => { row[key][field] = value; });
+  }
+  for (const field of ['source_type', 'source_notes', 'last_verified_year']) {
+    invalidSeed(`missing ${key}.${field}`, (_, row) => { delete row[key][field]; });
+  }
+}
+invalidSeedCases.push(['review minimal PRIORITY payload', { prospects: [{ player_id: 'x', player_name: 'X', actionability_band: 'PRIORITY' }] }]);
+
+test('Devy seed contract accepts admitted rows and valid empty without mutation', () => {
+  const payload = json('data/devy/devy_seed_watchlist_2026.json');
+  const before = JSON.stringify(payload);
+  assert.equal(readDevySeedRows(payload), payload.prospects);
+  assert.equal(JSON.stringify(payload), before);
+  assert.deepEqual(readDevySeedRows({ ...payload, prospects: [] }), []);
+});
+
+test('Devy seed contract retains nullable fields, optional provenance and supported horizons', () => {
+  const payload = structuredClone(seedPayload);
+  const row = payload.prospects[0];
+  for (const field of ['school', 'projected_draft_class', 'earliest_possible_draft_class', 'class_year',
+    'years_to_projected_draft', 'recruiting_stars', 'recruiting_rank_national', 'recruiting_rank_position']) row[field] = null;
+  for (const key of ['identity_provenance', 'timeline_provenance', 'signal_provenance']) {
+    row[key].source_urls = null; row[key].supports_fields = null;
+  }
+  assert.equal(readDevySeedRows(payload), payload.prospects);
+  for (const [years, horizon] of [[0, 'NEAR_TERM'], [1, 'NEAR_TERM'], [2, 'MEDIUM_TERM'], [3, 'LONG_HORIZON'], [4, 'PREP_OR_FUTURE']]) {
+    row.projected_draft_class = payload.as_of_year + years;
+    row.years_to_projected_draft = years; row.development_horizon = horizon;
+    assert.equal(readDevySeedRows(payload), payload.prospects);
+  }
+  row.lifecycle_stage = 'PREP'; row.years_to_projected_draft = 1;
+  row.projected_draft_class = payload.as_of_year + 1;
+  assert.equal(readDevySeedRows(payload), payload.prospects);
+  row.identity_provenance.supports_fields = ['position', 'school', 'player_name'];
+  row.timeline_provenance.supports_fields = ['class_year', 'years_to_projected_draft', 'projected_draft_class', 'earliest_possible_draft_class'];
+  row.signal_provenance.supports_fields = ['development_tags', 'confidence_band', 'volatility_band', 'actionability_band', 'signal_strength_band'];
+  assert.equal(readDevySeedRows(payload), payload.prospects);
+});
+
+for (const [name, payload] of invalidSeedCases) {
+  test(`Devy seed contract rejects ${name} before rendering or CSV export`, async () => {
+    const before = JSON.stringify(payload);
+    assert.throws(() => readDevySeedRows(payload), /Malformed Devy seed watchlist/);
+    const { document, nodes } = domAdapter();
+    const fetcher = async () => ({ ok: true, json: async () => payload });
+    let exports = 0;
+    await new AsyncFunction('document', 'fetch', 'readDevySeedRows', 'normalizeTransitionMap', 'enrichDevyRows', 'buildDevyCsv', 'downloadCsv', entryScript('cards/devy/index.html'))(
+      document, fetcher, readDevySeedRows, normalizeTransitionMap, enrichDevyRows, buildDevyCsv, () => { exports++; });
+    assert.match(nodes.get('status').textContent, /Failed to load Devy data/);
+    assert.equal(nodes.get('rows').innerHTML, '');
+    assert.equal(nodes.get('exportVisibleButton').disabled, true);
+    assert.equal(nodes.get('exportVisibleButton').events.click, undefined);
+    assert.equal(exports, 0);
+    assert.equal(JSON.stringify(payload), before);
+  });
+}
 
 for (const failure of ['404', '503', 'reject', 'invalid-json', {}, { players: [null] }, { players: [{ player_id: 'test-player', context: { class_year: 2025 } }] }]) {
   test(`Alpha failure ${JSON.stringify(failure)} preserves healthy historical cards and healthy stubs`, async () => {
@@ -168,6 +306,18 @@ function domAdapter() {
     return nodes.get(id);
   } } };
 }
+test('Devy entry accepts contract-valid empty seed and exports the unchanged CSV header', async () => {
+  const { document, nodes } = domAdapter();
+  const payload = { ...seedPayload, prospects: [] };
+  const fetcher = async (path) => ({ ok: path.includes('seed_watchlist'), json: async () => payload });
+  const downloads = [];
+  await new AsyncFunction('document', 'fetch', 'readDevySeedRows', 'normalizeTransitionMap', 'enrichDevyRows', 'buildDevyCsv', 'downloadCsv', entryScript('cards/devy/index.html'))(
+    document, fetcher, readDevySeedRows, normalizeTransitionMap, enrichDevyRows, buildDevyCsv, (...args) => downloads.push(args));
+  assert.match(nodes.get('rows').innerHTML, /loaded Devy seed watchlist is empty/);
+  assert.equal(nodes.get('exportVisibleButton').disabled, false);
+  nodes.get('exportVisibleButton').events.click();
+  assert.deepEqual(downloads, [[buildDevyCsv([]), 'devy_seed_watchlist_visible_2026.csv']]);
+});
 for (const failure of ['404', '503', 'reject', 'invalid-json', {}]) {
   test(`Devy entry rejects failed/malformed seed ${JSON.stringify(failure)}`, async () => {
     const { document, nodes } = domAdapter();
@@ -188,7 +338,7 @@ for (const transitionFailure of ['404', 'reject', 'invalid-json', {}]) {
   test(`Devy entry retains seed rows on transition failure ${JSON.stringify(transitionFailure)} and survives rerender`, async () => {
     const { document, nodes } = domAdapter();
     const fetcher = async (path) => {
-      if (path.includes('seed_watchlist')) return { ok: true, json: async () => ({ prospects: seed }) };
+      if (path.includes('seed_watchlist')) return { ok: true, json: async () => seedPayload };
       if (transitionFailure === 'reject') throw new Error('Synthetic rejection');
       return { ok: transitionFailure !== '404', json: async () => {
         if (transitionFailure === 'invalid-json') throw new SyntaxError('Synthetic JSON failure');
@@ -443,12 +593,45 @@ test('shared API retains history while healthy stubs survive failed Alpha', asyn
   assert.equal(selectRookiePlayer(buildRookieShellState(alpha, goodStubs), stubRows[0].slug).status, 'unscored');
 });
 
+for (const [name, payload] of noncanonicalAlphaCases) {
+  test(`noncanonical identity: ${name} fails before card construction across shared APIs and Board/Player`, async () => {
+    const baseline = await sharedLoad();
+    const { overlap } = baseline;
+    const { alpha, cards, shell, stubState } = await sharedLoad({ [alphaPath]: payload });
+    assert.equal(alpha.seasons.find((row) => row.season === 2026).status, 'load_failed');
+    assert.equal(alpha.seasons.find((row) => row.season === 2026).sources[0].status, 'load_failed');
+    assert(alpha.cards.every((card) => card.identity.classYear !== 2026));
+    assert.deepEqual(cards, baseline.cards.filter((card) => card.identity.classYear !== 2026));
+    assert.equal(stubState.status, 'loaded');
+    await loadWith({ [alphaPath]: payload }, async (module) => {
+      assert.equal(await module.getRookieCardBySlug(overlap.slug), null);
+    });
+    const player = await runPlayer(shell, overlap.slug);
+    assert.deepEqual(player.calls, [['stub', overlap.slug]]);
+    assert.equal(player.nodes.get('detail-actions').innerHTML, '');
+    const board = await runBoard(shell);
+    board.nodes.get('board-name-search').value = overlap.identity.name;
+    board.nodes.get('board-name-search').events.input();
+    assert(board.renderedRows.flat().some((row) => row.playerId === overlap.playerId));
+    assert(board.renderedRows.flat().filter((row) => row.draftClass === 2026)
+      .every((row) => row.alphaStatus === 'not_scored' && row.rookieGrade === null && row.classRank === null));
+    assert.match(board.nodes.get('load-status').textContent, /Rookie Alpha unavailable for 2026/);
+    assert.equal(selectRookiePlayer(shell, 'synthetic-non-player-294').status, 'unavailable');
+    for (const surface of ['gallery', 'compare', 'swipe']) {
+      await runSharedConsumer(surface, cards, shell, overlap, /Rookie Alpha unavailable for 2026/);
+    }
+    const failed = await sharedLoad({ [alphaPath]: payload, [stubPath]: 'reject' });
+    assert(failed.cards.every((card) => card.identity.classYear !== 2026));
+    assert.equal(selectRookiePlayer(failed.shell, overlap.slug).status, 'unavailable');
+  });
+}
+
 function eventNode() {
   return { events: {}, value: '', style: {}, dataset: {}, classList: { toggle() {} },
     addEventListener(event, fn) { this.events[event] = fn; } };
 }
 
-async function runSharedConsumer(surface, cards, shell, overlap) {
+async function runSharedConsumer(surface, cards, shell, overlap, expectedStatus = /stub coverage unavailable/) {
   const { document, nodes } = domAdapter();
   const rendered = [];
   const viewButton = Object.assign(eventNode(), { dataset: { view: 'board' } });
@@ -495,7 +678,7 @@ async function runSharedConsumer(surface, cards, shell, overlap) {
   }
   assert(rendered.length > 0, `${surface} must actually execute its supported rendering path`);
   assert(rendered.every((card) => card.identity.classYear !== 2026));
-  assert.match(nodes.get('load-status').textContent, /stub coverage unavailable/);
+  assert.match(nodes.get('load-status').textContent, expectedStatus);
 }
 
 for (const [caseName, failure] of coverageFailureCases) {
@@ -540,9 +723,13 @@ test('queue presentation revalidates scores and comparison without changing save
   assert.doesNotMatch(renderRookieQueuePanel(saved), /9876|data-queue-mark/, 'no supplied authority fails closed');
 });
 
-for (const [caseName, failure] of coverageFailureCases) {
+for (const [caseName, overrides, statusCopy] of [
+  ...coverageFailureCases.map(([name, failure]) => [name, { [stubPath]: failure }, /Coverage unavailable/]),
+  ...noncanonicalAlphaCases.map(([name, payload]) => [name, { [alphaPath]: payload }, /Unscored — draft-fact only/]),
+]) {
   test(`Board saved queue and actual import stay gated through rerenders on ${caseName}`, async () => {
-    const { overlap, shell } = await sharedLoad({ [stubPath]: failure });
+    const { shell } = await sharedLoad(overrides);
+    const { overlap } = await sharedLoad();
     const history = shell.cards.find((card) => card.identity.classYear === 2025);
     const stored = [savedEntry(overlap), savedEntry(history)];
     const key = 'tiber-rookie-queue-v1';
@@ -565,7 +752,7 @@ for (const [caseName, failure] of coverageFailureCases) {
       const board = await runBoard(shell, '', { window: win, loadRookieQueue, importRookieQueue, FileReader: FixtureReader }, setup);
       const assertWithheld = () => {
         const html = board.nodes.get('queue-root').innerHTML;
-        assert.match(html, /Coverage unavailable/);
+        assert.match(html, statusCopy);
         assert.doesNotMatch(html, /9876|STALE_TIER|STALE_PROFILE/);
         assert(!html.includes(`data-queue-mark="left" data-slug="${overlap.slug}"`));
         assert(html.includes(`data-queue-mark="left" data-slug="${history.slug}"`));
