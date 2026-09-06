@@ -13,6 +13,11 @@ import { collectGalleryFilters, sortAndFilterRookies } from '../lib/rookies/sort
 
 const repo = new URL('../', import.meta.url);
 const json = (path) => JSON.parse(fs.readFileSync(new URL(path.replace(/^\//, ''), repo), 'utf8'));
+const fileText = (path) => fs.readFileSync(new URL(path.replace(/^\//, ''), repo), 'utf8');
+const responseFromText = (text) => ({ ok: true,
+  json: async () => JSON.parse(text),
+  arrayBuffer: async () => new TextEncoder().encode(text).buffer,
+});
 const seed = [{ player_id: 'test-player', player_name: 'Test Player' }];
 let loadId = 0;
 async function loadWith(overrides = {}, inspect = (module) => module.getRookieCardLoadState()) {
@@ -22,18 +27,23 @@ async function loadWith(overrides = {}, inspect = (module) => module.getRookieCa
       const value = overrides[path];
       if (value === 'reject') throw new Error('Synthetic request rejection');
       if (value === '404' || value === '503') return { ok: false, status: Number(value) };
-      if (value === 'invalid-json') return { ok: true, json: async () => { throw new SyntaxError('Synthetic malformed JSON'); } };
-      return { ok: true, json: async () => value };
+      if (value === 'invalid-json') return responseFromText('{');
+      return responseFromText(JSON.stringify(value));
     }
-    try { return { ok: true, json: async () => json(path) }; }
+    try { return responseFromText(fileText(path)); }
     catch { return { ok: false, status: 404 }; }
   };
   try {
     // Isolate both loader caches for each request fixture without modifying files.
     let source = fs.readFileSync(new URL('lib/rookies/getRookieCardData.js', repo), 'utf8');
-    source = source.replace(/from '(\.\/[^']+)'/g, (_, path) => `from '${new URL(`lib/rookies/${path}?case=${++loadId}`, repo).href}'`);
+    let stubModuleUrl;
+    source = source.replace(/from '(\.\/[^']+)'/g, (_, path) => {
+      const url = new URL(`lib/rookies/${path}?case=${++loadId}`, repo).href;
+      if (path === './rookieStubs.js') stubModuleUrl = url;
+      return `from '${url}'`;
+    });
     const module = await import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
-    return await inspect(module);
+    return await inspect(module, await import(stubModuleUrl));
   } finally { globalThis.fetch = oldFetch; }
 }
 const alphaPath = '/exports/promoted/rookie-alpha/2026_rookie_alpha_predraft_v0.json';
@@ -283,7 +293,7 @@ for (const failure of ['404', '503', 'reject', 'invalid-json', {}, [null]]) {
           return failure;
         } };
       }
-      return { ok: true, json: async () => json(path) };
+      return responseFromText(fileText(path));
     };
     try {
       let source = fs.readFileSync(new URL('lib/rookies/rookieShellState.js', repo), 'utf8');
@@ -301,16 +311,109 @@ for (const failure of ['404', '503', 'reject', 'invalid-json', {}, [null]]) {
 const stubPath = '/data/processed/2026_rookie_stubs_v0.json';
 const stubFailures = ['404', '503', 'reject', 'invalid-json', {}, [null],
   [json(stubPath)[0], json(stubPath)[0]]];
+// Mendoza is the first real stub and overlaps the frozen pre-draft cards.
+const rawStubs = json(stubPath);
+const incompleteCases = [
+  ['empty array', []],
+  ['valid subset', rawStubs.slice(1, 4)],
+  ['one omitted identity', rawStubs.slice(1)],
+  ['same count wrong identity', [{ ...rawStubs[0], player_id: 'synthetic-non-player-294' }, ...rawStubs.slice(1)]],
+];
+const coverageFailureCases = [['rejection', 'reject'], ['malformed row', [null]], ...incompleteCases];
+
+for (const [name, payload] of incompleteCases) {
+  test(`incomplete coverage ${name} cannot authorize scores or player absence`, async () => {
+    const { alpha, cards, overlap, stubState, shell } = await sharedLoad({ [stubPath]: payload });
+    assert.equal(stubState.status, 'load_failed');
+    assert.deepEqual(cards, alpha.cards.filter((card) => card.identity.classYear !== 2026));
+    assert.equal(selectRookiePlayer(shell, overlap.slug).status, 'unavailable');
+    assert.equal(selectRookiePlayer(shell, 'synthetic-non-player-294').status, 'unavailable');
+    const player = await runPlayer(shell, overlap.slug);
+    assert.deepEqual(player.calls, []);
+    assert.equal(player.nodes.get('detail-actions').innerHTML, '');
+    const board = await runBoard(shell);
+    assert.match(board.nodes.get('load-status').textContent, /stub coverage unavailable/);
+    assert(!shell.stubs.some((stub) => stub.playerId === 'synthetic-non-player-294'));
+    for (const stub of shell.stubs) {
+      assert.equal(selectRookiePlayer(shell, stub.slug).status, 'unscored');
+      const row = mergeRookieBoardRowsWithStubs([], [stub])[0];
+      assert.equal(row.rookieGrade, null);
+      assert.equal(row.classRank, null);
+    }
+    assert.equal(shell.stubs.length, payload.filter((row) => rawStubs.some((s) => s.player_id === row.player_id)).length);
+  });
+}
+
+test('every omitted canonical stub identity makes coverage incomplete', async () => {
+  for (const omitted of rawStubs) {
+    const { stubState, cards } = await sharedLoad({ [stubPath]: rawStubs.filter((row) => row !== omitted) });
+    assert.equal(stubState.status, 'load_failed', omitted.player_id);
+    assert(cards.every((card) => card.identity.classYear !== 2026), omitted.player_id);
+  }
+});
+
+test('complete reordered stubs retain eligibility and healthy stubs survive failed pre-draft Alpha', async () => {
+  const normal = await sharedLoad();
+  const reordered = await sharedLoad({ [stubPath]: [...rawStubs].reverse() });
+  assert.equal(normal.stubState.status, 'loaded');
+  assert.equal(reordered.stubState.status, 'loaded');
+  assert.deepEqual(reordered.cards, normal.cards);
+  const failedAlpha = await sharedLoad({ [alphaPath]: 'reject' });
+  assert.equal(failedAlpha.stubState.status, 'loaded');
+  assert.equal(failedAlpha.shell.stubs.length, rawStubs.length);
+  assert.equal(selectRookiePlayer(failedAlpha.shell, stubRows[0].slug).status, 'unscored');
+});
+
+const coveragePaths = ['/data/processed/2026_draft_results.json',
+  '/exports/promoted/rookie-alpha/2026_rookie_alpha_postdraft_role_context_v0.json'];
+for (const path of coveragePaths) {
+  for (const failure of ['404', '503', 'reject', 'invalid-json', [], {}]) {
+    test(`coverage reference ${path} rejects ${JSON.stringify(failure)}`, async () => {
+      const { stubState, alpha, cards } = await sharedLoad({ [path]: failure });
+      assert.equal(stubState.status, 'load_failed');
+      assert.deepEqual(cards, alpha.cards.filter((card) => card.identity.classYear !== 2026));
+    });
+  }
+  test(`structurally valid altered coverage reference cannot replace the pin: ${path}`, async () => {
+    const payload = json(path);
+    if (Array.isArray(payload)) payload.pop();
+    else payload.rows.push({ ...payload.rows[0], player_id: rawStubs[0].player_id });
+    const { stubState, cards } = await sharedLoad({ [path]: payload });
+    assert.equal(stubState.status, 'load_failed');
+    assert.match(stubState.error, /integrity mismatch/);
+    assert(cards.every((card) => card.identity.classYear !== 2026));
+  });
+}
+
+test('unavailable digest capability cannot authorize coverage', async () => {
+  const descriptor = Object.getOwnPropertyDescriptor(globalThis, 'crypto');
+  Object.defineProperty(globalThis, 'crypto', { configurable: true, value: undefined });
+  try {
+    const { stubState, cards } = await sharedLoad();
+    assert.equal(stubState.status, 'load_failed');
+    assert(cards.every((card) => card.identity.classYear !== 2026));
+  } finally { Object.defineProperty(globalThis, 'crypto', descriptor); }
+});
+
+test('mismatched stub facts are withheld while verified unscored rows survive', async () => {
+  const payload = rawStubs.map((row, i) => i === 0 ? { ...row, team: 'SYNTHETIC' } : row);
+  const { stubState, shell } = await sharedLoad({ [stubPath]: payload });
+  assert.equal(stubState.status, 'load_failed');
+  assert.equal(shell.stubs.length, rawStubs.length - 1);
+  assert(!shell.stubs.some((row) => row.playerId === rawStubs[0].player_id));
+});
+
 
 async function sharedLoad(overrides = {}) {
-  return loadWith(overrides, async (module) => {
+  return loadWith(overrides, async (module, stubModule) => {
     const alpha = await module.getRookieCardLoadState();
     const cards = await module.getAllRookieCards();
     const overlap = alpha.cards.find((card) => card.identity.classYear === 2026
       && stubRows.some((stub) => stub.playerId === card.playerId));
     if (overlap) assert.equal(await module.getRookieCardBySlug(overlap.slug), null,
       'slug API cannot bypass coverage or healthy stub precedence');
-    return { alpha, cards, overlap };
+    const stubState = await stubModule.getRookieStubLoadState();
+    return { alpha, cards, overlap, stubState, shell: buildRookieShellState(alpha, stubState) };
   });
 }
 
@@ -395,11 +498,11 @@ async function runSharedConsumer(surface, cards, shell, overlap) {
   assert.match(nodes.get('load-status').textContent, /stub coverage unavailable/);
 }
 
-for (const failure of ['reject', [null]]) {
+for (const [caseName, failure] of coverageFailureCases) {
   for (const surface of ['gallery', 'compare', 'swipe']) {
-    test(`${surface} entry and rerenders withhold affected cards on ${JSON.stringify(failure)}`, async () => {
-      const { alpha, cards, overlap } = await sharedLoad({ [stubPath]: failure });
-      await runSharedConsumer(surface, cards, buildRookieShellState(alpha, failedStubs), overlap);
+    test(`${surface} entry and rerenders withhold affected cards on ${caseName}`, async () => {
+      const { cards, overlap, shell } = await sharedLoad({ [stubPath]: failure });
+      await runSharedConsumer(surface, cards, shell, overlap);
     });
   }
 }
@@ -437,10 +540,9 @@ test('queue presentation revalidates scores and comparison without changing save
   assert.doesNotMatch(renderRookieQueuePanel(saved), /9876|data-queue-mark/, 'no supplied authority fails closed');
 });
 
-for (const failure of ['reject', [null]]) {
-  test(`Board saved queue and actual import stay gated through rerenders on ${JSON.stringify(failure)}`, async () => {
-    const { alpha, overlap } = await sharedLoad({ [stubPath]: failure });
-    const shell = buildRookieShellState(alpha, failedStubs);
+for (const [caseName, failure] of coverageFailureCases) {
+  test(`Board saved queue and actual import stay gated through rerenders on ${caseName}`, async () => {
+    const { overlap, shell } = await sharedLoad({ [stubPath]: failure });
     const history = shell.cards.find((card) => card.identity.classYear === 2025);
     const stored = [savedEntry(overlap), savedEntry(history)];
     const key = 'tiber-rookie-queue-v1';
