@@ -97,6 +97,7 @@
       </div>
       <section id="board-controls-root" style="margin-top: 8px">Loading board controls…</section>
       <p style="margin-top: 8px"><a class="nav-link" href="#queue-root" id="queue-jump-link">↓ Jump to shortlist queue</a></p>
+      <p id="load-status" class="meta" role="status">Loading rookie sources…</p>
       <section id="board-root" style="margin-top: 12px">Loading rookie board…</section>
       <section id="queue-root" style="margin-top: 16px">Loading shortlist queue…</section>
     </main>
@@ -117,9 +118,9 @@
     </footer>
 
     <script type="module">
-      import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
+      import { getRookieShellState, rookieLoadMessage } from '/lib/rookies/rookieShellState.js';
       import { buildRookieBoardRows, filterRookieBoard, sortRookieBoard } from '/lib/rookies/buildRookieBoardRows.js';
-      import { get2026RookieStubs, mergeRookieBoardRowsWithStubs } from '/lib/rookies/rookieStubs.js';
+      import { mergeRookieBoardRowsWithStubs } from '/lib/rookies/rookieStubs.js';
       import { groupRookiesByTier } from '/lib/rookies/groupRookiesByTier.js';
       import { getRookieTierRules } from '/lib/rookies/deriveRookieTier.js';
       import { renderRookieBoardControls } from '/components/rookies/RookieBoardControls.js';
@@ -128,6 +129,7 @@
       import { addRookieToQueue, clearQueuedRookieNote, clearQueuedRookieTag, clearRookieQueue, getRookieQueueNoteMaxLength, getRookieQueueTagOptions, importRookieQueue, isRookieQueued, loadRookieQueue, moveQueuedRookie, removeRookieFromQueue, serializeRookieQueue, updateQueuedRookieNote, updateQueuedRookieTag } from '/lib/rookies/rookieQueueStore.js';
       import { buildBoardCsv, downloadCsv } from '/lib/rookies/exportCsv.js';
 
+      let shell = null;
       const summaryRoot = document.getElementById('board-summary');
       const controlsRoot = document.getElementById('board-controls-root');
       const boardRoot = document.getElementById('board-root');
@@ -305,6 +307,9 @@
           button.addEventListener('click', (event) => {
             const slug = event.currentTarget.dataset.slug;
             const side = event.currentTarget.dataset.queueMark;
+            const row = allRows.find((candidate) => candidate.slug === slug);
+            if (!row || row.alphaStatus === 'not_scored' || !Number.isFinite(row.rookieGrade)) return;
+            if (side !== 'left' && side !== 'right') return;
             compareState[side] = compareState[side] === slug ? null : slug;
             render(allRows);
           });
@@ -433,7 +438,14 @@
         const filtered = filterRookieBoard(allRows, { position: state.position, draftClass: state.draftClass, nameFilter: state.nameFilter });
         const sorted = sortRookieBoard(filtered, state.sort);
         const queue = loadRookieQueue();
+        const supportedSlugs = new Set(allRows.filter((row) => row.alphaStatus !== 'not_scored'
+          && Number.isFinite(row.rookieGrade)).map((row) => row.slug));
+        for (const side of ['left', 'right']) {
+          if (!supportedSlugs.has(compareState[side]) || !queue.some((entry) => entry.slug === compareState[side])) compareState[side] = null;
+        }
 
+        const loadMessage = rookieLoadMessage(shell, state.draftClass);
+        document.getElementById('load-status').textContent = loadMessage || 'Rookie sources loaded.';
         renderSummary(allRows, sorted);
         updateQueueJumpLink(queue.length);
         controlsRoot.innerHTML = renderRookieBoardControls({ positions, state });
@@ -445,7 +457,18 @@
           queueSlugs,
           queueAnnotations,
         });
+        if (!sorted.length) {
+          const classRows = filterRookieBoard(allRows, { draftClass: state.draftClass });
+          const populationIncomplete = shell.seasons.some((result) => result.status === 'load_failed'
+            && (state.draftClass === 'ALL' || String(result.season) === state.draftClass))
+            || (shell.stubStatus !== 'loaded' && ['ALL', '2026'].includes(state.draftClass));
+          boardRoot.textContent = populationIncomplete
+            ? 'No supported rows match this view. Coverage is incomplete; this is not a confirmed empty population.'
+            : classRows.length ? 'No rookies match the current search/filter state.'
+              : 'The successfully loaded sources for this view contain no players.';
+        }
         queueRoot.innerHTML = renderRookieQueuePanel(queue, compareState, portabilityState, {
+          supportedRows: allRows,
           tagOptions: queueTagOptions,
           noteMaxLength: queueNoteMaxLength,
         });
@@ -472,7 +495,8 @@
 
       try {
         hydrateStateFromUrl();
-        const [cards, stubs] = await Promise.all([getAllRookieCards(), get2026RookieStubs()]);
+        shell = await getRookieShellState();
+        const { cards, stubs } = shell;
         const rows = mergeRookieBoardRowsWithStubs(buildRookieBoardRows(cards), stubs);
         renderHeroMetrics(rows);
         render(rows);
@@ -487,9 +511,10 @@
           });
         }
       } catch (error) {
+        document.getElementById('load-status').textContent = 'Rookie sources unavailable.';
         summaryRoot.innerHTML = '';
         controlsRoot.innerHTML = '';
-        boardRoot.innerHTML = `<div class="meta">Failed to load rookie board: ${error.message}</div>`;
+        boardRoot.textContent = `Failed to load rookie board: ${error.message}`;
         queueRoot.innerHTML = '';
       }
     </script>
