@@ -1,5 +1,7 @@
 # TIBER-Rookies
 
+> **[TIBER Now — what works, what we’re building, and what’s still conceptual](https://github.com/Prometheus-Frameworks/TIBER-Fantasy/blob/main/docs/TIBER_NOW.md)**
+
 TIBER-Rookies is the **authoritative Rookie Alpha producer lab** and now also has a **minimal standalone static runtime** so the rookie prototype can be deployed independently (including Railway).
 
 It is intentionally not a full draft room, not a live backend, and not a runtime dependency for TIBER-Fantasy.
