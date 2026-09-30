@@ -155,7 +155,11 @@ rows: [
   evidence_window: {games_with_observed_rows, games_expected | null, finality_by_game}
   observed: {passing, rushing, receiving}    # per-cell {value, availability, observation_id, source_revision_id}
   prior_observed: same shape from prior_checkpoint | null
-  delta: per category {basis: same_revision|corrected|new_rows|not_comparable, note}
+  delta: per category, per cell {prior_value, current_value, difference | null,
+         basis: same_revision|corrected|new_rows|not_comparable, note}
+         # difference = current_value - prior_value, integers only, non-null only when
+         # both cells are observed_zero|observed_value and the row is MATCHED; a plain
+         # arithmetic derivation of copied cells, never a rate, share, score or grade
   opportunity: {status: unavailable, reason: no_denominator_contract}   # until a Data companion exists
   context: {program_state, roster_status, class_context}                # from v1 pulse or manual, with provenance
   evidence_change_state, context_change_state
@@ -176,7 +180,7 @@ The #298 example words "stronger/stable/weaker" are intentionally **not** adopte
 
 ### 3.4 Validation (future `scripts/validate_devy_evidence_pulse.py`)
 
-Fail closed on: any cell value present with availability other than `observed_zero|observed_value`; any delta on a row whose binding is not `MATCHED`; any delta across a corrected pair without `CORRECTED_EVIDENCE`; `prior_checkpoint.sha256` mismatch; cited `known_at` later than `as_known_at`; any `opportunity` value while no denominator artifact is declared; missing `auto_seed_watchlist_mutation: "none"`; any `NO_OBSERVED_ROWS` on a row whose binding is not `MATCHED`; any score, rank, grade, probability, projection or ordering field. Numeric values are permitted only in copied observed cells, structural identifiers and clocks (`season`, game IDs, timestamps, digests) and coverage counts (`games_with_observed_rows`, `games_expected`).
+Fail closed on: any cell value present with availability other than `observed_zero|observed_value`; any delta on a row whose binding is not `MATCHED`; any delta across a corrected pair without `CORRECTED_EVIDENCE`; `prior_checkpoint.sha256` mismatch; cited `known_at` later than `as_known_at`; any `opportunity` value while no denominator artifact is declared; missing `auto_seed_watchlist_mutation: "none"`; any `NO_OBSERVED_ROWS` on a row whose binding is not `MATCHED`; any score, rank, grade, probability, projection or ordering field. Numeric values are permitted only in copied observed cells (`observed`, `prior_observed`, `delta.prior_value`, `delta.current_value`), computed per-cell `delta.difference` values (integer `current_value − prior_value`, null unless both cells are observed and the row is `MATCHED`; the validator recomputes and rejects any mismatch), structural identifiers and clocks (`season`, game IDs, timestamps, digests) and coverage counts (`games_with_observed_rows`, `games_expected`). Rates, shares, per-game averages and any other derived number remain prohibited until a Data-owned denominator contract exists.
 
 ## 4. Cadence recommendation (nothing scheduled)
 
@@ -285,4 +289,10 @@ Round 1: Codex review at head `024938b4bcbecf34efbc06190ba0c620aeacf229`, submit
 | R1-3 | P2 | §1.4 grouped `fetch_rb_play_profiles.py` / `fetch_wr_route_profiles.py` under `/plays`; they use `/stats/player/season` and estimate targets; only the QB path calls `fetch_team_plays` | Confirmed: `fetch_rb_play_profiles.py` L4/L33/L142, `fetch_wr_route_profiles.py` L4/L35/L196, `fetch_qb_play_profiles.py` L19/L141 | Table row split into play-level (QB) and season-level (RB/WR/TE) precedent; matrix `Targets` row and §1.4 bullet corrected |
 | R1-4 | P2 | `draft_capital_only` listed as a non-ML baseline; it is a fitted logistic under `ml_models`, and the deterministic baselines are only the two `_rescaled` entries | Confirmed: producer L1443–1449 (`run_model`) vs L1451–1462 (`deterministic_non_ml_baseline`); archive `evaluation_report.json` keys | Disposition table corrected; fitted single-feature model moved to the DEPRECATE row; retention sentence corrected |
 
-No finding changed the terminal answer (§9), the successor sequence (§8) or the recommended authorization (S3).
+Round 2: Codex review at head `c41b1c1cdb9a649b5334acc8ffe67149207c6f61`, submitted 2026-09-30T14:48:10Z (review 5367873949; trigger: manual request). One inline finding.
+
+| ID | Severity | Finding (Codex) | Verification | Repair in this revision |
+| --- | --- | --- | --- | --- |
+| R2-1 | P2 | The §3.4 numeric whitelist still excluded the computed values of the sketch's `delta` entries, so a literal S3 validator would reject every checkpoint with a numeric change for a `MATCHED` player | Confirmed: §3.2 `delta` implied a computed change but named no numeric field, and §3.4 allowed none | §3.2 `delta` now names `prior_value`, `current_value` and an integer `difference` (null unless both cells observed and the row `MATCHED`); §3.4 permits exactly those, requires the validator to recompute `difference`, and keeps rates, shares, averages, scores and ranks prohibited |
+
+Round 2 was the last repair round permitted under this grant. No finding in either round changed the terminal answer (§9), the successor sequence (§8) or the recommended authorization (S3).
