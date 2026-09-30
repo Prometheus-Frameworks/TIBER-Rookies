@@ -158,8 +158,9 @@ rows: [
   delta: per category, per cell {prior_value, current_value, difference | null,
          basis: same_revision|corrected|new_rows|not_comparable, note}
          # difference = current_value - prior_value, integers only, non-null only when
-         # both cells are observed_zero|observed_value and the row is MATCHED; a plain
-         # arithmetic derivation of copied cells, never a rate, share, score or grade
+         # both cells are observed_zero|observed_value, the row is MATCHED, and
+         # evidence_change_state is not CONFLICTING_EVIDENCE or INSUFFICIENT_EVIDENCE;
+         # a plain arithmetic derivation of copied cells, never a rate, share, score or grade
   opportunity: {status: unavailable, reason: no_denominator_contract}   # until a Data companion exists
   context: {program_state, roster_status, class_context}                # from v1 pulse or manual, with provenance
   evidence_change_state, context_change_state
@@ -172,7 +173,7 @@ intake_audit: {intake_method, promotion_status: non_promoted_discovery_only, val
 
 ### 3.3 Change vocabulary (proposed enumerations)
 
-`evidence_change_state`: `NEW_EVIDENCE` (new observed rows since prior checkpoint, same revision lineage) · `NO_NEW_EVIDENCE` (rows unchanged) · `NO_OBSERVED_ROWS` (binding `MATCHED`, no source row in window; says nothing about participation) · `CORRECTED_EVIDENCE` (an established supersession changed at least one cell) · `CONFLICTING_EVIDENCE` (unresolved source relation; no delta computed) · `IDENTITY_UNRESOLVED` (binding not `MATCHED`, including seeds with no crosswalk decision; no delta and no absence claim) · `COVERAGE_INCOMPLETE` (envelope population partial/unknown or expected games unknown; deltas reported but flagged) · `INSUFFICIENT_EVIDENCE` (fewer than the operator-declared minimum observed games; no delta).
+`evidence_change_state`: `NEW_EVIDENCE` (new observed rows since prior checkpoint, same revision lineage) · `NO_NEW_EVIDENCE` (rows unchanged) · `NO_OBSERVED_ROWS` (binding `MATCHED`, no source row in window; says nothing about participation) · `CORRECTED_EVIDENCE` (an established supersession changed at least one cell) · `CONFLICTING_EVIDENCE` (unresolved source relation; no delta computed, `delta.difference` null) · `IDENTITY_UNRESOLVED` (binding not `MATCHED`, including seeds with no crosswalk decision; no delta and no absence claim) · `COVERAGE_INCOMPLETE` (envelope population partial/unknown or expected games unknown; deltas reported but flagged) · `INSUFFICIENT_EVIDENCE` (fewer than the operator-declared minimum observed games; no delta computed, `delta.difference` null).
 
 `context_change_state`: `UNCHANGED` · `PROGRAM_CHANGED` · `ROSTER_STATUS_CHANGED` · `CLASS_CONTEXT_CHANGED` · `UNKNOWN`.
 
@@ -180,7 +181,7 @@ The #298 example words "stronger/stable/weaker" are intentionally **not** adopte
 
 ### 3.4 Validation (future `scripts/validate_devy_evidence_pulse.py`)
 
-Fail closed on: any cell value present with availability other than `observed_zero|observed_value`; any delta on a row whose binding is not `MATCHED`; any delta across a corrected pair without `CORRECTED_EVIDENCE`; `prior_checkpoint.sha256` mismatch; cited `known_at` later than `as_known_at`; any `opportunity` value while no denominator artifact is declared; missing `auto_seed_watchlist_mutation: "none"`; any `NO_OBSERVED_ROWS` on a row whose binding is not `MATCHED`; any score, rank, grade, probability, projection or ordering field. Numeric values are permitted only in copied observed cells (`observed`, `prior_observed`, `delta.prior_value`, `delta.current_value`), computed per-cell `delta.difference` values (integer `current_value − prior_value`, null unless both cells are observed and the row is `MATCHED`; the validator recomputes and rejects any mismatch), structural identifiers and clocks (`season`, game IDs, timestamps, digests) and coverage counts (`games_with_observed_rows`, `games_expected`). Rates, shares, per-game averages and any other derived number remain prohibited until a Data-owned denominator contract exists.
+Fail closed on: any cell value present with availability other than `observed_zero|observed_value`; any delta on a row whose binding is not `MATCHED`; any delta across a corrected pair without `CORRECTED_EVIDENCE`; `prior_checkpoint.sha256` mismatch; cited `known_at` later than `as_known_at`; any `opportunity` value while no denominator artifact is declared; missing `auto_seed_watchlist_mutation: "none"`; any `NO_OBSERVED_ROWS` on a row whose binding is not `MATCHED`; any non-null `delta.difference` on a row whose `evidence_change_state` is `CONFLICTING_EVIDENCE` or `INSUFFICIENT_EVIDENCE`; any score, rank, grade, probability, projection or ordering field. Numeric values are permitted only in copied observed cells (`observed`, `prior_observed`, `delta.prior_value`, `delta.current_value`), computed per-cell `delta.difference` values (integer `current_value − prior_value`; null unless both cells are observed and the row is `MATCHED`, and always null in the `CONFLICTING_EVIDENCE` and `INSUFFICIENT_EVIDENCE` states; the validator recomputes and rejects any mismatch), structural identifiers and clocks (`season`, game IDs, timestamps, digests) and coverage counts (`games_with_observed_rows`, `games_expected`). Rates, shares, per-game averages and any other derived number remain prohibited until a Data-owned denominator contract exists.
 
 ## 4. Cadence recommendation (nothing scheduled)
 
@@ -295,4 +296,10 @@ Round 2: Codex review at head `c41b1c1cdb9a649b5334acc8ffe67149207c6f61`, submit
 | --- | --- | --- | --- | --- |
 | R2-1 | P2 | The §3.4 numeric whitelist still excluded the computed values of the sketch's `delta` entries, so a literal S3 validator would reject every checkpoint with a numeric change for a `MATCHED` player | Confirmed: §3.2 `delta` implied a computed change but named no numeric field, and §3.4 allowed none | §3.2 `delta` now names `prior_value`, `current_value` and an integer `difference` (null unless both cells observed and the row `MATCHED`); §3.4 permits exactly those, requires the validator to recompute `difference`, and keeps rates, shares, averages, scores and ranks prohibited |
 
-Round 2 was the last repair round permitted under this grant. No finding in either round changed the terminal answer (§9), the successor sequence (§8) or the recommended authorization (S3).
+Round 3: Codex review at head `96d6cd69996b700e173bebb6ad76462e5b42f036`, submitted 2026-09-30T14:52:37Z (review 5367939937; trigger: manual request). One inline finding. Round 2 had exhausted the original two-round repair budget, so R3-1 was first returned to the operator as a blocker; the operator then separately authorized one additional docs-only repair round on 2026-09-30, under which this revision was made.
+
+| ID | Severity | Finding (Codex) | Verification | Repair in this revision |
+| --- | --- | --- | --- | --- |
+| R3-1 | P2 | §3.4 permitted a numeric `delta.difference` on any `MATCHED` row with two observed cells, while §3.3 requires no delta for `CONFLICTING_EVIDENCE` and `INSUFFICIENT_EVIDENCE`; a literal validator could accept a contradictory checkpoint | Confirmed by reading §3.3 against §3.4 at `96d6cd6` | §3.2 comment, §3.3 state definitions and §3.4 now require `delta.difference` to be null in both states, and §3.4 fails closed on any non-null value there |
+
+No finding in any round changed the terminal answer (§9), the successor sequence (§8) or the recommended authorization (S3).
