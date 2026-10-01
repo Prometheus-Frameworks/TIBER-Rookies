@@ -460,6 +460,7 @@ def _validate_envelope(f: _Findings, env: Any, ref: dict[str, Any], path: str, s
                     f.fail("OBSERVATION_CELLS", f"{opath}.observed.{cat}.{field}", "non-observed cell must carry null (missing is not zero)")
         rows.append({
             "envelope_path": path,
+            "raw": obs,
             "observation_id": oid,
             "canonical": identity.get("canonical_college_player_id"),
             "identity_status": identity.get("status"),
@@ -691,12 +692,14 @@ def coverage_from_flags(flags: set[str]) -> str:
 
 
 def _observation_fingerprint(row: dict[str, Any]) -> str:
-    """Content identity of an observation, used to coalesce repeats across envelopes."""
-    return json.dumps(
-        {k: (v.isoformat() if isinstance(v, datetime) else v) for k, v in row.items() if k != "envelope_path"},
-        sort_keys=True,
-        default=str,
-    )
+    """Content identity of an observation, used to coalesce repeats across envelopes.
+
+    The fingerprint covers the **complete raw observation** as it appears in the
+    envelope, not only the fields the pulse consumes, so two envelopes carrying the
+    same observation_id with any difference in provenance, metadata or cells are an
+    input defect rather than a silent merge.
+    """
+    return json.dumps(row["raw"], sort_keys=True, separators=(",", ":"), default=str)
 
 
 def coalesce_observations(envelopes: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[str]]:

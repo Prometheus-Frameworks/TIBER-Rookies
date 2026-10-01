@@ -481,6 +481,19 @@ class CoveragePrecedence(unittest.TestCase):
         errors = self.b.errors()
         self.assertTrue(any(e.startswith("INPUT_CONFLICT") and "synthetic-observation-d-g1-r1" in e for e in errors), errors)
         self.assertFalse(any("rows[3].evidence_change_state" in e and CONFLICTING_EVIDENCE in e for e in errors), errors)
+        # A difference in content the pulse does not consume (provenance metadata) is
+        # still a different observation and must not be coalesced silently.
+        env = self.b.read(ENVELOPE)
+        env["observations"][3]["provider"] = "synthetic-provider-b"
+        self.b.files[copy_name] = _dump(env)
+        self.b.checkpoint["inputs"]["data_envelopes"][1]["sha256"] = hashlib.sha256(self.b.files[copy_name]).hexdigest()
+        errors = self.b.errors()
+        self.assertTrue(any(e.startswith("INPUT_CONFLICT") and "synthetic-observation-d-g1-r1" in e for e in errors), errors)
+        env = self.b.read(ENVELOPE)
+        env["observations"][3]["source_snapshot_ref"] = "synthetic-snapshot-other"
+        self.b.files[copy_name] = _dump(env)
+        self.b.checkpoint["inputs"]["data_envelopes"][1]["sha256"] = hashlib.sha256(self.b.files[copy_name]).hexdigest()
+        self.assertTrue(any(e.startswith("INPUT_CONFLICT") for e in self.b.errors()))
 
     def test_window_must_be_recomputed_from_envelopes(self) -> None:
         self.b.checkpoint["window"]["observed_game_ids"].append({"season": 2026, "source_game_id": "syn-g3"})
