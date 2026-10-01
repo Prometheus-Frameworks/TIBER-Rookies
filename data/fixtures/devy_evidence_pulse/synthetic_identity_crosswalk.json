@@ -1,0 +1,119 @@
+{
+  "artifact_type": "devy_identity_crosswalk",
+  "schema_version": "devy-identity-crosswalk-v0.1.0",
+  "evidence_mode": "synthetic_fixture",
+  "generated_at": "2026-09-19T10:00:00Z",
+  "disclaimer": "SYNTHETIC crosswalk fixture: append-only reviewed decisions binding synthetic seed ids to synthetic canonical college ids. Not real identities.",
+  "rows": [
+    {
+      "row_id": "synthetic-xw-r1",
+      "seed_player_id": "synthetic-seed-b",
+      "status": "READY",
+      "canonical_college_player_id": "synthetic-college-b",
+      "decision_known_at": "2026-09-15T09:00:00Z",
+      "supersedes": null,
+      "evidence_refs": [
+        {
+          "kind": "identity",
+          "locator": "synthetic:roster-b",
+          "known_at": "2026-09-14T09:00:00Z"
+        }
+      ],
+      "reviewer_decision": {
+        "decided_by": "synthetic-reviewer",
+        "decision": "SYNTHETIC reviewed decision READY"
+      },
+      "alias_claim": null,
+      "note": "SYNTHETIC fixture row; no provider accessed, no real player."
+    },
+    {
+      "row_id": "synthetic-xw-r2",
+      "seed_player_id": "synthetic-seed-b",
+      "status": "TRANSFER_VERIFY",
+      "canonical_college_player_id": "synthetic-college-b",
+      "decision_known_at": "2026-09-19T09:00:00Z",
+      "supersedes": "synthetic-xw-r1",
+      "evidence_refs": [
+        {
+          "kind": "identity",
+          "locator": "synthetic:roster-b",
+          "known_at": "2026-09-14T09:00:00Z"
+        },
+        {
+          "kind": "transfer_report",
+          "locator": "synthetic:transfer-b",
+          "known_at": "2026-09-18T09:00:00Z"
+        }
+      ],
+      "reviewer_decision": {
+        "decided_by": "synthetic-reviewer",
+        "decision": "SYNTHETIC reviewed decision TRANSFER_VERIFY"
+      },
+      "alias_claim": null,
+      "note": "SYNTHETIC fixture row; no provider accessed, no real player."
+    },
+    {
+      "row_id": "synthetic-xw-r3",
+      "seed_player_id": "synthetic-seed-c",
+      "status": "READY",
+      "canonical_college_player_id": "synthetic-college-c",
+      "decision_known_at": "2026-09-10T09:00:00Z",
+      "supersedes": null,
+      "evidence_refs": [
+        {
+          "kind": "identity",
+          "locator": "synthetic:roster-c",
+          "known_at": "2026-09-09T09:00:00Z"
+        }
+      ],
+      "reviewer_decision": {
+        "decided_by": "synthetic-reviewer",
+        "decision": "SYNTHETIC reviewed decision READY"
+      },
+      "alias_claim": null,
+      "note": "SYNTHETIC fixture row; no provider accessed, no real player."
+    },
+    {
+      "row_id": "synthetic-xw-r4",
+      "seed_player_id": "synthetic-seed-d",
+      "status": "READY",
+      "canonical_college_player_id": "synthetic-college-d",
+      "decision_known_at": "2026-09-10T09:00:00Z",
+      "supersedes": null,
+      "evidence_refs": [
+        {
+          "kind": "identity",
+          "locator": "synthetic:roster-d",
+          "known_at": "2026-09-09T09:00:00Z"
+        }
+      ],
+      "reviewer_decision": {
+        "decided_by": "synthetic-reviewer",
+        "decision": "SYNTHETIC reviewed decision READY"
+      },
+      "alias_claim": null,
+      "note": "SYNTHETIC fixture row; no provider accessed, no real player."
+    },
+    {
+      "row_id": "synthetic-xw-r5",
+      "seed_player_id": "synthetic-seed-e",
+      "status": "READY",
+      "canonical_college_player_id": "synthetic-college-e",
+      "decision_known_at": "2026-09-10T09:00:00Z",
+      "supersedes": null,
+      "evidence_refs": [
+        {
+          "kind": "identity",
+          "locator": "synthetic:roster-e",
+          "known_at": "2026-09-09T09:00:00Z"
+        }
+      ],
+      "reviewer_decision": {
+        "decided_by": "synthetic-reviewer",
+        "decision": "SYNTHETIC reviewed decision READY"
+      },
+      "alias_claim": null,
+      "note": "SYNTHETIC fixture row; no provider accessed, no real player."
+    }
+  ]
+}
