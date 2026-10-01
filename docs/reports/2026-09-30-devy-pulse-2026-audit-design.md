@@ -131,9 +131,10 @@ Legal boundary for every row: `docs/legal/external-source-hygiene-policy.md` and
 
 1. **Consumer, not store.** A checkpoint reads one or more TIBER-Data `college_player_game_observations` envelopes (`artifact_position=unpromoted` acceptable only while the checkpoint itself is non-promoted) and records their `generated_at` and a `sha256` of each envelope. It never fetches a provider and never holds observations Data does not hold.
 2. **As-known cutoff.** Each checkpoint has `as_known_at`. It may cite only evidence whose `known_at`/`retrieved_at`/`recorded_at` ≤ `as_known_at`. A later checkpoint never rewrites an earlier one.
-3. **Missing is not zero; absent is not inactive.** Cells copy Data's `availability` state verbatim. A prospect whose binding is `MATCHED` and who has no source row in the window gets `evidence_change_state = NO_OBSERVED_ROWS`, not zeros and not a participation claim. A prospect without a reviewed binding never gets a coverage statement at all (rule 5).
+3. **Missing is not zero; absent is not inactive.** Cells copy Data's `availability` state verbatim. A prospect whose binding is `MATCHED` and who has no source row in the window gets `evidence_change_state = NO_OBSERVED_ROWS`, not zeros and not a participation claim. A prospect without a `MATCHED` binding never gets a coverage statement at all (rule 5).
 4. **Corrections stay visible.** A change caused by a Data `established_supersession` is reported as `CORRECTED_EVIDENCE` with both `observation_id`s. Any `unresolved`/`older_discovered_later` relation in the window forces `CONFLICTING_EVIDENCE`, and the checkpoint must fail closed rather than pick a leaf (it must not rely on Data's validator alone for cycle rejection while D-4 is open).
-5. **Identity is bound, never inferred.** Each row carries `identity_binding` from a reviewed crosswalk (§6.2). Any binding other than `MATCHED` yields `evidence_change_state = IDENTITY_UNRESOLVED`: the envelopes may hold that player under an identity the pulse cannot associate, so neither a delta nor an absence claim is permitted. `MATCH_CANDIDATE` rows may list candidate evidence for the reviewer but produce no delta.
+5. **Identity is bound, never inferred.** Each row carries `identity_binding` whose `status` is derived only by the §6.2 mapping from a reviewed crosswalk decision known by `as_known_at`. The invariant holds in both directions: `identity_binding.status = MATCHED` if and only if `evidence_change_state ≠ IDENTITY_UNRESOLVED`. Every non-`MATCHED` row (`MATCH_CANDIDATE`, `UNBOUND_SEED`) carries `evidence_change_state = IDENTITY_UNRESOLVED` and null `evidence_window`, `observed`, `prior_observed` and `delta`: the envelopes may hold that player under an identity the pulse cannot associate, so neither a delta, nor an absence claim, nor any evidence or coverage assertion is permitted. `MATCH_CANDIDATE` rows may list candidate crosswalk evidence under `identity_binding.evidence_refs` for the reviewer, nothing more.
+8. **Coverage is orthogonal to change.** Every row carries `coverage_state` and `coverage_flags` describing the cited envelopes' population and expected-game completeness for the window, independent of `evidence_change_state`. A corrected row inside a partial envelope is `CORRECTED_EVIDENCE` with `coverage_state = INCOMPLETE`; neither fact hides the other.
 6. **No grades, no ranks, no predictions.** No numeric score, no ordering field, no draft-capital projection. Interpretive vocabulary is enumerated and coarse (§3.3).
 7. **No seed mutation.** `auto_seed_watchlist_mutation: "none"` is required on every row, as in v1.
 
@@ -149,13 +150,17 @@ inputs:
   seed_watchlist: {path, sha256, as_of_year}
   identity_crosswalk: {path, sha256} | null
 window: {season, game_scope_source: "data_envelope", expected_game_ids | null, observed_game_ids}
-coverage_warnings: [...]           # population partial/unknown, expectation unknown, envelope synthetic
+coverage_warnings: [...]           # checkpoint-level: population partial/unknown, expectation unknown, envelope synthetic
 rows: [
-  seed_player_id, identity_binding: {status, canonical_college_player_id | null, evidence_refs}
-  evidence_window: {games_with_observed_rows, games_expected | null, finality_by_game}
-  observed: {passing, rushing, receiving}    # per-cell {value, availability, observation_id, source_revision_id}
-  prior_observed: same shape from prior_checkpoint | null
-  delta: per category, per cell {prior_value, current_value, difference | null,
+  seed_player_id
+  identity_binding: {status: MATCHED|MATCH_CANDIDATE|UNBOUND_SEED,
+                     crosswalk_row_ref | null, crosswalk_status | null,      # §6.2 source decision
+                     canonical_college_player_id | null, decision_known_at | null, evidence_refs}
+  coverage_state: COMPLETE|INCOMPLETE|UNKNOWN, coverage_flags: [...]   # per row, independent of change state
+  evidence_window: {games_with_observed_rows, games_expected | null, finality_by_game} | null   # null unless MATCHED
+  observed: {passing, rushing, receiving} | null    # per-cell {value, availability, observation_id, source_revision_id}; null unless MATCHED
+  prior_observed: same shape from prior_checkpoint | null                                      # null unless MATCHED
+  delta: null unless MATCHED; otherwise per category, per cell {prior_value, current_value, difference | null,
          basis: same_revision|corrected|new_rows|not_comparable, note}
          # difference = current_value - prior_value, integers only, non-null only when
          # both cells are observed_zero|observed_value, the row is MATCHED, and
@@ -173,7 +178,9 @@ intake_audit: {intake_method, promotion_status: non_promoted_discovery_only, val
 
 ### 3.3 Change vocabulary (proposed enumerations)
 
-`evidence_change_state`: `NEW_EVIDENCE` (new observed rows since prior checkpoint, same revision lineage) · `NO_NEW_EVIDENCE` (rows unchanged) · `NO_OBSERVED_ROWS` (binding `MATCHED`, no source row in window; says nothing about participation) · `CORRECTED_EVIDENCE` (an established supersession changed at least one cell) · `CONFLICTING_EVIDENCE` (unresolved source relation; no delta computed, `delta.difference` null) · `IDENTITY_UNRESOLVED` (binding not `MATCHED`, including seeds with no crosswalk decision; no delta and no absence claim) · `COVERAGE_INCOMPLETE` (envelope population partial/unknown or expected games unknown; deltas reported but flagged) · `INSUFFICIENT_EVIDENCE` (fewer than the operator-declared minimum observed games; no delta computed, `delta.difference` null).
+`evidence_change_state`: `NEW_EVIDENCE` (new observed rows since prior checkpoint, same revision lineage) · `NO_NEW_EVIDENCE` (rows unchanged) · `NO_OBSERVED_ROWS` (binding `MATCHED`, no source row in window; says nothing about participation) · `CORRECTED_EVIDENCE` (an established supersession changed at least one cell) · `CONFLICTING_EVIDENCE` (unresolved source relation; no delta computed, `delta.difference` null) · `IDENTITY_UNRESOLVED` (binding not `MATCHED`, including seeds with no crosswalk decision; `evidence_window`, `observed`, `prior_observed` and `delta` null; no absence claim) · `INSUFFICIENT_EVIDENCE` (fewer than the operator-declared minimum observed games; no delta computed, `delta.difference` null). Coverage is **not** a value of this enumeration.
+
+`coverage_state` (per row, independent of `evidence_change_state`): `COMPLETE` (every cited envelope has `population_status = complete` and non-null `expected_game_ids`, and every expected game in the window has an observed game entry) · `INCOMPLETE` (any cited envelope is `partial`, or an expected game in the window has no observed game entry) · `UNKNOWN` (any cited envelope has `population_status = unknown` or null `expected_game_ids`). `coverage_flags` enumerate the reasons: `population_partial`, `population_unknown`, `expected_games_unknown`, `expected_game_missing`, `envelope_synthetic`. A row's `coverage_state` never alters its `evidence_change_state`: deltas are still reported under `INCOMPLETE` and `UNKNOWN` coverage, and the flags travel with them. `coverage_state` is informative only for `MATCHED` rows; on `IDENTITY_UNRESOLVED` rows it describes the cited envelopes, not the unassociated player.
 
 `context_change_state`: `UNCHANGED` · `PROGRAM_CHANGED` · `ROSTER_STATUS_CHANGED` · `CLASS_CONTEXT_CHANGED` · `UNKNOWN`.
 
@@ -181,7 +188,7 @@ The #298 example words "stronger/stable/weaker" are intentionally **not** adopte
 
 ### 3.4 Validation (future `scripts/validate_devy_evidence_pulse.py`)
 
-Fail closed on: any cell value present with availability other than `observed_zero|observed_value`; any delta on a row whose binding is not `MATCHED`; any delta across a corrected pair without `CORRECTED_EVIDENCE`; `prior_checkpoint.sha256` mismatch; cited `known_at` later than `as_known_at`; any `opportunity` value while no denominator artifact is declared; missing `auto_seed_watchlist_mutation: "none"`; any `NO_OBSERVED_ROWS` on a row whose binding is not `MATCHED`; any non-null `delta.difference` on a row whose `evidence_change_state` is `CONFLICTING_EVIDENCE` or `INSUFFICIENT_EVIDENCE`; any score, rank, grade, probability, projection or ordering field. Numeric values are permitted only in copied observed cells (`observed`, `prior_observed`, `delta.prior_value`, `delta.current_value`), computed per-cell `delta.difference` values (integer `current_value − prior_value`; null unless both cells are observed and the row is `MATCHED`, and always null in the `CONFLICTING_EVIDENCE` and `INSUFFICIENT_EVIDENCE` states; the validator recomputes and rejects any mismatch), structural identifiers and clocks (`season`, game IDs, timestamps, digests) and coverage counts (`games_with_observed_rows`, `games_expected`). Rates, shares, per-game averages and any other derived number remain prohibited until a Data-owned denominator contract exists.
+Fail closed on: any row whose `identity_binding.status` is not `MATCHED` and whose `evidence_change_state` is not `IDENTITY_UNRESOLVED`, or that carries a non-null `evidence_window`, `observed`, `prior_observed` or `delta`; any `IDENTITY_UNRESOLVED` on a row whose binding is `MATCHED`; any `identity_binding.status` that differs from the §6.2 mapping recomputed by the validator from the cited crosswalk row at `as_known_at`; any row missing `coverage_state`, or claiming `COMPLETE` while any cited envelope has `population_status` other than `complete`, null `expected_game_ids`, or an expected game without an observed entry, or whose `coverage_flags` contradict its `coverage_state`; any cell value present with availability other than `observed_zero|observed_value`; any delta on a row whose binding is not `MATCHED`; any delta across a corrected pair without `CORRECTED_EVIDENCE`; `prior_checkpoint.sha256` mismatch; cited `known_at` later than `as_known_at`; any `opportunity` value while no denominator artifact is declared; missing `auto_seed_watchlist_mutation: "none"`; any `NO_OBSERVED_ROWS` on a row whose binding is not `MATCHED`; any non-null `delta.difference` on a row whose `evidence_change_state` is `CONFLICTING_EVIDENCE` or `INSUFFICIENT_EVIDENCE`; any score, rank, grade, probability, projection or ordering field. Numeric values are permitted only in copied observed cells (`observed`, `prior_observed`, `delta.prior_value`, `delta.current_value`), computed per-cell `delta.difference` values (integer `current_value − prior_value`; null unless both cells are observed and the row is `MATCHED`, and always null in the `CONFLICTING_EVIDENCE` and `INSUFFICIENT_EVIDENCE` states; the validator recomputes and rejects any mismatch), structural identifiers and clocks (`season`, game IDs, timestamps, digests) and coverage counts (`games_with_observed_rows`, `games_expected`). Rates, shares, per-game averages and any other derived number remain prohibited until a Data-owned denominator contract exists.
 
 ## 4. Cadence recommendation (nothing scheduled)
 
@@ -191,13 +198,13 @@ Fail closed on: any cell value present with availability other than `observed_ze
 
 ## 5. Seed-watchlist relationship (no automatic mutation)
 
-The seed watchlist is the pulse's **identity anchor**, never its output.
+The seed watchlist is the pulse's **identity anchor**, never its output. Binding status is never assigned by the pulse itself; it is derived only by the §6.2 mapping from the crosswalk decision in force at `as_known_at`.
 
-| Binding status | Meaning | Pulse behaviour |
-| --- | --- | --- |
-| `MATCHED` | reviewed crosswalk row binds `seed player_id` ↔ Data `canonical_college_player_id` | deltas computed; if the bound identity has no source row in the window, `NO_OBSERVED_ROWS` (not proof of inactivity or transfer) |
-| `MATCH_CANDIDATE` | name/school candidate only (Data: names and school do not resolve identity) | `IDENTITY_UNRESOLVED`; candidate evidence listed for the reviewer, no delta, `needs_manual_review=true` |
-| `UNBOUND_SEED` | seed row with no crosswalk decision of any kind | `IDENTITY_UNRESOLVED`; no coverage statement, because the envelopes may contain the player under an identity the pulse cannot associate; `needs_manual_review=true` |
+| Binding status | Derived from (§6.2) | Meaning | Pulse behaviour |
+| --- | --- | --- | --- |
+| `MATCHED` | qualified `READY` or qualified `ALIAS_RESOLVED` | reviewed crosswalk row binds `seed player_id` ↔ Data `canonical_college_player_id` | deltas computed; if the bound identity has no source row in the window, `NO_OBSERVED_ROWS` (not proof of inactivity or transfer) |
+| `MATCH_CANDIDATE` | `AMBIGUOUS`, `POSSIBLE_DUPLICATE`, `TRANSFER_VERIFY`, or an unqualified `READY`/`ALIAS_RESOLVED` | a candidate identity exists but is not resolved (Data: names and school do not resolve identity) | `IDENTITY_UNRESOLVED`; candidate crosswalk evidence listed under `identity_binding.evidence_refs` for the reviewer; `evidence_window`, `observed`, `prior_observed`, `delta` null; `needs_manual_review=true` |
+| `UNBOUND_SEED` | `UNAVAILABLE`, or no crosswalk row known by `as_known_at` | seed row with no usable crosswalk decision | `IDENTITY_UNRESOLVED`; no evidence or coverage statement about the player, because the envelopes may contain the player under an identity the pulse cannot associate; `needs_manual_review=true` |
 | `NON_SEED_CANDIDATE` | observed player not on the seed list who meets an operator-declared discovery rule | appears only in `seed_review_proposals` |
 
 `seed_review_proposals` rows carry `proposal_kind` (`add_candidate`, `re_verify_identity`, `transition_review`, `school_update_candidate`), the evidence refs, and `auto_seed_watchlist_mutation: "none"`. Applying any proposal remains a manual issue → PR → `intake_audit` change validated by `devy_signal_registry.py`, exactly the #227 → #228 path. F-1 would be the first `transition_review` proposals.
@@ -210,7 +217,23 @@ The seed watchlist is the pulse's **identity anchor**, never its output.
 
 ### 6.2 Identity crosswalk (the actual blocker)
 
-Three ID spaces exist today with no reviewed join: seed slugs (`jeremiah-love`), rookie slugs (`rb-jeremiyah-love`), and Data canonical college IDs (not yet allocated). Proposed `devy_identity_crosswalk` with statuses borrowed from Data #265 §6 (`READY`, `ALIAS_RESOLVED`, `AMBIGUOUS`, `POSSIBLE_DUPLICATE`, `TRANSFER_VERIFY`, `UNAVAILABLE`), each row citing evidence and a reviewer decision. Normalized-name matching may propose, never resolve. The absent `devy_rookie_transition_map_2026.json` that `cards/devy/index.html` already looks for is the natural place for `transition_event` facts once a crosswalk exists; PR #295's truthful `unknown` transition state is the correct pre-crosswalk presentation.
+Three ID spaces exist today with no reviewed join: seed slugs (`jeremiah-love`), rookie slugs (`rb-jeremiyah-love`), and Data canonical college IDs (not yet allocated). Proposed `devy_identity_crosswalk` with statuses borrowed from Data #265 §6 (`READY`, `ALIAS_RESOLVED`, `AMBIGUOUS`, `POSSIBLE_DUPLICATE`, `TRANSFER_VERIFY`, `UNAVAILABLE`), each row citing evidence and a reviewer decision. Normalized-name matching may propose, never resolve.
+
+**Crosswalk decision → pulse `identity_binding.status` (the only permitted derivation).** A crosswalk row is *qualified* only when all of the following hold at the checkpoint's `as_known_at`: it names a non-null `canonical_college_player_id`; it records a reviewer decision with `decision_known_at ≤ as_known_at`; its `evidence_refs` cite at least one identity-class evidence item (for example an `official_roster` identity provenance on the seed side and a Data `identity` evidence item on the observation side) that is itself known by `as_known_at`; and no later crosswalk row for the same seed `player_id` known by `as_known_at` supersedes it. For `ALIAS_RESOLVED` the referenced Data alias claim must additionally be current, meaning the representative observation it binds to has not been superseded by a source correction without a fresh reviewed binding (the Data contract's alias-correction rule).
+
+| Crosswalk status | Qualified | Pulse binding | Note |
+| --- | --- | --- | --- |
+| `READY` | yes | `MATCHED` | direct reviewed binding |
+| `READY` | no (missing canonical ID, decision, evidence, or decision later than `as_known_at`) | `MATCH_CANDIDATE` | never silently promoted to `MATCHED` |
+| `ALIAS_RESOLVED` | yes, alias claim current | `MATCHED` | binding through a reviewed Data alias representative |
+| `ALIAS_RESOLVED` | no, or alias claim corrected without re-review | `MATCH_CANDIDATE` | mirrors Data's "corrected alias loses eligibility" rule |
+| `AMBIGUOUS` | n/a | `MATCH_CANDIDATE` | competing identities; reviewer must decide |
+| `POSSIBLE_DUPLICATE` | n/a | `MATCH_CANDIDATE` | quarantined until deduplicated |
+| `TRANSFER_VERIFY` | n/a | `MATCH_CANDIDATE` | event-time program unverified |
+| `UNAVAILABLE` | n/a | `UNBOUND_SEED` | explicit reviewed absence of a usable decision |
+| no row known by `as_known_at` | n/a | `UNBOUND_SEED` | includes every seed row today, since no crosswalk exists |
+
+The mapping is evaluated at each checkpoint's `as_known_at`; a later crosswalk decision never retroactively changes an earlier checkpoint's binding. The §3.4 validator recomputes the mapping from the cited crosswalk row and rejects any row whose `identity_binding.status` differs. Uncertain identities therefore stay `IDENTITY_UNRESOLVED` by construction; only an explicit, evidenced, reviewed `READY` or `ALIAS_RESOLVED` decision can produce a delta. The absent `devy_rookie_transition_map_2026.json` that `cards/devy/index.html` already looks for is the natural place for `transition_event` facts once a crosswalk exists; PR #295's truthful `unknown` transition state is the correct pre-crosswalk presentation.
 
 ### 6.3 Boundary
 
@@ -302,4 +325,12 @@ Round 3: Codex review at head `96d6cd69996b700e173bebb6ad76462e5b42f036`, submit
 | --- | --- | --- | --- | --- |
 | R3-1 | P2 | §3.4 permitted a numeric `delta.difference` on any `MATCHED` row with two observed cells, while §3.3 requires no delta for `CONFLICTING_EVIDENCE` and `INSUFFICIENT_EVIDENCE`; a literal validator could accept a contradictory checkpoint | Confirmed by reading §3.3 against §3.4 at `96d6cd6` | §3.2 comment, §3.3 state definitions and §3.4 now require `delta.difference` to be null in both states, and §3.4 fails closed on any non-null value there |
 
-No finding in any round changed the terminal answer (§9), the successor sequence (§8) or the recommended authorization (S3).
+Round 4: Codex review at head `d35094fcddc8cc81cdb32d559e127115fe7ba218`, submitted 2026-09-30T17:49:26Z (review 5369946956; trigger: draft marked ready, after the operator had Codex resolve the six repaired threads and mark the PR ready at 17:44Z without changing the head). This second review of the same commit followed the clean manual-request result of 17:36:20Z, confirming the qualification recorded on PR #299 that a clean conversation comment at a head is not proof the head is clean. Three inline findings; the operator separately authorized one additional docs-only repair round on 2026-10-01.
+
+| ID | Severity | Finding (Codex) | Verification | Repair in this revision |
+| --- | --- | --- | --- | --- |
+| R4-1 | P1 | §3.4 rejected only `NO_OBSERVED_ROWS` on a non-`MATCHED` row, so a `MATCH_CANDIDATE`/`UNBOUND_SEED` row with another evidence state and no delta would pass despite §3.1 rule 5 | Confirmed by reading §3.4 against §3.1 at `d35094f` | Rule 5 now states the two-way invariant (`MATCHED` ⇔ not `IDENTITY_UNRESOLVED`) and nulls `evidence_window`/`observed`/`prior_observed`/`delta` on non-`MATCHED` rows; §3.2 marks those fields null unless `MATCHED`; §3.4 fails closed on the inverse invariant, on any such non-null content, and on `IDENTITY_UNRESOLVED` applied to a `MATCHED` row |
+| R4-2 | P2 | `COVERAGE_INCOMPLETE` lived inside the single `evidence_change_state`, so a corrected row in a partial envelope could not be both `CORRECTED_EVIDENCE` and coverage-flagged | Confirmed by reading §3.3 against §3.1 rule 4 | `COVERAGE_INCOMPLETE` removed from `evidence_change_state`; new per-row `coverage_state` (`COMPLETE`/`INCOMPLETE`/`UNKNOWN`) and `coverage_flags` added to §3.2/§3.3, orthogonal by rule 8; §3.4 validates `coverage_state` against the cited envelopes and flags |
+| R4-3 | P2 | §6.2 defined six crosswalk statuses but no mapping to `MATCHED`/`MATCH_CANDIDATE`/`UNBOUND_SEED`, so S3 could neither derive bindings nor avoid inventing one | Confirmed by reading §6.2 against §5 and §3.1 | §6.2 now defines qualification conditions and a status-by-status mapping table evaluated at `as_known_at`; §5 table gains a "Derived from" column; §3.2 `identity_binding` carries `crosswalk_row_ref`, `crosswalk_status` and `decision_known_at`; §3.4 recomputes the mapping and rejects mismatches |
+
+No finding in any round changed the terminal answer (§9), the successor sequence (§8), the recommended authorization (S3), the Data dependencies (D-1..D-5) or the discovery-only boundaries (no seed mutation, no score, no ranking, no Rookie Alpha or ML connection).
