@@ -459,6 +459,7 @@ def _validate_envelope(f: _Findings, env: Any, ref: dict[str, Any], path: str, s
                 elif value is not None:
                     f.fail("OBSERVATION_CELLS", f"{opath}.observed.{cat}.{field}", "non-observed cell must carry null (missing is not zero)")
         rows.append({
+            "envelope_path": path,
             "observation_id": oid,
             "canonical": identity.get("canonical_college_player_id"),
             "identity_status": identity.get("status"),
@@ -539,13 +540,20 @@ def _validate_crosswalk(f: _Findings, xw: Any, path: str, synthetic: bool) -> di
                 ):
                     f.fail("CROSSWALK_ROW", f"{rpath}.evidence_refs[{j}]", "must be {kind, locator, known_at}")
                     continue
-                parsed_refs.append({"kind": ref["kind"], "locator": ref["locator"], "known_at": _instant(ref["known_at"])})
+                known = _instant(ref["known_at"])
+                if decided is not None and known is not None and known > decided:
+                    f.fail("CROSSWALK_ROW", f"{rpath}.evidence_refs[{j}]", "a decision cannot cite evidence first known after the decision itself")
+                parsed_refs.append({"kind": ref["kind"], "locator": ref["locator"], "known_at": known})
         decision = row.get("reviewer_decision")
         if decision is not None and (not isinstance(decision, dict) or not _is_str(decision.get("decided_by")) or not _is_str(decision.get("decision"))):
             f.fail("CROSSWALK_ROW", f"{rpath}.reviewer_decision", "must be null or {decided_by, decision}")
         alias = row.get("alias_claim")
-        if alias is not None and (not isinstance(alias, dict) or not isinstance(alias.get("current"), bool) or not _is_str(alias.get("representative_observation_id"))):
-            f.fail("CROSSWALK_ROW", f"{rpath}.alias_claim", "must be null or {representative_observation_id, current:bool}")
+        if alias is not None and (
+            not isinstance(alias, dict)
+            or set(alias) != {"representative_observation_id"}
+            or not _is_str(alias.get("representative_observation_id"))
+        ):
+            f.fail("CROSSWALK_ROW", f"{rpath}.alias_claim", "must be null or exactly {representative_observation_id}; currency is recomputed from the pinned envelopes, never self-declared")
         if row.get("status") == "ALIAS_RESOLVED" and alias is None:
             f.fail("CROSSWALK_ROW", f"{rpath}.alias_claim", "ALIAS_RESOLVED requires an alias_claim")
         by_id[rid] = {
@@ -597,8 +605,40 @@ def effective_decision(rows: dict[str, dict[str, Any]], seed_player_id: str, as_
     return "one", survivors[0], [survivors[0]["row_id"]]
 
 
-def expected_binding(decision: dict[str, Any] | None, as_known_at: datetime) -> dict[str, Any]:
+def alias_is_current(decision: dict[str, Any], envelopes: list[dict[str, Any]], as_known_at: datetime) -> bool:
+    """Recompute alias currency from the pinned envelopes (never from a self-declared flag).
+
+    The representative observation must exist in a pinned envelope, be known by the
+    cutoff, resolve to the decision's canonical ID, and not be superseded by any
+    established source correction known by the cutoff (the Data contract's
+    corrected-alias rule).
+    """
+    alias = decision.get("alias_claim") or {}
+    rep_id = alias.get("representative_observation_id")
+    if not rep_id:
+        return False
+    representative = None
+    superseded = False
+    for env in envelopes:
+        for row in env["rows"]:
+            if row["retrieved_at"] is None or row["retrieved_at"] > as_known_at:
+                continue
+            if row["observation_id"] == rep_id:
+                representative = row
+            if row["supersedes"] == rep_id and row["relationship"] == "established_supersession":
+                superseded = True
+    if representative is None or superseded:
+        return False
+    return (
+        representative["identity_status"] == "resolved"
+        and representative["canonical"] == decision["canonical"]
+        and representative["aggregation_status"] == "eligible"
+    )
+
+
+def expected_binding(decision: dict[str, Any] | None, as_known_at: datetime, envelopes: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     """Map the effective crosswalk decision to every decision-derived binding field."""
+    envelopes = envelopes or []
     if decision is None:
         return {
             "status": UNBOUND_SEED,
@@ -609,17 +649,17 @@ def expected_binding(decision: dict[str, Any] | None, as_known_at: datetime) -> 
             "evidence_refs": [],
         }
     status = decision["status"]
-    identity_evidence = any(
-        ref["kind"] == "identity" and ref["known_at"] is not None and ref["known_at"] <= as_known_at
-        for ref in decision["evidence_refs"]
-    )
+    # Only evidence known by the cutoff exists for this checkpoint; later knowledge is
+    # neither copied nor allowed to qualify the decision.
+    known_refs = [ref for ref in decision["evidence_refs"] if ref["known_at"] is not None and ref["known_at"] <= as_known_at]
+    identity_evidence = any(ref["kind"] == "identity" for ref in known_refs)
     qualified = (
         decision["canonical"] is not None
         and decision["reviewer_decision"] is not None
         and identity_evidence
     )
     if status == "ALIAS_RESOLVED":
-        qualified = qualified and bool(decision["alias_claim"] and decision["alias_claim"].get("current") is True)
+        qualified = qualified and alias_is_current(decision, envelopes, as_known_at)
     if status in {"READY", "ALIAS_RESOLVED"}:
         binding = MATCHED if qualified else MATCH_CANDIDATE
     elif status == "UNAVAILABLE":
@@ -632,7 +672,7 @@ def expected_binding(decision: dict[str, Any] | None, as_known_at: datetime) -> 
         "crosswalk_status": status,
         "canonical_college_player_id": decision["canonical"] if binding == MATCHED else None,
         "decision_known_at": decision["decision_known_at_raw"],
-        "evidence_refs": sorted(ref["locator"] for ref in decision["evidence_refs"]),
+        "evidence_refs": sorted(ref["locator"] for ref in known_refs),
     }
 
 
@@ -650,9 +690,41 @@ def coverage_from_flags(flags: set[str]) -> str:
 # --------------------------------------------------------------------------------------
 
 
+def _observation_fingerprint(row: dict[str, Any]) -> str:
+    """Content identity of an observation, used to coalesce repeats across envelopes."""
+    return json.dumps(
+        {k: (v.isoformat() if isinstance(v, datetime) else v) for k, v in row.items() if k != "envelope_path"},
+        sort_keys=True,
+        default=str,
+    )
+
+
+def coalesce_observations(envelopes: list[dict[str, Any]]) -> tuple[list[dict[str, Any]], list[str]]:
+    """Return one row per observation_id across all pinned envelopes.
+
+    Overlapping or cumulative envelope slices legitimately repeat identical
+    observations; those are coalesced. The same observation_id with different
+    content is an input defect and is reported, never turned into an evidence
+    conflict.
+    """
+    by_id: dict[str, tuple[str, dict[str, Any]]] = {}
+    conflicts: list[str] = []
+    for env in envelopes:
+        for row in env["rows"]:
+            fingerprint = _observation_fingerprint(row)
+            oid = row["observation_id"]
+            if oid in by_id:
+                if by_id[oid][0] != fingerprint:
+                    conflicts.append(oid)
+                continue
+            by_id[oid] = (fingerprint, row)
+    return [row for _, row in by_id.values()], sorted(set(conflicts))
+
+
 def _player_games(envelopes: list[dict[str, Any]], canonical: str, season: int, as_known_at: datetime) -> dict[str, list[dict[str, Any]]]:
     groups: dict[str, list[dict[str, Any]]] = {}
-    for env in envelopes:
+    rows, _ = coalesce_observations(envelopes)
+    for env in [{"rows": rows}]:
         for row in env["rows"]:
             if (
                 row["canonical"] == canonical
@@ -817,8 +889,12 @@ def _strip_notes(delta: Any) -> Any:
     return out
 
 
-def validate_devy_evidence_pulse(checkpoint: Any, resolve: Resolver) -> list[str]:
-    """Validate a checkpoint; ``resolve(path)`` returns the bytes of a pinned input."""
+def validate_devy_evidence_pulse(checkpoint: Any, resolve: Resolver, _lineage: tuple[str, ...] = ()) -> list[str]:
+    """Validate a checkpoint; ``resolve(path)`` returns the bytes of a pinned input.
+
+    ``_lineage`` carries the checkpoint IDs already being validated up the prior
+    chain, so a cyclic ``prior_checkpoint`` reference fails instead of recursing.
+    """
     f = _Findings()
     if not _check_keys(f, checkpoint, TOP_KEYS, "$"):
         if isinstance(checkpoint, dict):
@@ -932,6 +1008,11 @@ def validate_devy_evidence_pulse(checkpoint: Any, resolve: Resolver) -> list[str
                 if xw is not None:
                     crosswalk_rows = _validate_crosswalk(f, xw, "$.inputs.identity_crosswalk", synthetic)
 
+    # ---- cross-envelope observation identity ---------------------------------------
+    _, duplicate_conflicts = coalesce_observations(envelopes)
+    for oid in duplicate_conflicts:
+        f.fail("INPUT_CONFLICT", "$.inputs.data_envelopes", f"observation_id {oid!r} appears in more than one pinned envelope with different content")
+
     # ---- window recomputation ------------------------------------------------------
     expected_union: set[tuple[int, str]] | None = set()
     observed_union: set[tuple[int, str]] = set()
@@ -1007,6 +1088,23 @@ def validate_devy_evidence_pulse(checkpoint: Any, resolve: Resolver) -> list[str
                 f.fail("PRIOR", "$.prior_checkpoint", "prior checkpoint cutoff must be earlier than this cutoff")
             if isinstance(prior.get("window"), dict) and prior["window"].get("season") != season:
                 f.fail("PRIOR", "$.prior_checkpoint", "prior checkpoint must cover the same season")
+            # A digest only authenticates bytes. The prior checkpoint's cells may feed
+            # this checkpoint's deltas only if the prior itself validates against its
+            # own pinned inputs, all the way up the chain.
+            prior_id = str(prior.get("checkpoint_id"))
+            if prior_id in _lineage or prior_id == str(checkpoint.get("checkpoint_id")):
+                f.fail("PRIOR", "$.prior_checkpoint", "cyclic prior_checkpoint lineage")
+            else:
+                prior_findings = validate_devy_evidence_pulse(
+                    prior, resolve, _lineage + (str(checkpoint.get("checkpoint_id")),)
+                )
+                if prior_findings:
+                    f.fail(
+                        "PRIOR_INVALID",
+                        "$.prior_checkpoint",
+                        f"prior checkpoint {prior_id!r} fails validation against its own pinned inputs "
+                        f"({len(prior_findings)} finding(s); first: {prior_findings[0]})",
+                    )
             prior_rows = {}
             for r in prior.get("rows", []) if isinstance(prior.get("rows"), list) else []:
                 if isinstance(r, dict) and _is_str(r.get("seed_player_id")):
@@ -1082,7 +1180,7 @@ def validate_devy_evidence_pulse(checkpoint: Any, resolve: Resolver) -> list[str
                 f"crosswalk holds {len(survivors)} unsuperseded decisions for this seed at the cutoff ({', '.join(survivors)}); the checkpoint cannot bind this seed",
             )
             continue
-        expected = expected_binding(decision, as_known_at)
+        expected = expected_binding(decision, as_known_at, envelopes)
         for key, value in expected.items():
             if binding[key] != value:
                 f.fail(

@@ -68,6 +68,24 @@ class Bundle:
             inputs["identity_crosswalk"]["sha256"] = digest
         if self.checkpoint["prior_checkpoint"] and self.checkpoint["prior_checkpoint"]["path"] == name:
             self.checkpoint["prior_checkpoint"]["sha256"] = digest
+        # The prior checkpoint pins the same inputs; a rewritten input must be re-pinned
+        # there too, which in turn re-pins the prior itself in this checkpoint.
+        prior_ref = self.checkpoint["prior_checkpoint"]
+        if prior_ref and prior_ref["path"] != name and prior_ref["path"] in self.files:
+            prior = json.loads(self.files[prior_ref["path"]].decode("utf-8"))
+            touched = False
+            for ref in prior["inputs"]["data_envelopes"]:
+                if ref["path"] == name:
+                    ref["sha256"] = digest
+                    touched = True
+            if prior["inputs"]["seed_watchlist"]["path"] == name:
+                prior["inputs"]["seed_watchlist"]["sha256"] = digest
+                touched = True
+            if prior["inputs"]["identity_crosswalk"] and prior["inputs"]["identity_crosswalk"]["path"] == name:
+                prior["inputs"]["identity_crosswalk"]["sha256"] = digest
+                touched = True
+            if touched:
+                self.write(prior_ref["path"], prior)
 
     def row(self, seed_id: str) -> dict:
         return next(r for r in self.checkpoint["rows"] if r["seed_player_id"] == seed_id)
@@ -190,18 +208,75 @@ class IdentityResolution(unittest.TestCase):
         self.b.write(CROSSWALK, xw)
         self.assertTrue(any("rows[2].identity_binding.status" in e for e in self.b.errors()))
 
-    def test_alias_resolved_requires_current_alias_claim(self) -> None:
+    def test_alias_currency_is_recomputed_from_observation_lineage(self) -> None:
+        # At the prior cutoff (W02) the alias representative r1 is current. By W03 a
+        # source correction (r2 supersedes r1) is known, so the W02-era decision no
+        # longer qualifies until a later reviewed re-binding names r2.
         xw = self.b.read(CROSSWALK)
-        r5 = next(r for r in xw["rows"] if r["row_id"] == "synthetic-xw-r5")
-        r5["status"] = "ALIAS_RESOLVED"
-        r5["alias_claim"] = {"representative_observation_id": "synthetic-observation-e-g0", "current": True}
+        r3 = next(r for r in xw["rows"] if r["row_id"] == "synthetic-xw-r3")
+        r3["status"] = "ALIAS_RESOLVED"
+        r3["alias_claim"] = {"representative_observation_id": "synthetic-observation-c-g1-r1"}
         self.b.write(CROSSWALK, xw)
-        self.b.row("synthetic-seed-e")["identity_binding"]["crosswalk_status"] = "ALIAS_RESOLVED"
+        prior = self.b.read(PRIOR)
+        prior["rows"][2]["identity_binding"]["crosswalk_status"] = "ALIAS_RESOLVED"
+        self.b.write(PRIOR, prior)
+        self.b.row("synthetic-seed-c")["identity_binding"]["crosswalk_status"] = "ALIAS_RESOLVED"
+        errors = self.b.errors()
+        self.assertFalse(any(e.startswith("PRIOR_INVALID") for e in errors), errors)
+        self.assertTrue(any("rows[2].identity_binding.status" in e and MATCH_CANDIDATE in e for e in errors), errors)
+        # A later reviewed re-binding to the corrected revision restores MATCHED at W03 only.
+        xw["rows"].append({
+            "row_id": "synthetic-xw-r6",
+            "seed_player_id": "synthetic-seed-c",
+            "status": "ALIAS_RESOLVED",
+            "canonical_college_player_id": "synthetic-college-c",
+            "decision_known_at": "2026-09-16T09:00:00Z",
+            "supersedes": "synthetic-xw-r3",
+            "evidence_refs": [{"kind": "identity", "locator": "synthetic:roster-c", "known_at": "2026-09-09T09:00:00Z"}],
+            "reviewer_decision": {"decided_by": "synthetic-reviewer", "decision": "SYNTHETIC re-bound after correction"},
+            "alias_claim": {"representative_observation_id": "synthetic-observation-c-g1-r2"},
+            "note": "SYNTHETIC",
+        })
+        self.b.write(CROSSWALK, xw)
+        binding = self.b.row("synthetic-seed-c")["identity_binding"]
+        binding["crosswalk_row_ref"] = "synthetic-xw-r6"
+        binding["decision_known_at"] = "2026-09-16T09:00:00Z"
         self.assertEqual(self.b.errors(), [])
-        r5["alias_claim"]["current"] = False
+        # A representative absent from every pinned envelope is not current.
+        xw["rows"][-1]["alias_claim"] = {"representative_observation_id": "synthetic-observation-nowhere"}
+        self.b.write(CROSSWALK, xw)
+        self.assertTrue(any("rows[2].identity_binding.status" in e and MATCH_CANDIDATE in e for e in self.b.errors()))
+
+    def test_self_declared_alias_currency_is_rejected(self) -> None:
+        xw = self.b.read(CROSSWALK)
+        r3 = next(r for r in xw["rows"] if r["row_id"] == "synthetic-xw-r3")
+        r3["status"] = "ALIAS_RESOLVED"
+        r3["alias_claim"] = {"representative_observation_id": "synthetic-observation-c-g1-r1", "current": True}
+        self.b.write(CROSSWALK, xw)
+        self.assertTrue(any("alias_claim" in e and "never self-declared" in e for e in self.b.errors()))
+
+    def test_evidence_known_after_the_cutoff_cannot_qualify_or_be_copied(self) -> None:
+        xw = self.b.read(CROSSWALK)
+        r3 = next(r for r in xw["rows"] if r["row_id"] == "synthetic-xw-r3")
+        r3["evidence_refs"].append({"kind": "transfer_report", "locator": "synthetic:future-c", "known_at": "2026-09-25T09:00:00Z"})
         self.b.write(CROSSWALK, xw)
         errors = self.b.errors()
-        self.assertTrue(any("rows[4].identity_binding.status" in e and MATCH_CANDIDATE in e for e in errors), errors)
+        # The crosswalk row itself is defective: it cites evidence first known after the decision.
+        self.assertTrue(any(e.startswith("CROSSWALK_ROW") and "known after the decision" in e for e in errors), errors)
+        # And a checkpoint that copies the premature locator is rejected on evidence_refs.
+        self.b.row("synthetic-seed-c")["identity_binding"]["evidence_refs"] = ["synthetic:future-c", "synthetic:roster-c"]
+        self.assertTrue(any("rows[2].identity_binding.evidence_refs" in e for e in self.b.errors()))
+
+    def test_only_identity_evidence_known_by_the_cutoff_qualifies(self) -> None:
+        # Decision known at T-10d, its only identity evidence re-dated to after the cutoff:
+        # the row is defective and the decision no longer qualifies.
+        xw = self.b.read(CROSSWALK)
+        r3 = next(r for r in xw["rows"] if r["row_id"] == "synthetic-xw-r3")
+        r3["evidence_refs"][0]["known_at"] = "2026-09-22T09:00:00Z"
+        self.b.write(CROSSWALK, xw)
+        errors = self.b.errors()
+        self.assertTrue(any(e.startswith("CROSSWALK_ROW") for e in errors), errors)
+        self.assertTrue(any("rows[2].identity_binding.status" in e and MATCH_CANDIDATE in e for e in errors), errors)
 
     def test_crosswalk_fork_fails_the_checkpoint_outright(self) -> None:
         xw = self.b.read(CROSSWALK)
@@ -291,6 +366,26 @@ class SupersessionAndCutoff(unittest.TestCase):
         self.b.checkpoint["as_known_at"] = "2026-09-20T12:10:00Z"
         self.assertTrue(any(e.startswith("CLOCK") for e in self.b.errors()))
 
+    def test_prior_checkpoint_is_validated_before_its_cells_are_trusted(self) -> None:
+        prior = self.b.read(PRIOR)
+        cell = prior["rows"][3]["observed"]["2026:syn-g1"]["rushing"]["yards"]
+        self.assertEqual(cell["value"], 77)
+        cell["value"] = 999
+        self.b.write(PRIOR, prior)
+        row = self.b.row("synthetic-seed-d")
+        row["prior_observed"]["2026:syn-g1"]["rushing"]["yards"]["value"] = 999
+        row["delta"]["2026:syn-g1"]["rushing"]["yards"]["prior_value"] = 999
+        row["delta"]["2026:syn-g1"]["rushing"]["yards"]["difference"] = 77 - 999
+        errors = self.b.errors()
+        self.assertTrue(any(e.startswith("PRIOR_INVALID") and "synthetic-checkpoint-2026-w02" in e for e in errors), errors)
+
+    def test_cyclic_prior_lineage_fails(self) -> None:
+        prior = self.b.read(PRIOR)
+        prior["prior_checkpoint"] = {"checkpoint_id": "synthetic-checkpoint-2026-w03", "path": CURRENT, "sha256": "0" * 64}
+        self.b.write(PRIOR, prior)
+        errors = self.b.errors()
+        self.assertTrue(any(e.startswith("PRIOR_INVALID") for e in errors), errors)
+
     def test_prior_checkpoint_must_precede_this_cutoff(self) -> None:
         prior = self.b.read(PRIOR)
         prior["as_known_at"] = "2026-09-20T12:00:00Z"
@@ -365,6 +460,27 @@ class CoveragePrecedence(unittest.TestCase):
     def test_row_coverage_state_must_match_recomputation(self) -> None:
         self.b.row("synthetic-seed-c")["coverage_state"] = COVERAGE_COMPLETE
         self.assertTrue(any("rows[2].coverage_state" in e for e in self.b.errors()))
+
+    def test_identical_observations_across_envelopes_are_coalesced(self) -> None:
+        copy_name = "synthetic_envelope_2026_w03_copy.json"
+        env = self.b.read(ENVELOPE)
+        self.b.files[copy_name] = self.b.files[ENVELOPE]
+        ref = copy.deepcopy(self.b.checkpoint["inputs"]["data_envelopes"][0])
+        ref["path"] = copy_name
+        self.b.checkpoint["inputs"]["data_envelopes"].append(ref)
+        self.b.checkpoint["coverage_warnings"] = sorted(
+            self.b.checkpoint["coverage_warnings"]
+            + [{"flag": "envelope_synthetic", "scope": copy_name}, {"flag": "population_partial", "scope": copy_name}],
+            key=lambda w: (w["flag"], w["scope"]),
+        )
+        self.assertEqual(self.b.errors(), [])
+        # Same observation_id with different content is an input defect, not a conflict.
+        env["observations"][3]["observed"]["rushing"]["yards"]["value"] = 78
+        self.b.files[copy_name] = _dump(env)
+        self.b.checkpoint["inputs"]["data_envelopes"][1]["sha256"] = hashlib.sha256(self.b.files[copy_name]).hexdigest()
+        errors = self.b.errors()
+        self.assertTrue(any(e.startswith("INPUT_CONFLICT") and "synthetic-observation-d-g1-r1" in e for e in errors), errors)
+        self.assertFalse(any("rows[3].evidence_change_state" in e and CONFLICTING_EVIDENCE in e for e in errors), errors)
 
     def test_window_must_be_recomputed_from_envelopes(self) -> None:
         self.b.checkpoint["window"]["observed_game_ids"].append({"season": 2026, "source_game_id": "syn-g3"})
