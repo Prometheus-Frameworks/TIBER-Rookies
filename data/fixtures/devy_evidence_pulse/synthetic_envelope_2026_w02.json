@@ -1,0 +1,412 @@
+{
+  "artifact_type": "college_player_game_observations",
+  "schema_version": "college-player-game-observations-v0.1.0",
+  "artifact_position": "unpromoted",
+  "evidence_mode": "synthetic_fixture",
+  "generated_at": "2026-09-13T11:00:00Z",
+  "fixture_note": "SYNTHETIC subset-shaped envelope for TIBER-Rookies pulse validator tests. It carries only the fields the pulse consumes and has NOT been run through TIBER-Data's contract validator; it proves nothing about any provider or real player.",
+  "coverage": {
+    "provider": "synthetic-provider",
+    "competition_scope": "SYNTHETIC test league only; no NCAA coverage claim",
+    "population_status": "partial",
+    "declared_population": "SYNTHETIC selected seed rows only; not a player universe.",
+    "evidence_refs": [
+      "synthetic-scope"
+    ],
+    "game_scope": {
+      "expected_game_ids": [
+        {
+          "season": 2026,
+          "source_game_id": "syn-g1"
+        },
+        {
+          "season": 2026,
+          "source_game_id": "syn-g2"
+        },
+        {
+          "season": 2026,
+          "source_game_id": "syn-g3"
+        }
+      ],
+      "observed_game_ids": [
+        {
+          "season": 2026,
+          "source_game_id": "syn-g1"
+        }
+      ],
+      "expectation_evidence_refs": [
+        "synthetic-scope"
+      ]
+    }
+  },
+  "evidence": {
+    "synthetic-snapshot": {
+      "kind": "source_snapshot",
+      "locator": "synthetic:synthetic-snapshot",
+      "known_at": "2026-09-01T00:00:00Z",
+      "provider": "synthetic-provider"
+    },
+    "synthetic-identity": {
+      "kind": "identity",
+      "locator": "synthetic:synthetic-identity",
+      "known_at": "2026-09-01T00:00:00Z",
+      "provider": "synthetic-provider"
+    },
+    "synthetic-scope": {
+      "kind": "scope",
+      "locator": "synthetic:synthetic-scope",
+      "known_at": "2026-09-01T00:00:00Z",
+      "provider": "synthetic-provider"
+    },
+    "synthetic-mapping": {
+      "kind": "mapping",
+      "locator": "synthetic:synthetic-mapping",
+      "known_at": "2026-09-01T00:00:00Z",
+      "provider": "synthetic-provider"
+    }
+  },
+  "observations": [
+    {
+      "observation_id": "synthetic-observation-c-g1-r1",
+      "provider": "synthetic-provider",
+      "source_revision_id": "synthetic-r1",
+      "revision_origin": "source_supplied",
+      "supersedes": null,
+      "revision_reason": null,
+      "retrieved_at": "2026-09-06T12:00:00Z",
+      "source_snapshot_ref": "synthetic-snapshot",
+      "mapping_ref": "synthetic-mapping",
+      "identity": {
+        "source_player_id": "synthetic-player-c",
+        "canonical_college_player_id": "synthetic-college-c",
+        "name": "SYNTHETIC synthetic-player-c",
+        "status": "resolved",
+        "evidence_refs": [
+          "synthetic-identity"
+        ],
+        "aggregation_status": "eligible",
+        "alias_of_observation_id": null
+      },
+      "game": {
+        "season": 2026,
+        "source_game_id": "syn-g1",
+        "date": null,
+        "date_origin": "unavailable",
+        "status": "final",
+        "status_evidence_refs": [
+          "synthetic-snapshot"
+        ],
+        "team": {
+          "source_program_id": "synthetic-program-a",
+          "name": "SYNTHETIC Program A"
+        },
+        "opponent": {
+          "source_program_id": "synthetic-program-z",
+          "name": "SYNTHETIC Opponent"
+        }
+      },
+      "position": "QB",
+      "row_presence": "source_row_observed",
+      "category_completeness": {
+        "passing": "partial",
+        "rushing": "partial",
+        "receiving": "partial"
+      },
+      "source_relationship": {
+        "status": "initial",
+        "related_observation_id": null,
+        "basis": "none",
+        "evidence_refs": []
+      },
+      "source_record_type": "synthetic-boxscore-record",
+      "observed": {
+        "passing": {
+          "attempts": {
+            "value": 30,
+            "availability": "observed_value",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "completions": {
+            "value": 20,
+            "availability": "observed_value",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "yards": {
+            "value": 240,
+            "availability": "observed_value",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "touchdowns": {
+            "value": 2,
+            "availability": "observed_value",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "interceptions": {
+            "value": 1,
+            "availability": "observed_value",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          }
+        },
+        "rushing": {
+          "carries": {
+            "value": 5,
+            "availability": "observed_value",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "yards": {
+            "value": 18,
+            "availability": "observed_value",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "touchdowns": {
+            "value": 0,
+            "availability": "observed_zero",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          }
+        },
+        "receiving": {
+          "targets": {
+            "value": null,
+            "availability": "unavailable_from_source",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "receptions": {
+            "value": 0,
+            "availability": "observed_zero",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "yards": {
+            "value": 0,
+            "availability": "observed_zero",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "touchdowns": {
+            "value": 0,
+            "availability": "observed_zero",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          }
+        }
+      }
+    },
+    {
+      "observation_id": "synthetic-observation-d-g1-r1",
+      "provider": "synthetic-provider",
+      "source_revision_id": "synthetic-r1",
+      "revision_origin": "source_supplied",
+      "supersedes": null,
+      "revision_reason": null,
+      "retrieved_at": "2026-09-06T12:00:00Z",
+      "source_snapshot_ref": "synthetic-snapshot",
+      "mapping_ref": "synthetic-mapping",
+      "identity": {
+        "source_player_id": "synthetic-player-d",
+        "canonical_college_player_id": "synthetic-college-d",
+        "name": "SYNTHETIC synthetic-player-d",
+        "status": "resolved",
+        "evidence_refs": [
+          "synthetic-identity"
+        ],
+        "aggregation_status": "eligible",
+        "alias_of_observation_id": null
+      },
+      "game": {
+        "season": 2026,
+        "source_game_id": "syn-g1",
+        "date": null,
+        "date_origin": "unavailable",
+        "status": "final",
+        "status_evidence_refs": [
+          "synthetic-snapshot"
+        ],
+        "team": {
+          "source_program_id": "synthetic-program-a",
+          "name": "SYNTHETIC Program A"
+        },
+        "opponent": {
+          "source_program_id": "synthetic-program-z",
+          "name": "SYNTHETIC Opponent"
+        }
+      },
+      "position": "RB",
+      "row_presence": "source_row_observed",
+      "category_completeness": {
+        "passing": "partial",
+        "rushing": "partial",
+        "receiving": "partial"
+      },
+      "source_relationship": {
+        "status": "initial",
+        "related_observation_id": null,
+        "basis": "none",
+        "evidence_refs": []
+      },
+      "source_record_type": "synthetic-boxscore-record",
+      "observed": {
+        "passing": {
+          "attempts": {
+            "value": null,
+            "availability": "unavailable_from_source",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "completions": {
+            "value": null,
+            "availability": "unavailable_from_source",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "yards": {
+            "value": null,
+            "availability": "unavailable_from_source",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "touchdowns": {
+            "value": null,
+            "availability": "unavailable_from_source",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "interceptions": {
+            "value": null,
+            "availability": "unavailable_from_source",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          }
+        },
+        "rushing": {
+          "carries": {
+            "value": 14,
+            "availability": "observed_value",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "yards": {
+            "value": 77,
+            "availability": "observed_value",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "touchdowns": {
+            "value": 1,
+            "availability": "observed_value",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          }
+        },
+        "receiving": {
+          "targets": {
+            "value": null,
+            "availability": "unavailable_from_source",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "receptions": {
+            "value": 3,
+            "availability": "observed_value",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "yards": {
+            "value": 20,
+            "availability": "observed_value",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          },
+          "touchdowns": {
+            "value": 0,
+            "availability": "observed_zero",
+            "evidence_refs": [
+              "synthetic-snapshot"
+            ],
+            "note": "SYNTHETIC fixture row; no provider accessed, no real player.",
+            "applicability_basis": null
+          }
+        }
+      }
+    }
+  ],
+  "attributions": [],
+  "retrieval_receipts": []
+}

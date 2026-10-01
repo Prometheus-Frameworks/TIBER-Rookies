@@ -213,6 +213,17 @@ Validate the pulse artifact with:
 python3 scripts/validate_devy_roster_pulse.py --artifact data/devy/monthly_pulse/devy_roster_pulse_2026_05.json
 ```
 
+## Devy evidence pulse v2 (S3 candidate, synthetic-only)
+
+A fail-closed validator for the proposed in-season `devy_evidence_pulse_checkpoint`
+contract, with synthetic fixtures and focused tests. No producer, no real-player
+checkpoint, no runtime or downstream wiring. See `docs/devy-signal-discovery.md`
+and `docs/reports/2026-09-30-devy-pulse-2026-audit-design.md` §3.6.
+
+```bash
+python3 scripts/validate_devy_evidence_pulse.py --checkpoint data/fixtures/devy_evidence_pulse/synthetic_checkpoint_2026_w03.json
+```
+
 ## Parallel ML evaluation lane (phase 1, experimental)
 
 This repo now includes an **experimental parallel ML lane** that evaluates rookie hit probabilities from historical labeled rows. It is strictly additive and does **not** replace deterministic Rookie Alpha scoring.
