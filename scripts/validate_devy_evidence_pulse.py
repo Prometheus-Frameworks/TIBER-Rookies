@@ -956,6 +956,7 @@ def validate_devy_evidence_pulse(checkpoint: Any, resolve: Resolver, _lineage: t
     envelopes: list[dict[str, Any]] = []
     env_refs: list[dict[str, Any]] = []
     seed_ids: list[str] = []
+    seed_loaded = False  # True once the pinned watchlist's prospects list was read, even if empty
     seed_names: dict[str, Any] = {}
     crosswalk_rows: dict[str, dict[str, Any]] | None = None
     crosswalk_pinned = False
@@ -996,6 +997,7 @@ def validate_devy_evidence_pulse(checkpoint: Any, resolve: Resolver, _lineage: t
                 if not isinstance(prospects, list):
                     f.fail("SEED_SHAPE", "$.inputs.seed_watchlist", "prospects must be a list")
                 else:
+                    seed_loaded = True
                     for j, p in enumerate(prospects):
                         if not isinstance(p, dict) or not _is_str(p.get("player_id")):
                             f.fail("SEED_SHAPE", f"$.inputs.seed_watchlist.prospects[{j}]", "player_id must be a non-empty string")
@@ -1127,8 +1129,10 @@ def validate_devy_evidence_pulse(checkpoint: Any, resolve: Resolver, _lineage: t
         f.fail("ROWS", "$.rows", "must be a list")
         rows = []
     row_ids = [r.get("seed_player_id") for r in rows if isinstance(r, dict)]
-    if seed_ids and sorted(seed_ids) != sorted(x for x in row_ids if isinstance(x, str)):
-        f.fail("ROWS", "$.rows", "rows must cover exactly the pinned seed watchlist, one row per seed")
+    # Exact coverage also holds for an empty watchlist: then rows must be empty. The check
+    # is skipped only when the watchlist itself failed to load, which is already a finding.
+    if seed_loaded and sorted(seed_ids) != sorted(x for x in row_ids if isinstance(x, str)):
+        f.fail("ROWS", "$.rows", "rows must cover exactly the pinned seed watchlist, one row per seed (an empty watchlist requires an empty rows list)")
     if row_ids != sorted((x for x in row_ids if isinstance(x, str))):
         f.fail("ROWS", "$.rows", "rows must be sorted by seed_player_id")
 

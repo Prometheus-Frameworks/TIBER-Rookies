@@ -666,6 +666,23 @@ class ProhibitedOutputsAndGuardrails(unittest.TestCase):
         self.b.checkpoint["rows"].pop()
         self.assertTrue(any("one row per seed" in e for e in self.b.errors()))
 
+    def test_non_seed_rows_are_rejected(self) -> None:
+        self.b.checkpoint["rows"].append(unresolved_row("synthetic-seed-z"))
+        self.assertTrue(any(e.startswith("ROWS") and "one row per seed" in e for e in self.b.errors()))
+
+    def test_empty_watchlist_requires_an_empty_row_list(self) -> None:
+        seeds = self.b.read(SEEDS)
+        seeds["prospects"] = []
+        self.b.write(SEEDS, seeds)
+        self.b.checkpoint["prior_checkpoint"] = None  # the prior's own rows would otherwise fail against the empty watchlist
+        errors = self.b.errors()
+        self.assertTrue(any(e.startswith("ROWS") and "one row per seed" in e for e in errors), errors)
+        # Exact coverage of an empty watchlist is an empty row list; everything else is still validated.
+        self.b.checkpoint["rows"] = []
+        self.assertEqual(self.b.errors(), [])
+        self.b.checkpoint["coverage_warnings"] = []
+        self.assertTrue(any("coverage_warnings" in e for e in self.b.errors()))
+
     def test_context_from_any_source_is_rejected_until_a_qualified_input_exists(self) -> None:
         for source in ("manual", "seed_watchlist", "devy_roster_pulse_v1"):
             with self.subTest(source=source):
