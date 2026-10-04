@@ -758,12 +758,18 @@ def _leaf(group: list[dict[str, Any]]) -> tuple[dict[str, Any] | None, set[str],
     leaf = leaves[0]
     ancestors: set[str] = set()
     cursor = leaf
-    while cursor and cursor.get("supersedes"):
+    while cursor.get("supersedes"):
         nxt = ids.get(cursor["supersedes"])
         if nxt is None or nxt["observation_id"] in ancestors:
-            break
+            # The lineage revisits a node: a supersession cycle is contradictory
+            # correction history, so no node of the group may be treated as a leaf.
+            return None, set(), True
         ancestors.add(nxt["observation_id"])
         cursor = nxt
+    if len(ancestors) + 1 != len(ids):
+        # Every row the leaf's lineage never reaches is superseded (else it would be
+        # a second leaf), so the unreached rows can only form a cycle among themselves.
+        return None, set(), True
     return leaf, ancestors, False
 
 
@@ -1149,6 +1155,10 @@ def validate_devy_evidence_pulse(checkpoint: Any, resolve: Resolver, _lineage: t
         if _check_keys(f, context, CONTEXT_KEYS, f"{rpath}.context"):
             if context["source"] not in CONTEXT_SOURCES:
                 f.fail("CONTEXT", f"{rpath}.context.source", "unknown context source")
+            elif context["source"] != "none":
+                # No pinned, qualified context input exists in this contract version, so
+                # program/roster/class context cannot be asserted from any source yet.
+                f.fail("CONTEXT_UNSUPPORTED", f"{rpath}.context.source", "no qualified context input exists in this contract version; context.source must be 'none'")
             if context["roster_status"] is not None and context["roster_status"] not in ROSTER_STATUSES:
                 f.fail("CONTEXT", f"{rpath}.context.roster_status", "unknown roster status")
             for key in ("program_state", "class_context"):

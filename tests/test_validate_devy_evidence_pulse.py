@@ -25,6 +25,7 @@ from scripts.validate_devy_evidence_pulse import (
     MATCHED,
     NO_NEW_EVIDENCE,
     UNBOUND_SEED,
+    _leaf,
     coverage_from_flags,
     effective_decision,
     validate_devy_evidence_pulse,
@@ -354,6 +355,50 @@ class SupersessionAndCutoff(unittest.TestCase):
         self.b.write(CROSSWALK, xw)
         self.assertTrue(any("cannot supersede a decision for a different seed" in e for e in self.b.errors()))
 
+    def test_supersession_cycle_with_one_apparent_leaf_is_conflicting(self) -> None:
+        env = self.b.read(ENVELOPE)
+        r1 = next(o for o in env["observations"] if o["observation_id"] == "synthetic-observation-c-g1-r1")
+        r2 = next(o for o in env["observations"] if o["observation_id"] == "synthetic-observation-c-g1-r2")
+        # r1 -> r2 -> r1 is a cycle; a new r3 supersedes r2 and is the only apparent leaf.
+        r1["supersedes"] = r2["observation_id"]
+        r1["source_relationship"] = {**r2["source_relationship"], "related_observation_id": r2["observation_id"]}
+        r3 = copy.deepcopy(r2)
+        r3["observation_id"] = "synthetic-observation-c-g1-r3"
+        r3["source_revision_id"] = "synthetic-r3"
+        r3["supersedes"] = r2["observation_id"]
+        r3["source_relationship"]["related_observation_id"] = r2["observation_id"]
+        r3["retrieved_at"] = "2026-09-16T12:00:00Z"
+        env["observations"].append(r3)
+        self.b.write(ENVELOPE, env)
+        row = self.b.row("synthetic-seed-c")
+        # A checkpoint that copies r3's cells, as a truncating ancestry walk would allow, must fail.
+        for cat in row["observed"]["2026:syn-g1"].values():
+            for cell in cat.values():
+                cell["observation_id"] = "synthetic-observation-c-g1-r3"
+                cell["source_revision_id"] = "synthetic-r3"
+        errors = self.b.errors()
+        self.assertTrue(any("rows[2].evidence_change_state" in e and CONFLICTING_EVIDENCE in e for e in errors), errors)
+        self.assertTrue(any("rows[2].observed" in e for e in errors), errors)
+        # Declaring the conflict, with no leaf, no cells and no delta, is the only valid outcome.
+        row["evidence_change_state"] = CONFLICTING_EVIDENCE
+        row["evidence_window"] = {"games_with_observed_rows": 2, "games_expected": 3, "finality_by_game": {}}
+        row["observed"] = {}
+        row["delta"] = {}
+        row["needs_manual_review"] = True
+        self.assertEqual(self.b.errors(), [])
+
+    def test_leaf_rejects_every_cycle_shape(self) -> None:
+        def obs(oid: str, supersedes: str | None) -> dict:
+            return {"observation_id": oid, "relationship": "established_supersession" if supersedes else "initial", "supersedes": supersedes}
+
+        chain = [obs("a", None), obs("b", "a"), obs("c", "b")]
+        leaf, ancestors, conflict = _leaf(chain)
+        self.assertEqual((leaf["observation_id"], ancestors, conflict), ("c", {"a", "b"}, False))
+        one_apparent_leaf = [obs("a", "b"), obs("b", "a"), obs("c", "a")]
+        self.assertEqual(_leaf(one_apparent_leaf), (None, set(), True))
+        cycle_beside_a_leaf = [obs("a", "b"), obs("b", "a"), obs("d", None)]
+        self.assertEqual(_leaf(cycle_beside_a_leaf), (None, set(), True))
+
     def test_observation_retrieved_after_cutoff_is_excluded(self) -> None:
         env = self.b.read(ENVELOPE)
         next(o for o in env["observations"] if o["observation_id"] == "synthetic-observation-c-g2-r1")["retrieved_at"] = "2026-09-21T12:00:00Z"
@@ -620,6 +665,27 @@ class ProhibitedOutputsAndGuardrails(unittest.TestCase):
     def test_rows_must_cover_the_pinned_seed_watchlist(self) -> None:
         self.b.checkpoint["rows"].pop()
         self.assertTrue(any("one row per seed" in e for e in self.b.errors()))
+
+    def test_context_from_any_source_is_rejected_until_a_qualified_input_exists(self) -> None:
+        for source in ("manual", "seed_watchlist", "devy_roster_pulse_v1"):
+            with self.subTest(source=source):
+                b = Bundle(CURRENT)
+                row = b.row("synthetic-seed-c")
+                row["context"] = {"source": source, "program_state": "SYNTHETIC program", "roster_status": "program_changed", "class_context": "SYNTHETIC class"}
+                row["context_change_state"] = "PROGRAM_CHANGED"
+                errors = b.errors()
+                self.assertTrue(any(e.startswith("CONTEXT_UNSUPPORTED") and "rows[2].context.source" in e for e in errors), errors)
+        # An otherwise null context under a non-none source is rejected too; the source itself is the claim.
+        self.b.row("synthetic-seed-c")["context"]["source"] = "manual"
+        self.assertTrue(any(e.startswith("CONTEXT_UNSUPPORTED") for e in self.b.errors()))
+
+    def test_context_none_keeps_null_fields_and_unknown_state(self) -> None:
+        row = self.b.row("synthetic-seed-c")
+        row["context"]["roster_status"] = "still_present"
+        self.assertTrue(any("rows[2].context" in e and "entirely null" in e for e in self.b.errors()))
+        row["context"]["roster_status"] = None
+        row["context_change_state"] = "UNCHANGED"
+        self.assertTrue(any("rows[2].context_change_state" in e and "UNKNOWN" in e for e in self.b.errors()))
 
     def test_tampered_input_fails_on_digest(self) -> None:
         self.b.files[ENVELOPE] = self.b.files[ENVELOPE] + b"\n"
