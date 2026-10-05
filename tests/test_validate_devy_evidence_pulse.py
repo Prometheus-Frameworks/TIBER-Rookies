@@ -549,6 +549,33 @@ class CorrectionsAndStates(unittest.TestCase):
     def setUp(self) -> None:
         self.b = Bundle(CURRENT)
 
+    def test_every_prior_observed_game_disappearing_is_conflicting(self) -> None:
+        env = self.b.read(ENVELOPE)
+        env["observations"] = [o for o in env["observations"] if o["identity"]["canonical_college_player_id"] != "synthetic-college-d"]
+        self.b.write(ENVELOPE, env)
+        row = self.b.row("synthetic-seed-d")
+        self.assertIn("2026:syn-g1", row["prior_observed"])
+        row["evidence_change_state"] = "NO_OBSERVED_ROWS"
+        row["evidence_window"] = {"games_with_observed_rows": 0, "games_expected": 3, "finality_by_game": {}}
+        row["observed"] = {}
+        row["delta"] = {}
+        errors = self.b.errors()
+        self.assertTrue(any("rows[3].evidence_change_state" in e and CONFLICTING_EVIDENCE in e for e in errors), errors)
+        row["evidence_change_state"] = CONFLICTING_EVIDENCE
+        row["needs_manual_review"] = True
+        self.assertEqual(self.b.errors(), [])
+
+    def test_no_observed_rows_without_prior_observations_remains_valid(self) -> None:
+        for name, prior_observed in ((PRIOR, None), (CURRENT, {})):
+            with self.subTest(checkpoint=name):
+                bundle = Bundle(name)
+                row = bundle.row("synthetic-seed-e")
+                self.assertEqual(row["prior_observed"], prior_observed)
+                self.assertEqual(row["evidence_change_state"], "NO_OBSERVED_ROWS")
+                self.assertEqual(row["observed"], {})
+                self.assertEqual(row["delta"], {})
+                self.assertEqual(bundle.errors(), [])
+
     def test_correction_state_cannot_be_relabelled(self) -> None:
         self.b.row("synthetic-seed-c")["evidence_change_state"] = "NEW_EVIDENCE"
         self.assertTrue(any("rows[2].evidence_change_state" in e and CORRECTED_EVIDENCE in e for e in self.b.errors()))
@@ -581,6 +608,32 @@ class CorrectionsAndStates(unittest.TestCase):
         row["evidence_change_state"] = INSUFFICIENT_EVIDENCE
         self.assertTrue(any("rows[3].delta" in e and "must be empty" in e for e in self.b.errors()))
         row["delta"] = {}
+        self.assertEqual(self.b.errors(), [])
+
+    def test_insufficient_games_cannot_hide_a_competing_prior_revision(self) -> None:
+        env = self.b.read(ENVELOPE)
+        obs = next(o for o in env["observations"] if o["observation_id"] == "synthetic-observation-d-g1-r1")
+        obs["observation_id"] = "synthetic-observation-d-g1-unrelated"
+        obs["source_revision_id"] = "synthetic-unrelated-revision"
+        self.b.write(ENVELOPE, env)
+        row = self.b.row("synthetic-seed-d")
+        for cells in row["observed"]["2026:syn-g1"].values():
+            for cell in cells.values():
+                cell["observation_id"] = obs["observation_id"]
+                cell["source_revision_id"] = obs["source_revision_id"]
+        self.b.checkpoint["insufficient_evidence_min_games"] = 2
+        row["evidence_change_state"] = INSUFFICIENT_EVIDENCE
+        row["delta"] = {}
+        row["needs_manual_review"] = False
+        errors = self.b.errors()
+        self.assertTrue(any("rows[3].evidence_change_state" in e and CONFLICTING_EVIDENCE in e for e in errors), errors)
+        self.assertTrue(any("rows[3].observed" in e for e in errors), errors)
+        self.assertTrue(any("rows[3].evidence_window" in e for e in errors), errors)
+        self.assertTrue(any("rows[3].needs_manual_review" in e for e in errors), errors)
+        row["evidence_change_state"] = CONFLICTING_EVIDENCE
+        row["observed"] = {}
+        row["evidence_window"]["finality_by_game"] = {}
+        row["needs_manual_review"] = True
         self.assertEqual(self.b.errors(), [])
 
     def test_delta_without_corrected_lineage_is_not_comparable_and_conflicting(self) -> None:

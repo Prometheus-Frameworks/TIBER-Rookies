@@ -817,14 +817,15 @@ def recompute_matched_row(
     }
     if conflict:
         return {"state": CONFLICTING_EVIDENCE, "evidence_window": window, "observed": {}, "delta": {}}
+    prior = prior_observed or {}
+    missing_prior_games = sorted(set(prior) - set(groups))
+    if missing_prior_games:
+        # Disappearance is a competing assertion even when no current rows remain.
+        return {"state": CONFLICTING_EVIDENCE, "evidence_window": {**window, "finality_by_game": {}}, "observed": {}, "delta": {}, "missing_prior_games": missing_prior_games}
     if not groups:
         return {"state": NO_OBSERVED_ROWS, "evidence_window": window, "observed": {}, "delta": {}}
     observed = {key: _copy_cells(leaf) for key, (leaf, _) in leaves.items()}
-    if len(groups) < min_games:
-        return {"state": INSUFFICIENT_EVIDENCE, "evidence_window": window, "observed": observed, "delta": {}}
 
-    prior = prior_observed or {}
-    missing_prior_games = sorted(set(prior) - set(observed))
     corrected = False
     new_rows = prior_observed is None
     foreign = False
@@ -857,10 +858,12 @@ def recompute_matched_row(
                     "difference": difference,
                     "basis": basis,
                 }
-    if foreign or missing_prior_games:
+    if foreign:
         # A prior-cited revision that is neither the current leaf nor one of its
-        # ancestors, or a prior game that vanished, is a competing assertion.
+        # ancestors is a competing assertion.
         return {"state": CONFLICTING_EVIDENCE, "evidence_window": {**window, "finality_by_game": {}}, "observed": {}, "delta": {}, "missing_prior_games": missing_prior_games}
+    if len(groups) < min_games:
+        return {"state": INSUFFICIENT_EVIDENCE, "evidence_window": window, "observed": observed, "delta": {}}
     if corrected:
         state = CORRECTED_EVIDENCE
     elif new_rows:
