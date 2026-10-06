@@ -1,0 +1,40 @@
+{
+  "schema_version": "devy-prospect-registry-v0.1.0",
+  "artifact_type": "fixture_only_devy_signal_discovery_registry",
+  "as_of_year": 2026,
+  "generated_by": "synthetic_pulse_fixture",
+  "disclaimer": "SYNTHETIC seed rows for Devy evidence pulse validator tests only. Not a seed watchlist, not rankings, not Rookie Alpha inputs, not real players.",
+  "fixture_note": "Minimal pulse-oriented seed fixture: only player_id/player_name/school/position are consumed. It is not a registry-valid artifact and is never read by runtime surfaces.",
+  "prospects": [
+    {
+      "player_id": "synthetic-seed-a",
+      "player_name": "SYNTHETIC Seed A",
+      "school": "SYNTHETIC University",
+      "position": "WR"
+    },
+    {
+      "player_id": "synthetic-seed-b",
+      "player_name": "SYNTHETIC Seed B",
+      "school": "SYNTHETIC University",
+      "position": "RB"
+    },
+    {
+      "player_id": "synthetic-seed-c",
+      "player_name": "SYNTHETIC Seed C",
+      "school": "SYNTHETIC University",
+      "position": "QB"
+    },
+    {
+      "player_id": "synthetic-seed-d",
+      "player_name": "SYNTHETIC Seed D",
+      "school": "SYNTHETIC University",
+      "position": "RB"
+    },
+    {
+      "player_id": "synthetic-seed-e",
+      "player_name": "SYNTHETIC Seed E",
+      "school": "SYNTHETIC University",
+      "position": "TE"
+    }
+  ]
+}

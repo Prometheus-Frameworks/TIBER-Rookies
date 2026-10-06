@@ -294,3 +294,36 @@ python3 scripts/compute_devy_league_market_snapshot_diff.py \
 
 Use this as a manual review helper only. Drafted-missing names are candidate deltas for
 monthly pulse/operator review and must not be auto-added to the seed watchlist.
+
+## Devy evidence pulse v2 (S3 candidate, synthetic-only)
+
+`devy_evidence_pulse_checkpoint` is the proposed in-season evidence checkpoint
+designed in `docs/reports/2026-09-30-devy-pulse-2026-audit-design.md` (§3, §5,
+§6.2). The candidate implementation is a fail-closed validator plus synthetic
+fixtures; there is no producer, no real-player checkpoint and no runtime surface.
+
+What the validator recomputes from a checkpoint's pinned inputs and rejects on
+any difference:
+
+- identity binding from the *effective* crosswalk decision at `as_known_at`
+  (latest reviewed decision following the supersession chain; stale citations are
+  rejected, forks fail the checkpoint);
+- checkpoint-level `coverage_warnings` from every pinned envelope, and per-row
+  `coverage_state`/`coverage_flags` by strict precedence `UNKNOWN` > `INCOMPLETE` >
+  `COMPLETE`;
+- per-game copied cells, `evidence_change_state` and integer deltas, with no
+  delta in `CONFLICTING_EVIDENCE`, `INSUFFICIENT_EVIDENCE` or `NO_OBSERVED_ROWS`.
+
+Non-`MATCHED` rows are `IDENTITY_UNRESOLVED` with null evidence and coverage
+fields. Scores, ranks, grades, probabilities, projections, rates and shares are
+prohibited; `auto_seed_watchlist_mutation` must be `"none"`.
+
+```bash
+python3 scripts/validate_devy_evidence_pulse.py --checkpoint data/fixtures/devy_evidence_pulse/synthetic_checkpoint_2026_w03.json
+python3 -m pytest tests/test_validate_devy_evidence_pulse.py -q
+```
+
+The fixtures under `data/fixtures/devy_evidence_pulse/` are unmistakably
+synthetic and subset-shaped: they have not been run through TIBER-Data's
+envelope validator and prove nothing about any provider, real player, or 2026
+coverage. TIBER-Data PR #275's open review findings remain unsettled dependencies.

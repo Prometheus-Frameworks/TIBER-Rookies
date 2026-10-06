@@ -1,0 +1,963 @@
+{
+  "artifact_type": "devy_evidence_pulse_checkpoint",
+  "schema_version": "devy-evidence-pulse-v0.1.0",
+  "artifact_position": "unpromoted",
+  "evidence_mode": "synthetic_fixture",
+  "checkpoint_id": "synthetic-checkpoint-2026-w03",
+  "as_known_at": "2026-09-20T12:00:00Z",
+  "generated_at": "2026-09-20T12:05:00Z",
+  "disclaimer": "SYNTHETIC discovery-only Devy evidence pulse checkpoint fixture. Rows are not rankings, not Rookie Alpha inputs, not promoted, and prove contract behaviour only, never 2026 coverage or real-player readiness.",
+  "prior_checkpoint": {
+    "checkpoint_id": "synthetic-checkpoint-2026-w02",
+    "path": "synthetic_checkpoint_2026_w02.json",
+    "sha256": "499bf43d5ffd2532a3f94ca9d995e206b63cacf4dcb6cdf618a80b8a7cd4ea65"
+  },
+  "inputs": {
+    "data_envelopes": [
+      {
+        "path": "synthetic_envelope_2026_w03.json",
+        "sha256": "d4c91bfbe4ffb334722adad60269deae08492fa86938668072e807984427a586",
+        "generated_at": "2026-09-20T11:00:00Z",
+        "evidence_mode": "synthetic_fixture",
+        "population_status": "partial",
+        "competition_scope": "SYNTHETIC test league only; no NCAA coverage claim"
+      }
+    ],
+    "seed_watchlist": {
+      "path": "synthetic_seed_watchlist.json",
+      "sha256": "41e078acdf7e0ec0facef31c0174a5fde03a1ddc57e2c2cdfcc6607975959cbe",
+      "as_of_year": 2026
+    },
+    "identity_crosswalk": {
+      "path": "synthetic_identity_crosswalk.json",
+      "sha256": "d88752905d8a259a4e74ca93c9dce9585dea1762b5e84bf52b8a4dc79a35651f"
+    }
+  },
+  "window": {
+    "season": 2026,
+    "game_scope_source": "data_envelope",
+    "expected_game_ids": [
+      {
+        "season": 2026,
+        "source_game_id": "syn-g1"
+      },
+      {
+        "season": 2026,
+        "source_game_id": "syn-g2"
+      },
+      {
+        "season": 2026,
+        "source_game_id": "syn-g3"
+      }
+    ],
+    "observed_game_ids": [
+      {
+        "season": 2026,
+        "source_game_id": "syn-g1"
+      },
+      {
+        "season": 2026,
+        "source_game_id": "syn-g2"
+      }
+    ]
+  },
+  "insufficient_evidence_min_games": 1,
+  "coverage_warnings": [
+    {
+      "flag": "envelope_synthetic",
+      "scope": "synthetic_envelope_2026_w03.json"
+    },
+    {
+      "flag": "expected_game_missing",
+      "scope": "window:2026:syn-g3"
+    },
+    {
+      "flag": "population_partial",
+      "scope": "synthetic_envelope_2026_w03.json"
+    }
+  ],
+  "rows": [
+    {
+      "seed_player_id": "synthetic-seed-a",
+      "identity_binding": {
+        "status": "UNBOUND_SEED",
+        "crosswalk_row_ref": null,
+        "crosswalk_status": null,
+        "canonical_college_player_id": null,
+        "decision_known_at": null,
+        "evidence_refs": []
+      },
+      "coverage_state": null,
+      "coverage_flags": null,
+      "evidence_window": null,
+      "observed": null,
+      "prior_observed": null,
+      "delta": null,
+      "opportunity": {
+        "status": "unavailable",
+        "reason": "no_denominator_contract"
+      },
+      "context": {
+        "source": "none",
+        "program_state": null,
+        "roster_status": null,
+        "class_context": null
+      },
+      "evidence_change_state": "IDENTITY_UNRESOLVED",
+      "context_change_state": "UNKNOWN",
+      "auto_seed_watchlist_mutation": "none",
+      "needs_manual_review": true
+    },
+    {
+      "seed_player_id": "synthetic-seed-b",
+      "identity_binding": {
+        "status": "MATCH_CANDIDATE",
+        "crosswalk_row_ref": "synthetic-xw-r2",
+        "crosswalk_status": "TRANSFER_VERIFY",
+        "canonical_college_player_id": null,
+        "decision_known_at": "2026-09-19T09:00:00Z",
+        "evidence_refs": [
+          "synthetic:roster-b",
+          "synthetic:transfer-b"
+        ]
+      },
+      "coverage_state": null,
+      "coverage_flags": null,
+      "evidence_window": null,
+      "observed": null,
+      "prior_observed": null,
+      "delta": null,
+      "opportunity": {
+        "status": "unavailable",
+        "reason": "no_denominator_contract"
+      },
+      "context": {
+        "source": "none",
+        "program_state": null,
+        "roster_status": null,
+        "class_context": null
+      },
+      "evidence_change_state": "IDENTITY_UNRESOLVED",
+      "context_change_state": "UNKNOWN",
+      "auto_seed_watchlist_mutation": "none",
+      "needs_manual_review": true
+    },
+    {
+      "seed_player_id": "synthetic-seed-c",
+      "identity_binding": {
+        "status": "MATCHED",
+        "crosswalk_row_ref": "synthetic-xw-r3",
+        "crosswalk_status": "READY",
+        "canonical_college_player_id": "synthetic-college-c",
+        "decision_known_at": "2026-09-10T09:00:00Z",
+        "evidence_refs": [
+          "synthetic:roster-c"
+        ]
+      },
+      "coverage_state": "INCOMPLETE",
+      "coverage_flags": [
+        "population_partial",
+        "expected_game_missing",
+        "envelope_synthetic"
+      ],
+      "evidence_window": {
+        "games_with_observed_rows": 2,
+        "games_expected": 3,
+        "finality_by_game": {
+          "2026:syn-g1": "final",
+          "2026:syn-g2": "final"
+        }
+      },
+      "observed": {
+        "2026:syn-g1": {
+          "passing": {
+            "attempts": {
+              "value": 30,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g1-r2",
+              "source_revision_id": "synthetic-r2"
+            },
+            "completions": {
+              "value": 20,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g1-r2",
+              "source_revision_id": "synthetic-r2"
+            },
+            "yards": {
+              "value": 245,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g1-r2",
+              "source_revision_id": "synthetic-r2"
+            },
+            "touchdowns": {
+              "value": 2,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g1-r2",
+              "source_revision_id": "synthetic-r2"
+            },
+            "interceptions": {
+              "value": 1,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g1-r2",
+              "source_revision_id": "synthetic-r2"
+            }
+          },
+          "rushing": {
+            "carries": {
+              "value": 5,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g1-r2",
+              "source_revision_id": "synthetic-r2"
+            },
+            "yards": {
+              "value": 18,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g1-r2",
+              "source_revision_id": "synthetic-r2"
+            },
+            "touchdowns": {
+              "value": 0,
+              "availability": "observed_zero",
+              "observation_id": "synthetic-observation-c-g1-r2",
+              "source_revision_id": "synthetic-r2"
+            }
+          },
+          "receiving": {
+            "targets": {
+              "value": null,
+              "availability": "unavailable_from_source",
+              "observation_id": "synthetic-observation-c-g1-r2",
+              "source_revision_id": "synthetic-r2"
+            },
+            "receptions": {
+              "value": 0,
+              "availability": "observed_zero",
+              "observation_id": "synthetic-observation-c-g1-r2",
+              "source_revision_id": "synthetic-r2"
+            },
+            "yards": {
+              "value": 0,
+              "availability": "observed_zero",
+              "observation_id": "synthetic-observation-c-g1-r2",
+              "source_revision_id": "synthetic-r2"
+            },
+            "touchdowns": {
+              "value": 0,
+              "availability": "observed_zero",
+              "observation_id": "synthetic-observation-c-g1-r2",
+              "source_revision_id": "synthetic-r2"
+            }
+          }
+        },
+        "2026:syn-g2": {
+          "passing": {
+            "attempts": {
+              "value": 27,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g2-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "completions": {
+              "value": 15,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g2-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "yards": {
+              "value": 190,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g2-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "touchdowns": {
+              "value": 1,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g2-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "interceptions": {
+              "value": 0,
+              "availability": "observed_zero",
+              "observation_id": "synthetic-observation-c-g2-r1",
+              "source_revision_id": "synthetic-r1"
+            }
+          },
+          "rushing": {
+            "carries": {
+              "value": 3,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g2-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "yards": {
+              "value": 9,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g2-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "touchdowns": {
+              "value": 0,
+              "availability": "observed_zero",
+              "observation_id": "synthetic-observation-c-g2-r1",
+              "source_revision_id": "synthetic-r1"
+            }
+          },
+          "receiving": {
+            "targets": {
+              "value": null,
+              "availability": "unavailable_from_source",
+              "observation_id": "synthetic-observation-c-g2-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "receptions": {
+              "value": 0,
+              "availability": "observed_zero",
+              "observation_id": "synthetic-observation-c-g2-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "yards": {
+              "value": 0,
+              "availability": "observed_zero",
+              "observation_id": "synthetic-observation-c-g2-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "touchdowns": {
+              "value": 0,
+              "availability": "observed_zero",
+              "observation_id": "synthetic-observation-c-g2-r1",
+              "source_revision_id": "synthetic-r1"
+            }
+          }
+        }
+      },
+      "prior_observed": {
+        "2026:syn-g1": {
+          "passing": {
+            "attempts": {
+              "value": 30,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "completions": {
+              "value": 20,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "yards": {
+              "value": 240,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "touchdowns": {
+              "value": 2,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "interceptions": {
+              "value": 1,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            }
+          },
+          "rushing": {
+            "carries": {
+              "value": 5,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "yards": {
+              "value": 18,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-c-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "touchdowns": {
+              "value": 0,
+              "availability": "observed_zero",
+              "observation_id": "synthetic-observation-c-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            }
+          },
+          "receiving": {
+            "targets": {
+              "value": null,
+              "availability": "unavailable_from_source",
+              "observation_id": "synthetic-observation-c-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "receptions": {
+              "value": 0,
+              "availability": "observed_zero",
+              "observation_id": "synthetic-observation-c-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "yards": {
+              "value": 0,
+              "availability": "observed_zero",
+              "observation_id": "synthetic-observation-c-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "touchdowns": {
+              "value": 0,
+              "availability": "observed_zero",
+              "observation_id": "synthetic-observation-c-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            }
+          }
+        }
+      },
+      "delta": {
+        "2026:syn-g1": {
+          "passing": {
+            "attempts": {
+              "prior_value": 30,
+              "current_value": 30,
+              "difference": 0,
+              "basis": "corrected",
+              "note": "SYNTHETIC corrected"
+            },
+            "completions": {
+              "prior_value": 20,
+              "current_value": 20,
+              "difference": 0,
+              "basis": "corrected",
+              "note": "SYNTHETIC corrected"
+            },
+            "yards": {
+              "prior_value": 240,
+              "current_value": 245,
+              "difference": 5,
+              "basis": "corrected",
+              "note": "SYNTHETIC corrected"
+            },
+            "touchdowns": {
+              "prior_value": 2,
+              "current_value": 2,
+              "difference": 0,
+              "basis": "corrected",
+              "note": "SYNTHETIC corrected"
+            },
+            "interceptions": {
+              "prior_value": 1,
+              "current_value": 1,
+              "difference": 0,
+              "basis": "corrected",
+              "note": "SYNTHETIC corrected"
+            }
+          },
+          "rushing": {
+            "carries": {
+              "prior_value": 5,
+              "current_value": 5,
+              "difference": 0,
+              "basis": "corrected",
+              "note": "SYNTHETIC corrected"
+            },
+            "yards": {
+              "prior_value": 18,
+              "current_value": 18,
+              "difference": 0,
+              "basis": "corrected",
+              "note": "SYNTHETIC corrected"
+            },
+            "touchdowns": {
+              "prior_value": 0,
+              "current_value": 0,
+              "difference": 0,
+              "basis": "corrected",
+              "note": "SYNTHETIC corrected"
+            }
+          },
+          "receiving": {
+            "targets": {
+              "prior_value": null,
+              "current_value": null,
+              "difference": null,
+              "basis": "corrected",
+              "note": "SYNTHETIC corrected"
+            },
+            "receptions": {
+              "prior_value": 0,
+              "current_value": 0,
+              "difference": 0,
+              "basis": "corrected",
+              "note": "SYNTHETIC corrected"
+            },
+            "yards": {
+              "prior_value": 0,
+              "current_value": 0,
+              "difference": 0,
+              "basis": "corrected",
+              "note": "SYNTHETIC corrected"
+            },
+            "touchdowns": {
+              "prior_value": 0,
+              "current_value": 0,
+              "difference": 0,
+              "basis": "corrected",
+              "note": "SYNTHETIC corrected"
+            }
+          }
+        },
+        "2026:syn-g2": {
+          "passing": {
+            "attempts": {
+              "prior_value": null,
+              "current_value": 27,
+              "difference": null,
+              "basis": "new_rows",
+              "note": "SYNTHETIC new_rows"
+            },
+            "completions": {
+              "prior_value": null,
+              "current_value": 15,
+              "difference": null,
+              "basis": "new_rows",
+              "note": "SYNTHETIC new_rows"
+            },
+            "yards": {
+              "prior_value": null,
+              "current_value": 190,
+              "difference": null,
+              "basis": "new_rows",
+              "note": "SYNTHETIC new_rows"
+            },
+            "touchdowns": {
+              "prior_value": null,
+              "current_value": 1,
+              "difference": null,
+              "basis": "new_rows",
+              "note": "SYNTHETIC new_rows"
+            },
+            "interceptions": {
+              "prior_value": null,
+              "current_value": 0,
+              "difference": null,
+              "basis": "new_rows",
+              "note": "SYNTHETIC new_rows"
+            }
+          },
+          "rushing": {
+            "carries": {
+              "prior_value": null,
+              "current_value": 3,
+              "difference": null,
+              "basis": "new_rows",
+              "note": "SYNTHETIC new_rows"
+            },
+            "yards": {
+              "prior_value": null,
+              "current_value": 9,
+              "difference": null,
+              "basis": "new_rows",
+              "note": "SYNTHETIC new_rows"
+            },
+            "touchdowns": {
+              "prior_value": null,
+              "current_value": 0,
+              "difference": null,
+              "basis": "new_rows",
+              "note": "SYNTHETIC new_rows"
+            }
+          },
+          "receiving": {
+            "targets": {
+              "prior_value": null,
+              "current_value": null,
+              "difference": null,
+              "basis": "new_rows",
+              "note": "SYNTHETIC new_rows"
+            },
+            "receptions": {
+              "prior_value": null,
+              "current_value": 0,
+              "difference": null,
+              "basis": "new_rows",
+              "note": "SYNTHETIC new_rows"
+            },
+            "yards": {
+              "prior_value": null,
+              "current_value": 0,
+              "difference": null,
+              "basis": "new_rows",
+              "note": "SYNTHETIC new_rows"
+            },
+            "touchdowns": {
+              "prior_value": null,
+              "current_value": 0,
+              "difference": null,
+              "basis": "new_rows",
+              "note": "SYNTHETIC new_rows"
+            }
+          }
+        }
+      },
+      "opportunity": {
+        "status": "unavailable",
+        "reason": "no_denominator_contract"
+      },
+      "context": {
+        "source": "none",
+        "program_state": null,
+        "roster_status": null,
+        "class_context": null
+      },
+      "evidence_change_state": "CORRECTED_EVIDENCE",
+      "context_change_state": "UNKNOWN",
+      "auto_seed_watchlist_mutation": "none",
+      "needs_manual_review": false
+    },
+    {
+      "seed_player_id": "synthetic-seed-d",
+      "identity_binding": {
+        "status": "MATCHED",
+        "crosswalk_row_ref": "synthetic-xw-r4",
+        "crosswalk_status": "READY",
+        "canonical_college_player_id": "synthetic-college-d",
+        "decision_known_at": "2026-09-10T09:00:00Z",
+        "evidence_refs": [
+          "synthetic:roster-d"
+        ]
+      },
+      "coverage_state": "INCOMPLETE",
+      "coverage_flags": [
+        "population_partial",
+        "expected_game_missing",
+        "envelope_synthetic"
+      ],
+      "evidence_window": {
+        "games_with_observed_rows": 1,
+        "games_expected": 3,
+        "finality_by_game": {
+          "2026:syn-g1": "final"
+        }
+      },
+      "observed": {
+        "2026:syn-g1": {
+          "passing": {
+            "attempts": {
+              "value": null,
+              "availability": "unavailable_from_source",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "completions": {
+              "value": null,
+              "availability": "unavailable_from_source",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "yards": {
+              "value": null,
+              "availability": "unavailable_from_source",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "touchdowns": {
+              "value": null,
+              "availability": "unavailable_from_source",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "interceptions": {
+              "value": null,
+              "availability": "unavailable_from_source",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            }
+          },
+          "rushing": {
+            "carries": {
+              "value": 14,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "yards": {
+              "value": 77,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "touchdowns": {
+              "value": 1,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            }
+          },
+          "receiving": {
+            "targets": {
+              "value": null,
+              "availability": "unavailable_from_source",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "receptions": {
+              "value": 3,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "yards": {
+              "value": 20,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "touchdowns": {
+              "value": 0,
+              "availability": "observed_zero",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            }
+          }
+        }
+      },
+      "prior_observed": {
+        "2026:syn-g1": {
+          "passing": {
+            "attempts": {
+              "value": null,
+              "availability": "unavailable_from_source",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "completions": {
+              "value": null,
+              "availability": "unavailable_from_source",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "yards": {
+              "value": null,
+              "availability": "unavailable_from_source",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "touchdowns": {
+              "value": null,
+              "availability": "unavailable_from_source",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "interceptions": {
+              "value": null,
+              "availability": "unavailable_from_source",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            }
+          },
+          "rushing": {
+            "carries": {
+              "value": 14,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "yards": {
+              "value": 77,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "touchdowns": {
+              "value": 1,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            }
+          },
+          "receiving": {
+            "targets": {
+              "value": null,
+              "availability": "unavailable_from_source",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "receptions": {
+              "value": 3,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "yards": {
+              "value": 20,
+              "availability": "observed_value",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            },
+            "touchdowns": {
+              "value": 0,
+              "availability": "observed_zero",
+              "observation_id": "synthetic-observation-d-g1-r1",
+              "source_revision_id": "synthetic-r1"
+            }
+          }
+        }
+      },
+      "delta": {
+        "2026:syn-g1": {
+          "passing": {
+            "attempts": {
+              "prior_value": null,
+              "current_value": null,
+              "difference": null,
+              "basis": "same_revision",
+              "note": "SYNTHETIC same_revision"
+            },
+            "completions": {
+              "prior_value": null,
+              "current_value": null,
+              "difference": null,
+              "basis": "same_revision",
+              "note": "SYNTHETIC same_revision"
+            },
+            "yards": {
+              "prior_value": null,
+              "current_value": null,
+              "difference": null,
+              "basis": "same_revision",
+              "note": "SYNTHETIC same_revision"
+            },
+            "touchdowns": {
+              "prior_value": null,
+              "current_value": null,
+              "difference": null,
+              "basis": "same_revision",
+              "note": "SYNTHETIC same_revision"
+            },
+            "interceptions": {
+              "prior_value": null,
+              "current_value": null,
+              "difference": null,
+              "basis": "same_revision",
+              "note": "SYNTHETIC same_revision"
+            }
+          },
+          "rushing": {
+            "carries": {
+              "prior_value": 14,
+              "current_value": 14,
+              "difference": 0,
+              "basis": "same_revision",
+              "note": "SYNTHETIC same_revision"
+            },
+            "yards": {
+              "prior_value": 77,
+              "current_value": 77,
+              "difference": 0,
+              "basis": "same_revision",
+              "note": "SYNTHETIC same_revision"
+            },
+            "touchdowns": {
+              "prior_value": 1,
+              "current_value": 1,
+              "difference": 0,
+              "basis": "same_revision",
+              "note": "SYNTHETIC same_revision"
+            }
+          },
+          "receiving": {
+            "targets": {
+              "prior_value": null,
+              "current_value": null,
+              "difference": null,
+              "basis": "same_revision",
+              "note": "SYNTHETIC same_revision"
+            },
+            "receptions": {
+              "prior_value": 3,
+              "current_value": 3,
+              "difference": 0,
+              "basis": "same_revision",
+              "note": "SYNTHETIC same_revision"
+            },
+            "yards": {
+              "prior_value": 20,
+              "current_value": 20,
+              "difference": 0,
+              "basis": "same_revision",
+              "note": "SYNTHETIC same_revision"
+            },
+            "touchdowns": {
+              "prior_value": 0,
+              "current_value": 0,
+              "difference": 0,
+              "basis": "same_revision",
+              "note": "SYNTHETIC same_revision"
+            }
+          }
+        }
+      },
+      "opportunity": {
+        "status": "unavailable",
+        "reason": "no_denominator_contract"
+      },
+      "context": {
+        "source": "none",
+        "program_state": null,
+        "roster_status": null,
+        "class_context": null
+      },
+      "evidence_change_state": "NO_NEW_EVIDENCE",
+      "context_change_state": "UNKNOWN",
+      "auto_seed_watchlist_mutation": "none",
+      "needs_manual_review": false
+    },
+    {
+      "seed_player_id": "synthetic-seed-e",
+      "identity_binding": {
+        "status": "MATCHED",
+        "crosswalk_row_ref": "synthetic-xw-r5",
+        "crosswalk_status": "READY",
+        "canonical_college_player_id": "synthetic-college-e",
+        "decision_known_at": "2026-09-10T09:00:00Z",
+        "evidence_refs": [
+          "synthetic:roster-e"
+        ]
+      },
+      "coverage_state": "INCOMPLETE",
+      "coverage_flags": [
+        "population_partial",
+        "expected_game_missing",
+        "envelope_synthetic"
+      ],
+      "evidence_window": {
+        "games_with_observed_rows": 0,
+        "games_expected": 3,
+        "finality_by_game": {}
+      },
+      "observed": {},
+      "prior_observed": {},
+      "delta": {},
+      "opportunity": {
+        "status": "unavailable",
+        "reason": "no_denominator_contract"
+      },
+      "context": {
+        "source": "none",
+        "program_state": null,
+        "roster_status": null,
+        "class_context": null
+      },
+      "evidence_change_state": "NO_OBSERVED_ROWS",
+      "context_change_state": "UNKNOWN",
+      "auto_seed_watchlist_mutation": "none",
+      "needs_manual_review": false
+    }
+  ],
+  "seed_review_proposals": [],
+  "intake_audit": {
+    "intake_method": "synthetic_fixture_hand_authored",
+    "promotion_status": "non_promoted_discovery_only",
+    "validation_command": "python3 scripts/validate_devy_evidence_pulse.py --checkpoint data/fixtures/devy_evidence_pulse/synthetic_checkpoint_2026_w03.json",
+    "downstream_block": "blocked_until_rookie_transition"
+  }
+}
