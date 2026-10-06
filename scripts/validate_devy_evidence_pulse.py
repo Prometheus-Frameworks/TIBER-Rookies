@@ -354,7 +354,7 @@ def _load_json_input(f: _Findings, resolve: Resolver, ref: dict[str, Any], path:
         return None
 
 
-def _validate_envelope(f: _Findings, env: Any, ref: dict[str, Any], path: str, season: Any) -> dict[str, Any] | None:
+def _validate_envelope(f: _Findings, env: Any, ref: dict[str, Any], path: str, season: Any, as_known_at: datetime | None) -> dict[str, Any] | None:
     """Check the subset of a Data envelope the pulse consumes; return a summary."""
     if not isinstance(env, dict):
         f.fail("ENVELOPE_SHAPE", path, "envelope must be an object")
@@ -407,8 +407,11 @@ def _validate_envelope(f: _Findings, env: Any, ref: dict[str, Any], path: str, s
     ):
         if ref.get(key) != env_value:
             f.fail("INPUT_HEADER", f"{path}.{key}", f"pinned value {ref.get(key)!r} differs from envelope value {env_value!r}")
-    if _instant(env.get("generated_at")) is None:
+    generated_at = _instant(env.get("generated_at"))
+    if generated_at is None:
         f.fail("ENVELOPE_CLOCK", f"{path}.generated_at", "must be a timezone-aware ISO-8601 timestamp")
+    elif as_known_at is not None and generated_at > as_known_at:
+        f.fail("ENVELOPE_CLOCK", f"{path}.generated_at", "envelope generation must be at or before the checkpoint cutoff")
 
     observations = env.get("observations")
     if not isinstance(observations, list):
@@ -428,6 +431,15 @@ def _validate_envelope(f: _Findings, env: Any, ref: dict[str, Any], path: str, s
         if oid in seen_ids:
             f.fail("OBSERVATION_ID", opath, f"duplicate observation_id {oid!r}")
         seen_ids.add(oid)
+        if not _is_str(obs.get("source_revision_id")):
+            f.fail("OBSERVATION_REVISION", f"{opath}.source_revision_id", "must be a non-empty string")
+            continue
+        supersedes = obs.get("supersedes")
+        relationship = obs.get("source_relationship")
+        established = isinstance(relationship, dict) and relationship.get("status") == "established_supersession"
+        if (established or supersedes is not None) and not _is_str(supersedes):
+            f.fail("OBSERVATION_RELATIONSHIP", f"{opath}.supersedes", "must be a non-empty string for established supersession, otherwise a non-empty string or null")
+            continue
         identity = obs.get("identity") if isinstance(obs.get("identity"), dict) else {}
         game = obs.get("game") if isinstance(obs.get("game"), dict) else {}
         rel = obs.get("source_relationship") if isinstance(obs.get("source_relationship"), dict) else {}
@@ -977,7 +989,7 @@ def validate_devy_evidence_pulse(checkpoint: Any, resolve: Resolver, _lineage: t
             env = _load_json_input(f, resolve, ref, rpath)
             if env is None:
                 continue
-            summary = _validate_envelope(f, env, ref, rpath, season)
+            summary = _validate_envelope(f, env, ref, rpath, season, as_known_at)
             if summary is not None:
                 summary["path"] = ref["path"]
                 envelopes.append(summary)

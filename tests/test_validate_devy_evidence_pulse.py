@@ -11,6 +11,7 @@ import json
 import subprocess
 import sys
 import unittest
+from datetime import datetime, timedelta
 from pathlib import Path
 
 from scripts.validate_devy_evidence_pulse import (
@@ -767,6 +768,57 @@ class ProhibitedOutputsAndGuardrails(unittest.TestCase):
         errors = self.b.errors()
         self.assertTrue(any(e.startswith("INTAKE") for e in errors))
         self.assertTrue(any(e.startswith("ARTIFACT_POSITION") for e in errors))
+
+
+
+
+class EnvelopeInputSafety(unittest.TestCase):
+    def test_envelope_generation_is_bounded_by_checkpoint_cutoff(self) -> None:
+        for name, envelope in ((CURRENT, ENVELOPE), (PRIOR, "synthetic_envelope_2026_w02.json")):
+            for offset, valid in ((-1, True), (0, True), (1, False)):
+                with self.subTest(checkpoint=name, offset=offset):
+                    b = Bundle(name)
+                    env = b.read(envelope)
+                    cutoff = datetime.fromisoformat(b.checkpoint["as_known_at"].replace("Z", "+00:00"))
+                    env["generated_at"] = (cutoff + timedelta(seconds=offset)).isoformat()
+                    b.write(envelope, env)
+                    errors = b.errors()
+                    if valid:
+                        self.assertEqual(errors, [])
+                    else:
+                        self.assertTrue(any("ENVELOPE_CLOCK" in e and "cutoff" in e for e in errors), errors)
+
+    def test_consumed_observations_require_source_revision_ids(self) -> None:
+        for value in (None, "", "   ", [], {}, 7, False, "missing"):
+            with self.subTest(value=value):
+                b = Bundle(CURRENT)
+                env = b.read(ENVELOPE)
+                obs = next(o for o in env["observations"] if o["observation_id"] == "synthetic-observation-d-g1-r1")
+                if value == "missing":
+                    del obs["source_revision_id"]
+                else:
+                    obs["source_revision_id"] = value
+                b.write(ENVELOPE, env)
+                for category in b.row("synthetic-seed-d")["observed"]["2026:syn-g1"].values():
+                    for cell in category.values():
+                        cell["source_revision_id"] = obs.get("source_revision_id")
+                errors = b.errors()
+                self.assertTrue(any("OBSERVATION_REVISION" in e and "source_revision_id" in e for e in errors), errors)
+
+    def test_malformed_supersedes_returns_findings_without_traversal_crashes(self) -> None:
+        for oid in ("synthetic-observation-c-g1-r2", "synthetic-observation-d-g1-r1"):
+            for value in ([], {}, 1, False, "", "   ", None):
+                with self.subTest(observation=oid, value=value):
+                    b = Bundle(CURRENT)
+                    env = b.read(ENVELOPE)
+                    obs = next(o for o in env["observations"] if o["observation_id"] == oid)
+                    obs["supersedes"] = value
+                    b.write(ENVELOPE, env)
+                    errors = b.errors()
+                    if oid.endswith("d-g1-r1") and value is None:
+                        self.assertEqual(errors, [])
+                    else:
+                        self.assertTrue(any("OBSERVATION_RELATIONSHIP" in e and "supersedes" in e for e in errors), errors)
 
 
 if __name__ == "__main__":
