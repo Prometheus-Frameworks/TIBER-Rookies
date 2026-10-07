@@ -146,7 +146,7 @@ schema_version: devy-evidence-pulse-v0.1.0
 checkpoint_id, as_known_at, generated_at
 prior_checkpoint: {checkpoint_id, sha256} | null
 inputs:
-  data_envelopes: [{path_or_locator, generated_at, sha256, evidence_mode, population_status, competition_scope}]
+  data_envelopes: [{path, generated_at, sha256, evidence_mode, population_status, competition_scope}]
   seed_watchlist: {path, sha256, as_of_year}
   identity_crosswalk: {path, sha256} | null   # complete pinned crosswalk; null ⇒ every row UNBOUND_SEED
 window: {season, game_scope_source: "data_envelope", expected_game_ids | null, observed_game_ids}
