@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEST = ROOT / 'data/historical/reconstruction_2024'
 EXPECTED = {'QB': 11, 'RB': 20, 'WR': 35, 'TE': 12}
 MHJ = 'wr-marvin-harrison-jr'
-FORBIDDEN_COLLEGE_KEYS = {'actual_overall_pick', 'actual_draft_round', 'overall_pick', 'draft_round', 'draft_team', 'nfl_outcomes', 'nfl_stats', 'fantasy_points'}
+FORBIDDEN_COLLEGE_KEYS = {'actual_overall_pick', 'actual_draft_round', 'overall_pick', 'draft_round', 'draft_team', 'draft_team_name', 'nfl_outcomes', 'nfl_stats', 'fantasy_points'}
 
 
 def sha(path: Path) -> str:
@@ -50,7 +50,7 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
             if type(value) is not int or value < 0:
                 raise ValueError('Non-factual count operand: ' + key)
     for row in rows:
-        if not set(row['source_refs']).issubset(sources) or not 1 <= row['overall_pick'] <= 257:
+        if not row['source_refs'] or not set(row['source_refs']).issubset(sources) or not 1 <= row['overall_pick'] <= 257:
             raise ValueError('Unresolved draft fact')
     for path, expected in facts['repo_file_bindings'].items():
         if sha(root / path) != expected:
@@ -71,6 +71,11 @@ def derived_stats(stats: dict) -> dict:
 
 def build(facts: dict, root: Path = ROOT) -> dict[str, dict | str]:
     validate_facts(facts, root)
+    source_bytes = (root / 'data/historical/reconstruction_2024/source_facts_v0.json').read_bytes()
+    retained_facts = json.loads(source_bytes)
+    if json.dumps(facts, sort_keys=True) != json.dumps(retained_facts, sort_keys=True):
+        raise ValueError('Supplied facts do not match retained source ledger')
+    source_hash = hashlib.sha256(source_bytes).hexdigest()
     seed_path = 'data/raw/2024_real_seed_pool.json'
     stats_path = 'data/processed/2024_player_stats.json'
     alpha_path = 'exports/promoted/rookie-alpha/2024_rookie_alpha_predraft_v0.json'
@@ -84,7 +89,7 @@ def build(facts: dict, root: Path = ROOT) -> dict[str, dict | str]:
         raise ValueError('Legacy identities do not reconcile to census')
     shared = {'class_year': 2024, 'status': 'unpromoted_candidate_pending_independent_review',
               'promotable': False, 'base_commit': facts['base_commit'],
-              'source_facts_sha256': sha(root / 'data/historical/reconstruction_2024/source_facts_v0.json')}
+              'source_facts_sha256': source_hash}
     audit_rows = []
     coverage_rows = []
     for row in facts['draft_day_records']:

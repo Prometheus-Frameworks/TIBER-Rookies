@@ -14,7 +14,7 @@
     {
       "command": "python3 -m unittest discover -s tests -p 'test_build_2024_reconstruction.py'",
       "exit_code": 0,
-      "tests_passed": 8
+      "tests_passed": 10
     },
     {
       "check": "git diff --quiet pinned-base -- exports/promoted exports/experimental data/processed data/raw runtime-server.js index.html public package.json",
@@ -34,8 +34,8 @@
     "data/historical/reconstruction_2024/landing_context/2024_wr_marvin_harrison_jr_landing_context_v0.json": "8ac289060f267f88e6565006facd43b39697c086e76f411c7b48f2afc23842f1",
     "data/historical/reconstruction_2024/predraft_cards/2024_wr_marvin_harrison_jr_predraft_v0.json": "0c614882a2afa3f4ac4007a4937fd8148420333c22ab2e3d6a307905ee21692b",
     "data/historical/reconstruction_2024/source_facts_v0.json": "fe0503eaacebd43cb93be97b0d49eafc1b964c23a071b3e17ae9387c3b5b6b5e",
-    "scripts/build_2024_reconstruction.py": "7053d70f4fd9a80bf4bc09f81d7d0b6d65f2949ff59940a346a48cacbd3a02ef",
-    "tests/test_build_2024_reconstruction.py": "9e398fb16845d17272ac4746e52bd02a5849bb55f5a7f13d85b1417e39f1f037",
+    "scripts/build_2024_reconstruction.py": "f38881ddd7becb924ec024e24de01049e674d1c5bb1be61c6919841653af1f47",
+    "tests/test_build_2024_reconstruction.py": "0291374ce90a5501c6526e1e87c11b26027d0d1fc05a34d02c7c7d9db268cd93",
     "docs/2024-class-reconstruction-v0.md": "90ca6ac857ac4061f448227a5dfdb544a22a10555db294a56c6cd24ed8ae340f"
   },
   "not_executed": [
@@ -62,6 +62,14 @@
     {
       "comment_id": 4238606577,
       "result": "Derive source ledger hash from supplied root; regression fixture uses independently serialized source bytes."
+    },
+    {
+      "comment_ids": [
+        4238623074,
+        4238623075,
+        4238623079
+      ],
+      "result": "Reject established draft_team_name alias and empty draft sources; supplied facts must match the ledger parsed from the same bytes whose SHA-256 is recorded. Mutation and staging tests pass."
     }
   ]
 }

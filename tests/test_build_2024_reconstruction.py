@@ -38,7 +38,7 @@ class ReconstructionAdmissionTests(unittest.TestCase):
 
     def test_actual_draft_aliases_are_rejected_in_both_college_lanes(self):
         for lane in ['college_observations', 'mhj_college_seasons']:
-            for field in ['actual_overall_pick', 'actual_draft_round']:
+            for field in ['actual_overall_pick', 'actual_draft_round', 'draft_team_name']:
                 for nested in [False, True]:
                     with self.subTest(lane=lane, field=field, nested=nested):
                         facts = copy.deepcopy(self.facts)
@@ -46,6 +46,25 @@ class ReconstructionAdmissionTests(unittest.TestCase):
                         (row.setdefault('stats', {}) if nested else row)[field] = 4
                         with self.assertRaisesRegex(ValueError, 'leaked'):
                             module.validate_facts(facts)
+
+    def test_empty_draft_sources_are_rejected(self):
+        facts = copy.deepcopy(self.facts)
+        facts['draft_day_records'][0]['source_refs'] = []
+        with self.assertRaisesRegex(ValueError, 'Unresolved draft fact'):
+            module.validate_facts(facts)
+
+    def test_mutated_facts_cannot_claim_retained_source_hash(self):
+        for mutation in ['cutoff', 'statistic']:
+            with self.subTest(mutation=mutation):
+                facts = copy.deepcopy(self.facts)
+                if mutation == 'cutoff':
+                    facts['pre_draft_cutoff'] = '2024-04-23T23:59:59Z'
+                else:
+                    row = facts['college_observations'][0]['stats']
+                    key = next(iter(row))
+                    row[key] += 1
+                with self.assertRaisesRegex(ValueError, 'do not match retained source ledger'):
+                    module.build(facts)
 
     def test_staging_source_hash_uses_supplied_root(self):
         with tempfile.TemporaryDirectory() as directory:
