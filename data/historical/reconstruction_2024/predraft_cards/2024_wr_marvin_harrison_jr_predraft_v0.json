@@ -7,7 +7,7 @@
   "artifact": "predraft_reconstruction_card_v0",
   "reconstruction_mode": "historical_factual_candidate",
   "pre_draft_cutoff": "2024-04-24T23:59:59Z",
-  "nfl_outcome_fields_available_to_card_builder": false,
+  "input_separation_policy": "Shared builder reads draft facts for census and identity; this card excludes actual draft fields and NFL outcomes by validation and explicit field selection. No structural input isolation is claimed.",
   "player_id": "wr-marvin-harrison-jr",
   "player_name": "Marvin Harrison Jr.",
   "position": "WR",

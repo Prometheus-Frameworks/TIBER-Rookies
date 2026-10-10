@@ -14,7 +14,7 @@
     {
       "command": "python3 -m unittest discover -s tests -p 'test_build_2024_reconstruction.py'",
       "exit_code": 0,
-      "tests_passed": 5
+      "tests_passed": 8
     },
     {
       "check": "git diff --quiet pinned-base -- exports/promoted exports/experimental data/processed data/raw runtime-server.js index.html public package.json",
@@ -32,11 +32,11 @@
     "data/historical/reconstruction_2024/coverage_matrix_v0.json": "48581dd08a957072d90e6a7721d6559a553a7c30f45475e5d5394df068f32a45",
     "data/historical/reconstruction_2024/input_integrity_audit_v0.json": "0cb58b2a02153261d7ec963f18de9e955bdf48d53c70c36957184c7b013a3cb9",
     "data/historical/reconstruction_2024/landing_context/2024_wr_marvin_harrison_jr_landing_context_v0.json": "8ac289060f267f88e6565006facd43b39697c086e76f411c7b48f2afc23842f1",
-    "data/historical/reconstruction_2024/predraft_cards/2024_wr_marvin_harrison_jr_predraft_v0.json": "77000444575b1603bb8c620d9494187ef9a1954773681e3cfabde0b8afcdfaf5",
+    "data/historical/reconstruction_2024/predraft_cards/2024_wr_marvin_harrison_jr_predraft_v0.json": "0c614882a2afa3f4ac4007a4937fd8148420333c22ab2e3d6a307905ee21692b",
     "data/historical/reconstruction_2024/source_facts_v0.json": "fe0503eaacebd43cb93be97b0d49eafc1b964c23a071b3e17ae9387c3b5b6b5e",
-    "scripts/build_2024_reconstruction.py": "a141a0368cd358de03b7fd0de27c98c29b3c4534efab062b29a6c531391d62bb",
-    "tests/test_build_2024_reconstruction.py": "078e69069d0f223161642ca8c5f0fbc1a9a14e425769e6ec213fcc3c9e435257",
-    "docs/2024-class-reconstruction-v0.md": "4b4cb648dbebe133ad4fd3103bdeb890829ed431cc3fed8c57ef82040676a2f8"
+    "scripts/build_2024_reconstruction.py": "7053d70f4fd9a80bf4bc09f81d7d0b6d65f2949ff59940a346a48cacbd3a02ef",
+    "tests/test_build_2024_reconstruction.py": "9e398fb16845d17272ac4746e52bd02a5849bb55f5a7f13d85b1417e39f1f037",
+    "docs/2024-class-reconstruction-v0.md": "90ca6ac857ac4061f448227a5dfdb544a22a10555db294a56c6cd24ed8ae340f"
   },
   "not_executed": [
     "Alpha scoring on unqualified inputs",
@@ -49,5 +49,19 @@
     "Qualified 2023 production normalization population",
     "Testing/context/expected-capital source qualification",
     "Canonical Data 2024 draft-results handoff (#242)"
+  ],
+  "review_fixes": [
+    {
+      "comment_id": 4238606568,
+      "result": "Reject actual_overall_pick and actual_draft_round at college observation and stats levels; both college lanes covered."
+    },
+    {
+      "comment_id": 4238606572,
+      "result": "Replace false structural isolation claim with accurate shared-input and output-exclusion policy."
+    },
+    {
+      "comment_id": 4238606577,
+      "result": "Derive source ledger hash from supplied root; regression fixture uses independently serialized source bytes."
+    }
   ]
 }

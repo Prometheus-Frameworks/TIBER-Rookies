@@ -1,6 +1,9 @@
 import copy
 import importlib.util
 import json
+import hashlib
+import shutil
+import tempfile
 from pathlib import Path
 import unittest
 
@@ -32,6 +35,41 @@ class ReconstructionAdmissionTests(unittest.TestCase):
         facts['college_observations'][0]['stats']['overall_pick'] = 1
         with self.assertRaisesRegex(ValueError, 'leaked'):
             module.validate_facts(facts)
+
+    def test_actual_draft_aliases_are_rejected_in_both_college_lanes(self):
+        for lane in ['college_observations', 'mhj_college_seasons']:
+            for field in ['actual_overall_pick', 'actual_draft_round']:
+                for nested in [False, True]:
+                    with self.subTest(lane=lane, field=field, nested=nested):
+                        facts = copy.deepcopy(self.facts)
+                        row = facts[lane][0]
+                        (row.setdefault('stats', {}) if nested else row)[field] = 4
+                        with self.assertRaisesRegex(ValueError, 'leaked'):
+                            module.validate_facts(facts)
+
+    def test_staging_source_hash_uses_supplied_root(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for relative in self.facts['repo_file_bindings']:
+                target = root / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(ROOT / relative, target)
+            relative = 'data/historical/reconstruction_2024/source_facts_v0.json'
+            source = root / relative
+            source.parent.mkdir(parents=True, exist_ok=True)
+            source.write_text(json.dumps(self.facts, indent=4) + '\n')
+            facts = json.loads(source.read_text())
+            artifacts = module.build(facts, root=root)
+            expected = hashlib.sha256(source.read_bytes()).hexdigest()
+            self.assertNotEqual(expected, module.sha(ROOT / relative))
+            for artifact in artifacts.values():
+                if isinstance(artifact, dict):
+                    self.assertEqual(artifact['source_facts_sha256'], expected)
+
+    def test_shared_builder_does_not_claim_structural_input_isolation(self):
+        card = module.build(self.facts)['predraft_cards/2024_wr_marvin_harrison_jr_predraft_v0.json']
+        self.assertNotIn('nfl_outcome_fields_available_to_card_builder', card)
+        self.assertIn('No structural input isolation', card['input_separation_policy'])
 
     def test_unresolved_provenance_is_rejected(self):
         facts = copy.deepcopy(self.facts)

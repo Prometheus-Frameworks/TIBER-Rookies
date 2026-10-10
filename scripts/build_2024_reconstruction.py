@@ -14,7 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEST = ROOT / 'data/historical/reconstruction_2024'
 EXPECTED = {'QB': 11, 'RB': 20, 'WR': 35, 'TE': 12}
 MHJ = 'wr-marvin-harrison-jr'
-FORBIDDEN_COLLEGE_KEYS = {'overall_pick', 'draft_round', 'draft_team', 'nfl_outcomes', 'nfl_stats', 'fantasy_points'}
+FORBIDDEN_COLLEGE_KEYS = {'actual_overall_pick', 'actual_draft_round', 'overall_pick', 'draft_round', 'draft_team', 'nfl_outcomes', 'nfl_stats', 'fantasy_points'}
 
 
 def sha(path: Path) -> str:
@@ -84,7 +84,7 @@ def build(facts: dict, root: Path = ROOT) -> dict[str, dict | str]:
         raise ValueError('Legacy identities do not reconcile to census')
     shared = {'class_year': 2024, 'status': 'unpromoted_candidate_pending_independent_review',
               'promotable': False, 'base_commit': facts['base_commit'],
-              'source_facts_sha256': sha(DEST / 'source_facts_v0.json')}
+              'source_facts_sha256': sha(root / 'data/historical/reconstruction_2024/source_facts_v0.json')}
     audit_rows = []
     coverage_rows = []
     for row in facts['draft_day_records']:
@@ -144,7 +144,7 @@ def build(facts: dict, root: Path = ROOT) -> dict[str, dict | str]:
              'rows': audit_rows, 'source_conflicts': facts.get('source_conflicts', [])}
     mhj_row = next(x for x in facts['draft_day_records'] if x['player_id'] == MHJ)
     card = {**shared, 'artifact': 'predraft_reconstruction_card_v0', 'reconstruction_mode': 'historical_factual_candidate',
-            'pre_draft_cutoff': facts['pre_draft_cutoff'], 'nfl_outcome_fields_available_to_card_builder': False,
+            'pre_draft_cutoff': facts['pre_draft_cutoff'], 'input_separation_policy': 'Shared builder reads draft facts for census and identity; this card excludes actual draft fields and NFL outcomes by validation and explicit field selection. No structural input isolation is claimed.',
             'player_id': MHJ, 'player_name': mhj_row['player_name'], 'position': 'WR',
             'identity': {'school': 'Ohio State', 'source_refs': ['college-mhj'], 'birth_date': None, 'age_at_entry': None},
             'college_production': facts['mhj_college_seasons'],

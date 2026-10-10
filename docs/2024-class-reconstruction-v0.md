@@ -61,6 +61,8 @@ Testing is unavailable: the existing historical SPORQ row is `DNQ` with no timed
 
 The [separate landing candidate](../data/historical/reconstruction_2024/landing_context/2024_wr_marvin_harrison_jr_landing_context_v0.json) records 2024 round 1, pick 4, Arizona. These public facts do not substitute for a canonical Data draft-results handoff. NFL outcomes live only in the linked [Research study](https://github.com/Prometheus-Frameworks/TIBER-Research/issues/33).
 
+The shared builder reads draft facts for the census and player identity. College-lane validation rejects actual draft fields, and explicit card field selection excludes pick/team and NFL outcomes; this is an output exclusion guarantee, not structural isolation of builder inputs.
+
 All sources were retrieved now. A historical factual reconstruction is not an original 2024 TIBER forecast, and no immutable contemporaneous expectation receipt is claimed. These candidate cards extend the 2023 pilot's separation principles without changing its contract or admitting a new runtime family.
 
 ## Grading qualification and next work
