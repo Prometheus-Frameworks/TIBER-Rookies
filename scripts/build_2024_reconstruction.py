@@ -18,6 +18,8 @@ DRAFT_RECORD_FIELDS = ('player_id', 'player_name', 'position', 'school', 'class_
                        'overall_pick', 'draft_round', 'draft_team', 'draft_team_name',
                        'gsis_id', 'pfr_id', 'source_refs', 'primary_locator',
                        'id_status', 'identity_note')
+DRAFT_STRING_FIELDS = ('player_id', 'player_name', 'position', 'school', 'draft_team',
+                       'draft_team_name', 'id_status', 'identity_note')
 FORBIDDEN_COLLEGE_KEYS = {'actual_overall_pick', 'actual_draft_round', 'overall_pick', 'draft_round', 'draft_team', 'draft_team_name', 'nfl_outcomes', 'nfl_stats', 'fantasy_points'}
 COLLEGE_OBSERVATION_KEYS = {'player_id', 'season', 'stats', 'source_refs', 'source_locators', 'evidence_lane', 'status'}
 COLLEGE_OBSERVATION_REQUIRED = COLLEGE_OBSERVATION_KEYS - {'source_locators'}
@@ -107,7 +109,26 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
                         raise ValueError('Non-factual count operand: ' + key)
                 if obs['games'] == 0:
                     raise ValueError('Zero-game college season')
+    if Counter(row['season'] for row in facts['mhj_college_seasons']) != Counter({2021: 1, 2022: 1, 2023: 1}):
+        raise ValueError('Incomplete or duplicate MHJ college seasons')
+    legacy_seed_ids = {row['player_id'] for row in json.loads(
+        (root / 'data/raw/2024_real_seed_pool.json').read_text())}
+    if not legacy_seed_ids.issubset({obs['player_id'] for obs in observations}):
+        raise ValueError('Missing final-season observation for legacy seed')
     for row in rows:
+        if (any(type(row[field]) is not str or not row[field] for field in DRAFT_STRING_FIELDS)
+                or row['position'] not in EXPECTED
+                or type(row['class_year']) is not int or row['class_year'] != 2024
+                or type(row['draft_round']) is not int or not 1 <= row['draft_round'] <= 7
+                or any(value is not None and (type(value) is not str or not value)
+                       for value in [row['gsis_id'], row['pfr_id']])
+                or row['id_status'] not in {'existing_rookies_id', 'candidate_local_id'}):
+            raise ValueError('Invalid draft record value')
+        locator = row['primary_locator']
+        if (type(locator) is not dict or set(locator) != {'pdf_page', 'column'}
+                or type(locator['pdf_page']) is not int or locator['pdf_page'] < 1
+                or locator['column'] not in {'left', 'right'}):
+            raise ValueError('Invalid draft source locator')
         try:
             validate_source_refs(row['source_refs'], sources, 'draft')
         except ValueError:

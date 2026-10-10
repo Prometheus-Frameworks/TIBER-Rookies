@@ -155,6 +155,12 @@ class ReconstructionAdmissionTests(unittest.TestCase):
             module.validate_facts(facts)
         module.validate_facts(self.facts)
 
+    def test_mhj_history_requires_exactly_one_row_per_season(self):
+        facts = copy.deepcopy(self.facts)
+        facts['mhj_college_seasons'][0]['season'] = 2022
+        with self.assertRaisesRegex(ValueError, 'Incomplete or duplicate MHJ'):
+            module.validate_facts(facts)
+
     def test_draft_census_rejects_and_projects_unadmitted_fields(self):
         facts = copy.deepcopy(self.facts)
         facts['draft_day_records'][0]['fantasy_points'] = 100
@@ -162,6 +168,25 @@ class ReconstructionAdmissionTests(unittest.TestCase):
             module.validate_facts(facts)
         census = module.build(self.facts)['2024_skill_class_census_v0.json']
         self.assertTrue(all(tuple(row) == module.DRAFT_RECORD_FIELDS for row in census['players']))
+
+    def test_draft_census_validates_admitted_field_values(self):
+        mutations = [
+            ('class_year', 2025, 'draft record value'),
+            ('draft_round', True, 'draft record value'),
+            ('primary_locator', {'pdf_page': {'fantasy_points': 100}, 'column': 'left'}, 'draft source locator'),
+        ]
+        for field, value, message in mutations:
+            with self.subTest(field=field):
+                facts = copy.deepcopy(self.facts)
+                facts['draft_day_records'][0][field] = value
+                with self.assertRaisesRegex(ValueError, message):
+                    module.validate_facts(facts)
+
+    def test_legacy_seed_rows_require_final_season_observations(self):
+        facts = copy.deepcopy(self.facts)
+        facts['college_observations'] = facts['college_observations'][1:]
+        with self.assertRaisesRegex(ValueError, 'Missing final-season observation'):
+            module.validate_facts(facts)
 
     def test_receiving_efficiency_does_not_require_touchdown_field(self):
         audit = module.build(self.facts)['input_integrity_audit_v0.json']
