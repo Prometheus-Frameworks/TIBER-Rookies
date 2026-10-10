@@ -21,11 +21,26 @@ MHJ_SEASON_KEYS = {'season', 'games', 'receptions', 'receiving_yards', 'receivin
 COLLEGE_STAT_KEYS = {'completions', 'attempts', 'passing_yards', 'passing_tds', 'interceptions',
                      'rush_attempts', 'rush_yards', 'rush_tds',
                      'receptions', 'receiving_yards', 'receiving_tds'}
+STAT_FAMILIES = (
+    ({'completions', 'attempts', 'passing_yards', 'passing_tds', 'interceptions'},
+     {'completions', 'attempts', 'passing_yards'}, 'attempts'),
+    ({'rush_attempts', 'rush_yards', 'rush_tds'},
+     {'rush_attempts', 'rush_yards'}, 'rush_attempts'),
+    ({'receptions', 'receiving_yards', 'receiving_tds'},
+     {'receptions', 'receiving_yards'}, 'receptions'),
+)
 COLLEGE_STATUS = 'public_factual_candidate_pending_independent_review'
 
 
 def sha(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def validate_source_refs(refs: object, sources: set[str], label: str) -> None:
+    if (type(refs) is not list or not refs
+            or any(type(ref) is not str or not ref for ref in refs)
+            or len(set(refs)) != len(refs) or not set(refs).issubset(sources)):
+        raise ValueError('Unresolved ' + label + ' source')
 
 
 def validate_facts(facts: dict, root: Path = ROOT) -> None:
@@ -46,27 +61,52 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
         raise ValueError('Duplicate final-season college observation')
     lanes = [(observations, COLLEGE_OBSERVATION_KEYS, COLLEGE_OBSERVATION_REQUIRED),
              (facts['mhj_college_seasons'], MHJ_SEASON_KEYS, MHJ_SEASON_KEYS)]
-    for lane, allowed, required in lanes:
+    for lane, allowed, required_fields in lanes:
         for obs in lane:
             if FORBIDDEN_COLLEGE_KEYS.intersection(obs) or FORBIDDEN_COLLEGE_KEYS.intersection(obs.get('stats', {})):
                 raise ValueError('Draft/NFL evidence leaked into college observations')
-            if set(obs) - allowed or required - set(obs):
+            if set(obs) - allowed or required_fields - set(obs):
                 raise ValueError('Unexpected or missing college observation field')
             if 'stats' in obs and (type(obs['stats']) is not dict or set(obs['stats']) - COLLEGE_STAT_KEYS):
                 raise ValueError('Unexpected college statistic field')
-            if obs['season'] not in [2021, 2022, 2023] or obs['evidence_lane'] != 'college_production':
+            if type(obs['season']) is not int or obs['season'] not in [2021, 2022, 2023] or obs['evidence_lane'] != 'college_production':
                 raise ValueError('Ineligible college season/lane')
             if obs['status'] != COLLEGE_STATUS:
                 raise ValueError('Unexpected college observation status')
-            if not obs['source_refs'] or not set(obs['source_refs']).issubset(sources):
-                raise ValueError('Unresolved college source')
-            if 'player_id' in obs and obs['player_id'] not in ids:
+            validate_source_refs(obs['source_refs'], sources, 'college')
+            if 'player_id' in obs and (type(obs['player_id']) is not str or obs['player_id'] not in ids):
                 raise ValueError('Unresolved college identity')
+            if 'source_locators' in obs:
+                locators = obs['source_locators']
+                if (type(locators) is not dict or not locators
+                        or any(type(key) is not str or key not in obs['source_refs']
+                               or type(value) is not str or not value
+                               for key, value in locators.items())):
+                    raise ValueError('Invalid college source locator')
             for key, value in obs.get('stats', {}).items():
                 if type(value) is not int or value < 0:
                     raise ValueError('Non-factual count operand: ' + key)
+            stats = obs.get('stats')
+            if stats is not None:
+                if not stats:
+                    raise ValueError('Empty college statistic group')
+                for family, required_operands, denominator in STAT_FAMILIES:
+                    if family.intersection(stats) and (not required_operands.issubset(stats) or stats[denominator] == 0):
+                        raise ValueError('Incomplete or zero-denominator statistic group: ' + denominator)
+                if 'completions' in stats and stats['completions'] > stats['attempts']:
+                    raise ValueError('Completions exceed attempts')
+            if 'games' in obs:
+                for key in ['games', 'receptions', 'receiving_yards', 'receiving_tds']:
+                    if type(obs[key]) is not int or obs[key] < 0:
+                        raise ValueError('Non-factual count operand: ' + key)
+                if obs['games'] == 0:
+                    raise ValueError('Zero-game college season')
     for row in rows:
-        if not row['source_refs'] or not set(row['source_refs']).issubset(sources) or not 1 <= row['overall_pick'] <= 257:
+        try:
+            validate_source_refs(row['source_refs'], sources, 'draft')
+        except ValueError:
+            raise ValueError('Unresolved draft fact') from None
+        if type(row['overall_pick']) is not int or not 1 <= row['overall_pick'] <= 257:
             raise ValueError('Unresolved draft fact')
     for path, expected in facts['repo_file_bindings'].items():
         if sha(root / path) != expected:

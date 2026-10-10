@@ -112,6 +112,42 @@ class ReconstructionAdmissionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Unresolved college source'):
             module.validate_facts(facts)
 
+    def test_college_source_refs_require_a_string_list(self):
+        for lane in ['college_observations', 'mhj_college_seasons']:
+            with self.subTest(lane=lane):
+                facts = copy.deepcopy(self.facts)
+                source = facts[lane][0]['source_refs'][0]
+                facts[lane][0]['source_refs'] = {source: {'actual_overall_pick': 4}}
+                with self.assertRaisesRegex(ValueError, 'Unresolved college source'):
+                    module.validate_facts(facts)
+
+    def test_allowlisted_college_values_reject_nested_objects(self):
+        facts = copy.deepcopy(self.facts)
+        facts['mhj_college_seasons'][0]['games'] = {'count': 13}
+        with self.assertRaisesRegex(ValueError, 'Non-factual count operand'):
+            module.validate_facts(facts)
+        facts = copy.deepcopy(self.facts)
+        facts['college_observations'][-1]['source_locators'] = {
+            facts['college_observations'][-1]['source_refs'][0]: {'page': 4}
+        }
+        with self.assertRaisesRegex(ValueError, 'Invalid college source locator'):
+            module.validate_facts(facts)
+
+    def test_derived_stat_groups_must_be_complete_and_nonzero(self):
+        mutations = [
+            {'attempts': 10},
+            {'passing_tds': 10},
+            {'completions': 0, 'attempts': 0, 'passing_yards': 0},
+            {'rush_attempts': 0, 'rush_yards': 0},
+            {'receptions': 0, 'receiving_yards': 0},
+        ]
+        for stats in mutations:
+            with self.subTest(stats=stats):
+                facts = copy.deepcopy(self.facts)
+                facts['college_observations'][0]['stats'] = stats
+                with self.assertRaisesRegex(ValueError, 'Incomplete or zero-denominator'):
+                    module.validate_facts(facts)
+
     def test_missing_operands_do_not_emit_fallback_grade(self):
         artifacts = module.build(self.facts)
         rows = artifacts['coverage_matrix_v0.json']['players']
