@@ -17,7 +17,7 @@
       "tests_passed": 10
     },
     {
-      "check": "git diff --quiet pinned-base -- exports/promoted exports/experimental data/processed data/raw runtime-server.js index.html public package.json",
+      "command": "git diff --quiet e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6 -- exports/promoted exports/experimental data/processed data/raw runtime-server.js index.html public package.json",
       "exit_code": 0,
       "result": "Protected existing producer inputs, outputs and runtime unchanged."
     },
@@ -70,6 +70,10 @@
         4238623079
       ],
       "result": "Reject established draft_team_name alias and empty draft sources; supplied facts must match the ledger parsed from the same bytes whose SHA-256 is recorded. Mutation and staging tests pass."
+    },
+    {
+      "comment_id": 4238893164,
+      "result": "Replace the non-literal pinned-base placeholder with the recorded base commit SHA so the protected-path check is directly replayable."
     }
   ]
 }
