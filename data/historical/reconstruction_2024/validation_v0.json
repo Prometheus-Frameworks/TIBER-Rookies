@@ -14,7 +14,7 @@
     {
       "command": "python3 -m unittest discover -s tests -p 'test_build_2024_reconstruction.py'",
       "exit_code": 0,
-      "tests_passed": 16
+      "tests_passed": 19
     },
     {
       "command": "git diff --quiet e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6 -- exports/promoted exports/experimental data/processed data/raw runtime-server.js index.html public package.json",
@@ -30,12 +30,12 @@
     "data/historical/reconstruction_2024/2024_skill_class_census_v0.csv": "26d708eb352c17f99a0eed4bf3af70821bed8872db96578ffdd903af6278e02d",
     "data/historical/reconstruction_2024/2024_skill_class_census_v0.json": "960ae70d7e808bb0340d5950877fef4a2baf81901937943770731b058c91f64c",
     "data/historical/reconstruction_2024/coverage_matrix_v0.json": "48581dd08a957072d90e6a7721d6559a553a7c30f45475e5d5394df068f32a45",
-    "data/historical/reconstruction_2024/input_integrity_audit_v0.json": "0cb58b2a02153261d7ec963f18de9e955bdf48d53c70c36957184c7b013a3cb9",
+    "data/historical/reconstruction_2024/input_integrity_audit_v0.json": "3d5da6cae2f37c2b4de3a28a8292c46d215c09860efb66777ed801b9c4a0350a",
     "data/historical/reconstruction_2024/landing_context/2024_wr_marvin_harrison_jr_landing_context_v0.json": "8ac289060f267f88e6565006facd43b39697c086e76f411c7b48f2afc23842f1",
     "data/historical/reconstruction_2024/predraft_cards/2024_wr_marvin_harrison_jr_predraft_v0.json": "0c614882a2afa3f4ac4007a4937fd8148420333c22ab2e3d6a307905ee21692b",
     "data/historical/reconstruction_2024/source_facts_v0.json": "fe0503eaacebd43cb93be97b0d49eafc1b964c23a071b3e17ae9387c3b5b6b5e",
-    "scripts/build_2024_reconstruction.py": "15dc7a3093dd7b693ef7a6a086c5773bb222347d1646406726bc237a49116941",
-    "tests/test_build_2024_reconstruction.py": "9c492c3b2efbd145349a338cc62075429595a1657cad84325dd6d5174a4eb6d4",
+    "scripts/build_2024_reconstruction.py": "27e3bbd78e6708cd4fdc826c81b707d2d7c6190b0f3d8fc74727022aa71d11b2",
+    "tests/test_build_2024_reconstruction.py": "d19e5044f6a78fdaa31f1e83072ee43dfff9e304c6b32cf1c5b7ee380f173144",
     "docs/2024-class-reconstruction-v0.md": "90ca6ac857ac4061f448227a5dfdb544a22a10555db294a56c6cd24ed8ae340f"
   },
   "not_executed": [
@@ -85,6 +85,14 @@
         4239115478
       ],
       "result": "Require nonempty unique string-list provenance, primitive allowlisted college values, valid locator strings, complete derived-stat operands, and nonzero denominators before candidate serialization."
+    },
+    {
+      "comment_ids": [
+        4239391229,
+        4239391232,
+        4239391236
+      ],
+      "result": "Require final-season observations to use 2023, reject and explicitly project draft rows outside the admitted census schema, and derive receiving efficiency whenever the validated reception operands are present."
     }
   ]
 }

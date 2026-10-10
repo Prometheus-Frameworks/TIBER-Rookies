@@ -148,6 +148,26 @@ class ReconstructionAdmissionTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'Incomplete or zero-denominator'):
                     module.validate_facts(facts)
 
+    def test_final_season_observations_are_2023_only(self):
+        facts = copy.deepcopy(self.facts)
+        facts['college_observations'][0]['season'] = 2022
+        with self.assertRaisesRegex(ValueError, 'Ineligible college season'):
+            module.validate_facts(facts)
+        module.validate_facts(self.facts)
+
+    def test_draft_census_rejects_and_projects_unadmitted_fields(self):
+        facts = copy.deepcopy(self.facts)
+        facts['draft_day_records'][0]['fantasy_points'] = 100
+        with self.assertRaisesRegex(ValueError, 'draft record field'):
+            module.validate_facts(facts)
+        census = module.build(self.facts)['2024_skill_class_census_v0.json']
+        self.assertTrue(all(tuple(row) == module.DRAFT_RECORD_FIELDS for row in census['players']))
+
+    def test_receiving_efficiency_does_not_require_touchdown_field(self):
+        audit = module.build(self.facts)['input_integrity_audit_v0.json']
+        brooks = next(row for row in audit['rows'] if row['player_id'] == 'rb-jonathon-brooks')
+        self.assertEqual(brooks['candidate_2023_stats']['yards_per_reception'], 11.4)
+
     def test_missing_operands_do_not_emit_fallback_grade(self):
         artifacts = module.build(self.facts)
         rows = artifacts['coverage_matrix_v0.json']['players']

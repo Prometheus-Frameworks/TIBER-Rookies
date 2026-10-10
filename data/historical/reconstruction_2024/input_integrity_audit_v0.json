@@ -353,7 +353,8 @@
         "rush_tds": 10,
         "receptions": 25,
         "receiving_yards": 286,
-        "yards_per_carry": 6.1
+        "yards_per_carry": 6.1,
+        "yards_per_reception": 11.4
       },
       "source_refs": [
         "college-brooks"
@@ -436,7 +437,8 @@
         "rush_tds": 14,
         "receptions": 20,
         "receiving_yards": 227,
-        "yards_per_carry": 5.8
+        "yards_per_carry": 5.8,
+        "yards_per_reception": 11.3
       },
       "source_refs": [
         "college-benson",
@@ -492,7 +494,8 @@
         "rush_tds": 27,
         "receptions": 16,
         "receiving_yards": 117,
-        "yards_per_carry": 4.8
+        "yards_per_carry": 4.8,
+        "yards_per_reception": 7.3
       },
       "source_refs": [
         "college-corum"
@@ -542,7 +545,8 @@
         "rush_tds": 9,
         "receptions": 13,
         "receiving_yards": 232,
-        "yards_per_carry": 7.1
+        "yards_per_carry": 7.1,
+        "yards_per_reception": 17.8
       },
       "source_refs": [
         "college-lloyd"
@@ -592,7 +596,8 @@
         "rush_tds": 12,
         "receptions": 28,
         "receiving_yards": 132,
-        "yards_per_carry": 5.4
+        "yards_per_carry": 5.4,
+        "yards_per_reception": 4.7
       },
       "source_refs": [
         "college-allen",

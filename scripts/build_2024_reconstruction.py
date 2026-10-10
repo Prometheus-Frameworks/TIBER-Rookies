@@ -14,6 +14,10 @@ ROOT = Path(__file__).resolve().parents[1]
 DEST = ROOT / 'data/historical/reconstruction_2024'
 EXPECTED = {'QB': 11, 'RB': 20, 'WR': 35, 'TE': 12}
 MHJ = 'wr-marvin-harrison-jr'
+DRAFT_RECORD_FIELDS = ('player_id', 'player_name', 'position', 'school', 'class_year',
+                       'overall_pick', 'draft_round', 'draft_team', 'draft_team_name',
+                       'gsis_id', 'pfr_id', 'source_refs', 'primary_locator',
+                       'id_status', 'identity_note')
 FORBIDDEN_COLLEGE_KEYS = {'actual_overall_pick', 'actual_draft_round', 'overall_pick', 'draft_round', 'draft_team', 'draft_team_name', 'nfl_outcomes', 'nfl_stats', 'fantasy_points'}
 COLLEGE_OBSERVATION_KEYS = {'player_id', 'season', 'stats', 'source_refs', 'source_locators', 'evidence_lane', 'status'}
 COLLEGE_OBSERVATION_REQUIRED = COLLEGE_OBSERVATION_KEYS - {'source_locators'}
@@ -47,6 +51,8 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
     if facts.get('class_year') != 2024 or facts.get('promotable') is not False:
         raise ValueError('Wrong class or promotion state')
     rows = facts['draft_day_records']
+    if any(set(row) != set(DRAFT_RECORD_FIELDS) for row in rows):
+        raise ValueError('Unexpected or missing draft record field')
     if len(rows) != 78 or Counter(x['position'] for x in rows) != EXPECTED:
         raise ValueError('Incomplete or misclassified 2024 skill census')
     for field in ['player_id', 'overall_pick']:
@@ -59,9 +65,9 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
     observations = facts['college_observations']
     if len({x['player_id'] for x in observations}) != len(observations):
         raise ValueError('Duplicate final-season college observation')
-    lanes = [(observations, COLLEGE_OBSERVATION_KEYS, COLLEGE_OBSERVATION_REQUIRED),
-             (facts['mhj_college_seasons'], MHJ_SEASON_KEYS, MHJ_SEASON_KEYS)]
-    for lane, allowed, required_fields in lanes:
+    lanes = [(observations, COLLEGE_OBSERVATION_KEYS, COLLEGE_OBSERVATION_REQUIRED, {2023}),
+             (facts['mhj_college_seasons'], MHJ_SEASON_KEYS, MHJ_SEASON_KEYS, {2021, 2022, 2023})]
+    for lane, allowed, required_fields, allowed_seasons in lanes:
         for obs in lane:
             if FORBIDDEN_COLLEGE_KEYS.intersection(obs) or FORBIDDEN_COLLEGE_KEYS.intersection(obs.get('stats', {})):
                 raise ValueError('Draft/NFL evidence leaked into college observations')
@@ -69,7 +75,7 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
                 raise ValueError('Unexpected or missing college observation field')
             if 'stats' in obs and (type(obs['stats']) is not dict or set(obs['stats']) - COLLEGE_STAT_KEYS):
                 raise ValueError('Unexpected college statistic field')
-            if type(obs['season']) is not int or obs['season'] not in [2021, 2022, 2023] or obs['evidence_lane'] != 'college_production':
+            if type(obs['season']) is not int or obs['season'] not in allowed_seasons or obs['evidence_lane'] != 'college_production':
                 raise ValueError('Ineligible college season/lane')
             if obs['status'] != COLLEGE_STATUS:
                 raise ValueError('Unexpected college observation status')
@@ -120,7 +126,7 @@ def derived_stats(stats: dict) -> dict:
         result['yards_per_attempt'] = round(stats['passing_yards'] / stats['attempts'], 1)
     if 'rush_attempts' in stats:
         result['yards_per_carry'] = round(stats['rush_yards'] / stats['rush_attempts'], 1)
-    if 'receiving_tds' in stats:
+    if 'receptions' in stats:
         result['yards_per_reception'] = round(stats['receiving_yards'] / stats['receptions'], 1)
     return result
 
@@ -226,8 +232,9 @@ def build(facts: dict, root: Path = ROOT) -> dict[str, dict | str]:
                'evidence_cutoff': '2024-04-27T23:59:59Z', 'actual_draft_round': 1, 'actual_overall_pick': 4,
                'draft_team': 'ARI', 'source_refs': mhj_row['source_refs'],
                'status_note': 'Public factual candidate only; Data canonical draft handoff still unavailable. No grade or downstream runtime admission.'}
+    census_rows = [{key: row[key] for key in DRAFT_RECORD_FIELDS} for row in facts['draft_day_records']]
     census = {**shared, 'artifact': '2024_skill_class_census_v0', 'cohort': facts['cohort'],
-              'identity_resolutions': facts['identity_resolutions'], 'players': facts['draft_day_records']}
+              'identity_resolutions': facts['identity_resolutions'], 'players': census_rows}
     buffer = io.StringIO(newline='')
     writer = csv.DictWriter(buffer, fieldnames=['player_id', 'player_name', 'position', 'school', 'class_year', 'draft_round', 'overall_pick', 'draft_team', 'gsis_id'], lineterminator='\n')
     writer.writeheader()
