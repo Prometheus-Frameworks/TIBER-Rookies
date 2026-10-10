@@ -47,6 +47,18 @@ class ReconstructionAdmissionTests(unittest.TestCase):
                         with self.assertRaisesRegex(ValueError, 'leaked'):
                             module.validate_facts(facts)
 
+    def test_arbitrary_college_free_text_is_rejected(self):
+        facts = copy.deepcopy(self.facts)
+        facts['mhj_college_seasons'][0]['note'] = 'Drafted fourth overall by Arizona'
+        with self.assertRaisesRegex(ValueError, 'college observation field'):
+            module.validate_facts(facts)
+
+    def test_arbitrary_nested_college_object_is_rejected(self):
+        facts = copy.deepcopy(self.facts)
+        facts['mhj_college_seasons'][0]['landing'] = {'actual_overall_pick': 4}
+        with self.assertRaisesRegex(ValueError, 'college observation field'):
+            module.validate_facts(facts)
+
     def test_empty_draft_sources_are_rejected(self):
         facts = copy.deepcopy(self.facts)
         facts['draft_day_records'][0]['source_refs'] = []
@@ -89,6 +101,10 @@ class ReconstructionAdmissionTests(unittest.TestCase):
         card = module.build(self.facts)['predraft_cards/2024_wr_marvin_harrison_jr_predraft_v0.json']
         self.assertNotIn('nfl_outcome_fields_available_to_card_builder', card)
         self.assertIn('No structural input isolation', card['input_separation_policy'])
+
+    def test_card_projects_only_allowlisted_college_fields(self):
+        card = module.build(self.facts)['predraft_cards/2024_wr_marvin_harrison_jr_predraft_v0.json']
+        self.assertTrue(all(set(row) == module.MHJ_SEASON_KEYS for row in card['college_production']))
 
     def test_unresolved_provenance_is_rejected(self):
         facts = copy.deepcopy(self.facts)

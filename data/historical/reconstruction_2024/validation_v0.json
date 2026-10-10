@@ -14,7 +14,7 @@
     {
       "command": "python3 -m unittest discover -s tests -p 'test_build_2024_reconstruction.py'",
       "exit_code": 0,
-      "tests_passed": 10
+      "tests_passed": 13
     },
     {
       "command": "git diff --quiet e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6 -- exports/promoted exports/experimental data/processed data/raw runtime-server.js index.html public package.json",
@@ -34,8 +34,8 @@
     "data/historical/reconstruction_2024/landing_context/2024_wr_marvin_harrison_jr_landing_context_v0.json": "8ac289060f267f88e6565006facd43b39697c086e76f411c7b48f2afc23842f1",
     "data/historical/reconstruction_2024/predraft_cards/2024_wr_marvin_harrison_jr_predraft_v0.json": "0c614882a2afa3f4ac4007a4937fd8148420333c22ab2e3d6a307905ee21692b",
     "data/historical/reconstruction_2024/source_facts_v0.json": "fe0503eaacebd43cb93be97b0d49eafc1b964c23a071b3e17ae9387c3b5b6b5e",
-    "scripts/build_2024_reconstruction.py": "f38881ddd7becb924ec024e24de01049e674d1c5bb1be61c6919841653af1f47",
-    "tests/test_build_2024_reconstruction.py": "0291374ce90a5501c6526e1e87c11b26027d0d1fc05a34d02c7c7d9db268cd93",
+    "scripts/build_2024_reconstruction.py": "aa5bf950a3f2e61c6a3e63e9427daab1aaf175cd68e366d5c10105950c44f1ad",
+    "tests/test_build_2024_reconstruction.py": "e1769ec941b2b14a6ab7de6e455860899211a515f0a000f676d6a224aaaec1a4",
     "docs/2024-class-reconstruction-v0.md": "90ca6ac857ac4061f448227a5dfdb544a22a10555db294a56c6cd24ed8ae340f"
   },
   "not_executed": [
@@ -74,6 +74,10 @@
     {
       "comment_id": 4238893164,
       "result": "Replace the non-literal pinned-base placeholder with the recorded base commit SHA so the protected-path check is directly replayable."
+    },
+    {
+      "comment_id": 4239002938,
+      "result": "Enforce allowlisted college-row and statistic schemas, fixed evidence status, and explicit MHJ card projection; reject arbitrary free text and nested objects."
     }
   ]
 }

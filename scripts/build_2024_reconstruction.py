@@ -15,6 +15,13 @@ DEST = ROOT / 'data/historical/reconstruction_2024'
 EXPECTED = {'QB': 11, 'RB': 20, 'WR': 35, 'TE': 12}
 MHJ = 'wr-marvin-harrison-jr'
 FORBIDDEN_COLLEGE_KEYS = {'actual_overall_pick', 'actual_draft_round', 'overall_pick', 'draft_round', 'draft_team', 'draft_team_name', 'nfl_outcomes', 'nfl_stats', 'fantasy_points'}
+COLLEGE_OBSERVATION_KEYS = {'player_id', 'season', 'stats', 'source_refs', 'source_locators', 'evidence_lane', 'status'}
+COLLEGE_OBSERVATION_REQUIRED = COLLEGE_OBSERVATION_KEYS - {'source_locators'}
+MHJ_SEASON_KEYS = {'season', 'games', 'receptions', 'receiving_yards', 'receiving_tds', 'source_refs', 'evidence_lane', 'status'}
+COLLEGE_STAT_KEYS = {'completions', 'attempts', 'passing_yards', 'passing_tds', 'interceptions',
+                     'rush_attempts', 'rush_yards', 'rush_tds',
+                     'receptions', 'receiving_yards', 'receiving_tds'}
+COLLEGE_STATUS = 'public_factual_candidate_pending_independent_review'
 
 
 def sha(path: Path) -> str:
@@ -37,18 +44,27 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
     observations = facts['college_observations']
     if len({x['player_id'] for x in observations}) != len(observations):
         raise ValueError('Duplicate final-season college observation')
-    for obs in observations + facts['mhj_college_seasons']:
-        if FORBIDDEN_COLLEGE_KEYS.intersection(obs) or FORBIDDEN_COLLEGE_KEYS.intersection(obs.get('stats', {})):
-            raise ValueError('Draft/NFL evidence leaked into college observations')
-        if obs['season'] not in [2021, 2022, 2023] or obs['evidence_lane'] != 'college_production':
-            raise ValueError('Ineligible college season/lane')
-        if not obs['source_refs'] or not set(obs['source_refs']).issubset(sources):
-            raise ValueError('Unresolved college source')
-        if 'player_id' in obs and obs['player_id'] not in ids:
-            raise ValueError('Unresolved college identity')
-        for key, value in obs.get('stats', {}).items():
-            if type(value) is not int or value < 0:
-                raise ValueError('Non-factual count operand: ' + key)
+    lanes = [(observations, COLLEGE_OBSERVATION_KEYS, COLLEGE_OBSERVATION_REQUIRED),
+             (facts['mhj_college_seasons'], MHJ_SEASON_KEYS, MHJ_SEASON_KEYS)]
+    for lane, allowed, required in lanes:
+        for obs in lane:
+            if FORBIDDEN_COLLEGE_KEYS.intersection(obs) or FORBIDDEN_COLLEGE_KEYS.intersection(obs.get('stats', {})):
+                raise ValueError('Draft/NFL evidence leaked into college observations')
+            if set(obs) - allowed or required - set(obs):
+                raise ValueError('Unexpected or missing college observation field')
+            if 'stats' in obs and (type(obs['stats']) is not dict or set(obs['stats']) - COLLEGE_STAT_KEYS):
+                raise ValueError('Unexpected college statistic field')
+            if obs['season'] not in [2021, 2022, 2023] or obs['evidence_lane'] != 'college_production':
+                raise ValueError('Ineligible college season/lane')
+            if obs['status'] != COLLEGE_STATUS:
+                raise ValueError('Unexpected college observation status')
+            if not obs['source_refs'] or not set(obs['source_refs']).issubset(sources):
+                raise ValueError('Unresolved college source')
+            if 'player_id' in obs and obs['player_id'] not in ids:
+                raise ValueError('Unresolved college identity')
+            for key, value in obs.get('stats', {}).items():
+                if type(value) is not int or value < 0:
+                    raise ValueError('Non-factual count operand: ' + key)
     for row in rows:
         if not row['source_refs'] or not set(row['source_refs']).issubset(sources) or not 1 <= row['overall_pick'] <= 257:
             raise ValueError('Unresolved draft fact')
@@ -148,11 +164,15 @@ def build(facts: dict, root: Path = ROOT) -> dict[str, dict | str]:
              'summary': {'legacy_rows': 15, 'raw_rows_contradicted': conflicts_total, 'legacy_normalized_scores_qualified': 0},
              'rows': audit_rows, 'source_conflicts': facts.get('source_conflicts', [])}
     mhj_row = next(x for x in facts['draft_day_records'] if x['player_id'] == MHJ)
+    mhj_college = [{key: row[key] for key in
+                    ['season', 'games', 'receptions', 'receiving_yards', 'receiving_tds',
+                     'source_refs', 'evidence_lane', 'status']}
+                   for row in facts['mhj_college_seasons']]
     card = {**shared, 'artifact': 'predraft_reconstruction_card_v0', 'reconstruction_mode': 'historical_factual_candidate',
             'pre_draft_cutoff': facts['pre_draft_cutoff'], 'input_separation_policy': 'Shared builder reads draft facts for census and identity; this card excludes actual draft fields and NFL outcomes by validation and explicit field selection. No structural input isolation is claimed.',
             'player_id': MHJ, 'player_name': mhj_row['player_name'], 'position': 'WR',
             'identity': {'school': 'Ohio State', 'source_refs': ['college-mhj'], 'birth_date': None, 'age_at_entry': None},
-            'college_production': facts['mhj_college_seasons'],
+            'college_production': mhj_college,
             'prospect_baseline': {'facts': ['2022 and 2023 unanimous All-American', '2023 Biletnikoff Award'], 'source_refs': ['college-mhj']},
             'athletic_testing': {'status': 'unavailable', 'ras_0_100': None, 'sporq_0_100': None,
                                  'note': 'In-repo SPORQ row is DNQ with no timed/jump operands; neither zero nor a measured low score.',
