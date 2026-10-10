@@ -1,0 +1,53 @@
+{
+  "artifact": "2024_candidate_execution_validation_v0",
+  "observed_on": "2026-10-10",
+  "status": "executor_checks_passed_independent_review_pending",
+  "promotable": false,
+  "base_commit": "e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6",
+  "authorization": "Joe explicitly authorized execution in originating conversation; authorization receipt posted to #301 and Research #33.",
+  "checks": [
+    {
+      "command": "python3 scripts/build_2024_reconstruction.py --check",
+      "exit_code": 0,
+      "result": "78-player census and all checked-in generated outputs reproduce; pinned inputs match."
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p 'test_build_2024_reconstruction.py'",
+      "exit_code": 0,
+      "tests_passed": 5
+    },
+    {
+      "check": "git diff --quiet pinned-base -- exports/promoted exports/experimental data/processed data/raw runtime-server.js index.html public package.json",
+      "exit_code": 0,
+      "result": "Protected existing producer inputs, outputs and runtime unchanged."
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "candidate_file_sha256": {
+    "data/historical/reconstruction_2024/2024_skill_class_census_v0.csv": "26d708eb352c17f99a0eed4bf3af70821bed8872db96578ffdd903af6278e02d",
+    "data/historical/reconstruction_2024/2024_skill_class_census_v0.json": "960ae70d7e808bb0340d5950877fef4a2baf81901937943770731b058c91f64c",
+    "data/historical/reconstruction_2024/coverage_matrix_v0.json": "48581dd08a957072d90e6a7721d6559a553a7c30f45475e5d5394df068f32a45",
+    "data/historical/reconstruction_2024/input_integrity_audit_v0.json": "0cb58b2a02153261d7ec963f18de9e955bdf48d53c70c36957184c7b013a3cb9",
+    "data/historical/reconstruction_2024/landing_context/2024_wr_marvin_harrison_jr_landing_context_v0.json": "8ac289060f267f88e6565006facd43b39697c086e76f411c7b48f2afc23842f1",
+    "data/historical/reconstruction_2024/predraft_cards/2024_wr_marvin_harrison_jr_predraft_v0.json": "77000444575b1603bb8c620d9494187ef9a1954773681e3cfabde0b8afcdfaf5",
+    "data/historical/reconstruction_2024/source_facts_v0.json": "fe0503eaacebd43cb93be97b0d49eafc1b964c23a071b3e17ae9387c3b5b6b5e",
+    "scripts/build_2024_reconstruction.py": "a141a0368cd358de03b7fd0de27c98c29b3c4534efab062b29a6c531391d62bb",
+    "tests/test_build_2024_reconstruction.py": "078e69069d0f223161642ca8c5f0fbc1a9a14e425769e6ec213fcc3c9e435257",
+    "docs/2024-class-reconstruction-v0.md": "4b4cb648dbebe133ad4fd3103bdeb890829ed431cc3fed8c57ef82040676a2f8"
+  },
+  "not_executed": [
+    "Alpha scoring on unqualified inputs",
+    "Runtime/export/ML regeneration or promotion",
+    "Merge/deployment",
+    "Independent review"
+  ],
+  "open_dependencies": [
+    "Remaining 62 college records",
+    "Qualified 2023 production normalization population",
+    "Testing/context/expected-capital source qualification",
+    "Canonical Data 2024 draft-results handoff (#242)"
+  ]
+}

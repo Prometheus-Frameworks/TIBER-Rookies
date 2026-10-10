@@ -1,0 +1,104 @@
+{
+  "class_year": 2024,
+  "status": "unpromoted_candidate_pending_independent_review",
+  "promotable": false,
+  "base_commit": "e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6",
+  "source_facts_sha256": "fe0503eaacebd43cb93be97b0d49eafc1b964c23a071b3e17ae9387c3b5b6b5e",
+  "artifact": "predraft_reconstruction_card_v0",
+  "reconstruction_mode": "historical_factual_candidate",
+  "pre_draft_cutoff": "2024-04-24T23:59:59Z",
+  "nfl_outcome_fields_available_to_card_builder": false,
+  "player_id": "wr-marvin-harrison-jr",
+  "player_name": "Marvin Harrison Jr.",
+  "position": "WR",
+  "identity": {
+    "school": "Ohio State",
+    "source_refs": [
+      "college-mhj"
+    ],
+    "birth_date": null,
+    "age_at_entry": null
+  },
+  "college_production": [
+    {
+      "season": 2021,
+      "games": 13,
+      "receptions": 11,
+      "receiving_yards": 139,
+      "receiving_tds": 3,
+      "source_refs": [
+        "nfl-mhj-bio"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "season": 2022,
+      "games": 13,
+      "receptions": 77,
+      "receiving_yards": 1263,
+      "receiving_tds": 14,
+      "source_refs": [
+        "college-mhj",
+        "nfl-mhj-bio"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "season": 2023,
+      "games": 12,
+      "receptions": 67,
+      "receiving_yards": 1211,
+      "receiving_tds": 14,
+      "source_refs": [
+        "college-mhj",
+        "nfl-mhj-bio"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    }
+  ],
+  "prospect_baseline": {
+    "facts": [
+      "2022 and 2023 unanimous All-American",
+      "2023 Biletnikoff Award"
+    ],
+    "source_refs": [
+      "college-mhj"
+    ]
+  },
+  "athletic_testing": {
+    "status": "unavailable",
+    "ras_0_100": null,
+    "sporq_0_100": null,
+    "note": "In-repo SPORQ row is DNQ with no timed/jump operands; neither zero nor a measured low score.",
+    "source_ref": {
+      "path": "data/historical/sporq_raw_wr.tsv",
+      "sha256": "5a5ea28442a0998fd8e7e014cf1b313cf98bf4f428a2bd3efc9094ca18df9a1f",
+      "use": "missingness audit only; no third-party athletic value is ingested"
+    }
+  },
+  "market_share_context": {
+    "status": "unavailable",
+    "note": "No retained same-season Ohio State team denominator in this pass."
+  },
+  "route_separation_alignment": {
+    "status": "unavailable",
+    "note": "No qualified public charting or film sample admitted."
+  },
+  "expected_draft_capital": {
+    "status": "unavailable",
+    "value": null
+  },
+  "grade": {
+    "value": null,
+    "status": "unavailable",
+    "blockers": [
+      "Full 2023 positional normalization population and retained producer receipt unavailable.",
+      "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction.",
+      "No timed/jump testing in existing historical row (SPORQ DNQ); DNQ is missingness, not a low score."
+    ]
+  },
+  "historical_warning": "Reconstructed now from public historical facts, not an original TIBER forecast or immutable as-known-then receipt. Actual pick/team and all NFL outcomes are excluded."
+}

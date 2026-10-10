@@ -1,0 +1,19 @@
+{
+  "class_year": 2024,
+  "status": "unpromoted_candidate_pending_independent_review",
+  "promotable": false,
+  "base_commit": "e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6",
+  "source_facts_sha256": "fe0503eaacebd43cb93be97b0d49eafc1b964c23a071b3e17ae9387c3b5b6b5e",
+  "artifact": "landing_context_reconstruction_v0",
+  "player_id": "wr-marvin-harrison-jr",
+  "evidence_cutoff": "2024-04-27T23:59:59Z",
+  "actual_draft_round": 1,
+  "actual_overall_pick": 4,
+  "draft_team": "ARI",
+  "source_refs": [
+    "nfl-draft-factbook",
+    "nflverse-draft-identity",
+    "college-mhj"
+  ],
+  "status_note": "Public factual candidate only; Data canonical draft handoff still unavailable. No grade or downstream runtime admission."
+}
