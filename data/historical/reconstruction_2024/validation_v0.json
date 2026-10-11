@@ -14,7 +14,7 @@
     {
       "command": "python3 -m unittest discover -s tests -p 'test_build_2024_reconstruction.py'",
       "exit_code": 0,
-      "tests_passed": 28
+      "tests_passed": 30
     },
     {
       "command": "git diff --quiet e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6 -- exports/promoted exports/experimental data/processed data/raw runtime-server.js index.html public package.json",
@@ -34,8 +34,8 @@
     "data/historical/reconstruction_2024/landing_context/2024_wr_marvin_harrison_jr_landing_context_v0.json": "8ac289060f267f88e6565006facd43b39697c086e76f411c7b48f2afc23842f1",
     "data/historical/reconstruction_2024/predraft_cards/2024_wr_marvin_harrison_jr_predraft_v0.json": "0c614882a2afa3f4ac4007a4937fd8148420333c22ab2e3d6a307905ee21692b",
     "data/historical/reconstruction_2024/source_facts_v0.json": "fe0503eaacebd43cb93be97b0d49eafc1b964c23a071b3e17ae9387c3b5b6b5e",
-    "scripts/build_2024_reconstruction.py": "08e6318fac513007deae9600f3aa3b808f92d2bf625f7b0464d3295275a35d2a",
-    "tests/test_build_2024_reconstruction.py": "2821a5c608f13ff68414e57b234d8933339042bf8d9fb6613b1e42a4b18aa6af",
+    "scripts/build_2024_reconstruction.py": "96172c4d2f7ae42148a5175aee918e21de6215fd266392deca09af72d8e281df",
+    "tests/test_build_2024_reconstruction.py": "928024238391ea8df477b7c296457786e6dda7f73e9abfdfcb99720bcaac37e1",
     "docs/2024-class-reconstruction-v0.md": "90ca6ac857ac4061f448227a5dfdb544a22a10555db294a56c6cd24ed8ae340f"
   },
   "not_executed": [
@@ -123,6 +123,13 @@
         4239951582
       ],
       "result": "Bind college sources to their observed player in both college lanes, require and project the retained Benson conflict, and require cohort metadata to match the validated 78-player census."
+    },
+    {
+      "comment_ids": [
+        4240059727,
+        4240059729
+      ],
+      "result": "Require MHJ's final-season observation to match the retained 2023 history row, and derive landing round, pick and team from the validated MHJ draft row."
     }
   ]
 }

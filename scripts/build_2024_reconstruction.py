@@ -214,6 +214,13 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
                     raise ValueError('Zero-game college season')
     if Counter(row['season'] for row in facts['mhj_college_seasons']) != Counter({2021: 1, 2022: 1, 2023: 1}):
         raise ValueError('Incomplete or duplicate MHJ college seasons')
+    mhj_final = next((obs for obs in observations if obs['player_id'] == MHJ), None)
+    mhj_2023 = next(row for row in facts['mhj_college_seasons'] if row['season'] == 2023)
+    receiving_fields = ('receptions', 'receiving_yards', 'receiving_tds')
+    if (mhj_final is None
+            or any(mhj_final['stats'].get(field) != mhj_2023[field]
+                   for field in receiving_fields)):
+        raise ValueError('MHJ final-season observations do not reconcile')
     source_conflicts = facts.get('source_conflicts')
     if type(source_conflicts) is not list or len(source_conflicts) != 1:
         raise ValueError('Missing retained source conflict')
@@ -371,8 +378,10 @@ def build(facts: dict, root: Path = ROOT) -> dict[str, dict | str]:
             'grade': next(x['pre_draft_grade'] for x in coverage_rows if x['player_id'] == MHJ),
             'historical_warning': 'Reconstructed now from public historical facts, not an original TIBER forecast or immutable as-known-then receipt. Actual pick/team and all NFL outcomes are excluded.'}
     landing = {**shared, 'artifact': 'landing_context_reconstruction_v0', 'player_id': MHJ,
-               'evidence_cutoff': '2024-04-27T23:59:59Z', 'actual_draft_round': 1, 'actual_overall_pick': 4,
-               'draft_team': 'ARI', 'source_refs': mhj_row['source_refs'],
+               'evidence_cutoff': '2024-04-27T23:59:59Z',
+               'actual_draft_round': mhj_row['draft_round'],
+               'actual_overall_pick': mhj_row['overall_pick'],
+               'draft_team': mhj_row['draft_team'], 'source_refs': mhj_row['source_refs'],
                'status_note': 'Public factual candidate only; Data canonical draft handoff still unavailable. No grade or downstream runtime admission.'}
     census_rows = [{key: row[key] for key in DRAFT_RECORD_FIELDS} for row in facts['draft_day_records']]
     identity_rows = [{key: row[key] for key in IDENTITY_RESOLUTION_FIELDS}

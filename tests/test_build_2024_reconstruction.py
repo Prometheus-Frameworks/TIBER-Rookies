@@ -173,6 +173,40 @@ class ReconstructionAdmissionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Incomplete or duplicate MHJ'):
             module.validate_facts(facts)
 
+    def test_mhj_final_season_rows_must_reconcile(self):
+        facts = copy.deepcopy(self.facts)
+        facts['college_observations'] = [row for row in facts['college_observations']
+                                         if row['player_id'] != module.MHJ]
+        with self.assertRaisesRegex(ValueError, 'MHJ final-season observations do not reconcile'):
+            module.validate_facts(facts)
+        facts = copy.deepcopy(self.facts)
+        mhj = next(row for row in facts['college_observations']
+                   if row['player_id'] == module.MHJ)
+        mhj['stats']['receiving_yards'] += 1
+        with self.assertRaisesRegex(ValueError, 'MHJ final-season observations do not reconcile'):
+            module.validate_facts(facts)
+
+    def test_landing_facts_derive_from_validated_mhj_draft_row(self):
+        facts = copy.deepcopy(self.facts)
+        mhj = next(row for row in facts['draft_day_records']
+                   if row['player_id'] == module.MHJ)
+        mhj['draft_team'] = 'NYG'
+        mhj['draft_team_name'] = 'NEW YORK GIANTS'
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            for relative in facts['repo_file_bindings']:
+                target = root / relative
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(ROOT / relative, target)
+            source = root / 'data/historical/reconstruction_2024/source_facts_v0.json'
+            source.parent.mkdir(parents=True, exist_ok=True)
+            source.write_text(json.dumps(facts, indent=2) + '\n')
+            landing = module.build(facts, root=root)[
+                'landing_context/2024_wr_marvin_harrison_jr_landing_context_v0.json']
+        self.assertEqual(landing['draft_team'], mhj['draft_team'])
+        self.assertEqual(landing['actual_draft_round'], mhj['draft_round'])
+        self.assertEqual(landing['actual_overall_pick'], mhj['overall_pick'])
+
     def test_draft_census_rejects_and_projects_unadmitted_fields(self):
         facts = copy.deepcopy(self.facts)
         facts['draft_day_records'][0]['fantasy_points'] = 100
