@@ -39,7 +39,19 @@ DRAFT_TEAM_NAMES = {
     'SF': 'SAN FRANCISCO 49ERS', 'TB': 'TAMPA BAY BUCCANEERS',
     'TEN': 'TENNESSEE TITANS', 'WAS': 'WASHINGTON COMMANDERS',
 }
-DRAFT_CORE_SOURCES = {'nfl-draft-factbook', 'nflverse-draft-identity'}
+DRAFT_CORE_SOURCE_BINDINGS = {
+    'nfl-draft-factbook': {
+        'url': 'https://static.www.nfl.com/image/upload/league/apps/league-site/media-guides/2024/2024_Record_and_Fact_Book_incl_Supplemental.pdf',
+        'sha256': 'ed58911ff56141c9bb7c31f7c5b46f59ef5fe70790f35f6a7c566b36c1ff7c88',
+        'rights_scope': 'Factual draft/identity fields only; no copied prose or analyst data.',
+    },
+    'nflverse-draft-identity': {
+        'url': 'https://raw.githubusercontent.com/nflverse/nfldata/master/data/draft_picks.csv',
+        'sha256': '6ef8dd337de2f4215bd9018922e5527b5832c5ec4dbd12e43d20663f2949f18d',
+        'rights_scope': 'Factual draft/identity fields only; no copied prose or analyst data.',
+    },
+}
+DRAFT_CORE_SOURCES = set(DRAFT_CORE_SOURCE_BINDINGS)
 DRAFT_SUPPLEMENTAL_SOURCE_SUBJECT = {
     'college-mhj': MHJ,
     'draft-penix-name': 'qb-michael-penix-jr',
@@ -156,9 +168,15 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
                                    or len(source['sha256']) != 64
                                    or any(char not in '0123456789abcdef' for char in source['sha256'])):
             raise ValueError('Invalid source digest')
-    sources = {x['source_id'] for x in source_ledger}
+    sources_by_id = {x['source_id']: x for x in source_ledger}
+    sources = set(sources_by_id)
     if len(sources) != len(source_ledger):
         raise ValueError('Duplicate source identity')
+    for source_id, expected in DRAFT_CORE_SOURCE_BINDINGS.items():
+        source = sources_by_id.get(source_id)
+        if (source is None
+                or any(source.get(field) != value for field, value in expected.items())):
+            raise ValueError('Invalid core draft source binding')
     ids = {x['player_id'] for x in rows}
     draft_by_pick = {row['overall_pick']: row for row in rows}
     identity_resolutions = facts['identity_resolutions']

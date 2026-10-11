@@ -77,6 +77,21 @@ class ReconstructionAdmissionTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'Draft source does not match evidence role'):
                     module.validate_facts(facts)
 
+    def test_core_draft_source_ids_are_bound_to_retained_evidence(self):
+        replacements = {
+            'url': 'https://ohiostatebuckeyes.com/sports/football/roster/marvin-harrison-jr-/5776',
+            'sha256': '0' * 64,
+            'rights_scope': 'Unrelated college profile.',
+        }
+        for field, value in replacements.items():
+            with self.subTest(field=field):
+                facts = copy.deepcopy(self.facts)
+                source = next(row for row in facts['source_ledger']
+                              if row['source_id'] == 'nfl-draft-factbook')
+                source[field] = value
+                with self.assertRaisesRegex(ValueError, 'Invalid core draft source binding'):
+                    module.validate_facts(facts)
+
     def test_mutated_facts_cannot_claim_retained_source_hash(self):
         for mutation in ['cutoff', 'statistic']:
             with self.subTest(mutation=mutation):
