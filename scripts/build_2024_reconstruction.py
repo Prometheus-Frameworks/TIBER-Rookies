@@ -16,6 +16,7 @@ EXPECTED = {'QB': 11, 'RB': 20, 'WR': 35, 'TE': 12}
 MHJ = 'wr-marvin-harrison-jr'
 BASE_COMMIT = 'e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6'
 PRE_DRAFT_CUTOFF = '2024-04-24T23:59:59Z'
+CANDIDATE_STATUS = 'unpromoted_candidate_pending_independent_review'
 REPO_FILE_BINDING_PATHS = frozenset({
     'scripts/compute_rookie_alpha.py',
     'scripts/compute_production_scores.py',
@@ -129,7 +130,7 @@ COLLEGE_SOURCE_SUBJECT = {
     'college-worthy': 'wr-xavier-worthy',
     'nfl-mhj-bio': MHJ,
 }
-COLLEGE_SOURCE_BINDING_SHA256 = '4dea7fd3640b5a90eef683cf0c3724b37b6665070616de1afc67bfc9f46f89cf'
+COLLEGE_SOURCE_BINDING_SHA256 = 'fdd0eb8134d5c73961f369b06f26841368d337c85f4b82ec52274d14b77e1c4e'
 COLLEGE_OBSERVATION_BINDING_SHA256 = '4bf0316d1d1333bdbebf2a3e0cdc37e79022353caaf18c72ce38c737373d08cc'
 SOURCE_CONFLICT_FIELDS = ('player_id', 'field', 'season', 'observations',
                           'candidate_value', 'resolution_status', 'note')
@@ -169,7 +170,9 @@ def validate_source_refs(refs: object, sources: set[str], label: str) -> None:
 
 
 def validate_facts(facts: dict, root: Path = ROOT) -> None:
-    if facts.get('class_year') != 2024 or facts.get('promotable') is not False:
+    if (facts.get('class_year') != 2024
+            or facts.get('status') != CANDIDATE_STATUS
+            or facts.get('promotable') is not False):
         raise ValueError('Wrong class or promotion state')
     if facts.get('base_commit') != BASE_COMMIT:
         raise ValueError('Invalid base commit')
@@ -234,13 +237,10 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
         if (source is None
                 or any(source.get(field) != value for field, value in expected.items())):
             raise ValueError('Invalid supplemental draft source binding')
-    college_source_bindings = [
-        (source_id, sources_by_id.get(source_id, {}).get('url'),
-         sources_by_id.get(source_id, {}).get('sha256'))
-        for source_id in sorted(COLLEGE_SOURCE_SUBJECT)
-    ]
+    college_source_bindings = [sources_by_id.get(source_id, {})
+                               for source_id in sorted(COLLEGE_SOURCE_SUBJECT)]
     binding_digest = hashlib.sha256(json.dumps(
-        college_source_bindings, separators=(',', ':')).encode()).hexdigest()
+        college_source_bindings, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
     if binding_digest != COLLEGE_SOURCE_BINDING_SHA256:
         raise ValueError('Invalid college source binding')
     ids = {x['player_id'] for x in rows}

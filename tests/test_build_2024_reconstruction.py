@@ -107,6 +107,30 @@ class ReconstructionAdmissionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Invalid college source binding'):
             module.validate_facts(facts)
 
+    def test_college_source_receipts_are_completely_bound(self):
+        replacements = {
+            'bytes': 1,
+            'retrieved_at': '2026-10-11T00:00:00+00:00',
+            'snapshot_note': 'Different retained receipt note.',
+            'rights_scope': 'Different factual-use scope.',
+        }
+        for field, value in replacements.items():
+            with self.subTest(field=field):
+                facts = copy.deepcopy(self.facts)
+                source = next(row for row in facts['source_ledger']
+                              if row['source_id'] == 'college-caleb')
+                source[field] = value
+                with self.assertRaisesRegex(ValueError, 'Invalid college source binding'):
+                    module.validate_facts(facts)
+
+    def test_source_ledger_status_is_exactly_unpromoted(self):
+        for status in ['promoted', 'unpromoted', None]:
+            with self.subTest(status=status):
+                facts = copy.deepcopy(self.facts)
+                facts['status'] = status
+                with self.assertRaisesRegex(ValueError, 'Wrong class or promotion state'):
+                    module.validate_facts(facts)
+
     def test_pre_draft_cutoff_is_pinned_to_documented_boundary(self):
         for cutoff in ['2026-01-01', 'not-a-date', '2024-04-23T23:59:59Z']:
             with self.subTest(cutoff=cutoff):
