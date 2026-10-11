@@ -65,6 +65,18 @@ class ReconstructionAdmissionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Unresolved draft fact'):
             module.validate_facts(facts)
 
+    def test_draft_sources_are_bound_to_evidence_role_and_subject(self):
+        mutations = [
+            ['college-mhj'],
+            ['nfl-draft-factbook', 'nflverse-draft-identity', 'college-mhj'],
+        ]
+        for refs in mutations:
+            with self.subTest(refs=refs):
+                facts = copy.deepcopy(self.facts)
+                facts['draft_day_records'][0]['source_refs'] = refs
+                with self.assertRaisesRegex(ValueError, 'Draft source does not match evidence role'):
+                    module.validate_facts(facts)
+
     def test_mutated_facts_cannot_claim_retained_source_hash(self):
         for mutation in ['cutoff', 'statistic']:
             with self.subTest(mutation=mutation):
@@ -227,6 +239,14 @@ class ReconstructionAdmissionTests(unittest.TestCase):
                 facts['draft_day_records'][0][field] = value
                 with self.assertRaisesRegex(ValueError, message):
                     module.validate_facts(facts)
+
+    def test_draft_team_code_and_name_must_reconcile(self):
+        facts = copy.deepcopy(self.facts)
+        mhj = next(row for row in facts['draft_day_records']
+                   if row['player_id'] == module.MHJ)
+        mhj['draft_team'] = 'NYG'
+        with self.assertRaisesRegex(ValueError, 'Invalid draft record value'):
+            module.validate_facts(facts)
 
     def test_legacy_seed_rows_require_final_season_observations(self):
         facts = copy.deepcopy(self.facts)

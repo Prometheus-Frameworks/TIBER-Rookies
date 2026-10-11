@@ -21,6 +21,32 @@ DRAFT_RECORD_FIELDS = ('player_id', 'player_name', 'position', 'school', 'class_
                        'id_status', 'identity_note')
 DRAFT_STRING_FIELDS = ('player_id', 'player_name', 'position', 'school', 'draft_team',
                        'draft_team_name', 'id_status', 'identity_note')
+DRAFT_TEAM_NAMES = {
+    'ARI': 'ARIZONA CARDINALS', 'ATL': 'ATLANTA FALCONS',
+    'BAL': 'BALTIMORE RAVENS', 'BUF': 'BUFFALO BILLS',
+    'CAR': 'CAROLINA PANTHERS', 'CHI': 'CHICAGO BEARS',
+    'CIN': 'CINCINNATI BENGALS', 'CLE': 'CLEVELAND BROWNS',
+    'DAL': 'DALLAS COWBOYS', 'DEN': 'DENVER BRONCOS',
+    'DET': 'DETROIT LIONS', 'GB': 'GREEN BAY PACKERS',
+    'HOU': 'HOUSTON TEXANS', 'IND': 'INDIANAPOLIS COLTS',
+    'JAX': 'JACKSONVILLE JAGUARS', 'KC': 'KANSAS CITY CHIEFS',
+    'LA': 'LOS ANGELES RAMS', 'LAC': 'LOS ANGELES CHARGERS',
+    'LV': 'LAS VEGAS RAIDERS', 'MIA': 'MIAMI DOLPHINS',
+    'MIN': 'MINNESOTA VIKINGS', 'NE': 'NEW ENGLAND PATRIOTS',
+    'NO': 'NEW ORLEANS SAINTS', 'NYG': 'NEW YORK GIANTS',
+    'NYJ': 'NEW YORK JETS', 'PHI': 'PHILADELPHIA EAGLES',
+    'PIT': 'PITTSBURGH STEELERS', 'SEA': 'SEATTLE SEAHAWKS',
+    'SF': 'SAN FRANCISCO 49ERS', 'TB': 'TAMPA BAY BUCCANEERS',
+    'TEN': 'TENNESSEE TITANS', 'WAS': 'WASHINGTON COMMANDERS',
+}
+DRAFT_CORE_SOURCES = {'nfl-draft-factbook', 'nflverse-draft-identity'}
+DRAFT_SUPPLEMENTAL_SOURCE_SUBJECT = {
+    'college-mhj': MHJ,
+    'draft-penix-name': 'qb-michael-penix-jr',
+    'college-thomas': 'wr-brian-thomas-jr',
+    'draft-tracy-name': 'rb-tyrone-tracy-jr',
+    'draft-milton-name': 'qb-joe-milton-iii',
+}
 SOURCE_REQUIRED = {'source_id', 'url', 'qualification', 'rights_scope'}
 SOURCE_SCHEMAS = (
     frozenset(SOURCE_REQUIRED | {'retrieved_at', 'sha256', 'status', 'bytes', 'snapshot_note'}),
@@ -245,6 +271,7 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
                 or row['position'] not in EXPECTED
                 or type(row['class_year']) is not int or row['class_year'] != 2024
                 or type(row['draft_round']) is not int or not 1 <= row['draft_round'] <= 7
+                or DRAFT_TEAM_NAMES.get(row['draft_team']) != row['draft_team_name']
                 or any(value is not None and (type(value) is not str or not value)
                        for value in [row['gsis_id'], row['pfr_id']])
                 or row['id_status'] not in {'existing_rookies_id', 'candidate_local_id'}):
@@ -258,6 +285,11 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
             validate_source_refs(row['source_refs'], sources, 'draft')
         except ValueError:
             raise ValueError('Unresolved draft fact') from None
+        draft_refs = set(row['source_refs'])
+        if (not DRAFT_CORE_SOURCES.issubset(draft_refs)
+                or any(DRAFT_SUPPLEMENTAL_SOURCE_SUBJECT.get(ref) != row['player_id']
+                       for ref in draft_refs - DRAFT_CORE_SOURCES)):
+            raise ValueError('Draft source does not match evidence role')
         if type(row['overall_pick']) is not int or not 1 <= row['overall_pick'] <= 257:
             raise ValueError('Unresolved draft fact')
     for path, expected in facts['repo_file_bindings'].items():
