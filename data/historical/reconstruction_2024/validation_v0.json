@@ -14,7 +14,7 @@
     {
       "command": "python3 -m unittest discover -s tests -p 'test_build_2024_reconstruction.py'",
       "exit_code": 0,
-      "tests_passed": 22
+      "tests_passed": 24
     },
     {
       "command": "git diff --quiet e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6 -- exports/promoted exports/experimental data/processed data/raw runtime-server.js index.html public package.json",
@@ -34,8 +34,8 @@
     "data/historical/reconstruction_2024/landing_context/2024_wr_marvin_harrison_jr_landing_context_v0.json": "8ac289060f267f88e6565006facd43b39697c086e76f411c7b48f2afc23842f1",
     "data/historical/reconstruction_2024/predraft_cards/2024_wr_marvin_harrison_jr_predraft_v0.json": "0c614882a2afa3f4ac4007a4937fd8148420333c22ab2e3d6a307905ee21692b",
     "data/historical/reconstruction_2024/source_facts_v0.json": "fe0503eaacebd43cb93be97b0d49eafc1b964c23a071b3e17ae9387c3b5b6b5e",
-    "scripts/build_2024_reconstruction.py": "a9563f400932df48a03e3b0a9bcbbd470d6ce7f142a733b1db7cf7639f57c5d1",
-    "tests/test_build_2024_reconstruction.py": "2d72430d58852eb2c8aa93dd6153f4f9eb6181b05d65bd46a89ba759ac2e3e5f",
+    "scripts/build_2024_reconstruction.py": "99a753e03e33d0d5e17187911fc1e9b28166f6aa95abdd45cb6a4f58c4fe86a9",
+    "tests/test_build_2024_reconstruction.py": "a14b79b875f915072f9d91e29a11b77da550f5a4b87b635038f06cc68c2eb61d",
     "docs/2024-class-reconstruction-v0.md": "90ca6ac857ac4061f448227a5dfdb544a22a10555db294a56c6cd24ed8ae340f"
   },
   "not_executed": [
@@ -101,6 +101,13 @@
         4239488497
       ],
       "result": "Require exactly one MHJ college row for each 2021-2023 season, validate census field values including class year and source locator shapes, and require every legacy seed identity to retain a final-season observation."
+    },
+    {
+      "comment_ids": [
+        4239596341,
+        4239596342
+      ],
+      "result": "Require each source-ledger entry to match one complete qualified retrieval schema, and validate/project the exact identity-resolution schema with source, pick, position, name and round linkage."
     }
   ]
 }

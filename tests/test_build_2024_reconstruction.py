@@ -188,6 +188,29 @@ class ReconstructionAdmissionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Missing final-season observation'):
             module.validate_facts(facts)
 
+    def test_source_ledger_requires_qualified_retrieval_metadata(self):
+        facts = copy.deepcopy(self.facts)
+        facts['source_ledger'].append({'source_id': 'new-source'})
+        facts['college_observations'][0]['source_refs'] = ['new-source']
+        with self.assertRaisesRegex(ValueError, 'Invalid source ledger entry'):
+            module.validate_facts(facts)
+
+    def test_identity_resolutions_are_validated_and_projected(self):
+        mutations = [
+            ('fantasy_points', 100, 'identity resolution field'),
+            ('pick', 5, 'identity resolution linkage'),
+            ('name_source_refs', ['invented-source'], 'Unresolved identity source'),
+        ]
+        for field, value, message in mutations:
+            with self.subTest(field=field):
+                facts = copy.deepcopy(self.facts)
+                facts['identity_resolutions'][0][field] = value
+                with self.assertRaisesRegex(ValueError, message):
+                    module.validate_facts(facts)
+        census = module.build(self.facts)['2024_skill_class_census_v0.json']
+        self.assertTrue(all(tuple(row) == module.IDENTITY_RESOLUTION_FIELDS
+                            for row in census['identity_resolutions']))
+
     def test_receiving_efficiency_does_not_require_touchdown_field(self):
         audit = module.build(self.facts)['input_integrity_audit_v0.json']
         brooks = next(row for row in audit['rows'] if row['player_id'] == 'rb-jonathon-brooks')

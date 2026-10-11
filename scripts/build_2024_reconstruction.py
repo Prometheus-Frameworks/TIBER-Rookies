@@ -20,6 +20,16 @@ DRAFT_RECORD_FIELDS = ('player_id', 'player_name', 'position', 'school', 'class_
                        'id_status', 'identity_note')
 DRAFT_STRING_FIELDS = ('player_id', 'player_name', 'position', 'school', 'draft_team',
                        'draft_team_name', 'id_status', 'identity_note')
+SOURCE_REQUIRED = {'source_id', 'url', 'qualification', 'rights_scope'}
+SOURCE_SCHEMAS = (
+    frozenset(SOURCE_REQUIRED | {'retrieved_at', 'sha256', 'status', 'bytes', 'snapshot_note'}),
+    frozenset(SOURCE_REQUIRED | {'retrieved_on', 'retrieval_method'}),
+    frozenset(SOURCE_REQUIRED | {'retrieved_on', 'sha256', 'snapshot_note'}),
+)
+IDENTITY_RESOLUTION_FIELDS = ('pick', 'primary_name', 'secondary_name',
+                              'candidate_display_name', 'primary_position',
+                              'secondary_position', 'primary_printed_round',
+                              'adopted_round', 'resolution', 'name_source_refs')
 FORBIDDEN_COLLEGE_KEYS = {'actual_overall_pick', 'actual_draft_round', 'overall_pick', 'draft_round', 'draft_team', 'draft_team_name', 'nfl_outcomes', 'nfl_stats', 'fantasy_points'}
 COLLEGE_OBSERVATION_KEYS = {'player_id', 'season', 'stats', 'source_refs', 'source_locators', 'evidence_lane', 'status'}
 COLLEGE_OBSERVATION_REQUIRED = COLLEGE_OBSERVATION_KEYS - {'source_locators'}
@@ -60,10 +70,59 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
     for field in ['player_id', 'overall_pick']:
         if len({x[field] for x in rows}) != len(rows):
             raise ValueError('Duplicate census ' + field)
-    sources = {x['source_id'] for x in facts['source_ledger']}
-    if len(sources) != len(facts['source_ledger']):
+    source_ledger = facts['source_ledger']
+    for source in source_ledger:
+        if (frozenset(source) not in SOURCE_SCHEMAS
+                or any(type(source[field]) is not str or not source[field]
+                       for field in SOURCE_REQUIRED)
+                or not source['url'].startswith('https://')
+                or source['qualification'] != COLLEGE_STATUS
+                or ('retrieved_at' in source) == ('retrieved_on' in source)):
+            raise ValueError('Invalid source ledger entry')
+        if 'retrieved_at' in source:
+            if (not {'sha256', 'status', 'bytes', 'snapshot_note'}.issubset(source)
+                    or source['status'] != 'retrieved'
+                    or type(source['bytes']) is not int or source['bytes'] < 1):
+                raise ValueError('Invalid source retrieval receipt')
+        elif not ('retrieval_method' in source or {'sha256', 'snapshot_note'}.issubset(source)):
+            raise ValueError('Invalid source retrieval receipt')
+        for field in ['retrieved_at', 'retrieved_on', 'retrieval_method', 'snapshot_note']:
+            if field in source and (type(source[field]) is not str or not source[field]):
+                raise ValueError('Invalid source retrieval metadata')
+        if 'sha256' in source and (type(source['sha256']) is not str
+                                   or len(source['sha256']) != 64
+                                   or any(char not in '0123456789abcdef' for char in source['sha256'])):
+            raise ValueError('Invalid source digest')
+    sources = {x['source_id'] for x in source_ledger}
+    if len(sources) != len(source_ledger):
         raise ValueError('Duplicate source identity')
     ids = {x['player_id'] for x in rows}
+    draft_by_pick = {row['overall_pick']: row for row in rows}
+    identity_resolutions = facts['identity_resolutions']
+    seen_resolution_picks = set()
+    for resolution in identity_resolutions:
+        if set(resolution) != set(IDENTITY_RESOLUTION_FIELDS):
+            raise ValueError('Unexpected or missing identity resolution field')
+        if type(resolution['pick']) is not int:
+            raise ValueError('Invalid identity resolution linkage')
+        if resolution['pick'] in seen_resolution_picks:
+            raise ValueError('Duplicate identity resolution pick')
+        seen_resolution_picks.add(resolution['pick'])
+        draft = draft_by_pick.get(resolution['pick'])
+        if (draft is None
+                or resolution['candidate_display_name'] != draft['player_name']
+                or resolution['primary_position'] != draft['position']
+                or type(resolution['adopted_round']) is not int
+                or resolution['adopted_round'] != draft['draft_round']
+                or type(resolution['primary_printed_round']) is not int
+                or not 1 <= resolution['primary_printed_round'] <= 7
+                or any(type(resolution[field]) is not str or not resolution[field]
+                       for field in ['primary_name', 'secondary_name', 'candidate_display_name',
+                                     'primary_position', 'resolution'])
+                or (resolution['secondary_position'] is not None
+                    and resolution['secondary_position'] not in EXPECTED)):
+            raise ValueError('Invalid identity resolution linkage')
+        validate_source_refs(resolution['name_source_refs'], sources, 'identity')
     observations = facts['college_observations']
     if len({x['player_id'] for x in observations}) != len(observations):
         raise ValueError('Duplicate final-season college observation')
@@ -254,8 +313,10 @@ def build(facts: dict, root: Path = ROOT) -> dict[str, dict | str]:
                'draft_team': 'ARI', 'source_refs': mhj_row['source_refs'],
                'status_note': 'Public factual candidate only; Data canonical draft handoff still unavailable. No grade or downstream runtime admission.'}
     census_rows = [{key: row[key] for key in DRAFT_RECORD_FIELDS} for row in facts['draft_day_records']]
+    identity_rows = [{key: row[key] for key in IDENTITY_RESOLUTION_FIELDS}
+                     for row in facts['identity_resolutions']]
     census = {**shared, 'artifact': '2024_skill_class_census_v0', 'cohort': facts['cohort'],
-              'identity_resolutions': facts['identity_resolutions'], 'players': census_rows}
+              'identity_resolutions': identity_rows, 'players': census_rows}
     buffer = io.StringIO(newline='')
     writer = csv.DictWriter(buffer, fieldnames=['player_id', 'player_name', 'position', 'school', 'class_year', 'draft_round', 'overall_pick', 'draft_team', 'gsis_id'], lineterminator='\n')
     writer.writeheader()
