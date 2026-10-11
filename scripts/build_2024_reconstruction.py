@@ -16,6 +16,18 @@ EXPECTED = {'QB': 11, 'RB': 20, 'WR': 35, 'TE': 12}
 MHJ = 'wr-marvin-harrison-jr'
 BASE_COMMIT = 'e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6'
 PRE_DRAFT_CUTOFF = '2024-04-24T23:59:59Z'
+REPO_FILE_BINDING_PATHS = frozenset({
+    'scripts/compute_rookie_alpha.py',
+    'scripts/compute_production_scores.py',
+    'data/raw/2024_real_seed_pool.json',
+    'data/processed/2024_player_stats.json',
+    'data/processed/2024_college_production.json',
+    'data/processed/2024_draft_capital_proxy.json',
+    'data/processed/2024_prospect_context.json',
+    'data/raw/2024_combine_results.json',
+    'exports/promoted/rookie-alpha/2024_rookie_alpha_predraft_v0.json',
+    'data/historical/sporq_raw_wr.tsv',
+})
 MHJ_DRAFT_IDENTITY = {
     'player_name': 'Marvin Harrison Jr.',
     'position': 'WR',
@@ -378,7 +390,10 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
     ], sort_keys=True, separators=(',', ':')).encode()).hexdigest()
     if draft_record_binding != DRAFT_RECORD_BINDING_SHA256:
         raise ValueError('Invalid draft record evidence binding')
-    for path, expected in facts['repo_file_bindings'].items():
+    bindings = facts.get('repo_file_bindings')
+    if type(bindings) is not dict or set(bindings) != REPO_FILE_BINDING_PATHS:
+        raise ValueError('Invalid repository binding set')
+    for path, expected in bindings.items():
         if sha(root / path) != expected:
             raise ValueError('Pinned repository input changed: ' + path)
 

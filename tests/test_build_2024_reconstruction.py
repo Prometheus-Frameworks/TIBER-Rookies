@@ -121,6 +121,19 @@ class ReconstructionAdmissionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Invalid base commit'):
             module.validate_facts(facts)
 
+    def test_repository_binding_set_is_complete_and_exact(self):
+        mutations = []
+        missing = copy.deepcopy(self.facts)
+        missing['repo_file_bindings'].pop('data/raw/2024_real_seed_pool.json')
+        mutations.append(missing)
+        extra = copy.deepcopy(self.facts)
+        extra['repo_file_bindings']['unrelated.json'] = '0' * 64
+        mutations.append(extra)
+        for facts in mutations:
+            with self.subTest(paths=sorted(facts['repo_file_bindings'])):
+                with self.assertRaisesRegex(ValueError, 'Invalid repository binding set'):
+                    module.validate_facts(facts)
+
     def test_normalization_metadata_is_unavailable_and_allowlisted(self):
         mutations = [
             {'status': 'available', 'actual_overall_pick': 4},
