@@ -92,6 +92,13 @@ class ReconstructionAdmissionTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'Invalid core draft source binding'):
                     module.validate_facts(facts)
 
+    def test_supplemental_draft_source_ids_are_bound_to_retained_evidence(self):
+        facts = copy.deepcopy(self.facts)
+        sources = {row['source_id']: row for row in facts['source_ledger']}
+        sources['draft-penix-name']['url'] = sources['draft-tracy-name']['url']
+        with self.assertRaisesRegex(ValueError, 'Invalid supplemental draft source binding'):
+            module.validate_facts(facts)
+
     def test_college_source_ids_are_bound_to_retained_evidence(self):
         facts = copy.deepcopy(self.facts)
         sources = {row['source_id']: row for row in facts['source_ledger']}
@@ -107,6 +114,27 @@ class ReconstructionAdmissionTests(unittest.TestCase):
                 facts['pre_draft_cutoff'] = cutoff
                 with self.assertRaisesRegex(ValueError, 'Invalid pre-draft cutoff'):
                     module.validate_facts(facts)
+
+    def test_base_commit_is_pinned_to_documented_revision(self):
+        facts = copy.deepcopy(self.facts)
+        facts['base_commit'] = '0' * 40
+        with self.assertRaisesRegex(ValueError, 'Invalid base commit'):
+            module.validate_facts(facts)
+
+    def test_normalization_metadata_is_unavailable_and_allowlisted(self):
+        mutations = [
+            {'status': 'available', 'actual_overall_pick': 4},
+            {**self.facts['normalization_population'], 'actual_overall_pick': 4},
+        ]
+        for normalization in mutations:
+            with self.subTest(normalization=normalization):
+                facts = copy.deepcopy(self.facts)
+                facts['normalization_population'] = normalization
+                with self.assertRaisesRegex(ValueError, 'Invalid normalization population'):
+                    module.validate_facts(facts)
+        coverage = module.build(self.facts)['coverage_matrix_v0.json']
+        self.assertEqual(tuple(coverage['model']['normalization_status']),
+                         module.NORMALIZATION_FIELDS)
 
     def test_mutated_facts_cannot_claim_retained_source_hash(self):
         facts = copy.deepcopy(self.facts)
@@ -321,6 +349,14 @@ class ReconstructionAdmissionTests(unittest.TestCase):
         facts = copy.deepcopy(self.facts)
         facts['identity_resolutions'] = facts['identity_resolutions'][1:]
         with self.assertRaisesRegex(ValueError, 'Incomplete identity resolution set'):
+            module.validate_facts(facts)
+
+    def test_source_side_identity_resolution_values_are_bound(self):
+        facts = copy.deepcopy(self.facts)
+        resolution = next(row for row in facts['identity_resolutions'] if row['pick'] == 4)
+        resolution['primary_name'] = 'Caleb Williams'
+        resolution['secondary_name'] = 'Caleb Williams'
+        with self.assertRaisesRegex(ValueError, 'Invalid identity resolution evidence binding'):
             module.validate_facts(facts)
 
     def test_retained_source_conflict_is_required_and_projected(self):

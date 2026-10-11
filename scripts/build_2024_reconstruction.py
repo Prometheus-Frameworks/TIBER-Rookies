@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEST = ROOT / 'data/historical/reconstruction_2024'
 EXPECTED = {'QB': 11, 'RB': 20, 'WR': 35, 'TE': 12}
 MHJ = 'wr-marvin-harrison-jr'
+BASE_COMMIT = 'e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6'
 PRE_DRAFT_CUTOFF = '2024-04-24T23:59:59Z'
 MHJ_DRAFT_IDENTITY = {
     'player_name': 'Marvin Harrison Jr.',
@@ -65,6 +66,23 @@ DRAFT_SUPPLEMENTAL_SOURCE_SUBJECT = {
     'draft-tracy-name': 'rb-tyrone-tracy-jr',
     'draft-milton-name': 'qb-joe-milton-iii',
 }
+DRAFT_SUPPLEMENTAL_SOURCE_BINDINGS = {
+    'draft-penix-name': {
+        'url': 'https://www.atlantafalcons.com/news/michael-penix-jr-quarterback-washington-huskies-no-8-pick-overall-2024-nfl-draft',
+        'retrieval_method': 'search_service_primary_record',
+        'rights_scope': 'Factual name and draft identity only; no analyst commentary.',
+    },
+    'draft-tracy-name': {
+        'url': 'https://www.giants.com/news/tyrone-tracy-jr-running-back-purdue-nfl-draft-2024',
+        'retrieval_method': 'search_service_primary_record',
+        'rights_scope': 'Factual name and draft identity only; no analyst commentary.',
+    },
+    'draft-milton-name': {
+        'url': 'https://www.nfl.com/videos/patriots-select-joe-milton-iii-with-no-193-pick-in-2024-draft',
+        'retrieval_method': 'search_service_primary_record',
+        'rights_scope': 'Factual name and draft identity only; no analyst commentary.',
+    },
+}
 SOURCE_REQUIRED = {'source_id', 'url', 'qualification', 'rights_scope'}
 SOURCE_SCHEMAS = (
     frozenset(SOURCE_REQUIRED | {'retrieved_at', 'sha256', 'status', 'bytes', 'snapshot_note'}),
@@ -76,6 +94,7 @@ IDENTITY_RESOLUTION_FIELDS = ('pick', 'primary_name', 'secondary_name',
                               'secondary_position', 'primary_printed_round',
                               'adopted_round', 'resolution', 'name_source_refs')
 EXPECTED_IDENTITY_RESOLUTION_PICKS = {4, 8, 23, 37, 121, 132, 166, 193}
+IDENTITY_RESOLUTION_BINDING_SHA256 = 'cd2677cf5c820480962cdfa8df899b09cc44235132cf019415144f00a71d0f22'
 COLLEGE_SOURCE_SUBJECT = {
     'college-allen': 'rb-braelon-allen',
     'college-allen-pdf': 'rb-braelon-allen',
@@ -121,6 +140,7 @@ STAT_FAMILIES = (
      {'receptions', 'receiving_yards'}, 'receptions'),
 )
 COLLEGE_STATUS = 'public_factual_candidate_pending_independent_review'
+NORMALIZATION_FIELDS = ('status', 'required', 'observed_access', 'effect')
 
 
 def sha(path: Path) -> str:
@@ -137,8 +157,17 @@ def validate_source_refs(refs: object, sources: set[str], label: str) -> None:
 def validate_facts(facts: dict, root: Path = ROOT) -> None:
     if facts.get('class_year') != 2024 or facts.get('promotable') is not False:
         raise ValueError('Wrong class or promotion state')
+    if facts.get('base_commit') != BASE_COMMIT:
+        raise ValueError('Invalid base commit')
     if facts.get('pre_draft_cutoff') != PRE_DRAFT_CUTOFF:
         raise ValueError('Invalid pre-draft cutoff')
+    normalization = facts.get('normalization_population')
+    if (type(normalization) is not dict
+            or tuple(normalization) != NORMALIZATION_FIELDS
+            or normalization.get('status') != 'unavailable'
+            or any(type(normalization.get(field)) is not str or not normalization[field]
+                   for field in NORMALIZATION_FIELDS)):
+        raise ValueError('Invalid normalization population')
     rows = facts['draft_day_records']
     if any(set(row) != set(DRAFT_RECORD_FIELDS) for row in rows):
         raise ValueError('Unexpected or missing draft record field')
@@ -186,6 +215,11 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
         if (source is None
                 or any(source.get(field) != value for field, value in expected.items())):
             raise ValueError('Invalid core draft source binding')
+    for source_id, expected in DRAFT_SUPPLEMENTAL_SOURCE_BINDINGS.items():
+        source = sources_by_id.get(source_id)
+        if (source is None
+                or any(source.get(field) != value for field, value in expected.items())):
+            raise ValueError('Invalid supplemental draft source binding')
     college_source_bindings = [
         (source_id, sources_by_id.get(source_id, {}).get('url'),
          sources_by_id.get(source_id, {}).get('sha256'))
@@ -226,6 +260,12 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
             raise ValueError('Identity resolution sources do not match draft row')
     if seen_resolution_picks != EXPECTED_IDENTITY_RESOLUTION_PICKS:
         raise ValueError('Incomplete identity resolution set')
+    resolution_binding = hashlib.sha256(json.dumps([
+        {key: row[key] for key in IDENTITY_RESOLUTION_FIELDS}
+        for row in sorted(identity_resolutions, key=lambda row: row['pick'])
+    ], sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+    if resolution_binding != IDENTITY_RESOLUTION_BINDING_SHA256:
+        raise ValueError('Invalid identity resolution evidence binding')
     observations = facts['college_observations']
     if len({x['player_id'] for x in observations}) != len(observations):
         raise ValueError('Duplicate final-season college observation')
@@ -424,7 +464,9 @@ def build(facts: dict, root: Path = ROOT) -> dict[str, dict | str]:
                           'existing_export_version': 'rookie-alpha-predraft-v0.5.0',
                           'base_weight_formula': {'athletic': 0.35, 'production': 0.45, 'expected_draft_capital': 0.20},
                           'qualification_note': 'Current producer also has contextual adjustments and neutral defaults. No Alpha pass executed: defaults would manufacture completeness without qualified operands.',
-                          'normalization_status': facts['normalization_population'], 'formula_changed': False},
+                          'normalization_status': {key: facts['normalization_population'][key]
+                                                   for key in NORMALIZATION_FIELDS},
+                          'formula_changed': False},
                 'players': coverage_rows}
     audit = {**shared, 'artifact': '2024_input_integrity_audit_v0',
              'summary': {'legacy_rows': 15, 'raw_rows_contradicted': conflicts_total, 'legacy_normalized_scores_qualified': 0},

@@ -14,7 +14,7 @@
     {
       "command": "python3 -m unittest discover -s tests -p 'test_build_2024_reconstruction.py'",
       "exit_code": 0,
-      "tests_passed": 36
+      "tests_passed": 40
     },
     {
       "command": "git diff --quiet e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6 -- exports/promoted exports/experimental data/processed data/raw runtime-server.js index.html public package.json",
@@ -34,8 +34,8 @@
     "data/historical/reconstruction_2024/landing_context/2024_wr_marvin_harrison_jr_landing_context_v0.json": "8ac289060f267f88e6565006facd43b39697c086e76f411c7b48f2afc23842f1",
     "data/historical/reconstruction_2024/predraft_cards/2024_wr_marvin_harrison_jr_predraft_v0.json": "0c614882a2afa3f4ac4007a4937fd8148420333c22ab2e3d6a307905ee21692b",
     "data/historical/reconstruction_2024/source_facts_v0.json": "fe0503eaacebd43cb93be97b0d49eafc1b964c23a071b3e17ae9387c3b5b6b5e",
-    "scripts/build_2024_reconstruction.py": "2ffa01942bb5c47f531ffa1fda9ae0ceae8f0915f96fc11e79e10dbd861d2177",
-    "tests/test_build_2024_reconstruction.py": "65e3b875d830950328f58ff40907e4ead3a03c94a13af2b388edae79754d1492",
+    "scripts/build_2024_reconstruction.py": "a00018f4628303c03365b2a070b3f754c10f15ddb4403123109457f6433a5bc1",
+    "tests/test_build_2024_reconstruction.py": "1b1b0c636f10a5aba200a7ca670ecf9397291ef81dce51729e21c79071774ea6",
     "docs/2024-class-reconstruction-v0.md": "90ca6ac857ac4061f448227a5dfdb544a22a10555db294a56c6cd24ed8ae340f"
   },
   "not_executed": [
@@ -149,6 +149,15 @@
         4240439700
       ],
       "result": "Bind every admitted college source ID to its retained URL/digest set, pin the documented April 24 pre-draft cutoff, and reconcile the MHJ card school to the validated draft identity."
+    },
+    {
+      "comment_ids": [
+        4240625781,
+        4240625783,
+        4240625786,
+        4240625787
+      ],
+      "result": "Bind supplemental name-source IDs to retained evidence, pin all retained identity-resolution values and the documented base commit, and validate/project the unavailable normalization schema."
     }
   ]
 }
