@@ -1,0 +1,3049 @@
+{
+  "class_year": 2024,
+  "status": "unpromoted_candidate_pending_independent_review",
+  "promotable": false,
+  "base_commit": "e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6",
+  "source_facts_sha256": "fe0503eaacebd43cb93be97b0d49eafc1b964c23a071b3e17ae9387c3b5b6b5e",
+  "artifact": "2024_coverage_matrix_v0",
+  "cohort": {
+    "definition": "All 2024 drafted QB/RB/WR/TE, classified by NFL draft position.",
+    "total": 78,
+    "counts": {
+      "QB": 11,
+      "RB": 20,
+      "WR": 35,
+      "TE": 12
+    },
+    "udfa_rule": "Separate supplemental cohort requires explicit signing-source evidence; none admitted in v0."
+  },
+  "summary": {
+    "census_subjects": 78,
+    "legacy_seed_subjects": 15,
+    "previously_absent_from_seed": 63,
+    "sourced_college_candidates": 16,
+    "identity_only_blocked": 62,
+    "legacy_rows_with_raw_conflicts": 12,
+    "qualified_pre_draft_grades": 0,
+    "qualified_post_draft_grades": 0
+  },
+  "model": {
+    "producer_path": "scripts/compute_rookie_alpha.py",
+    "producer_sha256": "a7d33fc19212955912635fcfaea3ab5380350dcddf36e5af17007491e11737f6",
+    "existing_export_version": "rookie-alpha-predraft-v0.5.0",
+    "base_weight_formula": {
+      "athletic": 0.35,
+      "production": 0.45,
+      "expected_draft_capital": 0.2
+    },
+    "qualification_note": "Current producer also has contextual adjustments and neutral defaults. No Alpha pass executed: defaults would manufacture completeness without qualified operands.",
+    "normalization_status": {
+      "status": "unavailable",
+      "required": "Full eligible 2023 positional CFBD populations, filters and producer version.",
+      "observed_access": "Unauthenticated CFBD 2023 receiving request returned HTTP 401; no API key in this execution environment.",
+      "effect": "No qualified normalized production score or Rookie Alpha grade is emitted. Manual legacy scores are not repaired by changing their source text."
+    },
+    "formula_changed": false
+  },
+  "players": [
+    {
+      "player_id": "qb-caleb-williams",
+      "player_name": "Caleb Williams",
+      "position": "QB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "sourced_college_candidate",
+      "legacy_seed_present": true,
+      "legacy_alpha_row_present": true,
+      "college_production_status": "source_backed_candidate_pending_review",
+      "college_source_refs": [
+        "college-caleb"
+      ],
+      "college_observation_ref": "source_facts_v0.json#/college_observations/0",
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "legacy_manual_input_unqualified",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Existing raw production operands conflict with primary school records; candidate correction requires review.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": 73.5837,
+      "legacy_alpha_qualification": "unqualified_existing_output_preserved",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "qb-jayden-daniels",
+      "player_name": "Jayden Daniels",
+      "position": "QB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "sourced_college_candidate",
+      "legacy_seed_present": true,
+      "legacy_alpha_row_present": true,
+      "college_production_status": "source_backed_candidate_pending_review",
+      "college_source_refs": [
+        "college-daniels"
+      ],
+      "college_observation_ref": "source_facts_v0.json#/college_observations/1",
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "legacy_manual_input_unqualified",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Existing raw production operands conflict with primary school records; candidate correction requires review.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": 83.5174,
+      "legacy_alpha_qualification": "unqualified_existing_output_preserved",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "qb-drake-maye",
+      "player_name": "Drake Maye",
+      "position": "QB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "sourced_college_candidate",
+      "legacy_seed_present": true,
+      "legacy_alpha_row_present": true,
+      "college_production_status": "source_backed_candidate_pending_review",
+      "college_source_refs": [
+        "college-maye"
+      ],
+      "college_observation_ref": "source_facts_v0.json#/college_observations/2",
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "legacy_manual_input_unqualified",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Existing raw production operands conflict with primary school records; candidate correction requires review.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": 69.0207,
+      "legacy_alpha_qualification": "unqualified_existing_output_preserved",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-marvin-harrison-jr",
+      "player_name": "Marvin Harrison Jr.",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "sourced_college_candidate",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "source_backed_candidate_pending_review",
+      "college_source_refs": [
+        "college-mhj"
+      ],
+      "college_observation_ref": "source_facts_v0.json#/college_observations/3",
+      "testing_status": "existing_historical_DNQ_no_timed_or_jump_operands",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction.",
+          "No timed/jump testing in existing historical row (SPORQ DNQ); DNQ is missingness, not a low score."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity",
+        "college-mhj"
+      ]
+    },
+    {
+      "player_id": "wr-malik-nabers",
+      "player_name": "Malik Nabers",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "sourced_college_candidate",
+      "legacy_seed_present": true,
+      "legacy_alpha_row_present": true,
+      "college_production_status": "source_backed_candidate_pending_review",
+      "college_source_refs": [
+        "college-nabers"
+      ],
+      "college_observation_ref": "source_facts_v0.json#/college_observations/4",
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "legacy_manual_input_unqualified",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": 78.5182,
+      "legacy_alpha_qualification": "unqualified_existing_output_preserved",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "qb-michael-penix-jr",
+      "player_name": "Michael Penix Jr.",
+      "position": "QB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity",
+        "draft-penix-name"
+      ]
+    },
+    {
+      "player_id": "wr-rome-odunze",
+      "player_name": "Rome Odunze",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "sourced_college_candidate",
+      "legacy_seed_present": true,
+      "legacy_alpha_row_present": true,
+      "college_production_status": "source_backed_candidate_pending_review",
+      "college_source_refs": [
+        "college-odunze"
+      ],
+      "college_observation_ref": "source_facts_v0.json#/college_observations/5",
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "legacy_manual_input_unqualified",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": 78.5406,
+      "legacy_alpha_qualification": "unqualified_existing_output_preserved",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "qb-j-j-mccarthy",
+      "player_name": "J.J. McCarthy",
+      "position": "QB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "qb-bo-nix",
+      "player_name": "Bo Nix",
+      "position": "QB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "te-brock-bowers",
+      "player_name": "Brock Bowers",
+      "position": "TE",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "sourced_college_candidate",
+      "legacy_seed_present": true,
+      "legacy_alpha_row_present": true,
+      "college_production_status": "source_backed_candidate_pending_review",
+      "college_source_refs": [
+        "college-bowers"
+      ],
+      "college_observation_ref": "source_facts_v0.json#/college_observations/10",
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "legacy_manual_input_unqualified",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Existing raw production operands conflict with primary school records; candidate correction requires review.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": 77.25,
+      "legacy_alpha_qualification": "unqualified_existing_output_preserved",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-brian-thomas-jr",
+      "player_name": "Brian Thomas Jr.",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "sourced_college_candidate",
+      "legacy_seed_present": true,
+      "legacy_alpha_row_present": true,
+      "college_production_status": "source_backed_candidate_pending_review",
+      "college_source_refs": [
+        "college-thomas"
+      ],
+      "college_observation_ref": "source_facts_v0.json#/college_observations/6",
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "legacy_manual_input_unqualified",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": 71.7615,
+      "legacy_alpha_qualification": "unqualified_existing_output_preserved",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity",
+        "college-thomas"
+      ]
+    },
+    {
+      "player_id": "wr-xavier-worthy",
+      "player_name": "Xavier Worthy",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "sourced_college_candidate",
+      "legacy_seed_present": true,
+      "legacy_alpha_row_present": true,
+      "college_production_status": "source_backed_candidate_pending_review",
+      "college_source_refs": [
+        "college-worthy"
+      ],
+      "college_observation_ref": "source_facts_v0.json#/college_observations/7",
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "legacy_manual_input_unqualified",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Existing raw production operands conflict with primary school records; candidate correction requires review.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": 65.3897,
+      "legacy_alpha_qualification": "unqualified_existing_output_preserved",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-ricky-pearsall",
+      "player_name": "Ricky Pearsall",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-xavier-legette",
+      "player_name": "Xavier Legette",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-keon-coleman",
+      "player_name": "Keon Coleman",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-ladd-mcconkey",
+      "player_name": "Ladd McConkey",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "sourced_college_candidate",
+      "legacy_seed_present": true,
+      "legacy_alpha_row_present": true,
+      "college_production_status": "source_backed_candidate_pending_review",
+      "college_source_refs": [
+        "college-mcconkey"
+      ],
+      "college_observation_ref": "source_facts_v0.json#/college_observations/8",
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "legacy_manual_input_unqualified",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Existing raw production operands conflict with primary school records; candidate correction requires review.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": 59.7579,
+      "legacy_alpha_qualification": "unqualified_existing_output_preserved",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-ja-lynn-polk",
+      "player_name": "Ja'Lynn Polk",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-jonathon-brooks",
+      "player_name": "Jonathon Brooks",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "sourced_college_candidate",
+      "legacy_seed_present": true,
+      "legacy_alpha_row_present": true,
+      "college_production_status": "source_backed_candidate_pending_review",
+      "college_source_refs": [
+        "college-brooks"
+      ],
+      "college_observation_ref": "source_facts_v0.json#/college_observations/11",
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "legacy_manual_input_unqualified",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Existing raw production operands conflict with primary school records; candidate correction requires review.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": 64.5499,
+      "legacy_alpha_qualification": "unqualified_existing_output_preserved",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-adonai-mitchell",
+      "player_name": "Adonai Mitchell",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "sourced_college_candidate",
+      "legacy_seed_present": true,
+      "legacy_alpha_row_present": true,
+      "college_production_status": "source_backed_candidate_pending_review",
+      "college_source_refs": [
+        "college-mitchell"
+      ],
+      "college_observation_ref": "source_facts_v0.json#/college_observations/9",
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "legacy_manual_input_unqualified",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Existing raw production operands conflict with primary school records; candidate correction requires review.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": 69.0571,
+      "legacy_alpha_qualification": "unqualified_existing_output_preserved",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "te-ben-sinnott",
+      "player_name": "Ben Sinnott",
+      "position": "TE",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-malachi-corley",
+      "player_name": "Malachi Corley",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-trey-benson",
+      "player_name": "Trey Benson",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "sourced_college_candidate",
+      "legacy_seed_present": true,
+      "legacy_alpha_row_present": true,
+      "college_production_status": "source_backed_candidate_pending_review",
+      "college_source_refs": [
+        "college-benson",
+        "college-benson-pdf"
+      ],
+      "college_observation_ref": "source_facts_v0.json#/college_observations/13",
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "legacy_manual_input_unqualified",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Existing raw production operands conflict with primary school records; candidate correction requires review.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": 72.6326,
+      "legacy_alpha_qualification": "unqualified_existing_output_preserved",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-jermaine-burton",
+      "player_name": "Jermaine Burton",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "te-tip-reiman",
+      "player_name": "Tip Reiman",
+      "position": "TE",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-blake-corum",
+      "player_name": "Blake Corum",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "sourced_college_candidate",
+      "legacy_seed_present": true,
+      "legacy_alpha_row_present": true,
+      "college_production_status": "source_backed_candidate_pending_review",
+      "college_source_refs": [
+        "college-corum"
+      ],
+      "college_observation_ref": "source_facts_v0.json#/college_observations/12",
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "legacy_manual_input_unqualified",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Existing raw production operands conflict with primary school records; candidate correction requires review.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": 57.6667,
+      "legacy_alpha_qualification": "unqualified_existing_output_preserved",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-roman-wilson",
+      "player_name": "Roman Wilson",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-marshawn-lloyd",
+      "player_name": "MarShawn Lloyd",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "sourced_college_candidate",
+      "legacy_seed_present": true,
+      "legacy_alpha_row_present": true,
+      "college_production_status": "source_backed_candidate_pending_review",
+      "college_source_refs": [
+        "college-lloyd"
+      ],
+      "college_observation_ref": "source_facts_v0.json#/college_observations/14",
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "legacy_manual_input_unqualified",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Existing raw production operands conflict with primary school records; candidate correction requires review.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": 65.7444,
+      "legacy_alpha_qualification": "unqualified_existing_output_preserved",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-jalen-mcmillan",
+      "player_name": "Jalen McMillan",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-luke-mccaffrey",
+      "player_name": "Luke McCaffrey",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "te-ja-tavion-sanders",
+      "player_name": "Ja'Tavion Sanders",
+      "position": "TE",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-troy-franklin",
+      "player_name": "Troy Franklin",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "te-theo-johnson",
+      "player_name": "Theo Johnson",
+      "position": "TE",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-javon-baker",
+      "player_name": "Javon Baker",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-devontez-walker",
+      "player_name": "Devontez Walker",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "te-erick-all",
+      "player_name": "Erick All",
+      "position": "TE",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-jaylen-wright",
+      "player_name": "Jaylen Wright",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "te-a-j-barner",
+      "player_name": "A.J. Barner",
+      "position": "TE",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "te-cade-stover",
+      "player_name": "Cade Stover",
+      "position": "TE",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-bucky-irving",
+      "player_name": "Bucky Irving",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-will-shipley",
+      "player_name": "Will Shipley",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-ray-davis",
+      "player_name": "Ray Davis",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-isaac-guerendo",
+      "player_name": "Isaac Guerendo",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "te-jared-wiley",
+      "player_name": "Jared Wiley",
+      "position": "TE",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-sione-vaki",
+      "player_name": "Sione Vaki",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-braelon-allen",
+      "player_name": "Braelon Allen",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "sourced_college_candidate",
+      "legacy_seed_present": true,
+      "legacy_alpha_row_present": true,
+      "college_production_status": "source_backed_candidate_pending_review",
+      "college_source_refs": [
+        "college-allen",
+        "college-allen-pdf"
+      ],
+      "college_observation_ref": "source_facts_v0.json#/college_observations/15",
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "legacy_manual_input_unqualified",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Existing raw production operands conflict with primary school records; candidate correction requires review.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": 52.0837,
+      "legacy_alpha_qualification": "unqualified_existing_output_preserved",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-jacob-cowing",
+      "player_name": "Jacob Cowing",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-anthony-gould",
+      "player_name": "Anthony Gould",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-audric-estime",
+      "player_name": "Audric Estime",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "qb-spencer-rattler",
+      "player_name": "Spencer Rattler",
+      "position": "QB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-ainias-smith",
+      "player_name": "Ainias Smith",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-jamari-thrash",
+      "player_name": "Jamari Thrash",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-rasheen-ali",
+      "player_name": "Rasheen Ali",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-tyrone-tracy-jr",
+      "player_name": "Tyrone Tracy Jr.",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity",
+        "draft-tracy-name"
+      ]
+    },
+    {
+      "player_id": "rb-keilan-robinson",
+      "player_name": "Keilan Robinson",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-bub-means",
+      "player_name": "Bub Means",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "qb-jordan-travis",
+      "player_name": "Jordan Travis",
+      "position": "QB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-isaiah-davis",
+      "player_name": "Isaiah Davis",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-kimani-vidal",
+      "player_name": "Kimani Vidal",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-jha-quan-jackson",
+      "player_name": "Jha'Quan Jackson",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-malik-washington",
+      "player_name": "Malik Washington",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-johnny-wilson",
+      "player_name": "Johnny Wilson",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-jase-mcclellan",
+      "player_name": "Jase McClellan",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-casey-washington",
+      "player_name": "Casey Washington",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-tejhaun-palmer",
+      "player_name": "Tejhaun Palmer",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "qb-joe-milton-iii",
+      "player_name": "Joe Milton III",
+      "position": "QB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity",
+        "draft-milton-name"
+      ]
+    },
+    {
+      "player_id": "te-tanner-mclachlan",
+      "player_name": "Tanner McLachlan",
+      "position": "TE",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-jawhar-jordan",
+      "player_name": "Jawhar Jordan",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "rb-dylan-laube",
+      "player_name": "Dylan Laube",
+      "position": "RB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-jordan-whittington",
+      "player_name": "Jordan Whittington",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-ryan-flournoy",
+      "player_name": "Ryan Flournoy",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "qb-devin-leary",
+      "player_name": "Devin Leary",
+      "position": "QB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-brenden-rice",
+      "player_name": "Brenden Rice",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "te-jaheim-bell",
+      "player_name": "Jaheim Bell",
+      "position": "TE",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-devaughn-vele",
+      "player_name": "Devaughn Vele",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-tahj-washington",
+      "player_name": "Tahj Washington",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "qb-michael-pratt",
+      "player_name": "Michael Pratt",
+      "position": "QB",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "te-devin-culp",
+      "player_name": "Devin Culp",
+      "position": "TE",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "player_id": "wr-cornelius-johnson",
+      "player_name": "Cornelius Johnson",
+      "position": "WR",
+      "identity_profile_status": "sourced_draft_identity",
+      "prospect_profile_status": "identity_only_blocked",
+      "legacy_seed_present": false,
+      "legacy_alpha_row_present": false,
+      "college_production_status": "not_acquired",
+      "college_source_refs": [],
+      "college_observation_ref": null,
+      "testing_status": "not_qualified_in_this_pass",
+      "expected_draft_capital_status": "unavailable",
+      "draft_facts_status": "source_backed_candidate_not_canonical_Data_handoff",
+      "pre_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Public final-season college production has not been acquired for this subject in this bounded pass.",
+          "Full 2023 positional normalization population and retained producer receipt unavailable.",
+          "Pre-draft testing/context/expected-capital operands have not been qualified for a new reconstruction."
+        ]
+      },
+      "post_draft_grade": {
+        "value": null,
+        "status": "unavailable",
+        "blockers": [
+          "Pre-draft operands not qualified.",
+          "Canonical Data 2024 draft-results handoff unavailable; coordinate #242."
+        ]
+      },
+      "legacy_alpha_score": null,
+      "legacy_alpha_qualification": "no_existing_output",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    }
+  ]
+}

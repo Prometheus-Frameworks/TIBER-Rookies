@@ -1,0 +1,2540 @@
+{
+  "artifact": "2024_reconstruction_source_facts_v0",
+  "class_year": 2024,
+  "status": "unpromoted_candidate_pending_independent_review",
+  "promotable": false,
+  "base_commit": "e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6",
+  "retrieved_on": "2026-10-10",
+  "pre_draft_cutoff": "2024-04-24T23:59:59Z",
+  "cohort": {
+    "definition": "All 2024 drafted QB/RB/WR/TE, classified by NFL draft position.",
+    "total": 78,
+    "counts": {
+      "QB": 11,
+      "RB": 20,
+      "WR": 35,
+      "TE": 12
+    },
+    "udfa_rule": "Separate supplemental cohort requires explicit signing-source evidence; none admitted in v0."
+  },
+  "source_ledger": [
+    {
+      "source_id": "college-allen",
+      "url": "https://uwbadgers.com/sports/football/roster/braelon-allen/11864",
+      "retrieved_at": "2026-10-10T16:29:42.415543+00:00",
+      "sha256": "eebc27174677f6312772927005d668fb8c23e97cfb89e70bd768aeffb666ec38",
+      "status": "retrieved",
+      "bytes": 2508541,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "college-allen-pdf",
+      "url": "https://uwbadgers.com/documents/download/2024/1/2/2023_Season_Stats.pdf",
+      "retrieved_at": "2026-10-10T16:29:41.794394+00:00",
+      "sha256": "c1e092027242603962f7214ebf229138c3aa52679f53bcb74af76aa3a6993357",
+      "status": "retrieved",
+      "bytes": 935195,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "college-benson",
+      "url": "https://seminoles.com/sports/football/roster/trey-benson/4907",
+      "retrieved_at": "2026-10-10T16:29:42.732430+00:00",
+      "sha256": "f44f502e7c84ca858ebff75081226068f012760488c0538e1f9b9a53445bbe3c",
+      "status": "retrieved",
+      "bytes": 2570557,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "college-benson-pdf",
+      "url": "https://seminoles.com/documents/download/2024/3/5/Season_Recap.pdf",
+      "retrieved_at": "2026-10-10T16:29:41.672662+00:00",
+      "sha256": "46ef3afe89e3e1f616a46510798175e5a874326e6933f895bf3726268f8b530a",
+      "status": "retrieved",
+      "bytes": 3502515,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "college-bowers",
+      "url": "https://georgiadogs.com/sports/football/roster/brock--bowers/7345",
+      "retrieved_at": "2026-10-10T16:29:37.663202+00:00",
+      "sha256": "206a41cc79fc267fb80b2461bbc162dd45547eca86c73f2ce5ffce31fb1378d6",
+      "status": "retrieved",
+      "bytes": 2018555,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "college-brooks",
+      "url": "https://texaslonghorns.com/news/2023/11/29/football-four-longhorns-named-earl-campbell-tyler-rose-award-semifinalists",
+      "retrieved_at": "2026-10-10T16:29:39.062379+00:00",
+      "sha256": "dd528595637d3e56946760a060478fbeac57dea234de2b2a688794befffe5c7c",
+      "status": "retrieved",
+      "bytes": 504486,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "college-caleb",
+      "url": "https://usctrojans.com/sports/football/roster/williams-caleb/15820",
+      "retrieved_at": "2026-10-10T16:29:29.325916+00:00",
+      "sha256": "c8ecad6a5c09a8158b767bf71859cf5f2a2b4e7b69eaa1861322328d412d95fb",
+      "status": "retrieved",
+      "bytes": 2847260,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "college-corum",
+      "url": "https://mgoblue.com/sports/football/roster/blake-corum/24331",
+      "retrieved_at": "2026-10-10T16:29:39.360610+00:00",
+      "sha256": "b62ac6b40d3a569e519c43b445e83a86cbfe491ff82d078600541587d9a90a19",
+      "status": "retrieved",
+      "bytes": 2172665,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "college-daniels",
+      "url": "https://lsusports.net/news/2023/12/6/daniels-named-sec-player-of-the-year-by-leagues-coaches",
+      "retrieved_at": "2026-10-10T16:29:29.549871+00:00",
+      "sha256": "3fd16145fa6583a537b3220e653e6fa0e3d871adfea27e6e4d30b6c3cda5cf3c",
+      "status": "retrieved",
+      "bytes": 613819,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "college-lloyd",
+      "url": "https://usctrojans.com/news/2023/12/5/football-eleven-trojans-earn-all-pac-12-conference-honors",
+      "retrieved_at": "2026-10-10T16:29:41.983568+00:00",
+      "sha256": "7f55ffa31cb28da18aa5266f9bd7a0eba45febc6d83984e755dfae4430032eb1",
+      "status": "retrieved",
+      "bytes": 920595,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "college-maye",
+      "url": "https://goheels.com/sports/football/roster/mayedrake/24288",
+      "retrieved_at": "2026-10-10T16:29:31.599049+00:00",
+      "sha256": "b7f8bc2df8055135b55854261be69781759d137490990eacdefe600b5419db95",
+      "status": "retrieved",
+      "bytes": 1972857,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "college-mcconkey",
+      "url": "https://georgiadogs.com/sports/football/roster/ladd-mcconkey/7388",
+      "retrieved_at": "2026-10-10T16:29:37.372980+00:00",
+      "sha256": "2dca95611d59bf349e5f26032eb051407502387933b3185572dc2fb5afc4be22",
+      "status": "retrieved",
+      "bytes": 1967549,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "college-mhj",
+      "url": "https://ohiostatebuckeyes.com/sports/football/roster/marvin-harrison-jr-/5684",
+      "retrieved_at": "2026-10-10T16:29:28.519643+00:00",
+      "sha256": "0eacadfa48ab9dcc6e4319b6541146d312b7494272e16a67dc5413d4d554c485",
+      "status": "retrieved",
+      "bytes": 3211269,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "college-mitchell",
+      "url": "https://texaslonghorns.com/sports/football/roster/adonai-mitchell/12575",
+      "retrieved_at": "2026-10-10T16:29:42.791856+00:00",
+      "sha256": "87e9114845e06b6b61bc1c4b98321936a8ba9c73483cbac6e10f9f81d0bd35e9",
+      "status": "retrieved",
+      "bytes": 2323824,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "college-nabers",
+      "url": "https://lsusports.net/roster/malik-nabers/",
+      "retrieved_at": "2026-10-10T16:29:38.806186+00:00",
+      "sha256": "42f04d2eb3cbfdafaefb7b3bb09d6cd2868f0d15310ff3c8b1ffa5a39dc6eceb",
+      "status": "retrieved",
+      "bytes": 724268,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "college-odunze",
+      "url": "https://gohuskies.com/news/2024/1/23/football-odunze-named-csc-academic-team-member-of-the-year",
+      "retrieved_at": "2026-10-10T16:29:29.775456+00:00",
+      "sha256": "bf1b24dfc58e41f35de8dcebe101ccce38c0c614d2f724814a8ad5acff15ef9d",
+      "status": "retrieved",
+      "bytes": 843375,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "college-thomas",
+      "url": "https://lsusports.net/news/2024/04/26/thomas-becomes-third-tiger-picked-in-first-round-of-2024-nfl-draft",
+      "retrieved_at": "2026-10-10T16:29:34.351171+00:00",
+      "sha256": "3cb1fddae580a7754fbeacbe2dfba34224f1cde44c8b97ec4b95e160b5868387",
+      "status": "retrieved",
+      "bytes": 588575,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "college-worthy",
+      "url": "https://texaslonghorns.com/sports/football/roster/xavier-worthy/12556",
+      "retrieved_at": "2026-10-10T16:29:39.816514+00:00",
+      "sha256": "fd1fbb3d180ae4bccf772107f4dc92068517fc0eddf09774ac296a903149febe",
+      "status": "retrieved",
+      "bytes": 2401821,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "draft-milton-name",
+      "url": "https://www.nfl.com/videos/patriots-select-joe-milton-iii-with-no-193-pick-in-2024-draft",
+      "retrieved_on": "2026-10-10",
+      "retrieval_method": "search_service_primary_record",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "rights_scope": "Factual name and draft identity only; no analyst commentary."
+    },
+    {
+      "source_id": "draft-penix-name",
+      "url": "https://www.atlantafalcons.com/news/michael-penix-jr-quarterback-washington-huskies-no-8-pick-overall-2024-nfl-draft",
+      "retrieved_on": "2026-10-10",
+      "retrieval_method": "search_service_primary_record",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "rights_scope": "Factual name and draft identity only; no analyst commentary."
+    },
+    {
+      "source_id": "draft-tracy-name",
+      "url": "https://www.giants.com/news/tyrone-tracy-jr-running-back-purdue-nfl-draft-2024",
+      "retrieved_on": "2026-10-10",
+      "retrieval_method": "search_service_primary_record",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "rights_scope": "Factual name and draft identity only; no analyst commentary."
+    },
+    {
+      "source_id": "nfl-draft-factbook",
+      "url": "https://static.www.nfl.com/image/upload/league/apps/league-site/media-guides/2024/2024_Record_and_Fact_Book_incl_Supplemental.pdf",
+      "retrieved_on": "2026-10-10",
+      "sha256": "ed58911ff56141c9bb7c31f7c5b46f59ef5fe70790f35f6a7c566b36c1ff7c88",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "rights_scope": "Factual draft/identity fields only; no copied prose or analyst data.",
+      "snapshot_note": "Retrieved now; raw source document is not republished."
+    },
+    {
+      "source_id": "nfl-mhj-bio",
+      "url": "https://www.azcardinals.com/team/players-roster/marvin-harrison-jr/",
+      "retrieved_at": "2026-10-10T16:29:45.937365+00:00",
+      "sha256": "7ea0a6e5cb6a8fdc98ff032d6be591f5ba8517211ba1df71cf1c8620068888e2",
+      "status": "retrieved",
+      "bytes": 452178,
+      "rights_scope": "Public factual records only; no analyst grades/charting or copied prose.",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "snapshot_note": "Retrieved now, not an archived contemporaneous 2024 receipt. Raw source document is not republished."
+    },
+    {
+      "source_id": "nflverse-draft-identity",
+      "url": "https://raw.githubusercontent.com/nflverse/nfldata/master/data/draft_picks.csv",
+      "retrieved_on": "2026-10-10",
+      "sha256": "6ef8dd337de2f4215bd9018922e5527b5832c5ec4dbd12e43d20663f2949f18d",
+      "qualification": "public_factual_candidate_pending_independent_review",
+      "rights_scope": "Factual draft/identity fields only; no copied prose or analyst data.",
+      "snapshot_note": "Retrieved now; raw source document is not republished."
+    }
+  ],
+  "draft_day_records": [
+    {
+      "player_id": "qb-caleb-williams",
+      "player_name": "Caleb Williams",
+      "position": "QB",
+      "school": "Southern California",
+      "class_year": 2024,
+      "overall_pick": 1,
+      "draft_round": 1,
+      "draft_team": "CHI",
+      "draft_team_name": "CHICAGO BEARS",
+      "gsis_id": null,
+      "pfr_id": "WillCa03",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "right"
+      },
+      "id_status": "existing_rookies_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "qb-jayden-daniels",
+      "player_name": "Jayden Daniels",
+      "position": "QB",
+      "school": "LSU",
+      "class_year": 2024,
+      "overall_pick": 2,
+      "draft_round": 1,
+      "draft_team": "WAS",
+      "draft_team_name": "WASHINGTON COMMANDERS",
+      "gsis_id": null,
+      "pfr_id": "DaniJa02",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 37,
+        "column": "right"
+      },
+      "id_status": "existing_rookies_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "qb-drake-maye",
+      "player_name": "Drake Maye",
+      "position": "QB",
+      "school": "North Carolina",
+      "class_year": 2024,
+      "overall_pick": 3,
+      "draft_round": 1,
+      "draft_team": "NE",
+      "draft_team_name": "NEW ENGLAND PATRIOTS",
+      "gsis_id": null,
+      "pfr_id": "MayeDr00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "left"
+      },
+      "id_status": "existing_rookies_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-marvin-harrison-jr",
+      "player_name": "Marvin Harrison Jr.",
+      "position": "WR",
+      "school": "Ohio State",
+      "class_year": 2024,
+      "overall_pick": 4,
+      "draft_round": 1,
+      "draft_team": "ARI",
+      "draft_team_name": "ARIZONA CARDINALS",
+      "gsis_id": null,
+      "pfr_id": "HarrMa09",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity",
+        "college-mhj"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-malik-nabers",
+      "player_name": "Malik Nabers",
+      "position": "WR",
+      "school": "LSU",
+      "class_year": 2024,
+      "overall_pick": 6,
+      "draft_round": 1,
+      "draft_team": "NYG",
+      "draft_team_name": "NEW YORK GIANTS",
+      "gsis_id": null,
+      "pfr_id": "NabeMa00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "left"
+      },
+      "id_status": "existing_rookies_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "qb-michael-penix-jr",
+      "player_name": "Michael Penix Jr.",
+      "position": "QB",
+      "school": "Washington",
+      "class_year": 2024,
+      "overall_pick": 8,
+      "draft_round": 1,
+      "draft_team": "ATL",
+      "draft_team_name": "ATLANTA FALCONS",
+      "gsis_id": null,
+      "pfr_id": "PeniMi00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity",
+        "draft-penix-name"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-rome-odunze",
+      "player_name": "Rome Odunze",
+      "position": "WR",
+      "school": "Washington",
+      "class_year": 2024,
+      "overall_pick": 9,
+      "draft_round": 1,
+      "draft_team": "CHI",
+      "draft_team_name": "CHICAGO BEARS",
+      "gsis_id": null,
+      "pfr_id": "OdunRo00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "right"
+      },
+      "id_status": "existing_rookies_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "qb-j-j-mccarthy",
+      "player_name": "J.J. McCarthy",
+      "position": "QB",
+      "school": "Michigan",
+      "class_year": 2024,
+      "overall_pick": 10,
+      "draft_round": 1,
+      "draft_team": "MIN",
+      "draft_team_name": "MINNESOTA VIKINGS",
+      "gsis_id": null,
+      "pfr_id": "McCaJJ00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "qb-bo-nix",
+      "player_name": "Bo Nix",
+      "position": "QB",
+      "school": "Oregon",
+      "class_year": 2024,
+      "overall_pick": 12,
+      "draft_round": 1,
+      "draft_team": "DEN",
+      "draft_team_name": "DENVER BRONCOS",
+      "gsis_id": null,
+      "pfr_id": "NixxBo00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "te-brock-bowers",
+      "player_name": "Brock Bowers",
+      "position": "TE",
+      "school": "Georgia",
+      "class_year": 2024,
+      "overall_pick": 13,
+      "draft_round": 1,
+      "draft_team": "LV",
+      "draft_team_name": "LAS VEGAS RAIDERS",
+      "gsis_id": null,
+      "pfr_id": "BoweBr01",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "right"
+      },
+      "id_status": "existing_rookies_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-brian-thomas-jr",
+      "player_name": "Brian Thomas Jr.",
+      "position": "WR",
+      "school": "LSU",
+      "class_year": 2024,
+      "overall_pick": 23,
+      "draft_round": 1,
+      "draft_team": "JAX",
+      "draft_team_name": "JACKSONVILLE JAGUARS",
+      "gsis_id": null,
+      "pfr_id": "ThomBr06",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity",
+        "college-thomas"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "right"
+      },
+      "id_status": "existing_rookies_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-xavier-worthy",
+      "player_name": "Xavier Worthy",
+      "position": "WR",
+      "school": "Texas",
+      "class_year": 2024,
+      "overall_pick": 28,
+      "draft_round": 1,
+      "draft_team": "KC",
+      "draft_team_name": "KANSAS CITY CHIEFS",
+      "gsis_id": null,
+      "pfr_id": "WortXa00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "right"
+      },
+      "id_status": "existing_rookies_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-ricky-pearsall",
+      "player_name": "Ricky Pearsall",
+      "position": "WR",
+      "school": "Florida",
+      "class_year": 2024,
+      "overall_pick": 31,
+      "draft_round": 1,
+      "draft_team": "SF",
+      "draft_team_name": "SAN FRANCISCO 49ERS",
+      "gsis_id": null,
+      "pfr_id": "PearRi00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-xavier-legette",
+      "player_name": "Xavier Legette",
+      "position": "WR",
+      "school": "South Carolina",
+      "class_year": 2024,
+      "overall_pick": 32,
+      "draft_round": 1,
+      "draft_team": "CAR",
+      "draft_team_name": "CAROLINA PANTHERS",
+      "gsis_id": null,
+      "pfr_id": "LegeXa00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-keon-coleman",
+      "player_name": "Keon Coleman",
+      "position": "WR",
+      "school": "Florida State",
+      "class_year": 2024,
+      "overall_pick": 33,
+      "draft_round": 2,
+      "draft_team": "BUF",
+      "draft_team_name": "BUFFALO BILLS",
+      "gsis_id": null,
+      "pfr_id": "ColeKe02",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-ladd-mcconkey",
+      "player_name": "Ladd McConkey",
+      "position": "WR",
+      "school": "Georgia",
+      "class_year": 2024,
+      "overall_pick": 34,
+      "draft_round": 2,
+      "draft_team": "LAC",
+      "draft_team_name": "LOS ANGELES CHARGERS",
+      "gsis_id": null,
+      "pfr_id": "McCoLa00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "right"
+      },
+      "id_status": "existing_rookies_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-ja-lynn-polk",
+      "player_name": "Ja'Lynn Polk",
+      "position": "WR",
+      "school": "Washington",
+      "class_year": 2024,
+      "overall_pick": 37,
+      "draft_round": 2,
+      "draft_team": "NE",
+      "draft_team_name": "NEW ENGLAND PATRIOTS",
+      "gsis_id": null,
+      "pfr_id": "PolkJa00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-jonathon-brooks",
+      "player_name": "Jonathon Brooks",
+      "position": "RB",
+      "school": "Texas",
+      "class_year": 2024,
+      "overall_pick": 46,
+      "draft_round": 2,
+      "draft_team": "CAR",
+      "draft_team_name": "CAROLINA PANTHERS",
+      "gsis_id": null,
+      "pfr_id": "BrooJo02",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "right"
+      },
+      "id_status": "existing_rookies_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-adonai-mitchell",
+      "player_name": "Adonai Mitchell",
+      "position": "WR",
+      "school": "Texas",
+      "class_year": 2024,
+      "overall_pick": 52,
+      "draft_round": 2,
+      "draft_team": "IND",
+      "draft_team_name": "INDIANAPOLIS COLTS",
+      "gsis_id": null,
+      "pfr_id": "MitcAd00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "left"
+      },
+      "id_status": "existing_rookies_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "te-ben-sinnott",
+      "player_name": "Ben Sinnott",
+      "position": "TE",
+      "school": "Kansas State",
+      "class_year": 2024,
+      "overall_pick": 53,
+      "draft_round": 2,
+      "draft_team": "WAS",
+      "draft_team_name": "WASHINGTON COMMANDERS",
+      "gsis_id": null,
+      "pfr_id": "SinnBe00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 37,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-malachi-corley",
+      "player_name": "Malachi Corley",
+      "position": "WR",
+      "school": "Western Kentucky",
+      "class_year": 2024,
+      "overall_pick": 65,
+      "draft_round": 3,
+      "draft_team": "NYJ",
+      "draft_team_name": "NEW YORK JETS",
+      "gsis_id": null,
+      "pfr_id": "CorlMa00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-trey-benson",
+      "player_name": "Trey Benson",
+      "position": "RB",
+      "school": "Florida State",
+      "class_year": 2024,
+      "overall_pick": 66,
+      "draft_round": 3,
+      "draft_team": "ARI",
+      "draft_team_name": "ARIZONA CARDINALS",
+      "gsis_id": null,
+      "pfr_id": "BensTr01",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "left"
+      },
+      "id_status": "existing_rookies_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-jermaine-burton",
+      "player_name": "Jermaine Burton",
+      "position": "WR",
+      "school": "Alabama",
+      "class_year": 2024,
+      "overall_pick": 80,
+      "draft_round": 3,
+      "draft_team": "CIN",
+      "draft_team_name": "CINCINNATI BENGALS",
+      "gsis_id": null,
+      "pfr_id": "BurtJe01",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "te-tip-reiman",
+      "player_name": "Tip Reiman",
+      "position": "TE",
+      "school": "Illinois",
+      "class_year": 2024,
+      "overall_pick": 82,
+      "draft_round": 3,
+      "draft_team": "ARI",
+      "draft_team_name": "ARIZONA CARDINALS",
+      "gsis_id": null,
+      "pfr_id": "ReimTi00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-blake-corum",
+      "player_name": "Blake Corum",
+      "position": "RB",
+      "school": "Michigan",
+      "class_year": 2024,
+      "overall_pick": 83,
+      "draft_round": 3,
+      "draft_team": "LA",
+      "draft_team_name": "LOS ANGELES RAMS",
+      "gsis_id": null,
+      "pfr_id": "CoruBl00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "right"
+      },
+      "id_status": "existing_rookies_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-roman-wilson",
+      "player_name": "Roman Wilson",
+      "position": "WR",
+      "school": "Michigan",
+      "class_year": 2024,
+      "overall_pick": 84,
+      "draft_round": 3,
+      "draft_team": "PIT",
+      "draft_team_name": "PITTSBURGH STEELERS",
+      "gsis_id": null,
+      "pfr_id": "WilsRo02",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-marshawn-lloyd",
+      "player_name": "MarShawn Lloyd",
+      "position": "RB",
+      "school": "Southern California",
+      "class_year": 2024,
+      "overall_pick": 88,
+      "draft_round": 3,
+      "draft_team": "GB",
+      "draft_team_name": "GREEN BAY PACKERS",
+      "gsis_id": null,
+      "pfr_id": "LloyMa00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "left"
+      },
+      "id_status": "existing_rookies_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-jalen-mcmillan",
+      "player_name": "Jalen McMillan",
+      "position": "WR",
+      "school": "Washington",
+      "class_year": 2024,
+      "overall_pick": 92,
+      "draft_round": 3,
+      "draft_team": "TB",
+      "draft_team_name": "TAMPA BAY BUCCANEERS",
+      "gsis_id": null,
+      "pfr_id": "McMiJa01",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 37,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-luke-mccaffrey",
+      "player_name": "Luke McCaffrey",
+      "position": "WR",
+      "school": "Rice",
+      "class_year": 2024,
+      "overall_pick": 100,
+      "draft_round": 3,
+      "draft_team": "WAS",
+      "draft_team_name": "WASHINGTON COMMANDERS",
+      "gsis_id": null,
+      "pfr_id": "McCaLu00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 37,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "te-ja-tavion-sanders",
+      "player_name": "Ja'Tavion Sanders",
+      "position": "TE",
+      "school": "Texas",
+      "class_year": 2024,
+      "overall_pick": 101,
+      "draft_round": 4,
+      "draft_team": "CAR",
+      "draft_team_name": "CAROLINA PANTHERS",
+      "gsis_id": null,
+      "pfr_id": "SandJa01",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-troy-franklin",
+      "player_name": "Troy Franklin",
+      "position": "WR",
+      "school": "Oregon",
+      "class_year": 2024,
+      "overall_pick": 102,
+      "draft_round": 4,
+      "draft_team": "DEN",
+      "draft_team_name": "DENVER BRONCOS",
+      "gsis_id": null,
+      "pfr_id": "FranTr00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "te-theo-johnson",
+      "player_name": "Theo Johnson",
+      "position": "TE",
+      "school": "Penn State",
+      "class_year": 2024,
+      "overall_pick": 107,
+      "draft_round": 4,
+      "draft_team": "NYG",
+      "draft_team_name": "NEW YORK GIANTS",
+      "gsis_id": null,
+      "pfr_id": "JohnTh00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-javon-baker",
+      "player_name": "Javon Baker",
+      "position": "WR",
+      "school": "Central Florida",
+      "class_year": 2024,
+      "overall_pick": 110,
+      "draft_round": 4,
+      "draft_team": "NE",
+      "draft_team_name": "NEW ENGLAND PATRIOTS",
+      "gsis_id": null,
+      "pfr_id": "BakeJa00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-devontez-walker",
+      "player_name": "Devontez Walker",
+      "position": "WR",
+      "school": "North Carolina",
+      "class_year": 2024,
+      "overall_pick": 113,
+      "draft_round": 4,
+      "draft_team": "BAL",
+      "draft_team_name": "BALTIMORE RAVENS",
+      "gsis_id": null,
+      "pfr_id": "WalkDe01",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "te-erick-all",
+      "player_name": "Erick All",
+      "position": "TE",
+      "school": "Iowa",
+      "class_year": 2024,
+      "overall_pick": 115,
+      "draft_round": 4,
+      "draft_team": "CIN",
+      "draft_team_name": "CINCINNATI BENGALS",
+      "gsis_id": null,
+      "pfr_id": "AllxEr00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-jaylen-wright",
+      "player_name": "Jaylen Wright",
+      "position": "RB",
+      "school": "Tennessee",
+      "class_year": 2024,
+      "overall_pick": 120,
+      "draft_round": 4,
+      "draft_team": "MIA",
+      "draft_team_name": "MIAMI DOLPHINS",
+      "gsis_id": null,
+      "pfr_id": "WrigJa04",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "te-a-j-barner",
+      "player_name": "A.J. Barner",
+      "position": "TE",
+      "school": "Michigan",
+      "class_year": 2024,
+      "overall_pick": 121,
+      "draft_round": 4,
+      "draft_team": "SEA",
+      "draft_team_name": "SEATTLE SEAHAWKS",
+      "gsis_id": null,
+      "pfr_id": "BarnAJ00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "te-cade-stover",
+      "player_name": "Cade Stover",
+      "position": "TE",
+      "school": "Ohio State",
+      "class_year": 2024,
+      "overall_pick": 123,
+      "draft_round": 4,
+      "draft_team": "HOU",
+      "draft_team_name": "HOUSTON TEXANS",
+      "gsis_id": null,
+      "pfr_id": "StovCa00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-bucky-irving",
+      "player_name": "Bucky Irving",
+      "position": "RB",
+      "school": "Oregon",
+      "class_year": 2024,
+      "overall_pick": 125,
+      "draft_round": 4,
+      "draft_team": "TB",
+      "draft_team_name": "TAMPA BAY BUCCANEERS",
+      "gsis_id": null,
+      "pfr_id": "IrviBu00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 37,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-will-shipley",
+      "player_name": "Will Shipley",
+      "position": "RB",
+      "school": "Clemson",
+      "class_year": 2024,
+      "overall_pick": 127,
+      "draft_round": 4,
+      "draft_team": "PHI",
+      "draft_team_name": "PHILADELPHIA EAGLES",
+      "gsis_id": null,
+      "pfr_id": "ShipWi00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-ray-davis",
+      "player_name": "Ray Davis",
+      "position": "RB",
+      "school": "Kentucky",
+      "class_year": 2024,
+      "overall_pick": 128,
+      "draft_round": 4,
+      "draft_team": "BUF",
+      "draft_team_name": "BUFFALO BILLS",
+      "gsis_id": null,
+      "pfr_id": "DaviRa04",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-isaac-guerendo",
+      "player_name": "Isaac Guerendo",
+      "position": "RB",
+      "school": "Louisville",
+      "class_year": 2024,
+      "overall_pick": 129,
+      "draft_round": 4,
+      "draft_team": "SF",
+      "draft_team_name": "SAN FRANCISCO 49ERS",
+      "gsis_id": null,
+      "pfr_id": "GuerIs00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "te-jared-wiley",
+      "player_name": "Jared Wiley",
+      "position": "TE",
+      "school": "TCU",
+      "class_year": 2024,
+      "overall_pick": 131,
+      "draft_round": 4,
+      "draft_team": "KC",
+      "draft_team_name": "KANSAS CITY CHIEFS",
+      "gsis_id": null,
+      "pfr_id": "WileJa00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-sione-vaki",
+      "player_name": "Sione Vaki",
+      "position": "RB",
+      "school": "Utah",
+      "class_year": 2024,
+      "overall_pick": 132,
+      "draft_round": 4,
+      "draft_team": "DET",
+      "draft_team_name": "DETROIT LIONS",
+      "gsis_id": null,
+      "pfr_id": "VakiSi00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-braelon-allen",
+      "player_name": "Braelon Allen",
+      "position": "RB",
+      "school": "Wisconsin",
+      "class_year": 2024,
+      "overall_pick": 134,
+      "draft_round": 4,
+      "draft_team": "NYJ",
+      "draft_team_name": "NEW YORK JETS",
+      "gsis_id": null,
+      "pfr_id": "AlleBr05",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "right"
+      },
+      "id_status": "existing_rookies_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-jacob-cowing",
+      "player_name": "Jacob Cowing",
+      "position": "WR",
+      "school": "Arizona",
+      "class_year": 2024,
+      "overall_pick": 135,
+      "draft_round": 4,
+      "draft_team": "SF",
+      "draft_team_name": "SAN FRANCISCO 49ERS",
+      "gsis_id": null,
+      "pfr_id": "CowiJa00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-anthony-gould",
+      "player_name": "Anthony Gould",
+      "position": "WR",
+      "school": "Oregon State",
+      "class_year": 2024,
+      "overall_pick": 142,
+      "draft_round": 5,
+      "draft_team": "IND",
+      "draft_team_name": "INDIANAPOLIS COLTS",
+      "gsis_id": null,
+      "pfr_id": "GoulAn00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-audric-estime",
+      "player_name": "Audric Estime",
+      "position": "RB",
+      "school": "Notre Dame",
+      "class_year": 2024,
+      "overall_pick": 147,
+      "draft_round": 5,
+      "draft_team": "DEN",
+      "draft_team_name": "DENVER BRONCOS",
+      "gsis_id": null,
+      "pfr_id": "EstiAu00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "qb-spencer-rattler",
+      "player_name": "Spencer Rattler",
+      "position": "QB",
+      "school": "South Carolina",
+      "class_year": 2024,
+      "overall_pick": 150,
+      "draft_round": 5,
+      "draft_team": "NO",
+      "draft_team_name": "NEW ORLEANS SAINTS",
+      "gsis_id": null,
+      "pfr_id": "RattSp00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-ainias-smith",
+      "player_name": "Ainias Smith",
+      "position": "WR",
+      "school": "Texas A&M",
+      "class_year": 2024,
+      "overall_pick": 152,
+      "draft_round": 5,
+      "draft_team": "PHI",
+      "draft_team_name": "PHILADELPHIA EAGLES",
+      "gsis_id": null,
+      "pfr_id": "SmitAi00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-jamari-thrash",
+      "player_name": "Jamari Thrash",
+      "position": "WR",
+      "school": "Louisville",
+      "class_year": 2024,
+      "overall_pick": 156,
+      "draft_round": 5,
+      "draft_team": "CLE",
+      "draft_team_name": "CLEVELAND BROWNS",
+      "gsis_id": null,
+      "pfr_id": "ThraJa01",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-rasheen-ali",
+      "player_name": "Rasheen Ali",
+      "position": "RB",
+      "school": "Marshall",
+      "class_year": 2024,
+      "overall_pick": 165,
+      "draft_round": 5,
+      "draft_team": "BAL",
+      "draft_team_name": "BALTIMORE RAVENS",
+      "gsis_id": null,
+      "pfr_id": "AlixRa00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-tyrone-tracy-jr",
+      "player_name": "Tyrone Tracy Jr.",
+      "position": "RB",
+      "school": "Purdue",
+      "class_year": 2024,
+      "overall_pick": 166,
+      "draft_round": 5,
+      "draft_team": "NYG",
+      "draft_team_name": "NEW YORK GIANTS",
+      "gsis_id": null,
+      "pfr_id": "TracTy00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity",
+        "draft-tracy-name"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-keilan-robinson",
+      "player_name": "Keilan Robinson",
+      "position": "RB",
+      "school": "Texas",
+      "class_year": 2024,
+      "overall_pick": 167,
+      "draft_round": 5,
+      "draft_team": "JAX",
+      "draft_team_name": "JACKSONVILLE JAGUARS",
+      "gsis_id": null,
+      "pfr_id": "RobiKe03",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-bub-means",
+      "player_name": "Bub Means",
+      "position": "WR",
+      "school": "Pittsburgh",
+      "class_year": 2024,
+      "overall_pick": 170,
+      "draft_round": 5,
+      "draft_team": "NO",
+      "draft_team_name": "NEW ORLEANS SAINTS",
+      "gsis_id": null,
+      "pfr_id": "MeanBu00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "qb-jordan-travis",
+      "player_name": "Jordan Travis",
+      "position": "QB",
+      "school": "Florida State",
+      "class_year": 2024,
+      "overall_pick": 171,
+      "draft_round": 5,
+      "draft_team": "NYJ",
+      "draft_team_name": "NEW YORK JETS",
+      "gsis_id": null,
+      "pfr_id": "TravJo00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-isaiah-davis",
+      "player_name": "Isaiah Davis",
+      "position": "RB",
+      "school": "South Dakota State",
+      "class_year": 2024,
+      "overall_pick": 173,
+      "draft_round": 5,
+      "draft_team": "NYJ",
+      "draft_team_name": "NEW YORK JETS",
+      "gsis_id": null,
+      "pfr_id": "DaviIs00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-kimani-vidal",
+      "player_name": "Kimani Vidal",
+      "position": "RB",
+      "school": "Troy",
+      "class_year": 2024,
+      "overall_pick": 181,
+      "draft_round": 6,
+      "draft_team": "LAC",
+      "draft_team_name": "LOS ANGELES CHARGERS",
+      "gsis_id": null,
+      "pfr_id": "VidaKi00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-jha-quan-jackson",
+      "player_name": "Jha'Quan Jackson",
+      "position": "WR",
+      "school": "Tulane",
+      "class_year": 2024,
+      "overall_pick": 182,
+      "draft_round": 6,
+      "draft_team": "TEN",
+      "draft_team_name": "TENNESSEE TITANS",
+      "gsis_id": null,
+      "pfr_id": "JackJh00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 37,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-malik-washington",
+      "player_name": "Malik Washington",
+      "position": "WR",
+      "school": "Virginia",
+      "class_year": 2024,
+      "overall_pick": 184,
+      "draft_round": 6,
+      "draft_team": "MIA",
+      "draft_team_name": "MIAMI DOLPHINS",
+      "gsis_id": null,
+      "pfr_id": "WashMa00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-johnny-wilson",
+      "player_name": "Johnny Wilson",
+      "position": "WR",
+      "school": "Florida State",
+      "class_year": 2024,
+      "overall_pick": 185,
+      "draft_round": 6,
+      "draft_team": "PHI",
+      "draft_team_name": "PHILADELPHIA EAGLES",
+      "gsis_id": null,
+      "pfr_id": "WilsJo03",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-jase-mcclellan",
+      "player_name": "Jase McClellan",
+      "position": "RB",
+      "school": "Alabama",
+      "class_year": 2024,
+      "overall_pick": 186,
+      "draft_round": 6,
+      "draft_team": "ATL",
+      "draft_team_name": "ATLANTA FALCONS",
+      "gsis_id": null,
+      "pfr_id": "McClJa05",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-casey-washington",
+      "player_name": "Casey Washington",
+      "position": "WR",
+      "school": "Illinois",
+      "class_year": 2024,
+      "overall_pick": 187,
+      "draft_round": 6,
+      "draft_team": "ATL",
+      "draft_team_name": "ATLANTA FALCONS",
+      "gsis_id": null,
+      "pfr_id": null,
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-tejhaun-palmer",
+      "player_name": "Tejhaun Palmer",
+      "position": "WR",
+      "school": "Alabama-Birmingham",
+      "class_year": 2024,
+      "overall_pick": 191,
+      "draft_round": 6,
+      "draft_team": "ARI",
+      "draft_team_name": "ARIZONA CARDINALS",
+      "gsis_id": null,
+      "pfr_id": null,
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "qb-joe-milton-iii",
+      "player_name": "Joe Milton III",
+      "position": "QB",
+      "school": "Tennessee",
+      "class_year": 2024,
+      "overall_pick": 193,
+      "draft_round": 6,
+      "draft_team": "NE",
+      "draft_team_name": "NEW ENGLAND PATRIOTS",
+      "gsis_id": null,
+      "pfr_id": "MiltJo00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity",
+        "draft-milton-name"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "te-tanner-mclachlan",
+      "player_name": "Tanner McLachlan",
+      "position": "TE",
+      "school": "Arizona",
+      "class_year": 2024,
+      "overall_pick": 194,
+      "draft_round": 6,
+      "draft_team": "CIN",
+      "draft_team_name": "CINCINNATI BENGALS",
+      "gsis_id": null,
+      "pfr_id": "McLaTa00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-jawhar-jordan",
+      "player_name": "Jawhar Jordan",
+      "position": "RB",
+      "school": "Louisville",
+      "class_year": 2024,
+      "overall_pick": 205,
+      "draft_round": 6,
+      "draft_team": "HOU",
+      "draft_team_name": "HOUSTON TEXANS",
+      "gsis_id": null,
+      "pfr_id": "JordJa00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "rb-dylan-laube",
+      "player_name": "Dylan Laube",
+      "position": "RB",
+      "school": "New Hampshire",
+      "class_year": 2024,
+      "overall_pick": 208,
+      "draft_round": 6,
+      "draft_team": "LV",
+      "draft_team_name": "LAS VEGAS RAIDERS",
+      "gsis_id": null,
+      "pfr_id": "LaubDy00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-jordan-whittington",
+      "player_name": "Jordan Whittington",
+      "position": "WR",
+      "school": "Texas",
+      "class_year": 2024,
+      "overall_pick": 213,
+      "draft_round": 6,
+      "draft_team": "LA",
+      "draft_team_name": "LOS ANGELES RAMS",
+      "gsis_id": null,
+      "pfr_id": "WhitJo04",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-ryan-flournoy",
+      "player_name": "Ryan Flournoy",
+      "position": "WR",
+      "school": "Southeast Missouri",
+      "class_year": 2024,
+      "overall_pick": 216,
+      "draft_round": 6,
+      "draft_team": "DAL",
+      "draft_team_name": "DALLAS COWBOYS",
+      "gsis_id": null,
+      "pfr_id": "FlouRy00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "qb-devin-leary",
+      "player_name": "Devin Leary",
+      "position": "QB",
+      "school": "Kentucky",
+      "class_year": 2024,
+      "overall_pick": 218,
+      "draft_round": 6,
+      "draft_team": "BAL",
+      "draft_team_name": "BALTIMORE RAVENS",
+      "gsis_id": null,
+      "pfr_id": "LearDe00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-brenden-rice",
+      "player_name": "Brenden Rice",
+      "position": "WR",
+      "school": "Southern California",
+      "class_year": 2024,
+      "overall_pick": 225,
+      "draft_round": 7,
+      "draft_team": "LAC",
+      "draft_team_name": "LOS ANGELES CHARGERS",
+      "gsis_id": null,
+      "pfr_id": "RiceBr00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "te-jaheim-bell",
+      "player_name": "Jaheim Bell",
+      "position": "TE",
+      "school": "Florida State",
+      "class_year": 2024,
+      "overall_pick": 231,
+      "draft_round": 7,
+      "draft_team": "NE",
+      "draft_team_name": "NEW ENGLAND PATRIOTS",
+      "gsis_id": null,
+      "pfr_id": "BellJa00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-devaughn-vele",
+      "player_name": "Devaughn Vele",
+      "position": "WR",
+      "school": "Utah",
+      "class_year": 2024,
+      "overall_pick": 235,
+      "draft_round": 7,
+      "draft_team": "DEN",
+      "draft_team_name": "DENVER BRONCOS",
+      "gsis_id": null,
+      "pfr_id": "VeleDe00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 34,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-tahj-washington",
+      "player_name": "Tahj Washington",
+      "position": "WR",
+      "school": "Southern California",
+      "class_year": 2024,
+      "overall_pick": 241,
+      "draft_round": 7,
+      "draft_team": "MIA",
+      "draft_team_name": "MIAMI DOLPHINS",
+      "gsis_id": null,
+      "pfr_id": null,
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 36,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "qb-michael-pratt",
+      "player_name": "Michael Pratt",
+      "position": "QB",
+      "school": "Tulane",
+      "class_year": 2024,
+      "overall_pick": 245,
+      "draft_round": 7,
+      "draft_team": "GB",
+      "draft_team_name": "GREEN BAY PACKERS",
+      "gsis_id": null,
+      "pfr_id": "PratMi00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "te-devin-culp",
+      "player_name": "Devin Culp",
+      "position": "TE",
+      "school": "Washington",
+      "class_year": 2024,
+      "overall_pick": 246,
+      "draft_round": 7,
+      "draft_team": "TB",
+      "draft_team_name": "TAMPA BAY BUCCANEERS",
+      "gsis_id": null,
+      "pfr_id": "CulpDe00",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 37,
+        "column": "left"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    },
+    {
+      "player_id": "wr-cornelius-johnson",
+      "player_name": "Cornelius Johnson",
+      "position": "WR",
+      "school": "Michigan",
+      "class_year": 2024,
+      "overall_pick": 253,
+      "draft_round": 7,
+      "draft_team": "LAC",
+      "draft_team_name": "LOS ANGELES CHARGERS",
+      "gsis_id": null,
+      "pfr_id": "JohnCo02",
+      "source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ],
+      "primary_locator": {
+        "pdf_page": 35,
+        "column": "right"
+      },
+      "id_status": "candidate_local_id",
+      "identity_note": "GSIS/PFR keys are join metadata only; all draft facts belong to the post-draft lane."
+    }
+  ],
+  "identity_resolutions": [
+    {
+      "pick": 4,
+      "primary_name": "Marvin Harrison",
+      "secondary_name": "Marvin Harrison",
+      "candidate_display_name": "Marvin Harrison Jr.",
+      "primary_position": "WR",
+      "secondary_position": "WR",
+      "primary_printed_round": 1,
+      "adopted_round": 1,
+      "resolution": "Explicit identity/position/round reconciliation keyed by primary overall pick.",
+      "name_source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity",
+        "college-mhj"
+      ]
+    },
+    {
+      "pick": 8,
+      "primary_name": "Michael Penix",
+      "secondary_name": "Michael Penix",
+      "candidate_display_name": "Michael Penix Jr.",
+      "primary_position": "QB",
+      "secondary_position": "QB",
+      "primary_printed_round": 1,
+      "adopted_round": 1,
+      "resolution": "Explicit identity/position/round reconciliation keyed by primary overall pick.",
+      "name_source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity",
+        "draft-penix-name"
+      ]
+    },
+    {
+      "pick": 23,
+      "primary_name": "Brian Thomas",
+      "secondary_name": "Brian Thomas",
+      "candidate_display_name": "Brian Thomas Jr.",
+      "primary_position": "WR",
+      "secondary_position": "WR",
+      "primary_printed_round": 1,
+      "adopted_round": 1,
+      "resolution": "Explicit identity/position/round reconciliation keyed by primary overall pick.",
+      "name_source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity",
+        "college-thomas"
+      ]
+    },
+    {
+      "pick": 37,
+      "primary_name": "Ja'Lynn Polk",
+      "secondary_name": "Ja'Lynn Polk",
+      "candidate_display_name": "Ja'Lynn Polk",
+      "primary_position": "WR",
+      "secondary_position": "WR",
+      "primary_printed_round": 1,
+      "adopted_round": 2,
+      "resolution": "Explicit identity/position/round reconciliation keyed by primary overall pick.",
+      "name_source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "pick": 121,
+      "primary_name": "A.J. Barner",
+      "secondary_name": "AJ Barner",
+      "candidate_display_name": "A.J. Barner",
+      "primary_position": "TE",
+      "secondary_position": "TE",
+      "primary_printed_round": 4,
+      "adopted_round": 4,
+      "resolution": "Explicit identity/position/round reconciliation keyed by primary overall pick.",
+      "name_source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "pick": 132,
+      "primary_name": "Sione Vaki",
+      "secondary_name": "Sione Vaki",
+      "candidate_display_name": "Sione Vaki",
+      "primary_position": "RB",
+      "secondary_position": null,
+      "primary_printed_round": 4,
+      "adopted_round": 4,
+      "resolution": "Explicit identity/position/round reconciliation keyed by primary overall pick.",
+      "name_source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity"
+      ]
+    },
+    {
+      "pick": 166,
+      "primary_name": "Tyrone Tracy",
+      "secondary_name": "Tyrone Tracy",
+      "candidate_display_name": "Tyrone Tracy Jr.",
+      "primary_position": "RB",
+      "secondary_position": "RB",
+      "primary_printed_round": 5,
+      "adopted_round": 5,
+      "resolution": "Explicit identity/position/round reconciliation keyed by primary overall pick.",
+      "name_source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity",
+        "draft-tracy-name"
+      ]
+    },
+    {
+      "pick": 193,
+      "primary_name": "Joe Milton",
+      "secondary_name": "Joe Milton",
+      "candidate_display_name": "Joe Milton III",
+      "primary_position": "QB",
+      "secondary_position": "QB",
+      "primary_printed_round": 6,
+      "adopted_round": 6,
+      "resolution": "Explicit identity/position/round reconciliation keyed by primary overall pick.",
+      "name_source_refs": [
+        "nfl-draft-factbook",
+        "nflverse-draft-identity",
+        "draft-milton-name"
+      ]
+    }
+  ],
+  "college_observations": [
+    {
+      "player_id": "qb-caleb-williams",
+      "season": 2023,
+      "stats": {
+        "completions": 266,
+        "attempts": 388,
+        "passing_yards": 3633,
+        "passing_tds": 30,
+        "interceptions": 5
+      },
+      "source_refs": [
+        "college-caleb"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "player_id": "qb-jayden-daniels",
+      "season": 2023,
+      "stats": {
+        "completions": 236,
+        "attempts": 327,
+        "passing_yards": 3812,
+        "passing_tds": 40,
+        "interceptions": 4
+      },
+      "source_refs": [
+        "college-daniels"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "player_id": "qb-drake-maye",
+      "season": 2023,
+      "stats": {
+        "completions": 269,
+        "attempts": 425,
+        "passing_yards": 3608,
+        "passing_tds": 24,
+        "interceptions": 9
+      },
+      "source_refs": [
+        "college-maye"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "player_id": "wr-marvin-harrison-jr",
+      "season": 2023,
+      "stats": {
+        "receptions": 67,
+        "receiving_yards": 1211,
+        "receiving_tds": 14
+      },
+      "source_refs": [
+        "college-mhj"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "player_id": "wr-malik-nabers",
+      "season": 2023,
+      "stats": {
+        "receptions": 89,
+        "receiving_yards": 1569,
+        "receiving_tds": 14
+      },
+      "source_refs": [
+        "college-nabers"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "player_id": "wr-rome-odunze",
+      "season": 2023,
+      "stats": {
+        "receptions": 92,
+        "receiving_yards": 1640,
+        "receiving_tds": 13
+      },
+      "source_refs": [
+        "college-odunze"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "player_id": "wr-brian-thomas-jr",
+      "season": 2023,
+      "stats": {
+        "receptions": 68,
+        "receiving_yards": 1177,
+        "receiving_tds": 17
+      },
+      "source_refs": [
+        "college-thomas"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "player_id": "wr-xavier-worthy",
+      "season": 2023,
+      "stats": {
+        "receptions": 75,
+        "receiving_yards": 1014,
+        "receiving_tds": 5
+      },
+      "source_refs": [
+        "college-worthy"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "player_id": "wr-ladd-mcconkey",
+      "season": 2023,
+      "stats": {
+        "receptions": 30,
+        "receiving_yards": 478,
+        "receiving_tds": 2
+      },
+      "source_refs": [
+        "college-mcconkey"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "player_id": "wr-adonai-mitchell",
+      "season": 2023,
+      "stats": {
+        "receptions": 55,
+        "receiving_yards": 845,
+        "receiving_tds": 11
+      },
+      "source_refs": [
+        "college-mitchell"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "player_id": "te-brock-bowers",
+      "season": 2023,
+      "stats": {
+        "receptions": 56,
+        "receiving_yards": 714,
+        "receiving_tds": 6
+      },
+      "source_refs": [
+        "college-bowers"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "player_id": "rb-jonathon-brooks",
+      "season": 2023,
+      "stats": {
+        "rush_attempts": 187,
+        "rush_yards": 1139,
+        "rush_tds": 10,
+        "receptions": 25,
+        "receiving_yards": 286
+      },
+      "source_refs": [
+        "college-brooks"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "player_id": "rb-blake-corum",
+      "season": 2023,
+      "stats": {
+        "rush_attempts": 258,
+        "rush_yards": 1245,
+        "rush_tds": 27,
+        "receptions": 16,
+        "receiving_yards": 117
+      },
+      "source_refs": [
+        "college-corum"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "player_id": "rb-trey-benson",
+      "season": 2023,
+      "stats": {
+        "rush_attempts": 156,
+        "rush_yards": 906,
+        "rush_tds": 14,
+        "receptions": 20,
+        "receiving_yards": 227
+      },
+      "source_refs": [
+        "college-benson",
+        "college-benson-pdf"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review",
+      "source_locators": {
+        "college-benson-pdf": "PDF page 28: 2023 carries 156, receiving 20/227; rushing yards 905 conflicts with current roster 906."
+      }
+    },
+    {
+      "player_id": "rb-marshawn-lloyd",
+      "season": 2023,
+      "stats": {
+        "rush_attempts": 116,
+        "rush_yards": 820,
+        "rush_tds": 9,
+        "receptions": 13,
+        "receiving_yards": 232
+      },
+      "source_refs": [
+        "college-lloyd"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "player_id": "rb-braelon-allen",
+      "season": 2023,
+      "stats": {
+        "rush_attempts": 181,
+        "rush_yards": 984,
+        "rush_tds": 12,
+        "receptions": 28,
+        "receiving_yards": 132
+      },
+      "source_refs": [
+        "college-allen",
+        "college-allen-pdf"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review",
+      "source_locators": {
+        "college-allen-pdf": "2023 individual season statistics; Allen PDF page 4."
+      }
+    }
+  ],
+  "mhj_college_seasons": [
+    {
+      "season": 2021,
+      "games": 13,
+      "receptions": 11,
+      "receiving_yards": 139,
+      "receiving_tds": 3,
+      "source_refs": [
+        "nfl-mhj-bio"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "season": 2022,
+      "games": 13,
+      "receptions": 77,
+      "receiving_yards": 1263,
+      "receiving_tds": 14,
+      "source_refs": [
+        "college-mhj",
+        "nfl-mhj-bio"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    },
+    {
+      "season": 2023,
+      "games": 12,
+      "receptions": 67,
+      "receiving_yards": 1211,
+      "receiving_tds": 14,
+      "source_refs": [
+        "college-mhj",
+        "nfl-mhj-bio"
+      ],
+      "evidence_lane": "college_production",
+      "status": "public_factual_candidate_pending_independent_review"
+    }
+  ],
+  "repo_file_bindings": {
+    "scripts/compute_rookie_alpha.py": "a7d33fc19212955912635fcfaea3ab5380350dcddf36e5af17007491e11737f6",
+    "scripts/compute_production_scores.py": "0ccc6adb525a996440557588a55a61d6fdd200d335d312fc1e34d11a4cfb0694",
+    "data/raw/2024_real_seed_pool.json": "d4bd8f6c257175c6ab325a081dccaf4821ad3daebb4f86545c335fbefbba46df",
+    "data/processed/2024_player_stats.json": "7103e6b2beb890975532e2d019eecd33b96ca2d7f2d7802347760dac861071c7",
+    "data/processed/2024_college_production.json": "204ab183882f722eb615d177cfe1958de46a72dd027db47a31174b1f78e95680",
+    "data/processed/2024_draft_capital_proxy.json": "85cc0bebca928d52f667368a985139de4ff83dabe4a4208fe78ea62d53822081",
+    "data/processed/2024_prospect_context.json": "a3ff0c423b262e29395afb0b463325c16eb7259c6f36f49d5bcbf5a3a1b6465a",
+    "data/raw/2024_combine_results.json": "be7cc4fa50dc05ba4635173b44e8004fa38aa8046f83b1db258cb5873378b5dd",
+    "exports/promoted/rookie-alpha/2024_rookie_alpha_predraft_v0.json": "2dffd50acbf9d6a63ec83a529b6102d2d01ef4324f97c77ad4c255a55a3d162c",
+    "data/historical/sporq_raw_wr.tsv": "5a5ea28442a0998fd8e7e014cf1b313cf98bf4f428a2bd3efc9094ca18df9a1f"
+  },
+  "normalization_population": {
+    "status": "unavailable",
+    "required": "Full eligible 2023 positional CFBD populations, filters and producer version.",
+    "observed_access": "Unauthenticated CFBD 2023 receiving request returned HTTP 401; no API key in this execution environment.",
+    "effect": "No qualified normalized production score or Rookie Alpha grade is emitted. Manual legacy scores are not repaired by changing their source text."
+  },
+  "draft_handoff": {
+    "status": "unavailable",
+    "note": "Data has no inspected canonical 2024 draft-results handoff. Census facts are a separate candidate, not a replacement runtime file."
+  },
+  "source_conflicts": [
+    {
+      "player_id": "rb-trey-benson",
+      "field": "rush_yards",
+      "season": 2023,
+      "observations": [
+        {
+          "source_ref": "college-benson",
+          "value": 906
+        },
+        {
+          "source_ref": "college-benson-pdf",
+          "locator": "PDF page 28, player career table",
+          "value": 905
+        }
+      ],
+      "candidate_value": 906,
+      "resolution_status": "provisional_current_roster_value_pending_review",
+      "note": "The March 2024 recap uses 905 in the career table but 906 elsewhere. Current school roster and April 2024 school draft release use 906. This one-yard conflict remains explicit and blocks unqualified normalization."
+    }
+  ],
+  "identity_notes": [
+    "Primary school names are preserved: Southern California corresponds to legacy USC.",
+    "Local IDs are proposed identity keys, not Data-admitted canonical identities.",
+    "The NFL factbook prints Ja'Lynn Polk in round 1 despite overall pick 37; secondary draft round 2 is adopted explicitly.",
+    "Sione Vaki is an NFL-drafted RB; his secondary CSV position is empty, so filtering that CSV alone undercounts the domain."
+  ]
+}
