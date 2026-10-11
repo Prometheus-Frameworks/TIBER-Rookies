@@ -200,6 +200,7 @@ class ReconstructionAdmissionTests(unittest.TestCase):
             ('fantasy_points', 100, 'identity resolution field'),
             ('pick', 5, 'identity resolution linkage'),
             ('name_source_refs', ['invented-source'], 'Unresolved identity source'),
+            ('name_source_refs', ['college-caleb'], 'sources do not match draft row'),
         ]
         for field, value, message in mutations:
             with self.subTest(field=field):
@@ -210,6 +211,12 @@ class ReconstructionAdmissionTests(unittest.TestCase):
         census = module.build(self.facts)['2024_skill_class_census_v0.json']
         self.assertTrue(all(tuple(row) == module.IDENTITY_RESOLUTION_FIELDS
                             for row in census['identity_resolutions']))
+
+    def test_identity_resolution_set_is_complete(self):
+        facts = copy.deepcopy(self.facts)
+        facts['identity_resolutions'] = facts['identity_resolutions'][1:]
+        with self.assertRaisesRegex(ValueError, 'Incomplete identity resolution set'):
+            module.validate_facts(facts)
 
     def test_receiving_efficiency_does_not_require_touchdown_field(self):
         audit = module.build(self.facts)['input_integrity_audit_v0.json']

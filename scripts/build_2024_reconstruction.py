@@ -30,6 +30,7 @@ IDENTITY_RESOLUTION_FIELDS = ('pick', 'primary_name', 'secondary_name',
                               'candidate_display_name', 'primary_position',
                               'secondary_position', 'primary_printed_round',
                               'adopted_round', 'resolution', 'name_source_refs')
+EXPECTED_IDENTITY_RESOLUTION_PICKS = {4, 8, 23, 37, 121, 132, 166, 193}
 FORBIDDEN_COLLEGE_KEYS = {'actual_overall_pick', 'actual_draft_round', 'overall_pick', 'draft_round', 'draft_team', 'draft_team_name', 'nfl_outcomes', 'nfl_stats', 'fantasy_points'}
 COLLEGE_OBSERVATION_KEYS = {'player_id', 'season', 'stats', 'source_refs', 'source_locators', 'evidence_lane', 'status'}
 COLLEGE_OBSERVATION_REQUIRED = COLLEGE_OBSERVATION_KEYS - {'source_locators'}
@@ -123,6 +124,10 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
                     and resolution['secondary_position'] not in EXPECTED)):
             raise ValueError('Invalid identity resolution linkage')
         validate_source_refs(resolution['name_source_refs'], sources, 'identity')
+        if set(resolution['name_source_refs']) != set(draft['source_refs']):
+            raise ValueError('Identity resolution sources do not match draft row')
+    if seen_resolution_picks != EXPECTED_IDENTITY_RESOLUTION_PICKS:
+        raise ValueError('Incomplete identity resolution set')
     observations = facts['college_observations']
     if len({x['player_id'] for x in observations}) != len(observations):
         raise ValueError('Duplicate final-season college observation')

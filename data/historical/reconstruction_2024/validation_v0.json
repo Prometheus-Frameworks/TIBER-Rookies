@@ -14,7 +14,7 @@
     {
       "command": "python3 -m unittest discover -s tests -p 'test_build_2024_reconstruction.py'",
       "exit_code": 0,
-      "tests_passed": 24
+      "tests_passed": 25
     },
     {
       "command": "git diff --quiet e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6 -- exports/promoted exports/experimental data/processed data/raw runtime-server.js index.html public package.json",
@@ -34,8 +34,8 @@
     "data/historical/reconstruction_2024/landing_context/2024_wr_marvin_harrison_jr_landing_context_v0.json": "8ac289060f267f88e6565006facd43b39697c086e76f411c7b48f2afc23842f1",
     "data/historical/reconstruction_2024/predraft_cards/2024_wr_marvin_harrison_jr_predraft_v0.json": "0c614882a2afa3f4ac4007a4937fd8148420333c22ab2e3d6a307905ee21692b",
     "data/historical/reconstruction_2024/source_facts_v0.json": "fe0503eaacebd43cb93be97b0d49eafc1b964c23a071b3e17ae9387c3b5b6b5e",
-    "scripts/build_2024_reconstruction.py": "99a753e03e33d0d5e17187911fc1e9b28166f6aa95abdd45cb6a4f58c4fe86a9",
-    "tests/test_build_2024_reconstruction.py": "a14b79b875f915072f9d91e29a11b77da550f5a4b87b635038f06cc68c2eb61d",
+    "scripts/build_2024_reconstruction.py": "c37f393831e3c9410fa3142a954608d357bac292d5d6ecbdfc060159a17d395a",
+    "tests/test_build_2024_reconstruction.py": "4eb48af9f68a9eca7723fb7b2b46016c8f1fa890d70b719b6a2719269569643f",
     "docs/2024-class-reconstruction-v0.md": "90ca6ac857ac4061f448227a5dfdb544a22a10555db294a56c6cd24ed8ae340f"
   },
   "not_executed": [
@@ -108,6 +108,13 @@
         4239596342
       ],
       "result": "Require each source-ledger entry to match one complete qualified retrieval schema, and validate/project the exact identity-resolution schema with source, pick, position, name and round linkage."
+    },
+    {
+      "comment_ids": [
+        4239727748,
+        4239727750
+      ],
+      "result": "Require the complete eight-pick identity-resolution set and bind every resolution's provenance to the linked draft row rather than any globally valid source."
     }
   ]
 }
