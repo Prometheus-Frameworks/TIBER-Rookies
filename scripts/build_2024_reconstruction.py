@@ -17,6 +17,16 @@ MHJ = 'wr-marvin-harrison-jr'
 BASE_COMMIT = 'e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6'
 PRE_DRAFT_CUTOFF = '2024-04-24T23:59:59Z'
 CANDIDATE_STATUS = 'unpromoted_candidate_pending_independent_review'
+LEDGER_METADATA_FIELDS = frozenset({
+    'artifact', 'class_year', 'status', 'promotable', 'base_commit',
+    'retrieved_on', 'pre_draft_cutoff', 'cohort', 'repo_file_bindings',
+    'normalization_population', 'draft_handoff', 'source_conflicts', 'identity_notes',
+})
+LEDGER_FIELDS = LEDGER_METADATA_FIELDS | {
+    'source_ledger', 'draft_day_records', 'identity_resolutions',
+    'college_observations', 'mhj_college_seasons',
+}
+LEDGER_METADATA_BINDING_SHA256 = '3e104c1b7e2a58f8ec83fa507dfb859a7dbdefa4d04e30db33b651003d155e9c'
 DRAFT_HANDOFF = {
     'status': 'unavailable',
     'note': ('Data has no inspected canonical 2024 draft-results handoff. '
@@ -176,6 +186,8 @@ def validate_source_refs(refs: object, sources: set[str], label: str) -> None:
 
 
 def validate_facts(facts: dict, root: Path = ROOT) -> None:
+    if type(facts) is not dict or set(facts) != LEDGER_FIELDS:
+        raise ValueError('Unexpected or missing source-ledger field')
     if (facts.get('class_year') != 2024
             or facts.get('status') != CANDIDATE_STATUS
             or facts.get('promotable') is not False):
@@ -419,6 +431,12 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
     for path, expected in bindings.items():
         if sha(root / path) != expected:
             raise ValueError('Pinned repository input changed: ' + path)
+    # Freeze the ledger's provenance and qualification notes as well as its records.
+    metadata_binding = hashlib.sha256(json.dumps(
+        {key: facts[key] for key in LEDGER_METADATA_FIELDS},
+        sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+    if metadata_binding != LEDGER_METADATA_BINDING_SHA256:
+        raise ValueError('Invalid retained ledger metadata binding')
 
 
 def derived_stats(stats: dict) -> dict:

@@ -163,6 +163,49 @@ class ReconstructionAdmissionTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'Wrong class or promotion state'):
                     module.validate_facts(facts)
 
+    def test_source_ledger_top_level_schema_is_exact(self):
+        for field in self.facts:
+            with self.subTest(missing=field):
+                facts = copy.deepcopy(self.facts)
+                facts.pop(field)
+                with self.assertRaisesRegex(ValueError, 'Unexpected or missing source-ledger field'):
+                    module.validate_facts(facts)
+        for facts in [None, [], {**self.facts, 'scouting_claim': 'Unretained claim.'}]:
+            with self.subTest(facts=facts):
+                with self.assertRaisesRegex(ValueError, 'Unexpected or missing source-ledger field'):
+                    module.validate_facts(facts)
+
+    def test_retained_ledger_metadata_edits_are_rejected_before_build(self):
+        mutations = [
+            ('artifact', 'unretained_source_claim'),
+            ('artifact', None),
+            ('retrieved_on', 'not-a-date'),
+            ('retrieved_on', '2026-10-11'),
+            ('identity_notes', ['Unretained player claim.']),
+            ('identity_notes', None),
+            ('cohort', {**self.facts['cohort'], 'definition': 'Unretained cohort claim.'}),
+            ('normalization_population', {
+                **self.facts['normalization_population'], 'effect': 'Grades are qualified.'}),
+            ('source_conflicts', [{
+                **self.facts['source_conflicts'][0], 'note': 'The source conflict is resolved.'}]),
+        ]
+        for field, value in mutations:
+            with self.subTest(field=field, value=value):
+                facts = copy.deepcopy(self.facts)
+                facts[field] = value
+                with tempfile.TemporaryDirectory() as directory:
+                    root = Path(directory)
+                    for relative in facts['repo_file_bindings']:
+                        target = root / relative
+                        target.parent.mkdir(parents=True, exist_ok=True)
+                        shutil.copyfile(ROOT / relative, target)
+                    source = root / 'data/historical/reconstruction_2024/source_facts_v0.json'
+                    source.parent.mkdir(parents=True, exist_ok=True)
+                    source.write_text(json.dumps(facts, indent=2) + '\n')
+                    for operation in [module.validate_facts, module.build]:
+                        with self.assertRaisesRegex(ValueError, 'Invalid retained ledger metadata binding'):
+                            operation(facts, root=root)
+
     def test_pre_draft_cutoff_is_pinned_to_documented_boundary(self):
         for cutoff in ['2026-01-01', 'not-a-date', '2024-04-23T23:59:59Z']:
             with self.subTest(cutoff=cutoff):
@@ -207,7 +250,8 @@ class ReconstructionAdmissionTests(unittest.TestCase):
 
     def test_mutated_facts_cannot_claim_retained_source_hash(self):
         facts = copy.deepcopy(self.facts)
-        facts['source_conflicts'][0]['note'] += ' Changed after retention.'
+        # Record order is valid, but supplied facts must still match the retained file.
+        facts['draft_day_records'].reverse()
         with self.assertRaisesRegex(ValueError, 'do not match retained source ledger'):
             module.build(facts)
 
