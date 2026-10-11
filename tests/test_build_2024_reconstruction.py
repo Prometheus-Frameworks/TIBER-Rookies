@@ -92,18 +92,29 @@ class ReconstructionAdmissionTests(unittest.TestCase):
                 with self.assertRaisesRegex(ValueError, 'Invalid core draft source binding'):
                     module.validate_facts(facts)
 
-    def test_mutated_facts_cannot_claim_retained_source_hash(self):
-        for mutation in ['cutoff', 'statistic']:
-            with self.subTest(mutation=mutation):
+    def test_college_source_ids_are_bound_to_retained_evidence(self):
+        facts = copy.deepcopy(self.facts)
+        sources = {row['source_id']: row for row in facts['source_ledger']}
+        sources['college-caleb']['url'] = sources['college-maye']['url']
+        sources['college-caleb']['sha256'] = sources['college-maye']['sha256']
+        with self.assertRaisesRegex(ValueError, 'Invalid college source binding'):
+            module.validate_facts(facts)
+
+    def test_pre_draft_cutoff_is_pinned_to_documented_boundary(self):
+        for cutoff in ['2026-01-01', 'not-a-date', '2024-04-23T23:59:59Z']:
+            with self.subTest(cutoff=cutoff):
                 facts = copy.deepcopy(self.facts)
-                if mutation == 'cutoff':
-                    facts['pre_draft_cutoff'] = '2024-04-23T23:59:59Z'
-                else:
-                    row = facts['college_observations'][0]['stats']
-                    key = next(iter(row))
-                    row[key] += 1
-                with self.assertRaisesRegex(ValueError, 'do not match retained source ledger'):
-                    module.build(facts)
+                facts['pre_draft_cutoff'] = cutoff
+                with self.assertRaisesRegex(ValueError, 'Invalid pre-draft cutoff'):
+                    module.validate_facts(facts)
+
+    def test_mutated_facts_cannot_claim_retained_source_hash(self):
+        facts = copy.deepcopy(self.facts)
+        row = facts['college_observations'][0]['stats']
+        key = next(iter(row))
+        row[key] += 1
+        with self.assertRaisesRegex(ValueError, 'do not match retained source ledger'):
+            module.build(facts)
 
     def test_staging_source_hash_uses_supplied_root(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -262,6 +273,19 @@ class ReconstructionAdmissionTests(unittest.TestCase):
         mhj['draft_team'] = 'NYG'
         with self.assertRaisesRegex(ValueError, 'Invalid draft record value'):
             module.validate_facts(facts)
+
+    def test_mhj_card_identity_reconciles_to_validated_draft_row(self):
+        facts = copy.deepcopy(self.facts)
+        mhj = next(row for row in facts['draft_day_records']
+                   if row['player_id'] == module.MHJ)
+        mhj['school'] = 'Michigan'
+        with self.assertRaisesRegex(ValueError, 'Invalid MHJ draft identity'):
+            module.validate_facts(facts)
+        card = module.build(self.facts)[
+            'predraft_cards/2024_wr_marvin_harrison_jr_predraft_v0.json']
+        retained_mhj = next(row for row in self.facts['draft_day_records']
+                            if row['player_id'] == module.MHJ)
+        self.assertEqual(card['identity']['school'], retained_mhj['school'])
 
     def test_legacy_seed_rows_require_final_season_observations(self):
         facts = copy.deepcopy(self.facts)

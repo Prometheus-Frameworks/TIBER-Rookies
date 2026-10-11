@@ -14,6 +14,12 @@ ROOT = Path(__file__).resolve().parents[1]
 DEST = ROOT / 'data/historical/reconstruction_2024'
 EXPECTED = {'QB': 11, 'RB': 20, 'WR': 35, 'TE': 12}
 MHJ = 'wr-marvin-harrison-jr'
+PRE_DRAFT_CUTOFF = '2024-04-24T23:59:59Z'
+MHJ_DRAFT_IDENTITY = {
+    'player_name': 'Marvin Harrison Jr.',
+    'position': 'WR',
+    'school': 'Ohio State',
+}
 COHORT_FIELDS = ('definition', 'total', 'counts', 'udfa_rule')
 DRAFT_RECORD_FIELDS = ('player_id', 'player_name', 'position', 'school', 'class_year',
                        'overall_pick', 'draft_round', 'draft_team', 'draft_team_name',
@@ -91,6 +97,7 @@ COLLEGE_SOURCE_SUBJECT = {
     'college-worthy': 'wr-xavier-worthy',
     'nfl-mhj-bio': MHJ,
 }
+COLLEGE_SOURCE_BINDING_SHA256 = '4dea7fd3640b5a90eef683cf0c3724b37b6665070616de1afc67bfc9f46f89cf'
 SOURCE_CONFLICT_FIELDS = ('player_id', 'field', 'season', 'observations',
                           'candidate_value', 'resolution_status', 'note')
 EXPECTED_BENSON_CONFLICT_OBSERVATIONS = [
@@ -130,6 +137,8 @@ def validate_source_refs(refs: object, sources: set[str], label: str) -> None:
 def validate_facts(facts: dict, root: Path = ROOT) -> None:
     if facts.get('class_year') != 2024 or facts.get('promotable') is not False:
         raise ValueError('Wrong class or promotion state')
+    if facts.get('pre_draft_cutoff') != PRE_DRAFT_CUTOFF:
+        raise ValueError('Invalid pre-draft cutoff')
     rows = facts['draft_day_records']
     if any(set(row) != set(DRAFT_RECORD_FIELDS) for row in rows):
         raise ValueError('Unexpected or missing draft record field')
@@ -177,6 +186,15 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
         if (source is None
                 or any(source.get(field) != value for field, value in expected.items())):
             raise ValueError('Invalid core draft source binding')
+    college_source_bindings = [
+        (source_id, sources_by_id.get(source_id, {}).get('url'),
+         sources_by_id.get(source_id, {}).get('sha256'))
+        for source_id in sorted(COLLEGE_SOURCE_SUBJECT)
+    ]
+    binding_digest = hashlib.sha256(json.dumps(
+        college_source_bindings, separators=(',', ':')).encode()).hexdigest()
+    if binding_digest != COLLEGE_SOURCE_BINDING_SHA256:
+        raise ValueError('Invalid college source binding')
     ids = {x['player_id'] for x in rows}
     draft_by_pick = {row['overall_pick']: row for row in rows}
     identity_resolutions = facts['identity_resolutions']
@@ -310,6 +328,9 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
             raise ValueError('Draft source does not match evidence role')
         if type(row['overall_pick']) is not int or not 1 <= row['overall_pick'] <= 257:
             raise ValueError('Unresolved draft fact')
+    mhj_row = next(row for row in rows if row['player_id'] == MHJ)
+    if any(mhj_row[field] != value for field, value in MHJ_DRAFT_IDENTITY.items()):
+        raise ValueError('Invalid MHJ draft identity')
     for path, expected in facts['repo_file_bindings'].items():
         if sha(root / path) != expected:
             raise ValueError('Pinned repository input changed: ' + path)
@@ -416,7 +437,7 @@ def build(facts: dict, root: Path = ROOT) -> dict[str, dict | str]:
     card = {**shared, 'artifact': 'predraft_reconstruction_card_v0', 'reconstruction_mode': 'historical_factual_candidate',
             'pre_draft_cutoff': facts['pre_draft_cutoff'], 'input_separation_policy': 'Shared builder reads draft facts for census and identity; this card excludes actual draft fields and NFL outcomes by validation and explicit field selection. No structural input isolation is claimed.',
             'player_id': MHJ, 'player_name': mhj_row['player_name'], 'position': 'WR',
-            'identity': {'school': 'Ohio State', 'source_refs': ['college-mhj'], 'birth_date': None, 'age_at_entry': None},
+            'identity': {'school': mhj_row['school'], 'source_refs': ['college-mhj'], 'birth_date': None, 'age_at_entry': None},
             'college_production': mhj_college,
             'prospect_baseline': {'facts': ['2022 and 2023 unanimous All-American', '2023 Biletnikoff Award'], 'source_refs': ['college-mhj']},
             'athletic_testing': {'status': 'unavailable', 'ras_0_100': None, 'sporq_0_100': None,
