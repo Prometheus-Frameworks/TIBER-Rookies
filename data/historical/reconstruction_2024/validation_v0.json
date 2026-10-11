@@ -14,7 +14,7 @@
     {
       "command": "python3 -m unittest discover -s tests -p 'test_build_2024_reconstruction.py'",
       "exit_code": 0,
-      "tests_passed": 45
+      "tests_passed": 47
     },
     {
       "command": "git diff --quiet e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6 -- exports/promoted exports/experimental data/processed data/raw runtime-server.js index.html public package.json",
@@ -34,8 +34,8 @@
     "data/historical/reconstruction_2024/landing_context/2024_wr_marvin_harrison_jr_landing_context_v0.json": "8ac289060f267f88e6565006facd43b39697c086e76f411c7b48f2afc23842f1",
     "data/historical/reconstruction_2024/predraft_cards/2024_wr_marvin_harrison_jr_predraft_v0.json": "0c614882a2afa3f4ac4007a4937fd8148420333c22ab2e3d6a307905ee21692b",
     "data/historical/reconstruction_2024/source_facts_v0.json": "fe0503eaacebd43cb93be97b0d49eafc1b964c23a071b3e17ae9387c3b5b6b5e",
-    "scripts/build_2024_reconstruction.py": "48f5367026b4f47e2362754e3f0d9994ff944c4459d67426cdd279a0453bbf6d",
-    "tests/test_build_2024_reconstruction.py": "9dff9381ef40a585b32986735c9f549f96e6a77a4542547412095bac089cf3b1",
+    "scripts/build_2024_reconstruction.py": "fa0138db0f3494ca05ba614b162b33245358429fb2c7fc6a3f4ea23fef672061",
+    "tests/test_build_2024_reconstruction.py": "f240ed6c4c74db921e5978092525a85c5336ee965f9a34d9613943d25ff4059f",
     "docs/2024-class-reconstruction-v0.md": "90ca6ac857ac4061f448227a5dfdb544a22a10555db294a56c6cd24ed8ae340f"
   },
   "not_executed": [
@@ -178,6 +178,14 @@
     {
       "comment_id": 4241234030,
       "result": "Bind every field of each admitted college source receipt, including retrieval metadata, byte count, qualification, notes and rights scope."
+    },
+    {
+      "comment_id": 4241389878,
+      "result": "Bind the complete retained source-receipt set across draft, supplemental and college roles; reject edits to core or supplemental retrieval metadata."
+    },
+    {
+      "comment_id": 4241389882,
+      "result": "Require the exact retained unavailable draft-handoff state and note; reject available, incomplete or contradictory handoff claims."
     }
   ]
 }

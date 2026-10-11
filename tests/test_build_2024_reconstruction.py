@@ -99,6 +99,38 @@ class ReconstructionAdmissionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Invalid supplemental draft source binding'):
             module.validate_facts(facts)
 
+    def test_complete_draft_source_receipts_are_bound(self):
+        for source_id in ['nfl-draft-factbook', 'nflverse-draft-identity',
+                          'draft-penix-name', 'draft-tracy-name', 'draft-milton-name']:
+            source = next(row for row in self.facts['source_ledger']
+                          if row['source_id'] == source_id)
+            replacements = {'retrieved_on': '2030-01-01'}
+            if 'snapshot_note' in source:
+                replacements['snapshot_note'] = 'Changed retained receipt.'
+            for field, value in replacements.items():
+                with self.subTest(source_id=source_id, field=field):
+                    facts = copy.deepcopy(self.facts)
+                    changed = next(row for row in facts['source_ledger']
+                                   if row['source_id'] == source_id)
+                    changed[field] = value
+                    with self.assertRaisesRegex(ValueError, 'Invalid retained source receipt binding'):
+                        module.validate_facts(facts)
+
+    def test_draft_handoff_requires_retained_unavailable_state(self):
+        mutations = [
+            {**self.facts['draft_handoff'], 'status': 'available'},
+            {'status': 'unavailable'},
+            {**self.facts['draft_handoff'], 'artifact': 'unqualified.json'},
+            {'status': 'unavailable', 'note': 'Canonical handoff is available.'},
+            None,
+        ]
+        for handoff in mutations:
+            with self.subTest(handoff=handoff):
+                facts = copy.deepcopy(self.facts)
+                facts['draft_handoff'] = handoff
+                with self.assertRaisesRegex(ValueError, 'Invalid unavailable draft handoff'):
+                    module.validate_facts(facts)
+
     def test_college_source_ids_are_bound_to_retained_evidence(self):
         facts = copy.deepcopy(self.facts)
         sources = {row['source_id']: row for row in facts['source_ledger']}

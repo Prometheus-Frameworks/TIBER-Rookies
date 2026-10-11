@@ -17,6 +17,11 @@ MHJ = 'wr-marvin-harrison-jr'
 BASE_COMMIT = 'e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6'
 PRE_DRAFT_CUTOFF = '2024-04-24T23:59:59Z'
 CANDIDATE_STATUS = 'unpromoted_candidate_pending_independent_review'
+DRAFT_HANDOFF = {
+    'status': 'unavailable',
+    'note': ('Data has no inspected canonical 2024 draft-results handoff. '
+             'Census facts are a separate candidate, not a replacement runtime file.'),
+}
 REPO_FILE_BINDING_PATHS = frozenset({
     'scripts/compute_rookie_alpha.py',
     'scripts/compute_production_scores.py',
@@ -103,6 +108,7 @@ SOURCE_SCHEMAS = (
     frozenset(SOURCE_REQUIRED | {'retrieved_on', 'retrieval_method'}),
     frozenset(SOURCE_REQUIRED | {'retrieved_on', 'sha256', 'snapshot_note'}),
 )
+SOURCE_RECEIPT_BINDING_SHA256 = '5405d820cb854df366a98bda0caed6d7eb0162f0595efe19ca821800c82e38d0'
 IDENTITY_RESOLUTION_FIELDS = ('pick', 'primary_name', 'secondary_name',
                               'candidate_display_name', 'primary_position',
                               'secondary_position', 'primary_printed_round',
@@ -178,6 +184,9 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
         raise ValueError('Invalid base commit')
     if facts.get('pre_draft_cutoff') != PRE_DRAFT_CUTOFF:
         raise ValueError('Invalid pre-draft cutoff')
+    handoff = facts.get('draft_handoff')
+    if type(handoff) is not dict or handoff != DRAFT_HANDOFF:
+        raise ValueError('Invalid unavailable draft handoff')
     normalization = facts.get('normalization_population')
     if (type(normalization) is not dict
             or tuple(normalization) != NORMALIZATION_FIELDS
@@ -398,6 +407,12 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
     ], sort_keys=True, separators=(',', ':')).encode()).hexdigest()
     if draft_record_binding != DRAFT_RECORD_BINDING_SHA256:
         raise ValueError('Invalid draft record evidence binding')
+    # Bind complete receipts across all source roles, including retrieval metadata.
+    source_receipt_binding = hashlib.sha256(json.dumps(
+        sorted(source_ledger, key=lambda row: row['source_id']),
+        sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+    if source_receipt_binding != SOURCE_RECEIPT_BINDING_SHA256:
+        raise ValueError('Invalid retained source receipt binding')
     bindings = facts.get('repo_file_bindings')
     if type(bindings) is not dict or set(bindings) != REPO_FILE_BINDING_PATHS:
         raise ValueError('Invalid repository binding set')
