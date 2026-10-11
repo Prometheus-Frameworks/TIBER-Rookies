@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DEST = ROOT / 'data/historical/reconstruction_2024'
 EXPECTED = {'QB': 11, 'RB': 20, 'WR': 35, 'TE': 12}
 MHJ = 'wr-marvin-harrison-jr'
+COHORT_FIELDS = ('definition', 'total', 'counts', 'udfa_rule')
 DRAFT_RECORD_FIELDS = ('player_id', 'player_name', 'position', 'school', 'class_year',
                        'overall_pick', 'draft_round', 'draft_team', 'draft_team_name',
                        'gsis_id', 'pfr_id', 'source_refs', 'primary_locator',
@@ -31,6 +32,34 @@ IDENTITY_RESOLUTION_FIELDS = ('pick', 'primary_name', 'secondary_name',
                               'secondary_position', 'primary_printed_round',
                               'adopted_round', 'resolution', 'name_source_refs')
 EXPECTED_IDENTITY_RESOLUTION_PICKS = {4, 8, 23, 37, 121, 132, 166, 193}
+COLLEGE_SOURCE_SUBJECT = {
+    'college-allen': 'rb-braelon-allen',
+    'college-allen-pdf': 'rb-braelon-allen',
+    'college-benson': 'rb-trey-benson',
+    'college-benson-pdf': 'rb-trey-benson',
+    'college-bowers': 'te-brock-bowers',
+    'college-brooks': 'rb-jonathon-brooks',
+    'college-caleb': 'qb-caleb-williams',
+    'college-corum': 'rb-blake-corum',
+    'college-daniels': 'qb-jayden-daniels',
+    'college-lloyd': 'rb-marshawn-lloyd',
+    'college-maye': 'qb-drake-maye',
+    'college-mcconkey': 'wr-ladd-mcconkey',
+    'college-mhj': MHJ,
+    'college-mitchell': 'wr-adonai-mitchell',
+    'college-nabers': 'wr-malik-nabers',
+    'college-odunze': 'wr-rome-odunze',
+    'college-thomas': 'wr-brian-thomas-jr',
+    'college-worthy': 'wr-xavier-worthy',
+    'nfl-mhj-bio': MHJ,
+}
+SOURCE_CONFLICT_FIELDS = ('player_id', 'field', 'season', 'observations',
+                          'candidate_value', 'resolution_status', 'note')
+EXPECTED_BENSON_CONFLICT_OBSERVATIONS = [
+    {'source_ref': 'college-benson', 'value': 906},
+    {'source_ref': 'college-benson-pdf',
+     'locator': 'PDF page 28, player career table', 'value': 905},
+]
 FORBIDDEN_COLLEGE_KEYS = {'actual_overall_pick', 'actual_draft_round', 'overall_pick', 'draft_round', 'draft_team', 'draft_team_name', 'nfl_outcomes', 'nfl_stats', 'fantasy_points'}
 COLLEGE_OBSERVATION_KEYS = {'player_id', 'season', 'stats', 'source_refs', 'source_locators', 'evidence_lane', 'status'}
 COLLEGE_OBSERVATION_REQUIRED = COLLEGE_OBSERVATION_KEYS - {'source_locators'}
@@ -68,6 +97,13 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
         raise ValueError('Unexpected or missing draft record field')
     if len(rows) != 78 or Counter(x['position'] for x in rows) != EXPECTED:
         raise ValueError('Incomplete or misclassified 2024 skill census')
+    cohort = facts.get('cohort')
+    if (type(cohort) is not dict or set(cohort) != set(COHORT_FIELDS)
+            or type(cohort['definition']) is not str or not cohort['definition']
+            or type(cohort['total']) is not int or cohort['total'] != len(rows)
+            or cohort['counts'] != EXPECTED
+            or type(cohort['udfa_rule']) is not str or not cohort['udfa_rule']):
+        raise ValueError('Invalid cohort metadata')
     for field in ['player_id', 'overall_pick']:
         if len({x[field] for x in rows}) != len(rows):
             raise ValueError('Duplicate census ' + field)
@@ -146,6 +182,9 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
             if obs['status'] != COLLEGE_STATUS:
                 raise ValueError('Unexpected college observation status')
             validate_source_refs(obs['source_refs'], sources, 'college')
+            subject = obs.get('player_id', MHJ)
+            if any(COLLEGE_SOURCE_SUBJECT.get(ref) != subject for ref in obs['source_refs']):
+                raise ValueError('College source does not match observed player')
             if 'player_id' in obs and (type(obs['player_id']) is not str or obs['player_id'] not in ids):
                 raise ValueError('Unresolved college identity')
             if 'source_locators' in obs:
@@ -175,6 +214,21 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
                     raise ValueError('Zero-game college season')
     if Counter(row['season'] for row in facts['mhj_college_seasons']) != Counter({2021: 1, 2022: 1, 2023: 1}):
         raise ValueError('Incomplete or duplicate MHJ college seasons')
+    source_conflicts = facts.get('source_conflicts')
+    if type(source_conflicts) is not list or len(source_conflicts) != 1:
+        raise ValueError('Missing retained source conflict')
+    conflict = source_conflicts[0]
+    benson = next((obs for obs in observations if obs['player_id'] == 'rb-trey-benson'), None)
+    if (type(conflict) is not dict or set(conflict) != set(SOURCE_CONFLICT_FIELDS)
+            or conflict['player_id'] != 'rb-trey-benson'
+            or conflict['field'] != 'rush_yards'
+            or conflict['season'] != 2023
+            or conflict['observations'] != EXPECTED_BENSON_CONFLICT_OBSERVATIONS
+            or benson is None
+            or conflict['candidate_value'] != benson.get('stats', {}).get('rush_yards')
+            or conflict['resolution_status'] != 'provisional_current_roster_value_pending_review'
+            or type(conflict['note']) is not str or not conflict['note']):
+        raise ValueError('Invalid retained source conflict')
     legacy_seed_ids = {row['player_id'] for row in json.loads(
         (root / 'data/raw/2024_real_seed_pool.json').read_text())}
     if not legacy_seed_ids.issubset({obs['player_id'] for obs in observations}):
@@ -237,6 +291,9 @@ def build(facts: dict, root: Path = ROOT) -> dict[str, dict | str]:
     shared = {'class_year': 2024, 'status': 'unpromoted_candidate_pending_independent_review',
               'promotable': False, 'base_commit': facts['base_commit'],
               'source_facts_sha256': source_hash}
+    cohort = {key: facts['cohort'][key] for key in COHORT_FIELDS}
+    source_conflicts = [{key: conflict[key] for key in SOURCE_CONFLICT_FIELDS}
+                        for conflict in facts['source_conflicts']]
     audit_rows = []
     coverage_rows = []
     for row in facts['draft_day_records']:
@@ -280,7 +337,7 @@ def build(facts: dict, root: Path = ROOT) -> dict[str, dict | str]:
                               'legacy_alpha_qualification': 'unqualified_existing_output_preserved' if pid in alpha else 'no_existing_output',
                               'source_refs': row['source_refs']})
     conflicts_total = sum(x['raw_operand_status'] == 'contradicted' for x in audit_rows)
-    coverage = {**shared, 'artifact': '2024_coverage_matrix_v0', 'cohort': facts['cohort'],
+    coverage = {**shared, 'artifact': '2024_coverage_matrix_v0', 'cohort': cohort,
                 'summary': {'census_subjects': 78, 'legacy_seed_subjects': 15, 'previously_absent_from_seed': 63,
                             'sourced_college_candidates': len(observations), 'identity_only_blocked': 78 - len(observations),
                             'legacy_rows_with_raw_conflicts': conflicts_total, 'qualified_pre_draft_grades': 0, 'qualified_post_draft_grades': 0},
@@ -293,7 +350,7 @@ def build(facts: dict, root: Path = ROOT) -> dict[str, dict | str]:
                 'players': coverage_rows}
     audit = {**shared, 'artifact': '2024_input_integrity_audit_v0',
              'summary': {'legacy_rows': 15, 'raw_rows_contradicted': conflicts_total, 'legacy_normalized_scores_qualified': 0},
-             'rows': audit_rows, 'source_conflicts': facts.get('source_conflicts', [])}
+             'rows': audit_rows, 'source_conflicts': source_conflicts}
     mhj_row = next(x for x in facts['draft_day_records'] if x['player_id'] == MHJ)
     mhj_college = [{key: row[key] for key in
                     ['season', 'games', 'receptions', 'receiving_yards', 'receiving_tds',
@@ -320,7 +377,7 @@ def build(facts: dict, root: Path = ROOT) -> dict[str, dict | str]:
     census_rows = [{key: row[key] for key in DRAFT_RECORD_FIELDS} for row in facts['draft_day_records']]
     identity_rows = [{key: row[key] for key in IDENTITY_RESOLUTION_FIELDS}
                      for row in facts['identity_resolutions']]
-    census = {**shared, 'artifact': '2024_skill_class_census_v0', 'cohort': facts['cohort'],
+    census = {**shared, 'artifact': '2024_skill_class_census_v0', 'cohort': cohort,
               'identity_resolutions': identity_rows, 'players': census_rows}
     buffer = io.StringIO(newline='')
     writer = csv.DictWriter(buffer, fieldnames=['player_id', 'player_name', 'position', 'school', 'class_year', 'draft_round', 'overall_pick', 'draft_team', 'gsis_id'], lineterminator='\n')

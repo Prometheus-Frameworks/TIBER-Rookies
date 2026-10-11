@@ -112,6 +112,18 @@ class ReconstructionAdmissionTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Unresolved college source'):
             module.validate_facts(facts)
 
+    def test_college_sources_are_bound_to_the_observed_player(self):
+        mutations = [
+            ('college_observations', ['college-maye']),
+            ('mhj_college_seasons', ['college-caleb']),
+        ]
+        for lane, refs in mutations:
+            with self.subTest(lane=lane):
+                facts = copy.deepcopy(self.facts)
+                facts[lane][0]['source_refs'] = refs
+                with self.assertRaisesRegex(ValueError, 'source does not match observed player'):
+                    module.validate_facts(facts)
+
     def test_college_source_refs_require_a_string_list(self):
         for lane in ['college_observations', 'mhj_college_seasons']:
             with self.subTest(lane=lane):
@@ -217,6 +229,27 @@ class ReconstructionAdmissionTests(unittest.TestCase):
         facts['identity_resolutions'] = facts['identity_resolutions'][1:]
         with self.assertRaisesRegex(ValueError, 'Incomplete identity resolution set'):
             module.validate_facts(facts)
+
+    def test_retained_source_conflict_is_required_and_projected(self):
+        facts = copy.deepcopy(self.facts)
+        facts['source_conflicts'] = []
+        with self.assertRaisesRegex(ValueError, 'Missing retained source conflict'):
+            module.validate_facts(facts)
+        facts = copy.deepcopy(self.facts)
+        facts['source_conflicts'][0]['observations'][1]['value'] = 906
+        with self.assertRaisesRegex(ValueError, 'Invalid retained source conflict'):
+            module.validate_facts(facts)
+        audit = module.build(self.facts)['input_integrity_audit_v0.json']
+        self.assertEqual(tuple(audit['source_conflicts'][0]), module.SOURCE_CONFLICT_FIELDS)
+
+    def test_cohort_metadata_must_match_the_validated_census(self):
+        mutations = [('total', 77), ('counts', {'QB': 78})]
+        for field, value in mutations:
+            with self.subTest(field=field):
+                facts = copy.deepcopy(self.facts)
+                facts['cohort'][field] = value
+                with self.assertRaisesRegex(ValueError, 'Invalid cohort metadata'):
+                    module.validate_facts(facts)
 
     def test_receiving_efficiency_does_not_require_touchdown_field(self):
         audit = module.build(self.facts)['input_integrity_audit_v0.json']

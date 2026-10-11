@@ -14,7 +14,7 @@
     {
       "command": "python3 -m unittest discover -s tests -p 'test_build_2024_reconstruction.py'",
       "exit_code": 0,
-      "tests_passed": 25
+      "tests_passed": 28
     },
     {
       "command": "git diff --quiet e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6 -- exports/promoted exports/experimental data/processed data/raw runtime-server.js index.html public package.json",
@@ -34,8 +34,8 @@
     "data/historical/reconstruction_2024/landing_context/2024_wr_marvin_harrison_jr_landing_context_v0.json": "8ac289060f267f88e6565006facd43b39697c086e76f411c7b48f2afc23842f1",
     "data/historical/reconstruction_2024/predraft_cards/2024_wr_marvin_harrison_jr_predraft_v0.json": "0c614882a2afa3f4ac4007a4937fd8148420333c22ab2e3d6a307905ee21692b",
     "data/historical/reconstruction_2024/source_facts_v0.json": "fe0503eaacebd43cb93be97b0d49eafc1b964c23a071b3e17ae9387c3b5b6b5e",
-    "scripts/build_2024_reconstruction.py": "c37f393831e3c9410fa3142a954608d357bac292d5d6ecbdfc060159a17d395a",
-    "tests/test_build_2024_reconstruction.py": "4eb48af9f68a9eca7723fb7b2b46016c8f1fa890d70b719b6a2719269569643f",
+    "scripts/build_2024_reconstruction.py": "08e6318fac513007deae9600f3aa3b808f92d2bf625f7b0464d3295275a35d2a",
+    "tests/test_build_2024_reconstruction.py": "2821a5c608f13ff68414e57b234d8933339042bf8d9fb6613b1e42a4b18aa6af",
     "docs/2024-class-reconstruction-v0.md": "90ca6ac857ac4061f448227a5dfdb544a22a10555db294a56c6cd24ed8ae340f"
   },
   "not_executed": [
@@ -115,6 +115,14 @@
         4239727750
       ],
       "result": "Require the complete eight-pick identity-resolution set and bind every resolution's provenance to the linked draft row rather than any globally valid source."
+    },
+    {
+      "comment_ids": [
+        4239951576,
+        4239951578,
+        4239951582
+      ],
+      "result": "Bind college sources to their observed player in both college lanes, require and project the retained Benson conflict, and require cohort metadata to match the validated 78-player census."
     }
   ]
 }
