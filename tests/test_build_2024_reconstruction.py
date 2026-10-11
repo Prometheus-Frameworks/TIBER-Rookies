@@ -151,11 +151,22 @@ class ReconstructionAdmissionTests(unittest.TestCase):
 
     def test_mutated_facts_cannot_claim_retained_source_hash(self):
         facts = copy.deepcopy(self.facts)
-        row = facts['college_observations'][0]['stats']
-        key = next(iter(row))
-        row[key] += 1
+        facts['source_conflicts'][0]['note'] += ' Changed after retention.'
         with self.assertRaisesRegex(ValueError, 'do not match retained source ledger'):
             module.build(facts)
+
+    def test_college_observations_are_bound_to_retained_evidence(self):
+        mutations = []
+        final_season = copy.deepcopy(self.facts)
+        final_season['college_observations'][0]['stats']['passing_yards'] += 1
+        mutations.append(final_season)
+        mhj_history = copy.deepcopy(self.facts)
+        mhj_history['mhj_college_seasons'][0]['games'] += 1
+        mutations.append(mhj_history)
+        for facts in mutations:
+            with self.subTest(facts=facts):
+                with self.assertRaisesRegex(ValueError, 'Invalid college observation evidence binding'):
+                    module.validate_facts(facts)
 
     def test_staging_source_hash_uses_supplied_root(self):
         with tempfile.TemporaryDirectory() as directory:

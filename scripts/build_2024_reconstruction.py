@@ -130,6 +130,7 @@ COLLEGE_SOURCE_SUBJECT = {
     'nfl-mhj-bio': MHJ,
 }
 COLLEGE_SOURCE_BINDING_SHA256 = '4dea7fd3640b5a90eef683cf0c3724b37b6665070616de1afc67bfc9f46f89cf'
+COLLEGE_OBSERVATION_BINDING_SHA256 = '4bf0316d1d1333bdbebf2a3e0cdc37e79022353caaf18c72ce38c737373d08cc'
 SOURCE_CONFLICT_FIELDS = ('player_id', 'field', 'season', 'observations',
                           'candidate_value', 'resolution_status', 'note')
 EXPECTED_BENSON_CONFLICT_OBSERVATIONS = [
@@ -355,6 +356,13 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
         (root / 'data/raw/2024_real_seed_pool.json').read_text())}
     if not legacy_seed_ids.issubset({obs['player_id'] for obs in observations}):
         raise ValueError('Missing final-season observation for legacy seed')
+    college_observation_binding = hashlib.sha256(json.dumps({
+        'college_observations': sorted(observations, key=lambda row: row['player_id']),
+        'mhj_college_seasons': sorted(facts['mhj_college_seasons'],
+                                      key=lambda row: row['season']),
+    }, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+    if college_observation_binding != COLLEGE_OBSERVATION_BINDING_SHA256:
+        raise ValueError('Invalid college observation evidence binding')
     for row in rows:
         if (any(type(row[field]) is not str or not row[field] for field in DRAFT_STRING_FIELDS)
                 or row['position'] not in EXPECTED
