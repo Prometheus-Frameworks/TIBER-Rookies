@@ -26,6 +26,7 @@ DRAFT_RECORD_FIELDS = ('player_id', 'player_name', 'position', 'school', 'class_
                        'overall_pick', 'draft_round', 'draft_team', 'draft_team_name',
                        'gsis_id', 'pfr_id', 'source_refs', 'primary_locator',
                        'id_status', 'identity_note')
+DRAFT_RECORD_BINDING_SHA256 = '8d6bda78fdffa9f4eb867c6b394fc36d2e08cfbc8bd2ffc7724c161e68a21547'
 DRAFT_STRING_FIELDS = ('player_id', 'player_name', 'position', 'school', 'draft_team',
                        'draft_team_name', 'id_status', 'identity_note')
 DRAFT_TEAM_NAMES = {
@@ -371,6 +372,12 @@ def validate_facts(facts: dict, root: Path = ROOT) -> None:
     mhj_row = next(row for row in rows if row['player_id'] == MHJ)
     if any(mhj_row[field] != value for field, value in MHJ_DRAFT_IDENTITY.items()):
         raise ValueError('Invalid MHJ draft identity')
+    draft_record_binding = hashlib.sha256(json.dumps([
+        {key: row[key] for key in DRAFT_RECORD_FIELDS}
+        for row in sorted(rows, key=lambda row: row['player_id'])
+    ], sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+    if draft_record_binding != DRAFT_RECORD_BINDING_SHA256:
+        raise ValueError('Invalid draft record evidence binding')
     for path, expected in facts['repo_file_bindings'].items():
         if sha(root / path) != expected:
             raise ValueError('Pinned repository input changed: ' + path)

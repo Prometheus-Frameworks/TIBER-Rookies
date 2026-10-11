@@ -253,22 +253,10 @@ class ReconstructionAdmissionTests(unittest.TestCase):
             module.validate_facts(facts)
 
     def test_landing_facts_derive_from_validated_mhj_draft_row(self):
-        facts = copy.deepcopy(self.facts)
-        mhj = next(row for row in facts['draft_day_records']
+        mhj = next(row for row in self.facts['draft_day_records']
                    if row['player_id'] == module.MHJ)
-        mhj['draft_team'] = 'NYG'
-        mhj['draft_team_name'] = 'NEW YORK GIANTS'
-        with tempfile.TemporaryDirectory() as directory:
-            root = Path(directory)
-            for relative in facts['repo_file_bindings']:
-                target = root / relative
-                target.parent.mkdir(parents=True, exist_ok=True)
-                shutil.copyfile(ROOT / relative, target)
-            source = root / 'data/historical/reconstruction_2024/source_facts_v0.json'
-            source.parent.mkdir(parents=True, exist_ok=True)
-            source.write_text(json.dumps(facts, indent=2) + '\n')
-            landing = module.build(facts, root=root)[
-                'landing_context/2024_wr_marvin_harrison_jr_landing_context_v0.json']
+        landing = module.build(self.facts)[
+            'landing_context/2024_wr_marvin_harrison_jr_landing_context_v0.json']
         self.assertEqual(landing['draft_team'], mhj['draft_team'])
         self.assertEqual(landing['actual_draft_round'], mhj['draft_round'])
         self.assertEqual(landing['actual_overall_pick'], mhj['overall_pick'])
@@ -293,6 +281,14 @@ class ReconstructionAdmissionTests(unittest.TestCase):
                 facts['draft_day_records'][0][field] = value
                 with self.assertRaisesRegex(ValueError, message):
                     module.validate_facts(facts)
+
+    def test_draft_census_values_are_bound_to_retained_evidence(self):
+        facts = copy.deepcopy(self.facts)
+        caleb = next(row for row in facts['draft_day_records']
+                     if row['player_id'] == 'qb-caleb-williams')
+        caleb['overall_pick'] = 5
+        with self.assertRaisesRegex(ValueError, 'Invalid draft record evidence binding'):
+            module.validate_facts(facts)
 
     def test_draft_team_code_and_name_must_reconcile(self):
         facts = copy.deepcopy(self.facts)
