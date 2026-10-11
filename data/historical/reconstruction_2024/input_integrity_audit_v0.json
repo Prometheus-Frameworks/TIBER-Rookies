@@ -1,0 +1,659 @@
+{
+  "class_year": 2024,
+  "status": "unpromoted_candidate_pending_independent_review",
+  "promotable": false,
+  "base_commit": "e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6",
+  "source_facts_sha256": "fe0503eaacebd43cb93be97b0d49eafc1b964c23a071b3e17ae9387c3b5b6b5e",
+  "artifact": "2024_input_integrity_audit_v0",
+  "summary": {
+    "legacy_rows": 15,
+    "raw_rows_contradicted": 12,
+    "legacy_normalized_scores_qualified": 0
+  },
+  "rows": [
+    {
+      "player_id": "qb-caleb-williams",
+      "legacy_input_paths": [
+        "data/raw/2024_real_seed_pool.json",
+        "data/processed/2024_player_stats.json"
+      ],
+      "legacy_production_score": 91.0,
+      "legacy_source_claim": "manual_historical_seed (2023 season: 373 att/67.7% comp/9.74 YPA/30 TD/5 INT; z~2.7)",
+      "candidate_2023_stats": {
+        "completions": 266,
+        "attempts": 388,
+        "passing_yards": 3633,
+        "passing_tds": 30,
+        "interceptions": 5,
+        "completion_pct": 68.6,
+        "yards_per_attempt": 9.4
+      },
+      "source_refs": [
+        "college-caleb"
+      ],
+      "raw_operand_status": "contradicted",
+      "differences": [
+        {
+          "field": "completions",
+          "legacy_value": 252,
+          "candidate_value": 266
+        },
+        {
+          "field": "attempts",
+          "legacy_value": 373,
+          "candidate_value": 388
+        },
+        {
+          "field": "completion_pct",
+          "legacy_value": 67.6,
+          "candidate_value": 68.6
+        },
+        {
+          "field": "yards_per_attempt",
+          "legacy_value": 9.7,
+          "candidate_value": 9.4
+        }
+      ],
+      "normalized_score_status": "unqualified_manual_seed",
+      "note": "Agreement on selected raw operands does not verify normalized scores, testing, context, consensus or expected draft capital."
+    },
+    {
+      "player_id": "qb-jayden-daniels",
+      "legacy_input_paths": [
+        "data/raw/2024_real_seed_pool.json",
+        "data/processed/2024_player_stats.json"
+      ],
+      "legacy_production_score": 95.0,
+      "legacy_source_claim": "manual_historical_seed (2023 season: 415 att/72.4% comp/9.18 YPA/40 TD/4 INT + 1134 rush yds; z~3.0)",
+      "candidate_2023_stats": {
+        "completions": 236,
+        "attempts": 327,
+        "passing_yards": 3812,
+        "passing_tds": 40,
+        "interceptions": 4,
+        "completion_pct": 72.2,
+        "yards_per_attempt": 11.7
+      },
+      "source_refs": [
+        "college-daniels"
+      ],
+      "raw_operand_status": "contradicted",
+      "differences": [
+        {
+          "field": "completions",
+          "legacy_value": 300,
+          "candidate_value": 236
+        },
+        {
+          "field": "attempts",
+          "legacy_value": 415,
+          "candidate_value": 327
+        },
+        {
+          "field": "completion_pct",
+          "legacy_value": 72.3,
+          "candidate_value": 72.2
+        },
+        {
+          "field": "yards_per_attempt",
+          "legacy_value": 9.2,
+          "candidate_value": 11.7
+        }
+      ],
+      "normalized_score_status": "unqualified_manual_seed",
+      "note": "Agreement on selected raw operands does not verify normalized scores, testing, context, consensus or expected draft capital."
+    },
+    {
+      "player_id": "qb-drake-maye",
+      "legacy_input_paths": [
+        "data/raw/2024_real_seed_pool.json",
+        "data/processed/2024_player_stats.json"
+      ],
+      "legacy_production_score": 80.0,
+      "legacy_source_claim": "manual_historical_seed (2023 season: 436 att/63.4% comp/8.27 YPA/24 TD/5 INT; z~2.0)",
+      "candidate_2023_stats": {
+        "completions": 269,
+        "attempts": 425,
+        "passing_yards": 3608,
+        "passing_tds": 24,
+        "interceptions": 9,
+        "completion_pct": 63.3,
+        "yards_per_attempt": 8.5
+      },
+      "source_refs": [
+        "college-maye"
+      ],
+      "raw_operand_status": "contradicted",
+      "differences": [
+        {
+          "field": "completions",
+          "legacy_value": 276,
+          "candidate_value": 269
+        },
+        {
+          "field": "attempts",
+          "legacy_value": 436,
+          "candidate_value": 425
+        },
+        {
+          "field": "interceptions",
+          "legacy_value": 5,
+          "candidate_value": 9
+        },
+        {
+          "field": "yards_per_attempt",
+          "legacy_value": 8.3,
+          "candidate_value": 8.5
+        }
+      ],
+      "normalized_score_status": "unqualified_manual_seed",
+      "note": "Agreement on selected raw operands does not verify normalized scores, testing, context, consensus or expected draft capital."
+    },
+    {
+      "player_id": "wr-malik-nabers",
+      "legacy_input_paths": [
+        "data/raw/2024_real_seed_pool.json",
+        "data/processed/2024_player_stats.json"
+      ],
+      "legacy_production_score": 92.0,
+      "legacy_source_claim": "manual_historical_seed (2023 season: 89 rec/1569 yds/17.6 YPR/14 TD; SEC elite; z~2.8)",
+      "candidate_2023_stats": {
+        "receptions": 89,
+        "receiving_yards": 1569,
+        "receiving_tds": 14,
+        "yards_per_reception": 17.6
+      },
+      "source_refs": [
+        "college-nabers"
+      ],
+      "raw_operand_status": "selected_raw_operands_reconciled",
+      "differences": [],
+      "normalized_score_status": "unqualified_manual_seed",
+      "note": "Agreement on selected raw operands does not verify normalized scores, testing, context, consensus or expected draft capital."
+    },
+    {
+      "player_id": "wr-rome-odunze",
+      "legacy_input_paths": [
+        "data/raw/2024_real_seed_pool.json",
+        "data/processed/2024_player_stats.json"
+      ],
+      "legacy_production_score": 92.0,
+      "legacy_source_claim": "manual_historical_seed (2023 season: 92 rec/1640 yds/17.8 YPR/13 TD; Biletnikoff finalist; z~2.8)",
+      "candidate_2023_stats": {
+        "receptions": 92,
+        "receiving_yards": 1640,
+        "receiving_tds": 13,
+        "yards_per_reception": 17.8
+      },
+      "source_refs": [
+        "college-odunze"
+      ],
+      "raw_operand_status": "selected_raw_operands_reconciled",
+      "differences": [],
+      "normalized_score_status": "unqualified_manual_seed",
+      "note": "Agreement on selected raw operands does not verify normalized scores, testing, context, consensus or expected draft capital."
+    },
+    {
+      "player_id": "te-brock-bowers",
+      "legacy_input_paths": [
+        "data/raw/2024_real_seed_pool.json",
+        "data/processed/2024_player_stats.json"
+      ],
+      "legacy_production_score": 95.0,
+      "legacy_source_claim": "manual_historical_seed (2023 season: 71 rec/1182 yds/16.6 YPR/6 TD; generational TE season; z~3.0)",
+      "candidate_2023_stats": {
+        "receptions": 56,
+        "receiving_yards": 714,
+        "receiving_tds": 6,
+        "yards_per_reception": 12.8
+      },
+      "source_refs": [
+        "college-bowers"
+      ],
+      "raw_operand_status": "contradicted",
+      "differences": [
+        {
+          "field": "receptions",
+          "legacy_value": 71,
+          "candidate_value": 56
+        },
+        {
+          "field": "receiving_yards",
+          "legacy_value": 1182,
+          "candidate_value": 714
+        },
+        {
+          "field": "yards_per_reception",
+          "legacy_value": 16.6,
+          "candidate_value": 12.8
+        }
+      ],
+      "normalized_score_status": "unqualified_manual_seed",
+      "note": "Agreement on selected raw operands does not verify normalized scores, testing, context, consensus or expected draft capital."
+    },
+    {
+      "player_id": "wr-brian-thomas-jr",
+      "legacy_input_paths": [
+        "data/raw/2024_real_seed_pool.json",
+        "data/processed/2024_player_stats.json"
+      ],
+      "legacy_production_score": 83.0,
+      "legacy_source_claim": "manual_historical_seed (2023 season: 68 rec/1177 yds/17.3 YPR/17 TD; SEC; z~2.2)",
+      "candidate_2023_stats": {
+        "receptions": 68,
+        "receiving_yards": 1177,
+        "receiving_tds": 17,
+        "yards_per_reception": 17.3
+      },
+      "source_refs": [
+        "college-thomas"
+      ],
+      "raw_operand_status": "selected_raw_operands_reconciled",
+      "differences": [],
+      "normalized_score_status": "unqualified_manual_seed",
+      "note": "Agreement on selected raw operands does not verify normalized scores, testing, context, consensus or expected draft capital."
+    },
+    {
+      "player_id": "wr-xavier-worthy",
+      "legacy_input_paths": [
+        "data/raw/2024_real_seed_pool.json",
+        "data/processed/2024_player_stats.json"
+      ],
+      "legacy_production_score": 68.0,
+      "legacy_source_claim": "manual_historical_seed (2023 season: 57 rec/760 yds/13.3 YPR/9 TD; Big 12; z~1.2)",
+      "candidate_2023_stats": {
+        "receptions": 75,
+        "receiving_yards": 1014,
+        "receiving_tds": 5,
+        "yards_per_reception": 13.5
+      },
+      "source_refs": [
+        "college-worthy"
+      ],
+      "raw_operand_status": "contradicted",
+      "differences": [
+        {
+          "field": "receptions",
+          "legacy_value": 57,
+          "candidate_value": 75
+        },
+        {
+          "field": "receiving_yards",
+          "legacy_value": 760,
+          "candidate_value": 1014
+        },
+        {
+          "field": "receiving_tds",
+          "legacy_value": 9,
+          "candidate_value": 5
+        },
+        {
+          "field": "yards_per_reception",
+          "legacy_value": 13.3,
+          "candidate_value": 13.5
+        }
+      ],
+      "normalized_score_status": "unqualified_manual_seed",
+      "note": "Agreement on selected raw operands does not verify normalized scores, testing, context, consensus or expected draft capital."
+    },
+    {
+      "player_id": "wr-ladd-mcconkey",
+      "legacy_input_paths": [
+        "data/raw/2024_real_seed_pool.json",
+        "data/processed/2024_player_stats.json"
+      ],
+      "legacy_production_score": 65.0,
+      "legacy_source_claim": "manual_historical_seed (2023 season: 61 rec/841 yds/13.8 YPR/5 TD; SECshared targets; z~1.0)",
+      "candidate_2023_stats": {
+        "receptions": 30,
+        "receiving_yards": 478,
+        "receiving_tds": 2,
+        "yards_per_reception": 15.9
+      },
+      "source_refs": [
+        "college-mcconkey"
+      ],
+      "raw_operand_status": "contradicted",
+      "differences": [
+        {
+          "field": "receptions",
+          "legacy_value": 61,
+          "candidate_value": 30
+        },
+        {
+          "field": "receiving_yards",
+          "legacy_value": 841,
+          "candidate_value": 478
+        },
+        {
+          "field": "receiving_tds",
+          "legacy_value": 5,
+          "candidate_value": 2
+        },
+        {
+          "field": "yards_per_reception",
+          "legacy_value": 13.8,
+          "candidate_value": 15.9
+        }
+      ],
+      "normalized_score_status": "unqualified_manual_seed",
+      "note": "Agreement on selected raw operands does not verify normalized scores, testing, context, consensus or expected draft capital."
+    },
+    {
+      "player_id": "rb-jonathon-brooks",
+      "legacy_input_paths": [
+        "data/raw/2024_real_seed_pool.json",
+        "data/processed/2024_player_stats.json"
+      ],
+      "legacy_production_score": 77.0,
+      "legacy_source_claim": "manual_historical_seed (2023 season: 175 car/1139 yds/6.51 YPC/10 TD pre-ACL; z~1.8)",
+      "candidate_2023_stats": {
+        "rush_attempts": 187,
+        "rush_yards": 1139,
+        "rush_tds": 10,
+        "receptions": 25,
+        "receiving_yards": 286,
+        "yards_per_carry": 6.1,
+        "yards_per_reception": 11.4
+      },
+      "source_refs": [
+        "college-brooks"
+      ],
+      "raw_operand_status": "contradicted",
+      "differences": [
+        {
+          "field": "rush_attempts",
+          "legacy_value": 175,
+          "candidate_value": 187
+        },
+        {
+          "field": "receptions",
+          "legacy_value": 21,
+          "candidate_value": 25
+        },
+        {
+          "field": "receiving_yards",
+          "legacy_value": 147,
+          "candidate_value": 286
+        },
+        {
+          "field": "yards_per_carry",
+          "legacy_value": 6.5,
+          "candidate_value": 6.1
+        }
+      ],
+      "normalized_score_status": "unqualified_manual_seed",
+      "note": "Agreement on selected raw operands does not verify normalized scores, testing, context, consensus or expected draft capital."
+    },
+    {
+      "player_id": "wr-adonai-mitchell",
+      "legacy_input_paths": [
+        "data/raw/2024_real_seed_pool.json",
+        "data/processed/2024_player_stats.json"
+      ],
+      "legacy_production_score": 72.5,
+      "legacy_source_claim": "manual_historical_seed (2023 season: 46 rec/845 yds/18.4 YPR/8 TD; Big 12; z~1.5)",
+      "candidate_2023_stats": {
+        "receptions": 55,
+        "receiving_yards": 845,
+        "receiving_tds": 11,
+        "yards_per_reception": 15.4
+      },
+      "source_refs": [
+        "college-mitchell"
+      ],
+      "raw_operand_status": "contradicted",
+      "differences": [
+        {
+          "field": "receptions",
+          "legacy_value": 46,
+          "candidate_value": 55
+        },
+        {
+          "field": "receiving_tds",
+          "legacy_value": 8,
+          "candidate_value": 11
+        },
+        {
+          "field": "yards_per_reception",
+          "legacy_value": 18.4,
+          "candidate_value": 15.4
+        }
+      ],
+      "normalized_score_status": "unqualified_manual_seed",
+      "note": "Agreement on selected raw operands does not verify normalized scores, testing, context, consensus or expected draft capital."
+    },
+    {
+      "player_id": "rb-trey-benson",
+      "legacy_input_paths": [
+        "data/raw/2024_real_seed_pool.json",
+        "data/processed/2024_player_stats.json"
+      ],
+      "legacy_production_score": 80.0,
+      "legacy_source_claim": "manual_historical_seed (2023 season: 213 car/1401 yds/6.58 YPC/13 TD; ACC; z~2.0)",
+      "candidate_2023_stats": {
+        "rush_attempts": 156,
+        "rush_yards": 906,
+        "rush_tds": 14,
+        "receptions": 20,
+        "receiving_yards": 227,
+        "yards_per_carry": 5.8,
+        "yards_per_reception": 11.3
+      },
+      "source_refs": [
+        "college-benson",
+        "college-benson-pdf"
+      ],
+      "raw_operand_status": "contradicted",
+      "differences": [
+        {
+          "field": "rush_attempts",
+          "legacy_value": 213,
+          "candidate_value": 156
+        },
+        {
+          "field": "rush_yards",
+          "legacy_value": 1401,
+          "candidate_value": 906
+        },
+        {
+          "field": "rush_tds",
+          "legacy_value": 13,
+          "candidate_value": 14
+        },
+        {
+          "field": "receptions",
+          "legacy_value": 22,
+          "candidate_value": 20
+        },
+        {
+          "field": "receiving_yards",
+          "legacy_value": 147,
+          "candidate_value": 227
+        },
+        {
+          "field": "yards_per_carry",
+          "legacy_value": 6.6,
+          "candidate_value": 5.8
+        }
+      ],
+      "normalized_score_status": "unqualified_manual_seed",
+      "note": "Agreement on selected raw operands does not verify normalized scores, testing, context, consensus or expected draft capital."
+    },
+    {
+      "player_id": "rb-blake-corum",
+      "legacy_input_paths": [
+        "data/raw/2024_real_seed_pool.json",
+        "data/processed/2024_player_stats.json"
+      ],
+      "legacy_production_score": 72.5,
+      "legacy_source_claim": "manual_historical_seed (2023 season: 226 car/1240 yds/5.49 YPC/12 TD; CFP run; z~1.5)",
+      "candidate_2023_stats": {
+        "rush_attempts": 258,
+        "rush_yards": 1245,
+        "rush_tds": 27,
+        "receptions": 16,
+        "receiving_yards": 117,
+        "yards_per_carry": 4.8,
+        "yards_per_reception": 7.3
+      },
+      "source_refs": [
+        "college-corum"
+      ],
+      "raw_operand_status": "contradicted",
+      "differences": [
+        {
+          "field": "rush_attempts",
+          "legacy_value": 226,
+          "candidate_value": 258
+        },
+        {
+          "field": "rush_yards",
+          "legacy_value": 1240,
+          "candidate_value": 1245
+        },
+        {
+          "field": "rush_tds",
+          "legacy_value": 12,
+          "candidate_value": 27
+        },
+        {
+          "field": "receiving_yards",
+          "legacy_value": 159,
+          "candidate_value": 117
+        },
+        {
+          "field": "yards_per_carry",
+          "legacy_value": 5.5,
+          "candidate_value": 4.8
+        }
+      ],
+      "normalized_score_status": "unqualified_manual_seed",
+      "note": "Agreement on selected raw operands does not verify normalized scores, testing, context, consensus or expected draft capital."
+    },
+    {
+      "player_id": "rb-marshawn-lloyd",
+      "legacy_input_paths": [
+        "data/raw/2024_real_seed_pool.json",
+        "data/processed/2024_player_stats.json"
+      ],
+      "legacy_production_score": 65.0,
+      "legacy_source_claim": "manual_historical_seed (2023 season: 156 car/969 yds/6.21 YPC/9 TD; z~1.0)",
+      "candidate_2023_stats": {
+        "rush_attempts": 116,
+        "rush_yards": 820,
+        "rush_tds": 9,
+        "receptions": 13,
+        "receiving_yards": 232,
+        "yards_per_carry": 7.1,
+        "yards_per_reception": 17.8
+      },
+      "source_refs": [
+        "college-lloyd"
+      ],
+      "raw_operand_status": "contradicted",
+      "differences": [
+        {
+          "field": "rush_attempts",
+          "legacy_value": 156,
+          "candidate_value": 116
+        },
+        {
+          "field": "rush_yards",
+          "legacy_value": 969,
+          "candidate_value": 820
+        },
+        {
+          "field": "receptions",
+          "legacy_value": 14,
+          "candidate_value": 13
+        },
+        {
+          "field": "receiving_yards",
+          "legacy_value": 97,
+          "candidate_value": 232
+        },
+        {
+          "field": "yards_per_carry",
+          "legacy_value": 6.2,
+          "candidate_value": 7.1
+        }
+      ],
+      "normalized_score_status": "unqualified_manual_seed",
+      "note": "Agreement on selected raw operands does not verify normalized scores, testing, context, consensus or expected draft capital."
+    },
+    {
+      "player_id": "rb-braelon-allen",
+      "legacy_input_paths": [
+        "data/raw/2024_real_seed_pool.json",
+        "data/processed/2024_player_stats.json"
+      ],
+      "legacy_production_score": 65.0,
+      "legacy_source_claim": "manual_historical_seed (2023 season: 219 car/1100 yds/5.02 YPC/12 TD; BOA peak was 2021 at age 17; z~1.0)",
+      "candidate_2023_stats": {
+        "rush_attempts": 181,
+        "rush_yards": 984,
+        "rush_tds": 12,
+        "receptions": 28,
+        "receiving_yards": 132,
+        "yards_per_carry": 5.4,
+        "yards_per_reception": 4.7
+      },
+      "source_refs": [
+        "college-allen",
+        "college-allen-pdf"
+      ],
+      "raw_operand_status": "contradicted",
+      "differences": [
+        {
+          "field": "rush_attempts",
+          "legacy_value": 219,
+          "candidate_value": 181
+        },
+        {
+          "field": "rush_yards",
+          "legacy_value": 1100,
+          "candidate_value": 984
+        },
+        {
+          "field": "receptions",
+          "legacy_value": 29,
+          "candidate_value": 28
+        },
+        {
+          "field": "receiving_yards",
+          "legacy_value": 205,
+          "candidate_value": 132
+        },
+        {
+          "field": "yards_per_carry",
+          "legacy_value": 5.0,
+          "candidate_value": 5.4
+        }
+      ],
+      "normalized_score_status": "unqualified_manual_seed",
+      "note": "Agreement on selected raw operands does not verify normalized scores, testing, context, consensus or expected draft capital."
+    }
+  ],
+  "source_conflicts": [
+    {
+      "player_id": "rb-trey-benson",
+      "field": "rush_yards",
+      "season": 2023,
+      "observations": [
+        {
+          "source_ref": "college-benson",
+          "value": 906
+        },
+        {
+          "source_ref": "college-benson-pdf",
+          "locator": "PDF page 28, player career table",
+          "value": 905
+        }
+      ],
+      "candidate_value": 906,
+      "resolution_status": "provisional_current_roster_value_pending_review",
+      "note": "The March 2024 recap uses 905 in the career table but 906 elsewhere. Current school roster and April 2024 school draft release use 906. This one-yard conflict remains explicit and blocks unqualified normalization."
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "artifact": "2024_candidate_execution_validation_v0",
+  "observed_on": "2026-10-10",
+  "status": "executor_checks_passed_independent_review_pending",
+  "promotable": false,
+  "base_commit": "e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6",
+  "authorization": "Joe explicitly authorized execution in originating conversation; authorization receipt posted to #301 and Research #33.",
+  "checks": [
+    {
+      "command": "python3 scripts/build_2024_reconstruction.py --check",
+      "exit_code": 0,
+      "result": "78-player census and all checked-in generated outputs reproduce; pinned inputs match."
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p 'test_build_2024_reconstruction.py'",
+      "exit_code": 0,
+      "tests_passed": 25
+    },
+    {
+      "command": "git diff --quiet e78df9df32adb6568ccfbe8ff2b7210d9d99e8a6 -- exports/promoted exports/experimental data/processed data/raw runtime-server.js index.html public package.json",
+      "exit_code": 0,
+      "result": "Protected existing producer inputs, outputs and runtime unchanged."
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ],
+  "candidate_file_sha256": {
+    "data/historical/reconstruction_2024/2024_skill_class_census_v0.csv": "26d708eb352c17f99a0eed4bf3af70821bed8872db96578ffdd903af6278e02d",
+    "data/historical/reconstruction_2024/2024_skill_class_census_v0.json": "960ae70d7e808bb0340d5950877fef4a2baf81901937943770731b058c91f64c",
+    "data/historical/reconstruction_2024/coverage_matrix_v0.json": "48581dd08a957072d90e6a7721d6559a553a7c30f45475e5d5394df068f32a45",
+    "data/historical/reconstruction_2024/input_integrity_audit_v0.json": "3d5da6cae2f37c2b4de3a28a8292c46d215c09860efb66777ed801b9c4a0350a",
+    "data/historical/reconstruction_2024/landing_context/2024_wr_marvin_harrison_jr_landing_context_v0.json": "8ac289060f267f88e6565006facd43b39697c086e76f411c7b48f2afc23842f1",
+    "data/historical/reconstruction_2024/predraft_cards/2024_wr_marvin_harrison_jr_predraft_v0.json": "0c614882a2afa3f4ac4007a4937fd8148420333c22ab2e3d6a307905ee21692b",
+    "data/historical/reconstruction_2024/source_facts_v0.json": "fe0503eaacebd43cb93be97b0d49eafc1b964c23a071b3e17ae9387c3b5b6b5e",
+    "scripts/build_2024_reconstruction.py": "c37f393831e3c9410fa3142a954608d357bac292d5d6ecbdfc060159a17d395a",
+    "tests/test_build_2024_reconstruction.py": "4eb48af9f68a9eca7723fb7b2b46016c8f1fa890d70b719b6a2719269569643f",
+    "docs/2024-class-reconstruction-v0.md": "90ca6ac857ac4061f448227a5dfdb544a22a10555db294a56c6cd24ed8ae340f"
+  },
+  "not_executed": [
+    "Alpha scoring on unqualified inputs",
+    "Runtime/export/ML regeneration or promotion",
+    "Merge/deployment",
+    "Independent review"
+  ],
+  "open_dependencies": [
+    "Remaining 62 college records",
+    "Qualified 2023 production normalization population",
+    "Testing/context/expected-capital source qualification",
+    "Canonical Data 2024 draft-results handoff (#242)"
+  ],
+  "review_fixes": [
+    {
+      "comment_id": 4238606568,
+      "result": "Reject actual_overall_pick and actual_draft_round at college observation and stats levels; both college lanes covered."
+    },
+    {
+      "comment_id": 4238606572,
+      "result": "Replace false structural isolation claim with accurate shared-input and output-exclusion policy."
+    },
+    {
+      "comment_id": 4238606577,
+      "result": "Derive source ledger hash from supplied root; regression fixture uses independently serialized source bytes."
+    },
+    {
+      "comment_ids": [
+        4238623074,
+        4238623075,
+        4238623079
+      ],
+      "result": "Reject established draft_team_name alias and empty draft sources; supplied facts must match the ledger parsed from the same bytes whose SHA-256 is recorded. Mutation and staging tests pass."
+    },
+    {
+      "comment_id": 4238893164,
+      "result": "Replace the non-literal pinned-base placeholder with the recorded base commit SHA so the protected-path check is directly replayable."
+    },
+    {
+      "comment_id": 4239002938,
+      "result": "Enforce allowlisted college-row and statistic schemas, fixed evidence status, and explicit MHJ card projection; reject arbitrary free text and nested objects."
+    },
+    {
+      "comment_ids": [
+        4239115474,
+        4239115478
+      ],
+      "result": "Require nonempty unique string-list provenance, primitive allowlisted college values, valid locator strings, complete derived-stat operands, and nonzero denominators before candidate serialization."
+    },
+    {
+      "comment_ids": [
+        4239391229,
+        4239391232,
+        4239391236
+      ],
+      "result": "Require final-season observations to use 2023, reject and explicitly project draft rows outside the admitted census schema, and derive receiving efficiency whenever the validated reception operands are present."
+    },
+    {
+      "comment_ids": [
+        4239488488,
+        4239488493,
+        4239488497
+      ],
+      "result": "Require exactly one MHJ college row for each 2021-2023 season, validate census field values including class year and source locator shapes, and require every legacy seed identity to retain a final-season observation."
+    },
+    {
+      "comment_ids": [
+        4239596341,
+        4239596342
+      ],
+      "result": "Require each source-ledger entry to match one complete qualified retrieval schema, and validate/project the exact identity-resolution schema with source, pick, position, name and round linkage."
+    },
+    {
+      "comment_ids": [
+        4239727748,
+        4239727750
+      ],
+      "result": "Require the complete eight-pick identity-resolution set and bind every resolution's provenance to the linked draft row rather than any globally valid source."
+    }
+  ]
+}
