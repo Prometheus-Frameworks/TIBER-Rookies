@@ -233,7 +233,7 @@ test('buildDevyCsv keeps nullish fields empty and joins array fields', () => {
   const header = rows[0];
   assert.equal(rows[1][header.indexOf('school')], '', 'missing field stays empty');
   assert.equal(rows[1][header.indexOf('development_tags')], 'a|b');
-  assert.equal(rows[1][header.indexOf('devy_active_status')], 'active_devy', 'derived status preserved');
+  assert.equal(rows[1][header.indexOf('devy_active_status')], 'unknown', 'missing transition does not assert activity');
 });
 
 test('buildBoardCsv preserves numeric formatting and unscored blanks', () => {
