@@ -5,6 +5,11 @@ Reads WR/TE route profiles and RB play profiles for 2024 and 2025, pairs them
 by player_id, and outputs a trend artifact used by the UI to display ↑/↓/→
 indicators on the board.
 
+WR/TE rows carry per-season target-evidence status (#303) so a comparison
+mixing estimated and parsed/reported target counts stays visibly qualified.
+Numeric fields are unchanged; yards_per_target trends are observed-only
+efficiency evidence only when both denominators were observed.
+
 Output: data/processed/2026_yoy_trends.json
 """
 
@@ -12,7 +17,14 @@ from __future__ import annotations
 
 import json
 import logging
+import sys
 from pathlib import Path
+
+REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
+from scripts.target_evidence import PARSED_PARTIAL, SOURCE_REPORTED, TARGET_STATUSES, target_status
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
@@ -62,6 +74,9 @@ def compute_wr_te_trend(pid: str, profile_dir: Path) -> dict | None:
     vol_change = pct_change(targets_24, targets_25)
     eff_change = pct_change(ypt_24, ypt_25)
 
+    status_24 = target_status(p24)
+    status_25 = target_status(p25)
+
     return {
         "player_id": pid,
         "player_name": p25.get("player_name", pid),
@@ -78,7 +93,23 @@ def compute_wr_te_trend(pid: str, profile_dir: Path) -> dict | None:
         "efficiency_2025": round(ypt_25, 3) if ypt_25 is not None else None,
         "efficiency_change_pct": round(eff_change, 4) if eff_change is not None else None,
         "efficiency_trend": trend_tag(eff_change, EFFICIENCY_THRESHOLD),
+        "target_status_2024": status_24,
+        "target_status_2025": status_25,
+        "target_basis": status_24 if status_24 == status_25 else "mixed",
+        "efficiency_observed_denominators": {status_24, status_25} <= {SOURCE_REPORTED, PARSED_PARTIAL},
     }
+
+
+def validate_wr_te_rows(rows: list[dict]) -> None:
+    """Fail generation if any WR/TE row lost its target-evidence status."""
+    for row in rows:
+        if row.get("position_group") != "WR_TE":
+            continue
+        for key in ("target_status_2024", "target_status_2025"):
+            if row.get(key) not in TARGET_STATUSES:
+                raise ValueError(f"{row.get('player_id')}: missing/invalid {key}={row.get(key)!r}")
+        if "target_basis" not in row or "efficiency_observed_denominators" not in row:
+            raise ValueError(f"{row.get('player_id')}: missing target qualification fields")
 
 
 def compute_rb_trend(pid: str, profile_dir: Path) -> dict | None:
@@ -167,6 +198,8 @@ def main() -> None:
             )
         else:
             logging.warning("%s: missing 2024 or 2025 profile, skipped", pid)
+
+    validate_wr_te_rows(results)
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     with OUTPUT_PATH.open("w", encoding="utf-8") as f:
