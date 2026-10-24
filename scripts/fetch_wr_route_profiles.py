@@ -28,6 +28,13 @@ from scripts.compute_production_scores import (
     school_aliases,
 )
 from scripts.cfbd_plays import load_json, write_json
+from scripts.target_evidence import (
+    ESTIMATED,
+    SOURCE_REPORTED,
+    UNAVAILABLE,
+    UNSUPPORTED,
+    build_target_evidence,
+)
 
 DEFAULT_PLAYERS_INPUT = Path("data/processed/2026_college_production.json")
 DEFAULT_OUTPUT_DIR = Path("data/processed/wr_route_profiles")
@@ -38,9 +45,13 @@ METHODOLOGY_NOTE = (
     "Targets derived from CFBD /stats/player/season receiving stats. "
     "If CFBD does not supply a TGT stat type, targets are estimated as "
     f"receptions / {ASSUMED_CATCH_RATE:.2f} (industry avg catch rate). "
-    "yards_per_target is total receiving yards / estimated targets. "
-    "screen_target_rate and depth_tag_coverage_rate are always null — "
-    "season-level stats carry no route/scheme descriptors."
+    "yards_per_target is total receiving yards / targets, so it is "
+    "estimate-derived whenever targets are estimated. "
+    "screen_targets is stored as 0 for schema compatibility but is not an "
+    "observed absence; screen_target_rate, deep_target_rate and "
+    "depth_tag_coverage_rate are always null — "
+    "season-level stats carry no route/scheme descriptors. "
+    "See the target_evidence block for per-field status."
 )
 
 DEPTH_TAG_PATTERNS: tuple[tuple[str, tuple[str, ...]], ...] = (
@@ -170,6 +181,7 @@ def build_profile(
     team = str(player.get("school", "")).strip()
     player_id = player.get("player_id")
     player_name = player.get("player_name")
+    source_url = f"{CFBD_BASE_URL}/stats/player/season?year={season}&category=receiving"
 
     if stats is None:
         logging.warning(
@@ -193,20 +205,60 @@ def build_profile(
             "team_screen_rate": None,
             "team_yards_per_pass": None,
             "source_name": f"CFBD season stats (year={season}, team={team}) — player not found",
-            "source_url": f"{CFBD_BASE_URL}/stats/player/season?year={season}&category=receiving",
+            "source_url": source_url,
             "methodology_notes": METHODOLOGY_NOTE + " Player not matched in CFBD data.",
+            # targets/receptions 0 above are legacy placeholders, not observed zeros.
+            "target_evidence": build_target_evidence(
+                UNAVAILABLE,
+                origin="producer",
+                receptions_status=UNAVAILABLE,
+                scheme_status=UNSUPPORTED,
+                method="player_not_found",
+                lineage={"source_url": source_url},
+            ),
         }
 
     receptions = stats.get("REC", 0.0)
     yards = stats.get("YDS", 0.0)
+    # REC 0.0 above is a numeric placeholder when CFBD omits the stat.
+    receptions_status = SOURCE_REPORTED if "REC" in stats else UNAVAILABLE
 
     # CFBD sometimes returns TGT; fall back to estimate
     if "TGT" in stats:
         targets = int(round(stats["TGT"]))
         tgt_source = "CFBD TGT stat"
-    else:
+        evidence = build_target_evidence(
+            SOURCE_REPORTED,
+            origin="producer",
+            receptions_status=receptions_status,
+            scheme_status=UNSUPPORTED,
+            method="cfbd_tgt_stat",
+            lineage={"source_url": source_url},
+        )
+    elif "REC" in stats:
         targets = int(round(receptions / ASSUMED_CATCH_RATE)) if receptions > 0 else 0
         tgt_source = f"estimated (REC / {ASSUMED_CATCH_RATE:.2f})"
+        evidence = build_target_evidence(
+            ESTIMATED,
+            origin="producer",
+            receptions_status=receptions_status,
+            scheme_status=UNSUPPORTED,
+            method="receptions_div_assumed_catch_rate",
+            assumed_catch_rate=ASSUMED_CATCH_RATE,
+            lineage={"source_url": source_url},
+        )
+    else:
+        # Neither TGT nor REC: no estimate input exists; 0 is a placeholder.
+        targets = 0
+        tgt_source = "unavailable (CFBD returned neither TGT nor REC)"
+        evidence = build_target_evidence(
+            UNAVAILABLE,
+            origin="producer",
+            receptions_status=UNAVAILABLE,
+            scheme_status=UNSUPPORTED,
+            method="missing_tgt_and_rec",
+            lineage={"source_url": source_url},
+        )
 
     yards_per_target = round(yards / targets, 1) if targets > 0 else None
 
@@ -228,8 +280,9 @@ def build_profile(
         "team_screen_rate": None,
         "team_yards_per_pass": None,
         "source_name": f"CFBD season stats (year={season}, team={team}); targets={tgt_source}",
-        "source_url": f"{CFBD_BASE_URL}/stats/player/season?year={season}&category=receiving",
+        "source_url": source_url,
         "methodology_notes": METHODOLOGY_NOTE,
+        "target_evidence": evidence,
     }
 
 
