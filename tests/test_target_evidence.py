@@ -8,7 +8,7 @@ from pathlib import Path
 from scripts.compute_age_adjusted_production import season_volume
 from scripts.compute_yoy_trends import compute_wr_te_trend, validate_wr_te_rows
 from scripts.fetch_wr_route_profiles import build_profile
-from scripts.target_evidence import qualify_profile, target_status
+from scripts.target_evidence import qualify_profile, target_status, validate_target_evidence
 
 PROFILE_DIR = Path("data/processed/wr_route_profiles")
 PLAYER = {"player_id": "wr-test-player", "player_name": "Test Player", "school": "Test State"}
@@ -81,6 +81,19 @@ class LegacyQualificationTests(unittest.TestCase):
         self.assertEqual(q["targets"]["status"], "parsed_partial")
         self.assertNotEqual(q["scheme_fields"]["status"], "unsupported")
 
+    def test_prior_producer_reported_tgt_row_is_not_estimated(self) -> None:
+        # Pre-#303 producer shape: no block, standard conditional fallback note.
+        reported = build_profile(PLAYER, 2025, {"REC": 60.0, "YDS": 900.0, "TGT": 90.0})
+        estimated = build_profile(PLAYER, 2025, {"REC": 71.0, "YDS": 1000.0})
+        for profile in (reported, estimated):
+            del profile["target_evidence"]
+            self.assertIn("If CFBD does not supply a TGT stat type", profile["methodology_notes"])
+        self.assertEqual(target_status(reported), "source_reported")
+        self.assertTrue(qualify_profile(reported)["yards_per_target"]["observed_denominator"])
+        q = qualify_profile(estimated)
+        self.assertEqual(q["targets"]["status"], "estimated")
+        self.assertEqual(q["targets"]["assumed_catch_rate"], 0.70)
+
     def test_every_committed_profile_gets_a_status(self) -> None:
         for path in sorted(PROFILE_DIR.glob("*.json")):
             with self.subTest(path=path.name):
@@ -120,10 +133,81 @@ class ProducerEvidenceTests(unittest.TestCase):
         self.assertEqual(ev["targets"]["status"], "unavailable")
         self.assertEqual(ev["receptions"]["status"], "unavailable")
 
+    def test_missing_rec_with_tgt_does_not_invent_reported_receptions(self) -> None:
+        profile = build_profile(PLAYER, 2025, {"TGT": 90.0, "YDS": 900.0})
+        self.assertEqual((profile["targets"], profile["receptions"]), (90, 0))  # placeholders unchanged
+        ev = profile["target_evidence"]
+        self.assertEqual(ev["targets"]["status"], "source_reported")
+        self.assertEqual(ev["receptions"]["status"], "unavailable")
+
+    def test_missing_rec_and_tgt_is_not_an_estimate(self) -> None:
+        profile = build_profile(PLAYER, 2025, {"YDS": 1000.0})
+        self.assertEqual((profile["targets"], profile["receptions"]), (0, 0))  # placeholders unchanged
+        self.assertIsNone(profile["yards_per_target"])
+        ev = profile["target_evidence"]
+        self.assertEqual(ev["targets"]["status"], "unavailable")
+        self.assertNotIn("assumed_catch_rate", ev["targets"])
+        self.assertEqual(ev["receptions"]["status"], "unavailable")
+        self.assertEqual(validate_target_evidence(ev, profile), [])
+
+    def test_producer_blocks_pass_validation(self) -> None:
+        for stats in ({"REC": 60.0, "YDS": 900.0, "TGT": 90.0}, {"REC": 71.0, "YDS": 1000.0}, None):
+            profile = build_profile(PLAYER, 2025, stats)
+            self.assertEqual(validate_target_evidence(profile["target_evidence"], profile), [])
+
     def test_qualification_survives_serialization(self) -> None:
         profile = build_profile(PLAYER, 2025, {"REC": 50.0, "YDS": 600.0})
         reloaded = json.loads(json.dumps(profile))
         self.assertEqual(qualify_profile(reloaded), profile["target_evidence"])
+
+
+class StoredBlockValidationTests(unittest.TestCase):
+    def valid_reported(self) -> dict:
+        return build_profile(PLAYER, 2025, {"REC": 60.0, "YDS": 900.0, "TGT": 90.0})
+
+    def test_partial_block_is_degraded_not_trusted(self) -> None:
+        profile = {"targets": None, "receptions": None, "yards_per_target": None,
+                   "target_evidence": {"targets": {"status": "source_reported"}}}
+        q = qualify_profile(profile)
+        self.assertEqual(q["targets"]["status"], "unavailable")
+        self.assertFalse(q["yards_per_target"]["observed_denominator"])
+        self.assertTrue(q["invalid_stored_block"])
+
+    def test_unknown_contract_version_is_degraded(self) -> None:
+        profile = self.valid_reported()
+        profile["target_evidence"]["contract_version"] = "wr_te_target_evidence_v9"
+        q = qualify_profile(profile)
+        self.assertEqual(q["targets"]["status"], "unknown")
+        self.assertFalse(q["yards_per_target"]["observed_denominator"])
+
+    def test_mismatched_denominator_is_degraded(self) -> None:
+        profile = build_profile(PLAYER, 2025, {"REC": 71.0, "YDS": 1000.0})
+        profile["target_evidence"]["yards_per_target"]["observed_denominator"] = True
+        self.assertEqual(target_status(profile), "unknown")
+        profile = self.valid_reported()
+        profile["target_evidence"]["yards_per_target"]["denominator_status"] = "estimated"
+        self.assertEqual(target_status(profile), "unknown")
+
+    def test_estimate_without_assumption_is_degraded(self) -> None:
+        profile = build_profile(PLAYER, 2025, {"REC": 71.0, "YDS": 1000.0})
+        del profile["target_evidence"]["targets"]["assumed_catch_rate"]
+        self.assertEqual(target_status(profile), "unknown")
+
+    def test_non_object_block_is_degraded(self) -> None:
+        profile = self.valid_reported()
+        profile["target_evidence"] = "source_reported"
+        self.assertEqual(target_status(profile), "unknown")
+
+    def test_invalid_blocks_cannot_become_observed_yoy_evidence(self) -> None:
+        bad = {"targets": None, "receptions": None, "yards_per_target": None,
+               "target_evidence": {"targets": {"status": "source_reported"}}}
+        with tempfile.TemporaryDirectory() as tmp:
+            d = Path(tmp)
+            (d / "wr-x_2024.json").write_text(json.dumps(bad))
+            (d / "wr-x_2025.json").write_text(json.dumps(bad))
+            row = compute_wr_te_trend("wr-x", d)
+        self.assertFalse(row["efficiency_observed_denominators"])
+        validate_wr_te_rows([row])
 
 
 class DownstreamCompatibilityTests(unittest.TestCase):
@@ -150,6 +234,21 @@ class DownstreamCompatibilityTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_wr_te_rows([row])
         validate_wr_te_rows([{"player_id": "rb", "position_group": "RB"}])
+
+    def test_yoy_validation_rejects_inconsistent_couplings(self) -> None:
+        base = {"player_id": "x", "position_group": "WR_TE",
+                "target_status_2024": "estimated", "target_status_2025": "estimated",
+                "target_basis": "estimated", "efficiency_observed_denominators": False}
+        validate_wr_te_rows([base])
+        for override in ({"target_basis": None}, {"target_basis": "mixed"},
+                         {"efficiency_observed_denominators": True},
+                         {"efficiency_observed_denominators": 0}):
+            with self.subTest(override=override), self.assertRaises(ValueError):
+                validate_wr_te_rows([{**base, **override}])
+        mixed = {**base, "target_status_2025": "parsed_partial", "target_basis": "mixed"}
+        validate_wr_te_rows([mixed])
+        with self.assertRaises(ValueError):
+            validate_wr_te_rows([{**mixed, "target_basis": "estimated"}])
 
     def test_age_adjusted_volume_reads_unchanged(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:

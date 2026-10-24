@@ -56,8 +56,12 @@ player-season it emits:
   targets are estimated (`yards_per_target.observed_denominator: false`).
 - `screen_targets: 0` and null screen/depth rates for schema compatibility.
   `scheme_fields.status` is always `unsupported`.
-- Player not matched: `targets`/`receptions` are `0` placeholders, but
-  `target_evidence.targets.status` is `unavailable`. That is not an observed zero.
+- Player not matched, or CFBD returned neither `TGT` nor `REC`:
+  `targets`/`receptions` are `0` placeholders, but `target_evidence.targets.status`
+  is `unavailable`. That is not an observed zero.
+- `receptions.status` is `source_reported` only when CFBD returned `REC`.
+- A stored `target_evidence` block that fails `validate_target_evidence` is
+  read as `unknown`/`unavailable`, never as observed evidence.
 
 The estimation policy itself is unchanged by #303. Whether to move estimates
 out of `targets` is deferred to a reviewed migration.

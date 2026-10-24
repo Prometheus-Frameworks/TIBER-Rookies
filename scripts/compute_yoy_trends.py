@@ -101,15 +101,21 @@ def compute_wr_te_trend(pid: str, profile_dir: Path) -> dict | None:
 
 
 def validate_wr_te_rows(rows: list[dict]) -> None:
-    """Fail generation if any WR/TE row lost its target-evidence status."""
+    """Fail generation if any WR/TE row lost or mis-derived its target-evidence status."""
     for row in rows:
         if row.get("position_group") != "WR_TE":
             continue
-        for key in ("target_status_2024", "target_status_2025"):
-            if row.get(key) not in TARGET_STATUSES:
-                raise ValueError(f"{row.get('player_id')}: missing/invalid {key}={row.get(key)!r}")
-        if "target_basis" not in row or "efficiency_observed_denominators" not in row:
-            raise ValueError(f"{row.get('player_id')}: missing target qualification fields")
+        pid = row.get("player_id")
+        s24, s25 = row.get("target_status_2024"), row.get("target_status_2025")
+        for key, value in (("target_status_2024", s24), ("target_status_2025", s25)):
+            if value not in TARGET_STATUSES:
+                raise ValueError(f"{pid}: missing/invalid {key}={value!r}")
+        expected_basis = s24 if s24 == s25 else "mixed"
+        if row.get("target_basis") != expected_basis:
+            raise ValueError(f"{pid}: target_basis={row.get('target_basis')!r}, expected {expected_basis!r}")
+        expected_obs = {s24, s25} <= {SOURCE_REPORTED, PARSED_PARTIAL}
+        if row.get("efficiency_observed_denominators") is not expected_obs:
+            raise ValueError(f"{pid}: efficiency_observed_denominators must be {expected_obs}")
 
 
 def compute_rb_trend(pid: str, profile_dir: Path) -> dict | None:

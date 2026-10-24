@@ -39,6 +39,29 @@
 - `yards_per_target.observed_denominator` is true only for `source_reported` /
   `parsed_partial` denominators.
 - A `source_url` is never used as evidence of measured targets.
+- **Stored blocks are validated before they are trusted** (`validate_target_evidence`).
+  The checks are:
+  - the recognized `contract_version` and `qualification_origin`;
+  - the required object shape;
+  - valid statuses;
+  - `yards_per_target.denominator_status` equal to `targets.status`, with
+    `observed_denominator` consistent with it;
+  - `method` plus `assumed_catch_rate` in (0, 1] for estimates;
+  - null `targets` ⇒ `unavailable`.
+
+  An invalid block is degraded to `unknown` (`unavailable` when `targets` is
+  null), with `invalid_stored_block` listing the violations. It is never
+  promoted to observed evidence, and it is not re-inferred from prose.
+- **Legacy inference reads only the per-row `source_name` derivation label**
+  (`targets=CFBD TGT stat`, `targets estimated (REC / x)`, `CFBD play-by-play`).
+  The producer's methodology note describes the REC/0.70 fallback
+  conditionally on every row, so it is never read as a claim that the
+  fallback was used.
+- **Producer `receptions.status` follows field presence.** It is
+  `source_reported` only when CFBD returned `REC`. With `TGT` but no `REC`,
+  targets stay `source_reported` and receptions are `unavailable`. With
+  neither, targets are `unavailable` (`method: missing_tgt_and_rec`), not an
+  estimate. The numeric `0` placeholders are unchanged.
 - No coverage or confidence value is invented. Legacy lineage copies the
   existing `source_name` / `source_url` verbatim.
 
@@ -65,7 +88,10 @@ and `compute_age_adjusted_production.py` (→ `2026_age_adjusted_production.json
 
 - WR/TE rows gain `target_status_2024`, `target_status_2025`, `target_basis`
   (a status or `mixed`) and `efficiency_observed_denominators`.
-- `validate_wr_te_rows()` fails generation if any WR/TE row lacks them.
+- `validate_wr_te_rows()` fails generation if a WR/TE row lacks them or if
+  they are inconsistent. `target_basis` must equal the shared status (or
+  `mixed`), and `efficiency_observed_denominators` must be exactly
+  `True`/`False` as derived from both statuses.
 - Numeric fields and trend tags are computed exactly as before.
 - Current committed inputs give 19 WR/TE pairs: 9 all-estimated, 7 mixed
   (estimated ↔ parsed/unavailable), 3 parsed-only. Only those 3 (`te-oscar-delp`,
