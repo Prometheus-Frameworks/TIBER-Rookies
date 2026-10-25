@@ -101,7 +101,8 @@ def validate_target_evidence(block: Any, profile: dict[str, Any]) -> list[str]:
     errors: list[str] = []
     if block.get("contract_version") != CONTRACT_VERSION:
         errors.append(f"unrecognized contract_version {block.get('contract_version')!r}")
-    if block.get("qualification_origin") not in ORIGINS:
+    origin = block.get("qualification_origin")
+    if not isinstance(origin, str) or origin not in ORIGINS:
         errors.append("invalid qualification_origin")
     for key in ("targets", "receptions", "yards_per_target", "scheme_fields", "lineage"):
         if not isinstance(block.get(key), dict):
@@ -110,16 +111,19 @@ def validate_target_evidence(block: Any, profile: dict[str, Any]) -> list[str]:
         return errors
 
     status = block["targets"].get("status")
-    if status not in TARGET_STATUSES:
+    if not isinstance(status, str) or status not in TARGET_STATUSES:
         errors.append(f"invalid targets.status {status!r}")
-    if block["receptions"].get("status") not in TARGET_STATUSES:
+    receptions_status = block["receptions"].get("status")
+    if not isinstance(receptions_status, str) or receptions_status not in TARGET_STATUSES:
         errors.append("invalid receptions.status")
-    if block["scheme_fields"].get("status") not in SCHEME_STATUSES:
+    scheme_status = block["scheme_fields"].get("status")
+    if not isinstance(scheme_status, str) or scheme_status not in SCHEME_STATUSES:
         errors.append("invalid scheme_fields.status")
     ypt = block["yards_per_target"]
     if ypt.get("status") != "derived" or ypt.get("denominator_status") != status:
         errors.append("yards_per_target qualification does not match targets.status")
-    if ypt.get("observed_denominator") is not (status in OBSERVED_STATUSES):
+    observed_denominator = isinstance(status, str) and status in OBSERVED_STATUSES
+    if ypt.get("observed_denominator") is not observed_denominator:
         errors.append("yards_per_target.observed_denominator inconsistent with targets.status")
     if status == ESTIMATED:
         rate = block["targets"].get("assumed_catch_rate")
