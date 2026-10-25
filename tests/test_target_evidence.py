@@ -3,8 +3,11 @@
 import json
 import tempfile
 import unittest
+from copy import deepcopy
 from pathlib import Path
+from unittest.mock import patch
 
+from scripts import compute_yoy_trends
 from scripts.compute_age_adjusted_production import season_volume
 from scripts.compute_yoy_trends import compute_wr_te_trend, validate_wr_te_rows
 from scripts.fetch_wr_route_profiles import build_profile
@@ -12,6 +15,7 @@ from scripts.target_evidence import qualify_profile, target_status, validate_tar
 
 PROFILE_DIR = Path("data/processed/wr_route_profiles")
 PLAYER = {"player_id": "wr-test-player", "player_name": "Test Player", "school": "Test State"}
+STORED_STATUS_FIELDS = ("qualification_origin", "targets.status", "receptions.status", "scheme_fields.status")
 
 
 def load(name: str) -> dict:
@@ -164,6 +168,66 @@ class ProducerEvidenceTests(unittest.TestCase):
 class StoredBlockValidationTests(unittest.TestCase):
     def valid_reported(self) -> dict:
         return build_profile(PLAYER, 2025, {"REC": 60.0, "YDS": 900.0, "TGT": 90.0})
+
+    def malformed_profile(self, field: str, value: object) -> dict:
+        profile = self.valid_reported()
+        block = profile["target_evidence"]
+        keys = field.split(".")
+        for key in keys[:-1]:
+            block = block[key]
+        block[keys[-1]] = deepcopy(value)
+        return profile
+
+    def test_array_and_object_statuses_return_errors_and_degrade(self) -> None:
+        for field in STORED_STATUS_FIELDS:
+            for value in ([], {}):
+                for targets, expected in ((90, "unknown"), (None, "unavailable")):
+                    with self.subTest(field=field, value=value, targets=targets):
+                        profile = self.malformed_profile(field, value)
+                        profile["targets"] = targets
+                        original = deepcopy(profile)
+                        errors = validate_target_evidence(profile["target_evidence"], profile)
+                        self.assertTrue(any(field in error for error in errors))
+                        q = qualify_profile(profile)
+                        self.assertEqual(q["targets"]["status"], expected)
+                        self.assertEqual(q["yards_per_target"]["denominator_status"], expected)
+                        self.assertIs(q["yards_per_target"]["observed_denominator"], False)
+                        self.assertEqual(q["receptions"]["status"], "unknown")
+                        self.assertEqual(q["scheme_fields"]["status"], "unknown")
+                        self.assertEqual(q["invalid_stored_block"], errors)
+                        self.assertEqual(validate_target_evidence(q, profile), [])
+                        self.assertEqual(profile, original)
+
+    def test_yoy_generation_degrades_array_and_object_statuses(self) -> None:
+        for field in STORED_STATUS_FIELDS:
+            for value in ([], {}):
+                for season in (2024, 2025):
+                    for targets, expected in ((90, "unknown"), (None, "unavailable")):
+                        with self.subTest(field=field, value=value, season=season, targets=targets):
+                            profiles = {year: self.valid_reported() for year in (2024, 2025)}
+                            profiles[season] = self.malformed_profile(field, value)
+                            profiles[season]["targets"] = targets
+                            with tempfile.TemporaryDirectory() as tmp:
+                                root = Path(tmp)
+                                profile_dir = root / "profiles"
+                                profile_dir.mkdir()
+                                for year, profile in profiles.items():
+                                    (profile_dir / f"wr-test-player_{year}.json").write_text(json.dumps(profile))
+                                output = root / "yoy.json"
+                                with patch.multiple(compute_yoy_trends, WR_TE_PROFILE_DIR=profile_dir,
+                                                    RB_PROFILE_DIR=root / "no-rb-profiles", OUTPUT_PATH=output):
+                                    compute_yoy_trends.main()
+                                rows = json.loads(output.read_text())
+                            self.assertEqual(len(rows), 1)
+                            row = rows[0]
+                            self.assertEqual(row[f"target_status_{season}"], expected)
+                            self.assertEqual(row[f"target_status_{2025 if season == 2024 else 2024}"],
+                                             "source_reported")
+                            self.assertEqual(row["target_basis"], "mixed")
+                            self.assertIs(row["efficiency_observed_denominators"], False)
+                            self.assertEqual(row[f"volume_{season}"], targets)
+                            self.assertEqual((row["efficiency_2024"], row["efficiency_2025"]), (10.0, 10.0))
+                            validate_wr_te_rows(rows)
 
     def test_partial_block_is_degraded_not_trusted(self) -> None:
         profile = {"targets": None, "receptions": None, "yards_per_target": None,
