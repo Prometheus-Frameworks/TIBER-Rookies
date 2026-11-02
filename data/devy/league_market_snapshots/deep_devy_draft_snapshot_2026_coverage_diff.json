@@ -90,18 +90,6 @@
       "position": "QB"
     },
     {
-      "player_id": "jeremiah-love",
-      "player_name": "Jeremiah Love",
-      "school": "Notre Dame",
-      "position": "RB"
-    },
-    {
-      "player_id": "nicholas-singleton",
-      "player_name": "Nicholas Singleton",
-      "school": "Penn State",
-      "position": "RB"
-    },
-    {
       "player_id": "ryan-williams",
       "player_name": "Ryan Williams",
       "school": "Alabama",
@@ -111,12 +99,6 @@
       "player_id": "cam-coleman",
       "player_name": "Cam Coleman",
       "school": "Auburn",
-      "position": "WR"
-    },
-    {
-      "player_id": "carnell-tate",
-      "player_name": "Carnell Tate",
-      "school": "Ohio State",
       "position": "WR"
     },
     {
