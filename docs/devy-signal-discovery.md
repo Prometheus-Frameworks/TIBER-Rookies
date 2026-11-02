@@ -230,6 +230,34 @@ Disallowed examples:
 - `freshman_status = confirmed` when `prior_college_production_found=false`
   and `class_year_source=unknown`.
 
+### Generating a pulse from CFBD
+
+`scripts/build_devy_roster_pulse.py` generates a pulse for one target NFL draft
+class from CollegeFootballData (requires `CFBD_API_KEY`):
+
+```bash
+python3 scripts/build_devy_roster_pulse.py --season 2026 --draft-class 2027
+```
+
+It pulls the season's FBS rosters, high-school recruiting classes, and
+season-to-date passing/rushing/receiving stats (about 10 API calls), then writes
+`data/devy/monthly_pulse/devy_roster_pulse_YYYY_MM.json` containing:
+
+- the top `--top-n` (default 15) draft-class-eligible QB/RB/WR/TE per position
+  by passing yards (QB), scrimmage yards (RB), or receiving yards (WR/TE) who
+  are **not** on the seed watchlist, with `production_evidence`; and
+- every seed-watchlist row for that draft class with its current roster status
+  (`still_present`, `program_changed`, or `missing_from_roster`).
+
+Eligibility for draft class D requires a high-school recruiting class year
+<= D - 3 (`class_year_source = recruiting_profile`, `MEDIUM` confidence). Players
+with no linked recruiting record fall back to CFBD roster class year
+(`class_year_source = roster`, `LOW` confidence, `needs_class_year_verification`).
+`roster_status = still_present` on a new candidate means "present on the current
+roster"; the delta versus TIBER is `existing_seed_watchlist_match = false`.
+The generator never assigns `HIGH` confidence and always sets
+`needs_manual_review = true`. The output is validated before it is written.
+
 ### Validation + tests
 
 Validate sample artifact:

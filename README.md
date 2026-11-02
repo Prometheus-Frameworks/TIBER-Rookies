@@ -209,6 +209,12 @@ surfaces roster/program/class-context deltas for operator review. It does **not*
 mutate the curated seed watchlist automatically and is blocked from Rookie Alpha,
 NFL scoring, FORGE, Point Prediction, and TIBER-Fantasy active NFL surfaces.
 
+Generate a pulse for a target draft class from CFBD (requires `CFBD_API_KEY`):
+
+```bash
+python3 scripts/build_devy_roster_pulse.py --season 2026 --draft-class 2027
+```
+
 Validate the pulse artifact with:
 
 ```bash
