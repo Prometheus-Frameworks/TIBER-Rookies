@@ -27,6 +27,7 @@
 
     <main class="page">
       <section id="detail-actions" class="detail-actions-shell"></section>
+      <p id="load-status" class="meta" role="status">Loading rookie sources…</p>
       <section id="card-root" class="card-root-shell">Loading rookie card…</section>
       <section id="sporq-comps-root" class="sporq-shell"></section>
     </main>
@@ -47,8 +48,7 @@
     </footer>
 
     <script type="module">
-      import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
-      import { findRookieStubBySlug, get2026RookieStubs } from '/lib/rookies/rookieStubs.js';
+      import { getRookieShellState, rookieLoadMessage, selectRookiePlayer } from '/lib/rookies/rookieShellState.js';
       import { renderRookieCard } from '/components/rookies/RookieCardPhase1B.js';
       import { renderRookieStubCard } from '/components/rookies/RookieStubCard.js';
       import { addRookieToQueue, getQueuedRookieAnnotation, isRookieQueued, removeRookieFromQueue } from '/lib/rookies/rookieQueueStore.js';
@@ -201,9 +201,11 @@
       }
 
       try {
-        const [cards, stubs] = await Promise.all([getAllRookieCards(), get2026RookieStubs()]);
-        const stub = slug ? findRookieStubBySlug(stubs, slug) : null;
-        const card = slug ? cards.find((candidate) => candidate.slug === slug) ?? null : cards[0] ?? null;
+        const shell = await getRookieShellState();
+        const selection = selectRookiePlayer(shell, slug);
+        const { stub, card } = selection;
+        const notice = document.getElementById('load-status');
+        notice.textContent = rookieLoadMessage(shell);
 
         if (stub) {
           document.title = `TIBER Rookie Draft Facts | ${stub.name}`;
@@ -212,7 +214,7 @@
           renderRookieStubCard(root, stub);
         } else if (!card) {
           actionsRoot.innerHTML = '';
-          root.innerHTML = '<div class="meta">No rookie card data available for 2026.</div>';
+          root.textContent = selection.message;
         } else {
           document.title = `TIBER Rookie Card | ${card.identity.name}`;
           renderActions(card);
@@ -220,8 +222,9 @@
           renderSporqComps(card);  // async, fills in after card renders
         }
       } catch (error) {
+        document.getElementById('load-status').textContent = 'Rookie sources unavailable.';
         actionsRoot.innerHTML = '';
-        root.innerHTML = `<div class="meta">Failed to load rookie card: ${error.message}</div>`;
+        root.textContent = `Failed to load rookie card: ${error.message}`;
       }
     </script>
   </body>

@@ -23,7 +23,7 @@
         <input id="search" type="search" placeholder="Search name, school, position..." autocomplete="off" />
         <select id="actionabilityFilter"><option value="ALL">All actionability bands</option></select>
         <select id="lifecycleFilter"><option value="ALL">All lifecycle stages</option></select>
-        <button id="exportVisibleButton" type="button">Export visible Devy CSV</button>
+        <button id="exportVisibleButton" type="button" disabled>Export visible Devy CSV</button>
       </div>
       <div id="status" class="meta" style="margin-top:8px;">Loading Devy seed watchlist…</div>
       <div style="overflow-x:auto;">
@@ -40,6 +40,8 @@
     <script type="module">
       import { buildDevyCsv, downloadCsv } from '/lib/devy/exportDevyCsv.js';
 
+      import { normalizeTransitionMap, enrichDevyRows, readDevySeedRows } from '/lib/devy/transitionState.js';
+
       const rowsEl = document.getElementById('rows');
       const statusEl = document.getElementById('status');
       const searchEl = document.getElementById('search');
@@ -49,34 +51,6 @@
 
       const state = { search: '', actionability: 'ALL', lifecycle: 'ALL' };
       let allRows = [];
-
-      function normalizeTransitionMap(payload) {
-        if (!payload) return new Map();
-        const sourceRows = Array.isArray(payload.transitions)
-          ? payload.transitions
-          : Array.isArray(payload.rows)
-            ? payload.rows
-            : Array.isArray(payload.prospects)
-              ? payload.prospects
-              : [];
-        return new Map(sourceRows.map((row) => [row.player_id, row]));
-      }
-
-      function enrichRows(seedRows, transitionMap) {
-        return seedRows.map((row) => {
-          const transition = transitionMap.get(row.player_id) ?? {};
-          return {
-            ...row,
-            identity_source_type: row.identity_provenance?.source_type ?? 'unknown',
-            identity_source_urls: row.identity_provenance?.source_urls ?? [],
-            transition_status: transition.transition_status ?? '',
-            rookie_card_slug: transition.rookie_card_slug ?? '',
-            devy_active_status: transition.transition_status === 'graduated_to_rookie'
-              ? (transition.rookie_card_slug ? 'graduated_to_rookie' : 'rookie_card_pending')
-              : 'active_devy',
-          };
-        });
-      }
 
       function currentVisibleRows() {
         return allRows.filter((row) => {
@@ -90,9 +64,9 @@
 
       function render() {
         const visibleRows = currentVisibleRows();
-        statusEl.textContent = `${visibleRows.length} of ${allRows.length} Devy rows shown.`;
+        statusEl.textContent = `${visibleRows.length} of ${allRows.length} Devy rows shown. ${allRows.filter((row) => row.devy_active_status === 'unknown').length} with unknown / unavailable transition evidence.`;
         if (!visibleRows.length) {
-          rowsEl.innerHTML = '<tr><td colspan="8" class="meta">No Devy rows match the current search/filter state.</td></tr>';
+          rowsEl.innerHTML = `<tr><td colspan="8" class="meta">${allRows.length ? 'No Devy rows match the current search/filter state.' : 'The loaded Devy seed watchlist is empty.'}</td></tr>`;
           return;
         }
 
@@ -105,7 +79,7 @@
             <td><span class="badge">${row.lifecycle_stage ?? 'unknown'}</span></td>
             <td>${row.actionability_band ?? ''}</td>
             <td>${row.signal_strength_band ?? ''} / ${row.confidence_band ?? ''}</td>
-            <td>${row.transition_status || 'active_devy'}</td>
+            <td>${row.devy_active_status === 'unknown' ? 'Transition unknown / unavailable' : row.devy_active_status}</td>
           </tr>
         `).join('');
       }
@@ -129,7 +103,9 @@
       }
 
       try {
-        const seedPayload = await fetch('/data/devy/devy_seed_watchlist_2026.json').then((r) => r.json());
+        const seedResponse = await fetch('/data/devy/devy_seed_watchlist_2026.json');
+        if (!seedResponse.ok) throw new Error(`Seed request failed: ${seedResponse.status}`);
+        const seedRows = readDevySeedRows(await seedResponse.json());
         let transitionMap = new Map();
         try {
           const transitionPayload = await fetch('/data/devy/devy_rookie_transition_map_2026.json');
@@ -140,11 +116,11 @@
           // Transition overlay is optional.
         }
 
-        const seedRows = Array.isArray(seedPayload.prospects) ? seedPayload.prospects : [];
-        allRows = enrichRows(seedRows, transitionMap);
+        allRows = enrichDevyRows(seedRows, transitionMap);
         populateFilterOptions(allRows);
         wireFilters();
         render();
+        exportVisibleButton.disabled = false;
       } catch (error) {
         statusEl.textContent = `Failed to load Devy data: ${error.message}`;
         rowsEl.innerHTML = '';

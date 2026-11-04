@@ -31,6 +31,7 @@
       <p style="margin-top: 10px"><a class="nav-link" href="/cards/rookies/board/">Open rookie board →</a></p>
       <p style="margin-top: 10px"><a class="nav-link" href="/cards/rookies/compare/">Open rookie compare tool →</a></p>
       <div id="ranking-context" class="meta" style="margin-top: 8px">Loading class context…</div>
+      <p id="load-status" class="meta" role="status">Loading rookie sources…</p>
       <div class="board-search-row" style="margin-top: 10px">
         <input type="search" id="gallery-name-search" class="board-search-input" placeholder="Search players…" autocomplete="off" spellcheck="false">
       </div>
@@ -55,6 +56,7 @@
 
     <script type="module">
       import { getAllRookieCards } from '/lib/rookies/getRookieCardData.js';
+      import { getRookieShellState, rookieLoadMessage } from '/lib/rookies/rookieShellState.js';
       import { renderRookieCardCompact } from '/components/rookies/RookieCardCompact.js';
       import { renderRookieGalleryControls } from '/components/rookies/RookieGalleryControls.js';
       import { collectGalleryFilters, sortAndFilterRookies } from '/lib/rookies/sortAndFilterRookies.js';
@@ -127,6 +129,7 @@
 
       try {
         const cards = await getAllRookieCards();
+        document.getElementById('load-status').textContent = rookieLoadMessage(await getRookieShellState()) || 'Rookie sources loaded.';
         const filters = collectGalleryFilters(cards);
         render(cards, filters);
 

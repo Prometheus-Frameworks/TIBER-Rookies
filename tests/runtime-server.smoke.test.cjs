@@ -2,56 +2,44 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs/promises');
 const path = require('node:path');
-const { startServer } = require('../runtime-server.js');
+const os = require('node:os');
 
 function buildUrl(port, route) {
   return `http://127.0.0.1:${port}${route}`;
 }
 
-async function readIfExists(filePath) {
-  try {
-    const raw = await fs.readFile(filePath, 'utf8');
-    return { exists: true, raw };
-  } catch (error) {
-    if (error && error.code === 'ENOENT') {
-      return { exists: false, raw: null };
-    }
-
-    throw error;
-  }
-}
-
 test('standalone runtime smoke routes', async (t) => {
+  // Failure fixtures must never rewrite or remove canonical promoted files.
+  // Serve the unchanged runtime from a disposable copy instead.
+  const fixtureRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'rookies-runtime-smoke-'));
+  t.after(() => fs.rm(fixtureRoot, { recursive: true, force: true }));
+  for (const entry of ['runtime-server.js', 'cards', 'components', 'lib', 'data', 'exports']) {
+    await fs.cp(path.join(__dirname, '..', entry), path.join(fixtureRoot, entry), { recursive: true });
+  }
+  const { startServer } = require(path.join(fixtureRoot, 'runtime-server.js'));
   const roleContextPath = path.join(
-    __dirname,
-    '..',
+    fixtureRoot,
     'exports',
     'promoted',
     'rookie-alpha',
     '2026_rookie_alpha_postdraft_role_context_v0.json',
   );
   const teamContextPath = path.join(
-    __dirname,
-    '..',
+    fixtureRoot,
     'exports',
     'promoted',
     'rookie-alpha',
     '2026_rookie_alpha_postdraft_team_context_v0.json',
   );
   const fallbackPath = path.join(
-    __dirname,
-    '..',
+    fixtureRoot,
     'exports',
     'promoted',
     'rookie-alpha',
     '2026_rookie_alpha_postdraft_v0.json',
   );
 
-  const [roleContextOriginal, teamContextOriginal, fallbackRaw] = await Promise.all([
-    readIfExists(roleContextPath),
-    readIfExists(teamContextPath),
-    fs.readFile(fallbackPath, 'utf8'),
-  ]);
+  const fallbackRaw = await fs.readFile(fallbackPath, 'utf8');
   const fallbackPayload = JSON.parse(fallbackRaw);
   const syntheticRoleContextPayload = {
     rows: [
@@ -77,20 +65,6 @@ test('standalone runtime smoke routes', async (t) => {
 
   await fs.writeFile(roleContextPath, `${JSON.stringify(syntheticRoleContextPayload)}\n`, 'utf8');
   await fs.writeFile(teamContextPath, `${JSON.stringify(syntheticTeamContextPayload)}\n`, 'utf8');
-  t.after(async () => {
-    if (roleContextOriginal.exists) {
-      await fs.writeFile(roleContextPath, roleContextOriginal.raw, 'utf8');
-    } else {
-      await fs.rm(roleContextPath, { force: true });
-    }
-
-    if (teamContextOriginal.exists) {
-      await fs.writeFile(teamContextPath, teamContextOriginal.raw, 'utf8');
-    } else {
-      await fs.rm(teamContextPath, { force: true });
-    }
-  });
-
   const server = startServer(0);
   t.after(() => {
     server.close();
@@ -138,13 +112,19 @@ test('standalone runtime smoke routes', async (t) => {
 
   const boardPage = await fetch(buildUrl(port, '/cards/rookies/board/index.html'));
   const boardHtml = await boardPage.text();
-  assert.match(boardHtml, /get2026RookieStubs/);
+  assert.match(boardHtml, /getRookieShellState/);
   assert.match(boardHtml, /mergeRookieBoardRowsWithStubs/);
 
   const playerPage = await fetch(buildUrl(port, '/cards/rookies/player.html?slug=wr-cyrus-allen'));
   const playerHtml = await playerPage.text();
-  assert.match(playerHtml, /findRookieStubBySlug/);
+  assert.match(playerHtml, /selectRookiePlayer/);
   assert.match(playerHtml, /renderRookieStubCard/);
+
+  for (const route of ['/lib/rookies/rookieShellState.js', '/lib/devy/transitionState.js']) {
+    const response = await fetch(buildUrl(port, route));
+    assert.equal(response.status, 200);
+    assert.match(response.headers.get('content-type') || '', /javascript/);
+  }
 
   const rookieStubs = await fetch(
     buildUrl(port, '/data/processed/2026_rookie_stubs_v0.json'),
