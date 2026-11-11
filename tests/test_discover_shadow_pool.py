@@ -8,6 +8,7 @@ from scripts.discover_shadow_pool import (
     fetch_rosters,
     make_player_id,
     merge_players,
+    prior_year_map,
 )
 
 RUN_DATE = "2026-11-11"
@@ -93,6 +94,41 @@ class BuildCandidatesTests(unittest.TestCase):
         self.assertEqual(back["status_history"][0]["date"], RUN_DATE)
         self.assertEqual(back["observed_production"]["rush_share"], 1.0)
         self.assertFalse(back["young_breakout"])
+
+
+class UnpopulatedClassYearTests(unittest.TestCase):
+    """CFBD returned year == 1 for every 2026 Ohio State player (live check, 2026-11-11)."""
+
+    def _run(self, prior_rosters):
+        rosters = {"Ohio State": [
+            {"id": 10, "firstName": "Vet", "lastName": "Receiver", "position": "WR", "year": 1},
+            {"id": 11, "firstName": "Old", "lastName": "Back", "position": "RB", "year": 1},
+            {"id": 12, "firstName": "New", "lastName": "Guy", "position": "WR", "year": 1},
+        ]}
+        return build_candidates(rosters, {}, {}, {}, class_year=2027, run_date=RUN_DATE,
+                                prior_years=prior_year_map(prior_rosters))
+
+    def test_prior_year_plus_one_capped_and_unknowns_skipped(self):
+        prior = {"Texas": [  # transfer: different school, same CFBD id
+            {"id": 10, "position": "WR", "year": 2},
+            {"id": 11, "position": "RB", "year": 5},
+        ]}
+        candidates, unknown = self._run(prior)
+        years = {c["player_name"]: (c["academic_year"], c["academic_year_source"]) for c in candidates}
+        self.assertEqual(years, {
+            "Vet Receiver": (3, "cfbd_roster_prior_plus_one"),
+            "Old Back": (5, "cfbd_roster_prior_plus_one"),
+        })
+        self.assertEqual(unknown, 1)  # New Guy: no usable year from either season
+
+    def test_unpopulated_prior_roster_is_not_trusted(self):
+        candidates, unknown = self._run({"Texas": [{"id": 10, "year": 1}, {"id": 11, "year": 1}]})
+        self.assertEqual(candidates, [])
+        self.assertEqual(unknown, 3)
+
+    def test_populated_team_uses_current_year(self):
+        candidates, _ = build_candidates(*_fixture(), class_year=2027, run_date=RUN_DATE)
+        self.assertTrue(all(c["academic_year_source"] == "cfbd_roster_current" for c in candidates))
 
 
 class MergePlayersTests(unittest.TestCase):
