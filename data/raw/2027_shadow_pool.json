@@ -1,0 +1,105 @@
+{
+  "schema_version": "prospect-shadow-pool-v0.1.0",
+  "artifact_type": "prospect_shadow_pool",
+  "status": "producer_only",
+  "class_year": 2027,
+  "discovery_season": 2026,
+  "disclaimer": "Producer-only discovery list. Not rankings, not Rookie Alpha inputs, not runtime-visible, not draft predictions. Inclusion means only that CFBD roster data placed the player at a tracked position with draft-eligible academic standing (or a sophomore breakout). Promotion to the real seed pool is an operator decision.",
+  "observation_method": "Season-to-date CFBD /stats/player/season. Shares divide player totals by the sum of all CFBD player rows for the same team and category. target_share and targets are null because CFBD season stats carry no targets stat. Missing stat rows are null, never zero.",
+  "eligibility_rule": "academic_year >= 3, or academic_year == 2 with breakout_flagged == true",
+  "positions": [
+    "WR",
+    "RB",
+    "TE",
+    "QB"
+  ],
+  "last_run": {
+    "run_date": "2026-11-11",
+    "fbs_teams_requested": 138,
+    "rosters_empty_or_failed": [],
+    "skipped_unknown_academic_year": 0,
+    "candidates_this_run": 2,
+    "added": 2,
+    "refreshed": 0
+  },
+  "players": [
+    {
+      "player_id": "rb-braylin-presley-oklahoma-state",
+      "cfbd_player_id": "4702729",
+      "player_name": "Braylin Presley",
+      "position": "RB",
+      "school": "Oklahoma State",
+      "class_year": 2027,
+      "academic_year": 4,
+      "discovery_source": "cfbd_roster",
+      "discovery_season": 2026,
+      "status": "watchlist",
+      "status_history": [
+        {
+          "status": "watchlist",
+          "date": "2026-11-11",
+          "reason": "cfbd_roster_discovery"
+        }
+      ],
+      "observed_production": {
+        "season": 2026,
+        "through_date": "2026-11-11",
+        "pass_attempts": null,
+        "rush_attempts": null,
+        "rush_yards": null,
+        "receptions": null,
+        "receiving_yards": null,
+        "targets": null,
+        "target_share": null,
+        "receiving_yard_share": null,
+        "rush_share": null,
+        "rush_yard_share": null
+      },
+      "breakout_flagged": null,
+      "young_breakout": false,
+      "combine_invited": false,
+      "operator_notes": "",
+      "manually_added": false,
+      "last_seen_date": "2026-11-11"
+    },
+    {
+      "player_id": "rb-jacob-cornejo-jacksonville-state",
+      "cfbd_player_id": "5304196",
+      "player_name": "Jacob Cornejo",
+      "position": "RB",
+      "school": "Jacksonville State",
+      "class_year": 2027,
+      "academic_year": 3,
+      "discovery_source": "cfbd_roster",
+      "discovery_season": 2026,
+      "status": "watchlist",
+      "status_history": [
+        {
+          "status": "watchlist",
+          "date": "2026-11-11",
+          "reason": "cfbd_roster_discovery"
+        }
+      ],
+      "observed_production": {
+        "season": 2026,
+        "through_date": "2026-11-11",
+        "pass_attempts": null,
+        "rush_attempts": 8.0,
+        "rush_yards": 39.0,
+        "receptions": null,
+        "receiving_yards": null,
+        "targets": null,
+        "target_share": null,
+        "receiving_yard_share": null,
+        "rush_share": 0.0262,
+        "rush_yard_share": 0.0244
+      },
+      "breakout_flagged": false,
+      "young_breakout": false,
+      "combine_invited": false,
+      "operator_notes": "",
+      "manually_added": false,
+      "last_seen_date": "2026-11-11"
+    }
+  ]
+}
