@@ -10,7 +10,7 @@ For class_year C, discovery_season = C - 1. The script:
      two seasons before it, and filters positions locally,
   3. fetches season-to-date passing/rushing/receiving player stats
      (CFBD /stats/player/season?year=&category=, via the existing
-     compute_production_scores.fetch_cfbd_category helper — 3 requests total),
+     compute_production_scores.fetch_cfbd_category helper, cached — 3 requests total),
   4. keeps players with academic year >= 3, or academic year == 2 with a
      breakout under the existing compute_breakout_age thresholds,
   5. merges additively into data/raw/{class_year}_shadow_pool.json.
@@ -60,15 +60,17 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from scripts import cfbd_cache
 from scripts.cfbd_plays import REQUEST_DELAY_S, cfbd_headers, write_json
 from scripts.compute_breakout_age import (
     BREAKOUT_THRESHOLDS,
     SHARE_BREAKOUT_CRITERIA,
     fetch_roster,
+    roster_url,
 )
+from scripts.cfbd_cache import fetch_category as fetch_cfbd_category
 from scripts.compute_production_scores import (
     CFBD_BASE_URL,
-    fetch_cfbd_category,
     normalize_identity,
     pivot_stats,
 )
@@ -308,6 +310,9 @@ def merge_players(
 
 def fetch_fbs_teams(year: int, max_retries: int = 5) -> list[str]:
     url = f"{CFBD_BASE_URL}/teams/fbs?{urlencode({'year': year})}"
+    payload = cfbd_cache.load(url)
+    if payload is not cfbd_cache.MISS:
+        return sorted({str(t["school"]) for t in payload if t.get("school")})
     for attempt in range(max_retries):
         try:
             with urlopen(Request(url, headers=cfbd_headers()), timeout=60) as resp:
@@ -326,6 +331,7 @@ def fetch_fbs_teams(year: int, max_retries: int = 5) -> list[str]:
         raise SystemExit(f"CFBD /teams/fbs rate limited after {max_retries} attempts")
     if not isinstance(payload, list):
         raise SystemExit(f"Unexpected /teams/fbs payload: {type(payload).__name__}")
+    cfbd_cache.store(url, payload)
     return sorted({str(t["school"]) for t in payload if t.get("school")})
 
 
@@ -335,7 +341,8 @@ def fetch_rosters(
     rosters: dict[str, list[dict[str, Any]]] = {}
     empty_or_failed: list[str] = []
     for i, team in enumerate(teams, 1):
-        time.sleep(REQUEST_DELAY_S)
+        if cfbd_cache.load(roster_url(team, year)) is cfbd_cache.MISS:
+            time.sleep(REQUEST_DELAY_S)
         roster = fetch(team, year)
         if roster:
             rosters[team] = roster

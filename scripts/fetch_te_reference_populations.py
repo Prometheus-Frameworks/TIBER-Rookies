@@ -14,7 +14,8 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
-from scripts.compute_production_scores import CFBD_BASE_URL, fetch_cfbd_category, pivot_stats
+from scripts.cfbd_cache import fetch_category as fetch_cfbd_category
+from scripts.compute_production_scores import CFBD_BASE_URL, pivot_stats
 
 DEFAULT_YEARS = (2017, 2018, 2019, 2020, 2021)
 DEFAULT_OUTPUT_DIR = Path("data/historical/te_reference_populations")
