@@ -7,7 +7,7 @@ For class_year C, discovery_season = C - 1. The script:
   1. fetches the FBS team list for discovery_season (CFBD /teams/fbs),
   2. fetches each team's roster (CFBD /roster?team=&year=, via the existing
      compute_breakout_age.fetch_roster helper) for discovery_season and the
-     season before it, and filters positions locally,
+     two seasons before it, and filters positions locally,
   3. fetches season-to-date passing/rushing/receiving player stats
      (CFBD /stats/player/season?year=&category=, via the existing
      compute_production_scores.fetch_cfbd_category helper — 3 requests total),
@@ -27,12 +27,18 @@ Observed production notes (null-honest):
     not admitted.
   - Stats are season-to-date as of the run date; reruns refresh them.
 
-Academic year (verified against live CFBD on 2026-11-11): CFBD can report
-year == 1 for every player on an in-progress season's roster. A team roster
-where no player has year > 1 is treated as unpopulated. For those teams the
-academic year is the player's prior-season CFBD year + 1 (matched by CFBD
-player id across all FBS rosters, so FBS-to-FBS transfers carry over), capped
-at 5. Players with no usable year from either season are skipped and counted.
+Academic year (verified against live CFBD on 2026-11-11): CFBD's roster
+`year` field is not usable — 134/138 FBS rosters for 2026 report year 1 for
+every player, and the 2025 rosters report year 1 for nearly everyone. So class
+standing is derived from FBS roster tenure by CFBD player id instead (NFL
+eligibility is three years removed from high school):
+  - on any FBS roster two seasons before discovery_season -> academic_year 3
+    (a lower bound: third season or later) -> eligible
+  - first FBS roster one season before discovery_season -> academic_year 2
+    -> eligible only with a breakout
+  - on neither -> unknown (true freshmen, and FCS/JUCO arrivals) -> skipped
+    and counted; add such players manually if wanted.
+Redshirts are not distinguished.
 """
 
 from __future__ import annotations
@@ -116,42 +122,22 @@ def roster_name(entry: dict[str, Any]) -> str:
     return " ".join(f"{first} {last}".split())
 
 
-def parse_academic_year(entry: dict[str, Any]) -> int | None:
-    try:
-        year = int(entry.get("year"))
-    except (TypeError, ValueError):
+def roster_ids(rosters: dict[str, list[dict[str, Any]]]) -> set[str]:
+    return {str(e["id"]) for roster in rosters.values() for e in roster if e.get("id") is not None}
+
+
+def tenure_academic_year(
+    entry: dict[str, Any], ids_two_back: set[str], ids_one_back: set[str]
+) -> int | None:
+    """Lower-bound class standing from FBS roster tenure; None when unknown."""
+    cfbd_id = entry.get("id")
+    if cfbd_id is None:
         return None
-    return year if 1 <= year <= 5 else None
-
-
-def roster_year_populated(roster: list[dict[str, Any]]) -> bool:
-    """False when CFBD has not filled class year (every player reads year 1 or missing)."""
-    return any((parse_academic_year(entry) or 0) > 1 for entry in roster)
-
-
-def prior_year_map(prior_rosters: dict[str, list[dict[str, Any]]]) -> dict[str, int]:
-    """CFBD player id -> prior-season academic year, from populated rosters only."""
-    years: dict[str, int] = {}
-    for roster in prior_rosters.values():
-        if not roster_year_populated(roster):
-            continue
-        for entry in roster:
-            year = parse_academic_year(entry)
-            if entry.get("id") is not None and year is not None:
-                years[str(entry["id"])] = year
-    return years
-
-
-def resolve_academic_year(
-    entry: dict[str, Any], team_populated: bool, prior_years: dict[str, int]
-) -> tuple[int | None, str | None]:
-    if team_populated:
-        year = parse_academic_year(entry)
-        return year, ("cfbd_roster_current" if year is not None else None)
-    prior = prior_years.get(str(entry.get("id")))
-    if prior is not None:
-        return min(prior + 1, 5), "cfbd_roster_prior_plus_one"
-    return None, None
+    if str(cfbd_id) in ids_two_back:
+        return 3
+    if str(cfbd_id) in ids_one_back:
+        return 2
+    return None
 
 
 def team_totals(pivoted: dict[tuple[str, str], dict[str, Any]], stat: str) -> dict[str, float]:
@@ -225,11 +211,11 @@ def build_candidates(
     receiving: dict[tuple[str, str], dict[str, Any]],
     class_year: int,
     run_date: str,
-    prior_years: dict[str, int] | None = None,
+    ids_two_back: set[str],
+    ids_one_back: set[str],
     positions: list[str] = DISCOVERY_POSITIONS,
 ) -> tuple[list[dict[str, Any]], int]:
     """Return (eligible candidate entries, count skipped for unknown academic year)."""
-    prior_years = prior_years or {}
     discovery_season = class_year - 1
     totals = {
         "rec_yds": team_totals(receiving, "YDS"),
@@ -239,17 +225,14 @@ def build_candidates(
     candidates: list[dict[str, Any]] = []
     unknown_year = 0
     for school in sorted(rosters):
-        team_populated = roster_year_populated(rosters[school])
         for entry in rosters[school]:
             position = str(entry.get("position") or "").strip().upper()
             name = roster_name(entry)
             if position not in positions or not name:
                 continue
-            academic_year, year_source = resolve_academic_year(entry, team_populated, prior_years)
+            academic_year = tenure_academic_year(entry, ids_two_back, ids_one_back)
             if academic_year is None:
                 unknown_year += 1
-                continue
-            if academic_year < 2:
                 continue
             observed = observe_production(name, school, passing, rushing, receiving, totals)
             breakout = evaluate_breakout(position, observed)
@@ -264,7 +247,7 @@ def build_candidates(
                     "school": school,
                     "class_year": class_year,
                     "academic_year": academic_year,
-                    "academic_year_source": year_source,
+                    "academic_year_source": "cfbd_fbs_roster_tenure",
                     "discovery_source": "cfbd_roster",
                     "discovery_season": discovery_season,
                     "status": "watchlist",
@@ -393,13 +376,12 @@ def main() -> None:
     teams = fetch_fbs_teams(season)
     logging.info("%d FBS teams for %d", len(teams), season)
     rosters, empty_or_failed = fetch_rosters(teams, season)
-    unpopulated = sorted(t for t, r in rosters.items() if not roster_year_populated(r))
-    prior_years: dict[str, int] = {}
-    if unpopulated:
-        logging.info("%d/%d rosters have unpopulated class year; fetching %d rosters for prior-year lookup",
-                     len(unpopulated), len(rosters), season - 1)
-        prior_rosters, _ = fetch_rosters(fetch_fbs_teams(season - 1), season - 1)
-        prior_years = prior_year_map(prior_rosters)
+    tenure: dict[int, set[str]] = {}
+    for back in (1, 2):
+        year = season - back
+        logging.info("Fetching %d rosters for roster tenure", year)
+        prior, _ = fetch_rosters(fetch_fbs_teams(year), year)
+        tenure[back] = roster_ids(prior)
 
     stats = {}
     for category in ("passing", "rushing", "receiving"):
@@ -408,7 +390,8 @@ def main() -> None:
 
     candidates, unknown_year = build_candidates(
         rosters, stats["passing"], stats["rushing"], stats["receiving"], class_year, args.run_date,
-        prior_years=prior_years,
+        ids_two_back=tenure[2],
+        ids_one_back=tenure[1],
     )
     players, added, refreshed = merge_players(existing, candidates)
 
@@ -421,14 +404,14 @@ def main() -> None:
         "disclaimer": DISCLAIMER,
         "observation_method": OBSERVATION_METHOD,
         "eligibility_rule": "academic_year >= 3, or academic_year == 2 with breakout_flagged == true",
-    "academic_year_rule": "current CFBD roster year when the team roster is populated; else prior-season CFBD year + 1 (capped at 5) by CFBD player id; else skipped",
+        "academic_year_rule": "FBS roster tenure by CFBD player id: on a roster two seasons back -> 3 (lower bound); first roster one season back -> 2; else unknown and skipped",
         "positions": DISCOVERY_POSITIONS,
         "last_run": {
             "run_date": args.run_date,
             "fbs_teams_requested": len(teams),
             "rosters_empty_or_failed": empty_or_failed,
-            "rosters_with_unpopulated_class_year": len(unpopulated),
-            "prior_season_players_with_year": len(prior_years),
+            "fbs_roster_ids_two_seasons_back": len(tenure[2]),
+            "fbs_roster_ids_one_season_back": len(tenure[1]),
             "skipped_unknown_academic_year": unknown_year,
             "candidates_this_run": len(candidates),
             "added": added,

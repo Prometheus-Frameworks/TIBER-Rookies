@@ -8,7 +8,6 @@ from scripts.discover_shadow_pool import (
     fetch_rosters,
     make_player_id,
     merge_players,
-    prior_year_map,
 )
 
 RUN_DATE = "2026-11-11"
@@ -44,6 +43,11 @@ def _fixture():
     return rosters, passing, rushing, receiving
 
 
+# Smith (1) and Senior Back (8) were on FBS rosters two seasons back; the
+# sophomores (2, 3, 7) first appeared one season back; 5 and 6 on neither.
+TENURE = {"ids_two_back": {"1", "4", "8"}, "ids_one_back": {"1", "2", "3", "4", "7", "8"}}
+
+
 class EvaluateBreakoutTests(unittest.TestCase):
     def test_share_criterion_met(self):
         self.assertTrue(evaluate_breakout("WR", {"receiving_yard_share": 0.30}))
@@ -64,14 +68,14 @@ class EvaluateBreakoutTests(unittest.TestCase):
 
 class BuildCandidatesTests(unittest.TestCase):
     def setUp(self):
-        self.candidates, self.unknown = build_candidates(*_fixture(), class_year=2027, run_date=RUN_DATE)
+        self.candidates, self.unknown = build_candidates(*_fixture(), class_year=2027, run_date=RUN_DATE, **TENURE)
         self.by_name = {c["player_name"]: c for c in self.candidates}
 
     def test_eligibility_filter(self):
         self.assertEqual(set(self.by_name), {"Jeremiah Smith", "Young Star", "Senior Back"})
 
-    def test_unknown_academic_year_counted_not_admitted(self):
-        self.assertEqual(self.unknown, 1)
+    def test_unknown_tenure_counted_not_admitted(self):
+        self.assertEqual(self.unknown, 2)  # true freshman RB + TE with no prior roster
 
     def test_sophomore_breakout_flags(self):
         star = self.by_name["Young Star"]
@@ -96,44 +100,30 @@ class BuildCandidatesTests(unittest.TestCase):
         self.assertFalse(back["young_breakout"])
 
 
-class UnpopulatedClassYearTests(unittest.TestCase):
-    """CFBD returned year == 1 for every 2026 Ohio State player (live check, 2026-11-11)."""
+class TenureTests(unittest.TestCase):
+    """CFBD roster `year` is unusable (live check 2026-11-11), so tenure decides."""
 
-    def _run(self, prior_rosters):
+    def test_roster_year_field_is_ignored(self):
         rosters = {"Ohio State": [
             {"id": 10, "firstName": "Vet", "lastName": "Receiver", "position": "WR", "year": 1},
-            {"id": 11, "firstName": "Old", "lastName": "Back", "position": "RB", "year": 1},
-            {"id": 12, "firstName": "New", "lastName": "Guy", "position": "WR", "year": 1},
         ]}
-        return build_candidates(rosters, {}, {}, {}, class_year=2027, run_date=RUN_DATE,
-                                prior_years=prior_year_map(prior_rosters))
+        candidates, unknown = build_candidates(rosters, {}, {}, {}, class_year=2027, run_date=RUN_DATE,
+                                               ids_two_back={"10"}, ids_one_back={"10"})
+        self.assertEqual([(c["academic_year"], c["academic_year_source"]) for c in candidates],
+                         [(3, "cfbd_fbs_roster_tenure")])
+        self.assertEqual(unknown, 0)
 
-    def test_prior_year_plus_one_capped_and_unknowns_skipped(self):
-        prior = {"Texas": [  # transfer: different school, same CFBD id
-            {"id": 10, "position": "WR", "year": 2},
-            {"id": 11, "position": "RB", "year": 5},
-        ]}
-        candidates, unknown = self._run(prior)
-        years = {c["player_name"]: (c["academic_year"], c["academic_year_source"]) for c in candidates}
-        self.assertEqual(years, {
-            "Vet Receiver": (3, "cfbd_roster_prior_plus_one"),
-            "Old Back": (5, "cfbd_roster_prior_plus_one"),
-        })
-        self.assertEqual(unknown, 1)  # New Guy: no usable year from either season
-
-    def test_unpopulated_prior_roster_is_not_trusted(self):
-        candidates, unknown = self._run({"Texas": [{"id": 10, "year": 1}, {"id": 11, "year": 1}]})
-        self.assertEqual(candidates, [])
-        self.assertEqual(unknown, 3)
-
-    def test_populated_team_uses_current_year(self):
-        candidates, _ = build_candidates(*_fixture(), class_year=2027, run_date=RUN_DATE)
-        self.assertTrue(all(c["academic_year_source"] == "cfbd_roster_current" for c in candidates))
+    def test_transfer_tenure_follows_cfbd_id(self):
+        # tenure sets are league-wide, so the 2024 school doesn't matter
+        rosters = {"Texas A&M": [{"id": 20, "firstName": "Moved", "lastName": "On", "position": "RB", "year": 1}]}
+        candidates, _ = build_candidates(rosters, {}, {}, {}, class_year=2027, run_date=RUN_DATE,
+                                         ids_two_back={"20"}, ids_one_back=set())
+        self.assertEqual(len(candidates), 1)
 
 
 class MergePlayersTests(unittest.TestCase):
     def setUp(self):
-        self.first, _ = build_candidates(*_fixture(), class_year=2027, run_date="2026-09-01")
+        self.first, _ = build_candidates(*_fixture(), class_year=2027, run_date="2026-09-01", **TENURE)
 
     def test_rerun_preserves_operator_state_and_refreshes_observations(self):
         existing = copy.deepcopy(self.first)
@@ -142,7 +132,7 @@ class MergePlayersTests(unittest.TestCase):
         smith["status"] = "combine_invited"
         smith["status_history"].append({"status": "combine_invited", "date": "2027-02-01", "reason": "manual"})
 
-        second, _ = build_candidates(*_fixture(), class_year=2027, run_date=RUN_DATE)
+        second, _ = build_candidates(*_fixture(), class_year=2027, run_date=RUN_DATE, **TENURE)
         merged, added, refreshed = merge_players(existing, second)
 
         smith = next(p for p in merged if p["player_name"] == "Jeremiah Smith")
