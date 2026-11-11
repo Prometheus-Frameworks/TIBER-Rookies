@@ -214,8 +214,12 @@ def build_candidates(
     ids_two_back: set[str],
     ids_one_back: set[str],
     positions: list[str] = DISCOVERY_POSITIONS,
-) -> tuple[list[dict[str, Any]], int]:
-    """Return (eligible candidate entries, count skipped for unknown academic year)."""
+) -> tuple[list[dict[str, Any]], list[dict[str, Any]], int]:
+    """Return (admitted entries, refresh-only entries, count skipped for unknown academic year).
+
+    Refresh-only entries are sophomores without a current breakout: they are never
+    added, but refresh an existing pool entry so its observations stay current.
+    """
     discovery_season = class_year - 1
     totals = {
         "rec_yds": team_totals(receiving, "YDS"),
@@ -223,6 +227,7 @@ def build_candidates(
         "rush_yds": team_totals(rushing, "YDS"),
     }
     candidates: list[dict[str, Any]] = []
+    refresh_only: list[dict[str, Any]] = []
     unknown_year = 0
     for school in sorted(rosters):
         for entry in rosters[school]:
@@ -236,9 +241,8 @@ def build_candidates(
                 continue
             observed = observe_production(name, school, passing, rushing, receiving, totals)
             breakout = evaluate_breakout(position, observed)
-            if academic_year == 2 and breakout is not True:
-                continue
-            candidates.append(
+            admitted = academic_year >= 3 or breakout is True
+            (candidates if admitted else refresh_only).append(
                 {
                     "player_id": make_player_id(position, name, school),
                     "cfbd_player_id": str(entry["id"]) if entry.get("id") is not None else None,
@@ -267,7 +271,7 @@ def build_candidates(
                     "last_seen_date": run_date,
                 }
             )
-    return candidates, unknown_year
+    return candidates, refresh_only, unknown_year
 
 
 def _merge_key(entry: dict[str, Any]) -> str:
@@ -276,12 +280,15 @@ def _merge_key(entry: dict[str, Any]) -> str:
 
 
 def merge_players(
-    existing: list[dict[str, Any]], candidates: list[dict[str, Any]]
+    existing: list[dict[str, Any]],
+    candidates: list[dict[str, Any]],
+    refresh_only: list[dict[str, Any]] = (),
 ) -> tuple[list[dict[str, Any]], int, int]:
     """Additive merge. Returns (players, added_count, refreshed_count).
 
     Existing entries are never removed or demoted. Matching is by CFBD player id
-    when present, else by player_id.
+    when present, else by player_id. refresh_only entries update a matching
+    existing entry but are never added.
     """
     by_key: dict[str, dict[str, Any]] = {}
     for entry in existing:
@@ -289,9 +296,12 @@ def merge_players(
         by_key.setdefault(f"id:{entry['player_id']}", entry)
 
     added = refreshed = 0
-    for candidate in candidates:
+    admit_ids = {id(c) for c in candidates}
+    for candidate in [*candidates, *refresh_only]:
         current = by_key.get(_merge_key(candidate)) or by_key.get(f"id:{candidate['player_id']}")
         if current is None:
+            if id(candidate) not in admit_ids:
+                continue
             existing.append(candidate)
             by_key[_merge_key(candidate)] = candidate
             by_key.setdefault(f"id:{candidate['player_id']}", candidate)
@@ -380,7 +390,16 @@ def main() -> None:
     for back in (1, 2):
         year = season - back
         logging.info("Fetching %d rosters for roster tenure", year)
-        prior, _ = fetch_rosters(fetch_fbs_teams(year), year)
+        prior, prior_failed = fetch_rosters(fetch_fbs_teams(year), year)
+        if prior_failed:
+            # Tenure is league-wide by CFBD id, so a missing roster can't be
+            # localized: a failed request would read as absence and
+            # misclassify players. Fail closed; nothing is written.
+            raise SystemExit(
+                f"{len(prior_failed)} {year} roster request(s) empty or failed "
+                f"({', '.join(prior_failed[:10])}); roster tenure would be incomplete. "
+                "No output written — rerun (successful rosters are served from the local cache)."
+            )
         tenure[back] = roster_ids(prior)
 
     stats = {}
@@ -388,12 +407,12 @@ def main() -> None:
         time.sleep(REQUEST_DELAY_S)
         stats[category] = pivot_stats(fetch_cfbd_category(season, category))
 
-    candidates, unknown_year = build_candidates(
+    candidates, refresh_only, unknown_year = build_candidates(
         rosters, stats["passing"], stats["rushing"], stats["receiving"], class_year, args.run_date,
         ids_two_back=tenure[2],
         ids_one_back=tenure[1],
     )
-    players, added, refreshed = merge_players(existing, candidates)
+    players, added, refreshed = merge_players(existing, candidates, refresh_only)
 
     write_json(output, {
         "schema_version": SCHEMA_VERSION,

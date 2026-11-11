@@ -68,7 +68,7 @@ class EvaluateBreakoutTests(unittest.TestCase):
 
 class BuildCandidatesTests(unittest.TestCase):
     def setUp(self):
-        self.candidates, self.unknown = build_candidates(*_fixture(), class_year=2027, run_date=RUN_DATE, **TENURE)
+        self.candidates, self.refresh_only, self.unknown = build_candidates(*_fixture(), class_year=2027, run_date=RUN_DATE, **TENURE)
         self.by_name = {c["player_name"]: c for c in self.candidates}
 
     def test_eligibility_filter(self):
@@ -107,7 +107,7 @@ class TenureTests(unittest.TestCase):
         rosters = {"Ohio State": [
             {"id": 10, "firstName": "Vet", "lastName": "Receiver", "position": "WR", "year": 1},
         ]}
-        candidates, unknown = build_candidates(rosters, {}, {}, {}, class_year=2027, run_date=RUN_DATE,
+        candidates, _, unknown = build_candidates(rosters, {}, {}, {}, class_year=2027, run_date=RUN_DATE,
                                                ids_two_back={"10"}, ids_one_back={"10"})
         self.assertEqual([(c["academic_year"], c["academic_year_source"]) for c in candidates],
                          [(3, "cfbd_fbs_roster_tenure")])
@@ -116,14 +116,14 @@ class TenureTests(unittest.TestCase):
     def test_transfer_tenure_follows_cfbd_id(self):
         # tenure sets are league-wide, so the 2024 school doesn't matter
         rosters = {"Texas A&M": [{"id": 20, "firstName": "Moved", "lastName": "On", "position": "RB", "year": 1}]}
-        candidates, _ = build_candidates(rosters, {}, {}, {}, class_year=2027, run_date=RUN_DATE,
+        candidates, _, _ = build_candidates(rosters, {}, {}, {}, class_year=2027, run_date=RUN_DATE,
                                          ids_two_back={"20"}, ids_one_back=set())
         self.assertEqual(len(candidates), 1)
 
 
 class MergePlayersTests(unittest.TestCase):
     def setUp(self):
-        self.first, _ = build_candidates(*_fixture(), class_year=2027, run_date="2026-09-01", **TENURE)
+        self.first, _, _ = build_candidates(*_fixture(), class_year=2027, run_date="2026-09-01", **TENURE)
 
     def test_rerun_preserves_operator_state_and_refreshes_observations(self):
         existing = copy.deepcopy(self.first)
@@ -132,7 +132,7 @@ class MergePlayersTests(unittest.TestCase):
         smith["status"] = "combine_invited"
         smith["status_history"].append({"status": "combine_invited", "date": "2027-02-01", "reason": "manual"})
 
-        second, _ = build_candidates(*_fixture(), class_year=2027, run_date=RUN_DATE, **TENURE)
+        second, _, _ = build_candidates(*_fixture(), class_year=2027, run_date=RUN_DATE, **TENURE)
         merged, added, refreshed = merge_players(existing, second)
 
         smith = next(p for p in merged if p["player_name"] == "Jeremiah Smith")
@@ -162,6 +162,32 @@ class MergePlayersTests(unittest.TestCase):
         self.assertEqual(back[0]["player_id"], "rb-senior-back-miami-fl")  # identity preserved
         self.assertEqual(added, 0)
 
+    def test_sophomore_whose_breakout_drops_is_refreshed_not_removed(self):
+        existing = copy.deepcopy(self.first)
+        rosters, passing, rushing, receiving = _fixture()
+        # Young Star's share collapses on the rerun
+        receiving = pivot_stats(
+            _rows("Ohio State", "Jeremiah Smith", REC=60, YDS=2000)
+            + _rows("Ohio State", "Young Star", REC=10, YDS=100)
+        )
+        admitted, refresh_only, _ = build_candidates(rosters, passing, rushing, receiving,
+                                                     class_year=2027, run_date=RUN_DATE, **TENURE)
+        merged, added, _ = merge_players(existing, admitted, refresh_only)
+        star = next(p for p in merged if p["player_name"] == "Young Star")
+        self.assertFalse(star["breakout_flagged"])
+        self.assertFalse(star["young_breakout"])
+        self.assertEqual(star["last_seen_date"], RUN_DATE)
+        self.assertEqual(star["status"], "watchlist")
+        self.assertEqual(added, 0)
+
+    def test_refresh_only_entries_are_never_added(self):
+        admitted, refresh_only, _ = build_candidates(*_fixture(), class_year=2027,
+                                                     run_date=RUN_DATE, **TENURE)
+        self.assertEqual({c["player_name"] for c in refresh_only}, {"Quiet Soph", "Unseen Soph"})
+        merged, added, _ = merge_players([], admitted, refresh_only)
+        self.assertEqual(added, 3)
+        self.assertNotIn("Quiet Soph", {p["player_name"] for p in merged})
+
     def test_output_is_sorted_and_deterministic(self):
         a, _, _ = merge_players([], copy.deepcopy(self.first))
         b, _, _ = merge_players([], list(reversed(copy.deepcopy(self.first))))
@@ -179,6 +205,26 @@ class FetchRostersTests(unittest.TestCase):
             mod.REQUEST_DELAY_S = orig
         self.assertEqual(list(rosters), ["A"])
         self.assertEqual(failed, ["B"])
+
+
+class HistoricalRosterFailureTests(unittest.TestCase):
+    def test_failed_prior_roster_fails_closed_without_writing(self):
+        import sys
+        import tempfile
+        from pathlib import Path
+        from unittest.mock import patch
+        import scripts.discover_shadow_pool as mod
+
+        out = Path(tempfile.mkdtemp()) / "pool.json"
+        rosters = {2026: [{"id": 1}], 2025: [{"id": 1}], 2024: []}  # 2024 request "fails"
+        with patch.object(mod, "REQUEST_DELAY_S", 0), \
+             patch.object(mod, "fetch_fbs_teams", lambda y: ["Ohio State"]), \
+             patch.object(mod.fetch_rosters, "__defaults__", (lambda t, y: rosters[y],)), \
+             patch.object(sys, "argv", ["x", "--output", str(out)]):
+            with self.assertRaises(SystemExit) as ctx:
+                mod.main()
+        self.assertIn("2024", str(ctx.exception))
+        self.assertFalse(out.exists())
 
 
 if __name__ == "__main__":
