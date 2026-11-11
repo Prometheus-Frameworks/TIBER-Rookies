@@ -48,6 +48,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from scripts import cfbd_cache
 from scripts.cfbd_plays import cfbd_headers, load_json, write_json
 from scripts.compute_production_scores import CFBD_BASE_URL, normalize_identity
 
@@ -95,20 +96,29 @@ def profile_dir_for_position(position: str, args: argparse.Namespace) -> Path:
     return args.wr_dir  # WR and TE
 
 
+def roster_url(team: str, year: int) -> str:
+    return f"{CFBD_BASE_URL}/roster?{urlencode({'team': team, 'year': year})}"
+
+
 def fetch_roster(team: str, year: int, max_retries: int = 5) -> list[dict[str, Any]]:
     """Fetch CFBD roster for team/year with exponential backoff on 429. Returns empty list on failure."""
     from urllib.request import Request, urlopen
     from urllib.error import HTTPError, URLError
 
-    params = urlencode({"team": team, "year": year})
-    url = f"{CFBD_BASE_URL}/roster?{params}"
+    url = roster_url(team, year)
+    cached = cfbd_cache.load(url)
+    if cached is not cfbd_cache.MISS:
+        return cached
 
     for attempt in range(max_retries):
         try:
             req = Request(url, headers=cfbd_headers())
             with urlopen(req, timeout=30) as resp:
                 data = json.loads(resp.read())
-            return data if isinstance(data, list) else []
+            if not isinstance(data, list):
+                return []
+            cfbd_cache.store(url, data)
+            return data
         except HTTPError as exc:
             if exc.code == 429:
                 # Rate limited; check Retry-After header

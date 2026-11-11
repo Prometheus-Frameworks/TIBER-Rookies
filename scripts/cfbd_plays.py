@@ -19,6 +19,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from scripts import cfbd_cache
 from scripts.compute_production_scores import CFBD_BASE_URL, normalize_identity
 
 _WARNED_MISSING_KEY = False
@@ -49,6 +50,10 @@ def fetch_team_plays(year: int, team: str, season_type: str) -> list[dict[str, A
         for week in week_ranges[single_type]:
             params = urlencode({"year": year, "team": team, "seasonType": single_type, "week": week})
             url = f"{CFBD_BASE_URL}/plays?{params}"
+            cached = cfbd_cache.load(url)
+            if cached is not cfbd_cache.MISS:
+                plays.extend(cached)
+                continue
             payload: list[dict[str, Any]] | None = None
             for attempt in range(5):
                 try:
@@ -87,6 +92,7 @@ def fetch_team_plays(year: int, team: str, season_type: str) -> list[dict[str, A
                     f"Unexpected CFBD response for {team} {year} week {week}: "
                     f"expected list, got {type(payload).__name__}"
                 )
+            cfbd_cache.store(url, payload)
             plays.extend(payload)
 
     return plays

@@ -11,3 +11,7 @@ data/external/
 # Generated ML lane runs. Never a committed export: the frozen migration
 # archive lives under exports/experimental/ and must not be written by a run.
 runs/
+
+# Local CFBD API response cache. Raw API Data: CFBD Terms prohibit
+# redistribution, and this repo is public. Never commit.
+.cfbd_cache/

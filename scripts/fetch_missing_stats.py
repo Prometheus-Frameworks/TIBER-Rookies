@@ -23,6 +23,7 @@ import json
 import logging
 import os
 import re
+import sys
 import time
 from pathlib import Path
 from urllib.error import HTTPError, URLError
@@ -31,6 +32,11 @@ from urllib.request import Request, urlopen
 from typing import Any
 
 BASE_DIR = Path(__file__).parent.parent
+if str(BASE_DIR.resolve()) not in sys.path:
+    sys.path.insert(0, str(BASE_DIR.resolve()))
+
+from scripts import cfbd_cache as cfbd_response_cache  # noqa: E402
+
 DATA_PROCESSED = BASE_DIR / "data" / "processed"
 CFBD_BASE_URL = "https://api.collegefootballdata.com"
 
@@ -149,6 +155,9 @@ def fetch_category(
         query["team"] = team
     params = urlencode(query)
     url = f"{CFBD_BASE_URL}/stats/player/season?{params}"
+    cached = cfbd_response_cache.load(url)
+    if cached is not cfbd_response_cache.MISS:
+        return cached
     headers = {"Accept": "application/json"}
     api_key = os.getenv("CFBD_API_KEY")
     if api_key:
@@ -158,7 +167,9 @@ def fetch_category(
         req = Request(url=url, headers=headers)
         try:
             with urlopen(req, timeout=60) as resp:
-                return json.load(resp)
+                payload = json.load(resp)
+            cfbd_response_cache.store(url, payload)
+            return payload
         except HTTPError as exc:
             if exc.code == 429:
                 wait = 10 * (2 ** attempt)

@@ -18,9 +18,9 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
 
+from scripts.cfbd_cache import fetch_category as fetch_cfbd_category
 from scripts.compute_production_scores import (
     CFBD_BASE_URL,
-    fetch_cfbd_category,
     normalize_identity,
     pivot_stats,
     school_aliases,
