@@ -23,6 +23,7 @@ import hashlib
 import json
 import logging
 import os
+import tempfile
 from pathlib import Path
 from typing import Any
 from urllib.parse import parse_qs, urlparse
@@ -59,16 +60,24 @@ def load(url: str) -> Any:
 
 
 def store(url: str, payload: Any) -> None:
+    """Best-effort write. A cache failure never affects the fetched data."""
     path = cache_path(url)
-    path.parent.mkdir(parents=True, exist_ok=True)
     record = {
         "url": url,
         "fetched_at": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
         "payload": payload,
     }
-    tmp = path.with_suffix(".tmp")
-    tmp.write_text(json.dumps(record), encoding="utf-8")
-    tmp.replace(path)
+    tmp_name = None
+    try:
+        path.parent.mkdir(parents=True, exist_ok=True)
+        fd, tmp_name = tempfile.mkstemp(dir=path.parent, suffix=".tmp")  # unique per writer
+        with os.fdopen(fd, "w", encoding="utf-8") as handle:
+            json.dump(record, handle)
+        os.replace(tmp_name, path)
+    except OSError as exc:
+        logging.warning("Could not write CFBD cache file %s: %s", path, exc)
+        if tmp_name and os.path.exists(tmp_name):
+            os.unlink(tmp_name)
 
 
 def fetch_category(year: int, category: str, **kwargs: Any) -> list[dict[str, Any]]:

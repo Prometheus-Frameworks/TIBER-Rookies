@@ -38,7 +38,20 @@ class CacheModuleTests(unittest.TestCase):
         self.assertIs(cfbd_cache.load(self.URL), cfbd_cache.MISS)
 
 
+    def test_concurrent_writers_do_not_collide(self):
+        from concurrent.futures import ThreadPoolExecutor
+        with ThreadPoolExecutor(8) as pool:
+            list(pool.map(lambda i: cfbd_cache.store(self.URL, [{"id": i}]), range(40)))
+        self.assertIn(cfbd_cache.load(self.URL)[0]["id"], range(40))
+        self.assertEqual(list(cfbd_cache.cache_path(self.URL).parent.glob("*.tmp")), [])
+
+
 class FetchersUseCacheTests(unittest.TestCase):
+    def test_cache_write_failure_still_returns_roster(self):
+        with patch("scripts.cfbd_cache.tempfile.mkstemp", side_effect=OSError("disk full")), \
+             patch("urllib.request.urlopen", return_value=_response([{"id": 7}])):
+            self.assertEqual(fetch_roster("Ohio State", 2026), [{"id": 7}])
+
     def test_roster_second_call_is_offline(self):
         with patch("urllib.request.urlopen", return_value=_response([{"id": 7}])) as net:
             self.assertEqual(fetch_roster("Ohio State", 2026), [{"id": 7}])
