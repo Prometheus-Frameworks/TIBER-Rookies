@@ -1,11 +1,28 @@
 # TIBER-Rookies — Prospect Discovery Pipeline Design
 
-**Status:** Planning / Pre-implementation  
+**Status:** Phase 1 discovery + local cache implemented (producer-only); Phase 2 not implemented
+
 **Author:** Operator  
 **Applies to:** 2027 class and all future classes  
-**Last updated:** 2026-05-16
+**Last updated:** 2026-11-15
 
 ---
+
+## Current implementation (2026-11-15)
+
+[PR #306](https://github.com/Prometheus-Frameworks/TIBER-Rookies/pull/306) implemented `scripts/discover_shadow_pool.py`; [PR #307](https://github.com/Prometheus-Frameworks/TIBER-Rookies/pull/307) added `scripts/cfbd_cache.py`. Discovery builds/refreshes `data/raw/{class_year}_shadow_pool.json` (default class: 2027) from CFBD FBS team rosters and passing/rushing/receiving statistics. It emits producer-only candidates, without promoting them into Rookie Alpha or integrating them into rookie-lab surfaces.
+
+- **Eligibility:** for `discovery_season = class_year - 1`, use CFBD player ID presence on FBS rosters two seasons earlier to assign `academic_year = 3` (a lower bound), or one season earlier to assign `2` if absent two seasons earlier. Players assigned `3` qualify; those assigned `2` require a breakout under the imported `compute_breakout_age.py` thresholds. CFBD's roster `year` field is ignored; unknown tenure is skipped and counted. This proxy does not independently verify academic standing or NFL draft eligibility, distinguish redshirts, or cover players lacking FBS history.
+- **Reruns:** merge additively, preserving existing identity, operator notes and status/history; existing candidates are never automatically removed. `targets` and `target_share` remain `null`, as does unobserved production. A successful run does not establish complete candidate coverage.
+- **Cache and freshness:** integrated call sites reuse local, gitignored `.cfbd_cache/` responses (`CFBD_CACHE_DIR` can override the directory). There is no automatic expiry; remove the relevant local entries before fetching updated source data. Offline reuse requires every needed response to be cached. `observed_production.through_date` records the run date, not the source fetch date. Raw cache responses, including override directories, must remain local and outside version control.
+- **Artifact evidence:** [commit `577efeb`](https://github.com/Prometheus-Frameworks/TIBER-Rookies/commit/577efeb785274f4805a4cc92327156a821b879da) records regeneration under roster-tenure eligibility; the committed pool records that rule and a 2026-11-11 run date. This repository record does not independently validate source data, eligibility, completeness or freshness. Pool regeneration/validation is separate from documentation completion.
+- **Remaining work:** Phase 2 `scripts/promote_shadow_to_seed.py`, `watchlist_overrides.json` intake, an annual runbook and an automatic discovery schedule are not implemented in this repository. `2027_watchlist_seed.json` remains. Promotion requires explicit operator approval; this documentation grants no authority to publish source data, deploy, expose the pool in runtime features or activate a model, and makes no claim of a live deployment.
+
+---
+
+## Original design (May 2026)
+
+The remaining sections preserve the original proposal, not a current capability list or executable runbook. The implementation summary above supersedes its CFBD `year` assumption and draft-eligibility guarantee; Phase 2 commands, override intake and lifecycle transitions below remain proposals.
 
 ## Problem Statement
 
