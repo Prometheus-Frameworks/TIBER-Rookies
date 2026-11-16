@@ -75,6 +75,8 @@ This repo has two intentionally separated layers:
   - `exports/promoted/rookie-alpha/{season}_manifest.json`
 - Manifest + validation contract documented in `docs/export-contract.md`
 - Consumer ingest gate helper: `scripts/validate_promoted_export.py`
+- Producer-only prospect discovery: `scripts/discover_shadow_pool.py` builds/refreshes `data/raw/2027_shadow_pool.json` from CFBD FBS rosters and production for WR/RB/TE/QB. These are candidates, not Rookie Alpha inputs; promotion remains an operator decision. See [implementation status and remaining design](docs/prospect-discovery-pipeline-design.md) for eligibility and artifact validation limits.
+- Local CFBD response cache: `scripts/cfbd_cache.py` reuses responses at integrated call sites under gitignored `.cfbd_cache/`. It has no automatic expiry; cache reuse does not establish source freshness. Keep raw responses local and out of version control.
 
 ### Standalone rookie lab capabilities
 
@@ -103,6 +105,8 @@ This repo has two intentionally separated layers:
   - `runbooks/draft-week-handoff-2026.md`
 - `scripts/`
   - `compute_rookie_alpha.py`
+  - `discover_shadow_pool.py`
+  - `cfbd_cache.py`
   - `validate_promoted_export.py`
   - `rehearse_draft_week_handoff_2026.sh`
 - `lib/rookies/`
@@ -111,6 +115,7 @@ This repo has two intentionally separated layers:
   - static gallery/board/detail/compare surfaces
 - `data/raw/`
   - canonical combine inputs projected from the 2026 real seed pool
+  - `2027_shadow_pool.json` — producer-only discovery candidates, separate from canonical model inputs
 - `data/processed/`
   - canonical production + draft-capital-proxy inputs aligned to the same 2026 real seed pool
   - optional deterministic context scaffold (`2026_prospect_context.json`) for additive translation/evidence enrichment
