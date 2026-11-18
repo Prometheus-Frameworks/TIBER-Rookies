@@ -32,9 +32,31 @@ function notePreview(note) {
   return note.length > 90 ? `${note.slice(0, 90)}…` : note;
 }
 
-export function renderRookieQueuePanel(queue, compareState = {}, portabilityState = {}, options = {}) {
+export function reconcileRookieQueue(queue, supportedRows = []) {
+  const rowsBySlug = new Map(supportedRows.map((row) => [row.slug, row]));
+  return queue.map((entry) => {
+    const row = rowsBySlug.get(entry.slug);
+    const scoreAvailable = Boolean(row && row.alphaStatus !== 'not_scored' && Number.isFinite(row.rookieGrade));
+    return {
+      ...entry,
+      scoreAvailable,
+      rookieGrade: scoreAvailable ? row.rookieGrade : null,
+      classRank: scoreAvailable ? row.classRank : null,
+      tierLabel: scoreAvailable ? row.tier?.label : '',
+      identityNote: scoreAvailable ? row.profileSummary : '',
+      scoreStatus: row?.alphaStatus === 'not_scored'
+        ? 'Unscored — draft-fact only. Scores, ranks and comparison unavailable.'
+        : 'Coverage unavailable; scores, ranks and comparison withheld.',
+    };
+  });
+}
+
+export function renderRookieQueuePanel(savedQueue, compareState = {}, portabilityState = {}, options = {}) {
+  // Presentation only: stored entries and user annotations are never rewritten.
+  const queue = reconcileRookieQueue(savedQueue, options.supportedRows);
   const highestRanked = findHighestRanked(queue);
-  const canCompare = compareState.left && compareState.right && compareState.left !== compareState.right;
+  const eligibleSlugs = new Set(queue.filter((player) => player.scoreAvailable).map((player) => player.slug));
+  const canCompare = eligibleSlugs.has(compareState.left) && eligibleSlugs.has(compareState.right) && compareState.left !== compareState.right;
   const importMode = portabilityState.mode === 'merge' ? 'merge' : 'replace';
   const statusTone = portabilityState.tone === 'error' ? 'error' : 'info';
   const statusMessage = portabilityState.message ?? 'Export to a JSON file, then import on another browser/device.';
@@ -81,8 +103,9 @@ export function renderRookieQueuePanel(queue, compareState = {}, portabilityStat
                       <div>
                         <div class="board-player-name">${esc(player.name)}</div>
                         <div class="meta">${esc(player.position)} • ${esc(player.school)}</div>
-                        <div class="meta">Grade ${esc(grade)} • ${esc(player.tierLabel)}</div>
-                        <div class="meta">${esc(player.identityNote)}</div>
+                        ${player.scoreAvailable
+                          ? `<div class="meta">Grade ${esc(grade)} • ${esc(player.tierLabel)}</div><div class="meta">${esc(player.identityNote)}</div>`
+                          : `<div class="meta" role="status">${esc(player.scoreStatus)}</div>`}
                         ${playerTag ? `<div class="queue-annotation-tags"><span class="queue-tag-pill">${esc(playerTag)}</span></div>` : ''}
                         ${playerNote ? `<div class="queue-note-preview">“${esc(notePreview(playerNote))}”</div>` : ''}
                         <div class="queue-annotation-editor">
@@ -109,8 +132,8 @@ export function renderRookieQueuePanel(queue, compareState = {}, portabilityStat
                     </div>
                     <div class="queue-item-actions">
                       <a class="nav-link" href="/cards/rookies/player.html?slug=${encodeURIComponent(player.slug)}">Detail</a>
-                      <button type="button" class="queue-action" data-queue-mark="left" data-slug="${esc(player.slug)}">Set Left${compareState.left === player.slug ? ' ✓' : ''}</button>
-                      <button type="button" class="queue-action" data-queue-mark="right" data-slug="${esc(player.slug)}">Set Right${compareState.right === player.slug ? ' ✓' : ''}</button>
+                      ${player.scoreAvailable ? `<button type="button" class="queue-action" data-queue-mark="left" data-slug="${esc(player.slug)}">Set Left${compareState.left === player.slug ? ' ✓' : ''}</button>
+                      <button type="button" class="queue-action" data-queue-mark="right" data-slug="${esc(player.slug)}">Set Right${compareState.right === player.slug ? ' ✓' : ''}</button>` : ''}
                       <button type="button" class="queue-action" data-queue-move="up" data-slug="${esc(player.slug)}" ${index === 0 ? 'disabled' : ''}>Move up</button>
                       <button type="button" class="queue-action" data-queue-move="down" data-slug="${esc(player.slug)}" ${index === queue.length - 1 ? 'disabled' : ''}>Move down</button>
                       <button type="button" class="queue-action queue-remove" data-queue-remove data-slug="${esc(player.slug)}">Remove</button>
